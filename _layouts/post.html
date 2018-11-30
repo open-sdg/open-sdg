@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<div id="main-content" class="container">
+  <div class="row">
+    <div class="col-md-9 push-md-3">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <h2 class="post-title" itemprop="name headline">{{ page.title }}</h2>
+        <p><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+        
+        <div class="post-categories">
+          {% assign categories = page.categories %}
+          {% for category in categories %}
+            <a href="{{site.baseurl}}/categories/#{{category|slugize}}" title="View all posts in the {{category}} category">{{category}}</a>
+          {% unless forloop.last %}&nbsp;{% endunless %}
+          {% endfor %}
+        </div>
+
+        <div class="post-content" itemprop="articleBody">
+          {{ content }}
+        </div>
+      </article>
+    </div>
+    <div class="col-md-3 pull-md-9">
+      {% include components/post-categories.html %}
+    </div>
+  </div>
+</div>
+
+
+

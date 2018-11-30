@@ -1,0 +1,28 @@
+{% assign id = page.indicator | slugify %}
+{% assign unit_label = page.variable_unit_label %}
+<canvas id="barchart-{{ id }}" class="ct-chart ct-major-eleventh"></canvas>
+<script>
+  // 3.5.2
+  // 1.5.2 // 2 bars
+  // 4.b.1 // 3 bars
+  var chartInfo = chartDataProcessor.getChartInfo({{include.data}}),
+      chartInstance = new Chart(document.getElementById('barchart-{{ id }}'), {
+      type: 'bar',
+      data: chartInfo,
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [{
+              ticks: {
+                  suggestedMin: 0
+              }
+            }]
+          },
+          legend: {
+            display: false
+         },
+      }
+  });
+
+</script>

@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<div id="main-content" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      {{content}}
+      {% for category in site.categories %}
+        <div class="archive-group">
+          {% capture category_name %}{{ category | first }}{% endcapture %}
+          <div id="#{{ category_name | slugize }}">
+            <h4 class="category-head">{{ category_name }}</h4>
+            <a name="{{ category_name | slugize }}"></a>
+            {% for post in site.categories[category_name] %}
+            <article class="archive-item">
+              <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%b %-d, %Y" }}</time> - <a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a>
+            </article>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<div id="main-content" class="container newslist">
+  <div class="row">
+    <div class="col-md-9 push-md-3">  
+      {{content}}
+      {% for post in site.posts %}
+      <article>
+        <p>{{post.categories | category_links}}</p>
+        <h5><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h5>
+        <p><time datetime="{{post.date|date:"%F"}}">{{post.date|date:"%b %d, %Y"}}</time></p>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="col-md-3 pull-md-9">
+      {% include components/post-categories.html %}
+    </div>
+  </div>
+</div>

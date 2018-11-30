@@ -1,0 +1,11 @@
+<div id="sidebar">
+  <h4>{{ t.post.posts_by_category }}</h4>
+  <ul>
+    {% for category in site.categories %}
+      {% capture category_name %}{{ category | first }}{% endcapture %}
+      <li>
+        <a href="{{site.baseurl}}/categories/#{{category_name|slugize}}" title="{{ t.post.view_all_in_category | replace_first: '%category_name', category_name }}">{{category_name}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

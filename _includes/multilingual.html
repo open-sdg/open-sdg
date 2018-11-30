@@ -1,0 +1,19 @@
+{%- comment -%}
+
+  Here we assign all of the variables that will be used throughout other includes
+  and layouts to translate common words and phrases. The variables are:
+
+    - t: For translating by key (see sdg-translations on Github for details)
+    - default_language: The 2-letter code for the default language.
+    - current_language: The 2-letter code for the current language.
+    - baseurl_folder: The subfolder that should be added for all internal links.
+
+{%- endcomment -%}
+{%- assign default_language = site.languages[0] -%}
+{%- assign current_language = page.language -%}
+{%- assign t = site.data.translations[current_language] -%}
+{%- if current_language == default_language -%}
+  {%- assign baseurl_folder = '' -%}
+{%- else -%}
+  {%- assign baseurl_folder = '/' | append: current_language -%}
+{%- endif -%}

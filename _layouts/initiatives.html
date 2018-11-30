@@ -1,0 +1,29 @@
+{% include head.html %}
+{% include header.html %}
+<div id="main-content" class="container" role="main">
+    <section>
+        <div>
+            <div>
+                <h1>{{ page.title }}</h1>
+                <h2></h2>
+            </div>
+        </div>
+    </section>
+    <div>
+        {{ content }}
+    </div>
+    <div>
+        {% for initiative in site.initiatives %}
+            <a href="/{{ initiative.permalink }}">
+                <h3>{{ initiative.title }}</h3>
+            </a>
+        {% cycle '', '', '</div><div>' %}
+    {% endfor %}
+    
+<!--     <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="fa fa-arrow-circle-o-up
+"></span></a> -->
+
+    
+</div>
+</div>
+{% include footer.html %}

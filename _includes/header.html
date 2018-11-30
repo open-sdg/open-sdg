@@ -1,0 +1,68 @@
+<a class="sr-only sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">{{ t.header.skip_link }}</a>
+<div id="disclaimer">
+  {% include components/dev-disclaimer.html %}
+</div>
+
+<header role="banner">
+  <div class="container">
+
+    <a class="navbar-brand" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
+      <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ t.general.sdg }} - {{ t.header.tag_line }}" />
+    </a>
+
+  <div class='hidden visible-xs float-right'>
+    <ul id='accessibility-nav' class='contrast-switcher'></ul>
+    {%- if site.languages.size > 1 -%}
+    <div class="language-toggle-mobile">
+      {% include components/language-toggle.html %}
+    </div>
+    {%- endif -%}
+  </div>
+
+    <nav class="navbar navbar-default" id="main-nav">
+
+      <ul class="top-level">
+        <li><span data-target="menu">{{ t.menu.menu }}</span></li>
+        <li><span data-target="search">{{ t.search.search }}</span></li>
+      </ul>
+
+      <ul class="nav navbar-nav menu-target contrast-switcher" id="menu">
+        {%- if site.menu -%}
+          {%- for item in site.menu -%}
+          <li class="nav-link {% if page.permalink contains item.path %}active{% endif %}">
+            <a href="{{ site.baseurl }}{{ baseurl_folder }}{{ item.path }}">{{ t.menu[item.translation_key] }}</a>
+          </li>
+          {%- endfor -%}
+        {%- else -%}
+        <li {% if page.permalink contains "/reporting-status/" or page.permalink contains "/news" or page.permalink contains "/about" or page.layout=="post"  or page.permalink contains "/faq"  or page.permalink contains "/publications" or page.permalink contains "/guidance" %}class="nav-link"
+          {% else %}class="nav-link active" {% endif %}>
+          <a href="{{ site.baseurl }}{{ baseurl_folder }}/">{{ t.general.goals }}</a>
+        </li>
+        <li {% if page.permalink=="/reporting-status/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
+          <a href="{{ site.baseurl }}{{ baseurl_folder }}/reporting-status">{{ t.menu.reporting_status }}</a>
+        </li>
+        <li {% if page.permalink=="/about/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
+          <a href="{{ site.baseurl }}{{ baseurl_folder }}/about">{{ t.menu.about }}</a>
+        <li {% if page.permalink=="/publications/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
+            <a href="{{ site.baseurl }}{{ baseurl_folder }}/publications">{{ t.menu.publications }}</a>
+        </li>
+        <li {% if page.permalink=="/guidance/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
+          <a href="{{ site.baseurl }}{{ baseurl_folder }}/guidance">{{ t.menu.guidance }}</a>
+        </li>
+        <li {% if page.permalink=="/faq/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
+          <a href="{{ site.baseurl }}{{ baseurl_folder }}/faq">{{ t.menu.faq }}</a>
+        </li>
+        {%- endif -%}
+        {%- if site.languages.size > 1 -%}
+        <li>
+          {% include components/language-toggle.html %}
+        </li>
+        {%- endif -%}
+      </ul>
+
+      {% include search.html %}
+
+    </nav>
+  </div>
+
+</header>

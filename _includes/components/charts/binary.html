@@ -1,0 +1,45 @@
+{% assign unit_label = page.variable_unit_label %}
+<script>
+  // Create a variable that will override the chart config in indicatorView.js.
+  var chartConfigOverrides = {
+    // Force the "bar" type instead of the "binary" type which Chart.js doesn't
+    // recognize.
+    type: 'bar',
+    // Assign some callbacks to convert 1/-1 to Yes/No.
+    options: {
+      tooltips: {
+        callbacks: {
+          label: function(tooltipItem, data) {
+            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+            if (tooltipItem.yLabel == 1) {
+              label += ': Yes';
+            }
+            else {
+              label += ': No';
+            }
+            return label;
+          }
+        }
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            // Set the minimum to -1 so that the bars will start from the
+            // middle and either go up (for 1) or down (for -1).
+            min: -1,
+            callback: function(value, index, values) {
+                if (value == 1) {
+                  return 'Yes';
+                }
+                if (value == -1) {
+                  return 'No';
+                }
+                return '';
+            }
+          },
+        }]
+      },
+    }
+  };
+</script>
+<canvas></canvas>

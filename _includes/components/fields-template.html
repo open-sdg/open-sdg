@@ -1,0 +1,32 @@
+<script type="text/template" id="item_template">
+  <% _.each(series, function(seriesItem) { %>
+    <div class="variable-selector<% if(allowedFields.indexOf(seriesItem.field) == -1) { %> disallowed child<% }%>" data-field="<%=seriesItem.field%>">
+      <button class='accessBtn' tabindex='0'><h5><%=seriesItem.field%><i class="fa fa-chevron-down"></i></h5></button>
+      <div class="bar">
+        <div class="selected"></div>
+      </div>
+      <div class="variable-options">
+        <div>
+          <button data-type="select">{{ t.indicator.select_all }}</button>
+          <button data-type="clear">{{ t.indicator.clear_all }}</button>
+        </div>
+        <% _.each(seriesItem.values, function(item) { %>
+          <label><input type="checkbox" value="<%=item.value%>" data-field="<%=seriesItem.field%>" /><%=item.value%></label>
+        <% }); %>
+      </div>
+      
+      <% if(allowedFields.indexOf(seriesItem.field) == -1) { %> 
+        <div class="variable-hint">
+          {%- capture var_hint_replacement -%}
+            {% raw %}<%= _.findWhere(edges, { To: seriesItem.field }).From %>{% endraw %}
+          {%- endcapture -%}
+          {{ t.indicator.variable_hint | replace_first: '%field', var_hint_replacement }}
+        </div>
+        <div class="no-data-hint">
+          {{ t.indicator.no_data_hint }}
+        </div>
+      <% }%>
+
+    </div>
+  <% }); %>
+</script>

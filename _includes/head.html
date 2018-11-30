@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        {%- include multilingual.html -%}
+        <script>var translations = {};</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Title and meta description
+        ================================================== -->
+        {% assign goal = site.goals | where: "sdg_goal", page.sdg_goal | first %}
+        {% capture page_title %}
+        {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ goal.goal }} - {{ goal.short }}
+        {% endcapture %}
+        <title>{% if page.indicator %}{{ page_title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+        <meta name="description" content="">
+        <meta property="og:description" content="">
+        {% if site.environment == 'staging' %}
+        <meta name="robots" content="noindex, nofollow">
+        {% endif %}
+        <link rel="canonical" href="/">
+
+        {% comment %}
+        <!--[if lt IE 9]>
+        <script src="/assets/js/vendor/html5shiv.js"></script>
+        <script src="/assets/js/vendor/respond.js"></script>
+        <script src="/assets/js/vendor/selectivizr-min.js"></script>
+        <![endif]-->
+        {% endcomment %}
+
+        <!--[if IE 9]>
+        <script src="{{ site.baseurl }}/assets/js/lib/classList.js"></script>
+        <![endif]-->
+
+        <!-- Favicons ================================================== -->
+        <!-- 128x128 -->
+        <link rel="shortcut icon" type="image/ico" href="{{ site.baseurl }}/assets/img/favicons/favicon.ico">
+        <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicons/favicon.png"><!-- 192x192, as recommended for Android
+        http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
+        -->
+
+        {% comment %}
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ site.baseurl }}/assets/img/favicons/favicon-192.png"><!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+        <link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}/assets/img/favicons/favicon-57.png"><!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ site.baseurl }}/assets/img/favicons/favicon-72.png"><!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ site.baseurl }}/assets/img/favicons/favicon-114.png"><!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/assets/img/favicons/favicon-144.png"><!-- CSS
+        ================================================== -->
+        {% endcomment %}
+
+        {% assign cache_bust = site.time | date: "%Y%m%d%H%M%S" %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.3/css/fixedColumns.dataTables.min.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default.css?v={{ cache_bust }}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+        {%- if site.custom_css -%}
+          {%- for custom_css_file in site.custom_css -%}
+            <link rel="stylesheet" href="{{ site.baseurl }}{{ custom_css_file }}?v={{ cache_bust }}">
+          {%- endfor -%}
+        {%- endif -%}
+    </head>
+<body class="language-{{ current_language }}">
+<!-- <div class="container"> -->

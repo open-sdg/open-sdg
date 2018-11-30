@@ -1,0 +1,11 @@
+<script>
+  {%- if include.key contains '.' -%}
+    {%- assign key_parts = include.key | split: '.' -%}
+    {%- assign key1 = key_parts[0] -%}
+    {%- assign key2 = key_parts[1] -%}
+    translations['{{ key1 }}'] = translations['{{ key1 }}'] || {};
+    translations['{{ key1 }}']['{{ key2 }}'] = '{{ site.data.translations[current_language][key1][key2] }}';
+    {%- else -%}
+    translations['{{ include.key }}'] = {{ site.data.translations[current_language][include.key] | jsonify }};
+  {%- endif -%}
+</script>

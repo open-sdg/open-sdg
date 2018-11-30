@@ -1,0 +1,27 @@
+{% include head.html %}
+{% include header.html %}
+<div id="main-content" class="container goal-tiles" role="main">
+
+    <h1>{{site.country.name}} {{ t.frontpage.heading }}</h1>
+
+    <p>{{ t.frontpage.instructions | replace_first: '%before_link', '<span style="display:none" id="jump-to-search"><a href="javascript:void(0)">' | replace_first: '%after_link', '</a></span>' | replace_first: '%country_name', site.country.name }}</p>
+    {%- assign goals = site.goals | where: 'language', current_language -%}
+    {% for goal in goals %}
+        {%- assign goal_number = goal.sdg_goal -%}
+        {%- assign default_goal = site.data.translations[default_language].global_goals[goal_number] -%}
+        {%- assign translated_goal = t.global_goals[goal_number] -%}
+
+        {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
+            <div class="col-xs-4 col-md-2">
+                <a href="./{{ default_goal.short | slugify }}/">
+                  <img src="{{ site.baseurl }}/assets/img/goals/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
+              </a>
+            </div>
+        {% cycle 'end row' : '', '', '', '', '', '</div>' %}
+    {% endfor %}
+        <div class="col-xs-4 col-md-2">
+            <img src="{{ site.baseurl }}/assets/img/goals/{{ current_language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
+        </div>
+    </div>
+</div>
+{% include footer.html %}

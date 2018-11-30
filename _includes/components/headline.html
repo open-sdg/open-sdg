@@ -1,0 +1,55 @@
+{% capture headline_name %}{{page.indicator | slugify }}{% endcapture %} 
+{% assign sdg_headline_data = site.data.headlines[headline_name] %} 
+
+<div id="headlineTable">
+  
+  <div id="datatables">
+    
+    <a href="{{ site.remotedatabaseurl }}/headline/{{ page.indicator | slugify }}.csv" class="btn btn-primary btn-download" download="{{ dataset_name }}.csv" tabindex="0" role="button">{{ t.indicator.download_headline }}</a>
+    
+    <a href="{{ site.remotedatabaseurl }}/data/{{ page.indicator | slugify }}.csv" class="btn btn-primary btn-download" style='float:left;margin-right:1em' download='{{ dataset_name }}.csv' tabindex='0' role='button'>{{ t.indicator.download_source }}</a>
+    
+    <h3>Headline data</h3>
+    <table class="table-responsive table table-hover dataTable no-footer" role="grid">
+      <caption>{{ page.graph_title }}</caption>
+      <thead>
+        {% for column in sdg_headline_data[0] %}
+        {% if forloop.last %}
+        <th scope="col" class="table-value">{{ column[0] }}</th>
+        {% else %}
+        <th scope="col">{{ column[0] }}</th>
+        {% endif %}
+        {% endfor %}
+      </thead>
+      <tbody>
+        {% for row in sdg_headline_data %}
+        <tr>
+          {% for cell in row %}
+          {% if forloop.last %}
+          <td class="table-value">{{ cell[1] }}</td>
+          {% else %}
+          <td>{{ cell[1] }}</td>    
+          {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  <div id="datatableFooter">
+    {% if page.source_organisation_1.size %}
+    <p>{{ t.indicator.source }}: {{ page.source_organisation_1 }}</p>
+    {% endif %}
+    {% if page.national_geographical_coverage.size %}
+    <p>{{ t.indicator.geographical_area }}: {{ page.national_geographical_coverage }}</p>
+    {% endif %}
+    {% if page.computation_units.size %}
+    <p>{{ t.indicator.unit_of_measurement }}: {{ page.computation_units }}</p>
+    {% endif %}
+    {% if page.data_footnote.size %}
+    <p>{{ t.indicator.footnote }}: {{ page.data_footnote }}</p>
+    {% endif %}
+  </div>
+  
+</div>
