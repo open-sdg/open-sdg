@@ -1,4 +1,4 @@
-# Sustainable Development Goals - Platform documentation
+# Open SDG - Platform documentation
 
 ## Overview
 

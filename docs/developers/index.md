@@ -1,6 +1,6 @@
-# SDG Platform documentation - Developers
+# Open SDG documentation - Developers
 
-This document is intended for developers, to give an overview of what is involved in implementing the SDG reporting platform.
+This document is intended for developers, to give an overview of what is involved in implementing the Open SDG platform.
 
 ## Technical requirements
 

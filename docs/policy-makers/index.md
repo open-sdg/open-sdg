@@ -1,4 +1,4 @@
-# SDG Platform documentation - Policy makers
+# Open SDG documentation - Policy makers
 
 More coming soon.
 

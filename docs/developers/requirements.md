@@ -1,6 +1,6 @@
 # Requirements
 
-This document describes the software, services, and expertise that will be needed for the implementation of the SDG reporting platform.
+This document describes the software, services, and expertise that will be needed for the implementation of the Open SDG platform.
 
 ## Software
 

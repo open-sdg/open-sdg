@@ -4,7 +4,7 @@ This document is intended for data providers who will be tasked with gathering, 
 
 ## Repositories
 
-A working implementation of this platform requires 2 repositories, which elsewhere in this documentation have been referred to as the "site repository" and the "data repository". Data providers need only be concerned with the data repository. This is the repository that likely was forked from the [sdg-data-starter](https://github.com/OpenDataEnterprise/sdg-data-starter) repository.
+A working implementation of this platform requires 2 repositories, which elsewhere in this documentation have been referred to as the "site repository" and the "data repository". Data providers need only be concerned with the data repository. This is the repository that likely was forked from the [sdg-data-starter](https://github.com/open-sdg/data-starter) repository.
 
 ## Updating data and metadata
 

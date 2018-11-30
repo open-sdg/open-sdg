@@ -1,6 +1,6 @@
 # Customisation
 
-Prior to getting started with customising the platform, you should have already forked a "starter" repository, and renamed it to something like `sdg-indicators-sweden` (for example). If you have not done this yet, [start here](forking.md). In this documentation we will refer to this as the "site repository".
+Prior to getting started with customising the platform, you should have already forked a "starter" repository, and renamed it to something like `open-sdg-site-sweden` (for example). If you have not done this yet, [start here](forking.md). In this documentation we will refer to this as the "site repository".
 
 ## Jekyll configuration
 
@@ -10,19 +10,19 @@ Additionally, here are some commonly-used configuration items specific to this p
 
 ```
 # This tells the platform's Javascript code where pull remote data from.
-remotedatabaseurl: "https://my-github-organisation.github.io/sdg-data-sweden"
+remotedatabaseurl: "https://my-github-organisation.github.io/open-sdg-data-sweden"
 
 # This tells Jekyll itself where to pull remote data from.
 jekyll_get_data:
   # Pull in the metadata for all the indicators.
   - data: meta
-    json: 'https://my-github-organisation.github.io/sdg-data-sweden/meta/all.json'
+    json: 'https://my-github-organisation.github.io/open-sdg-data-sweden/meta/all.json'
   # Pull in the headlines for all the indicators.
   - data: headlines
-    json: 'https://my-github-organisation.github.io/sdg-data-sweden/headline/all.json'
+    json: 'https://my-github-organisation.github.io/open-sdg-data-sweden/headline/all.json'
   # Pull in the metadata schema for the indicators.
   - data: schema
-    json: 'https://my-github-organisation.github.io/sdg-data-sweden/meta/schema.json'
+    json: 'https://my-github-organisation.github.io/open-sdg-data-sweden/meta/schema.json'
   # Pull in the text translations for SDG-related words/phrases.
   - data: translations
     json: 'https://opendataenterprise.github.io/sdg-translations/translations.json'
@@ -34,7 +34,7 @@ email_contacts:
   functional: functional@example.com
 
 # For Prose.io integration, some information about the "data repository".
-repo_name: sdg-data-sweden
+repo_name: open-sdg-data-sweden
 branch: develop
 org_name: my-github-organisation
 
@@ -67,7 +67,7 @@ plugins:
   - jekyll-remote-theme
 
 # Tell the Remote Theme plugin to use this project!
-remote_theme: ONSDigital/sdg-theme
+remote_theme: open-sdg/open-sdg
 
 # Load any number of custom CSS files.
 custom_css:
