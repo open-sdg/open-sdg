@@ -1,0 +1,27 @@
+site_name: Open SDG Documentation
+
+repo_url: https://github.com/open-sdg/open-sdg
+site_description: 'Open SDG - A platform for collecting and disseminating data for the Sustainable Development Goal global indicators.'
+theme: readthedocs
+
+markdown_extensions:
+  - toc:
+      permalink: True
+
+nav:
+  - Home: 'index.md'
+  - Developers:
+      - Overview: developers/index.md
+      - Requirements: developers/requrements.md
+      - Forking: developers/forking.md
+      - Deployment: developers/deployment.md
+      - Customisation: developers/customisation.md
+      - Translation: developers/translation.md
+  - Data providers:
+      - Overview: data-providers/index.md
+      - Making updates: data-providers/making-updates.md
+      - Metadata format: data-providers/metadata-format.md
+      - Data format: data-providers/data-format.md
+  - Policy makers:
+      - Overview: policy-makers/index.md
+      - Who is using: policy-makers/who-is-using.md
