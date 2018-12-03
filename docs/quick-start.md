@@ -18,12 +18,12 @@ __Note for Windows users__: You will first need to install [Git for Windows](htt
 This part may be painful if you are not accustomed to command-line work. But don't worry - it is pretty fast.
 
 1. Open your operating system's Terminal application (use Git BASH, if on Windows).
-1. Create the SSH keys (substituting a real email address):
+1. Create the SSH keys by entering this command (substituting a real email address):
     `ssh-keygen -t rsa -b 4096 -C "my-email-address@example.com"`
     1. When prompted "Enter file in which to save the key", enter `my-site-key`
     1. When prompted "Enter passphrase", just hit `Enter`.
     1. When prompted "Enter same passphrase again", just hit `Enter` again.
-1. Repeat the previous step, only use `my-data-key` instead of `my-site-key`.
+1. Repeat the previous steps, only use `my-data-key` instead of `my-site-key`.
 
 Confirm that 4 files have been created:
 
@@ -80,7 +80,7 @@ Confirm that 4 files have been created:
             └─deploy_staging.sh
         ```
     1. On the right, click the Pencil icon ("Edit this file").
-    1. Update the value of the `GH_ORG_STAGING` variable, according to your fork.
+    1. Update the file as directed in the comments.
     1. At the bottom, click "Commit changes".
 1. Repeat these steps for the site repository (bookmarked earlier).
 
@@ -89,13 +89,20 @@ Confirm that 4 files have been created:
 1. Go to your fork of the site repository (bookmarked earlier).
 1. In the list of files, click `_config.yml`.
 1. On the right, click the Pencil icon ("Edit this file").
-1. Update the file by changing, if needed, any instances of:
-    * MY-GITHUB-ORG
-    * OPEN-SDG-SITE-STARTER
-    * OPEN-SDG-DATA-STARTER
+1. Update the file as directed in the comments.
 1. At the bottom, click "Commit changes".
 
 ## View the site
 
 1. CircleCI and Github will now build and publish the site. Wait about 5 minutes.
 1. View site at: https://my-github-org/github.io/open-sdg-site-starter/ (replacing "my-github-org" as needed).
+
+## Results
+
+At this point, any new updates in the "develop" branches of the repositories will trigger "builds" which automatically deploy to the github.io URLs. These github.io URLs are your __staging__ environments.
+
+## Possible next steps?
+
+1. Add data and metadata to the data repository
+1. Tweak and customise the site repository as needed
+1. Set up the "master" branch to deploy to a separate "production" environment
