@@ -33,14 +33,14 @@ All the services described here can be used without paying fees.
 
 [Prose.io](https://prose.io) provides a data management interface, which allows non-technical data providers to update data and metadata, using only their web browser.
 
-### TravisCI (or similar)
+### CircleCI (or similar)
 
-[TravisCI](https://travis-ci.org) provides allows the platform to be automatically "built" in response to simple workflows. The key ones are:
+[CircleCI](https://circleci.com/) provides allows the platform to be automatically "built" in response to simple workflows. The key ones are:
 * When code is pushed to the "develop" Git branch, build and deploy to staging.
 * When code is pushed to the "master" Git branch, build and deploy to production.
 * When a Github pull-request is created, run tests against the new code.
 
-Although these docs will focus on TravisCI, other services like [CircleCI](https://circleci.com/) are fine as well. Or for a more do-it-yourself approach: open-source [Jenkins](https://jenkins.io).
+Although these docs will focus on CircleCI, other services like [TravisCI](https://travis-ci.org) are equivalent. Or for a more do-it-yourself approach: open-source [Jenkins](https://jenkins.io).
 
 ## Expertise
 
@@ -65,4 +65,4 @@ Additionally -- although most implementations will not require alterations to ad
 
 ### Continuous integration
 
-Some experience with continuous integration (CI) -- such as with integrating Github sites with TravisCI -- will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices.
+Some experience with continuous integration (CI) -- such as with integrating Github sites with TravisCI or CircleCI -- will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices.
