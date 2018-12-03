@@ -12,7 +12,7 @@ The easiest way to perform these builds is to use a free automation service like
 
 > Note that the "starter" repositories mentioned in the [forking](forking.md)
 > section are pre-configured for to handle all of the tasks mentioned in this
-> document. The starter repositories are configured to use TravisCI.
+> document. The starter repositories are configured to use CircleCI.
 
 ## Hosting providers
 

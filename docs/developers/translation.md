@@ -15,7 +15,7 @@ There are 2 ways to get this translation data into Jekyll.
 1. Manually copy the [translations folder](https://github.com/OpenDataEnterprise/sdg-translations/tree/develop/translations) into your [data folder](https://jekyllrb.com/docs/datafiles/).
 2. (Recommended) Use a Jekyll plugin, such as [Jekyll Get](https://github.com/18F/jekyll-get), to pull in the [json data](https://opendataenterprise.github.io/sdg-translations/translations.json) at build time.
 
-Note that the [sdg-indicators-starter](https://github.com/open-sdg/site-starter) comes pre-configured to use approach #2 above.
+Note that the [open-sdg-site-starter](https://github.com/open-sdg/open-sdg-site-starter) comes pre-configured to use approach #2 above.
 
 ## Setting up translation-related variables
 
