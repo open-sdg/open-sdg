@@ -7,6 +7,7 @@ This is the centerpiece of several repositories comprising a reporting platform 
 ## Policy makers
 
 Visit the [policy makers](policy-makers/index.md) section for answers to these questions:
+
 * What is a National Reporting Platform (NRP)?
 * Can this platform be used as a Local Reporting Platform (LRP)?
 * Why chose an NRP or LRP?
@@ -16,6 +17,7 @@ Visit the [policy makers](policy-makers/index.md) section for answers to these q
 ## Data providers
 
 Visit the [data providers](data-providers/index.md) section for answers to these questions:
+
 * What is the best way to identify data gaps?
 * How can I update data and metadata?
 * How can I review changes to data and metadata?
@@ -25,6 +27,7 @@ Visit the [data providers](data-providers/index.md) section for answers to these
 ## Developers
 
 Visit the [developers](developers/index.md) section for answers to these questions:
+
 * What are the IT requirements for this platform?
 * How do I install this platform?
 * How can this platform be customised?
