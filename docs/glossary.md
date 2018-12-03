@@ -14,6 +14,10 @@ A set of files that is versioned by Git is called a __repository__. Each reposit
 
 Github.com is a service that hosts Git repositories, and provides a useful interface for maintaining them. Github does offer paid services, but everything that this platform needs is part of Github's free offerings.
 
+## Forks
+
+Github offers an easy way to make a copy of a repository, and the term they use is "fork". So, a __fork__ is a copy of a repository. It can also be used as a verb: "to fork" means "to copy a repository", and "forked" means "copied a repository".
+
 ## Environments: Staging vs Production
 
 It is important to be able to see proposed changes before releasing them to the general public. To accomplish this, there should be 2 separate __environments__:
