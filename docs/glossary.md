@@ -22,12 +22,22 @@ Github offers an easy way to make a copy of a repository, and the term they use 
 
 It is important to be able to see proposed changes before releasing them to the general public. To accomplish this, there should be 2 separate __environments__:
 
-* __Staging__: This is where proposed changes are first visible.
-* __Production__: This is where the general public views the platform.
+### Staging
+
+This is where proposed changes are first visible.
+
+### Production
+
+This is where the general public views the platform.
 
 ## Site repository vs Data repository
 
 The implementation of this platform involves maintaining 2 repositories:
 
-* __Data repository__: This is where the platform's data and metadata are managed.
-* __Site repository__: This is where everything else is managed, such as presentation, pages, menus, and documents.
+### Data repository
+
+This is where the platform's data and metadata are managed. A "starter" repository is available [here](https://github.com/open-sdg/open-sdg-data-starter) where it can be easily forked and customised.
+
+### Site repository
+
+This is where everything else is managed, such as presentation, pages, menus, and documents.  A "starter" repository is available [here](https://github.com/open-sdg/open-sdg-site-starter) where it can be easily forked and customised.
