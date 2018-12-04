@@ -8,7 +8,7 @@ markdown_extensions:
     - toc:
         permalink: True
 
-nav:
+pages:
     - Home: index.md
     - Glossary of terms: glossary.md
     - Requirement: requirements.md
