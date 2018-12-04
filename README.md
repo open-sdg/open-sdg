@@ -4,4 +4,4 @@ This is a platform for collecting and disseminating data for the Sustainable Dev
 
 ## Documentation
 
-See the [docs folder](docs/index.md) for more information.
+See the [docs](https://open-sdg.readthedocs.io/en/latest/) for more information.
