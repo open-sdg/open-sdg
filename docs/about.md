@@ -24,4 +24,5 @@ Absolutely nothing! You are free to use this platform and modify it in any way y
 # What are the IT requirements?
 
 For a high-level summary of the technologies used by this platform, see [here](https://open-sdg.readthedocs.io/en/latest/requirements/).
+
 There are ultimately two contributing users of the NRP: data managers/providers and developers. Data managers and providers do not need anything other than a computer with an internet connection and a web browser. Developers will need more software to be able to build the website on their local machine to test any changes they make before making these changes live; these requirements are detailed [here](https://open-sdg.readthedocs.io/en/latest/development/).
