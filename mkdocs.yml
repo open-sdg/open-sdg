@@ -10,14 +10,16 @@ markdown_extensions:
 
 pages:
     - Home: index.md
+    - About: about.md
     - Glossary of terms: glossary.md
-    - Requirement: requirements.md
+    - Requirements: requirements.md
     - Quick start: quick-start.md
     - Data providers:
         - Making updates: making-updates.md
         - Metadata format: metadata-format.md
         - Data format: data-format.md
     - Developers:
+        - Local development: development.md
         - Deployment: deployment.md
         - Customisation: customisation.md
         - Translation: translation.md
@@ -34,3 +36,6 @@ pages:
         - Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
+
+extra_css:
+    - assets/custom.css
