@@ -1,27 +1,36 @@
-site_name: Open SDG Documentation
+site_name: Open SDG
 
 repo_url: https://github.com/open-sdg/open-sdg
 site_description: 'Open SDG - A platform for collecting and disseminating data for the Sustainable Development Goal global indicators.'
 theme: readthedocs
 
 markdown_extensions:
-  - toc:
-      permalink: True
+    - toc:
+        permalink: True
 
 nav:
-  - Home: 'index.md'
-  - Developers:
-      - Overview: developers/index.md
-      - Requirements: developers/requrements.md
-      - Forking: developers/forking.md
-      - Deployment: developers/deployment.md
-      - Customisation: developers/customisation.md
-      - Translation: developers/translation.md
-  - Data providers:
-      - Overview: data-providers/index.md
-      - Making updates: data-providers/making-updates.md
-      - Metadata format: data-providers/metadata-format.md
-      - Data format: data-providers/data-format.md
-  - Policy makers:
-      - Overview: policy-makers/index.md
-      - Who is using: policy-makers/who-is-using.md
+    - Home: index.md
+    - Glossary of terms: glossary.md
+    - Requirement: requirements.md
+    - Quick start: quick-start.md
+    - Data providers:
+        - Making updates: making-updates.md
+        - Metadata format: metadata-format.md
+        - Data format: data-format.md
+    - Developers:
+        - Deployment: deployment.md
+        - Customisation: customisation.md
+        - Translation: translation.md
+    - Automation:
+        - CircleCI: automation/circle-ci.md
+        - TravisCI: automation/travis-ci.md
+        - Jenkins: automation/jenkins.md
+    - Hosting:
+        - Github pages: hosting/github-pages.md
+        - AWS S3: hosting/aws-s3.md
+        - Docker/Nginx/LetsEncrypt: hosting/docker-nginx-letsencrypt.md
+    - Community:
+        - Who is using: community.md
+        - Support: support.md
+        - Contribution guidelines: contribution.md
+        - Code of conduct: conduct.md
