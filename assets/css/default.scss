@@ -183,6 +183,7 @@ header {
   right: 0;
   left: 0;
   z-index: 400;
+  max-height: $disclaimer-height + unquote("px");
 
   .phase-tag {
     background: #005ea5;
