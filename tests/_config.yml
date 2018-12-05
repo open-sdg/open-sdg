@@ -1,0 +1,102 @@
+# Jekyll configuration for Open SDG platform
+
+# Replace this title as needed.
+title: Indicators For The Sustainable Development Goals
+# Replace the baseurl with the name of this repository.
+baseurl: "/open-sdg-site-testing"
+url: ""
+data_dir: data
+environment: staging
+# Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
+remotedatabaseurl: "https://open-sdg.github.io/open-sdg-data-testing"
+
+jekyll_get_data:
+  - data: meta
+    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
+    json: 'https://open-sdg.github.io/open-sdg-data-testing/meta/all.json'
+  - data: headlines
+    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
+    json: 'https://open-sdg.github.io/open-sdg-data-testing/headline/all.json'
+  - data: schema
+    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
+    json: 'https://open-sdg.github.io/open-sdg-data-testing/meta/schema.json'
+  - data: translations
+    json: 'https://open-sdg.github.io/sdg-translations/translations.json'
+
+analytics:
+  ga_prod: ''
+
+# Replace the email addresses below.
+email_contacts:
+  questions: test@example.com
+  suggestions: test@example.com
+  functional: test@example.com
+
+# Github Repo for Data
+# Replace this value as needed.
+repo_name: open-sdg-data-testing
+branch: develop
+# Replace this value as needed.
+org_name: open-sdg
+
+# Build settings
+markdown: kramdown
+
+# Travis Support
+exclude: [vendor, scripts, remotedata]
+
+# International Support
+# Eg name: Australia and adjective: Australian
+country:
+  name: Australia
+  adjective: Australian
+
+# Pages
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+  posts:
+    output: true
+    permalink: /news/:year/:month/:day/:title.html
+  indicators:
+    output: true
+  goals:
+    output: true
+
+# Menu
+menu:
+  # Use these to customise the main navigation.
+  - path: /reporting-status
+    translation_key: menu.reporting_status
+  - path: /about
+    translation_key: menu.about
+  - path: /guidance
+    translation_key: menu.guidance
+  - path: /faq
+    translation_key: menu.faq
+
+# The list of languages that are translated. The first one is the default.
+languages:
+  - en
+  - es
+  - fr
+
+# This makes sure that all pages have a language.
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      language: "en"
+
+# Tell Jekyll to use the Remote Theme plugin.
+plugins:
+  - jekyll-remote-theme
+
+# Tell the Remote Theme plugin to use the Open SDG platform (Jekyll theme).
+remote_theme: open-sdg/open-sdg
+
+# Apply any custom CSS.
+custom_css:
+  - /assets/css/custom.scss
