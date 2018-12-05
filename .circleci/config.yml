@@ -26,7 +26,7 @@ jobs:
           command: cp ~/open-sdg/tests/_config.yml ~/repo/
       - run:
           name: Add an additional language
-          command: python scripts/batch/add_language es
+          command: python scripts/batch/add_language.py es
       - run:
           name: Build the Jekyll site
           command: bundle exec jekyll build
