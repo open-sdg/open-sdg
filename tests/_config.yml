@@ -80,7 +80,6 @@ menu:
 languages:
   - en
   - es
-  - fr
 
 # This makes sure that all pages have a language.
 defaults:
