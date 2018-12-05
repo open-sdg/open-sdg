@@ -6,4 +6,4 @@ This is a platform for collecting and disseminating data for the Sustainable Dev
 
 ## Documentation
 
-See the [docs](https://open-sdg.readthedocs.io/en/latest/) for more information.
+Complete documentation can be found [here](https://open-sdg.readthedocs.io/en/latest/).
