@@ -10,7 +10,7 @@ Github's "Github Pages" is a great hosting option for Open SDG, because Github i
 
 ## Cons
 
-* There aren't many downsides to Github Pages, which is why it is the recommended hosting option in Open SDG.
+There aren't many downsides to Github Pages, which is why it is the recommended hosting option in Open SDG.
 
 ## Domain name
 
