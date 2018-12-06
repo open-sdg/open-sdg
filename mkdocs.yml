@@ -30,7 +30,7 @@ pages:
     - Hosting:
         - Github pages: hosting/github-pages.md
         - AWS S3: hosting/aws-s3.md
-        - Docker/Nginx/LetsEncrypt: hosting/docker-nginx-letsencrypt.md
+        - Linux server: hosting/linux-server.md
     - Community:
         - Who is using: community.md
         - Support: support.md
