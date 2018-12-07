@@ -6,12 +6,10 @@ jobs:
       - image: circleci/ruby:2.5.1
     working_directory: ~/repo
     steps:
-      - checkout
+      - checkout:
+          path: ~/open-sdg
       - run:
-          name: Move this repo out of the way
-          command: mv ~/repo ~/open-sdg
-      - run:
-          name: Download open-sdg-site-starter in its place
+          name: Download open-sdg-site-starter
           command: git clone https://github.com/open-sdg/open-sdg-site-starter.git ~/repo
       - restore_cache:
           key: test-dependencies-{{ checksum "Gemfile" }}
