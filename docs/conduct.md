@@ -1,4 +1,4 @@
-# Code of Conduct
+<h1>Code of Conduct</h1>
 
 ## Our Pledge
 

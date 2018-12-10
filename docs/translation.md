@@ -1,4 +1,4 @@
-# Translation
+<h1>Translation</h1>
 
 This platform is designed to be multilingual, and leverages the translations being maintained in [a separate repository](https://github.com/open-sdg/sdg-translations). This document provides an overview of how the platform accomplishes this, and how it can be extended.
 

@@ -1,4 +1,4 @@
-# Glossary of terms
+<h1>Glossary of terms</h1>
 
 This document will define the common terminology used through this platform's documentation.
 

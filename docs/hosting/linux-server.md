@@ -1,4 +1,4 @@
-# Linux server
+<h1>Linux server</h1>
 
 The industry-standard operating system-of-choice for web applications, Linux, is one option for hosting the Open SDG platform. There are endless different ways to provision a Linux server for this purpose. Here we will simply mention some possibilities, with links to helpful resources.
 

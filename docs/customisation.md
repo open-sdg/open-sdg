@@ -1,4 +1,4 @@
-# Customisation
+<h1>Customisation</h1>
 
 ## Jekyll configuration
 

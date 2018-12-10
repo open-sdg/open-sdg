@@ -1,4 +1,4 @@
-# Quick Start
+<h1>Quick Start</h1>
 
 This document will go over the quickest way to get this platform up and running. Here we will choose the simplest approach for automation and hosting, which are to use CircleCI.com and Github.com. Note, however, that there are alternatives to this approach, as detailed under the Automation and Hosting sections.
 

@@ -1,4 +1,4 @@
-# Contribution Guidelines
+<h1>Contribution Guidelines</h1>
 
 ## What do I need to know to help?
 
