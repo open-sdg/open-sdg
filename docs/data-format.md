@@ -1,4 +1,4 @@
-# Data format
+<h1>Data format</h1>
 
 These guidelines are for anyone wishing to supply a data set for an SDG indicator.
 

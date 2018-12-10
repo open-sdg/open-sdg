@@ -36,6 +36,3 @@ pages:
         - Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
-
-extra_css:
-    - assets/custom.css

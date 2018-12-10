@@ -1,4 +1,4 @@
-# Metadata format
+<h1>Metadata format</h1>
 
 When editing metadata, the individual fields are associated with a particular tag. This page details what each of those tags represents. This is mostly relevant for developers of the site, but users will also find it useful if they are adding additional "Raw Metadata" in the Prose interface.
 

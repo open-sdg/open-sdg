@@ -1,4 +1,4 @@
-# Getting support
+<h1>Getting support</h1>
 
 ## Issue queue
 

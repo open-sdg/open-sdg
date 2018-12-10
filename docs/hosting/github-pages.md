@@ -1,4 +1,4 @@
-# Github Pages
+<h1>Github Pages</h1>
 
 Github's "Github Pages" is a great hosting option for Open SDG, because Github is already a central component of the platform. The way Github Pages works is fairly simple: Github will serve your files as a website, for free. All you need to do is push them to a branch called `gh-pages`.
 

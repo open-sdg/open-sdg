@@ -1,4 +1,0 @@
-/* Hide the H1 in the table of contents on top-level pages. */
-li.toctree-l2:first-child {
-  display: none;
-}

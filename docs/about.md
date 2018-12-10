@@ -1,4 +1,4 @@
-# What is a National Reporting Platform?
+<h1>What is a National Reporting Platform?</h1>
 
 An NRP refers to an integrated web site, databases, and associated IT infrastructure to gather, host, secure, and display information. This platform is focused on the collection and dissemination of the Sustainable Development Goals (SDG) indicator statistics, metadata and other related information including data sources. In order to conform with the UN’s [Fundamental Principles of Official Statistics](https://unstats.un.org/unsd/dnss/gp/fundprinciples.aspx), the minimum characteristics an SDG NRP should have are that it should:
 

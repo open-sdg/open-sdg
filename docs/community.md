@@ -1,4 +1,4 @@
-# Community
+<h1>Community</h1>
 
 ## Who is using this platform
 
