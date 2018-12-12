@@ -1,8 +1,8 @@
-<h1>Contribution Guidelines</h1>
+<h1>Contribution guidelines</h1>
 
 ## What do I need to know to help?
 
-If you are looking to help to with a code contribution, our project uses mainly HTML, Javascript, CSS, and Jekyll, along with some separate Javascript and Python libraries. For more details and resources on the technologies we use, see the [Reqirements](requirements.md) page.
+If you are looking to help to with a code contribution, our project uses mainly HTML, Javascript, CSS, and Jekyll, along with some separate Javascript and Python libraries. For more details and resources on the technologies we use, see the [Requirements](requirements.md) page.
 
 If you don't feel ready to make a code contribution yet, no problem! You can also check out the [documentation issues](https://github.com/open-sdg/open-sdg/labels/docs) or the [design issues](https://github.com/open-sdg/open-sdg/labels/design) that we have.
 
@@ -20,7 +20,7 @@ There are many types of contributions that are needed. Here is a short list, wit
 
 ## How do I make a contribution?
 
-Never made an open source contribution before? Wondering how contributions work in our project? Here's a quick rundown!
+Never made an open-source contribution before? Wondering how contributions work in our project? Here's a quick rundown!
 
 1. Find an issue that you are interested in addressing or a feature that you would like to add.
 1. Fork this repository to your local GitHub organization. This means that you will have a copy of the repository under your-GitHub-username/open-sdg.
