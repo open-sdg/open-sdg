@@ -1,6 +1,6 @@
 <h1>Jenkins</h1>
 
-Jenkins is a self-contained, open source automation server. It is useful for Open SDG in a way that is typical of open-source projects: it "listens" for certain events in your Github repository, and then performs pre-configured tasks. Open SDG needs a CI tool to accomplish these things:
+Jenkins is a self-contained, open-source automation server. It is useful for Open SDG in a way that is typical of open-source projects: it "listens" for certain events in your Github repository, and then performs pre-configured tasks. Open SDG needs a CI tool to accomplish these things:
 
 * Run each new proposed change through certain tests, to prevent regression bugs
 * Build and deploy the platform to a "staging" environment whenever changes are made
