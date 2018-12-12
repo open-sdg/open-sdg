@@ -4,7 +4,7 @@ This document describes the software, services, and expertise that will be neede
 
 ## Software
 
-All the software described here is open-source and free to use.
+All the software described here is open source and free to use.
 
 ### Jekyll
 
@@ -16,7 +16,7 @@ Maintenance and development of the platform requires the use of Git. Most mainte
 
 ### Python
 
-Most implementations of the platform will not require alterations to any of the Python scripts involved in the "build process", but developers should be aware that additional build-time manipulations of data/metadata may require some knowledge of Python. Any extra validation may also require Python code.
+Most implementations of the platform will not require alterations to any of the Python scripts involved in the "build process," but developers should be aware that additional build-time manipulations of data/metadata may require some knowledge of Python. Any extra validation may also require Python code.
 
 ## Services
 
@@ -26,7 +26,7 @@ All the services described here can be used without paying fees.
 
 [Github.com](https://github.com) provides 2 key functions:
 
-1. Git repository: As a Git "remote", Github.com will be the central location for all maintenance and development, both for the platform and its content, data, and metadata.
+1. Git repository: As a Git "remote," Github.com will be the central location for all maintenance and development, both for the platform and its content, data, and metadata.
 1. Platform hosting: Through the free "Github Pages" offering, Github.com will provide free hosting of the platform.
 
 ### Prose.io
@@ -35,10 +35,10 @@ All the services described here can be used without paying fees.
 
 ### CircleCI (or similar)
 
-[CircleCI](https://circleci.com/) provides allows the platform to be automatically "built" in response to simple workflows. The key ones are:
+[CircleCI](https://circleci.com/) allows the platform to be automatically "built" in response to simple workflows. The key ones are:
 * When code is pushed to the "develop" Git branch, build and deploy to staging.
 * When code is pushed to the "master" Git branch, build and deploy to production.
-* When a Github pull-request is created, run tests against the new code.
+* When a Github pull request is created, run tests against the new code.
 
 Although these docs will focus on CircleCI, other services like [TravisCI](https://travis-ci.org) are equivalent. Or for a more do-it-yourself approach: open-source [Jenkins](https://jenkins.io).
 
@@ -58,11 +58,11 @@ Since the platform is a Jekyll site, familiarity with the configuration and stru
 
 Since this is a web platform, customisation of markup, style, and behavior will require familiarity with HTML, CSS, and Javascript. Developers should be aware that the platform uses the [Bootstrap](https://getbootstrap.com/) library.
 
-Additionally -- although most implementations will not require alterations to advanced functionality like filtering, charts, and maps -- developers should be aware of the Javascript libraries used:
+Additionally — although most implementations will not require alterations to advanced functionality like filtering, charts, and maps — developers should be aware of the Javascript libraries used:
 * Filtering: [Underscore.js](https://underscorejs.org/)
 * Charts: [Chart.js](https://www.chartjs.org/)
 * Maps: [D3.js](https://d3js.org/)
 
 ### Continuous integration
 
-Some experience with continuous integration (CI) -- such as with integrating Github sites with TravisCI or CircleCI -- will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices.
+Some experience with continuous integration (CI) — such as with integrating Github sites with TravisCI or CircleCI — will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices.
