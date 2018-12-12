@@ -16,9 +16,9 @@ Github.com is a service that hosts Git repositories, and provides a useful inter
 
 ## Forks
 
-Github offers an easy way to make a copy of a repository, and the term they use is "fork". So, a __fork__ is a copy of a repository. It can also be used as a verb: "to fork" means "to copy a repository", and "forked" means "copied a repository".
+Github offers an easy way to make a copy of a repository, and the term they use is "fork." So, a __fork__ is a copy of a repository. It can also be used as a verb: "to fork" means "to copy a repository," and "forked" means "copied a repository."
 
-## Environments: Staging vs Production
+## Environments: Staging vs production
 
 It is important to be able to see proposed changes before releasing them to the general public. To accomplish this, there should be 2 separate __environments__:
 
@@ -30,7 +30,7 @@ This is where proposed changes are first visible.
 
 This is where the general public views the platform.
 
-## Site repository vs Data repository
+## Site repository vs data repository
 
 The implementation of this platform involves maintaining 2 repositories:
 
