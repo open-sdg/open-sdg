@@ -1,6 +1,6 @@
 <h1>CircleCI</h1>
 
-CircleCI is a "continuous integration" (CI) cloud service. It is useful for Open SDG in a way that is typical of open-source projects: it "listens" for certain events in your Github repository, and then provides temporary virtual machines to perform various server-side tasks. Open SDG needs a CI tool to accomplish these things:
+CircleCI is a "continuous integration" (CI) cloud service. It is useful for Open SDG in a way that is typical of open-source projects: it "listens" for certain events in your GitHub repository, and then provides temporary virtual machines to perform various server-side tasks. Open SDG needs a CI tool to accomplish these things:
 
 * Run each new proposed change through certain tests, to prevent regression bugs
 * Build and deploy the platform to a "staging" environment whenever changes are made
