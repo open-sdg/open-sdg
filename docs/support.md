@@ -2,7 +2,7 @@
 
 ## Issue queue
 
-The best way to get general support with this platform is to post your questions on the [Github issue queue](https://github.com/open-sdg/open-sdg/issues). Any questions/feedback/etc are welcome and appreciated here.
+The best way to get general support with this platform is to post your questions on the [GitHub issue queue](https://github.com/open-sdg/open-sdg/issues). Any questions/feedback/etc are welcome and appreciated here.
 
 ## Specific implementations
 
