@@ -4,7 +4,7 @@ The industry-standard operating system-of-choice for web applications, Linux, is
 
 ## Pros
 
-* Full control: When you maintain the environment at this level, you gain absolute control over every aspect of the system - from software versions and patches, to security policies, firewalls, proxies. You can even go "on-premise" and control the actual physical location of any hardware.
+* Full control: When you maintain the environment at this level, you gain absolute control over every aspect of the system — from software versions and patches, to security policies, firewalls, proxies. You can even go "on-premise" and control the actual physical location of any hardware.
 
 ## Cons
 
