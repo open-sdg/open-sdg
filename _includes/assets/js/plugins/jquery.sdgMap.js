@@ -96,6 +96,15 @@
       return geoJson;
     },
 
+    // Pan to a feature.
+    panToFeature: function(layer) {
+      this.map.panTo(layer.getBounds().getCenter());
+      // Bring layer to front.
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    },
+
     // Select a feature.
     highlightFeature: function(layer) {
       // Update the style.
@@ -189,6 +198,20 @@
       // Add scale.
       this.map.addControl(L.control.scale({position: 'bottomright'}));
 
+      // Add the search feature.
+      this.searchControl = new L.Control.Search({
+        layer: this.zoomShowHide,
+        propertyName: 'name',
+        marker: false,
+        moveToLocation: function(latlng) {
+          plugin.selectionLegend.addSelection(latlng.layer);
+          plugin.highlightFeature(latlng.layer);
+          plugin.panToFeature(latlng.layer);
+        },
+        autoCollapse: true,
+      });
+      this.map.addControl(this.searchControl);
+
       // Add tile imagery.
       L.tileLayer(this.options.tileURL, this.options.tileOptions).addTo(this.map);
 
@@ -232,8 +255,9 @@
           // Set the "boundaries" for when this layer should be zoomed out of.
           layer.min_zoom = plugin.options.geoLayers[i].min_zoom;
           layer.max_zoom = plugin.options.geoLayers[i].max_zoom;
-          // Listen for when this layer gets zoomed out of.
-          layer.on('remove', zoomoutHandler);
+          // Listen for when this layer gets zoomed in or out of.
+          layer.on('remove', zoomOutHandler);
+          layer.on('add', zoomInHandler);
           // Save the GeoJSON object for direct access (download) later.
           layer.geoJsonObject = geoJson;
           // Add the layer to the ZoomShowHide group.
@@ -257,12 +281,7 @@
           else {
             plugin.selectionLegend.addSelection(layer);
             plugin.highlightFeature(layer);
-            // Pan to selection.
-            plugin.map.panTo(layer.getBounds().getCenter());
-            // Bring layer to front.
-            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-              layer.bringToFront();
-            }
+            plugin.panToFeature(layer);
           }
         }
         // Event handler for mouseover.
@@ -279,8 +298,8 @@
             plugin.unhighlightFeature(layer);
           }
         }
-        // Event handler for when a geoJson layer if zoomed out of.
-        function zoomoutHandler(e) {
+        // Event handler for when a geoJson layer is zoomed out of.
+        function zoomOutHandler(e) {
           var geoJsonLayer = e.target;
           // For desktop, we have to make sure that no features remain
           // highlighted, as they might have been highlighted on mouseover.
@@ -289,6 +308,12 @@
               plugin.unhighlightFeature(layer);
             }
           })
+        }
+        // Event handler for when a geoJson layer is zoomed into.
+        function zoomInHandler(e) {
+          var geoJsonLayer = e.target;
+          // Update the search control to search the regions in this layer.
+          plugin.searchControl.setLayer(geoJsonLayer);
         }
       });
 
