@@ -23,7 +23,9 @@ var mapView = function () {
           idProperty: '[replaceme]',
         },
       ],
+      tileURL: '[replaceme]',
       tileOptions: {
+        id: '[replaceme]',
         accessToken: '[replaceme]',
         attribution: '[replaceme]',
       },

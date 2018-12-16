@@ -8,9 +8,9 @@
   var defaults = {
 
     // Options for using tile imagery with leaflet.
-    tileURL: 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+    tileURL: '[replace me]',
     tileOptions: {
-      id: 'mapbox.light',
+      id: '[relace me]',
       accessToken: '[replace me]',
       attribution: '[replace me]',
     },
