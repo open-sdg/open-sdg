@@ -7,7 +7,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-md-3 col-lg-2">
-        <img src="{{ site.baseurl }}/assets/img/goals/{{ current_language }}/{{ goal_number }}.png" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
+        <img src="{{ site.baseurl }}/asserts/img/goals/{{ current_language }}/{{ goal_number }}.png" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
         <h1>
@@ -29,11 +29,11 @@
 
     {% if indicator.reporting_status == 'notstarted' %}
       {% assign status_desc = t.status.exploring_data_sources %}
-      {% assign status_css = 'danger' %}          
+      {% assign status_css = 'danger' %}
     {% endif %}
     {% if indicator.reporting_status == 'inprogress' %}
       {% assign status_desc = t.status.statistics_in_progress %}
-      {% assign status_css = 'warning' %}          
+      {% assign status_css = 'warning' %}
     {% endif %}
     {% if indicator.reporting_status == 'complete' %}
       {% assign status_desc = t.status.reported_online %}
