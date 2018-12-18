@@ -6,32 +6,10 @@ jobs:
       - image: circleci/ruby:2.5.1
     working_directory: ~/repo
     steps:
-      - checkout:
-          path: ~/open-sdg
+      - checkout
       - run:
-          name: Download open-sdg-site-starter
-          command: git clone https://github.com/open-sdg/open-sdg-site-starter.git ~/repo
-      - restore_cache:
-          key: test-dependencies-{{ checksum "Gemfile" }}
-      - run:
-          name: Install Ruby dependencies
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
-      - save_cache:
-          key: test-dependencies-{{ checksum "Gemfile" }}
-          paths:
-            - vendor/bundle
-      - run:
-          name: Update _config.yml
-          command: cp ~/open-sdg/tests/_config.yml ~/repo/
-      - run:
-          name: Add an additional language
-          command: python scripts/batch/add_language.py es
-      - run:
-          name: Build the Jekyll site
-          command: bundle exec jekyll build
-      - run:
-          name: Test the HTML
-          command: bash scripts/test/html_proofer_staging.sh
+          name: Run tests
+          command: make test
 workflows:
   version: 2
   build_and_test:

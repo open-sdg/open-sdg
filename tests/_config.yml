@@ -89,13 +89,6 @@ defaults:
     values:
       language: "en"
 
-# Tell Jekyll to use the Remote Theme plugin.
-plugins:
-  - jekyll-remote-theme
-
-# Tell the Remote Theme plugin to use the Open SDG platform (Jekyll theme).
-remote_theme: open-sdg/open-sdg
-
 # Apply any custom CSS.
 custom_css:
   - /assets/css/custom.css
