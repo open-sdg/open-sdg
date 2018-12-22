@@ -8,6 +8,9 @@ markdown_extensions:
     - toc:
         permalink: True
 
+extra_css:
+    - css/architecture.css
+
 pages:
     - Home: index.md
     - About: about.md
