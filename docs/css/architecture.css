@@ -1,7 +1,7 @@
 #architecture {
   padding: 20px;
   width: 100%;
-  height: 700px;
+  height: 630px;
   border: 1px solid gray;
 }
 
@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.repo {
+.node {
   height: 80px;
   padding: 25px;
   border: 1px solid black;
@@ -17,8 +17,17 @@
   cursor: pointer;
 }
 
-.repo .info {
+.node .info {
   display: none;
+}
+
+.node img {
+  max-width: 50px;
+  height: auto;
+  float: right;
+  margin-left: 20px;
+  margin-top: -10px;
+  max-height: 55px;
 }
 
 #open-sdg {
@@ -37,82 +46,100 @@
 }
 
 #site-repo {
-  top: 200px;
-  left: 70px;
+  top: 170px;
+  left: 10px;
 }
 
 #data-repo {
-  top: 150px;
+  top: 170px;
   right: 10px;
 }
 
+#automation {
+  top: 350px;
+  left: 10%;
+  width: 80%;
+}
+
+#hosting {
+  top: 500px;
+  left: 10%;
+  width: 80%;
+}
+
+#data-repo, #site-repo {
+  background-color: #2980B9;
+  color: white;
+  border-radius: 20px;
+}
+
 .tooltip {
-    position: absolute;
-    background: #FFC107;
-    color: black;
-    width: 150px;
-    border-radius: 3px;
-    box-shadow: 0 0 2px rgba(0,0,0,0.5);
-    padding: 10px;
-    text-align: center;
+  position: absolute;
+  background: #FFC107;
+  color: black;
+  width: 150px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  padding: 10px;
+  text-align: center;
 }
 .tooltip .tooltip-arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    position: absolute;
-    margin: 5px;
-    border-color: #FFC107;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  margin: 5px;
+  border-color: #FFC107;
 }
 .tooltip[x-placement^="top"] {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 .tooltip[x-placement^="top"] .tooltip-arrow {
-    border-width: 5px 5px 0 5px;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    bottom: -5px;
-    left: calc(50% - 5px);
-    margin-top: 0;
-    margin-bottom: 0;
+  border-width: 5px 5px 0 5px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  bottom: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .tooltip[x-placement^="bottom"] {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .tooltip[x-placement^="bottom"] .tooltip-arrow {
-    border-width: 0 5px 5px 5px;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    top: -5px;
-    left: calc(50% - 5px);
-    margin-top: 0;
-    margin-bottom: 0;
+  border-width: 0 5px 5px 5px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .tooltip[x-placement^="right"] {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .tooltip[x-placement^="right"] .tooltip-arrow {
-    border-width: 5px 5px 5px 0;
-    border-left-color: transparent;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    left: -5px;
-    top: calc(50% - 5px);
-    margin-left: 0;
-    margin-right: 0;
+  border-width: 5px 5px 5px 0;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  left: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
 }
 .tooltip[x-placement^="left"] {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 .tooltip[x-placement^="left"] .tooltip-arrow {
-    border-width: 5px 0 5px 5px;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    right: -5px;
-    top: calc(50% - 5px);
-    margin-left: 0;
-    margin-right: 0;
+  border-width: 5px 0 5px 5px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  right: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
 }
