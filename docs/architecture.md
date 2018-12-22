@@ -69,21 +69,19 @@ jsPlumb.ready(function () {
     ConnectionsDetachable: false,
     Connector: 'Straight',
     Overlays: [ ["Arrow" , { width:12, length:12, location:0.5 }] ],
+    Anchors: ['Bottom', 'Top'],
   });
   jsPlumb.connect({
     source: 'open-sdg',
     target: 'site-repo',
-    anchors: ['Bottom', 'Top'],
   });
   jsPlumb.connect({
     source: 'sdg-translations',
     target: 'site-repo',
-    anchors: ['Bottom', 'Top'],
   });
   jsPlumb.connect({
     source: 'sdg-build',
     target: 'data-repo',
-    anchors: ['Bottom', 'Top'],
   });
   jsPlumb.connect({
     source: 'data-repo',
@@ -93,17 +91,14 @@ jsPlumb.ready(function () {
   jsPlumb.connect({
     source: 'data-repo',
     target: 'automation',
-    anchors: ['Bottom', 'Top'],
   });
   jsPlumb.connect({
     source: 'site-repo',
     target: 'automation',
-    anchors: ['Bottom', 'Top'],
   });
   jsPlumb.connect({
     source: 'automation',
     target: 'hosting',
-    anchors: ['Bottom', 'Top'],
   });
 
   // Add the tooltips with Popper.js.
