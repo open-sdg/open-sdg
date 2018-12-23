@@ -47,7 +47,7 @@
       </span>
     </div>
     <div class="node" id="prose-io">
-      Prose.io<br>service
+      Prose.io<br>editor
       <i class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://prose.io">Prose.io</a> is a free cloud service that allows
