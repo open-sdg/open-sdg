@@ -84,7 +84,8 @@
 .tooltip { z-index:7; }
 
 /* Desktop optimizations */
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 650px) and (max-width: 768px),
+       only screen and (min-width: 1000px) {
   #architecture {
     height: 630px;
   }
