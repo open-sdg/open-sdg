@@ -137,6 +137,9 @@ jsPlumb.ready(function () {
     source: 'automation',
     target: 'hosting',
   });
+  window.addEventListener('resize', function() {
+    jsPlumb.repaintEverything();
+  });
 
   // Add the tooltips with Popper.js.
   var repos = document.getElementsByClassName('node');
