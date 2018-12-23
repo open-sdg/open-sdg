@@ -21,6 +21,11 @@
   display: none;
 }
 
+.node i {
+  margin-left: 5px;
+  font-size: large;
+}
+
 .node img {
   max-width: 50px;
   height: auto;
@@ -37,7 +42,7 @@
 
 #sdg-translations {
   top: 10px;
-  left: 150px;
+  left: 175px;
 }
 
 #sdg-build {
@@ -72,6 +77,11 @@
   color: white;
   border-radius: 20px;
 }
+
+.jtk-connector { z-index:4; }
+.jtk-endpoint { z-index:5; }
+.jtk-overlay { z-index:6; }
+.tooltip { z-index:7; }
 
 .tooltip {
   position: absolute;

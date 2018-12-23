@@ -6,39 +6,39 @@
 <div id="architecture">
   <div class="container">
     <div class="node" id="open-sdg">
-      Open SDG
+      Open SDG <i class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/open-sdg">Open SDG</a> provides the core layouts, styling, and functionality for your site.
       </span>
     </div>
     <div class="node" id="sdg-translations">
-      SDG Translations
+      SDG Translations <i class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/sdg-translations">SDG Translations</a> provides translations of all the text used on your site.
       </span>
     </div>
     <div class="node" id="site-repo">
-      Site repository
+      Site repository <i class="fa fa-info-circle"></i>
       <span class="info">
         This contains all the content, configuration, and customisations that
         are specific to your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-site-starter">here</a>.
       </span>
     </div>
     <div class="node" id="sdg-build">
-      SDG Build
+      SDG Build <i class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/sdg-build">SDG Build</a> handles all
         of the pre-processing of your data and metadata.
       </span>
     </div>
     <div class="node" id="data-repo">
-      Data repository
+      Data repository <i class="fa fa-info-circle"></i>
       <span class="info">
         This contains all the data and metadata for your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-data-starter">here</a>.
       </span>
     </div>
     <div class="node" id="automation">
-      Automation tool
+      Automation tool <i class="fa fa-info-circle"></i>
       <img src="../img/circleci.png" />
       <img src="../img/travisci.png" />
       <img src="../img/jenkins.png" />
@@ -49,7 +49,7 @@
       </span>
     </div>
     <div class="node" id="hosting">
-      Hosting provider
+      Hosting provider <i class="fa fa-info-circle"></i>
       <img src="../img/github.png" />
       <img src="../img/aws.png" />
       <img src="../img/linux.png" />
@@ -104,11 +104,12 @@ jsPlumb.ready(function () {
   // Add the tooltips with Popper.js.
   var repos = document.getElementsByClassName('node');
   for (var i = 0; i < repos.length; i++) {
+    var button = repos[i].getElementsByClassName('fa-info-circle');
     var text = repos[i].getElementsByClassName('info');
-    if (text.length) {
-      var instance = new Tooltip(repos[i], {
-        title: text[0],
-        trigger: 'click',
+    if (text.length && button.length) {
+      var instance = new Tooltip(button[0], {
+        title: text[0].innerHTML,
+        trigger: 'hover focus',
         html: true,
         closeOnClickOutside: true,
       });
