@@ -68,6 +68,7 @@ jsPlumb.ready(function () {
   jsPlumb.importDefaults({
     ConnectionsDetachable: false,
     Connector: 'Straight',
+    Endpoint: [ 'Dot', { radius: 4 } ],
     Overlays: [ ["Arrow" , { width:12, length:12, location:0.5 }] ],
     Anchors: ['Bottom', 'Top'],
   });
