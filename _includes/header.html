@@ -44,25 +44,6 @@
           </li>
           {%- endif -%}
           {%- endfor -%}
-        {%- else -%}
-        <li {% if page.permalink contains "/reporting-status/" or page.permalink contains "/news" or page.permalink contains "/about" or page.layout=="post"  or page.permalink contains "/faq"  or page.permalink contains "/publications" or page.permalink contains "/guidance" %}class="nav-link"
-          {% else %}class="nav-link active" {% endif %}>
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/">{{ t.general.goals }}</a>
-        </li>
-        <li {% if page.permalink=="/reporting-status/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/reporting-status">{{ t.menu.reporting_status }}</a>
-        </li>
-        <li {% if page.permalink=="/about/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/about">{{ t.menu.about }}</a>
-        <li {% if page.permalink=="/publications/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
-            <a href="{{ site.baseurl }}{{ baseurl_folder }}/publications">{{ t.menu.publications }}</a>
-        </li>
-        <li {% if page.permalink=="/guidance/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/guidance">{{ t.menu.guidance }}</a>
-        </li>
-        <li {% if page.permalink=="/faq/" %}class="nav-link active" {% else %}class="nav-link" {% endif %}>
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/faq">{{ t.menu.faq }}</a>
-        </li>
         {%- endif -%}
         {%- if site.languages.size > 1 -%}
         <li>
