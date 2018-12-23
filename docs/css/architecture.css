@@ -11,7 +11,7 @@
 
 .node {
   height: 80px;
-  padding: 25px;
+  padding: 20px 25px 0px 25px;
   border: 1px solid black;
   position: absolute;
   cursor: pointer;
@@ -31,7 +31,7 @@
   height: auto;
   float: right;
   margin-left: 20px;
-  margin-top: -10px;
+  margin-top: -25px;
   max-height: 55px;
 }
 
@@ -42,12 +42,17 @@
 
 #sdg-translations {
   top: 10px;
-  left: 175px;
+  left: 135px;
 }
 
 #sdg-build {
   top: 10px;
   right: 10px;
+}
+
+#prose-io {
+  top: 10px;
+  right: 140px;
 }
 
 #site-repo {
