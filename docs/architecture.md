@@ -40,8 +40,8 @@
       SDG<br>Build
       <i class="fa fa-info-circle"></i>
       <span class="info">
-        <a href="https://github.com/open-sdg/sdg-build">SDG Build</a> handles all
-        of the pre-processing of your data and metadata.
+        <a href="https://github.com/open-sdg/sdg-build">SDG Build</a> handles the
+        requisite pre-processing of your data and metadata.
         <br><br>
         This is a stand-alone library which does not require customisation.
       </span>
