@@ -7,7 +7,7 @@
   <div class="container">
     <div class="node" id="open-sdg">
       Open<br>SDG
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/open-sdg">Open SDG</a> provides the core layouts, styling, and functionality for your site.
         <br><br>
@@ -17,7 +17,7 @@
     </div>
     <div class="node" id="sdg-translations">
       SDG<br>Translations
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/sdg-translations">SDG Translations</a> provides translations of all the text used on your site.
         <br><br>
@@ -27,7 +27,7 @@
     </div>
     <div class="node" id="site-repo">
       Site<br>repository
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         This contains all the content, configuration, and customisations that
         are specific to your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-site-starter">here</a>.
@@ -38,7 +38,7 @@
     </div>
     <div class="node" id="sdg-build">
       SDG<br>Build
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/sdg-build">SDG Build</a> handles the
         requisite pre-processing of your data and metadata.
@@ -48,7 +48,7 @@
     </div>
     <div class="node" id="prose-io">
       Prose.io<br>editor
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://prose.io">Prose.io</a> is a free cloud service that allows
         for user-friendly editing of the data and metadata files.
@@ -59,7 +59,7 @@
     </div>
     <div class="node" id="data-repo">
       Data<br>repository
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         This contains all the data and metadata for your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-data-starter">here</a>.
         <br><br>
@@ -69,7 +69,7 @@
     </div>
     <div class="node" id="automation">
       Automation<br>tool
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <img src="../img/circleci.png" alt="Logo for CircleCI" />
       <img src="../img/travisci.png" alt="Logo for TravisCI" />
       <img src="../img/jenkins.png" alt="Logo for Jenkins" />
@@ -81,7 +81,7 @@
     </div>
     <div class="node" id="hosting">
       Hosting<br>provider
-      <i class="fa fa-info-circle"></i>
+      <i tabindex="0" class="fa fa-info-circle"></i>
       <img src="../img/github.png" alt="Logo for GitHub" />
       <img src="../img/aws.png" alt="Logo for AWS" />
       <img src="../img/linux.png" alt="Logo for Linux" />
@@ -149,9 +149,22 @@ jsPlumb.ready(function () {
     if (text.length && button.length) {
       var instance = new Tooltip(button[0], {
         title: text[0].innerHTML,
+        placements: ['bottom', 'top'],
         trigger: 'hover focus',
+        delay: {
+          show: 50,
+          hide: 150,
+        },
         html: true,
         closeOnClickOutside: true,
+        // Hijack the template to workaround a bug by adding an "inner" div.
+        // @see https://github.com/FezVrasta/popper.js/issues/669
+        template: '<div class="tooltip" role="tooltip">' +
+                    '<div class="inner">' +
+                      '<div class="tooltip-arrow"></div>' +
+                      '<div class="tooltip-inner"></div>' +
+                    '</div>' +
+                  '</div>',
       });
     }
   }
