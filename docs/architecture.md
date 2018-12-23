@@ -70,9 +70,9 @@
     <div class="node" id="automation">
       Automation<br>tool
       <i class="fa fa-info-circle"></i>
-      <img src="../img/circleci.png" />
-      <img src="../img/travisci.png" />
-      <img src="../img/jenkins.png" />
+      <img src="../img/circleci.png" alt="Logo for CircleCI" />
+      <img src="../img/travisci.png" alt="Logo for TravisCI" />
+      <img src="../img/jenkins.png" alt="Logo for Jenkins" />
       <span class="info">
         Any automation tool, such as <a href="../automation/circle-ci/">CircleCI</a>
         or <a href="../automation/travis-ci/">TravisCI</a>, handles the deployment
@@ -82,9 +82,9 @@
     <div class="node" id="hosting">
       Hosting<br>provider
       <i class="fa fa-info-circle"></i>
-      <img src="../img/github.png" />
-      <img src="../img/aws.png" />
-      <img src="../img/linux.png" />
+      <img src="../img/github.png" alt="Logo for GitHub" />
+      <img src="../img/aws.png" alt="Logo for AWS" />
+      <img src="../img/linux.png" alt="Logo for Linux" />
       <span class="info">
         Any hosting provider, such as <a href="../hosting/github-pages/">Github Pages</a> or <a href="../hosting/aws-s3/">Amazon S3</a>, will receive the
         uploaded files to serve them as a static website.
