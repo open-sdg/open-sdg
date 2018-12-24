@@ -2,7 +2,7 @@
 all: test
 
 test.before test.after:
-  # Stop the detached Jekyll web server.
+	# Stop the detached Jekyll web server.
 	-pkill -f -9 jekyll
 	# Delete the build.
 	rm -fr starter
