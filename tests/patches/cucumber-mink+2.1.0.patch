@@ -9,47 +9,11 @@ patch-package
  };
  
  function gherkin(cucumber) {
-@@ -38,6 +39,7 @@ Mink.prototype.hook = function (cucumber) {
- };
- Mink.prototype.setup = async function () {
+@@ -40,6 +41,7 @@ Mink.prototype.setup = async function () {
    this.browser = await puppeteer.launch({
-+    args: (this.config.noSandbox) ? ['--no-sandbox'] : [],
      headless: this.config.headless && !this.config.devtools,
      devtools: this.config.devtools,
++    args: (this.config.noSandbox) ? ['--no-sandbox'] : [],
    });
-@@ -75,16 +77,22 @@ Mink.prototype.count = function (selector) {
-   });
- };
- 
--Mink.prototype.elementsWithText = function (selector, text) {
-+Mink.prototype.elementsWithText = function (selector, text, exact = true) {
-   const self = this;
-   return self.page.$$(selector).then(items => Promise.filter(items, (handle) => {
-     /* istanbul ignore next */
-     return self.page.evaluate(obj => obj.innerText, handle)
--      .then(res => res.toUpperCase() === text.toUpperCase());
-+      .then(res => {
-+        if (exact) {
-+            return res.toUpperCase() === text.toUpperCase()
-+        } else {
-+            return res.toUpperCase().indexOf(text.toUpperCase()) >= 0
-+        }
-+      });
-   }));
- };
- 
--Mink.prototype.elementsWithValue = function (selector, text) {
-+Mink.prototype.elementsWithValue = function (selector, text, exact = true) {
-   const self = this;
-   return self.page.$$(selector).then(items => Promise.filter(items, (handle) => {
-     /* istanbul ignore next */
-@@ -113,7 +121,8 @@ Mink.prototype.link = function (mixed) {
-     () => Promise
-       .try(() => this.page.$$(mixed))
-       .catch((err) => { debug(err); return []; }),
--    () => this.elementsWithText('a', mixed),
-+    () => this.elementsWithText('a', mixed, true),
-+    () => this.elementsWithText('a', mixed, false),
-   ];
-   return detectSeries(arr, fn => fn(), WebElements => !!WebElements.length)
-     .then(({ result }) => {
+   this.page = await this.browser.newPage();
+   return this.page.setViewport(this.config.viewport);
