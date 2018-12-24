@@ -1,6 +1,13 @@
+.PHONY: test.prep test.run test.before test.after
 all: test
 
-prepare_tests:
+test.before test.after:
+  # Stop the detached Jekyll web server.
+	-pkill -f -9 jekyll
+	# Delete the build.
+	rm -fr starter
+
+test.prep:
 	# Clone the starter repository.
 	git clone https://github.com/open-sdg/open-sdg-site-starter.git starter
 	# Copy the Jekyll config we will use.
@@ -15,16 +22,10 @@ prepare_tests:
 	# Install dependencies for Cucumber tests.
 	cd tests && npm install
 
-run_tests:
+test.run:
 	# HTML proofer.
-	cd starter && bash scripts/test/html_proofer_staging.sh
+	#cd starter && bash scripts/test/html_proofer_staging.sh
 	# Cucumber.
 	cd tests && npx cucumber-js
 
-clean_tests:
-  # Stop the detached Jekyll web server.
-	pkill -f -9 jekyll
-	# Delete the build.
-	rm -fr starter
-
-test: prepare_tests run_tests clean_tests
+test: test.before test.prep test.run test.after
