@@ -1,7 +1,7 @@
 {
-    "name": "mysite-test",
+    "name": "open-sdg-tests",
     "version": "1.0.0",
-    "description": "Integration testing for mysite v1",
+    "description": "Integration testing for Open SDG",
     "dependencies": {
         "cucumber": "latest",
         "cucumber-mink": "latest"
