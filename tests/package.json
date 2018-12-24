@@ -1,0 +1,9 @@
+{
+    "name": "mysite-test",
+    "version": "1.0.0",
+    "description": "Integration testing for mysite v1",
+    "dependencies": {
+        "cucumber": "latest",
+        "cucumber-mink": "latest"
+    }
+}
