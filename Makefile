@@ -1,4 +1,4 @@
-.PHONY: test.prep test.run test.before test.after
+.PHONY: test.before test.prep test.serve test.html test.features test.after
 all: test
 
 test.before test.after:
@@ -16,16 +16,22 @@ test.prep:
 	cp -r -t starter/ _includes _layouts assets
 	# Add a second language.
 	cd starter && python scripts/batch/add_language.py es
-	# Build and serve the Jekyll site at http://127.0.0.1:4000/open-sdg-site-testing/
+	# Build the Jekyll site.
 	cd starter && bundle install
-	cd starter && bundle exec jekyll serve --detach
+	cd starter && bundle exec jekyll build
 	# Install dependencies for Cucumber tests.
 	cd tests && npm install
 
-test.run:
+test.serve:
+	# Serve the Jekyll site at http://127.0.0.1:4000/open-sdg-site-testing/
+	cd starter && bundle exec jekyll serve --detach --skip-initial-build
+
+test.html:
 	# HTML proofer.
-	#cd starter && bash scripts/test/html_proofer_staging.sh
+	cd starter && bash scripts/test/html_proofer_staging.sh
+
+test.features:
 	# Cucumber.
 	cd tests && npx cucumber-js
 
-test: test.before test.prep test.run test.after
+test: test.before test.prep test.serve test.html test.features test.after
