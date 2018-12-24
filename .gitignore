@@ -1,2 +1,4 @@
 tests/screenshot.png
-starter/
+tests/node_modules
+tests/package-lock.json
+starter
