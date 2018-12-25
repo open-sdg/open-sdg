@@ -28,7 +28,7 @@ test.serve:
 
 test.html:
 	# HTML proofer.
-	cd starter && bash scripts/test/html_proofer_staging.sh
+	cd starter && bash scripts/test/html_proofer_prod.sh
 
 test.features:
 	# Cucumber.

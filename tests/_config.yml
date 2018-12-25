@@ -3,7 +3,7 @@
 # Replace this title as needed.
 title: Indicators For The Sustainable Development Goals
 # Replace the baseurl with the name of this repository.
-baseurl: "/open-sdg-site-testing"
+baseurl: ""
 url: ""
 data_dir: data
 environment: staging
