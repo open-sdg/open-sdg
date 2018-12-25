@@ -13,6 +13,6 @@ const driver = new mink.Mink({
 });
 
 // Allow a little extra time for web page requests.
-cucumber.setDefaultTimeout(10 * 1000);
+cucumber.setDefaultTimeout(15 * 1000);
 
 driver.hook(cucumber);
