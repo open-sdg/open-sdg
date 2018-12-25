@@ -5,7 +5,7 @@ Feature: Homepage
   So that I can continue browsing into the site
 
   Background:
-    Given I am on homepage
+    Given I am on the homepage
 
   Scenario: All 17 goal icons are visible
     Then I should see 17 ".goal-tiles a img" elements
