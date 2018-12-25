@@ -10,5 +10,19 @@ Feature: Multilingual
     # Expand the language toggle.
     And I click on ".nav .language-toggle-button"
     # Click the first option (Español).
-    And I click on ".nav .language-options a:first-child"
+    And I follow ".nav .language-options a:first-child"
     Then I should see "Haga clic en cada objetivo"
+
+  Scenario: Lanugage switcher works on a goal page
+    Given I am on "/no-poverty"
+    Then I should see "End poverty in all its forms everywhere"
+    And I click on ".nav .language-toggle-button"
+    And I follow ".nav .language-options a:first-child"
+    Then I should see "Poner fin a la pobreza en todas sus formas y en todo el mundo"
+
+  Scenario: Language switcher works on an indicator page
+    Given I am on "/1-1-1"
+    Then I should see "Proportion of population below the international poverty line, by sex, age, employment status and geographical location (urban/rural)"
+    And I click on ".nav .language-toggle-button"
+    And I follow ".nav .language-options a:first-child"
+    Then I should see "Proporción de la población que vive por debajo del umbral internacional de pobreza, desglosada por sexo, edad, situación laboral y ubicación geográfica (urbana o rural)"
