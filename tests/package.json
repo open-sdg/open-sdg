@@ -4,12 +4,6 @@
     "description": "Integration testing for Open SDG",
     "dependencies": {
         "cucumber": "latest",
-        "cucumber-mink": "latest"
-    },
-    "scripts": {
-        "prepare": "patch-package"
-    },
-    "devDependencies": {
-        "patch-package": "5.1.1"
+        "cucumber-mink": "git://github.com/brockfanning/cucumber-mink.git#circleci-compatibility"
     }
 }
