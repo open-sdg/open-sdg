@@ -20,7 +20,6 @@ Feature: Multilingual
     And I follow ".nav .language-options a:first-child"
     Then I should see "Poner fin a la pobreza en todas sus formas y en todo el mundo"
 
-  @broken
   Scenario: Language switcher works on an indicator page
     Given I am on "/1-1-1"
     Then I should see "Proportion of population below the international poverty line, by sex, age, employment status and geographical location (urban/rural)"
