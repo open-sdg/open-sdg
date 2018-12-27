@@ -6,6 +6,6 @@ Feature: High contrast mode
 
   Scenario: The high-contrast switcher works on the homepage
     Given I am on the homepage
-    And I click on ".nav .contrast-high a"
+    And I click on ""
     Then the "body.contrast-high" element should exist
-    Then I should see 17 ".goal-tiles a img[src*='high-contrast']" elements
+    Then I should see 17 "high-contrast goal icon" elements

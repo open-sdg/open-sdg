@@ -8,4 +8,4 @@ Feature: Reporting status page
     Given I am on "/reporting-status"
 
   Scenario: All 17 goals are listed
-    Then I should see 17 ".goal .frame" elements
+    Then I should see 17 "goal status" elements

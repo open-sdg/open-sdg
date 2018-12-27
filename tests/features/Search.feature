@@ -6,8 +6,8 @@ Feature: Search
 
   Scenario: Search box works
     Given I am on the homepage
-    And I fill in ".navbar #indicator_search" with "poverty"
-    And I send key "Enter" in ".navbar #indicator_search" element
+    And I fill in "the search box" with "poverty"
+    And I send key "Enter" in "the search box" element
     And I wait 3 seconds
     Then I should be on "/search/?poverty"
     And I should see "5 indicators found in 1 goal"

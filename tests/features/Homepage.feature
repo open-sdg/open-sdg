@@ -8,4 +8,4 @@ Feature: Homepage
     Given I am on the homepage
 
   Scenario: All 17 goal icons are visible
-    Then I should see 17 ".goal-tiles a img" elements
+    Then I should see 17 "goal icon" elements

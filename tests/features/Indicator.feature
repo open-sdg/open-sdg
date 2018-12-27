@@ -13,19 +13,19 @@ Feature: Indicator
     Then I should see a "sortable table" element
 
   Scenario: Indicators have buttons for downloading CSV data
-    And I click on ".data-view .nav-link[href='#tableview']"
+    And I click on "the Table tab"
     Then I should see "Download Table CSV"
     And I should see "Download Source CSV"
 
   Scenario: Indicators have a "Chart" tab which displays data as a chart
-    And I click on ".data-view .nav-link[href='#tableview']"
-    And I click on ".data-view .nav-link[href='#chartview']"
-    Then I should see a "#chartview canvas" element
+    And I click on "the Table tab"
+    And I click on "the Chart tab"
+    Then I should see a "visual chart" element
 
   Scenario: Indicators have tabs for the different types of metadata
-    And I click on ".nav-tabs .nav-link[href='#globalmetadata']"
+    And I click on "the Global metadata tab"
     Then I should see "UN designated tier"
-    And I click on ".nav-tabs .nav-link[href='#metadata']"
+    And I click on "the National metadata tab"
     Then I should see "Data last updated"
-    And I click on ".nav-tabs .nav-link[href='#sources']"
+    And I click on "the Sources metadata tab"
     And I should see "My organisation"
