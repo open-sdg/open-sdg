@@ -8,18 +8,18 @@ url: ""
 data_dir: data
 environment: staging
 # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-remotedatabaseurl: "https://open-sdg.github.io/open-sdg-data-testing"
+remotedatabaseurl: "https://open-sdg.github.io/open-sdg-data-testing/staging"
 
 jekyll_get_data:
   - data: meta
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://open-sdg.github.io/open-sdg-data-testing/meta/all.json'
+    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/meta/all.json'
   - data: headlines
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://open-sdg.github.io/open-sdg-data-testing/headline/all.json'
+    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/headline/all.json'
   - data: schema
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://open-sdg.github.io/open-sdg-data-testing/meta/schema.json'
+    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/meta/schema.json'
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations.json'
 
