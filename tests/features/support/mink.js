@@ -11,7 +11,7 @@ const driver = new mink.Mink({
     "the Table tab": ".data-view .nav-link[href='#tableview']",
     "the Chart tab": ".data-view .nav-link[href='#chartview']",
     "sortable table": "#tableview table",
-    "vistual chart": "#chartview canvas",
+    "visual chart": "#chartview canvas",
     "the Global metadata tab": ".nav-tabs .nav-link[href='#globalmetadata']",
     "the National metadata tab": ".nav-tabs .nav-link[href='#metadata']",
     "the Sources metadata tab": ".nav-tabs .nav-link[href='#sources']",
