@@ -7,6 +7,10 @@ const driver = new mink.Mink({
     width: 1366,
     height: 768,
   },
+  selectors: {
+    "the Table tab": ".data-view .nav-link[href='#tableview']",
+    "sortable table": "#tableview table",
+  }
 });
 
 driver.hook(cucumber);

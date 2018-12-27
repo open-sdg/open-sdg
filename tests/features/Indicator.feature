@@ -9,8 +9,8 @@ Feature: Indicator
     And I wait 3 seconds
 
   Scenario: Indicators have a "Table" tab which displays a table of data
-    And I click on ".data-view .nav-link[href='#tableview']"
-    Then I should see a "#tableview table" element
+    And I click on "the Table tab"
+    Then I should see a "sortable table" element
 
   Scenario: Indicators have buttons for downloading CSV data
     And I click on ".data-view .nav-link[href='#tableview']"
