@@ -5,7 +5,7 @@ Feature: Goal page
   So that I can navigate further to indicators that I am looking for
 
   Scenario Outline: Goals show the correct number of indicators
-    Given I am on <PATH>
+    Given I am on "<PATH>"
     Then I should see <TOTAL> "goal indicator" elements
 
     Examples:
