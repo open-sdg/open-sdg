@@ -32,6 +32,13 @@
       color: '#111',
       fillOpacity: 0.7
     },
+    styleStatic: {
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0,
+      color: '#172d44',
+      dashArray: '5,5',
+    },
   };
 
   // Defaults for each geoLayer.
@@ -41,6 +48,7 @@
     serviceUrl: '[replace me]',
     nameProperty: '[replace me]',
     idProperty: '[replace me]',
+    staticBorders: false,
   }
 
   function Plugin(element, options) {
@@ -99,14 +107,19 @@
     // Pan to a feature.
     panToFeature: function(layer) {
       this.map.panTo(layer.getBounds().getCenter());
-      // Bring layer to front.
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
+    },
+
+    // Zoom to a feature.
+    zoomToFeature: function(layer) {
+      this.map.fitBounds(layer.getBounds());
     },
 
     // Select a feature.
     highlightFeature: function(layer) {
+      // Abort if the layer is not on the map.
+      if (!this.map.hasLayer(layer)) {
+        return;
+      }
       // Update the style.
       layer.setStyle(this.options.styleHighlighted);
       // Add a tooltip if not already there.
@@ -120,6 +133,10 @@
           permanent: true,
         }).addTo(this.map);
       }
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+      this.updateStaticLayers();
     },
 
     // Unselect a feature.
@@ -132,17 +149,30 @@
       if (layer.getTooltip()) {
         layer.unbindTooltip();
       }
+
+      // Make sure other selections are still highlighted.
+      var plugin = this;
+      this.selectionLegend.selections.forEach(function(selection) {
+        plugin.highlightFeature(selection);
+      });
     },
 
     // Get all of the GeoJSON layers.
     getAllLayers: function() {
-      return L.featureGroup(this.zoomShowHide.layers);
+      return L.featureGroup(this.dynamicLayers.layers);
     },
 
     // Get only the visible GeoJSON layers.
     getVisibleLayers: function() {
       // Unfortunately relies on an internal of the ZoomShowHide library.
-      return this.zoomShowHide._layerGroup;
+      return this.dynamicLayers._layerGroup;
+    },
+
+    updateStaticLayers: function() {
+      // Make sure the static borders are always visible.
+      this.staticLayers._layerGroup.eachLayer(function(layer) {
+        layer.bringToFront();
+      });
     },
 
     // Update the colors of the Features on the map.
@@ -186,8 +216,10 @@
         zoomControl: false,
       });
       this.map.setView([0, 0], 0);
-      this.zoomShowHide = new ZoomShowHide();
-      this.zoomShowHide.addTo(this.map);
+      this.dynamicLayers = new ZoomShowHide();
+      this.dynamicLayers.addTo(this.map);
+      this.staticLayers = new ZoomShowHide();
+      this.staticLayers.addTo(this.map);
 
       // Add zoom control.
       this.map.addControl(L.Control.zoomHome());
@@ -197,20 +229,6 @@
 
       // Add scale.
       this.map.addControl(L.control.scale({position: 'bottomright'}));
-
-      // Add the search feature.
-      this.searchControl = new L.Control.Search({
-        layer: this.zoomShowHide,
-        propertyName: 'name',
-        marker: false,
-        moveToLocation: function(latlng) {
-          plugin.selectionLegend.addSelection(latlng.layer);
-          plugin.highlightFeature(latlng.layer);
-          plugin.panToFeature(latlng.layer);
-        },
-        autoCollapse: true,
-      });
-      this.map.addControl(this.searchControl);
 
       // Add tile imagery.
       L.tileLayer(this.options.tileURL, this.options.tileOptions).addTo(this.map);
@@ -244,6 +262,19 @@
 
         var geoJsons = arguments;
         for (var i in geoJsons) {
+          // First add the geoJson as static (non-interactive) borders.
+          if (plugin.options.geoLayers[i].staticBorders) {
+            var staticLayer = L.geoJson(geoJsons[i][0], {
+              style: plugin.options.styleStatic,
+              interactive: false,
+            });
+            // Static layers should start appear when zooming past their dynamic
+            // layer, and stay visible after that.
+            staticLayer.min_zoom = plugin.options.geoLayers[i].max_zoom + 1;
+            staticLayer.max_zoom = plugin.options.maxZoom;
+            plugin.staticLayers.addLayer(staticLayer);
+          }
+          // Now go on to add the geoJson again as choropleth dynamic regions.
           var idProperty = plugin.options.geoLayers[i].idProperty;
           var nameProperty = plugin.options.geoLayers[i].nameProperty;
           var geoJson = plugin.prepareGeoJson(geoJsons[i][0], idProperty, nameProperty);
@@ -261,9 +292,30 @@
           // Save the GeoJSON object for direct access (download) later.
           layer.geoJsonObject = geoJson;
           // Add the layer to the ZoomShowHide group.
-          plugin.zoomShowHide.addLayer(layer);
+          plugin.dynamicLayers.addLayer(layer);
         }
         plugin.updateColors();
+
+        // Now that we have layers, we can add the search feature.
+        plugin.searchControl = new L.Control.Search({
+          layer: plugin.getAllLayers(),
+          propertyName: 'name',
+          marker: false,
+          moveToLocation: function(latlng) {
+            plugin.zoomToFeature(latlng.layer);
+            if (!plugin.selectionLegend.isSelected(latlng.layer)) {
+              plugin.highlightFeature(latlng.layer);
+              plugin.selectionLegend.addSelection(latlng.layer);
+            }
+          },
+          autoCollapse: true,
+        });
+        plugin.map.addControl(plugin.searchControl);
+        // The search plugin messes up zoomShowHide, so we have to reset that
+        // with this hacky method. Is there a better way?
+        var zoom = plugin.map.getZoom();
+        plugin.map.setZoom(zoom + 1);
+        plugin.map.setZoom(zoom);
 
         // The list of handlers to apply to each feature on a GeoJson layer.
         function onEachFeature(feature, layer) {
@@ -307,13 +359,12 @@
             if (!plugin.selectionLegend.isSelected(layer)) {
               plugin.unhighlightFeature(layer);
             }
-          })
+          });
+          plugin.updateStaticLayers();
         }
         // Event handler for when a geoJson layer is zoomed into.
         function zoomInHandler(e) {
-          var geoJsonLayer = e.target;
-          // Update the search control to search the regions in this layer.
-          plugin.searchControl.setLayer(geoJsonLayer);
+          plugin.updateStaticLayers();
         }
       });
 
