@@ -104,11 +104,6 @@
       return geoJson;
     },
 
-    // Pan to a feature.
-    panToFeature: function(layer) {
-      this.map.panTo(layer.getBounds().getCenter());
-    },
-
     // Zoom to a feature.
     zoomToFeature: function(layer) {
       this.map.fitBounds(layer.getBounds());
@@ -333,7 +328,7 @@
           else {
             plugin.selectionLegend.addSelection(layer);
             plugin.highlightFeature(layer);
-            plugin.panToFeature(layer);
+            plugin.zoomToFeature(layer);
           }
         }
         // Event handler for mouseover.
