@@ -7,29 +7,8 @@ var mapView = function () {
     $('#map').sdgMap({
       geoData: geoData,
       geoCodeRegEx: geoCodeRegEx,
-      geoLayers: [
-        {
-          min_zoom: 0,
-          max_zoom: 6,
-          serviceUrl: '[replaceme]',
-          nameProperty: '[replaceme]',
-          idProperty: '[replaceme]',
-        },
-        {
-          min_zoom: 7,
-          max_zoom: 20,
-          serviceUrl: '[replaceme]',
-          nameProperty: '[replaceme]',
-          idProperty: '[replaceme]',
-        },
-      ],
-      tileURL: '[replaceme]',
-      tileOptions: {
-        id: '[replaceme]',
-        accessToken: '[replaceme]',
-        attribution: '[replaceme]',
-      },
-      minZoom: 6,
+      mapOptions: {{ site.map_options | jsonify }},
+      mapLayers: {{ site.map_layers | jsonify }},
     });
   };
 };

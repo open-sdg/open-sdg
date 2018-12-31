@@ -41,41 +41,44 @@
     },
   };
 
-  // Defaults for each geoLayer.
-  var geoLayerDefaults = {
+  // Defaults for each map layer.
+  var mapLayerDefaults = {
     min_zoom: 0,
     max_zoom: 20,
     serviceUrl: '[replace me]',
     nameProperty: '[replace me]',
     idProperty: '[replace me]',
     staticBorders: false,
-  }
+  };
 
   function Plugin(element, options) {
 
     this.element = element;
-    this.options = $.extend(true, {}, defaults, options);
+    this.options = $.extend(true, {}, defaults, options.mapOptions);
+    this.mapLayers = [];
+    this.geoData = options.geoData;
+    this.geoCodeRegEx = options.geoCodeRegEx;
 
     // Require at least one geoLayer.
-    if (!this.options.geoLayers.length) {
-      console.log('Map disabled, no geoLayers in options.');
+    if (!options.mapLayers.length) {
+      console.log('Map disabled, no mapLayers in options.');
       return;
     }
 
     // Apply geoLayer defaults.
-    for (var i = 0; i < this.options.geoLayers.length; i++) {
-      this.options.geoLayers[i] = $.extend(true, {}, geoLayerDefaults, this.options.geoLayers[i]);
+    for (var i = 0; i < options.mapLayers.length; i++) {
+      this.mapLayers[i] = $.extend(true, {}, mapLayerDefaults, options.mapLayers[i]);
     }
 
     this._defaults = defaults;
     this._name = 'sdgMap';
 
-    this.valueRange = [_.min(_.pluck(this.options.geoData, 'Value')), _.max(_.pluck(this.options.geoData, 'Value'))];
+    this.valueRange = [_.min(_.pluck(this.geoData, 'Value')), _.max(_.pluck(this.geoData, 'Value'))];
     this.colorScale = chroma.scale(this.options.colorRange)
       .domain(this.valueRange)
       .classes(this.options.colorRange.length);
 
-    this.years = _.uniq(_.pluck(this.options.geoData, 'Year'));
+    this.years = _.uniq(_.pluck(this.geoData, 'Year'));
     this.currentYear = this.years[0];
 
     this.init();
@@ -85,7 +88,7 @@
 
     // Add time series to GeoJSON data and normalize the name and geocode.
     prepareGeoJson: function(geoJson, idProperty, nameProperty) {
-      var geoData = this.options.geoData;
+      var geoData = this.geoData;
       geoJson.features.forEach(function(feature) {
         var geocode = feature.properties[idProperty];
         var name = feature.properties[nameProperty];
@@ -252,7 +255,7 @@
       this.map.addControl(L.Control.downloadGeoJson(plugin));
 
       // At this point we need to load the GeoJSON layer/s.
-      var geoURLs = this.options.geoLayers.map(function(item) {
+      var geoURLs = this.mapLayers.map(function(item) {
         return $.getJSON(item.serviceUrl);
       });
       $.when.apply($, geoURLs).done(function() {
@@ -260,20 +263,20 @@
         var geoJsons = arguments;
         for (var i in geoJsons) {
           // First add the geoJson as static (non-interactive) borders.
-          if (plugin.options.geoLayers[i].staticBorders) {
+          if (plugin.mapLayers[i].staticBorders) {
             var staticLayer = L.geoJson(geoJsons[i][0], {
               style: plugin.options.styleStatic,
               interactive: false,
             });
             // Static layers should start appear when zooming past their dynamic
             // layer, and stay visible after that.
-            staticLayer.min_zoom = plugin.options.geoLayers[i].max_zoom + 1;
+            staticLayer.min_zoom = plugin.mapLayers[i].max_zoom + 1;
             staticLayer.max_zoom = plugin.options.maxZoom;
             plugin.staticLayers.addLayer(staticLayer);
           }
           // Now go on to add the geoJson again as choropleth dynamic regions.
-          var idProperty = plugin.options.geoLayers[i].idProperty;
-          var nameProperty = plugin.options.geoLayers[i].nameProperty;
+          var idProperty = plugin.mapLayers[i].idProperty;
+          var nameProperty = plugin.mapLayers[i].nameProperty;
           var geoJson = plugin.prepareGeoJson(geoJsons[i][0], idProperty, nameProperty);
 
           var layer = L.geoJson(geoJson, {
@@ -281,8 +284,8 @@
             onEachFeature: onEachFeature,
           });
           // Set the "boundaries" for when this layer should be zoomed out of.
-          layer.min_zoom = plugin.options.geoLayers[i].min_zoom;
-          layer.max_zoom = plugin.options.geoLayers[i].max_zoom;
+          layer.min_zoom = plugin.mapLayers[i].min_zoom;
+          layer.max_zoom = plugin.mapLayers[i].max_zoom;
           // Listen for when this layer gets zoomed in or out of.
           layer.on('remove', zoomOutHandler);
           layer.on('add', zoomInHandler);
