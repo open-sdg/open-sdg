@@ -2,7 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-9">
-        <a href="mailto:{{site.email_contacts.suggestions}}">{{ t.menu.contact_us }}</a> | <a class="twitter-follow-button" href="https://twitter.com/StatsClaudie?ref_src=twsrc%5Etfw" data-show-count="false">@StatsClaudie</a>
+        <a href="mailto:{{site.email_contacts.suggestions}}">{{ t.menu.contact_us }}</a>
+        {% if site.twitter %}
+          | <a class="twitter-follow-button" href="https://twitter.com/{{ site.twitter }}" data-show-count="false">
+              @{{ site.twitter }}
+            </a>
+        {% endif %}
       </div>
       <div class="col-xs-3 text-right">
         <a href="{{ site.baseurl }}{% link _pages/faq.md %}">{{ t.menu.faq }}</a> | <a href="{{ site.baseurl }}{% link _pages/cookies.md %}">{{ t.menu.cookies }}</a>
