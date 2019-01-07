@@ -234,18 +234,16 @@
       // Because after this point, "this" rarely works.
       var plugin = this;
 
-      // Add the year slider for desktop.
-      if (!L.Browser.mobile) {
-        this.map.addControl(L.Control.yearSlider({
-          yearStart: this.years[0],
-          yearEnd: this.years[this.years.length - 1],
-          yearChangeCallback: function(e) {
-            plugin.currentYear = new Date(e.time).getFullYear();
-            plugin.updateColors();
-            plugin.selectionLegend.update();
-          }
-        }));
-      }
+      // Add the year slider.
+      this.map.addControl(L.Control.yearSlider({
+        yearStart: this.years[0],
+        yearEnd: this.years[this.years.length - 1],
+        yearChangeCallback: function(e) {
+          plugin.currentYear = new Date(e.time).getFullYear();
+          plugin.updateColors();
+          plugin.selectionLegend.update();
+        }
+      }));
 
       // Add the selection legend.
       this.selectionLegend = L.Control.selectionLegend(plugin);
