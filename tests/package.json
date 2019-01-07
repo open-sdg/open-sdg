@@ -1,0 +1,9 @@
+{
+    "name": "open-sdg-tests",
+    "version": "1.0.0",
+    "description": "Integration testing for Open SDG",
+    "dependencies": {
+        "cucumber": "latest",
+        "cucumber-mink": "git://github.com/brockfanning/cucumber-mink.git#circleci-compatibility"
+    }
+}
