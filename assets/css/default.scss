@@ -1843,6 +1843,11 @@ body.contrast-high {
         min-width: 80px;
         padding: 0 10px;
       }
+      @media only screen and (max-width: 680px) {
+        .timecontrol-slider {
+          display: none;
+        }
+      }
       .download-geojson-button {
         display: block;
         cursor: pointer;
