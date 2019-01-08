@@ -39,7 +39,7 @@
             {%- endif -%}
           {%- endfor -%}
           {%- if translated_item -%}
-          <li class="nav-link {% if page.permalink contains item.path %}active{% endif %}">
+          <li class="nav-link {% if page.permalink == item.path %}active{% endif %}">
             <a href="{{ site.baseurl }}{{ baseurl_folder }}{{ item.path }}">{{ translated_item }}</a>
           </li>
           {%- endif -%}
