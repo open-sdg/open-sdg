@@ -33,6 +33,7 @@ pages:
         - AWS S3: hosting/aws-s3.md
         - Linux server: hosting/linux-server.md
     - Community:
+        - Change log: changelog.md
         - Who is using: community.md
         - Support: support.md
         - Contribution guidelines: contribution.md
