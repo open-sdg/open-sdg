@@ -23,6 +23,7 @@ pages:
         - Deployment: deployment.md
         - Customisation: customisation.md
         - Translation: translation.md
+        - Maps: maps.md
     - Automation:
         - CircleCI: automation/circle-ci.md
         - TravisCI: automation/travis-ci.md

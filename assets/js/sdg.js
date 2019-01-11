@@ -16,3 +16,6 @@
 {%- include assets/js/menu.js -%}
 {%- include assets/js/lib/classList.js -%}
 {%- include assets/js/lib/modernizr-custom.js -%}
+{%- include assets/js/plugins/leaflet.downloadGeoJson.js -%}
+{%- include assets/js/plugins/leaflet.selectionLegend.js -%}
+{%- include assets/js/plugins/leaflet.yearSlider.js -%}

@@ -1817,3 +1817,139 @@ body.contrast-high {
       }
 
     }
+
+// Map-related styles
+#main-content {
+  #map {
+    height: 500px;
+    width: 100%;
+
+    #loader-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      background: white;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: auto;
+      }
+    }
+
+    .leaflet-control {
+      .timecontrol-date {
+        min-width: 80px;
+        padding: 0 10px;
+      }
+      @media only screen and (max-width: 680px) {
+        .timecontrol-slider {
+          display: none;
+        }
+      }
+      .download-geojson-button {
+        display: block;
+        cursor: pointer;
+      }
+    }
+    .selection-legend {
+      background-color: rgba(150, 150, 150, 0.6);
+      padding: 0;
+      width: 300px;
+      .legend-swatches {
+        height: 10px;
+        .legend-swatch {
+          display: block;
+          float: left;
+          height: 10px;
+        }
+      }
+      .legend-values {
+        position: absolute;
+        bottom: -10px;
+        width: 100%;
+        .arrow {
+          width: 0;
+          height: 0;
+          border-style: solid;
+          position: absolute;
+          top: -10px;
+          z-index: 1;
+          &.left {
+            border-width: 20px 0 0 20px;
+            border-color: transparent transparent transparent white;
+            left: 0;
+          }
+          &.right {
+            border-width: 0 0 20px 20px;
+            border-color: transparent transparent white transparent;
+            right: 1px;
+            box-shadow: 1px 1px 1px 0px #666;
+          }
+        }
+        .legend-value {
+          padding: 0 4px;
+          background: white;
+          position: absolute;
+          z-index: 2;
+          &.left {
+            left: 0;
+          }
+          &.right {
+            right: 1px;
+          }
+          box-shadow: 1px 1px 1px 0px #666;
+        }
+      }
+      #selection-list {
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+        li {
+          position: relative;
+          margin-top: 3px;
+          &:first-child {
+            margin-top: 0;
+          }
+          cursor: pointer;
+          height: 23px;
+          .selection-bar, .selection-name, .selection-value {
+            height: 23px;
+            position: absolute;
+          }
+          .selection-bar {
+            border-radius: 2px 0 0 2px;
+            background: white;
+            z-index: 1;
+          }
+          .selection-name {
+            z-index: 2;
+            padding: 3px 20px 3px 3px;
+          }
+          &.no-value {
+            .selection-name {
+              background: repeating-linear-gradient(45deg, #FFF, #FFF 2px, #CCC 2px, #CCC 4px);
+            }
+            .selection-bar, .selection-value {
+              display: none;
+            }
+          }
+          .selection-value {
+            z-index: 2;
+            margin-right: 5px;
+            background-color: #ddd;
+            padding: 3px;
+            border-radius: 2px;
+          }
+          .selection-close {
+            top: 6px;
+            right: 5px;
+            position: absolute;
+            z-index: 3;
+          }
+        }
+      }
+    }
+  }
+}
