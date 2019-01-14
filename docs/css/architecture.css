@@ -16,6 +16,10 @@
   position: absolute;
   cursor: pointer;
 }
+.node.extra-tooltip {
+  border: none;
+  padding: 0;
+}
 
 .node .info {
   display: none;
@@ -50,6 +54,11 @@
   right: 140px;
 }
 
+#data-to-site {
+  top: 254px;
+  left: 48%;
+}
+
 #site-repo {
   top: 240px;
   left: 10px;
@@ -60,16 +69,50 @@
   right: 10px;
 }
 
-#automation {
+#automation-site {
   top: 400px;
   left: 10%;
-  width: 80%;
+  width: 30%;
 }
 
-#hosting {
+#automation-data {
+  top: 400px;
+  right: 10%;
+  width: 30%;
+}
+
+#hosting-site {
   top: 550px;
   left: 10%;
-  width: 80%;
+  width: 30%;
+}
+
+#hosting-data {
+  top: 550px;
+  right: 10%;
+  width: 30%;
+}
+
+.logos {
+  max-width: 100px;
+  position: absolute;
+  left: 43%;
+  display: none;
+}
+
+.logos img {
+  max-width: 28%;
+  height: auto;
+  float: left;
+  margin-right: 5px;
+}
+
+#logos-automation {
+  top: 371px;
+}
+
+#logos-hosting {
+  top: 519px;
 }
 
 #data-repo, #site-repo {
@@ -128,16 +171,20 @@
     right: 10px;
   }
 
-  #automation {
-    top: 350px;
-    left: 10%;
-    width: 80%;
+  #data-to-site {
+    top: 184px;
   }
 
-  #hosting {
+  #automation-site, #automation-data {
+    top: 350px;
+  }
+
+  #hosting-site, #hosting-data {
     top: 500px;
-    left: 10%;
-    width: 80%;
+  }
+
+  .logos {
+    display: block;
   }
 }
 

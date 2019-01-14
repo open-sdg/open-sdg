@@ -67,28 +67,56 @@
         handled here.
       </span>
     </div>
-    <div class="node" id="automation">
+    <div class="node extra-tooltip" id="data-to-site">
+      <i tabindex="0" class="fa fa-info-circle"></i>
+      <span class="info">
+        The data is imported into the site at build time, which allows the platform
+        to display data even without javascript.
+      </span>
+    </div>
+    <div class="node" id="automation-site">
       Automation<br>tool
       <i tabindex="0" class="fa fa-info-circle"></i>
-      <img src="../img/circleci.png" alt="Logo for CircleCI" />
-      <img src="../img/travisci.png" alt="Logo for TravisCI" />
-      <img src="../img/jenkins.png" alt="Logo for Jenkins" />
       <span class="info">
         Any automation tool, such as <a href="../automation/circle-ci/">CircleCI</a>
         or <a href="../automation/travis-ci/">TravisCI</a>, handles the deployment
-        of both repositories to a hosting provider.
+        of the site repository to a hosting provider.
       </span>
     </div>
-    <div class="node" id="hosting">
+    <div class="node" id="automation-data">
+      Automation<br>tool
+      <i tabindex="0" class="fa fa-info-circle"></i>
+      <span class="info">
+        Any automation tool, such as <a href="../automation/circle-ci/">CircleCI</a>
+        or <a href="../automation/travis-ci/">TravisCI</a>, handles the deployment
+        of the data repository to a hosting provider.
+      </span>
+    </div>
+    <div class="node" id="hosting-site">
       Hosting<br>provider
       <i tabindex="0" class="fa fa-info-circle"></i>
-      <img src="../img/github.png" alt="Logo for GitHub" />
-      <img src="../img/aws.png" alt="Logo for AWS" />
-      <img src="../img/linux.png" alt="Logo for Linux" />
       <span class="info">
         Any hosting provider, such as <a href="../hosting/github-pages/">Github Pages</a> or <a href="../hosting/aws-s3/">Amazon S3</a>, will receive the
         uploaded files to serve them as a static website.
       </span>
+    </div>
+    <div class="node" id="hosting-data">
+      Hosting<br>provider
+      <i tabindex="0" class="fa fa-info-circle"></i>
+      <span class="info">
+        Any hosting provider, such as <a href="../hosting/github-pages/">Github Pages</a> or <a href="../hosting/aws-s3/">Amazon S3</a>, will receive the
+        uploaded files to serve them as a static website.
+      </span>
+    </div>
+    <div id="logos-automation" class="logos">
+      <img src="../img/circleci.png" alt="Logo for CircleCI" />
+      <img src="../img/travisci.png" alt="Logo for TravisCI" />
+      <img src="../img/jenkins.png" alt="Logo for Jenkins" />
+    </div>
+    <div id="logos-hosting" class="logos">
+      <img src="../img/github.png" alt="Logo for GitHub" />
+      <img src="../img/aws.png" alt="Logo for AWS" />
+      <img src="../img/linux.png" alt="Logo for Linux" />
     </div>
   </div>
 </div>
@@ -127,15 +155,19 @@ jsPlumb.ready(function () {
   });
   jsPlumb.connect({
     source: 'data-repo',
-    target: 'automation',
+    target: 'automation-data',
   });
   jsPlumb.connect({
     source: 'site-repo',
-    target: 'automation',
+    target: 'automation-site',
   });
   jsPlumb.connect({
-    source: 'automation',
-    target: 'hosting',
+    source: 'automation-data',
+    target: 'hosting-data',
+  });
+  jsPlumb.connect({
+    source: 'automation-site',
+    target: 'hosting-site',
   });
   window.addEventListener('resize', function() {
     jsPlumb.repaintEverything();
