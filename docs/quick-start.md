@@ -19,7 +19,7 @@ This part may be painful if you are not accustomed to command-line work. But don
 
 1. Open your operating system's Terminal application (use Git BASH, if on Windows).
 1. Create the SSH keys by entering this command (substituting a real email address):
-    `ssh-keygen -t rsa -b 4096 -C "my-email-address@example.com"`
+    `ssh-keygen -m pem -t rsa -b 4096 -C "my-email-address@example.com"`
     1. When prompted "Enter file in which to save the key", enter `my-site-key`
     1. When prompted "Enter passphrase", just hit `Enter`.
     1. When prompted "Enter same passphrase again", just hit `Enter` again.
@@ -40,6 +40,7 @@ Confirm that 4 files have been created:
     1. Click "Add deploy key"
     1. For "Title" enter anything, such as `CircleCI key`
     1. For "Key" paste in the contents of `my-site-key.pub` (created earlier)
+        * _Tip_: A quick way to see the contents of the file is to go back to the terminal and enter: `cat my-site-key.pub`. Drag-select this output to copy it into your clipboard.
     1. Check "Allow write access"
     1. Click "Add key"
     1. Select and copy the "Fingerprint" that appears (you may need to refresh the page)
