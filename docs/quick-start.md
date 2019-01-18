@@ -103,6 +103,7 @@ At this point, any new updates in the "develop" branches of the repositories wil
 
 ## Possible next steps?
 
-1. Add data and metadata to the data repository
-1. Tweak and customise the site repository as needed
-1. Set up the "master" branch to deploy to a separate "production" environment
+1. [Turn on automation in your repositories](../automation/github/)
+1. [Add data and metadata to the data repository](../making-updates/)
+1. [Tweak and customise the site repository as needed](../customisation/)
+1. [Set up the "master" branch to deploy to a separate "production" environment](../deployment/)
