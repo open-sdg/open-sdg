@@ -6,8 +6,9 @@
 <div id="architecture">
   <div class="container">
     <ul id="legend">
-      <li><span class="local swatch">Blue</span> = Local (custom)</li>
-      <li><span class="global swatch">Gray</span> = Global (shared)</li>
+      <li><span class="local swatch">Blue</span> = Local / custom</li>
+      <li><span class="service swatch">Green</span> = Free service</li>
+      <li><span class="global swatch">Yellow</span> = Open-source library</li>
     </ul>
     <div class="node global row1 site-column" id="open-sdg">
       Open SDG
@@ -30,12 +31,12 @@
         site.
       </span>
     </div>
-    <div class="node global row1 data-column" id="prose-io">
-      Prose.io editor
+    <div class="node service row1 data-column" id="prose-io">
+      Github and<br>Prose.io
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://prose.io">Prose.io</a> is a free cloud service that allows
-        for user-friendly editing of the data and metadata files.
+        for user-friendly editing of the data and metadata files that are stored on <a href="https://github.com">Github</a>.
         <br><br>
         This functions as a data management system for curating the statistics in
         the platform.
@@ -51,7 +52,7 @@
         handled here.
       </span>
     </div>
-    <div class="node global row3 site-column" id="automation-site">
+    <div class="node service row3 site-column" id="automation-site">
       Automation tool
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -77,7 +78,7 @@
         any implementation-specific text as needed.
       </span>
     </div>
-    <div class="node global row3 data-column" id="automation-data">
+    <div class="node service row3 data-column" id="automation-data">
       Automation tool
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -95,46 +96,46 @@
         This is a stand-alone library which does not require customisation.
       </span>
     </div>
-    <div class="node global row5 site-column" id="hosting-site">
+    <div class="node service row5 site-column" id="hosting-site">
       Hosting provider
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        Any hosting provider, such as <a href="../hosting/github-pages/">Github Pages</a> or <a href="../hosting/aws-s3/">Amazon S3</a>, will receive the
-        uploaded files to serve them as a static website.
+        Any hosting provider, such as <a href="../hosting/github-pages/">Github Pages</a> will receive the uploaded files to serve them as a static website.
       </span>
     </div>
-    <div class="node global row5 data-column" id="hosting-data">
+    <div class="node service row5 data-column" id="hosting-data">
       Hosting provider
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        Any hosting provider, such as <a href="../hosting/github-pages/">Github Pages</a> or <a href="../hosting/aws-s3/">Amazon S3</a>, will receive the
-        uploaded files to serve them as a static website.
+        Any hosting provider, such as <a href="../hosting/github-pages/">Github Pages</a> will receive the uploaded files to serve them as a static website.
       </span>
     </div>
-    <div id="logos-automation" class="logos row3">
-      <img src="../img/circleci.png" alt="Logo for CircleCI" />
-      <img src="../img/travisci.png" alt="Logo for TravisCI" />
-      <img src="../img/jenkins.png" alt="Logo for Jenkins" />
-    </div>
-    <div id="logos-hosting" class="logos row5">
-      <img src="../img/github.png" alt="Logo for GitHub" />
-      <img src="../img/aws.png" alt="Logo for AWS" />
-      <img src="../img/linux.png" alt="Logo for Linux" />
-    </div>
+    <div id="logos-automation" class="logos row3"><div class="logo-container">
+      <img src="../img/circleci.png" alt="Logo for CircleCI" title="CircleCI" />
+      <img src="../img/travisci.png" alt="Logo for TravisCI" title="TravisCI" />
+      <img src="../img/jenkins.png" alt="Logo for Jenkins" title="Jenkins" />
+      <img src="../img/netlify.png" alt="Logo for Netlify" title="Netlify" />
+    </div></div>
+    <div id="logos-hosting" class="logos row5"><div class="logo-container">
+      <img src="../img/github.png" alt="Logo for GitHub" title="Github" />
+      <img src="../img/aws.png" alt="Logo for AWS" title="AWS" />
+      <img src="../img/linux.png" alt="Logo for Linux" title="Linux" />
+      <img src="../img/netlify.png" alt="Logo for Netlify" title="Netlify" />
+    </div></div>
     <div class="node local row6 site-column" id="prod-stage-site">
       Production and <br>staging domains
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        The hosted site can now be reached in two versions - <strong>staging</strong>
-        and <strong>production</strong> - accessible at different domain names.
+        The hosted site is available in two separate versions: <strong>staging</strong>
+        and <strong>production</strong>.
       </span>
     </div>
     <div class="node local row6 data-column" id="prod-stage-data">
       Production and <br>staging domains
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        The hosted data can now be reached in two versions - <strong>staging</strong>
-        and <strong>production</strong> - accessible at different domain names.
+        The hosted data is available in two separate versions - <strong>staging</strong>
+        and <strong>production</strong>.
       </span>
     </div>
   </div>
@@ -174,7 +175,7 @@ jsPlumb.ready(function () {
   jsPlumb.connect({
     source: 'open-sdg',
     target: 'site-repo',
-    overlays: connectorArrow(),
+    overlays: connectorTip('Open SDG is used in your site via the <a href="https://github.com/benbalter/jekyll-remote-theme">jekyll_remote_theme</a> plugin.'),
   });
   jsPlumb.connect({
     source: 'site-repo',

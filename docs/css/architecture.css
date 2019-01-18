@@ -16,38 +16,50 @@
   border-radius: 20px;
 }
 .global {
-  background-color: #EEE;
+  background-color: #ffff7f;
   border: 1px solid black;
   border-radius: 0px;
+}
+.service {
+  background-color: #27AE60;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 8px;
 }
 
 #legend {
   position: absolute;
   top: 30px;
-  left: 35%;
+  left: 36%;
   font-size: small;
   width: 230px;
 }
 #legend .swatch {
   padding: 4px;
+  box-shadow: 2px 2px 4px #666;
+  margin-right: 4px;
 }
 #legend .local {
   border-radius: 8px;
 }
+#legend .service {
+  border-radius: 3px;
+}
 #legend li {
-  margin-bottom: 6px;
+  list-style-type: none;
+  margin: 0 0 10px 0;
 }
 
 .node {
-  height: 80px;
-  padding: 20px 25px 0px 25px;
+  padding: 25px;
   position: absolute;
-  cursor: pointer;
+  box-shadow: 2px 2px 4px #666;
 }
 .node.connector-tooltip {
   border: none;
   padding: 0;
   height: 20px;
+  box-shadow: none;
 }
 .node.connector-tooltip i {
   background: white;
@@ -99,18 +111,23 @@
 }
 
 .logos {
-  max-width: 150px;
   position: absolute;
-  left: 39%;
+  left: 0;
   display: none;
+  margin: 0 auto;
+  left: 50%;
+}
+.logo-container {
+  left: -50%;
+  position: relative;
 }
 
 .logos img {
-  max-width: 25%;
+  max-width: 40px;
   height: auto;
   float: left;
-  margin-right: 3%;
-  margin-left: 3%;
+  margin: 0 10px;
+  opacity: 0.4;
 }
 
 .connector-tooltip { z-index: 3; }
@@ -134,7 +151,7 @@
   position: absolute;
 }
 .inner {
-  background: #FFC107;
+  background: #ffd2e8;
   color: black;
   width: 200px;
   border-radius: 3px;
