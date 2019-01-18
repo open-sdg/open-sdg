@@ -28,6 +28,7 @@ pages:
         - CircleCI: automation/circle-ci.md
         - TravisCI: automation/travis-ci.md
         - Jenkins: automation/jenkins.md
+        - Github integration: automation/github.md
     - Hosting:
         - Github pages: hosting/github-pages.md
         - AWS S3: hosting/aws-s3.md
