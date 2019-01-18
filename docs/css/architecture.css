@@ -9,10 +9,38 @@
   position: relative;
 }
 
+.local {
+  background-color: #2980B9;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 20px;
+}
+.global {
+  background-color: #EEE;
+  border: 1px solid black;
+  border-radius: 0px;
+}
+
+#legend {
+  position: absolute;
+  top: 30px;
+  left: 35%;
+  font-size: small;
+  width: 230px;
+}
+#legend .swatch {
+  padding: 4px;
+}
+#legend .local {
+  border-radius: 8px;
+}
+#legend li {
+  margin-bottom: 6px;
+}
+
 .node {
   height: 80px;
   padding: 20px 25px 0px 25px;
-  border: 1px solid black;
   position: absolute;
   cursor: pointer;
 }
@@ -83,12 +111,6 @@
   float: left;
   margin-right: 3%;
   margin-left: 3%;
-}
-
-#data-repo, #site-repo {
-  background-color: #2980B9;
-  color: white;
-  border-radius: 20px;
 }
 
 .connector-tooltip { z-index: 3; }

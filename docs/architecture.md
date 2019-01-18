@@ -5,7 +5,11 @@
 
 <div id="architecture">
   <div class="container">
-    <div class="node row1 site-column" id="open-sdg">
+    <ul id="legend">
+      <li><span class="local swatch">Blue</span> = Local (custom)</li>
+      <li><span class="global swatch">Gray</span> = Global (shared)</li>
+    </ul>
+    <div class="node global row1 site-column" id="open-sdg">
       Open SDG
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -15,7 +19,7 @@
         designed to be easily customised if needed.
       </span>
     </div>
-    <div class="node row2 site-column" id="site-repo">
+    <div class="node local row2 site-column" id="site-repo">
       Site repository
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -26,7 +30,7 @@
         site.
       </span>
     </div>
-    <div class="node row1 data-column" id="prose-io">
+    <div class="node global row1 data-column" id="prose-io">
       Prose.io editor
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -37,7 +41,7 @@
         the platform.
       </span>
     </div>
-    <div class="node row2 data-column" id="data-repo">
+    <div class="node local row2 data-column" id="data-repo">
       Data repository
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -47,7 +51,7 @@
         handled here.
       </span>
     </div>
-    <div class="node row3 site-column" id="automation-site">
+    <div class="node global row3 site-column" id="automation-site">
       Automation tool
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -55,7 +59,7 @@
         or <a href="../automation/travis-ci/">TravisCI</a>, performs configured actions in response to events or schedules.
       </span>
     </div>
-    <div class="node row4" id="jekyll">
+    <div class="node global row4" id="jekyll">
       Jekyll
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -63,7 +67,7 @@
         compiles the everything into a fast and secure website.
       </span>
     </div>
-    <div class="node row4 site-column" id="sdg-translations">
+    <div class="node global row4 site-column" id="sdg-translations">
       SDG<br> Translations
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -73,7 +77,7 @@
         any implementation-specific text as needed.
       </span>
     </div>
-    <div class="node row3 data-column" id="automation-data">
+    <div class="node global row3 data-column" id="automation-data">
       Automation tool
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -81,7 +85,7 @@
         or <a href="../automation/travis-ci/">TravisCI</a>, performs configured actions in response to events or schedules.
       </span>
     </div>
-    <div class="node row4 data-column" id="sdg-build">
+    <div class="node global row4 data-column" id="sdg-build">
       SDG Build
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -91,7 +95,7 @@
         This is a stand-alone library which does not require customisation.
       </span>
     </div>
-    <div class="node row5 site-column" id="hosting-site">
+    <div class="node global row5 site-column" id="hosting-site">
       Hosting provider
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -99,7 +103,7 @@
         uploaded files to serve them as a static website.
       </span>
     </div>
-    <div class="node row5 data-column" id="hosting-data">
+    <div class="node global row5 data-column" id="hosting-data">
       Hosting provider
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -117,7 +121,7 @@
       <img src="../img/aws.png" alt="Logo for AWS" />
       <img src="../img/linux.png" alt="Logo for Linux" />
     </div>
-    <div class="node row6 site-column" id="prod-stage-site">
+    <div class="node local row6 site-column" id="prod-stage-site">
       Production and <br>staging domains
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
@@ -125,7 +129,7 @@
         and <strong>production</strong> - accessible at different domain names.
       </span>
     </div>
-    <div class="node row6 data-column" id="prod-stage-data">
+    <div class="node local row6 data-column" id="prod-stage-data">
       Production and <br>staging domains
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
