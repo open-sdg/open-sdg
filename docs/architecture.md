@@ -200,10 +200,9 @@ jsPlumb.ready(function () {
   });
   jsPlumb.connect({
     source: 'prod-stage-data',
-    target: 'site-repo',
+    target: 'jekyll',
     anchors: ['Left', 'Right'],
-    connector: 'Flowchart',
-    overlays: connectorTip('The metadata and headline data is imported into the site at build time, which allows the platform to display data even without javascript.', 0.9),
+    overlays: connectorTip('The metadata and headline data is imported into the site at build time, which allows the platform to display data even without javascript.', 0.1),
   });
   jsPlumb.connect({
     source: 'automation-data',
