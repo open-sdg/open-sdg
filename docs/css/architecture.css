@@ -1,7 +1,7 @@
 #architecture {
   padding: 20px;
   width: 100%;
-  height: 680px;
+  height: 900px;
   border: 1px solid gray;
 }
 
@@ -16,9 +16,13 @@
   position: absolute;
   cursor: pointer;
 }
-.node.extra-tooltip {
+.node.connector-tooltip {
   border: none;
   padding: 0;
+  height: 20px;
+}
+.node.connector-tooltip i {
+  background: white;
 }
 
 .node .info {
@@ -30,89 +34,55 @@
   font-size: large;
 }
 
-.node img {
-  display: none;
+.site-column {
+  left: 10px;
 }
 
-#open-sdg {
+.data-column {
+  right: 10px;
+}
+
+.row1 {
   top: 10px;
-  left: 10px;
+}
+
+.row2 {
+  top: 160px;
+}
+
+.row3 {
+  top: 310px;
+}
+
+.row4 {
+  top: 460px;
+}
+
+.row5 {
+  top: 610px;
+}
+
+.row6 {
+  top: 760px;
 }
 
 #sdg-translations {
-  top: 10px;
-  left: 135px;
-}
-
-#sdg-build {
-  top: 110px;
-  right: 10px;
-}
-
-#prose-io {
-  top: 110px;
-  right: 140px;
-}
-
-#data-to-site {
-  top: 254px;
-  left: 48%;
-}
-
-#site-repo {
-  top: 240px;
-  left: 10px;
-}
-
-#data-repo {
-  top: 240px;
-  right: 10px;
-}
-
-#automation-site {
-  top: 400px;
-  left: 10%;
-  width: 30%;
-}
-
-#automation-data {
-  top: 400px;
-  right: 10%;
-  width: 30%;
-}
-
-#hosting-site {
-  top: 550px;
-  left: 10%;
-  width: 30%;
-}
-
-#hosting-data {
-  top: 550px;
-  right: 10%;
-  width: 30%;
+  left: 180px;
 }
 
 .logos {
-  max-width: 100px;
+  max-width: 150px;
   position: absolute;
-  left: 43%;
+  left: 39%;
   display: none;
 }
 
 .logos img {
-  max-width: 28%;
+  max-width: 25%;
   height: auto;
   float: left;
-  margin-right: 5px;
-}
-
-#logos-automation {
-  top: 371px;
-}
-
-#logos-hosting {
-  top: 519px;
+  margin-right: 3%;
+  margin-left: 3%;
 }
 
 #data-repo, #site-repo {
@@ -121,6 +91,7 @@
   border-radius: 20px;
 }
 
+.connector-tooltip { z-index: 3; }
 .jtk-connector { z-index:4; }
 .jtk-endpoint { z-index:5; }
 .jtk-overlay { z-index:6; }
@@ -129,62 +100,10 @@
 /* Desktop optimizations */
 @media only screen and (min-width: 650px) and (max-width: 768px),
        only screen and (min-width: 1000px) {
-  #architecture {
-    height: 630px;
-  }
-  .node img {
-    display: block;
-    max-width: 50px;
-    height: auto;
-    float: right;
-    margin-left: 20px;
-    margin-top: -25px;
-    max-height: 55px;
-  }
-  #open-sdg {
-    top: 10px;
-    left: 10px;
-  }
-
-  #sdg-translations {
-    top: 10px;
-    left: 135px;
-  }
-
-  #sdg-build {
-    top: 10px;
-    right: 10px;
-  }
-
-  #prose-io {
-    top: 10px;
-    right: 140px;
-  }
-
-  #site-repo {
-    top: 170px;
-    left: 10px;
-  }
-
-  #data-repo {
-    top: 170px;
-    right: 10px;
-  }
-
-  #data-to-site {
-    top: 184px;
-  }
-
-  #automation-site, #automation-data {
-    top: 350px;
-  }
-
-  #hosting-site, #hosting-data {
-    top: 500px;
-  }
 
   .logos {
     display: block;
+    padding-top: 20px;
   }
 }
 
@@ -201,6 +120,7 @@
   padding: 10px;
   text-align: center;
   position: relative;
+  z-index: 99999;
 }
 .tooltip .tooltip-arrow {
   width: 0;
