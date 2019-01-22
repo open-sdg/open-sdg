@@ -19,7 +19,7 @@ This part may be painful if you are not accustomed to command-line work. But don
 
 1. Open your operating system's Terminal application (use Git BASH, if on Windows).
 1. Create the SSH keys by entering this command (substituting a real email address):
-    `ssh-keygen -m pem -t rsa -b 4096 -C "my-email-address@example.com"`
+    `ssh-keygen -t rsa -b 4096 -C "my-email-address@example.com"`
     1. When prompted "Enter file in which to save the key", enter `my-site-key`
     1. When prompted "Enter passphrase", just hit `Enter`.
     1. When prompted "Enter same passphrase again", just hit `Enter` again.
