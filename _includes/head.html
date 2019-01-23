@@ -14,9 +14,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Title and meta description
         ================================================== -->
-        {% assign goal = site.goals | where: "sdg_goal", page.sdg_goal | first %}
         {% capture page_title %}
-        {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ goal.goal }} - {{ goal.short }}
+        {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ goal_number }} - {{ goal.short }}
         {% endcapture %}
         <title>{% if page.indicator %}{{ page_title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
         <meta name="description" content="">

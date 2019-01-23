@@ -1,0 +1,36 @@
+{%- comment -%}
+
+  Before we start the html we fetch the data and metadata for this page
+
+{%- endcomment -%}
+{%- include multilingual.html -%}
+
+{% capture indicator_id %}{{page.indicator | slugify}}{% endcapture %}
+{% assign meta = site.data.meta[indicator_id] %}
+{%- if meta[current_language] -%}
+  {%- assign meta = meta[current_language] -%}
+{%- endif -%}
+{% assign headline = site.data.headline[indicator_id] %}
+
+{%- assign goal_number = meta.sdg_goal | downcase -%}
+{%- assign goal = site.data.translations[default_language].global_goals[goal_number] -%}
+{%- assign translated_goal = t.global_goals[goal_number] -%}
+{% capture goal_uri %}{{ site.baseurl }}{{ baseurl_folder }}/{{ goal.short | slugify }}{% endcapture %}
+
+{% if meta.reporting_status != "complete" or meta.data_non_statistical == true %}
+  {% assign show_data = false %}
+{% else %}
+  {% assign show_data = true %}
+{% endif %}
+
+{% capture goal_href %}{{ goal_uri }}{% endcapture %}
+{% capture goal_title %}{{ goal.title }}{% endcapture %}
+{% capture indicator_title %}{{ meta.title }}{% endcapture %}
+
+{% capture dataset_name %}indicator_{{meta.indicator | slugify }}{% endcapture %}
+
+{% assign sdg_indicator_data = site.data[dataset_name] %}
+{% assign indicator_metadata = sdg_indicators | where: "indicator_id", meta.indicator | first %}
+{% assign json_data = sdg_indicator_data | jsonify %}
+{%- assign indicator_number = meta.indicator -%}
+{%- assign translated_indicator = t.global_indicators[indicator_number] -%}
