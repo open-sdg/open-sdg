@@ -8,10 +8,14 @@ markdown_extensions:
     - toc:
         permalink: True
 
+extra_css:
+    - css/architecture.css
+
 pages:
     - Home: index.md
     - About: about.md
     - Glossary of terms: glossary.md
+    - Architecture diagram: architecture.md
     - Requirements: requirements.md
     - Quick start: quick-start.md
     - Data providers:
