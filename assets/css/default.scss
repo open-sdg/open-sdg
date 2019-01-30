@@ -1025,7 +1025,15 @@ h5 + .btn-download {
     margin: 2px 2px 0 0;
   }
   &.goal-indicators {
-    @include indicatorcards
+    @include indicatorcards;
+    .indicator-cards a {
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+    .indicator-cards.target {
+      margin-bottom: 1.5rem;
+      clear: left;
+    }
   }
   .goal-indicators:after {
     content: "";
