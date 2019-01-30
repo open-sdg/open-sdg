@@ -27,3 +27,27 @@ Feature: Goal page
       | /life-on-land                           | 14    |
       | /peace-and-justice-strong-institutions  | 23    |
       | /partnerships-for-the-goals             | 25    |
+
+  Scenario Outline: Goals show the correct number of targets
+    Given I am on "<PATH>"
+    Then I should see <TOTAL> "goal target" elements
+
+    Examples:
+      | PATH                                    | TOTAL |
+      | /no-poverty                             | 8     |
+      | /zero-hunger                            | 8     |
+      | /good-health-and-well-being             | 13    |
+      | /quality-education                      | 10    |
+      | /gender-equality                        | 9     |
+      | /clean-water-and-sanitation             | 8     |
+      | /affordable-and-clean-energy            | 5     |
+      | /decent-jobs-and-economic-growth        | 12    |
+      | /industry-innovation-and-infrastructure | 8     |
+      | /reduced-inequalities                   | 10    |
+      | /sustainable-cities-communities         | 10    |
+      | /responsible-consumption-and-production | 11    |
+      | /climate-action                         | 5     |
+      | /life-below-water                       | 10    |
+      | /life-on-land                           | 12    |
+      | /peace-and-justice-strong-institutions  | 12    |
+      | /partnerships-for-the-goals             | 19    |
