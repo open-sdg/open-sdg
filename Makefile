@@ -23,7 +23,7 @@ test.prep:
 	cd tests && npm install
 
 test.serve:
-	# Serve the Jekyll site at http://127.0.0.1:4000/
+	# Serve the Jekyll site at http://127.0.0.1:4000/open-sdg-site-testing/
 	cd starter && bundle exec jekyll serve --detach --skip-initial-build
 
 test.html:
