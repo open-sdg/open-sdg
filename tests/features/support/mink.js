@@ -16,7 +16,7 @@ const driver = new mink.Mink({
     "the National metadata tab": ".nav-tabs .nav-link[href='#metadata']",
     "the Sources metadata tab": ".nav-tabs .nav-link[href='#sources']",
     "goal indicator": ".indicator-cards > div",
-    "goal target": ".indicators-cards.target",
+    "goal target": ".indicator-cards.target",
     "the high-contrast button": ".nav .contrast-high a",
     "goal icon": ".goal-tiles a img",
     "high-contrast goal icon": ".goal-tiles a img[src*='high-contrast']",
