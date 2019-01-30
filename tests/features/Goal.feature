@@ -34,7 +34,7 @@ Feature: Goal page
 
     Examples:
       | PATH                                    | TOTAL |
-      | /no-poverty                             | 8     |
+      | /no-poverty                             | 7     |
       | /zero-hunger                            | 8     |
       | /good-health-and-well-being             | 13    |
       | /quality-education                      | 10    |
@@ -48,6 +48,6 @@ Feature: Goal page
       | /responsible-consumption-and-production | 11    |
       | /climate-action                         | 5     |
       | /life-below-water                       | 10    |
-      | /life-on-land                           | 12    |
+      | /life-on-land                           | 13    |
       | /peace-and-justice-strong-institutions  | 12    |
       | /partnerships-for-the-goals             | 19    |
