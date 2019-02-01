@@ -29,8 +29,7 @@ for more information.
 ## Can the Open SDG platform be translated into other languages?
 
 Yes – Open SDG has been designed to be multilingual. As well as English, many elements
-are already available in French and Spanish. The [Translation](https://open-
-sdg.readthedocs.io/en/latest/translation/) section gives more technical information, including
+are already available in French and Spanish. The [Translation](https://open-sdg.readthedocs.io/en/latest/translation/) section gives more technical information, including
 how to add a language.
 
 ## Can I use Open SDG with other databases?
