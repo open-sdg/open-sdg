@@ -17,8 +17,7 @@ With the right skills, it should take less than a day to set up a standard copy.
 ## Can the Open SDG platform be customised?
 
 Yes. Copies of Open SDG can be adapted to local needs – technical developer resource will
-be needed to do this. The [Customisation](https://open-
-sdg.readthedocs.io/en/latest/customisation/) section gives detailed technical guidance.
+be needed to do this. The [Customisation](https://open-sdg.readthedocs.io/en/latest/customisation/) section gives detailed technical guidance.
 
 ## Are maps available in Open SDG?
 
