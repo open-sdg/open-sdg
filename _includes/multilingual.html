@@ -11,6 +11,7 @@
 {%- endcomment -%}
 {%- assign default_language = site.languages[0] -%}
 {%- assign current_language = page.language -%}
+
 {%- assign t = site.data.translations[current_language] -%}
 {%- if current_language == default_language -%}
   {%- assign baseurl_folder = '' -%}

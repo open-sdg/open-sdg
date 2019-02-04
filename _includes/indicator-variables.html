@@ -3,7 +3,6 @@
   Before we start the html we fetch the data and metadata for this page
 
 {%- endcomment -%}
-{%- include multilingual.html -%}
 
 {% capture indicator_id %}{{page.indicator | slugify}}{% endcapture %}
 {% assign meta = site.data.meta[indicator_id] %}
@@ -16,15 +15,14 @@
 {%- assign goal = site.data.translations[default_language].global_goals[goal_number] -%}
 {%- assign translated_goal = t.global_goals[goal_number] -%}
 {% capture goal_uri %}{{ site.baseurl }}{{ baseurl_folder }}/{{ goal.short | slugify }}{% endcapture %}
+{% capture goal_href %}{{ goal_uri }}{% endcapture %}
+{% capture goal_title %}{{ goal.title }}{% endcapture %}
 
 {% if meta.reporting_status != "complete" or meta.data_non_statistical == true %}
   {% assign show_data = false %}
 {% else %}
   {% assign show_data = true %}
 {% endif %}
-
-{% capture goal_href %}{{ goal_uri }}{% endcapture %}
-{% capture goal_title %}{{ goal.title }}{% endcapture %}
 
 {% capture dataset_name %}indicator_{{meta.indicator | slugify }}{% endcapture %}
 
