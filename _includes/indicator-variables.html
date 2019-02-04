@@ -25,12 +25,8 @@
 
 {% capture goal_href %}{{ goal_uri }}{% endcapture %}
 {% capture goal_title %}{{ goal.title }}{% endcapture %}
-{% capture indicator_title %}{{ meta.title }}{% endcapture %}
 
 {% capture dataset_name %}indicator_{{meta.indicator | slugify }}{% endcapture %}
 
-{% assign sdg_indicator_data = site.data[dataset_name] %}
-{% assign indicator_metadata = sdg_indicators | where: "indicator_id", meta.indicator | first %}
-{% assign json_data = sdg_indicator_data | jsonify %}
-{%- assign indicator_number = meta.indicator -%}
-{%- assign translated_indicator = t.global_indicators[indicator_number] -%}
+{%- assign json_data = site.data[dataset_name] | jsonify -%}
+{%- assign translated_indicator = t.global_indicators[meta.indicator] -%}
