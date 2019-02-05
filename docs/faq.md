@@ -12,7 +12,7 @@ instructions on the quickest way to get a copy of the open-sdg platform up and r
 
 ## How long would it take to set up a copy of Open SDG
 
-With the right skills, it should take less than a day to set up a standard copy.
+With the right skills, it should take less than a day to set up a standard copy, ready for data to be imported. 
 
 ## Can the Open SDG platform be customised?
 
