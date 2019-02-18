@@ -61,6 +61,7 @@ The rest are optional fields (incl. data sources 2-6)
 | computation_disaggregation          | Disaggregation               |
 | comments_limitations                | Comments and limitations     |
 | admin_contact_details               | Contact details              |
+| tags                                | Tags shown under indicators  |
 
 ## Method of Computation Metadata
 
