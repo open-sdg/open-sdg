@@ -36,6 +36,7 @@ All the services described here can be used without paying fees.
 ### CircleCI (or similar)
 
 [CircleCI](https://circleci.com/) allows the platform to be automatically "built" in response to simple workflows. The key ones are:
+
 * When code is pushed to the "develop" Git branch, build and deploy to staging.
 * When code is pushed to the "master" Git branch, build and deploy to production.
 * When a Github pull request is created, run tests against the new code.
@@ -59,6 +60,7 @@ Since the platform is a Jekyll site, familiarity with the configuration and stru
 Since this is a web platform, customisation of markup, style, and behavior will require familiarity with HTML, CSS, and Javascript. Developers should be aware that the platform uses the [Bootstrap](https://getbootstrap.com/) library.
 
 Additionally — although most implementations will not require alterations to advanced functionality like filtering, charts, and maps — developers should be aware of the Javascript libraries used:
+
 * Filtering: [Underscore.js](https://underscorejs.org/)
 * Charts: [Chart.js](https://www.chartjs.org/)
 * Maps: [D3.js](https://d3js.org/)
