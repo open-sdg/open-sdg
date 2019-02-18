@@ -1,5 +1,15 @@
 <h1>Change Log</h1>
 
+### 0.3.1
+
+Patch release with some accessibility and bug fixes.
+
+* Bugfix for page titles (#64)
+* Accessibility improvements for high contrast mode (#2) (#4)
+* Search queries now use a `?q=<search-term>` string for better GA compatibility (#81)
+
+Breaking changes: For any sites that have overridden the theme, they will need to add `{% include multilingual.html %}` at the top of each page as this has been moved out of `head.html`.
+
 ## 0.3.0
 
 * Changelog added (#47)
