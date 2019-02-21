@@ -30,20 +30,44 @@
 
     {% if indicator.reporting_status == 'notstarted' %}
       {% assign status_desc = t.status.exploring_data_sources %}
-      {% assign status_css = 'danger' %}          
+      {% assign status_css = 'danger' %}
     {% endif %}
     {% if indicator.reporting_status == 'inprogress' %}
       {% assign status_desc = t.status.statistics_in_progress %}
-      {% assign status_css = 'warning' %}          
+      {% assign status_css = 'warning' %}
     {% endif %}
     {% if indicator.reporting_status == 'complete' %}
       {% assign status_desc = t.status.reported_online %}
       {% assign status_css = 'success' %}
     {% endif %}
+    {% assign tag_classes = "" | split: "," %}
+    {% if indicator.tags %}
+      {% for tag in indicator.tags %}
+        {% assign tag_slug = "indicator-" | append: tag | slugify %}
+        {% assign tag_classes = tag_classes | push: tag_slug %}
+      {% endfor %}
+    {% endif %}
+    {% assign tag_classes = tag_classes | join: " " %}
 
     {% cycle 'add row' : '<div class="indicator-cards row no-gutters">', '', '', '' %}
-        <div class="col-md-6 col-lg-3">
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ indicator.indicator | slugify }}"><span>{{ indicator.indicator }}<span class="status {{ status_css }}">{{ status_desc }}</span></span> {{ translated_indicator.title }}</a>
+        <div class="col-md-6 col-lg-3 {{ tag_classes }}">
+          <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ indicator.indicator | slugify }}">
+            <span>
+              {{ indicator.indicator }}
+              <span class="status {{ status_css }}">
+                {{ status_desc }}
+              </span>
+            </span>
+            {{ translated_indicator.title }}
+            {% if indicator.tags %}
+              <ul class="tags">
+              {% for tag in indicator.tags %}
+                {% assign tag_class = tag | slugify %}
+                <li class="tag-{{ tag_class }} warning">{{ tag }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </a>
         </div>
     {% cycle 'end row' : '', '', '', '</div>' %}
     {% endfor %}

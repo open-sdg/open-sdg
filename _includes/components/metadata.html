@@ -24,6 +24,8 @@
               </a>
             {% endif %}
 
+          {% elsif indicator_metadata.field.element == 'multiselect' %}
+            {{ meta[indicator_metadata.name] | join: ", " }}
           {% else %}
             {{ meta[indicator_metadata.name] }}
           {% endif %}
