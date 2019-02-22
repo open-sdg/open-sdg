@@ -10,6 +10,7 @@ markdown_extensions:
 
 extra_css:
     - css/architecture.css
+    - css/home.css
 
 pages:
     - Home: index.md
