@@ -26,6 +26,10 @@
 
   {% assign goal_indicators = site.data.meta | where: 'sdg_goal', page.sdg_goal | sort: 'indicator_sort_order' %}
   {% for indicator in goal_indicators %}
+    {%- assign translated_meta = indicator -%}
+    {%- if indicator[current_language] -%}
+      {%- assign translated_meta = indicator[current_language] -%}
+    {%- endif -%}
     {%- assign translated_indicator = t.global_indicators[indicator.indicator] -%}
 
     {% if indicator.reporting_status == 'notstarted' %}
@@ -63,7 +67,7 @@
               <ul class="tags">
               {% for tag in indicator.tags %}
                 {% assign tag_class = tag | slugify %}
-                <li class="tag-{{ tag_class }} warning">{{ tag }}</li>
+                <li class="tag-{{ tag_class }} warning">{{ translated_meta.tags[forloop.index0] }}</li>
               {% endfor %}
               </ul>
             {% endif %}
