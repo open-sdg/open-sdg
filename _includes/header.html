@@ -29,20 +29,9 @@
       <ul class="nav navbar-nav menu-target contrast-switcher" id="menu">
         {%- if site.menu -%}
           {%- for item in site.menu -%}
-          {%- assign translation_keys = item.translation_key | split: "." -%}
-          {%- assign translated_item = false -%}
-          {%- for key in translation_keys -%}
-            {%- if t[key] -%}
-              {%- assign translated_item = t[key] -%}
-            {%- elsif translated_item[key] -%}
-              {%- assign translated_item = translated_item[key] -%}
-            {%- endif -%}
-          {%- endfor -%}
-          {%- if translated_item -%}
           <li class="nav-link {% if page.permalink == item.path %}active{% endif %}">
-            <a href="{{ site.baseurl }}{{ baseurl_folder }}{{ item.path }}">{{ translated_item }}</a>
+            <a href="{{ site.baseurl }}{{ baseurl_folder }}{{ item.path }}">{{ item.translation_key | t }}</a>
           </li>
-          {%- endif -%}
           {%- endfor -%}
         {%- endif -%}
         {%- if site.languages.size > 1 -%}
