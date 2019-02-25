@@ -81,6 +81,8 @@ languages:
   - en
   - es
 
+goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
+
 plugins:
   - jekyll-open-sdg-plugins
   - jekyll-get-json

@@ -15,13 +15,13 @@
         {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
             <div class="col-xs-4 col-md-2">
                 <a href="./{{ default_goal.short | slugify }}/">
-                  <img src="{{ site.baseurl }}/assets/img/goals/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
+                  <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
               </a>
             </div>
         {% cycle 'end row' : '', '', '', '', '', '</div>' %}
     {% endfor %}
         <div class="col-xs-4 col-md-2">
-            <img src="{{ site.baseurl }}/assets/img/goals/{{ current_language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
+            <img src="{{ site.goal_image_base }}/{{ current_language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
         </div>
     </div>
 </div>
