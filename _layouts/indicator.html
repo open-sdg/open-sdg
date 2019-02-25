@@ -135,8 +135,12 @@
             <div > <!-- formerly class="collapsible expanded" -->
               <!-- <h3 tabindex='0'>National Metadata</h3> -->
               <article>
-                <p>{{ t.indicator.national_metadata_blurb | replace: '%country_name', site.country.name | replace: '%country_adjective', site.country.adjective }}</p>
-                  {% include components/metadata.html scope='national' %}
+                <p>
+                  {% assign country_name = site.country.name | t %}
+                  {% assign country_adjective = site.country.adjective | t %}
+                  {{ t.indicator.national_metadata_blurb | replace: '%country_name', country_name | replace: '%country_adjective', country_adjective }}
+                </p>
+                {% include components/metadata.html scope='national' %}
               </article>
             </div>
           </div>
