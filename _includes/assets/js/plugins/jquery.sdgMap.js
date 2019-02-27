@@ -44,7 +44,7 @@
   // Defaults for each map layer.
   var mapLayerDefaults = {
     min_zoom: 0,
-    max_zoom: 20,
+    max_zoom: 10,
     serviceUrl: '[replace me]',
     nameProperty: '[replace me]',
     idProperty: '[replace me]',
@@ -312,7 +312,7 @@
         // The search plugin messes up zoomShowHide, so we have to reset that
         // with this hacky method. Is there a better way?
         var zoom = plugin.map.getZoom();
-        plugin.map.setZoom(zoom + 1);
+        plugin.map.setZoom(plugin.options.maxZoom);
         plugin.map.setZoom(zoom);
 
         // The list of handlers to apply to each feature on a GeoJson layer.
