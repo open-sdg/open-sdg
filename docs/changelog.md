@@ -1,5 +1,37 @@
 <h1>Change Log</h1>
 
+### 0.4.0
+
+Minor release with some multilingual enhancements and other bug fixes.
+
+* Fix bug with maps that have more than 2 layers (#104)
+* Optional method for translating metadata (#102)
+* Translate the country name/adjective on the homepage (#101)
+* Remove all goal images from this project (#99)
+* Fix problems with double-quotes breaking the search page (#98)
+* Translate indicator tags on goal pages (#96)
+* Simpler translation of navigation menu items (#94)
+
+**This release will require at least one update to your code.**:
+
+Breaking changes:
+
+* You should add the following line to your `_config.yml` file:
+    ```
+    goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
+    ```
+* In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.3.1...0.4.0) to see if you need to make any updates to your overriddes:
+    * _includes/assets/js/plugins/jquery.sdgMap.js
+    * _includes/components/metadata.html
+    * _includes/header.html
+    * _layouts/frontpage.html
+    * _layouts/goal.html
+    * _layouts/indicator.html
+    * _layouts/reportingstatus.html
+    * _layouts/search.html
+    * _layouts/indicator-json.html
+    * assets/css/default.scss
+
 ### 0.3.1
 
 Patch release with some accessibility and bug fixes.
