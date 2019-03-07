@@ -13,7 +13,7 @@
           {% if indicator_metadata.name contains "_url" or indicator_metadata.name contains "_link" %}
             {% assign url_text_name = indicator_metadata.name | replace_first:'_url','_url_text'  %}
             {% assign url_text_name = url_text_name | replace_first:'_link','_link_text'  %}
-            {% assign url_text = meta[url_text_name] %}
+            {% assign url_text = meta[url_text_name] | t %}
             {% unless url_text %}
               {% assign url_text = 'Link' %}
             {% endunless %}
@@ -25,9 +25,11 @@
             {% endif %}
 
           {% elsif indicator_metadata.field.element == 'multiselect' %}
-            {{ meta[indicator_metadata.name] | join: ", " }}
+            {% for item in meta[indicator_metadata.name] %}
+              {{ item | t }}{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
           {% else %}
-            {{ meta[indicator_metadata.name] }}
+            {{ meta[indicator_metadata.name] | t }}
           {% endif %}
         </td>
         </tr>
