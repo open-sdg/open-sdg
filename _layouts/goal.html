@@ -63,7 +63,7 @@
               <ul class="tags">
               {% for tag in indicator.tags %}
                 {% assign tag_class = tag | slugify %}
-                <li class="tag-{{ tag_class }} warning">{{ tag }}</li>
+                <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
               {% endfor %}
               </ul>
             {% endif %}
