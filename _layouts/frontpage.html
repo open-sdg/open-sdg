@@ -3,9 +3,10 @@
 {% include header.html %}
 <div id="main-content" class="container goal-tiles" role="main">
 
-    <h1>{{site.country.name}} {{ t.frontpage.heading }}</h1>
+    {% assign country_name = site.country.name | t %}
+    <h1>{{ t.frontpage.heading | replace: '%name', country_name }}</h1>
 
-    <p>{{ t.frontpage.instructions | replace_first: '%before_link', '<span style="display:none" id="jump-to-search"><a href="javascript:void(0)">' | replace_first: '%after_link', '</a></span>' | replace_first: '%country_name', site.country.name }}</p>
+    <p>{{ t.frontpage.instructions | replace_first: '%before_link', '<span style="display:none" id="jump-to-search"><a href="javascript:void(0)">' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name }}</p>
     {%- assign goals = site.goals | where: 'language', current_language -%}
     {% for goal in goals %}
         {%- assign goal_number = goal.sdg_goal -%}
