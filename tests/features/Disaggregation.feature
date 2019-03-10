@@ -8,13 +8,13 @@ Feature: Disaggregation
     Given I am on "/1-1-1"
     And I wait 3 seconds
 
-  Scenario: The disaggregation filters affect the chart
+  Scenario: The disaggregation filters add lines to the chart
     Then I should see 1 "chart legend item" element
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
     Then I should see 2 "chart legend item" elements
 
-  Scenario: The disaggregation filters affect the table
+  Scenario: The disaggregation filters add columns to the table
     And I click on "the Table tab"
     Then I should see 2 "data table column" elements
     And I click on "the filter drop-down button"
