@@ -487,6 +487,7 @@ var indicatorView = function (model, options) {
     }, table = $(el).find('table');
 
     datatables_options.aaSorting = [];
+
     table.DataTable(datatables_options);
 
     setDataTableWidth(table);
