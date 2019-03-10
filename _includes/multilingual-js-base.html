@@ -12,7 +12,7 @@ var translations = {
     // data. To spare data providers of needing to enter "data." in front of
     // their disaggregation data, we do it for them here.
     var originalKey = key;
-    if (!key.includes('.')) {
+    if (!key.includes('.') && this.data) {
       key = 'data.' + key.toLowerCase();
     }
 
