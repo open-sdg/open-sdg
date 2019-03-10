@@ -16,7 +16,7 @@
           <div class="statuses">
             {%- for status in overall.statuses -%}
             <div>
-              <span class="status {{ site.status_class[status.status] }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage }}%</span>
+              <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage }}%</span>
             </div>
             {%- endfor -%}
             
@@ -25,7 +25,7 @@
         </div>
         <div class="goal-stats">
             {%- for status in overall.statuses -%}
-            <span class="{{ site.status_class[status.status] }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
+            <span class="{{ status.status | slugify }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
             {%- endfor -%}
         </div>
         
@@ -55,7 +55,7 @@
             <div class="statuses">
               {%- for status in goalreport.statuses -%}
               <div>
-                <span class="status {{ site.status_class[status.status] }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage }}%</span>
+                <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage }}%</span>
               </div>
               {%- endfor -%}
               <br style="clear:both;">
@@ -63,7 +63,7 @@
           </div>
           <div class="goal-stats">
           {%- for status in goalreport.statuses -%}
-            <span class="{{ site.status_class[status.status] }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
+            <span class="{{ status.status | slugify }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
           {%- endfor -%}
           </div>
           <div class="divider">

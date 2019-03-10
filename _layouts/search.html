@@ -25,7 +25,7 @@
         </div>
         <div class="col col-xs-9 col-md-10 indicator-cards">
           <% _.each(goal.indicators, function(indicator){ %>
-            <a href="<%=indicator.href%>"><span><%= indicator.id %><span class="status <% if(indicator.status == 'notstarted') { %>danger<% } else if(indicator.status == 'inprogress') { %>warning<% } else if(indicator.status == 'complete') { %>success<% } %>"><% if(indicator.status == 'notstarted') { %>{{ t.status.exploring_data_sources }}<% } else if(indicator.status == 'inprogress') { %>{{ t.status.statistics_in_progress }}<% } else if(indicator.status == 'complete') { %>{{ t.status.reported_online }}<% } %></span></span> <%=indicator.parsedTitle%><% if(indicator.hasDescription) { %><p class="description"><%=indicator.parsedDescription%></p><%}%><% if(indicator.hasKeywords) { %><p class="keywords">{{ t.search.keywords }}: <%=indicator.parsedKeywords%></p><%}%></a>
+            <a href="<%=indicator.href%>"><span><%= indicator.id %><span class="status {{ indicator.status | slugify }}"><% if(indicator.status == 'notstarted') { %>{{ t.status.exploring_data_sources }}<% } else if(indicator.status == 'inprogress') { %>{{ t.status.statistics_in_progress }}<% } else if(indicator.status == 'complete') { %>{{ t.status.reported_online }}<% } %></span></span> <%=indicator.parsedTitle%><% if(indicator.hasDescription) { %><p class="description"><%=indicator.parsedDescription%></p><%}%><% if(indicator.hasKeywords) { %><p class="keywords">{{ t.search.keywords }}: <%=indicator.parsedKeywords%></p><%}%></a>
           <% }); %>
         </div>
       </div>

@@ -28,7 +28,7 @@
   {% for indicator in goal_indicators %}
     {%- assign translated_indicator = t.global_indicators[indicator.indicator] -%}
 
-    {% assign status_css = site.status_class[indicator.reporting_status] %}
+    {% assign status_css = indicator.reporting_status | slugify %}
     {% if indicator.reporting_status == 'notstarted' %}
       {% assign status_desc = t.status.exploring_data_sources %}
     {% endif %}
