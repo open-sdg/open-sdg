@@ -23,6 +23,10 @@ const driver = new mink.Mink({
     "the first language option": ".nav .language-options a:first-child",
     "goal status": ".goal .frame",
     "the search box": ".navbar #indicator_search",
+    "disaggregation filter": ".variable-selector",
+    "the filter drop-down button": ".variable-selector .accessBtn",
+    "the first filter option": ".variable-selector .variable-options label",
+    "second item in the legend": "#legend li[data-datasetindex='1']",
   }
 });
 
