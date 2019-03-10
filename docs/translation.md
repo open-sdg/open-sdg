@@ -22,7 +22,7 @@ Note that the [open-sdg-site-starter](https://github.com/open-sdg/open-sdg-site-
 There are 4 requirements for adding a new language to the platform
 
 1. Make sure that the new language is implemented in the [SDG Translations project](https://open-sdg.github.io/sdg-translations). If it is not, you can fork that repository and implement the language yourself.
-2. Make sure that translated goal icons have been created. These are typically included in the SDG Translations implementation mentioned above.
+2. Make sure that translated goal icons have been created. These are should be included in the SDG Translations implementation mentioned above.
 3. Add the new language in the 'languages' list in your `_config.yml` file.
 4. Add new subdirectories for the translated goals, indicators, and pages, and populate them with content. NOTE: The [open-sdg-site-starter](https://github.com/open-sdg/open-sdg-site-starter) ships with a script to do this for you.
 
