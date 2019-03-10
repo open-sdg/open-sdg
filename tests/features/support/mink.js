@@ -23,10 +23,15 @@ const driver = new mink.Mink({
     "the first language option": ".nav .language-options a:first-child",
     "goal status": ".goal .frame",
     "the search box": ".navbar #indicator_search",
-    "disaggregation filter": ".variable-selector",
     "the filter drop-down button": ".variable-selector .accessBtn",
     "the first filter option": ".variable-selector .variable-options label",
-    "second item in the legend": "#legend li[data-datasetindex='1']",
+    "chart legend": "#legend li",
+    "chart legend item": "#legend li",
+    "data table": "#selectionsTable",
+    "data table column": "#selectionsTable th",
+    "the 'Select all' button": "button[data-type='select']",
+    "the 'Clear all' button": "button[data-type='clear']",
+    "the 'Clear selections' button": "button#clear",
   }
 });
 
