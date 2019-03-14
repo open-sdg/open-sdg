@@ -6,6 +6,21 @@ Jekyll configuration is stored at the root of the site repository in a YAML file
 
 The [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains and [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml) with documentation of each of the platform-specific settings.
 
+## Optional features
+
+As with any Jekyll theme, Open SDG can be easily customised. The platform comes with some out-of-the-box optional features that can serve as examples of possible customisations.
+
+### Optional feature: Goal page layouts
+
+Open SDG includes two alternative [layouts](https://jekyllrb.com/docs/step-by-step/04-layouts/) for the 17 goal pages:
+
+1. [`goal`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal.html) - Indicators are displayed in a responsive grid
+1. [`goal-by-target`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal-by-target.html) - Targets on the left, and indicators on the right
+
+As with any Jekyll layout, you can use these by adjusting the [front matter](https://jekyllrb.com/docs/front-matter/) of the goal file. For example, to use the goal-by-target layout, you would need this in the goal's front matter:
+
+`layout: goal-by-target`
+
 ## Working with (remote) Jekyll themes
 
 This project (the repository you are reading currently) functions as a [Jekyll theme](https://jekyllrb.com/docs/themes/), which can most easily be used with the help of the [Remote Theme plugin](https://github.com/benbalter/jekyll-remote-theme). As with any Jekyll theme (and as can be seen in the [folder structure of this project](https://github.com/open-sdg/open-sdg)) the entirety of the theme is contained in these 3 folders:
