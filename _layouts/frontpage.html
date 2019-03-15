@@ -15,7 +15,7 @@
 
         {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
             <div class="col-xs-4 col-md-2">
-                <a href="./{{ default_goal.short | slugify }}/">
+                <a href="./{{ goal_number }}/">
                   <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
               </a>
             </div>

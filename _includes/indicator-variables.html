@@ -14,7 +14,7 @@
 {%- assign goal_number = meta.sdg_goal | downcase -%}
 {%- assign goal = site.data.translations[default_language].global_goals[goal_number] -%}
 {%- assign translated_goal = t.global_goals[goal_number] -%}
-{% capture goal_uri %}{{ site.baseurl }}{{ baseurl_folder }}/{{ goal.short | slugify }}{% endcapture %}
+{% capture goal_uri %}{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}{% endcapture %}
 {% capture goal_href %}{{ goal_uri }}{% endcapture %}
 {% capture goal_title %}{{ goal.title }}{% endcapture %}
 
