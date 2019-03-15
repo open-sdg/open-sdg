@@ -9,21 +9,21 @@ Feature: Goal page
     Then I should see <TOTAL> "goal indicator" elements
 
     Examples:
-      | PATH                                    | TOTAL |
-      | /no-poverty                             | 14    |
-      | /zero-hunger                            | 13    |
-      | /good-health-and-well-being             | 27    |
-      | /quality-education                      | 11    |
-      | /gender-equality                        | 14    |
-      | /clean-water-and-sanitation             | 11    |
-      | /affordable-and-clean-energy            | 6     |
-      | /decent-jobs-and-economic-growth        | 17    |
-      | /industry-innovation-and-infrastructure | 12    |
-      | /reduced-inequalities                   | 11    |
-      | /sustainable-cities-communities         | 15    |
-      | /responsible-consumption-and-production | 13    |
-      | /climate-action                         | 8     |
-      | /life-below-water                       | 10    |
-      | /life-on-land                           | 14    |
-      | /peace-and-justice-strong-institutions  | 23    |
-      | /partnerships-for-the-goals             | 25    |
+      | PATH | TOTAL |
+      | /1   | 14    |
+      | /2   | 13    |
+      | /3   | 27    |
+      | /4   | 11    |
+      | /5   | 14    |
+      | /6   | 11    |
+      | /7   | 6     |
+      | /8   | 17    |
+      | /9   | 12    |
+      | /10  | 11    |
+      | /11  | 15    |
+      | /12  | 13    |
+      | /13  | 8     |
+      | /14  | 10    |
+      | /15  | 14    |
+      | /16  | 23    |
+      | /17  | 25    |
