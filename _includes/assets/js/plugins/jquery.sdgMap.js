@@ -236,8 +236,7 @@
 
       // Add the year slider.
       this.map.addControl(L.Control.yearSlider({
-        yearStart: this.years[0],
-        yearEnd: this.years[this.years.length - 1],
+        years: this.years,
         yearChangeCallback: function(e) {
           plugin.currentYear = new Date(e.time).getFullYear();
           plugin.updateColors();
