@@ -10,8 +10,7 @@
   var defaultOptions = {
     // YearSlider options.
     yearChangeCallback: null,
-    yearStart: 2000,
-    yearEnd: 2018,
+    years: [],
     // TimeDimensionControl options.
     timeSliderDragUpdate: true,
     speedSlider: false,
@@ -39,8 +38,10 @@
     options = L.Util.extend(defaultOptions, options);
     // Hardcode the timeDimension to year intervals.
     options.timeDimension = new L.TimeDimension({
-      period: 'P1Y',
-      timeInterval: options.yearStart + '-01-02/' + options.yearEnd + '-01-02',
+      // We pad our years to at least January 2nd, so that timezone issues don't
+      // cause any problems. This converts the array of years into a comma-
+      // delimited string of YYYY-MM-DD dates.
+      times: options.years.join('-01-02,') + '-01-02',
       currentTime: new Date(options.yearStart + '-01-02').getTime(),
     });
     // Create the player.
