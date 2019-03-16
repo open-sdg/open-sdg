@@ -439,7 +439,7 @@ var indicatorView = function (model, options) {
   };
 
   var setDataTableWidth = function(table) {
-    table.find('th').each(function() {
+    table.find('thead th').each(function() {
       var textLength = $(this).text().length;
       for(var loop = 0; loop < view_obj._tableColumnDefs.length; loop++) {
         var def = view_obj._tableColumnDefs[loop];
@@ -458,7 +458,7 @@ var indicatorView = function (model, options) {
     table.removeAttr('style width');
 
     var totalWidth = 0;
-    table.find('th').each(function() {
+    table.find('thead th').each(function() {
       if($(this).data('width')) {
         totalWidth += $(this).data('width');
       } else {
@@ -592,7 +592,11 @@ var indicatorView = function (model, options) {
       table.data.forEach(function (data) {
         var row_html = '<tr>';
         table.headings.forEach(function (heading, index) {
-          row_html += '<td' + (!index || heading.toLowerCase() == 'units' ? '' : ' class="table-value"') + '>' + (data[index] ? data[index] : '-') + '</td>';
+          // For accessibility set the Year column to a "row" scope th.
+          var isYear = (index == 0 || heading.toLowerCase() == 'year');
+          var cell_prefix = (isYear) ? '<th scope="row"' : '<td';
+          var cell_suffix = (isYear) ? '</th>' : '</td>';
+          row_html += cell_prefix + (!index || heading.toLowerCase() == 'units' ? '' : ' class="table-value"') + '>' + (data[index] ? data[index] : '-') + cell_suffix;
         });
         row_html += '</tr>';
         currentTable.find('tbody').append(row_html);
