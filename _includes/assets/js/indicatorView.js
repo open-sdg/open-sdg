@@ -594,9 +594,10 @@ var indicatorView = function (model, options) {
         table.headings.forEach(function (heading, index) {
           // For accessibility set the Year column to a "row" scope th.
           var isYear = (index == 0 || heading.toLowerCase() == 'year');
+          var isUnits = (heading.toLowerCase() == 'units');
           var cell_prefix = (isYear) ? '<th scope="row"' : '<td';
           var cell_suffix = (isYear) ? '</th>' : '</td>';
-          row_html += cell_prefix + (!index || heading.toLowerCase() == 'units' ? '' : ' class="table-value"') + '>' + (data[index] ? data[index] : '-') + cell_suffix;
+          row_html += cell_prefix + (isYear || isUnits ? '' : ' class="table-value"') + '>' + (data[index] ? data[index] : '-') + cell_suffix;
         });
         row_html += '</tr>';
         currentTable.find('tbody').append(row_html);
