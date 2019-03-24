@@ -20,6 +20,9 @@ jekyll_get_json:
   - data: schema
     # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
     json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/meta/schema.json'
+  - data: reporting
+    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
+    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/stats/reporting.json'
   - data: translations
     json: 'https://open-sdg.github.io/sdg-translations/translations.json'
 
