@@ -24,7 +24,7 @@
 {% include scripts.html %}
 
 <script>
-  {% if site.analytics.ga_prod %}
+  {% if site.analytics.ga_prod and site.analytics.ga_prod != blank %}
   initialiseGoogleAnalytics();
   {% endif %}
 </script>
