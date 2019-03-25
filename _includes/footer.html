@@ -23,10 +23,11 @@
 <!-- /.container </div> -->
 {% include scripts.html %}
 
+{% if site.analytics.ga_prod and site.analytics.ga_prod != '' %}
 <script>
-  {% if site.analytics.ga_prod and site.analytics.ga_prod != '' %}
   initialiseGoogleAnalytics();
-  {% endif %}
 </script>
+{% endif %}
+
 </body>
 </html>
