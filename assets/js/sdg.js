@@ -19,3 +19,4 @@
 {%- include assets/js/plugins/leaflet.downloadGeoJson.js -%}
 {%- include assets/js/plugins/leaflet.selectionLegend.js -%}
 {%- include assets/js/plugins/leaflet.yearSlider.js -%}
+{%- include assets/js/googleAnalytics.js -%}
