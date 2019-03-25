@@ -24,10 +24,9 @@
 {% include scripts.html %}
 
 <script>
-  
+  {% if site.analytics.ga_prod %}
   initialiseGoogleAnalytics();
-  sendPageviewToGoogleAnalytics();
-
+  {% endif %}
 </script>
 </body>
 </html>
