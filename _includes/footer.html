@@ -24,12 +24,10 @@
 {% include scripts.html %}
 
 <script>
-  initialiseGoogleAnalytics();
-  {% if site.environment == 'staging' %}
   
-  {% else %}
+  initialiseGoogleAnalytics();
   sendPageviewToGoogleAnalytics();
-  {% endif %}
+
 </script>
 </body>
 </html>
