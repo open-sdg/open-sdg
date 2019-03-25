@@ -45,17 +45,19 @@
   data-charttitle="{{ meta.graph_title | t }}" data-measurementunit="{{ meta.computation_units | t }}" data-datasource="{{ meta.source_organisation_1 | t }}" data-geographicalarea="{{ meta.national_geographical_coverage | t }}" data-footnote="{{ meta.data_footnote | t }}" data-showdata="{{ show_data }}" data-graphtype="{{ meta.graph_type }}" data-geocoderegex="{{ meta.data_geocode_regex }}" data-showmap="{{ meta.data_show_map }}">
     {% if show_data %}
     <div class="col-md-3">
-      <div id="toolbar">
-        <span id="series-help">
-          <h4>{{ t.indicator.sub_categories }}</h4>
-          <p>{{ t.indicator.series_help }}</p>
-        </span>
-        <p>{{ t.indicator.legend_help }}</p>
-        <div id="fields">
-          <p class="async-loading" data-img="{{ site.baseurl }}/assets/img/loading-small.gif"></p>
+      <div id="chartControls" show="1">
+        <div id="toolbar">
+          <span id="series-help">
+            <h4>{{ t.indicator.sub_categories }}</h4>
+            <p>{{ t.indicator.series_help }}</p>
+          </span>
+          <p>{{ t.indicator.legend_help }}</p>
+          <div id="fields">
+            <p class="async-loading" data-img="{{ site.baseurl }}/assets/img/loading-small.gif"></p>
+          </div>
         </div>
+        <div id="units"></div>
       </div>
-      <div id="units"></div>
     </div>
     <div class="col-md-9">
     {% else %}
@@ -73,17 +75,17 @@
         <div class="async-loaded" style="display:none">
           <ul class="nav nav-tabs data-view" role="tablist">
             <li role="presentation" class="nav-item active">
-              <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab">{{ t.indicator.chart }}</a>
+              <a class="nav-link" data-toggle="tab" href="#chartview" onClick='ga("send", "event", "Tab change", "Change data view", "Change to Chart tab")' aria-controls="chartview" role="tab" show-controls="1">{{ t.indicator.chart }}</a>
             </li>
             <li role="presentation" class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab">{{ t.indicator.table }}</a>
+              <a class="nav-link" data-toggle="tab" href="#tableview" onClick='ga("send", "event", "Tab change", "Change data view", "Change to Table tab")' aria-controls="tableview" role="tab" show-controls="1">{{ t.indicator.table }}</a>
             </li>
             <li role="presentation" class="nav-item map" style="display:none">
-              <a class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab">{{ t.indicator.map }}</a>
+              <a class="nav-link" data-toggle="tab" href="#mapview" onClick='ga("send", "event", "Tab change", "Change data view", "Change to Map tab")' aria-controls="mapview" role="tab" show-controls="0">{{ t.indicator.map }}</a>
             </li>
             {%- if meta.embedded_map_html -%}
             <li role="presentation" class="nav-item embedded-map">
-              <a class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab">{{ t.indicator.map }}</a>
+              <a class="nav-link" data-toggle="tab" href="#embeddedmapview" onClick='ga("send", "event", "Tab change", "Change data view", "Change to embedded item tab")' aria-controls="embeddedmapview" role="tab" show-controls="0">Embed</a>
             </li>
             {%- endif -%}
           </ul>
@@ -171,5 +173,29 @@
   </div>
 </div>
 
-{% include footer.html %}
+<style type="text/css">
+  #chartControls[show="1"]{display: block;}
+  #chartControls[show="0"]{display: none;}
+</style>
 
+<script>
+var SHOW_CONTROLS_ATTRIBUTE = "show-controls";
+var CHART_CONTROLS_ELEMENT_ID = "chartControls";
+addControlsVisibilityActionsToTabs();
+function addControlsVisibilityActionsToTabs(){
+	var tabs = document.querySelectorAll("[" + SHOW_CONTROLS_ATTRIBUTE + "]");
+	tabs.forEach(function(eachTab){
+		addControlsVisibilityClickEventToTab(eachTab);
+	});
+}
+function addControlsVisibilityClickEventToTab(tab){
+	tab.addEventListener("click", function(){
+		setControlsVisibility(tab.getAttribute(SHOW_CONTROLS_ATTRIBUTE));
+	});
+}
+function setControlsVisibility(visibility){
+  	document.querySelector("#" + CHART_CONTROLS_ELEMENT_ID).setAttribute("show", visibility);
+}
+</script>  
+
+{% include footer.html %}
