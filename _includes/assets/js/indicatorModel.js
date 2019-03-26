@@ -108,7 +108,7 @@ var indicatorModel = function (options) {
     }
 
     that.fieldItemStates = _.map(_.filter(Object.keys(that.data[0]), function (key) {
-        return ['Year', 'Value', 'Units', 'GeoCode'].indexOf(key) === -1;
+        return ['Year', 'Value', 'Units', 'GeoCode', 'Observation status', 'Unit multiplier'].indexOf(key) === -1;
       }), function(field) {
       return {
         field: field,
