@@ -12,7 +12,7 @@ Feature: Multilingual
     Then I should see "Haga clic en cada objetivo"
 
   Scenario: Lanugage switcher works on a goal page
-    Given I am on "/no-poverty"
+    Given I am on "/1"
     Then I should see "End poverty in all its forms everywhere"
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
