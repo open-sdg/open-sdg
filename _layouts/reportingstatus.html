@@ -1,102 +1,80 @@
-{%- include multilingual.html -%}
+{% include multilingual.html %}
 {% include head.html %}
 {% include header.html %}
-<div id="main-content" class="container reportingstatus" data-url="{{ site.baseurl }}/indicators.json">
+
+<div id="main-content" class="container reportingstatus">
 
   <h1>{{ t.status.reporting_status }}</h1>
 
-  {% assign goal_indicators = site.data.meta %}
-  {% assign overall_indicator_count = goal_indicators | size %}
-  {% assign exploring_count = goal_indicators | where: 'reporting_status', 'notstarted' | size %}
-  {% assign in_progress_count = goal_indicators | where: 'reporting_status', 'inprogress' | size %}
-  {% assign complete_count = goal_indicators | where: 'reporting_status', 'complete' | size %}
-
-  <div class="goal goal-overall" data-goalid="{{ goal.goal }}">
+  {%- assign overall = site.data.reporting.overall -%}
+  <div class="goal goal-overall">
       <div class="details">
         <h2 class="status-goal">
-          {{ t.status.overall_reporting_status }} <span class="total"><span>{{ overall_indicator_count }}</span> {{ t.general.indicators | downcase }}</span>
+            {{ t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> indicators</span>
         </h2>
         <div class="summary">
           <div class="statuses">
+            {%- for status in overall.statuses -%}
             <div>
-              <span class="status success">{{ complete_count }}</span><strong>{{ t.status.reported_online }}</strong><span class="value"></span>
+              <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage }}%</span>
             </div>
-            <div>
-              <span class="status warning">{{ in_progress_count }}</span><strong>{{ t.status.statistics_in_progress }}</strong><span class="value"></span>
-            </div>
-            <div>
-              <span class="status danger">{{ exploring_count }}</span><strong>{{ t.status.exploring_data_sources }}</strong><span class="value"></span>
-            </div>
-            <br style="clear:both;" />
+            {%- endfor -%}
+            
+            <br style="clear:both;">
           </div>
         </div>
         <div class="goal-stats">
-          <!-- please keep this 'funky' markup; it has an impact on the display of the bar components -->
-          <span class="success"></span
-          ><span class="warning"></span
-          ><span class="danger"></span>
+            {%- for status in overall.statuses -%}
+            <span class="{{ status.status | slugify }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
+            {%- endfor -%}
         </div>
+        
       </div>
     <!--</li>-->
-    <br style="clear:both;" />
+    <br style="clear:both;">
   </div>
 
   <h2>Status by Goal</h2>
 
-      {%- assign goals = site.goals | where: 'language', current_language -%}
-      {% for goal in goals %}
-        {%- assign goal_number = goal.sdg_goal -%}
-        {%- assign default_goal = site.data.translations[default_language].global_goals[goal_number] -%}
-        {%- assign translated_goal = t.global_goals[goal_number] -%}
-        {% assign goal_indicators = site.data.meta | where: 'sdg_goal', goal_number %}
-        {% assign goal_indicator_count = goal_indicators | size %}
-        {% assign exploring_count = goal_indicators | where: 'reporting_status', 'notstarted' | size %}
-        {% assign in_progress_count = goal_indicators | where: 'reporting_status', 'inprogress' | size %}
-        {% assign complete_count = goal_indicators | where: 'reporting_status', 'complete' | size %}
-
-        <!--<li>-->
-        <div class="goal" data-goalid="{{ goal_number }}">
-          <div class="frame">
-            <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ default_goal.short | slugify }}/">
-              <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" width="100" height="100" />
-            </a>
-          </div>
-          <div class="details">
-            <h3 class="status-goal">
-              <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ default_goal.short | slugify }}/">{{ translated_goal.short }}</a>
-              <span class="total">{{ goal_indicators | size }}<span></span> {{ t.general.indicators | downcase }}</span>
-            </h3>
-            <div class="summary">
-              <div class="statuses">
-                <div>
-                  <span class="status success">{{ complete_count }}</span><strong>{{ t.status.reported_online }}</strong><span class="value"></span>
-                </div>
-                <div>
-                  <span class="status warning">{{ in_progress_count }}</span><strong>{{ t.status.statistics_in_progress }}</strong><span class="value"></span>
-                </div>
-                <div>
-                  <span class="status danger">{{ exploring_count }}</span><strong>{{ t.status.exploring_data_sources }}</strong><span class="value"></span>
-                </div>
-                <br style="clear:both;" />
+  {%- for goalreport in site.data.reporting.goals -%}
+    {%- assign goal_number = goalreport.goal  | downcase -%}
+    {%- assign default_goal = site.data.translations[default_language].global_goals[goal_number] -%}
+    {%- assign translated_goal = t.global_goals[goal_number] -%}
+    <div class="goal">
+        <div class="frame">
+          <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ default_goal.short | slugify }}/">
+            <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" width="100" height="100" />
+          </a>
+        </div>
+        <div class="details">
+          <h3 class="status-goal">
+            <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ default_goal.short | slugify }}/">{{ translated_goal.short }}</a>
+            <span class="total">{{ goalreport.totals.total }}<span></span> {{ t.general.indicators | downcase }}</span>
+          </h3>
+          <div class="summary">
+            <div class="statuses">
+              {%- for status in goalreport.statuses -%}
+              <div>
+                <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage }}%</span>
               </div>
-            </div>
-            <div class="goal-stats">
-              <!-- please keep this 'funky' markup; it has an impact on the display of the bar components -->
-              <span class="success"></span
-              ><span class="warning"></span
-              ><span class="danger"></span>
-            </div>
-            <div class="divider">
+              {%- endfor -%}
+              <br style="clear:both;">
             </div>
           </div>
-        <!--</li>-->
-        <br style="clear:both;" />
-      </div>
-      {% endfor %}
-    <!--</ul>-->
+          <div class="goal-stats">
+          {%- for status in goalreport.statuses -%}
+            <span class="{{ status.status | slugify }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage }}%"></span>
+          {%- endfor -%}
+          </div>
+          <div class="divider">
+          </div>
+        </div>
+      <!--</li>-->
+      <br style="clear:both;">
+    </div>
+  {%- endfor -%}
 
   <!--{{ content }}-->
-
 
 </div>
 {% include footer.html %}
