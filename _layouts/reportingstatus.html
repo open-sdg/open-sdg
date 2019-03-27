@@ -34,7 +34,7 @@
     <br style="clear:both;">
   </div>
 
-  <h2>Status by Goal</h2>
+  <h2>{{ t.status.status_by_goal }}</h2>
 
   {%- for goalreport in site.data.reporting.goals -%}
     {%- assign goal_number = goalreport.goal  | downcase -%}
