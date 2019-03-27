@@ -107,8 +107,9 @@ var indicatorModel = function (options) {
       });
     }
 
+    var specialColumns = ['Year', 'Value', 'Units', 'GeoCode', 'Observation status', 'Unit multiplier']
     that.fieldItemStates = _.map(_.filter(Object.keys(that.data[0]), function (key) {
-        return ['Year', 'Value', 'Units', 'GeoCode'].indexOf(key) === -1;
+        return specialColumns.indexOf(key) === -1;
       }), function(field) {
       return {
         field: field,
@@ -121,6 +122,11 @@ var indicatorModel = function (options) {
           };
         })
       };
+    });
+
+    // Remove special columns from edgesData.
+    that.edgesData = _.filter(that.edgesData, function(edge) {
+      return (!specialColumns.includes(edge.From) && !specialColumns.includes(edge.To));
     });
 
     // Set up the validParentsByChild object, which lists the parent field
@@ -281,12 +287,12 @@ var indicatorModel = function (options) {
 
   this.updateSelectedUnit = function(selectedUnit) {
     this.selectedUnit = selectedUnit;
-    
+
     // if fields are dependent on the unit, reset:
     this.getData({
       unitsChangeSeries: this.dataHasUnitSpecificFields
     });
-    
+
     this.onUnitsSelectedChanged.notify(selectedUnit);
   };
 
@@ -512,7 +518,7 @@ var indicatorModel = function (options) {
         return ds.data[yearIndex]
       })));
     });
-      
+
     this.onDataComplete.notify({
       datasetCountExceedsMax: datasetCountExceedsMax,
       datasets: datasetCountExceedsMax ? datasets.slice(0, maxDatasetCount) : datasets,
@@ -579,7 +585,7 @@ var indicatorModel = function (options) {
 
 indicatorModel.prototype = {
   initialise: function () {
-    this.getData({ 
+    this.getData({
       initial: true
     });
   },
