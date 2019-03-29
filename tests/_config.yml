@@ -101,3 +101,5 @@ defaults:
 # Apply any custom CSS.
 custom_css:
   - /assets/css/custom.css
+
+survey_url: http://url.to/survey
