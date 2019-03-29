@@ -28,7 +28,7 @@ const driver = new mink.Mink({
     "chart legend": "#legend li",
     "chart legend item": "#legend li",
     "data table": "#selectionsTable",
-    "data table column": "#selectionsTable th",
+    "data table column": "#selectionsTable thead th",
     "the 'Select all' button": "button[data-type='select']",
     "the 'Clear all' button": "button[data-type='clear']",
     "the 'Clear selections' button": "button#clear",
