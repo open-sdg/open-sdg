@@ -311,7 +311,7 @@ var indicatorView = function (model, options) {
               text.push('<li data-datasetindex="' + datasetIndex + '">');
               text.push('<span class="swatch' + (dataset.borderDash ? ' dashed' : '') + '" style="background-color: ' + dataset.backgroundColor + '">');
               text.push('</span>');
-              text.push(dataset.label);
+              text.push(translations.t(dataset.label));
               text.push('</li>');
             });
 
@@ -421,7 +421,7 @@ var indicatorView = function (model, options) {
 
   this.toCsv = function (tableData) {
     var lines = [],
-    headings = _.map(tableData.headings, function(heading) { return '"' + heading + '"'; });
+    headings = _.map(tableData.headings, function(heading) { return '"' + translations.t(heading) + '"'; });
 
     lines.push(headings.join(','));
 
@@ -577,7 +577,7 @@ var indicatorView = function (model, options) {
 
       var getHeading = function(heading, index) {
         var span = '<span class="sort" />';
-        var span_heading = '<span>' + heading + '</span>';
+        var span_heading = '<span>' + translations.t(heading) + '</span>';
         return (!index || heading.toLowerCase() == 'units') ? span_heading + span : span + span_heading;
       };
 
