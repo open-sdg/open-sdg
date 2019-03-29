@@ -6,7 +6,7 @@ Below is a list of countries and localities that are currently using this platfo
 
 ### Countries
 
-* [Armenia](../case-studies/armenia/)
+* [Armenia](case-studies/armenia.md)
 * [United Kingdom](https://sustainabledevelopment-uk.github.io)
 * [United States](https://sdg.data.gov)
 
