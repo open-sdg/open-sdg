@@ -45,3 +45,5 @@ pages:
         - Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
+    - Case studies:
+        - Armenia: case-studies/armenia.md
