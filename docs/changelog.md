@@ -19,11 +19,11 @@ Refactoring, re-structuring, bug fixes, and enhancements.
 Breaking changes:
 
 * The reporting status page has been refactored, and the following changes will be needed:
-    * In the data repository, make sure the order of the `reporting_status` options in your `_prose.yml` file matches the order you would like them to appear on the page. Example [here](https://github.com/armstat/sdg-data-armenia/pull/17/commits/6b62e7c5ecb17a11444638c885bcffdfd672e232).
-    * In the data repository, make sure you are using at least version 0.3.0 of SDG Build. Example [here](https://github.com/armstat/sdg-data-armenia/pull/17/commits/4fbb754642ef0993d82cc94310fccf310f38bb83).
-    * In the site repository, make sure you are pulling in this new data in the `jekyll_get_json` section. Example [here](https://github.com/armstat/sdg-site-armenia/commit/d68abf39e6aace53827db6995e850e5a4d3e4385).
-* All goal pages will need updated permalinks. Example [here](https://github.com/brockfanning/sdg-indicators/commit/648c1a9ae037ea22ed65bcf4158f7d1612934d2b).
-* You may also want to create redirects from the old permalinks. Example [here](https://github.com/brockfanning/sdg-indicators/commit/e0093955cdafef93e31847cba61837881ada3e04).
+    * In the data repository, make sure the order of the `reporting_status` options in your `_prose.yml` file matches the order you would like them to appear on the page. Example [here](https://github.com/open-sdg/open-sdg-data-starter/commit/3f22d5529c1b3084c3b06665a5e2920cff0aff17).
+    * In the data repository, make sure you are using at least version 0.3.0 of SDG Build. Example [here](https://github.com/open-sdg/open-sdg-data-starter/commit/55d91b5952b3cd6ca6d1ddc4601354e8acc4c22b).
+    * In the site repository, make sure you are pulling in this new data in the `jekyll_get_json` section. Example [here](https://github.com/open-sdg/open-sdg-site-starter/commit/7986def8a1b82f8754f22a69154560ac33374dd3).
+* All goal pages will need updated permalinks. Example [here](https://github.com/open-sdg/open-sdg-site-starter/commit/f421fa542687dfba2fcf93c209a8bdf9d4498c0a).
+* You may also want to create redirects from the old permalinks. Example [here](https://github.com/GSA/sdg-indicators-usa/commit/648c1a9ae037ea22ed65bcf4158f7d1612934d2b) and [here](https://github.com/brockfanning/sdg-indicators/commit/e0093955cdafef93e31847cba61837881ada3e04).
 * In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.4.0...0.5.0) to see if you need to make any updates to your overriddes:
     * _includes/assets/js/indicatorModel.js
     * _includes/assets/js/indicatorView.js
