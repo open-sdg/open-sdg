@@ -14,12 +14,14 @@ Refactoring, re-structuring, bug fixes, and enhancements.
 * Change goal paths to use numbers (#123)
 * Use scope=row to improve table accessibility (#124)
 * Make it easier to override Google Analytics (#128)
+* Keep 2 special columns out of disaggregation filters (#131)
 
 Breaking changes:
 
 * The reporting status page is now tied directly to the `_prose.yml` file in the data repository. Make sure that the order of the "options" under `reporting_status` matches the order you would like them to appear on the page.
 * All goal pages will need updated permalinks! You may also want to create redirects from the old permalinks. More information is [here](https://github.com/open-sdg/open-sdg/pull/123#issue-261720878).
 * In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.4.0...0.5.0) to see if you need to make any updates to your overriddes:
+    * _includes/assets/js/indicatorModel.js
     * _includes/assets/js/indicatorView.js
     * _includes/assets/js/plugins/jquery.sdgMap.js
     * _includes/assets/js/plugins/leaflet.yearSlider.js
