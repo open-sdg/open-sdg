@@ -9,6 +9,7 @@ function initialiseGoogleAnalytics(){
 
 function sendPageviewToGoogleAnalytics(){
     ga('create', '{{ site.analytics['ga_prod'] }}', 'auto');
+    ga('require', 'eventTracker');
     // anonymize user IPs (chops off the last IP triplet)
     ga('set', 'anonymizeIp', true);
     // forces SSL even if the page were somehow loaded over http://
