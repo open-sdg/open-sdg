@@ -13,6 +13,7 @@ Refactoring, re-structuring, bug fixes, and enhancements.
 * Translate additional elements (#116, #122)
 * Change goal paths to use numbers (#123)
 * Use scope=row to improve table accessibility (#124)
+* Sort list of years to fix possible mapping problems with year slider (#126)
 * Make it easier to override Google Analytics (#128)
 * Keep 2 special columns out of disaggregation filters (#131)
 
