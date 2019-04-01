@@ -78,7 +78,7 @@
       .domain(this.valueRange)
       .classes(this.options.colorRange.length);
 
-    this.years = _.uniq(_.pluck(this.geoData, 'Year'));
+    this.years = _.uniq(_.pluck(this.geoData, 'Year')).sort();
     this.currentYear = this.years[0];
 
     this.init();
