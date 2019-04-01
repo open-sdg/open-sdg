@@ -19,7 +19,7 @@ Adopting the SDG open data did not take long. Just one day to set up the platfor
 We have data from previous systems (eg DevInfo) as Excel files and receive data from MDAs in various formats. ONS ran a training session and helped us use Excel and scripts (Python and VBA) to convert the data and metadata into the required format and troubleshoot any errors during the upload process.
 
 ## How is the platform hosted? (GitHub, local server, other platform)
-Currently the ‘staging’ and public ‘production’ versions are both hosted on GitHub.
+Currently the staging and public production versions are both hosted on GitHub.
 
 ## How are support and maintenance managed for the platform?
 We have a team of staff within NISR that is being trained by ONS in using and managing the platform and ONS help us with any technical issues. We have not assigned web developer resource yet as we are using the features built in to Open SDG and we liaise with ONS to feed in our requirements.
