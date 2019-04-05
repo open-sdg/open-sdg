@@ -1,5 +1,49 @@
 <h1>Change Log</h1>
 
+### 0.5.0
+
+Refactoring, re-structuring, bug fixes, and enhancements.
+
+* Revamp reporting status page to allow for custom types (#111)
+* Support translation of data columns/filters (#117, #137)
+* Add optional layout for two-column goal pages (#118)
+* Maps: skip missing years in the year slider (#119)
+* Prevent issues with special characters on search page (#120)
+* Allow control of text of non-global metadata tab (#121)
+* Translate additional elements (#116, #122)
+* Change goal paths to use numbers (#123)
+* Use scope=row to improve table accessibility (#124)
+* Sort list of years to fix possible mapping problems with year slider (#126)
+* Make it easier to override Google Analytics (#128)
+* Keep 2 special columns out of disaggregation filters (#131)
+
+Breaking changes:
+
+* The reporting status page has been refactored, and the following changes will be needed:
+    * In the data repository, make sure the order of the `reporting_status` options in your `_prose.yml` file matches the order you would like them to appear on the page. Example [here](https://github.com/open-sdg/open-sdg-data-starter/commit/3f22d5529c1b3084c3b06665a5e2920cff0aff17).
+    * In the data repository, make sure you are using at least version 0.3.0 of SDG Build. Example [here](https://github.com/open-sdg/open-sdg-data-starter/commit/55d91b5952b3cd6ca6d1ddc4601354e8acc4c22b).
+    * In the site repository, make sure you are pulling in this new data in the `jekyll_get_json` section. Example [here](https://github.com/open-sdg/open-sdg-site-starter/commit/7986def8a1b82f8754f22a69154560ac33374dd3).
+* All goal pages will need updated permalinks. Example [here](https://github.com/open-sdg/open-sdg-site-starter/commit/f421fa542687dfba2fcf93c209a8bdf9d4498c0a).
+* You may also want to create redirects from the old permalinks. Example [here](https://github.com/GSA/sdg-indicators-usa/commit/648c1a9ae037ea22ed65bcf4158f7d1612934d2b) and [here](https://github.com/brockfanning/sdg-indicators/commit/e0093955cdafef93e31847cba61837881ada3e04).
+* In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.4.0...0.5.0) to see if you need to make any updates to your overriddes:
+    * _includes/assets/js/indicatorModel.js
+    * _includes/assets/js/indicatorView.js
+    * _includes/assets/js/plugins/jquery.sdgMap.js
+    * _includes/assets/js/plugins/leaflet.yearSlider.js
+    * _includes/assets/js/search.js
+    * _includes/components/fields-template.html
+    * _includes/components/headline.html
+    * _includes/components/units-template.html
+    * _includes/footer.html
+    * _includes/head.html
+    * _includes/indicator-variables.html
+    * _layouts/frontpage.html
+    * _layouts/goal.html
+    * _layouts/indicator.html
+    * _layouts/reportingstatus.html
+    * _layouts/search.html
+    * assets/css/default.scss
+
 ### 0.4.0
 
 Minor release with some multilingual enhancements and other bug fixes.
