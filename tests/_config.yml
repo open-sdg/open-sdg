@@ -2,6 +2,8 @@
 
 # Replace this title as needed.
 title: Indicators For The Sustainable Development Goals
+frontpage_heading: custom.frontpage_heading
+frontpage_instructions: custom.frontpage_instructions
 # Replace the baseurl with the name of this repository.
 baseurl: ""
 url: ""
