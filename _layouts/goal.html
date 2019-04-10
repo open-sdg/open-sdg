@@ -29,15 +29,18 @@
     {%- assign translated_indicator = t.global_indicators[indicator.indicator] -%}
 
     {% assign status_css = indicator.reporting_status | slugify %}
-    {% if indicator.reporting_status == 'notstarted' %}
-      {% assign status_desc = t.status.exploring_data_sources %}
-    {% endif %}
-    {% if indicator.reporting_status == 'inprogress' %}
-      {% assign status_desc = t.status.statistics_in_progress %}
-    {% endif %}
-    {% if indicator.reporting_status == 'complete' %}
-      {% assign status_desc = t.status.reported_online %}
-    {% endif %}
+      {% if indicator.reporting_status == 'notapplicable' %}
+        {% assign status_desc = t.status.not_applicable %}
+      {% endif %}
+      {% if indicator.reporting_status == 'notstarted' %}
+        {% assign status_desc = t.status.exploring_data_sources %}
+      {% endif %}
+      {% if indicator.reporting_status == 'inprogress' %}
+        {% assign status_desc = t.status.statistics_in_progress %}
+      {% endif %}
+      {% if indicator.reporting_status == 'complete' %}
+        {% assign status_desc = t.status.reported_online %}
+      {% endif %}
     {% assign tag_classes = "" | split: "," %}
     {% if indicator.tags %}
       {% for tag in indicator.tags %}
