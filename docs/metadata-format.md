@@ -111,7 +111,7 @@ These are not displayed on the website but affect how it is laid out.
 
 | Tag                                 | Description                        |
 |-------------------------------------|------------------------------------|
-| reporting_status                    | One of `notstarted` (red), `inprogress` (amber), or `complete` (green). |
+| reporting_status                    | One of `notstarted` (red), `inprogress` (amber), `complete` (green), or `notapplicable` (gray). |
 | data_non_statistical                | `true` or `false` flag. Non-statistical data does not have csv or graphs. |
 
 ## Graph Metadata
