@@ -22,9 +22,8 @@ be needed to do this. The [Customisation](https://open-sdg.readthedocs.io/en/lat
 ## Are maps available in Open SDG?
 
 Yes. Maps can be automatically generated from the data if GeoCodes are included and the
-required geographical boundary files are available. Links to maps in other systems can be
-also be embedded. See the [Maps](https://open-sdg.readthedocs.io/en/latest/maps/) section
-for more information.
+required geographical boundary files are available: see the [UK](https://sustainabledevelopment-uk.github.io/3-a-1/) and [Rwanda](https://sustainabledevelopment-rwanda.github.io/1-2-1/) sites for an example of how these look and operate. Maps from other systems or publications can also be embedded. See the [Maps](https://open-sdg.readthedocs.io/en/latest/maps/) section
+for more information, and the UK [Mapping guidance](https://github.com/ONSdigital/sdg-indicators/wiki/Mapping) for step-by-step instructions on setting up a map.
 
 ## Can the Open SDG platform be translated into other languages?
 
