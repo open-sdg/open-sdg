@@ -21,9 +21,18 @@ be needed to do this. The [Customisation](https://open-sdg.readthedocs.io/en/lat
 
 ## Are maps available in Open SDG?
 
-Yes. Maps can be automatically generated from the data if GeoCodes are included and the
-required geographical boundary files are available: see the [UK](https://sustainabledevelopment-uk.github.io/3-a-1/) and [Rwanda](https://sustainabledevelopment-rwanda.github.io/1-2-1/) sites for an example of how these look and operate. Maps from other systems or publications can also be embedded. See the [Maps](https://open-sdg.readthedocs.io/en/latest/maps/) section
+Yes. Maps can be automatically generated from the data if GeoCodes are included and the required geographical boundary files are available: see the UK and Rwanda links below for examples of how these look and operate.
+- [UK map](https://sustainabledevelopment-uk.github.io/3-a-1/) (3.a.1: 'Age-standardized prevalence of current tobacco use among persons aged 15 years and older')
+- [Rwanda map](https://sustainabledevelopment-rwanda.github.io/1-2-1/) (1.2.1: 'Proportion of population living below the national poverty line, by sex and age')
+
+Maps from other systems or publications can also be embedded. See the [Maps](https://open-sdg.readthedocs.io/en/latest/maps/) section
 for more information, and the UK [Mapping guidance](https://github.com/ONSdigital/sdg-indicators/wiki/Mapping) for step-by-step instructions on setting up a map.
+
+## Can content from other websites be embedded in Open SDG?
+
+Yes, content can be embedded into the indicator page using HTML.
+- [Embedded content as a tab](https://sustainabledevelopment-uk.github.io/3-4-2/) - link to [code example](https://raw.githubusercontent.com/ONSdigital/sdg-data/master/meta/3-4-2.md)
+- [Embedded content as main content](https://sustainabledevelopment-uk.github.io/17-13-1/) - link to [code example](https://raw.githubusercontent.com/ONSdigital/sdg-data/master/meta/17-13-1.md)
 
 ## Can the Open SDG platform be translated into other languages?
 
@@ -54,6 +63,3 @@ If users want to access your data and metadata programmatically, you can point t
 There isn't an API available at the moment but data can be accessed programmatically as described above.
 
 
-## Can content from other websites be embedded in Open SDG?
-
-Yes, content can be embedded using HTML. You can either embed content in a tab in the data tab panel as shown [here](https://sustainabledevelopment-uk.github.io/3-4-2/) or as main content as shown [here](https://sustainabledevelopment-uk.github.io/17-13-1/).
