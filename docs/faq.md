@@ -32,7 +32,7 @@ for more information, and the UK [Mapping guidance](https://github.com/ONSdigita
 
 Yes, content can be embedded into the indicator page using HTML.
 - [Embedded content as a tab](https://sustainabledevelopment-uk.github.io/3-4-2/) - link to [code example](https://raw.githubusercontent.com/ONSdigital/sdg-data/master/meta/3-4-2.md)
-- [Embedded content as main content](https://sustainabledevelopment-uk.github.io/17-13-1/) - link to [code example](https://raw.githubusercontent.com/ONSdigital/sdg-data/master/meta/17-13-1.md)
+- [Embedded content as main feature](https://sustainabledevelopment-uk.github.io/17-13-1/) - link to [code example](https://raw.githubusercontent.com/ONSdigital/sdg-data/master/meta/17-13-1.md)
 
 ## Can the Open SDG platform be translated into other languages?
 
