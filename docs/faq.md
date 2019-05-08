@@ -43,16 +43,13 @@ We are currently developing functionality which will allow Open SDG users to imp
 
 Currently data can be downloaded in CSV format for every indicator that has data. For indicators that have maps, data can also be downloaded in GeoJSON format.
 
-If users want to access your data and metadata programmatically, you can point them to the following:
+## Can data in a platform be accessed via API?
+
+The data and metadata for an Open SDG implementation is available at predictable and documented paths and so can be accessed programmatically as described below:
 
 **data**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/data/[INDICATOR CODE].json e.g. https://onsdigital.github.io/sdg-data/data/1-2-1.json
 
 **metatdata**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/meta/[INDICATOR CODE].json e.g. https://onsdigital.github.io/sdg-data/meta/1-2-1.json
-
-## Can data in a platform be accessed via API?
-
-There isn't an API available at the moment but data can be accessed programmatically as described above.
-
 
 ## Can content from other websites be embedded in Open SDG?
 
