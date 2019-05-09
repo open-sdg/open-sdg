@@ -1428,6 +1428,9 @@ footer {
       color: lighten($footer-color, 20%);
     }
   }
+  #footerLinks ul li{
+    display: inline-block;
+  }
 }
 
 .post-categories {
