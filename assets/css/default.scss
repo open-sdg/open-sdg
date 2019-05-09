@@ -1,7 +1,3 @@
----
-# site styles
----
-
 $main-background-color: #eaeaea;
 $dark-highlight : #0275d8;
 $vanilla: #fff;
@@ -1773,7 +1769,7 @@ body.contrast-high {
       a {
         color: white !important;
       }
-      span.status, .tags li, {
+      span.status, .tags li {
         color: black !important;
       }
     }
