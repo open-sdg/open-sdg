@@ -1,9 +1,12 @@
-{% assign unit_label = page.variable_unit_label %}
+{% comment %}
+The "binary" graphs builds on top of "bar", with a few configuration overrides.
+{% endcomment %}
+<canvas></canvas>
 <script>
-  // Create a variable that will override the chart config in indicatorView.js.
-  var chartConfigOverrides = {
-    // Force the "bar" type instead of the "binary" type which Chart.js doesn't
-    // recognize.
+opensdg.chartConfigAlter = function(config) {
+  var overrides = {
+    // Force the "bar" type instead of the "binary" type which Chart.js
+    // does not recognize.
     type: 'bar',
     // Assign some callbacks to convert 1/-1 to Yes/No.
     options: {
@@ -40,6 +43,10 @@
         }]
       },
     }
-  };
+  }
+
+  // Add these overrides onto the normal config, and return it.
+  $.extend(true, config, overrides);
+  return config;
+}
 </script>
-<canvas></canvas>

@@ -15,9 +15,7 @@
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 <script src="https://bowercdn.net/c/leaflet.zoomhome-latest/dist/leaflet.zoomhome.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
-<script>
-  var remoteDataBaseUrl = '{{ site.remotedatabaseurl }}';
-</script>
+{% include javascript-variables.html %}
 <script src='{{ site.baseurl }}/assets/js/sdg.js?v={{ cache_bust }}'></script>
 <script>
 $(function() {
@@ -29,7 +27,7 @@ $(function() {
       });
 
       $.ajax({
-        url: '{{ site.remotedatabaseurl }}/comb/' + domData.id + '.json',
+        url: opensdg.remoteDataBaseUrl + '/comb/' + domData.id + '.json',
         success: function(res) {
 
           $('.async-loading').remove();
