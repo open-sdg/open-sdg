@@ -22,8 +22,8 @@ be needed to do this. The [Customisation](https://open-sdg.readthedocs.io/en/lat
 ## Are maps available in Open SDG?
 
 Yes. Maps can be automatically generated from the data if GeoCodes are included and the required geographical boundary files are available: see the UK and Rwanda links below for examples of how these look and operate.
-- [UK map](https://sustainabledevelopment-uk.github.io/3-a-1/) (3.a.1: 'Age-standardized prevalence of current tobacco use among persons aged 15 years and older')
-- [Rwanda map](https://sustainabledevelopment-rwanda.github.io/1-2-1/) (1.2.1: 'Proportion of population living below the national poverty line, by sex and age')
+- [Map for UK indicator 3.a.1](https://sustainabledevelopment-uk.github.io/3-a-1/) ('Prevalence of tobacco use among persons aged 15 years and older')
+- [Map for Rwanda indicator 1.2.1](https://sustainabledevelopment-rwanda.github.io/1-2-1/) (1.2.1: 'Proportion of population living below the national poverty line')
 
 Maps from other systems or publications can also be embedded. See the [Maps](https://open-sdg.readthedocs.io/en/latest/maps/) section
 for more information, and the UK [Mapping guidance](https://github.com/ONSdigital/sdg-indicators/wiki/Mapping) for step-by-step instructions on setting up a map.
