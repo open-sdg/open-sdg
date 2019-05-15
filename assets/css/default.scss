@@ -1999,14 +1999,7 @@ body.contrast-high {
   }
 }
 
-#footerLinks{
-  ul{
-    li{
-      display: inline-block;
-      margin: 3px 9px;
-      a{
-        color: white;
-      }
-    }
-  }
+#footerLinks ul li{
+  display: inline-block;
+  margin: 3px 9px;
 }
