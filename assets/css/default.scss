@@ -1432,6 +1432,11 @@ footer {
       color: lighten($footer-color, 20%);
     }
   }
+
+  #footerLinks ul li{
+    display: inline-block !important;
+    margin: 3px 9px !important;
+  }
 }
 
 .post-categories {
@@ -1997,9 +2002,4 @@ body.contrast-high {
       }
     }
   }
-}
-
-#footerLinks ul li{
-  display: inline-block !important;
-  margin: 3px 9px !important;
 }
