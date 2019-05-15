@@ -1432,18 +1432,6 @@ footer {
       color: lighten($footer-color, 20%);
     }
   }
-
-  #footerLinks{
-    ul{
-      li{
-        display: inline-block;
-        margin: 3px 9px;
-        a{
-          color: white;
-        }
-      }
-    }
-  }
 }
 
 .post-categories {
@@ -2006,6 +1994,18 @@ body.contrast-high {
             z-index: 3;
           }
         }
+      }
+    }
+  }
+}
+
+#footerLinks{
+  ul{
+    li{
+      display: inline-block;
+      margin: 3px 9px;
+      a{
+        color: white;
       }
     }
   }
