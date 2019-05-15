@@ -2000,6 +2000,6 @@ body.contrast-high {
 }
 
 #footerLinks ul li{
-  display: inline-block;
-  margin: 3px 9px;
+  display: inline-block !important;
+  margin: 3px 9px !important;
 }
