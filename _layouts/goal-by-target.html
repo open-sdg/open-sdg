@@ -46,8 +46,7 @@
     </div>
     <div class="indicator-cards col-md-6 row no-gutters">
     {% for indicator in group.items %}
-      {%- assign translated_indicator = t.global_indicators[indicator.indicator] -%}
-      
+
       {% assign status_css = indicator.reporting_status | slugify %}
       {% if indicator.reporting_status == 'notapplicable' %}
         {% assign status_desc = t.status.not_applicable %}
@@ -78,7 +77,7 @@
               {{ status_desc }}
             </span>
           </span>
-          {{ translated_indicator.title }}
+          {{ indicator.indicator | get_indicator_name }}
           {% if indicator.tags %}
             <ul class="tags">
             {% for tag in indicator.tags %}

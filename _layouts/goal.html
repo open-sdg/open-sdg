@@ -26,7 +26,6 @@
 
   {% assign goal_indicators = site.data.meta | where: 'sdg_goal', page.sdg_goal | sort: 'indicator_sort_order' %}
   {% for indicator in goal_indicators %}
-    {%- assign translated_indicator = t.global_indicators[indicator.indicator] -%}
 
     {% assign status_css = indicator.reporting_status | slugify %}
       {% if indicator.reporting_status == 'notapplicable' %}
@@ -59,7 +58,7 @@
                 {{ status_desc }}
               </span>
             </span>
-            {{ translated_indicator.title }}
+            {{ indicator.indicator | get_indicator_name }}
             {% if indicator.tags %}
               <ul class="tags">
               {% for tag in indicator.tags %}
