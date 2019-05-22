@@ -60,10 +60,6 @@ The data and metadata for an Open SDG implementation is available at predictable
 
 **metatdata**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/meta/[INDICATOR CODE].json e.g. https://onsdigital.github.io/sdg-data/meta/1-2-1.json
 
-## Can data in a platform be accessed via API?
-
-There isn't an API available at the moment but data can be accessed programmatically as described above.
-
 ## Can content from other websites be embedded in Open SDG?
 
 Yes, content can be embedded using HTML. You can either embed content in a tab in the data tab panel as shown [here](https://sustainabledevelopment-uk.github.io/3-4-2/) or as main content as shown [here](https://sustainabledevelopment-uk.github.io/17-13-1/).
