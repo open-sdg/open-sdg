@@ -42,16 +42,13 @@ $(function() {
             shortIndicatorId: domData.id,
             chartTitle: domData.charttitle,
             measurementUnit: domData.measurementunit,
-            dataSource: domData.datasource,
-            geographicalArea: domData.geographicalarea,
             showData: domData.showdata,
-            footnote: domData.footnote,
             graphType: domData.graphtype
           }),
           view  = new indicatorView(model, {
             rootElement: '#indicatorData',
             legendElement: '#plotLegend',
-            maxChartHeight: 600,
+            maxChartHeight: 500,
             tableColumnDefs: [
               { maxCharCount: 25 }, // nowrap
               { maxCharCount: 35, width: 200 },

@@ -43,9 +43,6 @@ var indicatorModel = function (options) {
   this.chartTitle = options.chartTitle;
   this.graphType = options.graphType;
   this.measurementUnit = options.measurementUnit;
-  this.dataSource = options.dataSource;
-  this.geographicalArea = options.geographicalArea;
-  this.footnote = options.footnote;
   this.showData = options.showData;
   this.selectedFields = [];
   this.allowedFields = [];
@@ -178,12 +175,6 @@ var indicatorModel = function (options) {
       spanGaps: false
     };
 
-    that.footerFields = {
-      'Source': that.dataSource,
-      'Geographical Area': that.geographicalArea,
-      'Unit of Measurement': that.measurementUnit,
-      'Footnote': that.footnote,
-    };
   }());
 
   var headlineColor = '777777';
@@ -281,12 +272,12 @@ var indicatorModel = function (options) {
 
   this.updateSelectedUnit = function(selectedUnit) {
     this.selectedUnit = selectedUnit;
-    
+
     // if fields are dependent on the unit, reset:
     this.getData({
       unitsChangeSeries: this.dataHasUnitSpecificFields
     });
-    
+
     this.onUnitsSelectedChanged.notify(selectedUnit);
   };
 
@@ -512,7 +503,7 @@ var indicatorModel = function (options) {
         return ds.data[yearIndex]
       })));
     });
-      
+
     this.onDataComplete.notify({
       datasetCountExceedsMax: datasetCountExceedsMax,
       datasets: datasetCountExceedsMax ? datasets.slice(0, maxDatasetCount) : datasets,
@@ -522,7 +513,6 @@ var indicatorModel = function (options) {
       indicatorId: this.indicatorId,
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
-      footerFields: this.footerFields
     });
 
     if(options.initial || options.unitsChangeSeries) {
@@ -579,7 +569,7 @@ var indicatorModel = function (options) {
 
 indicatorModel.prototype = {
   initialise: function () {
-    this.getData({ 
+    this.getData({
       initial: true
     });
   },

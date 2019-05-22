@@ -1,0 +1,18 @@
+<dl class="data-footer dl-horizontal">
+  {% if include.meta['source_organisation_1'] %}
+    <dt>{{ t.indicator.source }}</dt>
+    <dd>{{ include.meta['source_organisation_1'] | t }}</dd>
+  {% endif %}
+  {% if include.meta['national_geographical_coverage'] %}
+    <dt>{{ t.indicator.geographical_area }}</dt>
+    <dd>{{ include.meta['national_geographical_coverage'] | t }}</dd>
+  {% endif %}
+  {% if include.meta['computation_units'] %}
+    <dt>{{ t.indicator.unit_of_measurement }}</dt>
+    <dd>{{ include.meta['computation_units'] | t }}</dd>
+  {% endif %}
+  {% if include.meta['data_footnote'] %}
+    <dt>{{ t.indicator.footnote }}</dt>
+    <dd>{{ include.meta['data_footnote'] | t }}</dd>
+  {% endif %}
+</dl>

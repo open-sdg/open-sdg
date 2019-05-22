@@ -66,26 +66,8 @@ var indicatorView = function (model, options) {
     }
   });
 
-  this._model.onSeriesSelectedChanged.attach(function(sender, args) {
-    // var selector;
-    // if (args.series.length === view_obj._fieldLimit) {
-    //   selector = $('#fields input:not(:checked)');
-    //   selector.attr('disabled', true);
-    //   selector.parent().addClass('disabled').attr('title', 'Maximum of ' + view_obj._fieldLimit + ' selections; unselect another to select this field');
-    // } else {
-    //   selector = $('#fields input');
-    //   selector.removeAttr('disabled');
-    //   selector.parent().removeClass('disabled').removeAttr('title');
-    // }
-  });
-
   this._model.onUnitsComplete.attach(function(sender, args) {
     view_obj.initialiseUnits(args);
-  });
-
-  this._model.onUnitsSelectedChanged.attach(function(sender, args) {
-    // update the plot's y axis label
-    // update the data
   });
 
   this._model.onFieldsCleared.attach(function(sender, args) {
@@ -95,9 +77,8 @@ var indicatorView = function (model, options) {
     // reset available/unavailable fields
     updateWithSelectedFields();
 
-    // #246
+    // See https://github.com/onsdigital/sdg-indicators/issues/246
     $(view_obj._rootElement).find('.selected').css('width', '0');
-    // end of #246
   });
 
   this._model.onSelectionUpdate.attach(function(sender, args) {
@@ -120,7 +101,6 @@ var indicatorView = function (model, options) {
   });
 
   this._model.onFieldsStatusUpdated.attach(function (sender, args) {
-    //console.log('updating field states with: ', args);
 
     // reset:
     $(view_obj._rootElement).find('label').removeClass('selected possible excluded');
@@ -313,9 +293,7 @@ var indicatorView = function (model, options) {
         layout: {
           padding: {
             top: 20,
-            // default of 85, but do a rough line count based on 150
-            // characters per line * 20 pixels per row
-            bottom: that._model.footnote ? (20 * (that._model.footnote.length / 150)) + 85 : 85
+            bottom: 20
           }
         },
         legendCallback: function(chart) {
@@ -335,13 +313,6 @@ var indicatorView = function (model, options) {
         legend: {
           display: false
         },
-        title: {
-          fontSize: 18,
-          fontStyle: 'normal',
-          display: this._model.chartTitle,
-          text: this._model.chartTitle,
-          padding: 20
-        },
         plugins: {
           scaler: {}
         }
@@ -356,75 +327,12 @@ var indicatorView = function (model, options) {
         var $canvas = $(that._rootElement).find('canvas'),
         font = '12px Arial',
         canvas = $canvas.get(0),
-        textRowHeight = 20,
         ctx = canvas.getContext("2d");
 
         ctx.font = font;
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#6e6e6e';
-
-        var getLinesFromText = function(text) {
-          var width = parseInt($canvas.css('width')), //width(),
-          lines = [],
-          line = '',
-          lineTest = '',
-          words = text.split(' ');
-
-          for (var i = 0, len = words.length; i < len; i++) {
-            lineTest = line + words[i] + ' ';
-
-            // Check total width of line or last word
-            if (ctx.measureText(lineTest).width > width) {
-              // Record and reset the current line
-              lines.push(line);
-              line = words[i] + ' ';
-            } else {
-              line = lineTest;
-            }
-          }
-
-          // catch left overs:
-          if (line.length > 0) {
-            lines.push(line.trim());
-          }
-
-          return lines;
-        };
-
-        function putTextOutputs(textOutputs, x) {
-          var y = $canvas.height() - 10 - ((textOutputs.length - 1) * textRowHeight);
-
-          _.each(textOutputs, function(textOutput) {
-            ctx.fillText(textOutput, x, y);
-            y += textRowHeight;
-          });
-        }
-
-        // TODO Merge this with the that.footerFields object used by table
-        var graphFooterItems = [];
-        if (that._model.dataSource) {
-          graphFooterItems.push(translations.indicator.source + ': ' + that._model.dataSource);
-        }
-        if (that._model.geographicalArea) {
-          graphFooterItems.push(translations.indicator.geographical_area + ': ' + that._model.geographicalArea);
-        }
-        if (that._model.measurementUnit) {
-          graphFooterItems.push(translations.indicator.unit_of_measurement + ': ' + that._model.measurementUnit);
-        }
-
-        if(that._model.footnote) {
-          var footnoteRows = getLinesFromText('Footnote: ' + that._model.footnote);
-          graphFooterItems = graphFooterItems.concat(footnoteRows);
-
-          if(footnoteRows.length > 1) {
-            //that._chartInstance.options.layout.padding.bottom += textRowHeight * footnoteRows.length;
-            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * footnoteRows.length);
-            that._chartInstance.resize();
-          }
-        }
-
-        putTextOutputs(graphFooterItems, 0);
       }
     });
 
@@ -506,10 +414,11 @@ var indicatorView = function (model, options) {
   };
 
   this.createSelectionsTable = function(chartInfo) {
-    this.createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', true);
-    this.createTableFooter(chartInfo.footerFields, '#selectionsTable');
-    this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#selectionsTable');
-    this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
+    this.createTable(chartInfo.selectionsTable, '#selectionsTable');
+    // Table buttons.
+    $('#tableSelectionDownload').empty();
+    this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload');
+    this.createSourceButton(chartInfo.shortIndicatorId, '#tableSelectionDownload');
     // Chart buttons
     $('#chartSelectionDownload').empty();
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
@@ -561,17 +470,11 @@ var indicatorView = function (model, options) {
     }));
   }
 
-  this.createTable = function(table, indicatorId, el) {
+  this.createTable = function(table, el) {
 
     options = options || {};
     var that = this,
-    csv_path = options.csv_path,
-    allow_download = options.allow_download || false,
-    csv_options = options.csv_options || {
-      separator: ',',
-      delimiter: '"'
-    },
-    table_class = options.table_class || 'table table-hover';
+        table_class = options.table_class || 'table table-hover';
 
     // clear:
     $(el).html('');
@@ -580,7 +483,6 @@ var indicatorView = function (model, options) {
       var currentTable = $('<table />').attr({
         'class': /*'table-responsive ' +*/ table_class,
         'width': '100%'
-        //'id': currentId
       });
 
       currentTable.append('<caption>' + that._model.chartTitle + '</caption>');
@@ -623,19 +525,6 @@ var indicatorView = function (model, options) {
     } else {
       $(el).append($('<p />').text('There is no data for this breakdown.'));
     }
-  };
-
-  this.createTableFooter = function(footerFields, el) {
-    var footdiv = $('<div />').attr({
-      'id': 'selectionTableFooter',
-      'class': 'table-footer-text'
-    });
-
-    _.each(footerFields, function(val, key) {
-      if(val) footdiv.append($('<p />').text(key + ': ' + val));
-    });
-
-    $(el).append(footdiv);
   };
 
   this.sortFieldGroup = function(fieldGroupElement) {

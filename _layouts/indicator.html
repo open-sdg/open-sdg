@@ -42,8 +42,17 @@
     </div>
   </div>
 
-  <div class="row" id="indicatorData" data-indicatorid='{{dataset_name}}' data-id="{{meta.indicator | slugify }}" data-country="{{ meta.national_geographical_coverage | t }}"
-  data-charttitle="{{ meta.graph_title | t }}" data-measurementunit="{{ meta.computation_units | t }}" data-datasource="{{ meta.source_organisation_1 | t }}" data-geographicalarea="{{ meta.national_geographical_coverage | t }}" data-footnote="{{ meta.data_footnote | t }}" data-showdata="{{ show_data }}" data-graphtype="{{ meta.graph_type }}" data-geocoderegex="{{ meta.data_geocode_regex }}" data-showmap="{{ meta.data_show_map }}">
+  <div class="row"
+       id="indicatorData"
+       data-indicatorid='{{dataset_name}}'
+       data-id="{{meta.indicator | slugify }}"
+       data-country="{{ meta.national_geographical_coverage | t }}"
+       data-charttitle="{{ meta.graph_title | t }}"
+       data-measurementunit="{{ meta.computation_units | t }}"
+       data-showdata="{{ show_data }}"
+       data-graphtype="{{ meta.graph_type }}"
+       data-geocoderegex="{{ meta.data_geocode_regex }}"
+       data-showmap="{{ meta.data_show_map }}">
     {% if show_data %}
     <div class="col-md-3">
       <div id="toolbar">
@@ -92,10 +101,10 @@
           <!-- Tab panes -->
           <div class="tab-content data-view">
             <div role="tabpanel" class="tab-pane active" id="chartview">
-              {% include components/charts/chart.html graph_type=meta.graph_type %}
+              {% include components/charts/chart.html graph_type=meta.graph_type meta=meta %}
             </div>
             <div role="tabpanel" class="tab-pane" id="tableview">
-              <div id="selectionsTable"></div>
+              {% include components/data-table.html meta=meta %}
             </div>
             <div role="tabpanel" class="tab-pane" id="mapview" class="map">
               <div id="map">
