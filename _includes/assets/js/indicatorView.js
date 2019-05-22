@@ -262,6 +262,18 @@ var indicatorView = function (model, options) {
       view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = chartInfo.selectedUnit;
     }
 
+    // Create a temp object to alter, and then apply. We go to all this trouble
+    // to avoid completely replacing view_obj._chartInstance -- and instead we
+    // just replace it's properties: "type", "data", and "options".
+    var updatedConfig = opensdg.chartConfigAlter({
+      type: view_obj._chartInstance.type,
+      data: view_obj._chartInstance.data,
+      options: view_obj._chartInstance.options
+    });
+    view_obj._chartInstance.type = updatedConfig.type;
+    view_obj._chartInstance.data = updatedConfig.data;
+    view_obj._chartInstance.options = updatedConfig.options;
+
     view_obj._chartInstance.update(1000, true);
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
@@ -335,9 +347,7 @@ var indicatorView = function (model, options) {
         }
       }
     };
-    if (typeof chartConfigOverrides !== 'undefined') {
-      $.extend(true, chartConfig, chartConfigOverrides);
-    }
+    chartConfig = opensdg.chartConfigAlter(chartConfig);
 
     this._chartInstance = new Chart($(this._rootElement).find('canvas'), chartConfig);
 
@@ -531,7 +541,7 @@ var indicatorView = function (model, options) {
       var id = indicatorId.replace('indicator', '');
       $(el).append($('<a />').text(translations.indicator.download_headline)
       .attr({
-        'href': remoteDataBaseUrl + '/headline/' + id + '.csv',
+        'href': opensdg.remoteDataBaseUrl + '/headline/' + id + '.csv',
         'download': headlineId + '.csv',
         'title': translations.indicator.download_headline_title,
         'class': 'btn btn-primary btn-download',
@@ -543,7 +553,7 @@ var indicatorView = function (model, options) {
   this.createSourceButton = function(indicatorId, el) {
     $(el).append($('<a />').text(translations.indicator.download_source)
     .attr({
-      'href': remoteDataBaseUrl + '/data/' + indicatorId + '.csv',
+      'href': opensdg.remoteDataBaseUrl + '/data/' + indicatorId + '.csv',
       'download': indicatorId + '.csv',
       'title': translations.indicator.download_source_title,
       'class': 'btn btn-primary btn-download',

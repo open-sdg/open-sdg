@@ -1,16 +1,12 @@
-{% if meta.graph_type %}
-    {% assign graph_type = meta.graph_type %}
-    {% if meta.graph_type == 'longitudinal' %}
-        {% assign graph_type = 'line' %}
-    {% endif %}
+{% if include.graph_type %}
 
     <div id="dataset-size-warning" style="display:none">
       <i class="fa fa-bolt"></i> {{ t.indicator.dataset_size_warning }}
     </div>
 
-    {% assign graph_template = 'components/charts/' | append: graph_type | append: '.html' %}
+    {% assign graph_template = 'components/charts/' | append: include.graph_type | append: '.html' %}
     <div class="plot-container">
-        {% include {{graph_template}} data=include.data %}
+        {% include {{graph_template}} %}
     </div>
     <div id="plotLegend"></div>
 
