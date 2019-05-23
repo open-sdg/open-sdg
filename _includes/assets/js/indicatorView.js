@@ -404,7 +404,7 @@ var indicatorView = function (model, options) {
         // TODO Merge this with the that.footerFields object used by table
         var graphFooterItems = [];
         if (that._model.dataSource) {
-          var sourceRows = getLinesFromText('Footnote: ' + that._model.dataSource);
+          var sourceRows = getLinesFromText(translations.indicator.source + ': ' + that._model.dataSource);
           graphFooterItems = graphFooterItems.concat(sourceRows);
 
           if(sourceRows.length > 1) {
