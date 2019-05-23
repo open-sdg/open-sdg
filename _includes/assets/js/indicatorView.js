@@ -404,7 +404,13 @@ var indicatorView = function (model, options) {
         // TODO Merge this with the that.footerFields object used by table
         var graphFooterItems = [];
         if (that._model.dataSource) {
-          graphFooterItems.push(translations.indicator.source + ': ' + that._model.dataSource);
+          var sourceRows = getLinesFromText(translations.indicator.source + ': ' + that._model.dataSource);
+          graphFooterItems = graphFooterItems.concat(sourceRows);
+
+          if(sourceRows.length > 1) {
+            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * sourceRows.length);
+            that._chartInstance.resize();
+          }
         }
         if (that._model.geographicalArea) {
           graphFooterItems.push(translations.indicator.geographical_area + ': ' + that._model.geographicalArea);
