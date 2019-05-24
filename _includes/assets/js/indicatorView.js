@@ -54,7 +54,24 @@ var indicatorView = function (model, options) {
   });
 
   this._model.onNoHeadlineData.attach(function() {
-    $('#fields .variable-options :checkbox:eq(0)').trigger('click');
+    var minimumFieldSelections = view_obj._model.minimumFieldSelections;
+    // If the model specifies the minimum field selections, impersonate a user
+    // and "click" on each of them.
+    // @TODO: Can this be customisable per indicator?
+    if (minimumFieldSelections) {
+      for (var fieldToSelect in minimumFieldSelections) {
+        var fieldValue = minimumFieldSelections[fieldToSelect];
+        $('#fields .variable-options input[type="checkbox"]')
+          .filter('[data-field="' + fieldToSelect + '"]')
+          .filter('[value="' + fieldValue + '"]')
+          .first()
+          .click();
+      }
+    }
+    else {
+      // Backwards compatibility - just click on the first one, whatever it is.
+      $('#fields .variable-options :checkbox:eq(0)').trigger('click');
+    }
   });
 
   this._model.onSeriesComplete.attach(function(sender, args) {

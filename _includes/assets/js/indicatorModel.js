@@ -37,6 +37,7 @@ var indicatorModel = function (options) {
   this.data = convertJsonFormat(options.data);
   this.edgesData = convertJsonFormat(options.edgesData);
   this.hasHeadline = true;
+  this.minimumFieldSelections = {};
   this.country = options.country;
   this.indicatorId = options.indicatorId;
   this.shortIndicatorId = options.shortIndicatorId;
@@ -281,12 +282,12 @@ var indicatorModel = function (options) {
 
   this.updateSelectedUnit = function(selectedUnit) {
     this.selectedUnit = selectedUnit;
-    
+
     // if fields are dependent on the unit, reset:
     this.getData({
       unitsChangeSeries: this.dataHasUnitSpecificFields
     });
-    
+
     this.onUnitsSelectedChanged.notify(selectedUnit);
   };
 
@@ -512,7 +513,7 @@ var indicatorModel = function (options) {
         return ds.data[yearIndex]
       })));
     });
-      
+
     this.onDataComplete.notify({
       datasetCountExceedsMax: datasetCountExceedsMax,
       datasets: datasetCountExceedsMax ? datasets.slice(0, maxDatasetCount) : datasets,
@@ -572,6 +573,29 @@ var indicatorModel = function (options) {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     if((options.initial || options.unitsChangeSeries) && !this.hasHeadline) {
       // if there is no initial data, select some:
+
+      // We have to decide what filters will be selected, and in some cases it
+      // may need to be multiple filters. So we find the smallest row (meaning,
+      // the row with the least number of disaggregations) and then sort it by
+      // it's field values. This should have the affect of selecting the first
+      // value in each drop-down, up until there are enough selected to display
+      // data on the graph. First we get the number of fields:
+      var fieldNames = _.pluck(this.fieldItemStates, 'field');
+      // We filter our full dataset to only those fields.
+      var fieldData = _.map(this.data, function(item) { return _.pick(item, fieldNames); });
+      // We then sort the data by each field. We go in reverse order so that the
+      // first field will be highest "priority" in the sort.
+      _.each(fieldNames.reverse(), function(fieldName) {
+        fieldData = _.sortBy(fieldData, fieldName);
+      });
+      // But actually we want the top-priority sort to be the "size" of the
+      // rows. In other words, the number of fields each has. We want the
+      // smallest one.
+      fieldData = _.sortBy(fieldData, function(item) { return _.size(item); });
+      // Now that we are all sorted, we get the first row and set it as the
+      // "minimumFieldSelections".
+      this.minimumFieldSelections = fieldData[0];
+      // Notify the view that there is no headline.
       this.onNoHeadlineData.notify();
     }
   };
@@ -579,7 +603,7 @@ var indicatorModel = function (options) {
 
 indicatorModel.prototype = {
   initialise: function () {
-    this.getData({ 
+    this.getData({
       initial: true
     });
   },
