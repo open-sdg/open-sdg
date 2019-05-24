@@ -257,8 +257,20 @@
       });
       $.when.apply($, geoURLs).done(function() {
 
+        // Apparently "arguments" can either be an array of responses, or if
+        // there was only one response, the response itself. This behavior is
+        // odd and should be investigated. In the meantime, a workaround is a
+        // blunt check to see if it is a single response.
         var geoJsons = arguments;
-        for (var i in geoJsons) {
+        // In a response, the second element is a string (like 'success') so
+        // check for that here to identify whether it is a response.
+        if (arguments.length > 1 && typeof arguments[1] === 'string') {
+          // If so, put it into an array, to match the behavior when there are
+          // multiple responses.
+          geoJsons = [geoJsons];
+        }
+
+        for (var i = 0; i < geoJsons.length; i++) {
           // First add the geoJson as static (non-interactive) borders.
           if (plugin.mapLayers[i].staticBorders) {
             var staticLayer = L.geoJson(geoJsons[i][0], {
