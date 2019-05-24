@@ -25,3 +25,8 @@
 {% endif %}
 
 {% capture dataset_name %}indicator_{{meta.indicator | slugify }}{% endcapture %}
+
+{% comment %}
+@deprecated: The following variable will be removed for 1.0.0.
+{% endcomment %}
+{%- assign translated_indicator = t.global_indicators[meta.indicator] -%}
