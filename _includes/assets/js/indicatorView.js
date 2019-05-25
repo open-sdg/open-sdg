@@ -53,14 +53,12 @@ var indicatorView = function (model, options) {
     view_obj.createSelectionsTable(args);
   });
 
-  this._model.onNoHeadlineData.attach(function() {
-    var minimumFieldSelections = view_obj._model.minimumFieldSelections;
-    // If the model specifies the minimum field selections, impersonate a user
-    // and "click" on each of them.
-    // @TODO: Can this be customisable per indicator?
-    if (minimumFieldSelections) {
-      for (var fieldToSelect in minimumFieldSelections) {
-        var fieldValue = minimumFieldSelections[fieldToSelect];
+  this._model.onNoHeadlineData.attach(function(sender, args) {
+    if (args && args.minimumFieldSelections) {
+      // If we have minimum field selections, impersonate a user and "click" on
+      // each item.
+      for (var fieldToSelect in args.minimumFieldSelections) {
+        var fieldValue = args.minimumFieldSelections[fieldToSelect];
         $('#fields .variable-options input[type="checkbox"]')
           .filter('[data-field="' + fieldToSelect + '"]')
           .filter('[value="' + fieldValue + '"]')

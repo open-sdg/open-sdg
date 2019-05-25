@@ -37,7 +37,6 @@ var indicatorModel = function (options) {
   this.data = convertJsonFormat(options.data);
   this.edgesData = convertJsonFormat(options.edgesData);
   this.hasHeadline = true;
-  this.minimumFieldSelections = {};
   this.country = options.country;
   this.indicatorId = options.indicatorId;
   this.shortIndicatorId = options.shortIndicatorId;
@@ -592,11 +591,9 @@ var indicatorModel = function (options) {
       // rows. In other words, the number of fields each has. We want the
       // smallest one.
       fieldData = _.sortBy(fieldData, function(item) { return _.size(item); });
-      // Now that we are all sorted, we get the first row and set it as the
-      // "minimumFieldSelections".
-      this.minimumFieldSelections = fieldData[0];
-      // Notify the view that there is no headline.
-      this.onNoHeadlineData.notify();
+      // Now that we are all sorted, we notify the view that there is no headline,
+      // and pass along the first row as the minimum field selections.
+      this.onNoHeadlineData.notify({ minimumFieldSelections: fieldData[0] });
     }
   };
 };
