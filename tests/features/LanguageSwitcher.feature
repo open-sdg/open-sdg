@@ -1,4 +1,4 @@
-Feature: Multilingual
+Feature: Language switcher
 
   As a site visitor
   I need to be able to switch to my native language
