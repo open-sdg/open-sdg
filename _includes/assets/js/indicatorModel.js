@@ -573,6 +573,7 @@ var indicatorModel = function (options) {
     if((options.initial || options.unitsChangeSeries) && !this.hasHeadline) {
       // if there is no initial data, select some:
 
+      // @TODO: Can the following be customisable per indicator, via metadata?
       // We have to decide what filters will be selected, and in some cases it
       // may need to be multiple filters. So we find the smallest row (meaning,
       // the row with the least number of disaggregations) and then sort it by
