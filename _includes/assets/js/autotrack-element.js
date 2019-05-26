@@ -11,7 +11,7 @@
 opensdg.autotrack = function(preset, category, action, label) {
   var presets = {};
   {%- if site.data.autotrack -%}
-    presets = {%- site.data.autotrack | jsonify -%};
+    presets = {{ site.data.autotrack | jsonify }};
   {%- endif -%}
   var params = {
     category: category,
