@@ -1,6 +1,3 @@
----
-# Don't delete this line.
----
 /**
  * This function returns a javascript object containing autotrack.js properties.
  *
