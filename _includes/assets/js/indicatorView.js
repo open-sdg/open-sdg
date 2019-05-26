@@ -531,7 +531,9 @@ var indicatorView = function (model, options) {
       if (name == 'Table') {
         downloadKey = 'download_table';
       }
+      var gaLabel = 'Download ' + name + ' CSV: ' + indicatorId.replace('indicator_', '');
       $(el).append($('<a />').text(translations.indicator[downloadKey])
+      .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download CSV', gaLabel))
       .attr({
         'href': URL.createObjectURL(new Blob([this.toCsv(table)], {
           type: 'text/csv'
@@ -544,8 +546,10 @@ var indicatorView = function (model, options) {
       .data('csvdata', this.toCsv(table)));
     } else {
       var headlineId = indicatorId.replace('indicator', 'headline');
-      var id = indicatorId.replace('indicator', '');
+      var id = indicatorId.replace('indicator_', '');
+      var gaLabel = 'Download Headline CSV: ' + id;
       $(el).append($('<a />').text(translations.indicator.download_headline)
+      .attr(opensdg.autotrack('download_data_headline', 'Downloads', 'Download CSV', gaLabel))
       .attr({
         'href': opensdg.remoteDataBaseUrl + '/headline/' + id + '.csv',
         'download': headlineId + '.csv',
@@ -557,7 +561,9 @@ var indicatorView = function (model, options) {
   }
 
   this.createSourceButton = function(indicatorId, el) {
+    var gaLabel = 'Download Source CSV: ' + indicatorId;
     $(el).append($('<a />').text(translations.indicator.download_source)
+    .attr(opensdg.autotrack('download_data_source', 'Downloads', 'Download CSV', gaLabel))
     .attr({
       'href': opensdg.remoteDataBaseUrl + '/data/' + indicatorId + '.csv',
       'download': indicatorId + '.csv',
