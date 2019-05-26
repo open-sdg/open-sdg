@@ -59,21 +59,17 @@ var accessibilitySwitcher = function() {
   ////////////////////////////////////////////////////////////////////////////////////
 
   _.each(contrastIdentifiers, function(contrast) {
-    $('.contrast-switcher')
-      .append($('<li />').attr({
-        'class': 'nav-link contrast contrast-' + contrast
-      })
-      .html($('<a />').attr({
-        'href': 'javascript:void(0)',
-        'title': 'Set to ' + contrast + ' contrast',
-        'data-contrast': contrast,
-      })
-      .attr(opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', contrast))
-      .text('A')
-      .click(function() {
-        setActiveContrast($(this).data('contrast'));
-        imageFix(contrast);
-      })));
+    var gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', contrast);
+    $('.contrast-switcher').append($('<li />').attr({
+      'class': 'nav-link contrast contrast-' + contrast
+    }).html($('<a />').attr(gaAttributes).attr({
+      'href': 'javascript:void(0)',
+      'title': 'Set to ' + contrast + ' contrast',
+      'data-contrast': contrast,
+    }).text('A').click(function() {
+      setActiveContrast($(this).data('contrast'));
+      imageFix(contrast);
+    })));
   });
 
 function imageFix(contrast) {
