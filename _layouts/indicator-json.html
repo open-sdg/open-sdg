@@ -17,10 +17,9 @@
         {%- for indicator in indicators -%}
         {%- capture indicator_id -%}{{indicator.indicator | slugify}}{%- endcapture -%}
         {%- assign meta = all_meta[indicator_id] -%}
-        {%- assign translated_meta = t.global_indicators[indicator.indicator] -%}
         {
           "id": "{{indicator_id}}",
-          "title": "{{translated_meta.title | strip_newlines | strip | replace: '"', "'"}}",
+          "title": "{{indicator_id | get_indicator_name | strip_newlines | strip | replace: '"', "'"}}",
           "description": "{{meta.national_indicator_description | strip_newlines | strip | replace: '"', "'" }}",
           "keywords": "{{meta.data_keywords}}",
           "href": "{{ site.baseurl }}{{ baseurl_folder }}/{{ indicator_id }}",
