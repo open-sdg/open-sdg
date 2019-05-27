@@ -54,7 +54,7 @@ var indicatorView = function (model, options) {
   });
 
   this._model.onNoHeadlineData.attach(function(sender, args) {
-    if (args && args.minimumFieldSelections) {
+    if (args && args.minimumFieldSelections && _.size(args.minimumFieldSelections)) {
       // If we have minimum field selections, impersonate a user and "click" on
       // each item.
       for (var fieldToSelect in args.minimumFieldSelections) {
@@ -67,7 +67,7 @@ var indicatorView = function (model, options) {
       }
     }
     else {
-      // Backwards compatibility - just click on the first one, whatever it is.
+      // Fallback behavior - just click on the first one, whatever it is.
       $('#fields .variable-options :checkbox:eq(0)').trigger('click');
     }
   });

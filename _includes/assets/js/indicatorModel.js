@@ -46,6 +46,7 @@ var indicatorModel = function (options) {
   this.dataSource = options.dataSource;
   this.geographicalArea = options.geographicalArea;
   this.footnote = options.footnote;
+  this.startValues = options.startValues;
   this.showData = options.showData;
   this.selectedFields = [];
   this.allowedFields = [];
@@ -573,28 +574,47 @@ var indicatorModel = function (options) {
     if((options.initial || options.unitsChangeSeries) && !this.hasHeadline) {
       // if there is no initial data, select some:
 
-      // @TODO: Can the following be customisable per indicator, via metadata?
-      // We have to decide what filters will be selected, and in some cases it
-      // may need to be multiple filters. So we find the smallest row (meaning,
-      // the row with the least number of disaggregations) and then sort it by
-      // it's field values. This should have the affect of selecting the first
-      // value in each drop-down, up until there are enough selected to display
-      // data on the graph. First we get the number of fields:
-      var fieldNames = _.pluck(this.fieldItemStates, 'field');
-      // We filter our full dataset to only those fields.
-      var fieldData = _.map(this.data, function(item) { return _.pick(item, fieldNames); });
-      // We then sort the data by each field. We go in reverse order so that the
-      // first field will be highest "priority" in the sort.
-      _.each(fieldNames.reverse(), function(fieldName) {
-        fieldData = _.sortBy(fieldData, fieldName);
-      });
-      // But actually we want the top-priority sort to be the "size" of the
-      // rows. In other words, the number of fields each has. We want the
-      // smallest one.
-      fieldData = _.sortBy(fieldData, function(item) { return _.size(item); });
+      var minimumFieldSelections = {};
+      // First, do we have some already pre-configured from data_start_values?
+      if (this.startValues) {
+        // We need to confirm that these values are valid, and pair them up
+        // with disaggregation categories. The value, at this point, is a string
+        // which we assume to be pipe-delimited.
+        var valuesToLookFor = this.startValues.split('|');
+        // Match up each field value with a field.
+        _.each(this.fieldItemStates, function(fieldItem) {
+          _.each(fieldItem.values, function(fieldValue) {
+            if (_.contains(valuesToLookFor, fieldValue.value)) {
+              minimumFieldSelections[fieldItem.field] = fieldValue.value;
+            }
+          });
+        });
+      }
+      if (_.size(minimumFieldSelections) == 0) {
+        // If we did not have any pre-configured start values, we calculate them.
+        // We have to decide what filters will be selected, and in some cases it
+        // may need to be multiple filters. So we find the smallest row (meaning,
+        // the row with the least number of disaggregations) and then sort it by
+        // it's field values. This should have the affect of selecting the first
+        // value in each drop-down, up until there are enough selected to display
+        // data on the graph. First we get the number of fields:
+        var fieldNames = _.pluck(this.fieldItemStates, 'field');
+        // We filter our full dataset to only those fields.
+        var fieldData = _.map(this.data, function(item) { return _.pick(item, fieldNames); });
+        // We then sort the data by each field. We go in reverse order so that the
+        // first field will be highest "priority" in the sort.
+        _.each(fieldNames.reverse(), function(fieldName) {
+          fieldData = _.sortBy(fieldData, fieldName);
+        });
+        // But actually we want the top-priority sort to be the "size" of the
+        // rows. In other words we want the row with the fewest number of fields.
+        fieldData = _.sortBy(fieldData, function(item) { return _.size(item); });
+        minimumFieldSelections = fieldData[0];
+      }
+
       // Now that we are all sorted, we notify the view that there is no headline,
       // and pass along the first row as the minimum field selections.
-      this.onNoHeadlineData.notify({ minimumFieldSelections: fieldData[0] });
+      this.onNoHeadlineData.notify({ minimumFieldSelections: minimumFieldSelections });
     }
   };
 };
