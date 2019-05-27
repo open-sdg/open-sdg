@@ -101,3 +101,7 @@ defaults:
 # Apply any custom CSS.
 custom_css:
   - /assets/css/custom.css
+
+# Social media accounts.
+twitter: 'MyTwitterAccount'
+facebook: 'MyFacebookAccount'
