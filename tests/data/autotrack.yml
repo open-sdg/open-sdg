@@ -1,0 +1,4 @@
+download_data_current:
+  category: My custom category
+  action: My custom action
+  label: My custom label
