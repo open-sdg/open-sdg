@@ -61,6 +61,31 @@ A full size demo data set can be [downloaded here](https://raw.githubusercontent
 
 Some indicators are reported using different units of measure. A special column name, `Units` is used to capture this (see the UK's [9-2-1](https://github.com/ONSdigital/sdg-data/blob/develop/data/indicator_9-2-1.csv) as an example). The `Units` column is interpreted as a special top-level disaggregation. You may only choose one at a time and it affects the chart axis labels. A Units column is not required if an indicator only includes one unit.
 
+## Indicators without headlines
+
+A "headline" is a term for the all-blank row mentioned above, which contains no disaggregations. By default, this "headline" is what will display as soon as an indicator page loads.
+
+However, Open SDG can also handle indicator data without a headline. This might happen, for example, if you have statistics for "Apples" and "Oranges", but no aggregated total for all fruits:
+
+|Year|Grade|Fruit   | Value|
+|:---|:----|:-------|:-----|
+|2015|A    |Apples  |1.2   |
+|2016|A    |Apples  |1.5   |
+|2015|     |Oranges |1.3   |
+|2016|     |Oranges |1.4   |
+
+Open SDG will choose the smallest set of disaggregations to start with. So in the example above, Open SDG will start with "Oranges" selected.
+
+In addition, by setting a special metadata field called `data_start_values`, you can also control exactly what disaggregations are selected. For example by setting this in the metadata for an indicator...
+
+```
+data_start_values:
+  - Apples
+  - A
+```
+
+...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
+
 ## White space
 
 You can double check for white space within an Excel file using a COUNTIF formula or by running a macro. We will add more information on this soon.
