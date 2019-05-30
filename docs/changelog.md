@@ -14,6 +14,7 @@
 * Ensure binary graphs always stretch from Yes (1) to No (-1) (#177)
 * More robust way to display indicator names (#173)
 * Update Bootstrap to 3.4.1 (#170)
+* Accessibility: update footer as unordered list (#167)
 * All-around cleanup, documentation, and light refactor of Chart.js stuff (#166)
 * Add ARIA expanded attribute to dissaggregation selectors (#162)
 * Polyfills for Array.forEach and String.includes (#154)
