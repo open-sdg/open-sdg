@@ -4,9 +4,11 @@
 <div id="main-content" class="container goal-tiles" role="main">
 
     {% assign country_name = site.country.name | t %}
-    <h1>{{ t.frontpage.heading | replace: '%name', country_name }}</h1>
+    {% assign heading_default = t.frontpage.heading | replace: '%name', country_name %}
+    <h1>{{ site.frontpage_heading | default: heading_default | t }}</h1>
 
-    <p>{{ t.frontpage.instructions | replace_first: '%before_link', '<span style="display:none" id="jump-to-search"><a href="javascript:void(0)">' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name }}</p>
+    {% assign instructions_default = t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
+    <p>{{ site.frontpage_instructions | default: instructions_default | t }}</p>
     {%- assign goals = site.goals | where: 'language', current_language -%}
     {% for goal in goals %}
         {%- assign goal_number = goal.sdg_goal -%}

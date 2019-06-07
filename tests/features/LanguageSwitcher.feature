@@ -6,10 +6,10 @@ Feature: Language switcher
 
   Scenario: Language switcher works on the homepage
     Given I am on the homepage
-    Then I should see "Click on each goal"
+    Then I should see "My custom frontpage instructions"
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
-    Then I should see "Haga clic en cada objetivo"
+    Then I should see "My translated frontpage instructions"
 
   Scenario: Lanugage switcher works on a goal page
     Given I am on "/1"
