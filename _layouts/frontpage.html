@@ -21,9 +21,15 @@
             </div>
         {% cycle 'end row' : '', '', '', '', '', '</div>' %}
     {% endfor %}
+    {% comment %}
+        If there were exactly 17 goals, "pad" it with 1 more, to make it come
+        out more symmetrically.
+    {% endcomment %}
+    {% if goals.size == 17 %}
         <div class="col-xs-4 col-md-2">
             <img src="{{ site.goal_image_base }}/{{ current_language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
         </div>
+    {% endif %}
     </div>
 </div>
 {% include footer.html %}
