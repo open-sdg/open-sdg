@@ -1,5 +1,57 @@
 <h1>Change Log</h1>
 
+### 0.6.0
+
+* Translate 'goal x' on search results page (#191)
+* Translate 'indicators' on reporting status page (#190)
+* Add facebook option to footer (#189)
+* Autotrack for Google Analytics (#188)
+* Better selection of fields when there is no headline (#186)
+* Only add the (fake) goal 18 if there are exactly 17 goals (#184)
+* Allow either multiple or single map layers (#183)
+* Round the percentages on reporting status page (#182)
+* Wrap the text of the 'Source' metadata below charts (#181)
+* Ensure binary graphs always stretch from Yes (1) to No (-1) (#177)
+* More robust way to display indicator names (#173)
+* Update Bootstrap to 3.4.1 (#170)
+* Accessibility: update footer as unordered list (#167)
+* All-around cleanup, documentation, and light refactor of Chart.js stuff (#166)
+* Add ARIA expanded attribute to dissaggregation selectors (#162)
+* Polyfills for Array.forEach and String.includes (#154)
+* Add notapplicable as fully supported status (#150)
+* Configurable frontpage headings (#147)
+* Exclude column 'Unit measure' from display (#145)
+
+Breaking changes:
+
+* An new required feature was added in [jekyll-open-sdg-plugins](https://github.com/open-sdg/jekyll-open-sdg-plugins). Make sure your Gemfile is referencing version 0.0.10 of jekyll-open-sdg-plugins, as shown [here](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/Gemfile#L8).
+* In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.5.0...0.6.0) to see if you need to make any updates to your overriddes:
+    * _includes/assets/js/accessibility.js
+    * _includes/assets/js/googleAnalytics.js
+    * _includes/assets/js/indicatorModel.js
+    * _includes/assets/js/indicatorView.js
+    * _includes/assets/js/plugins/jquery.sdgMap.js
+    * _includes/components/charts/bar.html
+    * _includes/components/charts/binary.html
+    * _includes/components/charts/chart.html
+    * _includes/components/charts/line.html
+    * _includes/components/fields-template.html
+    * _includes/footer.html
+    * _includes/head.html
+    * _includes/indicator-variables.html
+    * _includes/javascript-variables.html
+    * _includes/polyfills.html
+    * _includes/scripts.html
+    * _layouts/frontpage.html
+    * _layouts/goal-by-target.html
+    * _layouts/goal.html
+    * _layouts/indicator-json.html
+    * _layouts/indicator.html
+    * _layouts/reportingstatus.html
+    * _layouts/search.html
+    * assets/css/default.scss
+    * assets/js/sdg.js
+
 ### 0.5.0
 
 Refactoring, re-structuring, bug fixes, and enhancements.
