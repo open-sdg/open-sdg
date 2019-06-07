@@ -53,8 +53,23 @@ var indicatorView = function (model, options) {
     view_obj.createSelectionsTable(args);
   });
 
-  this._model.onNoHeadlineData.attach(function() {
-    $('#fields .variable-options :checkbox:eq(0)').trigger('click');
+  this._model.onNoHeadlineData.attach(function(sender, args) {
+    if (args && args.minimumFieldSelections && _.size(args.minimumFieldSelections)) {
+      // If we have minimum field selections, impersonate a user and "click" on
+      // each item.
+      for (var fieldToSelect in args.minimumFieldSelections) {
+        var fieldValue = args.minimumFieldSelections[fieldToSelect];
+        $('#fields .variable-options input[type="checkbox"]')
+          .filter('[data-field="' + fieldToSelect + '"]')
+          .filter('[value="' + fieldValue + '"]')
+          .first()
+          .click();
+      }
+    }
+    else {
+      // Fallback behavior - just click on the first one, whatever it is.
+      $('#fields .variable-options :checkbox:eq(0)').trigger('click');
+    }
   });
 
   this._model.onSeriesComplete.attach(function(sender, args) {
