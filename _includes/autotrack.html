@@ -1,0 +1,27 @@
+{%- comment -%}
+Renders HTML properties that autotrack.js can use to track a click event.
+Parameters
+----------
+preset
+  The name of a "preset" combination of properties, which is expected to exist
+  in site.data.autotrack. For example, if the preset is "foo", then this looks
+  for an object at site.data.autotrack.foo. If found, that object should contain
+  all the other parameters of this include. If not found, the other parameters
+  of this include will be used instead.
+  This preset logic allows sites to override the other parameters by creating an
+  autotrack data file (such as data/autotrack.yml).
+category
+  The Google Analytics "category" for this event, if any
+action
+  The Google Analytics "action" for this event, if any
+label
+  The Google Analytics "label" for this event, if any
+{%- endcomment -%}
+{%- assign params = include -%}
+{%- if include.preset and site.data.autotrack and site.data.autotrack[include.preset] -%}
+  {%- assign params = site.data.autotrack[include.preset] -%}
+{%- endif -%}
+data-on="click"
+{% if params.category %}data-event-category="{{ params.category }}"{% endif %}
+{% if params.action %}data-event-action="{{ params.action }}"{% endif %}
+{% if params.label %}data-event-label="{{ params.label }}"{% endif %}

@@ -30,6 +30,7 @@ pages:
         - Customisation: customisation.md
         - Translation: translation.md
         - Maps: maps.md
+        - Analytics: analytics.md
     - Automation:
         - CircleCI: automation/circle-ci.md
         - TravisCI: automation/travis-ci.md

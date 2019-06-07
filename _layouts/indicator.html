@@ -74,17 +74,17 @@
         <div class="async-loaded" style="display:none">
           <ul class="nav nav-tabs data-view" role="tablist">
             <li role="presentation" class="nav-item active">
-              <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab">{{ t.indicator.chart }}</a>
+              <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab" {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %}>{{ t.indicator.chart }}</a>
             </li>
             <li role="presentation" class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab">{{ t.indicator.table }}</a>
+              <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab" {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}>{{ t.indicator.table }}</a>
             </li>
             <li role="presentation" class="nav-item map" style="display:none">
-              <a class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab">{{ t.indicator.map }}</a>
+              <a class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}>{{ t.indicator.map }}</a>
             </li>
             {%- if meta.embedded_map_html -%}
             <li role="presentation" class="nav-item embedded-map">
-              <a class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab">{{ t.indicator.map }}</a>
+              <a class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ t.indicator.map }}</a>
             </li>
             {%- endif -%}
           </ul>
@@ -114,13 +114,13 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="nav-item active">
-            <a class="nav-link" data-toggle="tab" href="#metadata" aria-controls="metadata" role="tab">{{ site.non_global_metadata | default: 'indicator.national_metadata' | t }}</a>
+            <a class="nav-link" data-toggle="tab" href="#metadata" aria-controls="metadata" role="tab" {% include autotrack.html preset="tab_meta_national" category="Tab change" action="Change metadata view" label="Change to National Metadata tab" %}>{{ site.non_global_metadata | default: 'indicator.national_metadata' | t }}</a>
           </li>
           <li role="presentation" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#globalmetadata" aria-controls="globalmetadata" role="tab">{{ t.indicator.global_metadata }}</a>
+            <a class="nav-link" data-toggle="tab" href="#globalmetadata" aria-controls="globalmetadata" role="tab" {% include autotrack.html preset="tab_meta_global" category="Tab change" action="Change metadata view" label="Change to Global Metadata tab" %}>{{ t.indicator.global_metadata }}</a>
           </li>
           <li role="presentation" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#sources" aria-controls="sources" role="tab">{{ t.indicator.sources }}</a>
+            <a class="nav-link" data-toggle="tab" href="#sources" aria-controls="sources" role="tab" {% include autotrack.html preset="tab_meta_sources" category="Tab change" action="Change metadata view" label="Change to Sources tab" %}>{{ t.indicator.sources }}</a>
           </li>
           {% if site.environment == 'staging' %}
           <li role="presentation" class="nav-item">
