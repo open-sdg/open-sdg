@@ -6,12 +6,15 @@ Feature: Headlines
 
   Scenario: Indicators with headlines (series without disaggregation) show visualisation
     Given I am on "/1-2-1"
+    And I wait 1 second
     Then I should see 1 "chart legend item" element
 
   Scenario: Indicators without headlines, but single-disaggregation rows, show visualisation
     Given I am on "/1-3-1"
+    And I wait 1 second
     Then I should see 1 "chart legend item" element
 
   Scenario: Indicators without headlines, but double-disaggregation rows, show visualisation
     Given I am on "/1-4-1"
+    And I wait 1 second
     Then I should see 1 "chart legend item" element
