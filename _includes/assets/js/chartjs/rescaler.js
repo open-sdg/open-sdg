@@ -25,8 +25,8 @@ Chart.plugins.register({
 
     var ranges = _.chain(datasets).pluck('allData').map(function (data) {
       return {
-        min: _.findIndex(data, _.identity),
-        max: _.findLastIndex(data, _.identity)
+        min: _.findIndex(data, function(val) { return val !== null }),
+        max: _.findLastIndex(data, function(val) { return val !== null })
       };
     }).value();
 
