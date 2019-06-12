@@ -16,6 +16,7 @@ Feature: Analytics
 
   Scenario: Google Analytics data can be customised by preset
     Given I am on "/1-1-1"
+    And I wait 1 second
     Then I should see "My custom category"
     And I should see "My custom action"
     And I should see "My custom label"
