@@ -111,10 +111,7 @@ Similarly, instead of a values like `Female`, you could use `data.female` to cor
 
 > NOTE: There is a shortcut available here. Because data disaggregations/columns
 > will almost always refer to the `data` group, you can actually leave the `data.`
-> off. Additionally, the capitalization does not matter. So for example, the
-> columns/values `Sex` and `Female` would work fine, assuming that `data.sex`
-> and `data.female` were valid translation keys. Behind the scenes, `Sex` gets
-> converted to `data.sex` and `Female` gets converted to `data.female`, etc.
+> off.
 
 ## Available translation-related variables
 
