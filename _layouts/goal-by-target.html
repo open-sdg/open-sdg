@@ -37,7 +37,7 @@
   {% for group in goal_indicators %}
     {% assign target_id = group.name %}
     {% assign target_id_dashes = target_id | replace: ".", "-" %}
-    {% assign translated_target = t.global_targets[target_id_dashes] %}
+    {% assign translated_target = t.global_targets[target_id_dashes] | default: t.global_targets[target_id] %}
     <div class="indicator-cards target col-md-6">
       <span>
         <label class="hidden-md hidden-lg">{{ t.general.target }}</label>
