@@ -29,4 +29,5 @@
 {% comment %}
 @deprecated: The following variable will be removed for 1.0.0.
 {% endcomment %}
-{%- assign translated_indicator = t.global_indicators[meta.indicator] -%}
+{% assign indicator_id_dashes = meta.indicator | replace: ".", "-" %}
+{% assign translated_indicator = t.global_indicators[indicator_id_dashes] | default: t.global_indicators[indicator_id] %}

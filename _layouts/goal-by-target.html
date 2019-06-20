@@ -36,7 +36,8 @@
   {% assign goal_indicators = site.data.meta | where: 'sdg_goal', goal_number | sort: 'indicator_sort_order' | group_by: 'target_id' %}
   {% for group in goal_indicators %}
     {% assign target_id = group.name %}
-    {% assign translated_target = t.global_targets[target_id] %}
+    {% assign target_id_dashes = target_id | replace: ".", "-" %}
+    {% assign translated_target = t.global_targets[target_id_dashes] | default: t.global_targets[target_id] %}
     <div class="indicator-cards target col-md-6">
       <span>
         <label class="hidden-md hidden-lg">{{ t.general.target }}</label>
