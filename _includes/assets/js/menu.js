@@ -1,6 +1,6 @@
 $(function() {
 
-  var topLevelSearchLink = $('.top-level span:eq(1)');
+  var topLevelSearchLink = $('.top-level span:eq(1), .top-level button:eq(1)');
 
   var resetForSmallerViewport = function() {
     topLevelSearchLink.text('Search');
