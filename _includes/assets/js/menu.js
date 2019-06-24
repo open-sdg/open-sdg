@@ -8,7 +8,7 @@ $(function() {
     $('.top-level span').removeClass('open');
   };  
 
-  $('.top-level span').click(function() {
+  $('.top-level span, .top-level button').click(function() {
     var target = $(this).data('target');
 
     $('.top-level li').removeClass('active');
