@@ -19,6 +19,7 @@ $(function() {
 
     // hide everything:
     $('.menu-target').hide();
+    $('.menu-target').attr("aria-expanded", "false");
 
     if(target === 'search') {
       $(this).toggleClass('open');
@@ -36,6 +37,7 @@ $(function() {
 
     if(!wasVisible) {
       targetEl.show();
+      targetEl.attr("aria-expanded", "false");
       $(this).parent().addClass('active');
     }
   });
