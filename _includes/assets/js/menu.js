@@ -1,6 +1,6 @@
 $(function() {
 
-  var topLevelSearchLink = $('.top-level span:eq(1)');
+  var topLevelSearchLink = $('.top-level span:eq(1), .top-level button:eq(1)');
 
   var resetForSmallerViewport = function() {
     topLevelSearchLink.text('Search');
@@ -8,7 +8,7 @@ $(function() {
     $('.top-level span').removeClass('open');
   };  
 
-  $('.top-level span').click(function() {
+  $('.top-level span, .top-level button').click(function() {
     var target = $(this).data('target');
 
     $('.top-level li').removeClass('active');
@@ -19,6 +19,7 @@ $(function() {
 
     // hide everything:
     $('.menu-target').hide();
+    $(".top-level li button[data-target='" + target + "']").attr("aria-expanded", "false");
 
     if(target === 'search') {
       $(this).toggleClass('open');
@@ -36,6 +37,7 @@ $(function() {
 
     if(!wasVisible) {
       targetEl.show();
+      $(".top-level li button[data-target='" + target + "']").attr("aria-expanded", "true");
       $(this).parent().addClass('active');
     }
   });
