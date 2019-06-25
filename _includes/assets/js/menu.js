@@ -19,7 +19,7 @@ $(function() {
 
     // hide everything:
     $('.menu-target').hide();
-    $('.menu-target').attr("aria-expanded", "false");
+    $(".top-level li button[data-target='" + target + "']").attr("aria-expanded", "false");
 
     if(target === 'search') {
       $(this).toggleClass('open');
