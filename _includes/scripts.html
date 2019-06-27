@@ -17,6 +17,11 @@
 <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
 <script src='{{ site.baseurl }}/assets/js/sdg.js?v={{ cache_bust }}'></script>
+{%- if site.custom_js -%}
+  {%- for custom_js_file in site.custom_js -%}
+    <script src="{{ site.baseurl }}{{ custom_js_file }}?v={{ cache_bust }}"></script>
+  {%- endfor -%}
+{%- endif -%}
 <script>
 $(function() {
     if($('#indicatorData').length) {
