@@ -12,6 +12,13 @@ var opensdg = {
     // Alterations go here.
     return config;
   },
+
+  // A hook which can be replaced to alter whether/how the values that are
+  // displayed on indicator tables/graphs get rounded.
+  dataRounding: function(value) {
+    // Alterations go here.
+    return value;
+  },
 };
 
 // For backwards compatibility, some of these might need to be global.
