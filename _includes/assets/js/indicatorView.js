@@ -259,10 +259,12 @@ var indicatorView = function (model, options) {
 
   this.initialiseUnits = function(args) {
     var template = _.template($('#units_template').html()),
-        units = args.units || [];
+        units = args.units || [],
+        selectedUnit = args.selectedUnit || null;
 
     $('#units').html(template({
-      units: units
+      units: units,
+      selectedUnit: selectedUnit
     }));
 
     if(!units.length) {

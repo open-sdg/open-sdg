@@ -444,6 +444,14 @@ var indicatorModel = function (options) {
     // get the headline data:
     var headline = this.getHeadline();
 
+    // Catch the case where this is the initial display, there is a default
+    // selected unit (the first one), there is a headline, and this headline
+    // uses another unit.
+    if (options.initial && headline.length && this.selectedUnit && this.selectedUnit != headline[0]['Units']) {
+      // In this scenario we need to correct the selected unit here.
+      this.selectedUnit = headline[0]['Units'];
+    }
+
     // all units for headline data:
     if(headline.length) {
       headlineTable = {
@@ -546,7 +554,8 @@ var indicatorModel = function (options) {
         }
 
         this.onUnitsComplete.notify({
-          units: this.units
+          units: this.units,
+          selectedUnit: this.selectedUnit
         });
       }
 
