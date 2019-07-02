@@ -227,11 +227,12 @@ var indicatorView = function (model, options) {
 
   $(this._rootElement).on('click', '.variable-selector', function(e) {
     var currentSelector = e.target;
-
+    var accessButton = currentSelector.querySelector("button.accessBtn");
     var options = $(this).find('.variable-options');
     var optionsAreVisible = options.is(':visible');
     $(options)[optionsAreVisible ? 'hide' : 'show']();
-    currentSelector.setAttribute("aria-expanded", optionsAreVisible ? "true" : "false");
+    accessButton.setAttribute("aria-expanded", optionsAreVisible ? "true" : "false");
+
 
     e.stopPropagation();
   });
