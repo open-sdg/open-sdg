@@ -208,7 +208,7 @@ var indicatorModel = function (options) {
         return that.selectedUnit ? i.Units : i.Year;
       })
       .map(function (d) {
-        return _.pick(d, _.identity);
+        return _.pick(d, function(val) { return val !== null });
       })
       .value();
   };
