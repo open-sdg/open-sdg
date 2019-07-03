@@ -274,7 +274,7 @@ var indicatorView = function (model, options) {
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
 
     if(chartInfo.selectedUnit) {
-      view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = chartInfo.selectedUnit;
+      view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
     }
 
     // Create a temp object to alter, and then apply. We go to all this trouble
@@ -320,8 +320,8 @@ var indicatorView = function (model, options) {
               suggestedMin: 0
             },
             scaleLabel: {
-              display: this._model.selectedUnit ? this._model.selectedUnit : this._model.measurementUnit,
-              labelString: this._model.selectedUnit ? this._model.selectedUnit : this._model.measurementUnit
+              display: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
+              labelString: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit
             }
           }]
         },
