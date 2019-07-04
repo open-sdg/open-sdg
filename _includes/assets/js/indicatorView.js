@@ -35,6 +35,21 @@ var indicatorView = function (model, options) {
       meta.hidden = meta.hidden === null? !ci.data.datasets[index].hidden : null;
       ci.update();
     });
+
+    // Provide the hide/show functionality for the sidebar.
+    $('.data-view .nav-link').on('click', function(e) {
+      var $sidebar = $('#indicator-sidebar'),
+          $main = $('#indicator-main'),
+          hideSidebar = $(this).data('no-disagg');
+      if (hideSidebar) {
+        $sidebar.addClass('indicator-sidebar-hidden');
+        $main.addClass('indicator-main-full');
+      }
+      else {
+        $sidebar.removeClass('indicator-sidebar-hidden');
+        $main.removeClass('indicator-main-full');
+      }
+    });
   });
 
   this._model.onDataComplete.attach(function (sender, args) {

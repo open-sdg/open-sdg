@@ -385,7 +385,7 @@ header {
           display: block;
           padding: 15px;
         }
-	      
+
       	button{
 		color: #E5E6E7;
 		display: block;
@@ -701,6 +701,21 @@ h5 + .btn-download {
         }
       }
     }
+  }
+
+  // For shrinking the sidebar.
+  .indicator-sidebar-hidden {
+    padding: 0;
+    width: 0;
+    z-index: -1;
+  }
+  // For expanding the main section.
+  .indicator-main-full {
+    width: 100%;
+  }
+  // To make the shrinking/expanding animated.
+  #indicator-sidebar, #indicator-main {
+    transition: width 0.3s ease;
   }
 
   #toolbar {
