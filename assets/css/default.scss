@@ -706,8 +706,12 @@ h5 + .btn-download {
   // For shrinking the sidebar.
   .indicator-sidebar-hidden {
     padding: 0;
-    width: 0;
     z-index: -1;
+    display: none;
+    @media only screen and (min-width: 990px) {
+      width: 0;
+      display: block;
+    }
   }
   // For expanding the main section.
   .indicator-main-full {
