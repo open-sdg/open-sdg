@@ -17,11 +17,11 @@
         ================================================== -->
 
         {% capture indicator_page_title %}
-        {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ goal_number }} - {{ goal.short }}
+        {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ site.sdg_goal }} - {{ site.short }}
         {% endcapture %}
 
         {% capture goal_page_title %}
-        {{ t.general.goal }} {{ goal_number }} - {{ goal.short }}
+        {{ t.general.goal }} {{ site.sdg_goal }} - {{ site.short }}
         {% endcapture %}
 
         <title>
