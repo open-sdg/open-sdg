@@ -15,10 +15,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Title and meta description
         ================================================== -->
-        {% capture page_title %}
+
+        {% capture indicator_page_title %}
         {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ goal_number }} - {{ goal.short }}
         {% endcapture %}
-        <title>{% if page.indicator %}{{ page_title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+
+        {% capture goal_page_title %}
+        {{ t.general.goal }} {{ goal_number }} - {{ goal.short }}
+        {% endcapture %}
+
+        <title>
+          {% if page.indicator %}
+            {{ indicator_page_title | escape }}
+          {% elsif page.sdg_goal %}
+            {{ goal_page_title | escape }}
+          {% else %}
+            {{ site.title | escape }}
+          {% endif %}
+        </title>
+        
         <meta name="description" content="">
         <meta property="og:description" content="">
         {% if site.environment == 'staging' %}
