@@ -106,7 +106,16 @@
             </div>
             {% if meta.embedded_feature_url %}
             <div role="tabpanel" class="tab-pane" id="embeddedmapview" class="embedded-map">
-              {{ meta.embedded_feature_url }}
+              
+               <div role="tabpanel" class="tab-pane" id="embeddedmapview" >
+              <div class="row">
+              <div class="col-xs-12">
+                <h3>{{ meta.embedded_feature_title }}</h3>
+              </div>
+            </div>
+              <div class="embedded-map" id="embeddedmapframe">
+                {{ meta.embedded_feature_url }}
+              </div>
             </div>
             {% endif %}
           </div>
