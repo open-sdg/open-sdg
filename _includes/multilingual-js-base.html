@@ -11,7 +11,7 @@ var translations = {
     // The majority of uses of this function are to translate disaggregation
     // data. To spare data providers of needing to enter "data." in front of
     // their disaggregation data, we specifically look for that here.
-    if (typeof this.data === 'object' && this.data[key]) {
+    if (typeof this.data === 'object' && this.data !== null && this.data[key]) {
       return this.data[key];
     }
 
