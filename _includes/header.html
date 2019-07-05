@@ -6,9 +6,19 @@
 <header role="banner">
   <div class="container">
 
-    <a class="navbar-brand" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
-      <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ t.general.sdg }} - {{ t.header.tag_line }}" />
-    </a>
+    
+      {%- if site.nso_link -%}
+      <div class="col-1">
+        <a class="navbar-nso" href="{{ site.nso_link }}/" id="nso">
+          <img src="{{ site.baseurl }}/assets/img/NSO_logo.png" alt="Link to country's statistics office website" />
+        </a>
+      </div>
+      {%- endif -%}   
+      <div class="col-2">
+        <a class="navbar-brand" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
+          <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ t.general.sdg }} - {{ t.header.tag_line }}" />
+        </a>
+    </div>
 
   <div class='hidden visible-xs float-right'>
     <ul id='accessibility-nav' class='contrast-switcher'></ul>
