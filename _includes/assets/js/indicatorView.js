@@ -40,10 +40,17 @@ var indicatorView = function (model, options) {
     $('.data-view .nav-link').on('click', function(e) {
       var $sidebar = $('#indicator-sidebar'),
           $main = $('#indicator-main'),
-          hideSidebar = $(this).data('no-disagg');
+          hideSidebar = $(this).data('no-disagg'),
+          mobile = window.matchMedia("screen and (max-width: 990px)");
       if (hideSidebar) {
         $sidebar.addClass('indicator-sidebar-hidden');
         $main.addClass('indicator-main-full');
+        // On mobile, this can be confusing, so we need to scroll to the tabs.
+        if (mobile.matches) {
+          $([document.documentElement, document.body]).animate({
+            scrollTop: $("#indicator-main").offset().top - 40
+          }, 400);
+        }
       }
       else {
         $sidebar.removeClass('indicator-sidebar-hidden');
