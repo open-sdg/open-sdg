@@ -241,9 +241,15 @@ header {
   }
 }
 
-.column {
+.col-1 {
   float: left;
-  width: 33.33%;
+  width: 5%;
+  padding: 5px;
+}
+
+.col-2 {
+  float: left;
+  width: 95%;
   padding: 5px;
 }
 	
