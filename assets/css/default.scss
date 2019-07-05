@@ -708,7 +708,7 @@ h5 + .btn-download {
     padding: 0;
     width: 0;
     height: 0;
-    z-index: -1;
+    overflow: hidden;
   }
   // For expanding the main section.
   .indicator-main-full {
