@@ -6,13 +6,14 @@
 <header role="banner">
   <div class="container">
     
+    {%- if site.nso_link -%}
     <a class="navbar-brand" href="{{ site.nso_link }}/" id="nso">
       <img src="{{ site.baseurl }}/assets/img/NSO_logo.png" alt="Link to country's statistics office website" />
     </a>
 
-    <a class="navbar-brand" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
+    <!--<a class="navbar-brand" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
       <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ t.general.sdg }} - {{ t.header.tag_line }}" />
-    </a>
+    </a>-->
 
   <div class='hidden visible-xs float-right'>
     <ul id='accessibility-nav' class='contrast-switcher'></ul>
