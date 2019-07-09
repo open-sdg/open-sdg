@@ -317,6 +317,16 @@ var indicatorView = function (model, options) {
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
+  
+  $(function() {
+    $("#btn-save").click(function() {
+      html2canvas($("#chart"), {
+        onrendered: function(canvas) {
+          Canvas2Image.saveAsPNG(canvas);
+        }
+      });
+    });
+  });
 
   this.createPlot = function (chartInfo) {
 
