@@ -177,12 +177,13 @@ var indicatorModel = function (options) {
       spanGaps: false
     };
 
-    that.footerFields = {
-      'Source': that.dataSource,
-      'Geographical Area': that.geographicalArea,
-      'Unit of Measurement': that.measurementUnit,
-      'Footnote': that.footnote,
-    };
+    that.footerFields = {};
+    that.footerFields[translations.indicator.source] = that.dataSource;
+    that.footerFields[translations.indicator.geographical_area] = that.geographicalArea;
+    that.footerFields[translations.indicator.unit_of_measurement] = that.measurementUnit;
+    that.footerFields[translations.indicator.footnote] = that.footnote;
+    // Filter out the empty values.
+    that.footerFields = _.pick(that.footerFields, _.identity);
   }());
 
   var headlineColor = '777777';
