@@ -441,45 +441,8 @@ var indicatorView = function (model, options) {
           return lines;
         };
 
-        function putTextOutputs(textOutputs, x) {
-          var y = $canvas.height() - 10 - ((textOutputs.length - 1) * textRowHeight);
-
-          _.each(textOutputs, function(textOutput) {
-            ctx.fillText(textOutput, x, y);
-            y += textRowHeight;
-          });
-        }
-
-        // TODO Merge this with the that.footerFields object used by table
-        var graphFooterItems = [];
-        if (that._model.dataSource) {
-          var sourceRows = getLinesFromText(translations.indicator.source + ': ' + that._model.dataSource);
-          graphFooterItems = graphFooterItems.concat(sourceRows);
-
-          if(sourceRows.length > 1) {
-            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * sourceRows.length);
-            that._chartInstance.resize();
-          }
-        }
-        if (that._model.geographicalArea) {
-          graphFooterItems.push(translations.indicator.geographical_area + ': ' + that._model.geographicalArea);
-        }
-        if (that._model.measurementUnit) {
-          graphFooterItems.push(translations.indicator.unit_of_measurement + ': ' + that._model.measurementUnit);
-        }
-
-        if(that._model.footnote) {
-          var footnoteRows = getLinesFromText('Footnote: ' + that._model.footnote);
-          graphFooterItems = graphFooterItems.concat(footnoteRows);
-
-          if(footnoteRows.length > 1) {
-            //that._chartInstance.options.layout.padding.bottom += textRowHeight * footnoteRows.length;
-            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * footnoteRows.length);
-            that._chartInstance.resize();
-          }
-        }
-
-        putTextOutputs(graphFooterItems, 0);
+        
+        this.createTableFooter(chartInfo.footerFields, '#selectionsTable');
       }
     });
 
