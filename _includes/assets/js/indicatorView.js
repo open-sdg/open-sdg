@@ -442,7 +442,7 @@ var indicatorView = function (model, options) {
         };
 
         
-        this.createTableFooter(chartInfo.footerFields, '#selectionsTable');
+        this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
       }
     });
 
