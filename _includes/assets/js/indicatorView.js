@@ -385,11 +385,7 @@ var indicatorView = function (model, options) {
           display: false
         },
         title: {
-          fontSize: 18,
-          fontStyle: 'normal',
-          display: this._model.chartTitle,
-          text: this._model.chartTitle,
-          padding: 20
+          display: false
         },
         plugins: {
           scaler: {}
