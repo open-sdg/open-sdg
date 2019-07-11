@@ -9,18 +9,6 @@
       <div class="plot-container">
           <h2>{{ meta.graph_title | t }}</h2>
           {% include {{graph_template}} %}
-          {% if meta.source_organisation_1 %}
-          <p>{{ translations.indicator.source }}: {{ meta.source_organisation_1 | t }}</p>
-          {% endif %}
-          {% if meta.national_geographical_coverage %}
-          <p>{{ translations.indicator.geographical_coverage }}: {{ meta.national_geographical_coverage | t }}</p>
-          {% endif %}
-          {% if meta.computation_units %}
-          <p>{{ translations.indicator.units_type }}: {{ meta.computation_units | t }}</p>
-          {% endif %}
-          {% if meta.data_footnote %}
-          <p>{{ translations.indicator.footnote }}: {{ meta.data_footnote | t }}</p>
-          {% endif %}
       </div>
         
       <div id="plotLegend"></div>
