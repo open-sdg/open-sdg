@@ -1802,7 +1802,7 @@ body.contrast-high {
       }
     }
     .indicator-cards {
-      a {
+      a, &.target {
         color: white !important;
       }
       span.status, .tags li{
