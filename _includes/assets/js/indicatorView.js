@@ -409,36 +409,11 @@ var indicatorView = function (model, options) {
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#6e6e6e';
 
-        var getLinesFromText = function(text) {
-          var width = parseInt($canvas.css('width')), //width(),
-          lines = [],
-          line = '',
-          lineTest = '',
-          words = text.split(' ');
-
-          for (var i = 0, len = words.length; i < len; i++) {
-            lineTest = line + words[i] + ' ';
-
-            // Check total width of line or last word
-            if (ctx.measureText(lineTest).width > width) {
-              // Record and reset the current line
-              lines.push(line);
-              line = words[i] + ' ';
-            } else {
-              line = lineTest;
-            }
-          }
-
-          // catch left overs:
-          if (line.length > 0) {
-            lines.push(line.trim());
-          }
-
-          return lines;
-        };
+        
       }
-      this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
     });
+    
+    this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
