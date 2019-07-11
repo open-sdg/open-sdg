@@ -436,10 +436,8 @@ var indicatorView = function (model, options) {
 
           return lines;
         };
-
-        
-        this.createChartFooter(chartInfo);
       }
+      this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
     });
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
@@ -530,9 +528,6 @@ var indicatorView = function (model, options) {
     this.createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
   };
   
-  this.createChartFooter = function(chartInfo) {
-    this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
-  };
 
   this.createDownloadButton = function(table, name, indicatorId, el) {
     if(window.Modernizr.blobconstructor) {
