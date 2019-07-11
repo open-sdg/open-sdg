@@ -442,7 +442,7 @@ var indicatorView = function (model, options) {
         };
 
         
-        this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
+        this.createChartFooter(chartInfo);
       }
     });
 
@@ -532,6 +532,10 @@ var indicatorView = function (model, options) {
     $('#chartSelectionDownload').empty();
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
     this.createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
+  };
+  
+  this.createChartFooter = function(chartInfo) {
+    this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
   };
 
   this.createDownloadButton = function(table, name, indicatorId, el) {
@@ -661,6 +665,7 @@ var indicatorView = function (model, options) {
 
     $(el).append(footdiv);
   };
+  
 
   this.sortFieldGroup = function(fieldGroupElement) {
     var sortLabels = function(a, b) {
