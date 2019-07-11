@@ -412,6 +412,8 @@ var indicatorView = function (model, options) {
     });
 
     this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
+    this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
+    this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
     
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
@@ -495,10 +497,6 @@ var indicatorView = function (model, options) {
     this.createTableFooter(chartInfo.footerFields, '#selectionsTable');
     this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#selectionsTable');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
-    // Chart buttons
-    $('#chartSelectionDownload').empty();
-    this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
-    this.createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
   };
   
   this.createChartFooter = function(chartInfo) {
