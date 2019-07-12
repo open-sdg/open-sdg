@@ -318,15 +318,7 @@ var indicatorView = function (model, options) {
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
   
-  $(function() {
-    $("#btn-save").click(function() {
-      html2canvas($("#chart"), {
-        onrendered: function(canvas) {
-          Canvas2Image.saveAsPNG(canvas);
-        }
-      });
-    });
-  });
+  
 
   this.createPlot = function (chartInfo) {
 
@@ -412,6 +404,7 @@ var indicatorView = function (model, options) {
     });
 
     this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
+    this.createDownloadImageButton(chartInfo.indicatorId, '#selectionsChart');
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
     
@@ -499,10 +492,23 @@ var indicatorView = function (model, options) {
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
   };
   
-  this.createChartFooter = function(chartInfo) {
-    this.createTableFooter(chartInfo.footerFields, '#selectionsChart');
-  };
-
+  
+  this.createDownloadImageButton = function(IndicatorId, el) {
+    var gaLabel = 'Download chart image: ' + indicatorId.replace('indicator_', '');
+    $(el).append($('<a />').text('Save chart as image')
+    .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download CSV', gaLabel))
+    .attr({
+      'title': 'Save chart as image',
+      'class': 'btn btn-primary btn-download',
+      'tabindex': 0
+    })
+    html2canvas($("#chart"), {
+        onrendered: function(canvas) {
+          Canvas2Image.saveAsPNG(canvas);
+        }
+      }));
+  }
+                 
   this.createDownloadButton = function(table, name, indicatorId, el) {
     if(window.Modernizr.blobconstructor) {
       var downloadKey = 'download_csv';
