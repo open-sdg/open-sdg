@@ -404,7 +404,6 @@ var indicatorView = function (model, options) {
     });
 
     this.createTableFooter(chartInfo.footerFields, '#chart');
-    this.createDownloadImageButton('btn-save', chartInfo.indicatorId, '#selectionsChart');
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
     
@@ -492,18 +491,6 @@ var indicatorView = function (model, options) {
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
   };
   
-  
-this.createDownloadImageButton = function(button, indicatorId, el) {
-  $(el).append($('<a />').text('Save chart as image')
-  .attr({
-    'id': button
-    'download': indicatorId + '.png',
-    'title': 'Save chart as image',
-    'class': 'btn btn-primary btn-download',
-    'tabindex': 0
-  })
- );
-}
                  
   this.createDownloadButton = function(table, name, indicatorId, el) {
     if(window.Modernizr.blobconstructor) {
