@@ -493,7 +493,7 @@ var indicatorView = function (model, options) {
   };
   
   
-  this.createDownloadImageButton = function(IndicatorId, el) {
+  this.createDownloadImageButton = function(indicatorId, el) {
     var gaLabel = 'Download chart image: ' + indicatorId.replace('indicator_', '');
     $(el).append($('<a />').text('Save chart as image')
     .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download CSV', gaLabel))
