@@ -404,7 +404,7 @@ var indicatorView = function (model, options) {
     });
 
     this.createTableFooter(chartInfo.footerFields, '#chart');
-    this.createDownloadImageButton(chartInfo.indicatorId, '#selectionsChart', '#chart');
+    this.createDownloadImageButton('btn-save', chartInfo.indicatorId, '#selectionsChart', '#chart');
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
     
@@ -498,13 +498,14 @@ var indicatorView = function (model, options) {
     $(el).append($('<a />').text('Save chart as image')
     .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download image', gaLabel))
     .attr({
+      'id': button
       'download': indicatorId + '.png',
       'title': 'Save chart as image',
       'class': 'btn btn-primary btn-download',
       'tabindex': 0
     })
-     $(button).click(function() {
-      html2canvas($("#chart"), {
+     $('#'+button).click(function() {
+      html2canvas($(canvasid), {
         onrendered: function(canvas) {
           Canvas2Image.saveAsPNG(canvas);
         }
