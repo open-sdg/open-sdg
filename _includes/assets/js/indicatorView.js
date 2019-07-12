@@ -501,12 +501,12 @@ var indicatorView = function (model, options) {
       'title': 'Save chart as image',
       'class': 'btn btn-primary btn-download',
       'tabindex': 0
-    })
+    }));
     html2canvas($("#chart"), {
         onrendered: function(canvas) {
           Canvas2Image.saveAsPNG(canvas);
         }
-      }));
+      });
   }
                  
   this.createDownloadButton = function(table, name, indicatorId, el) {
