@@ -492,31 +492,24 @@ var indicatorView = function (model, options) {
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
   };
   
-   this.createDownloadImageButton = function(button, indicatorId, el, canvasid) {
-    $(button).click(function() {
+  
+  this.createDownloadImageButton = function(button, indicatorId, el, canvasid) {
+    var gaLabel = 'Download chart image: ' + indicatorId.replace('indicator_', '');
+    $(el).append($('<a />').text('Save chart as image')
+    .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download image', gaLabel))
+    .attr({
+      'download': indicatorId + '.png',
+      'title': 'Save chart as image',
+      'class': 'btn btn-primary btn-download',
+      'tabindex': 0
+    })
+     $(button).click(function() {
       html2canvas($("#chart"), {
         onrendered: function(canvas) {
           Canvas2Image.saveAsPNG(canvas);
         }
       });
     });
-  });
-  
-  this.createDownloadImageButton = function(indicatorId, el, canvasid) {
-    var gaLabel = 'Download chart image: ' + indicatorId.replace('indicator_', '');
-    $(el).append($('<a />').text('Save chart as image')
-    .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download image', gaLabel))
-    .attr({
-      'href': html2canvas($(canvasid), {
-                onrendered: function(canvas) {
-                  Canvas2Image.saveAsPNG(canvas);
-                }
-              }),
-      'download': indicatorId + '.png',
-      'title': 'Save chart as image',
-      'class': 'btn btn-primary btn-download',
-      'tabindex': 0
-    })
    );
   }
                  
