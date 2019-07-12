@@ -504,13 +504,6 @@ var indicatorView = function (model, options) {
       'class': 'btn btn-primary btn-download',
       'tabindex': 0
     })
-     $('#'+button).click(function() {
-      html2canvas($(canvasid), {
-        onrendered: function(canvas) {
-          Canvas2Image.saveAsPNG(canvas);
-        }
-      });
-    });
    );
   }
                  
