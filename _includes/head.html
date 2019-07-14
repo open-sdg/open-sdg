@@ -74,7 +74,9 @@
         {%- endif -%}
         
         <!-- ShareThis BEGIN -->
-        <script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5d279253faeee40012f195e1&product='sticky-share-buttons'"></script>
+        {%- if site.stickyshare == true -%}
+          <script async src="https://platform-api.sharethis.com/js/sharethis.js#property=5d279253faeee40012f195e1&product='sticky-share-buttons'"></script>
+        {%- endif -%}
         <!-- ShareThis END -->
                                                                                                                                               
     </head>
