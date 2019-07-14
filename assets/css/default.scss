@@ -1233,7 +1233,6 @@ h5 + .btn-download {
     position: absolute;
     top: 12px;
     right: 12px;
-
     a {
       background-color: white;
       border: none;
@@ -1241,7 +1240,6 @@ h5 + .btn-download {
       float: left;
     }
   }
-
   #zoom-in, #zoom-out {
     background-color: black;
     background-repeat: no-repeat;
@@ -1250,11 +1248,9 @@ h5 + .btn-download {
     width: 18px;
     height: 18px;
   }
-
   #zoom-in {
     background-position: 1px 1px;
   }
-
   #zoom-out {
     background-position: 1px -51px;
   }
@@ -1645,6 +1641,10 @@ footer {
       }
     }
   }
+}
+
+.chart-title {
+  text-align: center;
 }
 
 #accessibility-nav {
