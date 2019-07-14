@@ -1,7 +1,7 @@
 <h1>Sharing pages via social media</h1>
 
 ## Sticky share buttons
-The sticky share buttons allow users to share a page of the data website via social media (Facebook, Twitter, emails) as shown in the image below:
+The sticky share buttons allow users to share a page of the data website via social media (Facebook and Twitter) and via email as shown in the image below:
 
 <img src="img/sticky-share-buttons.PNG" alt="Image showing sticky share buttons" />
 
