@@ -317,6 +317,8 @@ var indicatorView = function (model, options) {
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
+  
+  
 
   this.createPlot = function (chartInfo) {
 
@@ -375,11 +377,7 @@ var indicatorView = function (model, options) {
           display: false
         },
         title: {
-          fontSize: 18,
-          fontStyle: 'normal',
-          display: this._model.chartTitle,
-          text: this._model.chartTitle,
-          padding: 20
+          display: false
         },
         plugins: {
           scaler: {}
@@ -402,77 +400,14 @@ var indicatorView = function (model, options) {
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#6e6e6e';
-
-        var getLinesFromText = function(text) {
-          var width = parseInt($canvas.css('width')), //width(),
-          lines = [],
-          line = '',
-          lineTest = '',
-          words = text.split(' ');
-
-          for (var i = 0, len = words.length; i < len; i++) {
-            lineTest = line + words[i] + ' ';
-
-            // Check total width of line or last word
-            if (ctx.measureText(lineTest).width > width) {
-              // Record and reset the current line
-              lines.push(line);
-              line = words[i] + ' ';
-            } else {
-              line = lineTest;
-            }
-          }
-
-          // catch left overs:
-          if (line.length > 0) {
-            lines.push(line.trim());
-          }
-
-          return lines;
-        };
-
-        function putTextOutputs(textOutputs, x) {
-          var y = $canvas.height() - 10 - ((textOutputs.length - 1) * textRowHeight);
-
-          _.each(textOutputs, function(textOutput) {
-            ctx.fillText(textOutput, x, y);
-            y += textRowHeight;
-          });
-        }
-
-        // TODO Merge this with the that.footerFields object used by table
-        var graphFooterItems = [];
-        if (that._model.dataSource) {
-          var sourceRows = getLinesFromText(translations.indicator.source + ': ' + that._model.dataSource);
-          graphFooterItems = graphFooterItems.concat(sourceRows);
-
-          if(sourceRows.length > 1) {
-            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * sourceRows.length);
-            that._chartInstance.resize();
-          }
-        }
-        if (that._model.geographicalArea) {
-          graphFooterItems.push(translations.indicator.geographical_area + ': ' + that._model.geographicalArea);
-        }
-        if (that._model.measurementUnit) {
-          graphFooterItems.push(translations.indicator.unit_of_measurement + ': ' + that._model.measurementUnit);
-        }
-
-        if(that._model.footnote) {
-          var footnoteRows = getLinesFromText('Footnote: ' + that._model.footnote);
-          graphFooterItems = graphFooterItems.concat(footnoteRows);
-
-          if(footnoteRows.length > 1) {
-            //that._chartInstance.options.layout.padding.bottom += textRowHeight * footnoteRows.length;
-            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * footnoteRows.length);
-            that._chartInstance.resize();
-          }
-        }
-
-        putTextOutputs(graphFooterItems, 0);
       }
     });
 
+    this.createTableFooter('selectionChartFooter', chartInfo.footerFields, '#chart-canvas');
+    this.createDownloadImageButton(chartInfo.indicatorId, '#selectionsChart', '#chart-canvas');
+    this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
+    this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
+    
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
 
@@ -552,15 +487,29 @@ var indicatorView = function (model, options) {
 
   this.createSelectionsTable = function(chartInfo) {
     this.createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', true);
-    this.createTableFooter(chartInfo.footerFields, '#selectionsTable');
+    this.createTableFooter('selectionTableFooter', chartInfo.footerFields, '#selectionsTable');
     this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#selectionsTable');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
-    // Chart buttons
-    $('#chartSelectionDownload').empty();
-    this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
-    this.createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
   };
-
+  
+  this.createDownloadImageButton = function(indicatorId, el, eltoImage) {
+    $(el).append($('<a />').text('Download chart as image')
+    .attr({
+      'href': URL.createObjectURL(new Blob([this.toImage(eltoImage)], {
+          type: 'image/png'
+        })),
+      'download': indicatorId + '.png',
+      'title': 'Download chart as image',
+      'class': 'btn btn-primary btn-download',
+      'tabindex': 0
+    }));
+  }
+  
+  this.toImage = function(divID) {
+    //NEED TO CREATE WORKING FUNCTION
+   }
+  
+                 
   this.createDownloadButton = function(table, name, indicatorId, el) {
     if(window.Modernizr.blobconstructor) {
       var downloadKey = 'download_csv';
@@ -676,9 +625,9 @@ var indicatorView = function (model, options) {
     }
   };
 
-  this.createTableFooter = function(footerFields, el) {
+  this.createTableFooter = function(divid, footerFields, el) {
     var footdiv = $('<div />').attr({
-      'id': 'selectionTableFooter',
+      'id': divid,
       'class': 'table-footer-text'
     });
 
@@ -688,6 +637,7 @@ var indicatorView = function (model, options) {
 
     $(el).append(footdiv);
   };
+  
 
   this.sortFieldGroup = function(fieldGroupElement) {
     var sortLabels = function(a, b) {
