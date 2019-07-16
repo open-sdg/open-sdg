@@ -18,7 +18,7 @@
       <% if(allowedFields.indexOf(seriesItem.field) == -1) { %>
         <div class="variable-hint">
           {%- capture var_hint_replacement -%}
-            {% raw %}<%= _.findWhere(edges, { To: seriesItem.field }).From %>{% endraw %}
+            {% raw %}<%= translations.t(_.findWhere(edges, { To: seriesItem.field }).From) %>{% endraw %}
           {%- endcapture -%}
           {{ t.indicator.variable_hint | replace_first: '%field', var_hint_replacement }}
         </div>
