@@ -76,7 +76,7 @@ var accessibilitySwitcher = function() {
 function imageFix(contrast) {
   if (contrast == 'high')  {
     _.each($('img:not([src*=high-contrast])'), function(goalImage){
-      if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/img/twitter.svg") {
+      if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/") {
       $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
       }})
   } else {
