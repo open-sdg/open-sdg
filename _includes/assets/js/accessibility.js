@@ -73,7 +73,7 @@ var accessibilitySwitcher = function() {
   });
 
 function imageFix(contrast) {
-  if (contrast == 'high' && {{($(goalImage).attr('src') | slice: 0, {{ "https://platform-cdn.sharethis.com/".size }} }} != "https://platform-cdn.sharethis.com/") {
+  if (contrast == 'high') {
     _.each($('img:not([src*=high-contrast])'), function(goalImage){
       $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
     })
