@@ -71,7 +71,8 @@ var accessibilitySwitcher = function() {
       imageFix(contrast);
     })));
   });
-
+  
+  
 function imageFix(contrast) {
   if (contrast == 'high') {
     _.each($('img:not([src*=high-contrast])'), function(goalImage){
@@ -83,8 +84,6 @@ function imageFix(contrast) {
       $(goalImage).attr('src', $(goalImage).attr('src').replace('high-contrast/', ''));
     })
   }
-};
-
 };
 
 };
