@@ -74,7 +74,7 @@ var accessibilitySwitcher = function() {
   
   
 function imageFix(contrast) {
-  if (contrast == 'high') {
+  if (contrast == 'high' && $(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/")  {
     _.each($('img:not([src*=high-contrast])'), function(goalImage){
       $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
     })
