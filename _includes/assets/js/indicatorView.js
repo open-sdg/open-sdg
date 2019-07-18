@@ -35,6 +35,28 @@ var indicatorView = function (model, options) {
       meta.hidden = meta.hidden === null? !ci.data.datasets[index].hidden : null;
       ci.update();
     });
+
+    // Provide the hide/show functionality for the sidebar.
+    $('.data-view .nav-link').on('click', function(e) {
+      var $sidebar = $('#indicator-sidebar'),
+          $main = $('#indicator-main'),
+          hideSidebar = $(this).data('no-disagg'),
+          mobile = window.matchMedia("screen and (max-width: 990px)");
+      if (hideSidebar) {
+        $sidebar.addClass('indicator-sidebar-hidden');
+        $main.addClass('indicator-main-full');
+        // On mobile, this can be confusing, so we need to scroll to the tabs.
+        if (mobile.matches) {
+          $([document.documentElement, document.body]).animate({
+            scrollTop: $("#indicator-main").offset().top - 40
+          }, 400);
+        }
+      }
+      else {
+        $sidebar.removeClass('indicator-sidebar-hidden');
+        $main.removeClass('indicator-main-full');
+      }
+    });
   });
 
   this._model.onDataComplete.attach(function (sender, args) {
@@ -260,10 +282,12 @@ var indicatorView = function (model, options) {
 
   this.initialiseUnits = function(args) {
     var template = _.template($('#units_template').html()),
-        units = args.units || [];
+        units = args.units || [],
+        selectedUnit = args.selectedUnit || null;
 
     $('#units').html(template({
-      units: units
+      units: units,
+      selectedUnit: selectedUnit
     }));
 
     if(!units.length) {
@@ -275,7 +299,7 @@ var indicatorView = function (model, options) {
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
 
     if(chartInfo.selectedUnit) {
-      view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = chartInfo.selectedUnit;
+      view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
     }
 
     // Create a temp object to alter, and then apply. We go to all this trouble
@@ -321,8 +345,8 @@ var indicatorView = function (model, options) {
               suggestedMin: 0
             },
             scaleLabel: {
-              display: this._model.selectedUnit ? this._model.selectedUnit : this._model.measurementUnit,
-              labelString: this._model.selectedUnit ? this._model.selectedUnit : this._model.measurementUnit
+              display: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
+              labelString: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit
             }
           }]
         },

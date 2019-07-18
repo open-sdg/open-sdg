@@ -315,9 +315,9 @@ header {
 
     label {
       position: absolute;
-      top: 8px;
-      left: 7px;
-      font-size: 1.25em;
+      top: 5px;
+      right: 0px;
+      font-size: 1.40em;
 
       span {
         display: none;
@@ -326,8 +326,8 @@ header {
 
     input {
       padding: 5px;
-      padding-left: 29px;
-      width: 140px;
+      padding-left: 5px;
+      width: 150px;
       transition: width 0.4s;
       margin-top: 5px;
 
@@ -385,7 +385,7 @@ header {
           display: block;
           padding: 15px;
         }
-	      
+
       	button{
 		color: #E5E6E7;
 		display: block;
@@ -701,6 +701,22 @@ h5 + .btn-download {
         }
       }
     }
+  }
+
+  // For shrinking the sidebar.
+  .indicator-sidebar-hidden {
+    padding: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+  // For expanding the main section.
+  .indicator-main-full {
+    width: 100%;
+  }
+  // To make the shrinking/expanding animated.
+  #indicator-sidebar, #indicator-main {
+    transition: width 0.3s ease;
   }
 
   #toolbar {
@@ -1786,7 +1802,7 @@ body.contrast-high {
       }
     }
     .indicator-cards {
-      a {
+      a, &.target {
         color: white !important;
       }
       span.status, .tags li{
