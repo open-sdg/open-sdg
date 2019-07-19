@@ -9,4 +9,4 @@ To set up the sticky share buttons on your country's data website, the following
 `#sharethis_property: '5d279253faeee40012f195e1'`<br>
 e.g. `sharethis_property: '5d279253faeee40012f195e1'`
 
-You can also add your own property by [signing up to ShareThis](https://platform.sharethis.com/sign-up). Adding your own property means that you will be able to configure the buttons to how you want them e.g. add more buttons for different social media platforms
+You can also add your own property by [signing up to ShareThis](https://platform.sharethis.com/sign-up). Adding your own property means that you will be able to configure the buttons to how you want them e.g. add more buttons for different social media platforms.
