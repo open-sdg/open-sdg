@@ -1,6 +1,45 @@
 <h1>Change Log</h1>
 
-### 0.6.0
+## 0.7.0
+
+* Create search button (#244, #251)
+* Translate the var_hint_replacement variable (#246)
+* Add sticky share buttons (#242)
+* Make sure the target name is also white in high-contrast (#241)
+* Refactor/cleanup of footerFields for charts/tables (#239)
+* Hide/show the sidebar depending on the active tab (#233)
+* Translate the units of measurement in the Y axis (#228)
+* Correct the initially-selected unit when headline doesn't use first unit (#220)
+* Remove data rounding and provide an easier way to add custom rounding (#212)
+* Catch another spot where zeroes are getting clobbered: the headline (#211)
+* Enable support for buttons on mobile top level menu (#210)
+* Expect dash-delimited translation keys for indicators/targets (#206)
+* A more precise check for data (disaggregation) translations. (#202)
+* Support zero values (#201)
+* Disaggregation accordions: Move ARIA expanded status to button (#200)
+
+Breaking changes:
+
+* Rounding of data has been removed by default. For instructions on adding it back, and controlling the behavior, see #212.
+* Translation keys for indicators/targets are now expected to be dash-delimited instead of dot-delimited. This means that you should **not** upgrade to this release until you are using SDG Translations [0.6.0](https://github.com/open-sdg/sdg-translations/releases/tag/0.6.0) or higher.
+* Data disaggregation translation keys (ie, translations inside a `data.yml` file) are now expected to be case-sensitive matches, and are no longer automatically converted to lowercase.
+* In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.6.0...0.7.0) to see if you need to make any updates to your overriddes:
+    * _includes/assets/js/accessibility.js
+    * _includes/assets/js/indicatorModel.js
+    * _includes/assets/js/indicatorView.js
+    * _includes/assets/js/menu.js
+    * _includes/assets/js/search.js
+    * _includes/components/fields-template.html
+    * _includes/components/units-template.html
+    * _includes/head.html
+    * _includes/javascript-variables.html
+    * _includes/multilingual-js-base.html
+    * _includes/scripts.html
+    * _includes/search.html
+    * _layouts/indicator.html
+    * assets/css/default.scss
+
+## 0.6.0
 
 * Translate 'goal x' on search results page (#191)
 * Translate 'indicators' on reporting status page (#190)
@@ -52,7 +91,7 @@ Breaking changes:
     * assets/css/default.scss
     * assets/js/sdg.js
 
-### 0.5.0
+## 0.5.0
 
 Refactoring, re-structuring, bug fixes, and enhancements.
 
@@ -97,7 +136,7 @@ Breaking changes:
     * _layouts/search.html
     * assets/css/default.scss
 
-### 0.4.0
+## 0.4.0
 
 Minor release with some multilingual enhancements and other bug fixes.
 
@@ -129,7 +168,7 @@ Breaking changes:
     * _layouts/indicator-json.html
     * assets/css/default.scss
 
-### 0.3.1
+## 0.3.1
 
 Patch release with some accessibility and bug fixes.
 
