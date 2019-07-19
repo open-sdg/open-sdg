@@ -72,6 +72,13 @@
             <link rel="stylesheet" href="{{ site.baseurl }}{{ custom_css_file }}?v={{ cache_bust }}">
           {%- endfor -%}
         {%- endif -%}
+        
+        <!-- ShareThis BEGIN -->
+        {%- if site.sharethis_property -%}
+          <script async src="https://platform-api.sharethis.com/js/sharethis.js#property={{ site.sharethis_property }}&product='sticky-share-buttons'"></script>
+        {%- endif -%}
+        <!-- ShareThis END -->
+                                                                                                                                              
     </head>
 <body class="language-{{ current_language }}">
 <!-- <div class="container"> -->
