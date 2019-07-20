@@ -352,7 +352,7 @@ var indicatorModel = function (options) {
       datasetIndex = 0,
       getCombinationDescription = function(combination) {
         return _.map(Object.keys(combination), function(key) {
-          return combination[key];
+          return translations.t(combination[key]);
           //return key + ' ' + combination[key];
         }).join(', ');
       },
