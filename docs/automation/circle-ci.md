@@ -36,6 +36,5 @@ If making changes to data, you normally have to send an empty commit to the site
 7. Go the Environment Variables and add the following variables:
 
 * CIRCLE_TOKEN: paste the token from step 5
-* ORGANIZATION: production organization name
-* PROJECT: data repository name
-* BRANCH: develop
+* SITE_REPO_ORG: production organization name
+* SITE_REPO_NAME: data repository name
