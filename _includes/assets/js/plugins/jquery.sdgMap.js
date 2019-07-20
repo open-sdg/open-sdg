@@ -99,7 +99,7 @@
           feature.properties[record.Year] = record.Value;
         });
         // Next normalize the geocode and name.
-        feature.properties.name = name;
+        feature.properties.name = translations.t(name);
         feature.properties.geocode = geocode;
         delete feature.properties[idProperty];
         delete feature.properties[nameProperty];
