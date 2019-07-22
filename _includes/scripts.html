@@ -16,6 +16,8 @@
 <script src="https://bowercdn.net/c/leaflet.zoomhome-latest/dist/leaflet.zoomhome.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
+<script src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
+<script src="https://hongru.github.io/proj/canvas2image/canvas2image.js"></script>
 <script src='{{ site.baseurl }}/assets/js/sdg.js?v={{ cache_bust }}'></script>
 {%- if site.custom_js -%}
   {%- for custom_js_file in site.custom_js -%}
@@ -26,18 +28,14 @@
 $(function() {
     if($('#indicatorData').length) {
       var domData = $('#indicatorData').data();
-
       $('.async-loading').each(function(i, obj) {
           $(obj).append($('<img />').attr('src', $(obj).data('img')));
       });
-
       $.ajax({
         url: opensdg.remoteDataBaseUrl + '/comb/' + domData.id + '.json',
         success: function(res) {
-
           $('.async-loading').remove();
           $('.async-loaded').show();
-
           var model = new indicatorModel({
             data: res.data,
             edgesData: res.edges,
@@ -58,7 +56,7 @@ $(function() {
           view  = new indicatorView(model, {
             rootElement: '#indicatorData',
             legendElement: '#plotLegend',
-            maxChartHeight: 600,
+            maxChartHeight: 420,
             tableColumnDefs: [
               { maxCharCount: 25 }, // nowrap
               { maxCharCount: 35, width: 200 },
@@ -70,9 +68,6 @@ $(function() {
         }
       });
     }
-
     var switcher = new accessibilitySwitcher();
-
-
 });
 </script>
