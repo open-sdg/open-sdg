@@ -317,8 +317,8 @@ var indicatorView = function (model, options) {
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
-  
-  
+
+
 
   this.createPlot = function (chartInfo) {
 
@@ -350,14 +350,6 @@ var indicatorView = function (model, options) {
               labelString: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit
             }
           }]
-        },
-        layout: {
-          padding: {
-            top: 20,
-            // default of 85, but do a rough line count based on 150
-            // characters per line * 20 pixels per row
-            bottom: that._model.footnote ? (20 * (that._model.footnote.length / 150)) + 85 : 85
-          }
         },
         legendCallback: function(chart) {
             var text = ['<ul id="legend">'];
@@ -404,10 +396,36 @@ var indicatorView = function (model, options) {
     });
 
     this.createTableFooter('selectionChartFooter', chartInfo.footerFields, '#chart-canvas');
-    this.createDownloadImageButton(chartInfo.indicatorId, '#selectionsChart', '#chart-canvas');
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
-    
+
+    $("#btnSave").click(function() {
+        html2canvas($("#chart-canvas"), {
+          onrendered: function(canvas) {
+            saveAs(canvas.toDataURL(), chartInfo.indicatorId+'.png');
+          }
+        });
+      });
+
+    function saveAs(uri, filename) {
+      var link = document.createElement('a');
+      if (typeof link.download === 'string') {
+        link.href = uri;
+        link.download = filename;
+
+        //Firefox requires the link to be in the body
+        document.body.appendChild(link);
+
+        //simulate click
+        link.click();
+
+        //remove the link when done
+        document.body.removeChild(link);
+        } else {
+        window.open(uri);
+        }
+        }
+
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
 
@@ -491,25 +509,8 @@ var indicatorView = function (model, options) {
     this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#selectionsTable');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
   };
-  
-  this.createDownloadImageButton = function(indicatorId, el, eltoImage) {
-    $(el).append($('<a />').text('Download chart as image')
-    .attr({
-      'href': URL.createObjectURL(new Blob([this.toImage(eltoImage)], {
-          type: 'image/png'
-        })),
-      'download': indicatorId + '.png',
-      'title': 'Download chart as image',
-      'class': 'btn btn-primary btn-download',
-      'tabindex': 0
-    }));
-  }
-  
-  this.toImage = function(divID) {
-    //NEED TO CREATE WORKING FUNCTION
-   }
-  
-                 
+
+
   this.createDownloadButton = function(table, name, indicatorId, el) {
     if(window.Modernizr.blobconstructor) {
       var downloadKey = 'download_csv';
@@ -637,7 +638,7 @@ var indicatorView = function (model, options) {
 
     $(el).append(footdiv);
   };
-  
+
 
   this.sortFieldGroup = function(fieldGroupElement) {
     var sortLabels = function(a, b) {
