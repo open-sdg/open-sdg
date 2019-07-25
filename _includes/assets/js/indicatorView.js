@@ -87,6 +87,13 @@ var indicatorView = function (model, options) {
           .first()
           .click();
       }
+      // Force a unit if necessary.
+      if (args.forceUnit) {
+        $('#units input[type="radio"]')
+          .filter('[value="' + args.forceUnit + '"]')
+          .first()
+          .click();
+      }
     }
     else {
       // Fallback behavior - just click on the first one, whatever it is.
