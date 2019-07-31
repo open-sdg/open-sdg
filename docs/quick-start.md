@@ -108,7 +108,7 @@ Confirm that 4 files have been created:
 ## View the site
 
 1. CircleCI and Github will now build and publish the site. Wait about 5 minutes.
-1. View site at: https://my-github-org/github.io/open-sdg-site-starter/ (replacing "my-github-org" as needed).
+1. View site at: https://my-github-org.github.io/open-sdg-site-starter/ (replacing "my-github-org" as needed).
 
 ## Results
 
