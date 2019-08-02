@@ -452,6 +452,12 @@ header {
         color: black;
       }
 
+      button {
+        display: inline-flex;
+        position: absolute;
+        right: 0;
+      }
+
       input {
         width: 100%;
         color: #333;
