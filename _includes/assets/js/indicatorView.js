@@ -77,6 +77,13 @@ var indicatorView = function (model, options) {
 
   this._model.onNoHeadlineData.attach(function(sender, args) {
     if (args && args.minimumFieldSelections && _.size(args.minimumFieldSelections)) {
+      // Force a unit if necessary.
+      if (args.forceUnit) {
+        $('#units input[type="radio"]')
+          .filter('[value="' + args.forceUnit + '"]')
+          .first()
+          .click();
+      }
       // If we have minimum field selections, impersonate a user and "click" on
       // each item.
       for (var fieldToSelect in args.minimumFieldSelections) {
@@ -84,13 +91,6 @@ var indicatorView = function (model, options) {
         $('#fields .variable-options input[type="checkbox"]')
           .filter('[data-field="' + fieldToSelect + '"]')
           .filter('[value="' + fieldValue + '"]')
-          .first()
-          .click();
-      }
-      // Force a unit if necessary.
-      if (args.forceUnit) {
-        $('#units input[type="radio"]')
-          .filter('[value="' + args.forceUnit + '"]')
           .first()
           .click();
       }
