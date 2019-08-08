@@ -441,35 +441,17 @@ var indicatorView = function (model, options) {
           });
         }
 
-        // TODO Merge this with the that.footerFields object used by table
         var graphFooterItems = [];
-        if (that._model.dataSource) {
-          var sourceRows = getLinesFromText(translations.indicator.source + ': ' + that._model.dataSource);
-          graphFooterItems = graphFooterItems.concat(sourceRows);
-
-          if(sourceRows.length > 1) {
-            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * sourceRows.length);
+        _.each(that._model.footerFields, function(value, key) {
+          // For each footer item, we have to manually do any line
+          // wrapping, because this is canvas, not HTML.
+          var rows = getLinesFromText(key + ': ' + value);
+          graphFooterItems = graphFooterItems.concat(rows);
+          if (rows.length > 1) {
+            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * rows.length);
             that._chartInstance.resize();
           }
-        }
-        if (that._model.geographicalArea) {
-          graphFooterItems.push(translations.indicator.geographical_area + ': ' + that._model.geographicalArea);
-        }
-        if (that._model.measurementUnit) {
-          graphFooterItems.push(translations.indicator.unit_of_measurement + ': ' + that._model.measurementUnit);
-        }
-
-        if(that._model.footnote) {
-          var footnoteRows = getLinesFromText('Footnote: ' + that._model.footnote);
-          graphFooterItems = graphFooterItems.concat(footnoteRows);
-
-          if(footnoteRows.length > 1) {
-            //that._chartInstance.options.layout.padding.bottom += textRowHeight * footnoteRows.length;
-            that._chartInstance.resize(parseInt($canvas.css('width')), parseInt($canvas.css('height')) + textRowHeight * footnoteRows.length);
-            that._chartInstance.resize();
-          }
-        }
-
+        });
         putTextOutputs(graphFooterItems, 0);
       }
     });
@@ -684,7 +666,7 @@ var indicatorView = function (model, options) {
     });
 
     _.each(footerFields, function(val, key) {
-      if(val) footdiv.append($('<p />').text(key + ': ' + val));
+      footdiv.append($('<p />').text(key + ': ' + val));
     });
 
     $(el).append(footdiv);

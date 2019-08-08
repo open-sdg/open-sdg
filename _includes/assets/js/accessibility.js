@@ -71,12 +71,14 @@ var accessibilitySwitcher = function() {
       imageFix(contrast);
     })));
   });
-
+  
+  
 function imageFix(contrast) {
-  if (contrast == 'high') {
+  if (contrast == 'high')  {
     _.each($('img:not([src*=high-contrast])'), function(goalImage){
+      if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/") {
       $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
-    })
+      }})
   } else {
     // Remove high-contrast
     _.each($('img[src*=high-contrast]'), function(goalImage){
