@@ -59,11 +59,11 @@ var accessibilitySwitcher = function() {
   ////////////////////////////////////////////////////////////////////////////////////
 
   _.each(contrastIdentifiers, function(contrast) {
+    var gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', contrast);
     $('.contrast-switcher').append($('<li />').attr({
       'class': 'nav-link contrast contrast-' + contrast
-    }).html($('<a />').attr({
+    }).html($('<a />').attr(gaAttributes).attr({
       'href': 'javascript:void(0)',
-      'onClick': 'ga("send", "event", "Accessibility", "Change contrast setting", "' + contrast + '")',
       'title': 'Set to ' + contrast + ' contrast',
       'data-contrast': contrast,
     }).text(getContrastToggleLabel(contrast)).click(function() {
