@@ -269,10 +269,10 @@ header {
         @media only screen and (max-width: 768px) {
           display: none;
         }
-        font-size: 1.3em;
+        font-size: 1em;
         font-weight: bold;
-        border-radius: 50%;
-        width: 25px;
+        border-radius: 5px;
+        width: 200px;
         max-height: 25px;
         text-align: center;
         margin-left: 0.5em;
@@ -338,6 +338,7 @@ header {
     }
   }
 }
+
 #search-btn {
   height: 34px;
   }
@@ -389,8 +390,7 @@ header {
           display: block;
           padding: 15px;
         }
-
-      	button{
+	      button{
 		color: #E5E6E7;
 		display: block;
 		padding: 15px;
@@ -713,8 +713,8 @@ h5 + .btn-download {
       }
     }
   }
-
-  // For shrinking the sidebar.
+	
+// For shrinking the sidebar.
   .indicator-sidebar-hidden {
     padding: 0;
     width: 0;
@@ -729,6 +729,7 @@ h5 + .btn-download {
   #indicator-sidebar, #indicator-main {
     transition: width 0.3s ease;
   }
+
 
   #toolbar {
     button {
@@ -1244,7 +1245,6 @@ h5 + .btn-download {
     position: absolute;
     top: 12px;
     right: 12px;
-
     a {
       background-color: white;
       border: none;
@@ -1252,7 +1252,6 @@ h5 + .btn-download {
       float: left;
     }
   }
-
   #zoom-in, #zoom-out {
     background-color: black;
     background-repeat: no-repeat;
@@ -1261,11 +1260,9 @@ h5 + .btn-download {
     width: 18px;
     height: 18px;
   }
-
   #zoom-in {
     background-position: 1px 1px;
   }
-
   #zoom-out {
     background-position: 1px -51px;
   }
@@ -1470,7 +1467,6 @@ footer {
       color: lighten($footer-color, 20%);
     }
   }
-
   #footerLinks ul li{
     display: inline-block !important;
     margin: 3px 9px !important;
@@ -1667,10 +1663,10 @@ footer {
     display: inline-block;
     list-style: none;
     &.contrast {
-      font-size: 1.3em;
+      font-size: 1em;
       font-weight: bold;
-      border-radius: 50%;
-      width: 25px;
+      border-radius: 5px;
+      width: 200px;
       max-height: 25px;
       text-align: center;
       margin: 0.25em;
@@ -1816,7 +1812,7 @@ body.contrast-high {
       a, &.target {
         color: white !important;
       }
-      span.status, .tags li{
+      span.status, .tags li {
         color: black !important;
       }
     }
@@ -2041,11 +2037,10 @@ body.contrast-high {
     }
   }
 }
-
 #jump-to-search {
   a {
     cursor: pointer;
-  }
+	}
 }
 
 body.contrast-default{
