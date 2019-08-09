@@ -2047,3 +2047,21 @@ body.contrast-high {
     cursor: pointer;
   }
 }
+
+body.contrast-default{
+	li.contrast-default{
+		display: none;
+	}
+	li.contrast-high{
+		display: block;
+	}
+}
+
+body.contrast-high{
+	li.contrast-default{
+		display: block;
+	}
+	li.contrast-high{
+		display: none;
+	}
+}
