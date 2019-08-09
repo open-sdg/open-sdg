@@ -1,5 +1,5 @@
 var accessibilitySwitcher = function() {
-
+  
   var contrastIdentifiers = ['default', 'high'];
 
   function setActiveContrast(contrast) {
@@ -59,26 +59,33 @@ var accessibilitySwitcher = function() {
   ////////////////////////////////////////////////////////////////////////////////////
 
   _.each(contrastIdentifiers, function(contrast) {
-    var gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', contrast);
     $('.contrast-switcher').append($('<li />').attr({
       'class': 'nav-link contrast contrast-' + contrast
-    }).html($('<a />').attr(gaAttributes).attr({
+    }).html($('<a />').attr({
       'href': 'javascript:void(0)',
+      'onClick': 'ga("send", "event", "Accessibility", "Change contrast setting", "' + contrast + '")',
       'title': 'Set to ' + contrast + ' contrast',
       'data-contrast': contrast,
-    }).text('A').click(function() {
+    }).text(getContrastToggleLabel(contrast)).click(function() {
       setActiveContrast($(this).data('contrast'));
       imageFix(contrast);
     })));
   });
   
-  
+function getContrastToggleLabel(identifier){	
+  if(identifier === "default"){	
+    return translations.header.disable_high_contrast;	
+  }	
+  else if(identifier === "high"){	
+    return translations.header.enable_high_contrast;	
+  }	
+}
+
 function imageFix(contrast) {
-  if (contrast == 'high')  {
+  if (contrast == 'high') {
     _.each($('img:not([src*=high-contrast])'), function(goalImage){
-      if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/") {
       $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
-      }})
+    })
   } else {
     // Remove high-contrast
     _.each($('img[src*=high-contrast]'), function(goalImage){
