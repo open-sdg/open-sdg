@@ -682,6 +682,6 @@ var indicatorView = function (model, options) {
     };
     fieldGroupElement.find('label')
     .sort(sortLabels)
-    .appendTo(fieldGroupElement.find('.variable-options'));
+    .appendTo(fieldGroupElement.find('#indicatorData .variable-options'));
   }
 };
