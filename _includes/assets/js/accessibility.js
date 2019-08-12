@@ -62,11 +62,11 @@ _.each(contrastIdentifiers, function(contrast) {
     var gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', contrast);
     $('.contrast-switcher').append($('<li />').attr({
       'class': 'nav-link contrast contrast-' + contrast
-    }).html($('<a />').attr(gaAttributes).attr({
+    }).html($('<a />').append(getContrastToggleLabel(contrast)).attr(gaAttributes).attr({
       'href': 'javascript:void(0)',
       'title': 'Set to ' + contrast + ' contrast',
       'data-contrast': contrast,
-    }).append(getContrastToggleLabel(contrast)).click(function() {
+    }).text(getContrastToggleLabel(contrast)).click(function() {
       setActiveContrast($(this).data('contrast'));
       imageFix(contrast);
     })));
