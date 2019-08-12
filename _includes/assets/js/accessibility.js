@@ -70,6 +70,7 @@ _.each(contrastIdentifiers, function(contrast) {
       setActiveContrast($(this).data('contrast'));
       imageFix(contrast);
     })));
+  $("a").append(getContrastToggleLabel(contrast));
   });
   
 function getContrastToggleLabel(identifier){	
