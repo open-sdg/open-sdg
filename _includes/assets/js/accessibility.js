@@ -66,10 +66,10 @@ _.each(contrastIdentifiers, function(contrast) {
       'href': 'javascript:void(0)',
       'title': 'Set to ' + contrast + ' contrast',
       'data-contrast': contrast,
-    }).text(getContrastToggleLabel(contrast)).click(function() {
+    }).append(getContrastToggleLabel(contrast)).click(function() {
       setActiveContrast($(this).data('contrast'));
       imageFix(contrast);
-    }).append(getContrastToggleLabel(contrast))));
+    })));
   });
   
 function getContrastToggleLabel(identifier){	
