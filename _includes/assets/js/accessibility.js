@@ -1,5 +1,3 @@
-{% include multilingual-js.html key="header" %}
-
 var accessibilitySwitcher = function() {
   
   var contrastIdentifiers = ['default', 'high'];
