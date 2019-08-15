@@ -105,9 +105,9 @@ NOTE: In contrast to Jekyll, any translation keys you will need in Javascript ne
 
 ## Translating data disaggregations and columns
 
-To translate the disaggregations and columns in your data (such as "Age", "Sex", "Female", etc.) you will need to make sure that the disaggregation values in your CSV files correspond to translation keys. For example, instead of a column called `Sex` you could call it `data.sex`. Assuming that `data.sex` refers to an actual key in your SDG Translations data, this will translate the disaggregation according to that data.
+To translate the disaggregations and columns in your data (such as "Age", "Sex", "Female", etc.) you will need to make sure that the disaggregation values in your CSV files correspond to translation keys. For example, instead of a column called `Sex` you could call it `data.Sex`. Assuming that `data.Sex` refers to an actual key in your SDG Translations data, this will translate the disaggregation according to that data.
 
-Similarly, instead of a values like `Female`, you could use `data.female` to correspond to a translation by that key.
+Similarly, instead of a values like `Female`, you could use `data.Female` to correspond to a translation by that key.
 
 > NOTE: There is a shortcut available here. Because data disaggregations/columns
 > will almost always refer to the `data` group, you can actually leave the `data.`
