@@ -76,10 +76,10 @@ _.each(contrastIdentifiers, function(contrast) {
   
 function getContrastToggleLabel(identifier){	
   if(identifier === "default"){	
-    return translations.header.disable_high_contrast.; 	
+    return translations.header.disable_high_contrast; 	
   }	
   else if(identifier === "high"){	
-    return translations.header.enable_high_contrast.;	
+    return translations.header.enable_high_contrast;	
   }	
 }
 
