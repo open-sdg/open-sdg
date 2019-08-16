@@ -8,7 +8,7 @@ $vanilla: #fff;
 $footer-color : #E5E6E7;
 $goal-colors : #E52B3D #DDA63A #4C9F38 #C42130 #FF3E24 #28BCE1 #FCC30B #A21942 #FD6925 #DD1367 #FD9C27 #BF8B2E #417D46 #0A96D8 #57BE2F #00689C #1F4A6A;
 $navbar-height : 175;
-$disclaimer-height: 50;
+$disclaimer-height: 40;
 $collapsed-navbar-height: $navbar-height - 30;
 @mixin noselect {
   user-select: none;
