@@ -207,6 +207,7 @@ header {
     color: #3D3D3D;
     margin-bottom: 0;
     padding: 10px;
+    max-height: $disclaimer-height + unquote("px");
     a {
       color: #3D3D3D;
     }
