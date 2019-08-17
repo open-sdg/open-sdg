@@ -152,6 +152,39 @@ analytics:
   ga_prod: 'paste ID here'
 ```
 
+### create_goals
+
+This optional setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
+
+```nohighlight
+create_goals:
+  layout: goal
+```
+
+### create_indicators
+
+This optional setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators.
+
+```nohighlight
+create_indicators:
+  layout: indicator
+```
+
+### create_pages
+
+This optional setting can be used to automatically create 4 platform-dependent pages:
+
+* the home page
+* the indicators.json page
+* the search results page
+* the reporting status page
+
+Without this setting, you will need a file for each of these 4 pages (per language), in a `_pages` folder. This setting can include more advanced settings (see [here](https://github.com/open-sdg/jekyll-open-sdg-plugins/blob/master/lib/jekyll-open-sdg-plugins/create_pages.rb#L18)) but can also simply be set to `true`.
+
+```nohighlight
+create_pages: true
+```
+
 ### custom_css
 
 This optional setting can be used to load additional CSS files on each page. It should be a list of relative paths to CSS files.
