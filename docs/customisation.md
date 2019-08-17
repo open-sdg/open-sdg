@@ -4,7 +4,7 @@
 
 Jekyll configuration is stored at the root of the site repository in a YAML file called `_config.yml`. General documentation about Jekyll configuration can be found [here](https://jekyllrb.com/docs/configuration/).
 
-The [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains and [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml) with documentation of each of the platform-specific settings.
+In addition to general Jekyll configurations, Open SDG needs some specific configurations. For more information on these, please see the [configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/).
 
 ## Optional features
 
