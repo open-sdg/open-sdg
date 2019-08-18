@@ -66,11 +66,20 @@ var accessibilitySwitcher = function() {
       'href': 'javascript:void(0)',
       'title': 'Set to ' + contrast + ' contrast',
       'data-contrast': contrast,
-    }).text('A').click(function() {
+    }).text(getContrastToggleLabel(contrast)).click(function() {
       setActiveContrast($(this).data('contrast'));
       imageFix(contrast);
     })));
   });
+  
+function getContrastToggleLabel(identifier){	
+  if(identifier === "default"){	
+    return translations.header.disable_high_contrast; 	
+  }	
+  else if(identifier === "high"){	
+    return translations.header.enable_high_contrast;	
+  }	
+}
   
   
 function imageFix(contrast) {
