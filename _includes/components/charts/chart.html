@@ -5,11 +5,16 @@
     </div>
 
     {% assign graph_template = 'components/charts/' | append: include.graph_type | append: '.html' %}
-    <div class="plot-container">
-        {% include {{graph_template}} %}
+    <div id="selectionsChart" class="chart-text">
+      <div id="chart-canvas">
+        <h3 class="chart-title">{{ meta.graph_title | t }}</h3>
+        <div id="chart" class="plot-container">
+          {% include {{graph_template}} %}
+        </div>
+        <div id="plotLegend"></div>
+      </div>
+      <button id="btnSave" title='Download chart as image' class='btn btn-primary btn-download'>Download chart as image</button>
     </div>
-    <div id="plotLegend"></div>
-
     <div id="chartSelectionDownload"></div>
 
 {% endif %}
