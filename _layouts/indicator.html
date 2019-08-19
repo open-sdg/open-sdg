@@ -47,7 +47,8 @@
     {% assign src_active = "source_active_" | append: i %}
     {% if meta[src_active] == true %}
       {% assign src_org = "source_organisation_" | append: i %} 
-      {% assign sources_list = sources_list | push: meta[src_org]  %}
+      {% assign src_org_translated = meta[src_org] | t %}
+      {% assign sources_list = sources_list | push: src_org_translated  %}
     {% endif %}
   {% endfor %}
 
