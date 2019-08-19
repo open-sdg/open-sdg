@@ -432,7 +432,7 @@ var indicatorView = function (model, options) {
           // Leave out everything else.
           return true;
         }
-        );
+      }});
         // First convert the target to a canvas.
         html2canvas(element, options).then(function(canvas) {
           // Then download that canvas as a PNG file.
