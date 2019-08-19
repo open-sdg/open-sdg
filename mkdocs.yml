@@ -27,6 +27,7 @@ pages:
     - Developers:
         - Local development: development.md
         - Deployment: deployment.md
+        - Configuration: configuration.md
         - Customisation: customisation.md
         - Translation: translation.md
         - Maps: maps.md
