@@ -318,6 +318,8 @@ var indicatorView = function (model, options) {
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
 
+
+
   this.createPlot = function (chartInfo) {
 
     var that = this;
@@ -349,7 +351,6 @@ var indicatorView = function (model, options) {
             }
           }]
         },
-
         legendCallback: function(chart) {
             var text = ['<ul id="legend">'];
 
@@ -391,8 +392,9 @@ var indicatorView = function (model, options) {
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#6e6e6e';
-        }
+      }
     });
+
     this.createTableFooter('selectionChartFooter', chartInfo.footerFields, '#chart-canvas');
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
@@ -432,15 +434,15 @@ var indicatorView = function (model, options) {
           // Leave out everything else.
           return true;
         }
-      }});
-        // First convert the target to a canvas.
-        html2canvas(element, options).then(function(canvas) {
-          // Then download that canvas as a PNG file.
-          canvas.toBlob(function(blob) {
-            saveAs(blob, filename);
-          });
+      };
+      // First convert the target to a canvas.
+      html2canvas(element, options).then(function(canvas) {
+        // Then download that canvas as a PNG file.
+        canvas.toBlob(function(blob) {
+          saveAs(blob, filename);
         });
       });
+    });
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
@@ -525,6 +527,7 @@ var indicatorView = function (model, options) {
     this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#selectionsTable');
     this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
   };
+
 
   this.createDownloadButton = function(table, name, indicatorId, el) {
     if(window.Modernizr.blobconstructor) {
@@ -641,7 +644,7 @@ var indicatorView = function (model, options) {
     }
   };
 
-  this.createTableFooter = function(divid, el) {
+  this.createTableFooter = function(divid, footerFields, el) {
     var footdiv = $('<div />').attr({
       'id': divid,
       'class': 'table-footer-text'
@@ -653,6 +656,7 @@ var indicatorView = function (model, options) {
 
     $(el).append(footdiv);
   };
+
 
   this.sortFieldGroup = function(fieldGroupElement) {
     var sortLabels = function(a, b) {
