@@ -1166,8 +1166,20 @@ h5 + .btn-download {
         font-size: 0.85em;
         margin: 0 0 5px;
       }
+      padding-left: 20px;
     }
   }
+
+  #selectionsChart {
+    padding-bottom: 20px;
+  }
+
+  #selectionChartFooter {
+    font-size: 12px;
+    line-height: 10px;
+    padding-left: 20px;
+  }
+
 
   /*
       MAP STUFF
@@ -1647,6 +1659,23 @@ footer {
       &:hover {
         color: black;
       }
+    }
+  }
+}
+
+.chart-title {
+  text-align: center;
+}
+
+.image-download-in-progress {
+  &, * {
+    padding: 0;
+    margin: 0;
+  }
+  #selectionChartFooter {
+    padding-left: 20px;
+    p {
+      margin-bottom: 10px;
     }
   }
 }
