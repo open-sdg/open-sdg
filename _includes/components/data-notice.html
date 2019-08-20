@@ -1,0 +1,9 @@
+{% if meta.data_notice_heading %}
+  <div class="alert {{ meta.data_notice_colour }}">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      <div class="data-notice">
+        <h4>{{ meta.data_notice_heading }}</h4>
+        <p>{{ meta.data_notice_text }}</p>
+      </div>
+  </div>
+{% endif %}
