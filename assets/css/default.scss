@@ -265,7 +265,8 @@ header {
         font-size: 0.75em;
         font-weight: bold;
         border-radius: 5px;
-        width: 150px;
+	width: fit-content;
+        max-width: 150px;
         max-height: 25px;
         text-align: center;
         margin-left: 1em;
