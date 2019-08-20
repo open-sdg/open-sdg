@@ -272,10 +272,6 @@ header {
         a {
           margin: auto;
           text-decoration: none;
-	  display: flex;
-          justify-content: center;
-          flex-direction: column;
-          height: 100%;
         }
       }
 
@@ -1680,6 +1676,10 @@ footer {
       a {
         margin: auto;
         text-decoration: none;
+	display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
       }
     }
 
