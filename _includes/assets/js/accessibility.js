@@ -74,10 +74,10 @@ var accessibilitySwitcher = function() {
   
 function getContrastToggleLabel(identifier){	
   if(identifier === "default"){	
-    return translations.header.high_contrast; 	
+    return translations.header.default_contrast; 	
   }	
   else if(identifier === "high"){	
-    return translations.header.default_contrast;	
+    return translations.header.high_contrast;	
   }	
 }
   
