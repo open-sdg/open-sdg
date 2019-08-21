@@ -10,7 +10,7 @@ $(function() {
   
   this.topLevelMenuToggle = document.querySelector("#menuToggle");
   
-  topLevelMenuToggle.addEventListener("click", function(){
+  this.topLevelMenuToggle.addEventListener("click", function(){
     setTopLevelMenuAccessibilityActions();
   });
   function setTopLevelMenuAccessibilityActions(){
