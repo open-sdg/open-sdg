@@ -8,9 +8,9 @@ $(function() {
     $('.top-level span').removeClass('open');
   };  
   
-  this.topLevelMenuToggle = document.querySelector("#menuToggle");
+  var topLevelMenuToggle = document.querySelector("#menuToggle");
   
-  this.topLevelMenuToggle.addEventListener("click", function(){
+  topLevelMenuToggle.addEventListener("click", function(){
     setTopLevelMenuAccessibilityActions();
   });
   function setTopLevelMenuAccessibilityActions(){
