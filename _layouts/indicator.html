@@ -97,9 +97,10 @@
             <li role="presentation" class="nav-item map" style="display:none">
               <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}>{{ t.indicator.map }}</a>
             </li>
-            {%- if meta.embedded_map_html -%}
+            {%- if meta.embedded_feature_url -%}
             <li role="presentation" class="nav-item embedded-map">
-              <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ t.indicator.map }}</a>
+              <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ meta.embedded_feature_tab_title }}</a>
+            </li>
           </li>
             {%- endif -%}
           </ul>
@@ -117,9 +118,19 @@
                 <img src="{{ site.baseurl }}/assets/img/loading.gif" alt="{{ t.indicator.loading_map }}" />
               </div>
             </div>
-            {% if meta.embedded_map_html %}
+            {% if meta.embedded_feature_url %}
             <div role="tabpanel" class="tab-pane" id="embeddedmapview" class="embedded-map">
-              {{ meta.embedded_map_html }}
+              <div role="tabpanel" class="tab-pane" id="embeddedmapview" >
+              <div class="row">
+              <div class="col-xs-12">
+                <h3 tabindex="0">{{ meta.embedded_feature_title }}</h3>
+              </div>
+            </div>
+              <div class="embedded-map" id="embeddedmapframe">
+                <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+                <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ meta.embedded_feature_url }}', {});})</script>
+
+              </div>
             </div>
             {% endif %}
           </div>
