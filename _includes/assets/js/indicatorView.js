@@ -256,14 +256,28 @@ var indicatorView = function (model, options) {
 
   $(this._rootElement).on('click', '.variable-selector', function(e) {
     var currentSelector = e.target;
-
+    
+    var currentButton = getCurrentButtonFromCurrentSelector(currentSelector);
+    
     var options = $(this).find('.variable-options');
     var optionsAreVisible = options.is(':visible');
     $(options)[optionsAreVisible ? 'hide' : 'show']();
-    currentSelector.setAttribute("aria-expanded", optionsAreVisible ? "true" : "false");
+    currentButton.setAttribute("aria-expanded", optionsAreVisible ? "true" : "false");
+    
+    var optionsVisibleAfterClick = options.is(':visible');
+    currentButton.setAttribute("aria-expanded", optionsVisibleAfterClick ? "true" : "false");
 
     e.stopPropagation();
   });
+  
+  function getCurrentButtonFromCurrentSelector(currentSelector){
+    if(currentSelector.tagName === "H5"){
+      return currentSelector.parentElement;
+    }
+    else if(currentSelector.tagName === "BUTTON"){
+      return currentSelector;
+    }
+  }
 
   this.initialiseSeries = function(args) {
     if(args.series.length) {
