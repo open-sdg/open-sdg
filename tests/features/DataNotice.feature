@@ -14,4 +14,4 @@ Feature: Data notice
    
    Scenario: Data notices appear on indicator pages
    Given I am on "/1-2-1"
-   Then I should see a data notice of the `success` class 
+   Then I should see 1 "success data notice" element 
