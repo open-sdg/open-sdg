@@ -32,6 +32,7 @@
 
   <div class="row" id="page-content-row">
     <div class="col-xs-12">
+      {% include components/data-notice.html %}
       {% include components/indicator-content.html %}
     </div>
   </div>
@@ -41,9 +42,21 @@
       <h2>{{ meta.graph_title | t }}</h2>
     </div>
   </div>
+  
+  {% assign sources_list = '' | split: ',' %}
+  {% for i in (1..12) %}
+    {% assign src_active = "source_active_" | append: i %}
+    {% if meta[src_active] == true %}
+      {% assign src_org = "source_organisation_" | append: i %} 
+      {% assign src_org_translated = meta[src_org] | t %}
+      {% assign sources_list = sources_list | push: src_org_translated  %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign uniqSources = sources_list | uniq | join: ", " %}
 
   <div class="row" id="indicatorData" data-indicatorid='{{dataset_name}}' data-id="{{meta.indicator | slugify }}" data-country="{{ meta.national_geographical_coverage | t }}"
-  data-charttitle="{{ meta.graph_title | t }}" data-measurementunit="{{ meta.computation_units | t }}" data-datasource="{{ meta.source_organisation_1 | t }}"
+  data-charttitle="{{ meta.graph_title | t }}" data-measurementunit="{{ meta.computation_units | t }}" data-datasource="{{ uniqSources }}"
   data-geographicalarea="{{ meta.national_geographical_coverage | t }}" data-footnote="{{ meta.data_footnote | t }}" data-showdata="{{ show_data }}" data-graphtype="{{ meta.graph_type }}"
   data-geocoderegex="{{ meta.data_geocode_regex }}" data-showmap="{{ meta.data_show_map }}" data-startvalues="{{ meta.data_start_values | join: '|' }}">
     {% if show_data %}

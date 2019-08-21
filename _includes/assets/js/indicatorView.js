@@ -77,6 +77,13 @@ var indicatorView = function (model, options) {
 
   this._model.onNoHeadlineData.attach(function(sender, args) {
     if (args && args.minimumFieldSelections && _.size(args.minimumFieldSelections)) {
+      // Force a unit if necessary.
+      if (args.forceUnit) {
+        $('#units input[type="radio"]')
+          .filter('[value="' + args.forceUnit + '"]')
+          .first()
+          .click();
+      }
       // If we have minimum field selections, impersonate a user and "click" on
       // each item.
       for (var fieldToSelect in args.minimumFieldSelections) {
@@ -249,14 +256,28 @@ var indicatorView = function (model, options) {
 
   $(this._rootElement).on('click', '.variable-selector', function(e) {
     var currentSelector = e.target;
-
+    
+    var currentButton = getCurrentButtonFromCurrentSelector(currentSelector);
+    
     var options = $(this).find('.variable-options');
     var optionsAreVisible = options.is(':visible');
     $(options)[optionsAreVisible ? 'hide' : 'show']();
-    currentSelector.setAttribute("aria-expanded", optionsAreVisible ? "true" : "false");
+    currentButton.setAttribute("aria-expanded", optionsAreVisible ? "true" : "false");
+    
+    var optionsVisibleAfterClick = options.is(':visible');
+    currentButton.setAttribute("aria-expanded", optionsVisibleAfterClick ? "true" : "false");
 
     e.stopPropagation();
   });
+  
+  function getCurrentButtonFromCurrentSelector(currentSelector){
+    if(currentSelector.tagName === "H5"){
+      return currentSelector.parentElement;
+    }
+    else if(currentSelector.tagName === "BUTTON"){
+      return currentSelector;
+    }
+  }
 
   this.initialiseSeries = function(args) {
     if(args.series.length) {
@@ -682,6 +703,6 @@ var indicatorView = function (model, options) {
     };
     fieldGroupElement.find('label')
     .sort(sortLabels)
-    .appendTo(fieldGroupElement.find('.variable-options'));
+    .appendTo(fieldGroupElement.find('#indicatorData .variable-options'));
   }
 };

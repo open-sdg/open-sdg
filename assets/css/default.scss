@@ -98,7 +98,6 @@ html {
 
 body {
   background: $main-background-color;
-  padding: $disclaimer-height + unquote("px") 0 0 0;
   margin: 0 0 50px 0;
 }
 
@@ -190,12 +189,6 @@ header {
 
 #disclaimer {
   background: #f2dede;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 400;
-  max-height: $disclaimer-height + unquote("px");
 
   .phase-tag {
     background: #005ea5;
@@ -454,7 +447,7 @@ header {
         left: 25px;
         color: black;
       }
-	    
+
       button {
         display: inline-flex;
         position: absolute;
@@ -1244,7 +1237,6 @@ h5 + .btn-download {
     position: absolute;
     top: 12px;
     right: 12px;
-
     a {
       background-color: white;
       border: none;
@@ -1252,7 +1244,6 @@ h5 + .btn-download {
       float: left;
     }
   }
-
   #zoom-in, #zoom-out {
     background-color: black;
     background-repeat: no-repeat;
@@ -1261,11 +1252,9 @@ h5 + .btn-download {
     width: 18px;
     height: 18px;
   }
-
   #zoom-in {
     background-position: 1px 1px;
   }
-
   #zoom-out {
     background-position: 1px -51px;
   }
@@ -1703,6 +1692,16 @@ footer {
 /* example stuff */
 body.contrast-high {
 
+  #page-content {
+    .alert {
+      div {
+        p, h4 {
+          color: black;
+	}
+      }
+    }
+  }
+
   #accessibility-nav {
     li {
       &.contrast-default {
@@ -2047,3 +2046,13 @@ body.contrast-high {
     cursor: pointer;
   }
 }
+
+.data-notice {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.fa-exclamation-circle {
+  font-size: 60px;
+  display: inline-block;
+}	

@@ -139,3 +139,14 @@ In the Prose editor, you can add free Markdown text in the same file as the meta
 
 A guide to writing [Markdown is here](https://guides.github.com/features/mastering-markdown/) and you can write your own tables, lists, links, headings, and so on. This is a useful place to add information about an indicator that doesn't fit in with the rest of the metadata.
 
+
+# Data Notice
+
+You may want to display some very important information which site viewers must keep in mind when using the data provided. To display a notice above the graph in a coloured box, you can use the following fields within the metadata file.
+
+| Tag                                 | Description                        |
+|-------------------------------------|------------------------------------|
+| data_notice_heading                 | Title of data notice               |
+| data_notice_text                    | Text you want to display within the notice |
+| data_notice_class                   | One of `success`(green), `warning` (amber) or `danger` (red) |
+

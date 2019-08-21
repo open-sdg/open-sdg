@@ -582,7 +582,8 @@ var indicatorModel = function (options) {
     if((options.initial || options.unitsChangeSeries) && !this.hasHeadline) {
       // if there is no initial data, select some:
 
-      var minimumFieldSelections = {};
+      var minimumFieldSelections = {},
+          forceUnit = false;
       // First, do we have some already pre-configured from data_start_values?
       if (this.startValues) {
         // We need to confirm that these values are valid, and pair them up
@@ -607,6 +608,8 @@ var indicatorModel = function (options) {
         // value in each drop-down, up until there are enough selected to display
         // data on the graph. First we get the number of fields:
         var fieldNames = _.pluck(this.fieldItemStates, 'field');
+        // Manually add "Units" so that we can check for required units.
+        fieldNames.push('Units');
         // We filter our full dataset to only those fields.
         var fieldData = _.map(this.data, function(item) { return _.pick(item, fieldNames); });
         // We then sort the data by each field. We go in reverse order so that the
@@ -618,11 +621,25 @@ var indicatorModel = function (options) {
         // rows. In other words we want the row with the fewest number of fields.
         fieldData = _.sortBy(fieldData, function(item) { return _.size(item); });
         minimumFieldSelections = fieldData[0];
+        // If we ended up finding something with "Units", we need to remove it
+        // before continuing and then remember to force it later.
+        if ('Units' in minimumFieldSelections) {
+          forceUnit = minimumFieldSelections['Units'];
+          delete minimumFieldSelections['Units'];
+        }
+      }
+
+      // Ensure that we only force a unit on the initial load.
+      if (!options.initial) {
+        forceUnit = false;
       }
 
       // Now that we are all sorted, we notify the view that there is no headline,
       // and pass along the first row as the minimum field selections.
-      this.onNoHeadlineData.notify({ minimumFieldSelections: minimumFieldSelections });
+      this.onNoHeadlineData.notify({
+        minimumFieldSelections: minimumFieldSelections,
+        forceUnit: forceUnit
+      });
     }
   };
 };
