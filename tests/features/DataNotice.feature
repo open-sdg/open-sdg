@@ -7,11 +7,6 @@ Feature: Data notice
   Scenario: Data notices appear on indicator pages
   Given I am on "/1-2-1"
   Then I should see "My data notice heading"
-   
-   Scenario: Data notices appear on indicator pages
-   Given I am on "/1-2-1"
-   Then I should see "My data notice text"
-   
-   Scenario: Data notices appear on indicator pages
-   Given I am on "/1-2-1"
-   Then I should see 1 "success data notice" element 
+  And I should see "My data notice text"
+  And I should see 1 "success data notice" element
+
