@@ -7,6 +7,34 @@ $(function() {
     $('.top-level li').removeClass('active');
     $('.top-level span').removeClass('open');
   };  
+  
+  this.topLevelMenuToggle = document.querySelector("#menuToggle");
+  
+  topLevelMenuToggle.addEventListener("click", function(){
+    setTopLevelMenuAccessibilityActions();
+  });
+  function setTopLevelMenuAccessibilityActions(){
+    if(topLevelMenuIsOpen()){
+      setAriaExpandedStatus(true);
+      focusOnFirstMenuElement();
+    }
+    else{
+      setAriaExpandedStatus(false);
+    }
+    function topLevelMenuIsOpen(){
+      return topLevelMenuToggle.classList.contains("active");
+    }
+    function setAriaExpandedStatus(expandedStatus){
+      topLevelMenuToggle.setAttribute("aria-expanded", expandedStatus.toString());
+    }
+    function focusOnFirstMenuElement(){
+      var firstMenuElement = getFirstMenuElement();
+      firstMenuElement.focus();
+    }
+    function getFirstMenuElement(){
+      return document.querySelector("#menu .nav-link:first-child a");
+    }
+  }
 
   $('.top-level span, .top-level button').click(function() {
     var target = $(this).data('target');
