@@ -152,6 +152,14 @@ analytics:
   ga_prod: 'paste ID here'
 ```
 
+### contrast_type
+
+This optional setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+
+```nohighlight
+contrast_type: long
+```
+
 ### create_goals
 
 This optional setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
@@ -245,11 +253,7 @@ non_global_metadata: indicator.national_metadata
 
 ### sharethis_property
 
-This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](https://open-sdg.readthedocs.io/en/latest/social-media-sharing/) page.
-
-### contrast_type: long
-
-This optional setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active. 
+This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](https://open-sdg.readthedocs.io/en/latest/social-media-sharing/) page. 
 
 ## Examples
 
