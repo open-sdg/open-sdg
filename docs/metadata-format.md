@@ -123,8 +123,19 @@ Some additional tags are available for the graphs, including the graph type and 
 | graph_type                          | One of `line` or `bar`     |
 | graph_title                         | The title to be shown on the graph |
 
+## Embedded Feature Metadata
+
+You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following tags to the metadata file.
+
+| Tag                                 | Description                                       
+|-------------------------------------|--------------------------------------------------|
+| embedded_feature_tab_title          | Tab title e.g. Embedded Chart                    |
+| embedded_feature_title              | The title to be shown above the embedded feature |
+| embedded_feature_url                | URL of feature that you want to embed            |
+
 # Non-Standard Information
 
 In the Prose editor, you can add free Markdown text in the same file as the metadata. This is the `edit` section in prose and is part of the metadata. In the raw .md file this is the content underneath the yaml header. You can add any content you like in this section and the content will be converted to html and placed above the graph near the top of the screen.
 
 A guide to writing [Markdown is here](https://guides.github.com/features/mastering-markdown/) and you can write your own tables, lists, links, headings, and so on. This is a useful place to add information about an indicator that doesn't fit in with the rest of the metadata.
+
