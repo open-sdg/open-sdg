@@ -3,7 +3,7 @@ var accessibilitySwitcher = function() {
   var contrastIdentifiers = ['default', 'high'];
 
   function setActiveContrast(contrast) {
-    var contrastType = "{{ site.contrast_type }}
+    var contrastType = "{{ site.contrast_type }}"
     _.each(contrastIdentifiers, function(id) {
       $('body').removeClass('contrast-' + id);
     });
