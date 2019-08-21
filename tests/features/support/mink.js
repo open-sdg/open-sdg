@@ -32,6 +32,7 @@ const driver = new mink.Mink({
     "the 'Select all' button": "button[data-type='select']",
     "the 'Clear all' button": "button[data-type='clear']",
     "the 'Clear selections' button": "button#clear",
+    "success data notice": "div.alert.success"
   }
 });
 
