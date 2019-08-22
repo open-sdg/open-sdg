@@ -68,7 +68,7 @@ var accessibilitySwitcher = function() {
       'class': 'nav-link contrast contrast-' + contrast
     }).html($('<a />').attr(gaAttributes).attr({
       'href': 'javascript:void(0)',
-      'title': 'Set to ' + contrast + ' contrast',
+      'title': getContrastToggleTitle(contrast),
       'data-contrast': contrast,
     }).html(getContrastToggleLabel(contrast).replace(" ", "<br/>")).click(function() {
       setActiveContrast($(this).data('contrast'));
