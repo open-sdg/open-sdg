@@ -2079,9 +2079,9 @@ body.long {
     font-size: 0.75em;
     font-weight: bold;
     border-radius: 5px;
-    width: fit-content;
+    width: auto;
     max-width: 150px;
-    height: fit-content;
+    height: auto;
     max-height: 50px;
     text-align: center;
     margin-left: 1em;
@@ -2099,8 +2099,8 @@ body.long {
       font-size: 1em;
     }
     border-radius: 5px;
-    height: fit-content;
-    width: fit-content;
+    height: auto;
+    width: auto;
     text-align: center;
     margin: 0.25em;
     margin-top: 0.1em;
@@ -2112,7 +2112,6 @@ body.long {
       margin: auto;
       text-decoration: none;
       padding: 1px;
-      display: table-caption;  
     }
   }
 
