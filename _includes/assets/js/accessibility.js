@@ -70,7 +70,7 @@ var accessibilitySwitcher = function() {
       'href': 'javascript:void(0)',
       'title': 'Set to ' + contrast + ' contrast',
       'data-contrast': contrast,
-    }).text(getContrastToggleLabel(contrast)).click(function() {
+    }).html(getContrastToggleLabel(contrast).replace(" ", "<br/>")).click(function() {
       setActiveContrast($(this).data('contrast'));
       imageFix(contrast);
     })));
