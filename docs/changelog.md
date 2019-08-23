@@ -5,7 +5,6 @@
 * Translate regions on maps (#255)
 * Translate each part of the combined disaggregation labels (#256)
 * Set a body class for each layout (#257)
-* Force a specific unit if needed when no headline data (#264)
 * Use page.url instead of page.permalink to determine active menu item (#266)
 * Fixed typo in quickstart (#270)
 * Fix search bar styling for IE and mobile (#273)
@@ -32,7 +31,6 @@ Breaking changes:
    * _includes/assets/js/indicatorView.js
    * _includes/assets/js/menu.js
    * _includes/assets/js/plugins/jquery.sdgMap.js
-   * _includes/components/data-notice.html
    * _includes/components/metadata.html
    * _includes/footer.html
    * _includes/head.html
