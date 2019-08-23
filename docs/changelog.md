@@ -1,5 +1,48 @@
 <h1>Change Log</h1>
 
+## 0.8.0
+
+* Translate regions on maps (#255)
+* Translate each part of the combined disaggregation labels (#256)
+* Set a body class for each layout (#257)
+* Force a specific unit if needed when no headline data (#264)
+* Use page.url instead of page.permalink to determine active menu item (#266)
+* Fixed typo in quickstart (#270)
+* Fix search bar styling for IE and mobile (#273)
+* Screen reader to read out disaggregation is expandable/collapsible and what state it is in (#317)
+* Prefix social media platform links with platform name (#318)
+* Clean up embed code and make more configurable (#319)
+* Make search bar obvious to screen readers (#320)
+* Give goal page title in format `Goal # - Goal title` (#321)
+* Screen reader to indicate when check boxes are selected (#323)
+* Add configurable data notice to indicator pages (#296)
+* Stop disclaimer from overhanging if text is long (#309)
+* Have list of sources in graph footer rather than just one (#311)
+* Mobile menu fix (#324)
+* Allow markdown in all visible metadata fields (#303)
+* Optional alternative contrast button (#325)
+* Chart attributes changes from canvas to html (#315)
+
+Breaking changes:
+* You should be using SDG Translations 0.7.0 or higher before upgrading to this release
+* Embedded feature configuration has changed. If you are using the embedded option you need to alter the metadata tags to account for these changes.
+* After this change, all sites will need to have jekyll-open-sdg-plugins 0.0.13 or later.
+* In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.7.0...0.8.0) to see if you need to make any updates to your overriddes:
+   * _includes/assets/js/indicatorModel.js
+   * _includes/assets/js/indicatorView.js
+   * _includes/assets/js/menu.js
+   * _includes/assets/js/plugins/jquery.sdgMap.js
+   * _includes/components/data-notice.html
+   * _includes/components/metadata.html
+   * _includes/footer.html
+   * _includes/head.html
+   * _includes/header.html
+   * _includes/search.html
+   * _layouts/indicator.html
+   * assets/css/default.scss
+
+
+
 ## 0.7.0
 
 * Create search button (#244, #251)
