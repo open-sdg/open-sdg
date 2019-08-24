@@ -9,24 +9,9 @@ baseurl: ""
 url: ""
 data_dir: data
 environment: staging
-# Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-remotedatabaseurl: "https://open-sdg.github.io/open-sdg-data-testing/staging"
-
-jekyll_get_json:
-  - data: meta
-    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/meta/all.json'
-  - data: headlines
-    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/headline/all.json'
-  - data: schema
-    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/meta/schema.json'
-  - data: reporting
-    # Replace MY-GITHUB-ORG and OPEN-SDG-DATA-STARTER as needed.
-    json: 'https://open-sdg.github.io/open-sdg-data-testing/staging/stats/reporting.json'
-  - data: translations
-    json: 'https://open-sdg.github.io/sdg-translations/translations.json'
+remote_data_prefix: "https://open-sdg.github.io/open-sdg-data-testing/staging"
+remote_translations:
+  - https://open-sdg.github.io/sdg-translations/translations.json
 
 analytics:
   ga_prod: ''
@@ -89,7 +74,6 @@ languages:
 goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
 
 plugins:
-  - jekyll-get-json
   - jekyll-open-sdg-plugins
 
 # This makes sure that all pages have a language.
@@ -107,3 +91,15 @@ custom_css:
 # Social media accounts.
 twitter: 'MyTwitterAccount'
 facebook: 'MyFacebookAccount'
+
+map_options:
+  minZoom: 5
+  tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  tileOptions:
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+map_layers:
+  - min_zoom: 5
+    max_zoom: 10
+    serviceUrl: https://geoportal1-ons.opendata.arcgis.com/datasets/4fcca2a47fed4bfaa1793015a18537ac_4.geojson
+    nameProperty: rgn17nm
+    idProperty: rgn17cd
