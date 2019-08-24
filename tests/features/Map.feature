@@ -5,7 +5,7 @@ Feature: Map
   So that I can gain insights into regional differences
 
   Background:
-    Given I am on "/1-3-1"
+    Given I am on "/1-2-1"
     And I wait 3 seconds
 
   Scenario: Indicators have a "Map" tab which displays data in a map
