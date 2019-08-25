@@ -10,8 +10,10 @@ const driver = new mink.Mink({
   selectors: {
     "the Table tab": ".data-view .nav-link[href='#tableview']",
     "the Chart tab": ".data-view .nav-link[href='#chartview']",
+    "the Map tab": ".data-view .nav-link[href='#mapview']",
     "sortable table": "#tableview table",
     "visual chart": "#chartview canvas",
+    "map": "#mapview #map.leaflet-container",
     "the Global metadata tab": ".nav-tabs .nav-link[href='#globalmetadata']",
     "the National metadata tab": ".nav-tabs .nav-link[href='#metadata']",
     "the Sources metadata tab": ".nav-tabs .nav-link[href='#sources']",
@@ -32,7 +34,8 @@ const driver = new mink.Mink({
     "the 'Select all' button": "button[data-type='select']",
     "the 'Clear all' button": "button[data-type='clear']",
     "the 'Clear selections' button": "button#clear",
-    "success data notice": "div.alert.success"
+    "success data notice": "div.alert.success",
+    "disaggregation sidebar": "#indicator-sidebar:not(.indicator-sidebar-hidden)"
   }
 });
 
