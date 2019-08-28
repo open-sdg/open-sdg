@@ -76,28 +76,36 @@ var indicatorView = function (model, options) {
   });
 
   this._model.onNoHeadlineData.attach(function(sender, args) {
+    // Force a unit if necessary.
+    if (args && args.forceUnit) {
+      $('#units input[type="radio"]')
+        .filter('[value="' + args.forceUnit + '"]')
+        .first()
+        .click();
+      // Since that "click" will trigger this event all over again, we can stop
+      // here.
+      return;
+    }
+    // Force particular minimum field selections if necessary. We have to delay
+    // this slightly to make it work...
     if (args && args.minimumFieldSelections && _.size(args.minimumFieldSelections)) {
-      // Force a unit if necessary.
-      if (args.forceUnit) {
-        $('#units input[type="radio"]')
-          .filter('[value="' + args.forceUnit + '"]')
-          .first()
-          .click();
-      }
-      // If we have minimum field selections, impersonate a user and "click" on
-      // each item.
       for (var fieldToSelect in args.minimumFieldSelections) {
         var fieldValue = args.minimumFieldSelections[fieldToSelect];
-        $('#fields .variable-options input[type="checkbox"]')
-          .filter('[data-field="' + fieldToSelect + '"]')
-          .filter('[value="' + fieldValue + '"]')
-          .first()
-          .click();
+        setTimeout(function() {
+          $('#fields .variable-options input[type="checkbox"]')
+            .filter('[data-field="' + fieldToSelect + '"]')
+            .filter('[value="' + fieldValue + '"]')
+            .first()
+            .click();
+        }, 500);
       }
     }
     else {
       // Fallback behavior - just click on the first one, whatever it is.
-      $('#fields .variable-options :checkbox:eq(0)').trigger('click');
+      // Also needs to be delayed...
+      setTimeout(function() {
+        $('#fields .variable-options :checkbox:eq(0)').trigger('click');
+      }, 500);
     }
   });
 
@@ -256,20 +264,20 @@ var indicatorView = function (model, options) {
 
   $(this._rootElement).on('click', '.variable-selector', function(e) {
     var currentSelector = e.target;
-    
+
     var currentButton = getCurrentButtonFromCurrentSelector(currentSelector);
-    
+
     var options = $(this).find('.variable-options');
     var optionsAreVisible = options.is(':visible');
     $(options)[optionsAreVisible ? 'hide' : 'show']();
     currentButton.setAttribute("aria-expanded", optionsAreVisible ? "true" : "false");
-    
+
     var optionsVisibleAfterClick = options.is(':visible');
     currentButton.setAttribute("aria-expanded", optionsVisibleAfterClick ? "true" : "false");
 
     e.stopPropagation();
   });
-  
+
   function getCurrentButtonFromCurrentSelector(currentSelector){
     if(currentSelector.tagName === "H5"){
       return currentSelector.parentElement;
