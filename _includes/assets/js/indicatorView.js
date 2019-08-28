@@ -89,15 +89,18 @@ var indicatorView = function (model, options) {
     // Force particular minimum field selections if necessary. We have to delay
     // this slightly to make it work...
     if (args && args.minimumFieldSelections && _.size(args.minimumFieldSelections)) {
-      for (var fieldToSelect in args.minimumFieldSelections) {
-        var fieldValue = args.minimumFieldSelections[fieldToSelect];
-        setTimeout(function() {
+      function getClickFunction(fieldToSelect, fieldValue) {
+        return function() {
           $('#fields .variable-options input[type="checkbox"]')
             .filter('[data-field="' + fieldToSelect + '"]')
             .filter('[value="' + fieldValue + '"]')
             .first()
             .click();
-        }, 500);
+        }
+      }
+      for (var fieldToSelect in args.minimumFieldSelections) {
+        var fieldValue = args.minimumFieldSelections[fieldToSelect];
+        setTimeout(getClickFunction(fieldToSelect, fieldValue), 500);
       }
     }
     else {
