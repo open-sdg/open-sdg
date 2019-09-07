@@ -3,11 +3,12 @@
   {%- assign goals = site.goals | where: 'language', current_language -%}
   {%- for goal in goals -%}
   {%- assign goal_number = goal.sdg_goal | downcase -%}
-  {%- assign translated_goal = t.global_goals[goal_number] -%}
+  {%- assign goal_title_key = goal_number | append: '-title' -%}
+  {%- assign goal_title = t.global_goals[goal_title_key] -%}
   {
     "goal": {
       "id": "{{goal_number}}",
-      "title": "{{translated_goal.title | strip_newlines | strip | replace: '"', "'"}}",
+      "title": "{{goal_title | strip_newlines | strip | replace: '"', "'"}}",
       "indicators": [
         {%- assign all_meta = site.data.meta -%}
         {%- if all_meta[current_language] -%}

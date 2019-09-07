@@ -12,13 +12,13 @@
     <div class="row">
       <div class="col-xs-4 col-md-3 col-lg-2">
         <a href="{{ goal_uri }}" title="{{ t.indicator.view_indicator_list }}">
-          <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
+          <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" />
         </a>
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
         <h1>
           <a href="{{ goal_uri }}">
-            <span class="hidden-sm hidden-md hidden-lg">{{ t.general.goal }} {{ goal_number }}: </span>{{ translated_goal.title }}
+            <span class="hidden-sm hidden-md hidden-lg">{{ t.general.goal }} {{ goal_number }}: </span>{{ goal_title }}
           </a>
         </h1>
         <h2>{{ t.general.indicator }} {{ meta.indicator }}: {{ meta.indicator | get_indicator_name }}</h2>
@@ -42,12 +42,12 @@
       <h2>{{ meta.graph_title | t }}</h2>
     </div>
   </div>
-  
+
   {% assign sources_list = '' | split: ',' %}
   {% for i in (1..12) %}
     {% assign src_active = "source_active_" | append: i %}
     {% if meta[src_active] == true %}
-      {% assign src_org = "source_organisation_" | append: i %} 
+      {% assign src_org = "source_organisation_" | append: i %}
       {% assign src_org_translated = meta[src_org] | t %}
       {% assign sources_list = sources_list | push: src_org_translated  %}
     {% endif %}
