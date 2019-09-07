@@ -13,6 +13,14 @@ remote_data_prefix: "https://open-sdg.github.io/open-sdg-data-testing/staging"
 remote_translations:
   - https://open-sdg.github.io/sdg-translations/translations.json
 
+# Automatically create indicator pages, goal pages,
+# and some other required pages.
+create_indicators:
+  layout: indicator
+create_goals:
+  layout: goal
+create_pages: true
+
 analytics:
   ga_prod: ''
 
