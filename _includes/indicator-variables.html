@@ -15,7 +15,6 @@
 {%- assign goal = site.data.translations[default_language].global_goals[goal_number] -%}
 {%- assign translated_goal = t.global_goals[goal_number] -%}
 {% capture goal_uri %}{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}{% endcapture %}
-{% capture goal_href %}{{ goal_uri }}{% endcapture %}
 {% capture goal_title %}{{ goal.title }}{% endcapture %}
 
 {% if meta.reporting_status != "complete" or meta.data_non_statistical == true %}
@@ -27,7 +26,8 @@
 {% capture dataset_name %}indicator_{{meta.indicator | slugify }}{% endcapture %}
 
 {% comment %}
-@deprecated: The following variable will be removed for 1.0.0.
+@deprecated: The following variables will be removed for 1.0.0.
 {% endcomment %}
 {% assign indicator_id_dashes = meta.indicator | replace: ".", "-" %}
 {% assign translated_indicator = t.global_indicators[indicator_id_dashes] | default: t.global_indicators[indicator_id] %}
+{% assign goal_href = goal_uri %}
