@@ -12,13 +12,13 @@
     {%- assign goals = site.goals | where: 'language', current_language -%}
     {% for goal in goals %}
         {%- assign goal_number = goal.sdg_goal -%}
-        {%- assign default_goal = site.data.translations[default_language].global_goals[goal_number] -%}
-        {%- assign translated_goal = t.global_goals[goal_number] -%}
+        {%- assign goal_short_key = goal_number | append: '-short' -%}
+        {%- assign goal_short = t.global_goals[goal_short_key] -%}
 
         {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
             <div class="col-xs-4 col-md-2">
                 <a href="./{{ goal_number }}/">
-                  <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ translated_goal.short }} - {{ t.general.goal }} {{ goal_number }}" />
+                  <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" />
               </a>
             </div>
         {% cycle 'end row' : '', '', '', '', '', '</div>' %}
