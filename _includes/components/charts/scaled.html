@@ -1,0 +1,27 @@
+{% comment %}
+The "scaled" graphs builds on top of "line" or "bar", with a few configuration overrides.
+{% endcomment %}
+<canvas></canvas>
+<script>
+opensdg.chartConfigAlter = function(config) {
+  var overrides = {
+    // Force the "line" or "bar" type instead of the "binary" type which Chart.js using secondary_type from metadata
+    // does not recognize.
+    type: '{{ meta.secondary_graph_type }}',
+    options: {
+  	  scales: {
+    	  yAxes: [{
+          ticks: {
+            min: 1,
+            max:10,
+            stepSize: 1
+            }
+        }]
+      }
+    }
+  }
+  // Add these overrides onto the normal config, and return it.
+  $.extend(true, config, overrides);
+  return config;
+}
+</script>
