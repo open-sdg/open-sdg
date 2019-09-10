@@ -5,24 +5,24 @@ being used, see `createPlot()` in `indicatorView.js`.
 {% endcomment %}
 <canvas></canvas>
 {% if meta.graph_min_value and meta.graph_max_value %}
-  <script>
-  opensdg.chartConfigAlter = function(config) {
-    var overrides = {
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              min: meta.graph_min_value,
-              max: meta.graph_max_value,
-              stepSize: 1
-              }
-            }]
-          }
+<script>
+opensdg.chartConfigAlter = function(config) {
+  var overrides = {
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: meta.graph_min_value,
+            max: meta.graph_max_value,
+            stepSize: 1
+            }
+          }]
         }
       }
-  // Add these overrides onto the normal config, and return it.
-  $.extend(true, config, overrides);
-  return config;
-  }
-  </script>
+    }
+// Add these overrides onto the normal config, and return it.
+$.extend(true, config, overrides);
+return config;
+}
+</script>
 {% endif %}
