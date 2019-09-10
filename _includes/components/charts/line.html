@@ -6,7 +6,7 @@ being used, see `createPlot()` in `indicatorView.js`.
 <canvas></canvas>
 <script>
 console.log(meta.graph_min_value)
-if (meta.graph_min_value) && (meta.graph_max_value) {
+{%- if meta.graph_min_value and meta.graph_max_value -%} 
   opensdg.chartConfigAlter = function(config) {
     var overrides = {
       options: {
@@ -25,5 +25,5 @@ if (meta.graph_min_value) && (meta.graph_max_value) {
   $.extend(true, config, overrides);
   return config;
   }
-}
+{%- endif -%}
 </script>
