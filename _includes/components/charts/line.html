@@ -12,8 +12,8 @@ opensdg.chartConfigAlter = function(config) {
       scales: {
         yAxes: [{
           ticks: {
-            min: meta.graph_min_value,
-            max: meta.graph_max_value,
+            min: {{ meta.graph_min_value }},
+            max: {{ meta.graph_max_value }},
             stepSize: 1
             }
           }]
