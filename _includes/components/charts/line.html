@@ -5,7 +5,7 @@ being used, see `createPlot()` in `indicatorView.js`.
 {% endcomment %}
 <canvas></canvas>
 <script>
-{% if meta.graph_min_value and meta.graph_max_value %}
+if (meta.graph_min_value) && (meta.graph_max_value)
   opensdg.chartConfigAlter = function(config) {
     var overrides = {
       options: {
@@ -23,6 +23,5 @@ being used, see `createPlot()` in `indicatorView.js`.
   // Add these overrides onto the normal config, and return it.
   $.extend(true, config, overrides);
   return config;
-}
-{% endif %}
+  }
 </script>
