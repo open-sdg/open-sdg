@@ -122,6 +122,8 @@ Some additional tags are available for the graphs, including the graph type and 
 |-------------------------------------|------------------------------------|
 | graph_type                          | One of `line` or `bar`     |
 | graph_title                         | The title to be shown on the graph |
+| graph_min_value                     | The lowest value to be shown on the y-axis |
+| graph_max_value                     | The highest value to be shown on the y-axis |
 
 ## Embedded Feature Metadata
 
