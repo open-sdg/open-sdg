@@ -82,9 +82,6 @@ var indicatorView = function (model, options) {
         .filter('[value="' + args.forceUnit + '"]')
         .first()
         .click();
-      // Since that "click" will trigger this event all over again, we can stop
-      // here.
-      return;
     }
     // Force particular minimum field selections if necessary. We have to delay
     // this slightly to make it work...
