@@ -27,6 +27,7 @@ const driver = new mink.Mink({
     "the search box": ".navbar #indicator_search",
     "the filter drop-down button": ".variable-selector .accessBtn",
     "the first filter option": ".variable-selector .variable-options label",
+    "selected unit of measurement": "#units input[checked='']",
     "chart legend": "#legend li",
     "chart legend item": "#legend li",
     "data table": "#selectionsTable",
@@ -38,5 +39,8 @@ const driver = new mink.Mink({
     "disaggregation sidebar": "#indicator-sidebar:not(.indicator-sidebar-hidden)"
   }
 });
+
+// Avoid timeout issues.
+cucumber.setDefaultTimeout(60 * 1000);
 
 driver.hook(cucumber);
