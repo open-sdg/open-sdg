@@ -91,6 +91,7 @@ var indicatorView = function (model, options) {
           $('#fields .variable-options input[type="checkbox"]')
             .filter('[data-field="' + fieldToSelect + '"]')
             .filter('[value="' + fieldValue + '"]')
+            .filter(':not(:checked)')
             .first()
             .click();
         }
