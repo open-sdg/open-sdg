@@ -1,5 +1,32 @@
 <h1>Change Log</h1>
 
+## 0.9.0
+
+* Center embed title (#330)
+* Move charset to beginning of head (#333)
+* Fixes for forcing units/disaggregation when there is no headline (#338)
+* Switch to flattened global translations (#344)
+* Allow min and max value to be set on y axis (#351, #352)
+
+Breaking changes:
+* This upgrade MUST be accompanied by an upgrade to both:
+    * sdg-translations 0.8.0 (or higher)
+    * jekyll-open-sdg-plugins 0.0.14 (or higher)
+* In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.8.0...0.9.0) to see if you need to make any updates to your overriddes:
+   * _includes/assets/js/indicatorView.js
+   * _includes/components/breadcrumb.html
+   * _includes/components/charts/bar.html
+   * _includes/components/charts/line.html
+   * _includes/head.html
+   * _includes/indicator-variables.html
+   * _layouts/frontpage.html
+   * _layouts/goal-by-target.html
+   * _layouts/goal.html
+   * _layouts/indicator-json.html
+   * _layouts/indicator.html
+   * _layouts/reportingstatus.html
+   * assets/css/default.scss
+
 ## 0.8.0
 
 * Translate regions on maps (#255)
