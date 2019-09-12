@@ -13,19 +13,19 @@ Breaking changes:
     * sdg-translations 0.8.0 (or higher)
     * jekyll-open-sdg-plugins 0.0.14 (or higher)
 * In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.8.0...0.9.0) to see if you need to make any updates to your overriddes:
-   * _includes/assets/js/indicatorView.js
-   * _includes/components/breadcrumb.html
-   * _includes/components/charts/bar.html
-   * _includes/components/charts/line.html
-   * _includes/head.html
-   * _includes/indicator-variables.html
-   * _layouts/frontpage.html
-   * _layouts/goal-by-target.html
-   * _layouts/goal.html
-   * _layouts/indicator-json.html
-   * _layouts/indicator.html
-   * _layouts/reportingstatus.html
-   * assets/css/default.scss
+    * _includes/assets/js/indicatorView.js
+    * _includes/components/breadcrumb.html
+    * _includes/components/charts/bar.html
+    * _includes/components/charts/line.html
+    * _includes/head.html
+    * _includes/indicator-variables.html
+    * _layouts/frontpage.html
+    * _layouts/goal-by-target.html
+    * _layouts/goal.html
+    * _layouts/indicator-json.html
+    * _layouts/indicator.html
+    * _layouts/reportingstatus.html
+    * assets/css/default.scss
 
 ## 0.8.0
 
