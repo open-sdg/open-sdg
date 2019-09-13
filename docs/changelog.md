@@ -9,6 +9,7 @@
 * Allow min and max value to be set on y axis (#351, #352)
 
 Breaking changes:
+
 * This upgrade MUST be accompanied by an upgrade to both:
     * sdg-translations 0.8.0 (or higher)
     * jekyll-open-sdg-plugins 0.0.14 (or higher)
@@ -51,6 +52,7 @@ Breaking changes:
 * Chart attributes changes from canvas to html (#315)
 
 Breaking changes:
+
 * You should be using SDG Translations 0.7.0 or higher before upgrading to this release
 * Embedded feature configuration has changed. If you are using the embedded option you need to alter the metadata tags to account for these changes.
 * After this change, all sites will need to have jekyll-open-sdg-plugins 0.0.13 or later.
@@ -67,8 +69,6 @@ Breaking changes:
    * _includes/search.html
    * _layouts/indicator.html
    * assets/css/default.scss
-
-
 
 ## 0.7.0
 
