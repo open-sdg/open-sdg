@@ -16,6 +16,8 @@ test.prep:
 	cp -r -t starter/ _includes _layouts assets
 	# Copy any custom data into the starter.
 	cp -r tests/data starter/
+	# Copy any custom pages into the starter.
+	cp -r tests/pages/* starter/_pages/
 	# Add a second language.
 	cd starter && python scripts/batch/add_language.py es
 	# Build the Jekyll site.
@@ -25,7 +27,7 @@ test.prep:
 	cd tests && npm install
 
 test.serve:
-	# Serve the Jekyll site at http://127.0.0.1:4000/open-sdg-site-testing/
+	# Serve the Jekyll site at http://127.0.0.1:4000/
 	cd starter && bundle exec jekyll serve --detach --skip-initial-build
 
 test.html:

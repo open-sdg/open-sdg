@@ -40,8 +40,8 @@
   {% for group in goal_indicators %}
     {% assign target_id = group.name %}
     {% assign target_id_dashes = target_id | replace: ".", "-" %}
-    {% target_title_key = target_id | append: '-title' %}
-    {% target_title_key_dashes = target_id_dashes | append: '-title' %}
+    {% assign target_title_key = target_id | append: '-title' %}
+    {% assign target_title_key_dashes = target_id_dashes | append: '-title' %}
     {% assign target_title = t.global_targets[target_title_key_dashes] | default: t.global_targets[target_title_key] %}
     <div class="indicator-cards target col-md-6">
       <span>
