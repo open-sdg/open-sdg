@@ -10,7 +10,11 @@
     {%- if language == default_language -%}
       {%- assign new_language_segment = '/' -%}
     {%- else -%}
-      {%- assign new_language_segment = '/' | append: language | append: '/' -%}
+      {%- assign language_code_public = language -%}
+      {%- if site.languages_public and site.languages_public[language] -%}
+        {%- assign language_code_public = site.languages_public[language] -%}
+      {%- endif -%}
+      {%- assign new_language_segment = '/' | append: language_code_public | append: '/' -%}
     {%- endif -%}
     {%- if current_language == default_language -%}
       {%- assign old_language_segment = '/' -%}
