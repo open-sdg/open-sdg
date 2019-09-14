@@ -78,6 +78,11 @@ menu:
 languages:
   - en
   - es
+  - fr
+
+# We will display "fr" as "fr-CA" (French Canadian) for testing purposes.
+languages_public:
+  fr: fr-CA
 
 goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
 
