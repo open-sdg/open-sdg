@@ -27,3 +27,9 @@ Feature: Goal page
       | /15  | 14    |
       | /16  | 23    |
       | /17  | 25    |
+
+  Scenario: The goal-by-target layout displays correctly
+    Given I am on "/testing-goal-by-target"
+    Then I should see "Targets"
+    And I should see 7 "goal target" elements
+    And I should see 14 "goal indicator" elements
