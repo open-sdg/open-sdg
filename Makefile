@@ -16,6 +16,8 @@ test.prep:
 	cp -r -t starter/ _includes _layouts assets
 	# Copy any custom data into the starter.
 	cp -r tests/data starter/
+	# Copy any custom pages into the starter.
+	cp -r tests/pages/* starter/_pages/
 	# Add a second language.
 	cd starter && python scripts/batch/add_language.py es
 	# Build the Jekyll site.
