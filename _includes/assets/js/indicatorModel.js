@@ -37,6 +37,7 @@ var indicatorModel = function (options) {
   this.chartTitle = options.chartTitle;
   this.graphType = options.graphType;
   this.measurementUnit = options.measurementUnit;
+  this.copyright = options.copyright;
   this.dataSource = options.dataSource;
   this.geographicalArea = options.geographicalArea;
   this.footnote = options.footnote;
@@ -181,6 +182,7 @@ var indicatorModel = function (options) {
     that.footerFields[translations.indicator.source] = that.dataSource;
     that.footerFields[translations.indicator.geographical_area] = that.geographicalArea;
     that.footerFields[translations.indicator.unit_of_measurement] = that.measurementUnit;
+    that.footerFields[translations.indicator.copyright] = that.copyright;
     that.footerFields[translations.indicator.footnote] = that.footnote;
     // Filter out the empty values.
     that.footerFields = _.pick(that.footerFields, _.identity);
