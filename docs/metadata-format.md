@@ -125,6 +125,15 @@ Some additional tags are available for the graphs, including the graph type and 
 | graph_min_value                     | The lowest value to be shown on the y-axis |
 | graph_max_value                     | The highest value to be shown on the y-axis |
 
+## Footer
+
+These fields appear (as well as the 'Geographical coverage' and the 'Unit of measurement') below the graph and the table. 
+
+| Tag                                 | Description                        |
+|-------------------------------------|------------------------------------|
+| data_footnote                       | Additional information on the data |
+| copyright                           | Information about the copyright    |
+
 ## Embedded Feature Metadata
 
 You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following tags to the metadata file.
