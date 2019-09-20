@@ -6,14 +6,6 @@ _Note about "strings": Many of the settings detailed here contain human-readable
 
 ## Required settings
 
-### branch
-
-This **required** setting should indicate the default "branch" used by your [data repository](https://open-sdg.readthedocs.io/en/latest/glossary/#data-repository).
-
-```nohighlight
-branch: develop
-```
-
 ### country
 
 This **required** setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
@@ -22,6 +14,14 @@ This **required** setting should contain two more (indented) settings: `name` an
 country:
   name: Australia
   adjective: Australian
+```
+
+### data_edit_url
+
+This **required** setting controls the URL of the "Edit Data" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
 ```
 
 ### email_contacts
@@ -70,6 +70,14 @@ defaults:
       language: "es"
 ```
 
+### metadata_edit_url
+
+This **required** setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
+```
+
 ### menu
 
 This **required** setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](https://open-sdg.readthedocs.io/en/latest/translation/).
@@ -82,14 +90,6 @@ menu:
     translation_key: menu.about
   - path: /faq
     translation_key: menu.faq
-```
-
-### org_name
-
-This **required** setting should indicate the GitHub organisation used for your [data repository](https://open-sdg.readthedocs.io/en/latest/glossary/#data-repository).
-
-```nohighlight
-org_name: my-github-org
 ```
 
 ### plugins
@@ -131,14 +131,6 @@ This **required** setting tells the platform where look for remote language tran
 ```nohighlight
 remote_translations:
   - https://open-sdg.github.io/sdg-translations/translations.json
-```
-
-### repo_name
-
-This **required** setting should indicate the GitHub repository used for your [data repository](https://open-sdg.readthedocs.io/en/latest/glossary/#data-repository).
-
-```nohighlight
-repo_name: my-data-repository
 ```
 
 ## Optional settings
@@ -253,7 +245,7 @@ non_global_metadata: indicator.national_metadata
 
 ### sharethis_property
 
-This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](https://open-sdg.readthedocs.io/en/latest/social-media-sharing/) page. 
+This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](https://open-sdg.readthedocs.io/en/latest/social-media-sharing/) page.
 
 ## Examples
 
