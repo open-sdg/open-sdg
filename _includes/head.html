@@ -19,11 +19,8 @@
         {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ goal_number }}
         {% endcapture %}
 
-        {% assign goal_number = page.sdg_goal %}
-        {% assign goal_short_key = goal_number | append: '-short' %}
-        {% assign goal_short = t.global_goals[goal_short_key] %}
         {% capture goal_page_title %}
-        {{ t.general.goal }} {{ page.sdg_goal }} - {{ goal_short }}
+        {{ t.general.goal }} {{ goal_number }} - {{ goal_short }}
         {% endcapture %}
 
         <title>
