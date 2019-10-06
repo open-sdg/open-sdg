@@ -29,3 +29,11 @@ Feature: Indicator
     Then I should see "Data last updated"
     And I click on "the Sources metadata tab"
     And I should see "My organisation"
+
+  Scenario: The metadata tab titles and blurbs can both be configured
+    Then I should see "My national metadata title"
+    And I should see "My global metadata title"
+    And I click on "the Global metadata tab"
+    Then I should see "My global metadata blurb"
+    And I click on "the National metadata tab"
+    Then I should see "My national metadata blurb"
