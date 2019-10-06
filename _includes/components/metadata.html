@@ -6,6 +6,11 @@
       {%- assign metadata_label = indicator_metadata.field.label -%}
     {%- endif -%}
     {% if indicator_metadata.field.scope == include.scope %}
+      {% if site.hide_empty_metadata %}
+        {% unless meta[indicator_metadata.name] %}
+          {% continue %}
+        {% endunless %}
+      {% endif %}
       {% unless indicator_metadata.name contains "_url_text" or indicator_metadata.name contains "_link_text" %}
       <tr>
         <th scope="row">{{ metadata_label }} </th>

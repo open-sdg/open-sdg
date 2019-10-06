@@ -119,3 +119,5 @@ metadata_tabs:
   global:
     title: My global metadata title
     blurb: My global metadata blurb
+
+hide_empty_metadata: true

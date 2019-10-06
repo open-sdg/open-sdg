@@ -37,3 +37,7 @@ Feature: Indicator
     Then I should see "My global metadata blurb"
     And I click on "the National metadata tab"
     Then I should see "My national metadata blurb"
+
+  Scenario: Missing metdata can be hidden
+    And I click on "the Global metadata tab"
+    Then I should not see "Global indicator description"
