@@ -255,7 +255,14 @@ metadata_tabs:
   global:
     title: indicator.global_metadata
     blurb: indicator.global_metadata_blurb
+  sources:
+    title: indicator.sources
+    blurb: ''
 ```
+
+About the "Sources" tab:
+
+While the "keys" above, such as "national" and "global", are arbitrary, the "sources" key is special. The "Sources" tab will only display if the key under `metadata_tabs` is specifically `sources`.
 
 ### non_global_metadata
 

@@ -156,10 +156,10 @@
           <li role="presentation" class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#global" aria-controls="global" role="tab" {% include autotrack.html preset="tab_meta_global" category="Tab change" action="Change metadata view" label="Change to Global Metadata tab" %}>{{ t.indicator.global_metadata }}</a>
           </li>
-        {% endif %}
           <li role="presentation" class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#sources" aria-controls="sources" role="tab" {% include autotrack.html preset="tab_meta_sources" category="Tab change" action="Change metadata view" label="Change to Sources tab" %}>{{ t.indicator.sources }}</a>
           </li>
+        {% endif %}
           {% if site.environment == 'staging' %}
           <li role="presentation" class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#edit" aria-controls="edit" role="tab">{{ t.indicator.edit }}</a>
@@ -173,10 +173,14 @@
             {% for tab in site.metadata_tabs %}
             {% assign tab_key = tab[0] %}
             {% assign tab_obj = tab[1] %}
+            {% assign tab_include = 'components/metadata.html' %}
+            {% if tab_key == 'sources' %}
+              {% assign tab_include = 'components/sources.html' %}
+            {% endif %}
             <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
               <article>
-                <p>{{ tab_obj.blurb | t }}</p>
-                {% include components/metadata.html scope=tab_key %}
+                {% if tab_obj.blurb %}<p>{{ tab_obj.blurb | t }}</p>{% endif %}
+                {% include {{ tab_include }} scope=tab_key %}
               </article>
             </div>
             {% endfor %}
@@ -205,10 +209,10 @@
               </article>
             </div>
           </div>
-          {% endif %}
           <div role="tabpanel" class="tab-pane" id="sources">
             {% include components/sources.html %}
           </div>
+          {% endif %}
           {% if site.environment == 'staging' %}
           <div role="tabpanel" class="tab-pane" id="edit">
             <div class="edit-container">
