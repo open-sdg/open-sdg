@@ -235,6 +235,35 @@ This optional setting can control the instructions that appear on the front page
 frontpage_instructions: Click on each goal for Australian statistics for Sustainable Development Goal global indicators.
 ```
 
+### hide_empty_metadata
+
+This optional setting can be used to hide any metadata fields that are empty. In other words, this setting can ensure that if an indicator has no data for a particular metadata field, that field will not display at all. The default behavior if for all metadata fields to be displayed, regardless of whether the indicator has the required data.
+
+```nohighlight
+hide_empty_metadata: true
+```
+
+### metadata_tabs
+
+This optional setting can control the metadata tabs which appear on the indicator pages. This is directly tied to the "schema" of your data repository (ie, the `_prose.yml` file). This keys of this object must correspond to the "scope" of the fields in that schema file. The following configuration is assumed if this setting is omitted:
+
+```nohighlight
+metadata_tabs:
+  national:
+    title: indicator.national_metadata
+    blurb: indicator.national_metadata_blurb
+  global:
+    title: indicator.global_metadata
+    blurb: indicator.global_metadata_blurb
+  sources:
+    title: indicator.sources
+    blurb: ''
+```
+
+About the "Sources" tab:
+
+While the "keys" above, such as "national" and "global", are arbitrary, the "sources" key is special. The "Sources" tab will only display if the key under `metadata_tabs` is specifically `sources`.
+
 ### non_global_metadata
 
 This optional setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](https://open-sdg.readthedocs.io/en/latest/translation/) is recommended for better multilingual support.

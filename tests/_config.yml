@@ -111,3 +111,16 @@ map_layers:
     serviceUrl: https://geoportal1-ons.opendata.arcgis.com/datasets/4fcca2a47fed4bfaa1793015a18537ac_4.geojson
     nameProperty: rgn17nm
     idProperty: rgn17cd
+
+metadata_tabs:
+  national:
+    title: My national metadata title
+    blurb: My national metadata blurb
+  global:
+    title: My global metadata title
+    blurb: My global metadata blurb
+  sources:
+    title: My sources title
+    blurb: My sources blurb
+
+hide_empty_metadata: true

@@ -139,15 +139,27 @@
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
+        {% if site.metadata_tabs %}
+          {% for tab in site.metadata_tabs %}
+          {% assign tab_key = tab[0] %}
+          {% assign tab_obj = tab[1] %}
+          {% assign tab_preset = "tab_meta_" | append: tab_key %}
+          {% assign tab_label = "Change to " | append: tab_obj.title | append: " tab" %}
+          <li role="presentation" class="nav-item {% if forloop.first %}active{% endif %}">
+            <a class="nav-link" data-toggle="tab" href="#{{ tab_key }}" aria-controls="{{ tab_key }}" role="tab" {% include autotrack.html preset=tab_preset category="Tab change" action="Change metadata view" label=tab_label %}>{{ tab_obj.title | t }}</a>
+          </li>
+          {% endfor %}
+        {% else %}
           <li role="presentation" class="nav-item active">
-            <a class="nav-link" data-toggle="tab" href="#metadata" aria-controls="metadata" role="tab" {% include autotrack.html preset="tab_meta_national" category="Tab change" action="Change metadata view" label="Change to National Metadata tab" %}>{{ site.non_global_metadata | default: 'indicator.national_metadata' | t }}</a>
+            <a class="nav-link" data-toggle="tab" href="#national" aria-controls="national" role="tab" {% include autotrack.html preset="tab_meta_national" category="Tab change" action="Change metadata view" label="Change to National Metadata tab" %}>{{ site.non_global_metadata | default: 'indicator.national_metadata' | t }}</a>
           </li>
           <li role="presentation" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#globalmetadata" aria-controls="globalmetadata" role="tab" {% include autotrack.html preset="tab_meta_global" category="Tab change" action="Change metadata view" label="Change to Global Metadata tab" %}>{{ t.indicator.global_metadata }}</a>
+            <a class="nav-link" data-toggle="tab" href="#global" aria-controls="global" role="tab" {% include autotrack.html preset="tab_meta_global" category="Tab change" action="Change metadata view" label="Change to Global Metadata tab" %}>{{ t.indicator.global_metadata }}</a>
           </li>
           <li role="presentation" class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#sources" aria-controls="sources" role="tab" {% include autotrack.html preset="tab_meta_sources" category="Tab change" action="Change metadata view" label="Change to Sources tab" %}>{{ t.indicator.sources }}</a>
           </li>
+        {% endif %}
           {% if site.environment == 'staging' %}
           <li role="presentation" class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#edit" aria-controls="edit" role="tab">{{ t.indicator.edit }}</a>
@@ -157,7 +169,23 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="metadata">
+          {% if site.metadata_tabs %}
+            {% for tab in site.metadata_tabs %}
+            {% assign tab_key = tab[0] %}
+            {% assign tab_obj = tab[1] %}
+            {% assign tab_include = 'components/metadata.html' %}
+            {% if tab_key == 'sources' %}
+              {% assign tab_include = 'components/sources.html' %}
+            {% endif %}
+            <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
+              <article>
+                {% if tab_obj.blurb %}<p>{{ tab_obj.blurb | t }}</p>{% endif %}
+                {% include {{ tab_include }} scope=tab_key %}
+              </article>
+            </div>
+            {% endfor %}
+          {% else %}
+          <div role="tabpanel" class="tab-pane active" id="national">
             <!-- National Metadata -->
             <div > <!-- formerly class="collapsible expanded" -->
               <!-- <h3 tabindex='0'>National Metadata</h3> -->
@@ -171,7 +199,7 @@
               </article>
             </div>
           </div>
-          <div role="tabpanel" class="tab-pane" id="globalmetadata">
+          <div role="tabpanel" class="tab-pane" id="global">
             <!-- Global Metadata -->
             <div> <!-- formerly <div class="collapsible expanded"> -->
               <!-- <h3 tabindex='0'>Global Metadata</h3> -->
@@ -184,6 +212,7 @@
           <div role="tabpanel" class="tab-pane" id="sources">
             {% include components/sources.html %}
           </div>
+          {% endif %}
           {% if site.environment == 'staging' %}
           <div role="tabpanel" class="tab-pane" id="edit">
             <div class="edit-container">
