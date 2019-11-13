@@ -1,30 +1,20 @@
 {%- include multilingual.html -%}
 [
-  {%- assign goals = site.goals | where: 'language', current_language -%}
-  {%- for goal in goals -%}
-  {%- assign goal_number = goal.sdg_goal | downcase -%}
-  {%- assign goal_title_key = goal_number | append: '-title' -%}
-  {%- assign goal_title = t.global_goals[goal_title_key] -%}
+  {%- for group in site.Indicators | group_by: 'goal_number' -%}
+  {% assign goal = group.name | sdg_lookup %}
   {
     "goal": {
-      "id": "{{goal_number}}",
-      "title": "{{goal_title | strip_newlines | strip | replace: '"', "'"}}",
+      "id": "{{ goal.number }}",
+      "title": "{{ goal.name | strip_newlines | strip | replace: '"', "'" }}",
       "indicators": [
-        {%- assign all_meta = site.data.meta -%}
-        {%- if all_meta[current_language] -%}
-          {%- assign all_meta = all_meta[current_language] -%}
-        {%- endif -%}
-        {%- assign indicators = all_meta | where:'sdg_goal', goal_number -%}
-        {%- for indicator in indicators -%}
-        {%- capture indicator_id -%}{{indicator.indicator | slugify}}{%- endcapture -%}
-        {%- assign meta = all_meta[indicator_id] -%}
+        {% for indicator in group.items %}
         {
-          "id": "{{indicator_id}}",
-          "title": "{{indicator_id | get_indicator_name | strip_newlines | strip | replace: '"', "'"}}",
-          "description": "{{meta.national_indicator_description | strip_newlines | strip | replace: '"', "'" }}",
-          "keywords": "{{meta.data_keywords}}",
-          "href": "{{ site.baseurl }}{{ baseurl_folder }}/{{ indicator_id }}",
-          "status": "{{meta.reporting_status}}"
+          "id": "{{ indicator.number | slugify }}",
+          "title": "{{ indicator.name | strip_newlines | strip | replace: '"', "'" }}",
+          "description": "{{ indicator.national_indicator_description | strip_newlines | strip | replace: '"', "'" }}",
+          "keywords": "{{ indicator.data_keywords }}",
+          "href": "{{ indicator.url }}",
+          "status": "{{ indicator.reporting_status }}"
         }
         {%- if forloop.last -%}{%- else -%},{%- endif -%}
         {%- endfor -%}

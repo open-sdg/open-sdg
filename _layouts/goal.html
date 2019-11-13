@@ -1,29 +1,32 @@
 {%- include multilingual.html -%}
-{%- include goal-variables.html -%}
 {% include head.html %}
 {% include header.html %}
 
-<div class="heading goal-{{page.sdg_goal}}">
+<div class="heading goal-{{ page.Goal.number }}">
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-md-3 col-lg-2">
-        <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" />
+        <img src="{{ page.Goal.icon }}" alt="{{ page.Goal.short }} - {{ t.general.goal }} {{ page.Goal.number }}" />
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
         <h1>
-          <span class="hidden-sm hidden-md hidden-lg">{{ t.general.goal }} {{ goal_number }}: </span>{{ goal_title }}
+          <span class="hidden-sm hidden-md hidden-lg">{{ t.general.goal }} {{ page.Goal.number }}: </span>{{ page.Goal.name }}
         </h1>
       </div>
     </div>
   </div>
 </div>
 
-<div id="main-content" class="container goal-indicators goal-{{page.sdg_goal}}">
+<div id="main-content" class="container goal-indicators goal-{{ page.Goal.number }}">
 
   {{ content }}
-  {% include components/breadcrumb.html %}
 
-  {% assign goal_indicators = site.data.meta | where: 'sdg_goal', page.sdg_goal | sort: 'indicator_sort_order' %}
+  <ol class="breadcrumb">
+    <li><a href="{{ site.baseurl }}{{ baseurl_folder }}/">{{ t.general.home }}</a></li>
+    <li class="active">{{ t.general.goal }} {{ page.Goal.number }}</li>
+  </ol>
+
+  {% assign goal_indicators = page.Indicators | where: 'goal_number', page.Goal.number %}
   {% for indicator in goal_indicators %}
 
     {% assign status_css = indicator.reporting_status | slugify %}
@@ -50,14 +53,14 @@
 
     {% cycle 'add row' : '<div class="indicator-cards row no-gutters">', '', '', '' %}
         <div class="col-md-6 col-lg-3 {{ tag_classes }}">
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ indicator.indicator | slugify }}">
+          <a href="{{ indicator.url }}">
             <span>
-              {{ indicator.indicator }}
+              {{ indicator.number }}
               <span class="status {{ status_css }}">
                 {{ status_desc }}
               </span>
             </span>
-            {{ indicator.indicator | get_indicator_name }}
+            {{ indicator.name }}
             {% if indicator.tags %}
               <ul class="tags">
               {% for tag in indicator.tags %}

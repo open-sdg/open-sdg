@@ -9,16 +9,11 @@
 
     {% assign instructions_default = t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
     <p>{{ site.frontpage_instructions | default: instructions_default | t }}</p>
-    {%- assign goals = site.goals | where: 'language', current_language -%}
-    {% for goal in goals %}
-        {%- assign goal_number = goal.sdg_goal -%}
-        {%- assign goal_short_key = goal_number | append: '-short' -%}
-        {%- assign goal_short = t.global_goals[goal_short_key] -%}
-
+    {% for goal in page.Goals %}
         {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
             <div class="col-xs-4 col-md-2">
-                <a href="./{{ goal_number }}/">
-                  <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" id="goal-{{ goal_number }}" alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" />
+                <a href="./{{ goal.number }}/">
+                  <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short }} - {{ t.general.goal }} {{ goal.number }}" />
               </a>
             </div>
         {% cycle 'end row' : '', '', '', '', '', '</div>' %}
@@ -27,7 +22,7 @@
         If there were exactly 17 goals, "pad" it with 1 more, to make it come
         out more symmetrically.
     {% endcomment %}
-    {% if goals.size == 17 %}
+    {% if page.Goals.size == 17 %}
         <div class="col-xs-4 col-md-2">
             <img src="{{ site.goal_image_base }}/{{ current_language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
         </div>

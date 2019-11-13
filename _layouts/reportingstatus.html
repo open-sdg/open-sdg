@@ -37,18 +37,16 @@
   <h2>{{ t.status.status_by_goal }}</h2>
 
   {%- for goalreport in site.data.reporting.goals -%}
-    {%- assign goal_number = goalreport.goal  | downcase -%}
-    {%- assign goal_short_key = goal_number | append: '-short' -%}
-    {%- assign goal_short = t.global_goals[goal_short_key] -%}
+    {%- assign goal = goalreport.goal | downcase | sdg_lookup -%}
     <div class="goal">
         <div class="frame">
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}/">
-            <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" width="100" height="100" />
+          <a href="{{ goal.url }}">
+            <img src="{{ goal.icon }}" alt="{{ goal.short }} - {{ t.general.goal }} {{ goal.number }}" width="100" height="100" />
           </a>
         </div>
         <div class="details">
           <h3 class="status-goal">
-            <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}/">{{ goal_short }}</a>
+            <a href="{{ goal.url }}">{{ goal.short }}</a>
             <span class="total">{{ goalreport.totals.total }}<span></span> {{ t.general.indicators | downcase }}</span>
           </h3>
           <div class="summary">
