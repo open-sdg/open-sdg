@@ -6,14 +6,21 @@
     - t: For translating by key (see sdg-translations on Github for details)
     - default_language: The 2-letter code for the default language.
     - current_language: The 2-letter code for the current language.
+    - current_language_public: A version of the code for use in public URLs.
     - baseurl_folder: The subfolder that should be added for all internal links.
 
 {%- endcomment -%}
 {%- assign default_language = site.languages[0] -%}
 {%- assign current_language = page.language -%}
+{%- assign current_language_public = current_language -%}
+{%- if site.languages_public -%}
+  {%- if site.languages_public[current_language] -%}
+    {%- assign current_language_public = site.languages_public[current_language] -%}
+  {%- endif -%}
+{%- endif -%}
 {%- assign t = site.data.translations[current_language] -%}
 {%- if current_language == default_language -%}
   {%- assign baseurl_folder = '' -%}
 {%- else -%}
-  {%- assign baseurl_folder = '/' | append: current_language -%}
+  {%- assign baseurl_folder = '/' | append: current_language_public -%}
 {%- endif -%}

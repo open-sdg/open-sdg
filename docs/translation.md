@@ -119,6 +119,7 @@ In addition to the `t` variable for displaying translations, there are 3 other L
 
 * `default_language`: The 2-letter code for the default language
 * `current_language`: The 2-letter code for the current language
+* `current_language_public`: Version of the code for use in public URLs
 * `baseurl_folder`: The subfolder that should be added for all internal links
 
 These variables are available in all Jekyll documents.

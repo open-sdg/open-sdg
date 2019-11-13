@@ -243,6 +243,15 @@ This optional setting can be used to hide any metadata fields that are empty. In
 hide_empty_metadata: true
 ```
 
+### languages_public
+
+This optional setting can be used if you are not happy with any of the standard language codes. For example, if the standard code for a language is `xyz` but you would prefer that it show up in your URLs as `abc`, then you could do the following:
+
+```nohighlight
+languages_public:
+  xyz: abc
+```
+
 ### metadata_tabs
 
 This optional setting can control the metadata tabs which appear on the indicator pages. This is directly tied to the "schema" of your data repository (ie, the `_prose.yml` file). This keys of this object must correspond to the "scope" of the fields in that schema file. The following configuration is assumed if this setting is omitted:

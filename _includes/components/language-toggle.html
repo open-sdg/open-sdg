@@ -10,12 +10,16 @@
     {%- if language == default_language -%}
       {%- assign new_language_segment = '/' -%}
     {%- else -%}
-      {%- assign new_language_segment = '/' | append: language | append: '/' -%}
+      {%- assign language_code_public = language -%}
+      {%- if site.languages_public and site.languages_public[language] -%}
+        {%- assign language_code_public = site.languages_public[language] -%}
+      {%- endif -%}
+      {%- assign new_language_segment = '/' | append: language_code_public | append: '/' -%}
     {%- endif -%}
     {%- if current_language == default_language -%}
       {%- assign old_language_segment = '/' -%}
     {%- else -%}
-      {%- assign old_language_segment = '/' | append: current_language | append: '/' -%}
+      {%- assign old_language_segment = '/' | append: current_language_public | append: '/' -%}
     {%- endif -%}
     {%- assign new_url = page.url | replace_first: old_language_segment, new_language_segment -%}
     <li><a href="{{site.baseurl}}{{new_url | remove: 'index.html'}}">{{ t.languages[language] }}</a></li>

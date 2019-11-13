@@ -18,8 +18,9 @@ test.prep:
 	cp -r tests/data starter/
 	# Copy any custom pages into the starter.
 	cp -r tests/pages/* starter/_pages/
-	# Add a second language.
+	# Add extra languages.
 	cd starter && python scripts/batch/add_language.py es
+	cd starter && python scripts/batch/add_language.py fr fr-CA
 	# Build the Jekyll site.
 	cd starter && bundle install
 	cd starter && bundle exec jekyll build
