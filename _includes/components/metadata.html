@@ -7,7 +7,7 @@
     {%- endif -%}
     {% if indicator_metadata.field.scope == include.scope %}
       {% if site.hide_empty_metadata %}
-        {% unless page.Indicator[indicator_metadata.name] %}
+        {% unless page.indicator[indicator_metadata.name] %}
           {% continue %}
         {% endunless %}
       {% endif %}
@@ -18,23 +18,23 @@
           {% if indicator_metadata.name contains "_url" or indicator_metadata.name contains "_link" %}
             {% assign url_text_name = indicator_metadata.name | replace_first:'_url','_url_text'  %}
             {% assign url_text_name = url_text_name | replace_first:'_link','_link_text'  %}
-            {% assign url_text = page.Indicator[url_text_name] %}
+            {% assign url_text = page.indicator[url_text_name] %}
             {% unless url_text %}
               {% assign url_text = 'Link' %}
             {% endunless %}
 
-            {% if page.Indicator[indicator_metadata.name] contains "http" or page.Indicator[indicator_metadata.name] contains "mailto" %}
-              <a href="{{ page.Indicator[indicator_metadata.name] }}" target="_blank">
+            {% if page.indicator[indicator_metadata.name] contains "http" or page.indicator[indicator_metadata.name] contains "mailto" %}
+              <a href="{{ page.indicator[indicator_metadata.name] }}" target="_blank">
                 {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
               </a>
             {% endif %}
 
           {% elsif indicator_metadata.field.element == 'multiselect' %}
-            {% for item in page.Indicator[indicator_metadata.name] %}
+            {% for item in page.indicator[indicator_metadata.name] %}
               {{ item | t }}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
           {% else %}
-            {{ page.Indicator[indicator_metadata.name] | markdownify }}
+            {{ page.indicator[indicator_metadata.name] | markdownify }}
           {% endif %}
         </td>
         </tr>
