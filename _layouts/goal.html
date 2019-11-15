@@ -25,7 +25,7 @@
     <li class="active">{{ page.t.general.goal }} {{ page.goal.number }}</li>
   </ol>
 
-  {% assign goal_indicators = page.Indicators | where: 'goal_number', page.goal.number %}
+  {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number %}
   {% for indicator in goal_indicators %}
 
     {% assign status_css = indicator.reporting_status | slugify %}
