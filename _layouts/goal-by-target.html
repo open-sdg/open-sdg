@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  {% assign goal_indicators = site.indicators | where: 'number', page.goal.number | group_by: 'target_number' %}
+  {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
   {% for group in goal_indicators %}
     {% assign target = group.name | sdg_lookup %}
     <div class="indicator-cards target col-md-6">
