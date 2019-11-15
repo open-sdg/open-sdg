@@ -1,4 +1,3 @@
-{%- include multilingual.html -%}
 [
   {%- for group in site.Indicators | group_by: 'goal_number' -%}
   {% assign goal = group.name | sdg_lookup %}
