@@ -9,7 +9,7 @@
       "indicators": [
         {% for indicator in group.items %}
         {
-          "id": "{{ indicator.number | slugify }}",
+          "id": "{{ indicator.slug }}",
           "title": "{{ indicator.name | strip_newlines | strip | replace: '"', "'" }}",
           "description": "{{ indicator.national_indicator_description | strip_newlines | strip | replace: '"', "'" }}",
           "keywords": "{{ indicator.data_keywords }}",

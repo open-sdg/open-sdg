@@ -1,13 +1,11 @@
-{% assign slug = page.indicator.number | slugify %}
-
 {% if site.data_edit_url %}
-<a class="btn btn-primary" href="{{ site.data_edit_url | replace: '[id]', slug }}">{{ page.t.indicator.edit_data }}</a>
+<a class="btn btn-primary" href="{{ site.data_edit_url | replace: '[id]', page.indicator.slug }}">{{ page.t.indicator.edit_data }}</a>
 {% else %}
-<a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/{{ site.data_dir_for_edits | default: 'data' }}/indicator_{{ slug }}.csv">{{ page.t.indicator.edit_data }}</a>
+<a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/{{ site.data_dir_for_edits | default: 'data' }}/indicator_{{ page.indicator.slug }}.csv">{{ page.t.indicator.edit_data }}</a>
 {% endif %}
 
 {% if site.metadata_edit_url %}
-<a class="btn btn-primary" href="{{ site.metadata_edit_url | replace: '[id]', slug }}">{{ page.t.indicator.edit_metadata }}</a>
+<a class="btn btn-primary" href="{{ site.metadata_edit_url | replace: '[id]', page.indicator.slug }}">{{ page.t.indicator.edit_metadata }}</a>
 {% else %}
-<a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/meta/{{ slug }}.md">{{ page.t.indicator.edit_metadata }}</a>
+<a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/meta/{{ page.indicator.slug }}.md">{{ page.t.indicator.edit_metadata }}</a>
 {% endif %}
