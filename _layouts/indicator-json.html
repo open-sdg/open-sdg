@@ -1,5 +1,5 @@
 [
-  {%- for group in site.Indicators | group_by: 'goal_number' -%}
+  {%- for group in page.indicators | group_by: 'goal_number' -%}
   {% assign goal = group.name | sdg_lookup %}
   {
     "goal": {
