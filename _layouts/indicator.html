@@ -1,4 +1,3 @@
-{%- include multilingual.html -%}
 {% include head.html %}
 {% include header.html %}
 {% include components/fields-template.html %}
@@ -6,31 +5,31 @@
 {% include multilingual-js.html key="indicator" %}
 {% include multilingual-js.html key="data" %}
 
-<div class="heading indicator goal-{{ page.Goal.number }}">
+<div class="heading indicator goal-{{ page.goal.number }}">
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-md-3 col-lg-2">
-        <a href="{{ page.Goal.url }}" title="{{ t.indicator.view_indicator_list }}">
-          <img src="{{ page.Goal.icon }}" alt="{{ page.Goal.short }} - {{ t.general.goal }} {{ page.Goal.number }}" />
+        <a href="{{ page.goal.url }}" title="{{ page.t.indicator.view_indicator_list }}">
+          <img src="{{ page.goal.icon }}" alt="{{ page.goal.short }} - {{ page.t.general.goal }} {{ page.goal.number }}" />
         </a>
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
         <h1>
-          <a href="{{ page.Goal.url }}">
-            <span class="hidden-sm hidden-md hidden-lg">{{ t.general.goal }} {{ page.Goal.number }}: </span>{{ page.Goal.name }}
+          <a href="{{ page.goal.url }}">
+            <span class="hidden-sm hidden-md hidden-lg">{{ page.t.general.goal }} {{ page.goal.number }}: </span>{{ page.goal.name }}
           </a>
         </h1>
-        <h2>{{ t.general.indicator }} {{ page.Indicator.number }}: {{ page.Indicator.name }}</h2>
+        <h2>{{ page.t.general.indicator }} {{ page.indicator.number }}: {{ page.indicator.name }}</h2>
       </div>
     </div>
   </div>
 </div>
 
-<div id="main-content" class="container goal-{{ page.Goal.number }}">
+<div id="main-content" class="container goal-{{ page.goal.number }}">
   <ol class="breadcrumb">
-    <li><a href="{{ site.baseurl }}{{ baseurl_folder }}/">{{ t.general.home }}</a></li>
-    <li><a href="{{ page.Goal.url }}" title="{{ page.Goal.name }}">{{ t.general.goal }} {{ page.Goal.number }}</a></li>
-    <li class="active">{{ t.general.indicator }} {{ page.Indicator.number }}</li>
+    <li><a href="{{ page.baseurl }}">{{ page.t.general.home }}</a></li>
+    <li><a href="{{ page.goal.url }}" title="{{ page.goal.name }}">{{ page.t.general.goal }} {{ page.goal.number }}</a></li>
+    <li class="active">{{ page.t.general.indicator }} {{ page.indicator.number }}</li>
   </ol>
 
   <div class="row" id="page-content-row">
@@ -42,7 +41,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h2>{{ page.Indicator.graph_title }}</h2>
+      <h2>{{ page.indicator.graph_title }}</h2>
     </div>
   </div>
 
@@ -58,25 +57,25 @@
 
   {% assign uniqSources = sources_list | uniq | join: ", " %}
 
-  {% assign slug = page.Indicator.number | slugify %}
-  {% if page.Indicator.reporting_status != "complete" or page.Indicator.data_non_statistical == true %}
+  {% assign slug = page.indicator.number | slugify %}
+  {% if page.indicator.reporting_status != "complete" or page.indicator.data_non_statistical == true %}
     {% assign show_data = false %}
   {% else %}
     {% assign show_data = true %}
   {% endif %}
-  <div class="row" id="indicatorData" data-indicatorid='indicator_{{ slug }}' data-id="{{ slug }}" data-country="{{ page.Indicator.national_geographical_coverage }}"
-  data-charttitle="{{ page.Indicator.graph_title }}" data-measurementunit="{{ page.Indicator.computation_units }}" data-datasource="{{ uniqSources }}" data-copyright="{{ page.Indicator.copyright }}"
-  data-geographicalarea="{{ page.Indicator.national_geographical_coverage }}" data-footnote="{{ page.Indicator.data_footnote }}" data-showdata="{{ show_data }}" data-graphtype="{{ page.Indicator.graph_type }}"
-  data-geocoderegex="{{ page.Indicator.data_geocode_regex }}" data-showmap="{{ page.Indicator.data_show_map }}" data-startvalues="{{ page.Indicator.data_start_values | join: '|' }}">
+  <div class="row" id="indicatorData" data-indicatorid='indicator_{{ slug }}' data-id="{{ slug }}" data-country="{{ page.indicator.national_geographical_coverage }}"
+  data-charttitle="{{ page.indicator.graph_title }}" data-measurementunit="{{ page.indicator.computation_units }}" data-datasource="{{ uniqSources }}" data-copyright="{{ page.indicator.copyright }}"
+  data-geographicalarea="{{ page.indicator.national_geographical_coverage }}" data-footnote="{{ page.indicator.data_footnote }}" data-showdata="{{ show_data }}" data-graphtype="{{ page.indicator.graph_type }}"
+  data-geocoderegex="{{ page.indicator.data_geocode_regex }}" data-showmap="{{ page.indicator.data_show_map }}" data-startvalues="{{ page.indicator.data_start_values | join: '|' }}">
 
     {% if show_data %}
     <div id="indicator-sidebar" class="col-md-3">
       <div id="toolbar">
         <span id="series-help">
-          <h4>{{ t.indicator.sub_categories }}</h4>
-          <p>{{ t.indicator.series_help }}</p>
+          <h4>{{ page.t.indicator.sub_categories }}</h4>
+          <p>{{ page.t.indicator.series_help }}</p>
         </span>
-        <p>{{ t.indicator.legend_help }}</p>
+        <p>{{ page.t.indicator.legend_help }}</p>
         <div id="fields">
           <p class="async-loading" data-img="{{ site.baseurl }}/assets/img/loading-small.gif"></p>
         </div>
@@ -99,17 +98,17 @@
         <div class="async-loaded" style="display:none">
           <ul class="nav nav-tabs data-view" role="tablist">
             <li role="presentation" class="nav-item active">
-              <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab" {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %}>{{ t.indicator.chart }}</a>
+              <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab" {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %}>{{ page.t.indicator.chart }}</a>
             </li>
             <li role="presentation" class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab" {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}>{{ t.indicator.table }}</a>
+              <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab" {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}>{{ page.t.indicator.table }}</a>
             </li>
             <li role="presentation" class="nav-item map" style="display:none">
-              <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}>{{ t.indicator.map }}</a>
+              <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}>{{ page.t.indicator.map }}</a>
             </li>
-            {%- if page.Indicator.embedded_feature_url -%}
+            {%- if page.indicator.embedded_feature_url -%}
             <li role="presentation" class="nav-item embedded-map">
-              <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ page.Indicator.embedded_feature_tab_title }}</a>
+              <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ page.indicator.embedded_feature_tab_title }}</a>
             </li>
           </li>
             {%- endif -%}
@@ -118,27 +117,27 @@
           <!-- Tab panes -->
           <div class="tab-content data-view">
             <div role="tabpanel" class="tab-pane active" id="chartview">
-              {% include components/charts/chart.html graph_type=page.Indicator.graph_type %}
+              {% include components/charts/chart.html graph_type=page.indicator.graph_type %}
             </div>
             <div role="tabpanel" class="tab-pane" id="tableview">
               <div id="selectionsTable"></div>
             </div>
             <div role="tabpanel" class="tab-pane" id="mapview" class="map">
               <div id="map">
-                <img src="{{ site.baseurl }}/assets/img/loading.gif" alt="{{ t.indicator.loading_map }}" />
+                <img src="{{ site.baseurl }}/assets/img/loading.gif" alt="{{ page.t.indicator.loading_map }}" />
               </div>
             </div>
-            {% if page.Indicator.embedded_feature_url %}
+            {% if page.indicator.embedded_feature_url %}
             <div role="tabpanel" class="tab-pane" id="embeddedmapview" class="embedded-map">
               <div role="tabpanel" class="tab-pane" id="embeddedmapview" >
               <div class="row">
               <div class="col-xs-12">
-                <h3 tabindex="0">{{ page.Indicator.embedded_feature_title }}</h3>
+                <h3 tabindex="0">{{ page.indicator.embedded_feature_title }}</h3>
               </div>
             </div>
               <div class="embedded-map" id="embeddedmapframe">
                 <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
-                <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ page.Indicator.embedded_feature_url }}', {});})</script>
+                <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ page.indicator.embedded_feature_url }}', {});})</script>
 
               </div>
               {% if meta.embedded_feature_footer %}
@@ -169,15 +168,15 @@
             <a class="nav-link" data-toggle="tab" href="#national" aria-controls="national" role="tab" {% include autotrack.html preset="tab_meta_national" category="Tab change" action="Change metadata view" label="Change to National Metadata tab" %}>{{ site.non_global_metadata | default: 'indicator.national_metadata' | t }}</a>
           </li>
           <li role="presentation" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#global" aria-controls="global" role="tab" {% include autotrack.html preset="tab_meta_global" category="Tab change" action="Change metadata view" label="Change to Global Metadata tab" %}>{{ t.indicator.global_metadata }}</a>
+            <a class="nav-link" data-toggle="tab" href="#global" aria-controls="global" role="tab" {% include autotrack.html preset="tab_meta_global" category="Tab change" action="Change metadata view" label="Change to Global Metadata tab" %}>{{ page.t.indicator.global_metadata }}</a>
           </li>
           <li role="presentation" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#sources" aria-controls="sources" role="tab" {% include autotrack.html preset="tab_meta_sources" category="Tab change" action="Change metadata view" label="Change to Sources tab" %}>{{ t.indicator.sources }}</a>
+            <a class="nav-link" data-toggle="tab" href="#sources" aria-controls="sources" role="tab" {% include autotrack.html preset="tab_meta_sources" category="Tab change" action="Change metadata view" label="Change to Sources tab" %}>{{ page.t.indicator.sources }}</a>
           </li>
         {% endif %}
           {% if site.environment == 'staging' %}
           <li role="presentation" class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#edit" aria-controls="edit" role="tab">{{ t.indicator.edit }}</a>
+            <a class="nav-link" data-toggle="tab" href="#edit" aria-controls="edit" role="tab">{{ page.t.indicator.edit }}</a>
           </li>
           {% endif %}
         </ul>
@@ -208,7 +207,7 @@
                 <p>
                   {% assign country_name = site.country.name | t %}
                   {% assign country_adjective = site.country.adjective | t %}
-                  {{ t.indicator.national_metadata_blurb | replace: '%country_name', country_name | replace: '%country_adjective', country_adjective }}
+                  {{ page.t.indicator.national_metadata_blurb | replace: '%country_name', country_name | replace: '%country_adjective', country_adjective }}
                 </p>
                 {% include components/metadata.html scope='national' %}
               </article>
@@ -219,7 +218,7 @@
             <div> <!-- formerly <div class="collapsible expanded"> -->
               <!-- <h3 tabindex='0'>Global Metadata</h3> -->
               <article>
-                <p>{{ t.indicator.global_metadata_blurb }}</p>
+                <p>{{ page.t.indicator.global_metadata_blurb }}</p>
                 {% include components/metadata.html scope='global' %}
               </article>
             </div>

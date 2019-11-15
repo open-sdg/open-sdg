@@ -1,5 +1,5 @@
 {% include multilingual-js.html key="header" %}
-<a class="sr-only sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">{{ t.header.skip_link }}</a>
+<a class="sr-only sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">{{ page.t.header.skip_link }}</a>
 <div id="disclaimer">
   {% include components/dev-disclaimer.html %}
 </div>
@@ -7,8 +7,8 @@
 <header role="banner">
   <div class="container">
 
-    <a class="navbar-brand" href="{{ site.baseurl }}{{ baseurl_folder }}/" id="home">
-      <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ t.general.sdg }} - {{ t.header.tag_line }}" />
+    <a class="navbar-brand" href="{{ page.baseurl }}" id="home">
+      <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ page.t.general.sdg }} - {{ page.t.header.tag_line }}" />
     </a>
 
   <div class='hidden visible-xs float-right'>
@@ -28,9 +28,9 @@
             aria-haspopup="true"
             aria-expanded="false">
           <span data-target="menu" tabindex="0"
-          role="navigation">{{ t.menu.menu }}</span>
+          role="navigation">{{ page.t.menu.menu }}</span>
         </li>
-        <li><span data-target="search">{{ t.search.search }}</span></li>
+        <li><span data-target="search">{{ page.t.search.search }}</span></li>
       </ul>
 
       <ul class="nav navbar-nav menu-target contrast-switcher" id="menu">
@@ -39,7 +39,7 @@
           {%- for item in site.menu -%}
           {%- assign item_path_no_slash = item.path | remove: '/' -%}
           <li class="nav-link {% if current_path_no_slash == item_path_no_slash %}active{% endif %}">
-            <a href="{{ site.baseurl }}{{ baseurl_folder }}{{ item.path }}">{{ item.translation_key | t }}</a>
+            <a href="{{ page.baseurl }}{{ item.path }}">{{ item.translation_key | t }}</a>
           </li>
           {%- endfor -%}
         {%- endif -%}

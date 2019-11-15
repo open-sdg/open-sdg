@@ -1,7 +1,7 @@
 <table class="table table-hover">
   {% for indicator_metadata in site.data.schema %}
-    {%- if t.metadata_fields[indicator_metadata.name] -%}
-      {%- assign metadata_label = t.metadata_fields[indicator_metadata.name] -%}
+    {%- if page.t.metadata_fields[indicator_metadata.name] -%}
+      {%- assign metadata_label = page.t.metadata_fields[indicator_metadata.name] -%}
     {%- else -%}
       {%- assign metadata_label = indicator_metadata.field.label -%}
     {%- endif -%}
@@ -25,7 +25,7 @@
 
             {% if page.Indicator[indicator_metadata.name] contains "http" or page.Indicator[indicator_metadata.name] contains "mailto" %}
               <a href="{{ page.Indicator[indicator_metadata.name] }}" target="_blank">
-                {{ url_text }} <span class="visuallyhidden">{{ t.general.opens_new_window }}</span>
+                {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
               </a>
             {% endif %}
 

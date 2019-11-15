@@ -1,46 +1,45 @@
-{%- include multilingual.html -%}
 {% include head.html %}
 {% include header.html %}
 
-<div class="heading goal-{{ page.Goal.number }}">
+<div class="heading goal-{{ page.goal.number }}">
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-md-3 col-lg-2">
-        <img src="{{ page.Goal.icon }}" alt="{{ page.Goal.short }} - {{ t.general.goal }} {{ page.Goal.number }}" />
+        <img src="{{ page.goal.icon }}" alt="{{ page.goal.short }} - {{ page.t.general.goal }} {{ page.goal.number }}" />
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
         <h1>
-          <span class="hidden-sm hidden-md hidden-lg">{{ t.general.goal }} {{ page.Goal.number }}: </span>{{ page.Goal.name }}
+          <span class="hidden-sm hidden-md hidden-lg">{{ page.t.general.goal }} {{ page.goal.number }}: </span>{{ page.goal.name }}
         </h1>
       </div>
     </div>
   </div>
 </div>
 
-<div id="main-content" class="container goal-indicators goal-{{ page.Goal.number }} goal-by-target">
+<div id="main-content" class="container goal-indicators goal-{{ page.goal.number }} goal-by-target">
 
   {{ content }}
 
   <ol class="breadcrumb">
-    <li><a href="{{ site.baseurl }}{{ baseurl_folder }}/">{{ t.general.home }}</a></li>
-    <li class="active">{{ t.general.goal }} {{ page.Goal.number }}</li>
+    <li><a href="{{ page.baseurl }}">{{ page.t.general.home }}</a></li>
+    <li class="active">{{ page.t.general.goal }} {{ page.goal.number }}</li>
   </ol>
 
   <div class="visible-md-block visible-lg-block">
     <div class="col-md-6">
-      <h4>{{ t.general.targets }}</h4>
+      <h4>{{ page.t.general.targets }}</h4>
     </div>
     <div class="col-md-6">
-      <h4>{{ t.general.indicators }}</h4>
+      <h4>{{ page.t.general.indicators }}</h4>
     </div>
   </div>
 
-  {% assign goal_indicators = site.Indicators | where: 'number', page.Goal.number | group_by: 'target_number' %}
+  {% assign goal_indicators = site.Indicators | where: 'number', page.goal.number | group_by: 'target_number' %}
   {% for group in goal_indicators %}
     {% assign target = group.name | sdg_lookup %}
     <div class="indicator-cards target col-md-6">
       <span>
-        <label class="hidden-md hidden-lg">{{ t.general.target }}</label>
+        <label class="hidden-md hidden-lg">{{ page.t.general.target }}</label>
         {{ target.number }}
       </span>
       {{ target.name }}
@@ -50,16 +49,16 @@
 
       {% assign status_css = indicator.reporting_status | slugify %}
       {% if indicator.reporting_status == 'notapplicable' %}
-        {% assign status_desc = t.status.not_applicable %}
+        {% assign status_desc = page.t.status.not_applicable %}
       {% endif %}
       {% if indicator.reporting_status == 'notstarted' %}
-        {% assign status_desc = t.status.exploring_data_sources %}
+        {% assign status_desc = page.t.status.exploring_data_sources %}
       {% endif %}
       {% if indicator.reporting_status == 'inprogress' %}
-        {% assign status_desc = t.status.statistics_in_progress %}
+        {% assign status_desc = page.t.status.statistics_in_progress %}
       {% endif %}
       {% if indicator.reporting_status == 'complete' %}
-        {% assign status_desc = t.status.reported_online %}
+        {% assign status_desc = page.t.status.reported_online %}
       {% endif %}
       {% assign tag_classes = "" | split: "," %}
       {% if indicator.tags %}

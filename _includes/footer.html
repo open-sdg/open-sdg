@@ -4,15 +4,15 @@
       <div class="col-xs-12">
         <div id="footerLinks">
           <ul>
-            <li><a href="mailto:{{site.email_contacts.suggestions}}">{{ t.menu.contact_us }}</a></li>
+            <li><a href="mailto:{{site.email_contacts.suggestions}}">{{ page.t.menu.contact_us }}</a></li>
             {% if site.twitter %}
-            <li><a class="twitter-follow-button" href="https://twitter.com/{{ site.twitter }}" data-show-count="false">{{ t.general.twitter }}: @{{ site.twitter }}</a></li>
+            <li><a class="twitter-follow-button" href="https://twitter.com/{{ site.twitter }}" data-show-count="false">{{ page.t.general.twitter }}: @{{ site.twitter }}</a></li>
             {% endif %}
             {% if site.facebook %}
-            <li><a href="https://facebook.com/{{ site.facebook }}" target="_blank">{{ t.general.facebook }}: @{{ site.facebook }}</a></li>
+            <li><a href="https://facebook.com/{{ site.facebook }}" target="_blank">{{ page.t.general.facebook }}: @{{ site.facebook }}</a></li>
             {% endif %}
-            <li><a href="{{ site.baseurl }}{% link _pages/faq.md %}">{{ t.menu.faq }}</a></li>
-            <li><a href="{{ site.baseurl }}{% link _pages/cookies.md %}">{{ t.menu.cookies }}</a></li>
+            <li><a href="{{ site.baseurl }}{% link _pages/faq.md %}">{{ page.t.menu.faq }}</a></li>
+            <li><a href="{{ site.baseurl }}{% link _pages/cookies.md %}">{{ page.t.menu.cookies }}</a></li>
           </ul>
         </div>
       </div>

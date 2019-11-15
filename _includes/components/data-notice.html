@@ -1,9 +1,9 @@
-{% if page.Indicator.data_notice_heading %}
-  <div class="alert {{ page.Indicator.data_notice_class }}">
+{% if page.indicator.data_notice_heading %}
+  <div class="alert {{ page.indicator.data_notice_class }}">
       <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
       <div class="data-notice">
-        <h4>{{ page.Indicator.data_notice_heading | markdownify }}</h4>
-        <p>{{ page.Indicator.data_notice_text | markdownify }}</p>
+        <h4>{{ page.indicator.data_notice_heading | markdownify }}</h4>
+        <p>{{ page.indicator.data_notice_text | markdownify }}</p>
       </div>
   </div>
 {% endif %}

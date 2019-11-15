@@ -16,11 +16,11 @@
         <!-- Title and meta description
         ================================================== -->
         {% capture indicator_page_title %}
-        {{ t.general.indicator }} {{ indicator_id_with_dots }} - {{ t.general.goal }} {{ goal_number }}
+        {{ page.t.general.indicator }} {{ page.indicator }} - {{ page.t.general.goal }} {{ goal_number }}
         {% endcapture %}
 
         {% capture goal_page_title %}
-        {{ t.general.goal }} {{ goal_number }} - {{ goal_short }}
+        {{ page.t.general.goal }} {{ goal_number }} - {{ goal_short }}
         {% endcapture %}
 
         <title>
@@ -94,5 +94,5 @@
         <!-- ShareThis END -->
 
     </head>
-<body class="language-{{ current_language }} layout-{{ page.layout }}">
+<body class="language-{{ page.language }} layout-{{ page.layout }}">
 <!-- <div class="container"> -->

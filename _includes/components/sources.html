@@ -14,7 +14,7 @@
     {% assign src_scope = "source_" | append: i %}
     <div class="col-md-6">
       {% if n_sources > 1 %}
-        <h4>{{ t.indicator.source }} {{ i }}</h4>
+        <h4>{{ page.t.indicator.source }} {{ i }}</h4>
       {% endif %}
       {% include components/metadata.html scope=src_scope %}
     </div>

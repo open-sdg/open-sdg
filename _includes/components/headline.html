@@ -1,17 +1,17 @@
-{% assign slug = page.Indicator.number | slugify %}
+{% assign slug = page.indicator.number | slugify %}
 {% assign sdg_headline_data = site.data.headlines[slug] %}
 
 <div id="headlineTable">
 
   <div id="datatables">
 
-    <a href="{{ site.remotedatabaseurl }}/headline/{{ slug }}.csv" class="btn btn-primary btn-download" download="indicator_{{ slug }}.csv" tabindex="0" role="button">{{ t.indicator.download_headline }}</a>
+    <a href="{{ site.remotedatabaseurl }}/headline/{{ slug }}.csv" class="btn btn-primary btn-download" download="indicator_{{ slug }}.csv" tabindex="0" role="button">{{ page.t.indicator.download_headline }}</a>
 
-    <a href="{{ site.remotedatabaseurl }}/data/{{ slug }}.csv" class="btn btn-primary btn-download" style='float:left;margin-right:1em' download='indicator_{{ slug }}.csv' tabindex='0' role='button'>{{ t.indicator.download_source }}</a>
+    <a href="{{ site.remotedatabaseurl }}/data/{{ slug }}.csv" class="btn btn-primary btn-download" style='float:left;margin-right:1em' download='indicator_{{ slug }}.csv' tabindex='0' role='button'>{{ page.t.indicator.download_source }}</a>
 
     <h3>Headline data</h3>
     <table class="table-responsive table table-hover dataTable no-footer" role="grid">
-      <caption>{{ page.Indicator.graph_title }}</caption>
+      <caption>{{ page.indicator.graph_title }}</caption>
       <thead>
         {% for column in sdg_headline_data[0] %}
         {% if forloop.last %}
@@ -38,17 +38,17 @@
   </div>
 
   <div id="datatableFooter">
-    {% if page.Indicator.source_organisation_1 %}
-    <p>{{ t.indicator.source }}: {{ page.Indicator.source_organisation_1 }}</p>
+    {% if page.indicator.source_organisation_1 %}
+    <p>{{ page.t.indicator.source }}: {{ page.indicator.source_organisation_1 }}</p>
     {% endif %}
-    {% if page.Indicator.national_geographical_coverage %}
-    <p>{{ t.indicator.geographical_area }}: {{ page.Indicator.national_geographical_coverage }}</p>
+    {% if page.indicator.national_geographical_coverage %}
+    <p>{{ page.t.indicator.geographical_area }}: {{ page.indicator.national_geographical_coverage }}</p>
     {% endif %}
-    {% if page.Indicator.computation_units %}
-    <p>{{ t.indicator.unit_of_measurement }}: {{ page.Indicator.computation_units }}</p>
+    {% if page.indicator.computation_units %}
+    <p>{{ page.t.indicator.unit_of_measurement }}: {{ page.indicator.computation_units }}</p>
     {% endif %}
-    {% if page.Indicator.data_footnote %}
-    <p>{{ t.indicator.footnote }}: {{ page.Indicator.data_footnote }}</p>
+    {% if page.indicator.data_footnote %}
+    <p>{{ page.t.indicator.footnote }}: {{ page.indicator.data_footnote }}</p>
     {% endif %}
   </div>
 

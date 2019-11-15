@@ -34,9 +34,9 @@ When writing Jekyll templates for this platform, there should never be any direc
 
 Instead, you should see something like this:
 
-`<h1>{{ t.general.sdg }}</h1>`
+`<h1>{{ page.t.general.sdg }}</h1>`
 
-The `t` variable contains a nested structure of translation values, corresponding to the folder structure of the [sdg-translations](https://github.com/open-sdg/sdg-translations) repository. In the example above, the "general" refers to [this file](https://github.com/open-sdg/sdg-translations/blob/develop/translations/en/general.yml), and the "sdg" refers to [that line within the file](https://github.com/open-sdg/sdg-translations/blob/develop/translations/en/general.yml#L5).
+The `page.t` variable contains a nested structure of translation values, corresponding to the folder structure of the [sdg-translations](https://github.com/open-sdg/sdg-translations) repository. In the example above, the "general" refers to [this file](https://github.com/open-sdg/sdg-translations/blob/develop/translations/en/general.yml), and the "sdg" refers to [that line within the file](https://github.com/open-sdg/sdg-translations/blob/develop/translations/en/general.yml#L5).
 
 Jekyll will display translated text according to the "language" specified in the "front matter" of the current document.
 
@@ -115,12 +115,11 @@ Similarly, instead of a values like `Female`, you could use `data.Female` to cor
 
 ## Available translation-related variables
 
-In addition to the `t` variable for displaying translations, there are 3 other Liquid variables of general use:
+In addition to the `page.t` variable for displaying translations, there are 3 other Liquid variables of general use:
 
-* `default_language`: The 2-letter code for the default language
-* `current_language`: The 2-letter code for the current language
-* `current_language_public`: Version of the code for use in public URLs
-* `baseurl_folder`: The subfolder that should be added for all internal links
+* `page.language`: The 2-letter code for the current language
+* `page.language_public`: Version of the code for use in public URLs
+* `page.baseurl`: A version of site.baseurl including any language code
 
 These variables are available in all Jekyll documents.
 
