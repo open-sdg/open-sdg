@@ -1,5 +1,5 @@
 ---
 layout: goal-by-target
-goal_number: '1'
+goal_number: 1
 permalink: /testing-goal-by-target/
 ---
