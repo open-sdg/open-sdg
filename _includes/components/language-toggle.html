@@ -4,22 +4,11 @@
   <i class="language-toggle fa fa-chevron-down"></i>
   <i class="language-toggle fa fa-chevron-up" style="display:none;"></i>
 </a>
+
 <ul class="language-options language-toggle">
-{%- assign default_language = site.languages[0] -%}
 {%- for language in site.languages -%}
   {%- if language != page.language -%}
-    {%- if language == default_language -%}
-      {%- assign new_language_segment = '/' -%}
-    {%- else -%}
-      {%- assign new_language_segment = '/' | append: page.language_public | append: '/' -%}
-    {%- endif -%}
-    {%- if page.language == site.lanudefault_language -%}
-      {%- assign old_language_segment = '/' -%}
-    {%- else -%}
-      {%- assign old_language_segment = '/' | append: page.language_public | append: '/' -%}
-    {%- endif -%}
-    {%- assign new_url = page.url | replace_first: old_language_segment, new_language_segment -%}
-    <li><a href="{{ site.baseurl }}{{ new_url | remove: 'index.html' }}">{{ page.t.languages[language] }}</a></li>
+    <li><a href="{{ page.url_by_language[language] }}">{{ page.t.languages[language] }}</a></li>
   {%- endif -%}
 {%- endfor -%}
 </ul>
