@@ -17,7 +17,9 @@ Open SDG includes two alternative [layouts](https://jekyllrb.com/docs/step-by-st
 1. [`goal`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal.html) - Indicators are displayed in a responsive grid
 1. [`goal-by-target`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal-by-target.html) - Targets on the left, and indicators on the right
 
-As with any Jekyll layout, you can use these by adjusting the [front matter](https://jekyllrb.com/docs/front-matter/) of the goal file. For example, to use the goal-by-target layout, you would need this in the goal's front matter:
+If you are using the `create_goals` setting, you can change the layout as described [here](https://open-sdg.readthedocs.io/en/latest/configuration/#create_goals).
+
+Otherwise you can set the layout by adjusting the [front matter](https://jekyllrb.com/docs/front-matter/) of the goal file. For example, to use the goal-by-target layout, you would need this in the goal's front matter:
 
 `layout: goal-by-target`
 
