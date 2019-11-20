@@ -45,3 +45,186 @@ The main takeaway here is that these indivdual Javascript files are in `_include
 ## Adding custom CSS
 
 You may have noticed in the Jekyll configuration section above the `custom_css` option. Using this, you can easily add custom CSS files, to be loaded onto the page after the "default" CSS of this platform.
+
+## Working with Jekyll templates
+
+Jekyll provides a `page` variable for use in any of files in `_layouts` and `_includes` (referred to here as "templates"). This `page` variable contains helpful contextual information about the current page being rendered. Open SDG adds additional information for your use.
+
+### Variables available on all pages
+
+The following variables can be used on any page:
+
+#### page.goals
+
+An array of all the SDG Goals available. Each item in the array contains information about the goal. See "Goal objects" below.
+
+Usage example - printing the names of each goal:
+
+```
+{% for goal in page.goals %}
+  {{ goal.name }}
+{% endfor %}
+```
+
+#### page.targets
+
+An array of all the SDG Targets available. Each item in the array contains information about the target. See "Target objects" below.
+
+Usage example - printing the names of each target:
+
+```
+{% for target in page.targets %}
+  {{ target.name }}
+{% endfor %}
+```
+
+#### page.indicators
+
+An array of all the SDG Indicators available. Each item in the array contains information about the indicator. See "Indicator objects" below.
+
+Usage example - printing the names of each indicator:
+
+```
+{% for indicator in page.indicators %}
+  {{ indicator.name }}
+{% endfor %}
+```
+
+#### page.baseurl
+
+This should be used instead of `site.baseurl`, because it includes necessary subfolders according to the language of the current page.
+
+Usage example - printing a link to another page:
+
+```
+<a href="{{ page.baseurl }}/my-page/">My page</a>
+```
+
+#### page.language
+
+The language code for the current page.
+
+Usage example - printing the current language code:
+
+```
+The current language code is {{ page.language }}.
+```
+
+#### page.language_public
+
+The "public" language code for the current page. This may be different from `page.language` in special cases where you prefer a language code that is different from the standard language code for your language. Most sites will not use this.
+
+Usage example - printing the current public language code:
+
+```
+The current language code is {{ page.language }}, but the "public" language code is {{ page.language_public }}.
+```
+
+#### page.t
+
+The translations for the current language. More detail on this is available [here](https://open-sdg.readthedocs.io/en/latest/configuration/).
+
+Usage example - printing the translation of the word "Goal" (which is available with the key "goal" in the "general" group:
+
+```
+{{ page.t.general.goal }}
+```
+
+### Variables available on Goal pages only
+
+The following variables can be used on goal pages only:
+
+#### page.goal
+
+Information about the current goal. See "Goal objects" below.
+
+Usage example - printing the name of the current goal:
+
+```
+{{ page.goal.name }}
+```
+
+### Variables available on Indicator pages only
+
+The following variables can be used on indicator pages only:
+
+#### page.goal
+
+Information about the current goal. See "Goal objects" below.
+
+Usage example - printing the name of the current goal:
+
+```
+{{ page.goal.name }}
+```
+
+#### page.target
+
+Information about the current target. See "Target objects" below.
+
+Usage example - printing the name of the current target:
+
+```
+{{ page.target.name }}
+```
+
+#### page.indicator
+
+Information about the current indicator. See "Indicator objects" below.
+
+Usage example - printing the name of the current indicator:
+
+```
+{{ page.indicator.name }}
+```
+
+### Goal objects
+
+The goal objects mentioned above in `page.goal` and `page.goals` each contain the following information:
+
+* icon - the URL of the goal's icon, for the current language
+    Example: "https://example.com/goal-icons/english/goal-1.png"
+* name - the translated name of the goal
+    Example: "End poverty in all its forms everywhere"
+* number - the number of the goal
+    Example: "1", "2", etc.
+* short - the translated short name of the goal
+    Example: "No poverty"
+* slug - the slug for the goal, for use in URLs
+    For goals this is identical to "number"
+* sort - a string suitable for use in sorting the goal
+    Example: "01", "02", etc.
+* url - the URL of the goal's page in the platform, for the current language
+    Example: "/my-base-url/en/1/"
+
+### Target objects
+
+* goal_number - the number of the goal that the target is part of
+    Example: "1", "2", etc.
+* name - the translated name of the target
+    Example: "By 2030, eradicate extreme poverty for all people everywhere, currently measured as people living on less than $1.25 a day"
+* number - the number of the target
+    Example: "1.1", "1.2", etc.
+* slug - the slug for the target, for use in URLs
+    Example: "1-1", "1-2", etc.
+* sort - a string suitable for use in sorting the goal
+    Example: "0101", "0102", etc.
+
+### Indicator objects
+
+* goal_number - the number of the goal that the indicator is part of
+    Example: "1", "2", etc.
+* name - the translated name of the indicator
+    Example: "Proportion of population living below the national poverty line, by sex and age"
+* number - the number of the indicator
+    Example: "1.1.1", "1.2.1", etc.
+* slug - the slug for the indicator, for use in URLs
+    Example: "1-1-1", "1-2-1", etc.
+* sort - a string suitable for use in sorting the indicator
+    Example: "010101", "010201", etc.
+* target_number - the number of the target that the indicator is part of
+    Example: "1.1", "1.2", etc.
+* url - the URL of the indicators's page in the platform, for the current language
+    Example: "/my-base-url/en/1-1-1/"
+* [all metadata fields for the indicator]
+    The indicator object contains ALL metadata fields associated with the indicator, as set in the data repository.
