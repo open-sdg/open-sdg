@@ -16,7 +16,7 @@
         <!-- Title and meta description
         ================================================== -->
         {% capture indicator_page_title %}
-        {{ t.general.indicator }} {{ page.indicator }} - {{ t.general.goal }} {{ goal_number }}
+        {{ t.general.indicator }} {{ indicator_id_with_dots }} - {{ t.general.goal }} {{ goal_number }}
         {% endcapture %}
 
         {% capture goal_page_title %}
@@ -24,7 +24,7 @@
         {% endcapture %}
 
         <title>
-          {% if page.indicator %}
+          {% if indicator_id_with_dots %}
             {{ indicator_page_title | escape }}
           {% elsif page.sdg_goal %}
             {{ goal_page_title | escape }}
