@@ -2,7 +2,7 @@
   <li><a href="{{ site.baseurl }}{{ baseurl_folder }}/">{{ t.general.home }}</a></li>
   {% if goal_uri %}
       <li><a href="{{ goal_uri }}" title="{{ goal_title }}">{{ t.general.goal }} {{ goal_number }}</a></li>
-      <li class="active">{{ t.general.indicator }} {{ page.indicator }}</li>
+      <li class="active">{{ t.general.indicator }} {{ indicator_id_with_dots }}</li>
   {% else %}
       <li class="active">{{ t.general.goal }} {{ goal_number }}</li>
   {% endif %}
