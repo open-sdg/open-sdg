@@ -41,3 +41,24 @@ This is where the platform's data and metadata are managed. A "starter" reposito
 ### Site repository
 
 This is where everything else is managed, such as presentation, pages, menus, and documents.  A "starter" repository is available [here](https://github.com/open-sdg/open-sdg-site-starter) where it can be easily forked and customised.
+
+## Translation keys
+
+Open SDG is a multilingual platform, so translation functionality is part of most aspects of the platform. A central concept is that of a "translation key". A translation key is any string of text that refers to a particular translated word/phrase/etc. Translation keys always start with a "group", which is separated by a dot.
+
+NOTE: Because dots have a special meaning in translation keys, groups/keys should never contain any dots themselves.
+
+To illustrate, here are a few examples of translation keys:
+
+* `general.goal`
+* `general.goals`
+* `global_goals.1-title`
+* `global_goals.2-title`
+
+## Disaggregations
+
+To "disaggregate" a data series is to add additional statistics that describe only a portion of the total. For example, to add additional statistics for "Female" and for "Male".
+
+## Headline
+
+And indicator's "headline" is the data series that contains no disaggregations. It is the data series that is typically displayed first, upon viewing the indicator's page.

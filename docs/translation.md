@@ -2,13 +2,11 @@
 
 This platform is designed to be multilingual, and leverages the translations being maintained in [a separate repository](https://github.com/open-sdg/sdg-translations). This document provides an overview of how the platform accomplishes this, and how it can be extended.
 
+Throughout this discussion of translation, there will be repeated mention of "translation keys". See [here](https://open-sdg.readthedocs.io/en/latest/glossary/#translation-keys) for a definition.
+
 ## Translation data
 
 In order to compile the platform in multiple languages, Jekyll needs the translations themselves. This platform leverages translations from [this project](https://open-sdg.github.io/sdg-translations).
-
-> An important note about the sdg-translation project: Each translation receives
-> a "translation key" which can uniquely identify it. This is important to the
-> mechanism for using these translations throughout this platform.
 
 There are 2 ways to get this translation data into Jekyll.
 
