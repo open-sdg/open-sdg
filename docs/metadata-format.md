@@ -143,7 +143,7 @@ You may want to add an additional feature which isn't created from data, such as
 | embedded_feature_tab_title          | Tab title e.g. Embedded Chart                    |
 | embedded_feature_title              | The title to be shown above the embedded feature |
 | embedded_feature_url                | URL of feature that you want to embed            |
-| embed_footer                        | Information about the embedded feature which displays below embed |
+| embedded_feature_footer             | Information about the embedded feature which displays below embed |
 
 # Non-Standard Information
 
