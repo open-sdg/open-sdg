@@ -208,6 +208,8 @@ The goal objects mentioned above in `page.goal` and `page.goals` each contain th
 
 ### Target objects
 
+The target objects mentioned above in `page.target` and `page.targets` each contain the following information:
+
 * `goal_number` - the number of the goal that the target is part of. Examples:
     * 1
     * 2
@@ -228,6 +230,8 @@ The goal objects mentioned above in `page.goal` and `page.goals` each contain th
     * 0102
 
 ### Indicator objects
+
+The indicator objects mentioned above in `page.indicator` and `page.indicators` each contain the following information:
 
 * `goal_number` - the number of the goal that the indicator is part of. Examples:
     * 1
