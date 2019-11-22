@@ -130,9 +130,9 @@
                 <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
                 <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ meta.embedded_feature_url }}', {});})</script>
               </div>
-              {% if meta.embed_footer %}
+              {% if meta.embedded_feature_footer %}
                 <div id="embedfooter" class="table-footer-text">
-                  <p>{{ meta.embed_footer | t | markdownify}}</p>
+                  <p>{{ meta.embedded_feature_footer | t | markdownify}}</p>
                 </div>
               {% endif %}
             </div>
