@@ -1,5 +1,14 @@
 <h1>Change Log</h1>
 
+## 0.10.0
+
+Functionality and docs for a 'languages_public' mapping (#360)
+Footerfield for Copyright (#364)
+Configurable URLs for the edit buttons (#368)
+Metadata tabs configuation (#378)
+Ability to hide empty metadata (#378)
+Add footer to embed tag (#401)
+
 ## 0.9.0
 
 * Center embed title (#330)
