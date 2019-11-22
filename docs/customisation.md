@@ -132,6 +132,16 @@ The following variables can be used on any page:
     {{ page.t.general.goal }}
     ```
 
+* `page.url_by_language`
+
+    This contains URLs to the current page, but in each language. This is useful if you'd like to link to the same page but in another language.
+
+    Usage example - printing a link to the Spanish version of the current page:
+
+    ```
+    <a href="{{ page.url_by_language.es }}">Spanish version</a>
+    ```
+
 ### Variables available on Goal pages only
 
 The following variables can be used on goal pages only:
