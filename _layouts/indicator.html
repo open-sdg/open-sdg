@@ -139,9 +139,9 @@
                 <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ page.indicator.embedded_feature_url }}', {});})</script>
 
               </div>
-              {% if meta.embedded_feature_footer %}
+              {% if page.indicator.embedded_feature_footer %}
                 <div id="embedfooter" class="table-footer-text">
-                  <p>{{ meta.embedded_feature_footer | t | markdownify}}</p>
+                  <p>{{ page.indicator.embedded_feature_footer | markdownify}}</p>
                 </div>
               {% endif %}
             </div>
