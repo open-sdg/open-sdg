@@ -56,129 +56,129 @@ Jekyll provides a `page` variable for use in any of files in `_layouts` and `_in
 
 The following variables can be used on any page:
 
-#### page.goals
+* `page.goals`
 
-An array of all the SDG Goals available. Each item in the array contains information about the goal. See "Goal objects" below.
+    An array of all the SDG Goals available. Each item in the array contains information about the goal. See "Goal objects" below.
 
-Usage example - printing the names of each goal:
+    Usage example - printing the names of each goal:
 
-```
-{% for goal in page.goals %}
-  {{ goal.name }}
-{% endfor %}
-```
+    ```
+    {% for goal in page.goals %}
+      {{ goal.name }}
+    {% endfor %}
+    ```
 
-#### page.targets
+* `page.targets`
 
-An array of all the SDG Targets available. Each item in the array contains information about the target. See "Target objects" below.
+    An array of all the SDG Targets available. Each item in the array contains information about the target. See "Target objects" below.
 
-Usage example - printing the names of each target:
+    Usage example - printing the names of each target:
 
-```
-{% for target in page.targets %}
-  {{ target.name }}
-{% endfor %}
-```
+    ```
+    {% for target in page.targets %}
+    {{ target.name }}
+    {% endfor %}
+    ```
 
-#### page.indicators
+* `page.indicators`
 
-An array of all the SDG Indicators available. Each item in the array contains information about the indicator. See "Indicator objects" below.
+    An array of all the SDG Indicators available. Each item in the array contains information about the indicator. See "Indicator objects" below.
 
-Usage example - printing the names of each indicator:
+    Usage example - printing the names of each indicator:
 
-```
-{% for indicator in page.indicators %}
-  {{ indicator.name }}
-{% endfor %}
-```
+    ```
+    {% for indicator in page.indicators %}
+    {{ indicator.name }}
+    {% endfor %}
+    ```
 
-#### page.baseurl
+* `page.baseurl`
 
-This should be used instead of `site.baseurl`, because it includes necessary subfolders according to the language of the current page.
+    This should be used instead of `site.baseurl`, because it includes necessary subfolders according to the language of the current page.
 
-Usage example - printing a link to another page:
+    Usage example - printing a link to another page:
 
-```
-<a href="{{ page.baseurl }}/my-page/">My page</a>
-```
+    ```
+    <a href="{{ page.baseurl }}/my-page/">My page</a>
+    ```
 
-#### page.language
+* `page.language`
 
-The language code for the current page.
+    The language code for the current page.
 
-Usage example - printing the current language code:
+    Usage example - printing the current language code:
 
-```
-The current language code is {{ page.language }}.
-```
+    ```
+    The current language code is {{ page.language }}.
+    ```
 
-#### page.language_public
+* `page.language_public`
 
-The "public" language code for the current page. This may be different from `page.language` in special cases where you prefer a language code that is different from the standard language code for your language. Most sites will not use this.
+    The "public" language code for the current page. This may be different from `page.language` in special cases where you prefer a language code that is different from the standard language code for your language. Most sites will not use this.
 
-Usage example - printing the current public language code:
+    Usage example - printing the current public language code:
 
-```
-The current language code is {{ page.language }}, but the "public" language code is {{ page.language_public }}.
-```
+    ```
+    The current language code is {{ page.language }}, but the "public" language code is {{ page.language_public }}.
+    ```
 
-#### page.t
+* `page.t`
 
-The translations for the current language. More detail on this is available [here](https://open-sdg.readthedocs.io/en/latest/configuration/).
+    The translations for the current language. More detail on this is available [here](https://open-sdg.readthedocs.io/en/latest/configuration/).
 
-Usage example - printing the translation of the word "Goal" (which is available with the key "goal" in the "general" group:
+    Usage example - printing the translation of the word "Goal" (which is available with the key "goal" in the "general" group:
 
-```
-{{ page.t.general.goal }}
-```
+    ```
+    {{ page.t.general.goal }}
+    ```
 
 ### Variables available on Goal pages only
 
 The following variables can be used on goal pages only:
 
-#### page.goal
+* `page.goal`
 
-Information about the current goal. See "Goal objects" below.
+    Information about the current goal. See "Goal objects" below.
 
-Usage example - printing the name of the current goal:
+    Usage example - printing the name of the current goal:
 
-```
-{{ page.goal.name }}
-```
+    ```
+    {{ page.goal.name }}
+    ```
 
 ### Variables available on Indicator pages only
 
 The following variables can be used on indicator pages only:
 
-#### page.goal
+* `page.goal`
 
-Information about the current goal. See "Goal objects" below.
+    Information about the current goal. See "Goal objects" below.
 
-Usage example - printing the name of the current goal:
+    Usage example - printing the name of the current goal:
 
-```
-{{ page.goal.name }}
-```
+    ```
+    {{ page.goal.name }}
+    ```
 
-#### page.target
+* `page.target`
 
-Information about the current target. See "Target objects" below.
+    Information about the current target. See "Target objects" below.
 
-Usage example - printing the name of the current target:
+    Usage example - printing the name of the current target:
 
-```
-{{ page.target.name }}
-```
+    ```
+    {{ page.target.name }}
+    ```
 
-#### page.indicator
+* `page.indicator`
 
-Information about the current indicator. See "Indicator objects" below.
+    Information about the current indicator. See "Indicator objects" below.
 
-Usage example - printing the name of the current indicator:
+    Usage example - printing the name of the current indicator:
 
-```
-{{ page.indicator.name }}
-```
+    ```
+    {{ page.indicator.name }}
+    ```
 
 ### Goal objects
 
