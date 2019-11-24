@@ -4,9 +4,9 @@
 
   <div id="datatables">
 
-    <a href="{{ site.remotedatabaseurl }}/headline/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download="indicator_{{ page.indicator.slug }}.csv" tabindex="0" role="button">{{ page.t.indicator.download_headline }}</a>
+    <a href="{{ site.remote_data_prefix }}/headline/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download="indicator_{{ page.indicator.slug }}.csv" tabindex="0" role="button">{{ page.t.indicator.download_headline }}</a>
 
-    <a href="{{ site.remotedatabaseurl }}/data/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" style='float:left;margin-right:1em' download='indicator_{{ page.indicator.slug }}.csv' tabindex='0' role='button'>{{ page.t.indicator.download_source }}</a>
+    <a href="{{ site.remote_data_prefix }}/data/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" style='float:left;margin-right:1em' download='indicator_{{ page.indicator.slug }}.csv' tabindex='0' role='button'>{{ page.t.indicator.download_source }}</a>
 
     <h3>Headline data</h3>
     <table class="table-responsive table table-hover dataTable no-footer" role="grid">
