@@ -1,28 +1,14 @@
 <a class="language-toggle-button" onclick="$(this).next('.language-toggle').toggle(); return false;">
   <i class="fa fa-globe"></i>
-  <span class="language-toggle-text">{{ t.languages[current_language] }}</span>
+  <span class="language-toggle-text">{{ page.t.languages[page.language] }}</span>
   <i class="language-toggle fa fa-chevron-down"></i>
   <i class="language-toggle fa fa-chevron-up" style="display:none;"></i>
 </a>
+
 <ul class="language-options language-toggle">
 {%- for language in site.languages -%}
-  {%- if language != current_language -%}
-    {%- if language == default_language -%}
-      {%- assign new_language_segment = '/' -%}
-    {%- else -%}
-      {%- assign language_code_public = language -%}
-      {%- if site.languages_public and site.languages_public[language] -%}
-        {%- assign language_code_public = site.languages_public[language] -%}
-      {%- endif -%}
-      {%- assign new_language_segment = '/' | append: language_code_public | append: '/' -%}
-    {%- endif -%}
-    {%- if current_language == default_language -%}
-      {%- assign old_language_segment = '/' -%}
-    {%- else -%}
-      {%- assign old_language_segment = '/' | append: current_language_public | append: '/' -%}
-    {%- endif -%}
-    {%- assign new_url = page.url | replace_first: old_language_segment, new_language_segment -%}
-    <li><a href="{{site.baseurl}}{{new_url | remove: 'index.html'}}">{{ t.languages[language] }}</a></li>
+  {%- if language != page.language -%}
+    <li><a href="{{ page.url_by_language[language] }}">{{ page.t.languages[language] }}</a></li>
   {%- endif -%}
 {%- endfor -%}
 </ul>

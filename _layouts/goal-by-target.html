@@ -1,66 +1,64 @@
-{%- include multilingual.html -%}
-{%- include goal-variables.html -%}
 {% include head.html %}
 {% include header.html %}
 
-<div class="heading goal-{{page.sdg_goal}}">
+<div class="heading goal-{{ page.goal.number }}">
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-md-3 col-lg-2">
-        <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" />
+        <img src="{{ page.goal.icon }}" alt="{{ page.goal.short }} - {{ page.t.general.goal }} {{ page.goal.number }}" />
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
         <h1>
-          <span class="hidden-sm hidden-md hidden-lg">{{ t.general.goal }} {{ goal_number }}: </span>{{ goal_title }}
+          <span class="hidden-sm hidden-md hidden-lg">{{ page.t.general.goal }} {{ page.goal.number }}: </span>{{ page.goal.name }}
         </h1>
       </div>
     </div>
   </div>
 </div>
 
-<div id="main-content" class="container goal-indicators goal-{{page.sdg_goal}} goal-by-target">
+<div id="main-content" class="container goal-indicators goal-{{ page.goal.number }} goal-by-target">
 
   {{ content }}
-  {% include components/breadcrumb.html %}
+
+  <ol class="breadcrumb">
+    <li><a href="{{ page.baseurl }}">{{ page.t.general.home }}</a></li>
+    <li class="active">{{ page.t.general.goal }} {{ page.goal.number }}</li>
+  </ol>
 
   <div class="visible-md-block visible-lg-block">
     <div class="col-md-6">
-      <h4>{{ t.general.targets }}</h4>
+      <h4>{{ page.t.general.targets }}</h4>
     </div>
     <div class="col-md-6">
-      <h4>{{ t.general.indicators }}</h4>
+      <h4>{{ page.t.general.indicators }}</h4>
     </div>
   </div>
 
-  {% assign goal_indicators = site.data.meta | where: 'sdg_goal', goal_number | sort: 'indicator_sort_order' | group_by: 'target_id' %}
+  {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
   {% for group in goal_indicators %}
-    {% assign target_id = group.name %}
-    {% assign target_id_dashes = target_id | replace: ".", "-" %}
-    {% assign target_title_key = target_id | append: '-title' %}
-    {% assign target_title_key_dashes = target_id_dashes | append: '-title' %}
-    {% assign target_title = t.global_targets[target_title_key_dashes] | default: t.global_targets[target_title_key] %}
+    {% assign target = group.name | sdg_lookup %}
     <div class="indicator-cards target col-md-6">
       <span>
-        <label class="hidden-md hidden-lg">{{ t.general.target }}</label>
-        {{ target_id }}
+        <label class="hidden-md hidden-lg">{{ page.t.general.target }}</label>
+        {{ target.number }}
       </span>
-      {{ target_title }}
+      {{ target.name }}
     </div>
     <div class="indicator-cards col-md-6 row no-gutters">
     {% for indicator in group.items %}
 
       {% assign status_css = indicator.reporting_status | slugify %}
       {% if indicator.reporting_status == 'notapplicable' %}
-        {% assign status_desc = t.status.not_applicable %}
+        {% assign status_desc = page.t.status.not_applicable %}
       {% endif %}
       {% if indicator.reporting_status == 'notstarted' %}
-        {% assign status_desc = t.status.exploring_data_sources %}
+        {% assign status_desc = page.t.status.exploring_data_sources %}
       {% endif %}
       {% if indicator.reporting_status == 'inprogress' %}
-        {% assign status_desc = t.status.statistics_in_progress %}
+        {% assign status_desc = page.t.status.statistics_in_progress %}
       {% endif %}
       {% if indicator.reporting_status == 'complete' %}
-        {% assign status_desc = t.status.reported_online %}
+        {% assign status_desc = page.t.status.reported_online %}
       {% endif %}
       {% assign tag_classes = "" | split: "," %}
       {% if indicator.tags %}
@@ -72,14 +70,14 @@
       {% assign tag_classes = tag_classes | join: " " %}
 
       <div class="col-md-12 {{ tag_classes }}">
-        <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ indicator.indicator | slugify }}">
+        <a href="{{ indicator.url }}">
           <span>
-            {{ indicator.indicator }}
+            {{ indicator.number }}
             <span class="status {{ status_css }}">
               {{ status_desc }}
             </span>
           </span>
-          {{ indicator.indicator | get_indicator_name }}
+          {{ indicator.name }}
           {% if indicator.tags %}
             <ul class="tags">
             {% for tag in indicator.tags %}

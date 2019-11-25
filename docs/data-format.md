@@ -89,3 +89,7 @@ data_start_values:
 ## White space
 
 You can double check for white space within an Excel file using a COUNTIF formula or by running a macro. We will add more information on this soon.
+
+## Translation
+
+All column headers and disaggregation values can be "translation keys" to enable translation. As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.

@@ -3,7 +3,7 @@
 var opensdg = {
 
   // A base URL for asynchronous calls to SDG data.
-  remoteDataBaseUrl: '{{ site.remotedatabaseurl }}',
+  remoteDataBaseUrl: '{{ page.remote_data_prefix }}',
 
   // A hook which can be replaced to modify the configuration for Chart.js.
   // To see where this is used, see indicatorView.js createPlot() and updatePlot().

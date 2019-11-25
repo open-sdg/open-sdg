@@ -1,13 +1,13 @@
 <table class="table table-hover">
   {% for indicator_metadata in site.data.schema %}
-    {%- if t.metadata_fields[indicator_metadata.name] -%}
-      {%- assign metadata_label = t.metadata_fields[indicator_metadata.name] -%}
+    {%- if page.t.metadata_fields[indicator_metadata.name] -%}
+      {%- assign metadata_label = page.t.metadata_fields[indicator_metadata.name] -%}
     {%- else -%}
       {%- assign metadata_label = indicator_metadata.field.label -%}
     {%- endif -%}
     {% if indicator_metadata.field.scope == include.scope %}
       {% if site.hide_empty_metadata %}
-        {% unless meta[indicator_metadata.name] %}
+        {% unless page.indicator[indicator_metadata.name] %}
           {% continue %}
         {% endunless %}
       {% endif %}
@@ -18,23 +18,23 @@
           {% if indicator_metadata.name contains "_url" or indicator_metadata.name contains "_link" %}
             {% assign url_text_name = indicator_metadata.name | replace_first:'_url','_url_text'  %}
             {% assign url_text_name = url_text_name | replace_first:'_link','_link_text'  %}
-            {% assign url_text = meta[url_text_name] | t %}
+            {% assign url_text = page.indicator[url_text_name] %}
             {% unless url_text %}
               {% assign url_text = 'Link' %}
             {% endunless %}
 
-            {% if meta[indicator_metadata.name] contains "http" or meta[indicator_metadata.name] contains "mailto" %}
-              <a href="{{ meta[indicator_metadata.name] }}" target="_blank">
-                {{ url_text }} <span class="visuallyhidden">{{ t.general.opens_new_window }}</span>
+            {% if page.indicator[indicator_metadata.name] contains "http" or page.indicator[indicator_metadata.name] contains "mailto" %}
+              <a href="{{ page.indicator[indicator_metadata.name] }}" target="_blank">
+                {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
               </a>
             {% endif %}
 
           {% elsif indicator_metadata.field.element == 'multiselect' %}
-            {% for item in meta[indicator_metadata.name] %}
+            {% for item in page.indicator[indicator_metadata.name] %}
               {{ item | t }}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
           {% else %}
-            {{ meta[indicator_metadata.name] | t | markdownify }}
+            {{ page.indicator[indicator_metadata.name] | markdownify }}
           {% endif %}
         </td>
         </tr>

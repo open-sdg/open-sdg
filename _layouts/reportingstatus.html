@@ -1,16 +1,15 @@
-{% include multilingual.html %}
 {% include head.html %}
 {% include header.html %}
 
 <div id="main-content" class="container reportingstatus">
 
-  <h1>{{ t.status.reporting_status }}</h1>
+  <h1>{{ page.t.status.reporting_status }}</h1>
 
   {%- assign overall = site.data.reporting.overall -%}
   <div class="goal goal-overall">
       <div class="details">
         <h2 class="status-goal">
-            {{ t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> {{ t.general.indicators | downcase }}</span>
+            {{ page.t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> {{ page.t.general.indicators | downcase }}</span>
         </h2>
         <div class="summary">
           <div class="statuses">
@@ -34,22 +33,20 @@
     <br style="clear:both;">
   </div>
 
-  <h2>{{ t.status.status_by_goal }}</h2>
+  <h2>{{ page.t.status.status_by_goal }}</h2>
 
   {%- for goalreport in site.data.reporting.goals -%}
-    {%- assign goal_number = goalreport.goal  | downcase -%}
-    {%- assign goal_short_key = goal_number | append: '-short' -%}
-    {%- assign goal_short = t.global_goals[goal_short_key] -%}
+    {%- assign goal = goalreport.goal | downcase | sdg_lookup -%}
     <div class="goal">
         <div class="frame">
-          <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}/">
-            <img src="{{ site.goal_image_base }}/{{ current_language }}/{{ goal_number }}.png" alt="{{ goal_short }} - {{ t.general.goal }} {{ goal_number }}" width="100" height="100" />
+          <a href="{{ goal.url }}">
+            <img src="{{ goal.icon }}" alt="{{ goal.short }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" />
           </a>
         </div>
         <div class="details">
           <h3 class="status-goal">
-            <a href="{{ site.baseurl }}{{ baseurl_folder }}/{{ goal_number }}/">{{ goal_short }}</a>
-            <span class="total">{{ goalreport.totals.total }}<span></span> {{ t.general.indicators | downcase }}</span>
+            <a href="{{ goal.url }}">{{ goal.short }}</a>
+            <span class="total">{{ goalreport.totals.total }}<span></span> {{ page.t.general.indicators | downcase }}</span>
           </h3>
           <div class="summary">
             <div class="statuses">

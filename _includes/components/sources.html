@@ -2,7 +2,7 @@
 {% assign n_sources = 0 %}
 {% for i in (1..12) %}
   {% assign src_active = "source_active_" | append: i %}
-  {% if meta[src_active] == true %}
+  {% if page.indicator[src_active] == true %}
     {% assign n_sources  = n_sources | plus: 1 %}
   {% endif %}
 {% endfor %}
@@ -10,11 +10,11 @@
 {% if n_sources > 0 %}
   <div class="row no-gutters">
   {% for i in (1..n_sources) %}
-   {% assign src_active = "source_active_" | append: i %}
+    {% assign src_active = "source_active_" | append: i %}
     {% assign src_scope = "source_" | append: i %}
     <div class="col-md-6">
       {% if n_sources > 1 %}
-        <h4>{{ t.indicator.source }} {{ i }}</h4>
+        <h4>{{ page.t.indicator.source }} {{ i }}</h4>
       {% endif %}
       {% include components/metadata.html scope=src_scope %}
     </div>

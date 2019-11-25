@@ -15,19 +15,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Title and meta description
         ================================================== -->
-        {% capture indicator_page_title %}
-        {{ t.general.indicator }} {{ indicator_id_with_dots }} - {{ t.general.goal }} {{ goal_number }}
-        {% endcapture %}
-
-        {% capture goal_page_title %}
-        {{ t.general.goal }} {{ goal_number }} - {{ goal_short }}
-        {% endcapture %}
 
         <title>
-          {% if indicator_id_with_dots %}
-            {{ indicator_page_title | escape }}
-          {% elsif page.sdg_goal %}
-            {{ goal_page_title | escape }}
+          {% if page.indicator %}
+            {{ page.t.general.indicator | escape }} {{ page.indicator.number }} - {{ page.t.general.goal | escape }} {{ page.goal.number }}
+          {% elsif page.goal %}
+            {{ page.t.general.goal | escape }} {{ page.goal.number }} - {{ page.goal.short | escape }}
           {% else %}
             {{ site.title | escape }}
           {% endif %}
@@ -94,5 +87,5 @@
         <!-- ShareThis END -->
 
     </head>
-<body class="language-{{ current_language }} layout-{{ page.layout }}">
+<body class="language-{{ page.language }} layout-{{ page.layout }}">
 <!-- <div class="container"> -->
