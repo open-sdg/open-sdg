@@ -1,5 +1,34 @@
 <h1>Change Log</h1>
 
+## 0.10.0
+
+Functionality and docs for a 'languages_public' mapping (#360)
+Footerfield for Copyright (#364)
+Configurable URLs for the edit buttons (#368)
+Metadata tabs configuration (#378)
+Ability to hide empty metadata (#378)
+Add footer to embed tag (#401)
+
+Breaking changes:
+
+* This upgrade should be accompanied by an upgrade to:
+    * jekyll-open-sdg-plugins 0.0.16
+* In addition, if you have overridden any of the following files, check [this diff](https://github.com/open-sdg/open-sdg/compare/0.9.0...0.10.0) to see if you need to make any updates to your overriddes:
+    * _includes/assets/js/indicatorModel.js
+    * _includes/components/breadcrumb.html
+    * _includes/components/edit-buttons.html
+    * _includes/components/headline.html
+    * _includes/components/language-toggle.html
+    * _includes/components/metadata.html
+    * _includes/goal-variables.html
+    * _includes/head.html
+    * _includes/indicator-variables.html
+    * _includes/multilingual.html
+    * _includes/scripts.html
+    * _layouts/goal-by-target.html
+    * _layouts/goal.html
+    * _layouts/indicator.html
+
 ## 0.9.0
 
 * Center embed title (#330)
