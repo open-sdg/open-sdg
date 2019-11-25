@@ -1,13 +1,35 @@
 <h1>Change Log</h1>
 
+## 1.0.0
+
+* More consistent template variables without globals (#394)
+
+Breaking changes:
+
+
+* `t` has changed to `page.t`. Eg: t.general.goal is now page.t.general.goal. All overridden templates should be updated accordingly.
+* The following include files have been removed:
+    * indicator-variables.html
+    * goal-variables.html
+    * multilingual.html
+
+    This means that global variables like `meta`, `current_language`, etc. are no longer available. All overridden templates that include these files will need to be updated. To fix, remove the "include" statements and remove any use of global variables. It may be easier to start with the updated version of the file from Open SDG, and then re-apply your modifications.
+
+* Along the lines of the item above - expect that ALL templates in the platform have been updated. So every overridden layout and/or include file will potentially need to be updated.
+* The `get_indicator_name` filter is no longer supported. The metadata field `indicator_name` is now the sole (and required) source of indicator names.
+* The "subfolder approach" for translation is no longer supported and has been removed from the documentation.
+* The `remotedatabaseurl` setting is no longer supported. Sites should use `remote_data_prefix` instead, if not already.
+
+
+
 ## 0.10.0
 
-Functionality and docs for a 'languages_public' mapping (#360)
-Footerfield for Copyright (#364)
-Configurable URLs for the edit buttons (#368)
-Metadata tabs configuration (#378)
-Ability to hide empty metadata (#378)
-Add footer to embed tag (#401)
+* Functionality and docs for a 'languages_public' mapping (#360)
+* Footerfield for Copyright (#364)
+* Configurable URLs for the edit buttons (#368)
+* Metadata tabs configuration (#378)
+* Ability to hide empty metadata (#378)
+* Add footer to embed tag (#401)
 
 Breaking changes:
 
