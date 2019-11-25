@@ -6,7 +6,9 @@
 
 Breaking changes:
 
-
+* This upgrade should be accompanied by an upgrade to:
+    * jekyll-open-sdg-plugins 1.0.0
+    * sdg-build 1.0.0
 * `t` has changed to `page.t`. Eg: t.general.goal is now page.t.general.goal. All overridden templates should be updated accordingly.
 * The following include files have been removed:
     * indicator-variables.html
