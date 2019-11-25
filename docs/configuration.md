@@ -124,15 +124,6 @@ This is far safer and more recommended than using the latest version, such as th
 remote_theme: open-sdg/open-sdg
 ```
 
-### remote_translations
-
-This **required** setting tells the platform where look for remote language translation files. Note that this should be list of one or more URLs, which allows you to pull in multiple translation files.
-
-```nohighlight
-remote_translations:
-  - https://open-sdg.github.io/sdg-translations/translations.json
-```
-
 ## Optional settings
 
 ### analytics

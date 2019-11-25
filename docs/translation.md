@@ -8,21 +8,16 @@ Throughout this discussion of translation, there will be repeated mention of "tr
 
 In order to compile the platform in multiple languages, Jekyll needs the translations themselves. This platform leverages translations from [this project](https://open-sdg.github.io/sdg-translations).
 
-There are 2 ways to get this translation data into Jekyll.
-
-1. Manually copy the [translations folder](https://github.com/open-sdg/sdg-translations/tree/develop/translations) into your [data folder](https://jekyllrb.com/docs/datafiles/).
-2. (Recommended) Use a Jekyll plugin, such as [Jekyll Get JSON](https://github.com/brockfanning/jekyll-get-json), to pull in the [json data](https://open-sdg.github.io/sdg-translations/translations.json) at build time.
-
-Note that the [open-sdg-site-starter](https://github.com/open-sdg/open-sdg-site-starter) comes pre-configured to use approach #2 above.
+The recommended way to get the translations is via the SDG Build library, in the data repository. Note that the [open-sdg-data-starter](https://github.com/open-sdg/open-sdg-site-starter) comes pre-configured to use this approach.
 
 ## Adding new languages
 
 There are 4 requirements for adding a new language to the platform
 
-1. Make sure that the new language is implemented in the [SDG Translations project](https://open-sdg.github.io/sdg-translations). If it is not, you can fork that repository and implement the language yourself.
-2. Make sure that translated goal icons have been created. These are should be included in the SDG Translations implementation mentioned above.
+1. Check that the new language is implemented in the [SDG Translations project](https://open-sdg.github.io/sdg-translations). If it is not, you can fork that repository and implement the language yourself.
+2. Make sure that translated goal icons have been created. These are included in the SDG Translations project mentioned above.
 3. Add the new language in the 'languages' list in your `_config.yml` file.
-4. Add new subdirectories for the translated goals, indicators, and pages, and populate them with content. NOTE: The [open-sdg-site-starter](https://github.com/open-sdg/open-sdg-site-starter) ships with a script to do this for you.
+4. Create new versions of any Jekyll pages that you would like to have available in the new language. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
 
 ## Using translated text in Jekyll templates
 
@@ -47,28 +42,11 @@ Sometimes you may need to translate something that exists as a Liquid variable i
 <h1>{{ foo | t }}</h1>
 ```
 
+Note that it is always safe to run variables through this `t` filter, even if you aren't sure whether it actually contains a translation key. If the variable doesn't actually contain a translation key, then it will be unchanged.
+
 ## Translating indicator metadata
 
-There are two methods available for translating metadata. Both are equally valid, and you are free to use one or both, depending on your preferences.
-
-### 1. Translating indicator metadata via subfolders
-
-Using this approach, for each language (other than the default language) you will create a subfolder inside the `meta` folder of your data repository, containing corresponding versions of each indicator. For example:
-
-```lang-none
-meta
-└─1-1-1.md (this contains the metadata in your default language)
-└─es
-  └─1-1-1.md (this contains any Spanish translations of the metadata)
-└─fr
-  └─1-1-1.md (this contains any French translations of the metadata)
-```
-
-NOTE: The translated versions in the subfolders need not contain every metadata field. They only need to contain the fields that you want translated.
-
-### 2. Translating indicator metadata via translation keys
-
-Using this approach, you put "translation keys" directly into the indicator metadata. For example, instead of:
+The translate indicator metadata, you put "translation keys" directly into the indicator metadata. For example, instead of:
 
 ```lang-yaml
 un_custodian_agency: UN Habitat
@@ -80,7 +58,7 @@ You might do:
 un_custodian_agency: agencies.un_habitat
 ```
 
-Assuming that `agencies.un_habitat` refers to an actual key in your SDG Translations data, this will translate the field according to that data.
+Assuming that `agencies.un_habitat` refers to an actual translation key in your translations, this will translate the field according to that entry.
 
 ## Translation in Javascript
 
@@ -103,7 +81,7 @@ NOTE: In contrast to Jekyll, any translation keys you will need in Javascript ne
 
 ## Translating data disaggregations and columns
 
-To translate the disaggregations and columns in your data (such as "Age", "Sex", "Female", etc.) you will need to make sure that the disaggregation values in your CSV files correspond to translation keys. For example, instead of a column called `Sex` you could call it `data.Sex`. Assuming that `data.Sex` refers to an actual key in your SDG Translations data, this will translate the disaggregation according to that data.
+To translate the disaggregations and columns in your data (such as "Age", "Sex", "Female", etc.) you will need to make sure that the disaggregation values in your CSV files correspond to translation keys. For example, instead of a column called `Sex` you could call it `data.Sex`. Assuming that `data.Sex` refers to an actual translations key in your translations, this will translate the disaggregation according to that entry.
 
 Similarly, instead of a values like `Female`, you could use `data.Female` to correspond to a translation by that key.
 
@@ -125,7 +103,7 @@ These variables are available in all Jekyll documents.
 
 Inevitably an implementation of this platform will need to display some text that is not already included in the SDG Translations project, and that is likely specific to a particular country. The recommended way to accomplish this is to fork the SDG Translations repository. Once forked, you can add new translation files custom to your implementation.
 
-It is recommended that you limit the changes in your fork of SDG Transations to new files only -- and refrain from changing existing files. The reason for this approach is to make it easier to merge in the latest upstream updates, should any occur.
+Alternatively you can also put the translations directly into your data repository, in a `translations` folder.
 
 > **NOTE**: If you make a translation that you think would be useful to others, please
 > submit it as a pull-request in the [sdg-translations](https://github.com/open-sdg/sdg-translations) repository!
