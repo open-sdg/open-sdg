@@ -2,6 +2,13 @@
 
 Open SDG platforms are very customisable and there are a variety of optional features which can be easily configured.
 
+## Multilingual
+By default, the site is created in English (?). However, it is possible to change the default language of the site and make the site available in multiple languages.
+
+An example of a site just using the English language (default) is the [UK site](https://sustainabledevelopment-uk.github.io/).
+
+An example of a site using multiple languages is the [Armenian site](https://armstat.github.io/sdg-site-armenia/).
+
 ## Maps
 By default, data uploaded to an Open SDG platform is displayed on a chart and a table. You can configure your platform and data to also display data on a map.
 
@@ -44,3 +51,16 @@ For guidance on how to change what reporting stasus options your site uses, see 
 By default, two buttons show to allow you to toggle between different contrast levels - the [US site](https://sdg.data.gov/) is an example of using this option. However, you can choose to user a more accessible contrast toggle button - the [UK site](https://sustainabledevelopment-uk.github.io/) is an example of using this option.
 
 For guidance on how to use the more accessible contrast button, see the [*contrast_type* section on the Configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/#contrast_type).
+
+## Add pages
+By default, there are four pages which show in the menu bar: Reporting status, About, Guidance and FAQ.
+
+An example of using just the four default menu items is [Kyrgyzstan's site](https://sdg-kyrgyzstan.github.io/open-sdg-site-starter/en/)
+
+An example of menu items being added is [UK's site](https://sustainabledevelopment-uk.github.io/)
+
+Even though only four pages are linked to in the menu by default, there are other pages provided for use (e.g. Contacts, News) as well as the option to easily create your own pages.
+
+For guidance on how to add more pages to the menu, see the [*menu* section of the Configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/#menu).
+
+For guidance on how to create new pages, see [XX]().
