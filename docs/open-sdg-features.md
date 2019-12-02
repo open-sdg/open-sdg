@@ -64,3 +64,10 @@ Even though only four pages are linked to in the menu by default, there are othe
 For guidance on how to add more pages to the menu, see the [*menu* section of the Configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/#menu).
 
 For guidance on how to create new pages, see [XX]().
+
+## Filter by disaggregation
+Open SDG platforms allow data to be displayed in a way in which it can be filtered by disaggregation. This allows user to compare different breakdowns for a particular indicator.
+
+An example of providing disaggregation filtering is [indicator 5.2.2 on the UK site](https://sustainabledevelopment-uk.github.io/5-2-2/).
+
+This feature is configured with the data files. For guidance on how to provide disaggregation filtering, see the [Data format page](https://open-sdg.readthedocs.io/en/latest/data-format/).
