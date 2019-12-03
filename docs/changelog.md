@@ -3,6 +3,7 @@
 ## 1.0.0
 
 * More consistent template variables without globals (#394)
+* Auto fit search bar around text (#407)
 
 Breaking changes:
 
