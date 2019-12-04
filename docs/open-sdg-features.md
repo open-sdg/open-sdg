@@ -3,7 +3,7 @@
 Open SDG platforms are very customisable and there are a variety of optional features which can be easily configured.
 
 ## Multilingual
-By default, the site is created in English (?). However, it is possible to change the default language of the site and make the site available in multiple languages.
+By default, the site is created in English. However, it is possible to change the default language of the site and make the site available in multiple languages.
 
 An example of a site just using the English language (default) is the [UK site](https://sustainabledevelopment-uk.github.io/).
 
@@ -45,7 +45,7 @@ An example of removing one of the options is the [UK's Reporting status page](ht
 An example of using the **Not applicable** option is [Rwanda's Reporting status page](https://sustainabledevelopment-rwanda.github.io/reporting-status/).
 
 ## Display data for national indicators as well as global indicators
-One way of displaying national indicators on an Open SDG platform is by adding them in the same section as the global indicators and tagging them as national. An example of this is [Armenia's platform].
+One way of displaying national indicators on an Open SDG platform is by adding them in the same section as the global indicators and tagging them as national. An example of this is [Armenia's platform](https://armstat.github.io/sdg-site-armenia/1/).
 
 Another way of displaying national indicators is by having them on separate pages. An example of this is [Poland's platform](http://sdg.gov.pl/en). Even though Poland's site has undergone a lot of customisation since it started off as Open SDG platform, this example shows what is possible.
 
