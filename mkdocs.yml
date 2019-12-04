@@ -15,6 +15,7 @@ extra_css:
 pages:
     - Home: index.md
     - About: about.md
+    - Open SDG features: open-sdg-features.md
     - Frequently Asked Questions: faq.md
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
