@@ -22,10 +22,9 @@ For guidance on how set up your site and data in order to be able to display dat
 ## Embedded content
 Another way of showing data/information on a indicator page is by embedding content from other websites/applications.
 
-Some examples of embedded content are:
+An examples of embedded content as main content is a [macro-economic dashboard on the UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/17-13-1/)
 
-* [macro-economic dashboard embedded as main content on UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/17-13-1/)
-* XX embedded on a tab on XX
+Content can also be embedded on a data tab next to the Chart and Table tabs.
 
 Embedded features are configured in the metadata files. See the [*Embedded feature metadata* section on the Metadata format page](https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata) for more guidance.
 
@@ -44,6 +43,11 @@ An example of using the default options is [Ghana's Reporting status page](https
 An example of removing one of the options is the [UK's Reporting status page](https://sustainabledevelopment-uk.github.io/reporting-status/).
 
 An example of using the **Not applicable** option is [Rwanda's Reporting status page](https://sustainabledevelopment-rwanda.github.io/reporting-status/).
+
+## Display data for national indicators as well as global indicators
+One way of displaying national indicators on an Open SDG platform is by adding them in the same section as the global indicators and tagging them as national. An example of this is [Armenia's platform].
+
+Another way of displaying national indicators is by having them on separate pages. An example of this is [Poland's platform](http://sdg.gov.pl/en). Even though Poland's site has undergone a lot of customisation since it started off as Open SDG platform, this example shows what is possible.
 
 ## Contrast button
 By default, two buttons show to allow you to toggle between different contrast levels - the [US site](https://sdg.data.gov/) is an example of using this option. However, you can choose to user a more accessible contrast toggle button - the [UK site](https://sustainabledevelopment-uk.github.io/) is an example of using this option.
