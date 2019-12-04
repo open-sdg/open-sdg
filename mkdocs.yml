@@ -17,6 +17,11 @@ pages:
     - About: about.md
     - Open SDG features: open-sdg-features.md
     - Frequently Asked Questions: faq.md
+    - Case studies:
+      - Armenia: case-studies/armenia.md
+      - Germany: case-studies/germany.md
+      - Kyrgyzstan: case-studies/kyrgyzstan.md
+      - Rwanda: case-studies/rwanda.md
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
     - Requirements: requirements.md
@@ -48,8 +53,3 @@ pages:
         - Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
-    - Case studies:
-        - Armenia: case-studies/armenia.md
-        - Germany: case-studies/germany.md
-        - Kyrgyzstan: case-studies/kyrgyzstan.md
-        - Rwanda: case-studies/rwanda.md
