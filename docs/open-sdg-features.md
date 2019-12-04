@@ -14,8 +14,8 @@ By default, data uploaded to an Open SDG platform is displayed on a chart and a 
 
 Some examples of data being shown on maps are:
 
-* 3.2.1 on Rwanda's Open SDG platform
-* 3.c.1 on UK's Open SDG platform
+* [3.2.1 on Rwanda's Open SDG platform](https://sustainabledevelopment-rwanda.github.io/3-2-1/)
+* [3.c.1 on UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/3-a-1/)
 
 For guidance on how set up your site and data in order to be able to display data on a map (as well as on a chart and table), see the [Maps page](https://open-sdg.readthedocs.io/en/latest/maps/).
 
@@ -24,7 +24,7 @@ Another way of showing data/information on a indicator page is by embedding cont
 
 Some examples of embedded content are:
 
-* macro-economic dashboard embedded as main content on UK's Open SDG platform
+* [macro-economic dashboard embedded as main content on UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/17-13-1/)
 * XX embedded on a tab on XX
 
 Embedded features are configured in the metadata files. See the [*Embedded feature metadata* section on the Metadata format page](https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata) for more guidance.
@@ -45,8 +45,6 @@ An example of removing one of the options is the [UK's Reporting status page](ht
 
 An example of using the **Not applicable** option is [Rwanda's Reporting status page](https://sustainabledevelopment-rwanda.github.io/reporting-status/).
 
-For guidance on how to change what reporting stasus options your site uses, see the [XX page]().
-
 ## Contrast button
 By default, two buttons show to allow you to toggle between different contrast levels - the [US site](https://sdg.data.gov/) is an example of using this option. However, you can choose to user a more accessible contrast toggle button - the [UK site](https://sustainabledevelopment-uk.github.io/) is an example of using this option.
 
@@ -62,8 +60,6 @@ An example of menu items being added is [UK's site](https://sustainabledevelopme
 Even though only four pages are linked to in the menu by default, there are other pages provided for use (e.g. Contacts, News) as well as the option to easily create your own pages.
 
 For guidance on how to add more pages to the menu, see the [*menu* section of the Configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/#menu).
-
-For guidance on how to create new pages, see [XX]().
 
 ## Filter by disaggregation
 Open SDG platforms allow data to be displayed in a way in which it can be filtered by disaggregation. This allows user to compare different breakdowns for a particular indicator.
