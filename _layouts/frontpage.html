@@ -12,7 +12,7 @@
         {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
             <div class="col-xs-4 col-md-2">
                 <a href="./{{ goal.number }}/">
-                  <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short }} - {{ page.t.general.goal }} {{ goal.number }}" />
+                  <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" />
               </a>
             </div>
         {% cycle 'end row' : '', '', '', '', '', '</div>' %}
