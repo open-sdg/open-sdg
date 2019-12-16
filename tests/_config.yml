@@ -71,7 +71,9 @@ menu:
     translation_key: menu.about
   - path: guidance
     translation_key: menu.guidance
-  - path: faq
+    # Internal paths do not need a preceding slash,
+    # but it is fine to have one.
+  - path: /faq
     translation_key: menu.faq
 
 footer_menu:
@@ -83,7 +85,9 @@ footer_menu:
     translation_key: general.facebook
   - path: faq
     translation_key: menu.faq
-  - path: about/cookies-and-privacy
+  # Internal paths do not need a preceding slash,
+  # but it is fine to have one.
+  - path: /about/cookies-and-privacy
     translation_key: menu.cookies
 
 # The list of languages that are translated. The first one is the default.
