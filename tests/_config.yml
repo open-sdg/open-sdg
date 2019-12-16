@@ -74,6 +74,18 @@ menu:
   - path: /faq
     translation_key: menu.faq
 
+footer_menu:
+  - path: mailto:test@example.com
+    translation_key: menu.contact-us
+  - path: https://twitter.com/MyTwitterAccount
+    translation_key: general.twitter
+  - path: https://facebook.com/MyFacebookAccount
+    translation_key: general.facebook
+  - path: /faq
+    translation_key: menu.faq
+  - path: /cookies
+    translation_key: menu.cookies
+
 # The list of languages that are translated. The first one is the default.
 languages:
   - en

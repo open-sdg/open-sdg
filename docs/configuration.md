@@ -43,6 +43,26 @@ This **required** setting should be either `staging` or `production`. Certain fe
 environment: staging
 ```
 
+### footer_menu
+
+This **required** setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](https://open-sdg.readthedocs.io/en/latest/translation/).
+
+The following example provides a footer menu matching older versions of Open SDG, which included options for social media and email contacts.
+
+```nohighlight
+footer_menu:
+  - path: mailto:my-email-address@example.com
+    translation_key: menu.contact-us
+  - path: https://twitter.com/MyTwitterAccount
+    translation_key: general.twitter
+  - path: https://facebook.com/MyFacebookAccount
+    translation_key: general.facebook
+  - path: /faq
+    translation_key: menu.faq
+  - path: /cookies
+    translation_key: menu.cookies
+```
+
 ### goal_image_base
 
 This **required** setting controls the base URL for downloading the imagery for the goals (PNG files). The platform will use this as a base, and complete the URLs (behind the scenes) by adding a language and number. For example, if you set this to `https://example.com`, then the platform will try to download the Spanish image for Goal 4 at: `https://example.com/en/4.png`.
@@ -192,22 +212,6 @@ This optional setting can be used to load additional JavaScript files on each pa
 ```
 custom_js:
   - /assets/js/custom.js
-```
-
-### twitter
-
-This optional setting creates a [Twitter](https://twitter.com) link in the platform's footer. It should be a Twitter account name.
-
-```nohighlight
-twitter: MyTwitterAccount
-```
-
-### facebook
-
-This optional setting creates a [Facebook](https://facebook.com) link in the platform's footer. It should be a Facebook account name.
-
-```nohighlight
-facebook: MyFacebookAccount
 ```
 
 ### frontpage_heading
