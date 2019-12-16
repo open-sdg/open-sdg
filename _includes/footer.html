@@ -10,7 +10,12 @@
                 {% if item.path contains ":" %}
                   <a href="{{ item.path }}" target="_blank">{{ item.translation_key | t }}</a>
                 {% else %}
-                  <a href="{{ page.baseurl }}{{ item.path }}">{{ item.translation_key | t }}</a>
+                  {%- assign item_path = item.path -%}
+                  {%- assign item_path_first = item_path | slice: 0 %}
+                  {%- if item_path_first == '/' -%}
+                    {%- assign item_path = item_path | slice: 1, item_path.size -%}
+                  {%- endif -%}
+                  <a href="{{ page.baseurl }}{{ item_path }}">{{ item.translation_key | t }}</a>
                 {% endif %}
                 </li>
               {% endfor %}

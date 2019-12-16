@@ -65,25 +65,25 @@ collections:
 # Menu
 menu:
   # Use these to customise the main navigation.
-  - path: /reporting-status
+  - path: reporting-status
     translation_key: menu.reporting_status
-  - path: /about
+  - path: about
     translation_key: menu.about
-  - path: /guidance
+  - path: guidance
     translation_key: menu.guidance
-  - path: /faq
+  - path: faq
     translation_key: menu.faq
 
 footer_menu:
   - path: mailto:test@example.com
-    translation_key: menu.contact-us
+    translation_key: menu.contact_us
   - path: https://twitter.com/MyTwitterAccount
     translation_key: general.twitter
   - path: https://facebook.com/MyFacebookAccount
     translation_key: general.facebook
-  - path: /faq
+  - path: faq
     translation_key: menu.faq
-  - path: /cookies
+  - path: about/cookies-and-privacy
     translation_key: menu.cookies
 
 # The list of languages that are translated. The first one is the default.
