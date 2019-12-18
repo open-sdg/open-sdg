@@ -53,3 +53,4 @@ The City of LA took several steps to customize the platform:
 * If you do not have a central repository of local data, alot time for identifying available local data for the platform.
 * The platform is very user friendly for those who are not coders.  The Open SDG community is helpful for resolving issues, be sure to leverage everyone.
 * The City of LA site is currently in English. Set in your plan time for translation to other languages, as well as identify team members who can support translation needs.
+* All data is currently managed manually, we are exploring ways to automate updates to indicator data and encourage other cities to do the same
