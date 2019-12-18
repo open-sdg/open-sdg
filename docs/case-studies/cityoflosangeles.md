@@ -22,7 +22,7 @@ We forked the open data platform from the US SDG site [sdg.data.org](https://sdg
 
 ## How do you upload data and metadata into the platform?
 
-Data and metadata are uploaded to the platform via the data repository in GitHub, using .csv and .md files.  The Prose.io editor is also used to edit local meta-data.
+Data and metadata are uploaded to the platform via the data repository in GitHub, using .csv and .md files.  The Prose.io editor is also used to edit local metadata.
 
 ## How is the platform hosted? (GitHub, local server, other platform)
 
