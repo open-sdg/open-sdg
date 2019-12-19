@@ -19,6 +19,7 @@ pages:
     - Frequently Asked Questions: faq.md
     - Case studies:
       - Armenia: case-studies/armenia.md
+      - City of Los Angeles: case-studies/cityoflosangeles.md
       - Germany: case-studies/germany.md
       - Kyrgyzstan: case-studies/kyrgyzstan.md
       - Rwanda: case-studies/rwanda.md
