@@ -18,7 +18,7 @@ The City of L.A. began the setup of the reporting platform using the quick start
 
 ## How long did it take to set up the platform?
 
-We forked the open data platform from the US SDG site [sdg.data.org](https://sdg.data.org/).  This initial process took about a week.  However, the process to identify local data sources, format data and customize the site for our initial five priority Goals, took about 4-5 months.
+We forked the open data platform from the US SDG site [sdg.data.gov](https://sdg.data.gov/).  This initial process took about a week.  However, the process to identify local data sources, format data and customize the site for our initial five priority Goals, took about 4-5 months.
 
 ## How do you upload data and metadata into the platform?
 
