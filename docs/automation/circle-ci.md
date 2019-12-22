@@ -13,7 +13,7 @@ CircleCI is a "continuous integration" (CI) cloud service. It is useful for Open
 
 ## Cons
 
-There are not many downsides to CircleCI, making it a good choice for Open SDG.
+* Requires the creation of SSH keys to communicate with version control (eg, GitHub)
 
 ## Set-up
 
