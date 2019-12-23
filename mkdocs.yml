@@ -40,6 +40,7 @@ pages:
         - Maps: maps.md
         - Analytics: analytics.md
     - Automation:
+        - GitHub Actions: automation/github-actions.md
         - CircleCI: automation/circle-ci.md
         - TravisCI: automation/travis-ci.md
         - Jenkins: automation/jenkins.md
