@@ -89,14 +89,6 @@ goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
 plugins:
   - jekyll-open-sdg-plugins
 
-# This makes sure that all pages have a language.
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      language: "en"
-
 # Apply any custom CSS.
 custom_css:
   - /assets/css/custom.css
