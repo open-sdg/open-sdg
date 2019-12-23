@@ -52,7 +52,7 @@ The following example provides a footer menu matching older versions of Open SDG
 ```nohighlight
 footer_menu:
   - path: mailto:my-email-address@example.com
-    translation_key: menu.contact-us
+    translation_key: menu.contact_us
   - path: https://twitter.com/MyTwitterAccount
     translation_key: general.twitter
   - path: https://facebook.com/MyFacebookAccount
