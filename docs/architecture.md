@@ -82,8 +82,7 @@
       Automation tool
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        Any automation tool, such as <a href="../automation/circle-ci/">CircleCI</a>
-        or <a href="../automation/travis-ci/">TravisCI</a>, performs configured actions in response to events or schedules.
+        Any automation tool, such as <a href="../automation/github-actions/">GitHub Actions</a>, performs configured actions in response to events or schedules.
       </span>
     </div>
     <div class="node global row4 data-column" id="sdg-build">
@@ -111,10 +110,10 @@
       </span>
     </div>
     <div id="logos-automation" class="logos row3"><div class="logo-container">
+      <img src="../img/github.png" alt="Logo for GitHub" title="GitHub" />
       <img src="../img/circleci.png" alt="Logo for CircleCI" title="CircleCI" />
       <img src="../img/travisci.png" alt="Logo for TravisCI" title="TravisCI" />
       <img src="../img/jenkins.png" alt="Logo for Jenkins" title="Jenkins" />
-      <img src="../img/netlify.png" alt="Logo for Netlify" title="Netlify" />
     </div></div>
     <div id="logos-hosting" class="logos row5"><div class="logo-container">
       <img src="../img/github.png" alt="Logo for GitHub" title="Github" />

@@ -6,8 +6,8 @@ Feature: Footer
 
   Scenario: A link to a Twitter account is in the footer
     Given I am on the homepage
-    Then I should see "MyTwitterAccount"
+    Then I should see "Twitter"
 
   Scenario: A link to a Facebook account is in the footer
     Given I am on the homepage
-    Then I should see "MyFacebookAccount"
+    Then I should see "Facebook"
