@@ -75,6 +75,18 @@ Metadata about "data sources" must follow a special format. The keys for the met
 
 In this way, all of the source fields ending in "_1" refer to source #1. And all the source fields ending in "_2" refer to source #2, etc.
 
+### Caution about URLs
+
+Especially long sequences of characters, like those in a long URL, can cause formatting issues on webpages. It is recommended that particularly long URLs be included as links, instead of as plain text. For example:
+
+Good:
+
+`[This is a link to a long URL](https://example.com/abc/def/ghi/jkl/mno/pqr/stu?vwxyz=foo&bar=1234567890)`
+
+Avoid:
+
+`This a long plain-text URL: https://example.com/abc/def/ghi/jkl/mno/pqr/stu?vwxyz=foo&bar=1234567890`
+
 ## Data Info
 
 Some of the metadata are not intended to be displayed on the site. These are put into a "scope" called "data" in the `_prose.yml` file. For example, see [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L142).
