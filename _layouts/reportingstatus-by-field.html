@@ -1,0 +1,80 @@
+{% include head.html %}
+{% include header.html %}
+
+<div id="main-content" class="container reportingstatus">
+
+  <h1>{{ page.t.status.reporting_status }}</h1>
+
+  {%- assign overall = site.data.reporting.overall -%}
+  <div class="goal goal-overall">
+      <div class="details">
+        <h2 class="status-goal">
+            {{ page.t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> {{ page.t.general.indicators | downcase }}</span>
+        </h2>
+        <div class="summary">
+          <div class="statuses">
+            {%- for status in overall.statuses -%}
+            <div>
+              <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+            </div>
+            {%- endfor -%}
+
+            <br style="clear:both;">
+          </div>
+        </div>
+        <div class="goal-stats">
+            {%- for status in overall.statuses -%}
+            <span class="{{ status.status | slugify }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage | round }}%"></span>
+            {%- endfor -%}
+        </div>
+
+      </div>
+    <!--</li>-->
+    <br style="clear:both;">
+  </div>
+
+  {% if page.t.status[page.grouping_field] %}
+    <h2>{{ page.t.status[page.grouping_field] }}</h2>
+  {% elsif page.t.metadata_fields[page.grouping_field] %}
+    <h2>{{ page.t.metadata_fields[page.grouping_field] }}</h2>
+  {% else %}
+    <h2>{{ page.grouping_field }}</h2>
+  {% endif %}
+
+  {%- for fieldreport in site.data.reporting[page.grouping_field] -%}
+    {%- assign field_value = fieldreport[page.grouping_field] -%}
+    <div class="goal">
+        <div class="frame">
+          <p>{{ field_value | t }}</p>
+        </div>
+        <div class="details">
+          <h3 class="status-goal">
+            <span class="total">{{ fieldreport.totals.total }}<span></span> {{ page.t.general.indicators | downcase }}</span>
+          </h3>
+          <div class="summary">
+            <div class="statuses">
+              {%- for status in fieldreport.statuses -%}
+              <div>
+                <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+              </div>
+              {%- endfor -%}
+              <br style="clear:both;">
+            </div>
+          </div>
+          <div class="goal-stats">
+          {%- for status in fieldreport.statuses -%}
+            <span class="{{ status.status | slugify }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage | round }}%"></span>
+          {%- endfor -%}
+          </div>
+          <div class="divider">
+          </div>
+        </div>
+      <!--</li>-->
+      <br style="clear:both;">
+    </div>
+  {%- endfor -%}
+
+  <!--{{ content }}-->
+
+</div>
+{% include footer.html %}
