@@ -33,8 +33,26 @@
     <br style="clear:both;">
   </div>
 
+  {% if site.data.reporting.extra_fields %}
+  <ul class="nav nav-tabs reporting-status-view" role="tablist">
+    <li role="presentation" class="nav-item active">
+      <a class="nav-link" data-toggle="tab" href="#goalsview" aria-controls="goals" role="tab" {% include autotrack.html preset="tab_reporting_status_goals" category="Tab change" action="Change reporting status view" label="Change reporting status view to goals" %}>{{ page.t.status.status_by_goal }}</a>
+    </li>
+    {% for extra_field in site.data.reporting.extra_fields %}
+    {% assign extra_field_name = extra_field[0] %}
+    <li role="presentation" class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#{{ extra_field_name }}view" aria-controls="{{ extra_field_name }}" role="tab" {% include autotrack.html preset="tab_reporting_status_extra_field" category="Tab change" action="Change reporting status view" label="Change reporting status view to extra field" %}>{{ page.t.metadata_fields[extra_field_name] }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
   <h2>{{ page.t.status.status_by_goal }}</h2>
+  {% endif %}
 
+  {% if site.data.reporting.extra_fields %}
+  <div class="tab-content reporting-status-view">
+    <div role="tabpanel" class="tab-pane active" id="goalsview">
+  {% endif %}
   {%- for goalreport in site.data.reporting.goals -%}
     {%- assign goal = goalreport.goal | downcase | sdg_lookup -%}
     <div class="goal">
@@ -70,6 +88,42 @@
       <br style="clear:both;">
     </div>
   {%- endfor -%}
+  {% if site.data.reporting.extra_fields %}
+    </div>
+    {% for extra_field in site.data.reporting.extra_fields %}
+    <div role="tabpanel" class="tab-pane active" id="{{ extra_field[0] }}view">
+      {% assign extra_field_name = extra_field[0] %}
+      {% for fieldreport in extra_field[1] %}
+      <div class="goal">
+        <div class="details">
+          <h3 class="status-goal">
+            <span class="status-field">{{ fieldreport[extra_field_name] | t }}</span>
+            <span class="total">{{ fieldreport.totals.total }}<span></span> {{ page.t.general.indicators | downcase }}</span>
+          </h3>
+          <div class="summary">
+            <div class="statuses">
+              {% for status in fieldreport.statuses %}
+              <div>
+                <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+              </div>
+              {% endfor %}
+              <br style="clear:both;">
+            </div>
+          </div>
+          <div class="field-stats">
+          {% for status in fieldreport.statuses %}
+            <span class="{{ status.status | slugify }}" style="width:{{ status.percentage }}%" title="{{ status.translation_key | t }}: {{ status.percentage | round }}%"></span>
+          {% endfor %}
+          </div>
+          <div class="divider"></div>
+        </div>
+        <br style="clear:both;">
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 
   <!--{{ content }}-->
 
