@@ -89,8 +89,8 @@
   {% if site.data.reporting.extra_fields %}
     </div>
     {%- for extra_field in site.data.reporting.extra_fields -%}
-    <div role="tabpanel" class="tab-pane" id="{{ extra_field[0] }}view">
-      {% assign extra_field_name = extra_field[0] %}
+    {% assign extra_field_name = extra_field[0] %}
+    <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}view">
       {%- for fieldreport in extra_field[1] -%}
       <div class="goal">
         <h3 class="status-goal">
