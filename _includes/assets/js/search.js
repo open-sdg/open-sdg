@@ -26,12 +26,18 @@ var indicatorSearch = function() {
     // Perform the search.
     var results = searchIndex.search(searchTermsToUse);
     var resultItems = [];
+    var escapeRegExp = function(str) {
+      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/gi, "\\$&");
+    };
     results.forEach(function(result) {
       var doc = opensdg.searchItems[result.ref]
       // Truncate the contents.
       if (doc.content.length > 400) {
         doc.content = doc.content.substring(0, 400) + '...';
       }
+      // Indicate the matches.
+      doc.content = doc.content.replace(new RegExp('(' + escapeRegExp(searchTerms) + ')', 'gi'), '<span class="match">$1</span>');
+      doc.title = doc.title.replace(new RegExp('(' + escapeRegExp(searchTerms) + ')', 'gi'), '<span class="match">$1</span>');
       resultItems.push(doc);
     });
 
