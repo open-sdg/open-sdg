@@ -1,6 +1,8 @@
 <div id="search" class="menu-target">
-  <input id="indicator_search" title="{{ page.t.search.indicator_search }}" placeholder="{{ page.t.search.indicator_search }}" data-url="{{ page.baseurl }}indicators.json" data-pageurl="{{ page.baseurl }}search/?q=" />
-  <label for="indicator_search">
-    <button id="search-btn" type="submit"><i class="fa fa-search" aria-hidden="false" aria-label={{ page.t.search.indicator_search }}></i></button><span>{{ page.t.search.search }}:</span>
-  </label>
+  <form action="{{ page.baseurl }}search">
+    <input name="q" id="indicator_search" title="{{ page.t.search.search }}" />
+    <label for="indicator_search">
+      <button id="search-btn" type="submit"><i class="fa fa-search" aria-hidden="false" aria-label={{ page.t.search.search }}></i></button><span>{{ page.t.search.search }}:</span>
+    </label>
+  </form>
 </div>

@@ -278,6 +278,15 @@ This optional setting can be used to control the text of the tab containing non-
 non_global_metadata: indicator.national_metadata
 ```
 
+### search_index_extra_fields
+
+This optional setting can be used to "index" additional metadata fields in your indicators, for the purposes of affecting the site-wide search. For example, if you have a metadata field called `national_agency` and you would like the sitewide search to include that field, add it in a list here, like so:
+
+```nohighlight
+search_index_extra_fields:
+  - national_agency
+```
+
 ### sharethis_property
 
 This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](https://open-sdg.readthedocs.io/en/latest/social-media-sharing/) page.

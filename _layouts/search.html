@@ -1,31 +1,20 @@
 {% include head.html %}
 {% include header.html %}
-<div id="main-content" class="container search-results" role="main">
-  <h1 style="display:none">{{ page.t.search.search_results_for }} '<span id="search-term"></span>'</h1>
-  {% include components/loading.html %}
-  <div class="results" data-imgpath="{{ site.goal_image_base }}/{{ page.language }}/">
-  </div>
-</div>
 
-<script type="text/template" class="results">
-
+<script type="text/template" class="results-template">
   <% if(resultsCount) { %>
-    <p><%= resultsCount %> indicator<% if(resultsCount != 1) { %>s<% } %> {{ page.t.search.found_in }} <%= searchResults.length %> {{ page.t.general.goal | downcase }}<% if(searchResults.length != 1) { %>s<% } %></p>
+    <p><%= resultsCount %> results found</p>
 
-    <% _.each(searchResults, function(goal){ %>
-      <div class="row">
+    <% _.each(searchResults, function(result){ %>
+      <div class="row search-result">
         <div class="col col-xs-12">
-          <h2>{{ page.t.general.goal }} <%= goal.goalId %> - <%= goal.goalTitle %></h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col col-xs-3 col-md-2">
-          <img src="<%= imgPath%><%= goal.goalId%>.png" />
-        </div>
-        <div class="col col-xs-9 col-md-10 indicator-cards">
-          <% _.each(goal.indicators, function(indicator){ %>
-            <a href="<%=indicator.href%>"><span><%= indicator.id %><span class="status <%= indicator.status %>"><% if(indicator.status == 'notstarted') { %>{{ page.t.status.exploring_data_sources }}<% } else if(indicator.status == 'inprogress') { %>{{ page.t.status.statistics_in_progress }}<% } else if(indicator.status == 'complete') { %>{{ page.t.status.reported_online }}<% } else if(indicator.status == 'notapplicable') { %>{{ page.t.status.not_applicable }}<% } %></span></span> <%=indicator.parsedTitle%><% if(indicator.hasDescription) { %><p class="description"><%=indicator.parsedDescription%></p><%}%><% if(indicator.hasKeywords) { %><p class="keywords">{{ page.t.search.keywords }}: <%=indicator.parsedKeywords%></p><%}%></a>
-          <% }); %>
+          <a href="<%= result.url %>">
+            <h3 class="title"><%= result.title %></h3>
+            <span class="url">
+              <%= result.type %> &raquo; <%= result.url %>
+            </span>
+          </a>
+          <div class="content"><%= result.content %></div>
         </div>
       </div>
     <% }); %>
@@ -33,7 +22,20 @@
   <% } else { %>
     <p>{{ page.t.search.no_results }}</p>
   <% } %>
-
+</script>
+<script>
+opensdg.searchItems = {{ site.data.search_items[page.language] | jsonify }};
 </script>
 
+<div id="main-content" class="container" role="main">
+  <h1>{{ page.t.search.search_results_for }} '<span id="search-term"></span>'</h1>
+  <form>
+    <input id="search-bar-on-page" type="text" name="q">
+    <input type="submit" value="{{ page.t.search.search }}">
+  </form>
+
+  <div id="search-results" class="results"></div>
+</div>
+
+<script src="https://unpkg.com/lunr/lunr.min.js"></script>
 {% include footer.html %}
