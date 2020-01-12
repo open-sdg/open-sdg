@@ -17,7 +17,9 @@ This document will go over the quickest way to get this platform up and running.
 
 This step is temporarily necessary because of a bug involving GitHub Actions and GitHub Pages. The bug is being discussed [here](https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/td-p/26869/highlight/true).
 
-1. Create an access token described [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Save the token somewhere private.
+1. Create an access token described [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
+    * Select the `repo` permission, as indicated in those instructions.
+    * Save the token somewhere private.
 1. Copy the access token so that you can paste in the next steps.
 1. Go to the site repository you bookmarked earlier.
 1. Under the repository name, click "Settings".
@@ -28,14 +30,22 @@ This step is temporarily necessary because of a bug involving GitHub Actions and
 1. Click the green "Add secret" button.
 1. Repeat all the steps above, but for the "data" repository you bookmarked earlier.
 
-## Update the data repository README
+## Update the data repository configuration
 
-This steps is necessary before continuing, and also serves to demonstrate how to edit files on Github.com.
+This step is necessary before continuing, and also serves to demonstrate how to edit files on Github.com.
 
 1. Go to the data repository.
-1. In the list of files, click on `README.md`.
+1. In the list of files, click on `config_data.yml`.
 1. Click the pencil icon on the right (You can find it next to the History button.)
-1. Make some changes to the file. (Any change is fine.)
+1. Adjust the list of language codes under `languages` by adding or changing as needed. If you would like multiple languages, they should be one per line, like so:
+
+    ```
+    languages:
+      - fr
+      - es
+    ```
+
+1. If you did not need to adjust the list of language codes, simply make any other change in the file. For example, add a new line at the top: `# This is a comment`
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. Beneath this, click "Propose file changes".
 1. Click on the green "Create pull request" button.
@@ -50,12 +60,13 @@ This is a commonly-used way to edit files in GitHub. In summary, the steps are:
 * Create the pull request
 * Merge the pull request
 
-## Update the site Jekyll configuration
+## Update the site repository configuration
 
 1. Go to the site repository.
 1. In the list of files, click on `_config.yml`.
 1. Click the pencil icon on the right (You can find it next to the History button.)
 1. You will see some instructions in the file. Update the code as directed.
+1. In particular, adjust the language codes under `languages` in the same way you did with the data repository.
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. Beneath this, click "Propose file changes".
 1. Click on the green "Create pull request" button.
