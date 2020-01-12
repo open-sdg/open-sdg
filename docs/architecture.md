@@ -69,12 +69,12 @@
       </span>
     </div>
     <div class="node global row4 site-column" id="sdg-translations">
-      SDG<br> Translations
+      Translations
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        <a href="https://github.com/open-sdg/sdg-translations">SDG Translations</a> provides translations of all the text used on your site.
+        Translation repositories like <a href="https://github.com/open-sdg/translations-open-sdg">this one</a> provide translations of all the text used on your site.
         <br><br>
-        This is a stand-alone project which can be forked and extended to translate
+        These are stand-alone projects which can be forked and extended to translate
         any implementation-specific text as needed.
       </span>
     </div>
@@ -182,10 +182,10 @@ jsPlumb.ready(function () {
     overlays: connectorTip('The automation tool listens for changes in the repository code.'),
   });
   jsPlumb.connect({
-    source: 'jekyll',
+    source: 'sdg-build',
     target: 'sdg-translations',
-    anchors: ['Right', 'Left'],
-    overlays: connectorTip('During the Jekyll build, the SDG Translations project is used to get multilingual content.'),
+    anchors: ['Left', 'Right'],
+    overlays: connectorTip('During the data build, the translations projects are used to get multilingual content.'),
   });
   jsPlumb.connect({
     source: 'prose-io',
