@@ -41,6 +41,8 @@ var indicatorSearch = function() {
       resultItems.push(doc);
     });
 
+    $('.loader').hide();
+
     // Print the results using a template.
     var template = _.template(
       $("script.results-template").html()

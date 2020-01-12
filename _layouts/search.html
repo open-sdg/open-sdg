@@ -33,7 +33,7 @@ opensdg.searchItems = {{ site.data.search_items[page.language] | jsonify }};
     <input id="search-bar-on-page" type="text" name="q">
     <input type="submit" value="{{ page.t.search.search }}">
   </form>
-
+  {% include components/loading.html %}
   <div id="search-results" class="results"></div>
 </div>
 
