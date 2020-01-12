@@ -1,6 +1,6 @@
 <table class="table table-hover">
   {% for indicator_metadata in site.data.schema %}
-    {%- assign metadata_label = indicator_metadata.name | metadata_field -%}
+    {%- assign metadata_label = indicator_metadata.name | translate_metadata_field -%}
     {% if indicator_metadata.field.scope == include.scope %}
       {% if site.hide_empty_metadata %}
         {% unless page.indicator[indicator_metadata.name] %}
