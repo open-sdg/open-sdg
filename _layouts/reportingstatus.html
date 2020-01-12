@@ -3,6 +3,11 @@
 
 <div id="main-content" class="container reportingstatus">
 
+  {%- assign extra_fields = false -%}
+  {%- for extra_field in site.data.reporting.extra_fields -%}
+    {%- assign extra_fields = true -%}
+  {%- endfor -%}
+
   <h1>{{ page.t.status.reporting_status }}</h1>
 
   {%- assign overall = site.data.reporting.overall -%}
@@ -32,7 +37,7 @@
     <br style="clear:both;">
   </div>
 
-  {% if site.data.reporting.extra_fields %}
+  {% if extra_fields %}
   <ul class="nav nav-tabs reporting-status-view" role="tablist">
     <li role="presentation" class="nav-item active">
       <a class="nav-link" data-toggle="tab" href="#goalsview" aria-controls="goals" role="tab" {% include autotrack.html preset="tab_reporting_status_goals" category="Tab change" action="Change reporting status view" label="Change reporting status view to goals" %}>{{ page.t.status.status_by_goal }}</a>
@@ -48,7 +53,7 @@
   <h2>{{ page.t.status.status_by_goal }}</h2>
   {% endif %}
 
-  {% if site.data.reporting.extra_fields %}
+  {% if extra_fields %}
   <div class="tab-content reporting-status-view">
     <div role="tabpanel" class="tab-pane active" id="goalsview">
   {% endif %}
@@ -86,7 +91,7 @@
       <br style="clear:both;">
     </div>
   {%- endfor -%}
-  {% if site.data.reporting.extra_fields %}
+  {% if extra_fields %}
     </div>
     {%- for extra_field in site.data.reporting.extra_fields -%}
     {% assign extra_field_name = extra_field[0] %}
