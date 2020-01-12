@@ -41,3 +41,10 @@ Feature: Indicator
   Scenario: Missing metdata can be hidden
     And I click on "the Global metadata tab"
     Then I should not see "Global indicator description"
+
+  Scenario: The 'indicator_available' metadata appears as a sub-heading
+    Then I should see an "available indicator" element
+    And I should see "Name of available indicator"
+    And I am on "/1-2-1"
+    Then I should not see an "available indicator" element
+    And I should not see "Name of available indicator"

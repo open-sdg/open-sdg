@@ -41,6 +41,7 @@ If the indicator is going to display a graph, the following fields are required:
 
 The following fields are not strictly required, but are recommended because they serve special purposes:
 
+* `indicator_available` - an alternate name for the indicator, intended for when the global indicator name might not accurately describe the available national/regional statistics
 * `computation_units` - the unit used in the headline series for this indicator. Examples:
     * Metric tons * my_translations.metric_tons
 * `source_active_1` - whether source #1 should be displayed. Examples:

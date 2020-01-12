@@ -38,7 +38,8 @@ const driver = new mink.Mink({
     "the 'Clear all' button": "button[data-type='clear']",
     "the 'Clear selections' button": "button#clear",
     "success data notice": "div.alert.success",
-    "disaggregation sidebar": "#indicator-sidebar:not(.indicator-sidebar-hidden)"
+    "disaggregation sidebar": "#indicator-sidebar:not(.indicator-sidebar-hidden)",
+    "available indicator": '.metadata-available-indicator'
   }
 });
 
