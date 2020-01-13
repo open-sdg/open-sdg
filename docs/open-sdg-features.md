@@ -44,6 +44,8 @@ An example of removing one of the options is the [UK's Reporting status page](ht
 
 An example of using the **Not applicable** option is [Rwanda's Reporting status page](https://sustainabledevelopment-rwanda.github.io/reporting-status/).
 
+For details, see [here](https://open-sdg.readthedocs.io/en/latest/reporting-status/).
+
 ## Display data for national indicators as well as global indicators
 One way of displaying national indicators on an Open SDG platform is by adding them in the same section as the global indicators and tagging them as national. An example of this is [Armenia's platform](https://armstat.github.io/sdg-site-armenia/1/).
 
