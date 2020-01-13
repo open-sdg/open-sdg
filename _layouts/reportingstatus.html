@@ -1,6 +1,9 @@
 {% include head.html %}
 {% include header.html %}
 
+{%- assign indicator_singular = page.t.general.indicator | downcase -%}
+{%- assign indicators_plural = page.t.general.indicators | downcase -%}
+
 <div id="main-content" class="container reportingstatus">
 
   {%- assign extra_fields = false -%}
@@ -14,7 +17,7 @@
   <div class="goal goal-overall">
       <div class="details">
         <h2 class="status-goal">
-            {{ page.t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> {{ page.t.general.indicators | downcase }}</span>
+            {{ page.t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
         </h2>
         <div class="summary">
           <div class="statuses">
@@ -70,7 +73,7 @@
         <div class="details">
           <h3 class="status-goal">
             <a href="{{ goal.url }}">{{ goal.short }}</a>
-            <span class="total">{{ goalreport.totals.total }} {{ page.t.general.indicators | downcase }}</span>
+            <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
           </h3>
           <div class="summary">
             <div class="statuses">
@@ -102,7 +105,13 @@
       <div class="goal details">
         <h3 class="status-goal">
           <span class="status-field">{{ fieldreport[extra_field_name] | t }}</span>
-          <span class="total">{{ fieldreport.totals.total }} {{ page.t.general.indicators | downcase }}</span>
+          <span class="total">{{ fieldreport.totals.total }}
+            {% if fieldreport.totals.total == 1 %}
+              {{ indicator_singular }}
+            {% else %}
+              {{ indicators_plural }}
+            {% endif %}
+          </span>
         </h3>
         <div class="summary">
           <div class="statuses">
