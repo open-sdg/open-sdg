@@ -3,13 +3,16 @@ layout: default
 ---
 <div id="main-content" class="container newslist">
   <div class="row">
-    <div class="col-md-9 push-md-3">  
+    <div class="col-md-9 push-md-3">
       {{content}}
       {% for post in site.posts %}
       <article>
         <p>{{post.categories | category_links}}</p>
         <h5><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h5>
         <p><time datetime="{{post.date|date:"%F"}}">{{post.date|date:"%b %d, %Y"}}</time></p>
+        {% if post.excerpt %}
+          {{ post.excerpt | markdownify }}
+        {% endif %}
       </article>
       {% endfor %}
     </div>
