@@ -44,8 +44,10 @@
     </li>
     {% for extra_field in site.data.reporting.extra_fields %}
     {% assign extra_field_name = extra_field[0] %}
+    {% assign extra_field_translated = extra_field_name | translate_metadata_field %}
+    {% assign extra_field_autotrack = 'Change reporting status view to ' | append: extra_field_name %}
     <li role="presentation" class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#{{ extra_field_name }}view" aria-controls="{{ extra_field_name }}" role="tab" {% include autotrack.html preset="tab_reporting_status_extra_field" category="Tab change" action="Change reporting status view" label="Change reporting status view to extra field" %}>{{ page.t.metadata_fields[extra_field_name] }}</a>
+      <a class="nav-link" data-toggle="tab" href="#{{ extra_field_name }}view" aria-controls="{{ extra_field_name }}" role="tab" {% include autotrack.html preset="tab_reporting_status_extra_field" category="Tab change" action="Change reporting status view" label=extra_field_autotrack %}>{{ page.t.status.status_by_field | replace: "%field", extra_field_translated }}</a>
     </li>
     {% endfor %}
   </ul>
