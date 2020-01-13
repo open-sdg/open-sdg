@@ -161,6 +161,34 @@ You may want to display some very important information which site viewers must 
 
 The actual fields available on each indicator is fully configurable by editing the `_prose.yml` file in your data repository. For a full list of fields available out-of-the-box in the starter repository, see [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml). This file also serves to control the behavior of the Prose.io service, which is the usual way that metadata is edited. (For technical information about Prose.io schema, see [here](https://github.com/prose/prose/wiki/Prose-Configuration).)
 
+## Renaming metadata fields
+
+In the schema file mentioned above, each field can have a `translation_key` property. These can be changed from the defaults, as needed, to control the public-facing name for each field. For example, perhaps you want to change the public-facing label for the `indicator_name` field. You could update the schema, changing it from this:
+
+```
+- name: "indicator_name"
+  field:
+    element: text
+    label: "Indicator name"
+    translation_key: metadata_fields.indicator_name
+    scope: global
+```
+
+To this:
+
+```
+- name: "indicator_name"
+  field:
+    element: text
+    label: "Indicator name"
+    translation_key: my_custom_translations.another_translation
+    scope: global
+```
+
+### Advanced - label vs translation_key
+
+You may think that it would make more sense for the `label` property above to control the public-facing name for the field. Indeed, if you are not using Prose.io, you are free to use `label` instead of `translation_key`. But Prose.io needs that `label` property for a special purpose: this is what data editors/managers will see when they're editing metadata. The Prose.io service is not multilingual, so its `label` property needs to already be translated. (This is why it is plain English out-of-the-box.)
+
 ## Metadata tabs
 
 The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see [here](https://open-sdg.readthedocs.io/en/latest/configuration/#metadata_tabs).
