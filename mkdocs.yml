@@ -31,6 +31,7 @@ pages:
         - Making updates: making-updates.md
         - Metadata format: metadata-format.md
         - Data format: data-format.md
+        - Data sources: data-sources.md
     - Developers:
         - Local development: development.md
         - Deployment: deployment.md
