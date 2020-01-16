@@ -6,11 +6,18 @@ Below is a list of countries and localities that are currently using this platfo
 
 ### Countries
 
-* [Armenia](case-studies/armenia.md)
-* [Rwanda](case-studies/rwanda.md)
-* [United Kingdom](https://sustainabledevelopment-uk.github.io)
-* [United States](https://sdg.data.gov)
+|Country|Link|
+|----|----|
+|Armenia|https://armstat.github.io/sdg-site-armenia/|
+|Germany|https://sustainabledevelopment-germany.github.io/|
+|Kyrgyzstan|https://sustainabledevelopment-kyrgyzstan.github.io/|
+|Rwanda|https://sustainabledevelopment-rwanda.github.io/|
+|United Kingdom|https://sustainabledevelopment-uk.github.io/|
+|United States|https://sdg.data.gov/|
 
 ### Localities
 
-[coming soon]
+|Locality|Link|
+|----|----|
+|City of Los Angeles|https://sdgdata.lamayor.org/|
+
