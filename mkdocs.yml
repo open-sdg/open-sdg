@@ -17,12 +17,18 @@ pages:
     - About: about.md
     - Open SDG features: open-sdg-features.md
     - Frequently Asked Questions: faq.md
-    - Case studies:
-      - Armenia: case-studies/armenia.md
-      - City of Los Angeles: case-studies/cityoflosangeles.md
-      - Germany: case-studies/germany.md
-      - Kyrgyzstan: case-studies/kyrgyzstan.md
-      - Rwanda: case-studies/rwanda.md
+    - Community:
+        - Change log: changelog.md
+        - Who is using: community.md
+        - Case studies:
+            - Armenia: case-studies/armenia.md
+            - City of Los Angeles: case-studies/cityoflosangeles.md
+            - Germany: case-studies/germany.md
+            - Kyrgyzstan: case-studies/kyrgyzstan.md
+            - Rwanda: case-studies/rwanda.md
+        - Support: support.md
+        - Contribution guidelines: contribution.md
+        - Code of conduct: conduct.md
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
     - Requirements: requirements.md
@@ -51,9 +57,3 @@ pages:
         - Github pages: hosting/github-pages.md
         - AWS S3: hosting/aws-s3.md
         - Linux server: hosting/linux-server.md
-    - Community:
-        - Change log: changelog.md
-        - Who is using: community.md
-        - Support: support.md
-        - Contribution guidelines: contribution.md
-        - Code of conduct: conduct.md
