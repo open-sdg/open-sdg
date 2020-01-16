@@ -4,7 +4,6 @@
 <script type="text/template" class="results-template">
   <% if(resultsCount) { %>
     <p><%= resultsCount %> results found</p>
-
     <% _.each(searchResults, function(result){ %>
       <div class="row search-result">
         <div class="col col-xs-12">
@@ -20,7 +19,15 @@
     <% }); %>
 
   <% } else { %>
-    <p>{{ page.t.search.no_results }}</p>
+    <p>
+      {{ page.t.search.no_results }}
+      <% if(didYouMean) { %>
+      - did you mean:
+        <% _.each(didYouMean, function(searchTerm){ %>
+        <a href="{{ page.baseurl }}search?q=<%= searchTerm %>"><%= searchTerm %></a>
+        <% }); %>
+      <% } %>
+    </p>
   <% } %>
 </script>
 <script>

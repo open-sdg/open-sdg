@@ -1,4 +1,21 @@
 var indicatorSearch = function() {
+  // Helper function to make a search query "fuzzier", using the ~ syntax.
+  var getFuzzierQuery = function(query, fuzziness) {
+    return query
+      .split(' ')
+      .map(function(x) { return x + '~' + fuzziness; })
+      .join(' ');
+  }
+  // Helper function to get the matched words from a result set.
+  var getMatchedTerms = function(results) {
+    var matchedTerms = {};
+    results.forEach(function(result) {
+      Object.keys(result.matchData.metadata).forEach(function(matchedTerm) {
+        matchedTerms[matchedTerm] = true;
+      })
+    });
+    return Object.keys(matchedTerms);
+  }
   var urlParams = new URLSearchParams(window.location.search);
   var searchTerms = urlParams.get('q');
   if (searchTerms) {
@@ -25,6 +42,24 @@ var indicatorSearch = function() {
     }
     // Perform the search.
     var results = searchIndex.search(searchTermsToUse);
+    var didYouMean = false;
+
+    // If we didn't find anything, get progressively "fuzzier" to look for
+    // "did you mean?" options.
+    if (!results.length) {
+      var fuzziness;
+      for (fuzziness = 1; fuzziness < 5; fuzziness++) {
+        var fuzzierQuery = getFuzzierQuery(searchTermsToUse, fuzziness);
+        var alternateResults = searchIndex.search(fuzzierQuery);
+        if (alternateResults.length) {
+          var matchedTerms = getMatchedTerms(alternateResults);
+          if (matchedTerms) {
+            didYouMean = matchedTerms;
+          }
+          break;
+        }
+      }
+    }
     var resultItems = [];
     var escapeRegExp = function(str) {
       return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/gi, "\\$&");
@@ -47,10 +82,10 @@ var indicatorSearch = function() {
     var template = _.template(
       $("script.results-template").html()
     );
-
     $('div.results').html(template({
       searchResults: resultItems,
-      resultsCount: resultItems.length
+      resultsCount: resultItems.length,
+      didYouMean: didYouMean,
     }));
   }
 };
