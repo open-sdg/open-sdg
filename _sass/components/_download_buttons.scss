@@ -1,0 +1,31 @@
+.btn-download {
+  margin-top: 1.5rem;
+  margin-right: 0.8rem;
+  border: none !important;
+  background: #0F8243 !important;
+
+  &:hover, &:active, &:focus {
+    background: #0b5d30 !important;
+  }
+}
+
+h5.download {
+  font-weight: bold;
+}
+
+h5 + .btn-download {
+  margin-top: 0.5rem;
+}
+
+.image-download-in-progress {
+  &, * {
+    padding: 0;
+    margin: 0;
+  }
+  #selectionChartFooter {
+    padding-left: 20px;
+    p {
+      margin-bottom: 10px;
+    }
+  }
+}

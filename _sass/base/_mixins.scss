@@ -1,0 +1,64 @@
+@mixin noselect {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+@mixin indicatorcards {
+  .indicator-cards {
+    a {
+      color: black;
+      padding: 1rem;
+      display: inline-block;
+      -webkit-transition: background 0.3s;
+      transition: background 0.3s;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+      position: relative;
+      padding: 5px 0;
+
+      &.status {
+        color: black;
+        font-weight: normal;
+        border: none;
+        padding: 4px;
+        position: absolute;
+        top: -1px;
+        right: 0;
+        display: inline;
+      }
+    }
+
+    .tags {
+      padding: 0;
+      margin: 6px 10px 0 0;
+      list-style-type: none;
+      li {
+        margin-right: 6px;
+        padding: 4px 6px;
+        display: inline;
+        border-radius: 10px;
+      }
+    }
+
+    .match {
+      display: inline;
+      font-weight: normal;
+      border-bottom: none;
+    }
+  }
+}

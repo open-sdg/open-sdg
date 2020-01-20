@@ -1,0 +1,30 @@
+.table-hover {
+  tbody tr:hover {
+    background: darken(white, 12%);
+  }
+}
+
+#page-content {
+
+  border-top: 1px solid #faebcc;
+  border-bottom: 1px solid #faebcc;
+  padding-top: 10px;
+
+  table {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-style: solid;
+    border-color: $footer-color;
+    border-width: 1px;
+  }
+
+  td, th {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  thead {
+    padding-bottom: 10px;
+    border-bottom: 1pt solid $footer-color;
+  }
+}

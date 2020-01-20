@@ -1,0 +1,29 @@
+#main-content {
+  .collapsible {
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    border-left: 1px solid #d4d4d4;
+    border-right: 1px solid #d4d4d4;
+    margin-bottom: 10px;
+    h3 {
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 8px 12px;
+      margin: 0;
+      position: relative;
+      span {
+        position: absolute;
+        top: 17px;
+        right: 12px;
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-color: transparent;
+        text-indent: -9999px;
+      }
+    }
+    article {
+      display: none;
+      padding: 8px 12px;
+    }
+  }
+}

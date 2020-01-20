@@ -1,0 +1,281 @@
+header {
+  background: $vanilla url('../img/sdgbg.png') bottom left repeat-x;
+  .container {
+    min-height: 113px;
+    .navbar-default {
+      border: none;
+    }
+  }
+}
+
+.navbar-brand {
+  display: block;
+  width: 75%;
+  max-width: 300px;
+  img {
+    width: 100%;
+  }
+}
+
+.navbar {
+
+  margin-bottom: 32px;
+
+  li {
+    text-transform: uppercase;
+  }
+
+  ul.navbar-nav {
+    float: right;
+    margin-top: 12px;
+
+    li {
+      a {
+        padding: 2px;
+        margin: 2px 15px;
+        color: #595959;
+      }
+
+      &.active a {
+        border-bottom: 2px solid #333;
+        background: transparent;
+        color: #333;
+
+        &:hover {
+          background: transparent;
+        }
+      }
+
+      a:last-child {
+        margin-right: 0;
+      }
+
+      &.contrast {
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+        font-size: 1.3em;
+        font-weight: bold;
+        border-radius: 50%;
+        width: 25px;
+        max-height: 25px;
+        text-align: center;
+        margin-left: 0.5em;
+        a {
+          margin: auto;
+          text-decoration: none;
+        }
+      }
+
+      &.contrast-default {
+        background: white;
+        a {
+          color: black;
+        }
+      }
+
+      &.contrast-high {
+        background: black;
+        a {
+          color: yellow;
+        }
+      }
+    }
+  }
+
+  &.navbar-default {
+    background: transparent;
+    border: none;
+    float: right;
+  }
+
+  .top-level {
+    display: none;
+  }
+
+  #search {
+    position: relative;
+    clear: both;
+    float: right;
+
+    label {
+      position: absolute;
+      top: 5px;
+      right: 0px;
+      font-size: 1.40em;
+
+      span {
+        display: none;
+      }
+    }
+
+    input {
+      padding: 5px;
+      padding-left: 5px;
+      width: auto;
+      height: 34px;
+      transition: width 0.4s;
+      margin-top: 5px;
+
+      &:focus {
+        width: 350px;
+      }
+    }
+  }
+}
+#search-btn {
+  height: 34px;
+  }
+
+.table {
+  .table-value {
+    text-align: right;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  header .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .navbar-brand {
+    height: auto;
+  }
+
+  .navbar {
+    clear: left;
+
+    &.navbar-default {
+      color: #E5E6E7;
+      background: #414042;
+      margin-bottom: 10px;
+      width: 100%;
+      float: none;
+    }
+
+    .top-level {
+      display: block;
+      font-size: 1em;
+      @include noselect;
+
+      li {
+        float: left;
+        width: 50%;
+        cursor: pointer;
+
+        &.active {
+          background: #58595B;
+        }
+
+        span {
+          color: #E5E6E7;
+          display: block;
+          padding: 15px;
+        }
+
+      	button {
+          color: #E5E6E7;
+          display: block;
+          padding: 15px;
+          border: 0;
+          text-transform: uppercase;
+          background-color: inherit;
+          text-align: left;
+          width: 100%;
+        }
+      }
+    }
+
+    & .menu-target {
+      background: #58595B;
+    }
+
+    ul.navbar-nav {
+      float: none;
+      display: none;
+      clear: left;
+      margin: 0;
+
+      font-size: 0.938em;
+
+      li {
+        cursor: pointer;
+        a {
+          display: block;
+          background: #58595B;
+          padding: 6px 0 6px;
+          color: #E5E6E7;
+
+          &:hover {
+            color: #E5E6E7;
+          }
+        }
+
+        &.active a {
+          border: none;
+          color: #fff;
+          font-weight: bold;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+
+        &:last-child {
+          padding-bottom: 10px;
+        }
+      }
+    }
+
+    #search {
+      display: none;
+      width: 100%;
+      padding: 20px;
+
+      label {
+        top: 23px;
+        left: 25px;
+        color: black;
+      }
+
+      button {
+        display: inline-flex;
+        position: absolute;
+        right: 20px;
+	top: -3px
+      }
+
+      input {
+        width: 100%;
+        color: #333;
+        margin-top: 0;
+
+        &:focus {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 991px)  {
+  .navbar {
+    width: 100%;
+    ul.navbar-nav {
+      float: none;
+      margin-top: 40px;
+    }
+  }
+
+  #search {
+    margin-top: -100px;
+  }
+}
+
+header ul {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}

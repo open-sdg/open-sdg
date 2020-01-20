@@ -1,0 +1,33 @@
+footer {
+  clear: left;
+  background-color: #414042;
+  color: $footer-color;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px; /* Set the fixed height of the footer here */
+  img {
+    float: left;
+    margin-right: 12px;
+    margin-top: 3px;
+  }
+  .row {
+    padding: 15px 0;
+
+    @media only screen and (max-width: 767px) {
+      padding: 5px 0;
+    }
+  }
+  a {
+    color: $footer-color;
+    text-decoration: underline;
+    &:hover, &:focus {
+      color: lighten($footer-color, 20%);
+    }
+  }
+
+  #footerLinks ul li{
+    display: inline-block !important;
+    margin: 3px 9px !important;
+  }
+}

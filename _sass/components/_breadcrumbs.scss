@@ -1,0 +1,11 @@
+.breadcrumb {
+  margin-bottom: 15px;
+  a {
+    color: darken(#337ab7, 10%);
+    // text-decoration: underline;
+  }
+  &>.active {
+    display: inline;
+    color: black;
+  }
+}
