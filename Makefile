@@ -13,7 +13,7 @@ test.prep:
 	# Copy the Jekyll config we will use.
 	cp tests/_config.yml starter
 	# Copy all the theme files into the starter.
-	cp -r -t starter/ _includes _layouts assets
+	cp -r -t starter/ _includes _layouts assets _sass
 	# Copy any custom data into the starter.
 	cp -r tests/data starter/
 	# Copy any custom pages into the starter.
