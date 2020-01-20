@@ -1,6 +1,5 @@
 @import "variables/colors";
 @import "variables/dimensions";
-@import "base/accessibility";
 @import "base/grid";
 @import "base/lists";
 @import "base/mixins";
@@ -19,6 +18,7 @@
 @import "components/loader";
 @import "components/maps";
 @import "components/notices";
+@import "components/high_contrast";
 @import "layouts/indicator";
 @import "layouts/news";
 @import "layouts/reporting_status";
