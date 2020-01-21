@@ -12,3 +12,26 @@
   display: inline-block;
   margin-left: 20px;
 }
+
+body.contrast-high {
+
+  #page-content {
+    .alert {
+      div {
+        p, h4 {
+          color: black;
+	      }
+      }
+    }
+  }
+
+  .danger {
+    background-color: red;
+  }
+  .warning {
+    background-color: yellow;
+  }
+  .success {
+    background-color: green;
+  }
+}

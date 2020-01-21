@@ -295,3 +295,47 @@ header ul {
   padding-left: 0;
   list-style-type: none;
 }
+
+body.contrast-high {
+  .navbar {
+    li {
+      a {
+        color: white;
+        &:hover, &:focus {
+          color: yellow;
+        }
+      }
+    }
+    li.active {
+      a {
+        color: yellow;
+        border-color: yellow;
+        &:hover {
+          color: yellow;
+        }
+        &:focus {
+          color: yellow;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .navbar.navbar-default {
+      background: black;
+      color: white;
+    }
+    .navbar .top-level li.active {
+      background: white;
+      span {
+        color: black;
+      }
+    }
+    .navbar .menu-target {
+      background: black;
+    }
+    .navbar ul.navbar-nav li a {
+      background: black;
+    }
+  }
+}

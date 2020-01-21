@@ -499,3 +499,52 @@
 .chart-title {
   text-align: center;
 }
+
+body.contrast-high {
+  #main-content #fields label {
+    background: black;
+    color: white;
+    &:hover {
+      background: white;
+      color: black;
+    }
+    &:focus {
+      background: white;
+      color: black;
+    }
+  }
+
+  #toolbar {
+    button {
+      background-color: black !important;
+      border-color: white;
+      color: white;
+    }
+  }
+
+  .variable-options {
+    background: black;
+    color: white;
+    div {
+      background: black;
+      color: white;
+    }
+    button {
+      background: black;
+      color: white !important;
+      border-color: white;
+    }
+  }
+
+  #main-content #fields .bar .selected { background-color: white; }
+
+  #main-content #fields .variable-selector .variable-hint { color: white; }
+
+  caption {
+    color: white;
+  }
+
+  div#units {
+    color: white;
+  }
+}

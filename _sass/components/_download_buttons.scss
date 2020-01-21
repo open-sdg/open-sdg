@@ -29,3 +29,14 @@ h5 + .btn-download {
     }
   }
 }
+
+body.contrast-high {
+  .btn { background: white !important; color: black !important;
+    &:hover {
+      background: yellow !important;
+    }
+    &:focus {
+      background: yellow !important;
+    }
+  }
+}

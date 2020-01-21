@@ -41,16 +41,6 @@
 
 body.contrast-high {
 
-  #page-content {
-    .alert {
-      div {
-        p, h4 {
-          color: black;
-	}
-      }
-    }
-  }
-
   #accessibility-nav {
     li {
       &.contrast-default {
@@ -66,33 +56,6 @@ body.contrast-high {
   background-color: black;
   .table {
     background: black;
-  }
-
-  .btn { background: white !important; color: black !important;
-    &:hover {
-      background: yellow !important;
-    }
-    &:focus {
-      background: yellow !important;
-    }
-  }
-
-  div#units {
-    color: white;
-  }
-
-  .nav-tabs { border-color: yellow; }
-
-  #main-content #fields .bar .selected { background-color: white; }
-
-  #main-content #fields .variable-selector .variable-hint { color: white; }
-
-  #main-content .nav-tabs .nav-item.active a { background: yellow; color: black; border-color: yellow; }
-
-  a.nav-link:focus { background: white; color: black; }
-
-  caption {
-    color: white;
   }
 
   .table-hover {
@@ -111,8 +74,6 @@ body.contrast-high {
     }
   }
 
-
-
   .container, #main-content, header, footer, #disclaimer, .heading {
     background: black;
     border-color: black;
@@ -128,130 +89,6 @@ body.contrast-high {
 
   li.contrast-default a {
     color: black !important;
-  }
-
-  .navbar {
-    li {
-      a {
-        color: white;
-        &:hover, &:focus {
-          color: yellow;
-        }
-      }
-    }
-    li.active {
-      a {
-        color: yellow;
-        border-color: yellow;
-        &:hover {
-          color: yellow;
-        }
-        &:focus {
-          color: yellow;
-        }
-      }
-    }
-  }
-
-  .goal-indicators {
-    div {
-      span {
-        border-color: white !important;
-        color: white !important;
-      }
-    }
-    .indicator-cards {
-      a, &.target {
-        color: white !important;
-      }
-      span.status, .tags li{
-        color: black !important;
-      }
-    }
-  }
-
-  #main-content #fields label {
-    background: black;
-    color: white;
-    &:hover {
-      background: white;
-      color: black;
-    }
-    &:focus {
-      background: white;
-      color: black;
-    }
-  }
-
-  #toolbar {
-    button {
-      background-color: black !important;
-      border-color: white;
-      color: white;
-    }
-  }
-
-  .danger {
-    background-color: red;
-  }
-  .warning {
-    background-color: yellow;
-  }
-  .success {
-    background-color: green;
-  }
-
-  .statuses {
-    strong {
-      color: white;
-    }
-    .value {
-      color: white !important;
-    }
-  }
-
-  .variable-options {
-    background: black;
-    color: white;
-    div {
-      background: black;
-      color: white;
-    }
-    button {
-      background: black;
-      color: white !important;
-      border-color: white;
-    }
-  }
-
-  .breadcrumb {
-    background: white;
-    a {
-      color: black !important;
-    }
-  }
-
-  span.match {
-    color: black !important;
-  }
-
-  @media screen and (max-width: 768px) {
-    .navbar.navbar-default {
-      background: black;
-      color: white;
-    }
-    .navbar .top-level li.active {
-      background: white;
-      span {
-        color: black;
-      }
-    }
-    .navbar .menu-target {
-      background: black;
-    }
-    .navbar ul.navbar-nav li a {
-      background: black;
-    }
   }
 }
 

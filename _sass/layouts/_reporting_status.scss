@@ -98,3 +98,15 @@
     }
   }
 }
+
+body.contrast-high {
+
+  .statuses {
+    strong {
+      color: white;
+    }
+    .value {
+      color: white !important;
+    }
+  }
+}
