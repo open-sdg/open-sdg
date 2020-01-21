@@ -251,7 +251,6 @@ header {
 
         &:hover {
           background: transparent;
-          border-bottom: 2px solid #aaaaaa;
         }
       }
 
@@ -287,6 +286,11 @@ header {
         background: black;
         a {
           color: yellow;
+        }
+      }
+      &:not(.active){
+        a:hover{
+          border-bottom: 2px solid #aaaaaa;
         }
       }
     }
