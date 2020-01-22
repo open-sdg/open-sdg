@@ -169,6 +169,11 @@ var indicatorModel = function (options) {
       return item;
     });
 
+    // Remove anything without a value (allowing for zero as a value).
+    that.data = _.filter(that.data, function(item) {
+      return item['Value'] || item['Value'] === 0;
+    });
+
     that.datasetObject = {
       fill: false,
       pointHoverRadius: 5,
