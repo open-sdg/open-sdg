@@ -60,3 +60,31 @@ body.contrast-high {
     color: black !important;
   }
 }
+
+#search-results {
+
+  margin-top: 20px;
+
+  .search-result {
+    a {
+      text-decoration: none;
+      margin-bottom: 5px;
+      margin-top: 10px;
+      .title {
+        margin-bottom: 5px;
+      }
+      .url {
+        color: green;
+        font-size: 16px;
+      }
+      .content {
+
+      }
+      &:hover {
+        .title {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
