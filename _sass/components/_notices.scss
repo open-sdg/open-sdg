@@ -1,0 +1,37 @@
+.danger {
+  background-color: #E27874;
+}
+.warning {
+  background-color: #f0ad4e;
+}
+.success {
+  background-color: #5cb85c;
+}
+
+.data-notice {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+body.contrast-high {
+
+  #page-content {
+    .alert {
+      div {
+        p, h4 {
+          color: black;
+	      }
+      }
+    }
+  }
+
+  .danger {
+    background-color: red;
+  }
+  .warning {
+    background-color: yellow;
+  }
+  .success {
+    background-color: green;
+  }
+}

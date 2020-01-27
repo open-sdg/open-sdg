@@ -1,0 +1,25 @@
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.row.no-gutters>[class^="col-"],
+.row.no-gutters>[class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.container.no-gutters {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background: $main-background-color;
+  margin: 0 0 50px 0;
+}

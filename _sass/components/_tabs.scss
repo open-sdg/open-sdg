@@ -1,0 +1,8 @@
+body.contrast-high {
+  .nav-tabs { border-color: yellow; }
+
+  #main-content .nav-tabs .nav-item.active a { background: yellow; color: black; border-color: yellow; }
+
+  a.nav-link:focus { background: white; color: black; }
+
+}

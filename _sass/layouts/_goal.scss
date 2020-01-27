@@ -1,0 +1,18 @@
+body.contrast-high {
+  .goal-indicators {
+    div {
+      span {
+        border-color: white !important;
+        color: white !important;
+      }
+    }
+    .indicator-cards {
+      a, &.target {
+        color: white !important;
+      }
+      span.status, .tags li{
+        color: black !important;
+      }
+    }
+  }
+}

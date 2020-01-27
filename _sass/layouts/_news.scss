@@ -1,0 +1,30 @@
+.post-categories {
+  margin: 3px 0;
+}
+
+.post-title {
+  margin-top: 0;
+}
+
+.newslist{
+  article {
+    p {
+      margin: 0;
+
+      &:first {
+        font-size: 90%;
+      }
+    }
+
+    h5 {
+      margin: 3px 0;
+      font-size: 120%;
+    }
+
+    time {
+      margin: 0;
+    }
+
+    margin-bottom: 20px;
+  }
+}

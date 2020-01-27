@@ -205,6 +205,8 @@ custom_css:
   - /assets/css/custom.css
 ```
 
+NOTE: This approach is deprecated. It is recommended to use [this](https://open-sdg.readthedocs.io/en/latest/configuration/#custom_css) approach instead.
+
 ### custom_js
 
 This optional setting can be used to load additional JavaScript files on each page. It should be a list of relative paths to JavaScript files.
