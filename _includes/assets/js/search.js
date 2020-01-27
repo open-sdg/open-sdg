@@ -18,8 +18,15 @@ var indicatorSearch = function(inputElement, indicatorDataStore) {
 
   this.inputElement.keyup(function(e) {
     var searchValue = that.inputElement.val();
+    var searchQueryMatchesIndicatorPattern = searchValue.match(/^[0-9]+\.[0-9a-z]+\.[0-9]+$/g) !== null
+
     if(e.keyCode === 13 && searchValue.length) {
-      window.location.replace(that.inputElement.data('pageurl') + searchValue);
+      if(searchQueryMatchesIndicatorPattern){
+        window.location.replace("/" + searchValue);
+      }
+      else{
+        window.location.replace(that.inputElement.data('pageurl') + searchValue);
+      }
     }
   });
   
