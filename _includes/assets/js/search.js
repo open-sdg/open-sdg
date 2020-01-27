@@ -22,7 +22,7 @@ var indicatorSearch = function(inputElement, indicatorDataStore) {
 
     if(e.keyCode === 13 && searchValue.length) {
       if(searchQueryMatchesIndicatorPattern){
-        window.location.replace("/" + searchValue);
+        window.location.replace("/" + searchValue.split(".").join("-"));
       }
       else{
         window.location.replace(that.inputElement.data('pageurl') + searchValue);
