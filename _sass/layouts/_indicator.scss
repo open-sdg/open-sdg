@@ -378,14 +378,16 @@
     border: 0;
     padding: 0;
     margin: 5px;
-  }
-  &:not(#goal-18){
-    box-shadow: 5px 5px 5px 0px rgba(5,5,5,0.3);
-
-    &:hover{
-      box-shadow: 5px 5px 5px 0px rgba(5,5,5,0.6);
+    
+    &:not(#goal-18){
+      box-shadow: 5px 5px 5px 0px rgba(5,5,5,0.3);
+  
+      &:hover{
+        box-shadow: 5px 5px 5px 0px rgba(5,5,5,0.6);
+      }
     }
   }
+  
   &.goal-indicators {
     @include indicatorcards;
     &.goal-by-target {
