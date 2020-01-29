@@ -2,7 +2,7 @@ var indicatorSearch = function() {
 
   var urlParams = new URLSearchParams(window.location.search);
   var searchTerms = urlParams.get('q');
-  if (searchTerms && typeof searchTerms === 'string') {
+  if (searchTerms !== null) {
     document.getElementById('search-bar-on-page').value = searchTerms;
     document.getElementById('search-term').innerHTML = searchTerms;
 
