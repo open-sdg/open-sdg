@@ -50,6 +50,7 @@ header {
         padding: 2px;
         margin: 2px 15px;
         color: #595959;
+
       }
 
       &.active a {
@@ -94,6 +95,11 @@ header {
         background: black;
         a {
           color: yellow;
+        }
+      }
+      &:not(.contrast) {
+        a:hover{
+          border-bottom: 2px solid $menu-hover-border-bottom;
         }
       }
     }
