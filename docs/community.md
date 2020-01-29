@@ -10,11 +10,13 @@ Below is a list of some of the countries and localities that are currently using
 |----|----|
 |Armenia|<https://armstat.github.io/sdg-site-armenia/>|
 |Germany|<https://sustainabledevelopment-germany.github.io/>|
+|Iceland|<https://visar.hagstofa.is/heimsmarkmidin/>|
 |Kyrgyzstan|<https://sustainabledevelopment-kyrgyzstan.github.io/>|
+|Poland* |<http://sdg.gov.pl/>|
 |Rwanda|<https://sustainabledevelopment-rwanda.github.io/>|
 |United Kingdom|<https://sustainabledevelopment-uk.github.io/>|
 |United States|<https://sdg.data.gov/>|
-|Iceland|<https://visar.hagstofa.is/heimsmarkmidin/>|
+
 
 
 ### Localities
@@ -23,3 +25,4 @@ Below is a list of some of the countries and localities that are currently using
 |----|----|
 |City of Los Angeles|<https://sdgdata.lamayor.org/>|
 
+\*Using older version of platform that Open SDG is based on.
