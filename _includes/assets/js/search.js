@@ -82,7 +82,7 @@ var indicatorSearch = function() {
     $('div.results').html(template({
       searchResults: resultItems,
       resultsCount: resultItems.length,
-      didYouMean: (alternateSearchTerms.length > 0) ? alternateSearchTerms : false,
+      didYouMean: (alternativeSearchTerms.length > 0) ? alternativeSearchTerms : false,
     }));
   }
 
