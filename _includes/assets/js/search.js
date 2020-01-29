@@ -88,7 +88,7 @@ var indicatorSearch = function() {
 
   // Helper function to make a search query "fuzzier", using the ~ syntax.
   // See https://lunrjs.com/guides/searching.html#fuzzy-matches.
-  var getFuzzierQuery = function(query, amountOfFuzziness) {
+  function getFuzzierQuery(query, amountOfFuzziness) {
     return query
       .split(' ')
       .map(function(x) { return x + '~' + amountOfFuzziness; })
@@ -96,7 +96,7 @@ var indicatorSearch = function() {
   }
 
   // Helper function to get the matched words from a result set.
-  var getMatchedTerms = function(results) {
+  function getMatchedTerms(results) {
     var matchedTerms = {};
     results.forEach(function(result) {
       Object.keys(result.matchData.metadata).forEach(function(matchedTerm) {
@@ -107,7 +107,7 @@ var indicatorSearch = function() {
   }
 
   // Helper function to get a boost score, if any.
-  var getSearchFieldOptions = function(field) {
+  function getSearchFieldOptions(field) {
     var opts = {}
     if (opensdg.searchIndexBoost[field]) {
       opts['boost'] = intval(opensdg.searchIndexBoost[field])
