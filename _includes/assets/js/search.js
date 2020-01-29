@@ -30,6 +30,11 @@ var indicatorSearch = function() {
     document.getElementById('search-bar-on-page').value = searchTerms;
     document.getElementById('search-term').innerHTML = searchTerms;
 
+    // Add commas as an additional token separator. This is helpful because in
+    // SDG metadata many times there are acronyms separated only by commas, and
+    // we want to be able to search by any of the individual acronyms.
+    lunr.tokenizer.separator = /[\s\-,]+/
+
     var searchIndex = lunr(function () {
       this.ref('url');
       // Index the expected fields.
@@ -37,9 +42,11 @@ var indicatorSearch = function() {
       this.field('content', getSearchFieldOptions('content'));
       this.field('id', getSearchFieldOptions('id'));
       // Index any extra fields.
-      opensdg.searchIndexExtraFields.forEach(function(extraField) {
+      var i;
+      for (i = 0; i < opensdg.searchIndexExtraFields.length; i++) {
+        var extraField = opensdg.searchIndexExtraFields[i];
         this.field(extraField, getSearchFieldOptions(extraField));
-      });
+      }
       // Index all the documents.
       for (var ref in opensdg.searchItems) {
         this.add(opensdg.searchItems[ref]);
