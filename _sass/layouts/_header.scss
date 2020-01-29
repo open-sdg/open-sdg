@@ -97,7 +97,7 @@ header {
           color: yellow;
         }
       }
-      &:not(.contrast, .active) {
+      &:not(.contrast), &:not(.active) {
         a:hover{
           border-bottom: 2px solid $menu-hover-border-bottom;
         }
