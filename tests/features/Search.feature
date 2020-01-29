@@ -9,8 +9,7 @@ Feature: Search
     And I fill in "the search box" with "poverty"
     And I send key "Enter" in "the search box" element
     And I wait 3 seconds
-    Then I should be on "/search/?q=poverty"
-    And I should see "6 results found"
+    Then I should see "6 results found"
     And I follow "End poverty in all its forms everywhere"
     Then I should be on "/1/"
 
@@ -19,8 +18,7 @@ Feature: Search
     And I fill in "the search box" with "emissions"
     And I send key "Enter" in "the search box" element
     And I wait 3 seconds
-    Then I should be on "/search/?q=emissions"
-    And I should see "2 results found"
+    Then I should see "2 results found"
     And I follow "CO2 emission per unit of value added"
     Then I should be on "/9-4-1/"
 
@@ -29,7 +27,24 @@ Feature: Search
     And I fill in "the search box" with "guidance"
     And I send key "Enter" in "the search box" element
     And I wait 3 seconds
-    Then I should be on "/search/?q=guidance"
-    And I should see "3 results found"
+    Then I should see "3 results found"
     And I follow "Guidance"
     Then I should be on "/guidance/"
+
+  Scenario: Search indexes can include extra fields
+    Given I am on the homepage
+    And I fill in "the search box" with "UNODA"
+    And I send key "Enter" in "the search box" element
+    And I wait 3 seconds
+    Then I should see "1 results found"
+
+  Scenario: The "did you mean" feature suggests alternative searches
+    Given I am on the homepage
+    And I fill in "the search box" with "popular"
+    And I send key "Enter" in "the search box" element
+    And I wait 3 seconds
+    Then I should see "No results"
+    And I should see "did you mean"
+    And I follow "popul"
+    And I wait 3 seconds
+    Then I should see "results found"
