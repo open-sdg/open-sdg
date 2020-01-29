@@ -40,18 +40,18 @@ var indicatorSearch = function() {
     var results = searchIndex.search(searchTermsToUse);
     // Array of alternative search terms to suggest to the user, in the case
     // where no results were found.
-    var alternateSearchTerms = [];
+    var alternativeSearchTerms = [];
 
     // If we didn't find anything, get progressively "fuzzier" to look for
     // alternative search term options.
     if (!results.length > 0) {
       for (var fuzziness = 1; fuzziness < 5; fuzziness++) {
         var fuzzierQuery = getFuzzierQuery(searchTermsToUse, fuzziness);
-        var alternateResults = searchIndex.search(fuzzierQuery);
-        if (alternateResults.length > 0) {
-          var matchedTerms = getMatchedTerms(alternateResults);
+        var alternativeResults = searchIndex.search(fuzzierQuery);
+        if (alternativeResults.length > 0) {
+          var matchedTerms = getMatchedTerms(alternativeResults);
           if (matchedTerms) {
-            alternateSearchTerms = matchedTerms;
+            alternativeSearchTerms = matchedTerms;
           }
           break;
         }
