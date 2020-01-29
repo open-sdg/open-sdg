@@ -351,16 +351,13 @@ var indicatorModel = function (options) {
         unitsChangeSeries: false
       }),
       fields = this.selectedFields,
-      selectedFieldTypes = _.pluck(fields, 'field'),
       datasets = [],
       that = this,
-      seriesData = [],
       headlineTable = undefined,
       datasetIndex = 0,
       getCombinationDescription = function(combination) {
         return _.map(Object.keys(combination), function(key) {
           return translations.t(combination[key]);
-          //return key + ' ' + combination[key];
         }).join(', ');
       },
       getColor = function(datasetIndex) {
@@ -379,8 +376,6 @@ var indicatorModel = function (options) {
             return colors[datasetIndex - 1];
           }
         }
-
-        return datasetIndex === 0 ? headlineColor : colors[datasetIndex];
       },
       getBorderDash = function(datasetIndex) {
 
@@ -393,12 +388,8 @@ var indicatorModel = function (options) {
         // the first dataset is the headline:
         return datasetIndex > colors.length ? [5, 5] : undefined;
       },
-      convertToDataset = function (data, combinationDescription /*field, fieldValue*/) {
-        // var fieldIndex = field ? _.findIndex(that.selectedFields, function (f) {
-        //     return f === field;
-        //   }) : undefined,
-        var fieldIndex,
-          ds = _.extend({
+      convertToDataset = function (data, combinationDescription) {
+        var ds = _.extend({
             label: combinationDescription ? combinationDescription : that.country,
             borderColor: '#' + getColor(datasetIndex),
             backgroundColor: '#' + getColor(datasetIndex),
@@ -420,11 +411,9 @@ var indicatorModel = function (options) {
       fields = [].concat(fields);
     }
 
-    var isSingleValueSelected = function() { return that.selectedFields.length === 1 && that.selectedFields[0].values.length === 1; },
-        matchedData = that.data;
+    var matchedData = that.data;
 
     // filter the data:
-    //if(!isSingleValueSelected()) {
     if(that.selectedUnit) {
       matchedData = _.where(matchedData, { Units: that.selectedUnit});
     }
@@ -487,7 +476,7 @@ var indicatorModel = function (options) {
     var combinations = this.getCombinationData(this.selectedFields);
 
     var filteredDatasets = [];
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     _.each(combinations, function(combination) {
       var filtered = _.filter(matchedData, function(dataItem) {
         var matched = true;
@@ -585,7 +574,6 @@ var indicatorModel = function (options) {
       });
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
     if((options.initial || options.unitsChangeSeries) && !this.hasHeadline) {
       // if there is no initial data, select some:
 

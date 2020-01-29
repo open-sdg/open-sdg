@@ -119,26 +119,8 @@ var indicatorView = function (model, options) {
     }
   });
 
-  this._model.onSeriesSelectedChanged.attach(function(sender, args) {
-    // var selector;
-    // if (args.series.length === view_obj._fieldLimit) {
-    //   selector = $('#fields input:not(:checked)');
-    //   selector.attr('disabled', true);
-    //   selector.parent().addClass('disabled').attr('title', 'Maximum of ' + view_obj._fieldLimit + ' selections; unselect another to select this field');
-    // } else {
-    //   selector = $('#fields input');
-    //   selector.removeAttr('disabled');
-    //   selector.parent().removeClass('disabled').removeAttr('title');
-    // }
-  });
-
   this._model.onUnitsComplete.attach(function(sender, args) {
     view_obj.initialiseUnits(args);
-  });
-
-  this._model.onUnitsSelectedChanged.attach(function(sender, args) {
-    // update the plot's y axis label
-    // update the data
   });
 
   this._model.onFieldsCleared.attach(function(sender, args) {
@@ -148,9 +130,7 @@ var indicatorView = function (model, options) {
     // reset available/unavailable fields
     updateWithSelectedFields();
 
-    // #246
     $(view_obj._rootElement).find('.selected').css('width', '0');
-    // end of #246
   });
 
   this._model.onSelectionUpdate.attach(function(sender, args) {
@@ -173,7 +153,6 @@ var indicatorView = function (model, options) {
   });
 
   this._model.onFieldsStatusUpdated.attach(function (sender, args) {
-    //console.log('updating field states with: ', args);
 
     // reset:
     $(view_obj._rootElement).find('label').removeClass('selected possible excluded');
@@ -614,12 +593,6 @@ var indicatorView = function (model, options) {
 
     options = options || {};
     var that = this,
-    csv_path = options.csv_path,
-    allow_download = options.allow_download || false,
-    csv_options = options.csv_options || {
-      separator: ',',
-      delimiter: '"'
-    },
     table_class = options.table_class || 'table table-hover';
 
     // clear:
@@ -627,9 +600,8 @@ var indicatorView = function (model, options) {
 
     if(table && table.data.length) {
       var currentTable = $('<table />').attr({
-        'class': /*'table-responsive ' +*/ table_class,
+        'class': table_class,
         'width': '100%'
-        //'id': currentId
       });
 
       currentTable.append('<caption>' + that._model.chartTitle + '</caption>');
