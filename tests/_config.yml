@@ -133,3 +133,7 @@ metadata_tabs:
     blurb: My sources blurb
 
 hide_empty_metadata: true
+
+# Search.feature
+search_index_extra_fields:
+  - un_custodian_agency
