@@ -1,32 +1,8 @@
 var indicatorSearch = function() {
-  // Helper function to make a search query "fuzzier", using the ~ syntax.
-  var getFuzzierQuery = function(query, fuzziness) {
-    return query
-      .split(' ')
-      .map(function(x) { return x + '~' + fuzziness; })
-      .join(' ');
-  }
-  // Helper function to get the matched words from a result set.
-  var getMatchedTerms = function(results) {
-    var matchedTerms = {};
-    results.forEach(function(result) {
-      Object.keys(result.matchData.metadata).forEach(function(matchedTerm) {
-        matchedTerms[matchedTerm] = true;
-      })
-    });
-    return Object.keys(matchedTerms);
-  }
-  // Helper function to get a boost score, if any.
-  var getSearchFieldOptions = function(field) {
-    var opts = {}
-    if (opensdg.searchIndexBoost[field]) {
-      opts['boost'] = intval(opensdg.searchIndexBoost[field])
-    }
-    return opts
-  }
+
   var urlParams = new URLSearchParams(window.location.search);
   var searchTerms = urlParams.get('q');
-  if (searchTerms) {
+  if (searchTerms && typeof searchTerms === 'string') {
     document.getElementById('search-bar-on-page').value = searchTerms;
     document.getElementById('search-term').innerHTML = searchTerms;
 
@@ -62,19 +38,20 @@ var indicatorSearch = function() {
     }
     // Perform the search.
     var results = searchIndex.search(searchTermsToUse);
-    var didYouMean = false;
+    // Array of alternative search terms to suggest to the user, in the case
+    // where no results were found.
+    var alternateSearchTerms = [];
 
     // If we didn't find anything, get progressively "fuzzier" to look for
-    // "did you mean?" options.
-    if (!results.length) {
-      var fuzziness;
-      for (fuzziness = 1; fuzziness < 5; fuzziness++) {
+    // alternative search term options.
+    if (!results.length > 0) {
+      for (var fuzziness = 1; fuzziness < 5; fuzziness++) {
         var fuzzierQuery = getFuzzierQuery(searchTermsToUse, fuzziness);
         var alternateResults = searchIndex.search(fuzzierQuery);
-        if (alternateResults.length) {
+        if (alternateResults.length > 0) {
           var matchedTerms = getMatchedTerms(alternateResults);
           if (matchedTerms) {
-            didYouMean = matchedTerms;
+            alternateSearchTerms = matchedTerms;
           }
           break;
         }
@@ -105,8 +82,37 @@ var indicatorSearch = function() {
     $('div.results').html(template({
       searchResults: resultItems,
       resultsCount: resultItems.length,
-      didYouMean: didYouMean,
+      didYouMean: (alternateSearchTerms.length > 0) ? alternateSearchTerms : false,
     }));
+  }
+
+  // Helper function to make a search query "fuzzier", using the ~ syntax.
+  // See https://lunrjs.com/guides/searching.html#fuzzy-matches.
+  var getFuzzierQuery = function(query, amountOfFuzziness) {
+    return query
+      .split(' ')
+      .map(function(x) { return x + '~' + amountOfFuzziness; })
+      .join(' ');
+  }
+
+  // Helper function to get the matched words from a result set.
+  var getMatchedTerms = function(results) {
+    var matchedTerms = {};
+    results.forEach(function(result) {
+      Object.keys(result.matchData.metadata).forEach(function(matchedTerm) {
+        matchedTerms[matchedTerm] = true;
+      })
+    });
+    return Object.keys(matchedTerms);
+  }
+
+  // Helper function to get a boost score, if any.
+  var getSearchFieldOptions = function(field) {
+    var opts = {}
+    if (opensdg.searchIndexBoost[field]) {
+      opts['boost'] = intval(opensdg.searchIndexBoost[field])
+    }
+    return opts
   }
 };
 
