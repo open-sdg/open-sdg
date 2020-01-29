@@ -32,6 +32,16 @@
 </script>
 <script>
 opensdg.searchItems = {{ site.data.search_items[page.language] | jsonify }};
+{% if site.search_index_boost %}
+opensdg.searchIndexBoost = {{ site.search_index_boost | jsonify }};
+{% else %}
+opensdg.searchIndexBoost = {};
+{% endif %}
+{% if site.search_index_extra_fields %}
+opensdg.searchIndexExtraFields = {{ site.search_index_extra_fields | jsonify }};
+{% else %}
+opensdg.searchIndexExtraFields = [];
+{% endif %}
 </script>
 
 <div id="main-content" class="container" role="main">

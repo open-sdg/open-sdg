@@ -16,6 +16,14 @@ var indicatorSearch = function() {
     });
     return Object.keys(matchedTerms);
   }
+  // Helper function to get a boost score, if any.
+  var getSearchFieldOptions = function(field) {
+    var opts = {}
+    if (opensdg.searchIndexBoost[field]) {
+      opts['boost'] = intval(opensdg.searchIndexBoost[field])
+    }
+    return opts
+  }
   var urlParams = new URLSearchParams(window.location.search);
   var searchTerms = urlParams.get('q');
   if (searchTerms) {
@@ -24,10 +32,15 @@ var indicatorSearch = function() {
 
     var searchIndex = lunr(function () {
       this.ref('url');
-      this.field('title', { boost: 10 });
-      this.field('content');
-      this.field('hidden');
-
+      // Index the expected fields.
+      this.field('title', getSearchFieldOptions('title'));
+      this.field('content', getSearchFieldOptions('content'));
+      this.field('id', getSearchFieldOptions('id'));
+      // Index any extra fields.
+      opensdg.searchIndexExtraFields.forEach(function(extraField) {
+        this.field(extraField, getSearchFieldOptions(extraField));
+      });
+      // Index all the documents.
       for (var ref in opensdg.searchItems) {
         this.add(opensdg.searchItems[ref]);
       };

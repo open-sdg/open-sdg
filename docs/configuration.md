@@ -278,6 +278,35 @@ This optional setting can be used to control the text of the tab containing non-
 non_global_metadata: indicator.national_metadata
 ```
 
+### search_index_boost
+
+This optional setting can be used to give a "boost" to one or more fields in the search index. The boost number should be a positive integer. The higher the number, the more "relevant" that field will be in search results. If omitted, the following defaults will be used:
+
+```
+search_index_boost:
+  title: 10
+```
+
+The following example shows additional fields that can be boosted:
+
+```
+search_index_boost:
+  # The title of the indicator, goal, or page.
+  title: 10
+  # The content of the indicator, goal, or page.
+  content: 1
+  # The id number of the indicator or goal.
+  id: 5
+```
+
+Additionally, any fields set in the `search_index_extra_fields` setting may also be boosted. For example:
+
+```
+search_index_boost:
+  # Assumes that "national_agency" was set in "search_index_extra_fields".
+  national_agency: 5
+```
+
 ### search_index_extra_fields
 
 This optional setting can be used to "index" additional metadata fields in your indicators, for the purposes of affecting the site-wide search. For example, if you have a metadata field called `national_agency` and you would like the sitewide search to include that field, add it in a list here, like so:
