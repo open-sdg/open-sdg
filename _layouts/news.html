@@ -5,14 +5,23 @@ layout: default
   <div class="row">
     <div class="col-md-9 push-md-3">
       {{content}}
-      {% for post in site.posts %}
+      {% assign posts = site.posts | where: 'language', page.language %}
+      {% for post in posts %}
       <article>
-        <h5><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></h5>
-        <p><time datetime="{{post.date|date:"%F"}}">{{post.date|date:"%b %d, %Y"}}</time></p>
+        <h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h5>
+        <p><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | t_date: 'standard' }}</time></p>
         <div class="post-excerpt">
           {{ post.excerpt | markdownify }}
         </div>
-        <p>{{post.categories | category_links}}</p>
+        {% if post.categories %}
+        <ul class="post-categories">
+          {% for category in post.categories %}
+          <li class="warning">
+            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category }}">{{ category | t }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </article>
       {% endfor %}
     </div>
