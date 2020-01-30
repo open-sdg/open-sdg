@@ -139,10 +139,6 @@ header {
       height: 34px;
       transition: width 0.4s;
       margin-top: 5px;
-
-      &:focus {
-        width: 350px;
-      }
     }
   }
 }
