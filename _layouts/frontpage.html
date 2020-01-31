@@ -18,12 +18,15 @@
         {% cycle 'end row' : '', '', '', '', '', '</div>' %}
     {% endfor %}
     {% comment %}
-        If there were exactly 17 goals, "pad" it with 1 more, to make it come
-        out more symmetrically.
+        If there were exactly 17 goals, "pad" it with the download link.
     {% endcomment %}
     {% if page.goals.size == 17 %}
-        <div class="col-xs-4 col-md-2">
-            <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
+        <div class="col-xs-4 col-md-2 download-all-indicators">
+            <a aria-label="{{ page.t.frontpage.download_all | escape }}"
+               title="{{ page.t.frontpage.download_all | escape }}"
+               href="{{ page.remote_data_prefix | append: '/zip/all_indicators.zip' }}">
+              <i class="fa fa-download"></i>
+            </a>
         </div>
     {% endif %}
     </div>

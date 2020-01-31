@@ -30,6 +30,19 @@ h5 + .btn-download {
   }
 }
 
+.download-all-indicators {
+  a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    .fa-download {
+      font-size: 9em;
+      padding-top: 15%;
+    }
+  }
+}
+
 body.contrast-high {
   .btn { background: white !important; color: black !important;
     &:hover {
