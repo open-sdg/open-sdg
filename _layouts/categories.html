@@ -6,7 +6,6 @@ layout: default
     <div class="col-xs-12">
       {{content}}
       {% for category in site.categories %}
-        {% capture category_name %}{{ category | first }}{% endcapture %}
         <div class="archive-group">
           {% capture category_name %}{{ category | first }}{% endcapture %}
           <div id="#{{ category_name | slugize }}">
@@ -15,7 +14,7 @@ layout: default
             {% assign posts = site.categories[category_name] | where: 'language', page.language %}
             {% for post in posts %}
             <article class="archive-item">
-              <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | t_date: "standard" }}</time> - <a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a>
+              <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | t_date: "standard" }}</time> - <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
             </article>
             {% endfor %}
           </div>
