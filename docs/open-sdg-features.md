@@ -79,5 +79,5 @@ Open SDG includes the ability to post news and updates to your site. In all resp
 
 The [site starter](https://github.com/open-sdg/open-sdg-site-starter) includes 2 pages to support this functionality:
 
-* a [News page](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/news.md) which lists your posts
-* a [Categories page](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/categories.md) which lists the "categories" used in your posts
+* a News page, which lists your posts (see an [example](https://open-sdg.github.io/open-sdg-site-starter/news/) and the [code](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/news.md))
+* a Categories page which lists the "categories" used in your posts (see an [example](https://open-sdg.github.io/open-sdg-site-starter/categories/) and the [code](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/categories.md))
