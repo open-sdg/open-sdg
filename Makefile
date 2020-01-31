@@ -19,6 +19,7 @@ test.prep:
 	# Copy any custom pages into the starter.
 	mkdir starter/_goals
 	cp -r tests/goals/* starter/_goals/
+	cp -r tests/posts/* starter/_posts/
 	# Add extra languages.
 	cd starter && python scripts/batch/add_language.py es
 	cd starter && python scripts/batch/add_language.py fr fr-CA

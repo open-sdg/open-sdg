@@ -137,3 +137,10 @@ hide_empty_metadata: true
 # Search.feature
 search_index_extra_fields:
   - un_custodian_agency
+
+# News.feature
+date_formats:
+  standard:
+    en: '%B %d, %Y'
+    es: '%d de %B de %Y'
+    fr: '%d %B %Y'
