@@ -19,7 +19,8 @@ There are 4 requirements for adding a new language to the platform
 
 1. Check that the new language is implemented in the two repositories mentioned above. If it is not, you can copy those repositories and implement the language yourself.
     * Specifically, you will need to translate all the YAML files in [this folder](https://github.com/open-sdg/translations-open-sdg/tree/master/translations/en) and [this folder](https://github.com/open-sdg/translations-un-sdg/tree/master/translations/en).
-2. Make sure that translated goal icons have been created. These are currently maintained [here](https://github.com/open-sdg/sdg-translations/).
+2. Make sure that translated goal icons have been created. These are currently maintained [here](https://github.com/open-sdg/translations-un-sdg/).
+    * Specifically, you will need to produce translated versions of all the PNG files in [this folder](https://github.com/open-sdg/translations-un-sdg/tree/master/docs/assets/img/goals/en) and [this folder](https://github.com/open-sdg/translations-un-sdg/tree/master/docs/assets/img/high-contrast/goals/en) (for high contrast versions).
 3. Add the new language in the 'languages' list in your site config (`_config.yml`) and data config (`config_data.yml`) files.
 4. Create new versions of any Jekyll pages that you would like to have available in the new language. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
 
