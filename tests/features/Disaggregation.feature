@@ -35,6 +35,7 @@ Feature: Disaggregation
   Scenario: The disaggregation filters are translated
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
+    And I wait 3 seconds
     And I click on "the filter drop-down button"
     Then I should see "Borrar selecciones"
     And I should see "Seleccionar todo"
