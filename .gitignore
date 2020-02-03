@@ -1,5 +1,6 @@
 tests/screenshot.png
 tests/node_modules
 tests/package-lock.json
-tests/data/_build
-starter
+site-starter
+data-starter
+venv
