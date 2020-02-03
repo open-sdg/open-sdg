@@ -6,7 +6,7 @@ Feature: Map
 
   Background:
     Given I am on "/1-3-1"
-    And I wait 5 seconds
+    And I wait 3 seconds
 
   Scenario: Indicators have a "Map" tab which displays data in a map
     And I click on "the Map tab"

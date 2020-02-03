@@ -6,7 +6,7 @@ Feature: Disaggregation
 
   Background:
     Given I am on "/1-1-1"
-    And I wait 5 seconds
+    And I wait 3 seconds
 
   Scenario: The disaggregation filters add lines to the chart
     Then I should see 1 "chart legend item" element

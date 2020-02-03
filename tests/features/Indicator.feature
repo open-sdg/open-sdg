@@ -6,7 +6,7 @@ Feature: Indicator
 
   Background:
     Given I am on "/1-1-1"
-    And I wait 5 seconds
+    And I wait 3 seconds
 
   Scenario: Indicators have a "Table" tab which displays a table of data
     And I click on "the Table tab"
