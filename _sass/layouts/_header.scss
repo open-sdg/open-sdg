@@ -37,10 +37,6 @@ header {
 
   margin-bottom: 32px;
 
-  li {
-    text-transform: uppercase;
-  }
-
   ul.navbar-nav {
     float: right;
     margin-top: 12px;
@@ -226,6 +222,7 @@ header {
           background: #58595B;
           padding: 6px 0 6px;
           color: #E5E6E7;
+          font-size: 15px;
 
           &:hover {
             color: #E5E6E7;
