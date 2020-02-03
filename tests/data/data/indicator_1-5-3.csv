@@ -1,0 +1,9 @@
+Year,Units,Group1,Group2,Value
+2015,Total,A,X,1
+2015,Total,B,Y,2
+2016,Total,A,X,3
+2016,Total,B,Y,4
+2015,Percent,A,X,10
+2015,Percent,B,Y,20
+2016,Percent,A,X,30
+2016,Percent,B,Y,40

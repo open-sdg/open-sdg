@@ -1,0 +1,3 @@
+# These are the Python requirements for building the data.
+git+git://github.com/dougmet/yamlmd
+git+git://github.com/open-sdg/sdg-build@1.0.0-rc3

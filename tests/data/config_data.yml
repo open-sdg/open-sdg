@@ -1,0 +1,22 @@
+# These settings are used by the Python functions open_sdg_build() and
+# open_sdg_check(), from sdg-build.
+
+# List of languages.
+languages:
+  - en
+  - es
+  - fr
+
+# Where the data gets built.
+site_dir: _build
+
+# The file to use for the metadata schema.
+schema_file: _prose.yml
+
+# The parent folder of the 'meta' and 'data' folders.
+src_dir: ''
+
+# Links to Git repositories with translation data.
+translations:
+  - https://github.com/open-sdg/translations-un-sdg.git@1.0.0-rc1
+  - https://github.com/open-sdg/translations-open-sdg.git@1.0.0-rc5
