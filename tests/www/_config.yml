@@ -7,11 +7,8 @@ frontpage_instructions: custom.frontpage_instructions
 # Replace the baseurl with the name of this repository.
 baseurl: ""
 url: ""
-data_dir: data
 environment: staging
-remote_data_prefix: "https://open-sdg.github.io/open-sdg-data-testing/staging"
-remote_translations:
-  - https://open-sdg.github.io/sdg-translations/translations.json
+local_data_folder: _build
 
 # Automatically create indicator pages, goal pages,
 # and some other required pages.
@@ -29,13 +26,6 @@ email_contacts:
   questions: test@example.com
   suggestions: test@example.com
   functional: test@example.com
-
-# Github Repo for Data
-# Replace this value as needed.
-repo_name: open-sdg-data-testing
-branch: develop
-# Replace this value as needed.
-org_name: open-sdg
 
 # Build settings
 markdown: kramdown
@@ -100,14 +90,10 @@ languages:
 languages_public:
   fr: fr-CA
 
-goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
+goal_image_base: https://open-sdg.github.io/translations-un-sdg/assets/img/goals
 
 plugins:
   - jekyll-open-sdg-plugins
-
-# Social media accounts.
-twitter: 'MyTwitterAccount'
-facebook: 'MyFacebookAccount'
 
 map_options:
   minZoom: 5
