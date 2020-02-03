@@ -45,6 +45,7 @@ Feature: Disaggregation
   Scenario: The chart legend items are translated
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
+    And I wait 3 seconds
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
     Then I should see "A-translated" in the "chart legend" element
@@ -52,6 +53,7 @@ Feature: Disaggregation
   Scenario: The table columns are translated
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
+    And I wait 3 seconds
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
     Then I should see "A-translated" in the "data table" element
