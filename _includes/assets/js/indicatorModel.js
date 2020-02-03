@@ -377,15 +377,21 @@ var indicatorModel = function (options) {
           }
         }
       },
-      getBackgroundColor = function(datasetIndex) {
+      getBackground = function(datasetIndex) {
 
         var color = '#' + getColor(datasetIndex);
         // offset if there is no headline data:
         if(!this.hasHeadline) {
           datasetIndex += 1;
         }
-        // Either a solid color, or a pattern via the "patternomaly" library.
-        return datasetIndex > colors.length ? pattern.draw('diagonal', color) : color;
+
+        if (datasetIndex > colors.length) {
+          if (window.pattern && typeof window.pattern.draw === 'function') {
+            return window.pattern.draw('diagonal', color);
+          }
+        }
+
+        return color;
       },
       getBorderDash = function(datasetIndex) {
 
@@ -402,7 +408,7 @@ var indicatorModel = function (options) {
         var ds = _.extend({
             label: combinationDescription ? combinationDescription : that.country,
             borderColor: '#' + getColor(datasetIndex),
-            backgroundColor: getBackgroundColor(datasetIndex),
+            backgroundColor: getBackground(datasetIndex),
             pointBorderColor: '#' + getColor(datasetIndex),
             borderDash: getBorderDash(datasetIndex),
             data: _.map(that.years, function (year) {
