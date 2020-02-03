@@ -377,18 +377,26 @@ var indicatorModel = function (options) {
           }
         }
       },
+      getBackgroundColor = function(datasetIndex) {
+        return '#' + getColor(datasetIndex);
+      },
+      getBackgroundPattern = function(color) {
+        if (window.pattern && typeof window.pattern.draw === 'function') {
+          return window.pattern.draw('diagonal', color);
+        }
+        return color;
+      },
       getBackground = function(datasetIndex) {
 
-        var color = '#' + getColor(datasetIndex);
+        var color = getBackgroundColor(datasetIndex);
+
         // offset if there is no headline data:
         if(!this.hasHeadline) {
           datasetIndex += 1;
         }
 
         if (datasetIndex > colors.length) {
-          if (window.pattern && typeof window.pattern.draw === 'function') {
-            return window.pattern.draw('diagonal', color);
-          }
+          color = getBackgroundPattern(color);
         }
 
         return color;
