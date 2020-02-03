@@ -1,0 +1,13 @@
+Year,Units,Group1,Group2,Value
+2015,Total,A,X,1
+2015,Total,B,Y,2
+2015,Total,single disaggregation,,5
+2016,Total,A,X,3
+2016,Total,B,Y,4
+2016,Total,single disaggregation,,6
+2015,Percent,A,X,10
+2015,Percent,B,Y,20
+2015,Percent,single disaggregation,,7
+2016,Percent,A,X,30
+2016,Percent,B,Y,40
+2016,Percent,single disaggregation,,8
