@@ -14,12 +14,8 @@ test.prep:
 	cp tests/_config.yml starter
 	# Copy all the theme files into the starter.
 	cp -r -t starter/ _includes _layouts assets _sass
-	# Copy any custom data into the starter.
-	cp -r tests/data starter/
-	# Copy any custom pages into the starter.
-	mkdir starter/_goals
-	cp -r tests/goals/* starter/_goals/
-	cp -r tests/posts/* starter/_posts/
+	# Copy any custom files into the starter.
+	cp -r tests/www starter/
 	# Add extra languages.
 	cd starter && python scripts/batch/add_language.py es
 	cd starter && python scripts/batch/add_language.py fr fr-CA
