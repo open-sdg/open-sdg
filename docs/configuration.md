@@ -216,6 +216,19 @@ custom_js:
   - /assets/js/custom.js
 ```
 
+### date_formats
+
+This optional setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, using an arbitrary key, such as "standard". Each date format should have a variant for each of your languages. For example, here is how you might configure a "standard" date format:
+
+```nohighlight
+date_formats:
+  standard:
+    en: "%b %d, %Y"
+    es: "%d de %b de %Y"
+```
+
+The `%` variables in the formats correspond to the variables listed [here](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
+
 ### frontpage_heading
 
 This optional setting can control the heading that appears on the front page.

@@ -1,5 +1,10 @@
 .post-categories {
-  margin: 3px 0;
+  @include tags;
+  li {
+    a {
+      color: black;
+    }
+  }
 }
 
 .post-title {

@@ -6,6 +6,18 @@
   -o-user-select: none;
 }
 
+@mixin tags {
+  padding: 0;
+  margin: 6px 10px 0 0;
+  list-style-type: none;
+  li {
+    margin-right: 6px;
+    padding: 4px 6px;
+    display: inline;
+    border-radius: 10px;
+  }
+}
+
 @mixin indicatorcards {
   .indicator-cards {
     a {
@@ -44,15 +56,7 @@
     }
 
     .tags {
-      padding: 0;
-      margin: 6px 10px 0 0;
-      list-style-type: none;
-      li {
-        margin-right: 6px;
-        padding: 4px 6px;
-        display: inline;
-        border-radius: 10px;
-      }
+      @include tags;
     }
 
     .match {

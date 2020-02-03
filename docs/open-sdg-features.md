@@ -73,3 +73,11 @@ Open SDG platforms allow data to be displayed in a way in which it can be filter
 An example of providing disaggregation filtering is [indicator 5.2.2 on the UK site](https://sustainabledevelopment-uk.github.io/5-2-2/).
 
 This feature is configured with the data files. For guidance on how to provide disaggregation filtering, see the [Data format page](https://open-sdg.readthedocs.io/en/latest/data-format/).
+
+## News, posts, and categories
+Open SDG includes the ability to post news and updates to your site. In all respects, this functionality matches what is described in [this Jekyll documentation](https://jekyllrb.com/docs/posts/).
+
+The [site starter](https://github.com/open-sdg/open-sdg-site-starter) includes 2 pages to support this functionality:
+
+* a News page, which lists your posts (see an [example](https://open-sdg.github.io/open-sdg-site-starter/news/) and the [code](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/news.md))
+* a Categories page which lists the "categories" used in your posts (see an [example](https://open-sdg.github.io/open-sdg-site-starter/categories/) and the [code](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/categories.md))
