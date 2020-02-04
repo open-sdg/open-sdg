@@ -377,15 +377,6 @@ var indicatorModel = function (options) {
           }
         }
       },
-      getBackgroundColor = function(datasetIndex) {
-        return '#' + getColor(datasetIndex);
-      },
-      getBackgroundPattern = function(color) {
-        if (window.pattern && typeof window.pattern.draw === 'function') {
-          return window.pattern.draw('diagonal', color);
-        }
-        return color;
-      },
       getBackground = function(datasetIndex) {
 
         var color = getBackgroundColor(datasetIndex);
@@ -399,6 +390,15 @@ var indicatorModel = function (options) {
           color = getBackgroundPattern(color);
         }
 
+        return color;
+      },
+      getBackgroundColor = function(datasetIndex) {
+        return '#' + getColor(datasetIndex);
+      },
+      getBackgroundPattern = function(color) {
+        if (window.pattern && typeof window.pattern.draw === 'function') {
+          return window.pattern.draw('diagonal', color);
+        }
         return color;
       },
       getBorderDash = function(datasetIndex) {
