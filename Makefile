@@ -4,7 +4,7 @@ all: test
 install:
 	cd tests && npm install
 	cd tests/site && bundle install
-	cd tests/data && pip install -r requirements.txt
+	cd tests/data && pip install --user -r requirements.txt
 
 serve: test.before test.prep
 	cd site-starter && bundle exec jekyll serve --skip-initial-build
