@@ -1,6 +1,7 @@
 tests/screenshot.png
 tests/node_modules
 tests/package-lock.json
+tests/site/Gemfile.lock
 site-starter
 data-starter
 venv

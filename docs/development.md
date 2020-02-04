@@ -3,12 +3,8 @@
 When making changes to the website, it is useful to check how those changes look before committing and pushing them to GitHub. In this case, we can build the website locally first. To do this, you will need to have a few tools installed, namely you will need:
 
 * [`Ruby`](https://www.ruby-lang.org/en/downloads/)
-* [`jekyll`](https://jekyllrb.com/docs/installation/)
-* [`html-proofer`](https://github.com/gjtorikian/html-proofer)
 * [`git`](https://git-scm.com/)
 * [`python3`](https://www.anaconda.com/download/)
-
-Note: `jekyll` and `html-proofer` are ruby gems (see [here](http://guides.rubygems.org/what-is-a-gem/) for more details).
 
 # Installation
 
@@ -75,7 +71,7 @@ For Linux you may get away with installing just the packages you need: `python3`
 
 The pre-processing works fine for version anything greater than or equal to 3.4.
 
-# Building the site
+## Building the site
 
 After you have gone through the [quick start](https://open-sdg.readthedocs.io/en/latest/quick-start/) to implement the platform, you will be ready to `clone` the site repository. On the command line, change your directory (`cd`) to the relevant area of your computer where you wish to store the website files and type:
 
@@ -93,3 +89,19 @@ bundle exec jekyll serve
 ```
 
 You should see that `jekyll` provides us with a server address from which we can access the site. Copy and paste this URL into any web browser to see any changes. Remember you will need to "commit" and "push" these changes to your `develop` branch on GitHub for others to view them.
+
+## Developing the platform
+
+To work on Open SDG itself, you will need Ruby, Python, and Node.js. Fork and clone the repository to your computer. Then:
+
+```
+make install
+make serve
+```
+
+And to run the tests:
+
+```
+make install
+make test
+```
