@@ -1,6 +1,9 @@
 .PHONY: test.before test.prep test.serve test.html test.features test.after
 all: test
 
+serve: test.before test.prep
+	cd site-starter && bundle exec jekyll serve --skip-initial-build
+
 test.before test.after:
 	# Stop the detached Jekyll web server.
 	-pkill -f -9 jekyll
@@ -12,8 +15,15 @@ test.prep:
 	# Clone the starter repositories.
 	git clone https://github.com/open-sdg/open-sdg-site-starter.git site-starter
 	git clone https://github.com/open-sdg/open-sdg-data-starter.git data-starter
-	# Copy all the theme files into the site starter.
-	cp -r -t site-starter/ _includes _layouts assets _sass
+	# Copy all the theme files into the site starter (using symbolic links).
+	rm -fr site-starter/_includes
+	rm -fr site-starter/_layouts
+	rm -fr site-starter/assets
+	rm -fr site-starter/_sass
+	ln -s ../_includes site-starter/_includes
+	ln -s ../_layouts site-starter/_layouts
+	ln -s ../assets site-starter/assets
+	ln -s ../_sass site-starter/_sass
 	# Copy any custom files into the site starter.
 	cp -r -t site-starter/ tests/site/*
 	# Copy any custom files into the data starter.
@@ -28,7 +38,7 @@ test.prep:
 	# Build the Jekyll site.
 	cd site-starter && bundle install
 	cd site-starter && bundle exec jekyll build
-	# Install dependencies for Cucumber tests.
+	# Install the Node.js depedencies.
 	cd tests && npm install
 
 test.serve:
