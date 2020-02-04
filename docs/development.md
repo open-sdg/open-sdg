@@ -95,13 +95,11 @@ You should see that `jekyll` provides us with a server address from which we can
 To work on Open SDG itself, you will need Ruby, Python, and Node.js. Fork and clone the repository to your computer. Then:
 
 ```
-make install
 make serve
 ```
 
 And to run the tests:
 
 ```
-make install
 make test
 ```

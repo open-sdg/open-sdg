@@ -1,11 +1,6 @@
 .PHONY: test.before test.prep test.serve test.html test.features test.after
 all: test
 
-install:
-	cd tests && npm install
-	cd tests/site && bundle install
-	cd tests/data && pip install --user -r requirements.txt
-
 serve: test.before test.prep
 	cd site-starter && bundle exec jekyll serve --skip-initial-build
 
@@ -37,10 +32,14 @@ test.prep:
 	cd site-starter && python scripts/batch/add_language.py es
 	cd site-starter && python scripts/batch/add_language.py fr fr-CA
 	# Build the data and metadata and move it into the starter.
+	cd data-starter && pip install -r requirements.txt
 	cd data-starter && python build_data.py
 	mv data-starter/_build site-starter
 	# Build the Jekyll site.
+	cd site-starter && bundle install
 	cd site-starter && bundle exec jekyll build
+	# Install the Node.js depedencies.
+	cd tests && npm install
 
 test.serve:
 	# Serve the Jekyll site at http://127.0.0.1:4000/

@@ -11,13 +11,11 @@ Complete documentation can be found [here](https://open-sdg.readthedocs.io/en/la
 To see the platform while developing (requires Ruby and Python):
 
 ```
-make install
 make serve
 ```
 
 To run the tests (requires Node.js):
 
 ```
-make install
 make test
 ```
