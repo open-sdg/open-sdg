@@ -10,8 +10,8 @@ Feature: Homepage
   Scenario: The heading text can be customised
     Then I should see "My custom frontpage heading"
 
-  Scenario: All 17 goal icons are visible
-    Then I should see 17 "goal icon" elements
+  Scenario: All available goal icons are visible
+    Then I should see 3 "goal icon" elements
 
   Scenario: The download-all button is available
     Then I should see "Download all data"

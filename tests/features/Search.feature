@@ -6,21 +6,21 @@ Feature: Search
 
   Scenario: Search index includes goals
     Given I am on the homepage
-    And I fill in "the search box" with "poverty"
+    And I fill in "the search box" with "hunger"
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
-    Then I should see "6 results found"
-    And I follow "End poverty in all its forms everywhere"
-    Then I should be on "/1/"
+    Then I should see "1 results found"
+    And I follow "End hunger, achieve food security and improved nutrition and promote sustainable agriculture"
+    Then I should be on "/2/"
 
   Scenario: Search index includes indicators
     Given I am on the homepage
-    And I fill in "the search box" with "emissions"
+    And I fill in "the search box" with "mortality"
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
-    Then I should see "2 results found"
-    And I follow "CO2 emission per unit of value added"
-    Then I should be on "/9-4-1/"
+    Then I should see "1 results found"
+    And I follow "Maternal mortality ratio"
+    Then I should be on "/3-1-1/"
 
   Scenario: Search index includes pages
     Given I am on the homepage
@@ -33,7 +33,7 @@ Feature: Search
 
   Scenario: Search indexes can include extra fields
     Given I am on the homepage
-    And I fill in "the search box" with "UNODA"
+    And I fill in "the search box" with "FAO"
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
     Then I should see "1 results found"
