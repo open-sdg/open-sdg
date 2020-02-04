@@ -12,7 +12,7 @@ instructions on the quickest way to get a copy of the open-sdg platform up and r
 
 ## How long would it take to set up a copy of Open SDG
 
-With the right skills, it should take less than a day to set up a standard copy, ready for data to be imported. 
+With the right skills, it should take less than a day to set up a standard copy, ready for data to be imported.
 
 ## Can the Open SDG platform be customised?
 
@@ -59,6 +59,23 @@ The data and metadata for an Open SDG implementation is available at predictable
 **data**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/data/[INDICATOR CODE].json e.g. https://onsdigital.github.io/sdg-data/data/1-2-1.json
 
 **metatdata**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/meta/[INDICATOR CODE].json e.g. https://onsdigital.github.io/sdg-data/meta/1-2-1.json
+
+## What is the difference between the double-repository and the single-repository approach?
+
+With the **double-repository** approach, site content is kept separate from data/metadata by splitting them into two repositories: a *site repository* and a *data repository*. This is the most popular approach, because it provides the following benefits:
+
+1. The staff responsible for updating the site repository can be different from the staff responsible for updating the data repository. This allows for more fine-grained user management.
+2. Activity logs on the site repository do not appear on the data repository, and vice versa. This helps make the process of maintenance and review easier.
+3. Having the data and site in separate repositories adds a layer of protection against accidental version control problems.
+
+The double-repository approach is detailed in the [Quick Start](https://open-sdg.readthedocs.io/en/latest/quick-start/) with the help of the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) template projects.
+
+By contrast, with the **single-repository** approach, site content and data/metadata are contained with the same single repository. This approach can be useful for local testing and development, as it simplifies the architecture of the platform. The benefits include:
+
+1. Faster quick-start process
+2. Simpler workflow for testing out changes locally
+
+The single-repository is exemplified in the [simple starter](https://github.com/open-sdg/open-sdg-simpler-starter) template project.
 
 ## Can content from other websites be embedded in Open SDG?
 

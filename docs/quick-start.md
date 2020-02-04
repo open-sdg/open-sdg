@@ -2,6 +2,14 @@
 
 This document will go over the quickest way to get this platform up and running. Here we will choose the simplest approach for automation and hosting, which is to use GitHub Actions. Note, however, that there are alternatives to this approach, as detailed under the Automation and Hosting sections.
 
+> #### Need a quicker quick start?
+> This document recommends a double-repository approach,
+> which separates your platform into a "site repository" and a "data repository".
+> This is a good practice in general, and provides several logistical benefits.
+> However, a simpler single-repository approach may be preferred if you just
+> want to try out Open SDG locally. In this case, see
+> [here](https://github.com/open-sdg/open-sdg-simple-starter).
+
 ## Signing up and creating repositories
 
 1. If you don't already have a Github.com account, [go to Github.com](https://github.com/) to sign up and then log in.
