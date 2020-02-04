@@ -7,5 +7,5 @@ Feature: Reporting status page
   Background:
     Given I am on "/reporting-status"
 
-  Scenario: All available are listed
+  Scenario: All available goals are listed
     Then I should see 3 "goal status" elements
