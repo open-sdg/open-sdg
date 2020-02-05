@@ -81,3 +81,7 @@ The [site starter](https://github.com/open-sdg/open-sdg-site-starter) includes 2
 
 * a News page, which lists your posts (see an [example](https://open-sdg.github.io/open-sdg-site-starter/news/) and the [code](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/news.md))
 * a Categories page which lists the "categories" used in your posts (see an [example](https://open-sdg.github.io/open-sdg-site-starter/categories/) and the [code](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/categories.md))
+
+> *Note for multilingual sites*: The News and Categories pages mentioned above, as
+> well as any posts you create, will need to be duplicated for each of your
+> languages, and translated individually.
