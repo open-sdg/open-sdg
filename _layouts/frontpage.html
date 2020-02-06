@@ -2,13 +2,9 @@
 {% include header.html %}
 <div id="main-content" class="container goal-tiles" role="main">
 
-    <div class="spacer medium"></div>
-
     {% assign country_name = site.country.name | t %}
     {% assign heading_default = page.t.frontpage.heading | replace: '%name', country_name %}
     <h1 class="spacer medium">{{ site.frontpage_heading | default: heading_default | t }}</h1>
-
-    <div class="spacer medium"></div>
 
     {% assign instructions_default = page.t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
     <p class="spacer medium">{{ site.frontpage_instructions | default: instructions_default | t }}</p>
