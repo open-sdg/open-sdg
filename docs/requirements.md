@@ -63,8 +63,8 @@ Additionally — although most implementations will not require alterations to a
 
 * Filtering: [Underscore.js](https://underscorejs.org/)
 * Charts: [Chart.js](https://www.chartjs.org/)
-* Maps: [D3.js](https://d3js.org/)
+* Maps: [Leaflet](https://leafletjs.com/)
 
 ### Continuous integration
 
-Some experience with continuous integration (CI) — such as with integrating Github sites with TravisCI or CircleCI — will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices.
+Some experience with continuous integration (CI) — such as with integrating Github sites with GitHub Actions, TravisCI, or CircleCI — will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices.
