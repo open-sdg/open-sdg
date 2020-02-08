@@ -45,9 +45,8 @@
   var mapLayerDefaults = {
     min_zoom: 0,
     max_zoom: 10,
-    serviceUrl: '[replace me]',
-    nameProperty: '[replace me]',
-    idProperty: '[replace me]',
+    subfolder: 'regions',
+    label: 'indicator.map',
     staticBorders: false,
   };
 
@@ -58,6 +57,7 @@
     this.mapLayers = [];
     this.geoData = options.geoData;
     this.geoCodeRegEx = options.geoCodeRegEx;
+    this.indicatorId = options.indicatorId
 
     // Require at least one geoLayer.
     if (!options.mapLayers.length) {
@@ -85,27 +85,6 @@
   }
 
   Plugin.prototype = {
-
-    // Add time series to GeoJSON data and normalize the name and geocode.
-    prepareGeoJson: function(geoJson, idProperty, nameProperty) {
-      var geoData = this.geoData;
-      geoJson.features.forEach(function(feature) {
-        var geocode = feature.properties[idProperty];
-        var name = feature.properties[nameProperty];
-        // First add the time series data.
-        var records = _.where(geoData, { GeoCode: geocode });
-        records.forEach(function(record) {
-          // Add the Year data into the properties.
-          feature.properties[record.Year] = record.Value;
-        });
-        // Next normalize the geocode and name.
-        feature.properties.name = translations.t(name);
-        feature.properties.geocode = geocode;
-        delete feature.properties[idProperty];
-        delete feature.properties[nameProperty];
-      });
-      return geoJson;
-    },
 
     // Zoom to a feature.
     zoomToFeature: function(layer) {
@@ -187,8 +166,10 @@
 
     // Get the data from a feature's properties, according to the current year.
     getData: function(props) {
-      if (props[this.currentYear]) {
-        return props[this.currentYear];
+      // The 'values' property has a full set of years for each combination of
+      // disaggregations, but for now we just use the first one.
+      if (props.values && props.values.length && props.values[0][this.currentYear]) {
+        return props.values[0][this.currentYear];
       }
       return false;
     },
@@ -202,6 +183,12 @@
       else {
         return this.options.noValueColor;
       }
+    },
+
+    // Get the (long) URL of a geojson file, given a particular subfolder.
+    getGeoJsonUrl: function(subfolder) {
+      var fileName = this.indicatorId + '.geojson';
+      return [opensdg.remoteDataBaseUrl, 'geojson', subfolder, fileName].join('/');
     },
 
     // Initialize the map itself.
@@ -248,12 +235,9 @@
       this.selectionLegend = L.Control.selectionLegend(plugin);
       this.map.addControl(this.selectionLegend);
 
-      // Add the download button.
-      this.map.addControl(L.Control.downloadGeoJson(plugin));
-
       // At this point we need to load the GeoJSON layer/s.
       var geoURLs = this.mapLayers.map(function(item) {
-        return $.getJSON(item.serviceUrl);
+        return $.getJSON(plugin.getGeoJsonUrl(item.subfolder));
       });
       $.when.apply($, geoURLs).done(function() {
 
@@ -284,10 +268,7 @@
             plugin.staticLayers.addLayer(staticLayer);
           }
           // Now go on to add the geoJson again as choropleth dynamic regions.
-          var idProperty = plugin.mapLayers[i].idProperty;
-          var nameProperty = plugin.mapLayers[i].nameProperty;
-          var geoJson = plugin.prepareGeoJson(geoJsons[i][0], idProperty, nameProperty);
-
+          var geoJson = geoJsons[i][0]
           var layer = L.geoJson(geoJson, {
             style: plugin.options.styleNormal,
             onEachFeature: onEachFeature,
@@ -302,6 +283,15 @@
           layer.geoJsonObject = geoJson;
           // Add the layer to the ZoomShowHide group.
           plugin.dynamicLayers.addLayer(layer);
+
+          // Add a download button below the map.
+          var downloadLabel = translations.t(plugin.mapLayers[i].label)
+          var downloadButton = $('<a></a>')
+            .attr('href', plugin.getGeoJsonUrl(plugin.mapLayers[i].subfolder))
+            .attr('class', 'btn btn-primary btn-download')
+            .attr('title', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
+            .text(translations.indicator.download_geojson + ' - ' + downloadLabel);
+          $(plugin.element).parent().append(downloadButton);
         }
         plugin.updateColors();
 
