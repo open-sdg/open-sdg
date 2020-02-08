@@ -62,7 +62,7 @@
   <div class="row" id="indicatorData" data-indicatorid='indicator_{{ page.indicator.slug }}' data-id="{{ page.indicator.slug }}" data-country="{{ page.indicator.national_geographical_coverage }}"
   data-charttitle="{{ page.indicator.graph_title }}" data-measurementunit="{{ page.indicator.computation_units }}" data-datasource="{{ uniqSources }}" data-copyright="{{ page.indicator.copyright }}"
   data-geographicalarea="{{ page.indicator.national_geographical_coverage }}" data-footnote="{{ page.indicator.data_footnote }}" data-showdata="{{ show_data }}" data-graphtype="{{ page.indicator.graph_type }}"
-  data-geocoderegex="{{ page.indicator.data_geocode_regex }}" data-showmap="{{ page.indicator.data_show_map }}" data-startvalues="{{ page.indicator.data_start_values | jsonify | xml_escape }}"
+  data-showmap="{{ page.indicator.data_show_map }}" data-startvalues="{{ page.indicator.data_start_values | jsonify | xml_escape }}"
   data-graphlimits="{{ page.indicator.graph_limits | jsonify | xml_escape }}" data-stackeddisaggregation="{{ page.indicator.graph_stacked_disaggregation }}"
   data-unitswithoutheadline="{{ page.indicator.graph_units_without_headline | jsonify | xml_escape }}">
 

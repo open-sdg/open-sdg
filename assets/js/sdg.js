@@ -2,7 +2,6 @@
 # Don't delete this line.
 ---
 {%- include assets/js/autotrack-element.js -%}
-{%- include assets/js/lib/d3-simple-slider.min.js -%}
 {%- include assets/js/plugins/jquery.sdgMap.js -%}
 {%- include assets/js/chartjs/rescaler.js -%}
 {%- include assets/js/event.js -%}
@@ -15,7 +14,6 @@
 {%- include assets/js/menu.js -%}
 {%- include assets/js/lib/classList.js -%}
 {%- include assets/js/lib/modernizr-custom.js -%}
-{%- include assets/js/plugins/leaflet.downloadGeoJson.js -%}
 {%- include assets/js/plugins/leaflet.selectionLegend.js -%}
 {%- include assets/js/plugins/leaflet.yearSlider.js -%}
 {%- include assets/js/googleAnalytics.js -%}
