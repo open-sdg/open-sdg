@@ -2,7 +2,11 @@
  * TODO:
  * Integrate with high-contrast switcher.
  */
-(function($, L, chroma, window, document, undefined) {
+(function($) {
+
+  if (typeof L === 'undefined') {
+    return;
+  }
 
   // Create the defaults once
   var defaults = {
@@ -55,8 +59,6 @@
     this.element = element;
     this.options = $.extend(true, {}, defaults, options.mapOptions);
     this.mapLayers = [];
-    this.geoData = options.geoData;
-    this.geoCodeRegEx = options.geoCodeRegEx;
     this.indicatorId = options.indicatorId
 
     // Require at least one geoLayer.
@@ -72,14 +74,6 @@
 
     this._defaults = defaults;
     this._name = 'sdgMap';
-
-    this.valueRange = [_.min(_.pluck(this.geoData, 'Value')), _.max(_.pluck(this.geoData, 'Value'))];
-    this.colorScale = chroma.scale(this.options.colorRange)
-      .domain(this.valueRange)
-      .classes(this.options.colorRange.length);
-
-    this.years = _.uniq(_.pluck(this.geoData, 'Year')).sort();
-    this.currentYear = this.years[0];
 
     this.init();
   }
@@ -221,19 +215,10 @@
       // Because after this point, "this" rarely works.
       var plugin = this;
 
-      // Add the year slider.
-      this.map.addControl(L.Control.yearSlider({
-        years: this.years,
-        yearChangeCallback: function(e) {
-          plugin.currentYear = new Date(e.time).getFullYear();
-          plugin.updateColors();
-          plugin.selectionLegend.update();
-        }
-      }));
-
-      // Add the selection legend.
-      this.selectionLegend = L.Control.selectionLegend(plugin);
-      this.map.addControl(this.selectionLegend);
+      // Below we'll be figuring out the min/max values and available years.
+      var minimumValues = [],
+          maximumValues = [],
+          availableYears = [];
 
       // At this point we need to load the GeoJSON layer/s.
       var geoURLs = this.mapLayers.map(function(item) {
@@ -292,10 +277,43 @@
             .attr('title', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
             .text(translations.indicator.download_geojson + ' - ' + downloadLabel);
           $(plugin.element).parent().append(downloadButton);
+
+          // Keep track of the minimums and maximums.
+          _.each(geoJson.features, function(feature) {
+            if (feature.properties.values && feature.properties.values.length) {
+              availableYears = availableYears.concat(Object.keys(feature.properties.values[0]));
+              minimumValues.push(_.min(Object.values(feature.properties.values[0])));
+              maximumValues.push(_.max(Object.values(feature.properties.values[0])));
+            }
+          });
         }
+
+        // Calculate the ranges of values, years and colors.
+        plugin.valueRange = [_.min(minimumValues), _.max(maximumValues)];
+        plugin.colorScale = chroma.scale(plugin.options.colorRange)
+          .domain(plugin.valueRange)
+          .classes(plugin.options.colorRange.length);
+        plugin.years = _.uniq(availableYears).sort();
+        plugin.currentYear = plugin.years[0];
+
+        // And we can now update the colors.
         plugin.updateColors();
 
-        // Now that we have layers, we can add the search feature.
+        // Add the year slider.
+        plugin.map.addControl(L.Control.yearSlider({
+          years: plugin.years,
+          yearChangeCallback: function(e) {
+            plugin.currentYear = new Date(e.time).getFullYear();
+            plugin.updateColors();
+            plugin.selectionLegend.update();
+          }
+        }));
+
+        // Add the selection legend.
+        plugin.selectionLegend = L.Control.selectionLegend(plugin);
+        plugin.map.addControl(plugin.selectionLegend);
+
+        // Add the search feature.
         plugin.searchControl = new L.Control.Search({
           layer: plugin.getAllLayers(),
           propertyName: 'name',
@@ -405,4 +423,4 @@
       }
     });
   };
-})(jQuery, L, chroma, window, document);
+})(jQuery);
