@@ -99,13 +99,12 @@ map_options:
   minZoom: 5
   tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   tileOptions:
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: 'My map attribution'
 map_layers:
   - min_zoom: 5
     max_zoom: 10
-    serviceUrl: https://geoportal1-ons.opendata.arcgis.com/datasets/4fcca2a47fed4bfaa1793015a18537ac_4.geojson
-    nameProperty: rgn17nm
-    idProperty: rgn17cd
+    subfolder: regions
+    label: indicator.regions
 
 metadata_tabs:
   national:

@@ -20,3 +20,8 @@ src_dir: ''
 translations:
   - https://github.com/open-sdg/translations-un-sdg.git@master
   - https://github.com/open-sdg/translations-open-sdg.git@master
+
+map_layers:
+  - geojson_file: https://geoportal1-ons.opendata.arcgis.com/datasets/4fcca2a47fed4bfaa1793015a18537ac_4.geojson
+    name_property: rgn17nm
+    id_property: rgn17cd
