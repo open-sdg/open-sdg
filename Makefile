@@ -29,7 +29,7 @@ build: clean
 	cd site-starter && python scripts/batch/add_language.py es
 	cd site-starter && python scripts/batch/add_language.py fr fr-CA
 	# Build the data and metadata and move it into the starter.
-	cd data-starter && pip install -r requirements.txt
+	cd data-starter && pip install --upgrade -r requirements.txt
 	cd data-starter && python build_data.py
 	mv data-starter/_build site-starter
 	# Build the Jekyll site.
