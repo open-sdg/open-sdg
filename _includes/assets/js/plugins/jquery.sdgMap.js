@@ -339,9 +339,11 @@
 
         // The list of handlers to apply to each feature on a GeoJson layer.
         function onEachFeature(feature, layer) {
-          layer.on('click', clickHandler);
-          layer.on('mouseover', mouseoverHandler);
-          layer.on('mouseout', mouseoutHandler);
+          if (plugin.featureShouldDisplay(feature)) {
+            layer.on('click', clickHandler);
+            layer.on('mouseover', mouseoverHandler);
+            layer.on('mouseout', mouseoutHandler);
+          }
         }
         // Event handler for click/touch.
         function clickHandler(e) {
@@ -414,6 +416,15 @@
           }
         }, 500);
       });
+    },
+
+    featureShouldDisplay: function(feature) {
+      var display = true;
+      display = display && typeof feature.properties.name !== 'undefined';
+      display = display && typeof feature.properties.geocode !== 'undefined';
+      display = display && typeof feature.properties.values !== 'undefined';
+      display = display && typeof feature.properties.disaggregations !== 'undefined';
+      return display;
     },
   };
 
