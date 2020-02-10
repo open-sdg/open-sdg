@@ -584,7 +584,7 @@ var indicatorView = function (model, options) {
   }
 
   this.updateChartDownloadButton = function(table) {
-    if (this._chartDownloadButton) {
+    if (typeof this._chartDownloadButton !== 'undefined') {
       var tableCsv = this.toCsv(table);
       this._chartDownloadButton
         .attr({
