@@ -59,7 +59,8 @@
     this.element = element;
     this.options = $.extend(true, {}, defaults, options.mapOptions);
     this.mapLayers = [];
-    this.indicatorId = options.indicatorId
+    this.indicatorId = options.indicatorId;
+    this.currentDisaggregation = 0;
 
     // Require at least one geoLayer.
     if (!options.mapLayers.length) {
@@ -160,10 +161,8 @@
 
     // Get the data from a feature's properties, according to the current year.
     getData: function(props) {
-      // The 'values' property has a full set of years for each combination of
-      // disaggregations, but for now we just use the first one.
-      if (props.values && props.values.length && props.values[0][this.currentYear]) {
-        return props.values[0][this.currentYear];
+      if (props.values && props.values.length && props.values[this.currentDisaggregation][this.currentYear]) {
+        return props.values[this.currentDisaggregation][this.currentYear];
       }
       return false;
     },
@@ -199,12 +198,6 @@
       this.dynamicLayers.addTo(this.map);
       this.staticLayers = new ZoomShowHide();
       this.staticLayers.addTo(this.map);
-
-      // Add zoom control.
-      this.map.addControl(L.Control.zoomHome());
-
-      // Add full-screen functionality.
-      this.map.addControl(new L.Control.Fullscreen());
 
       // Add scale.
       this.map.addControl(L.control.scale({position: 'bottomright'}));
@@ -298,6 +291,16 @@
 
         // And we can now update the colors.
         plugin.updateColors();
+
+        // Add the disaggregation select.
+        plugin.disaggregationSelect = L.Control.disaggregationSelect(plugin);
+        plugin.map.addControl(plugin.disaggregationSelect);
+
+        // Add zoom control.
+        plugin.map.addControl(L.Control.zoomHome());
+
+        // Add full-screen functionality.
+        plugin.map.addControl(new L.Control.Fullscreen());
 
         // Add the year slider.
         plugin.map.addControl(L.Control.yearSlider({
