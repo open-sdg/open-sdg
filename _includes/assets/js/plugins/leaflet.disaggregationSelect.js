@@ -3,6 +3,8 @@
  *
  * This is a Leaflet control designed to select the disaggregations available
  * in the GeoJSON.
+ *
+ * @TODO: This needs a "clear" button and some accessible labels.
  */
 (function () {
   "use strict";
@@ -32,7 +34,8 @@
           });
 
       select.innerHTML = options.map(function(option) {
-        return '<option>' + option + '</option>';
+        var label = (option === '') ? translations.indicator.sub_categories : option;
+        return '<option>' + label  + '</option>';
       });
       var that = this;
       L.DomEvent.on(select, 'change', function(event) {
