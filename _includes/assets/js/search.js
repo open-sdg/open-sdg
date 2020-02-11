@@ -9,9 +9,14 @@ var indicatorSearch = function() {
     // Add commas as an additional token separator. This is helpful because in
     // SDG metadata many times there are acronyms separated only by commas, and
     // we want to be able to search by any of the individual acronyms.
-    lunr.tokenizer.separator = /[\s\-,]+/
+    if (opensdg.language == 'en') {
+      lunr.tokenizer.separator = /[\s\-,]+/
+    }
 
     var searchIndex = lunr(function () {
+      if (opensdg.language != 'en' && lunr[opensdg.language]) {
+        this.use(lunr[opensdg.language]);
+      }
       this.ref('url');
       // Index the expected fields.
       this.field('title', getSearchFieldOptions('title'));
