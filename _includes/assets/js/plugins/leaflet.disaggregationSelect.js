@@ -3,8 +3,6 @@
  *
  * This is a Leaflet control designed to select the disaggregations available
  * in the GeoJSON.
- *
- * @TODO: This needs a "clear" button and some accessible labels.
  */
 (function () {
   "use strict";
