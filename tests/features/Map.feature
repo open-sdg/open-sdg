@@ -35,3 +35,18 @@ Feature: Map
     And I should see "Urban - Female"
     And I should see "Rural - Male"
     And I should see "Urban - Male"
+
+  Scenario: Text on the map should be translated
+    And I click on "the language toggle dropdown"
+    And I follow "the first language option"
+    And I wait 3 seconds
+    And I click on "the Map tab"
+    Then I should see "Subcategorías"
+    And I should see "Female-translated (Spanish)"
+    And I should see "Male-translated (Spanish)"
+    And I should see "Rural-translated (Spanish) - Female-translated (Spanish)"
+    And I should see "Urban-translated (Spanish) - Female-translated (Spanish)"
+    And I should see "Rural-translated (Spanish) - Male-translated (Spanish)"
+    And I should see "Urban-translated (Spanish) - Male-translated (Spanish)"
+    And I should see "Descargar GeoJSON"
+    And I should see "My Spanish regions"
