@@ -295,7 +295,10 @@
         // Add the disaggregation select if necessary.
         var disaggregationOptions = plugin.getVisibleLayers().toGeoJSON().features[0].properties.disaggregations.map(function(disaggregation) {
           return Object.values(disaggregation).filter(function(subcategory) {
-            return subcategory;
+            if (!subcategory) {
+              return false;
+            }
+            return translations.t(subcategory);
           }).join(' - ');
         });
         if (disaggregationOptions.length > 1) {
