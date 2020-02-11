@@ -2,10 +2,8 @@
   $c: nth($goal-colors, $i);
   $dark-c: darken($c, 20%);
   .goal-#{$i} {
-    &.heading {
-      background-color: $c;
-      border-bottom: 5px solid $dark-c;
-    }
+    padding-top: 30px;
+    padding-bottom: 30px;
     &.goal-indicators {
       div {
         span {
