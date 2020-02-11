@@ -292,9 +292,15 @@
         // And we can now update the colors.
         plugin.updateColors();
 
-        // Add the disaggregation select.
-        plugin.disaggregationSelect = L.Control.disaggregationSelect(plugin);
-        plugin.map.addControl(plugin.disaggregationSelect);
+        // Add the disaggregation select if necessary.
+        var disaggregationOptions = plugin.getVisibleLayers().toGeoJSON().features[0].properties.disaggregations.map(function(disaggregation) {
+          return Object.values(disaggregation).filter(function(subcategory) {
+            return subcategory;
+          }).join(' - ');
+        });
+        if (disaggregationOptions.length > 1) {
+          plugin.map.addControl(L.Control.disaggregationSelect(plugin, disaggregationOptions));
+        }
 
         // Add zoom control.
         plugin.map.addControl(L.Control.zoomHome());
