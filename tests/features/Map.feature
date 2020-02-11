@@ -25,3 +25,13 @@ Feature: Map
     And I click on "the Map tab"
     Then I should see "Download GeoJSON"
     And I should see "My English regions"
+
+  Scenario: The map should include a dropdown for selection disaggregations
+    And I click on "the Map tab"
+    Then I should see "Sub-categories"
+    And I should see "Female"
+    And I should see "Male"
+    And I should see "Rural - Female"
+    And I should see "Urban - Female"
+    And I should see "Rural - Male"
+    And I should see "Urban - Male"
