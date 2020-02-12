@@ -25,9 +25,9 @@ test.prep:
 	ln -s ../assets site-starter/assets
 	ln -s ../_sass site-starter/_sass
 	# Copy any custom files into the site starter.
-	cp -r -t site-starter/ tests/site/*
+	cp -r tests/site/* site-starter/
 	# Copy any custom files into the data starter.
-	cp -r -t data-starter/ tests/data/*
+	cp -r tests/data/* data-starter/
 	# Add extra languages.
 	cd site-starter && python scripts/batch/add_language.py es
 	cd site-starter && python scripts/batch/add_language.py fr fr-CA
