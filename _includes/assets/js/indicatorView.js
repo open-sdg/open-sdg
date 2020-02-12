@@ -325,6 +325,8 @@ var indicatorView = function (model, options) {
     view_obj._chartInstance.update(1000, true);
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
+
+    view_obj.updateChartDownloadButton(chartInfo.selectionsTable);
   };
 
 
@@ -548,18 +550,34 @@ var indicatorView = function (model, options) {
         downloadKey = 'download_table';
       }
       var gaLabel = 'Download ' + name + ' CSV: ' + indicatorId.replace('indicator_', '');
-      $(el).append($('<a />').text(translations.indicator[downloadKey])
-      .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download CSV', gaLabel))
-      .attr({
-        'href': URL.createObjectURL(new Blob([this.toCsv(table)], {
-          type: 'text/csv'
-        })),
-        'download': indicatorId + '.csv',
-        'title': translations.indicator.download_csv_title,
-        'class': 'btn btn-primary btn-download',
-        'tabindex': 0
-      })
-      .data('csvdata', this.toCsv(table)));
+      var tableCsv = this.toCsv(table);
+      var fileName = indicatorId + '.csv';
+      var downloadButton = $('<a />').text(translations.indicator[downloadKey])
+        .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download CSV', gaLabel))
+        .attr({
+          'download': fileName,
+          'title': translations.indicator.download_csv_title,
+          'class': 'btn btn-primary btn-download',
+          'tabindex': 0
+        });
+      var blob = new Blob([tableCsv], {
+        type: 'text/csv'
+      });
+      if (window.navigator && window.navigator.msSaveBlob) {
+        // Special behavior for IE.
+        downloadButton.on('click.openSdgDownload', function(event) {
+          window.navigator.msSaveBlob(blob, fileName);
+        });
+      }
+      else {
+        downloadButton
+          .attr('href', URL.createObjectURL(blob))
+          .data('csvdata', tableCsv);
+      }
+      if (name == 'Chart') {
+        this._chartDownloadButton = downloadButton;
+      }
+      $(el).append(downloadButton);
     } else {
       var headlineId = indicatorId.replace('indicator', 'headline');
       var id = indicatorId.replace('indicator_', '');
@@ -573,6 +591,28 @@ var indicatorView = function (model, options) {
         'class': 'btn btn-primary btn-download',
         'tabindex': 0
       }));
+    }
+  }
+
+  this.updateChartDownloadButton = function(table) {
+    if (typeof this._chartDownloadButton !== 'undefined') {
+      var tableCsv = this.toCsv(table);
+      var blob = new Blob([tableCsv], {
+        type: 'text/csv'
+      });
+      var fileName = this._chartDownloadButton.attr('download');
+      if (window.navigator && window.navigator.msSaveBlob) {
+        // Special behavior for IE.
+        this._chartDownloadButton.off('click.openSdgDownload')
+        this._chartDownloadButton.on('click.openSdgDownload', function(event) {
+          window.navigator.msSaveBlob(blob, fileName);
+        });
+      }
+      else {
+        this._chartDownloadButton
+          .attr('href', URL.createObjectURL(blob))
+          .data('csvdata', tableCsv);
+      }
     }
   }
 
