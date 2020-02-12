@@ -14,6 +14,8 @@ Feature: Map
 
   Scenario: While the map is being displayed, the sidebar is hidden
     And I click on "the Map tab"
+    And I wait 1 second
     Then I should not see a "disaggregation sidebar" element
     And I click on "the Chart tab"
+    And I wait 1 second
     Then I should see a "disaggregation sidebar" element
