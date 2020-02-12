@@ -6,34 +6,6 @@ var indicatorSearch = function() {
     document.getElementById('search-bar-on-page').value = searchTerms;
     document.getElementById('search-term').innerHTML = searchTerms;
 
-    // Add commas as an additional token separator. This is helpful because in
-    // SDG metadata many times there are acronyms separated only by commas, and
-    // we want to be able to search by any of the individual acronyms.
-    if (opensdg.language == 'en') {
-      lunr.tokenizer.separator = /[\s\-,]+/
-    }
-
-    var searchIndex = lunr(function () {
-      if (opensdg.language != 'en' && lunr[opensdg.language]) {
-        this.use(lunr[opensdg.language]);
-      }
-      this.ref('url');
-      // Index the expected fields.
-      this.field('title', getSearchFieldOptions('title'));
-      this.field('content', getSearchFieldOptions('content'));
-      this.field('id', getSearchFieldOptions('id'));
-      // Index any extra fields.
-      var i;
-      for (i = 0; i < opensdg.searchIndexExtraFields.length; i++) {
-        var extraField = opensdg.searchIndexExtraFields[i];
-        this.field(extraField, getSearchFieldOptions(extraField));
-      }
-      // Index all the documents.
-      for (var ref in opensdg.searchItems) {
-        this.add(opensdg.searchItems[ref]);
-      };
-    });
-
     var searchTermsToUse = searchTerms;
     // This is to allow for searching by indicator with dashes.
     if (searchTerms.split('-').length == 3 && searchTerms.length < 15) {
@@ -41,31 +13,89 @@ var indicatorSearch = function() {
       // indicator ID.
       searchTermsToUse = searchTerms.replace(/-/g, '.');
     }
-    // Perform the search.
-    var results = searchIndex.search(searchTermsToUse);
-    // Array of alternative search terms to suggest to the user, in the case
-    // where no results were found.
+
+    var useLunr = typeof window.lunr !== 'undefined';
+    if (useLunr && opensdg.language != 'en') {
+      if (typeof lunr[opensdg.language] === 'undefined') {
+        useLunr = false;
+      }
+    }
+
+    var results = [];
     var alternativeSearchTerms = [];
 
-    // If we didn't find anything, get progressively "fuzzier" to look for
-    // alternative search term options.
-    if (!results.length > 0) {
-      for (var fuzziness = 1; fuzziness < 5; fuzziness++) {
-        var fuzzierQuery = getFuzzierQuery(searchTermsToUse, fuzziness);
-        var alternativeResults = searchIndex.search(fuzzierQuery);
-        if (alternativeResults.length > 0) {
-          var matchedTerms = getMatchedTerms(alternativeResults);
-          if (matchedTerms) {
-            alternativeSearchTerms = matchedTerms;
+    if (useLunr) {
+      // Engish-specific tweak for words separated only by commas.
+      if (opensdg.language == 'en') {
+        lunr.tokenizer.separator = /[\s\-,]+/
+      }
+
+      var searchIndex = lunr(function () {
+        if (opensdg.language != 'en' && lunr[opensdg.language]) {
+          this.use(lunr[opensdg.language]);
+        }
+        this.ref('url');
+        // Index the expected fields.
+        this.field('title', getSearchFieldOptions('title'));
+        this.field('content', getSearchFieldOptions('content'));
+        this.field('id', getSearchFieldOptions('id'));
+        // Index any extra fields.
+        var i;
+        for (i = 0; i < opensdg.searchIndexExtraFields.length; i++) {
+          var extraField = opensdg.searchIndexExtraFields[i];
+          this.field(extraField, getSearchFieldOptions(extraField));
+        }
+        // Index all the documents.
+        for (var ref in opensdg.searchItems) {
+          this.add(opensdg.searchItems[ref]);
+        };
+      });
+
+      // Perform the search.
+      var results = searchIndex.search(searchTermsToUse);
+
+      // If we didn't find anything, get progressively "fuzzier" to look for
+      // alternative search term options.
+      if (!results.length > 0) {
+        for (var fuzziness = 1; fuzziness < 5; fuzziness++) {
+          var fuzzierQuery = getFuzzierQuery(searchTermsToUse, fuzziness);
+          var alternativeResults = searchIndex.search(fuzzierQuery);
+          if (alternativeResults.length > 0) {
+            var matchedTerms = getMatchedTerms(alternativeResults);
+            if (matchedTerms) {
+              alternativeSearchTerms = matchedTerms;
+            }
+            break;
           }
-          break;
         }
       }
     }
+    else {
+      // Non-Lunr basic search functionality.
+      results = _.filter(opensdg.searchItems, function(item) {
+        var i, match = false;
+        if (item.title) {
+          match = match || item.title.indexOf(searchTermsToUse) !== -1;
+        }
+        if (item.content) {
+          match = match || item.content.indexOf(searchTermsToUse) !== -1;
+        }
+        for (i = 0; i < opensdg.searchIndexExtraFields.length; i++) {
+          var extraField = opensdg.searchIndexExtraFields[i];
+          if (typeof item[extraField] !== 'undefined') {
+            match = match || item[extraField].indexOf(searchTermsToUse) !== -1;
+          }
+        }
+        return match;
+      });
+      // Mimic what Lunr does.
+      results = _.map(results, function(item) {
+        return { ref: item.url }
+      });
+    }
+
     var resultItems = [];
-    var escapeRegExp = function(str) {
-      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/gi, "\\$&");
-    };
+
     results.forEach(function(result) {
       var doc = opensdg.searchItems[result.ref]
       // Truncate the contents.
@@ -119,6 +149,11 @@ var indicatorSearch = function() {
     }
     return opts
   }
+
+  // Used to highlight search term matches on the screen.
+  function escapeRegExp(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/gi, "\\$&");
+  };
 };
 
 $(function() {
