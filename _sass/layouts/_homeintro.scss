@@ -3,14 +3,14 @@
     min-height: 200px;
 
     background: url('https://sdgplatform-assets.s3.us-east-2.amazonaws.com/SDG+Wheel_Transparent.png');
-    background-position: right top;
+    background-position: right 30px top;
     background-size: 200px;
     background-repeat: no-repeat;
 
     .description{
         margin-top:  30px;
         font-size:  21px;
-        
+
         text-align: justify;
         text-justify: inter-word;
     }
