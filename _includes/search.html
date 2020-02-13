@@ -2,7 +2,7 @@
   <form action="{{ page.baseurl }}search">
     <input name="q" id="indicator_search" title="{{ page.t.search.search }}" />
     <label for="indicator_search">
-      <button id="search-btn" type="submit"><i class="fa fa-search" aria-hidden="false" aria-label={{ page.t.search.search }}></i></button><span>{{ page.t.search.search }}:</span>
+      <button aria-label="{{ page.t.search.search }}" id="search-btn" type="submit"><i class="fa fa-search" aria-hidden="false"></i></button><span>{{ page.t.search.search }}:</span>
     </label>
   </form>
 </div>
