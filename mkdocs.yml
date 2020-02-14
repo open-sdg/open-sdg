@@ -39,6 +39,7 @@ pages:
         - Data format: data-format.md
         - Data sources: data-sources.md
     - Developers:
+        - Upgrading: upgrading.md
         - Local development: development.md
         - Deployment: deployment.md
         - Configuration: configuration.md
