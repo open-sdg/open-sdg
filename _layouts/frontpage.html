@@ -35,5 +35,15 @@
         </div>
     {% endif %}
     </div>
+    <div class="zip-download-container">
+        <a href="{{ page.remote_data_prefix | append: '/zip/all_indicators.zip' }}" class="btn btn-primary btn-download">
+            {{ page.t.frontpage.download_all }} - {{ site.data.zip.size_human }}
+        </a>
+        {% if site.data.zip.timestamp %}
+        <div class="zip-date">
+            {{ page.t.metadata_fields.national_data_update_url }} - {{ site.data.zip.timestamp | t_date: 'standard' }}
+        </div>
+        {% endif %}
+    </div>
 </div>
 {% include footer.html %}
