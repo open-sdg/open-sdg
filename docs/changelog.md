@@ -4,6 +4,31 @@
 
 * More consistent template variables without globals (#394)
 * Auto fit search bar around text (#407)
+* Add link to Open SDG to footer (#411)
+* Configurable footer menu links (#414)
+* Escape variables in alt attributes (#415)
+* Use indicator_available instead of graph_title for the indicator page H2 (#422)
+* Reporting status for any metadata field (#424)
+* Switch to Lunr for search functionality (#427)
+* Metadata field translation keys (#428)
+* Show post excerpts on news page (#431)
+* Sass refactor (#439)
+* Ensure that indicator data always has a value (#441)
+* Set background to white for pages and footer (#448)
+* General javascript cleanup (#451)
+* Add box shadows to goal tiles (#452)
+* Underline menu items when hovered (#454)
+* Move search box above the top navigation (#455)
+* Keep searchbox the same size when in focus (#456)
+* Multilingual news/posts (#457)
+* Make bars striped when necessary (#459)
+* Remove uppercase styling for top menu (#461)
+* Make serve command for easier local development (#464)
+* Adjust homepage whitespace (#465, #473)
+* Redesign indicator page tabs (#466, #472, #479)
+* Change the styling of the top banner on goal and indicator pages (#474)
+* Update the chart download button when data changes (#476)
+* Fixed rounding on reporting status page progress bar (#485)
 
 Breaking changes:
 
@@ -22,8 +47,8 @@ Breaking changes:
 * The `get_indicator_name` filter is no longer supported. The metadata field `indicator_name` is now the sole (and required) source of indicator names.
 * The "subfolder approach" for translation is no longer supported and has been removed from the documentation.
 * The `remotedatabaseurl` setting is no longer supported. Sites should use `remote_data_prefix` instead, if not already.
-
-
+* The `custom_css` configuration option is deprecated in favor of a more standard Jekyll approach. To add custom styles it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss
+* The H2 on indicator pages is now controlled by the `indicator_available` metadata field. Previously it was controlled by `graph_title`, which also displays above the graph. Be aware that if your indicators do not have anything in the `indicator_available` field, this H2 will no longer display.
 
 ## 0.10.0
 
