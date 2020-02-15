@@ -1,25 +1,27 @@
 <script>
 // This is where we initialise any global variables, namespaced in "opensdg".
-var opensdg = {
+var opensdg = function() {
 
-  // A base URL for asynchronous calls to SDG data.
-  remoteDataBaseUrl: '{{ page.remote_data_prefix }}',
+  return {
+    // A base URL for asynchronous calls to SDG data.
+    remoteDataBaseUrl: '{{ page.remote_data_prefix }}',
 
-  // A hook which can be replaced to modify the configuration for Chart.js.
-  // To see where this is used, see indicatorView.js createPlot() and updatePlot().
-  // To see an example of replacing it, see binary.html.
-  chartConfigAlter: function(config) {
-    // Alterations go here.
-    return config;
-  },
+    // A hook which can be replaced to modify the configuration for Chart.js.
+    // To see where this is used, see indicatorView.js createPlot() and updatePlot().
+    // To see an example of replacing it, see binary.html.
+    chartConfigAlter: function(config) {
+      // Alterations go here.
+      return config;
+    },
 
-  // A hook which can be replaced to alter whether/how the values that are
-  // displayed on indicator tables/graphs get rounded.
-  dataRounding: function(value) {
-    // Alterations go here.
-    return value;
-  },
-};
+    // A hook which can be replaced to alter whether/how the values that are
+    // displayed on indicator tables/graphs get rounded.
+    dataRounding: function(value) {
+      // Alterations go here.
+      return value;
+    },
+  };
+}();
 
 // For backwards compatibility, some of these might need to be global.
 // @TODO: Remove these eventually.
