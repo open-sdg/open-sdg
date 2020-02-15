@@ -318,7 +318,7 @@ var indicatorView = function (model, options) {
     // Create a temp object to alter, and then apply. We go to all this trouble
     // to avoid completely replacing view_obj._chartInstance -- and instead we
     // just replace it's properties: "type", "data", and "options".
-    var updatedConfig = opensdg.chartConfigAlter({
+    var updatedConfig = opensdg.performChartAlterations({
       type: view_obj._chartInstance.type,
       data: view_obj._chartInstance.data,
       options: view_obj._chartInstance.options
@@ -392,7 +392,7 @@ var indicatorView = function (model, options) {
         }
       }
     };
-    chartConfig = opensdg.chartConfigAlter(chartConfig);
+    chartConfig = opensdg.performChartAlterations(chartConfig);
 
     this._chartInstance = new Chart($(this._rootElement).find('canvas'), chartConfig);
 
