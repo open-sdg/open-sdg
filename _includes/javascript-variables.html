@@ -2,9 +2,11 @@
 // This is where we initialise any global variables, namespaced in "opensdg".
 var opensdg = function() {
 
+  var remoteDataBaseUrl = '{{ page.remote_data_prefix }}';
+
   return {
     // A base URL for asynchronous calls to SDG data.
-    remoteDataBaseUrl: '{{ page.remote_data_prefix }}',
+    getRemoteDataBaseUrl: function() { return remoteDataBaseUrl; },
 
     // A hook which can be replaced to modify the configuration for Chart.js.
     // To see where this is used, see indicatorView.js createPlot() and updatePlot().
