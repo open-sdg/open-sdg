@@ -3,7 +3,7 @@ The "binary" graphs builds on top of "bar", with a few configuration overrides.
 {% endcomment %}
 <canvas></canvas>
 <script>
-opensdg.chartConfigAlter = function(config) {
+opensdg.addChartAlteration(function(config) {
   var overrides = {
     // Force the "bar" type instead of the "binary" type which Chart.js
     // does not recognize.
@@ -49,5 +49,5 @@ opensdg.chartConfigAlter = function(config) {
   // Add these overrides onto the normal config, and return it.
   $.extend(true, config, overrides);
   return config;
-}
+});
 </script>

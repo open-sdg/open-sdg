@@ -3,24 +3,31 @@
 var opensdg = function() {
 
   var remoteDataBaseUrl = '{{ page.remote_data_prefix }}';
+  var chartAlterations = [];
+  var dataAlterations = [];
 
   return {
-    // A base URL for asynchronous calls to SDG data.
+    // Get the base URL for asynchronous calls to SDG data.
     getRemoteDataBaseUrl: function() { return remoteDataBaseUrl; },
 
-    // A hook which can be replaced to modify the configuration for Chart.js.
-    // To see where this is used, see indicatorView.js createPlot() and updatePlot().
-    // To see an example of replacing it, see binary.html.
-    chartConfigAlter: function(config) {
-      // Alterations go here.
+    // Add functions to alter the Chart.js configuration.
+    addChartAlteration: function(callback) { chartAlterations.push(callback); },
+
+    performChartAlterations: function(config, context) {
+      chartAlterations.forEach(function(callback) {
+        config = callback(config, context);
+      });
       return config;
     },
 
-    // A hook which can be replaced to alter whether/how the values that are
-    // displayed on indicator tables/graphs get rounded.
-    dataRounding: function(value) {
-      // Alterations go here.
-      return value;
+    // Add functions to alter data before displaying on tables/graphs.
+    addDataAlteration: function(callback) { dataAlterations.push(callback); },
+
+    performDataAlterations: function(data) {
+      dataAlterations.forEach(function(callback) {
+        data = callback(data);
+      });
+      return data;
     },
   };
 }();
