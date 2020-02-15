@@ -308,6 +308,13 @@ var indicatorView = function (model, options) {
     }
   };
 
+  this.getChartContext = function(chartInfo) {
+    return {
+      indicatorId: chartInfo.shortIndicatorId,
+      selectedUnit: chartInfo.selectedUnit,
+    }
+  }
+
   this.updatePlot = function(chartInfo) {
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
 
@@ -322,7 +329,7 @@ var indicatorView = function (model, options) {
       type: view_obj._chartInstance.type,
       data: view_obj._chartInstance.data,
       options: view_obj._chartInstance.options
-    });
+    }, this.getChartContext(chartInfo));
     view_obj._chartInstance.type = updatedConfig.type;
     view_obj._chartInstance.data = updatedConfig.data;
     view_obj._chartInstance.options = updatedConfig.options;
@@ -392,7 +399,7 @@ var indicatorView = function (model, options) {
         }
       }
     };
-    chartConfig = opensdg.performChartAlterations(chartConfig);
+    chartConfig = opensdg.performChartAlterations(chartConfig, this.getChartContext(chartInfo));
 
     this._chartInstance = new Chart($(this._rootElement).find('canvas'), chartConfig);
 

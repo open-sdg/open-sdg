@@ -6,7 +6,7 @@ being used, see `createPlot()` in `indicatorView.js`.
 <canvas></canvas>
 {% if page.indicator.graph_min_value and page.indicator.graph_max_value %}
   <script>
-    opensdg.addChartAlteration(function(config) {
+    opensdg.addChartAlteration(function(config, context) {
       var overrides = {
         options: {
           scales: {
