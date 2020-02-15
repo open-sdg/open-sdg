@@ -590,7 +590,7 @@ var indicatorView = function (model, options) {
       $(el).append($('<a />').text(translations.indicator.download_headline)
       .attr(opensdg.autotrack('download_data_headline', 'Downloads', 'Download CSV', gaLabel))
       .attr({
-        'href': opensdg.remoteDataBaseUrl + '/headline/' + id + '.csv',
+        'href': opensdg.getRemoteDataBaseUrl() + '/headline/' + id + '.csv',
         'download': headlineId + '.csv',
         'title': translations.indicator.download_headline_title,
         'class': 'btn btn-primary btn-download',
@@ -626,7 +626,7 @@ var indicatorView = function (model, options) {
     $(el).append($('<a />').text(translations.indicator.download_source)
     .attr(opensdg.autotrack('download_data_source', 'Downloads', 'Download CSV', gaLabel))
     .attr({
-      'href': opensdg.remoteDataBaseUrl + '/data/' + indicatorId + '.csv',
+      'href': opensdg.getRemoteDataBaseUrl() + '/data/' + indicatorId + '.csv',
       'download': indicatorId + '.csv',
       'title': translations.indicator.download_source_title,
       'class': 'btn btn-primary btn-download',
