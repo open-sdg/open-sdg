@@ -68,7 +68,7 @@
   data-charttitle="{{ page.indicator.graph_title }}" data-measurementunit="{{ page.indicator.computation_units }}" data-datasource="{{ uniqSources }}" data-copyright="{{ page.indicator.copyright }}"
   data-geographicalarea="{{ page.indicator.national_geographical_coverage }}" data-footnote="{{ page.indicator.data_footnote }}" data-showdata="{{ show_data }}" data-graphtype="{{ page.indicator.graph_type }}"
   data-geocoderegex="{{ page.indicator.data_geocode_regex }}" data-showmap="{{ page.indicator.data_show_map }}" data-startvalues="{{ page.indicator.data_start_values | join: '|' }}"
-  data-graphlimitunits="{{ page.indicator.graph_limit_units | join: '|' }}" data-graphlimitminimums="{{ page.indicator.graph_limit_minimums | join: '|' }}" data-graphlimitmaximums="{{ page.indicator.graph_limit_maximums | join: '|' }}">
+  data-graphlimits="{{ page.indicator.graph_limits | jsonify | xml_escape }}">
 
     {% if show_data %}
     <div id="indicator-sidebar" class="col-md-3">
