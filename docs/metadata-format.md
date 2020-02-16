@@ -6,6 +6,8 @@ In your [data repository](https://open-sdg.readthedocs.io/en/latest/glossary/#da
 
 Metadata values can either be filled in with normal text ("My field value") or with [translation keys](https://open-sdg.readthedocs.io/en/latest/glossary/#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
 
+As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
+
 ## Mandatory fields
 
 The following fields are required on all indicators:

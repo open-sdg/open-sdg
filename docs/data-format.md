@@ -93,3 +93,14 @@ You can double check for white space within an Excel file using a COUNTIF formul
 ## Translation
 
 All column headers and disaggregation values can be "translation keys" to enable translation. As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
+
+## Rounding
+
+To control the way that data is rounded when displayed to the public, you can register a "data alteration" function. This can be done with the `opensdg.addDataAlteration` function. For example:
+
+```
+opensdg.addDataAlteration(function(value) {
+  // Make some alterations to "value".
+  return value;
+});
+```
