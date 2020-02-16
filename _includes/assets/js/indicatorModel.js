@@ -410,9 +410,10 @@ var indicatorModel = function (options) {
         // the first dataset is the headline:
         return datasetIndex > colors.length ? [5, 5] : undefined;
       },
-      convertToDataset = function (data, combinationDescription) {
+      convertToDataset = function (data, combinationDescription, combination) {
         var ds = _.extend({
             label: combinationDescription ? combinationDescription : that.country,
+            disaggregation: combination,
             borderColor: '#' + getColor(datasetIndex),
             backgroundColor: getBackground(datasetIndex),
             pointBorderColor: '#' + getColor(datasetIndex),
@@ -513,7 +514,8 @@ var indicatorModel = function (options) {
         // but some combinations may not have any data:
         filteredDatasets.push({
           data: filtered,
-          combinationDescription: getCombinationDescription(combination)
+          combinationDescription: getCombinationDescription(combination),
+          combination: combination,
         });
       }
     });
@@ -526,7 +528,7 @@ var indicatorModel = function (options) {
 
     _.chain(filteredDatasets)
       .sortBy(function(ds) { return ds.combinationDescription; })
-      .each(function(ds) { datasets.push(convertToDataset(ds.data, ds.combinationDescription)); });
+      .each(function(ds) { datasets.push(convertToDataset(ds.data, ds.combinationDescription, ds.combination)); });
 
     // convert datasets to tables:
     var selectionsTable = {
