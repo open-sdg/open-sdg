@@ -98,12 +98,16 @@ Use this method to hide any fields needed, by putting them into the "data" scope
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These tags are experimental. Graph tags do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
-* `graph_min_value` - the lowest value to be shown on the y-axis. Examples:
-    * 1
-    * 100
-* `graph_max_value` - the highest value to be shown on the y-axis. Examples:
-    * 500
-    * 1000
+* `graph_limits` - a list of min/max limits controlling the lowest/highest values to be shown on the y-axis. Optionally they can refer to a specific unit of measurement. Note that this involves a slightly more complex metadata structure. If using Prose.io, this will need to be set under "Raw Metadata". For example:
+    ```
+    graph_limits:
+        - unit: tons
+          minimum: 2
+          maximimum: 20
+        - unit: passengers
+          minimum: 200
+          maximum: 2000
+    ```
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
 
