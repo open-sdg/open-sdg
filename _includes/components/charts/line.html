@@ -1,33 +1,7 @@
 {% comment %}
 Because the "line" visualization is basic, nothing special needs to be done here,
-apart from providing the canvas tag. For details on the Chart.js configuration
-being used, see `createPlot()` in `indicatorView.js`.
+apart from providing the canvas tag and supporting graph limits. For details on
+the Chart.js configuration being used, see `createPlot()` in `indicatorView.js`.
 {% endcomment %}
 <canvas></canvas>
-<script>
-opensdg.addChartAlteration(function(config, context) {
-  if (context.graphLimits) {
-    var limits = context.graphLimits;
-    if (context.selectedUnit) {
-      limits = _.where(limits, { unit: context.selectedUnit });
-    }
-    if (limits.length) {
-      var overrides = {
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                min: limits[0].minimum,
-                max: limits[0].maximum,
-              }
-            }]
-          }
-        }
-      }
-      // Add these overrides onto the normal config, and return it.
-      $.extend(true, config, overrides);
-    }
-  }
-  return config;
-});
-</script>
+{% include components/charts/graph_limits.html %}

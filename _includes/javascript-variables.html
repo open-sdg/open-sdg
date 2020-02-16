@@ -4,7 +4,7 @@ var opensdg = function() {
 
   var remoteDataBaseUrl = '{{ page.remote_data_prefix }}';
   var chartAlterations = [];
-  var dataAlterations = [];
+  var dataRoundings = [];
 
   return {
     // Get the base URL for asynchronous calls to SDG data.
@@ -13,27 +13,24 @@ var opensdg = function() {
     // Add functions to alter the Chart.js configuration.
     addChartAlteration: function(callback) { chartAlterations.push(callback); },
 
-    performChartAlterations: function(config, context) {
+    // This modifies the passed "config" and "info" objects in-place.
+    performChartAlterations: function(config, info) {
       chartAlterations.forEach(function(callback) {
-        config = callback(config, context);
+        callback(config, info);
       });
-      return config;
     },
 
-    // Add functions to alter data before displaying on tables/graphs.
-    addDataAlteration: function(callback) { dataAlterations.push(callback); },
+    // Add functions to alter data values before displaying on tables/graphs.
+    addDataRounding: function(callback) { dataRoundings.push(callback); },
 
-    performDataAlterations: function(data) {
-      dataAlterations.forEach(function(callback) {
+    // This returns the rounded data value.
+    performDataRounding: function(data) {
+      dataRoundings.forEach(function(callback) {
         data = callback(data);
       });
       return data;
     },
   };
 }();
-
-// For backwards compatibility, some of these might need to be global.
-// @TODO: Remove these eventually.
-var remoteDataBaseUrl = opensdg.remoteDataBaseUrl;
 
 </script>

@@ -80,8 +80,10 @@ In addition, by setting a special metadata field called `data_start_values`, you
 
 ```
 data_start_values:
-  - Apples
-  - A
+  - field: Fruit
+    value: Apples
+  - field: Grade
+    value: A
 ```
 
 ...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
@@ -96,10 +98,10 @@ All column headers and disaggregation values can be "translation keys" to enable
 
 ## Rounding
 
-To control the way that data is rounded when displayed to the public, you can register a "data alteration" function. This can be done with the `opensdg.addDataAlteration` function. For example:
+To control the way that data is rounded when displayed to the public, you can register a "data rounding" function. This can be done with the `opensdg.addDataRounding` function. For example:
 
 ```
-opensdg.addDataAlteration(function(value) {
+opensdg.addDataRounding(function(value) {
   // Make some alterations to "value".
   return value;
 });

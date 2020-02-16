@@ -13,7 +13,7 @@ var indicatorModel = function (options) {
   this.onFieldsStatusUpdated = new event(this);
   this.onFieldsCleared = new event(this);
   this.onSelectionUpdate = new event(this);
-  this.onNoHeadlineData = new event(this);
+  this.onStartValuesNeeded = new event(this);
 
   // json conversion:
   var convertJsonFormat = function(data) {
@@ -55,6 +55,7 @@ var indicatorModel = function (options) {
   this.geoCodeRegEx = options.geoCodeRegEx;
   this.showMap = options.showMap;
   this.graphLimits = options.graphLimits;
+  this.stackedDisaggregation = options.stackedDisaggregation;
 
   // initialise the field information, unique fields and unique values for each field:
   (function initialise() {
@@ -152,12 +153,8 @@ var indicatorModel = function (options) {
     that.data = _.map(that.data, function(item) {
 
       // only apply a rounding function for non-zero values:
-      if(item.Value != 0) {
-        // For rounding, use a function that can be set on the global opensdg
-        // object, for easier control: opensdg.dataRounding()
-        if (typeof opensdg.dataRounding === 'function') {
-          item.Value = opensdg.dataRounding(item.Value);
-        }
+      if (item.Value != 0) {
+        item.Value = opensdg.performDataRounding(item.Value);
       }
 
       // remove any undefined/null values:
@@ -553,6 +550,7 @@ var indicatorModel = function (options) {
       selectedUnit: this.selectedUnit,
       footerFields: this.footerFields,
       graphLimits: this.graphLimits,
+      stackedDisaggregation: this.stackedDisaggregation,
     });
 
     if(options.initial || options.unitsChangeSeries) {
@@ -600,27 +598,12 @@ var indicatorModel = function (options) {
       });
     }
 
-    if((options.initial || options.unitsChangeSeries) && !this.hasHeadline) {
-      // if there is no initial data, select some:
+    if ((options.initial || options.unitsChangeSeries) && (this.startValues || !this.hasHeadline)) {
 
-      var minimumFieldSelections = {},
+      var startingFieldSelections = this.startValues,
           forceUnit = false;
-      // First, do we have some already pre-configured from data_start_values?
-      if (this.startValues) {
-        // We need to confirm that these values are valid, and pair them up
-        // with disaggregation categories. The value, at this point, is a string
-        // which we assume to be pipe-delimited.
-        var valuesToLookFor = this.startValues.split('|');
-        // Match up each field value with a field.
-        _.each(this.fieldItemStates, function(fieldItem) {
-          _.each(fieldItem.values, function(fieldValue) {
-            if (_.contains(valuesToLookFor, fieldValue.value)) {
-              minimumFieldSelections[fieldItem.field] = fieldValue.value;
-            }
-          });
-        });
-      }
-      if (_.size(minimumFieldSelections) == 0) {
+
+      if (!startingFieldSelections) {
         // If we did not have any pre-configured start values, we calculate them.
         // We have to decide what filters will be selected, and in some cases it
         // may need to be multiple filters. So we find the smallest row (meaning,
@@ -641,13 +624,23 @@ var indicatorModel = function (options) {
         // But actually we want the top-priority sort to be the "size" of the
         // rows. In other words we want the row with the fewest number of fields.
         fieldData = _.sortBy(fieldData, function(item) { return _.size(item); });
-        minimumFieldSelections = fieldData[0];
-        // If we ended up finding something with "Units", we need to remove it
-        // before continuing and then remember to force it later.
-        if ('Units' in minimumFieldSelections) {
-          forceUnit = minimumFieldSelections['Units'];
-          delete minimumFieldSelections['Units'];
-        }
+        // Convert to an array of objects with 'field' and 'value' keys.
+        startingFieldSelections = _.map(_.keys(fieldData[0]), function(key) {
+          return {
+            field: key,
+            value: fieldData[0][key]
+          };
+        });
+      }
+
+      var startingUnit = _.findWhere(startingFieldSelections, { field: 'Units' });
+      if (startingUnit) {
+        // If one of the starting field selections is a Unit, remember for later
+        // and remove it from the list.
+        forceUnit = startingUnit.value;
+        startingFieldSelections = _.filter(function(item) {
+          return item.field !== 'Units';
+        });
       }
 
       // Ensure that we only force a unit on the initial load.
@@ -657,8 +650,8 @@ var indicatorModel = function (options) {
 
       // Now that we are all sorted, we notify the view that there is no headline,
       // and pass along the first row as the minimum field selections.
-      this.onNoHeadlineData.notify({
-        minimumFieldSelections: minimumFieldSelections,
+      this.onStartValuesNeeded.notify({
+        startingFieldSelections: startingFieldSelections,
         forceUnit: forceUnit
       });
     }

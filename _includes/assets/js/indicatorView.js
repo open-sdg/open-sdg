@@ -75,7 +75,7 @@ var indicatorView = function (model, options) {
     view_obj.createSelectionsTable(args);
   });
 
-  this._model.onNoHeadlineData.attach(function(sender, args) {
+  this._model.onStartValuesNeeded.attach(function(sender, args) {
     // Force a unit if necessary.
     if (args && args.forceUnit) {
       $('#units input[type="radio"]')
@@ -85,7 +85,7 @@ var indicatorView = function (model, options) {
     }
     // Force particular minimum field selections if necessary. We have to delay
     // this slightly to make it work...
-    if (args && args.minimumFieldSelections && _.size(args.minimumFieldSelections)) {
+    if (args && args.startingFieldSelections && args.startingFieldSelections.length) {
       function getClickFunction(fieldToSelect, fieldValue) {
         return function() {
           $('#fields .variable-options input[type="checkbox"]')
@@ -96,10 +96,9 @@ var indicatorView = function (model, options) {
             .click();
         }
       }
-      for (var fieldToSelect in args.minimumFieldSelections) {
-        var fieldValue = args.minimumFieldSelections[fieldToSelect];
-        setTimeout(getClickFunction(fieldToSelect, fieldValue), 500);
-      }
+      args.startingFieldSelections.forEach(function(selection) {
+        setTimeout(getClickFunction(selection.field, selection.value), 500);
+      });
     }
     else {
       // Fallback behavior - just click on the first one, whatever it is.
@@ -308,14 +307,6 @@ var indicatorView = function (model, options) {
     }
   };
 
-  this.getChartContext = function(chartInfo) {
-    return {
-      indicatorId: chartInfo.shortIndicatorId,
-      selectedUnit: chartInfo.selectedUnit,
-      graphLimits: chartInfo.graphLimits,
-    }
-  }
-
   this.updatePlot = function(chartInfo) {
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
 
@@ -326,11 +317,12 @@ var indicatorView = function (model, options) {
     // Create a temp object to alter, and then apply. We go to all this trouble
     // to avoid completely replacing view_obj._chartInstance -- and instead we
     // just replace it's properties: "type", "data", and "options".
-    var updatedConfig = opensdg.performChartAlterations({
+    var updatedConfig = {
       type: view_obj._chartInstance.type,
       data: view_obj._chartInstance.data,
       options: view_obj._chartInstance.options
-    }, this.getChartContext(chartInfo));
+    }
+    opensdg.performChartAlterations(updatedConfig, chartInfo);
     view_obj._chartInstance.type = updatedConfig.type;
     view_obj._chartInstance.data = updatedConfig.data;
     view_obj._chartInstance.options = updatedConfig.options;
@@ -400,7 +392,7 @@ var indicatorView = function (model, options) {
         }
       }
     };
-    chartConfig = opensdg.performChartAlterations(chartConfig, this.getChartContext(chartInfo));
+    opensdg.performChartAlterations(chartConfig, chartInfo);
 
     this._chartInstance = new Chart($(this._rootElement).find('canvas'), chartConfig);
 

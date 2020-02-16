@@ -1,0 +1,26 @@
+{% comment %}
+
+{% endcomment %}
+<canvas></canvas>
+{% include components/charts/graph_limits.html %}
+<script>
+opensdg.addChartAlteration(function(config, info) {
+  var overrides = {
+    type: 'bar',
+    options: {
+      scales: {
+        xAxes: [{ stacked: true }],
+        yAxes: [{ stacked: true }],
+      }
+    }
+  };
+  // If we have a stackedDisaggregation set, we need to modify the data.
+  if (info.stackedDisaggregation) {
+    console.log(info);
+    //console.log(context);
+    //context.datasets = [];
+  }
+  // Add these overrides onto the normal config, and return it.
+  $.extend(true, config, overrides);
+});
+</script>
