@@ -5,15 +5,20 @@ being used, see `createPlot()` in `indicatorView.js`.
 {% endcomment %}
 <canvas></canvas>
 <script>
-  opensdg.addChartAlteration(function(config, context) {
-    if (context.selectedUnit && context.unitLimits[context.selectedUnit]) {
+opensdg.addChartAlteration(function(config, context) {
+  if (context.graphLimits) {
+    var limits = context.graphLimits;
+    if (context.selectedUnit) {
+      limits = _.where(limits, { unit: context.selectedUnit });
+    }
+    if (limits.length) {
       var overrides = {
         options: {
           scales: {
             yAxes: [{
               ticks: {
-                min: context.unitLimits[context.selectedUnit].minimum,
-                max: context.unitLimits[context.selectedUnit].maximum,
+                min: limits[0].minimum,
+                max: limits[0].maximum,
               }
             }]
           }
@@ -22,6 +27,7 @@ being used, see `createPlot()` in `indicatorView.js`.
       // Add these overrides onto the normal config, and return it.
       $.extend(true, config, overrides);
     }
-    return config;
-  });
+  }
+  return config;
+});
 </script>

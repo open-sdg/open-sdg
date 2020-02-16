@@ -307,7 +307,7 @@ var indicatorView = function (model, options) {
     return {
       indicatorId: chartInfo.shortIndicatorId,
       selectedUnit: chartInfo.selectedUnit,
-      unitLimits: chartInfo.unitLimits,
+      graphLimits: chartInfo.graphLimits,
     }
   }
 
