@@ -56,7 +56,10 @@ $(function() {
             showData: domData.showdata,
             footnote: domData.footnote,
             graphType: domData.graphtype,
-            startValues: domData.startvalues
+            startValues: domData.startvalues,
+            graphLimitUnits: domData.graphlimitunits,
+            graphLimitMinimums: domData.graphlimitminimums,
+            graphLimitMaximums: domData.graphlimitmaximums,
           }),
           view  = new indicatorView(model, {
             rootElement: '#indicatorData',

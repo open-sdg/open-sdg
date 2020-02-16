@@ -4,16 +4,16 @@ apart from providing the canvas tag. For details on the Chart.js configuration
 being used, see `createPlot()` in `indicatorView.js`.
 {% endcomment %}
 <canvas></canvas>
-{% if page.indicator.graph_min_value and page.indicator.graph_max_value %}
-  <script>
-    opensdg.addChartAlteration(function(config, context) {
+<script>
+  opensdg.addChartAlteration(function(config, context) {
+    if (context.selectedUnit && context.unitLimits[context.selectedUnit]) {
       var overrides = {
         options: {
           scales: {
             yAxes: [{
               ticks: {
-                min: {{ page.indicator.graph_min_value }},
-                max: {{ page.indicator.graph_max_value }}
+                min: context.unitLimits[context.selectedUnit].minimum,
+                max: context.unitLimits[context.selectedUnit].maximum,
               }
             }]
           }
@@ -21,7 +21,7 @@ being used, see `createPlot()` in `indicatorView.js`.
       }
       // Add these overrides onto the normal config, and return it.
       $.extend(true, config, overrides);
-      return config;
-    });
-  </script>
-{% endif %}
+    }
+    return config;
+  });
+</script>
