@@ -54,6 +54,9 @@ var indicatorModel = function (options) {
   this.geoData = [];
   this.geoCodeRegEx = options.geoCodeRegEx;
   this.showMap = options.showMap;
+  this.graphLimitUnits = options.graphLimitUnits;
+  this.graphLimitMinimums = options.graphLimitMinimums;
+  this.graphLimitMaximums = options.graphLimitMaximums;
 
   // initialise the field information, unique fields and unique values for each field:
   (function initialise() {
@@ -541,6 +544,22 @@ var indicatorModel = function (options) {
       })));
     });
 
+    this.getUnitLimits = function() {
+      var unitLimits = {}
+      if (this.graphLimitUnits && (this.graphLimitMinimums || this.graphLimitMaximums)) {
+        var units = this.graphLimitUnits.split('|');
+        var unitsMin = (this.graphLimitMinimums) ? this.graphLimitMinimums.split('|') : [];
+        var unitsMax = (this.graphLimitMaximums) ? this.graphLimitMaximums.split('|') : [];
+        for (var i = 0; i < units.length; i++) {
+          unitLimits[units[i]] = {
+            minimum: (unitsMin.length > i) ? parseInt(unitsMin[i]) : null,
+            maximum: (unitsMax.length > i) ? parseInt(unitsMax[i]) : null
+          };
+        }
+      }
+      return unitLimits;
+    }
+
     this.onDataComplete.notify({
       datasetCountExceedsMax: datasetCountExceedsMax,
       datasets: datasetCountExceedsMax ? datasets.slice(0, maxDatasetCount) : datasets,
@@ -550,7 +569,8 @@ var indicatorModel = function (options) {
       indicatorId: this.indicatorId,
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
-      footerFields: this.footerFields
+      footerFields: this.footerFields,
+      unitLimits: this.getUnitLimits(),
     });
 
     if(options.initial || options.unitsChangeSeries) {
