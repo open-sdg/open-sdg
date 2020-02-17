@@ -110,6 +110,10 @@ The following fields affect the display of graphs. Currently only longitudinal g
           minimum: 200
           maximum: 2000
     ```
+* `graph_stacked_disaggregation` - this is used in the "stacked_bar" graph type, to identify the disaggregation category to be featured in the stacked bars. For Example:
+    ```
+    graph_stacked_disaggregation: Age
+    ```
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
 
