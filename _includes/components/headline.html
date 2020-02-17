@@ -1,4 +1,7 @@
 {% assign sdg_headline_data = site.data.headlines[page.indicator.slug] %}
+{% if site.data[page.language].headlines[page.indicator.slug] %}
+  {% assign sdg_headline_data = site.data[page.language].headlines[page.indicator.slug] %}
+{% endif %}
 
 <div id="headlineTable">
 
