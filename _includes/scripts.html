@@ -34,7 +34,7 @@ $(function() {
       });
 
       $.ajax({
-        url: opensdg.getRemoteDataBaseUrl() + '/comb/' + domData.id + '.json',
+        url: opensdg.remoteDataBaseUrl + '/comb/' + domData.id + '.json',
         success: function(res) {
 
           $('.async-loading').remove();
