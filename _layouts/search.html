@@ -55,4 +55,8 @@ opensdg.searchIndexExtraFields = [];
 </div>
 
 <script src="https://unpkg.com/lunr/lunr.min.js"></script>
+{% if page.language != 'en' %}
+  <script src="https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/lunr.stemmer.support.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/lunr.{{ page.language }}.js"></script>
+{% endif %}
 {% include footer.html %}
