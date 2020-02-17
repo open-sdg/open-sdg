@@ -1,5 +1,7 @@
 {% comment %}
-
+The stacked bar chart can be used when a particular disaggregation is central
+to the visualization. It is typically used in combination with the metadata
+fields "data_start_values" and "chart_stacked_disaggregation".
 {% endcomment %}
 <canvas></canvas>
 {% include components/charts/graph_limits.html %}
@@ -14,12 +16,16 @@ opensdg.addChartAlteration(function(config, info) {
       }
     }
   };
-  // If we have a stackedDisaggregation set, we need to modify the data.
-  if (info.stackedDisaggregation) {
-    console.log(info);
-    //console.log(context);
-    //context.datasets = [];
-  }
+  // If we have stackedDisaggregation, we need to group datasets into stacks.
+  config.data.datasets.forEach(function(dataset) {
+    var disaggregation = Object.assign({}, dataset.disaggregation);
+    if (info.stackedDisaggregation) {
+      // We don't want the stackedDisaggregation to be considered when stacking.
+      delete disaggregation[info.stackedDisaggregation];
+    }
+    // Use the disaggregation as a unique id for each stack.
+    dataset.stack = JSON.stringify(disaggregation);
+  });
   // Add these overrides onto the normal config, and return it.
   $.extend(true, config, overrides);
 });
