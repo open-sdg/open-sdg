@@ -650,8 +650,8 @@ var indicatorModel = function (options) {
         forceUnit = false;
       }
 
-      // Now that we are all sorted, we notify the view that there is no headline,
-      // and pass along the first row as the minimum field selections.
+      // Now that we are all sorted, we notify the view that there needs to be
+      // starting values, and pass along the info.
       this.onStartValuesNeeded.notify({
         startingFieldSelections: startingFieldSelections,
         forceUnit: forceUnit
