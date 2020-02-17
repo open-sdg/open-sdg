@@ -307,6 +307,12 @@ var indicatorView = function (model, options) {
     }
   };
 
+  this.alterChartConfig = function(config, info) {
+    opensdg.chartConfigAlerations.forEach(function(callback) {
+      callback(config, info);
+    });
+  };
+
   this.updatePlot = function(chartInfo) {
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
 
@@ -322,7 +328,7 @@ var indicatorView = function (model, options) {
       data: view_obj._chartInstance.data,
       options: view_obj._chartInstance.options
     }
-    opensdg.performChartAlterations(updatedConfig, chartInfo);
+    this.alterChartConfig(updatedConfig, chartInfo);
     view_obj._chartInstance.type = updatedConfig.type;
     view_obj._chartInstance.data = updatedConfig.data;
     view_obj._chartInstance.options = updatedConfig.options;
@@ -392,7 +398,7 @@ var indicatorView = function (model, options) {
         }
       }
     };
-    opensdg.performChartAlterations(chartConfig, chartInfo);
+    this.alterChartConfig(chartConfig, chartInfo);
 
     this._chartInstance = new Chart($(this._rootElement).find('canvas'), chartConfig);
 

@@ -153,8 +153,12 @@ var indicatorModel = function (options) {
     that.data = _.map(that.data, function(item) {
 
       // only apply a rounding function for non-zero values:
-      if (item.Value != 0) {
-        item.Value = opensdg.performDataRounding(item.Value);
+      if(item.Value != 0) {
+        // For rounding, use a function that can be set on the global opensdg
+        // object, for easier control: opensdg.dataRounding()
+        if (typeof opensdg.dataRounding === 'function') {
+          item.Value = opensdg.dataRounding(item.Value);
+        }
       }
 
       // remove any undefined/null values:

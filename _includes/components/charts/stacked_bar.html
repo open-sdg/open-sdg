@@ -6,7 +6,7 @@ fields "data_start_values" and "graph_stacked_disaggregation".
 <canvas></canvas>
 {% include components/charts/graph_limits.html %}
 <script>
-opensdg.addChartAlteration(function(config, info) {
+opensdg.chartConfigAlter(function(config, info) {
   var overrides = {
     type: 'bar',
     options: {
