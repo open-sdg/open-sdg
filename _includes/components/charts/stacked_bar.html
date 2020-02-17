@@ -18,7 +18,7 @@ opensdg.chartConfigAlter(function(config, info) {
   };
   // If we have stackedDisaggregation, we need to group datasets into stacks.
   config.data.datasets.forEach(function(dataset) {
-    var disaggregation = Object.assign({}, dataset.disaggregation);
+    var disaggregation = $.extend({}, dataset.disaggregation);
     if (info.stackedDisaggregation) {
       // We don't want the stackedDisaggregation to be considered when stacking.
       delete disaggregation[info.stackedDisaggregation];
