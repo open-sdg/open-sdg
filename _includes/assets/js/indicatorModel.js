@@ -640,7 +640,7 @@ var indicatorModel = function (options) {
         // If one of the starting field selections is a Unit, remember for later
         // and remove it from the list.
         forceUnit = startingUnit.value;
-        startingFieldSelections = _.filter(function(item) {
+        startingFieldSelections = _.filter(startingFieldSelections, function(item) {
           return item.field !== 'Units';
         });
       }
