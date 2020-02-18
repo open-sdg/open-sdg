@@ -53,8 +53,8 @@ test.features:
 	# Cucumber.
 	cd tests && npx cucumber-js
 
-test.accessibility: test.before test.prep test.serve
+test.accessibility:
 	# Pa11y.
 	cd tests && npx pa11y-ci
 
-test: test.before test.prep test.serve test.html test.features test.after
+test: test.before test.prep test.serve test.html test.features test.accessibility test.after
