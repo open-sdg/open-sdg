@@ -30,6 +30,12 @@ header {
   max-width: 300px;
   img {
     width: 100%;
+
+    padding-right: 60px;
+    background: url('../img/header_flag.png');
+    background-size: 57px;
+    background-repeat: no-repeat;
+    background-position: right center;
   }
 }
 
