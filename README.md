@@ -19,9 +19,3 @@ To run the tests (requires Node.js):
 ```
 make test
 ```
-
-To run separate accessibility tests (requires Node.js):
-
-```
-make test.accessibility
-```
