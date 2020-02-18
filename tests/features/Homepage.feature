@@ -12,3 +12,6 @@ Feature: Homepage
 
   Scenario: All 17 goal icons are visible
     Then I should see 17 "goal icon" elements
+
+  Scenario: The download-all button is available
+    Then I should see "Download all data"
