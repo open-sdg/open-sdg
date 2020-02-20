@@ -48,6 +48,7 @@ h6 {
   &.indicator {
     h1 {
       font-size: 24px;
+      line-height: normal;
 
       @media only screen and (max-width: 480px) {
         font-size: 0.813em;
