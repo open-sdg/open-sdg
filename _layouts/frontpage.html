@@ -2,10 +2,12 @@
 {% include header.html %}
 <div id="main-content" class="container goal-tiles" role="main">
 
-    {% if page.t.frontpage.intro_title and page.t.frontpage.intro_description %}
+    {% assign homepage_introduction_banner_is_setup =  site.homepage_introduction_banner %}
+
+    {% if homepage_introduction_banner_is_setup %}
     <div class="site-intro spacer medium">
-        <h1>{{ page.t.frontpage.intro_title }}</h1>
-        <div class="description">{{ page.t.frontpage.intro_description }}</div>
+        <h1>{{ site.homepage_introduction_banner.title }}</h1>
+        <div class="description">{{ site.homepage_introduction_banner.description }}</div>
     </div>
     {% endif %}
 
