@@ -68,7 +68,7 @@
   .details {
     width: calc(100% - 125px);
     float: left;
-    h3 {
+    h2, h3 {
       margin-top: 10px;
       @media only screen and (max-width: 720px) {
         margin-top: 3px;
