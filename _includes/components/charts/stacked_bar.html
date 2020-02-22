@@ -5,6 +5,7 @@ fields "data_start_values" and "graph_stacked_disaggregation".
 {% endcomment %}
 <canvas></canvas>
 {% include components/charts/graph_limits.html %}
+{% include components/charts/hide_headline.html %}
 <script>
 opensdg.chartConfigAlter(function(config, info) {
   var overrides = {

@@ -56,6 +56,7 @@ var indicatorModel = function (options) {
   this.showMap = options.showMap;
   this.graphLimits = options.graphLimits;
   this.stackedDisaggregation = options.stackedDisaggregation;
+  this.unitsWithoutHeadline = options.unitsWithoutHeadline;
 
   // initialise the field information, unique fields and unique values for each field:
   (function initialise() {
@@ -557,6 +558,7 @@ var indicatorModel = function (options) {
       footerFields: this.footerFields,
       graphLimits: this.graphLimits,
       stackedDisaggregation: this.stackedDisaggregation,
+      unitsWithoutHeadline: this.unitsWithoutHeadline,
     });
 
     if(options.initial || options.unitsChangeSeries) {

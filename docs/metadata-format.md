@@ -96,10 +96,30 @@ Some of the metadata are not intended to be displayed on the site. These are put
 
 Use this method to hide any fields needed, by putting them into the "data" scope.
 
+## Starting values
+
+If you would like an indicator load with certain disaggregation values already selected, you can use the `data_start_values` field. For example by setting this in the metadata for an indicator...
+
+```
+data_start_values:
+  - field: Fruit
+    value: Apples
+  - field: Grade
+    value: A
+```
+
+...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
+
 ## Graph Metadata
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These tags are experimental. Graph tags do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
+* `graph_units_without_headline` - a list of units in which the "headline" (aggregated data series) should not be displayed on the graph. This is typically used in combination with the `data_start_values` field described above. For example:
+    ```
+    graph_units_without_headline:
+        - tons
+        - passengers
+    ```
 * `graph_limits` - a list of min/max limits controlling the lowest/highest values to be shown on the y-axis. Optionally they can refer to a specific unit of measurement. Note that this involves a slightly more complex metadata structure. If using Prose.io, this will need to be set under "Raw Metadata". For example:
     ```
     graph_limits:
