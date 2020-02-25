@@ -13,6 +13,7 @@ Below is a list of some of the countries and localities that are currently using
 |Iceland|<https://visar.hagstofa.is/heimsmarkmidin/>|
 |Kyrgyzstan|<https://sustainabledevelopment-kyrgyzstan.github.io/>|
 |Poland* |<http://sdg.gov.pl/>|
+|Namibia|<https://sustainabledevelopment-namibia.github.io/Site/>
 |Rwanda|<https://sustainabledevelopment-rwanda.github.io/>|
 |United Kingdom|<https://sustainabledevelopment-uk.github.io/>|
 |United States|<https://sdg.data.gov/>|
