@@ -2,9 +2,16 @@
 {% include header.html %}
 <div id="main-content" class="container goal-tiles" role="main">
 
+    {% if site.homepage_introduction_banner %}
+    <div class="site-intro spacer medium">
+        <h1>{{ site.homepage_introduction_banner.title | t }}</h1>
+        <div class="description">{{ site.homepage_introduction_banner.description | t }}</div>
+    </div>
+    {% endif %}
+
     {% assign country_name = site.country.name | t %}
     {% assign heading_default = page.t.frontpage.heading | replace: '%name', country_name %}
-    <h1 class="spacer medium">{{ site.frontpage_heading | default: heading_default | t }}</h1>
+    <h2 class="spacer medium">{{ site.frontpage_heading | default: heading_default | t }}</h2>
 
     {% assign instructions_default = page.t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
     <p class="spacer medium">{{ site.frontpage_instructions | default: instructions_default | t }}</p>

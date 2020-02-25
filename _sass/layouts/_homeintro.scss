@@ -1,0 +1,20 @@
+.site-intro{
+    
+    .description{
+        margin-top:  30px;
+        font-size:  21px;
+
+        text-align: justify;
+        text-justify: inter-word;
+    }
+
+    @media only screen and (min-width: 700px) {
+        padding-right: 300px;
+        min-height: 180px;
+
+        background: url('../img/SDG Wheel_Transparent-01.png');
+        background-position: right 60px top;
+        background-size: 180px;
+        background-repeat: no-repeat;
+    }    
+}
