@@ -4,8 +4,8 @@
 
     {% if site.homepage_introduction_banner %}
     <div class="site-intro spacer medium">
-        <h1>{{ site.homepage_introduction_banner.title }}</h1>
-        <div class="description">{{ site.homepage_introduction_banner.description }}</div>
+        <h1>{{ site.homepage_introduction_banner.title | t }}</h1>
+        <div class="description">{{ site.homepage_introduction_banner.description | t }}</div>
     </div>
     {% endif %}
 
