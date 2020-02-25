@@ -11,6 +11,7 @@ Below is a list of some of the countries and localities that are currently using
 |Armenia|<https://armstat.github.io/sdg-site-armenia/>|
 |Germany|<https://sustainabledevelopment-germany.github.io/>|
 |Iceland|<https://visar.hagstofa.is/heimsmarkmidin/>|
+|Kazakhstan|<https://sdg-kazstat.github.io/>|
 |Kyrgyzstan|<https://sustainabledevelopment-kyrgyzstan.github.io/>|
 |Poland* |<http://sdg.gov.pl/>|
 |Rwanda|<https://sustainabledevelopment-rwanda.github.io/>|
