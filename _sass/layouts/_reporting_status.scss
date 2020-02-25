@@ -32,9 +32,16 @@
         margin-right: 3px;
         padding: 2px 5px;
         border-radius: 4px;
-        color: black;
+        
         width: 40px;
         text-align: center;
+        .notstarted{
+          border: 1px solid #333333;
+          color: black;
+        }
+        .complete{
+          color: white;
+        }
       }
     }
   }
