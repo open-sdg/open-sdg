@@ -48,3 +48,6 @@ Feature: Indicator
     And I am on "/1-2-1"
     Then I should not see an "available indicator" element
     And I should not see "Name of available indicator"
+
+  Scenario: Indicators can display a free form blurb at the top.
+    Then I should see "This is the page content in English."

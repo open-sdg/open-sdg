@@ -65,6 +65,33 @@ un_custodian_agency: agencies.un_habitat
 
 Assuming that `agencies.un_habitat` refers to an actual translation key in your translations, this will translate the field according to that entry.
 
+### Alternative approach: subfolders
+
+Another mechanism available for translating metadata is to place pre-translated versions of your metadata files into subfolders, named by the language. The pre-translated versions need not contain all the fields - only the particular fields that you have translated.
+
+For example, suppose you have a metadata file called `1-1-1.md` containing the following:
+
+```
+indicator_name: My English indicator name
+some_other_field: XYZ
+```
+
+If you want to translate the indicator name into Spanish, you could create a subfolder called `es` and place inside a file called `1-1-1.md` containing the following:
+
+```
+indicator_name: My Spanish indicator name
+```
+
+This will translate the indicator name into Spanish, but will leave `some_other_field` alone.
+
+### Subfolders vs translation keys
+
+You may be wondering which of the above approaches you should use - subfolders, or translation keys. The answer depends on your preference. You can use either approach - or even both approaches - as you see fit.
+
+A practical tip: You may find that using translation keys is preferable for smaller pieces of content that are shared by multiple indicators. Translation keys work best here, because they allow you to maintain the translation in only one place. By contrast, using the subfolder approach would require you to copy/paste the translation into each metadata file in the subfolder.
+
+However, the subfolder approach can be more straightforward and direct, may be preferable for larger chunks of content that are specific to one indicator only, such as indicator descriptions.
+
 ## Translation in Javascript
 
 There is a global object `translations` available to your Javascript. It can be used similarly to the `t` variable in Liquid templates. For example:
