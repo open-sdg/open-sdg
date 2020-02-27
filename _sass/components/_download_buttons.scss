@@ -30,6 +30,14 @@ h5 + .btn-download {
   }
 }
 
+.zip-download-container {
+  margin-top: 20px;
+  #zip-download-info {
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+}
+
 body.contrast-high {
   .btn { background: white !important; color: black !important;
     &:hover {
