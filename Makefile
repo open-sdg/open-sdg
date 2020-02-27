@@ -56,5 +56,7 @@ test.features: serve.detached
 test.accessibility: serve.detached
 	# Pa11y.
 	cd tests && npx pa11y-ci
+	cd tests && npx pa11y-ci --config .pa11yci-mobile
+	cd tests && npx pa11y-ci --config .pa11yci-contrast
 
 test: test.html test.features test.accessibility
