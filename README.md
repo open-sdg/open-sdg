@@ -14,8 +14,25 @@ To see the platform while developing (requires Ruby and Python):
 make serve
 ```
 
-To run the tests (requires Node.js):
+To run the tests (also requires Node.js):
 
 ```
 make test
+```
+
+To run particular tests:
+
+```
+# Test for broken links, images, and other HTML issues.
+make test.html
+# Test for broken functionality.
+make test.features
+# Test for accessibility problems.
+make test.accessibility
+```
+
+To clean up (remove temporary files and stop the web server) after running particular tests:
+
+```
+make clean
 ```

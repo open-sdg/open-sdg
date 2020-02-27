@@ -1,10 +1,10 @@
-.PHONY: test.before test.prep test.serve test.html test.features test.after
+.PHONY: test.before test.prep test.serve test.html test.features test.accessibility test.after
 all: test
 
 serve: test.before test.prep
 	cd site-starter && bundle exec jekyll serve --skip-initial-build
 
-test.before test.after:
+clean test.before test.after:
 	# Stop the detached Jekyll web server.
 	-pkill -f -9 jekyll
 	# Delete the builds.
@@ -45,16 +45,16 @@ test.serve:
 	# Serve the Jekyll site at http://127.0.0.1:4000/
 	cd site-starter && bundle exec jekyll serve --detach --skip-initial-build
 
-test.html:
+test.html: test.before test.prep test.serve
 	# HTML proofer.
 	cd site-starter && bash scripts/test/html_proofer_prod.sh
 
-test.features:
+test.features: test.before test.prep test.serve
 	# Cucumber.
 	cd tests && npx cucumber-js
 
-test.accessibility:
+test.accessibility: test.before test.prep test.serve
 	# Pa11y.
 	cd tests && npx pa11y-ci
 
-test: test.before test.prep test.serve test.html test.features test.accessibility test.after
+test: test.html test.features test.accessibility test.after
