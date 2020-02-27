@@ -1,7 +1,7 @@
 {
     "defaults": {
         "actions": [
-            "click element #contrast-high a"
+            "click element #menu .contrast-high a"
         ]
     },
     "urls": [
