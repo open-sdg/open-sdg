@@ -1,17 +1,14 @@
-.PHONY: test.before test.prep test.serve test.html test.features test.accessibility test.after
+.PHONY: clean build serve serve.detached test.html test.features test.accessibility test
 all: test
 
-serve: test.before test.prep
-	cd site-starter && bundle exec jekyll serve --skip-initial-build
-
-clean test.before test.after:
+clean:
 	# Stop the detached Jekyll web server.
 	-pkill -f -9 jekyll
 	# Delete the builds.
 	rm -fr site-starter
 	rm -fr data-starter
 
-test.prep:
+build: clean
 	# Clone the starter repositories.
 	git clone https://github.com/open-sdg/open-sdg-site-starter.git site-starter
 	git clone https://github.com/open-sdg/open-sdg-data-starter.git data-starter
@@ -41,20 +38,23 @@ test.prep:
 	# Install the Node.js depedencies.
 	cd tests && npm install
 
-test.serve:
+serve: build
+	cd site-starter && bundle exec jekyll serve --skip-initial-build
+
+serve.detached: build
 	# Serve the Jekyll site at http://127.0.0.1:4000/
 	cd site-starter && bundle exec jekyll serve --detach --skip-initial-build
 
-test.html: test.before test.prep test.serve
+test.html: serve.detached
 	# HTML proofer.
 	cd site-starter && bash scripts/test/html_proofer_prod.sh
 
-test.features: test.before test.prep test.serve
+test.features: serve.detached
 	# Cucumber.
 	cd tests && npx cucumber-js
 
-test.accessibility: test.before test.prep test.serve
+test.accessibility: serve.detached
 	# Pa11y.
 	cd tests && npx pa11y-ci
 
-test: test.html test.features test.accessibility test.after
+test: test.html test.features test.accessibility

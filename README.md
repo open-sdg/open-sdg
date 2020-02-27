@@ -31,7 +31,7 @@ make test.features
 make test.accessibility
 ```
 
-To clean up (remove temporary files and stop the web server) after running particular tests:
+To clean up (remove temporary files and stop the web server) after tests:
 
 ```
 make clean
