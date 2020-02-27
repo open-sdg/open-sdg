@@ -15,3 +15,10 @@ Feature: Multilingual Metadata
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
     Then I should see "This is a translated unit of measurement via translation key"
+
+  Scenario: The subfolder-approach can be used to translate metadata
+    Given I am on "/1-1-1"
+    And I click on "the language toggle dropdown"
+    And I follow "the first language option"
+    Then I should see "Spanish translation of available indicator"
+    And I should see "This is the page content translated into Spanish."
