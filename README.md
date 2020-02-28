@@ -14,6 +14,14 @@ To see the platform while developing (requires Ruby and Python):
 make serve
 ```
 
+### Using Docker
+
+If you have Docker installed you can run do the same as above, without worrying about installing the correct software or packages. Docker will create a container with all the necessary packages for you, and serve the site:
+
+```bash
+make serve.docker
+```
+
 To run the tests (also requires Node.js):
 
 ```

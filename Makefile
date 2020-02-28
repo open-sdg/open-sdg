@@ -41,6 +41,10 @@ build: clean
 serve: build
 	cd site-starter && bundle exec jekyll serve --skip-initial-build
 
+serve.docker:
+	docker build -t opensdgmake ${PWD}/makedocker
+	docker run -it --rm -p 4000:4000 -v ${PWD}:/repo opensdgmake
+
 serve.detached: build
 	# Serve the Jekyll site at http://127.0.0.1:4000/
 	cd site-starter && bundle exec jekyll serve --detach --skip-initial-build
