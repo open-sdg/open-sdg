@@ -40,3 +40,14 @@ Then you could color-code the options by adding this in your CSS:
 ## Alternative groupings
 
 Apart from grouping by _goal_, you might like to show the reporting status in different ways (such as "status by _tier_", for example). To do this, your data repository needs to be configured to generate the necessary data. See the `config_data.yml` file in the data starter, [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L24), for an example.
+
+Note that the value of that setting in the data repository should be a list of fields which are present in your indicator metadata files.
+
+For example, suppose you would like to show reporting status grouped by UN custodian agency. To do this, you must have a field in your indicator metadata which specifies the UN custodian agency. (In fact, the data starter ships with such a field, called `un_custodian_agency`.) To accomplish this, you could have the following configuration for your data repository's `reporting_status_extra_fields`:
+
+```
+reporting_status_extra_fields:
+  - un_custodian_agency
+```
+
+There is no configuration necessary in the site repository, for this feature. Open SDG can automatically detect whether you have `reporting_status_extra_fields` configured in the data repository.
