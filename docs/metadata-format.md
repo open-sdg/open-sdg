@@ -40,9 +40,11 @@ If the indicator is going to display a graph, the following fields are required:
           - unit: Total
             title: My alternate title for totals
 
-* `graph_type` - what type of graph to use for the indicator. Examples:
+* `graph_type` - what type of graph to use for the indicator. [More information here](./charts.md). Examples:
     * line
     * bar
+    * binary
+    * stacked_bar
 * `national_geographical_coverage` - a label used in the absence of any disaggregation. Examples:
     * Australia
     * my_translations.australia
