@@ -57,7 +57,7 @@ Breaking changes:
 * Along the lines of the item above - expect that ALL templates in the platform have been updated. So every overridden layout and/or include file will potentially need to be updated.
 * The `get_indicator_name` filter is no longer supported. The metadata field `indicator_name` is now the sole (and required) source of indicator names.
 * The `remotedatabaseurl` setting is no longer supported. Sites should use `remote_data_prefix` instead, if not already.
-* The `custom_css` configuration option is deprecated in favor of a more standard Jekyll approach. To add custom styles it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss
+* The `custom_css` configuration option is deprecated in favor of a more standard Jekyll approach. To add custom styles it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss)
 * The H2 on indicator pages is now controlled by the `indicator_available` metadata field. Previously it was controlled by `graph_title`, which also displays above the graph. Be aware that if your indicators do not have anything in the `indicator_available` field, this H2 will no longer display.
 
 ## 0.10.0
