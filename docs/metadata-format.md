@@ -64,6 +64,12 @@ The following fields are not strictly required, but are recommended because they
     * https://unstats.un.org/sdgs/metadata/files/Metadata-01-01-01a.pdf
 * `goal_meta_link_text` - the text to display as the link to the official UN metadata for this indicator. Examples:
     * United Nations Sustainable Development Goals Metadata (pdf 894kB)
+* `tags` - an optional list of "tags" to display under an indicator when it is listed on its goal page. Unlike most other fields, the `tags` field should be a list. Here is an example of what it might look like, in YAML form:
+    ```
+    tags:
+      - My tag
+      - My other tag
+    ```
 
 ## Data Sources Metadata
 
@@ -96,7 +102,7 @@ Use this method to hide any fields needed, by putting them into the "data" scope
 
 ## Graph Metadata
 
-The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These tags are experimental. Graph tags do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
+The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
 * `graph_min_value` - the lowest value to be shown on the y-axis. Examples:
     * 1
@@ -122,7 +128,7 @@ The following fields will appear on indicator pages below the graph and the tabl
 
 ## Embedded Feature Metadata
 
-You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following tags to the metadata file.
+You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following fields to the metadata file.
 
 * `embedded_feature_footer` - information about the embedded feature which displays below embed. Examples:
     * This graph provided by "My Organisation"
