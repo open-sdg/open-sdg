@@ -1,6 +1,6 @@
 <h1>Upgrading to 1.0.0</h1>
 
-This document is intended for developers, to help with the process of upgrading to version 1.0.0 of Open SDG, from any previous release. In particular, this will detail the requirements of 1.0.0, the recommended procedures for upgrading, and the breaking changes to look out for.
+This document is intended for developers, to help with the process of upgrading to version 1.0.0 of Open SDG, from any previous release.
 
 ## Translation updates
 
