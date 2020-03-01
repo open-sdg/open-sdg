@@ -4,7 +4,7 @@ This document is intended for developers, to help with the process of upgrading 
 
 ## Translation updates
 
-If your site is pointing at the standard set of translations (most likely something like `https://open-sdg.github.io/sdg-translations/translations.json`) then you can skip this part. But if your site is pointing to a forked set of translations, then you should be aware of important changes regarding translation, and add some new required translation keys.
+If your site is pointing at the standard set of translations (most likely something like `https://open-sdg.github.io/sdg-translations/translations.json`) then you can skip to "Data repository updates" below. But if your site is pointing to a forked set of translations, then you should be aware of important changes regarding translation, and add some new required translation keys.
 
 ### Deprecation of sdg-translations
 
