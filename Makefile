@@ -41,9 +41,6 @@ build: clean
 serve: build
 	cd site-starter && bundle exec jekyll serve --skip-initial-build
 
-serve.docker:
-	docker build -t opensdgmake ${PWD}/makedocker
-	docker run -it --rm -p 4000:4000 -v ${PWD}:/repo opensdgmake
 
 serve.detached: build
 	# Serve the Jekyll site at http://127.0.0.1:4000/
@@ -62,3 +59,10 @@ test.accessibility: serve.detached
 	cd tests && npx pa11y-ci
 
 test: test.html test.features test.accessibility
+
+docker:
+	docker run -it --rm -p 4000:4000 -v ${PWD}:/repo opensdg/make:0.1 bash
+
+docker.serve:
+	docker run -it --rm -p 4000:4000 -v ${PWD}:/repo opensdg/make:0.1 bash -c \
+	"make build && cd site-starter && bundle exec jekyll serve --skip-initial-build --host 0.0.0.0"
