@@ -34,6 +34,7 @@
 * Bulk download link beneath the homepage grid (#489)
 * Black text for tab links (#490)
 * Set aria-disabled on 'Clear selections' button (#491)
+* Chart refactor for limits and stacked bars (#497)
 * Fit total number of indicators on one line (#502)
 * Also have overall total in box (#505)
 * Remove goal line from indicator banner (#506)
@@ -43,18 +44,21 @@
 
 Breaking changes:
 
+This is a major version upgrade and contains some breaking changes. Full technical details are available [here](./upgrading-1-0-0). But here is a brief summary of the breaking changes:
+
 * This upgrade should be accompanied by an upgrade to:
     * jekyll-open-sdg-plugins 1.0.0
     * sdg-build 1.0.0
-* `t` has changed to `page.t`. Eg: t.general.goal is now page.t.general.goal. All overridden templates should be updated accordingly.
+    * sdg-translations 1.0.0
+* Some global Liquid variables have changed. For example:
+    * `t` has changed to `page.t`
+    * `meta` has changed to `page.indicator`
+    * `current_language` has changed to `page.language`
 * The following include files have been removed:
     * indicator-variables.html
     * goal-variables.html
     * multilingual.html
-
-    This means that global variables like `meta`, `current_language`, etc. are no longer available. All overridden templates that include these files will need to be updated. To fix, remove the "include" statements and remove any use of global variables. It may be easier to start with the updated version of the file from Open SDG, and then re-apply your modifications.
-
-* Along the lines of the item above - expect that ALL templates in the platform have been updated. So every overridden layout and/or include file will potentially need to be updated.
+* All include files and layout files in the platform have been updated.
 * The `get_indicator_name` filter is no longer supported. The metadata field `indicator_name` is now the sole (and required) source of indicator names.
 * The `remotedatabaseurl` setting is no longer supported. Sites should use `remote_data_prefix` instead, if not already.
 * The `custom_css` configuration option is deprecated in favor of a more standard Jekyll approach. To add custom styles it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss)
