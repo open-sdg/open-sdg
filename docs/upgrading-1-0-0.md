@@ -4,43 +4,23 @@ This document is intended for developers, to help with the process of upgrading 
 
 ## Translation updates
 
-If your site is pointing at the standard set of translations (most likely something like `https://open-sdg.github.io/sdg-translations/translations.json`) then you can skip to "Data repository updates" below. But if your site is pointing to a forked set of translations, then you should be aware of important changes regarding translation, and add some new required translation keys.
-
-### Deprecation of sdg-translations
-
-As you will see below in the data repository updates, the standard set of translations is now split between 2 repositories:
-
-* [translations-open-sdg](https://github.com/open-sdg/translations-open-sdg)
-    This contains the translations specific to Open SDG
-* [translations-un-sdg](https://github.com/open-sdg/translations-un-sdg)
-    This contains the translations of UN-provided metadata
-
-The deprecated [sdg-translations](https://github.com/open-sdg/sdg-translations) will remain available, but no longer receives new translation keys that Open SDG requires.
-
-If you are currently using a forked version of sdg-translations, it is recommended that you take the following steps:
-
-1. Create a copy (not a fork) of translations-open-sdg by going [here](https://github.com/open-sdg/translations/open-sdg) by clicking "Use this template".
-2. After creating this new repository, copy over the translations from your forked version of sdg-translations, and push them up.
-3. If your language *already exists* in translations-open-sdg, go through the list of new keys below, and confirm that the translations are correct (they were largely performed with Google Translate, so most probably need corrections).
-4. If your language *does not exist* in translations-open-sdg, go through the list of new keys below, and add them to your translation files.
-
-### Required translation keys
+If your site is pointing at the standard set of translations (most likely something like `https://open-sdg.github.io/sdg-translations/translations.json`) then you can skip to "Data repository updates" below. But if your site is pointing to a forked set of translations, then you should be aware of some new required translation keys.
 
 The new translation keys required by Open SDG, along with links to their English translations, are as follows:
 
-* [calendar.January](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/calendar.yml#L1) (along with the other 11 months of the year)
-* [frontpage.download_all](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/frontpage.yml#L5)
-* [frontpage.zip_file](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/frontpage.yml#L6)
-* [general.built_using_open_sdg](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/general.yml#L18)
-* [general.page](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/general.yml#L19)
-* [general.pages](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/general.yml#L20)
-* [metadata_fields.other_info](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/metadata_fields.yml#L2)
-* [metadata_fields.quality_assurance](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/metadata_fields.yml#L101)
-* [metadata_fields.international_comparability](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/metadata_fields.yml#L102)
-* [metadata_fields.comments_limitations](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/metadata_fields.yml#L103) (this is a change, rather than an addition)
-* [metadata_fields.rational_interpretation](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/metadata_fields.yml#L104)
-* [search.did_you_mean](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/search.yml#L10)
-* [status.status_by_field](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/status.yml#L9)
+* [calendar.January](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/calendar.yml#L1) (along with the other 11 months of the year)
+* [frontpage.download_all](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/frontpage.yml#L5)
+* [frontpage.zip_file](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/frontpage.yml#L6)
+* [general.built_using_open_sdg](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/general.yml#L18)
+* [general.page](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/general.yml#L19)
+* [general.pages](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/general.yml#L20)
+* [metadata_fields.other_info](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/metadata_fields.yml#L2)
+* [metadata_fields.quality_assurance](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/metadata_fields.yml#L101)
+* [metadata_fields.international_comparability](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/metadata_fields.yml#L102)
+* [metadata_fields.comments_limitations](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/metadata_fields.yml#L103) (this is a change, rather than an addition)
+* [metadata_fields.rational_interpretation](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/metadata_fields.yml#L104)
+* [search.did_you_mean](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/search.yml#L10)
+* [status.status_by_field](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/status.yml#L9)
 
 ### Language code changes
 
@@ -67,7 +47,9 @@ If you are using the default data management approach -- .CSV files for data and
 
 1. Add a configuration file called `config_data.yml`. Start with [this file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml) and edit as needed. You should read through the whole file, but in particular:
     1. Adjust the `languages` list (as described [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L10))
-    2. If your site repository was pointing at custom translations repositories, adjust the defaults for `translations` (as described [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L35)). *Note that these should point directly to Git repositories (usually ending in .git) and NOT to .json files.*
+    2. If your site repository was pointing at custom translations repositories, adjust the defaults for `translations` (as described [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L35)).
+        * Note that these should point directly to Git repositories (usually ending in .git) and NOT to .json files.
+        * Note that if you are using the standard `open-sdg/sdg-translations` translations, that you should use version 1.0.0, as demonstrated here (link TBD).
     3. If your site uses the Open SDG mapping functionality, uncomment and adjust the `map_layers` (as described [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L53))
 2. Replace the contents of the scripts you use to check and build data. They are likely called `check_data.py` and `build_data.py`, in your `scripts` folder. Unless you need special customisations, you can use the exact versions from the data starter, [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/check_data.py) and [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/build_data.py).
 
@@ -84,11 +66,11 @@ python scripts/check_data.py
 
 If you see no output from the above command, that means your data and metadata is already fine. However if you see any output, you will need to fix your data and/or metadata as described in the output.
 
-### Copy over any translations from your site repository
+### Copy over any local translations from your site repository
 
-With Open SDG 1.0.0, it is recommended that your custom translations be in your data repository instead of your site repository. You can simply move them over as-is.
+With Open SDG 1.0.0, it is recommended that your "local" custom translations be in your data repository instead of your site repository. If you have any such translations, they are likely in a "data/translations" folder in your site repository. You can simply move them over as-is.
 
-They should be in a folder in your data repository called `translations`, as described [here](https://github.com/open-sdg/open-sdg-data-starter/tree/develop/translations).
+The new locations for the translations should be in a folder in your data repository called `translations`, as described [here](https://github.com/open-sdg/open-sdg-data-starter/tree/develop/translations).
 
 For example, if you had translations in your site repository at `/my-site-repository/data/translations` and your data repository is at `/my-data-repository`, then you would move them over with something like this:
 
