@@ -566,4 +566,15 @@ body.contrast-high {
   div#units {
     color: white;
   }
+
+  #legend {
+    li {
+      color: white !important;
+      &:first-child {
+        .swatch {
+          background-color: white !important;
+        }
+      }
+    }
+  }
 }
