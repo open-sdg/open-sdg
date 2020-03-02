@@ -41,7 +41,7 @@ prose:
             label: "Indicator number"
             translation_key: metadata_fields.indicator
             scope: global
-      - name: "target"
+      - name: "target_name"
         field:
             element: text
             label: "Target name"

@@ -192,3 +192,22 @@ You may think that it would make more sense for the `label` property above to co
 ## Metadata tabs
 
 The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see [here](https://open-sdg.readthedocs.io/en/latest/configuration/#metadata_tabs).
+
+## Reserved metadata fields
+
+The following keys cannot be used as metadata fields, because they are used for special purposes in Open SDG:
+
+* goals
+* goal
+* targets
+* target
+* indicators
+* indicator
+* language
+* name
+* number
+* sort
+* global
+* url
+* goal_number
+* target_number
