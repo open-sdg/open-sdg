@@ -52,6 +52,10 @@
         top: -1px;
         right: 0;
         display: inline;
+
+        &.complete{
+          color: white;
+        }
       }
     }
 
