@@ -80,8 +80,10 @@ In addition, by setting a special metadata field called `data_start_values`, you
 
 ```
 data_start_values:
-  - Apples
-  - A
+  - field: Fruit
+    value: Apples
+  - field: Grade
+    value: A
 ```
 
 ...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".

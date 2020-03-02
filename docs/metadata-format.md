@@ -6,6 +6,8 @@ In your [data repository](https://open-sdg.readthedocs.io/en/latest/glossary/#da
 
 Metadata values can either be filled in with normal text ("My field value") or with [translation keys](https://open-sdg.readthedocs.io/en/latest/glossary/#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
 
+As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
+
 ## Mandatory fields
 
 The following fields are required on all indicators:
@@ -94,16 +96,44 @@ Some of the metadata are not intended to be displayed on the site. These are put
 
 Use this method to hide any fields needed, by putting them into the "data" scope.
 
+## Starting values
+
+If you would like an indicator load with certain disaggregation values already selected, you can use the `data_start_values` field. For example by setting this in the metadata for an indicator...
+
+```
+data_start_values:
+  - field: Fruit
+    value: Apples
+  - field: Grade
+    value: A
+```
+
+...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
+
 ## Graph Metadata
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These tags are experimental. Graph tags do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
-* `graph_min_value` - the lowest value to be shown on the y-axis. Examples:
-    * 1
-    * 100
-* `graph_max_value` - the highest value to be shown on the y-axis. Examples:
-    * 500
-    * 1000
+* `graph_units_without_headline` - a list of units in which the "headline" (aggregated data series) should not be displayed on the graph. This is typically used in combination with the `data_start_values` field described above. For example:
+    ```
+    graph_units_without_headline:
+        - tons
+        - passengers
+    ```
+* `graph_limits` - a list of min/max limits controlling the lowest/highest values to be shown on the y-axis. Optionally they can refer to a specific unit of measurement. Note that this involves a slightly more complex metadata structure. If using Prose.io, this will need to be set under "Raw Metadata". For example:
+    ```
+    graph_limits:
+        - unit: tons
+          minimum: 2
+          maximimum: 20
+        - unit: passengers
+          minimum: 200
+          maximum: 2000
+    ```
+* `graph_stacked_disaggregation` - this is used in the "stacked_bar" graph type, to identify the disaggregation category to be featured in the stacked bars. For Example:
+    ```
+    graph_stacked_disaggregation: Age
+    ```
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
 

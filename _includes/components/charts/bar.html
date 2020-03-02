@@ -1,27 +1,8 @@
 {% comment %}
 Because the "bar" visualization is basic, nothing special needs to be done here,
-apart from providing the canvas tag. For details on the Chart.js configuration
-being used, see `createPlot()` in `indicatorView.js`.
+apart from providing the canvas tag and supporting graph limits. For details on
+the Chart.js configuration being used, see `createPlot()` in `indicatorView.js`.
 {% endcomment %}
 <canvas></canvas>
-{% if meta.graph_min_value and meta.graph_max_value %}
-  <script>
-    opensdg.chartConfigAlter = function(config) {
-      var overrides = {
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                min: {{ meta.graph_min_value }},
-                max: {{ meta.graph_max_value }}
-              }
-            }]
-          }
-        }
-      }
-      // Add these overrides onto the normal config, and return it.
-      $.extend(true, config, overrides);
-      return config;
-    }
-  </script>
-{% endif %}
+{% include components/charts/graph_limits.html %}
+{% include components/charts/hide_headline.html %}
