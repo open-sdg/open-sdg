@@ -24,7 +24,7 @@ The new translation keys required by Open SDG, along with links to their English
 
 ### Language code changes
 
-If you are using the following languages, be aware that the language codes have changed. Your translation folders should use the updated language code. Your site itself can continue using the old language code, as described below in site repository section, with the `languages_public` setting.
+If you are using the following languages, be aware that the language codes in sdg-translations have changed. Your translation folders should use the updated language code. Your site itself can continue using the old language code, as described below in site repository section, with the `languages_public` setting.
 
 * Armenian: changed from "am" to "hy"
 * Kazakh: changed from "kz" to "kk"
@@ -53,7 +53,7 @@ If you are using the default data management approach -- .CSV files for data and
     3. If your site uses the Open SDG mapping functionality, uncomment and adjust the `map_layers` (as described [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L53))
 2. Replace the contents of the scripts you use to check and build data. They are likely called `check_data.py` and `build_data.py`, in your `scripts` folder. Unless you need special customisations, you can use the exact versions from the data starter, [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/check_data.py) and [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/build_data.py).
 
-If you are not able to use this new YAML-based configuration approach, or you would prefer not to, you can use the sdg-build classes directly, as demonstrated [here](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg.py).
+If you are not able to use this new YAML-based configuration approach, or you would prefer not to, you can use the sdg-build classes directly, as demonstrated [here](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg.py). This requires some knowledge of Python.
 
 ### Confirm that your data and metadata passes validation
 
