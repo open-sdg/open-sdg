@@ -1,14 +1,19 @@
 .notapplicable {
-  background-color: #B7B7B7;
+  background-color: #ccc;
+  background: repeating-linear-gradient(
+    135deg,
+    #ccc,
+    white 10px,
+    #ccc 10px,
+    white 20px
+  );
 }
-.notstarted {
-  background-color: #E27874;
-}
+
 .inprogress {
-  background-color: #f0ad4e;
+  background-color: #767676;
 }
 .complete {
-  background-color: #5cb85c;
+  background-color: #333333;
 }
 
 #main-content {
@@ -27,9 +32,16 @@
         margin-right: 3px;
         padding: 2px 5px;
         border-radius: 4px;
-        color: black;
+        
         width: 40px;
         text-align: center;
+        &.notstarted{
+          border: 1px solid #333333;
+          color: #757575;
+        }
+        &.complete, &.inprogress{
+          color: white;
+        }
       }
     }
   }
@@ -39,8 +51,8 @@
     margin-left: 3px;
   }
   .goal-stats {
+    border: 1px solid #333333;
     font-size: 0;
-    height: 10px;
     margin-top:10px;
     & span {
       display: inline-block;
