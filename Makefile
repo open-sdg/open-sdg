@@ -60,9 +60,12 @@ test.accessibility: serve.detached
 
 test: test.html test.features test.accessibility
 
-docker:
-	docker run -it --rm -p 4000:4000 -v ${PWD}:/repo opensdg/make:0.1 bash
+docker.setup:
+	docker run -it -d -p 4000:4000 -v ${PWD}:/repo --name opensdgmake opensdg/make:0.2
 
-docker.serve:
-	docker run -it --rm -p 4000:4000 -v ${PWD}:/repo opensdg/make:0.1 bash -c \
-	"make build && cd site-starter && bundle exec jekyll serve --skip-initial-build --host 0.0.0.0"
+docker.run:
+	docker exec -it opensdgmake bash
+
+docker.stop:
+	docker stop opensdgmake
+	docker rm opensdgmake
