@@ -284,7 +284,8 @@ var indicatorModel = function (options) {
 
   this.updateChartTitle = function() {
     if (typeof that.chartTitles === 'string') {
-      that.chartTitle = that.chartTitles;
+      // The JSON.parse is necessary because it was "jsonified" which adds quotes.
+      that.chartTitle = JSON.parse(that.chartTitles);
     }
     else {
       var chartTitle = _.findWhere(that.chartTitles, { unit: that.selectedUnit });
