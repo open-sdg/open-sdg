@@ -333,12 +333,12 @@ search_index_extra_fields:
 
 This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](https://open-sdg.readthedocs.io/en/latest/social-media-sharing/) page.
 
-### homepage_introduction_banner
+### frontpage_introduction_banner
 
 This optional setting adds a banner to your site's homepage, in order to introduce your users to your site. To add a banner update the `_config.yml` file with these settings:
 
 ```yaml
-homepage_introduction_banner:
+frontpage_introduction_banner:
     title: title goes here
     description: description goes here
 ```
