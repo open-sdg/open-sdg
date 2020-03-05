@@ -34,7 +34,7 @@ var indicatorModel = function (options) {
   this.country = options.country;
   this.indicatorId = options.indicatorId;
   this.shortIndicatorId = options.shortIndicatorId;
-  this.chartTitle = options.chartTitle;
+  this.chartTitles = options.chartTitles;
   this.graphType = options.graphType;
   this.measurementUnit = options.measurementUnit;
   this.copyright = options.copyright;
@@ -282,15 +282,29 @@ var indicatorModel = function (options) {
     });
   };
 
+  this.updateChartTitle = function() {
+    if (typeof that.chartTitles === 'string') {
+      that.chartTitle = that.chartTitles;
+    }
+    else {
+      var chartTitle = _.findWhere(that.chartTitles, { unit: that.selectedUnit });
+      that.chartTitle = (chartTitle) ? chartTitle.title : that.chartTitles[0].title;
+    }
+  }
+
   this.updateSelectedUnit = function(selectedUnit) {
     this.selectedUnit = selectedUnit;
+    this.updateChartTitle();
 
     // if fields are dependent on the unit, reset:
     this.getData({
       unitsChangeSeries: this.dataHasUnitSpecificFields
     });
 
-    this.onUnitsSelectedChanged.notify(selectedUnit);
+    this.onUnitsSelectedChanged.notify({
+      selectedUnit: selectedUnit,
+      chartTitle: that.chartTitle,
+    });
   };
 
   this.getCombinationData = function(obj) {
@@ -539,6 +553,8 @@ var indicatorModel = function (options) {
       })));
     });
 
+    this.updateChartTitle();
+
     this.onDataComplete.notify({
       datasetCountExceedsMax: datasetCountExceedsMax,
       datasets: datasetCountExceedsMax ? datasets.slice(0, maxDatasetCount) : datasets,
@@ -552,6 +568,7 @@ var indicatorModel = function (options) {
       graphLimits: this.graphLimits,
       stackedDisaggregation: this.stackedDisaggregation,
       unitsWithoutHeadline: this.unitsWithoutHeadline,
+      chartTitle: this.chartTitle
     });
 
     if(options.initial || options.unitsChangeSeries) {
