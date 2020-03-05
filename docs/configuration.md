@@ -333,6 +333,16 @@ search_index_extra_fields:
 
 This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](https://open-sdg.readthedocs.io/en/latest/social-media-sharing/) page.
 
+### frontpage_introduction_banner
+
+This optional setting adds a banner to your site's homepage, in order to introduce your users to your site. To add a banner update the `_config.yml` file with these settings:
+
+```yaml
+frontpage_introduction_banner:
+    title: title goes here
+    description: description goes here
+```
+
 ## Examples
 
 To see many of these options in action, the [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml).
