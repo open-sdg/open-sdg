@@ -36,7 +36,7 @@ Feature: Search
     And I fill in "the search box" with "FAO"
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
-    Then I should see "1 results found"
+    Then I should see "3 results found"
 
   Scenario: The "did you mean" feature suggests alternative searches
     Given I am on the homepage

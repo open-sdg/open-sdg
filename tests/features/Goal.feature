@@ -11,7 +11,7 @@ Feature: Goal page
     Examples:
       | PATH | TOTAL |
       | /1   | 9     |
-      | /2   | 2     |
+      | /2   | 4     |
       | /3   | 1     |
 
   Scenario: The goal-by-target layout displays correctly
