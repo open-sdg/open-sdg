@@ -13,7 +13,7 @@
   background-color: #767676;
 }
 .complete {
-  background-color: #333333;
+  background-color: #000000;
 }
 
 #main-content {
@@ -35,9 +35,11 @@
         
         width: 40px;
         text-align: center;
+        font-size: 16px;
+
         &.notstarted{
-          border: 1px solid #333333;
-          color: #757575;
+          border: 1px solid #000000;
+          color: black;
         }
         &.complete, &.inprogress{
           color: white;
@@ -51,7 +53,7 @@
     margin-left: 3px;
   }
   .goal-stats {
-    border: 1px solid #333333;
+    border: 1px solid #000000;
     font-size: 0;
     margin-top:10px;
     & span {
@@ -74,7 +76,7 @@
     .total {
        line-height: 24px;
        vertical-align: middle;
-       font-size: 0.65em;
+       font-size: 16px;
        width: auto;
        padding-left: 4px;
        padding-right: 4px;
