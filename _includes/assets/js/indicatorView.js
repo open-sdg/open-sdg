@@ -158,10 +158,6 @@ var indicatorView = function (model, options) {
     });
   });
 
-  this._model.onUnitsSelectedChanged.attach(function(sender, args) {
-    console.log(args);
-  });
-
   this._model.onFieldsStatusUpdated.attach(function (sender, args) {
 
     // reset:

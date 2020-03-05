@@ -302,10 +302,7 @@ var indicatorModel = function (options) {
       unitsChangeSeries: this.dataHasUnitSpecificFields
     });
 
-    this.onUnitsSelectedChanged.notify({
-      selectedUnit: selectedUnit,
-      chartTitle: that.chartTitle,
-    });
+    this.onUnitsSelectedChanged.notify(selectedUnit);
   };
 
   this.getCombinationData = function(obj) {
