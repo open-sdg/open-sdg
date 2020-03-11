@@ -51,8 +51,6 @@ var indicatorModel = function (options) {
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
-  this.geoData = [];
-  this.geoCodeRegEx = options.geoCodeRegEx;
   this.showMap = options.showMap;
   this.graphLimits = options.graphLimits;
   this.stackedDisaggregation = options.stackedDisaggregation;
@@ -71,11 +69,6 @@ var indicatorModel = function (options) {
 
     if(that.data[0].hasOwnProperty('GeoCode')) {
       that.hasGeoData = true;
-
-      // Year, GeoCode, Value
-      that.geoData = _.filter(that.data, function(dataItem) {
-        return dataItem.GeoCode;
-      });
     }
 
     if(that.data[0].hasOwnProperty('Units')) {
@@ -594,8 +587,7 @@ var indicatorModel = function (options) {
         allowedFields: this.allowedFields,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
-        geoData: this.geoData,
-        geoCodeRegEx: this.geoCodeRegEx,
+        indicatorId: this.indicatorId,
         showMap: this.showMap
       });
 

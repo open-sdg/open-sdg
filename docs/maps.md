@@ -18,14 +18,14 @@ You will need to find at least one source for an accurate [GeoJSON](http://geojs
 
 > You can optionally include any number of more granular GeoJSON files, if your data supports it. For example, in the United States you might also include a second GeoJSON file that includes boundaries for the counties within each state.
 
-These GeoJSON files can be hosted remotely (ie, on a different site).
+These GeoJSON files will be processed and and hosted in the data repository. See the data starter for an example.
 
 Each "feature" in the The GeoJSON must have the following in their `properties` attributes:
 
 1. A property that holds the unique ID for the boundary (which must correspond to the GeoCode data column mentioned above)
 2. A property that holds the human-readable name of the boundary
 
-The specific keys for these properties can be configured later (see `map_layers` below).
+The specific keys for these properties are configured in the data repository.
 
 ## Site configuration: map_options and map_layers
 
@@ -81,12 +81,10 @@ You must have at least one item in the `map_layers` array. Here are the possible
 ```
 map_layers:
   -
-    # [REQUIRED] The URL to the GeoJSON file for this layer:
-    serviceUrl: replace me
-    # [REQUIRED] The property in `properties` for each boundary's human-readable name
-    nameProperty: replace me
-    # [REQUIRED] The property in `properties` for each boundary's unique ID (GeoCode).
-    idProperty: replace me
+    # The subfolder under 'geojson' in the data repository holding the GeoJSON files:
+    subfolder: regions
+    # The label to use in the "Download GeoJSON" button:
+    label: indicator.map
     # The minimum zoom at which this layer should be visible.
     min_zoom: 0
     # The maximum zoom at which this layer should be visible.
