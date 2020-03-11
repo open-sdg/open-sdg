@@ -72,7 +72,7 @@
       Translations
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        Translation repositories like <a href="https://github.com/open-sdg/translations-open-sdg">this one</a> provide translations of all the text used on your site.
+        Translation repositories like <a href="https://github.com/open-sdg/sdg-translations">this one</a> provide translations of all the text used on your site.
         <br><br>
         These are stand-alone projects which can be forked and extended to translate
         any implementation-specific text as needed.

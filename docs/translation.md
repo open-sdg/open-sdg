@@ -1,9 +1,8 @@
 <h1>Translation</h1>
 
-This platform is designed to be multilingual, and leverages the translations being maintained in separate repositories:
+This platform is designed to be multilingual, and leverages the translations being maintained in a separate repository:
 
-1. [Open SDG specific translations](https://github.com/open-sdg/translations-open-sdg)
-2. [Translations of UN global metadata](https://github.com/open-sdg/translations-un-sdg)
+* [SDG Translations](https://github.com/open-sdg/sdg-translations)
 
 This document provides an overview of how the platform accomplishes this, and how it can be extended.
 
@@ -17,10 +16,10 @@ In order to compile the platform in multiple languages, Jekyll needs the transla
 
 There are 4 requirements for adding a new language to the platform
 
-1. Check that the new language is implemented in the two repositories mentioned above. If it is not, you can copy those repositories and implement the language yourself.
-    * Specifically, you will need to translate all the YAML files in [this folder](https://github.com/open-sdg/translations-open-sdg/tree/master/translations/en) and [this folder](https://github.com/open-sdg/translations-un-sdg/tree/master/translations/en).
-2. Make sure that translated goal icons have been created. These are currently maintained [here](https://github.com/open-sdg/translations-un-sdg/).
-    * Specifically, you will need to produce translated versions of all the PNG files in [this folder](https://github.com/open-sdg/translations-un-sdg/tree/master/docs/assets/img/goals/en) and [this folder](https://github.com/open-sdg/translations-un-sdg/tree/master/docs/assets/img/high-contrast/goals/en) (for high contrast versions).
+1. Check that the new language is implemented in the repository mentioned above. If it is not, you can copy that repository and implement the language yourself.
+    * Specifically, you will need to translate all the YAML files in [this folder](https://github.com/open-sdg/sdg-translations/tree/master/translations/en).
+2. Make sure that translated goal icons have been created. These are currently maintained [here](https://github.com/open-sdg/sdg-translations/).
+    * Specifically, you will need to produce translated versions of all the PNG files in [this folder](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/goals/en) and [this folder](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/high-contrast/goals/en) (for high contrast versions).
 3. Add the new language in the 'languages' list in your site config (`_config.yml`) and data config (`config_data.yml`) files.
 4. Create new versions of any Jekyll pages that you would like to have available in the new language. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
 
@@ -34,7 +33,7 @@ Instead, you should see something like this:
 
 `<h1>{{ page.t.general.sdg }}</h1>`
 
-The `page.t` variable contains a nested structure of translation values, corresponding to the folder structure of the repositories mentioned above. For example, in the example above, the "general" refers to [this file](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/general.yml), and the "sdg" refers to [that line within the file](https://github.com/open-sdg/translations-open-sdg/blob/master/translations/en/general.yml#L9).
+The `page.t` variable contains a nested structure of translation values, corresponding to the folder structure of the repositories mentioned above. For example, in the example above, the "general" refers to [this file](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/general.yml), and the "sdg" refers to [that line within the file](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/general.yml#L9).
 
 Jekyll will display translated text according to the "language" specified in the "front matter" of the current document.
 

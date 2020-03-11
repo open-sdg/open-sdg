@@ -78,14 +78,13 @@ Unlike open-sdg, the sdg-build project is not overridden -- it is simply used as
 
 One exception for advanced users: if you are using object-oriented Python code to extend the sdg-build library, you will likely want to keep a close eye on any changes to the sdg-build API.
 
-### translations-open-sdg and translations-un-sdg
+### sdg-translations
 
-The labels, blurbs, and miscellaneous copy in Open SDG depend on two separate projects containing translations:
+The labels, blurbs, and miscellaneous copy in Open SDG depend on a separate project containing translations:
 
-* [translations-open-sdg](https://github.com/open-sdg/translations-open-sdg), which contains translations specific to Open SDG
-* [translations-un-sdg](https://github.com/open-sdg/translations-un-sdg), which contains translations of UN-controlled metadata about the indicators
+* [sdg-translations](https://github.com/open-sdg/sdg-translations), which contains translations specific to Open SDG and translations of UN-controlled metadata about the indicators
 
-These projects are updated rarely, but may occasionally get fixes, or new translations as features are added to Open SDG.
+This project is updated rarely, but may occasionally get fixes, or new translations as features are added to Open SDG.
 
 #### translations -- Upgrade procedure
 
@@ -93,14 +92,14 @@ The version of these translations is typically controlled in the `config_data.ym
 
 ```
 translations:
-  - https://github.com/open-sdg/translations-open-sdg.git@0.9.0
+  - https://github.com/open-sdg/sdg-translations.git@0.9.0
 ```
 
 To upgrade to version 1.0.0, you would change it to this:
 
 ```
 translations:
-  - https://github.com/open-sdg/translations-open-sdg.git@1.0.0
+  - https://github.com/open-sdg/sdg-translations.git@1.0.0
 ```
 
 #### translations -- Considerations for upgrading
