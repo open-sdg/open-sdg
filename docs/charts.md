@@ -40,3 +40,34 @@ graph_type: binary
 ### Data requirements for binary charts
 
 Your data (CSV files typically) cannot have "Yes" and "No" for values. Instead you must use `1` to indicate "Yes" and `-1` to indicate "No".
+
+## Stacked bar
+
+This type of chart is similar to the bar chart, but is intended to display a certain disaggregation in a single "stacked" bar.
+
+> This type of chart is useful in cases where you would like to highlight some
+> disaggregation, such as Age or Sex. It is most commonly used in cases where
+> the data is a percentage, adding up to 100.
+
+For example, if an indicator is showing salaries, and you would like to highlight the difference between female and male salaries, you may want the "Sex" disaggregation to appear stacked in the same bar.
+
+### Data requirements for stacked bar charts
+
+The typical use-case for stacked bar charts requires quite a bit of special metadata. The following fields are recommended:
+
+* `graph_stacked_disaggregation`: This identifies which disaggregation should appear stacked in the same bar. For example:
+
+        graph_stacked_disaggregation: Sex
+
+* `graph_units_without_headline`: When displaying stacked bar charts, you likely don't want to display the aggregate "headline", since you are trying to highlight the disaggregation. You can do this with `graph_units_without_headline` like so:
+
+        graph_units_without_headline:
+          - percentage
+
+* `data_start_values`: If you are using stacked bar charts you likely want to highlight a particular disaggregation, which means that you want the chart to appear with certain values (such as "Female" and "Male") already selected. You can do this with `data_start_values`, like so:
+
+        data_start_values:
+          - field: Sex
+            value: Female
+          - field: Sex
+            value: Male
