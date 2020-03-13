@@ -18,8 +18,7 @@ src_dir: ''
 
 # Links to Git repositories with translation data.
 translations:
-  - https://github.com/open-sdg/translations-un-sdg.git@master
-  - https://github.com/open-sdg/translations-open-sdg.git@master
+  - https://github.com/open-sdg/sdg-translations.git@master
 
 map_layers:
   - geojson_file: https://geoportal1-ons.opendata.arcgis.com/datasets/4fcca2a47fed4bfaa1793015a18537ac_4.geojson
