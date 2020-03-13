@@ -7,6 +7,10 @@
 (function () {
   "use strict";
 
+  if (typeof L === 'undefined') {
+    return;
+  }
+
   var defaultOptions = {
     // YearSlider options.
     yearChangeCallback: null,

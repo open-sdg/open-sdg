@@ -1,19 +1,109 @@
-Year,Region,GeoCode,Value
-2011,,,50
-2011,East Midlands,E12000004,40
-2011,East of England,E12000006,60
-2011,London,E12000007,30
-2011,North East,E12000001,70
-2011,North West,E12000002,45
-2011,South East,E12000008,55
-2011,South West,E12000009,35
-2011,West Midlands,E12000005,65
-2012,,,50
-2012,East Midlands,E12000004,40
-2012,East of England,E12000006,60
-2012,London,E12000007,30
-2012,North East,E12000001,70
-2012,North West,E12000002,45
-2012,South East,E12000008,55
-2012,South West,E12000009,35
-2012,West Midlands,E12000005,65
+Year,Location,Sex,Region,GeoCode,Value
+2011,,male,,,50
+2011,,male,East Midlands,E12000004,40
+2011,,male,East of England,E12000006,60
+2011,,male,London,E12000007,30
+2011,,male,North East,E12000001,70
+2011,,male,North West,E12000002,45
+2011,,male,South East,E12000008,55
+2011,,male,South West,E12000009,35
+2011,,male,West Midlands,E12000005,65
+2012,,male,,,70
+2012,,male,East Midlands,E12000004,60
+2012,,male,East of England,E12000006,80
+2012,,male,London,E12000007,50
+2012,,male,North East,E12000001,90
+2012,,male,North West,E12000002,65
+2012,,male,South East,E12000008,75
+2012,,male,South West,E12000009,55
+2012,,male,West Midlands,E12000005,85
+2011,,female,,,60
+2011,,female,East Midlands,E12000004,50
+2011,,female,East of England,E12000006,70
+2011,,female,London,E12000007,40
+2011,,female,North East,E12000001,80
+2011,,female,North West,E12000002,55
+2011,,female,South East,E12000008,65
+2011,,female,South West,E12000009,45
+2011,,female,West Midlands,E12000005,75
+2012,,female,,,80
+2012,,female,East Midlands,E12000004,70
+2012,,female,East of England,E12000006,90
+2012,,female,London,E12000007,60
+2012,,female,North East,E12000001,100
+2012,,female,North West,E12000002,75
+2012,,female,South East,E12000008,85
+2012,,female,South West,E12000009,65
+2012,,female,West Midlands,E12000005,95
+2011,rural,male,,,50
+2011,rural,male,East Midlands,E12000004,40
+2011,rural,male,East of England,E12000006,60
+2011,rural,male,London,E12000007,30
+2011,rural,male,North East,E12000001,70
+2011,rural,male,North West,E12000002,45
+2011,rural,male,South East,E12000008,55
+2011,rural,male,South West,E12000009,35
+2011,rural,male,West Midlands,E12000005,65
+2012,rural,male,,,70
+2012,rural,male,East Midlands,E12000004,60
+2012,rural,male,East of England,E12000006,80
+2012,rural,male,London,E12000007,50
+2012,rural,male,North East,E12000001,90
+2012,rural,male,North West,E12000002,65
+2012,rural,male,South East,E12000008,75
+2012,rural,male,South West,E12000009,55
+2012,rural,male,West Midlands,E12000005,85
+2011,rural,female,,,60
+2011,rural,female,East Midlands,E12000004,50
+2011,rural,female,East of England,E12000006,70
+2011,rural,female,London,E12000007,40
+2011,rural,female,North East,E12000001,80
+2011,rural,female,North West,E12000002,55
+2011,rural,female,South East,E12000008,65
+2011,rural,female,South West,E12000009,45
+2011,rural,female,West Midlands,E12000005,75
+2012,rural,female,,,80
+2012,rural,female,East Midlands,E12000004,70
+2012,rural,female,East of England,E12000006,90
+2012,rural,female,London,E12000007,60
+2012,rural,female,North East,E12000001,100
+2012,rural,female,North West,E12000002,75
+2012,rural,female,South East,E12000008,85
+2012,rural,female,South West,E12000009,65
+2012,rural,female,West Midlands,E12000005,95
+2011,urban,male,,,10
+2011,urban,male,East Midlands,E12000004,1
+2011,urban,male,East of England,E12000006,20
+2011,urban,male,London,E12000007,1
+2011,urban,male,North East,E12000001,30
+2011,urban,male,North West,E12000002,5
+2011,urban,male,South East,E12000008,15
+2011,urban,male,South West,E12000009,5
+2011,urban,male,West Midlands,E12000005,25
+2012,urban,male,,,30
+2012,urban,male,East Midlands,E12000004,20
+2012,urban,male,East of England,E12000006,40
+2012,urban,male,London,E12000007,10
+2012,urban,male,North East,E12000001,50
+2012,urban,male,North West,E12000002,25
+2012,urban,male,South East,E12000008,35
+2012,urban,male,South West,E12000009,15
+2012,urban,male,West Midlands,E12000005,45
+2011,urban,female,,,30
+2011,urban,female,East Midlands,E12000004,20
+2011,urban,female,East of England,E12000006,40
+2011,urban,female,London,E12000007,10
+2011,urban,female,North East,E12000001,50
+2011,urban,female,North West,E12000002,25
+2011,urban,female,South East,E12000008,35
+2011,urban,female,South West,E12000009,15
+2011,urban,female,West Midlands,E12000005,45
+2012,urban,female,,,50
+2012,urban,female,East Midlands,E12000004,40
+2012,urban,female,East of England,E12000006,60
+2012,urban,female,London,E12000007,30
+2012,urban,female,North East,E12000001,70
+2012,urban,female,North West,E12000002,45
+2012,urban,female,South East,E12000008,55
+2012,urban,female,South West,E12000009,35
+2012,urban,female,West Midlands,E12000005,65

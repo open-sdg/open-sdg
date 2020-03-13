@@ -40,8 +40,8 @@ Feature: Disaggregation
     Then I should see "Borrar selecciones"
     And I should see "Seleccionar todo"
     And I should see "Limpiar todo"
-    And I should see "Group-translated"
-    And I should see "A-translated"
+    And I should see "Group-translated (Spanish)"
+    And I should see "A-translated (Spanish)"
 
   Scenario: The chart legend items are translated
     And I click on "the language toggle dropdown"
@@ -49,7 +49,7 @@ Feature: Disaggregation
     And I wait 3 seconds
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
-    Then I should see "A-translated" in the "chart legend" element
+    Then I should see "A-translated (Spanish)" in the "chart legend" element
 
   Scenario: The table columns are translated
     And I click on "the language toggle dropdown"
@@ -57,4 +57,4 @@ Feature: Disaggregation
     And I wait 3 seconds
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
-    Then I should see "A-translated" in the "data table" element
+    Then I should see "A-translated (Spanish)" in the "data table" element

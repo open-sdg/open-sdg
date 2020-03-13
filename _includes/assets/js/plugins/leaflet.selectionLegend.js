@@ -7,6 +7,10 @@
 (function () {
   "use strict";
 
+  if (typeof L === 'undefined') {
+    return;
+  }
+
   L.Control.SelectionLegend = L.Control.extend({
 
     initialize: function(plugin) {
