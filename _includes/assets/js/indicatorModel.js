@@ -34,6 +34,7 @@ var indicatorModel = function (options) {
   this.country = options.country;
   this.indicatorId = options.indicatorId;
   this.shortIndicatorId = options.shortIndicatorId;
+  this.chartTitle = options.chartTitle,
   this.chartTitles = options.chartTitles;
   this.graphType = options.graphType;
   this.measurementUnit = options.measurementUnit;
@@ -283,11 +284,8 @@ var indicatorModel = function (options) {
   };
 
   this.updateChartTitle = function() {
-    if (typeof that.chartTitles === 'string') {
-      // The JSON.parse is necessary because it was "jsonified" which adds quotes.
-      that.chartTitle = JSON.parse(that.chartTitles);
-    }
-    else {
+    // We only need to change anything if this indicator has multiple titles.
+    if (that.chartTitles && that.chartTitles.length > 0) {
       var chartTitle = _.findWhere(that.chartTitles, { unit: that.selectedUnit });
       that.chartTitle = (chartTitle) ? chartTitle.title : that.chartTitles[0].title;
     }

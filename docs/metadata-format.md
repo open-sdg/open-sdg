@@ -32,10 +32,9 @@ If the indicator is going to display a graph, the following fields are required:
 * `graph_title` - the title that displays above the graph/chart. This can be simple text (or a translation key) if you would like the chart title to be the same for all units of measurement. Examples:
     * My graph title for 1.1.1
     * my_translations.1-1-1-graph_title
+* `graph_titles` - However if you would like the chart title to depend on the user-selected unit of measurement, then you can use `graph_titles` (*plural*) with a more complex structure:
 
-    <br>However if you would like the chart title to depend on the user-selected unit of measurement, then you can use a more complex structure:
-
-        graph_title:
+        graph_titles:
           - unit: Percent
             title: My title for percentages
           - unit: Total
