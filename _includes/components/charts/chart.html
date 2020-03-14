@@ -8,8 +8,8 @@
     <div id="selectionsChart">
       <div id="chart-canvas">
         <h3 class="chart-title">
-          {% if page.indicator.graph_title.first %}
-            {{ page.indicator.graph_title.first.title }}
+          {% if page.indicator.graph_titles %}
+            {{ page.indicator.graph_titles.first.title }}
           {% else %}
             {{ page.indicator.graph_title }}
           {% endif %}
