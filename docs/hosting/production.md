@@ -35,4 +35,4 @@ Government policy may dictate your choice of where to host your production envir
 
 ## GitHub Pages for a production environment
 
-Using GitHub Pages to host your production environment is a good option, because it is free to use, reliable, and requires no maintenance. The setup process is fairly similar to the [quick start](../quick-start.md) procedure, but requires a bit more explanation. For a complete explanation of the details, see [here](../github-pages-production.md).
+Using GitHub Pages to host your production environment is a good option, because it is free to use, reliable, and requires no maintenance. The setup process is fairly similar to the [quick start](../quick-start.md) procedure, but requires a bit more explanation. For a complete explanation of the details, see [here](./github-pages-production.md).
