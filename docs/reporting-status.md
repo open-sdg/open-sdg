@@ -6,11 +6,11 @@ Out of the box, Open SDG provides a page showing the "reporting status" of all t
 
 By default, the reporting status options dispayed are **Complete**, **In progress** and **Exploring data sources**. However, these options can be changed to meet your needs. For example, options can be removed or another option, such as **Not applicable**, can be used.
 
-The options available can be controlled by adjusting the [schema file](https://open-sdg.readthedocs.io/en/latest/metadata-format/#schema). For example, [here is the section](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L135) in the data starter repository, where you would adjust the available options for reporting status.
+The options available can be controlled by adjusting the [schema file](./metadata-format/#schema). For example, [here is the section](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L135) in the data starter repository, where you would adjust the available options for reporting status.
 
 ## Color-coding
 
-The horizontal bars on the reporting status page have color-coded segments. The default options mentioned above are already color-coded for green, yellow, and red, respectively. That color-coding is controlled in CSS code in [this section](https://github.com/open-sdg/open-sdg/blob/master/assets/css/default.scss#L640).
+The horizontal bars on the reporting status page have color-coded segments. The default options mentioned above are already color-coded for green, yellow, and red, respectively. That color-coding is controlled in CSS code in [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/layouts/_reporting_status.scss).
 
 To color-code your custom options, add your own CSS code (such as in a `custom.scss` file) using a class name that is the same as the option value. For example, if your custom options are configured like so:
 

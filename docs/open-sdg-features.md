@@ -17,7 +17,7 @@ Some examples of data being shown on maps are:
 * [3.2.1 on Rwanda's Open SDG platform](https://sustainabledevelopment-rwanda.github.io/3-2-1/)
 * [3.c.1 on UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/3-a-1/)
 
-For guidance on how set up your site and data in order to be able to display data on a map (as well as on a chart and table), see the [Maps page](https://open-sdg.readthedocs.io/en/latest/maps/).
+For guidance on how set up your site and data in order to be able to display data on a map (as well as on a chart and table), see the [Maps page](./maps.md).
 
 ## Embedded content
 Another way of showing data/information on a indicator page is by embedding content from other websites/applications.
@@ -26,14 +26,14 @@ An examples of embedded content as main content is a [macro-economic dashboard o
 
 Content can also be embedded on a data tab next to the Chart and Table tabs.
 
-Embedded features are configured in the metadata files. See the [*Embedded feature metadata* section on the Metadata format page](https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata) for more guidance.
+Embedded features are configured in the metadata files. See the [*Embedded feature metadata* section on the Metadata format page](./metadata-format.md#embedded-feature-metadata) for more guidance.
 
 ## Targets on goal pages
 By default, targets are not shown on the goal pages. An example of this is the [UK Open SDG platform](https://sustainabledevelopment-uk.github.io/1/).
 
 However, Open SDG platforms can be configured to show targets on the goal pages. An example of this is [Armenia's Open SDG platform](https://armstat.github.io/sdg-site-armenia/1/)
 
-For guidance on how to display targets on your goal pages, see the [*Optional feature: Goal page layouts* section on the Customisations page](https://open-sdg.readthedocs.io/en/latest/customisation/#optional-feature-goal-page-layouts).
+For guidance on how to display targets on your goal pages, see the [*Optional feature: Goal page layouts* section on the Customisations page](./customisation/#optional-feature-goal-page-layouts).
 
 ## Reporting status options
 By default, the reporting status options dispayed are **Complete**, **In progress** and **Exploring data sources**. However, these options can be changed to meet your needs. For example, options can be removed or another option, **Not applicable**, can be used.
@@ -44,7 +44,7 @@ An example of removing one of the options is the [UK's Reporting status page](ht
 
 An example of using the **Not applicable** option is [Rwanda's Reporting status page](https://sustainabledevelopment-rwanda.github.io/reporting-status/).
 
-For details, see [here](https://open-sdg.readthedocs.io/en/latest/reporting-status/).
+For details, see [here](./reporting-status/).
 
 ## Display data for national indicators as well as global indicators
 One way of displaying national indicators on an Open SDG platform is by adding them in the same section as the global indicators and tagging them as national. An example of this is [Armenia's platform](https://armstat.github.io/sdg-site-armenia/1/).
@@ -54,7 +54,7 @@ Another way of displaying national indicators is by having them on separate page
 ## Contrast button
 By default, two buttons show to allow you to toggle between different contrast levels - the [US site](https://sdg.data.gov/) is an example of using this option. However, you can choose to user a more accessible contrast toggle button - the [UK site](https://sustainabledevelopment-uk.github.io/) is an example of using this option.
 
-For guidance on how to use the more accessible contrast button, see the [*contrast_type* section on the Configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/#contrast_type).
+For guidance on how to use the more accessible contrast button, see the [*contrast_type* section on the Configuration page](./configuration/#contrast_type).
 
 ## Add pages
 By default, there are four pages which show in the menu bar: Reporting status, About, Guidance and FAQ.
@@ -65,14 +65,14 @@ An example of menu items being added is [UK's site](https://sustainabledevelopme
 
 Even though only four pages are linked to in the menu by default, there are other pages provided for use (e.g. Contacts, News) as well as the option to easily create your own pages.
 
-For guidance on how to add more pages to the menu, see the [*menu* section of the Configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/#menu).
+For guidance on how to add more pages to the menu, see the [*menu* section of the Configuration page](./configuration/#menu).
 
 ## Filter by disaggregation
 Open SDG platforms allow data to be displayed in a way in which it can be filtered by disaggregation. This allows user to compare different breakdowns for a particular indicator.
 
 An example of providing disaggregation filtering is [indicator 5.2.2 on the UK site](https://sustainabledevelopment-uk.github.io/5-2-2/).
 
-This feature is configured with the data files. For guidance on how to provide disaggregation filtering, see the [Data format page](https://open-sdg.readthedocs.io/en/latest/data-format/).
+This feature is configured with the data files. For guidance on how to provide disaggregation filtering, see the [Data format page](./data-format.md).
 
 ## News, posts, and categories
 Open SDG includes the ability to post news and updates to your site. In all respects, this functionality matches what is described in [this Jekyll documentation](https://jekyllrb.com/docs/posts/).

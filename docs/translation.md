@@ -6,7 +6,7 @@ This platform is designed to be multilingual, and leverages the translations bei
 
 This document provides an overview of how the platform accomplishes this, and how it can be extended.
 
-Throughout this discussion of translation, there will be repeated mention of "translation keys". See [here](https://open-sdg.readthedocs.io/en/latest/glossary/#translation-keys) for a definition.
+Throughout this discussion of translation, there will be repeated mention of "translation keys". See [here](./glossary/#translation-keys) for a definition.
 
 ## Translation data
 
