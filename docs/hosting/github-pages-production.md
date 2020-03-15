@@ -1,0 +1,88 @@
+<h1>GitHub Pages for a production environment</h1>
+
+GitHub Pages is a great option for hosting your production environment, because it is free to use, reliable, and requires no maintenance. The setup process is fairly similar to the [quick start](../quick-start.md) procedure, but requires a bit more explanation. This document will explain the technical details.
+
+## Default site address
+
+By default, a GitHub Pages site's address is equal to your GitHub organisation plus `.github.io`, plus a subfolder equal to your site repository name.
+
+For example, if your organisation is `my-stats-org` and your site repository name is `sdg-site`, then your default GitHub pages deployment might be available at `https://my-stats-org.github.io/sdg-site`.
+
+As discussed above with the `baseurl` setting, you probably don't want a subfolder for your production site. So instead of `https://my-stats-org.github.io/sdg-site` you might prefer `https://my-stats-org.github.io`. (Actually you probably want something even more custom, but we will discuss that later.) In order to accomplish this, you will need a second GitHub organisation.
+
+## Production organisation and repositories
+
+First, create a second organisation to use for production. This will a public-facing organisation, so choose the name accordingly. For example if your country is France, you might choose `sustainabledevelopment-france`. You can create GitHub organisations [here](https://github.com/organizations/plan) (choose the free option).
+
+After you've created the organisation, you will need to create 2 repositories inside it. The names of the repositories is discussed below.
+
+1. Repository for production data: This repository can be named whatever you would like. Perhaps something like `sdg-data`, `sdg-data-prod`, `sdg-data-france`, etc.
+2. Repository for production site: This repository **must** be named the same as your organisation, plus `.github.io`. For example, if your organisation is `my-stats-org`, then you **must** name this repository exactly: `my-stats-org.github.io`.
+
+You can create these repositories [here](https://github.com/new). **Make sure that you select your new production organisation under "Owner"!**
+
+## Contents of the "production" repositories
+
+Note that you will never be manually adding anything to these "production" repositories. The content of these repositories will be 100% automated. So, for the rest of this document, we will go back to referring to your original "site repository" and "data repository".
+
+## Setting up production deployments - data repository
+
+If you started by using the [data starter](https://github.com/open-sdg/open-sdg-data-starter) as a template, then you already have a [GitHub Actions workflow](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/.github/workflows/deploy-to-production.yml) for production deployments.
+
+Find that file in your data repository under `.github/workflows/deploy-to-production.yml`, and change it as instructed in the file. (If you do not have the file already, create a new one in that location using the [starter version](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/.github/workflows/deploy-to-production.yml) as a guide.)
+
+## Performing a production deployment - data repository
+
+To perform a production deployment of your **data**, you simply need to merge code to the `master` branch. This can be done as follows:
+
+1. Go to your data repository in GitHub.com.
+2. Press the `New pull request` button, which you should see next to the `Branch: develop` drop-down.
+3. Press `base: develop` and choose `master`. You should see something like:
+
+    base: master <- compare: develop
+
+4. For "Title" enter anything, such as "Production release".
+5. Press the green "Create pull request" button.
+6. Wait for any automated tests to complete. This may take a few minutes.
+7. Press the green "Merge pull request" button.
+
+This will trigger the production deployment. You can go to the "Actions" section of your GitHub.com repository to watch the progress. It should succeed after a few minutes.
+
+## Setting up production deployment - site repository
+
+If you started by using the [site starter](https://github.com/open-sdg/open-sdg-site-starter) as a template, then you already have a [GitHub Actions workflow](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/.github/workflows/deploy-to-production.yml) for production deployments.
+
+Find that file in your site repository under `.github/workflows/deploy-to-production.yml`, and change it as instructed in the file. (If you do not have the file already, create a new one in that location using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/.github/workflows/deploy-to-production.yml) as a guide.)
+
+Before we can perform a deployment, we have to tell the site repository where to find the production data. If you started by using the [site starter](https://github.com/open-sdg/open-sdg-site-starter) as a template, then you should have a production-specific config file: [_config_prod.yml](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml). (If you do not have the file already, create a new one in that location, using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml) as a guide.)
+
+Edit the [remote_data_prefix line](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml#L17) in that file to point to the GitHub Pages URL for your production organisation and repository. For example, if your production organisation is `my-stats-org`, and your production **data** repository is `sdg-data`, then use:
+
+```
+remote_data_prefix: "https://my-stats-org.github.io/sdg-data"
+```
+
+## Performing a production deployment - site repository
+
+To perform a production deployment of your **site**, you simply need to merge code to the `master` branch. This can be done as follows:
+
+1. Go to your site repository in GitHub.com.
+2. Press the `New pull request` button, which you should see next to the `Branch: develop` drop-down.
+3. Press `base: develop` and choose `master`. You should see something like:
+
+    base: master <- compare: develop
+
+4. For "Title" enter anything, such as "Production release".
+5. Press the green "Create pull request" button.
+6. Wait for any automated tests to complete. This may take a few minutes.
+7. Press the green "Merge pull request" button.
+
+This will trigger the production deployment. You can go to the "Actions" section of your GitHub.com repository to watch the progress. It should succeed after a few minutes.
+
+## Viewing the production site
+
+Your production site, once it has been deployed as described in the previous step, will be available at a URL depending on your production organisation name. For example, if your production organisation is `my-stats-org`, you can visit your production site at `https://my-stats-org.github.io`.
+
+## Custom domain
+
+For your production site's domain you will likely want something other than `my-stats-org.github.io` (for example). A common approach is adding `sdg` as a subdomain for an existing domain, such as `https://sdg.example.com`. Whatever you choose, please refer to the GitHub documentation for configuring a custom domain [here](https://help.github.com/en/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site).

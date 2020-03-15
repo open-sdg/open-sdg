@@ -27,22 +27,12 @@ Here are the main bits of configuration to be aware of:
 2. [remote_data_prefix](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml#L17): As mentioned above, you can also have "production data". This is where you would point your production site to your production data.
 3. [analytics](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml#L19): Also as mentioned above, you probably only want analytics for your production traffic, and so that can be configured here.
 
-Note that the production configuration need not contain all the settings from the staging configuration. It only needs to contain those settings that are different.
+Note that the production configuration need not contain all the settings from the staging configuration. It only needs to contain those settings that you want to be different from staging.
 
 ## Hosting location
 
-Government policy may dictate your choice of where to host your production environment. Common choices are an [on-premise server](./linux-server.md) or a [cloud provider](./aws-s3.md). Be aware that these choices do carry some cost (however small).
-
-Another choice which is completely free is to host your production environment on GitHub Pages. Doing this is fairly similar to the [quick start](../quick-start.md) procedure, but requires a bit more explanation.
+Government policy may dictate your choice of where to host your production environment. The easiest option is GitHub Pages, which will be detailed below. But if GitHub Pages is not an option for you, common alternatives are an [on-premise server](./linux-server.md) or a [cloud provider](./aws-s3.md). Be aware that these choices do carry some cost (however small).
 
 ## GitHub Pages for a production environment
 
-Using GitHub Pages is free and reliable, making it a great choice for hosting your production environment. However it does require some extra steps in regards to the URL of your site.
-
-By default, a GitHub Pages site has a domain name equal to your GitHub organisation plus `.github.io`. In addition, as mentioned above, it typically requires the use of a subfolder equal to your site repository name.
-
-For example, if your organisation is `my-stats-org` and your site repository name is `sdg-site`, then your default GitHub pages deployment might be available at `https://my-stats-org.github.io/sdg-site`.
-
-For your production site you will likely want something much more simple and custom to your needs. A common approach is adding `sdg` as a subdomain, such as `https://sdg.example.com`.
-
-
+Using GitHub Pages to host your production environment is a good option, because it is free to use, reliable, and requires no maintenance. The setup process is fairly similar to the [quick start](../quick-start.md) procedure, but requires a bit more explanation. For a complete explanation of the details, see [here](../github-pages-production.md).
