@@ -26,6 +26,7 @@ pages:
         - "Case study: Rwanda": case-studies/rwanda.md
         - "Case study: United Kingdom": case-studies/uk.md
     - Community:
+        - Platform updates: updates.md
         - Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
