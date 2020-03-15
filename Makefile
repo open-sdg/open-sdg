@@ -38,12 +38,19 @@ build: clean
 	# Install the Node.js depedencies.
 	cd tests && npm install
 
+build.docs:
+	pip install mkdocs
+	mkdocs build
+
 serve: build
 	cd site-starter && bundle exec jekyll serve --skip-initial-build
 
 serve.detached: build
 	# Serve the Jekyll site at http://127.0.0.1:4000/
 	cd site-starter && bundle exec jekyll serve --detach --skip-initial-build
+
+serve.docs: build.docs
+	mkdocs serve
 
 test.html: serve.detached
 	# HTML proofer.
@@ -58,5 +65,9 @@ test.accessibility: serve.detached
 	cd tests && npx pa11y-ci --config accessibility/pa11yci-desktop.json
 	cd tests && npx pa11y-ci --config accessibility/pa11yci-mobile.json
 	cd tests && npx pa11y-ci --config accessibility/pa11yci-contrast.json
+
+test.docs: build.docs
+	gem install html-proofer
+	htmlproofer site
 
 test: test.html test.features test.accessibility

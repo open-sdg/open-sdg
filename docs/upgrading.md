@@ -30,7 +30,7 @@ In most cases, the worst that will happen is that you will miss out on any impro
 
 1. When possible, avoid overriding files. Prefer configuration changes and style changes, if possible, over overrides of files.
 2. If an override is necessary, try to override `_includes` files before overriding `_layouts` files. The `_includes` files are smaller and easier to maintain.
-3. When performing an upgrade, check the [changelog](./changelog/) to see if any of your overridden files have changed. If so, read the details in the changelog to help decide if you need to make any adjustments in your overridden versions.
+3. When performing an upgrade, check the [changelog](./changelog.md) to see if any of your overridden files have changed. If so, read the details in the changelog to help decide if you need to make any adjustments in your overridden versions.
 
 ### jekyll-open-sdg-plugins
 

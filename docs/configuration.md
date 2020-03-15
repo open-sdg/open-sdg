@@ -124,7 +124,7 @@ plugins:
 
 ### remote_data_prefix
 
-This **required** setting tells the platform where to find your hosted [data repository](./glossary/#data-repository).
+This **required** setting tells the platform where to find your hosted [data repository](./glossary.md#data-repository).
 
 ```nohighlight
 remote_data_prefix: https://my-github-org.github.io/my-data-repository
@@ -205,7 +205,7 @@ custom_css:
   - /assets/css/custom.css
 ```
 
-NOTE: This approach is deprecated. It is recommended to use [this](./configuration/#custom_css) approach instead.
+NOTE: This approach is deprecated. It is recommended to use [this](./configuration.md#custom_css) approach instead.
 
 ### custom_js
 
