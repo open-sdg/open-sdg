@@ -126,7 +126,6 @@ The following **changes** should be made in the `_config.yml` file, if needed:
 
 * Change `remotedatabaseurl` to `remote_data_prefix`
 * Check the format of the `menu` settings and make sure they match what is [here](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L68)
-* Change the value of `goal_image_base` to the following (unless you need it pointed to a particular place): https://open-sdg.github.io/translations-un-sdg/assets/img/goals
 * Update the `map_layers` configuration, if your site is using the Open SDG mapping functionality. In particular:
     * Remove each map layer's `serviceUrl`, `nameProperty`, and `idProperty`
     * Add a `subfolder` (which should match the `output_subfolder` you added to your data repository)
@@ -161,6 +160,7 @@ The follow config settings should be **added**, if needed:
     languages_public:
       kk: kz
     ```
+* If you are upgradiing to 1.0.0 from a much lower version, there may be additional settings needed. You should scan through [this config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml) and decide if there is anything else you need to add to yours.
 
 ### Update any custom CSS
 

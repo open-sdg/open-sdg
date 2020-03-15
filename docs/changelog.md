@@ -54,7 +54,7 @@ This is a major version upgrade and contains some breaking changes. Full technic
     * `t` has changed to `page.t`
     * `meta` has changed to `page.indicator`
     * `current_language` has changed to `page.language`
-    * Details on Liquid variables can be found [here](https://open-sdg.readthedocs.io/en/latest/customisation/#working-with-jekyll-templates).
+    * Details on Liquid variables can be found [here](./customisation.md#working-with-jekyll-templates).
 * The following include files have been removed:
     * indicator-variables.html
     * goal-variables.html
