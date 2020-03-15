@@ -64,3 +64,4 @@ pages:
         - AWS S3: hosting/aws-s3.md
         - Linux server: hosting/linux-server.md
         - Production environments: hosting/production.md
+        - Github pages (production): hosting/github-pages-production.md
