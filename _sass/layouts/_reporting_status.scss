@@ -125,5 +125,25 @@ body.contrast-high {
     .value {
       color: white !important;
     }
+    
   }
+
+  .complete{
+    background-color: white;
+    color: black !important;
+  }
+
+  .inprogress{
+    background-color: #898989;
+  }
+
+  .notstarted{
+    border: 1px solid white !important;
+    color: white !important;
+  }
+
+  .notapplicable{
+    color: black !important;
+  }
+  
 }
