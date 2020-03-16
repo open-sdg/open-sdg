@@ -73,6 +73,8 @@ var indicatorView = function (model, options) {
     }
 
     view_obj.createSelectionsTable(args);
+
+    view_obj.updateChartTitle(args.chartTitle);
   });
 
   this._model.onStartValuesNeeded.attach(function(sender, args) {
@@ -312,6 +314,12 @@ var indicatorView = function (model, options) {
       callback(config, info);
     });
   };
+
+  this.updateChartTitle = function(chartTitle) {
+    if (typeof chartTitle !== 'undefined') {
+      $('.chart-title').text(chartTitle);
+    }
+  }
 
   this.updatePlot = function(chartInfo) {
     view_obj._chartInstance.data.datasets = chartInfo.datasets;

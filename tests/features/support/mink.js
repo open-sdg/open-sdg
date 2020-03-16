@@ -30,6 +30,7 @@ const driver = new mink.Mink({
     "the filter drop-down button": ".variable-selector .accessBtn",
     "the first filter option": ".variable-selector .variable-options label",
     "selected unit of measurement": "#units input[checked='']",
+    "the last unit of measurement": "#units label:last-child input",
     "chart legend": "#legend li",
     "chart legend item": "#legend li",
     "data table": "#selectionsTable",

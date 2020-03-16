@@ -7,7 +7,13 @@
     {% assign graph_template = 'components/charts/' | append: include.graph_type | append: '.html' %}
     <div id="selectionsChart">
       <div id="chart-canvas">
-        <h3 class="chart-title">{{ page.indicator.graph_title }}</h3>
+        <h3 class="chart-title">
+          {% if page.indicator.graph_titles %}
+            {{ page.indicator.graph_titles.first.title }}
+          {% else %}
+            {{ page.indicator.graph_title }}
+          {% endif %}
+        </h3>
         <div id="chart" class="plot-container">
           {% include {{ graph_template }} %}
         </div>
