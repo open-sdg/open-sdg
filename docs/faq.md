@@ -2,12 +2,12 @@
 
 ## Is the Open SDG platform free to reuse?
 
-Yes. Open SDG is open source and is free for anyone to reuse. See the [What does the NRP cost?](https://open-sdg.readthedocs.io/en/latest/about/#what-does-the-nrp-cost) section for
+Yes. Open SDG is open source and is free for anyone to reuse. See the [What does the NRP cost?](./about.md#what-does-the-nrp-cost) section for
 more information.
 
 ## How do I copy the Open SDG platform?
 
-The [Quick start](https://open-sdg.readthedocs.io/en/latest/quick-start/) guide gives technical
+The [Quick start](./quick-start.md) guide gives technical
 instructions on the quickest way to get a copy of the open-sdg platform up and running.
 
 ## How long would it take to set up a copy of Open SDG
@@ -17,7 +17,7 @@ With the right skills, it should take less than a day to set up a standard copy,
 ## Can the Open SDG platform be customised?
 
 Yes. Copies of Open SDG can be adapted to local needs – technical developer resource will
-be needed to do this. The [Customisation](https://open-sdg.readthedocs.io/en/latest/customisation/) section gives detailed technical guidance.
+be needed to do this. The [Customisation](./customisation.md) section gives detailed technical guidance.
 
 ## Are maps available in Open SDG?
 
@@ -25,7 +25,7 @@ Yes. Maps can be automatically generated from the data if GeoCodes are included 
 - [Map for UK indicator 3.a.1](https://sustainabledevelopment-uk.github.io/3-a-1/) ('Prevalence of tobacco use among persons aged 15 years and older')
 - [Map for Rwanda indicator 1.2.1](https://sustainabledevelopment-rwanda.github.io/1-2-1/) (1.2.1: 'Proportion of population living below the national poverty line')
 
-Maps from other systems or publications can also be embedded. See the [Maps](https://open-sdg.readthedocs.io/en/latest/maps/) section
+Maps from other systems or publications can also be embedded. See the [Maps](./maps.md) section
 for more information, and the UK [Mapping guidance](https://github.com/ONSdigital/sdg-indicators/wiki/Mapping) for step-by-step instructions on setting up a map.
 
 ## Can content from other websites be embedded in Open SDG?
@@ -37,7 +37,7 @@ Yes, content can be embedded into the indicator page using HTML.
 ## Can the Open SDG platform be translated into other languages?
 
 Yes – Open SDG has been designed to be multilingual. As well as English, many elements
-are already available in French and Spanish. The [Translation](https://open-sdg.readthedocs.io/en/latest/translation/) section gives more technical information, including
+are already available in French and Spanish. The [Translation](./translation.md) section gives more technical information, including
 how to add a language.
 
 ## Can I use Open SDG with other databases?
@@ -68,14 +68,14 @@ With the **double-repository** approach, site content is kept separate from data
 2. Activity logs on the site repository do not appear on the data repository, and vice versa. This helps make the process of maintenance and review easier.
 3. Having the data and site in separate repositories adds a layer of protection against accidental version control problems.
 
-The double-repository approach is detailed in the [Quick Start](https://open-sdg.readthedocs.io/en/latest/quick-start/) with the help of the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) template projects.
+The double-repository approach is detailed in the [Quick Start](./quick-start.md) with the help of the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) template projects.
 
 By contrast, with the **single-repository** approach, site content and data/metadata are contained with the same single repository. This approach can be useful for local testing and development, as it simplifies the architecture of the platform. The benefits include:
 
 1. Faster quick-start process
 2. Simpler workflow for testing out changes locally
 
-The single-repository is exemplified in the [simple starter](https://github.com/open-sdg/open-sdg-simpler-starter) template project.
+The single-repository is exemplified in the [simple starter](https://github.com/open-sdg/open-sdg-simple-starter) template project.
 
 ## Can content from other websites be embedded in Open SDG?
 

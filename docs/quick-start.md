@@ -112,6 +112,6 @@ At this point, any new proposed file changes in the repositories will trigger th
 
 ## Possible next steps?
 
-1. [Add data and metadata to the data repository](../making-updates/)
-1. [Tweak and customise the site repository as needed](../customisation/)
-1. [Set up separate "production" environments](../deployment/)
+1. [Add data and metadata to the data repository](./making-updates.md)
+1. [Tweak and customise the site repository as needed](./customisation.md)
+1. [Set up separate "production" environments](./deployment.md)

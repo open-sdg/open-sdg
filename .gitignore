@@ -5,3 +5,5 @@ tests/site/Gemfile.lock
 site-starter
 data-starter
 venv
+/site
+.vscode
