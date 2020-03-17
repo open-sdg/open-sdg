@@ -7,5 +7,5 @@ Feature: Reporting status page
   Background:
     Given I am on "/reporting-status"
 
-  Scenario: All 17 goals are listed
-    Then I should see 17 "goal status" elements
+  Scenario: All available goals are listed
+    Then I should see 4 "goal status" elements

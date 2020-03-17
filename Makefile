@@ -12,6 +12,9 @@ build: clean
 	# Clone the starter repositories.
 	git clone https://github.com/open-sdg/open-sdg-site-starter.git site-starter
 	git clone https://github.com/open-sdg/open-sdg-data-starter.git data-starter
+	# To make the tests run faster, remove all the starter data.
+	rm -fr data-starter/data
+	rm -fr data-starter/meta
 	# Copy all the theme files into the site starter (using symbolic links).
 	rm -fr site-starter/_includes
 	rm -fr site-starter/_layouts

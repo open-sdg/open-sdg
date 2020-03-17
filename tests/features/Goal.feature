@@ -10,26 +10,12 @@ Feature: Goal page
 
     Examples:
       | PATH | TOTAL |
-      | /1   | 14    |
-      | /2   | 13    |
-      | /3   | 27    |
-      | /4   | 11    |
-      | /5   | 14    |
-      | /6   | 11    |
-      | /7   | 6     |
-      | /8   | 17    |
-      | /9   | 12    |
-      | /10  | 11    |
-      | /11  | 15    |
-      | /12  | 13    |
-      | /13  | 8     |
-      | /14  | 10    |
-      | /15  | 14    |
-      | /16  | 23    |
-      | /17  | 25    |
+      | /1   | 10    |
+      | /2   | 4     |
+      | /3   | 1     |
 
   Scenario: The goal-by-target layout displays correctly
     Given I am on "/testing-goal-by-target"
     Then I should see "Targets"
-    And I should see 7 "goal target" elements
-    And I should see 14 "goal indicator" elements
+    And I should see 5 "goal target" elements
+    And I should see 10 "goal indicator" elements
