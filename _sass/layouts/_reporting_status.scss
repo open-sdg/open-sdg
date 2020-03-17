@@ -1,14 +1,19 @@
 .notapplicable {
-  background-color: #B7B7B7;
+  background-color: #ccc;
+  background: repeating-linear-gradient(
+    135deg,
+    #ccc,
+    white 10px,
+    #ccc 10px,
+    white 20px
+  );
 }
-.notstarted {
-  background-color: #E27874;
-}
+
 .inprogress {
-  background-color: #f0ad4e;
+  background-color: #767676;
 }
 .complete {
-  background-color: #5cb85c;
+  background-color: #000000;
 }
 
 #main-content {
@@ -27,9 +32,18 @@
         margin-right: 3px;
         padding: 2px 5px;
         border-radius: 4px;
-        color: black;
+        
         width: 40px;
         text-align: center;
+        font-size: 16px;
+
+        &.notstarted{
+          border: 1px solid #000000;
+          color: black;
+        }
+        &.complete, &.inprogress{
+          color: white;
+        }
       }
     }
   }
@@ -39,8 +53,8 @@
     margin-left: 3px;
   }
   .goal-stats {
+    border: 1px solid #000000;
     font-size: 0;
-    height: 10px;
     margin-top:10px;
     & span {
       display: inline-block;
@@ -62,7 +76,7 @@
     .total {
        line-height: 24px;
        vertical-align: middle;
-       font-size: 0.65em;
+       font-size: 16px;
        width: auto;
        padding-left: 4px;
        padding-right: 4px;
@@ -104,6 +118,10 @@
 
 body.contrast-high {
 
+  .goal-stats{
+    border: 1px solid white !important;
+  }
+
   .statuses {
     strong {
       color: white;
@@ -111,5 +129,28 @@ body.contrast-high {
     .value {
       color: white !important;
     }
+    
   }
+
+  .summary .statuses .notstarted{
+    border: 1px solid white !important;
+  }
+
+  .complete{
+    background-color: white;
+    color: black !important;
+  }
+
+  .inprogress{
+    background-color: #767676;
+  }
+
+  .notstarted{
+    color: white !important;
+  }
+
+  .notapplicable{
+    color: black !important;
+  }
+  
 }

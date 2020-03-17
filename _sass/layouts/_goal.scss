@@ -13,6 +13,11 @@ body.contrast-high {
       span.status, .tags li{
         color: black !important;
       }
+
+      span.status.notstarted{
+        color: white !important;
+        border: 1px solid white !important;
+      }
     }
   }
 }
