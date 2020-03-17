@@ -69,7 +69,7 @@ The typical use-case for stacked bar charts requires quite a bit of special meta
 
         graph_stacked_disaggregation: Sex
 
-* `graph_units_without_headline`: When displaying stacked bar charts, you likely don't want to display the aggregate "headline", since you are trying to highlight the disaggregation. You can do this with `graph_units_without_headline` like so:
+* `graph_units_without_headline`: When displaying stacked bar charts, you likely don't want to display the aggregate "headline", since you are trying to highlight the disaggregation. If your data does not have a headline, then you can skip this. But if your data *does* have a headline, and you would prefer to hide it, then you can do this with `graph_units_without_headline` like so:
 
         graph_units_without_headline:
           - percentage
