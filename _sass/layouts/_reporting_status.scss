@@ -118,6 +118,10 @@
 
 body.contrast-high {
 
+  .goal-stats{
+    border: 1px solid white !important;
+  }
+
   .statuses {
     strong {
       color: white;
@@ -126,6 +130,10 @@ body.contrast-high {
       color: white !important;
     }
     
+  }
+
+  .summary .statuses .notstarted{
+    border: 1px solid white !important;
   }
 
   .complete{
@@ -138,7 +146,6 @@ body.contrast-high {
   }
 
   .notstarted{
-    border: 1px solid white !important;
     color: white !important;
   }
 
