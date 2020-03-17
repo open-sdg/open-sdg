@@ -37,6 +37,8 @@ To use this type, put `binary` in the `graph_type` metadata field for an indicat
 graph_type: binary
 ```
 
+In addition, see the special data requirements below.
+
 ### Data requirements for binary charts
 
 Your data (CSV files typically) cannot have "Yes" and "No" for values. Instead you must use `1` to indicate "Yes" and `-1` to indicate "No".
@@ -50,6 +52,14 @@ This type of chart is similar to the bar chart, but is intended to display a cer
 > the data is a percentage, adding up to 100.
 
 For example, if an indicator is showing salaries, and you would like to highlight the difference between female and male salaries, you may want the "Sex" disaggregation to appear stacked in the same bar.
+
+To use this type, put `stacked_bar` in the `graph_type` metadata field for an indicator. For example:
+
+```
+graph_type: stacked_bar
+```
+
+In addition, see the special data requirements below.
 
 ### Data requirements for stacked bar charts
 
