@@ -33,9 +33,9 @@ If you decide to have the human-readable labels as the field values in your Exce
 |Definitions|computation_definitions|
 |Unit of measurement|computation_units|
 
-**Note:** if you are unsure what the machine-readable field names are, take a look at the *_prose.yml* file in your data repo. If you haven't made any changes to your file, it should still follow [*_prose.yml* file that comes with the starter data repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml)
+**Note:** if you are unsure what the machine-readable field names are, take a look at the *_prose.yml* file in your data repo. If you haven't made any changes to your file, it should still follow the [*_prose.yml* file that comes with the starter data repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml)
 
-If you want to use the machine-readable field names in the Excel or CSV files instead of having a mapping. Your file would look like this:
+If you want to use the machine-readable field names in the Excel or CSV files instead of having a mapping, your file would look like this:
 
 
 |    |    |
