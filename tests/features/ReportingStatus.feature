@@ -8,4 +8,4 @@ Feature: Reporting status page
     Given I am on "/reporting-status"
 
   Scenario: All available goals are listed
-    Then I should see 3 "goal status" elements
+    Then I should see 4 "goal status" elements

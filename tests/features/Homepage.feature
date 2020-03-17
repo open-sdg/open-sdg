@@ -11,7 +11,7 @@ Feature: Homepage
     Then I should see "My custom frontpage heading"
 
   Scenario: All available goal icons are visible
-    Then I should see 3 "goal icon" elements
+    Then I should see 4 "goal icon" elements
 
   Scenario: The download-all button is available
     Then I should see "Download all data"

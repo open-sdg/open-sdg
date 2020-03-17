@@ -10,7 +10,7 @@ Feature: Goal page
 
     Examples:
       | PATH | TOTAL |
-      | /1   | 9     |
+      | /1   | 10    |
       | /2   | 4     |
       | /3   | 1     |
 
@@ -18,4 +18,4 @@ Feature: Goal page
     Given I am on "/testing-goal-by-target"
     Then I should see "Targets"
     And I should see 5 "goal target" elements
-    And I should see 9 "goal indicator" elements
+    And I should see 10 "goal indicator" elements

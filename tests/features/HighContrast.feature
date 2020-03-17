@@ -8,4 +8,4 @@ Feature: High contrast mode
     Given I am on the homepage
     And I click on "the high-contrast button"
     Then the "body.contrast-high" element should exist
-    Then I should see 3 "high-contrast goal icon" elements
+    Then I should see 4 "high-contrast goal icon" elements
