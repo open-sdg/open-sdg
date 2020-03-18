@@ -192,10 +192,7 @@ var indicatorModel = function (options) {
 
   var headlineColor = '777777';
   
-  // use custom colors if defined
-  //this.colorSet = {{ site.graph_color_set | jsonify }};
-  //his.numberOfColors = {{ site.graph_color_number | jsonify }};
-  //this.customColors = {{ site.graph_color_list | jsonify }};
+  // use custom colors
   var colors = opensdg.chartColors(this.indicatorId);
   
   // allow headline + (2 x others)
