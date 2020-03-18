@@ -1,7 +1,7 @@
 opensdg.chartColors = function(indicatorId) {
   var colorSet = {{ site.graph_color_set | jsonify }};
   var numberOfColors = {{ site.graph_color_number | jsonify }};
-  var customColors = {{ site.graph_color_list | jsonify }};
+  var customColorList = {{ site.graph_color_list | jsonify }};
   
   this.goalNumber = parseInt(indicatorId.slice(indicatorId.indexOf('_')+1,indicatorId.indexOf('-')));
   this.goalColors = [['e5243b', '891523', 'ef7b89', '2d070b', 'f4a7b0', 'b71c2f', 'ea4f62', '5b0e17', 'fce9eb'],
