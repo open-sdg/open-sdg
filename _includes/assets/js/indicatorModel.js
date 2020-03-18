@@ -193,10 +193,10 @@ var indicatorModel = function (options) {
   var headlineColor = '777777';
   
   // use custom colors if defined
-  this.colorSet = {{ site.graph_color_set | jsonify }};
-  this.numberOfColors = {{ site.graph_color_number | jsonify }};
-  this.customColors = {{ site.graph_color_list | jsonify }};
-  var colors = opensdg.chartColors(this.indicatorId, this.colorSet, this.numberOfColors, this.customColors);
+  //this.colorSet = {{ site.graph_color_set | jsonify }};
+  //his.numberOfColors = {{ site.graph_color_number | jsonify }};
+  //this.customColors = {{ site.graph_color_list | jsonify }};
+  var colors = opensdg.chartColors(this.indicatorId);
   
   // allow headline + (2 x others)
   var maxDatasetCount = 2 * colors.length;
