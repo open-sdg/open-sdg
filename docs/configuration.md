@@ -342,6 +342,24 @@ frontpage_introduction_banner:
     title: title goes here
     description: description goes here
 ```
+### graph_color_set
+
+This optional setting can be used to customize the color set used in the charts. There are four possible entries:
+Use `graph_color_set: 'default'` for using the 6 default colors,
+`graph_color_set: 'sdg'` to use the 17 SDG colors in all charts,
+`graph_color_set: 'goal'` to use shades of the color of the current indicator's goal,
+`graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
+
+### graph_color_list
+
+This optional setting can be used to define a set of colors to be used in the charts. Precondition is `graph_color_set` to be `custom`. Enter a list of hexadecimal color codes.
+```yaml
+graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
+```
+
+### graph_color_number
+
+This optional setting can be used to limit the length of the list of colors selected via `graph_color_set`. The highest possible value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the maximum value is automatically selected. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar)
 
 ## Examples
 
