@@ -37,6 +37,7 @@ pages:
     - Data providers:
         - Making updates: making-updates.md
         - Metadata format: metadata-format.md
+        - Metadata file formats: metadata-file-formats.md
         - Data format: data-format.md
         - Data sources: data-sources.md
     - Developers:
