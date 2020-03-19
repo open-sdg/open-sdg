@@ -231,6 +231,7 @@
           }
 
           &[data-has-data="false"] {
+            display: none;
             cursor: default;
             &:hover {
               background: white;
