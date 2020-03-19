@@ -350,6 +350,10 @@ Use `graph_color_set: 'default'` for using the 6 default colors,
 `graph_color_set: 'goal'` to use shades of the color of the current indicator's goal,
 `graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
 
+> **NOTE**: Whatever color scheme you choose here, please ensure that all colors satisfy
+> the accessibility (minimum contrast) standards in your region. These colors will need to
+> be visible on white and black backgrounds.
+
 ### graph_color_list
 
 This optional setting can be used to define a set of colors to be used in the charts. Precondition is `graph_color_set` to be `custom`. Enter a list of hexadecimal color codes.
