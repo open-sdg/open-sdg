@@ -24,6 +24,7 @@ pages:
         - "Case study: Germany": case-studies/germany.md
         - "Case study: Kyrgyzstan": case-studies/kyrgyzstan.md
         - "Case study: Rwanda": case-studies/rwanda.md
+        - "Case study: United Kingdom": case-studies/uk.md
     - Community:
         - Support: support.md
         - Contribution guidelines: contribution.md
