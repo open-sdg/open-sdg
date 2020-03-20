@@ -44,7 +44,6 @@ If the indicator is going to display a graph, the following fields are required:
     * line
     * bar
     * binary
-    * stacked_bar
 * `national_geographical_coverage` - a label used in the absence of any disaggregation. Examples:
     * Australia
     * my_translations.australia
