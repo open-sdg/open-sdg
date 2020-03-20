@@ -16,7 +16,6 @@ Open SDG supports several types of charts for displaying indicator data:
   * Line: [example](https://visar.hagstofa.is/heimsmarkmidin/2-a-1), [documentation](../charts#line)
   * Bar: [example](https://sustainabledevelopment-uk.github.io/2-1-2/), [documentation](../charts#bar)
   * Binary (yes/no): [example](https://sdg.data.gov/1-5-1/), [documentation](../charts/#binary)
-  * Stacked bar: [documentation](../charts/#stacked-bar)
 
 ## Maps
 By default, data uploaded to an Open SDG platform is displayed on a chart and a table. You can configure your platform and data to also display data on a map.
