@@ -7,6 +7,10 @@ Feature: Homepage
   Background:
     Given I am on the homepage
 
+  Scenario: The introduction banner appears on the page
+    Then I should see "My frontpage introduction banner title"
+    And I should see "My frontpage introduction banner description"
+
   Scenario: The heading text can be customised
     Then I should see "My custom frontpage heading"
 

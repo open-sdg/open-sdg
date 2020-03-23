@@ -129,3 +129,7 @@ date_formats:
     en: '%B %d, %Y'
     es: '%d de %B de %Y'
     fr: '%d %B %Y'
+
+frontpage_introduction_banner:
+  title: My frontpage introduction banner title
+  description: My frontpage introduction banner description    
