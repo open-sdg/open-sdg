@@ -15,7 +15,7 @@ local_data_folder: _build
 create_indicators:
   layout: indicator
 create_goals:
-  layout: goal
+  layout: goal-by-target
 create_pages: true
 
 analytics:
