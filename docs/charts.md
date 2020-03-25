@@ -47,6 +47,14 @@ data_start_values:
     value: Male
 ```
 
+NOTE: Stacked bar charts tend to look best when all the bars are of equal height. For example, the disaggregated data could by percentages that all add up to 100. For example:
+
+Year | Sex | Value
+---  | --- | -----
+2018 |     | 100
+2018 | Female | 60
+2018 | Male | 40
+
 ## Binary
 
 This type of chart is meant to display data where the only possible values are "Yes" and "No". It does this by showing a bar going up for "Yes", and a bar going down for "No". See below for important data requirements.
