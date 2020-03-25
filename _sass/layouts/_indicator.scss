@@ -394,7 +394,11 @@
       .indicator-cards a {
         padding: 0;
         margin-bottom: 1.5rem;
-        color: blue;
+        color: #337ab7;
+
+        .tags li{
+          color: black;
+        }
       }
       .indicator-cards.target {
         margin-bottom: 1.5rem;
