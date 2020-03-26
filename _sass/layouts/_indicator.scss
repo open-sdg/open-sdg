@@ -394,16 +394,19 @@
       .indicator-cards a {
         padding: 0;
         margin-bottom: 1.5rem;
-        color: #337ab7;
+        color: #044b88;
 
         .tags li{
-          color: black;
+          color: #044b88;
         }
       }
       .indicator-cards.target {
         margin-bottom: 1.5rem;
         clear: left;
       }
+    }
+    .indicator-cards .tags li{
+      color: #044b88;
     }
   }
   .goal-indicators:after {
