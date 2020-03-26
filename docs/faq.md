@@ -25,7 +25,7 @@ Yes. It's easy to start monitoring traffic to an Open SDG platform as there is G
 
 To get a Google Analytics tracking code, sign in to Google and then [create a Google Analytics account](https://analytics.google.com/analytics/web/provision/#/provision/create). After you enter your website's details, you will be given a tracking code.
 
-For more information about using Google Analytics with an Open SDG platform, see the [Analytics](./analytics.md) section
+For more information about using Google Analytics with an Open SDG platform, see the [Analytics](./analytics.md) section.
 
 ## Are maps available in Open SDG?
 
