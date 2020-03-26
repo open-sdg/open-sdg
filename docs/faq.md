@@ -21,7 +21,7 @@ be needed to do this. The [Customisation](./customisation.md) section gives deta
 
 ## Can I monitor traffic to an Open SDG platform?
 
-Yes. It's easy to start monitoring traffic to an Open SDG platform as there is Google Analytics functionality built in. In the [*_config_prod.yml* file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml#L19-L21) in the site repo, there is a placeholder, where you can add your Google Analytics tracking code.
+Yes. It's easy to start monitoring traffic to an Open SDG platform as there is Google Analytics functionality built in. In the [*_config_prod.yml* file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml#L19-L21) in the site repo there is a placeholder, where you can add your Google Analytics tracking code.
 
 To get a Google Analytics tracking code, sign in to Google and then [create a Google Analytics account](https://analytics.google.com/analytics/web/provision/#/provision/create). After you enter your website's details, you will be given a tracking code.
 
