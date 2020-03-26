@@ -4,6 +4,12 @@
   }
 }
 
+.layout-search {
+  h1 {
+    font-size: 24px;
+  }
+}
+
 #search-results {
 
   span.match {
@@ -13,12 +19,15 @@
   margin-top: 20px;
 
   .search-result {
+    margin-top: 20px;
+    margin-bottom: 20px;
     a {
       text-decoration: none;
       margin-bottom: 5px;
       margin-top: 10px;
       .title {
         margin-bottom: 5px;
+        font-size: 18px;
       }
       .url {
         color: green;
