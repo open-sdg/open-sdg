@@ -11,7 +11,19 @@ body.contrast-high {
         color: white !important;
       }
       span.status, .tags li{
-        color: #044b88 !important;
+        color: black !important;
+      }
+
+      span.status{
+        &.complete,
+        &.notapplicable{
+          color: black !important;
+        }
+
+        &.notstarted,
+        &.inprogress{
+          color: white !important;
+        }
       }
 
       span.status.notstarted{
