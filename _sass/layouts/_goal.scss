@@ -14,6 +14,18 @@ body.contrast-high {
         color: #044b88 !important;
       }
 
+      span.status{
+        &.complete,
+        &.notapplicable{
+          color: black !important;
+        }
+
+        &.notstarted,
+        &.inprogress{
+          color: white !important;
+        }
+      }
+
       span.status.notstarted{
         color: white !important;
         border: 1px solid white !important;
