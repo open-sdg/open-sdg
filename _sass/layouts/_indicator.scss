@@ -570,10 +570,10 @@ body.contrast-high {
   #legend {
     li {
       color: white !important;
-      &:first-child {
-        .swatch {
-          background-color: white !important;
-        }
+      border: 1px solid transparent;
+      &:hover {
+        background: transparent !important;
+        border: 1px solid white;
       }
     }
   }
