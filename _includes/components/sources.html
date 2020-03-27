@@ -12,7 +12,7 @@
   {% for i in (1..n_sources) %}
     {% assign src_active = "source_active_" | append: i %}
     {% assign src_scope = "source_" | append: i %}
-    <div class="col-md-6">
+    <div>
       {% if n_sources > 1 %}
         <h4>{{ page.t.indicator.source }} {{ i }}</h4>
       {% endif %}

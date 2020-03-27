@@ -28,7 +28,12 @@ Feature: Indicator
     And I click on "the National metadata tab"
     Then I should see "Data last updated"
     And I click on "the Sources metadata tab"
-    And I should see "My organisation"
+    Then I should see "My first organisation"
+    And I should see "Link to first source"
+    And I should see "My second organisation"
+    And I should see "Link to second source"
+    And I should not see "My third organisation"
+    And I should not see "Link to third source"
 
   Scenario: The metadata tab titles and blurbs can both be configured
     Then I should see "My national metadata title"
