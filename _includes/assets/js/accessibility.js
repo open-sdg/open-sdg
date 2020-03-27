@@ -73,46 +73,55 @@ var accessibilitySwitcher = function() {
     }).html(getContrastToggleLabel(contrast).replace(" ", "<br/>")).click(function() {
       setActiveContrast($(this).data('contrast'));
       imageFix(contrast);
+      broadcastContrastChange(contrast, this);
     })));
   });
-  
-function getContrastToggleLabel(identifier){
-  var contrastType = "{{ site.contrast_type }}"
-  if(contrastType === "long") {
-    if(identifier === "default"){	
-      return translations.header.default_contrast; 	
-    }	
-    else if(identifier === "high"){	
-      return translations.header.high_contrast;	
+
+  function broadcastContrastChange(contrast, elem) {
+    var event = new CustomEvent('contrastChange', {
+      bubbles: true,
+      detail: contrast
+    });
+    elem.dispatchEvent(event);
+  }
+
+  function getContrastToggleLabel(identifier){
+    var contrastType = "{{ site.contrast_type }}"
+    if(contrastType === "long") {
+      if(identifier === "default"){
+        return translations.header.default_contrast;
+      }
+      else if(identifier === "high"){
+        return translations.header.high_contrast;
+      }
+    }
+    else {
+      return 'A'
     }
   }
-  else {
-    return 'A'
-  }
-}
 
-function getContrastToggleTitle(identifier){	
-  if(identifier === "default"){	
-    return translations.header.disable_high_contrast; 	
-  }	
-  else if(identifier === "high"){	
-    return translations.header.enable_high_contrast;	
-  }	
-}
-  
-  
-function imageFix(contrast) {
-  if (contrast == 'high')  {
-    _.each($('img:not([src*=high-contrast])'), function(goalImage){
-      if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/") {
-      $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
-      }})
-  } else {
-    // Remove high-contrast
-    _.each($('img[src*=high-contrast]'), function(goalImage){
-      $(goalImage).attr('src', $(goalImage).attr('src').replace('high-contrast/', ''));
-    })
+  function getContrastToggleTitle(identifier){
+    if(identifier === "default"){
+      return translations.header.disable_high_contrast;
+    }
+    else if(identifier === "high"){
+      return translations.header.enable_high_contrast;
+    }
   }
-};
+
+
+  function imageFix(contrast) {
+    if (contrast == 'high')  {
+      _.each($('img:not([src*=high-contrast])'), function(goalImage){
+        if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/") {
+        $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
+        }})
+    } else {
+      // Remove high-contrast
+      _.each($('img[src*=high-contrast]'), function(goalImage){
+        $(goalImage).attr('src', $(goalImage).attr('src').replace('high-contrast/', ''));
+      })
+    }
+  };
 
 };
