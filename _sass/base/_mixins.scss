@@ -51,9 +51,13 @@
         top: -1px;
         right: 0;
         display: inline;
+        font-size: 12px;
 
         &.complete{
           color: white;
+        }
+        &.notstarted{
+          border: 1px solid black;
         }
       }
       

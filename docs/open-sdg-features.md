@@ -9,6 +9,19 @@ An example of a site just using the English language (default) is the [UK site](
 
 An example of a site using multiple languages is the [Armenian site](https://armstat.github.io/sdg-site-armenia/).
 
+## Monitoring traffic
+There is Google Analytics functionality built in to Open SDG so it's easy to start monitoring traffic to an Open SDG platform, with a number of events being tracked straight of out the box e.g. data downloads. There is also functionality which makes it easy to add more custom event tracking.
+
+For more information about using Google Analytics with an Open SDG platform, see the [Analytics section](./analytics.md).
+
+## Charts
+
+Open SDG supports several types of charts for displaying indicator data:
+
+  * Line: [example](https://visar.hagstofa.is/heimsmarkmidin/2-a-1), [documentation](../charts#line)
+  * Bar: [example](https://sustainabledevelopment-uk.github.io/2-1-2/), [documentation](../charts#bar)
+  * Binary (yes/no): [example](https://sdg.data.gov/1-5-1/), [documentation](../charts/#binary)
+
 ## Maps
 By default, data uploaded to an Open SDG platform is displayed on a chart and a table. You can configure your platform and data to also display data on a map.
 

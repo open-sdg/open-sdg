@@ -393,7 +393,7 @@
     &.goal-by-target {
       .indicator-cards a {
         padding: 0;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
         color: #044b88;
 
         .tags li{
@@ -401,7 +401,7 @@
         }
       }
       .indicator-cards.target {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
         clear: left;
       }
     }
@@ -578,10 +578,10 @@ body.contrast-high {
   #legend {
     li {
       color: white !important;
-      &:first-child {
-        .swatch {
-          background-color: white !important;
-        }
+      border: 1px solid transparent;
+      &:hover {
+        background: transparent !important;
+        border: 1px solid white;
       }
     }
   }

@@ -40,9 +40,10 @@ If the indicator is going to display a graph, the following fields are required:
           - unit: Total
             title: My alternate title for totals
 
-* `graph_type` - what type of graph to use for the indicator. Examples:
+* `graph_type` - what type of graph to use for the indicator. [More information here](./charts.md). Examples:
     * line
     * bar
+    * binary
 * `national_geographical_coverage` - a label used in the absence of any disaggregation. Examples:
     * Australia
     * my_translations.australia
@@ -128,12 +129,6 @@ data_start_values:
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
-* `graph_units_without_headline` - a list of units in which the "headline" (aggregated data series) should not be displayed on the graph. This is typically used in combination with the `data_start_values` field described above. For example:
-
-        graph_units_without_headline:
-          - tons
-          - passengers
-
 * `graph_limits` - a list of min/max limits controlling the lowest/highest values to be shown on the y-axis. Optionally they can refer to a specific unit of measurement. Note that this involves a slightly more complex metadata structure. If using Prose.io, this will need to be set under "Raw Metadata". For example:
 
         graph_limits:
@@ -144,7 +139,7 @@ The following fields affect the display of graphs. Currently only longitudinal g
             minimum: 200
             maximum: 2000
 
-* `graph_stacked_disaggregation` - this is used in the "stacked_bar" graph type, to identify the disaggregation category to be featured in the stacked bars. For Example:
+* `graph_stacked_disaggregation` - this can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars. For example:
 
         graph_stacked_disaggregation: Age
 
