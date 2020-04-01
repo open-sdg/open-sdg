@@ -29,7 +29,7 @@
 * Change the styling of the top banner on goal and indicator pages (#474)
 * Update the chart download button when data changes (#476)
 * Fixed rounding on reporting status page progress bar (#485)
-* Add an introduction banner to the frontpage (#486)
+* Add an introduction banner to the frontpage (#486, #545, #565)
 * Set aria-label on search button (#487)
 * Bulk download link beneath the homepage grid (#489)
 * Black text for tab links (#490)
@@ -41,6 +41,17 @@
 * Remove a lot of unused images (#509)
 * Change the styling of the search input field (#515)
 * Fix for the edge case of local data with untranslated builds (#522)
+* Update styling of progress bars (#533)
+* Chart title per unit of measurement (#538)
+* Upgrade to jQuery 3.4.1 (#547)
+* Allow the use of user-defined colors in charts (#553)
+* Increase the font size of the header navigation menu (#572)
+* Search page design improvements (#586)
+* Remove hover styling from metadata fields (#587)
+* Align more elements flush to the left (#588)
+* Change reporting status progress bar colors to be less dominating (#589)
+* High-contrast fixes for chart grids/ticks (#593)
+* Indicator cards styling updates (#594)
 
 Breaking changes:
 

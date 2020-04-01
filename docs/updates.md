@@ -14,7 +14,7 @@ This release includes the following:
 * Configurable footer menu
 * Secondary heading on indicator pages to use `indicator_available` instead of `graph_title`
 * Ability to report indicator status by custom criteria (such as tier, agency, etc.)
-* Improved site-wide search, including pages, goals, and indicators
+* Improved and redesigned site-wide search, including pages, goals, and indicators
 * News/post functionality - show post excerpts on news page
 * Set background to white for pages and footer
 * Add shadows to goal tiles on front page for more depth
@@ -23,7 +23,7 @@ This release includes the following:
 * Multilingual support extended to news/posts
 * Bug-fix to extend color-striping functionality to bar charts
 * Title-casing for navigation menu
-* More whitespace on homepage
+* More whitespace and better alignment on homepage
 * Redesign of indicator page tabs
 * Change the styling of the top banner on goal and indicator pages
 * Bug-fix: chart download button gets latest data
@@ -33,6 +33,9 @@ This release includes the following:
 * Stacked bar charts
 * Redesign of reporting status page
 * Remove goal line from indicator banner
+* Allow for a different chart title per unit of measurement
+* Allow the use of user-defined colors in charts
+* Improved support for high-contrast mode
 
 ## 0.10.0
 
