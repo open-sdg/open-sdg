@@ -32,6 +32,9 @@ h5 + .btn-download {
 
 .zip-download-container {
   margin-top: 20px;
+  a.btn {
+    margin-left: 10px;
+  }
   #zip-download-info {
     margin-top: 5px;
     margin-left: 10px;
