@@ -46,7 +46,7 @@ By default, targets are not shown on the goal pages. An example of this is the [
 
 However, Open SDG platforms can be configured to show targets on the goal pages. An example of this is [Armenia's Open SDG platform](https://armstat.github.io/sdg-site-armenia/1/)
 
-For guidance on how to display targets on your goal pages, see the Customisations page *Optional feature: Goal page layouts*](./customisation.md#optional-feature-goal-page-layouts) section.
+For guidance on how to display targets on your goal pages, see the Customisations page [*Optional feature: Goal page layouts*](./customisation.md#optional-feature-goal-page-layouts) section.
 
 ## Reporting status options
 By default, the reporting status options dispayed are **Complete**, **In progress** and **Exploring data sources**. However, these options can be changed to meet your needs. For example, options can be removed or another option, **Not applicable**, can be used.
