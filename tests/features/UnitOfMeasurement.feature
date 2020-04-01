@@ -4,11 +4,18 @@ Feature: Unit of measurement
   I need to be able to change the unit of measurement
   So that I can see the data that is useful for my needs
 
-  Background:
+  Scenario: The selected unit of measurement changes the chart title
     Given I am on "/1-5-2"
     And I wait 3 seconds
-
-  Scenario: The selected unit of measurement changes the chart title
     Then I should see "My untranslated graph title for percent"
     And I click on "the last unit of measurement"
     Then I should see "My English graph title for total"
+
+  Scenario: When the selected unit lacks disaggregation, sub-categories are hidden
+    Given I am on "/1-4-2"
+    And I wait 3 seconds
+    Then I should not see a "disaggregation filter" element
+    And I click on "the first unit of measurement"
+    Then I should see a "disaggregation filter" element
+    And I click on "the last unit of measurement"
+    Then I should not see a "disaggregation filter" element
