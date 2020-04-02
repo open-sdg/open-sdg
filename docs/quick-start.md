@@ -21,7 +21,7 @@ This document will go over the quickest way to get this platform up and running.
 1. As before, choose a name. This one should refer to "data" instead of "site" (eg, `sdg-data-australia`). As before, leave "Public" selected and click "Create repository from template".
     * Bookmark the created repository -- this is your "__data repository__".
 
-## Creating an access token
+## Creating access tokens
 
 This step is temporarily necessary because of a bug involving GitHub Actions and GitHub Pages. The bug is being discussed [here](https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/td-p/26869/highlight/true).
 
@@ -37,6 +37,7 @@ This step is temporarily necessary because of a bug involving GitHub Actions and
 1. Under "Value", paste in the access token you copied earlier.
 1. Click the green "Add secret" button.
 1. Repeat all the steps above, but for the "data" repository you bookmarked earlier.
+1. Repeat again for the "data" repository, but this time name the secret (case-sensitive): `auto-rebuild-token`
 
 ## Update the data repository configuration
 
@@ -54,6 +55,19 @@ This step is necessary before continuing, and also serves to demonstrate how to 
     ```
 
 1. If you did not need to adjust the list of language codes, simply make any other change in the file. For example, add a new line at the top: `# This is a comment`
+1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
+1. Beneath this, click "Propose file changes".
+1. Click on the green "Create pull request" button.
+1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
+1. Wait until you see "All checks have passed". This takes about 5 minutes.
+1. Click on the green "Merge pull request" button.
+
+Next, you will need to edit the deploy-to-staging workflow to allow the site repository to be rebuilt automatically once a change has been made in the data repository:
+
+1. In the list of files in the data repository, click on `.github/workflows`.
+1. Click on `deploy-to-staging.yml`.
+1. Click the pencil to edit the file.
+1. Make changes to the file by following the instructions in the notes.
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. Beneath this, click "Propose file changes".
 1. Click on the green "Create pull request" button.
