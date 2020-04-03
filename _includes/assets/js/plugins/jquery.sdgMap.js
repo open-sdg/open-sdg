@@ -63,8 +63,8 @@
     this.currentDisaggregation = 0;
 
     // Require at least one geoLayer.
-    if (!options.mapLayers.length) {
-      console.log('Map disabled, no mapLayers in options.');
+    if (!options.mapLayers || !options.mapLayers.length) {
+      console.log('Map disabled - please add "map_layers" in site configuration.');
       return;
     }
 
