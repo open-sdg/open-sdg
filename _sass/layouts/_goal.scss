@@ -7,11 +7,23 @@ body.contrast-high {
       }
     }
     .indicator-cards {
-      a, &.target {
+      &.target {
         color: white !important;
       }
       span.status, .tags li{
         color: black !important;
+      }
+
+      span.status{
+        &.complete,
+        &.notapplicable{
+          color: black !important;
+        }
+
+        &.notstarted,
+        &.inprogress{
+          color: white !important;
+        }
       }
 
       span.status.notstarted{
@@ -19,5 +31,8 @@ body.contrast-high {
         border: 1px solid white !important;
       }
     }
+  }
+  #main-content.goal-indicators.goal-by-target .indicator-cards a{
+    color: yellow;
   }
 }

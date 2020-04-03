@@ -395,11 +395,19 @@
       .indicator-cards a {
         padding: 0;
         margin-bottom: 2.5rem;
+        color: #044b88;
+
+        .tags li{
+          color: black;
+        }
       }
       .indicator-cards.target {
         margin-bottom: 2.5rem;
         clear: left;
       }
+    }
+    .indicator-cards .tags li{
+      color: black;
     }
   }
   .goal-indicators:after {
