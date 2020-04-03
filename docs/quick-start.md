@@ -21,7 +21,7 @@ This document will go over the quickest way to get this platform up and running.
 1. As before, choose a name. This one should refer to "data" instead of "site" (eg, `sdg-data-australia`). As before, leave "Public" selected and click "Create repository from template".
     * Bookmark the created repository -- this is your "__data repository__".
 
-## Creating access tokens
+## Creating an access token
 
 This step is temporarily necessary because of a bug involving GitHub Actions and GitHub Pages. The bug is being discussed [here](https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/td-p/26869/highlight/true).
 
@@ -37,7 +37,6 @@ This step is temporarily necessary because of a bug involving GitHub Actions and
 1. Under "Value", paste in the access token you copied earlier.
 1. Click the green "Add secret" button.
 1. Repeat all the steps above, but for the "data" repository you bookmarked earlier.
-1. Repeat again for the "data" repository, but this time name the secret (case-sensitive): `auto-rebuild-token`
 
 ## Update the data repository configuration
 
