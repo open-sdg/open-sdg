@@ -82,6 +82,7 @@
 
     {% if show_data %}
     <div id="indicator-sidebar" class="col-md-3">
+      <div id="units"></div>
       <div id="toolbar">
         <span id="series-help">
           <h4>{{ page.t.indicator.sub_categories }}</h4>
@@ -92,7 +93,6 @@
           <p class="async-loading" data-img="{{ site.baseurl }}/assets/img/loading-small.gif"></p>
         </div>
       </div>
-      <div id="units"></div>
     </div>
     <div id="indicator-main" class="col-md-9">
     {% else %}
