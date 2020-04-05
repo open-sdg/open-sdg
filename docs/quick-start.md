@@ -61,6 +61,19 @@ This step is necessary before continuing, and also serves to demonstrate how to 
 1. Wait until you see "All checks have passed". This takes about 5 minutes.
 1. Click on the green "Merge pull request" button.
 
+Next, you will need to edit the deploy-to-staging workflow to allow the site repository to be rebuilt automatically once a change has been made in the data repository:
+
+1. In the list of files in the data repository, click on `.github/workflows`.
+1. Click on `deploy-to-staging.yml`.
+1. Click the pencil to edit the file.
+1. Make changes to the file by following the instructions in the notes.
+1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
+1. Beneath this, click "Propose file changes".
+1. Click on the green "Create pull request" button.
+1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
+1. Wait until you see "All checks have passed". This takes about 5 minutes.
+1. Click on the green "Merge pull request" button.
+
 This is a commonly-used way to edit files in GitHub. In summary, the steps are:
 
 * Find the file
