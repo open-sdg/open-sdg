@@ -13,7 +13,7 @@ These steps have four pre-requisites:
     If you do not already have one, go [here](https://github.com) now to sign up for your free account.
 4. A working implementation of Open SDG (hereafter referred to as the "staging site")
 
-    In most cases, the "staging site" will be something similar to: `https://my-org.github.io/my-site` (but with `my-org` and `my-site` changed as appropriate). If you do not have such a site available, or you are not sure, check with your team before continuing. Instructions on getting started are [here](./quick-start.md).
+    In most cases, the "staging site" will be something similar to: `https://my-org.github.io/my-site` (but with `my-org` and `my-site` changed as appropriate). If you do not have such a site available, or you are not sure, check with your team before continuing. Instructions on getting started are [here](quick-start.md).
 
 ## GitHub.com login
 

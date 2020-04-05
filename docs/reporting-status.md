@@ -6,7 +6,7 @@ Out of the box, Open SDG provides a page showing the "reporting status" of all t
 
 By default, the reporting status options dispayed are **Complete**, **In progress** and **Exploring data sources**. However, these options can be changed to meet your needs. For example, options can be removed or another option, such as **Not applicable**, can be used.
 
-The options available can be controlled by adjusting the [schema file](./metadata-format.md#schema). For example, [here is the section](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L135) in the data starter repository, where you would adjust the available options for reporting status.
+The options available can be controlled by adjusting the [schema file](metadata-format.md#schema). For example, [here is the section](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L135) in the data starter repository, where you would adjust the available options for reporting status.
 
 ## Color-coding
 

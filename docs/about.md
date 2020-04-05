@@ -19,10 +19,10 @@ An NRP tool facilitates national reporting by improving communication:
 
 # What does the NRP cost?
 
-Absolutely nothing! You are free to use this platform and modify it in any way you feel is necessary to facilitate your country's or region's needs. This NRP is built soley upon open-source technologies and so there are no software costs. The only hardware costs are the machine(s) you choose to use to create your own version of this site. See the [quick start](./quick-start.md) for details on how to set up the platform using free automation from [CircleCI](https://circleci.com) and free hosting from [Github](https://github.com). Minimal staff time to copy, adapt, populate, and maintain the platform is also needed, and can be handled by part-time web developers, statisticians, and managers.
+Absolutely nothing! You are free to use this platform and modify it in any way you feel is necessary to facilitate your country's or region's needs. This NRP is built soley upon open-source technologies and so there are no software costs. The only hardware costs are the machine(s) you choose to use to create your own version of this site. See the [quick start](quick-start.md) for details on how to set up the platform using free automation from [CircleCI](https://circleci.com) and free hosting from [Github](https://github.com). Minimal staff time to copy, adapt, populate, and maintain the platform is also needed, and can be handled by part-time web developers, statisticians, and managers.
 
 # What are the IT requirements?
 
-For a high-level summary of the technologies used by this platform, see [here](./requirements.md).
+For a high-level summary of the technologies used by this platform, see [here](requirements.md).
 
-There are ultimately two contributing users of the NRP: data managers/providers and developers. Data managers and providers do not need anything other than a computer with an internet connection and a web browser. Developers will need more software to be able to build the website on their local machine to test any changes they make before making these changes live; these requirements are detailed [here](./development.md).
+There are ultimately two contributing users of the NRP: data managers/providers and developers. Data managers and providers do not need anything other than a computer with an internet connection and a web browser. Developers will need more software to be able to build the website on their local machine to test any changes they make before making these changes live; these requirements are detailed [here](development.md).

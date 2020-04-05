@@ -1,10 +1,10 @@
 <h1>Metadata format</h1>
 
-In your [data repository](./glossary.md#data-repository) the metadata is maintained on an indicator-by-indicator basis. This metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml) (see the "Schema" section below) in your data repository. Some fields, however, are mandatory and/or have specific uses in Open SDG. This page details those fields.
+In your [data repository](glossary.md#data-repository) the metadata is maintained on an indicator-by-indicator basis. This metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml) (see the "Schema" section below) in your data repository. Some fields, however, are mandatory and/or have specific uses in Open SDG. This page details those fields.
 
 ## Note about translation keys
 
-Metadata values can either be filled in with normal text ("My field value") or with [translation keys](./glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
+Metadata values can either be filled in with normal text ("My field value") or with [translation keys](glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
 
 As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
 
@@ -40,7 +40,7 @@ If the indicator is going to display a graph, the following fields are required:
           - unit: Total
             title: My alternate title for totals
 
-* `graph_type` - what type of graph to use for the indicator. [More information here](./charts.md). Examples:
+* `graph_type` - what type of graph to use for the indicator. [More information here](charts.md). Examples:
     * line
     * bar
     * binary
@@ -230,7 +230,7 @@ You may think that it would make more sense for the `label` property above to co
 
 ## Metadata tabs
 
-The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see [here](./configuration.md#metadata_tabs).
+The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see [here](configuration.md#metadata_tabs).
 
 ## Reserved metadata fields
 

@@ -4,7 +4,7 @@
 
 Jekyll configuration is stored at the root of the site repository in a YAML file called `_config.yml`. General documentation about Jekyll configuration can be found [here](https://jekyllrb.com/docs/configuration/).
 
-In addition to general Jekyll configurations, Open SDG needs some specific configurations. For more information on these, please see the [configuration page](./configuration.md).
+In addition to general Jekyll configurations, Open SDG needs some specific configurations. For more information on these, please see the [configuration page](configuration.md).
 
 ## Optional features
 
@@ -17,7 +17,7 @@ Open SDG includes two alternative [layouts](https://jekyllrb.com/docs/step-by-st
 1. [`goal`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal.html) - Indicators are displayed in a responsive grid
 1. [`goal-by-target`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal-by-target.html) - Targets on the left, and indicators on the right
 
-If you are using the `create_goals` setting, you can change the layout as described [here](./configuration.md#create_goals).
+If you are using the `create_goals` setting, you can change the layout as described [here](configuration.md#create_goals).
 
 Otherwise you can set the layout by adjusting the [front matter](https://jekyllrb.com/docs/front-matter/) of the goal file. For example, to use the goal-by-target layout, you would need this in the goal's front matter:
 
@@ -124,7 +124,7 @@ The following variables can be used on any page:
 
 * `page.t`
 
-    The translations for the current language. More detail on this is available [here](./configuration.md).
+    The translations for the current language. More detail on this is available [here](configuration.md).
 
     Usage example - printing the translation of the word "Goal" (which is available with the key "goal" in the "general" group:
 

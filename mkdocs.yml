@@ -51,6 +51,7 @@ pages:
         - Maps: maps.md
         - Analytics: analytics.md
         - Reporting status: reporting-status.md
+        - Social media sharing: social-media-sharing.md
     - Automation:
         - GitHub Actions: automation/github-actions.md
         - CircleCI: automation/circle-ci.md
