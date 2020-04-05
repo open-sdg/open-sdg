@@ -134,8 +134,57 @@ These variables are available in all Jekyll documents.
 
 Inevitably an implementation of this platform will need to display some text that is not already included in the repositories mentioned above, and that is likely specific to a particular country. There are two recommended options for this:
 
-1. Copy/fork one of the repositories mentioned above, and maintain your translations there.
+1. Maintain your translations in a `translations` folder of any Git repository. An easy way to get started with this is to copy the [sdg-translations](https://github.com/open-sdg/sdg-translations) project and then clear out the `translations` folder. More detail on this process is below.
 2. Put the translations directly into your data repository, in a `translations` folder. See [this folder in the data starter](https://github.com/open-sdg/open-sdg-data-starter/tree/develop/translations) for an example.
+
+Whichever approach you take, make sure to adjust your data repository's configuration as needed. See this [example of a data repository's translation configuration](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L66).
 
 > **NOTE**: If you make a translation that you think would be useful to others, please
 > submit it as a pull-request!
+
+### Maintaining translation data in a separate repository
+
+An implementation of Open SDG can pull its translations from any number of Git repositories. Out of the box, the starter repositories are configured to pull translations from the [sdg-translations](https://github.com/open-sdg/sdg-translations) project. To see an example, see [that part of the data starter configuration](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L69).
+
+However as mentioned above, you likely will need custom translations of text that are specific to your region. For a direct approach, as mentioned above, you can add these translations directly to a `translations` folder in the data repository. The starter repository is configured to pull translations from this folder, if it exists (see [that part of the data starter configuration](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L73)).
+
+But perhaps you would prefer to maintain your translations in a separate Git repository. The recommended approach here is to copy [sdg-translations](https://github.com/open-sdg/sdg-translations) by going there and clicking the green "Use this template" button. This will allow you to name it whatever you would like, and will give you an exact copy of sdg-translations.
+
+You likely don't want to maintain *all* of the translations in sdg-translations, so it is recommended that you clear out the contents of the `translations` folder of your copied version. Next, you can add only the translations that you need. Then, you will need to update your data repository configuration so that it pulls from sdg-translations **AND** your copied version.
+
+For example, if you named your copied version `my-github-org/my-translations-repo`, then you would update your data repository configuration from this:
+
+```
+translations:
+  - class: TranslationInputSdgTranslations
+    source: https://github.com/open-sdg/sdg-translations.git
+    tag: master
+```
+
+...to this:
+
+```
+translations:
+  - class: TranslationInputSdgTranslations
+    source: https://github.com/open-sdg/sdg-translations.git
+    tag: master
+  - class: TranslationInputSdgTranslations
+    source: https://github.com/my-github-org/my-translations-repo.git
+    tag: master
+
+```
+
+Note that because your copied version is *after* the sdg-translations entry, you can "override" anything in the sdg-translations project by duplicating (and changing) it in your copied version.
+
+Also note, as a good practice you should point at "tags" (such as "1.0.0") instead of "branches" (such as "master"). In other words, a better configuration would be something like:
+
+```
+translations:
+  - class: TranslationInputSdgTranslations
+    source: https://github.com/open-sdg/sdg-translations.git
+    tag: 1.0.0
+  - class: TranslationInputSdgTranslations
+    source: https://github.com/my-github-org/my-translations-repo.git
+    tag: 1.0.0
+
+```
