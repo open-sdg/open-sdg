@@ -19,7 +19,7 @@ An NRP tool facilitates national reporting by improving communication:
 
 # What does the NRP cost?
 
-Absolutely nothing! You are free to use this platform and modify it in any way you feel is necessary to facilitate your country's or region's needs. This NRP is built soley upon open-source technologies and so there are no software costs. The only hardware costs are the machine(s) you choose to use to create your own version of this site. See the [quick start](quick-start.md) for details on how to set up the platform using free automation from [CircleCI](https://circleci.com) and free hosting from [Github](https://github.com). Minimal staff time to copy, adapt, populate, and maintain the platform is also needed, and can be handled by part-time web developers, statisticians, and managers.
+Absolutely nothing! You are free to use this platform and modify it in any way you feel is necessary to facilitate your country's or region's needs. This NRP is built soley upon open-source technologies and so there are no software costs. The only hardware costs are the machine(s) you choose to use to create your own version of this site. See the [quick start](quick-start.md) for details on how to set up the platform using free automation and hosting from [Github](https://github.com). Minimal staff time to copy, adapt, populate, and maintain the platform is also needed, and can be handled by part-time web developers, statisticians, and managers.
 
 # What are the IT requirements?
 
