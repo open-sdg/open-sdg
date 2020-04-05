@@ -39,7 +39,7 @@ Then you could color-code the options by adding this in your CSS:
 
 ## Alternative groupings
 
-Apart from grouping by _goal_, you might like to show the reporting status in different ways (such as "status by _tier_", for example). To do this, your data repository needs to be configured to generate the necessary data. See the `config_data.yml` file in the data starter, [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L24), for an example.
+Apart from grouping by _goal_, you might like to show the reporting status in different ways (such as "status by _tier_", for example). To do this, your data repository needs to be configured to generate the necessary data. See the [`config_data.yml` file in the data starter](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L24), for an example.
 
 Note that the value of that setting in the data repository should be a list of fields which are present in your indicator metadata files.
 

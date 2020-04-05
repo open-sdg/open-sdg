@@ -8,24 +8,24 @@ This document will go over the quickest way to get this platform up and running.
 > This is a good practice in general, and provides several logistical benefits.
 > However, a simpler single-repository approach may be preferred if you just
 > want to try out Open SDG locally. In this case, see
-> [here](https://github.com/open-sdg/open-sdg-simple-starter).
+> the [open-sdg-simple-starter project](https://github.com/open-sdg/open-sdg-simple-starter).
 
 ## Signing up and creating repositories
 
 1. If you don't already have a Github.com account, [go to Github.com](https://github.com/) to sign up and then log in.
-1. Go [here](https://github.com/open-sdg/open-sdg-site-starter) and click the green "Use this template" button.
+1. Go to the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and click the green "Use this template" button.
 1. Next you will be prompted to choose a name for your new repository. This will affect the URL at which you access the site later, so choose carefully. A suggestion might be: `sdg-site-australia` (adjusted for your country). Note that you can change this later if needed.
 1. Enter a description if you would like. Leave "Public" selected, and click "Create repository from template".
     * Bookmark the created repository -- this is your "__site repository__".
-1. Go [here](https://github.com/open-sdg/open-sdg-data-starter) and click the green "Use this template" button.
+1. Go to the [data starter](https://github.com/open-sdg/open-sdg-data-starter) and click the green "Use this template" button.
 1. As before, choose a name. This one should refer to "data" instead of "site" (eg, `sdg-data-australia`). As before, leave "Public" selected and click "Create repository from template".
     * Bookmark the created repository -- this is your "__data repository__".
 
 ## Creating an access token
 
-This step is temporarily necessary because of a bug involving GitHub Actions and GitHub Pages. The bug is being discussed [here](https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/td-p/26869/highlight/true).
+This step is temporarily necessary because of a bug involving GitHub Actions and GitHub Pages. The bug is being discussed in [this GitHub discussion thread](https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/td-p/26869/highlight/true).
 
-1. Create an access token described [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
+1. Create an access token described in [this official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
     * Select the `repo` permission, as indicated in those instructions.
     * Save the token somewhere private.
 1. Copy the access token so that you can paste in the next steps.

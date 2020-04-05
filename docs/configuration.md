@@ -190,7 +190,7 @@ This optional setting can be used to automatically create 4 platform-dependent p
 * the search results page
 * the reporting status page
 
-Without this setting, you will need a file for each of these 4 pages (per language), in a `_pages` folder. This setting can include more advanced settings (see [here](https://github.com/open-sdg/jekyll-open-sdg-plugins/blob/master/lib/jekyll-open-sdg-plugins/create_pages.rb#L18)) but can also simply be set to `true`.
+Without this setting, you will need a file for each of these 4 pages (per language), in a `_pages` folder. This setting can include more advanced settings (see this [jekyll-open-sdg-plugins code](https://github.com/open-sdg/jekyll-open-sdg-plugins/blob/master/lib/jekyll-open-sdg-plugins/create_pages.rb#L18)) but can also simply be set to `true`.
 
 ```nohighlight
 create_pages: true
@@ -227,7 +227,7 @@ date_formats:
     es: "%d de %b de %Y"
 ```
 
-The `%` variables in the formats correspond to the variables listed [here](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
+The `%` variables in the formats correspond to the variables listed in this [Ruby DateTime documentation](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
 
 ### frontpage_heading
 

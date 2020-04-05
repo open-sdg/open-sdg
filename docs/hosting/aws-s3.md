@@ -23,7 +23,7 @@ S3 has become a popular choice for hosting static websites, which makes it an ap
 
 Out of the box, your AWS S3 site will be viewable at a default AWS domain name. This might be something similar to: "http://www.my-bucket-name.org.s3-website-us-east-1.amazonaws.com/".
 
-This URL can be customised, of course, to any domain you own. More details are available [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html).
+This URL can be customised, of course, to any domain you own. More details are available in this [official Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html).
 
 ## Set-up
 

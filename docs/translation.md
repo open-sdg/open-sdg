@@ -6,7 +6,7 @@ This platform is designed to be multilingual, and leverages the translations bei
 
 This document provides an overview of how the platform accomplishes this, and how it can be extended.
 
-Throughout this discussion of translation, there will be repeated mention of "translation keys". See [here](glossary.md#translation-keys) for a definition.
+Throughout this discussion of translation, there will be repeated mention of "translation keys". See the [glossary page in the "translation keys" section](glossary.md#translation-keys) for a definition.
 
 ## Translation data
 
@@ -18,7 +18,7 @@ There are 4 requirements for adding a new language to the platform
 
 1. Check that the new language is implemented in the repository mentioned above. If it is not, you can copy that repository and implement the language yourself.
     * Specifically, you will need to translate all the YAML files in [this folder](https://github.com/open-sdg/sdg-translations/tree/master/translations/en).
-2. Make sure that translated goal icons have been created. These are currently maintained [here](https://github.com/open-sdg/sdg-translations/).
+2. Make sure that translated goal icons have been created. These are currently maintained in [the sdg-translations project](https://github.com/open-sdg/sdg-translations/).
     * Specifically, you will need to produce translated versions of all the PNG files in [this folder](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/goals/en) and [this folder](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/high-contrast/goals/en) (for high contrast versions).
 3. Add the new language in the 'languages' list in your site config (`_config.yml`) and data config (`config_data.yml`) files.
 4. Create new versions of any Jekyll pages that you would like to have available in the new language. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
@@ -135,7 +135,7 @@ These variables are available in all Jekyll documents.
 Inevitably an implementation of this platform will need to display some text that is not already included in the repositories mentioned above, and that is likely specific to a particular country. There are two recommended options for this:
 
 1. Copy/fork one of the repositories mentioned above, and maintain your translations there.
-2. Put the translations directly into your data repository, in a `translations` folder. See [here](https://github.com/open-sdg/open-sdg-data-starter/tree/develop/translations) for details.
+2. Put the translations directly into your data repository, in a `translations` folder. See [this folder in the data starter](https://github.com/open-sdg/open-sdg-data-starter/tree/develop/translations) for an example.
 
 > **NOTE**: If you make a translation that you think would be useful to others, please
 > submit it as a pull-request!

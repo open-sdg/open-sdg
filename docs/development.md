@@ -55,7 +55,7 @@ The `bundler` will install the package versions as listed in the `Gemfile`.
 
 Note: we will assume you have a GitHub account for this part.
 
-We will need `git` to `clone` your forker copy of the repository. You can download and install `git` from [here](https://git-scm.com/downloads), or if you are using `Homebrew` on a Mac, just use:
+We will need `git` to `clone` your forker copy of the repository. You can download and install `git` from the [official Git download page](https://git-scm.com/downloads), or if you are using `Homebrew` on a Mac, just use:
 
 ```
 brew install git

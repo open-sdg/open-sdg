@@ -107,7 +107,7 @@ Avoid:
 
 ## Data Info
 
-Some of the metadata are not intended to be displayed on the site. These are put into a "scope" called "data" in the `_prose.yml` file. For example, see [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L142).
+Some of the metadata are not intended to be displayed on the site. These are put into a "scope" called "data" in the `_prose.yml` file. For example, see the [`data_non_statistical` field](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L205).
 
 Use this method to hide any fields needed, by putting them into the "data" scope.
 
@@ -198,7 +198,7 @@ You may want to display some very important information which site viewers must 
 
 ## Schema
 
-The actual fields available on each indicator is fully configurable by editing the `_prose.yml` file in your data repository. For a full list of fields available out-of-the-box in the starter repository, see [here](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml). This file also serves to control the behavior of the Prose.io service, which is the usual way that metadata is edited. (For technical information about Prose.io schema, see [here](https://github.com/prose/prose/wiki/Prose-Configuration).)
+The actual fields available on each indicator is fully configurable by editing the `_prose.yml` file in your data repository. For a full list of fields available out-of-the-box in the starter repository, see the [starter repository's `_prose.yml` file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml). This file also serves to control the behavior of the Prose.io service, which is the usual way that metadata is edited. (For technical information about Prose.io schema, see [the official Prose.io documentation](https://github.com/prose/prose/wiki/Prose-Configuration).)
 
 ## Renaming metadata fields
 
@@ -230,7 +230,7 @@ You may think that it would make more sense for the `label` property above to co
 
 ## Metadata tabs
 
-The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see [here](configuration.md#metadata_tabs).
+The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see the [configuration page in the "metadata tabs" section](configuration.md#metadata_tabs).
 
 ## Reserved metadata fields
 
