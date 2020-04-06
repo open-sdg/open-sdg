@@ -53,7 +53,7 @@
         display: inline;
         font-size: 12px;
 
-        &.complete{
+        &.complete, &.inprogress{
           color: white;
         }
         &.notstarted{
