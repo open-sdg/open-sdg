@@ -205,7 +205,7 @@ custom_css:
   - /assets/css/custom.css
 ```
 
-NOTE: This approach is deprecated. It is recommended to intstead [put your custom styles into a _sass folder](customisation.md/#adding-custom-css).
+NOTE: This approach is deprecated. It is recommended to intstead [put your custom styles into a _sass folder](customisation.md#adding-custom-css).
 
 ### custom_js
 
