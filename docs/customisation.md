@@ -46,7 +46,7 @@ The main takeaway here is that these indivdual Javascript files are in `_include
 
 ## Adding custom CSS
 
-To add custom styles on top of the out-of-the-box Open SDG styles, it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss).
+To add custom styles on top of the out-of-the-box Open SDG styles, it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this placeholder file in the starter repository](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss).
 
 ## Working with Jekyll templates
 
