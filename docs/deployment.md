@@ -21,7 +21,7 @@ However, alternatives are easy - after all, it's merely uploading files.
 
 ## Staging vs Production
 
-It is helpful to have both a "staging" and "production" version of the site, in order to preview changes (staging) before they are presented to the public (production). More details on this can be found [here](./hosting/production.md).
+It is helpful to have both a "staging" and "production" version of the site, in order to preview changes (staging) before they are presented to the public (production). More details on this can be found the [production hosting documentation](hosting/production.md).
 
 ## Deployment overview for the two repositories
 
