@@ -19,7 +19,10 @@ After you've created the organisation, you will need to create 2 repositories in
 1. Repository for production data: This repository can be named whatever you would like. Perhaps something like `sdg-data`, `sdg-data-prod`, `sdg-data-france`, etc.
 2. Repository for production site: This repository **must** be named the same as your organisation, plus `.github.io`. For example, if your organisation is `my-stats-org`, then you **must** name this repository exactly: `my-stats-org.github.io`.
 
-You can create these repositories [here](https://github.com/new). **Make sure that you select your new production organisation under "Owner"!**
+You can create these repositories a on [GitHub.com "new" page](https://github.com/new). **IMPORTANT**: Make sure to remember the following **required** items when create **both** repositories:
+
+1. Select your new production organisation under "Owner".
+2. Check the "Initialize this repository with a README".
 
 ## Contents of the "production" repositories
 
@@ -33,7 +36,13 @@ Find that file in your data repository under `.github/workflows/deploy-to-produc
 
 ## Performing a production deployment - data repository
 
-To perform a production deployment of your **data**, you simply need to merge code to the `master` branch. This can be done as follows:
+To perform the *first* production deployment of your **data**, you need to create a `master` branch. This can be done as follows:
+
+1. Go to your data repository in GitHub.com.
+2. Open the `Branch: develop` select, which you should see next to the `New pull request` button.
+3. Type `master` and then click on `Create branch: master from 'develop'`.
+
+This will start the process of performing a production deployment of data. However, for all future production deployments, the process is different. So, for future reference, here is the normal process for production deployments. (You don't need to do this now.)
 
 1. Go to your data repository in GitHub.com.
 2. Press the `New pull request` button, which you should see next to the `Branch: develop` drop-down.
@@ -46,7 +55,7 @@ To perform a production deployment of your **data**, you simply need to merge co
 6. Wait for any automated tests to complete. This may take a few minutes.
 7. Press the green "Merge pull request" button.
 
-This will trigger the production deployment. You can go to the "Actions" section of your GitHub.com repository to watch the progress. It should succeed after a few minutes.
+Meanwhile, your first production deployment is already in progress. You can go to the "Actions" section of your GitHub.com repository to watch the progress. It should succeed after a few minutes.
 
 ## Setting up production deployment - site repository
 
@@ -64,7 +73,13 @@ remote_data_prefix: "https://my-stats-org.github.io/sdg-data"
 
 ## Performing a production deployment - site repository
 
-To perform a production deployment of your **site**, you simply need to merge code to the `master` branch. This can be done as follows:
+Just as with the data repository, to perform the *first* production deployment of your **site**, you need to create a `master` branch. As before, this can be done as follows:
+
+1. Go to your data repository in GitHub.com.
+2. Open the `Branch: develop` select, which you should see next to the `New pull request` button.
+3. Type `master` and then click on `Create branch: master from 'develop'`.
+
+This will start the process of performing a production deployment of the site. However, just as with the data repository, for all future production deployments the process is different. So, for future reference, here is the normal process for production deployments. (You don't need to do this now.)
 
 1. Go to your site repository in GitHub.com.
 2. Press the `New pull request` button, which you should see next to the `Branch: develop` drop-down.
