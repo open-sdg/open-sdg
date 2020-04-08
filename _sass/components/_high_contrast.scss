@@ -172,3 +172,10 @@ body.contrast-high .site-intro .description{
 body.contrast-high #main-content .no-gutters img:not(#goal-18):hover {
   box-shadow: 0px 0px 0px 5px yellow;
 }
+
+body.contrast-high footer a {
+  color: white;
+  &:hover, &:focus {
+    color: yellow;
+  }
+}
