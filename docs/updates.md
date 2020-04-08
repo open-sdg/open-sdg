@@ -1,6 +1,6 @@
 <h1>Platform updates</h1>
 
-For a more technical list of platform changes, see [here](./changelog.md).
+For a more technical list of platform changes, see [the change log](changelog.md).
 
 ## 1.0.0
 
