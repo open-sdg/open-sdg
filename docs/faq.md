@@ -2,11 +2,11 @@
 
 ## Is the Open SDG platform free to reuse?
 
-Yes. Open SDG is open source and is free for anyone to reuse. 
+Yes. Open SDG is open source and is free for anyone to reuse.
 
 ## How do I copy the Open SDG platform?
 
-The [Quick start](./quick-start.md) guide gives technical
+The [Quick start](quick-start.md) guide gives technical
 instructions on the quickest way to get a copy of the open-sdg platform up and running.
 
 ## How long would it take to set up a copy of Open SDG
@@ -16,18 +16,18 @@ With the right skills, it should take less than a day to set up a standard copy,
 ## Can the Open SDG platform be customised?
 
 Yes. Copies of Open SDG can be adapted to local needs – technical developer resource may
-be needed to do this. The [Customisation](./customisation.md) section gives detailed technical guidance.
+be needed to do this. The [Customisation](customisation.md) section gives detailed technical guidance.
 
 ## Can the Open SDG platform be translated into other languages?
 
-Yes. Open SDG has been designed to be multilingual. It is available in the six official UN languages (English, French, Russian, Spanish, Arabic, Chinese) and more (German, Armenian). The [Translation](./translation.md) section gives more technical information, including
+Yes. Open SDG has been designed to be multilingual. It is available in the six official UN languages (English, French, Russian, Spanish, Arabic, Chinese) and more (German, Armenian). The [Translation](translation.md) section gives more technical information, including
 how to add another language.
 
 ## Can I monitor traffic to an Open SDG platform?
 
 Yes. It's easy to start monitoring traffic as Google Analytics functionality has been built in to Open SDG. You need to sign in to Google, [create a Google Analytics account](https://analytics.google.com/analytics/web/provision/#/provision/create) and obtain a tracking code which you then store in your copy of Open SDG.
 
-See the [Analytics section](./analytics.md) for detailed instructions.
+See the [Analytics section](analytics.md) for detailed instructions.
 
 ## Are maps available in Open SDG?
 
@@ -37,7 +37,7 @@ Yes. Maps can be automatically generated from the data if GeoCodes are included 
 
 - [Map for Rwanda indicator 1.2.1](https://sustainabledevelopment-rwanda.github.io/1-2-1/) (1.2.1: 'Proportion of population living below the national poverty line')
 
-Maps from other systems or publications can also be embedded. See the [Maps](./maps.md) section
+Maps from other systems or publications can also be embedded. See the [Maps](maps.md) section
 for more information
 
 ## Can content from other websites be embedded in Open SDG?
@@ -46,7 +46,7 @@ Yes. Content can be embedded into the indicator page using HTML either within a 
 
 ## Can I use Open SDG with other databases?
 
-Open SDG is designed to read its data from CSV files. But it is possible to use scripts to "pre-process" your data, fetching it from a database and then writing it to CSV files. This will require coding expertise in a language such as Python or PHP. Within Open SDG there is already a feature to import CKAN data. 
+Open SDG is designed to read its data from CSV files. But it is possible to use scripts to "pre-process" your data, fetching it from a database and then writing it to CSV files. This will require coding expertise in a language such as Python or PHP. Within Open SDG there is already a feature to import CKAN data.
 
 ## Does Open SDG work with SDMX?
 
@@ -72,7 +72,7 @@ With the **double-repository** approach, site content is kept separate from data
 2. Activity logs on the site repository do not appear on the data repository, and vice versa. This helps make the process of maintenance and review easier.
 3. Having the data and site in separate repositories adds a layer of protection against accidental version control problems.
 
-The double-repository approach is detailed in the [Quick Start](./quick-start.md) with the help of the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) template projects.
+The double-repository approach is detailed in the [Quick Start](quick-start.md) with the help of the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) template projects.
 
 By contrast, with the **single-repository** approach, site content and data/metadata are contained with the same single repository. This approach can be useful for local testing and development, as it simplifies the architecture of the platform. The benefits include:
 

@@ -36,11 +36,11 @@ The implementation of this platform involves maintaining 2 repositories:
 
 ### Data repository
 
-This is where the platform's data and metadata are managed. A "starter" repository is available [here](https://github.com/open-sdg/open-sdg-data-starter) where it can be easily forked and customised.
+This is where the platform's data and metadata are managed. A ["starter" repository](https://github.com/open-sdg/open-sdg-data-starter) is available which can be easily copied and customised.
 
 ### Site repository
 
-This is where everything else is managed, such as presentation, pages, menus, and documents.  A "starter" repository is available [here](https://github.com/open-sdg/open-sdg-site-starter) where it can be easily forked and customised.
+This is where everything else is managed, such as presentation, pages, menus, and documents.  A ["starter" repository](https://github.com/open-sdg/open-sdg-site-starter) is available which can be easily copied and customised.
 
 ## Translation keys
 

@@ -24,7 +24,7 @@ As mentioned above, there are endless ways to set up a Linux server for this pur
 * Provisioning the server using software like Ansible or Chef
 * Composing the server as microservices with Docker or Kubernetes
 
-To minimise the "cons" mentioned above, try to go with the most modern, automated, and community-supported approach possible. With that philosophy, Docker images like [this one](https://github.com/linuxserver/docker-letsencrypt) are probably your best bet.
+To minimise the "cons" mentioned above, try to go with the most modern, automated, and community-supported approach possible. With that philosophy, Docker images like [this Let's Encrypt Docker image](https://github.com/linuxserver/docker-letsencrypt) are probably your best bet.
 
 ## Automation
 

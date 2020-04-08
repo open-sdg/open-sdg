@@ -2,7 +2,7 @@
 
 In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples.
 
-_Note about "strings": Many of the settings detailed here contain human-readable "strings" (ie, text). In most cases, they can be replaced by [translation keys](./translation.md) for better multilingual support. For example, "Indicator" could be replaced with "general.indicator"._
+_Note about "strings": Many of the settings detailed here contain human-readable "strings" (ie, text). In most cases, they can be replaced by [translation keys](translation.md) for better multilingual support. For example, "Indicator" could be replaced with "general.indicator"._
 
 ## Required settings
 
@@ -45,7 +45,7 @@ environment: staging
 
 ### footer_menu
 
-This **required** setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](./translation.md).
+This **required** setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
 
 The following example provides a footer menu matching older versions of Open SDG, which included options for social media and email contacts.
 
@@ -100,7 +100,7 @@ metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
 
 ### menu
 
-This **required** setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](./translation.md).
+This **required** setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
 
 ```nohighlight
 menu:
@@ -124,7 +124,7 @@ plugins:
 
 ### remote_data_prefix
 
-This **required** setting tells the platform where to find your hosted [data repository](./glossary.md#data-repository).
+This **required** setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
 
 ```nohighlight
 remote_data_prefix: https://my-github-org.github.io/my-data-repository
@@ -148,7 +148,7 @@ remote_theme: open-sdg/open-sdg
 
 ### analytics
 
-This optional setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](./analytics.md) page.
+This optional setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](analytics.md) page.
 
 ```nohighlight
 analytics:
@@ -190,7 +190,7 @@ This optional setting can be used to automatically create 4 platform-dependent p
 * the search results page
 * the reporting status page
 
-Without this setting, you will need a file for each of these 4 pages (per language), in a `_pages` folder. This setting can include more advanced settings (see [here](https://github.com/open-sdg/jekyll-open-sdg-plugins/blob/master/lib/jekyll-open-sdg-plugins/create_pages.rb#L18)) but can also simply be set to `true`.
+Without this setting, you will need a file for each of these 4 pages (per language), in a `_pages` folder. This setting can include more advanced settings (see this [jekyll-open-sdg-plugins code](https://github.com/open-sdg/jekyll-open-sdg-plugins/blob/master/lib/jekyll-open-sdg-plugins/create_pages.rb#L18)) but can also simply be set to `true`.
 
 ```nohighlight
 create_pages: true
@@ -205,7 +205,7 @@ custom_css:
   - /assets/css/custom.css
 ```
 
-NOTE: This approach is deprecated. It is recommended to use [this](./configuration.md#custom_css) approach instead.
+NOTE: This approach is deprecated. It is recommended to instead [put your custom styles into a _sass folder](customisation.md#adding-custom-css).
 
 ### custom_js
 
@@ -227,7 +227,7 @@ date_formats:
     es: "%d de %b de %Y"
 ```
 
-The `%` variables in the formats correspond to the variables listed [here](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
+The `%` variables in the formats correspond to the variables listed in this [Ruby DateTime documentation](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
 
 ### frontpage_heading
 
@@ -285,7 +285,7 @@ While the "keys" above, such as "national" and "global", are arbitrary, the "sou
 
 ### non_global_metadata
 
-This optional setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](./translation.md) is recommended for better multilingual support.
+This optional setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](translation.md) is recommended for better multilingual support.
 
 ```nohighlight
 non_global_metadata: indicator.national_metadata
@@ -331,7 +331,7 @@ search_index_extra_fields:
 
 ### sharethis_property
 
-This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](./social-media-sharing.md) page.
+This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
 
 ### frontpage_introduction_banner
 

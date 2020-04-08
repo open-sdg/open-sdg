@@ -23,11 +23,11 @@ S3 has become a popular choice for hosting static websites, which makes it an ap
 
 Out of the box, your AWS S3 site will be viewable at a default AWS domain name. This might be something similar to: "http://www.my-bucket-name.org.s3-website-us-east-1.amazonaws.com/".
 
-This URL can be customised, of course, to any domain you own. More details are available [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html).
+This URL can be customised, of course, to any domain you own. More details are available in this [official Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html).
 
 ## Set-up
 
-As mentioned, the initial one-time setup of a static website on AWS S3 is somewhat involved. It is the subject of many blog posts, videos, and tutorials attempting to make it easier. The most authoritative source of guidance would be [Amazon's own documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html). Of particular use would be their example walkthroughs, like [this one](https://docs.aws.amazon.com/AmazonS3/latest/dev/HostingWebsiteOnS3Setup.html). Plenty of third-party guides and videos are available online as well, but try to use the most recent ones, since Amazon has changed their interface over the years.
+As mentioned, the initial one-time setup of a static website on AWS S3 is somewhat involved. It is the subject of many blog posts, videos, and tutorials attempting to make it easier. The most authoritative source of guidance would be [Amazon's own documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html). Of particular use would be this [official Amazon example walkthrough](https://docs.aws.amazon.com/AmazonS3/latest/dev/HostingWebsiteOnS3Setup.html). Plenty of third-party guides and videos are available online as well, but try to use the most recent ones, since Amazon has changed their interface over the years.
 
 ## Automation
 

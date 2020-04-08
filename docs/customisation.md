@@ -2,9 +2,9 @@
 
 ## Jekyll configuration
 
-Jekyll configuration is stored at the root of the site repository in a YAML file called `_config.yml`. General documentation about Jekyll configuration can be found [here](https://jekyllrb.com/docs/configuration/).
+Jekyll configuration is stored at the root of the site repository in a YAML file called `_config.yml`. General documentation about Jekyll configuration can be found in the [official Jekyll documentation](https://jekyllrb.com/docs/configuration/).
 
-In addition to general Jekyll configurations, Open SDG needs some specific configurations. For more information on these, please see the [configuration page](./configuration.md).
+In addition to general Jekyll configurations, Open SDG needs some specific configurations. For more information on these, please see the [configuration page](configuration.md).
 
 ## Optional features
 
@@ -17,7 +17,7 @@ Open SDG includes two alternative [layouts](https://jekyllrb.com/docs/step-by-st
 1. [`goal`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal.html) - Indicators are displayed in a responsive grid
 1. [`goal-by-target`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal-by-target.html) - Targets on the left, and indicators on the right
 
-If you are using the `create_goals` setting, you can change the layout as described [here](./configuration.md#create_goals).
+If you are using the `create_goals` setting, you can change the layout as described on the [configuration page in the "create goals" section](configuration.md#create_goals).
 
 Otherwise you can set the layout by adjusting the [front matter](https://jekyllrb.com/docs/front-matter/) of the goal file. For example, to use the goal-by-target layout, you would need this in the goal's front matter:
 
@@ -46,7 +46,7 @@ The main takeaway here is that these indivdual Javascript files are in `_include
 
 ## Adding custom CSS
 
-To add custom styles on top of the out-of-the-box Open SDG styles, it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss).
+To add custom styles on top of the out-of-the-box Open SDG styles, it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this placeholder file in the starter repository](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss).
 
 ## Working with Jekyll templates
 
@@ -124,7 +124,7 @@ The following variables can be used on any page:
 
 * `page.t`
 
-    The translations for the current language. More detail on this is available [here](./configuration.md).
+    The translations for the current language. More detail on this is available on the [configuration page](configuration.md).
 
     Usage example - printing the translation of the word "Goal" (which is available with the key "goal" in the "general" group:
 

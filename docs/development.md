@@ -55,7 +55,7 @@ The `bundler` will install the package versions as listed in the `Gemfile`.
 
 Note: we will assume you have a GitHub account for this part.
 
-We will need `git` to `clone` your forker copy of the repository. You can download and install `git` from [here](https://git-scm.com/downloads), or if you are using `Homebrew` on a Mac, just use:
+We will need `git` to `clone` your forker copy of the repository. You can download and install `git` from the [official Git download page](https://git-scm.com/downloads), or if you are using `Homebrew` on a Mac, just use:
 
 ```
 brew install git
@@ -73,7 +73,7 @@ The pre-processing works fine for version anything greater than or equal to 3.4.
 
 ## Building the site
 
-After you have gone through the [quick start](./quick-start.md) to implement the platform, you will be ready to `clone` the site repository. On the command line, change your directory (`cd`) to the relevant area of your computer where you wish to store the website files and type:
+After you have gone through the [quick start](quick-start.md) to implement the platform, you will be ready to `clone` the site repository. On the command line, change your directory (`cd`) to the relevant area of your computer where you wish to store the website files and type:
 
 ```
 git clone https://github.com/{#NAME}/open-sdg-site-starter.git

@@ -20,10 +20,10 @@ Other than these very minor issues, TravisCI makes a good choice for Open SDG.
 
 ## Set-up
 
-TravisCI's tight integration with Github repositories makes it relatively simple to set up. More details can be found [here](https://docs.travis-ci.com/user/tutorial/).
+TravisCI's tight integration with Github repositories makes it relatively simple to set up. More details can be found in [the official TravisCI documentation](https://docs.travis-ci.com/user/tutorial/).
 
 ## Usage
 
-Using TravisCI involves putting a configuration file (`.travis.yml`) in your repository. For details on getting started, see [here](https://docs.travis-ci.com/).
+Using TravisCI involves putting a configuration file (`.travis.yml`) in your repository. For details on getting started, see the [TravisCI documentation](https://docs.travis-ci.com/).
 
 Note that although TravisCI has [dedicated support for Github Pages](https://docs.travis-ci.com/user/deployment/pages/), this approach is discouraged because it is coupled to a particular user's Github account.

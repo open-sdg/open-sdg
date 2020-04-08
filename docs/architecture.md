@@ -27,7 +27,7 @@
         This contains all the content, configuration, and customisations that
         are specific to your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-site-starter">here</a>.
         <br><br>
-        This functions as your own custom <a href="https://jekyllrb.org">Jekyll</a>
+        This functions as your own custom <a href="https://jekyllrb.com">Jekyll</a>
         site.
       </span>
     </div>
@@ -56,8 +56,7 @@
       Automation tool
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        Any automation tool, such as <a href="../automation/circle-ci/">CircleCI</a>
-        or <a href="../automation/travis-ci/">TravisCI</a>, performs configured actions in response to events or schedules.
+        Any automation tool, such as <a href="../automation/github-actions/">GitHub Actions</a>, performs configured actions in response to events or schedules.
       </span>
     </div>
     <div class="node global row4" id="jekyll">

@@ -24,6 +24,6 @@ As mentioned above, there is no special set-up involved in GitHub Pages, since w
 
 ## Automation
 
-The [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) repositories both include a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/deploy/circleci/deploy_staging.sh) to help use GitHub Pages for hosting. Using GitHub Pages for the "production" environment can be accomplished by having a second GitHub organisation, and the starter repositories also include everything needed to do this.
+The [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) repositories both include a [GitHub Actions workflow](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/.github/workflows/deploy-to-staging.yml) to help use GitHub Pages for hosting. Using GitHub Pages for the "production" environment can be accomplished by having a second GitHub organisation, and the starter repositories also include everything needed to do this.
 
-The main hurdle in automating deployments to GitHub Pages is setting up the SSH keys to allow your automation tool to write to the GitHub repository. For a detailed walk-through of this, see the [Quick Start](../quick-start.md).
+The main hurdle in automating deployments to GitHub Pages is setting up the access tokens to allow your automation tool to write to the GitHub repository. For a detailed walk-through of this, see the [Quick Start](../quick-start.md).

@@ -73,4 +73,4 @@ test.docs: build.docs
 	gem install html-proofer
 	htmlproofer site
 
-test: test.html test.features test.accessibility
+test: test.html test.features test.accessibility test.docs
