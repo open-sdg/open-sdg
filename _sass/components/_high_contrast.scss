@@ -168,3 +168,7 @@ body.long {
 body.contrast-high .site-intro .description{
   color: white;
 }
+
+body.contrast-high #main-content .no-gutters img:not(#goal-18):hover {
+  box-shadow: 0px 0px 0px 5px yellow;
+}
