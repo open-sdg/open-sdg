@@ -59,7 +59,7 @@
 
 Breaking changes:
 
-This is a major version upgrade and contains some breaking changes. Full technical details are available in [1.0.0 upgrade instructions](upgrading-1-0-0.md). But here is a brief summary of the breaking changes:
+This is a major version upgrade and contains some breaking changes. Full technical details are available in [1.0.0 upgrade instructions](upgrades/upgrading-1-0-0.md). But here is a brief summary of the breaking changes:
 
 * This upgrade should be accompanied by an upgrade to:
     * jekyll-open-sdg-plugins 1.0.0

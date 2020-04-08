@@ -43,7 +43,6 @@ pages:
         - Data sources: data-sources.md
         - Chart types: charts.md
     - Developers:
-        - Upgrading: upgrading.md
         - Local development: development.md
         - Deployment: deployment.md
         - Configuration: configuration.md
@@ -65,3 +64,6 @@ pages:
         - Linux server: hosting/linux-server.md
         - Production environments: hosting/production.md
         - Github pages (production): hosting/github-pages-production.md
+    - Upgrades:
+        - Upgrade process: upgrades/upgrade-process.md
+        - Upgrading to 1.0.0: upgrades/upgrading-1-0-0.md
