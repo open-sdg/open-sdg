@@ -4,7 +4,7 @@ Having two environments deployed at once gives you the option to treat one as "s
 
 ## Production site and production data
 
-The typical Open SDG setup involves 2 separately-hosted repositories: the [site repository](../glossary/#site-repository) and the [data repository](../glossary/#data-repository). Both of these can have the staging/production versions, giving you a total of four environments:
+The typical Open SDG setup involves 2 separately-hosted repositories: the [site repository](../glossary.md#site-repository) and the [data repository](../glossary.md#data-repository). Both of these can have the staging/production versions, giving you a total of four environments:
 
 * Staging data
 * Staging site
