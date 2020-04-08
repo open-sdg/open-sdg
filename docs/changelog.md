@@ -41,7 +41,7 @@
 * Remove a lot of unused images (#509)
 * Change the styling of the search input field (#515)
 * Fix for the edge case of local data with untranslated builds (#522)
-* Update styling of progress bars (#533)
+* Update styling of reporting status progress bars (#533, #613)
 * Chart title per unit of measurement (#538)
 * Upgrade to jQuery 3.4.1 (#547)
 * Allow the use of user-defined colors in charts (#553)
@@ -52,6 +52,10 @@
 * Change reporting status progress bar colors to be less dominating (#589)
 * High-contrast fixes for chart grids/ticks (#593)
 * Indicator cards styling updates (#594)
+* Only show disaggregations that have data in drop-downs (#600)
+* Move units above subcategories (#603)
+* Hide the sub-categories when there are no disaggregations (#604)
+* Automatic site builds whenever the data changes (#605)
 
 Breaking changes:
 

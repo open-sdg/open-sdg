@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [here](./changelog.md).
 
 ## 1.0.0
 
-[Date TBD]
+2020-04-08
 
 Although Open SDG has been in use and production-ready throughout its evolution, the release of version 1.0.0 brings a stable base of documentation and functionality to the platform. Sites upgrading to version 1.0.0 can enjoy the latest batch of features and fixes, as well as the security of consistent and future-proof configuration.
 
@@ -36,6 +36,8 @@ This release includes the following:
 * Allow for a different chart title per unit of measurement
 * Allow the use of user-defined colors in charts
 * Improved support for high-contrast mode
+* More intuitive behavior with the disaggregation drop-downs
+* Guide: automatic site builds when the data changes
 
 ## 0.10.0
 
