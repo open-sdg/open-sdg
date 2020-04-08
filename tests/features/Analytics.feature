@@ -6,11 +6,13 @@ Feature: Analytics
 
   Scenario: Google Analytics tags track events on the indicator data tabs
     Given I am on "/1-1-1"
+    And I wait 1 second
     And I should see "Change data view"
     And I should see "Change to Chart tab"
 
   Scenario: Google Analytics tags track events on the contrast switcher
     Given I am on "/"
+    And I wait 1 second
     Then I should see "Accessibility"
     And I should see "Change contrast setting"
 
