@@ -59,7 +59,7 @@
 
 Breaking changes:
 
-This is a major version upgrade and contains some breaking changes. Full technical details are available [here](./upgrading-1-0-0). But here is a brief summary of the breaking changes:
+This is a major version upgrade and contains some breaking changes. Full technical details are available in [1.0.0 upgrade instructions](upgrading-1-0-0.md). But here is a brief summary of the breaking changes:
 
 * This upgrade should be accompanied by an upgrade to:
     * jekyll-open-sdg-plugins 1.0.0
@@ -69,7 +69,7 @@ This is a major version upgrade and contains some breaking changes. Full technic
     * `t` has changed to `page.t`
     * `meta` has changed to `page.indicator`
     * `current_language` has changed to `page.language`
-    * Details on Liquid variables can be found [here](./customisation.md#working-with-jekyll-templates).
+    * Details on Liquid variables can be found in [the Jekyll customisation docs](customisation.md#working-with-jekyll-templates).
 * The following include files have been removed:
     * indicator-variables.html
     * goal-variables.html
@@ -87,9 +87,9 @@ This is a major version upgrade and contains some breaking changes. Full technic
 
     <p>The name of my goal is {{ myGoal.name }}.</p>
     ```
-    For more details see [here](https://open-sdg.readthedocs.io/en/latest/customisation/#working-with-jekyll-templates).
+    For more details see [the Jekyll customisation docs](https://open-sdg.readthedocs.io/en/latest/customisation/#working-with-jekyll-templates).
 * The `remotedatabaseurl` setting is no longer supported. Use `remote_data_prefix` instead.
-* The `custom_css` configuration option is deprecated. Override [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
+* The `custom_css` configuration option is deprecated. Override [the `_sass/custom.scss` file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
 * The H2 on indicator pages is now controlled by the `indicator_available` metadata field, rather than `graph_title`.
 
 ## 0.10.0
