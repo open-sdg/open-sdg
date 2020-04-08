@@ -71,6 +71,6 @@ test.accessibility: serve.detached
 
 test.docs: build.docs
 	gem install html-proofer
-	htmlproofer site
+	htmlproofer site --disable_external
 
 test: test.html test.features test.accessibility test.docs

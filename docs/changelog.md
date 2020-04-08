@@ -1,13 +1,105 @@
 <h1>Change Log</h1>
 
+## 1.0.0
+
+* More consistent template variables without globals (#394)
+* Auto fit search bar around placeholder text (#407)
+* Add link to Open SDG to footer (#411)
+* Configurable footer menu links (#414)
+* Escape variables in alt attributes (#415)
+* Use indicator_available instead of graph_title for the indicator page H2 (#422)
+* Reporting status for any metadata field (#424)
+* Switch to Lunr for search functionality (#427)
+* Metadata field translation keys (#428)
+* Show post excerpts on news page (#431)
+* Refactoring of Sass style sheets (#439)
+* Ensure that indicator data always has a value (#441)
+* Set background to white for pages and footer (#448)
+* General javascript cleanup (#451)
+* Add box shadows to goal tiles (#452)
+* Underline menu items when hovered (#454)
+* Move search box above the top navigation (#455)
+* Keep searchbox the same size when in focus (#456)
+* Multilingual news/posts (#457)
+* Make bars striped after unique colors are exhausted (#459)
+* Remove uppercase styling for top menu (#461)
+* Make serve command for easier local development (#464)
+* Adjust homepage whitespace (#465, #473)
+* Redesign indicator page tabs (#466, #472, #479)
+* Change the styling of the top banner on goal and indicator pages (#474)
+* Update the chart download button when data changes (#476)
+* Fixed rounding on reporting status page progress bar (#485)
+* Add an introduction banner to the frontpage (#486, #545, #565)
+* Set aria-label on search button (#487)
+* Bulk download link beneath the homepage grid (#489)
+* Black text for tab links (#490)
+* Set aria-disabled on 'Clear selections' button (#491)
+* Chart refactor for limits and stacked bars (#497)
+* Fit total number of indicators on one line (#502)
+* Also have overall total in box (#505)
+* Remove goal line from indicator banner (#506)
+* Remove unused images (#509)
+* Change the styling of the search input field (#515)
+* Fix for the edge case of local data with untranslated builds (#522)
+* Update styling of reporting status progress bars (#533, #613)
+* Chart title per unit of measurement (#538)
+* Upgrade to jQuery 3.4.1 (#547)
+* Allow the use of user-defined colors in charts (#553)
+* Increase the font size of the header navigation menu (#572)
+* Search page design improvements (#586)
+* Remove hover styling from metadata fields (#587)
+* Align more elements flush to the left (#588)
+* Change reporting status progress bar colors to be less dominating (#589)
+* High-contrast fixes for chart grids/ticks (#593)
+* Indicator cards styling updates (#594)
+* Only show disaggregations that have data in drop-downs (#600)
+* Move units above subcategories (#603)
+* Hide the sub-categories when there are no disaggregations (#604)
+* Automatic site builds whenever the data changes (#605)
+
+Breaking changes:
+
+This is a major version upgrade and contains some breaking changes. Full technical details are available in [1.0.0 upgrade instructions](upgrading-1-0-0.md). But here is a brief summary of the breaking changes:
+
+* This upgrade should be accompanied by an upgrade to:
+    * jekyll-open-sdg-plugins 1.0.0
+    * sdg-build 1.0.0
+    * sdg-translations 1.0.0
+* Some global Liquid variables have changed. For example:
+    * `t` has changed to `page.t`
+    * `meta` has changed to `page.indicator`
+    * `current_language` has changed to `page.language`
+    * Details on Liquid variables can be found in [the Jekyll customisation docs](customisation.md#working-with-jekyll-templates).
+* The following include files have been removed:
+    * indicator-variables.html
+    * goal-variables.html
+    * multilingual.html
+* All include files and layout files in the platform have been updated.
+* The `get_indicator_name` filter is no longer supported. Use `sdg_lookup` and hash objects instead. Eg:
+    ```
+    {% assign indicatorId = '1.1.1' %}
+    {% assign myIndicator = indicatorId | sdg_lookup %}
+
+    <p>The name of my indicator is: {{ myIndicator.name }}</p>
+    <p>My indicator is in goal {{ myIndicator.goal_number }}.</p>
+
+    {% assign myGoal = myIndicator.goal_number | sdg_lookup %}
+
+    <p>The name of my goal is {{ myGoal.name }}.</p>
+    ```
+    For more details see [the Jekyll customisation docs](https://open-sdg.readthedocs.io/en/latest/customisation/#working-with-jekyll-templates).
+* The `remotedatabaseurl` setting is no longer supported. Use `remote_data_prefix` instead.
+* The `custom_css` configuration option is deprecated. Override [the `_sass/custom.scss` file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
+* The H2 on indicator pages is now controlled by the `indicator_available` metadata field, rather than `graph_title`.
+
 ## 0.10.0
 
-Functionality and docs for a 'languages_public' mapping (#360)
-Footerfield for Copyright (#364)
-Configurable URLs for the edit buttons (#368)
-Metadata tabs configuration (#378)
-Ability to hide empty metadata (#378)
-Add footer to embed tag (#401)
+* Functionality and docs for a 'languages_public' mapping (#360)
+* Footerfield for Copyright (#364)
+* Configurable URLs for the edit buttons (#368)
+* Metadata tabs configuration (#378)
+* Ability to hide empty metadata (#378)
+* Add footer to embed tag (#401)
 
 Breaking changes:
 
