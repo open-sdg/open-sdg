@@ -83,8 +83,12 @@ body.contrast-high {
     color: white;
   }
 
-  h1, li, a {
+  li, a {
     color: yellow;
+  }
+
+  h1 {
+    color: white;
   }
 
   li.contrast-default a {
