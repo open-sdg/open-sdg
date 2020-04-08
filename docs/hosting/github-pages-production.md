@@ -19,7 +19,7 @@ After you've created the organisation, you will need to create 2 repositories in
 1. Repository for production data: This repository can be named whatever you would like. Perhaps something like `sdg-data`, `sdg-data-prod`, `sdg-data-france`, etc.
 2. Repository for production site: This repository **must** be named the same as your organisation, plus `.github.io`. For example, if your organisation is `my-stats-org`, then you **must** name this repository exactly: `my-stats-org.github.io`.
 
-You can create these repositories a on [GitHub.com "new" page](https://github.com/new). **IMPORTANT**: Make sure to remember the following **required** items when create **both** repositories:
+You can create these repositories a on [GitHub.com "new" page](https://github.com/new). **IMPORTANT**: Make sure to remember the following **required** items when creating **both** repositories:
 
 1. Select your new production organisation under "Owner".
 2. Check the "Initialize this repository with a README".
