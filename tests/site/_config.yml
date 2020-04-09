@@ -132,4 +132,8 @@ date_formats:
 
 frontpage_introduction_banner:
   title: My frontpage introduction banner title
-  description: My frontpage introduction banner description    
+  description: My frontpage introduction banner description
+
+disclaimer:
+  phase: header.alpha
+  message: custom.disclaimer_message
