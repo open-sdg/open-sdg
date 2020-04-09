@@ -181,6 +181,12 @@ body.contrast-high footer a {
   }
 }
 
-body.contrast-high #disclaimer .disclaimer-alert {
-  color: white;
+body.contrast-high #disclaimer {
+  .phase-tag {
+    background: white;
+    color: black;
+  }
+  .disclaimer-alert {
+    color: white;
+  }
 }
