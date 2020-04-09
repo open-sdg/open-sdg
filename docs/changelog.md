@@ -56,6 +56,7 @@
 * Move units above subcategories (#603)
 * Hide the sub-categories when there are no disaggregations (#604)
 * Automatic site builds whenever the data changes (#605)
+* Disclaimer configuration and redesign (#620)
 
 Breaking changes:
 
