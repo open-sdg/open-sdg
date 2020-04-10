@@ -16,12 +16,25 @@ schema_file: _prose.yml
 # The parent folder of the 'meta' and 'data' folders.
 src_dir: ''
 
-# Links to Git repositories with translation data.
+inputs:
+  - class: InputCsvData
+    path_pattern: data/*-*.csv
+  - class: InputYamlMdMeta
+    path_pattern: meta/*-*.md
+    git: false
+    git_data_dir: data
+
 translations:
-  - https://github.com/open-sdg/sdg-translations.git@master
+  # This pulls in translations from a Git repository.
+  - class: TranslationInputSdgTranslations
+    source: https://github.com/open-sdg/sdg-translations.git
+    tag: master
+  # This pulls in translations from a local 'translations' folder.
+  - class: TranslationInputYaml
+    source: translations
 
 map_layers:
-  - geojson_file: https://geoportal1-ons.opendata.arcgis.com/datasets/4fcca2a47fed4bfaa1793015a18537ac_4.geojson
+  - geojson_file: england-regions.geojson
     name_property: rgn17nm
     id_property: rgn17cd
     exclude_columns:

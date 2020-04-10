@@ -26,7 +26,7 @@ Feature: Indicator
     And I click on "the Global metadata tab"
     Then I should see "UN designated tier"
     And I click on "the National metadata tab"
-    Then I should see "Data last updated"
+    Then I should see "Indicator description"
     And I click on "the Sources metadata tab"
     And I should see "My organisation"
 

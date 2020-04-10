@@ -59,12 +59,6 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
-  - path: guidance
-    translation_key: menu.guidance
-    # Internal paths do not need a preceding slash,
-    # but it is fine to have one.
-  - path: /faq
-    translation_key: menu.faq
 
 footer_menu:
   - path: mailto:test@example.com
@@ -73,12 +67,6 @@ footer_menu:
     translation_key: general.twitter
   - path: https://facebook.com/MyFacebookAccount
     translation_key: general.facebook
-  - path: faq
-    translation_key: menu.faq
-  # Internal paths do not need a preceding slash,
-  # but it is fine to have one.
-  - path: /about/cookies-and-privacy
-    translation_key: menu.cookies
 
 # The list of languages that are translated. The first one is the default.
 languages:

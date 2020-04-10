@@ -9,28 +9,16 @@ clean:
 	rm -fr data-starter
 
 build: clean
-	# Clone the starter repositories.
-	git clone https://github.com/open-sdg/open-sdg-site-starter.git site-starter
-	git clone https://github.com/open-sdg/open-sdg-data-starter.git data-starter
-	# To make the tests run faster, remove all the starter data.
-	rm -fr data-starter/data
-	rm -fr data-starter/meta
+	mkdir site-starter
+	mkdir data-starter
 	# Copy all the theme files into the site starter (using symbolic links).
-	rm -fr site-starter/_includes
-	rm -fr site-starter/_layouts
-	rm -fr site-starter/assets
-	rm -fr site-starter/_sass
 	ln -s ../_includes site-starter/_includes
 	ln -s ../_layouts site-starter/_layouts
 	ln -s ../assets site-starter/assets
 	ln -s ../_sass site-starter/_sass
-	# Copy any custom files into the site starter.
+	# Copy any custom files into the starter folders.
 	cp -r tests/site/* site-starter/
-	# Copy any custom files into the data starter.
 	cp -r tests/data/* data-starter/
-	# Add extra languages.
-	cd site-starter && python scripts/batch/add_language.py es
-	cd site-starter && python scripts/batch/add_language.py fr fr-CA
 	# Build the data and metadata and move it into the starter.
 	cd data-starter && pip install --upgrade -r requirements.txt
 	cd data-starter && python build_data.py
@@ -57,7 +45,7 @@ serve.docs: build.docs
 
 test.html: serve.detached
 	# HTML proofer.
-	cd site-starter && bash scripts/test/html_proofer_prod.sh
+	cd site-starter && bundle exec htmlproofer --disable-external ./_site
 
 test.features: serve.detached
 	# Cucumber.
