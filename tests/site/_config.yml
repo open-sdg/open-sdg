@@ -78,7 +78,7 @@ languages:
 languages_public:
   fr: fr-CA
 
-goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
+goal_image_base: /img/goals
 
 plugins:
   - jekyll-open-sdg-plugins

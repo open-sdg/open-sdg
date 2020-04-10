@@ -25,13 +25,10 @@ inputs:
     git_data_dir: data
 
 translations:
-  # This pulls in translations from a Git repository.
-  - class: TranslationInputSdgTranslations
-    source: https://github.com/open-sdg/sdg-translations.git
-    tag: master
-  # This pulls in translations from a local 'translations' folder.
   - class: TranslationInputYaml
     source: translations
+  - class: TranslationInputYaml
+    source: custom-translations
 
 map_layers:
   - geojson_file: england-regions.geojson
