@@ -4,6 +4,7 @@ tests/package-lock.json
 tests/site/Gemfile.lock
 site-starter
 data-starter
+make-cache
 venv
 /site
 .vscode

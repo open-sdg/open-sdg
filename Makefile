@@ -8,7 +8,15 @@ clean:
 	rm -fr site-starter
 	rm -fr data-starter
 
-build: clean
+cache:
+	if [ -d "make-cache" ]; then echo "Using cached versions of files. Use 'make cache.bust' for updated files."; fi
+	if [ ! -d "make-cache" ]; then mkdir make-cache; fi
+	if [ ! -d "make-cache/sdg-translations" ]; then cd make-cache && git clone https://github.com/open-sdg/sdg-translations; fi
+
+cache.bust:
+	rm -fr make-cache
+
+build: clean cache
 	mkdir site-starter
 	mkdir data-starter
 	# Copy all the theme files into the site starter (using symbolic links).
@@ -16,7 +24,9 @@ build: clean
 	ln -s ../_layouts site-starter/_layouts
 	ln -s ../assets site-starter/assets
 	ln -s ../_sass site-starter/_sass
-	# Copy any custom files into the starter folders.
+	# Copy necessary files into the starter folders.
+	cp -r make-cache/sdg-translations/www/assets/img site-starter/
+	cp -r make-cache/sdg-translations/translations data-starter/
 	cp -r tests/site/* site-starter/
 	cp -r tests/data/* data-starter/
 	# Build the data and metadata and move it into the starter.
