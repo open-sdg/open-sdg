@@ -6,7 +6,7 @@ Out of the box, Open SDG provides a page showing the "reporting status" of all t
 
 By default, the reporting status options dispayed are **Complete**, **In progress** and **Exploring data sources**. However, these options can be changed to meet your needs. For example, options can be removed or another option, such as **Not applicable**, can be used.
 
-The options available can be controlled by adjusting the [schema file](metadata-format.md#schema). For example, [here is the section](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L135) in the data starter repository, where you would adjust the available options for reporting status.
+The options available can be controlled by adjusting the [schema file](metadata-format.md#schema). For example, [here is the section](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L184) in the data starter repository, where you would adjust the available options for reporting status.
 
 ## Color-coding
 
@@ -39,7 +39,7 @@ Then you could color-code the options by adding this in your CSS:
 
 ## Alternative groupings
 
-Apart from grouping by _goal_, you might like to show the reporting status in different ways (such as "status by _tier_", for example). To do this, your data repository needs to be configured to generate the necessary data. See the [`config_data.yml` file in the data starter](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L24), for an example.
+Apart from grouping by _goal_, you might like to show the reporting status in different ways (such as "status by _tier_", for example). To do this, your data repository needs to be configured to generate the necessary data. See the [`config_data.yml` file in the data starter](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L79), for an example.
 
 Note that the value of that setting in the data repository should be a list of fields which are present in your indicator metadata files.
 
