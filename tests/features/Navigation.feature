@@ -10,5 +10,3 @@ Feature: Navigation
   Scenario: All expected menu items are visible
     Then I should see "Reporting Status"
     And I should see "About"
-    And I should see "Guidance"
-    And I should see "FAQ"

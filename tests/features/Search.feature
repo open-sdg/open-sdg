@@ -24,12 +24,12 @@ Feature: Search
 
   Scenario: Search index includes pages
     Given I am on the homepage
-    And I fill in "the search box" with "guidance"
+    And I fill in "the search box" with "platypus"
     And I send key "Enter" in "the search box" element
     And I wait 6 seconds
-    Then I should see "3 results found"
-    And I follow "Guidance"
-    Then I should be on "/guidance/"
+    Then I should see "1 results found"
+    And I follow "About"
+    Then I should be on "/about/"
 
   Scenario: Search indexes can include extra fields
     Given I am on the homepage
