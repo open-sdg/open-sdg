@@ -1,26 +1,16 @@
 #disclaimer {
-  background: #f2dede;
 
   .phase-tag {
     background: #005ea5;
     color: white;
     text-transform: uppercase;
-    padding: 2px 5px 0;
+    padding: 2px 5px;
   }
-  .alert {
+  .disclaimer-alert {
     color: #3D3D3D;
-    margin-bottom: 0;
-    padding: 10px 10px 10px 0;
-    a {
-      color: #3D3D3D;
-    }
-  }
-  .alert-danger {
-    border: none;
-    margin-bottom: 0;
-    a {
-      text-decoration: underline;
-    }
+    margin-bottom: 10px;
+    padding: 12px 10px 10px 0;
+    border-bottom: 1px solid #BBBBBB;
     @media only screen and (max-width: 680px) {
       font-size: 0.75em;
     }

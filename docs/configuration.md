@@ -229,6 +229,27 @@ date_formats:
 
 The `%` variables in the formats correspond to the variables listed in this [Ruby DateTime documentation](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
 
+### disclaimer
+
+This optional setting controls the content of the disclaimer that appears at the top of each page. If you are not happy with the default ("ALPHA: This is a development website. We welcome your feedback.") then you can use something like the following example configuration:
+
+```nohighlight
+disclaimer:
+  phase: BETA
+  message: This is my disclaimer message.
+```
+
+The above configuration would result in: "BETA: This is my disclaimer message."
+
+If you only want to change the phase (to "BETA" for example), you can omit the `message` like so:
+
+```
+disclaimer:
+  phase: BETA
+```
+
+As always, you can use translation keys.
+
 ### frontpage_heading
 
 This optional setting can control the heading that appears on the front page.

@@ -38,6 +38,7 @@ This release includes the following:
 * Improved support for high-contrast mode
 * More intuitive behavior with the disaggregation drop-downs
 * Guide: automatic site builds when the data changes
+* Redesign of the disclaimer, and new disclaimer-related configuration options
 
 ## 0.10.0
 
