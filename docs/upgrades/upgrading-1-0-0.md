@@ -47,10 +47,10 @@ If you are using the default data management approach -- .CSV files for data and
 
 1. Add a configuration file called `config_data.yml`. Start with [this file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml) and edit as needed. You should read through the whole file, but in particular:
     1. Adjust the `languages` list (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L10))
-    2. If your site repository was pointing at custom translations repositories, adjust the defaults for `translations` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L35)).
+    2. If your site repository was pointing at custom translations repositories, adjust the defaults for `translations` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L57)).
         * Note that these should point directly to Git repositories (usually ending in .git) and NOT to .json files.
         * Note that if you are using the standard `open-sdg/sdg-translations` translations, that you should use version 1.0.0, as demonstrated here (link TBD).
-    3. If your site uses the Open SDG mapping functionality, uncomment and adjust the `map_layers` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L53))
+    3. If your site uses the Open SDG mapping functionality, uncomment and adjust the `map_layers` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L81))
 2. Replace the contents of the scripts you use to check and build data. They are likely called `check_data.py` and `build_data.py`, in your `scripts` folder. Unless you need special customisations, you can use the exact versions from the data starter ([check_data.py](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/check_data.py) and [build_data.py](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/build_data.py).
 
 If you are not able to use this new YAML-based configuration approach, or you would prefer not to, you can use the sdg-build classes directly, as demonstrated in the [sdg-build example](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg.py). This requires some knowledge of Python.
@@ -125,7 +125,7 @@ If you chose to remove them, you can delete the following folders/files, if need
 The following **changes** should be made in the `_config.yml` file, if needed:
 
 * Change `remotedatabaseurl` to `remote_data_prefix`
-* Check the format of the `menu` settings and make sure they match the [site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L68)
+* Check the format of the `menu` settings and make sure they match the [site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L76)
 * Update the `map_layers` configuration, if your site is using the Open SDG mapping functionality. In particular:
     * Remove each map layer's `serviceUrl`, `nameProperty`, and `idProperty`
     * Add a `subfolder` (which should match the `output_subfolder` you added to your data repository)
@@ -143,13 +143,13 @@ The following config settings can be **removed**, if needed:
 
 The follow config settings should be **added**, if needed:
 
-* Add `data_edit_url` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L20)
-* Add `metadata_edit_url` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L22)
-* Add `create_indicators` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L26)
-* Add `create_goals` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L28)
-* Add `create_pages` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L30)
-* Add and cusotmise `footer_menu` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L82)
-* Add `non_global_metadata` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L94)
+* Add `data_edit_url` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L22)
+* Add `metadata_edit_url` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L24)
+* Add `create_indicators` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L28)
+* Add `create_goals` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L30)
+* Add `create_pages` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L32)
+* Add and cusotmise `footer_menu` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L90)
+* Add `non_global_metadata` as done in [the site starter config](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml#L100)
 * If you are using the Armenian language, and would like to continue using a language code of "am", you should add the following:
     ```
     languages_public:
