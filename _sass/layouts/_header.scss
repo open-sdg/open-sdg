@@ -100,9 +100,14 @@ header {
         }
       }
       &:not(.contrast) {
-        a:hover{
-          border-bottom: 2px solid $menu-hover-border-bottom;
+        a{
+          border-bottom: 2px solid transparent;
+
+          &:hover{
+            border-bottom: 2px solid $menu-hover-border-bottom;
+          }
         }
+        
       }
     }
     @media screen and (min-width: 769px) {
