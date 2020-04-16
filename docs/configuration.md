@@ -8,7 +8,7 @@ _Note about "strings": Many of the settings detailed here contain human-readable
 
 ### analytics
 
-This optional setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](analytics.md) page.
+_Optional_: This setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](analytics.md) page.
 
 ```nohighlight
 analytics:
@@ -17,7 +17,7 @@ analytics:
 
 ### contrast_type
 
-This optional setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+_Optional_: This setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
 
 ```nohighlight
 contrast_type: long
@@ -25,7 +25,7 @@ contrast_type: long
 
 ### country
 
-This **required** setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
+**_Required_**: This setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
 
 ```nohighlight
 country:
@@ -35,7 +35,7 @@ country:
 
 ### create_goals
 
-This optional setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
+_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
 
 ```nohighlight
 create_goals:
@@ -44,7 +44,7 @@ create_goals:
 
 ### create_indicators
 
-This optional setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators.
+_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators.
 
 ```nohighlight
 create_indicators:
@@ -53,7 +53,7 @@ create_indicators:
 
 ### create_pages
 
-This optional setting can be used to automatically create 4 platform-dependent pages:
+_Optional_: This setting can be used to automatically create 4 platform-dependent pages:
 
 * the home page
 * the indicators.json page
@@ -68,7 +68,7 @@ create_pages: true
 
 ### custom_css
 
-This optional setting can be used to load additional CSS files on each page. It should be a list of relative paths to CSS files.
+_Optional_: This setting can be used to load additional CSS files on each page. It should be a list of relative paths to CSS files.
 
 ```
 custom_css:
@@ -79,7 +79,7 @@ NOTE: This approach is deprecated. It is recommended to instead [put your custom
 
 ### custom_js
 
-This optional setting can be used to load additional JavaScript files on each page. It should be a list of relative paths to JavaScript files.
+_Optional_: This setting can be used to load additional JavaScript files on each page. It should be a list of relative paths to JavaScript files.
 
 ```
 custom_js:
@@ -88,7 +88,7 @@ custom_js:
 
 ### data_edit_url
 
-This **required** setting controls the URL of the "Edit Data" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+**_Required_**: This setting controls the URL of the "Edit Data" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
 
 ```nohighlight
 data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
@@ -96,7 +96,7 @@ data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].
 
 ### date_formats
 
-This optional setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, using an arbitrary key, such as "standard". Each date format should have a variant for each of your languages. For example, here is how you might configure a "standard" date format:
+_Optional_: This setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, using an arbitrary key, such as "standard". Each date format should have a variant for each of your languages. For example, here is how you might configure a "standard" date format:
 
 ```nohighlight
 date_formats:
@@ -109,7 +109,7 @@ The `%` variables in the formats correspond to the variables listed in this [Rub
 
 ### disclaimer
 
-This optional setting controls the content of the disclaimer that appears at the top of each page. If you are not happy with the default ("ALPHA: This is a development website. We welcome your feedback.") then you can use something like the following example configuration:
+_Optional_: This setting controls the content of the disclaimer that appears at the top of each page. If you are not happy with the default ("ALPHA: This is a development website. We welcome your feedback.") then you can use something like the following example configuration:
 
 ```nohighlight
 disclaimer:
@@ -130,7 +130,7 @@ As always, you can use translation keys.
 
 ### email_contacts
 
-This **required** setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
+**_Required_**: This setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
 
 ```nohighlight
 email_contacts:
@@ -141,7 +141,7 @@ email_contacts:
 
 ### environment
 
-This **required** setting should be either `staging` or `production`. Certain features of the platform, such as data management links, will only appear on `staging`. Typically you will have this set to `staging` in the `_config.yml` file, and set to `production` in the `_config_prod.yml` file.
+**_Required_**: This setting should be either `staging` or `production`. Certain features of the platform, such as data management links, will only appear on `staging`. Typically you will have this set to `staging` in the `_config.yml` file, and set to `production` in the `_config_prod.yml` file.
 
 ```nohighlight
 environment: staging
@@ -149,7 +149,7 @@ environment: staging
 
 ### footer_menu
 
-This **required** setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
+**_Required_**: This setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
 
 The following example provides a footer menu matching older versions of Open SDG, which included options for social media and email contacts.
 
@@ -169,7 +169,7 @@ footer_menu:
 
 ### frontpage_heading
 
-This optional setting can control the heading that appears on the front page.
+_Optional_: This setting can control the heading that appears on the front page.
 
 ```nohighlight
 frontpage_heading: Australian data for Sustainable Development Goal indicators
@@ -177,7 +177,7 @@ frontpage_heading: Australian data for Sustainable Development Goal indicators
 
 ### frontpage_instructions
 
-This optional setting can control the instructions that appear on the front page.
+_Optional_: This setting can control the instructions that appear on the front page.
 
 ```nohighlight
 frontpage_instructions: Click on each goal for Australian statistics for Sustainable Development Goal global indicators.
@@ -185,7 +185,7 @@ frontpage_instructions: Click on each goal for Australian statistics for Sustain
 
 ### frontpage_introduction_banner
 
-This optional setting adds a banner to your site's homepage, in order to introduce your users to your site. To add a banner update the `_config.yml` file with these settings:
+_Optional_: This setting adds a banner to your site's homepage, in order to introduce your users to your site. To add a banner update the `_config.yml` file with these settings:
 
 ```yaml
 frontpage_introduction_banner:
@@ -195,7 +195,7 @@ frontpage_introduction_banner:
 
 ### goal_image_base
 
-This **required** setting controls the base URL for downloading the imagery for the goals (PNG files). The platform will use this as a base, and complete the URLs (behind the scenes) by adding a language and number. For example, if you set this to `https://example.com`, then the platform will try to download the Spanish image for Goal 4 at: `https://example.com/en/4.png`.
+**_Required_**: This setting controls the base URL for downloading the imagery for the goals (PNG files). The platform will use this as a base, and complete the URLs (behind the scenes) by adding a language and number. For example, if you set this to `https://example.com`, then the platform will try to download the Spanish image for Goal 4 at: `https://example.com/en/4.png`.
 
 ```nohighlight
 goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
@@ -203,7 +203,7 @@ goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
 
 ### graph_color_set
 
-This optional setting can be used to customize the color set used in the charts. There are four possible entries:
+_Optional_: This setting can be used to customize the color set used in the charts. There are four possible entries:
 Use `graph_color_set: 'default'` for using the 6 default colors,
 `graph_color_set: 'sdg'` to use the 17 SDG colors in all charts,
 `graph_color_set: 'goal'` to use shades of the color of the current indicator's goal,
@@ -215,18 +215,18 @@ Use `graph_color_set: 'default'` for using the 6 default colors,
 
 ### graph_color_list
 
-This optional setting can be used to define a set of colors to be used in the charts. Precondition is `graph_color_set` to be `custom`. Enter a list of hexadecimal color codes.
+_Optional_: This setting can be used to define a set of colors to be used in the charts. Precondition is `graph_color_set` to be `custom`. Enter a list of hexadecimal color codes.
 ```yaml
 graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 ```
 
 ### graph_color_number
 
-This optional setting can be used to limit the length of the list of colors selected via `graph_color_set`. The highest possible value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the maximum value is automatically selected. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar)
+_Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The highest possible value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the maximum value is automatically selected. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar)
 
 ### hide_empty_metadata
 
-This optional setting can be used to hide any metadata fields that are empty. In other words, this setting can ensure that if an indicator has no data for a particular metadata field, that field will not display at all. The default behavior if for all metadata fields to be displayed, regardless of whether the indicator has the required data.
+_Optional_: This setting can be used to hide any metadata fields that are empty. In other words, this setting can ensure that if an indicator has no data for a particular metadata field, that field will not display at all. The default behavior if for all metadata fields to be displayed, regardless of whether the indicator has the required data.
 
 ```nohighlight
 hide_empty_metadata: true
@@ -234,7 +234,7 @@ hide_empty_metadata: true
 
 ### languages
 
-This **required** setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
+**_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
 
 Note that the [Jekyll defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) mechanism should also be used, to ensure that all pages on the will be assigned a default language.
 
@@ -253,7 +253,7 @@ defaults:
 
 ### languages_public
 
-This optional setting can be used if you are not happy with any of the standard language codes. For example, if the standard code for a language is `xyz` but you would prefer that it show up in your URLs as `abc`, then you could do the following:
+_Optional_: This setting can be used if you are not happy with any of the standard language codes. For example, if the standard code for a language is `xyz` but you would prefer that it show up in your URLs as `abc`, then you could do the following:
 
 ```nohighlight
 languages_public:
@@ -262,7 +262,7 @@ languages_public:
 
 ### metadata_edit_url
 
-This **required** setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+**_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
 
 ```nohighlight
 metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
@@ -270,7 +270,7 @@ metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
 
 ### metadata_tabs
 
-This optional setting can control the metadata tabs which appear on the indicator pages. This is directly tied to the "schema" of your data repository (ie, the `_prose.yml` file). This keys of this object must correspond to the "scope" of the fields in that schema file. The following configuration is assumed if this setting is omitted:
+_Optional_: This setting can control the metadata tabs which appear on the indicator pages. This is directly tied to the "schema" of your data repository (ie, the `_prose.yml` file). This keys of this object must correspond to the "scope" of the fields in that schema file. The following configuration is assumed if this setting is omitted:
 
 ```nohighlight
 metadata_tabs:
@@ -291,7 +291,7 @@ While the "keys" above, such as "national" and "global", are arbitrary, the "sou
 
 ### menu
 
-This **required** setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
+**_Required_**: This setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
 
 ```nohighlight
 menu:
@@ -305,7 +305,7 @@ menu:
 
 ### non_global_metadata
 
-This optional setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](translation.md) is recommended for better multilingual support.
+_Optional_: This setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](translation.md) is recommended for better multilingual support.
 
 ```nohighlight
 non_global_metadata: indicator.national_metadata
@@ -313,7 +313,7 @@ non_global_metadata: indicator.national_metadata
 
 ### plugins
 
-This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
+**_Required_**: This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
 
 ```
 plugins:
@@ -323,7 +323,7 @@ plugins:
 
 ### remote_data_prefix
 
-This **required** setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
+**_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
 
 ```nohighlight
 remote_data_prefix: https://my-github-org.github.io/my-data-repository
@@ -331,7 +331,7 @@ remote_data_prefix: https://my-github-org.github.io/my-data-repository
 
 ### remote_theme
 
-This is not specific to Open SDG, but it is very important to always use a specific version of Open SDG (as opposed to using the latest version). For example, to use version 0.8.0 of the platform, use the following:
+**_Required_**: This is not specific to Open SDG, but it is very important to always use a specific version of Open SDG (as opposed to using the latest version). For example, to use version 0.8.0 of the platform, use the following:
 
 ```nohighlight
 remote_theme: open-sdg/open-sdg@0.8.0
@@ -345,7 +345,7 @@ remote_theme: open-sdg/open-sdg
 
 ### search_index_boost
 
-This optional setting can be used to give a "boost" to one or more fields in the search index. The boost number should be a positive integer. The higher the number, the more "relevant" that field will be in search results. If omitted, the following defaults will be used:
+_Optional_: This setting can be used to give a "boost" to one or more fields in the search index. The boost number should be a positive integer. The higher the number, the more "relevant" that field will be in search results. If omitted, the following defaults will be used:
 
 ```
 search_index_boost:
@@ -374,7 +374,7 @@ search_index_boost:
 
 ### search_index_extra_fields
 
-This optional setting can be used to "index" additional metadata fields in your indicators, for the purposes of affecting the site-wide search. For example, if you have a metadata field called `national_agency` and you would like the sitewide search to include that field, add it in a list here, like so:
+_Optional_: This setting can be used to "index" additional metadata fields in your indicators, for the purposes of affecting the site-wide search. For example, if you have a metadata field called `national_agency` and you would like the sitewide search to include that field, add it in a list here, like so:
 
 ```nohighlight
 search_index_extra_fields:
@@ -383,4 +383,4 @@ search_index_extra_fields:
 
 ### sharethis_property
 
-This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
+_Optional_: This setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
