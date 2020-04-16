@@ -1,150 +1,10 @@
 <h1>Configuration</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples.
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_config.yml` file.**
 
 _Note about "strings": Many of the settings detailed here contain human-readable "strings" (ie, text). In most cases, they can be replaced by [translation keys](translation.md) for better multilingual support. For example, "Indicator" could be replaced with "general.indicator"._
 
-## Required settings
-
-### country
-
-This **required** setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
-
-```nohighlight
-country:
-  name: Australia
-  adjective: Australian
-```
-
-### data_edit_url
-
-This **required** setting controls the URL of the "Edit Data" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
-
-```nohighlight
-data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
-```
-
-### email_contacts
-
-This **required** setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
-
-```nohighlight
-email_contacts:
-  questions: test@example.com
-  suggestions: test@example.com
-  functional: test@example.com
-```
-
-### environment
-
-This **required** setting should be either `staging` or `production`. Certain features of the platform, such as data management links, will only appear on `staging`. Typically you will have this set to `staging` in the `_config.yml` file, and set to `production` in the `_config_prod.yml` file.
-
-```nohighlight
-environment: staging
-```
-
-### footer_menu
-
-This **required** setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
-
-The following example provides a footer menu matching older versions of Open SDG, which included options for social media and email contacts.
-
-```nohighlight
-footer_menu:
-  - path: mailto:my-email-address@example.com
-    translation_key: menu.contact_us
-  - path: https://twitter.com/MyTwitterAccount
-    translation_key: general.twitter
-  - path: https://facebook.com/MyFacebookAccount
-    translation_key: general.facebook
-  - path: /faq
-    translation_key: menu.faq
-  - path: /cookies
-    translation_key: menu.cookies
-```
-
-### goal_image_base
-
-This **required** setting controls the base URL for downloading the imagery for the goals (PNG files). The platform will use this as a base, and complete the URLs (behind the scenes) by adding a language and number. For example, if you set this to `https://example.com`, then the platform will try to download the Spanish image for Goal 4 at: `https://example.com/en/4.png`.
-
-```nohighlight
-goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
-```
-
-### languages
-
-This **required** setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
-
-Note that the [Jekyll defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) mechanism should also be used, to ensure that all pages on the will be assigned a default language.
-
-```nohighlight
-languages:
-  - es
-  - en
-
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      language: "es"
-```
-
-### metadata_edit_url
-
-This **required** setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
-
-```nohighlight
-metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
-```
-
-### menu
-
-This **required** setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
-
-```nohighlight
-menu:
-  - path: /reporting-status
-    translation_key: menu.reporting_status
-  - path: /about
-    translation_key: menu.about
-  - path: /faq
-    translation_key: menu.faq
-```
-
-### plugins
-
-This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
-
-```
-plugins:
-  - jekyll-remote-theme
-  - jekyll-open-sdg-plugins
-```
-
-### remote_data_prefix
-
-This **required** setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
-
-```nohighlight
-remote_data_prefix: https://my-github-org.github.io/my-data-repository
-```
-
-### remote_theme
-
-This is not specific to Open SDG, but it is very important to always use a specific version of Open SDG (as opposed to using the latest version). For example, to use version 0.8.0 of the platform, use the following:
-
-```nohighlight
-remote_theme: open-sdg/open-sdg@0.8.0
-```
-
-This is far safer and more recommended than using the latest version, such as the following (which is **not recommended**):
-
-```nohighlight
-remote_theme: open-sdg/open-sdg
-```
-
-## Optional settings
+> To see many of these options in action, the [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml).
 
 ### analytics
 
@@ -161,6 +21,16 @@ This optional setting allows you to change the type of contrast button your site
 
 ```nohighlight
 contrast_type: long
+```
+
+### country
+
+This **required** setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
+
+```nohighlight
+country:
+  name: Australia
+  adjective: Australian
 ```
 
 ### create_goals
@@ -216,6 +86,14 @@ custom_js:
   - /assets/js/custom.js
 ```
 
+### data_edit_url
+
+This **required** setting controls the URL of the "Edit Data" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
+```
+
 ### date_formats
 
 This optional setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, using an arbitrary key, such as "standard". Each date format should have a variant for each of your languages. For example, here is how you might configure a "standard" date format:
@@ -250,6 +128,45 @@ disclaimer:
 
 As always, you can use translation keys.
 
+### email_contacts
+
+This **required** setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
+
+```nohighlight
+email_contacts:
+  questions: test@example.com
+  suggestions: test@example.com
+  functional: test@example.com
+```
+
+### environment
+
+This **required** setting should be either `staging` or `production`. Certain features of the platform, such as data management links, will only appear on `staging`. Typically you will have this set to `staging` in the `_config.yml` file, and set to `production` in the `_config_prod.yml` file.
+
+```nohighlight
+environment: staging
+```
+
+### footer_menu
+
+This **required** setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
+
+The following example provides a footer menu matching older versions of Open SDG, which included options for social media and email contacts.
+
+```nohighlight
+footer_menu:
+  - path: mailto:my-email-address@example.com
+    translation_key: menu.contact_us
+  - path: https://twitter.com/MyTwitterAccount
+    translation_key: general.twitter
+  - path: https://facebook.com/MyFacebookAccount
+    translation_key: general.facebook
+  - path: /faq
+    translation_key: menu.faq
+  - path: /cookies
+    translation_key: menu.cookies
+```
+
 ### frontpage_heading
 
 This optional setting can control the heading that appears on the front page.
@@ -266,12 +183,72 @@ This optional setting can control the instructions that appear on the front page
 frontpage_instructions: Click on each goal for Australian statistics for Sustainable Development Goal global indicators.
 ```
 
+### frontpage_introduction_banner
+
+This optional setting adds a banner to your site's homepage, in order to introduce your users to your site. To add a banner update the `_config.yml` file with these settings:
+
+```yaml
+frontpage_introduction_banner:
+    title: title goes here
+    description: description goes here
+```
+
+### goal_image_base
+
+This **required** setting controls the base URL for downloading the imagery for the goals (PNG files). The platform will use this as a base, and complete the URLs (behind the scenes) by adding a language and number. For example, if you set this to `https://example.com`, then the platform will try to download the Spanish image for Goal 4 at: `https://example.com/en/4.png`.
+
+```nohighlight
+goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
+```
+
+### graph_color_set
+
+This optional setting can be used to customize the color set used in the charts. There are four possible entries:
+Use `graph_color_set: 'default'` for using the 6 default colors,
+`graph_color_set: 'sdg'` to use the 17 SDG colors in all charts,
+`graph_color_set: 'goal'` to use shades of the color of the current indicator's goal,
+`graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
+
+> **NOTE**: Whatever color scheme you choose here, please ensure that all colors satisfy
+> the accessibility (minimum contrast) standards in your region. These colors will need to
+> be visible on white and black backgrounds.
+
+### graph_color_list
+
+This optional setting can be used to define a set of colors to be used in the charts. Precondition is `graph_color_set` to be `custom`. Enter a list of hexadecimal color codes.
+```yaml
+graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
+```
+
+### graph_color_number
+
+This optional setting can be used to limit the length of the list of colors selected via `graph_color_set`. The highest possible value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the maximum value is automatically selected. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar)
+
 ### hide_empty_metadata
 
 This optional setting can be used to hide any metadata fields that are empty. In other words, this setting can ensure that if an indicator has no data for a particular metadata field, that field will not display at all. The default behavior if for all metadata fields to be displayed, regardless of whether the indicator has the required data.
 
 ```nohighlight
 hide_empty_metadata: true
+```
+
+### languages
+
+This **required** setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
+
+Note that the [Jekyll defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) mechanism should also be used, to ensure that all pages on the will be assigned a default language.
+
+```nohighlight
+languages:
+  - es
+  - en
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      language: "es"
 ```
 
 ### languages_public
@@ -281,6 +258,14 @@ This optional setting can be used if you are not happy with any of the standard 
 ```nohighlight
 languages_public:
   xyz: abc
+```
+
+### metadata_edit_url
+
+This **required** setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
 ```
 
 ### metadata_tabs
@@ -304,12 +289,58 @@ About the "Sources" tab:
 
 While the "keys" above, such as "national" and "global", are arbitrary, the "sources" key is special. The "Sources" tab will only display if the key under `metadata_tabs` is specifically `sources`.
 
+### menu
+
+This **required** setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
+
+```nohighlight
+menu:
+  - path: /reporting-status
+    translation_key: menu.reporting_status
+  - path: /about
+    translation_key: menu.about
+  - path: /faq
+    translation_key: menu.faq
+```
+
 ### non_global_metadata
 
 This optional setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](translation.md) is recommended for better multilingual support.
 
 ```nohighlight
 non_global_metadata: indicator.national_metadata
+```
+
+### plugins
+
+This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
+
+```
+plugins:
+  - jekyll-remote-theme
+  - jekyll-open-sdg-plugins
+```
+
+### remote_data_prefix
+
+This **required** setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
+
+```nohighlight
+remote_data_prefix: https://my-github-org.github.io/my-data-repository
+```
+
+### remote_theme
+
+This is not specific to Open SDG, but it is very important to always use a specific version of Open SDG (as opposed to using the latest version). For example, to use version 0.8.0 of the platform, use the following:
+
+```nohighlight
+remote_theme: open-sdg/open-sdg@0.8.0
+```
+
+This is far safer and more recommended than using the latest version, such as the following (which is **not recommended**):
+
+```nohighlight
+remote_theme: open-sdg/open-sdg
 ```
 
 ### search_index_boost
@@ -353,39 +384,3 @@ search_index_extra_fields:
 ### sharethis_property
 
 This optional setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
-
-### frontpage_introduction_banner
-
-This optional setting adds a banner to your site's homepage, in order to introduce your users to your site. To add a banner update the `_config.yml` file with these settings:
-
-```yaml
-frontpage_introduction_banner:
-    title: title goes here
-    description: description goes here
-```
-### graph_color_set
-
-This optional setting can be used to customize the color set used in the charts. There are four possible entries:
-Use `graph_color_set: 'default'` for using the 6 default colors,
-`graph_color_set: 'sdg'` to use the 17 SDG colors in all charts,
-`graph_color_set: 'goal'` to use shades of the color of the current indicator's goal,
-`graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
-
-> **NOTE**: Whatever color scheme you choose here, please ensure that all colors satisfy
-> the accessibility (minimum contrast) standards in your region. These colors will need to
-> be visible on white and black backgrounds.
-
-### graph_color_list
-
-This optional setting can be used to define a set of colors to be used in the charts. Precondition is `graph_color_set` to be `custom`. Enter a list of hexadecimal color codes.
-```yaml
-graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
-```
-
-### graph_color_number
-
-This optional setting can be used to limit the length of the list of colors selected via `graph_color_set`. The highest possible value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the maximum value is automatically selected. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar)
-
-## Examples
-
-To see many of these options in action, the [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml).
