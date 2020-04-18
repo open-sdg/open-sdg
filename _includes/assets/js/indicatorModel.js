@@ -433,7 +433,7 @@ var indicatorModel = function (options) {
       },
       convertToDataset = function (data, combinationDescription, combination) {
         var ds = _.extend({
-            label: combinationDescription ? combinationDescription : that.country,
+            label: combinationDescription || that.country || 'Value',
             disaggregation: combination,
             borderColor: '#' + getColor(datasetIndex),
             backgroundColor: getBackground(datasetIndex),
