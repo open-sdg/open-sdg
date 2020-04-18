@@ -36,7 +36,7 @@ var indicatorModel = function (options) {
         sources.push(metadata[orgKey]);
       }
     }
-    return _.uniq(sources);
+    return _.uniq(sources).join(', ');
   }
 
   // general members:
