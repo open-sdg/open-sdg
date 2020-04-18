@@ -13,7 +13,7 @@ local_data_folder: _build
 # Automatically create indicator pages, goal pages,
 # and some other required pages.
 create_indicators:
-  layout: indicator
+  layout: indicator2
 create_goals:
   layout: goal
 create_pages: true
