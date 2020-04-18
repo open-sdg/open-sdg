@@ -26,36 +26,24 @@ var indicatorModel = function (options) {
     });
   }
 
-  var convertDataSources = function(metadata) {
-    var sources = [],
-        sourceNumber;
-    for (sourceNumber = 1; sourceNumber <= 12; sourceNumber++) {
-      var activeKey = 'source_active_' + sourceNumber;
-      var orgKey = 'source_organisation_' + sourceNumber;
-      if (metadata[activeKey] && metadata[orgKey]) {
-        sources.push(metadata[orgKey]);
-      }
-    }
-    return _.uniq(sources).join(', ');
-  }
-
   // general members:
   var that = this;
   this.data = convertJsonFormat(options.data);
   this.edgesData = convertJsonFormat(options.edgesData);
   this.hasHeadline = true;
-  this.country = options.metadata.national_geographical_coverage;
-  this.indicatorId = 'indicator_' + options.metadata.slug;
-  this.shortIndicatorId = options.metadata.slug;
-  this.chartTitle = options.metadata.graph_title,
-  this.chartTitles = options.metadata.graph_titles;
-  this.graphType = options.metadata.graph_type;
-  this.measurementUnit = options.metadata.computation_units;
-  this.copyright = options.metadata.copyright;
-  this.dataSource = convertDataSources(options.metadata);
-  this.geographicalArea = options.metadata.national_geographical_coverage;
-  this.footnote = options.metadata.data_footnote;
-  this.startValues = options.metadata.data_start_values;
+  this.country = options.country;
+  this.indicatorId = options.indicatorId;
+  this.shortIndicatorId = options.shortIndicatorId;
+  this.chartTitle = options.chartTitle,
+  this.chartTitles = options.chartTitles;
+  this.graphType = options.graphType;
+  this.measurementUnit = options.measurementUnit;
+  this.copyright = options.copyright;
+  this.dataSource = options.dataSource;
+  this.geographicalArea = options.geographicalArea;
+  this.footnote = options.footnote;
+  this.startValues = options.startValues;
+  this.showData = options.showData;
   this.selectedFields = [];
   this.allowedFields = [];
   this.selectedUnit = undefined;
@@ -64,9 +52,9 @@ var indicatorModel = function (options) {
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
-  this.showMap = options.metadata.data_show_map;
-  this.graphLimits = options.metadata.graph_limits;
-  this.stackedDisaggregation = options.metadata.graph_stacked_disaggregation;
+  this.showMap = options.showMap;
+  this.graphLimits = options.graphLimits;
+  this.stackedDisaggregation = options.stackedDisaggregation;
 
   // initialise the field information, unique fields and unique values for each field:
   (function initialise() {
