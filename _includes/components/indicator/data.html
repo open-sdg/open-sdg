@@ -1,0 +1,6 @@
+{% if page.indicator.reporting_status == "complete" and page.indicator.data_non_statistical != true %}
+  <div class="row" id="indicatorData" data-metadata="{{ page.indicator | jsonify | xml_escape }}">
+    {% include components/indicator/data-sidebar.html %}
+    {% include components/indicator/data-main.html %}
+  </div>
+{% endif %}

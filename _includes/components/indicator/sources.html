@@ -16,7 +16,7 @@
       {% if n_sources > 1 %}
         <h4>{{ page.t.indicator.source }} {{ i }}</h4>
       {% endif %}
-      {% include components/metadata.html scope=src_scope %}
+      {% include components/indicator/metadata-table.html scope=src_scope %}
     </div>
     {% endfor %}
   </div>

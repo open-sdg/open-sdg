@@ -61,15 +61,12 @@ var indicatorView = function (model, options) {
 
   this._model.onDataComplete.attach(function (sender, args) {
 
-    if(view_obj._model.showData) {
+    $('#dataset-size-warning')[args.datasetCountExceedsMax ? 'show' : 'hide']();
 
-      $('#dataset-size-warning')[args.datasetCountExceedsMax ? 'show' : 'hide']();
-
-      if(!view_obj._chartInstance) {
-        view_obj.createPlot(args);
-      } else {
-        view_obj.updatePlot(args);
-      }
+    if(!view_obj._chartInstance) {
+      view_obj.createPlot(args);
+    } else {
+      view_obj.updatePlot(args);
     }
 
     view_obj.createSelectionsTable(args);

@@ -35,7 +35,7 @@ $(function() {
           $(obj).append($('<img />').attr('src', $(obj).data('img')));
       });
 
-      var remoteUrl = '/comb/' + domData.id + '.json';
+      var remoteUrl = '/comb/' + domData.metadata.slug + '.json';
       if (opensdg.remoteDataBaseUrl !== '/') {
         remoteUrl = opensdg.remoteDataBaseUrl + remoteUrl;
       }
@@ -50,22 +50,7 @@ $(function() {
           var model = new indicatorModel({
             data: res.data,
             edgesData: res.edges,
-            showMap: domData.showmap,
-            country: domData.country,
-            indicatorId: domData.indicatorid,
-            shortIndicatorId: domData.id,
-            chartTitle: domData.charttitle,
-            chartTitles: domData.charttitles,
-            measurementUnit: domData.measurementunit,
-            copyright: domData.copyright,
-            dataSource: domData.datasource,
-            geographicalArea: domData.geographicalarea,
-            showData: domData.showdata,
-            footnote: domData.footnote,
-            graphType: domData.graphtype,
-            startValues: domData.startvalues,
-            graphLimits: domData.graphlimits,
-            stackedDisaggregation: domData.stackeddisaggregation,
+            metadata: domData.metadata,
           }),
           view  = new indicatorView(model, {
             rootElement: '#indicatorData',
