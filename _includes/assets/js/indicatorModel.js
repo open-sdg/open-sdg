@@ -43,7 +43,6 @@ var indicatorModel = function (options) {
   this.geographicalArea = options.geographicalArea;
   this.footnote = options.footnote;
   this.startValues = options.startValues;
-  this.showData = options.showData;
   this.selectedFields = [];
   this.allowedFields = [];
   this.selectedUnit = undefined;
@@ -421,7 +420,7 @@ var indicatorModel = function (options) {
       },
       convertToDataset = function (data, combinationDescription, combination) {
         var ds = _.extend({
-            label: combinationDescription || that.country || 'Value',
+            label: combinationDescription ? combinationDescription : that.country,
             disaggregation: combination,
             borderColor: '#' + getColor(datasetIndex),
             backgroundColor: getBackground(datasetIndex),
