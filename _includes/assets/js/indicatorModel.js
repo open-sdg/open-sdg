@@ -43,6 +43,7 @@ var indicatorModel = function (options) {
   this.geographicalArea = options.geographicalArea;
   this.footnote = options.footnote;
   this.startValues = options.startValues;
+  this.showData = options.showData;
   this.selectedFields = [];
   this.allowedFields = [];
   this.selectedUnit = undefined;
@@ -189,10 +190,10 @@ var indicatorModel = function (options) {
   }());
 
   var headlineColor = '777777';
-
+  
   // use custom colors
   var colors = opensdg.chartColors(this.indicatorId);
-
+  
   // allow headline + (2 x others)
   var maxDatasetCount = 2 * colors.length;
 
