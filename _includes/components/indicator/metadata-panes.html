@@ -1,0 +1,51 @@
+<div class="tab-content">
+  {% if site.metadata_tabs %}
+    {% for tab in site.metadata_tabs %}
+    {% assign tab_key = tab[0] %}
+    {% assign tab_obj = tab[1] %}
+    {% assign tab_include = 'components/indicator/metadata.html' %}
+    {% if tab_key == 'sources' %}
+      {% assign tab_include = 'components/indicator/sources.html' %}
+    {% endif %}
+    <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
+      <article>
+        {% if tab_obj.blurb %}<p>{{ tab_obj.blurb | t }}</p>{% endif %}
+        {% include {{ tab_include }} scope=tab_key %}
+      </article>
+    </div>
+    {% endfor %}
+  {% else %}
+  <div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div >
+      <article>
+        <p>
+          {% assign country_name = site.country.name | t %}
+          {% assign country_adjective = site.country.adjective | t %}
+          {{ page.t.indicator.national_metadata_blurb | replace: '%country_name', country_name | replace: '%country_adjective', country_adjective }}
+        </p>
+        {% include components/indicator/metadata.html scope='national' %}
+      </article>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+      <article>
+        <p>{{ page.t.indicator.global_metadata_blurb }}</p>
+        {% include components/indicator/metadata.html scope='global' %}
+      </article>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="sources">
+    {% include components/indicator/sources.html %}
+  </div>
+  {% endif %}
+  {% if site.environment == 'staging' %}
+  <div role="tabpanel" class="tab-pane" id="edit">
+    <div class="edit-container">
+      {% include components/indicator/edit-buttons.html %}
+    </div>
+  </div>
+  {% endif %}
+</div>
