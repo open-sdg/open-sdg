@@ -1,8 +1,6 @@
 var indicatorModel = function (options) {
 
-  Array.prototype.containsValue = function(val) {
-    return this.indexOf(val) != -1;
-  };
+  var helpers = {% include assets/js/indicatorModelHelpers.js %}
 
   // events:
   this.onDataComplete = new event(this);
@@ -15,21 +13,10 @@ var indicatorModel = function (options) {
   this.onSelectionUpdate = new event(this);
   this.onStartValuesNeeded = new event(this);
 
-  // json conversion:
-  var convertJsonFormat = function(data) {
-    var keys = _.keys(data);
-
-    return _.map(data[keys[0]], function(item, i) {
-      return _.object(keys, _.map(keys, function(k) {
-        return data[k][i];
-      }));
-    });
-  }
-
   // general members:
   var that = this;
-  this.data = convertJsonFormat(options.data);
-  this.edgesData = convertJsonFormat(options.edgesData);
+  this.data = helpers.convertJsonFormat(options.data);
+  this.edgesData = helpers.convertJsonFormat(options.edgesData);
   this.hasHeadline = true;
   this.country = options.country;
   this.indicatorId = options.indicatorId;
@@ -56,168 +43,30 @@ var indicatorModel = function (options) {
   this.graphLimits = options.graphLimits;
   this.stackedDisaggregation = options.stackedDisaggregation;
 
-  // initialise the field information, unique fields and unique values for each field:
-  (function initialise() {
-
-    var extractUnique = function(prop) {
-      return _.chain(that.data).pluck(prop).uniq().sortBy(function(year) {
-        return year;
-      }).value();
-    };
-
-    that.years = extractUnique('Year');
-
-    if(that.data[0].hasOwnProperty('GeoCode')) {
-      that.hasGeoData = true;
-    }
-
-    if(that.data[0].hasOwnProperty('Units')) {
-      that.units = extractUnique('Units');
-      that.selectedUnit = that.units[0];
-
-      // what fields have values for a given unit?
-      that.fieldsByUnit = _.chain(_.map(that.units, function(unit) {
-        return _.map(_.filter(Object.keys(that.data[0]), function (key) {
-              return ['Year', 'Value', 'Units'].indexOf(key) === -1;
-          }), function(field) {
-          return {
-            unit: unit,
-            field: field,
-            fieldData: !!_.find(_.where(that.data, { Units: unit }), function(d) { return d[field]; })
-          };
-        });
-      })).map(function(r) {
-        return r.length ? {
-          unit: r[0].unit,
-          fields: _.pluck(_.where(r, { fieldData: true }), 'field')
-        } : {};
-      }).value();
-
-      // determine if the fields vary by unit:
-      that.dataHasUnitSpecificFields = !_.every(_.pluck(that.fieldsByUnit, 'fields'), function(fields) {
-        return _.isEqual(_.sortBy(_.pluck(that.fieldsByUnit, 'fields')[0]), _.sortBy(fields));
-      });
-    }
-
-    that.fieldItemStates = _.map(_.filter(Object.keys(that.data[0]), function (key) {
-        return ['Year', 'Value', 'Units', 'GeoCode', 'Observation status', 'Unit multiplier', 'Unit measure'].indexOf(key) === -1;
-      }), function(field) {
-      return {
-        field: field,
-        hasData: true,
-        values: _.map(_.chain(that.data).pluck(field).uniq().filter(function(f) { return f; }).sort().value(),
-          function(f) { return {
-            value: f,
-            state: 'default',
-            hasData: true
-          };
-        })
-      };
-    });
-
-    // Set up the validParentsByChild object, which lists the parent field
-    // values that should be associated with each child field value.
-    var parentFields = _.pluck(that.edgesData, 'From');
-    var childFields = _.pluck(that.edgesData, 'To');
-    that.validParentsByChild = {};
-    _.each(childFields, function(childField, fieldIndex) {
-      var fieldItemState = _.findWhere(that.fieldItemStates, {field: childField});
-      var childValues = _.pluck(fieldItemState.values, 'value');
-      var parentField = parentFields[fieldIndex];
-      that.validParentsByChild[childField] = {};
-      _.each(childValues, function(childValue) {
-        var rowsWithParentValues = _.filter(that.data, function(row) {
-          var childMatch = row[childField] == childValue;
-          var parentNotEmpty = row[parentField];
-          return childMatch && parentNotEmpty;
-        });
-        var parentValues = _.pluck(rowsWithParentValues, parentField);
-        parentValues = _.uniq(parentValues);
-        that.validParentsByChild[childField][childValue] = parentValues;
-      });
-    });
-
-    that.selectableFields = _.pluck(that.fieldItemStates, 'field');
-
-    // determine if there are any 'child' fields: those that can
-    // only be selected if their parent has one or more selections:
-    that.allowedFields = _.difference(that.selectableFields, _.pluck(that.edgesData, 'To'));
-
-    // prepare the data according to the rounding function:
-    that.data = _.map(that.data, function(item) {
-
-      // only apply a rounding function for non-zero values:
-      if(item.Value != 0) {
-        // For rounding, use a function that can be set on the global opensdg
-        // object, for easier control: opensdg.dataRounding()
-        if (typeof opensdg.dataRounding === 'function') {
-          item.Value = opensdg.dataRounding(item.Value);
-        }
-      }
-
-      // remove any undefined/null values:
-      _.each(Object.keys(item), function(key) {
-        if(_.isNull(item[key]) || _.isUndefined(item[key])) {
-          delete item[key];
-        }
-      });
-
-      return item;
-    });
-
-    // Remove anything without a value (allowing for zero as a value).
-    that.data = _.filter(that.data, function(item) {
-      return item['Value'] || item['Value'] === 0;
-    });
-
-    that.datasetObject = {
-      fill: false,
-      pointHoverRadius: 5,
-      pointBackgroundColor: '#ffffff',
-      pointHoverBorderWidth: 1,
-      tension: 0,
-      spanGaps: false
-    };
-
-    that.footerFields = {};
-    that.footerFields[translations.indicator.source] = that.dataSource;
-    that.footerFields[translations.indicator.geographical_area] = that.geographicalArea;
-    that.footerFields[translations.indicator.unit_of_measurement] = that.measurementUnit;
-    that.footerFields[translations.indicator.copyright] = that.copyright;
-    that.footerFields[translations.indicator.footnote] = that.footnote;
-    // Filter out the empty values.
-    that.footerFields = _.pick(that.footerFields, _.identity);
-  }());
+  // calculate some initial values:
+  this.years = helpers.extractUnique(helpers.YEAR_COLUMN, this.data);
+  this.hasGeoData = helpers.dataHasGeoCodes(this.data);
+  if (helpers.dataHasUnits(this.data)) {
+    this.units = helpers.extractUnique(helpers.UNIT_COLUMN, this.data);
+    this.selectedUnit = this.units[0];
+    this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data);
+    this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
+  }
+  this.fieldItemStates = helpers.getInitialFieldItemStates(this.data);
+  this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
+  this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
+  this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
+  this.data = helpers.prepareData(this.data);
+  this.footerFields = helpers.footerFields(this);
+  this.datasetObject = helpers.chartBaseDataset();
 
   var headlineColor = '777777';
-  
+
   // use custom colors
   var colors = opensdg.chartColors(this.indicatorId);
-  
+
   // allow headline + (2 x others)
   var maxDatasetCount = 2 * colors.length;
-
-  this.getHeadline = function(fields) {
-    var that = this, allUndefined = function (obj) {
-      for (var loop = 0; loop < that.selectableFields.length; loop++) {
-        if (obj[that.selectableFields[loop]])
-          return false;
-      }
-      return true;
-    };
-
-    return _.chain(that.data)
-      .filter(function (i) {
-        return allUndefined(i);
-      })
-      .sortBy(function (i) {
-        return that.selectedUnit ? i.Units : i.Year;
-      })
-      .map(function (d) {
-        return _.pick(d, function(val) { return val !== null });
-      })
-      .value();
-  };
 
   this.clearSelectedFields = function() {
     this.selectedFields = [];
@@ -225,62 +74,14 @@ var indicatorModel = function (options) {
     this.onFieldsCleared.notify();
   };
 
-  this.updateSelectedFields = function (fields) {
-    this.selectedFields = fields;
-
-    // update parent/child statuses:
-    var selectedFields = _.pluck(this.selectedFields, 'field');
-    _.each(this.edgesData, function(edge) {
-      if(!_.contains(selectedFields, edge.From)) {
-        // don't allow any child fields of this association:
-        this.selectedFields = _.without(this.selectedFields, _.findWhere(this.selectedFields, {
-          field: edge.From
-        }));
-      }
-    });
-
-    // reset the allowedFields:
-    this.allowedFields = _.difference(this.selectableFields, _.pluck(this.edgesData, 'To'));
-
-    // and reinstate based on selectedFields:
-    var parentFields = _.pluck(this.edgesData, 'From');
-    _.each(parentFields, function(parentField) {
-      if(_.contains(selectedFields, parentField)) {
-        // resinstate
-        var childFields = _.chain(that.edgesData).where({ 'From' : parentField }).pluck('To').value();
-        that.allowedFields = that.allowedFields.concat(childFields);
-        // check each value in the child fields to see if it has data in common
-        // with the selected parent value.
-        var selectedParent = _.find(that.selectedFields, function(selectedField) {
-          return selectedField.field == parentField;
-        });
-        _.each(that.fieldItemStates, function(fieldItem) {
-          // We only care about child fields.
-          if (_.contains(childFields, fieldItem.field)) {
-            var fieldHasData = false;
-            _.each(fieldItem.values, function(childValue) {
-              var valueHasData = false;
-              _.each(selectedParent.values, function(parentValue) {
-                if (_.contains(that.validParentsByChild[fieldItem.field][childValue.value], parentValue)) {
-                  valueHasData = true;
-                  fieldHasData = true;
-                }
-              });
-              childValue.hasData = valueHasData;
-            });
-            fieldItem.hasData = fieldHasData;
-          }
-        });
-      }
-    });
-
-    // remove duplicates:
-    that.allowedFields = _.uniq(that.allowedFields);
-
+  this.updateSelectedFields = function (selectedFields) {
+    this.selectedFields = helpers.removeOrphanSelections(selectedFields, this.edgesData);
+    this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, selectedFields);
+    this.fieldItemStates = helpers.getUpdatedFieldItemStates(this.fieldItemStates, this.edgesData, selectedFields, this.validParentsByChild);
     this.getData();
     this.onSelectionUpdate.notify({
-      selectedFields: fields,
-      allowedFields: that.allowedFields
+      selectedFields: this.selectedFields,
+      allowedFields: this.allowedFields
     });
   };
 
@@ -453,7 +254,7 @@ var indicatorModel = function (options) {
     matchedData = _.filter(matchedData, function(rowItem) {
       var matched = false;
       for(var fieldLoop = 0; fieldLoop < that.selectedFields.length; fieldLoop++) {
-        if(that.selectedFields[fieldLoop].values.containsValue(rowItem[that.selectedFields[fieldLoop].field])) {
+        if(that.selectedFields[fieldLoop].values.includes(rowItem[that.selectedFields[fieldLoop].field])) {
           matched = true;
           break;
         }
@@ -469,7 +270,7 @@ var indicatorModel = function (options) {
     });
 
     // get the headline data:
-    var headline = this.getHeadline();
+    var headline = helpers.getHeadline(this.selectableFields, this.selectedUnit, this.data);
 
     // Catch the case where this is the initial display, there is a default
     // selected unit (the first one), there is a headline, and this headline
