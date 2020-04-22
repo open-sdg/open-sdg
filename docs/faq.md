@@ -50,7 +50,7 @@ Open SDG is designed to read its data from CSV files. But it is possible to use 
 
 ## Does Open SDG work with SDMX?
 
-Open SDG can use an SDMX API endpoint or can use data and metadata in SDMX-ML format. We are also planning to develop an SDMX export feature.
+Open SDG can use an SDMX API endpoint or can use data and metadata in SDMX-ML format. We are also planning to develop an SDMX download feature.
 
 ## In what formats are data available?
 
