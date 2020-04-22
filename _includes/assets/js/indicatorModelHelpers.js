@@ -234,5 +234,13 @@
       }, this);
       return fieldItemStates;
     },
+    getChartTitle: function(currentTitle, allTitles, selectedUnit) {
+      var newTitle = currentTitle;
+      if (allTitles && allTitles.length > 0) {
+        var unitTitle = allTitles.find(function(title) { return title.unit === selectedUnit });
+        newTitle = (unitTitle) ? unitTitle.title : allTitles[0].title;
+      }
+      return newTitle;
+    }
   }
 })();

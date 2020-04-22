@@ -86,11 +86,7 @@ var indicatorModel = function (options) {
   };
 
   this.updateChartTitle = function() {
-    // We only need to change anything if this indicator has multiple titles.
-    if (that.chartTitles && that.chartTitles.length > 0) {
-      var chartTitle = _.findWhere(that.chartTitles, { unit: that.selectedUnit });
-      that.chartTitle = (chartTitle) ? chartTitle.title : that.chartTitles[0].title;
-    }
+    this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles);
   }
 
   this.updateSelectedUnit = function(selectedUnit) {
