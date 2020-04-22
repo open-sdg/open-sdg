@@ -38,8 +38,8 @@ var indicatorView = function (model, options) {
 
     // Provide the hide/show functionality for the sidebar.
     $('.data-view .nav-link').on('click', function(e) {
-      var $sidebar = $('#indicator-sidebar'),
-          $main = $('#indicator-main'),
+      var $sidebar = $('.indicator-sidebar'),
+          $main = $('.indicator-main'),
           hideSidebar = $(this).data('no-disagg'),
           mobile = window.matchMedia("screen and (max-width: 990px)");
       if (hideSidebar) {

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    {% if page.indicator.embedded_feature_title %}
+      <h3>{{ page.indicator.embedded_feature_title }}</h3>
+    {% endif %}
+    <div class="embedded-map" id="embeddedmapframe">
+      <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+      <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ page.indicator.embedded_feature_url }}', {});})</script>
+    </div>
+    {% if page.indicator.embedded_feature_footer %}
+      <div id="embedfooter" class="table-footer-text">
+        <p>{{ page.indicator.embedded_feature_footer | markdownify}}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>

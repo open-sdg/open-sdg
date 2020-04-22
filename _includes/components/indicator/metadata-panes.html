@@ -1,0 +1,25 @@
+<div class="tab-content">
+  {% if site.metadata_tabs %}
+    {% for tab in site.metadata_tabs %}
+    {% assign tab_key = tab[0] %}
+    {% assign tab_obj = tab[1] %}
+    {% assign tab_include = 'components/indicator/metadata.html' %}
+    {% if tab_key == 'sources' %}
+      {% assign tab_include = 'components/indicator/sources.html' %}
+    {% endif %}
+    <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
+      <article>
+        {% if tab_obj.blurb %}<p>{{ tab_obj.blurb | t }}</p>{% endif %}
+        {% include {{ tab_include }} scope=tab_key %}
+      </article>
+    </div>
+    {% endfor %}
+  {% else %}
+    {% include components/indicator/metadata-panes-default.html %}
+  {% endif %}
+  {% if site.environment == 'staging' %}
+  <div role="tabpanel" class="tab-pane" id="edit">
+    {% include components/indicator/edit-buttons.html %}
+  </div>
+  {% endif %}
+</div>
