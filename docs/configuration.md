@@ -222,7 +222,7 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 
 ### graph_color_number
 
-_Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The highest possible value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the maximum value is automatically selected. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar)
+_Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
 
 ### hide_empty_metadata
 
@@ -310,6 +310,8 @@ _Optional_: This setting can be used to control the text of the tab containing n
 ```nohighlight
 non_global_metadata: indicator.national_metadata
 ```
+
+NOTE: This approach is deprecated. It is now possible to have complete control over all the metadata tabs using the `metadata_tabs` configuration setting (see above).
 
 ### plugins
 
