@@ -30,6 +30,90 @@
     dataHasGeoCodes: function(data) {
       return this.dataHasColumn(this.GEOCODE_COLUMN, data);
     },
+    getFirstUnitInData: function(data) {
+      return data.find(function(row) {
+        return row[this.UNIT_COLUMN];
+      }, this)[this.UNIT_COLUMN];
+    },
+    getDataByUnit: function(data, unit) {
+      if (!unit) {
+        return data;
+      }
+      return data.filter(function(row) {
+        return row[this.UNIT_COLUMN] === unit;
+      }, this);
+    },
+    getDataBySelectedFields: function(data, selectedFields) {
+      return data.filter(function(row) {
+        return selectedFields.some(function(field) {
+          return field.values.includes(row[field.field]);
+        });
+      });
+    },
+    getDataMatchingCombination: function(data, combination, selectableFields) {
+      return data.filter(function(row) {
+        return selectableFields.every(function(field) {
+          return row[field] === combination[field];
+        });
+      });
+    },
+    getUnitFromStartValues: function(startValues) {
+      var match = startValues.find(function(startValue) {
+        return startValue.field === this.UNIT_COLUMN;
+      }, this);
+      return (match) ? match.value : false;
+    },
+    selectFieldsFromStartValues: function(startValues, selectableFields) {
+      if (!startValues) {
+        return [];
+      }
+      var specialFields = this.nonFieldColumns();
+      var allowedStartValues = startValues.filter(function(startValue) {
+        var normalField = !specialFields.includes(startValue.field);
+        var allowedField = selectableFields.includes(startValue.field)
+        return normalField && allowedField;
+      });
+      var valuesByField = {};
+      allowedStartValues.forEach(function(startValue) {
+        if (!(startValue.field in valuesByField)) {
+          valuesByField[startValue.field] = [];
+        }
+        valuesByField[startValue.field].push(startValue.value);
+      });
+      return Object.keys(valuesByField).map(function(field) {
+        return {
+          field: field,
+          values: valuesByField[field],
+        };
+      });
+    },
+    selectMinimumStartingFields: function(data, fieldNames) {
+      // We filter our full dataset to only those fields.
+      var filteredData = data.filter(function(row) {
+        return fieldNames.some(function(fieldName) {
+          return row[fieldName];
+        });
+      });
+      // We then sort the data by each field. We go in reverse order so that the
+      // first field will be highest "priority" in the sort.
+      fieldNames.reverse().forEach(function(fieldName) {
+        filteredData = filteredData.sort(function(a, b) {
+          return a[fieldName] - b[fieldName];
+        });
+      });
+      // But actually we want the top-priority sort to be the "size" of the
+      // rows. In other words we want the row with the fewest number of fields.
+      filteredData = filteredData.sort(function(a, b) {
+        return Object.keys(a).length - Object.keys(b).length;
+      });
+      // Convert to an array of objects with 'field' and 'value' keys.
+      return Object.keys(filteredData[0]).map(function(field) {
+        return {
+          field: field,
+          value: filteredData[0][field]
+        };
+      });
+    },
     nonFieldColumns: function() {
       return [
         this.YEAR_COLUMN,
@@ -70,8 +154,25 @@
         return _.isEqual(_.sortBy(_.pluck(fieldsUsedByUnit, 'fields')[0]), _.sortBy(fields));
       });
     },
-    getInitialFieldItemStates: function(data) {
-      return this.getFieldColumnsFromData(data).map(function(field) {
+    sortFieldItemStates: function(fieldItemStates, edges) {
+      if (edges.length) {
+        var orderedEdges = _.chain(edges)
+          .groupBy('From')
+          .map(function(value, key) { return [key].concat(_.pluck(value, 'To')); })
+          .flatten()
+          .value();
+
+        var customOrder = orderedEdges.concat(_.difference(_.pluck(fieldItemStates, 'field'), orderedEdges));
+
+        // now order the fields:
+        return _.sortBy(fieldItemStates, function(item) {
+          return customOrder.indexOf(item.field);
+        });
+      }
+      return fieldItemStates;
+    },
+    getInitialFieldItemStates: function(data, edges) {
+      var initial = this.getFieldColumnsFromData(data).map(function(field) {
         return {
           field: field,
           hasData: true,
@@ -79,11 +180,22 @@
             return {
               value: value,
               state: 'default',
+              checked: false,
               hasData: true
             };
           }, this),
         };
       }, this);
+
+      return this.sortFieldItemStates(initial, edges);
+    },
+    fieldItemStatesForUnit: function(fieldItemStates, fieldsByUnit, selectedUnit) {
+      return fieldItemStates.filter(function(fis) {
+        var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
+          return fieldByUnit.unit === selectedUnit;
+        })[0];
+        return fieldsBySelectedUnit.fields.includes(fis.field);
+      });
     },
     getChildFieldNames: function(edges) {
       return edges.map(function(edge) { return edge.To; });
@@ -150,15 +262,15 @@
         return item[this.VALUE_COLUMN] || item[this.VALUE_COLUMN] === 0;
       }, this);
     },
-    chartBaseDataset: function() {
-      return {
+    getBaseDataset: function() {
+      return Object.assign({}, {
         fill: false,
         pointHoverRadius: 5,
-        pointBackgroundColor: '#ffffff',
+        pointBackgroundColor: '#FFFFFF',
         pointHoverBorderWidth: 1,
         tension: 0,
         spanGaps: false
-      };
+      });
     },
     footerFields: function(model) {
       var fields = {}
@@ -170,17 +282,30 @@
       // Filter out the empty values.
       return _.pick(fields, _.identity);
     },
-    getHeadline: function(selectableFields, selectedUnit, data) {
-      var column = selectedUnit ? this.UNIT_COLUMN : this.YEAR_COLUMN;
+    getHeadline: function(selectableFields, data) {
       return data.filter(function (row) {
         return selectableFields.every(function(field) {
           return !row[field];
         });
       }).map(function (row) {
+        // Remove null fields in each row.
         return _.pick(row, function(val) { return val !== null });
-      }).sort(function (a, b) {
+      });
+    },
+    sortData: function(data, selectedUnit) {
+      var column = selectedUnit ? this.UNIT_COLUMN : this.YEAR_COLUMN;
+      return data.sort(function(a, b) {
         return a[column] - b[column];
-      })
+      });
+    },
+    getHeadlineTable: function(data, selectedUnit) {
+      return {
+        title: 'Headline data',
+        headings: selectedUnit ? ['Year', 'Units', 'Value'] : ['Year', 'Value'],
+        data: data.map(function (row) {
+          return selectedUnit ? [row.Year, row.Units, row.Value] : [row.Year, row.Value];
+        }),
+      };
     },
     removeOrphanSelections: function(selectedFields, edges) {
       var selectedFieldNames = _.pluck(selectedFields, 'field');
@@ -233,6 +358,29 @@
       }, this);
       return fieldItemStates;
     },
+    fieldItemStatesForView: function(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, selectedFields) {
+      var states = fieldItemStates.map(function(item) { return item; });
+      if (dataHasUnitSpecificFields) {
+        states = this.fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit);
+      }
+      if (selectedFields.length) {
+        states.forEach(function(fieldItem) {
+          var fieldName = fieldItem.field;
+          var selectedField = selectedFields.find(function(selectedItem) {
+            return selectedItem.field === fieldItem.field;
+          });
+          if (selectedField) {
+            selectedField.values.forEach(function(selectedValue) {
+              var fieldItemValue = fieldItem.values.find(function(valueItem) {
+                return valueItem.value === selectedValue;
+              });
+              fieldItemValue.checked = true;
+            })
+          }
+        });
+      }
+      return states;
+    },
     getChartTitle: function(currentTitle, allTitles, selectedUnit) {
       var newTitle = currentTitle;
       if (allTitles && allTitles.length > 0) {
@@ -280,6 +428,129 @@
 
       // Return a combination of both.
       return fieldValuePairs.concat(fieldValuePairCombinations);
+    },
+    getCombinationDescription: function(combination, fallback) {
+      var keys = Object.keys(combination);
+      if (!keys.length) {
+        return fallback;
+      }
+      return keys.map(function(key) {
+        return translations.t(combination[key]);
+      }).join(', ');
+    },
+    getHeadlineColor: function() {
+      // TODO: Make this dynamic to support high-contrast.
+      return '777777';
+    },
+    getHeadlineBackground: function() {
+      // TODO: Make this dynamic to support high-contrast.
+      return 'FFFFFF';
+    },
+    getColor: function(datasetIndex, colors) {
+
+      // offset if there is no headline data:
+      //if (!hasHeadline) {
+      //  datasetIndex += 1;
+      //}
+
+      if (datasetIndex > colors.length) {
+        return colors[datasetIndex - colors.length];
+      } else {
+        return colors[datasetIndex];
+      }
+    },
+    getBackground: function(datasetIndex, colors) {
+
+      var color = this.getBackgroundColor(datasetIndex, colors);
+
+      // offset if there is no headline data:
+      //if (!hasHeadline) {
+      //  datasetIndex += 1;
+      //}
+
+      if (datasetIndex > colors.length) {
+        color = getBackgroundPattern(color);
+      }
+
+      return color;
+    },
+    getBackgroundColor: function(datasetIndex, colors) {
+      return '#' + this.getColor(datasetIndex, colors);
+    },
+    getBackgroundPattern: function(color) {
+      if (window.pattern && typeof window.pattern.draw === 'function') {
+        return window.pattern.draw('diagonal', color);
+      }
+      return color;
+    },
+    getBorderDash: function(datasetIndex, colors) {
+
+      // offset if there is no headline data:
+      //if (!hasHeadline) {
+      //  datasetIndex += 1;
+      //}
+
+      return datasetIndex > colors.length ? [5, 5] : undefined;
+    },
+    prepareDataForDataset: function(years, data) {
+      return years.map(function(year) {
+        return data
+          .filter(function(row) { return row[this.YEAR_COLUMN] === year; }, this)
+          .map(function(row) { return row[this.VALUE_COLUMN]; }, this)[0];
+      }, this);
+    },
+    makeHeadlineDataset: function(years, data, label) {
+      var dataset = this.getBaseDataset();
+      return Object.assign(dataset, {
+        label: label,
+        borderColor: '#' + this.getHeadlineColor(),
+        backgroundColor: this.getHeadlineBackground(),
+        pointBorderColor: '#' + this.getHeadlineColor(),
+        data: this.prepareDataForDataset(years, data),
+      });
+    },
+    makeDataset: function (years, data, combination, labelFallback, color, background, border) {
+      var dataset = this.getBaseDataset();
+      return Object.assign(dataset, {
+        label: this.getCombinationDescription(combination, labelFallback),
+        disaggregation: combination,
+        borderColor: '#' + color,
+        backgroundColor: background,
+        pointBorderColor: '#' + color,
+        borderDash: border,
+        borderWidth: 4,
+        data: this.prepareDataForDataset(years, data),
+      });
+    },
+    getDatasets: function(headline, data, combinations, years, defaultLabel, colors, selectableFields) {
+      var datasets = [], index = 0, dataset, color, background, border;
+      combinations.forEach(function(combination) {
+        var filteredData = this.getDataMatchingCombination(data, combination, selectableFields);
+        if (filteredData.length) {
+          color = this.getColor(index, colors);
+          background = this.getBackground(index, colors);
+          border = this.getBorderDash(index, colors);
+          dataset = this.makeDataset(years, filteredData, combination, defaultLabel, color, background, border);
+          datasets.push(dataset);
+          index++;
+        }
+      }, this);
+      datasets.sort(function(a, b) { return a.label > b.label; });
+      if (headline.length) {
+        color = this.getHeadlineColor();
+        background = this.getHeadlineBackground();
+        dataset = this.makeHeadlineDataset(years, headline, defaultLabel);
+        datasets.unshift(dataset);
+      }
+      return datasets;
+    },
+    tableDataFromDatasets: function(datasets, years) {
+      return {
+        headings: [this.YEAR_COLUMN].concat(datasets.map(function(ds) { return ds.label; })),
+        data: years.map(function(year, index) {
+          return [year].concat(datasets.map(function(ds) { return ds.data[index]; }));
+        }),
+      };
     },
   }
 })();

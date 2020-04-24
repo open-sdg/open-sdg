@@ -1,6 +1,6 @@
 #main-content {
   #indicatorData {
-    &.no-series {
+    &.no-fields {
 
       #series-help, #fields, #legend-help, #clear {
         display: none;
@@ -400,7 +400,7 @@
         .tags li{
           color: black;
         }
-        
+
       }
       .indicator-cards.target {
         margin-bottom: 2.5rem;
