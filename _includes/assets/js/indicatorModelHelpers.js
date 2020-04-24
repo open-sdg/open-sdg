@@ -198,7 +198,6 @@
       var allowedFields = this.getInitialAllowedFields(selectableFields, edges);
       var selectedFieldNames = this.getFieldNames(selectedFields);
       this.getParentFieldNames(edges).forEach(function(parentFieldName) {
-        console.log(parentFieldName);
         if (selectedFieldNames.includes(parentFieldName)) {
           var childFieldNames = this.getChildFieldNamesByParent(edges, parentFieldName);
           allowedFields = allowedFields.concat(childFieldNames);
@@ -241,6 +240,46 @@
         newTitle = (unitTitle) ? unitTitle.title : allTitles[0].title;
       }
       return newTitle;
-    }
+    },
+    // This needs to return an array of every possible combination of disaggregations.
+    // The fieldItems parameter is an array of objects, each containing 'field' (which
+    // is a field name) and 'values' (which is an array of field value names). The
+    // return of this function should be an array of objects, each being a key/value
+    // representation of a possible combination of disaggregations.
+    getCombinationData: function(fieldItems) {
+
+      // First get a list of all the single field/value pairs.
+      var fieldValuePairs = [];
+      fieldItems.forEach(function(fieldItem) {
+        fieldItem.values.forEach(function(value) {
+          var pair = {};
+          pair[fieldItem.field] = value;
+          fieldValuePairs.push(pair);
+        });
+      });
+
+      // Next get a list of each single pair combined with every other.
+      var fieldValuePairCombinations = {};
+      fieldValuePairs.forEach(function(fieldValuePair) {
+        var combinationsForCurrentPair = Object.assign({}, fieldValuePair);
+        fieldValuePairs.forEach(function(fieldValuePairToAdd) {
+          // The following conditional reflects that we're not interested in combinations
+          // within the same field. (Eg, not interested in combination of Female and Male).
+          if (Object.keys(fieldValuePair)[0] !== Object.keys(fieldValuePairToAdd)[0]) {
+            Object.assign(combinationsForCurrentPair, fieldValuePairToAdd);
+            var combinationKeys = Object.keys(combinationsForCurrentPair).sort();
+            var combinationValues = Object.values(combinationsForCurrentPair).sort();
+            var combinationUniqueId = JSON.stringify(combinationKeys.concat(combinationValues));
+            if (!(combinationUniqueId in fieldValuePairCombinations)) {
+              fieldValuePairCombinations[combinationUniqueId] = Object.assign({}, combinationsForCurrentPair);
+            }
+          }
+        });
+      });
+      fieldValuePairCombinations = Object.values(fieldValuePairCombinations);
+
+      // Return a combination of both.
+      return fieldValuePairs.concat(fieldValuePairCombinations);
+    },
   }
 })();

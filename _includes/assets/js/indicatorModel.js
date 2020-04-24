@@ -101,55 +101,7 @@ var indicatorModel = function (options) {
     this.onUnitsSelectedChanged.notify(selectedUnit);
   };
 
-  this.getCombinationData = function(obj) {
-    var getCombinations = function(fields, arr, n) {
-      var index = 0, ret = [];
-      for(var i = 0; i < arr.length; i++) {
-        var elem = (n == 1) ? arr[i] : arr.shift();
-        var field = (n == 1) ? fields[i] : fields.shift();
-        for(var j = 0; j < elem.length; j++) {
-          if(n == 1) {
-            ret.push({
-              value: elem[j],
-              field: field
-            });
-          } else {
-            var childperm = getCombinations(fields.slice(), arr.slice(), n-1);
-            for(var k = 0; k < childperm.length; k++) {
-              ret.push([{
-                value: elem[j],
-                field: field
-              }].concat(childperm[k]));
-            }
-          }
-        }
-      }
-      return ret;
-    };
-
-    var	loop = 1,
-        res = [],
-        src = JSON.parse(JSON.stringify(obj));
-
-    for(; loop <= src.length; loop++) {
-      obj = JSON.parse(JSON.stringify(src));
-      res = res.concat(getCombinations(_.pluck(obj, 'field'), _.pluck(obj, 'values'), loop));
-    }
-
-    return _.map(res, function(r) {
-      if(!_.isArray(r)) {
-        r = [r];
-      }
-      return _.object(
-        _.pluck(r, 'field'),
-        _.pluck(r, 'value')
-      );
-    });
-  };
-
   this.getData = function(options) {
-    // field: 'Grade'
-    // values: ['A', 'B']
     var options = _.defaults(options || {}, {
         initial: false,
         unitsChangeSeries: false
@@ -302,7 +254,7 @@ var indicatorModel = function (options) {
     }
 
     // extract the possible combinations for the selected field values
-    var combinations = this.getCombinationData(this.selectedFields);
+    var combinations = helpers.getCombinationData(this.selectedFields);
 
     var filteredDatasets = [];
 
