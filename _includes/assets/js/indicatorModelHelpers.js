@@ -445,7 +445,7 @@
     },
     getHeadlineBackground: function() {
       // TODO: Make this dynamic to support high-contrast.
-      return 'FFFFFF';
+      return '#FFFFFF';
     },
     getColor: function(datasetIndex, colors) {
       if (datasetIndex > colors.length) {
