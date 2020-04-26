@@ -56,15 +56,8 @@ var indicatorModel = function (options) {
   this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
   this.data = helpers.prepareData(this.data);
   this.footerFields = helpers.footerFields(this);
-  this.datasetObject = helpers.getBaseDataset();
-
-  var headlineColor = '777777';
-
-  // use custom colors
-  var colors = opensdg.chartColors(this.indicatorId);
-
-  // allow headline + (2 x others)
-  var maxDatasetCount = 2 * colors.length;
+  this.colors = opensdg.chartColors(this.indicatorId);
+  this.maxDatasetCount = 2 * this.colors.length;
 
   this.clearSelectedFields = function() {
     this.selectedFields = [];
@@ -191,12 +184,12 @@ var indicatorModel = function (options) {
     }
 
     var combinations = helpers.getCombinationData(this.selectedFields);
-    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, colors, this.selectableFields);
+    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
 
     var datasetCountExceedsMax = false;
     // restrict count if it exceeds the limit:
-    if(datasets.length > maxDatasetCount) {
+    if(datasets.length > this.maxDatasetCount) {
       datasetCountExceedsMax = true;
     }
 
@@ -204,7 +197,7 @@ var indicatorModel = function (options) {
 
     this.onDataComplete.notify({
       datasetCountExceedsMax: datasetCountExceedsMax,
-      datasets: datasetCountExceedsMax ? datasets.slice(0, maxDatasetCount) : datasets,
+      datasets: datasetCountExceedsMax ? datasets.slice(0, this.maxDatasetCount) : datasets,
       labels: this.years,
       headlineTable: helpers.getHeadlineTable(headline, this.selectedUnit),
       selectionsTable: selectionsTable,
