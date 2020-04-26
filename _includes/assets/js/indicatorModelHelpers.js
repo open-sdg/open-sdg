@@ -395,11 +395,6 @@
       }
       return newTitle;
     },
-    // This needs to return an array of every possible combination of disaggregations.
-    // The fieldItems parameter is an array of objects, each containing 'field' (which
-    // is a field name) and 'values' (which is an array of field value names). The
-    // return of this function should be an array of objects, each being a key/value
-    // representation of a possible combination of disaggregations.
     getCombinationData: function(fieldItems) {
 
       // First get a list of all the single field/value pairs.
@@ -453,12 +448,6 @@
       return 'FFFFFF';
     },
     getColor: function(datasetIndex, colors) {
-
-      // offset if there is no headline data:
-      //if (!hasHeadline) {
-      //  datasetIndex += 1;
-      //}
-
       if (datasetIndex > colors.length) {
         return colors[datasetIndex - colors.length];
       } else {
@@ -466,13 +455,7 @@
       }
     },
     getBackground: function(datasetIndex, colors) {
-
       var color = this.getBackgroundColor(datasetIndex, colors);
-
-      // offset if there is no headline data:
-      //if (!hasHeadline) {
-      //  datasetIndex += 1;
-      //}
 
       if (datasetIndex > colors.length) {
         color = getBackgroundPattern(color);
@@ -490,12 +473,6 @@
       return color;
     },
     getBorderDash: function(datasetIndex, colors) {
-
-      // offset if there is no headline data:
-      //if (!hasHeadline) {
-      //  datasetIndex += 1;
-      //}
-
       return datasetIndex > colors.length ? [5, 5] : undefined;
     },
     prepareDataForDataset: function(years, data) {
