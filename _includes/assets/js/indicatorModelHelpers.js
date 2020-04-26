@@ -5,11 +5,14 @@
     YEAR_COLUMN: 'Year',
     VALUE_COLUMN: 'Value',
     convertJsonFormat: function(data) {
-      var keys = _.keys(data);
+      var keys = Object.keys(data);
+      if (!keys.length) {
+        return [];
+      }
 
-      return _.map(data[keys[0]], function(item, i) {
-        return _.object(keys, _.map(keys, function(k) {
-          return data[k][i];
+      return data[keys[0]].map(function(item, index) {
+        return _.object(keys, keys.map(function(key) {
+          return data[key][index];
         }));
       });
     },
