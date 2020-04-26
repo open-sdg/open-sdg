@@ -106,11 +106,15 @@
       filteredData = filteredData.sort(function(a, b) {
         return Object.keys(a).length - Object.keys(b).length;
       });
-      // Convert to an array of objects with 'field' and 'value' keys.
-      return Object.keys(filteredData[0]).map(function(field) {
+      // Convert to an array of objects with 'field' and 'values' keys, omitting
+      // any special columns.
+      var specialColumns = this.nonFieldColumns();
+      return Object.keys(filteredData[0]).filter(function(key) {
+        return !specialColumns.includes(key);
+      }).map(function(field) {
         return {
           field: field,
-          value: filteredData[0][field]
+          values: [filteredData[0][field]]
         };
       });
     },
@@ -365,7 +369,6 @@
       }
       if (selectedFields.length) {
         states.forEach(function(fieldItem) {
-          var fieldName = fieldItem.field;
           var selectedField = selectedFields.find(function(selectedItem) {
             return selectedItem.field === fieldItem.field;
           });
