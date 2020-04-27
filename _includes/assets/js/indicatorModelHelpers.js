@@ -126,8 +126,8 @@
       ];
     },
     getFieldColumnsFromArray: function(arr) {
-      var omit = this.nonFieldColumns();
-      return arr.filter(function(col) { return !omit.includes(col); });
+      var omitColumns = this.nonFieldColumns();
+      return arr.filter(function(col) { return !omitColumns.includes(col); });
     },
     getFieldColumnsFromData: function(data) {
       return this.getFieldColumnsFromArray(this.getColumnsFromData(data));
