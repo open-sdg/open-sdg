@@ -104,9 +104,9 @@
 
       // Convert to an array of objects with 'field' and 'values' keys, omitting
       // any special columns.
-      var specialColumns = this.nonFieldColumns();
+      var nonFieldColumns = this.nonFieldColumns();
       return Object.keys(filteredData[0]).filter(function(key) {
-        return !specialColumns.includes(key);
+        return !nonFieldColumns.includes(key);
       }).map(function(field) {
         return {
           field: field,
