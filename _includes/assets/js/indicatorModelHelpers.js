@@ -115,6 +115,8 @@
       });
     },
     nonFieldColumns: function() {
+      // These are the data columns that have a special purpose. All other
+      // columns can be considered "field columns".
       return [
         this.YEAR_COLUMN,
         this.VALUE_COLUMN,
