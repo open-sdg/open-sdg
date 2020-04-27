@@ -116,7 +116,7 @@ var indicatorModel = function (options) {
         else {
           // If our selected unit causes the headline to be empty, change it
           // to the first one available that would work.
-          if (headlineWithoutUnit.length && !headline.length) {
+          if (headlineWithoutUnit.length > 0 && headline.length === 0) {
             startingUnit = helpers.getFirstUnitInData(headlineWithoutUnit);
           }
         }
@@ -133,11 +133,11 @@ var indicatorModel = function (options) {
         startingFields = helpers.selectFieldsFromStartValues(this.startValues, this.selectableFields);
       }
       else {
-        if (!headline.length) {
+        if (headline.length === 0) {
           startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields);
         }
       }
-      if (startingFields.length) {
+      if (startingFields.length > 0) {
         this.selectedFields = startingFields;
         this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, this.selectedFields);
         selectionUpdateNeeded = true;
@@ -179,7 +179,7 @@ var indicatorModel = function (options) {
     }
 
     filteredData = helpers.sortData(filteredData, this.selectedUnit);
-    if (headline.length) {
+    if (headline.length > 0) {
       headline = helpers.sortData(headline, this.selectedUnit);
     }
 

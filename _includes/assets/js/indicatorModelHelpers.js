@@ -6,7 +6,7 @@
     VALUE_COLUMN: 'Value',
     convertJsonFormat: function(data) {
       var keys = Object.keys(data);
-      if (!keys.length) {
+      if (keys.length === 0) {
         return [];
       }
 
@@ -162,7 +162,7 @@
       });
     },
     sortFieldItemStates: function(fieldItemStates, edges) {
-      if (edges.length) {
+      if (edges.length > 0) {
         var orderedEdges = _.chain(edges)
           .groupBy('From')
           .map(function(value, key) { return [key].concat(_.pluck(value, 'To')); })
@@ -370,7 +370,7 @@
       if (dataHasUnitSpecificFields) {
         states = this.fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit);
       }
-      if (selectedFields.length) {
+      if (selectedFields.length > 0) {
         states.forEach(function(fieldItem) {
           var selectedField = selectedFields.find(function(selectedItem) {
             return selectedItem.field === fieldItem.field;
@@ -432,7 +432,7 @@
     },
     getCombinationDescription: function(combination, fallback) {
       var keys = Object.keys(combination);
-      if (!keys.length) {
+      if (keys.length === 0) {
         return fallback;
       }
       return keys.map(function(key) {
@@ -509,7 +509,7 @@
       var datasets = [], index = 0, dataset, color, background, border;
       combinations.forEach(function(combination) {
         var filteredData = this.getDataMatchingCombination(data, combination, selectableFields);
-        if (filteredData.length) {
+        if (filteredData.length > 0) {
           color = this.getColor(index, colors);
           background = this.getBackground(index, colors);
           border = this.getBorderDash(index, colors);
@@ -519,7 +519,7 @@
         }
       }, this);
       datasets.sort(function(a, b) { return a.label > b.label; });
-      if (headline.length) {
+      if (headline.length > 0) {
         color = this.getHeadlineColor();
         background = this.getHeadlineBackground();
         dataset = this.makeHeadlineDataset(years, headline, defaultLabel);
