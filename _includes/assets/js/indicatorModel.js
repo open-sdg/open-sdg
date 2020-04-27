@@ -42,10 +42,10 @@ var indicatorModel = function (options) {
   this.stackedDisaggregation = options.stackedDisaggregation;
 
   // calculate some initial values:
-  this.years = helpers.extractUnique(helpers.YEAR_COLUMN, this.data);
+  this.years = helpers.extractUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
   this.hasGeoData = helpers.dataHasGeoCodes(this.data);
   if (helpers.dataHasUnits(this.data)) {
-    this.units = helpers.extractUnique(helpers.UNIT_COLUMN, this.data);
+    this.units = helpers.extractUniqueValuesByProperty(helpers.UNIT_COLUMN, this.data);
     this.selectedUnit = this.units[0];
     this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data);
     this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);

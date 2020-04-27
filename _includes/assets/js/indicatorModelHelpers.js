@@ -16,7 +16,7 @@
         }));
       });
     },
-    extractUnique: function(prop, data) {
+    extractUniqueValuesByProperty: function(prop, data) {
       return _.chain(data).pluck(prop).uniq().filter(function(f) { return f; }).sortBy(function(year) {
         return year;
       }).value();
@@ -183,7 +183,7 @@
         return {
           field: field,
           hasData: true,
-          values: this.extractUnique(field, data).map(function(value) {
+          values: this.extractUniqueValuesByProperty(field, data).map(function(value) {
             return {
               value: value,
               state: 'default',
