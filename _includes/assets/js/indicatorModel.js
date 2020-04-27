@@ -69,15 +69,19 @@ var indicatorModel = function (options) {
     this.onFieldsCleared.notify();
   };
 
-  this.updateSelectedFields = function (selectedFields) {
+  this.updateFieldStates = function(selectedFields) {
     this.selectedFields = helpers.removeOrphanSelections(selectedFields, this.edgesData);
     this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, selectedFields);
     this.fieldItemStates = helpers.getUpdatedFieldItemStates(this.fieldItemStates, this.edgesData, selectedFields, this.validParentsByChild);
-    this.getData();
     this.onSelectionUpdate.notify({
       selectedFields: this.selectedFields,
       allowedFields: this.allowedFields
     });
+  }
+
+  this.updateSelectedFields = function (selectedFields) {
+    this.updateFieldStates(selectedFields);
+    this.getData();
   };
 
   this.updateChartTitle = function() {
@@ -143,7 +147,6 @@ var indicatorModel = function (options) {
       }
       if (startingFields.length > 0) {
         this.selectedFields = startingFields;
-        this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, this.selectedFields);
         selectionUpdateNeeded = true;
       }
 
@@ -171,10 +174,7 @@ var indicatorModel = function (options) {
     }
 
     if (selectionUpdateNeeded) {
-      this.onSelectionUpdate.notify({
-        selectedFields: this.selectedFields,
-        allowedFields: this.allowedFields
-      });
+      this.updateFieldStates(this.selectedFields);
     }
 
     var filteredData = helpers.getDataBySelectedFields(this.data, this.selectedFields);
@@ -198,6 +198,12 @@ var indicatorModel = function (options) {
     }
 
     this.updateChartTitle();
+
+    this.onFieldsStatusUpdated.notify({
+      data: this.fieldItemStates,
+      // TODO: Why is selectionStates not used?
+      selectionStates: []
+    });
 
     this.onDataComplete.notify({
       datasetCountExceedsMax: datasetCountExceedsMax,
