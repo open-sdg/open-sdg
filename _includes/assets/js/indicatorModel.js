@@ -45,10 +45,14 @@ var indicatorModel = function (options) {
   this.years = helpers.extractUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
   this.hasGeoData = helpers.dataHasGeoCodes(this.data);
   if (helpers.dataHasUnits(this.data)) {
+    this.hasUnits = true;
     this.units = helpers.extractUniqueValuesByProperty(helpers.UNIT_COLUMN, this.data);
     this.selectedUnit = this.units[0];
     this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data);
     this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
+  }
+  else {
+    this.hasUnits = false;
   }
   this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData);
   this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
@@ -99,13 +103,13 @@ var indicatorModel = function (options) {
     }, options);
 
     var headlineWithoutUnit = helpers.getHeadline(this.selectableFields, this.data);
-    var headline = helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit);
+    var headline = this.hasUnits ? helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit) : headlineWithoutUnit;
 
     // If this is the initial load, check for special cases.
     var selectionUpdateNeeded = false;
     if (options.initial) {
       // Decide on a starting unit.
-      if (this.units) {
+      if (this.hasUnits) {
         var startingUnit = this.selectedUnit;
         if (this.startValues) {
           var unitInStartValues = helpers.getUnitFromStartValues(this.startValues);
@@ -174,7 +178,7 @@ var indicatorModel = function (options) {
     }
 
     var filteredData = helpers.getDataBySelectedFields(this.data, this.selectedFields);
-    if (this.units) {
+    if (this.hasUnits) {
       filteredData = helpers.getDataByUnit(filteredData, this.selectedUnit);
     }
 

@@ -39,9 +39,6 @@
       }, this)[this.UNIT_COLUMN];
     },
     getDataByUnit: function(data, unit) {
-      if (!unit) {
-        return data;
-      }
       return data.filter(function(row) {
         return row[this.UNIT_COLUMN] === unit;
       }, this);
