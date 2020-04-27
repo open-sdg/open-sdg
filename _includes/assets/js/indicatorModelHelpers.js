@@ -4,7 +4,7 @@
     GEOCODE_COLUMN: 'GeoCode',
     YEAR_COLUMN: 'Year',
     VALUE_COLUMN: 'Value',
-    convertJsonFormat: function(data) {
+    convertJsonFormatToRows: function(data) {
       var keys = Object.keys(data);
       if (keys.length === 0) {
         return [];

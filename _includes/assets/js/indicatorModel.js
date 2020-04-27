@@ -13,8 +13,8 @@ var indicatorModel = function (options) {
 
   // general members:
   var that = this;
-  this.data = helpers.convertJsonFormat(options.data);
-  this.edgesData = helpers.convertJsonFormat(options.edgesData);
+  this.data = helpers.convertJsonFormatToRows(options.data);
+  this.edgesData = helpers.convertJsonFormatToRows(options.edgesData);
   this.hasHeadline = true;
   this.country = options.country;
   this.indicatorId = options.indicatorId;
