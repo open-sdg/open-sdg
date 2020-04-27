@@ -26,11 +26,7 @@
         }));
       });
     },
-    getUniqueValuesByProperty: function(prop, data) {
-      return _.chain(data).pluck(prop).uniq().filter(function(f) { return f; }).sortBy(function(year) {
-        return year;
-      }).value();
-    },
+    getUniqueValuesByProperty: getUniqueValuesByProperty,
     dataHasUnits: function(data) {
       return dataHasColumn(UNIT_COLUMN, data);
     },
@@ -150,19 +146,25 @@
       var parentFields = getParentFieldNames(edges);
       var childFields = getChildFieldNames(edges);
       var validParentsByChild = {};
-      _.each(childFields, function(childField, fieldIndex) {
-        var fieldItemState = _.findWhere(fieldItemStates, {field: childField});
-        var childValues = _.pluck(fieldItemState.values, 'value');
+      childFields.forEach(function(childField, fieldIndex) {
+        var fieldItemState = fieldItemStates.find(function(fis) {
+          return fis.field === childField;
+        });
+        var childValues = fieldItemState.values.map(function(value) {
+          return value.value;
+        });
         var parentField = parentFields[fieldIndex];
         validParentsByChild[childField] = {};
-        _.each(childValues, function(childValue) {
-          var rowsWithParentValues = _.filter(data, function(row) {
+        childValues.forEach(function(childValue) {
+          var rowsWithParentValues = data.filter(function(row) {
             var childMatch = row[childField] == childValue;
             var parentNotEmpty = row[parentField];
             return childMatch && parentNotEmpty;
           });
-          var parentValues = _.pluck(rowsWithParentValues, parentField);
-          parentValues = _.uniq(parentValues);
+          var parentValues = rowsWithParentValues.map(function(row) {
+            return row[parentField];
+          });
+          parentValues = parentValues.filter(isElementUniqueInArray);
           validParentsByChild[childField][childValue] = parentValues;
         });
       });
@@ -172,7 +174,8 @@
       return fieldItems.map(function(item) { return item.field; });
     },
     getInitialAllowedFields: function(fields, edges) {
-      return _.difference(fields, getChildFieldNames(edges));
+      var children = getChildFieldNames(edges);
+      return fields.filter(function(field) { return !children.includes(field); });
     },
     prepareData: function(data) {
       return data.map(function(item) {
@@ -186,8 +189,8 @@
         }
 
         // remove any undefined/null values:
-        _.each(Object.keys(item), function(key) {
-          if(_.isNull(item[key]) || _.isUndefined(item[key])) {
+        Object.keys(item).forEach(function(key) {
+          if (item[key] === null || typeof item[key] === 'undefined') {
             delete item[key];
           }
         });
@@ -232,13 +235,14 @@
       };
     },
     removeOrphanSelections: function(selectedFields, edges) {
-      var selectedFieldNames = _.pluck(selectedFields, 'field');
+      var selectedFieldNames = selectedFields.map(function(selectedField) {
+        return selectedField.field;
+      });
       edges.forEach(function(edge) {
-        if(!selectedFieldNames.includes(edge.From)) {
-          // don't allow any child fields of this association:
-          selectedFields = _.without(selectedFields, _.findWhere(selectedFields, {
-            field: edge.From
-          }));
+        if (!selectedFieldNames.includes(edge.From)) {
+          selectedFields = selectedFields.filter(function(selectedField) {
+            return selectedField.field !== edge.From;
+          });
         }
       });
       return selectedFields;
@@ -252,7 +256,7 @@
           allowedFields = allowedFields.concat(childFieldNames);
         }
       }, this);
-      return  _.uniq(allowedFields);
+      return allowedFields.filter(isElementUniqueInArray);
     },
     getUpdatedFieldItemStates: function(fieldItemStates, edges, selectedFields, validParentsByChild) {
       var selectedFieldNames = this.getFieldNames(selectedFields);

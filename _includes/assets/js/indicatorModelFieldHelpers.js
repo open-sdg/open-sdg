@@ -2,19 +2,31 @@
  * Model helper functions related to fields and data.
  */
 
+function isElementUniqueInArray(element, index, arr) {
+  return arr.indexOf(element) === index;
+}
+
+function getUniqueValuesByProperty(prop, data) {
+  return data
+    .map(function(row) { return row[prop]; })
+    .filter(isElementUniqueInArray)
+    .filter(function(row) { return row; })
+    .sort();
+}
+
 function nonFieldColumns() {
-    // These are the data columns that have a special purpose. All other
-    // columns can be considered "field columns".
-    return [
-      YEAR_COLUMN,
-      VALUE_COLUMN,
-      UNIT_COLUMN,
-      GEOCODE_COLUMN,
-      'Observation status',
-      'Unit multiplier',
-      'Unit measure',
-    ];
-  }
+  // These are the data columns that have a special purpose. All other
+  // columns can be considered "field columns".
+  return [
+    YEAR_COLUMN,
+    VALUE_COLUMN,
+    UNIT_COLUMN,
+    GEOCODE_COLUMN,
+    'Observation status',
+    'Unit multiplier',
+    'Unit measure',
+  ];
+}
 
 function getFieldColumnsFromArray(arr) {
   var omitColumns = nonFieldColumns();
@@ -41,15 +53,14 @@ function fieldIsUsedInDataWithUnit(field, unit, data) {
 
 function sortFieldItemStates(fieldItemStates, edges) {
   if (edges.length > 0) {
-    var orderedEdges = _.chain(edges)
-      .groupBy('From')
-      .map(function(value, key) { return [key].concat(_.pluck(value, 'To')); })
-      .flatten()
-      .value();
+    var froms = getUniqueValuesByProperty('From', edges);
+    var tos = getUniqueValuesByProperty('To', edges);
+    var orderedEdges = froms.concat(tos);
+    var fieldsNotInEdges = fieldItemStates
+      .map(function(fis) { return fis.field; })
+      .filter(function(field) { return !orderedEdges.includes(field); });
+    var customOrder = orderedEdges.concat(fieldsNotInEdges);
 
-    var customOrder = orderedEdges.concat(_.difference(_.pluck(fieldItemStates, 'field'), orderedEdges));
-
-    // now order the fields:
     return _.sortBy(fieldItemStates, function(item) {
       return customOrder.indexOf(item.field);
     });
