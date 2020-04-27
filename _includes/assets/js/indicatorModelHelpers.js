@@ -88,24 +88,20 @@
       });
     },
     selectMinimumStartingFields: function(data, fieldNames) {
-      // We filter our full dataset to only those fields.
       var filteredData = data.filter(function(row) {
         return fieldNames.some(function(fieldName) {
           return row[fieldName];
         });
       });
-      // We then sort the data by each field. We go in reverse order so that the
+      // Sort the data by each field. We go in reverse order so that the
       // first field will be highest "priority" in the sort.
       fieldNames.reverse().forEach(function(fieldName) {
-        filteredData = filteredData.sort(function(a, b) {
-          return a[fieldName] - b[fieldName];
-        });
+        filteredData = _.sortBy(filteredData, fieldName);
       });
       // But actually we want the top-priority sort to be the "size" of the
       // rows. In other words we want the row with the fewest number of fields.
-      filteredData = filteredData.sort(function(a, b) {
-        return Object.keys(a).length - Object.keys(b).length;
-      });
+      filteredData = _.sortBy(filteredData, function(row) { return Object.keys(row).length; });
+
       // Convert to an array of objects with 'field' and 'values' keys, omitting
       // any special columns.
       var specialColumns = this.nonFieldColumns();
@@ -298,9 +294,7 @@
     },
     sortData: function(data, selectedUnit) {
       var column = selectedUnit ? this.UNIT_COLUMN : this.YEAR_COLUMN;
-      return data.sort(function(a, b) {
-        return a[column] - b[column];
-      });
+      return _.sortBy(data, column);
     },
     getHeadlineTable: function(data, selectedUnit) {
       return {
