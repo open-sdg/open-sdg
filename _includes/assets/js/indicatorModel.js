@@ -1,6 +1,6 @@
 var indicatorModel = function (options) {
 
-  var helpers = {% include assets/js/indicatorModelHelpers.js %}
+  var helpers = {% include assets/js/model/helpers.js %}
 
   // events:
   this.onDataComplete = new event(this);
@@ -85,12 +85,11 @@ var indicatorModel = function (options) {
   };
 
   this.updateChartTitle = function() {
-    this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles);
+    this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit);
   }
 
   this.updateSelectedUnit = function(selectedUnit) {
     this.selectedUnit = selectedUnit;
-    this.updateChartTitle();
 
     // if fields are dependent on the unit, reset:
     this.getData({
