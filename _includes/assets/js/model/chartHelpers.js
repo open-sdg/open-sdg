@@ -71,6 +71,7 @@ function getDataMatchingCombination(data, combination, selectableFields) {
  */
 function getColor(datasetIndex, colors) {
   if (datasetIndex >= colors.length) {
+    // Support double the number of colors, because we'll use striped versions.
     return '#' + colors[datasetIndex - colors.length];
   } else {
     return '#' + colors[datasetIndex];
@@ -86,7 +87,7 @@ function getBackground(datasetIndex, colors) {
   var color = getColor(datasetIndex, colors);
 
   if (datasetIndex >= colors.length) {
-    color = getBackgroundPattern(color);
+    color = getStripes(color);
   }
 
   return color;
@@ -96,7 +97,7 @@ function getBackground(datasetIndex, colors) {
  * @param {string} color
  * @return Canvas pattern from color
  */
-function getBackgroundPattern(color) {
+function getStripes(color) {
   if (window.pattern && typeof window.pattern.draw === 'function') {
     return window.pattern.draw('diagonal', color);
   }
@@ -106,7 +107,7 @@ function getBackgroundPattern(color) {
 /**
  * @param {int} datasetIndex
  * @param {Array} colors
- * @return Use dashed lines after running out of colors
+ * @return {Array|undefined} An array produces dashed lines on the chart
  */
 function getBorderDash(datasetIndex, colors) {
   return datasetIndex >= colors.length ? [5, 5] : undefined;
