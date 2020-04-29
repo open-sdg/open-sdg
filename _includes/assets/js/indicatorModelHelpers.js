@@ -460,7 +460,7 @@
 
     /**
      * @param {Array} fieldItemStates
-     * @param {Array} fieldsByUnit Field names
+     * @param {Array} fieldsByUnit Objects containing 'unit' and 'fields'
      * @param {string} selectedUnit
      * @param {boolean} dataHasUnitSpecificFields
      * @param {Array} selectedFields Field items
