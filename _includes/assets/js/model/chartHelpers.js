@@ -70,10 +70,10 @@ function getDataMatchingCombination(data, combination, selectableFields) {
  * @return Color from a list
  */
 function getColor(datasetIndex, colors) {
-  if (datasetIndex > colors.length) {
-    return colors[datasetIndex - colors.length];
+  if (datasetIndex >= colors.length) {
+    return '#' + colors[datasetIndex - colors.length];
   } else {
-    return colors[datasetIndex];
+    return '#' + colors[datasetIndex];
   }
 }
 
@@ -83,22 +83,13 @@ function getColor(datasetIndex, colors) {
  * @return Background color or pattern
  */
 function getBackground(datasetIndex, colors) {
-  var color = getBackgroundColor(datasetIndex, colors);
+  var color = getColor(datasetIndex, colors);
 
-  if (datasetIndex > colors.length) {
+  if (datasetIndex >= colors.length) {
     color = getBackgroundPattern(color);
   }
 
   return color;
-}
-
-/**
- * @param {int} datasetIndex
- * @param {Array} colors
- * @return CSS background color from a list
- */
-function getBackgroundColor(datasetIndex, colors) {
-  return '#' + getColor(datasetIndex, colors);
 }
 
 /**
@@ -118,7 +109,7 @@ function getBackgroundPattern(color) {
  * @return Use dashed lines after running out of colors
  */
 function getBorderDash(datasetIndex, colors) {
-  return datasetIndex > colors.length ? [5, 5] : undefined;
+  return datasetIndex >= colors.length ? [5, 5] : undefined;
 }
 
 /**
@@ -136,9 +127,9 @@ function makeDataset(years, rows, combination, labelFallback, color, background,
   return Object.assign(dataset, {
     label: getCombinationDescription(combination, labelFallback),
     disaggregation: combination,
-    borderColor: '#' + color,
+    borderColor: color,
     backgroundColor: background,
-    pointBorderColor: '#' + color,
+    pointBorderColor: color,
     borderDash: border,
     borderWidth: 4,
     data: prepareDataForDataset(years, rows),
@@ -193,7 +184,7 @@ function prepareDataForDataset(years, rows) {
  * TODO: Make this dynamic to support high-contrast.
  */
 function getHeadlineColor() {
-  return '777777';
+  return HEADLINE_COLOR;
 }
 
 /**
@@ -202,7 +193,7 @@ function getHeadlineColor() {
  * TODO: Make this dynamic to support high-contrast.
  */
 function getHeadlineBackground() {
-  return '#FFFFFF';
+  return HEADLINE_BACKGROUND_COLOR;
 }
 
 /**
@@ -215,9 +206,9 @@ function makeHeadlineDataset(years, rows, label) {
   var dataset = getBaseDataset();
   return Object.assign(dataset, {
     label: label,
-    borderColor: '#' + getHeadlineColor(),
+    borderColor: getHeadlineColor(),
     backgroundColor: getHeadlineBackground(),
-    pointBorderColor: '#' + getHeadlineColor(),
+    pointBorderColor: getHeadlineColor(),
     data: prepareDataForDataset(years, rows),
   });
 }
