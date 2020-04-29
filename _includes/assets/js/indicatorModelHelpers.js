@@ -1,6 +1,41 @@
+{% comment %}
 /**
  * Helper functions to be used in indicatorModel.js.
+ *
+ * Notes on parameters - here are some details on common parameters in the
+ * methods throughout these files:
+ * - Rows: This is an array of objects representing data. For example:
+ *   [
+ *     {Year: 2015, Value: 1},
+ *     {Year: 2016, Value: 2}
+ *   ]
+ * - Field names: This is a flat array of strings. For example: ['Location', 'Sex']
+ * - Field items: This is an array of objects representing fields. For example:
+ *   [
+ *     {field: 'Location', values: ['Rural', 'Urban']},
+ *     {field: 'Sex', values: ['Female', 'Male']}
+ *   ]
+ * - Field item states: This is an array of object similar to "Field items",
+ *   but with extra information. For example:
+ *   [
+ *     {
+ *       field: 'Location',
+ *       hasData: true,
+ *       values: [
+ *         {
+ *           value: 'Rural',
+ *           hasData: true
+ *         }
+ *       ]
+ *     }
+ *   ]
+ * - Edges: An array of objects containing 'From' and 'To'. For example:
+ *   [
+ *     { From: 'Location', To: 'Sex' },
+ *     { From: 'Location', To: 'Age' }
+ *   ]
  */
+{% endcomment %}
 (function() {
 
   // Private helper functions.
@@ -14,6 +49,11 @@
     GEOCODE_COLUMN: GEOCODE_COLUMN,
     YEAR_COLUMN: YEAR_COLUMN,
     VALUE_COLUMN: VALUE_COLUMN,
+
+    /**
+     * @param {Object} data Object imported from JSON file
+     * @return {Array} Rows
+     */
     convertJsonFormatToRows: function(data) {
       var keys = Object.keys(data);
       if (keys.length === 0) {
@@ -26,44 +66,85 @@
         }));
       });
     },
+
+    /**
+     * @see getUniqueValuesByProperty in indicatorModelFieldHelpers.js
+     */
     getUniqueValuesByProperty: getUniqueValuesByProperty,
-    dataHasUnits: function(data) {
-      return dataHasColumn(UNIT_COLUMN, data);
+
+    /**
+     * @param {Array} rows
+     * @return {boolean}
+     */
+    dataHasUnits: function(rows) {
+      return dataHasColumn(UNIT_COLUMN, rows);
     },
-    dataHasGeoCodes: function(data) {
-      return dataHasColumn(GEOCODE_COLUMN, data);
+
+    /**
+     * @param {Array} rows
+     * @return {boolean}
+     */
+    dataHasGeoCodes: function(rows) {
+      return dataHasColumn(GEOCODE_COLUMN, rows);
     },
-    getFirstUnitInData: function(data) {
-      return data.find(function(row) {
+
+    /**
+     * @param {Array} rows
+     * @return {string}
+     */
+    getFirstUnitInData: function(rows) {
+      return rows.find(function(row) {
         return row[UNIT_COLUMN];
       }, this)[UNIT_COLUMN];
     },
-    getDataByUnit: function(data, unit) {
-      return data.filter(function(row) {
+
+    /**
+     * @param {Array} rows
+     * @param {string} unit
+     * @return {Array} Rows
+     */
+    getDataByUnit: function(rows, unit) {
+      return rows.filter(function(row) {
         return row[UNIT_COLUMN] === unit;
       }, this);
     },
-    getDataBySelectedFields: function(data, selectedFields) {
-      return data.filter(function(row) {
+
+    /**
+     * @param {Array} rows
+     * @param {Array} selectedFields Field items
+     * @return {Array} Rows
+     */
+    getDataBySelectedFields: function(rows, selectedFields) {
+      return rows.filter(function(row) {
         return selectedFields.some(function(field) {
           return field.values.includes(row[field.field]);
         });
       });
     },
+
+    /**
+     * @param {Array} startValues Objects containing 'field' and 'value'
+     * @return {string|boolean} Unit, or false if none were found
+     */
     getUnitFromStartValues: function(startValues) {
       var match = startValues.find(function(startValue) {
         return startValue.field === UNIT_COLUMN;
       }, this);
       return (match) ? match.value : false;
     },
-    selectFieldsFromStartValues: function(startValues, selectableFields) {
+
+    /**
+     * @param {Array} startValues Objects containing 'field' and 'value'
+     * @param {Array} selectableFieldNames
+     * @return {Array} Field items
+     */
+    selectFieldsFromStartValues: function(startValues, selectableFieldNames) {
       if (!startValues) {
         return [];
       }
-      var specialFields = nonFieldColumns();
       var allowedStartValues = startValues.filter(function(startValue) {
-        var normalField = !specialFields.includes(startValue.field);
-        var allowedField = selectableFields.includes(startValue.field)
+        var normalField = !nonFieldColumns().includes(startValue.field);
+        var allowedField = selectableFieldNames.includes(startValue.field)
         return normalField && allowedField;
       });
       var valuesByField = {};
@@ -80,15 +161,21 @@
         };
       });
     },
-    selectMinimumStartingFields: function(data, fieldNames) {
-      var filteredData = data.filter(function(row) {
-        return fieldNames.some(function(fieldName) {
+
+    /**
+     * @param {Array} rows
+     * @param {Array} selectableFieldNames Field names
+     * @return {Array} Field items
+     */
+    selectMinimumStartingFields: function(rows, selectableFieldNames) {
+      var filteredData = rows.filter(function(row) {
+        return selectableFieldNames.some(function(fieldName) {
           return row[fieldName];
         });
       });
       // Sort the data by each field. We go in reverse order so that the
       // first field will be highest "priority" in the sort.
-      fieldNames.reverse().forEach(function(fieldName) {
+      selectableFieldNames.reverse().forEach(function(fieldName) {
         filteredData = _.sortBy(filteredData, fieldName);
       });
       // But actually we want the top-priority sort to be the "size" of the
@@ -106,29 +193,46 @@
         };
       });
     },
-    fieldsUsedByUnit: function(units, data) {
-      var fields = getFieldColumnsFromData(data);
+
+    /**
+     * @param {Array} units
+     * @param {Array} rows
+     * @return {Array} Field names
+     */
+    fieldsUsedByUnit: function(units, rows) {
+      var fields = getFieldColumnsFromData(rows);
       return units.map(function(unit) {
         return {
           unit: unit,
           fields: fields.filter(function(field) {
-            return fieldIsUsedInDataWithUnit(field, unit, data);
+            return fieldIsUsedInDataWithUnit(field, unit, rows);
           }, this),
         }
       }, this);
     },
-    // Expects the output of the fieldsUsedByUnit method.
+
+    /**
+     * @param {Array} fieldsUsedByUnit Field names
+     * @return {boolean}
+     */
     dataHasUnitSpecificFields: function(fieldsUsedByUnit) {
       return !_.every(_.pluck(fieldsUsedByUnit, 'fields'), function(fields) {
         return _.isEqual(_.sortBy(_.pluck(fieldsUsedByUnit, 'fields')[0]), _.sortBy(fields));
       });
     },
-    getInitialFieldItemStates: function(data, edges) {
-      var initial = getFieldColumnsFromData(data).map(function(field) {
+
+    /**
+     *
+     * @param {Array} rows
+     * @param {Array} edges
+     * @return {Array} Field item states
+     */
+    getInitialFieldItemStates: function(rows, edges) {
+      var initial = getFieldColumnsFromData(rows).map(function(field) {
         return {
           field: field,
           hasData: true,
-          values: this.getUniqueValuesByProperty(field, data).map(function(value) {
+          values: this.getUniqueValuesByProperty(field, rows).map(function(value) {
             return {
               value: value,
               state: 'default',
@@ -141,8 +245,14 @@
 
       return sortFieldItemStates(initial, edges);
     },
-    // Expects the output of the fieldItemStates method.
-    validParentsByChild: function(edges, fieldItemStates, data) {
+
+    /**
+     * @param {Array} edges
+     * @param {Array} fieldItemStates
+     * @param {Array} rows
+     * @return {Object} Arrays of parents keyed to children
+     */
+    validParentsByChild: function(edges, fieldItemStates, rows) {
       var parentFields = getParentFieldNames(edges);
       var childFields = getChildFieldNames(edges);
       var validParentsByChild = {};
@@ -156,7 +266,7 @@
         var parentField = parentFields[fieldIndex];
         validParentsByChild[childField] = {};
         childValues.forEach(function(childValue) {
-          var rowsWithParentValues = data.filter(function(row) {
+          var rowsWithParentValues = rows.filter(function(row) {
             var childMatch = row[childField] == childValue;
             var parentNotEmpty = row[parentField];
             return childMatch && parentNotEmpty;
@@ -170,15 +280,32 @@
       });
       return validParentsByChild;
     },
+
+    /**
+     * @param {Array} fieldItems
+     * @return {Array} Field names
+     */
     getFieldNames: function(fieldItems) {
       return fieldItems.map(function(item) { return item.field; });
     },
-    getInitialAllowedFields: function(fields, edges) {
+
+    /**
+     *
+     * @param {Array} fieldNames
+     * @param {Array} edges
+     * @return {Array} Field names
+     */
+    getInitialAllowedFields: function(fieldNames, edges) {
       var children = getChildFieldNames(edges);
-      return fields.filter(function(field) { return !children.includes(field); });
+      return fieldNames.filter(function(field) { return !children.includes(field); });
     },
-    prepareData: function(data) {
-      return data.map(function(item) {
+
+    /**
+     * @param {Array} rows
+     * @return {Array} Prepared rows
+     */
+    prepareData: function(rows) {
+      return rows.map(function(item) {
 
         if (item.Value != 0) {
           // For rounding, use a function that can be set on the global opensdg
@@ -201,6 +328,11 @@
         return item[VALUE_COLUMN] || item[VALUE_COLUMN] === 0;
       }, this);
     },
+
+    /**
+     * @param {Object} model
+     * @return {Object} Translated footer fields keyed to values
+     */
     footerFields: function(model) {
       var fields = {}
       fields[translations.indicator.source] = model.dataSource;
@@ -211,8 +343,14 @@
       // Filter out the empty values.
       return _.pick(fields, _.identity);
     },
-    getHeadline: function(selectableFields, data) {
-      return data.filter(function (row) {
+
+    /**
+     * @param {Array} selectableFields Field names
+     * @param {Array} rows
+     * @return {Array} Headline rows
+     */
+    getHeadline: function(selectableFields, rows) {
+      return rows.filter(function (row) {
         return selectableFields.every(function(field) {
           return !row[field];
         });
@@ -221,19 +359,37 @@
         return _.pick(row, function(val) { return val !== null });
       });
     },
-    sortData: function(data, selectedUnit) {
+
+    /**
+     * @param {Array} rows
+     * @param {string} selectedUnit
+     * @return {Array} Sorted rows
+     */
+    sortData: function(rows, selectedUnit) {
       var column = selectedUnit ? UNIT_COLUMN : YEAR_COLUMN;
-      return _.sortBy(data, column);
+      return _.sortBy(rows, column);
     },
-    getHeadlineTable: function(data, selectedUnit) {
+
+    /**
+     * @param {Array} rows
+     * @param {string} selectedUnit
+     * @return {Object} Object containing 'title', 'headings', and 'data'
+     */
+    getHeadlineTable: function(rows, selectedUnit) {
       return {
         title: 'Headline data',
         headings: selectedUnit ? [YEAR_COLUMN, UNIT_COLUMN, VALUE_COLUMN] : [YEAR_COLUMN, VALUE_COLUMN],
-        data: data.map(function (row) {
+        data: rows.map(function (row) {
           return selectedUnit ? [row[YEAR_COLUMN], row[UNIT_COLUMN], row[VALUE_COLUMN]] : [row[YEAR_COLUMN], row[VALUE_COLUMN]];
         }),
       };
     },
+
+    /**
+     * @param {Array} selectedFields Field names
+     * @param {Array} edges
+     * @return {Array} Selected fields without orphans
+     */
     removeOrphanSelections: function(selectedFields, edges) {
       var selectedFieldNames = selectedFields.map(function(selectedField) {
         return selectedField.field;
@@ -247,6 +403,13 @@
       });
       return selectedFields;
     },
+
+    /**
+     * @param {Array} selectableFields Field names
+     * @param {Array} edges
+     * @param {Array} selectedFields Field items
+     * @return {Array} Field names
+     */
     getAllowedFieldsWithChildren: function(selectableFields, edges, selectedFields) {
       var allowedFields = this.getInitialAllowedFields(selectableFields, edges);
       var selectedFieldNames = this.getFieldNames(selectedFields);
@@ -258,6 +421,14 @@
       }, this);
       return allowedFields.filter(isElementUniqueInArray);
     },
+
+    /**
+     * @param {Array} fieldItemStates
+     * @param {Array} edges
+     * @param {Array} selectedFields Field items
+     * @param {Object} validParentsByChild Arrays of parents keyed to children
+     * @return {Array} Field item states
+     */
     getUpdatedFieldItemStates: function(fieldItemStates, edges, selectedFields, validParentsByChild) {
       var selectedFieldNames = this.getFieldNames(selectedFields);
       getParentFieldNames(edges).forEach(function(parentFieldName) {
@@ -286,6 +457,15 @@
       }, this);
       return fieldItemStates;
     },
+
+    /**
+     * @param {Array} fieldItemStates
+     * @param {Array} fieldsByUnit Field names
+     * @param {string} selectedUnit
+     * @param {boolean} dataHasUnitSpecificFields
+     * @param {Array} selectedFields Field items
+     * @return {Array} Field item states
+     */
     fieldItemStatesForView: function(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, selectedFields) {
       var states = fieldItemStates.map(function(item) { return item; });
       if (dataHasUnitSpecificFields) {
@@ -308,6 +488,13 @@
       }
       return states;
     },
+
+    /**
+     * @param {string} currentTitle
+     * @param {Array} allTitles Objects containing 'unit' and 'title'
+     * @param {String} selectedUnit
+     * @return {String} Updated title
+     */
     getChartTitle: function(currentTitle, allTitles, selectedUnit) {
       var newTitle = currentTitle;
       if (allTitles && allTitles.length > 0) {
@@ -316,6 +503,11 @@
       }
       return newTitle;
     },
+
+    /**
+     * @param {Array} fieldItems
+     * @return {Array} Objects representing disaggregation combinations
+     */
     getCombinationData: function(fieldItems) {
 
       // First get a list of all the single field/value pairs.
@@ -351,6 +543,17 @@
       // Return a combination of both.
       return fieldValuePairs.concat(fieldValuePairCombinations);
     },
+
+    /**
+     * @param {Array} headline Rows
+     * @param {Array} rows
+     * @param {Array} combinations Objects representing disaggregation combinations
+     * @param {Array} years
+     * @param {string} defaultLabel
+     * @param {Array} colors
+     * @param {Array} selectableFields Field names
+     * @return {Array} Datasets suitable for Chart.js
+     */
     getDatasets: function(headline, data, combinations, years, defaultLabel, colors, selectableFields) {
       var datasets = [], index = 0, dataset, color, background, border;
       combinations.forEach(function(combination) {
@@ -373,6 +576,12 @@
       }
       return datasets;
     },
+
+    /**
+     * @param {Array} datasets
+     * @param {Array} years
+     * @return {Object} Object containing 'headings' and 'data'
+     */
     tableDataFromDatasets: function(datasets, years) {
       return {
         headings: [YEAR_COLUMN].concat(datasets.map(function(ds) { return ds.label; })),
