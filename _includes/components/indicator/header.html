@@ -7,7 +7,10 @@
         </a>
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
-        <h1>{{ page.t.general.indicator }} {{ page.indicator.number }}: {{ page.indicator.name }}</h1>
+        <div aria-labelledby="headerIndicatorNumber headerIndicatorName">
+          <h1 id="headerIndicatorNumber" aria-hidden="true">{{ page.t.general.indicator }} {{ page.indicator.number }}</h1>
+          <p class="leadCopy" id="headerIndicatorName" aria-hidden="true">{{ page.indicator.name }}</p>
+        </div>
       </div>
     </div>
   </div>

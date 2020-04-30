@@ -7,6 +7,12 @@ h6 {
   font-family: 'Open Sans', sans-serif;
 }
 
+h1{ font-size: 36px;}
+h2{ font-size: 27px;}
+h3{ font-size: 24px;}
+.normalCopy { font-size: 16px; }
+.leadCopy { font-size: 22px; }
+
 .heading {
   a {
     background: transparent;
@@ -23,43 +29,42 @@ h6 {
   }
   h1 {
     margin-top: 12px;
-		font-size: 2.2em;
-    @media only screen and (max-width: 480px) {
-      font-size: 0.938em;
-    }
+    // @media only screen and (max-width: 480px) {
+    //   font-size: 0.938em;
+    // }
   }
   h2 {
-    font-size: 1.5em;
+    // font-size: 1.5em;
 
-    @media only screen and (min-width: 768px) {
-      font-size: 1.8em;
-    }
+    // @media only screen and (min-width: 768px) {
+    //   font-size: 1.8em;
+    // }
 
-    @media only screen and (min-width: 992px) {
-      font-size: 2.2em;
-    }
+    // @media only screen and (min-width: 992px) {
+    //   font-size: 2.2em;
+    // }
   }
   h3 {
-    @media only screen and (max-width: 480px) {
-      font-size: 0.813em;
-    }
+    // @media only screen and (max-width: 480px) {
+    //   font-size: 0.813em;
+    // }
   }
 
   &.indicator {
     h1 {
-      font-size: 24px;
+      // font-size: 24px;
       line-height: normal;
 
-      @media only screen and (max-width: 480px) {
-        font-size: 0.813em;
-      }
+      // @media only screen and (max-width: 480px) {
+      //   font-size: 0.813em;
+      // }
     }
     h3 {
-      font-size: 30px;
+      // font-size: 30px;
 
-      @media only screen and (max-width: 480px) {
-        font-size: 0.938em;
-      }
+      // @media only screen and (max-width: 480px) {
+      //   font-size: 0.938em;
+      // }
     }
   }
 
