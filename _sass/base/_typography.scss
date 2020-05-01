@@ -1,10 +1,5 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Open Sans', sans-serif;
+*{
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1{ font-size: 36px;}
@@ -29,42 +24,11 @@ h3{ font-size: 24px;}
   }
   h1 {
     margin-top: 12px;
-    // @media only screen and (max-width: 480px) {
-    //   font-size: 0.938em;
-    // }
-  }
-  h2 {
-    // font-size: 1.5em;
-
-    // @media only screen and (min-width: 768px) {
-    //   font-size: 1.8em;
-    // }
-
-    // @media only screen and (min-width: 992px) {
-    //   font-size: 2.2em;
-    // }
-  }
-  h3 {
-    // @media only screen and (max-width: 480px) {
-    //   font-size: 0.813em;
-    // }
   }
 
   &.indicator {
     h1 {
-      // font-size: 24px;
       line-height: normal;
-
-      // @media only screen and (max-width: 480px) {
-      //   font-size: 0.813em;
-      // }
-    }
-    h3 {
-      // font-size: 30px;
-
-      // @media only screen and (max-width: 480px) {
-      //   font-size: 0.938em;
-      // }
     }
   }
 
@@ -98,7 +62,6 @@ h3{ font-size: 24px;}
   }
 
   h2:first-child {
-    // margin-top: 0;
     margin-bottom: 14px;
   }
 }
