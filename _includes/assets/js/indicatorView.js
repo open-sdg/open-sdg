@@ -77,42 +77,8 @@ var indicatorView = function (model, options) {
     view_obj.updateChartTitle(args.chartTitle);
   });
 
-  this._model.onStartValuesNeeded.attach(function(sender, args) {
-    // Force a unit if necessary.
-    if (args && args.forceUnit) {
-      $('#units input[type="radio"]')
-        .filter('[value="' + args.forceUnit + '"]')
-        .first()
-        .click();
-    }
-    // Force particular minimum field selections if necessary. We have to delay
-    // this slightly to make it work...
-    if (args && args.startingFieldSelections && args.startingFieldSelections.length) {
-      function getClickFunction(fieldToSelect, fieldValue) {
-        return function() {
-          $('#fields .variable-options input[type="checkbox"]')
-            .filter('[data-field="' + fieldToSelect + '"]')
-            .filter('[value="' + fieldValue + '"]')
-            .filter(':not(:checked)')
-            .first()
-            .click();
-        }
-      }
-      args.startingFieldSelections.forEach(function(selection) {
-        setTimeout(getClickFunction(selection.field, selection.value), 500);
-      });
-    }
-    else {
-      // Fallback behavior - just click on the first one, whatever it is.
-      // Also needs to be delayed...
-      setTimeout(function() {
-        $('#fields .variable-options :checkbox:eq(0)').trigger('click');
-      }, 500);
-    }
-  });
-
-  this._model.onSeriesComplete.attach(function(sender, args) {
-    view_obj.initialiseSeries(args);
+  this._model.onFieldsComplete.attach(function(sender, args) {
+    view_obj.initialiseFields(args);
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
@@ -273,8 +239,8 @@ var indicatorView = function (model, options) {
     }
   }
 
-  this.initialiseSeries = function(args) {
-    if(args.series.length) {
+  this.initialiseFields = function(args) {
+    if(args.fields.length) {
       var template = _.template($("#item_template").html());
 
       if(!$('button#clear').length) {
@@ -282,15 +248,15 @@ var indicatorView = function (model, options) {
       }
 
       $('#fields').html(template({
-        series: args.series,
+        fields: args.fields,
         allowedFields: args.allowedFields,
         edges: args.edges
       }));
 
-      $(this._rootElement).removeClass('no-series');
+      $(this._rootElement).removeClass('no-fields');
 
     } else {
-      $(this._rootElement).addClass('no-series');
+      $(this._rootElement).addClass('no-fields');
     }
   };
 
