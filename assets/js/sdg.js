@@ -17,4 +17,5 @@
 {%- include assets/js/lib/modernizr-custom.js -%}
 {%- include assets/js/plugins/leaflet.selectionLegend.js -%}
 {%- include assets/js/plugins/leaflet.yearSlider.js -%}
+{%- include assets/js/plugins/leaflet.disaggregationSelect.js -%}
 {%- include assets/js/googleAnalytics.js -%}
