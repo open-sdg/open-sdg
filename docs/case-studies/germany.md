@@ -2,7 +2,8 @@
 
 ## Link to platform
 
-[https://sustainabledevelopment-germany.github.io/](https://sustainabledevelopment-germany.github.io/)
+Global indicators [https://sustainabledevelopment-germany.github.io/](https://sustainabledevelopment-germany.github.io/)
+National indicators [https://sustainabledevelopment-deutschland.github.io/en/](https://sustainabledevelopment-deutschland.github.io/en/)
 
 ## Why was Open SDG chosen?
 
@@ -39,7 +40,7 @@ English and German
 
 ## What customisations were added to the Open SDG platform?
 
-In addition to some layout adjustments, Destatis plans to report on the indicators of the national sustainability strategy via the platform in the near future.
+Some layout and navigation adjustments were made. Destatis also set up a second website to report indicators for the national sustainability strategy and further visual changes were made to this.
 
 ## What advice and lessons learned could you give to other countries considering using Open SDG?
 
