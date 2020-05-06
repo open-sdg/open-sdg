@@ -585,3 +585,17 @@ body.contrast-high {
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  body.layout-indicator{
+    .container{
+      .goalIcon{
+        float: none;
+      }
+      .indicatorDetails {
+        float: none;
+        width: 100%;
+      }
+    }
+  }
+}
