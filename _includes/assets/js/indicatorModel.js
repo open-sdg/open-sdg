@@ -7,6 +7,8 @@ var indicatorModel = function (options) {
   this.onFieldsComplete = new event(this);
   this.onUnitsComplete = new event(this);
   this.onUnitsSelectedChanged = new event(this);
+  this.onSeriesesComplete = new event(this);
+  this.onSeriesesSelectedChanged = new event(this);
   this.onFieldsStatusUpdated = new event(this);
   this.onFieldsCleared = new event(this);
   this.onSelectionUpdate = new event(this);
@@ -34,6 +36,9 @@ var indicatorModel = function (options) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
+  this.selectedSeries = undefined;
+  this.fieldsBySeries = undefined;
+  this.dataHasSeriesSpecificFields = false;
   this.fieldValueStatuses = [];
   this.validParentsByChild = {};
   this.hasGeoData = false;
@@ -53,6 +58,16 @@ var indicatorModel = function (options) {
   }
   else {
     this.hasUnits = false;
+  }
+  if (helpers.dataHasSerieses(this.data)) {
+    this.hasSerieses = true;
+    this.serieses = helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.data);
+    this.selectedSeries = this.serieses[0];
+    this.fieldsBySeries = helpers.fieldsUsedBySeries(this.serieses, this.data);
+    this.dataHasSeriesSpecificFields = helpers.dataHasSeriesSpecificFields(this.fieldsBySeries);
+  }
+  else {
+    this.hasSerieses = false;
   }
   this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData);
   this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
@@ -86,27 +101,33 @@ var indicatorModel = function (options) {
   };
 
   this.updateChartTitle = function() {
-    this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit);
+    this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
   }
 
   this.updateSelectedUnit = function(selectedUnit) {
     this.selectedUnit = selectedUnit;
-
-    // if fields are dependent on the unit, reset:
     this.getData({
-      unitsChangeSeries: this.dataHasUnitSpecificFields
+      updateFields: this.dataHasUnitSpecificFields
     });
-
     this.onUnitsSelectedChanged.notify(selectedUnit);
+  };
+
+  this.updateSelectedSeries = function(selectedSeries) {
+    this.selectedSeries = selectedSeries;
+    this.getData({
+      updateFields: this.dataHasSeriesSpecificFields
+    });
+    this.onSeriesesSelectedChanged.notify(selectedSeries);
   };
 
   this.getData = function(options) {
     options = Object.assign({
       initial: false,
-      unitsChangeSeries: false
+      updateFields: false
     }, options);
 
     var headlineWithoutUnit = helpers.getHeadline(this.selectableFields, this.data);
+    // @TODO: Deal with series here.
     var headline = this.hasUnits ? helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit) : headlineWithoutUnit;
 
     // If this is the initial load, check for special cases.
@@ -156,7 +177,7 @@ var indicatorModel = function (options) {
       });
     }
 
-    if (options.initial || options.unitsChangeSeries) {
+    if (options.initial || options.updateFields) {
       this.onFieldsComplete.notify({
         fields: helpers.fieldItemStatesForView(
           this.fieldItemStates,
@@ -214,6 +235,7 @@ var indicatorModel = function (options) {
       indicatorId: this.indicatorId,
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
+      selectedSeries: this.selectedSeries,
       footerFields: this.footerFields,
       graphLimits: this.graphLimits,
       stackedDisaggregation: this.stackedDisaggregation,

@@ -6,9 +6,11 @@
  * @param {string} currentTitle
  * @param {Array} allTitles Objects containing 'unit' and 'title'
  * @param {String} selectedUnit
+ * @param {String} selectedSeries
  * @return {String} Updated title
  */
-function getChartTitle(currentTitle, allTitles, selectedUnit) {
+function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
+  // @TODO: Deal with selected series.
   var newTitle = currentTitle;
   if (allTitles && allTitles.length > 0) {
     var unitTitle = allTitles.find(function(title) { return title.unit === selectedUnit });
