@@ -1,15 +1,15 @@
 <div class="heading indicator goal-{{ page.goal.number }}">
   <div class="container">
     <div class="row">
-      <div class="col-xs-4 col-md-3 col-lg-2 goalIcon">
+      <div class="col-xs-4 col-md-3 col-lg-2 goal-icon">
         <a href="{{ page.goal.url }}" title="{{ page.t.indicator.view_indicator_list }}">
           <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" />
         </a>
       </div>
-      <div class="col-xs-8 col-md-9 col-lg-10 indicatorDetails">
+      <div class="col-xs-8 col-md-9 col-lg-10 indicator-details">
         <div>
           <h1>{{ page.t.general.indicator }} {{ page.indicator.number }}</h1>
-          <p class="leadCopy">{{ page.indicator.name }}</p>
+          <p class="lead-copy">{{ page.indicator.name }}</p>
         </div>
       </div>
     </div>
