@@ -43,7 +43,6 @@
       text-align: left;
       padding: 10px 7px 14px 7px;
       font-size: 0.875em;
-      font-family: 'Open Sans', sans-serif;
       margin-right: 8px;
 
       i {
@@ -291,7 +290,6 @@
     margin-bottom: 20px;
 
     label {
-      font-family: 'Open Sans', sans-serif;
       font-weight: normal;
       border: 1px solid #ccc;
       padding: 10px;
@@ -323,7 +321,6 @@
   }
 
   #chartSelectionDownload {
-    // margin-top: -40px;
     margin-bottom: 10px;
     clear: left;
   }
@@ -584,6 +581,20 @@ body.contrast-high {
       &:hover {
         background: transparent !important;
         border: 1px solid white;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  body.layout-indicator{
+    .container{
+      .goal-icon{
+        float: none;
+      }
+      .indicator-details {
+        float: none;
+        width: 100%;
       }
     }
   }
