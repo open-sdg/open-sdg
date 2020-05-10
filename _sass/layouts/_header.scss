@@ -21,6 +21,7 @@ body{
 
 header {
   .container {
+    padding-top: 20px;
     min-height: 113px;
     .navbar-default {
       border: none;
@@ -34,7 +35,7 @@ header {
   max-width: 300px;
   padding: 15px;
   @media screen and (min-width: 769px) {
-    padding: 15px 15px 15px 0;
+    padding: 5px 15px 15px 0;
   }
   img {
     width: 100%;
@@ -111,7 +112,7 @@ header {
             border-bottom: 2px solid $menu-hover-border-bottom;
           }
         }
-        
+
       }
     }
     @media screen and (min-width: 769px) {
@@ -137,6 +138,7 @@ header {
     position: relative;
     clear: both;
     float: right;
+    margin-bottom: 20px;
 
     label {
       position: absolute;
