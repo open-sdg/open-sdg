@@ -57,6 +57,15 @@
 * Hide the sub-categories when there are no disaggregations (#604)
 * Automatic site builds whenever the data changes (#605)
 * Disclaimer configuration and redesign (#620)
+* High-contrast support for y-axis scale label (#621)
+* Goal page styling updates (#622)
+* Fix navigation hover issue (#626)
+* Indicator page refactor with more components (#646)
+* indicatorModel.js refactor (#652)
+* Move indicator available above indicator content (#654)
+* Heading styling / font change (#659)
+* Move colored bar to top of page (#661)
+* More whitespace around search bar/logo (#667)
 
 Breaking changes:
 

@@ -39,6 +39,11 @@ This release includes the following:
 * More intuitive behavior with the disaggregation drop-downs
 * Guide: automatic site builds when the data changes
 * Redesign of the disclaimer, and new disclaimer-related configuration options
+* Style updates on goal pages
+* Move indicator available above indicator content
+* Audit and cleanup of the use of headings throughout the platform
+* Move colored bar to top of page
+* More whitespace around search bar/logo
 
 ## 0.10.0
 
