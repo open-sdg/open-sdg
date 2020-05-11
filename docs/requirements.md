@@ -24,24 +24,21 @@ All the services described here can be used without paying fees.
 
 ### Github.com
 
-[Github.com](https://github.com) provides 2 key functions:
+[Github.com](https://github.com) provides 3 key functions:
 
 1. Git repository: As a Git "remote," Github.com will be the central location for all maintenance and development, both for the platform and its content, data, and metadata.
 1. Platform hosting: Through the free "Github Pages" offering, Github.com will provide free hosting of the platform.
+1. Automation: Through the free "Github Actions" offering, Github.com also provides automation services. This allows the platform to be automatically "built" in response to simple workflows. The key ones are:
+
+    * When code is pushed to the "develop" Git branch, build and deploy to staging.
+    * When code is pushed to the "master" Git branch, build and deploy to production.
+    * When a Github pull request is created, run tests against the new code.
+
+    Although these docs will focus on Github Actions, other automation services like [CircleCI](https://circleci.com) and [TravisCI](https://travis-ci.org) are equivalent. Or for a more do-it-yourself approach: open-source [Jenkins](https://jenkins.io).
 
 ### Prose.io
 
 [Prose.io](https://prose.io) provides a data management interface, which allows non-technical data providers to update data and metadata, using only their web browser.
-
-### CircleCI (or similar)
-
-[CircleCI](https://circleci.com/) allows the platform to be automatically "built" in response to simple workflows. The key ones are:
-
-* When code is pushed to the "develop" Git branch, build and deploy to staging.
-* When code is pushed to the "master" Git branch, build and deploy to production.
-* When a Github pull request is created, run tests against the new code.
-
-Although these docs will focus on CircleCI, other services like [TravisCI](https://travis-ci.org) are equivalent. Or for a more do-it-yourself approach: open-source [Jenkins](https://jenkins.io).
 
 ## Expertise
 

@@ -17,8 +17,8 @@ CircleCI is a "continuous integration" (CI) cloud service. It is useful for Open
 
 ## Set-up
 
-CircleCI's tight integration with Github repositories makes it relatively simple to set up. The [Quick start](../quick-start.md) page details the process of using CircleCI with Open SDG.
+CircleCI's tight integration with Github repositories makes it relatively simple to set up.
 
 ## Usage
 
-Using CircleCI involves putting a configuration file (`.circleci/config.yml`) in your repository. The [site starter](https://github.com/open-sdg/open-sdg-site-starter) and [data starter](https://github.com/open-sdg/open-sdg-data-starter) repositories include working configurations.
+Using CircleCI involves putting a configuration file (`.circleci/config.yml`) in your repository.
