@@ -11,6 +11,9 @@ These steps have four pre-requisites:
 3. A [GitHub.com](https://github.com) account
 
     If you do not already have one, go to [GitHub](https://github.com) now to sign up for your free account.
+
+    **IMPORTANT NOTE**: The workflow described here, which uses the "Prose.io" service, will **not** work if your GitHub.com account has "write permissions" on the repository. If you are not sure about this, check with your team.
+
 4. A working implementation of Open SDG (hereafter referred to as the "staging site")
 
     In most cases, the "staging site" will be something similar to: `https://my-org.github.io/my-site` (but with `my-org` and `my-site` changed as appropriate). If you do not have such a site available, or you are not sure, check with your team before continuing. Instructions on getting started are available on the [Quick Start page](quick-start.md).
