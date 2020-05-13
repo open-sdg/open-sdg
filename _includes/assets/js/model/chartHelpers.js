@@ -42,8 +42,6 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
   }, this);
   datasets.sort(function(a, b) { return a.label > b.label; });
   if (headline.length > 0) {
-    color = getHeadlineColor();
-    background = getHeadlineBackground();
     dataset = makeHeadlineDataset(years, headline, defaultLabel);
     datasets.unshift(dataset);
   }
@@ -189,15 +187,6 @@ function getHeadlineColor() {
 }
 
 /**
- * @return {string} CSS value for headline background
- *
- * TODO: Make this dynamic to support high-contrast.
- */
-function getHeadlineBackground() {
-  return HEADLINE_BACKGROUND_COLOR;
-}
-
-/**
  * @param {Array} years
  * @param {Array} rows
  * @param {string} label
@@ -208,7 +197,7 @@ function makeHeadlineDataset(years, rows, label) {
   return Object.assign(dataset, {
     label: label,
     borderColor: getHeadlineColor(),
-    backgroundColor: getHeadlineBackground(),
+    backgroundColor: getHeadlineColor(),
     pointBorderColor: getHeadlineColor(),
     data: prepareDataForDataset(years, rows),
   });
