@@ -6,7 +6,7 @@
         display: none;
       }
 
-      &.no-units {
+      &.no-units.no-serieses {
         // no units and no series, hide the column:
         > .col-md-3 {
           display: none;
@@ -285,7 +285,7 @@
       }
     }
   }
-  #units {
+  #units, #serieses {
     clear: left;
     margin-bottom: 20px;
 
@@ -580,7 +580,7 @@ body.contrast-high {
     color: $color-light-highContrast;
   }
 
-  div#units {
+  div#units, div#serieses {
     color: $color-light-highContrast;
   }
 

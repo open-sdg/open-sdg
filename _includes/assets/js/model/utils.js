@@ -65,6 +65,7 @@ function nonFieldColumns() {
     YEAR_COLUMN,
     VALUE_COLUMN,
     UNIT_COLUMN,
+    SERIES_COLUMN,
     GEOCODE_COLUMN,
     'Observation status',
     'Unit multiplier',

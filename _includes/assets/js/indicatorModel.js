@@ -127,8 +127,20 @@ var indicatorModel = function (options) {
     }, options);
 
     var headlineWithoutUnit = helpers.getHeadline(this.selectableFields, this.data);
-    // @TODO: Deal with series here.
-    var headline = this.hasUnits ? helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit) : headlineWithoutUnit;
+    var headline;
+    if (this.hasUnits && !this.hasSerieses) {
+      headline = helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit);
+    }
+    else if (this.hasSerieses && !this.hasUnits) {
+      headline = helpers.getDataBySeries(headlineWithoutUnit, this.selectedSeries);
+    }
+    else if (this.hasSerieses && this.hasUnits) {
+      headline = helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit);
+      headline = helpers.getDataBySeries(headline, this.selectedSeries);
+    }
+    else {
+      headline = headlineWithoutUnit;
+    }
 
     // If this is the initial load, check for special cases.
     var selectionUpdateNeeded = false;
@@ -174,6 +186,11 @@ var indicatorModel = function (options) {
       this.onUnitsComplete.notify({
         units: this.units,
         selectedUnit: this.selectedUnit
+      });
+
+      this.onSeriesesComplete.notify({
+        serieses: this.serieses,
+        selectedSeries: this.selectedSeries
       });
     }
 
