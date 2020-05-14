@@ -6,4 +6,3 @@ var GEOCODE_COLUMN = 'GeoCode';
 var YEAR_COLUMN = 'Year';
 var VALUE_COLUMN = 'Value';
 var HEADLINE_COLOR = '#777777';
-var HEADLINE_BACKGROUND_COLOR = '#FFFFFF';
