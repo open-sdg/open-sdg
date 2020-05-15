@@ -192,12 +192,10 @@ body.contrast-high #disclaimer {
 }
 
 body.contrast-high {
-  @for $i from 1 through length($goal-colors) {
-    .goal-tiles #goal-#{$i} {
-      background-color: black;
-      &:hover {
-        background-color: black;
-      }
+  .goal-tiles img {
+    background-color: black !important;
+    &:hover {
+      background-color: black !important;
     }
   }
 }

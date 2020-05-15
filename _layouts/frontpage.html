@@ -1,6 +1,6 @@
 {% include head.html %}
 {% include header.html %}
-<div id="main-content" class="container goal-tiles" role="main">
+<div id="main-content" class="container" role="main">
 
     {% if site.frontpage_introduction_banner %}
     <div class="site-intro spacer medium">
@@ -16,6 +16,7 @@
     {% assign instructions_default = page.t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
     <p class="spacer medium">{{ site.frontpage_instructions | default: instructions_default | t }}</p>
 
+    <div class="goal-tiles">
     {% for goal in page.goals %}
         {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
             <div class="col-xs-4 col-md-2">
@@ -34,6 +35,7 @@
             <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
         </div>
     {% endif %}
+    </div>
     </div>
     {% include components/download-all-data.html %}
 </div>
