@@ -1,5 +1,9 @@
-Year,Series,Value
-2015,A,1
-2016,A,2
-2015,B,3
-2016,B,4
+Year,Series,Units,Value
+2015,A,Total,1
+2016,A,Total,2
+2015,A,Percent,50
+2016,A,Percent,60
+2015,B,Total,4
+2016,B,Total,5
+2015,B,Percent,70
+2016,B,Percent,80
