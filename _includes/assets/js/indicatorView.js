@@ -317,10 +317,6 @@ var indicatorView = function (model, options) {
       view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
     }
 
-    if(chartInfo.selectedSeries) {
-      view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedSeries);
-    }
-
     // Create a temp object to alter, and then apply. We go to all this trouble
     // to avoid completely replacing view_obj._chartInstance -- and instead we
     // just replace it's properties: "type", "data", and "options".

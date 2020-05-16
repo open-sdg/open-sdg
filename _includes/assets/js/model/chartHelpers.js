@@ -10,11 +10,25 @@
  * @return {String} Updated title
  */
 function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
-  // @TODO: Deal with selected series.
   var newTitle = currentTitle;
   if (allTitles && allTitles.length > 0) {
-    var unitTitle = allTitles.find(function(title) { return title.unit === selectedUnit });
-    newTitle = (unitTitle) ? unitTitle.title : allTitles[0].title;
+    var matchedTitle;
+    if (selectedUnit && selectedSeries) {
+      matchedTitle = allTitles.find(function(title) {
+        return title.unit === selectedUnit && title.series === selectedSeries;
+      });
+    }
+    if (!matchedTitle && selectedSeries) {
+      matchedTitle = allTitles.find(function(title) {
+        return title.series === selectedSeries;
+      });
+    }
+    if (!matchedTitle && selectedUnit) {
+      matchedTitle = allTitles.find(function(title) {
+        return title.unit === selectedUnit;
+      });
+    }
+    newTitle = (matchedTitle) ? matchedTitle.title : allTitles[0].title;
   }
   return newTitle;
 }

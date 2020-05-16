@@ -34,6 +34,8 @@ const driver = new mink.Mink({
     "selected unit of measurement": "#units input[checked='']",
     "the first unit of measurement": "#units label:nth-of-type(1) input",
     "the last unit of measurement": "#units label:last-child input",
+    "the first series": "#serieses label:nth-of-type(1) input",
+    "the last series": "#serieses label:last-child input",
     "chart legend": "#legend li",
     "chart legend item": "#legend li",
     "data table": "#selectionsTable",

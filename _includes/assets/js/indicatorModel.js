@@ -126,20 +126,20 @@ var indicatorModel = function (options) {
       updateFields: false
     }, options);
 
-    var headlineWithoutUnit = helpers.getHeadline(this.selectableFields, this.data);
+    var headlineUnfiltered = helpers.getHeadline(this.selectableFields, this.data);
     var headline;
     if (this.hasUnits && !this.hasSerieses) {
-      headline = helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit);
+      headline = helpers.getDataByUnit(headlineUnfiltered, this.selectedUnit);
     }
     else if (this.hasSerieses && !this.hasUnits) {
-      headline = helpers.getDataBySeries(headlineWithoutUnit, this.selectedSeries);
+      headline = helpers.getDataBySeries(headlineUnfiltered, this.selectedSeries);
     }
     else if (this.hasSerieses && this.hasUnits) {
-      headline = helpers.getDataByUnit(headlineWithoutUnit, this.selectedUnit);
+      headline = helpers.getDataByUnit(headlineUnfiltered, this.selectedUnit);
       headline = helpers.getDataBySeries(headline, this.selectedSeries);
     }
     else {
-      headline = headlineWithoutUnit;
+      headline = headlineUnfiltered;
     }
 
     // If this is the initial load, check for special cases.
@@ -157,15 +157,38 @@ var indicatorModel = function (options) {
         else {
           // If our selected unit causes the headline to be empty, change it
           // to the first one available that would work.
-          if (headlineWithoutUnit.length > 0 && headline.length === 0) {
-            startingUnit = helpers.getFirstUnitInData(headlineWithoutUnit);
+          if (headlineUnfiltered.length > 0 && headline.length === 0) {
+            startingUnit = helpers.getFirstUnitInData(headlineUnfiltered);
           }
         }
         // Re-query the headline if needed.
         if (this.selectedUnit !== startingUnit) {
-          headline = helpers.getDataByUnit(headlineWithoutUnit, startingUnit);
+          headline = helpers.getDataByUnit(headlineUnfiltered, startingUnit);
         }
         this.selectedUnit = startingUnit;
+      }
+
+      // Decide on a starting series.
+      if (this.hasSerieses) {
+        var startingSeries = this.selectedSeries;
+        if (this.startValues) {
+          var seriesInStartValues = helpers.getSeriesFromStartValues(this.startValues);
+          if (seriesInStartValues) {
+            startingSeries = seriesInStartValues;
+          }
+        }
+        else {
+          // If our selected series causes the headline to be empty, change it
+          // to the first one available that would work.
+          if (headlineUnfiltered.length > 0 && headline.length === 0) {
+            startingSeries = helpers.getFirstSeriesInData(headlineUnfiltered);
+          }
+        }
+        // Re-query the headline if needed.
+        if (this.selectedSeries !== startingSeries) {
+          headline = helpers.getDataBySeries(headlineUnfiltered, startingSeries);
+        }
+        this.selectedSeries = startingSeries;
       }
 
       // Decide on starting field values.
@@ -201,6 +224,9 @@ var indicatorModel = function (options) {
           this.fieldsByUnit,
           this.selectedUnit,
           this.dataHasUnitSpecificFields,
+          this.fieldsBySeries,
+          this.selectedSeries,
+          this.dataHasSeriesSpecificFields,
           this.selectedFields
         ),
         allowedFields: this.allowedFields,
