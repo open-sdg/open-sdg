@@ -47,6 +47,7 @@ pages:
         - Deployment: deployment.md
         - Configuration: configuration.md
         - Customisation: customisation.md
+        - Jekyll templates: jekyll-templates.md
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md

@@ -184,7 +184,7 @@ If your version of a file contains only small changes from the original, you may
 If your version of a file is dramatically changed from the original, you may find it easier to understand what changed in version 1.0.0, and make those changes to your own version. See [this diff between 0.10.0 and 1.0.0](https://github.com/open-sdg/open-sdg/compare/0.10.0...1.0.0) and look for the file in question. In general, the main changes will be:
 
 * `t` has changed to `page.t`. Eg: t.general.goal is now page.t.general.goal.
-* Global variables like `meta`, `current_language`, etc. are no longer available, and have been replaced with variables on the `page` object, as described in [the Jekyll template customisation docs](../customisation.md#working-with-jekyll-templates).
+* Global variables like `meta`, `current_language`, etc. are no longer available, and have been replaced with variables on the `page` object, as described in [the Jekyll template customisation docs](../jekyll-templates.md).
 
 ### Test your site locally
 
