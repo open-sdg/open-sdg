@@ -141,7 +141,7 @@ var indicatorModel = function (options) {
       }
       else {
         if (headline.length === 0) {
-          startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields);
+          startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
         }
       }
       if (startingFields.length > 0) {
@@ -172,7 +172,7 @@ var indicatorModel = function (options) {
       });
     }
 
-    if (selectionUpdateNeeded) {
+    if (selectionUpdateNeeded || options.unitsChangeSeries) {
       this.updateFieldStates(this.selectedFields);
     }
 
