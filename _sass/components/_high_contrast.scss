@@ -190,3 +190,12 @@ body.contrast-high #disclaimer {
     color: white;
   }
 }
+
+body.contrast-high {
+  .goal-tiles img {
+    background-color: black !important;
+    &:hover {
+      background-color: black !important;
+    }
+  }
+}
