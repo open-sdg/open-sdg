@@ -130,7 +130,7 @@ function makeDataset(years, rows, combination, labelFallback, color, background,
     backgroundColor: background,
     pointBorderColor: color,
     borderDash: border,
-    borderWidth: 4,
+    borderWidth: 2,
     data: prepareDataForDataset(years, rows),
   });
 }
@@ -199,6 +199,7 @@ function makeHeadlineDataset(years, rows, label) {
     borderColor: getHeadlineColor(),
     backgroundColor: getHeadlineColor(),
     pointBorderColor: getHeadlineColor(),
+    borderWidth: 4,
     data: prepareDataForDataset(years, rows),
   });
 }
