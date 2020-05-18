@@ -1,4 +1,4 @@
-<h1>News & Events</h1>
+<h1>News & events</h1>
 
 ## News
 
