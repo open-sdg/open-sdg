@@ -1,18 +1,14 @@
-<div id="indicator-main" class="indicator-main col-md-9">
+{% include components/indicator/headline.html %}
 
-  {% include components/indicator/headline.html %}
+<section>
 
-  <section>
+  <p class="async-loading" data-img="{{ site.baseurl }}/assets/img/loading-small.gif"></p>
 
-    <p class="async-loading" data-img="{{ site.baseurl }}/assets/img/loading-small.gif"></p>
+  <div class="async-loaded spacer medium" style="display:none;">
 
-    <div class="async-loaded spacer medium" style="display:none;">
+    {% include components/indicator/data-tabs.html %}
+    {% include components/indicator/data-panes.html %}
 
-      {% include components/indicator/data-tabs.html %}
-      {% include components/indicator/data-panes.html %}
+  </div>
 
-    </div>
-
-  </section>
-
-</div>
+</section>

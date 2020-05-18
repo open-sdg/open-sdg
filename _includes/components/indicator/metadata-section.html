@@ -1,11 +1,2 @@
-<div class="row">
-{% if page.indicator.reporting_status == "complete" and page.indicator.data_non_statistical != true %}
-  <div id="metadata-sidebar" class="indicator-sidebar col-md-3"></div>
-  <div id="metadata-main" class="indicator-main col-md-9">
-{% else %}
-  <div id="metadata-main" class="indicator-main col-md-12">
-{% endif %}
-    {% include components/indicator/metadata-tabs.html %}
-    {% include components/indicator/metadata-panes.html %}
-  </div>
-</div>
+{% include components/indicator/metadata-tabs.html %}
+{% include components/indicator/metadata-panes.html %}
