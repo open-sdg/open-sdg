@@ -11,7 +11,12 @@ function tableDataFromDatasets(datasets, years) {
   return {
     headings: [YEAR_COLUMN].concat(datasets.map(function(ds) { return ds.label; })),
     data: years.map(function(year, index) {
-      return [year].concat(datasets.map(function(ds) { return ds.data[index]; }));
+      return [year].concat(datasets.map(function(ds) {
+        if (typeof ds.data[index] === 'undefined') {
+          return null;
+        }
+        return ds.data[index];
+      }));
     }),
   };
 }
