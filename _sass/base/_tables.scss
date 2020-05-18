@@ -1,20 +1,20 @@
 .table-hover {
   tbody tr:hover {
-    background: darken(white, 12%);
+    background: darken($background-color, 12%);
   }
 }
 
 #page-content {
 
-  border-top: 1px solid #faebcc;
-  border-bottom: 1px solid #faebcc;
+  border-top: 1px solid $indicator-content-rule-color;
+  border-bottom: 1px solid $indicator-content-rule-color;
   padding-top: 10px;
 
   table {
     margin-top: 5px;
     margin-bottom: 5px;
     border-style: solid;
-    border-color: $footer-color;
+    border-color: $text-dark-color;
     border-width: 1px;
   }
 
@@ -25,6 +25,6 @@
 
   thead {
     padding-bottom: 10px;
-    border-bottom: 1pt solid $footer-color;
+    border-bottom: 1pt solid $text-dark-color;
   }
 }

@@ -1,117 +1,3 @@
-// Legacy map styles.
-// @TODO: Can this section be removed?
-#main-content {
-  #map {
-    position: relative;
-    width: 590px;
-  }
-
-  g.tick {
-    line {
-      stroke: rgb(0, 0, 0);
-    }
-    text {
-      fill: rgb(0, 0, 0);
-    }
-  }
-
-  line.track {
-    stroke: rgb(0, 0, 0);
-  }
-
-  g.parameter-value {
-    path {
-      stroke: rgb(0, 0, 0);
-    }
-  }
-
-  .background {
-    fill: #e5f3ff;
-    pointer-events: all;
-  }
-
-  .map-layer {
-    fill: #fff;
-    stroke: #aaa;
-  }
-
-  .tooltip {
-    color: #222;
-    background: #fff;
-    border-radius: 3px;
-    box-shadow: 0px 0px 2px 0px #a6a6a6;
-    padding: .2em;
-    text-shadow: #f5f5f5 0 1px 0;
-    opacity: 0.9;
-    position: absolute;
-    min-width: 180px;
-
-    &.hidden {
-      display: none;
-    }
-
-    h2 {
-      margin: 4px 0;
-
-    }
-
-    table {
-      width: 100%;
-    }
-  }
-
-  #resetButton {
-    position: absolute;
-    top: 13px;
-    right: 12px;
-    background: #444;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    display: none;
-
-    &:hover {
-      background: #000;
-    }
-
-    i {
-      font-size: 12px;
-      margin-right: 4px;
-    }
-  }
-
-  #key {
-    display: block;
-    margin-top: -5px;
-  }
-
-  #slider {
-    position: absolute;
-    top: 0;
-  }
-
-  #infoPanel {
-    position: absolute;
-    bottom: 40px;
-    left: 0;
-    right: 0;
-    min-height: 100px;
-    background: rgba(0, 0, 0, 0.75);
-    width: 590px;
-    display: none;
-    padding: 10px;
-    color: white;
-
-    h2 {
-      margin: 0 0 20px 0;
-    }
-
-    table {
-      width: 100%;
-    }
-  }
-}
-
 // Leaflet map styles.
 #main-content {
   #map {
@@ -122,7 +8,7 @@
       position: relative;
       height: 100%;
       width: 100%;
-      background: white;
+      background: $background-color;
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -148,7 +34,7 @@
       }
     }
     .disaggregation-select-container {
-      background: white;
+      background: $background-color;
       padding: 5px;
       border: 2px solid rgba(0,0,0,0.3);
       border-radius: 5px;
@@ -181,19 +67,19 @@
           z-index: 1;
           &.left {
             border-width: 20px 0 0 20px;
-            border-color: transparent transparent transparent white;
+            border-color: transparent transparent transparent $background-color;
             left: 0;
           }
           &.right {
             border-width: 0 0 20px 20px;
-            border-color: transparent transparent white transparent;
+            border-color: transparent transparent $background-color transparent;
             right: 1px;
-            box-shadow: 1px 1px 1px 0px #666;
+            box-shadow: 1px 1px 1px 0px $map-legend-shadow-color;
           }
         }
         .legend-value {
           padding: 0 4px;
-          background: white;
+          background: $background-color;
           position: absolute;
           z-index: 2;
           &.left {
@@ -202,7 +88,7 @@
           &.right {
             right: 1px;
           }
-          box-shadow: 1px 1px 1px 0px #666;
+          box-shadow: 1px 1px 1px 0px $map-legend-shadow-color;
         }
       }
       #selection-list {
@@ -223,7 +109,7 @@
           }
           .selection-bar {
             border-radius: 2px 0 0 2px;
-            background: white;
+            background: $map-legend-bar-color;
             z-index: 1;
           }
           .selection-name {
@@ -232,7 +118,7 @@
           }
           &.no-value {
             .selection-name {
-              background: repeating-linear-gradient(45deg, #FFF, #FFF 2px, #CCC 2px, #CCC 4px);
+              background: $map-legend-no-value-color;
             }
             .selection-bar, .selection-value {
               display: none;
@@ -241,7 +127,7 @@
           .selection-value {
             z-index: 2;
             margin-right: 5px;
-            background-color: #ddd;
+            background-color: $map-legend-value-color;
             padding: 3px;
             border-radius: 2px;
           }

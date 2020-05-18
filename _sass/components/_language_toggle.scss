@@ -6,12 +6,10 @@
   position: absolute;
   z-index: 999;
   left: 12px;
-  color: #222;
-  background: #fff;
+  background: $background-color;
   border-radius: 3px;
-  box-shadow: 0px 0px 2px 0px #a6a6a6;
+  box-shadow: 0px 0px 2px 0px $language-toggle-shadow-color;
   padding: .2em 1em .2em .2em;
-  text-shadow: #f5f5f5 0 1px 0;
   li {
     padding: 5px;
     padding-left: 0;
@@ -54,9 +52,9 @@
 .contrast-high {
   .language-toggle-mobile, ul.navbar-nav {
     .language-options a {
-      color: black;
+      color: $high-contrast-dark-color;
       &:hover {
-        color: black;
+        color: $high-contrast-dark-color;
       }
     }
   }

@@ -44,7 +44,7 @@
       padding: 5px 0;
 
       &.status {
-        color: black;
+        color: $text-dark-color;
         font-weight: normal;
         border: none;
         padding: 4px;
@@ -55,13 +55,13 @@
         font-size: 12px;
 
         &.complete, &.inprogress{
-          color: white;
+          color: $text-on-dark-background-color;
         }
         &.notstarted{
-          border: 1px solid black;
+          border: 1px solid $text-dark-color;
         }
       }
-      
+
     }
 
     .tags {

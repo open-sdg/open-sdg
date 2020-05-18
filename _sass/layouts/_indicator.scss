@@ -37,9 +37,9 @@
   #toolbar {
     button {
       width: 100%;
-      background-color: #fff;
+      background-color: $background-color;
       position: relative;
-      border: 1px solid #ccc;
+      border: 1px solid $horizontal-rule-color;
       text-align: left;
       padding: 10px 7px 14px 7px;
       font-size: 0.875em;
@@ -53,8 +53,8 @@
       }
 
       &.disabled {
-        color: #777;
-        background: #ccc;
+        color: $indicator-disabled-color;
+        background: $indicator-disabled-background-color;
       }
 
     }
@@ -78,7 +78,7 @@
     margin-top: 10px;
 
     label {
-      background-color: #fff;
+      background-color: $background-color;
       padding: 7px;
       display: block;
       font-weight: normal;
@@ -92,21 +92,21 @@
         right: 6px;
       }
       &:hover {
-        border-color: #acacac;
+        border-color: $indicator-field-border-hover-color;
       }
       &.disabled {
-        color: #888;
+        color: $indicator-disabled-color;
         cursor: not-allowed;
         &:hover {
-          border-color: #ccc;
+          border-color: $indicator-disabled-background-color;
         }
       }
       &.possible {
-        background-color: #dedede;
+        background-color: $indicator-possible-background-color;
       }
       &.excluded {
-        background-color: #666;
-        color: white;
+        background-color: $indicator-excluded-background-color;
+        color: $text-on-dark-background-color;
 
         & input {
           display: none;
@@ -129,7 +129,7 @@
 
     .bar {
       height: 7px;
-      border: 1px solid #dedede;
+      border: 1px solid $indicator-field-border-color;
       margin: 2px;
       padding: 0;
       position: relative;
@@ -139,19 +139,19 @@
         float: left;
       }
       .selected {
-        background-color: #555;
+        background-color: $indicator-selected-background-color;
       }
 
       .default {
-        background-color: white;
+        background-color: $background-color;
       }
 
       .possible {
-        background-color: #dedede;
+        background-color: $indicator-possible-background-color;
       }
 
       .excluded {
-        background-color: #666;
+        background-color: $indicator-excluded-background-color;
       }
     }
 
@@ -159,24 +159,24 @@
       position: relative;
       cursor: pointer;
       width: 100%;
-      border: 1px solid #ccc;
+      border: 1px solid $indicator-selector-border-color;
       display: inline-block;
       margin-right: 8px;
       margin-bottom: 10px;
 
       &:hover {
-        border-color: #555;
+        border-color: $indicator-selector-hover-border-color;
       }
 
       .no-data-hint,
       .variable-hint {
         display: none;
         padding-left: 7px;
-        color: #666;
+        color: $indicator-hint-color;
       }
 
       .variable-options {
-        background-color: white;
+        background-color: $background-color;
         display: none;
         position: static;
         z-index: 100;
@@ -192,9 +192,9 @@
 
         button {
           width: auto;
-          background-color: #fff;
-          border: 1px solid #555;
-          color: #000;
+          background-color: $background-color;
+          border: 1px solid $indicator-field-button-border-color;
+          color: $text-dark-color;
           float: none;
           position: static;
           text-align: center;
@@ -205,7 +205,7 @@
           border-radius: 4px;
 
           &:hover {
-            background: #f5f3f3;
+            background: $indicator-field-button-hover-background-color;
           }
         }
 
@@ -216,7 +216,7 @@
           font-size: 1.3em;
 
           &:not(:first-child) {
-            border-top: 1px solid #cdcdcd;
+            border-top: 1px solid $indicator-field-label-border;
           }
 
           input {
@@ -226,14 +226,14 @@
           }
 
           &:hover {
-            background: #f5f3f3;
+            background: $indicator-field-button-hover-background-color;
           }
 
           &[data-has-data="false"] {
             display: none;
             cursor: default;
             &:hover {
-              background: white;
+              background: $background-color;
             }
             input {
               display: none;
@@ -265,7 +265,7 @@
           label {
             cursor: default;
             &:hover {
-              background: white;
+              background: $background-color;
             }
           }
         }
@@ -291,7 +291,7 @@
 
     label {
       font-weight: normal;
-      border: 1px solid #ccc;
+      border: 1px solid $indicator-selector-border-color;
       padding: 10px;
       margin-right: 8px;
       cursor: pointer;
@@ -306,7 +306,7 @@
     font-size: 1.2em;
     line-height: 1.2em;
     vertical-align: middle;
-    background: #FFCC0B;
+    background: $indicator-dataset-size-warning;
     border-radius: 4px;
     padding: 5px;
 
@@ -333,13 +333,13 @@
       font-size: 13px;
       list-style-type: none;
       display: inline-block;
-      color: #666;
+      color: $indicator-legend-color;
       line-height: 18px;
       cursor: pointer;
       padding: 5px;
 
       &:hover {
-        background: #eee;
+        background: $indicator-legend-hover-background-color;
       }
 
       &.notshown {
@@ -379,10 +379,10 @@
     margin: 5px 10px 5px 0;
 
     &:not(#goal-18){
-      box-shadow: 5px 5px 5px 0px rgba(5,5,5,0.3);
+      box-shadow: 5px 5px 5px 0px $goal-tiles-shadow-color;
 
       &:hover{
-        box-shadow: 5px 5px 5px 0px rgba(5,5,5,0.6);
+        box-shadow: 5px 5px 5px 0px $goal-tiles-hover-shadow-color;
       }
     }
   }
@@ -395,7 +395,7 @@
         margin-bottom: 2.5rem;
 
         .tags li{
-          color: black;
+          color: $text-dark-color;
         }
 
       }
@@ -405,7 +405,7 @@
       }
     }
     .indicator-cards .tags li{
-      color: black;
+      color: $text-dark-color;
     }
   }
   .goal-indicators:after {
@@ -414,23 +414,23 @@
     clear: both;
   }
   .nav-tabs {
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid $indicator-tabs-border-color;
     .nav-item {
       background: none;
       border: none;
       a {
         border: none;
-        color: black;
+        color: $text-dark-color;
       }
       &.active {
         a {
-          border: 1px solid #888;
+          border: 1px solid $indicator-tabs-border-color;
           border-bottom: 0;
         }
       }
       &:not(.active){
         a{
-          background-color: #eeeeee;
+          background-color: $indicator-tabs-inactive-background-color;
           &:hover{
             text-decoration: underline;
           }
@@ -439,7 +439,7 @@
     }
   }
   .tab-content {
-    border: 1px solid #888;
+    border: 1px solid $indicator-tabs-border-color;
     padding: 15px;
     border-top:  0;
 
@@ -528,59 +528,59 @@
 
 body.contrast-high {
   #main-content #fields label {
-    background: black;
-    color: white;
+    background: $high-contrast-dark-color;
+    color: $high-contrast-light-color;
     &:hover {
-      background: white;
-      color: black;
+      background: $high-contrast-light-color;
+      color: $high-contrast-dark-color;
     }
     &:focus {
-      background: white;
-      color: black;
+      background: $high-contrast-light-color;
+      color: $high-contrast-dark-color;
     }
   }
 
   #toolbar {
     button {
-      background-color: black !important;
-      border-color: white;
-      color: white;
+      background-color: $high-contrast-dark-color !important;
+      border-color: $high-contrast-light-color;
+      color: $high-contrast-light-color;
     }
   }
 
   .variable-options {
-    background: black;
-    color: white;
+    background: $high-contrast-dark-color;
+    color: $high-contrast-light-color;
     div {
-      background: black;
-      color: white;
+      background: $high-contrast-dark-color;
+      color: $high-contrast-light-color;
     }
     button {
-      background: black;
-      color: white !important;
-      border-color: white;
+      background: $high-contrast-dark-color;
+      color: $high-contrast-light-color !important;
+      border-color: $high-contrast-light-color;
     }
   }
 
-  #main-content #fields .bar .selected { background-color: white; }
+  #main-content #fields .bar .selected { background-color: $high-contrast-light-color; }
 
-  #main-content #fields .variable-selector .variable-hint { color: white; }
+  #main-content #fields .variable-selector .variable-hint { color: $high-contrast-light-color; }
 
   caption {
-    color: white;
+    color: $high-contrast-light-color;
   }
 
   div#units {
-    color: white;
+    color: $high-contrast-light-color;
   }
 
   #legend {
     li {
-      color: white !important;
+      color: $high-contrast-light-color !important;
       border: 1px solid transparent;
       &:hover {
         background: transparent !important;
-        border: 1px solid white;
+        border: 1px solid $high-contrast-light-color;
       }
     }
   }

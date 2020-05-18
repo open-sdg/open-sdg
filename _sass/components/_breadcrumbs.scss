@@ -5,15 +5,15 @@
   }
   &>.active {
     display: inline;
-    color: black;
+    color: $text-color;
   }
 }
 
 body.contrast-high {
   .breadcrumb {
-    background: white;
+    background: $high-contrast-light-color;
     a {
-      color: black !important;
+      color: $high-contrast-dark-color !important;
     }
   }
 }

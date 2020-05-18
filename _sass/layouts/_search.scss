@@ -7,7 +7,7 @@
 #search-results {
 
   span.match {
-    background-color: yellow;
+    background-color: $search-highlight-color;
   }
 
   margin-top: 20px;
@@ -24,7 +24,7 @@
         font-size: 18px;
       }
       .url {
-        color: green;
+        color: $search-url-color;
         font-size: 16px;
       }
       &:hover {
@@ -41,17 +41,17 @@ body.contrast-high {
   #search-results {
 
     span.match {
-      color: black !important;
+      color: $high-contrast-dark-color !important;
     }
 
     .search-result {
       a {
         .url {
-          color: yellow !important;
+          color: $high-contrast-highlight-color !important;
         }
       }
       .content {
-        color: white !important;
+        color: $high-contrast-light-color !important;
       }
     }
   }

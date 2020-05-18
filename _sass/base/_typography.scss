@@ -11,7 +11,6 @@ h3{ font-size: 24px;}
 .heading {
   a {
     background: transparent;
-    color: #888;
     display: block;
     &:hover {
       text-decoration: none;
@@ -20,7 +19,7 @@ h3{ font-size: 24px;}
   h1,
 	h2,
   h3 {
-    color: black;
+    color: $text-dark-color;
   }
   h1 {
     margin-top: 12px;
@@ -39,7 +38,7 @@ h3{ font-size: 24px;}
 }
 
 #main-content {
-  background: white;
+  background: $background-color;
   padding-top: 15px;
   padding-bottom: 15px;
 
@@ -52,7 +51,7 @@ h3{ font-size: 24px;}
     margin-right: 5px;
   }
   .alert {
-    color: black;
+    color: $text-dark-color;
   }
   .alert a {
     display: inline;

@@ -1,11 +1,11 @@
 .danger {
-  background-color: #E27874;
+  background-color: $danger-color;
 }
 .warning {
-  background-color: #f0ad4e;
+  background-color: $warning-color;
 }
 .success {
-  background-color: #5cb85c;
+  background-color: $success-color;
 }
 
 .data-notice {
@@ -19,19 +19,19 @@ body.contrast-high {
     .alert {
       div {
         p, h4 {
-          color: black;
+          color: $high-contrast-dark-color;
 	      }
       }
     }
   }
 
   .danger {
-    background-color: red;
+    background-color: $high-contrast-danger-color;
   }
   .warning {
-    background-color: yellow;
+    background-color: $high-contrast-highlight-color;
   }
   .success {
-    background-color: green;
+    background-color: $high-contrast-success-color;
   }
 }
