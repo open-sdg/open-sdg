@@ -199,3 +199,19 @@ body.contrast-high {
     }
   }
 }
+
+body.contrast-high {
+  #map {
+    // Temporary code until high-contrast mode is implemented for maps.
+    a {
+      color: $high-contrast-dark-color;
+    }
+    .selection-legend {
+      .legend-values, #selection-list {
+        li, span {
+          color: $high-contrast-dark-color;
+        }
+      }
+    }
+  }
+}
