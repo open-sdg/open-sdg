@@ -60,3 +60,8 @@ Feature: Headlines
     Then I should see 1 "chart legend item" element
     And I should see a "selected unit of measurement" element
     And I should see "single disaggregation" in the "chart legend" element
+
+  Scenario: Indicators with only a headline do not display the disaggregation sidebar
+    Given I am on "/4-2-1"
+    And I wait 2 seconds
+    Then I should not see a "disaggregation sidebar" element
