@@ -1,6 +1,7 @@
 @for $i from 1 through length($goal-colors) {
   $c: nth($goal-colors, $i);
   $dark-c: darken($c, 20%);
+  $background-c: nth($goal-banner-background-colors, $i);
   .goal-#{$i} {
     padding-top: 30px;
     padding-bottom: 30px;
@@ -11,6 +12,9 @@
           color: $dark-c;
         }
       }
+    }
+    &.heading {
+      background-color: $background-c;
     }
   }
   .goal-tiles #goal-#{$i} {
