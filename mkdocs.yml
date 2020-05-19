@@ -15,6 +15,7 @@ extra_css:
 pages:
     - Home: index.md
     - About: about.md
+    - News & events: news-and-events.md
     - Open SDG features: open-sdg-features.md
     - Frequently Asked Questions: faq.md
     - Open SDG users:
