@@ -1,8 +1,16 @@
 body.contrast-high {
-  .nav-tabs { border-color: yellow; }
+  .nav-tabs {
+    border-color: $high-contrast-highlight-color;
+  }
 
-  #main-content .nav-tabs .nav-item.active a { background: yellow; color: black; border-color: yellow; }
+  #main-content .nav-tabs .nav-item.active a {
+    background: $high-contrast-highlight-color;
+    color: $high-contrast-dark-color;
+    border-color: $high-contrast-highlight-color; }
 
-  a.nav-link:focus { background: white; color: black; }
+  a.nav-link:focus {
+    background: $high-contrast-light-color;
+    color: $high-contrast-dark-color;
+  }
 
 }

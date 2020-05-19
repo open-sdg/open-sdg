@@ -2,37 +2,37 @@ body.contrast-high {
   .goal-indicators {
     div {
       span {
-        border-color: white !important;
-        color: white !important;
+        border-color: $high-contrast-light-color !important;
+        color: $high-contrast-light-color !important;
       }
     }
     .indicator-cards {
       &.target {
-        color: white !important;
+        color: $high-contrast-light-color !important;
       }
       span.status, .tags li{
-        color: black !important;
+        color: $high-contrast-dark-color !important;
       }
 
       span.status{
         &.complete,
         &.notapplicable{
-          color: black !important;
+          color: $high-contrast-dark-color !important;
         }
 
         &.notstarted,
         &.inprogress{
-          color: white !important;
+          color: $high-contrast-dark-color !important;
         }
       }
 
       span.status.notstarted{
-        color: white !important;
-        border: 1px solid white !important;
+        color: $high-contrast-light-color !important;
+        border: 1px solid $high-contrast-light-color !important;
       }
     }
   }
   #main-content.goal-indicators.goal-by-target .indicator-cards a{
-    color: yellow;
+    color: $high-contrast-highlight-color;
   }
 }

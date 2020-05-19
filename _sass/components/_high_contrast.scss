@@ -23,17 +23,17 @@
 
     &.contrast-default {
       display: none;
-      background: white;
+      background: $high-contrast-light-color;
       a {
-        color: black;
+        color: $high-contrast-dark-color;
       }
     }
 
     &.contrast-high {
       display: block;
-      background: black;
+      background: $high-contrast-dark-color;
       a {
-        color: yellow;
+        color: $high-contrast-highlight-color;
       }
     }
   }
@@ -53,46 +53,46 @@ body.contrast-high {
     }
   }
 
-  background-color: black;
+  background-color: $high-contrast-dark-color;
   .table {
-    background: black;
+    background: $high-contrast-dark-color;
   }
 
   .table-hover {
     tbody tr:hover {
-      background: yellow;
+      background: $high-contrast-highlight-color;
       td {
-        color: black;
+        color: $high-contrast-dark-color;
       }
       th {
-        color: black;
+        color: $high-contrast-dark-color;
       }
       a {
-        color: blue;
+        color: $link-color;
         text-decoration: underline;
       }
     }
   }
 
   .container, #main-content, header, footer, #disclaimer, .heading {
-    background: black;
-    border-color: black;
+    background: $high-contrast-dark-color;
+    border-color: $high-contrast-dark-color;
   }
 
   p, h2, h3, h4, span, td, th, a#text {
-    color: white;
+    color: $high-contrast-light-color;
   }
 
   li, a {
-    color: yellow;
+    color: $high-contrast-highlight-color;
   }
 
   h1 {
-    color: white;
+    color: $high-contrast-light-color;
   }
 
   li.contrast-default a {
-    color: black !important;
+    color: $high-contrast-dark-color !important;
   }
 }
 
@@ -167,27 +167,27 @@ body.long {
 }
 
 body.contrast-high .site-intro .description{
-  color: white;
+  color: $high-contrast-light-color;
 }
 
 body.contrast-high #main-content .no-gutters img:not(#goal-18):hover {
-  box-shadow: 0px 0px 0px 5px yellow;
+  box-shadow: 0px 0px 0px 5px $high-contrast-highlight-color;
 }
 
 body.contrast-high footer a {
-  color: white;
+  color: $high-contrast-light-color;
   &:hover, &:focus {
-    color: yellow;
+    color: $high-contrast-highlight-color;
   }
 }
 
 body.contrast-high #disclaimer {
   .phase-tag {
-    background: white;
-    color: black;
+    background: $high-contrast-light-color;
+    color: $high-contrast-dark-color;
   }
   .disclaimer-alert {
-    color: white;
+    color: $high-contrast-light-color;
   }
 }
 
@@ -196,6 +196,22 @@ body.contrast-high {
     background-color: black !important;
     &:hover {
       background-color: black !important;
+    }
+  }
+}
+
+body.contrast-high {
+  #map {
+    // Temporary code until high-contrast mode is implemented for maps.
+    a {
+      color: $high-contrast-dark-color;
+    }
+    .selection-legend {
+      .legend-values, #selection-list {
+        li, span {
+          color: $high-contrast-dark-color;
+        }
+      }
     }
   }
 }

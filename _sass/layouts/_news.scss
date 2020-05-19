@@ -2,7 +2,7 @@
   @include tags;
   li {
     a {
-      color: black;
+      color: $text-dark-color;
     }
   }
 }

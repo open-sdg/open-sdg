@@ -2,10 +2,10 @@
   margin-top: 1.5rem;
   margin-right: 0.8rem;
   border: none !important;
-  background: #0F8243 !important;
+  background: $button-color !important;
 
   &:hover, &:active, &:focus {
-    background: #0b5d30 !important;
+    background: $button-pressed-color !important;
   }
 }
 
@@ -42,15 +42,15 @@ h5 + .btn-download {
 }
 
 body.contrast-high {
-  .btn { background: white !important; color: black !important;
+  .btn { background: $high-contrast-light-color !important; color: $high-contrast-dark-color !important;
     &:hover {
-      background: yellow !important;
+      background: $high-contrast-highlight-color !important;
     }
     &:focus {
-      background: yellow !important;
+      background: $high-contrast-highlight-color !important;
     }
   }
   #zip-download-info {
-    color: white;
+    color: $high-contrast-light-color;
   }
 }
