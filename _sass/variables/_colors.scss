@@ -1,26 +1,26 @@
-$dark-highlight: #0275d8 !default;
-$footer-color: #000000 !default;
 $goal-colors: #E52B3D #DDA63A #4C9F38 #C42130 #FF3E24 #28BCE1 #FCC30B #A21942 #FD6925 #DD1367 #FD9C27 #BF8B2E #417D46 #0A96D8 #57BE2F #00689C #1F4A6A !default;
 $goal-banner-background-colors: white white white white white white white white white white white white white white white white white !default;
-$menu-hover-border-bottom: #aaaaaa !default;
 
 $text-color: #333 !default;
 $text-dark-color: black !default;
 $text-on-dark-background-color: white !default;
 $background-color: white !default;
 $link-color: #337ab7 !default;
+$dark-highlight: #0275d8 !default;
+$footer-color: #000000 !default;
 
 $high-contrast-dark-color: black !default;
 $high-contrast-light-color: white !default;
 $high-contrast-highlight-color: yellow !default;
 $high-contrast-success-color: green !default;
 $high-contrast-danger-color: red !default;
-$high-contrast-medium-color: #767676;
+$high-contrast-medium-color: #767676 !default;
 
 $danger-color: #E27874 !default;
 $warning-color: #f0ad4e !default;
 $success-color: #5cb85c !default;
 
+$menu-hover-border-bottom: #aaaaaa !default;
 $menu-link-color: #595959 !default;
 $menu-mobile-link-color: #E5E6E7 !default;
 $menu-mobile-link-background-color: #414042 !default;
@@ -38,11 +38,10 @@ $status-notstarted-background-color: white !default;
 $status-notapplicable-background-color: repeating-linear-gradient(135deg, #ccc, white 10px, #ccc 10px, white 20px) !default;
 
 $horizontal-rule-color: #ccc !default;
+$indicator-content-rule-color: #faebcc !default;
 
 $search-highlight-color: yellow !default;
 $search-url-color: green !default;
-
-$indicator-content-rule-color: #faebcc !default;
 
 $disclaimer-tag-color: #005ea5 !default;
 $disclaimer-text-color: #3D3D3D !default;
