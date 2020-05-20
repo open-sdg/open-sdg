@@ -2,7 +2,7 @@
 
 ## News
 
-### Open SDG v1.0.0
+<h3>Open SDG v1.0.0</h3>
 
 The Open SDG team have been working hard to release Open SDG v1.0.0.
 
@@ -15,7 +15,7 @@ For more information about the v1.0.0 release, check out the [the list of update
 
 ## Events
 
-### Open SDG Webinar - 17th June 2020, 13:00-14:30 UK time (GMT+1)
+<h3>Open SDG Webinar - 17th June 2020, 13:00-14:30 UK time (GMT+1)</h3>
 
 The UK Office for National Statistics (ONS), the UN Statistics Division (UNSD), and the Center for Open Data Enterprise (CODE) are hosting a webinar for users of Open SDG.
 
