@@ -1,6 +1,6 @@
 <h1>Potential users</h1>
 
-If you are considering using an Open SDG platform, we would love to hear about it. Please email the Open SDG team at [mailto:opensdg@googlegroups.com](opensdg@googlegroups.com) or [raise an issue on GitHub](https://github.com/open-sdg/open-sdg/issues/new) to let us know and ask us questions.
+If you are considering using an Open SDG platform, we would love to hear about it. Please email the Open SDG team at [opensdg@googlegroups.com](mailto:opensdg@googlegroups.com) or [raise an issue on GitHub](https://github.com/open-sdg/open-sdg/issues/new) to let us know and ask us questions.
 
 ## Considerations
 
@@ -49,6 +49,7 @@ However, some countries, such as Germany, have chosen to set up a separate platf
 Knowing if and how you want to report national indicators from the start will make the process more efficient.
 
 **6. Do you have any deadlines e.g. VNR for getting Open SDG platform live?**
+Knowing if you have any deadlines that rely on your Open SDG platform coming up will give you an idea of how long you have to set up the platform.
 
 ## Overview of setting up an Open SDG platform
 To see an overview of the processes involved with setting up an Open SDG platform, [download this high-level guidance](https://github.com/open-sdg/open-sdg/blob/new-country-considerations/docs/platform_process-v1.pdf?raw=1)
