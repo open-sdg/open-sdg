@@ -11,6 +11,14 @@ a:hover{
   color: $link-color-hover;
 }
 
+a:visited{
+  color: $link-color-visited;
+}
+
+body.contrast-high a:visited{
+  color: $link-color-visited-highcontrast;
+}
+
 .nav li a,
 .nav li a:hover,
 a.btn{
@@ -35,4 +43,8 @@ footer a{
 
 footer a:hover{
     color: lighten($footer-color, 20%);
+}
+
+body.contrast-high footer a:visited{
+  color: $footer-color-highcontrast;
 }
