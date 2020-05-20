@@ -17,13 +17,6 @@ footer {
       padding: 5px 0;
     }
   }
-  a {
-    color: $footer-color;
-    text-decoration: underline;
-    &:hover, &:focus {
-      color: lighten($footer-color, 20%);
-    }
-  }
 
   #footerLinks ul {
     padding-left: 0;

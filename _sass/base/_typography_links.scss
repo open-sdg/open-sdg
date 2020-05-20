@@ -1,0 +1,38 @@
+a,
+a:hover{
+  text-decoration: underline;
+}
+
+a{
+  color: $link-color;
+}
+
+a:hover{
+  color: $link-color-hover;
+}
+
+.nav li a,
+.nav li a:hover,
+a.btn{
+  text-decoration: none;
+}
+
+.navbar ul.navbar-nav li:not(.contrast) a{
+    border-bottom: 2px solid transparent;
+}
+
+.navbar ul.navbar-nav li:not(.contrast) a:hover{
+    border-bottom: 2px solid $menu-hover-border-bottom;
+}
+
+#search-results .search-result a {
+    text-decoration: none;
+}
+
+footer a{
+    color: $footer-color;
+}
+
+footer a:hover{
+    color: lighten($footer-color, 20%);
+}
