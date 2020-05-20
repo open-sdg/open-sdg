@@ -79,6 +79,12 @@ body.contrast-high {
     border-color: $high-contrast-dark-color;
   }
 
+  .heading[class*="goal-"] {
+    h1, p {
+      color: $high-contrast-light-color;
+    }
+  }
+
   p, h2, h3, h4, span, td, th, a#text {
     color: $high-contrast-light-color;
   }

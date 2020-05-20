@@ -1,0 +1,14 @@
+@for $i from 1 through length($goal-banner-background-colors) {
+  $background-c: nth($goal-banner-background-colors, $i);
+  .goal-#{$i} {
+    &.heading {
+      background-color: $background-c;
+    }
+  }
+}
+
+.heading[class*="goal-"] {
+  h1, p {
+    color: $goal-banner-color;
+  }
+}
