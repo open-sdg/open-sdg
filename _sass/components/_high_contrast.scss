@@ -41,6 +41,10 @@
 
 body.contrast-high {
 
+  li {
+    color: $high-contrast-light-color;
+  }
+
   #accessibility-nav {
     li {
       &.contrast-default {
@@ -83,7 +87,7 @@ body.contrast-high {
     color: $high-contrast-light-color;
   }
 
-  li, a {
+  a {
     color: $high-contrast-highlight-color;
   }
 
