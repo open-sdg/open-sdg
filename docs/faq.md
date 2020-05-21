@@ -4,6 +4,10 @@
 
 Yes. Open SDG is open source and is free for anyone to reuse.
 
+## What resources do I need to set up an Open SDG platform?
+
+To set up the platform out of the box and carry out basic customisations, you will need to use a computer and GitHub. If you want to customise your platform further, you may need additional technical resource such as a developer.
+
 ## How do I copy the Open SDG platform?
 
 The [Quick start](quick-start.md) guide gives technical
