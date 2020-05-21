@@ -419,7 +419,8 @@ var indicatorView = function (model, options) {
     $("#btnSave").click(function() {
       var filename = chartInfo.indicatorId + '.png',
           element = document.getElementById('chart-canvas'),
-          height = element.clientHeight + 25,
+          footer = document.getElementById('selectionChartFooter'),
+          height = element.clientHeight + 25 + ((footer) ? footer.clientHeight : 0),
           width = element.clientWidth + 25;
       var options = {
         // These options fix the height, width, and position.
