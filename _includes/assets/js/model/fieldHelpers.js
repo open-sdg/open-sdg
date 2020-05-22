@@ -238,10 +238,17 @@ function selectFieldsFromStartValues(startValues, selectableFieldNames) {
 /**
  * @param {Array} rows
  * @param {Array} selectableFieldNames Field names
+ * @param {string} selectedUnit
  * @return {Array} Field items
  */
-function selectMinimumStartingFields(rows, selectableFieldNames) {
-  var filteredData = rows.filter(function(row) {
+function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
+  var filteredData = rows;
+  if (selectedUnit) {
+    filteredData = filteredData.filter(function(row) {
+      return row[UNIT_COLUMN] === selectedUnit;
+    });
+  }
+  filteredData = filteredData.filter(function(row) {
     return selectableFieldNames.some(function(fieldName) {
       return row[fieldName];
     });
