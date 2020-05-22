@@ -54,10 +54,17 @@ $loader-color: #FF6700 !default;
 // Component-level color variables.
 // [component] - [element] - [color|backgroundColor|etc] - [...modifiers]
 $goal-banner-backgroundColors: $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor !default;
-$indicator-banner-backgroundColors: $goal-banner-backgroundColors !default;
+$goal-banner-backgroundColor-highContrast: $color-dark-highContrast !default;
+$goal-banner-color: $text-color-dark !default;
+$goal-banner-color-highContrast: $color-light-highContrast !default;
 
 $footer-text-color: $text-color-dark !default;
-$footer-link-color: $text-color-dark !default;
+$footer-text-color-highContrast: $color-light-highContrast !default;
+$footer-link-color: $footer-text-color !default;
+$footer-link-color-highContrast: $footer-text-color-highContrast !default;
+$footer-link-color-highContrast-hover: $color-highlight-highContrast !default;
+$footer-text-backgroundColor: $backgroundColor !default;
+$footer-text-backgroundColor-highContrast: $color-dark-highContrast !default;
 
 $menu-link-color: #595959 !default;
 $menu-link-color-mobile: #E5E6E7 !default;

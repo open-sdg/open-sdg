@@ -78,9 +78,29 @@ body.contrast-high {
     }
   }
 
-  .container, #main-content, header, footer, #disclaimer, .heading {
+  .container, #main-content, header, #disclaimer {
     background: $color-dark-highContrast;
     border-color: $color-dark-highContrast;
+  }
+
+  footer {
+    color: $footer-text-color-highContrast;
+    background: $footer-text-backgroundColor-highContrast;
+    border-color: $footer-text-backgroundColor-highContrast;
+    a {
+      color: $footer-link-color-highContrast;
+      &:hover, &:focus {
+        color: $footer-link-color-highContrast-hover;
+      }
+    }
+  }
+
+  .goal-banner {
+    background: $goal-banner-backgroundColor-highContrast;
+    border-color: $goal-banner-backgroundColor-highContrast;
+    h1, p {
+      color: $goal-banner-color-highContrast;
+    }
   }
 
   p, h2, h3, h4, span, td, th, a#text {
@@ -176,13 +196,6 @@ body.contrast-high .site-intro .description{
 
 body.contrast-high #main-content .no-gutters img:not(#goal-18):hover {
   box-shadow: 0px 0px 0px 5px $color-highlight-highContrast;
-}
-
-body.contrast-high footer a {
-  color: $color-light-highContrast;
-  &:hover, &:focus {
-    color: $color-highlight-highContrast;
-  }
 }
 
 body.contrast-high #disclaimer {
