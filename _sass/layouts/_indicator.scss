@@ -37,9 +37,9 @@
   #toolbar {
     button {
       width: 100%;
-      background-color: $background-color;
+      background-color: $backgroundColor;
       position: relative;
-      border: 1px solid $horizontal-rule-color;
+      border: 1px solid $horizontalRule-color;
       text-align: left;
       padding: 10px 7px 14px 7px;
       font-size: 0.875em;
@@ -53,8 +53,8 @@
       }
 
       &.disabled {
-        color: $indicator-disabled-color;
-        background: $indicator-disabled-background-color;
+        color: $indicator-field-color-disabled;
+        background: $indicator-field-backgroundColor-disabled;
       }
 
     }
@@ -78,7 +78,7 @@
     margin-top: 10px;
 
     label {
-      background-color: $background-color;
+      background-color: $backgroundColor;
       padding: 7px;
       display: block;
       font-weight: normal;
@@ -92,21 +92,21 @@
         right: 6px;
       }
       &:hover {
-        border-color: $indicator-field-border-hover-color;
+        border-color: $indicator-field-borderColor-hover;
       }
       &.disabled {
-        color: $indicator-disabled-color;
+        color: $indicator-field-color-disabled;
         cursor: not-allowed;
         &:hover {
-          border-color: $indicator-disabled-background-color;
+          border-color: $indicator-field-backgroundColor-disabled;
         }
       }
       &.possible {
-        background-color: $indicator-possible-background-color;
+        background-color: $indicator-field-backgroundColor-possible;
       }
       &.excluded {
-        background-color: $indicator-excluded-background-color;
-        color: $text-on-dark-background-color;
+        background-color: $indicator-field-backgroundColor-excluded;
+        color: $text-color-light;
 
         & input {
           display: none;
@@ -129,7 +129,7 @@
 
     .bar {
       height: 7px;
-      border: 1px solid $indicator-field-border-color;
+      border: 1px solid $indicator-field-borderColor;
       margin: 2px;
       padding: 0;
       position: relative;
@@ -139,19 +139,19 @@
         float: left;
       }
       .selected {
-        background-color: $indicator-selected-background-color;
+        background-color: $indicator-field-backgroundColor-selected;
       }
 
       .default {
-        background-color: $background-color;
+        background-color: $backgroundColor;
       }
 
       .possible {
-        background-color: $indicator-possible-background-color;
+        background-color: $indicator-field-backgroundColor-possible;
       }
 
       .excluded {
-        background-color: $indicator-excluded-background-color;
+        background-color: $indicator-field-backgroundColor-excluded;
       }
     }
 
@@ -159,13 +159,13 @@
       position: relative;
       cursor: pointer;
       width: 100%;
-      border: 1px solid $indicator-selector-border-color;
+      border: 1px solid $indicator-selector-borderColor;
       display: inline-block;
       margin-right: 8px;
       margin-bottom: 10px;
 
       &:hover {
-        border-color: $indicator-selector-hover-border-color;
+        border-color: $indicator-selected-borderColor-hover;
       }
 
       .no-data-hint,
@@ -176,7 +176,7 @@
       }
 
       .variable-options {
-        background-color: $background-color;
+        background-color: $backgroundColor;
         display: none;
         position: static;
         z-index: 100;
@@ -192,9 +192,9 @@
 
         button {
           width: auto;
-          background-color: $background-color;
-          border: 1px solid $indicator-field-button-border-color;
-          color: $text-dark-color;
+          background-color: $backgroundColor;
+          border: 1px solid $indicator-fieldButton-borderColor;
+          color: $text-color-dark;
           float: none;
           position: static;
           text-align: center;
@@ -205,7 +205,7 @@
           border-radius: 4px;
 
           &:hover {
-            background: $indicator-field-button-hover-background-color;
+            background: $indicator-fieldButton-borderColor-hover;
           }
         }
 
@@ -216,7 +216,7 @@
           font-size: 1.3em;
 
           &:not(:first-child) {
-            border-top: 1px solid $indicator-field-label-border;
+            border-top: 1px solid $indicator-fieldLabel-borderColor;
           }
 
           input {
@@ -226,14 +226,14 @@
           }
 
           &:hover {
-            background: $indicator-field-button-hover-background-color;
+            background: $indicator-fieldButton-borderColor-hover;
           }
 
           &[data-has-data="false"] {
             display: none;
             cursor: default;
             &:hover {
-              background: $background-color;
+              background: $backgroundColor;
             }
             input {
               display: none;
@@ -265,7 +265,7 @@
           label {
             cursor: default;
             &:hover {
-              background: $background-color;
+              background: $backgroundColor;
             }
           }
         }
@@ -291,7 +291,7 @@
 
     label {
       font-weight: normal;
-      border: 1px solid $indicator-selector-border-color;
+      border: 1px solid $indicator-selector-borderColor;
       padding: 10px;
       margin-right: 8px;
       cursor: pointer;
@@ -306,7 +306,7 @@
     font-size: 1.2em;
     line-height: 1.2em;
     vertical-align: middle;
-    background: $indicator-dataset-size-warning;
+    background: $indicator-datasetWarning-backgroundColor;
     border-radius: 4px;
     padding: 5px;
 
@@ -333,13 +333,13 @@
       font-size: 13px;
       list-style-type: none;
       display: inline-block;
-      color: $indicator-legend-color;
+      color: $indicator-legendSwatch-fillColor;
       line-height: 18px;
       cursor: pointer;
       padding: 5px;
 
       &:hover {
-        background: $indicator-legend-hover-background-color;
+        background: $indicator-legendSwatch-backgroundColor-hover;
       }
 
       &.notshown {
@@ -379,10 +379,10 @@
     margin: 5px 10px 5px 0;
 
     &:not(#goal-18){
-      box-shadow: 5px 5px 5px 0px $goal-tiles-shadow-color;
+      box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor;
 
       &:hover{
-        box-shadow: 5px 5px 5px 0px $goal-tiles-hover-shadow-color;
+        box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor-hover;
       }
     }
   }
@@ -395,7 +395,7 @@
         margin-bottom: 2.5rem;
 
         .tags li{
-          color: $text-dark-color;
+          color: $text-color-dark;
         }
 
       }
@@ -405,7 +405,7 @@
       }
     }
     .indicator-cards .tags li{
-      color: $text-dark-color;
+      color: $text-color-dark;
     }
   }
   .goal-indicators:after {
@@ -414,23 +414,23 @@
     clear: both;
   }
   .nav-tabs {
-    border-bottom: 1px solid $indicator-tabs-border-color;
+    border-bottom: 1px solid $indicator-tabs-borderColor;
     .nav-item {
       background: none;
       border: none;
       a {
         border: none;
-        color: $text-dark-color;
+        color: $text-color-dark;
       }
       &.active {
         a {
-          border: 1px solid $indicator-tabs-border-color;
+          border: 1px solid $indicator-tabs-borderColor;
           border-bottom: 0;
         }
       }
       &:not(.active){
         a{
-          background-color: $indicator-tabs-inactive-background-color;
+          background-color: $indicator-tabs-backgroundColor-inactive;
           &:hover{
             text-decoration: underline;
           }
@@ -439,7 +439,7 @@
     }
   }
   .tab-content {
-    border: 1px solid $indicator-tabs-border-color;
+    border: 1px solid $indicator-tabs-borderColor;
     padding: 15px;
     border-top:  0;
 
@@ -528,59 +528,59 @@
 
 body.contrast-high {
   #main-content #fields label {
-    background: $high-contrast-dark-color;
-    color: $high-contrast-light-color;
+    background: $color-dark-highContrast;
+    color: $color-light-highContrast;
     &:hover {
-      background: $high-contrast-light-color;
-      color: $high-contrast-dark-color;
+      background: $color-light-highContrast;
+      color: $color-dark-highContrast;
     }
     &:focus {
-      background: $high-contrast-light-color;
-      color: $high-contrast-dark-color;
+      background: $color-light-highContrast;
+      color: $color-dark-highContrast;
     }
   }
 
   #toolbar {
     button {
-      background-color: $high-contrast-dark-color !important;
-      border-color: $high-contrast-light-color;
-      color: $high-contrast-light-color;
+      background-color: $color-dark-highContrast !important;
+      border-color: $color-light-highContrast;
+      color: $color-light-highContrast;
     }
   }
 
   .variable-options {
-    background: $high-contrast-dark-color;
-    color: $high-contrast-light-color;
+    background: $color-dark-highContrast;
+    color: $color-light-highContrast;
     div {
-      background: $high-contrast-dark-color;
-      color: $high-contrast-light-color;
+      background: $color-dark-highContrast;
+      color: $color-light-highContrast;
     }
     button {
-      background: $high-contrast-dark-color;
-      color: $high-contrast-light-color !important;
-      border-color: $high-contrast-light-color;
+      background: $color-dark-highContrast;
+      color: $color-light-highContrast !important;
+      border-color: $color-light-highContrast;
     }
   }
 
-  #main-content #fields .bar .selected { background-color: $high-contrast-light-color; }
+  #main-content #fields .bar .selected { background-color: $color-light-highContrast; }
 
-  #main-content #fields .variable-selector .variable-hint { color: $high-contrast-light-color; }
+  #main-content #fields .variable-selector .variable-hint { color: $color-light-highContrast; }
 
   caption {
-    color: $high-contrast-light-color;
+    color: $color-light-highContrast;
   }
 
   div#units {
-    color: $high-contrast-light-color;
+    color: $color-light-highContrast;
   }
 
   #legend {
     li {
-      color: $high-contrast-light-color !important;
+      color: $color-light-highContrast !important;
       border: 1px solid transparent;
       &:hover {
         background: transparent !important;
-        border: 1px solid $high-contrast-light-color;
+        border: 1px solid $color-light-highContrast;
       }
     }
   }

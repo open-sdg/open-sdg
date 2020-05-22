@@ -1,12 +1,12 @@
 .notapplicable {
-  background: $status-notapplicable-background-color;
+  background: $status-backgroundColor-notapplicable;
 }
 
 .inprogress {
-  background-color: $status-inprogress-background-color;
+  background-color: $status-backgroundColor-inprogress;
 }
 .complete {
-  background-color: $status-complete-background-color;
+  background-color: $status-backgroundColor-complete;
 }
 
 #main-content {
@@ -31,11 +31,17 @@
         font-size: 16px;
 
         &.notstarted{
-          border: 1px solid $text-dark-color;
-          color: $text-dark-color;
+          border: 1px solid $text-color-dark;
+          color: $status-color-notstarted;
         }
-        &.complete, &.inprogress{
-          color: $text-on-dark-background-color;
+        &.complete {
+          color: $status-color-complete;
+        }
+        &.inprogress {
+          color: $status-color-inprogress;
+        }
+        &.notapplicable {
+          color: $status-color-notapplicable;
         }
       }
     }
@@ -46,7 +52,7 @@
     margin-left: 3px;
   }
   .goal-stats {
-    border: 1px solid $text-dark-color;
+    border: 1px solid $text-color-dark;
     font-size: 0;
     margin-top:10px;
     & span {
@@ -62,7 +68,7 @@
     clear: left;
     margin-bottom: 4px;
     padding-bottom: 4px;
-    border-bottom: 1px solid $horizontal-rule-color;
+    border-bottom: 1px solid $horizontalRule-color;
     .total {
        line-height: 24px;
        vertical-align: middle;
@@ -75,7 +81,7 @@
        margin-left: 10px;
        margin-top: -2px;
        border-radius: 4px;
-       border: 1px solid $horizontal-rule-color;
+       border: 1px solid $horizontalRule-color;
     }
   }
   .frame {
@@ -109,38 +115,39 @@
 body.contrast-high {
 
   .goal-stats{
-    border: 1px solid $high-contrast-light-color !important;
+    border: 1px solid $color-light-highContrast !important;
   }
 
   .statuses {
     strong {
-      color: $high-contrast-light-color;
+      color: $color-light-highContrast;
     }
     .value {
-      color: $high-contrast-light-color !important;
+      color: $color-light-highContrast !important;
     }
 
   }
 
   .summary .statuses .notstarted{
-    border: 1px solid $high-contrast-light-color !important;
+    border: 1px solid $color-light-highContrast !important;
   }
 
   .complete{
-    background-color: $high-contrast-light-color;
-    color: $high-contrast-dark-color !important;
+    background-color: $status-backgroundColor-complete-highContrast;
+    color: $status-color-complete-highContrast !important;
   }
 
   .inprogress{
-    background-color: $high-contrast-medium-color;
+    background-color: $status-backgroundColor-inprogress-highContrast;
+    color: $status-color-inprogress-highContrast;
   }
 
   .notstarted{
-    color: $high-contrast-light-color !important;
+    color: $status-color-notstarted-highContrast !important;
   }
 
   .notapplicable{
-    color: $high-contrast-dark-color !important;
+    color: $status-color-notapplicable-highContrast !important;
   }
 
 }

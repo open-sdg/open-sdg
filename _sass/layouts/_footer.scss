@@ -1,6 +1,6 @@
 footer {
   clear: left;
-  color: $footer-color;
+  color: $footer-text-color;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -18,10 +18,10 @@ footer {
     }
   }
   a {
-    color: $footer-color;
+    color: $footer-link-color;
     text-decoration: underline;
     &:hover, &:focus {
-      color: lighten($footer-color, 20%);
+      color: lighten($footer-link-color, 20%);
     }
   }
 

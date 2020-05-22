@@ -6,9 +6,9 @@
   position: absolute;
   z-index: 999;
   left: 12px;
-  background: $background-color;
+  background: $backgroundColor;
   border-radius: 3px;
-  box-shadow: 0px 0px 2px 0px $language-toggle-shadow-color;
+  box-shadow: 0px 0px 2px 0px $languageToggle-dropDown-shadowColor;
   padding: .2em 1em .2em .2em;
   li {
     padding: 5px;
@@ -52,9 +52,9 @@
 .contrast-high {
   .language-toggle-mobile, ul.navbar-nav {
     .language-options a {
-      color: $high-contrast-dark-color;
+      color: $color-dark-highContrast;
       &:hover {
-        color: $high-contrast-dark-color;
+        color: $color-dark-highContrast;
       }
     }
   }

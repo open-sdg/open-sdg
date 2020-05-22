@@ -1,11 +1,11 @@
 .danger {
-  background-color: $danger-color;
+  background-color: $color-danger;
 }
 .warning {
-  background-color: $warning-color;
+  background-color: $color-warning;
 }
 .success {
-  background-color: $success-color;
+  background-color: $color-success;
 }
 
 .data-notice {
@@ -19,19 +19,19 @@ body.contrast-high {
     .alert {
       div {
         p, h4 {
-          color: $high-contrast-dark-color;
+          color: $color-dark-highContrast;
 	      }
       }
     }
   }
 
   .danger {
-    background-color: $high-contrast-danger-color;
+    background-color: $color-danger-highContrast;
   }
   .warning {
-    background-color: $high-contrast-highlight-color;
+    background-color: $color-highlight-highContrast;
   }
   .success {
-    background-color: $high-contrast-success-color;
+    background-color: $color-success-highContrast;
   }
 }
