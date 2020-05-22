@@ -36,3 +36,6 @@ map_layers:
     id_property: rgn17cd
     exclude_columns:
       - Region
+
+reporting_status_extra_fields:
+  - un_custodian_agency
