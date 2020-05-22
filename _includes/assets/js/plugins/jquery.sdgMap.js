@@ -266,6 +266,7 @@
           var downloadLabel = translations.t(plugin.mapLayers[i].label)
           var downloadButton = $('<a></a>')
             .attr('href', plugin.getGeoJsonUrl(plugin.mapLayers[i].subfolder))
+            .attr('download', '')
             .attr('class', 'btn btn-primary btn-download')
             .attr('title', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
             .text(translations.indicator.download_geojson + ' - ' + downloadLabel);
