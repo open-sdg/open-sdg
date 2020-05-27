@@ -14,8 +14,8 @@ body{
   padding: 10px;
   background: $backgroundColor;
   text-align: center;
-  border: 1px solid $text-color-dark;
-  color: $text-color-dark;
+  border: 1px solid $color-dark;
+  color: $color-dark;
   display: block;
 }
 
@@ -277,7 +277,7 @@ header {
       label {
         top: 23px;
         left: 25px;
-        color: $text-color-dark;
+        color: $color-dark;
       }
 
       button {

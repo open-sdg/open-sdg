@@ -2,6 +2,9 @@
 // [color|backgroundColor|etc] - [...modifiers]
 $backgroundColor: white !default;
 
+$color-dark: black !default;
+$color-light: white !default;
+
 $color-dark-highContrast: black !default;
 $color-light-highContrast: white !default;
 $color-highlight-highContrast: yellow !default;
@@ -18,16 +21,14 @@ $color-success: #5cb85c !default;
 $goal-colors: #E52B3D #DDA63A #4C9F38 #C42130 #FF3E24 #28BCE1 #FCC30B #A21942 #FD6925 #DD1367 #FD9C27 #BF8B2E #417D46 #0A96D8 #57BE2F #00689C #1F4A6A !default;
 
 $text-color: #333 !default;
-$text-color-dark: black !default;
-$text-color-light: white !default;
 
 $link-color: #337ab7 !default;
 $link-color-dark: #0275d8 !default;
 
 $horizontalRule-color: #ccc !default;
 
-$status-color-complete: $text-color-light !default;
-$status-color-inprogress: $text-color-light !default;
+$status-color-complete: $color-light !default;
+$status-color-inprogress: $color-light !default;
 $status-color-notstarted: $text-color !default;
 $status-color-notapplicable: $text-color !default;
 $status-backgroundColor-complete: #2B2B2B !default;
@@ -55,10 +56,10 @@ $loader-color: #FF6700 !default;
 // [component] - [element] - [color|backgroundColor|etc] - [...modifiers]
 $goal-banner-backgroundColors: $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor !default;
 $goal-banner-backgroundColor-highContrast: $color-dark-highContrast !default;
-$goal-banner-color: $text-color-dark !default;
+$goal-banner-color: $color-dark !default;
 $goal-banner-color-highContrast: $color-light-highContrast !default;
 
-$footer-text-color: $text-color-dark !default;
+$footer-text-color: $color-dark !default;
 $footer-text-color-highContrast: $color-light-highContrast !default;
 $footer-link-color: $footer-text-color !default;
 $footer-link-color-highContrast: $footer-text-color-highContrast !default;
@@ -77,7 +78,8 @@ $indicatorContent-horizontalRule-color: #faebcc !default;
 $search-resultMatch-color: yellow !default;
 $search-resultURL-color: green !default;
 
-$disclaimer-tag-color: #005ea5 !default;
+$disclaimer-tag-backgroundColor: #005ea5 !default;
+$disclaimer-tag-color: $color-light !default;
 $disclaimer-text-color: #3D3D3D !default;
 
 $goalTiles-tile-shadowColor: rgba(5,5,5,0.3) !default;

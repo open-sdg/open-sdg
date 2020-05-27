@@ -106,7 +106,7 @@
       }
       &.excluded {
         background-color: $indicator-field-backgroundColor-excluded;
-        color: $text-color-light;
+        color: $color-light;
 
         & input {
           display: none;
@@ -194,7 +194,7 @@
           width: auto;
           background-color: $backgroundColor;
           border: 1px solid $indicator-fieldButton-borderColor;
-          color: $text-color-dark;
+          color: $color-dark;
           float: none;
           position: static;
           text-align: center;
@@ -395,7 +395,7 @@
         margin-bottom: 2.5rem;
 
         .tags li{
-          color: $text-color-dark;
+          color: $color-dark;
         }
 
       }
@@ -405,7 +405,7 @@
       }
     }
     .indicator-cards .tags li{
-      color: $text-color-dark;
+      color: $color-dark;
     }
   }
   .goal-indicators:after {
@@ -420,7 +420,7 @@
       border: none;
       a {
         border: none;
-        color: $text-color-dark;
+        color: $color-dark;
       }
       &.active {
         a {

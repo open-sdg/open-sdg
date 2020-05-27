@@ -31,7 +31,7 @@
         font-size: 16px;
 
         &.notstarted{
-          border: 1px solid $text-color-dark;
+          border: 1px solid $color-dark;
           color: $status-color-notstarted;
         }
         &.complete {
@@ -52,7 +52,7 @@
     margin-left: 3px;
   }
   .goal-stats {
-    border: 1px solid $text-color-dark;
+    border: 1px solid $color-dark;
     font-size: 0;
     margin-top:10px;
     & span {
