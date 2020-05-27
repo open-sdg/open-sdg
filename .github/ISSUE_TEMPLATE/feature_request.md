@@ -2,7 +2,7 @@
 name: Request a feature
 about: Suggest an idea for Open SDG
 title: ''
-labels: ''
+labels: 'enhancement'
 assignees: ''
 
 ---
