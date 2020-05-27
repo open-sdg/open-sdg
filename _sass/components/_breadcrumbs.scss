@@ -12,9 +12,9 @@
 
 body.contrast-high {
   .breadcrumb {
-    background: $high-contrast-light-color;
+    background: $color-light-highContrast;
     li, a {
-      color: $high-contrast-dark-color !important;
+      color: $color-dark-highContrast !important;
     }
   }
 }

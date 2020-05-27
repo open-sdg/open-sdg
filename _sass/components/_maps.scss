@@ -8,7 +8,7 @@
       position: relative;
       height: 100%;
       width: 100%;
-      background: $background-color;
+      background: $backgroundColor;
       z-index: 99999;
       display: flex;
       align-items: center;
@@ -34,7 +34,7 @@
       }
     }
     .disaggregation-select-container {
-      background: $background-color;
+      background: $backgroundColor;
       padding: 5px;
       border: 2px solid rgba(0,0,0,0.3);
       border-radius: 5px;
@@ -67,19 +67,19 @@
           z-index: 1;
           &.left {
             border-width: 20px 0 0 20px;
-            border-color: transparent transparent transparent $background-color;
+            border-color: transparent transparent transparent $backgroundColor;
             left: 0;
           }
           &.right {
             border-width: 0 0 20px 20px;
-            border-color: transparent transparent $background-color transparent;
+            border-color: transparent transparent $backgroundColor transparent;
             right: 1px;
-            box-shadow: 1px 1px 1px 0px $map-legend-shadow-color;
+            box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
           }
         }
         .legend-value {
           padding: 0 4px;
-          background: $background-color;
+          background: $backgroundColor;
           position: absolute;
           z-index: 2;
           &.left {
@@ -88,7 +88,7 @@
           &.right {
             right: 1px;
           }
-          box-shadow: 1px 1px 1px 0px $map-legend-shadow-color;
+          box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
         }
       }
       #selection-list {
@@ -109,7 +109,7 @@
           }
           .selection-bar {
             border-radius: 2px 0 0 2px;
-            background: $map-legend-bar-color;
+            background: $map-legendBar-color;
             z-index: 1;
           }
           .selection-name {
@@ -118,7 +118,7 @@
           }
           &.no-value {
             .selection-name {
-              background: $map-legend-no-value-color;
+              background: $map-legendValue-color-noValue;
             }
             .selection-bar, .selection-value {
               display: none;
@@ -127,7 +127,7 @@
           .selection-value {
             z-index: 2;
             margin-right: 5px;
-            background-color: $map-legend-value-color;
+            background-color: $map-legendValue-color;
             padding: 3px;
             border-radius: 2px;
           }
