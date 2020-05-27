@@ -27,7 +27,7 @@ By default, data uploaded to an Open SDG platform is displayed on a chart and a 
 
 Some examples of data being shown on maps are:
 
-* [3.2.1 on Rwanda's Open SDG platform](https://sustainabledevelopment-rwanda.github.io/3-2-1/)
+* [5.1.a on Germany's national Open SDG platform](https://sustainabledevelopment-deutschland.github.io/5-1-a/)
 * [3.c.1 on UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/3-a-1/)
 
 For guidance on how set up your site and data in order to be able to display data on a map (as well as on a chart and table), see the [Maps page](maps.md).
