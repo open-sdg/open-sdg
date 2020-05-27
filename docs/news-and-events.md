@@ -27,4 +27,4 @@ The webinar will:
 
 Please send any questions and register interest with [Lucy Gwilliam](mailto:Lucy.Gwilliam@ons.gov.uk) by 3rd June 2020.
 
-[Download the draft agenda](https://github.com/open-sdg/open-sdg/blob/news-events-docs/docs/Open-SDG-Webinar-Agenda.pdf?raw=1)
+[Download the draft agenda](https://github.com/open-sdg/open-sdg/blob/master/docs/Open-SDG-Webinar-Agenda.pdf?raw=1)
