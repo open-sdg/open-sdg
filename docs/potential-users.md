@@ -63,4 +63,4 @@ To help you plan the set up of your platform and any support you may need, it's 
 
 ## Overview of setting up an Open SDG platform
 
-To see an overview of the processes involved with setting up an Open SDG platform, [download this summary diagram](https://github.com/open-sdg/open-sdg/blob/new-country-considerations/docs/platform_process-v1.pdf?raw=1)
+To see an overview of the processes involved with setting up an Open SDG platform, [download this summary diagram](https://github.com/open-sdg/open-sdg/blob/master/docs/platform_process-v1.pdf?raw=1)
