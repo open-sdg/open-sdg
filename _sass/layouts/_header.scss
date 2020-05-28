@@ -1,5 +1,5 @@
 body{
-  background: $background-color url('../img/sdgbg.png') top left repeat-x;
+  background: $backgroundColor url('../img/sdgbg.png') top left repeat-x;
   padding-top: 15px;
 }
 
@@ -12,10 +12,10 @@ body{
   left: 50%;
   margin-left: -125px;
   padding: 10px;
-  background: $background-color;
+  background: $backgroundColor;
   text-align: center;
-  border: 1px solid $text-dark-color;
-  color: $text-dark-color;
+  border: 1px solid $color-dark;
+  color: $color-dark;
   display: block;
 }
 
@@ -92,18 +92,19 @@ header {
       }
 
       &.contrast-default {
-        background: $high-contrast-light-color;
+        background: $color-light-highContrast;
         a {
-          color: $high-contrast-dark-color;
+          color: $color-dark-highContrast;
         }
       }
 
       &.contrast-high {
-        background: $high-contrast-dark-color;
+        background: $color-dark-highContrast;
         a {
-          color: $high-contrast-highlight-color;
+          color: $color-highlight-highContrast;
         }
       }
+
     }
     @media screen and (min-width: 769px) {
       > li:first-child {
@@ -177,8 +178,8 @@ header {
     clear: left;
 
     &.navbar-default {
-      color: $menu-mobile-link-color;
-      background: $menu-mobile-link-background-color;
+      color: $menu-link-color-mobile;
+      background: $menu-link-backgroundColor-mobile;
       margin-bottom: 10px;
       width: 100%;
       float: none;
@@ -195,17 +196,17 @@ header {
         cursor: pointer;
 
         &.active {
-          background: $menu-mobile-link-active-background-color;
+          background: $menu-link-backgroundColor-mobile-active;
         }
 
         span {
-          color: $menu-mobile-link-color;
+          color: $menu-link-color-mobile;
           display: block;
           padding: 15px;
         }
 
       	button {
-          color: $menu-mobile-link-color;
+          color: $menu-link-color-mobile;
           display: block;
           padding: 15px;
           border: 0;
@@ -218,7 +219,7 @@ header {
     }
 
     & .menu-target {
-      background: $menu-mobile-dropdown-color;
+      background: $menu-link-backgroundColor-mobile-active;
     }
 
     ul.navbar-nav {
@@ -233,23 +234,23 @@ header {
         cursor: pointer;
         a {
           display: block;
-          background: $menu-mobile-dropdown-color;
+          background: $menu-link-backgroundColor-mobile-active;
           padding: 6px 0 6px;
-          color: $menu-mobile-link-color;
+          color: $menu-link-color-mobile;
           font-size: 15px;
 
           &:hover {
-            color: $menu-mobile-link-color;
+            color: $menu-link-color-mobile;
           }
         }
 
         &.active a {
           border: none;
-          color: $menu-mobile-link-active-color;
+          color: $menu-link-color-mobile-active;
           font-weight: bold;
 
           &:hover {
-            color: $menu-mobile-link-active-color;
+            color: $menu-link-color-mobile-active;
           }
         }
 
@@ -267,7 +268,7 @@ header {
       label {
         top: 23px;
         left: 25px;
-        color: $text-dark-color;
+        color: $color-dark;
       }
 
       button {
@@ -314,21 +315,21 @@ body.contrast-high {
   .navbar {
     li {
       a {
-        color: $high-contrast-light-color;
+        color: $color-light-highContrast;
         &:hover, &:focus {
-          color: $high-contrast-highlight-color;
+          color: $color-highlight-highContrast;
         }
       }
     }
     li.active {
       a {
-        color: $high-contrast-highlight-color;
-        border-color: $high-contrast-highlight-color;
+        color: $color-highlight-highContrast;
+        border-color: $color-highlight-highContrast;
         &:hover {
-          color: $high-contrast-highlight-color;
+          color: $color-highlight-highContrast;
         }
         &:focus {
-          color: $high-contrast-highlight-color;
+          color: $color-highlight-highContrast;
         }
       }
     }
@@ -336,20 +337,20 @@ body.contrast-high {
 
   @media screen and (max-width: 768px) {
     .navbar.navbar-default {
-      background: $high-contrast-dark-color;
-      color: $high-contrast-light-color;
+      background: $color-dark-highContrast;
+      color: $color-light-highContrast;
     }
     .navbar .top-level li.active {
-      background: $high-contrast-light-color;
+      background: $color-light-highContrast;
       span {
-        color: $high-contrast-dark-color;
+        color: $color-dark-highContrast;
       }
     }
     .navbar .menu-target {
-      background: $high-contrast-dark-color;
+      background: $color-dark-highContrast;
     }
     .navbar ul.navbar-nav li a {
-      background: $high-contrast-dark-color;
+      background: $color-dark-highContrast;
     }
   }
 }

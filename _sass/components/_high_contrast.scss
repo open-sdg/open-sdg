@@ -23,23 +23,27 @@
 
     &.contrast-default {
       display: none;
-      background: $high-contrast-light-color;
+      background: $color-light-highContrast;
       a {
-        color: $high-contrast-dark-color;
+        color: $color-dark-highContrast;
       }
     }
 
     &.contrast-high {
       display: block;
-      background: $high-contrast-dark-color;
+      background: $color-dark-highContrast;
       a {
-        color: $high-contrast-highlight-color;
+        color: $color-highlight-highContrast;
       }
     }
   }
 }
 
 body.contrast-high {
+
+  li {
+    color: $color-light-highContrast;
+  }
 
   #accessibility-nav {
     li {
@@ -53,19 +57,19 @@ body.contrast-high {
     }
   }
 
-  background-color: $high-contrast-dark-color;
+  background-color: $color-dark-highContrast;
   .table {
-    background: $high-contrast-dark-color;
+    background: $color-dark-highContrast;
   }
 
   .table-hover {
     tbody tr:hover {
-      background: $high-contrast-highlight-color;
+      background: $color-highlight-highContrast;
       td {
-        color: $high-contrast-dark-color;
+        color: $color-dark-highContrast;
       }
       th {
-        color: $high-contrast-dark-color;
+        color: $color-dark-highContrast;
       }
       a {
         color: $link-color;
@@ -74,25 +78,45 @@ body.contrast-high {
     }
   }
 
-  .container, #main-content, header, footer, #disclaimer, .heading {
-    background: $high-contrast-dark-color;
-    border-color: $high-contrast-dark-color;
+  .container, #main-content, header, #disclaimer {
+    background: $color-dark-highContrast;
+    border-color: $color-dark-highContrast;
+  }
+
+  footer {
+    color: $footer-text-color-highContrast;
+    background: $footer-text-backgroundColor-highContrast;
+    border-color: $footer-text-backgroundColor-highContrast;
+    a {
+      color: $footer-link-color-highContrast;
+      &:hover, &:focus {
+        color: $footer-link-color-highContrast-hover;
+      }
+    }
+  }
+
+  .goal-banner {
+    background: $goal-banner-backgroundColor-highContrast;
+    border-color: $goal-banner-backgroundColor-highContrast;
+    h1, p {
+      color: $goal-banner-color-highContrast;
+    }
   }
 
   p, h2, h3, h4, span, td, th, a#text {
-    color: $high-contrast-light-color;
+    color: $color-light-highContrast;
   }
 
-  li, a {
-    color: $high-contrast-highlight-color;
+  a {
+    color: $color-highlight-highContrast;
   }
 
   h1 {
-    color: $high-contrast-light-color;
+    color: $color-light-highContrast;
   }
 
   li.contrast-default a {
-    color: $high-contrast-dark-color !important;
+    color: $color-dark-highContrast !important;
   }
 }
 
@@ -167,27 +191,20 @@ body.long {
 }
 
 body.contrast-high .site-intro .description{
-  color: $high-contrast-light-color;
+  color: $color-light-highContrast;
 }
 
 body.contrast-high #main-content .no-gutters img:not(#goal-18):hover {
-  box-shadow: 0px 0px 0px 5px $high-contrast-highlight-color;
-}
-
-body.contrast-high footer a {
-  color: $high-contrast-light-color;
-  &:hover, &:focus {
-    color: $high-contrast-highlight-color;
-  }
+  box-shadow: 0px 0px 0px 5px $color-highlight-highContrast;
 }
 
 body.contrast-high #disclaimer {
   .phase-tag {
-    background: $high-contrast-light-color;
-    color: $high-contrast-dark-color;
+    background: $color-light-highContrast;
+    color: $color-dark-highContrast;
   }
   .disclaimer-alert {
-    color: $high-contrast-light-color;
+    color: $color-light-highContrast;
   }
 }
 
@@ -204,12 +221,12 @@ body.contrast-high {
   #map {
     // Temporary code until high-contrast mode is implemented for maps.
     a {
-      color: $high-contrast-dark-color;
+      color: $color-dark-highContrast;
     }
     .selection-legend {
       .legend-values, #selection-list {
         li, span {
-          color: $high-contrast-dark-color;
+          color: $color-dark-highContrast;
         }
       }
     }

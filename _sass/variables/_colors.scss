@@ -1,11 +1,31 @@
+// Top-level color variables.
+// [color|backgroundColor|etc] - [...modifiers]
+$backgroundColor: white !default;
+
+$color-dark: black !default;
+$color-light: white !default;
+
+$color-dark-highContrast: black !default;
+$color-light-highContrast: white !default;
+$color-highlight-highContrast: yellow !default;
+$color-success-highContrast: green !default;
+$color-danger-highContrast: red !default;
+$color-medium-highContrast: #767676 !default;
+
+$color-danger: #E27874 !default;
+$color-warning: #f0ad4e !default;
+$color-success: #5cb85c !default;
+
+// Element-level color variables.
+// [element] - [color|backgroundColor|etc] - [...modifiers]
 $goal-colors: #E52B3D #DDA63A #4C9F38 #C42130 #FF3E24 #28BCE1 #FCC30B #A21942 #FD6925 #DD1367 #FD9C27 #BF8B2E #417D46 #0A96D8 #57BE2F #00689C #1F4A6A !default;
-$goal-banner-background-colors: white white white white white white white white white white white white white white white white white !default;
 
 $text-color: #333 !default;
 $text-dark-color: black !default;
 $text-on-dark-background-color: white !default;
 $background-color: white !default;
 $link-color: #1d70b8 !default;
+$link-color-dark: #0275d8 !default;
 $link-color-hover: #003078 !default;
 $link-color-visited: #4c2c92 !default;
 $link-color-visited-highcontrast: #F47738 !default;
@@ -13,74 +33,89 @@ $dark-highlight: #0275d8 !default;
 $footer-color: #000000 !default;
 $footer-color-highcontrast: #FFFFFF !default;
 
-$high-contrast-dark-color: black !default;
-$high-contrast-light-color: white !default;
-$high-contrast-highlight-color: yellow !default;
-$high-contrast-success-color: green !default;
-$high-contrast-danger-color: red !default;
-$high-contrast-medium-color: #767676 !default;
+$horizontalRule-color: #ccc !default;
 
-$danger-color: #E27874 !default;
-$warning-color: #f0ad4e !default;
-$success-color: #5cb85c !default;
+$status-color-complete: $color-light !default;
+$status-color-inprogress: $color-light !default;
+$status-color-notstarted: $text-color !default;
+$status-color-notapplicable: $text-color !default;
+$status-backgroundColor-complete: #2B2B2B !default;
+$status-backgroundColor-inprogress: #757575 !default;
+$status-backgroundColor-notstarted: white !default;
+$status-backgroundColor-notapplicable: repeating-linear-gradient(135deg, #ccc, white 10px, #ccc 10px, white 20px) !default;
 
-$menu-hover-border-bottom: #aaaaaa !default;
-$menu-link-color: #595959 !default;
-$menu-mobile-link-color: #E5E6E7 !default;
-$menu-mobile-link-background-color: #414042 !default;
-$menu-mobile-link-active-color: white !default;
-$menu-mobile-link-active-background-color: #58595B !default;
-$menu-mobile-dropdown-color: #58595B !default;
-
-$status-complete-color: $text-on-dark-background-color !default;
-$status-inprogress-color: $text-on-dark-background-color !default;
-$status-notstarted-color: $text-color !default;
-$status-notapplicable-color: $text-color !default;
-$status-complete-background-color: #2B2B2B !default;
-$status-inprogress-background-color: #757575 !default;
-$status-notstarted-background-color: white !default;
-$status-notapplicable-background-color: repeating-linear-gradient(135deg, #ccc, white 10px, #ccc 10px, white 20px) !default;
-
-$horizontal-rule-color: #ccc !default;
-$indicator-content-rule-color: #faebcc !default;
-
-$search-highlight-color: yellow !default;
-$search-url-color: green !default;
-
-$disclaimer-tag-color: #005ea5 !default;
-$disclaimer-text-color: #3D3D3D !default;
+$status-color-complete-highContrast: $color-dark-highContrast !default;
+$status-color-inprogress-highContrast: $color-dark-highContrast !default;
+$status-color-notstarted-highContrast: $color-light-highContrast !default;
+$status-color-notapplicable-highContrast: $color-dark-highContrast !default;
+$status-backgroundColor-complete-highContrast: $color-light-highContrast !default;
+$status-backgroundColor-inprogress-highContrast: $color-medium-highContrast !default;
+$status-backgroundColor-notstarted-highContrast: $color-dark-highContrast !default;
+$status-backgroundColor-notapplicable-highContrast: $status-backgroundColor-notapplicable !default;
 
 $button-color: #0F8243 !default;
-$button-pressed-color: #0b5d30 !default;
+$button-color-pressed: #0b5d30 !default;
 
-$goal-tiles-shadow-color: rgba(5,5,5,0.3) !default;
-$goal-tiles-hover-shadow-color: rgba(5,5,5,0.6) !default;
-
-$language-toggle-shadow-color: #a6a6a6 !default;
-
-$map-legend-shadow-color: #666 !default;
-$map-legend-no-value-color: repeating-linear-gradient(45deg, #FFF, #FFF 2px, #CCC 2px, #CCC 4px) !default;
-$map-legend-value-color: #ddd !default;
-$map-legend-bar-color: white !default;
+$backToTop-backgroundColor: $link-color-dark !default;
 
 $loader-color: #FF6700 !default;
 
-$indicator-disabled-color: #777 !default;
-$indicator-disabled-background-color: #ccc !default;
-$indicator-field-border-hover-color: #acacac !default;
-$indicator-selected-background-color: #555 !default;
-$indicator-possible-background-color: #dedede !default;
-$indicator-excluded-background-color: #666 !default;
-$indicator-field-border-color: #dedede !default;
-$indicator-selector-border-color: #ccc !default;
-$indicator-selector-hover-border-color: #555 !default;
-$indicator-hint-color: #666 !default;
-$indicator-field-button-border-color: #555 !default;
-$indicator-field-button-hover-background-color: #f5f3f3 !default;
-$indicator-field-label-border: #cdcdcd !default;
-$indicator-dataset-size-warning: #FFCC0B !default;
-$indicator-legend-color: #666 !default;
-$indicator-legend-hover-background-color: #eee !default;
+// Component-level color variables.
+// [component] - [element] - [color|backgroundColor|etc] - [...modifiers]
+$goal-banner-backgroundColors: $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor !default;
+$goal-banner-backgroundColor-highContrast: $color-dark-highContrast !default;
+$goal-banner-color: $color-dark !default;
+$goal-banner-color-highContrast: $color-light-highContrast !default;
 
-$indicator-tabs-border-color: #888 !default;
-$indicator-tabs-inactive-background-color: #eeeeee !default;
+$footer-text-color: $color-dark !default;
+$footer-text-color-highContrast: $color-light-highContrast !default;
+$footer-link-color: $footer-text-color !default;
+$footer-link-color-highContrast: $footer-text-color-highContrast !default;
+$footer-link-color-highContrast-hover: $color-highlight-highContrast !default;
+$footer-text-backgroundColor: $backgroundColor !default;
+$footer-text-backgroundColor-highContrast: $color-dark-highContrast !default;
+
+$menu-link-color: #595959 !default;
+$menu-link-color-mobile: #E5E6E7 !default;
+$menu-link-color-mobile-active: white !default;
+$menu-link-backgroundColor-mobile: #414042 !default;
+$menu-link-backgroundColor-mobile-active: #58595B !default;
+
+$indicatorContent-horizontalRule-color: #faebcc !default;
+
+$search-resultMatch-color: yellow !default;
+$search-resultURL-color: green !default;
+
+$disclaimer-tag-backgroundColor: #005ea5 !default;
+$disclaimer-tag-color: $color-light !default;
+$disclaimer-text-color: #3D3D3D !default;
+
+$goalTiles-tile-shadowColor: rgba(5,5,5,0.3) !default;
+$goalTiles-tile-shadowColor-hover: rgba(5,5,5,0.6) !default;
+
+$languageToggle-dropDown-shadowColor: #a6a6a6 !default;
+
+$map-legendValue-shadowColor: #666 !default;
+$map-legendValue-color-noValue: repeating-linear-gradient(45deg, #FFF, #FFF 2px, #CCC 2px, #CCC 4px) !default;
+$map-legendValue-color: #ddd !default;
+$map-legendBar-color: white !default;
+
+$indicator-field-color-disabled: #777 !default;
+$indicator-field-backgroundColor-disabled: #ccc !default;
+$indicator-field-borderColor-hover: #acacac !default;
+$indicator-field-backgroundColor-selected: #555 !default;
+$indicator-field-backgroundColor-possible: #dedede !default;
+$indicator-field-backgroundColor-excluded: #666 !default;
+$indicator-field-borderColor: #dedede !default;
+$indicator-selector-borderColor: #ccc !default;
+$indicator-selected-borderColor-hover: #555 !default;
+$indicator-hint-color: #666 !default;
+$indicator-fieldButton-borderColor: #555 !default;
+$indicator-fieldButton-borderColor-hover: #f5f3f3 !default;
+$indicator-fieldLabel-borderColor: #cdcdcd !default;
+$indicator-datasetWarning-backgroundColor: #FFCC0B !default;
+$indicator-legendSwatch-fillColor: #666 !default;
+$indicator-legendSwatch-backgroundColor-hover: #eee !default;
+
+$indicator-tabs-borderColor: #888 !default;
+$indicator-tabs-backgroundColor-inactive: #eeeeee !default;

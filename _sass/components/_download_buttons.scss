@@ -5,7 +5,7 @@
   background: $button-color !important;
 
   &:hover, &:active, &:focus {
-    background: $button-pressed-color !important;
+    background: $button-color-pressed !important;
   }
 }
 
@@ -42,15 +42,15 @@ h5 + .btn-download {
 }
 
 body.contrast-high {
-  .btn { background: $high-contrast-light-color !important; color: $high-contrast-dark-color !important;
+  .btn { background: $color-light-highContrast !important; color: $color-dark-highContrast !important;
     &:hover {
-      background: $high-contrast-highlight-color !important;
+      background: $color-highlight-highContrast !important;
     }
     &:focus {
-      background: $high-contrast-highlight-color !important;
+      background: $color-highlight-highContrast !important;
     }
   }
   #zip-download-info {
-    color: $high-contrast-light-color;
+    color: $color-light-highContrast;
   }
 }

@@ -7,7 +7,7 @@
 #search-results {
 
   span.match {
-    background-color: $search-highlight-color;
+    background-color: $search-resultMatch-color;
   }
 
   margin-top: 20px;
@@ -23,7 +23,7 @@
         font-size: 18px;
       }
       .url {
-        color: $search-url-color;
+        color: $search-resultURL-color;
         font-size: 16px;
       }
       &:hover {
@@ -40,17 +40,17 @@ body.contrast-high {
   #search-results {
 
     span.match {
-      color: $high-contrast-dark-color !important;
+      color: $color-dark-highContrast !important;
     }
 
     .search-result {
       a {
         .url {
-          color: $high-contrast-highlight-color !important;
+          color: $color-highlight-highContrast !important;
         }
       }
       .content {
-        color: $high-contrast-light-color !important;
+        color: $color-light-highContrast !important;
       }
     }
   }

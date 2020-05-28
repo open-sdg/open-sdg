@@ -4,6 +4,10 @@
 
 Yes. Open SDG is open source and is free for anyone to reuse.
 
+## What resources do I need to set up an Open SDG platform?
+
+To set up the platform out of the box and carry out basic customisations, you will need to use a computer and GitHub. If you want to customise your platform further, you may need additional technical resource such as a developer.
+
 ## How do I copy the Open SDG platform?
 
 The [Quick start](quick-start.md) guide gives technical
@@ -54,15 +58,27 @@ Open SDG can use an SDMX API endpoint or can use data and metadata in SDMX-ML fo
 
 ## In what formats are data available?
 
-Currently data can be downloaded in CSV format for every indicator that has data. For indicators that have maps, data can also be downloaded in GeoJSON format.
+Currently data can be downloaded in CSV format for every indicator that has data. For indicators that have maps, data can also be downloaded in GeoJSON format. The exact download paths depend on configuration choices, but here are general examples:
+
+**CSV**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/data/[INDICATOR CODE].csv
+
+e.g. https://onsdigital.github.io/sdg-data/data/1-2-1.csv
+
+**GeoJSON**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/geojson/[MAP LAYER NAME]/indicator_[INDICATOR CODE].geojson
+
+e.g. https://onsdigital.github.io/sdg-data/geojson/country/indicator_9-c-1.geojson
 
 ## Can data in a platform be accessed via API?
 
 The data and metadata for an Open SDG implementation is available at predictable and documented paths and so can be accessed programmatically as described below:
 
-**data**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/data/[INDICATOR CODE].json e.g. https://onsdigital.github.io/sdg-data/data/1-2-1.json
+**data**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/data/[INDICATOR CODE].json
 
-**metatdata**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/meta/[INDICATOR CODE].json e.g. https://onsdigital.github.io/sdg-data/meta/1-2-1.json
+e.g. https://onsdigital.github.io/sdg-data/data/1-2-1.json
+
+**metatdata**: https://[GITHUB ORGANISATION].github.io/[DATA REPO NAME]/meta/[INDICATOR CODE].json
+
+e.g. https://onsdigital.github.io/sdg-data/meta/1-2-1.json
 
 ## What is the difference between the double-repository and the single-repository approach?
 
