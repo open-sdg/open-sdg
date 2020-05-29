@@ -21,17 +21,11 @@ $color-success: #5cb85c !default;
 $goal-colors: #E52B3D #DDA63A #4C9F38 #C42130 #FF3E24 #28BCE1 #FCC30B #A21942 #FD6925 #DD1367 #FD9C27 #BF8B2E #417D46 #0A96D8 #57BE2F #00689C #1F4A6A !default;
 
 $text-color: #333 !default;
-$text-dark-color: black !default;
-$text-on-dark-background-color: white !default;
-$background-color: white !default;
 $link-color: #1d70b8 !default;
 $link-color-dark: #0275d8 !default;
 $link-color-hover: #003078 !default;
 $link-color-visited: #4c2c92 !default;
-$link-color-visited-highcontrast: #F47738 !default;
-$dark-highlight: #0275d8 !default;
-$footer-color: #000000 !default;
-$footer-color-highcontrast: #FFFFFF !default;
+$link-color-visited-highContrast: #F47738 !default;
 
 $horizontalRule-color: #ccc !default;
 
@@ -80,7 +74,7 @@ $menu-link-color-mobile: #E5E6E7 !default;
 $menu-link-color-mobile-active: white !default;
 $menu-link-backgroundColor-mobile: #414042 !default;
 $menu-link-backgroundColor-mobile-active: #58595B !default;
-$menu-hover-border-bottom: #aaaaaa !default;
+$menu-link-borderBottomColor-hover: #aaaaaa !default;
 
 $indicatorContent-horizontalRule-color: #faebcc !default;
 

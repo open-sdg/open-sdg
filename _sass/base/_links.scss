@@ -16,7 +16,7 @@ a:visited{
 }
 
 body.contrast-high a:visited{
-  color: $link-color-visited-highcontrast;
+  color: $link-color-visited-highContrast;
 }
 
 .nav li a,
@@ -30,7 +30,7 @@ a.btn{
 }
 
 .navbar ul.navbar-nav li:not(.contrast) a:hover{
-    border-bottom: 2px solid $menu-hover-border-bottom;
+    border-bottom: 2px solid $menu-link-borderBottomColor-hover;
 }
 
 #search-results .search-result a {
@@ -38,13 +38,13 @@ a.btn{
 }
 
 footer a{
-    color: $footer-color;
+    color: $footer-link-color-highContrast;
 }
 
 footer a:hover{
-    color: lighten($footer-color, 20%);
+    color: lighten($footer-link-color-highContrast, 20%);
 }
 
 body.contrast-high footer a:visited{
-  color: $footer-color-highcontrast;
+  color: $footer-link-color-highContrast;
 }
