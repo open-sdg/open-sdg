@@ -1,13 +1,17 @@
 .notapplicable {
+  background-color: $status-backgroundColor-notapplicable;
   background: $status-backgroundColor-notapplicable;
 }
 .notstarted {
+  background-color: $status-backgroundColor-notstarted;
   background: $status-backgroundColor-notstarted;
 }
 .inprogress {
+  background-color: $status-backgroundColor-inprogress;
   background: $status-backgroundColor-inprogress;
 }
 .complete {
+  background-color: $status-backgroundColor-complete;
   background: $status-backgroundColor-complete;
 }
 
@@ -138,21 +142,25 @@ body.contrast-high {
   }
 
   .complete{
+    background-color: $status-backgroundColor-complete-highContrast;
     background: $status-backgroundColor-complete-highContrast;
     color: $status-color-complete-highContrast !important;
   }
 
   .inprogress{
+    background-color: $status-backgroundColor-inprogress-highContrast;
     background: $status-backgroundColor-inprogress-highContrast;
     color: $status-color-inprogress-highContrast;
   }
 
   .notstarted{
+    background-color: $status-backgroundColor-notstarted-highContrast;
     background: $status-backgroundColor-notstarted-highContrast;
     color: $status-color-notstarted-highContrast !important;
   }
 
   .notapplicable{
+    background-color: $status-backgroundColor-notapplicable-highContrast;
     background: $status-backgroundColor-notapplicable-highContrast;
     color: $status-color-notapplicable-highContrast !important;
   }
