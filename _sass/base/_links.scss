@@ -38,11 +38,11 @@ a.btn{
 }
 
 footer a{
-    color: $footer-link-color-highContrast;
+    color: $footer-link-color;
 }
 
 footer a:hover{
-    color: lighten($footer-link-color-highContrast, 20%);
+    color: lighten($footer-link-color, 20%);
 }
 
 body.contrast-high footer a:visited{
