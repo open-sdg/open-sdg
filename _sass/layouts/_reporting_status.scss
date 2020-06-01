@@ -1,7 +1,9 @@
 .notapplicable {
   background: $status-backgroundColor-notapplicable;
 }
-
+.notstarted {
+  background: $status-backgroundColor-notstarted;
+}
 .inprogress {
   background-color: $status-backgroundColor-inprogress;
 }
