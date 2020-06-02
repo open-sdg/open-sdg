@@ -4,7 +4,7 @@ This document will define the common terminology used through this platform's do
 
 ## Git
 
-This platform, its data, and its metadata, are all powered by files. Changes to these files are tracked (or "versioned") by the industry-standard free sotware called __Git__. Thanks to Git, a complete history of every change to the platform (and its data) will always be available.
+Git is a free industry-standard version control system that makes it easier to track changes to files. An Open SDG platform, its data and its metadata, are all powered by files. Changes to these files are tracked (or "versioned") by Git ensuring a complete history of every change to the platform (and its data and metadata) will always be available.
 
 ## Repository
 
@@ -57,7 +57,7 @@ To illustrate, here are a few examples of translation keys:
 
 ## Disaggregations
 
-To "disaggregate" a data series is to add additional statistics that describe only a portion of the total. For example, to add additional statistics for "Female" and for "Male".
+Disaggregated data is data that has been broken down by detailed sub-categories for example gender, age and ethnicity. 
 
 ## Headline
 
