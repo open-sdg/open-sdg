@@ -1,0 +1,50 @@
+a,
+a:hover{
+  text-decoration: underline;
+}
+
+a{
+  color: $link-color;
+}
+
+a:hover{
+  color: $link-color-hover;
+}
+
+a:visited{
+  color: $link-color-visited;
+}
+
+body.contrast-high a:visited{
+  color: $link-color-visited-highContrast;
+}
+
+.nav li a,
+.nav li a:hover,
+a.btn{
+  text-decoration: none;
+}
+
+.navbar ul.navbar-nav li:not(.contrast) a{
+    border-bottom: 2px solid transparent;
+}
+
+.navbar ul.navbar-nav li:not(.contrast) a:hover{
+    border-bottom: 2px solid $menu-link-borderBottomColor-hover;
+}
+
+#search-results .search-result a {
+    text-decoration: none;
+}
+
+footer a{
+    color: $footer-link-color;
+}
+
+footer a:hover{
+    color: lighten($footer-link-color, 20%);
+}
+
+body.contrast-high footer a:visited{
+  color: $footer-link-color-highContrast;
+}

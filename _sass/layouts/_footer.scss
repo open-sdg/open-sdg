@@ -18,13 +18,6 @@ footer {
       padding: 5px 0;
     }
   }
-  a {
-    color: $footer-link-color;
-    text-decoration: underline;
-    &:hover, &:focus {
-      color: lighten($footer-link-color, 20%);
-    }
-  }
 
   #footerLinks ul {
     padding-left: 0;
