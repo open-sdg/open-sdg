@@ -1,4 +1,4 @@
-<img alt="Open SDG logo" src="img/OpenSDG.png" height="200" width="600" />
+<img alt="Open SDG logo" src="img/OpenSDG.png" width="525" />
 
 <h1>Welcome to the Open SDG community</h1>
 
