@@ -66,6 +66,10 @@
 * Heading styling / font change (#659)
 * Move colored bar to top of page (#661)
 * More whitespace around search bar/logo (#667)
+* Support transparent high-contrast goal images (#671)
+* Allow easier customisation of colors through Sass variables(#700, #715, #723)
+* Bugfix for search "boost" functionality (#717)
+* Add Github issue templates (#718)
 
 Breaking changes:
 

@@ -44,6 +44,7 @@ This release includes the following:
 * Audit and cleanup of the use of headings throughout the platform
 * Move colored bar to top of page
 * More whitespace around search bar/logo
+* Easier method of customising the colors in the platform ("Sass variables")
 
 ## 0.10.0
 
