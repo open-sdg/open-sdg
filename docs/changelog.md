@@ -70,6 +70,7 @@
 * Allow easier customisation of colors through Sass variables(#700, #715, #723)
 * Bugfix for search "boost" functionality (#717)
 * Add Github issue templates (#718)
+* Sitewide link styling (#705)
 
 Breaking changes:
 
