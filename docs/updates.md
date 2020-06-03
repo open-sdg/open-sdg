@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 1.0.0
 
-2020-04-08
+8 April 2020
 
 Although Open SDG has been in use and production-ready throughout its evolution, the release of version 1.0.0 brings a stable base of documentation and functionality to the platform. Sites upgrading to version 1.0.0 can enjoy the latest batch of features and fixes, as well as the security of consistent and future-proof configuration.
 
@@ -39,10 +39,17 @@ This release includes the following:
 * More intuitive behavior with the disaggregation drop-downs
 * Guide: automatic site builds when the data changes
 * Redesign of the disclaimer, and new disclaimer-related configuration options
+* Style updates on goal pages
+* Move indicator available above indicator content
+* Audit and cleanup of the use of headings throughout the platform
+* Move colored bar to top of page
+* More whitespace around search bar/logo
+* Easier method of customising the colors in the platform ("Sass variables")
+* Standardize styling of links (color and decoration) across the platform
 
 ## 0.10.0
 
-2019-11-25
+25 November 2019
 
 This release includes the following:
 
@@ -53,7 +60,7 @@ This release includes the following:
 
 ## 0.9.0
 
-2019-09-12
+12 September 2019
 
 This release includes the following:
 
@@ -63,7 +70,7 @@ This release includes the following:
 
 ## 0.8.0
 
-2019-08-23
+23 August 2019
 
 This release includes the following:
 
@@ -79,7 +86,7 @@ This release includes the following:
 
 ## 0.7.0
 
-2019-07-19
+19 July 2019
 
 This release includes the following:
 
@@ -92,7 +99,7 @@ This release includes the following:
 
 ## 0.6.0
 
-2019-06-07
+7 June 2019
 
 This release includes the following:
 
@@ -107,7 +114,7 @@ This release includes the following:
 
 ## 0.5.0
 
-2019-04-04
+4 April 2019
 
 This release includes the following:
 
@@ -121,7 +128,7 @@ This release includes the following:
 
 ## 0.4.0
 
-2019-03-08
+8 March 2019
 
 This release includes the following:
 
@@ -134,7 +141,7 @@ This release includes the following:
 
 ## 0.3.0
 
-2019-01-14
+14 January 2019
 
 This release includes the following:
 
@@ -143,7 +150,7 @@ This release includes the following:
 
 ## 0.2.0
 
-2019-01-07
+7 January 2019
 
 This release includes the following:
 
@@ -154,6 +161,6 @@ This release includes the following:
 
 ## 0.1.0
 
-2018-12-04
+4 December 2018
 
 This is the initial release, consisting of code developed in collaboration between teams in the UK and the US. This release is production-ready, but further development and documentation will be done, leading up to a 1.0.0 release.

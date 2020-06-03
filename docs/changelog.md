@@ -57,6 +57,20 @@
 * Hide the sub-categories when there are no disaggregations (#604)
 * Automatic site builds whenever the data changes (#605)
 * Disclaimer configuration and redesign (#620)
+* High-contrast support for y-axis scale label (#621)
+* Goal page styling updates (#622)
+* Fix navigation hover issue (#626)
+* Indicator page refactor with more components (#646)
+* indicatorModel.js refactor (#652)
+* Move indicator available above indicator content (#654)
+* Heading styling / font change (#659)
+* Move colored bar to top of page (#661)
+* More whitespace around search bar/logo (#667)
+* Support transparent high-contrast goal images (#671)
+* Allow easier customisation of colors through Sass variables(#700, #715, #723)
+* Bugfix for search "boost" functionality (#717)
+* Add Github issue templates (#718)
+* Sitewide link styling (#705)
 
 Breaking changes:
 
@@ -100,6 +114,7 @@ This is a major version upgrade and contains some breaking changes. Full technic
 * The `remotedatabaseurl` setting is no longer supported. Use `remote_data_prefix` instead.
 * The `custom_css` configuration option is deprecated. Override [the `_sass/custom.scss` file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
 * The H2 on indicator pages is now controlled by the `indicator_available` metadata field, rather than `graph_title`.
+* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](metadata-format.md#starting-values).
 
 ## 0.10.0
 

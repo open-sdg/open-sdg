@@ -55,6 +55,10 @@ If you are using the default data management approach -- .CSV files for data and
 
 If you are not able to use this new YAML-based configuration approach, or you would prefer not to, you can use the sdg-build classes directly, as demonstrated in the [sdg-build example](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg.py). This requires some knowledge of Python.
 
+### Update some special metadata fields, if you use them
+
+The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](../metadata-format.md#starting-values). If you use `data_start_values` for any indicators, update their structure before going further.
+
 ### Confirm that your data and metadata passes validation
 
 The validation rules for data and metadata have changed, in some ways becoming more strict. To save time in resolving any issues, you can run the validation locally (if you have Python 3 installed) like so:
