@@ -104,16 +104,7 @@ header {
           color: $color-highlight-highContrast;
         }
       }
-      &:not(.contrast) {
-        a{
-          border-bottom: 2px solid transparent;
 
-          &:hover{
-            border-bottom: 2px solid $menu-link-color;
-          }
-        }
-
-      }
     }
     @media screen and (min-width: 769px) {
       > li:first-child {
