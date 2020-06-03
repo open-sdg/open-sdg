@@ -4,7 +4,7 @@
 
 It is built exclusively with open-source libraries and tools and can be hosted and maintained using free services.
 
-Open SDG is the result of collaboration between the UK [Office for National Statistics](https://www.ons.gov.uk/aboutus) (ONS), US government and the nonprofit [Center for Open Data Enterprise](https://www.opendataenterprise.org/) (CODE).
+Open SDG is the result of collaboration between the UK [Office for National Statistics](https://www.ons.gov.uk/aboutus) (ONS), US government, the nonprofit [Center for Open Data Enterprise](https://www.opendataenterprise.org/) (CODE) and members of the Open SDG community.
 
 # Why choose a reporting platform?
 
