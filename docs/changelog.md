@@ -113,6 +113,7 @@ This is a major version upgrade and contains some breaking changes. Full technic
 * The `remotedatabaseurl` setting is no longer supported. Use `remote_data_prefix` instead.
 * The `custom_css` configuration option is deprecated. Override [the `_sass/custom.scss` file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
 * The H2 on indicator pages is now controlled by the `indicator_available` metadata field, rather than `graph_title`.
+* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](metadata-format.md#starting-values).
 
 ## 0.10.0
 
