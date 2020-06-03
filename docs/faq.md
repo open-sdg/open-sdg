@@ -27,6 +27,10 @@ be needed to do this. The [Customisation](customisation.md) section gives detail
 Yes. Open SDG has been designed to be multilingual. It is available in the six official UN languages (English, French, Russian, Spanish, Arabic, Chinese) and more (German, Armenian). The [Translation](translation.md) section gives more technical information, including
 how to add another language.
 
+## What software does Open SDG use?
+
+Open SDG is built exclusively with free open-source libraries and tools. A high-level summary of the technologies used is available on the [requirements page](requirements.md). The software that developers will need is detailed on the [development page](development.md).
+
 ## Can I monitor traffic to an Open SDG platform?
 
 Yes. It's easy to start monitoring traffic as Google Analytics functionality has been built in to Open SDG. You need to sign in to Google, [create a Google Analytics account](https://analytics.google.com/analytics/web/provision/#/provision/create) and obtain a tracking code which you then store in your copy of Open SDG.
