@@ -1,28 +1,22 @@
-<h1>What is a national reporting platform?</h1>
+<h1>What is Open SDG?</h1>
 
-A national reporting platform (NRP) refers to an integrated web site, databases, and associated IT infrastructure to gather, host, secure, and display information. This platform is focused on the collection and dissemination of the Sustainable Development Goals (SDGs) indicator statistics, metadata and other related information including data sources. In order to conform with the UN’s [Fundamental Principles of Official Statistics](https://unstats.un.org/unsd/dnss/gp/fundprinciples.aspx), the minimum characteristics an SDG NRP should have are that it should:
+[Open SDG](https://github.com/open-sdg/open-sdg)  is an open source, free-to-reuse platform for managing and publishing data and statistics related to the [UN Sustainable Development Goals](https://www.un.org/sustainabledevelopment/sustainable-development-goals/) (SDGs). 
 
-* Be managed by national statistical offices.
-* Feature official statistics and metadata according to established standard methodology.
-* Be publically accessible.
-* Allow for feedback from data users.
-* Feature open source (free) technology.
+It is built exclusively with open-source libraries and tools and can be hosted and maintained using free services.
 
-# Why choose an NRP?
+Open SDG is the result of collaboration between the UK [Office for National Statistics](https://www.ons.gov.uk/aboutus) (ONS), US government and the nonprofit [Center for Open Data Enterprise](https://www.opendataenterprise.org/) (CODE).
 
-An NRP tool facilitates national reporting by improving communication:
+# Why choose a reporting platform?
 
-* Gather, disseminate, and track national data on the SDG indicators, including identification of data gaps.
-* Report national data to be harmonized for international purposes (i.e. global indicator database).
+Using a reporting platform such as Open SDG facilitates countries and organisations to:
+
+* Gather, disseminate, and track national or local data on the SDG indicators, including identification of data gaps.
 * Improve access to official statistics and metadata.
-* Improve communication between data providers, NSOs, custodian agencies, and other stakeholders.
 
-# What does the NRP cost?
+For countries, a national reporting platform also enables them to:
 
-Absolutely nothing! You are free to use this platform and modify it in any way you feel is necessary to facilitate your country's or region's needs. This NRP is built soley upon open-source technologies and so there are no software costs. The only hardware costs are the machine(s) you choose to use to create your own version of this site. See the [quick start](quick-start.md) for details on how to set up the platform using free automation and hosting from [Github](https://github.com). Minimal staff time to copy, adapt, populate, and maintain the platform is also needed, and can be handled by part-time web developers, statisticians, and managers.
+* Report country national data to be harmonized for international purposes (i.e. UN global indicator database).
+* Improve communication between data providers, National Statistics Offices (NSOs), custodian agencies, and other stakeholders.
 
-# What are the IT requirements?
 
-For a high-level summary of the technologies used by this platform, see the [requirements page](requirements.md).
 
-There are ultimately two contributing users of the NRP: data managers/providers and developers. Data managers and providers do not need anything other than a computer with an internet connection and a web browser. Developers will need more software to be able to build the website on their local machine to test any changes they make before making these changes live; these requirements are detailed on the [development page](development.md).
