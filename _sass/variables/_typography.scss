@@ -8,3 +8,7 @@ $h1-fontSize: 36px !default;
 $h2-fontSize: 27px !default;
 $h3-fontSize: 24px !default;
 $leadCopy-fontSize: 22px !default;
+
+// Component-level typography variables.
+// [component] - [element] - [fontSize|fontWeight|etc] - [...modifiers]
+$searchBar-input-fontSize: 16px !default;
