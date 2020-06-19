@@ -8,7 +8,7 @@
   <div role="tabpanel" class="tab-pane" id="mapview" class="map">
     {% include components/indicator/map.html %}
   </div>
-  {% if page.indicator.embedded_feature_url %}
+  {% if page.indicator.embedded_feature_url or page.indicator.embedded_feature_iframe %}
   <div role="tabpanel" class="tab-pane" id="embeddedmapview" class="embedded-map">
     {% include components/indicator/embedded-feature.html %}
   </div>
