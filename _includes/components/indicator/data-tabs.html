@@ -8,7 +8,7 @@
   <li role="presentation" class="nav-item map" style="display:none">
     <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}>{{ page.t.indicator.map }}</a>
   </li>
-  {%- if page.indicator.embedded_feature_url or if page.indicator.embedded_feature_iframe -%}
+  {%- if page.indicator.embedded_feature_url or page.indicator.embedded_feature_iframe -%}
   <li role="presentation" class="nav-item embedded-map">
     <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ page.indicator.embedded_feature_tab_title }}</a>
   </li>
