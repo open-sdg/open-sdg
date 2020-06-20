@@ -1,12 +1,12 @@
 body{
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: $fontSize;
 }
 
-h1{ font-size: 36px;}
-h2{ font-size: 27px;}
-h3{ font-size: 24px;}
-.normal-copy { font-size: 16px; }
-.lead-copy { font-size: 22px; }
+h1{ font-size: $h1-fontSize; }
+h2{ font-size: $h2-fontSize; }
+h3{ font-size: $h3-fontSize; }
+.lead-copy { font-size: $leadCopy-fontSize; }
 
 .goal-banner {
   a {

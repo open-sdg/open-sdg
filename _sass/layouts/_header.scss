@@ -149,7 +149,7 @@ header {
       height: 34px;
       transition: width 0.4s;
       margin-top: 5px;
-      font-size: 15px;
+      font-size: $searchBar-input-fontSize;
     }
   }
 }
