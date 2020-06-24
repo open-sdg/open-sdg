@@ -172,8 +172,13 @@ You may want to add an additional feature which isn't created from data, such as
 * `embedded_feature_title` - the title to be shown above the embedded feature. Examples:
     * My embedded chart
     * my_translatins.1-1-1-embedded-chart
-* `embedded_feature_url` - the URL of feature that you want to embed. Examples:
+    
+You can either specify a URL or some HTML for the feature you want to embed:
+
+* `embedded_feature_url` - the URL of feature that you want to embed. You may use this when you have control over the original feature that you want to embed, and don't need to make any changes e.g. if the feature is already the correct size. Examples:
     * http://example.com/embed-1-1-1.html
+* `embedded_feature_html` - HTML code of the feature that you want to embed. You may use this when you don't have control of the original feature that you want to embed, and so need to make some changes e.g. to the size, title, or other attributes. Example:
+    * `<iframe width="1110" height="700" title="Childhood Vaccination Coverage Statistics" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3NWZhNzItMTIyZS00OWM2LTg0MzMtOGY5YTJjMGY0MjI1IiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>`
 
 ## Non-Standard Information
 
