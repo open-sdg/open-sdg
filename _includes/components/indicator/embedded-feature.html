@@ -9,9 +9,9 @@
         <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ page.indicator.embedded_feature_url }}', {});})</script>
       </div>
     {% endif %}
-    {% if page.indicator.embedded_feature_iframe %}
+    {% if page.indicator.embedded_feature_html %}
       <div class="embedded-map" id="embeddedmapframe">
-         {{ page.indicator.embedded_feature_iframe }}
+         {{ page.indicator.embedded_feature_html }}
       </div>
     {% endif %}
     <div class="embedded-map" id="embeddedmapframe">
