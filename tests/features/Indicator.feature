@@ -46,6 +46,7 @@ Feature: Indicator
     Then I should see an "available indicator" element
     And I should see "Name of available indicator"
     And I am on "/1-2-1"
+    And I wait 3 seconds
     Then I should not see an "available indicator" element
     And I should not see "Name of available indicator"
 
