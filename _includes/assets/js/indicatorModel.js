@@ -59,7 +59,7 @@ var indicatorModel = function (options) {
   else {
     this.hasUnits = false;
   }
-  if (helpers.dataHasSerieses(this.data)) {
+  if (helpers.SERIES_TOGGLE && helpers.dataHasSerieses(this.data)) {
     this.hasSerieses = true;
     this.serieses = helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.data);
     this.selectedSeries = this.serieses[0];

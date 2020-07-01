@@ -476,6 +476,14 @@ search_index_extra_fields:
   - national_agency
 ```
 
+### series_toggle
+
+_Optional_: This setting enables the special treatment of the "Series" column in the data. If set to `true`, when an indicator's data includes a "Series" column, it will be displayed above "Units" as radio buttons. If omitted or `false`, the normal behavior is that the "Series" column will display below "Units" as checkboxes. Example:
+
+```nohighlight
+series_toggle: true
+```
+
 ### sharethis_property
 
 _Optional_: This setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
