@@ -203,6 +203,9 @@ header {
           color: $menu-link-color-mobile;
           display: block;
           padding: 15px;
+          &[data-target="search"] {
+            text-transform: capitalize;
+          }
         }
 
       	button {
