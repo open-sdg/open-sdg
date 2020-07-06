@@ -155,7 +155,7 @@ function getBaseDataset() {
  * @return {string} Human-readable description of combo
  */
 function getCombinationDescription(combination, fallback) {
-  var keys = Object.keys(combination);
+  var keys = Object.keys(combination).sort();
   if (keys.length === 0) {
     return fallback;
   }
