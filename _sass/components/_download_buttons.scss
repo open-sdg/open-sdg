@@ -3,9 +3,13 @@
   margin-right: 0.8rem;
   border: none !important;
   background: $button-color !important;
+  color: $button-foregroundColor !important;
 
   &:hover, &:active, &:focus {
     background: $button-color-pressed !important;
+  }
+  &:visited {
+    color: $button-foregroundColor-visited !important;
   }
 }
 
