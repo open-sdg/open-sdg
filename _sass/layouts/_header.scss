@@ -130,6 +130,9 @@ header {
     clear: both;
     float: right;
     margin-bottom: 20px;
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 0;
+    }
 
     label {
       position: absolute;
@@ -239,14 +242,14 @@ header {
           color: $menu-link-color-mobile;
           font-size: 15px;
 
-          &:hover {
+          &:hover, &:focus {
             color: $menu-link-color-mobile;
           }
         }
 
-        &.active a {
-          border: none;
+        &.nav-link.active a {
           color: $menu-link-color-mobile-active;
+          background: $menu-link-backgroundColor-mobile-active;
           font-weight: bold;
 
           &:hover {
@@ -275,7 +278,7 @@ header {
         display: inline-flex;
         position: absolute;
         right: 20px;
-	top: -3px
+        top: -3px
       }
 
       input {
