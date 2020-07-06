@@ -465,15 +465,15 @@ var indicatorView = function (model, options) {
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
 
-  this.getGridColor = function(contrast=null) {
+  this.getGridColor = function(contrast) {
     return this.isHighContrast(contrast) ? '#222' : '#ddd';
   };
 
-  this.getTickColor = function(contrast=null) {
+  this.getTickColor = function(contrast) {
     return this.isHighContrast(contrast) ? '#fff' : '#000';
   }
 
-  this.isHighContrast = function(contrast=null) {
+  this.isHighContrast = function(contrast) {
     if (contrast) {
       return contrast === 'high';
     }
