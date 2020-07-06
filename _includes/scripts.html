@@ -36,7 +36,7 @@ $(function() {
       if (domData.showdata) {
 
         $('.async-loading').each(function(i, obj) {
-            $(obj).append($('<img />').attr('src', $(obj).data('img')));
+            $(obj).append($('<img />').attr('src', $(obj).data('img')).attr('alt', translations.indicator.loading));
         });
 
         var remoteUrl = '/comb/' + domData.id + '.json';
