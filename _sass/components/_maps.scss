@@ -43,6 +43,9 @@
       }
     }
     .selection-legend {
+      @media only screen and (max-width: 680px) {
+        display: none;
+      }
       background-color: rgba(150, 150, 150, 0.6);
       padding: 0;
       width: 300px;
