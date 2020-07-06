@@ -6,10 +6,10 @@ $(function() {
     topLevelSearchLink.text('Search');
     $('.top-level li').removeClass('active');
     $('.top-level span').removeClass('open');
-  };  
-  
+  };
+
   var topLevelMenuToggle = document.querySelector("#menuToggle");
-  
+
   topLevelMenuToggle.addEventListener("click", function(){
     setTopLevelMenuAccessibilityActions();
   });
@@ -51,16 +51,16 @@ $(function() {
 
     if(target === 'search') {
       $(this).toggleClass('open');
-      
+
       if($(this).hasClass('open') || !wasVisible) {
-        $(this).text('Hide');
+        $(this).text(translations.general.hide);
       } else {
-        $(this).text('Search');
+        $(this).text(translations.search.search);
       }
     } else {
       // menu click, always hide search:
       topLevelSearchLink.removeClass('open');
-      topLevelSearchLink.text('Search');
+      topLevelSearchLink.text(translations.search.search);
     }
 
     if(!wasVisible) {
