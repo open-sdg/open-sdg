@@ -4,16 +4,21 @@
 {%- assign indicator_singular = page.t.general.indicator | downcase -%}
 {%- assign indicators_plural = page.t.general.indicators | downcase -%}
 
+{% assign reporting_data = site.data.reporting %}
+{% if site.data[page.language].reporting %}
+  {% assign reporting_data = site.data[page.language].reporting %}
+{% endif %}
+
 <div id="main-content" class="container reportingstatus">
 
   {%- assign extra_fields = false -%}
-  {%- for extra_field in site.data.reporting.extra_fields -%}
+  {%- for extra_field in reporting_data.extra_fields -%}
     {%- assign extra_fields = true -%}
   {%- endfor -%}
 
   <h1>{{ page.t.status.reporting_status }}</h1>
 
-  {%- assign overall = site.data.reporting.overall -%}
+  {%- assign overall = reporting_data.overall -%}
   <div class="goal goal-overall">
       <div class="details">
         <h2 class="status-goal">
@@ -48,7 +53,7 @@
     <li role="presentation" class="nav-item active">
       <a class="nav-link" data-toggle="tab" href="#goalsview" aria-controls="goals" role="tab" {% include autotrack.html preset="tab_reporting_status_goals" category="Tab change" action="Change reporting status view" label="Change reporting status view to goals" %}>{{ page.t.status.status_by_goal }}</a>
     </li>
-    {% for extra_field in site.data.reporting.extra_fields %}
+    {% for extra_field in reporting_data.extra_fields %}
     {% assign extra_field_name = extra_field[0] %}
     {% assign extra_field_translated = extra_field_name | translate_metadata_field %}
     {% assign extra_field_autotrack = 'Change reporting status view to ' | append: extra_field_name %}
@@ -65,7 +70,7 @@
   <div class="tab-content reporting-status-view">
     <div role="tabpanel" class="tab-pane active" id="goalsview">
   {% endif %}
-  {%- for goalreport in site.data.reporting.goals -%}
+  {%- for goalreport in reporting_data.goals -%}
     {%- assign goal = goalreport.goal | downcase | sdg_lookup -%}
     <div class="goal">
         <div class="frame">
@@ -104,7 +109,7 @@
   {%- endfor -%}
   {% if extra_fields %}
     </div>
-    {%- for extra_field in site.data.reporting.extra_fields -%}
+    {%- for extra_field in reporting_data.extra_fields -%}
     {% assign extra_field_name = extra_field[0] %}
     <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}view">
       {%- for fieldreport in extra_field[1] -%}

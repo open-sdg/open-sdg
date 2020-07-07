@@ -26,6 +26,7 @@ const driver = new mink.Mink({
     "the first language option": ".nav .language-options li:first-child a",
     "the last language option": ".nav .language-options li:last-child a",
     "goal status": ".goal .frame",
+    "the second reporting status tab": ".nav-tabs.reporting-status-view li:last-child a",
     "the search box": ".navbar #indicator_search",
     "disaggregation filter": ".variable-selector",
     "the filter drop-down button": ".variable-selector .accessBtn",
