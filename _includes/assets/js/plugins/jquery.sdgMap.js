@@ -87,7 +87,7 @@
     },
 
     // Build content for a tooltip.
-    getTooltipContent(feature) {
+    getTooltipContent: function(feature) {
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
       if (tooltipData) {
