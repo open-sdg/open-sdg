@@ -1,0 +1,22 @@
+.layout-frontpage-alt {
+
+  .frontpage-goals-grid {
+    margin: 40px 0 20px 0;
+    border-top: 2px solid lightgrey;
+  }
+
+  .goal-tiles {
+    .goal-tile {
+      @media only screen and (min-width: 767px) {
+        width: 11%;
+      }
+    }
+  }
+
+  .frontpage-cards {
+    margin-top: 40px;
+    .row {
+      margin-bottom: 20px;
+    }
+  }
+}

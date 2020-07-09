@@ -1,0 +1,25 @@
+<div class="card col-xs-12 col-sm-6 col-md-4">
+
+  {% if include.card.title %}
+  <h2 class="card-title"
+      {% if include.card.rule_color %}
+      style="border-color: {{ include.card.rule_color }};"
+      {% endif %}
+  >{{ include.card.title | t }}</h2>
+  {% endif %}
+
+  {% if include.card.content %}
+  <div class="card-content">{{ include.card.content | t | markdownify }}</div>
+  {% endif %}
+
+  {% if include.card.feature == 'bulk_download' %}
+    {% include components/download-all-data.html %}
+  {% endif %}
+
+  {% if include.card.button_label %}
+  <a class="btn btn-primary btn-download" href="{{ include.card.button_link }}">
+    {{ include.card.button_label }}
+  </a>
+  {% endif %}
+
+</div>
