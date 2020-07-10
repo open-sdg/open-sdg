@@ -66,6 +66,24 @@ Without this setting, you will need a file for each of these 4 pages (per langua
 create_pages: true
 ```
 
+If you would like to use the alternative frontpage (`frontpage-alt`) alongside a dedicated "goals" page, you can used this configuration:
+
+```nohighlight
+create_pages:
+  pages:
+    - folder: /
+      layout: frontpage-alt
+    - folder: /goals
+      layout: goals
+    - folder: /reporting-status
+      layout: reportingstatus
+    - filename: indicators.json
+      folder: /
+      layout: indicator-json
+    - folder: /search
+      layout: search
+```
+
 ### custom_css
 
 _Optional_: This setting can be used to load additional CSS files on each page. It should be a list of relative paths to CSS files.
@@ -165,6 +183,42 @@ footer_menu:
     translation_key: menu.faq
   - path: /cookies
     translation_key: menu.cookies
+```
+
+### frontpage_cards
+
+_Optional_: This setting is used in the `frontpage-alt` layout. It can display any number of "cards" in 3-column rows, beneath the grid of goal tiles. It should be a list of cards. Each configuration is optional, and here is an displaying one card with all of the options:
+
+```
+frontpage_cards:
+    -
+      # This controls the color of the line at the top of the card.
+      rule_color: orange
+      # This sets the title of the card.
+      title: My card title
+      # This sets the content of the card. Markdown is supported.
+      content: |
+        * List item
+        * List item with [link](https://example.com)
+      # This displays any file in the `_includes` folder.
+      include: components/download-all-data.html
+      # This controls the text for a call-to-action button.
+      button_label: My button text
+      # This controls the URL the button links to.
+      button_link: https://example.com
+    -
+      title: My second card
+      etc...
+```
+
+### frontpage_goals_grid
+
+_Optional_: This setting is used in the `frontpage-alt` layout. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
+
+```
+frontpage_goals_grid:
+    title: title goes here
+    description: description goes here
 ```
 
 ### frontpage_heading
