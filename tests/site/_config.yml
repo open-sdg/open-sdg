@@ -73,6 +73,8 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
+  - path: frontpage-alt
+    translation_key: Alternate frontpage
 
 footer_menu:
   - path: mailto:test@example.com
@@ -150,7 +152,7 @@ frontpage_goals_grid:
 
 frontpage_cards:
   - title: Download all data
-    feature: bulk_download
+    include: components/download-all-data.html
     rule_color: green
   - title: Useful resources
     rule_color: blue

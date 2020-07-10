@@ -12,8 +12,8 @@
   <div class="card-content">{{ include.card.content | t | markdownify }}</div>
   {% endif %}
 
-  {% if include.card.feature == 'bulk_download' %}
-    {% include components/download-all-data.html %}
+  {% if include.card.include %}
+    {% include {{ include.card.include }} %}
   {% endif %}
 
   {% if include.card.button_label %}
