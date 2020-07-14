@@ -17,7 +17,16 @@
   {% endif %}
 
   {% if include.card.button_label %}
-  <a class="btn btn-primary btn-download" href="{{ include.card.button_link }}">
+  {% assign button_href = include.card.button_link %}
+  {% assign href_start = button_href | slice: 0, 4 %}
+  {% if href_start != 'http' %}
+    {%- assign href_first = button_href | slice: 0 %}
+    {%- if href_first == '/' -%}
+      {%- assign button_href = button_href | slice: 1, button_href.size -%}
+    {%- endif -%}
+    {% assign button_href = page.baseurl | append: button_href %}
+  {% endif %}
+  <a class="btn btn-primary btn-download" href="{{ button_href }}">
     {{ include.card.button_label }}
   </a>
   {% endif %}
