@@ -6,6 +6,15 @@
     margin-bottom: 20px;
   }
 
+  .target-row::after {
+    content : "";
+    height: 1px;
+    width: 84%;
+    border-bottom: 1px solid $goalTarget-horizontalRule-color;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+
   #main-content.goal-indicators .indicator-cards a {
     padding: 0;
   }
