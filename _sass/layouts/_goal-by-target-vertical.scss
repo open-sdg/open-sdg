@@ -1,0 +1,19 @@
+.layout-goal-by-target-vertical {
+  .tags {
+    @include tags;
+  }
+  .target-row, .target-row > div {
+    margin-bottom: 20px;
+  }
+
+  #main-content.goal-indicators .indicator-cards a {
+    padding: 0;
+  }
+
+  .status-column {
+    text-align: right;
+    .status {
+      margin-right: 20px;
+    }
+  }
+}
