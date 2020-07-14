@@ -196,7 +196,9 @@ frontpage_cards:
       rule_color: orange
       # This sets the title of the card.
       title: My card title
-      # This sets the content of the card. Markdown is supported.
+      # This sets the content of the card. Markdown is supported. Note that all
+      # internal links should be relative to the frontpage. For example, instead
+      # of [link](/path) you should use [link](path).
       content: |
         * List item
         * List item with [link](https://example.com)
@@ -220,6 +222,9 @@ frontpage_goals_grid:
     title: title goes here
     description: description goes here
 ```
+
+Markdown is supported in the description. However note that all internal links
+should be relative to the frontpage. For example, instead of `[link](/path)` you should use `[link](path)`.
 
 ### frontpage_heading
 
