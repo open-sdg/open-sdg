@@ -1,7 +1,7 @@
 .card {
   .card-title {
     border-top: 2px solid;
-    border-color: lightgrey;
+    border-color: $card-horizontalRule-color;
     padding-top: 7px;
   }
   img {
