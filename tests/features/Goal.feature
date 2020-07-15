@@ -19,3 +19,9 @@ Feature: Goal page
     Then I should see "Targets"
     And I should see 5 "goal target" elements
     And I should see 10 "goal indicator" elements
+
+  Scenario: The goal-by-target-vertical layout displays correctly
+    Given I am on "/goal-by-target-vertical"
+    Then I should see "Targets and indicators"
+    And I should see 5 "goal target" elements
+    And I should see 10 "goal indicator" elements

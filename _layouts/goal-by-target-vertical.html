@@ -31,7 +31,7 @@
     {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
     {% for group in goal_indicators %}
       {% assign target = group.name | sdg_lookup %}
-      <div class="row no-gutters target-row">
+      <div class="row no-gutters goal-target">
         <div class="col-md-1">
           {{ target.number }}
         </div>
@@ -39,7 +39,7 @@
           {{ target.name }}
         </div>
         {% for indicator in group.items %}
-        <div class="row no-gutters indicator-row indicator-cards">
+        <div class="row no-gutters goal-indicator indicator-cards">
 
           {% assign status_css = indicator.reporting_status | slugify %}
           {% if indicator.reporting_status == 'notapplicable' %}

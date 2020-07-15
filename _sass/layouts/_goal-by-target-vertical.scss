@@ -2,11 +2,11 @@
   .tags {
     @include tags;
   }
-  .target-row, .target-row > div {
+  .goal-target, .goal-target > div {
     margin-bottom: 20px;
   }
 
-  .target-row::after {
+  .goal-target::after {
     content : "";
     height: 1px;
     width: 84%;
