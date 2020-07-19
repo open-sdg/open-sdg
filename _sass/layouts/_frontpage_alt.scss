@@ -7,7 +7,8 @@
 
   .goal-tiles {
     .goal-tile {
-      @media only screen and (min-width: 767px) {
+      @media only screen and (min-width: 992px) {
+        // Display 9-goal rows on desktop.
         width: 11%;
       }
     }
