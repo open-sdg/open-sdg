@@ -11,12 +11,12 @@
 
 <div id="main-content" class="container reportingstatus">
 
+  {% include components/reporting-status-introduction.html %}
+
   {%- assign extra_fields = false -%}
   {%- for extra_field in reporting_data.extra_fields -%}
     {%- assign extra_fields = true -%}
   {%- endfor -%}
-
-  <h1>{{ page.t.status.reporting_status }}</h1>
 
   {%- assign overall = reporting_data.overall -%}
   <div class="goal goal-overall">

@@ -17,3 +17,11 @@ Feature: Reporting status page
     And I follow "the first language option"
     And I click on "the second reporting status tab"
     Then I should see "This is a translated custodian agency"
+
+  Scenario: The title and description of the reporting status page can be configured
+    Then I should see "My reporting status title"
+    And I should see "My reporting status description"
+    And I click on "the language toggle dropdown"
+    And I follow "the first language option"
+    Then I should see "My Spanish reporting status title"
+    And I should see "My Spanish reporting status description"

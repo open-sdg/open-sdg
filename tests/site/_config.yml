@@ -125,3 +125,7 @@ frontpage_introduction_banner:
 disclaimer:
   phase: header.alpha
   message: custom.disclaimer_message
+
+reporting_status:
+  title: custom.reporting_status_title
+  description: custom.reporting_status_description

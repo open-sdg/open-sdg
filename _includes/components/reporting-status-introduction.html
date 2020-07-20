@@ -1,0 +1,11 @@
+<h1>
+  {% if site.reporting_status.title %}
+    {{ site.reporting_status.title | t }}
+  {% else %}
+    {{ page.t.status.reporting_status }}
+  {% endif %}
+</h1>
+
+{% if site.reporting_status.description %}
+<p class="lead-copy">{{ site.reporting_status.description | t }}</p>
+{% endif %}
