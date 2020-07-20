@@ -345,6 +345,23 @@ This is far safer and more recommended than using the latest version, such as th
 remote_theme: open-sdg/open-sdg
 ```
 
+### reporting_status
+
+_Optional_: This setting adds controls certain aspects of the reporting status page. The available settings are:
+
+* `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
+* `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+
+Here is an example of using these settings:
+
+```yaml
+reporting_status:
+    title: title goes here
+    description: description goes here
+```
+
+As always, for multilingual support, these settings can refer to translation keys.
+
 ### search_index_boost
 
 _Optional_: This setting can be used to give a "boost" to one or more fields in the search index. The boost number should be a positive integer. The higher the number, the more "relevant" that field will be in search results. If omitted, the following defaults will be used:
