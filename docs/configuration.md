@@ -347,7 +347,7 @@ remote_theme: open-sdg/open-sdg
 
 ### reporting_status
 
-_Optional_: This setting adds controls certain aspects of the reporting status page. The available settings are:
+_Optional_: This setting controls certain aspects of the reporting status page. The available settings are:
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
