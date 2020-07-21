@@ -7,5 +7,7 @@
 </h1>
 
 {% if site.reporting_status.description %}
-<p class="lead-copy">{{ site.reporting_status.description | t }}</p>
+<div class="reporting-status-description">
+  {{ site.reporting_status.description | t }}
+</div>
 {% endif %}
