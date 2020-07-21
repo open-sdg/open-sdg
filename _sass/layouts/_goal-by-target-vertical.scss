@@ -19,10 +19,21 @@
     padding: 0;
   }
 
-  .status-column {
-    text-align: right;
+  #main-content.goal-indicators .indicator-cards .status-column {
     .status {
-      margin-right: 20px;
+      position: static;
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    @media only screen and (min-width: 992px) {
+      text-align: right;
+      .status {
+        position: absolute;
+        right: 15px;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 }
