@@ -51,7 +51,7 @@
     {% assign tag_classes = tag_classes | join: " " %}
 
     {% cycle 'add row' : '<div class="indicator-cards row no-gutters">', '', '', '' %}
-        <div class="col-md-6 col-lg-3 {{ tag_classes }}">
+        <div class="col-md-6 col-lg-3 {{ tag_classes }} goal-indicator">
           <a href="{{ indicator.url }}">
             <span>
               {{ indicator.number }}

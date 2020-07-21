@@ -1,0 +1,39 @@
+.layout-goal-by-target-vertical {
+  .tags {
+    @include tags;
+  }
+  .goal-target, .goal-target > div {
+    margin-bottom: 20px;
+  }
+
+  .goal-target::after {
+    content : "";
+    height: 1px;
+    width: 84%;
+    border-bottom: 1px solid $goalTarget-horizontalRule-color;
+    margin: 0 auto;
+    padding-bottom: 10px;
+  }
+
+  #main-content.goal-indicators .indicator-cards a {
+    padding: 0;
+  }
+
+  #main-content.goal-indicators .indicator-cards .status-column {
+    .status {
+      position: static;
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    @media only screen and (min-width: 992px) {
+      text-align: right;
+      .status {
+        position: absolute;
+        right: 15px;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
