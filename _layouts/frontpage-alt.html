@@ -34,7 +34,7 @@ release) this can replace frontpage.html.
         <div class="goal-tiles">
             <div class="row no-gutters">
                 {% for goal in page.goals %}
-                <div class="col-xs-3 col-sm-2 col-md-1 goal-tile">
+                <div class="col-xs-4 col-sm-2 col-md-1 goal-tile">
                     <a href="{{ goal.url }}">
                         <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" />
                     </a>
