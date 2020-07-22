@@ -308,6 +308,14 @@ _Optional_: This setting can be used to hide any metadata fields that are empty.
 hide_empty_metadata: true
 ```
 
+### language_toggle
+
+_Optional_: This setting controls the type of language toggle to be used. Possible settings are `dropdown` and `links`. If this is omitted, the default is `dropdown`. The general recommendation is to use `dropdown` if you have more than 3 languages, and otherwise to use `links`.
+
+```nohighlight
+language_toggle: dropdown
+```
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.

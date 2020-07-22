@@ -49,6 +49,23 @@
     }
   }
 }
+
+.navbar .language-toggle-links,
+.language-toggle-links {
+  margin-left: 10px;
+  li {
+    display: inline;
+    vertical-align: middle;
+    .language-toggle-link {
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+  }
+  li + li::before {
+    content: " | ";
+    vertical-align: top;
+  }
+}
 .contrast-high {
   .language-toggle-mobile, ul.navbar-nav {
     .language-options a {

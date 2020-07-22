@@ -1,3 +1,6 @@
+{% assign language_toggle = site.language_toggle | default: 'dropdown' %}
+
+{% if language_toggle == 'dropdown' %}
 <a class="language-toggle-button" onclick="$(this).next('.language-toggle').toggle(); return false;">
   <i class="fa fa-globe"></i>
   <span class="language-toggle-text">{{ page.t.languages[page.language] }}</span>
@@ -12,3 +15,12 @@
   {%- endif -%}
 {%- endfor -%}
 </ul>
+{% endif %}
+
+{% if language_toggle == 'links' %}
+<ul class="language-toggle-links">
+{%- for language in site.languages -%}
+  <li><a class="language-toggle-link" href="{{ page.url_by_language[language] }}">{{ page.t.languages[language] }}</a></li>
+{%- endfor -%}
+</ul>
+{% endif %}
