@@ -187,7 +187,7 @@ footer_menu:
 
 ### frontpage_cards
 
-_Optional_: This setting is used in the `frontpage-alt` layout. It can display any number of "cards" in 3-column rows, beneath the grid of goal tiles. It should be a list of cards. Each configuration is optional, and here is an displaying one card with all of the options:
+_Optional_: This setting is only used in the `frontpage-alt` layout. It can display any number of "cards" in 3-column rows, beneath the grid of goal tiles. It should be a list of cards. Each configuration is optional, and here is an displaying one card with all of the options:
 
 ```
 frontpage_cards:
@@ -215,7 +215,7 @@ frontpage_cards:
 
 ### frontpage_goals_grid
 
-_Optional_: This setting is used in the `frontpage-alt` layout. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
+_Optional_: This setting is only used in the `frontpage-alt` layout. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
 
 ```
 frontpage_goals_grid:
@@ -228,7 +228,7 @@ should be relative to the frontpage. For example, instead of `[link](/path)` you
 
 ### frontpage_heading
 
-_Optional_: This setting can control the heading that appears on the front page.
+_Optional_: This setting can control the heading that appears on the front page. This setting is only used in the `frontpage` layout.
 
 ```nohighlight
 frontpage_heading: Australian data for Sustainable Development Goal indicators
@@ -236,7 +236,7 @@ frontpage_heading: Australian data for Sustainable Development Goal indicators
 
 ### frontpage_instructions
 
-_Optional_: This setting can control the instructions that appear on the front page.
+_Optional_: This setting can control the instructions that appear on the front page. This setting is only used in the `frontpage` layout.
 
 ```nohighlight
 frontpage_instructions: Click on each goal for Australian statistics for Sustainable Development Goal global indicators.
@@ -244,7 +244,7 @@ frontpage_instructions: Click on each goal for Australian statistics for Sustain
 
 ### frontpage_introduction_banner
 
-_Optional_: This setting adds a banner to your site's homepage, in order to introduce your users to your site. To add a banner update the `_config.yml` file with these settings:
+_Optional_: This setting adds a banner to your site's homepage, in order to introduce your users to your site. This setting is used in both the `frontpage` and `frontpage-alt` layouts. To add a banner update the `_config.yml` file with these settings:
 
 ```yaml
 frontpage_introduction_banner:
