@@ -165,4 +165,8 @@ body.contrast-high {
     color: $status-color-notapplicable-highContrast !important;
   }
 
+  .reporting-status-description {
+    color: $color-light-highContrast;
+  }
+
 }
