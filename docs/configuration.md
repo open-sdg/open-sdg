@@ -224,6 +224,21 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
 
+### header
+
+_Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
+
+* `include`: This specifies an include file, assumed to be inside of `_includes/headers/`, to use for the header.
+
+Here is an example, showing the default that is used if this setting is omitted:
+
+```nohighlight
+header:
+    include: default.html
+```
+
+The configuration above will include the file `_includes/headers/default.html` at the top of each page.
+
 ### hide_empty_metadata
 
 _Optional_: This setting can be used to hide any metadata fields that are empty. In other words, this setting can ensure that if an indicator has no data for a particular metadata field, that field will not display at all. The default behavior if for all metadata fields to be displayed, regardless of whether the indicator has the required data.
