@@ -1,7 +1,7 @@
 Chart.plugins.register({
-	afterDraw: function(chart) {
-  	if (chart.data.datasets.length === 0) {
-    	// No data is present
+  afterDraw: function(chart) {
+    if (chart.data.datasets.length === 0) {
+      // No data is present
       var ctx = chart.chart.ctx;
       var width = chart.chart.width;
       var height = chart.chart.height
