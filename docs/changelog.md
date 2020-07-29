@@ -24,6 +24,24 @@
 * Vertical goal-by-target layout (#776)
 * Configurable reporting status title and description (#778)
 
+The release contains no breaking changes. However, if you are overriding any of the following files, your implementation might not benefit from the various enhancements/fixes in the release:
+
+* _includes/assets/js/indicatorView.js
+* _includes/assets/js/menu.js
+* _includes/assets/js/model/chartHelpers.js
+* _includes/assets/js/plugins/jquery.sdgMap.js
+* _includes/components/indicator/data-panes.html
+* _includes/components/indicator/data-tabs.html
+* _includes/components/indicator/embedded-feature.html
+* _includes/components/indicator/indicator-main.html
+* _includes/footer.html
+* _includes/polyfills.html
+* _includes/scripts.html
+* _layouts/frontpage.html
+* _layouts/goal-by-target.html
+* _layouts/goal.html
+* _layouts/reportingstatus.html
+
 ## 1.0.0
 
 * More consistent template variables without globals (#394)
