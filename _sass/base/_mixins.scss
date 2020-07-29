@@ -52,11 +52,21 @@
         display: inline;
         font-size: 12px;
 
-        &.complete, &.inprogress{
-          color: $color-light;
+        &.complete {
+          color: $status-color-complete;
+          border: $status-border-complete;
         }
-        &.notstarted{
-          border: 1px solid $color-dark;
+        &.inprogress{
+          color: $status-color-inprogress;
+          border: $status-border-inprogress;
+        }
+        &.notstarted {
+          color: $status-color-notstarted;
+          border: $status-border-notstarted;
+        }
+        &.notapplicable {
+          color: $status-color-notapplicable;
+          border: $status-border-notapplicable;
         }
       }
 

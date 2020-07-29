@@ -30,10 +30,13 @@ This project (the repository you are reading currently) functions as a [Jekyll t
 1. _includes
 1. _layouts
 1. assets
+1. _sass
 
 Any file in these folders can be "overridden" simply by placing the same file in your site repository. When Jekyll compiles the platform, it will give precedence to files in your site repository, over the corresponding file in this remote theme.
 
 In this way, any of the files in these folders can be customised to your platform's needs, without requiring any changes to the files in this theme.
+
+> **NOTE on the `_sass` folder**: Individual files in the `_sass` folder that start with an underscore (eg, `_maps.scss`) cannot be overridden in the method mentioned above, unless you also override the [open-sdg.scss file](https://github.com/open-sdg/open-sdg/blob/master/_sass/open-sdg.scss). This is a quirk of Jekyll's Sass implementation. Because of this it is recommended that you avoid overriding individual Sass files starting with underscores, and instead put your changes in a custom CSS file as detailed below.
 
 > **NOTE**: If you make an improvement that you think would be useful to others, please
 > submit it as a pull-request in this repository!
@@ -47,3 +50,11 @@ The main takeaway here is that these indivdual Javascript files are in `_include
 ## Adding custom CSS
 
 To add custom styles on top of the out-of-the-box Open SDG styles, it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this placeholder file in the starter repository](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss).
+
+## Overriding color via Sass variables
+
+In many cases, you may want to override the colors being used throughout the site. Rather than putting these types of changes in a custom CSS file (as mentioned above) a much simpler method is to override "Sass variables".
+
+You can find a full list of Sass variables related to color in [this Sass variables file](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss).
+
+By contrast to the method for overriding layouts and includes (mentioned above), overriding Sass variables can be done in a more easily-maintainable way. Instead of overriding the file containing the Sass variables, you instead override [this placeholder file for Sass variable overrides](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables.scss). This allows you to override only the specific variables you need to change.
