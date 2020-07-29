@@ -146,6 +146,10 @@ reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
 
+goals_page:
+  title: custom.goals_page_title
+  description: custom.goals_page_description
+
 frontpage_goals_grid:
   title: The Sustainable Development Goals
   description: Click on each [goal](../goals) for data for Sustainable Development Goal global indicators.
