@@ -2,6 +2,20 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.1.0
+
+29 July 2020
+
+This release includes the following:
+
+* New optional alternate homepage design which includes additional sections for more introductory content and resources
+* New optional alternate goal layout, organised by target and displayed in a vertical indented list
+* The title and/or description on the Reporting Status page is now configurable
+* Increased font size for normal text
+* More control over embedded iframes on indicator pages
+* Fixes for Internet Exporer problems
+* Style and functionality bug-fixes for mobile, maps, and charts
+
 ## 1.0.0
 
 8 April 2020
