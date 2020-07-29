@@ -1,5 +1,14 @@
 $(function() {
 
+  // @deprecated start
+  if (typeof translations.search === 'undefined') {
+    translations.search = { search: 'Search' };
+  }
+  if (typeof translations.general === 'undefined') {
+    translations.general = { hide: 'Hide' };
+  }
+  // @deprecated end
+
   var topLevelSearchLink = $('.top-level span:eq(1), .top-level button:eq(1)');
 
   var resetForSmallerViewport = function() {
