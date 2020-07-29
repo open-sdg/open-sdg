@@ -21,7 +21,7 @@ Below is a list of some of the countries and localities that are currently using
 |Rwanda|<https://sustainabledevelopment-rwanda.github.io/>|
 |Sierra Leone|In development|
 |South Korea|In development|
-|United Kingdom|<https://sustainabledevelopment-uk.github.io/>|
+|United Kingdom|<https://sdgdata.gov.uk/>|
 |United States|<https://sdg.data.gov/>|
 
 
