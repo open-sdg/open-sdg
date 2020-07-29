@@ -20,6 +20,7 @@
 * Syntax fix - map tooltips (#768)
 * Backwards compatibility for code mobile search button text (#771)
 * Alternate frontpage layout (#772)
+* More usage of variables with status colors and borders (#773)
 * Vertical goal-by-target layout (#776)
 * Configurable reporting status title and description (#778)
 
