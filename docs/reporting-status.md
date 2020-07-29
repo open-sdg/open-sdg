@@ -10,7 +10,7 @@ The options available can be controlled by adjusting the [schema file](metadata-
 
 ## Color-coding
 
-The horizontal bars on the reporting status page have color-coded segments. The default options mentioned above are already color-coded for green, yellow, and red, respectively. That color-coding is controlled in CSS code in [this file](https://github.com/open-sdg/open-sdg/blob/master/_sass/layouts/_reporting_status.scss).
+The horizontal bars on the reporting status page have color-coded segments. The default options mentioned above are already color-coded for black, grey, and white, respectively. That color-coding is controlled using Sass variables in [this Sass variables file](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss). To override any of these variables, you can override and edit [this placeholder file for Sass variable overrides](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables.scss).
 
 To color-code your custom options, add your own CSS code (such as in a `custom.scss` file) using a class name that is the same as the option value. For example, if your custom options are configured like so:
 
