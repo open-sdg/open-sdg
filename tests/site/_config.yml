@@ -16,7 +16,21 @@ create_indicators:
   layout: indicator
 create_goals:
   layout: goal
-create_pages: true
+create_pages:
+  pages:
+    - folder: /frontpage-alt
+      layout: frontpage-alt
+    - folder: /
+      layout: goals
+    - folder: /goals
+      layout: goals
+    - folder: /reporting-status
+      layout: reportingstatus
+    - filename: indicators.json
+      folder: /
+      layout: indicator-json
+    - folder: /search
+      layout: search
 
 analytics:
   ga_prod: ''
@@ -59,6 +73,8 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
+  - path: frontpage-alt
+    translation_key: Alternate frontpage
 
 footer_menu:
   - path: mailto:test@example.com
@@ -129,3 +145,28 @@ disclaimer:
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
+
+frontpage_goals_grid:
+  title: The Sustainable Development Goals
+  description: Click on each [goal](../goals) for data for Sustainable Development Goal global indicators.
+
+frontpage_cards:
+  - title: Download all data
+    include: components/download-all-data.html
+    rule_color: green
+  - title: Useful resources
+    rule_color: blue
+    content: |
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+  - title: Publications
+    rule_color: orange
+    content: |
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+    button_label: View more publications
+    button_link: https://example.com

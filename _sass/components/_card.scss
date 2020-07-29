@@ -1,0 +1,13 @@
+.card {
+  .card-title {
+    border-top: 2px solid;
+    border-color: $card-horizontalRule-color;
+    padding-top: 7px;
+  }
+  img {
+    max-width: 100%;
+  }
+  .btn {
+    white-space: normal;
+  }
+}

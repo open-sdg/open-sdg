@@ -19,3 +19,12 @@ Feature: Homepage
 
   Scenario: The download-all button is available
     Then I should see "Download all data"
+
+  Scenario: An alternate homepage is available as well
+    And I am on "/frontpage-alt"
+    Then I should see "My frontpage introduction banner title"
+    And I should see "My frontpage introduction banner description"
+    And I should see "The Sustainable Development Goals"
+    And I should see "Download all data"
+    And I should see "Useful resources"
+    And I should see "Publications"
