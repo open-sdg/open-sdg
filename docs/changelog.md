@@ -1,5 +1,28 @@
 <h1>Change Log</h1>
 
+## 1.1.0
+
+* Embed either using either Pym parent or iframe (#751)
+* Use increased font size (#750)
+* Link to new site in footer (#746)
+* Default to country name for headline label on charts/tables (#744)
+* Join data points when data is missing (#742)
+* Javascript fixes for IE support (#757)
+* Alt tag for loading image (#758)
+* Visited color for download buttons (#759)
+* Sort the disaggregations that display in table headers (#760)
+* Correct selector to avoid infinite loop (#761)
+* Translate mobile search buttons (#762)
+* Update tooltips of active selections when the year changes (#763, #768)
+* Hide map selection legend on mobile (#764)
+* Fix styling of mobile menu items (#765)
+* Support translations in the reporting status extra fields (#767)
+* Syntax fix - map tooltips (#768)
+* Backwards compatibility for code mobile search button text (#771)
+* Alternate frontpage layout (#772)
+* Vertical goal-by-target layout (#776)
+* Configurable reporting status title and description (#778)
+
 ## 1.0.0
 
 * More consistent template variables without globals (#394)
