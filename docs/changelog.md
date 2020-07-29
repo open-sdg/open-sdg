@@ -2,7 +2,7 @@
 
 ## 1.1.0
 
-* Embed either using either Pym parent or iframe (#751)
+* Embed using either Pym parent or iframe (#751)
 * Use increased font size (#750)
 * Link to new site in footer (#746)
 * Default to country name for headline label on charts/tables (#744)
