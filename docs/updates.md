@@ -10,7 +10,7 @@ This release includes the following:
 
 * New optional alternate homepage design which includes additional sections for more introductory content and resources
 * New optional alternate goal layout, organised by target and displayed in a vertical indented list
-* The title and/or description on the Reporting Status page is not configurable
+* The title and/or description on the Reporting Status page is now configurable
 * Increased font size for normal text
 * More control over embedded iframes on indicator pages
 * Fixes for Internet Exporer problems
