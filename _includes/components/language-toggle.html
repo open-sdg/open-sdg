@@ -20,7 +20,19 @@
 {% if language_toggle == 'links' %}
 <ul class="language-toggle-links">
 {%- for language in site.languages -%}
-  <li><a class="language-toggle-link" href="{{ page.url_by_language[language] }}">{{ page.t.languages[language] }}</a></li>
+  <li>
+    {%- if language != page.language -%}
+    <a class="language-toggle-link" href="{{ page.url_by_language[language] }}">
+    {%- else -%}
+    <span class="language-toggle-active-language">
+    {%- endif -%}
+    {{ page.t.languages[language] }}
+    {%- if language != page.language -%}
+    </a>
+    {%- else -%}
+    </span>
+    {%- endif -%}
+  </li>
 {%- endfor -%}
 </ul>
 {% endif %}
