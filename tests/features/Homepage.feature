@@ -12,19 +12,19 @@ Feature: Homepage
     And I should see "My frontpage introduction banner description"
 
   Scenario: The heading text can be customised
-    Then I should see "My custom frontpage heading"
+    Then I should see "My custom frontpage goals grid title"
 
   Scenario: All available goal icons are visible
     Then I should see 4 "goal icon" elements
 
-  Scenario: The download-all button is available
+  Scenario: Additional content is shown below the goals
     Then I should see "Download all data"
-
-  Scenario: An alternate homepage is available as well
-    And I am on "/frontpage-alt"
-    Then I should see "My frontpage introduction banner title"
-    And I should see "My frontpage introduction banner description"
-    And I should see "The Sustainable Development Goals"
-    And I should see "Download all data"
     And I should see "Useful resources"
     And I should see "Publications"
+
+  Scenario: A legacy homepage is available as well
+    And I am on "/frontpage-legacy"
+    Then I should see "My frontpage introduction banner title"
+    And I should see "My frontpage introduction banner description"
+    And I should see "My custom frontpage heading"
+    And I should see 4 "goal icon" elements

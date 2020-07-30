@@ -6,10 +6,10 @@ Feature: Language switcher
 
   Scenario: Language switcher works on the homepage
     Given I am on the homepage
-    Then I should see "My custom frontpage instructions"
+    Then I should see "My frontpage introduction banner title"
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
-    Then I should see "My Spanish frontpage instructions"
+    Then I should see "My Spanish frontpage introduction banner title"
 
   Scenario: Lanugage switcher works on a goal page
     Given I am on "/1"
@@ -30,4 +30,4 @@ Feature: Language switcher
     And I click on "the language toggle dropdown"
     And I follow "the last language option"
     Then I should be on "/fr-CA/"
-    And I should see "My French Canadian frontpage instructions"
+    And I should see "My French Canadian frontpage introduction banner title"

@@ -1,0 +1,11 @@
+.layout-goals {
+  .goals-page-description {
+    margin-bottom: 20px;
+  }
+}
+
+.layout-goals.contrast-high {
+  .goals-page-description {
+    color: $color-light-highContrast;
+  }
+}
