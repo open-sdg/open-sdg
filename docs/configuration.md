@@ -260,6 +260,23 @@ frontpage_introduction_banner:
 goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
 ```
 
+### goals_page
+
+_Optional_: This setting controls certain aspects of the `goals` layout. The available settings are:
+
+* `title`: Controls the title of the goals page. Defaults to "Goals".
+* `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+
+Here is an example of using these settings:
+
+```yaml
+goals_page:
+    title: title goes here
+    description: description goes here
+```
+
+As always, for multilingual support, these settings can refer to translation keys.
+
 ### graph_color_set
 
 _Optional_: This setting can be used to customize the color set used in the charts. There are four possible entries:

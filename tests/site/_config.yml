@@ -18,10 +18,10 @@ create_goals:
   layout: goal
 create_pages:
   pages:
-    - folder: /frontpage-alt
-      layout: frontpage-alt
+    - folder: /frontpage-legacy
+      layout: frontpage
     - folder: /
-      layout: goals
+      layout: frontpage-alt
     - folder: /goals
       layout: goals
     - folder: /reporting-status
@@ -73,8 +73,8 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
-  - path: frontpage-alt
-    translation_key: Alternate frontpage
+  - path: frontpage-legacy
+    translation_key: Legacy frontpage
 
 footer_menu:
   - path: mailto:test@example.com
@@ -135,7 +135,7 @@ date_formats:
     fr: '%d %B %Y'
 
 frontpage_introduction_banner:
-  title: My frontpage introduction banner title
+  title: custom.frontpage_introduction_banner_title
   description: My frontpage introduction banner description
 
 disclaimer:
@@ -146,9 +146,13 @@ reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
 
+goals_page:
+  title: custom.goals_page_title
+  description: custom.goals_page_description
+
 frontpage_goals_grid:
-  title: The Sustainable Development Goals
-  description: Click on each [goal](../goals) for data for Sustainable Development Goal global indicators.
+  title: My custom frontpage goals grid title
+  description: Click on each [goal](goals) for data for Sustainable Development Goal global indicators.
 
 frontpage_cards:
   - title: Download all data

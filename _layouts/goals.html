@@ -1,13 +1,28 @@
----
-layout: frontpage
----
-{% comment %}
-Currently the "frontpage.html" layout is serving 2 purposes:
+{% include head.html %}
+{% include header.html %}
+<div id="main-content" class="container" role="main">
 
-1. A front page
-2. A landing page for the 17 goals
+    {% include components/goals-introduction.html %}
 
-This file is named "goals.html" to indicate that this is only serving purpose
-#2 above. For now, this merely replicates "frontpage.html". But in the future
-it will diverge.
-{% endcomment %}
+    <div class="goal-tiles">
+        <div class="row no-gutters">
+            {% for goal in page.goals %}
+            <div class="col-xs-4 col-md-2">
+                <a href="{{ goal.url }}">
+                    <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" />
+                </a>
+            </div>
+            {% endfor %}
+            {% comment %}
+            If there were exactly 17 goals, "pad" it with 1 more, to make it come
+            out more symmetrically.
+            {% endcomment %}
+            {% if page.goals.size == 17 %}
+            <div class="col-xs-4 col-md-2">
+                <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% include footer.html %}
