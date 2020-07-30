@@ -5,24 +5,24 @@
     {% include components/goals-introduction.html %}
 
     <div class="goal-tiles">
-    {% for goal in page.goals %}
-        {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
+        <div class="row no-gutters">
+            {% for goal in page.goals %}
             <div class="col-xs-4 col-md-2">
                 <a href="{{ goal.url }}">
                     <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" />
-              </a>
+                </a>
             </div>
-        {% cycle 'end row' : '', '', '', '', '', '</div>' %}
-    {% endfor %}
-    {% comment %}
-        If there were exactly 17 goals, "pad" it with 1 more, to make it come
-        out more symmetrically.
-    {% endcomment %}
-    {% if page.goals.size == 17 %}
-        <div class="col-xs-4 col-md-2">
-            <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
+            {% endfor %}
+            {% comment %}
+            If there were exactly 17 goals, "pad" it with 1 more, to make it come
+            out more symmetrically.
+            {% endcomment %}
+            {% if page.goals.size == 17 %}
+            <div class="col-xs-4 col-md-2">
+                <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
+            </div>
+            {% endif %}
         </div>
-    {% endif %}
     </div>
 </div>
 {% include footer.html %}
