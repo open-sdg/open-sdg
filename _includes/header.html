@@ -13,9 +13,9 @@
 
   <div class='hidden visible-xs float-right'>
     <ul id='accessibility-nav' class='contrast-switcher'></ul>
-    {%- if site.languages.size > 1 -%}
+    {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
     <div class="language-toggle-mobile">
-      {% include components/language-toggle.html %}
+      {% include components/language-toggle.html location="header" %}
     </div>
     {%- endif -%}
   </div>
@@ -34,7 +34,7 @@
       </ul>
 
       {% include search.html %}
-      
+
       <ul class="nav navbar-nav menu-target contrast-switcher" id="menu">
         {%- if site.menu -%}
           {%- assign current_path_no_slash = page.url | remove: '/' -%}
@@ -50,14 +50,12 @@
           </li>
           {%- endfor -%}
         {%- endif -%}
-        {%- if site.languages.size > 1 -%}
+        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
         <li>
           {% include components/language-toggle.html %}
         </li>
         {%- endif -%}
       </ul>
-
-      
 
     </nav>
   </div>

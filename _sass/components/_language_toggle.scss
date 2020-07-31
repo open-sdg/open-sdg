@@ -50,6 +50,26 @@
   }
 }
 
+@media only screen and (max-width: 680px) {
+  .language-name {
+    display: none !important;
+  }
+  .language-abbreviation {
+    display: inline !important;
+  }
+}
+@media only screen and (min-width: 680px) {
+  .language-name {
+    display: inline !important;
+  }
+  .language-abbreviation {
+    display: none !important;
+  }
+}
+.language-abbreviation {
+  text-transform: uppercase;
+}
+
 .navbar ul.navbar-nav .language-toggle-links,
 .language-toggle-links {
   margin-left: 20px;

@@ -165,6 +165,14 @@ email_contacts:
 environment: staging
 ```
 
+### footer_language_toggle
+
+_Optional_: This setting controls the type of language toggle to be used in the footer. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `none`.
+
+```nohighlight
+footer_language_toggle: none
+```
+
 ### footer_menu
 
 **_Required_**: This setting controls the footer menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
@@ -300,20 +308,20 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
 
+### header_language_toggle
+
+_Optional_: This setting controls the type of language toggle to be used in the header. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `dropdown`. The general recommendation is to use `dropdown` if you have more than 3 languages, and otherwise to use `links`.
+
+```nohighlight
+header_language_toggle: dropdown
+```
+
 ### hide_empty_metadata
 
 _Optional_: This setting can be used to hide any metadata fields that are empty. In other words, this setting can ensure that if an indicator has no data for a particular metadata field, that field will not display at all. The default behavior if for all metadata fields to be displayed, regardless of whether the indicator has the required data.
 
 ```nohighlight
 hide_empty_metadata: true
-```
-
-### language_toggle
-
-_Optional_: This setting controls the type of language toggle to be used. Possible settings are `dropdown` and `links`. If this is omitted, the default is `dropdown`. The general recommendation is to use `dropdown` if you have more than 3 languages, and otherwise to use `links`.
-
-```nohighlight
-language_toggle: dropdown
 ```
 
 ### languages

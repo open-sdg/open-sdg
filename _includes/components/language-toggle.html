@@ -1,38 +1,11 @@
-{% assign language_toggle = site.language_toggle | default: 'dropdown' %}
-
-{% if language_toggle == 'dropdown' %}
-<a class="language-toggle-button" onclick="$(this).next('.language-toggle').toggle(); return false;">
-  <i class="fa fa-globe"></i>
-  <span class="language-toggle-text">{{ page.t.languages[page.language] }}</span>
-  <i class="language-toggle fa fa-chevron-down"></i>
-  <i class="language-toggle fa fa-chevron-up" style="display:none;"></i>
-</a>
-
-<ul class="language-options language-toggle">
-{%- for language in site.languages -%}
-  {%- if language != page.language -%}
-    <li><a href="{{ page.url_by_language[language] }}">{{ page.t.languages[language] }}</a></li>
-  {%- endif -%}
-{%- endfor -%}
-</ul>
+{% assign language_toggle_setting = 'header_language_toggle' %}
+{% if include.location == 'footer' %}
+  {% assign language_toggle_setting = 'footer_language_toggle' %}
 {% endif %}
+{% assign language_toggle_type = site[language_toggle_setting] %}
 
-{% if language_toggle == 'links' %}
-<ul class="language-toggle-links">
-{%- for language in site.languages -%}
-  <li>
-    {%- if language != page.language -%}
-    <a class="language-toggle-link" href="{{ page.url_by_language[language] }}">
-    {%- else -%}
-    <span class="language-toggle-active-language">
-    {%- endif -%}
-    {{ page.t.languages[language] }}
-    {%- if language != page.language -%}
-    </a>
-    {%- else -%}
-    </span>
-    {%- endif -%}
-  </li>
-{%- endfor -%}
-</ul>
+{% if language_toggle_type == 'dropdown' %}
+  {% include components/language-toggle-dropdown.html %}
+{% elsif language_toggle_type == 'links' %}
+  {% include components/language-toggle-links.html %}
 {% endif %}
