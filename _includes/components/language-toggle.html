@@ -2,7 +2,7 @@
 {% if include.location == 'footer' %}
   {% assign language_toggle_setting = 'footer_language_toggle' %}
 {% endif %}
-{% assign language_toggle_type = site[language_toggle_setting] %}
+{% assign language_toggle_type = site[language_toggle_setting] | default: 'dropdown' %}
 
 {% if language_toggle_type == 'dropdown' %}
   {% include components/language-toggle-dropdown.html %}
