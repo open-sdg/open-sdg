@@ -19,6 +19,7 @@
 .language-toggle-button {
   cursor: pointer;
 }
+.navbar ul.navbar-nav .language-toggle-links,
 .navbar ul.navbar-nav li a.language-toggle-button {
   display: none;
   @media only screen and (min-width: 768px) {
@@ -37,7 +38,6 @@
     }
   }
   a {
-    text-transform: uppercase;
     .language-toggle-text {
       display: none;
     }
@@ -50,7 +50,7 @@
   }
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 768px) {
   .language-name {
     display: none !important;
   }
@@ -58,7 +58,7 @@
     display: inline !important;
   }
 }
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 768px) {
   .language-name {
     display: inline !important;
   }
@@ -94,7 +94,7 @@
 }
 .contrast-high {
   .language-toggle-mobile, ul.navbar-nav {
-    .language-options a, .language-toggle-link {
+    .language-options a, .language-toggle-link, .language-toggle-link span {
       color: $color-highlight-highContrast;
       &:hover {
         color: $color-highlight-highContrast;
@@ -108,7 +108,7 @@
   .navbar ul.navbar-nav .language-toggle-links,
   .language-toggle-links {
     li {
-      .language-toggle-link {
+      .language-toggle-link, .language-toggle-link span {
         color: $color-highlight-highContrast;
       }
     }
