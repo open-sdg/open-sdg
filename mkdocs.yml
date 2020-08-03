@@ -50,6 +50,7 @@ pages:
         - Configuration: configuration.md
         - Customisation: customisation.md
         - Jekyll templates: jekyll-templates.md
+        - Reasons for using Jekyll: reasons-for-using-jekyll.md
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md
