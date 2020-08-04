@@ -14,6 +14,22 @@ Google Analytics functionality is built in to Open SDG so it's easy to start mon
 
 For more information about using Google Analytics with an Open SDG platform, see the [Analytics section](analytics.md).
 
+## Site search
+Open SDG platforms have a search function, where users can search for terms to quickly help them find information.
+
+By default, the following fields are searched:
+
+- The title of an indicator, goal, or page i.e. words within an indicator title, short goal title, long goal title or page title e.g. FAQ
+- The content of the indicator e.g. on the [UK 3.4.2 indicator page](https://sdgdata.gov.uk/3-4-2/) the content is the text which starts with "In 2018..." and ends with "[Further Quality and Methodology information](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/methodologies/suicideratesintheukqmi) is available."
+- The content of pages such as the About or FAQ page i.e. everything on the page below the title e.g on the [UK FAQ page](https://sdgdata.gov.uk/faq/), everything below the title (Frequently Asked Questions (FAQ)) is the page content
+- The ID number of an indicator or goal e.g. 3 or 3.1.2
+
+The search functionality also includes fuzzy search meaning the search function will also find pages that are likely to be relevant to a search term even when the term doesn't correspond exactly to the wanted information.
+
+It is possible to "boost" one or more fields in the search index, so that more relevant fields will appear in search results. See the [search_index_boost configuration option](https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_boost) for more information and guidance on how to configure this option.
+
+It is also possible to index additional metadata fields, so that more fields are searched e.g. if you wanted the search to return pages where the graph title contains the search term. See the [search_index_extra_fields configuration option](https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_extra_fields)
+
 ## Charts
 
 Open SDG supports several types of charts for displaying indicator data:
