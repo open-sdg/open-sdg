@@ -24,11 +24,11 @@ By default, the following fields are searched:
 - The content of pages such as the About or FAQ page i.e. everything on the page below the title e.g on the [UK FAQ page](https://sdgdata.gov.uk/faq/), everything below the title (Frequently Asked Questions (FAQ)) is the page content
 - The ID number of an indicator or goal e.g. 3 or 3.1.2
 
-The search functionality also includes fuzzy search meaning the search function will also find pages that are likely to be relevant to a search term even when the term doesn't correspond exactly to the wanted information.
+The search functionality also includes fuzzy search meaning the search function will also find pages that are likely to be relevant to a search term even when the term doesn't correspond exactly to the wanted information. For example, pages with searched fields that contain "smoke" or "smoker" may be returned when a user searches for "smoking".
 
 It is possible to "boost" one or more fields in the search index, so that more relevant fields will appear in search results. See the [search_index_boost configuration option](https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_boost) for more information and guidance on how to configure this option.
 
-It is also possible to index additional metadata fields, so that more fields are searched e.g. if you wanted the search to return pages where the graph title contains the search term. See the [search_index_extra_fields configuration option](https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_extra_fields)
+It is also possible to index additional metadata fields, so that more fields are searched e.g. if you wanted the search to return pages where the graph title contains the search term. See the [search_index_extra_fields configuration option](https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_extra_fields) for how to configure this.
 
 ## Charts
 
