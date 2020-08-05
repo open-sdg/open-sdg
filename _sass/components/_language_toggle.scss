@@ -72,7 +72,11 @@
 
 .navbar ul.navbar-nav .language-toggle-links,
 .language-toggle-links {
-  margin-left: 20px;
+  .fa-globe {
+    position: relative;
+    top: 2px;
+  }
+  margin-left: 50px;
   li {
     display: inline;
     .language-toggle-link {
@@ -84,14 +88,31 @@
         border: none;
       }
     }
-    .language-toggle-link, .language-toggle-active-language {
-      font-size: 13px;
-    }
   }
   li + li::before {
     content: " | ";
   }
 }
+.navbar ul.navbar-nav .language-toggle-links {
+  li {
+    .language-toggle-link, .language-toggle-active-language {
+      font-size: 13px;
+    }
+  }
+}
+footer #footerLinks ul.language-toggle-links > li {
+  display: inline;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+footer #footerLinks > ul > li {
+  position: relative;
+}
+footer #footerLinks .language-options {
+  bottom: 30px;
+  left: 5px;
+}
+
 .contrast-high {
   .language-toggle-mobile, ul.navbar-nav {
     .language-options a, .language-toggle-link, .language-toggle-link span {

@@ -2,6 +2,9 @@
 {%- for language in site.languages -%}
   {%- if language != page.language -%}
   <li>
+    {%- if forloop.first -%}
+    <i class="fa fa-globe"></i>
+    {%- endif -%}
     <a class="language-toggle-link" href="{{ page.url_by_language[language] }}">
       <span class="language-name">{{ page.t.languages[language] }}</span>
       <span class="language-abbreviation">{{ language }}</span>
@@ -9,6 +12,9 @@
   </li>
   {%- elsif site.languages.size > 2 -%}
   <li>
+    {%- if forloop.first -%}
+    <i class="fa fa-globe"></i>
+    {%- endif -%}
     <span class="language-toggle-active-language">
       <span class="language-name">{{ page.t.languages[language] }}</span>
       <span class="language-abbreviation">{{ language }}</span>

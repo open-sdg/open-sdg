@@ -19,12 +19,12 @@ footer {
     }
   }
 
-  #footerLinks ul {
+  #footerLinks > ul {
     padding-left: 0;
     li {
       display: inline-block;
       margin: 3px 9px;
-      &:first-child {
+      > &:first-child {
         margin-left: 0px;
       }
     }
