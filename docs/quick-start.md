@@ -36,13 +36,6 @@ This step is necessary before continuing, and also serves to demonstrate how to 
 1. Wait until you see "All checks have passed". This takes about 5 minutes.
 1. Click on the green "Merge pull request" button.
 
-This is a commonly-used way to edit files in GitHub. In summary, the steps are:
-
-* Find the file
-* Edit the file
-* Create the pull request
-* Merge the pull request
-
 ## Update the site repository configuration
 
 1. Go to the site repository.
