@@ -438,6 +438,18 @@ reporting_status:
 
 As always, for multilingual support, these settings can refer to translation keys.
 
+### sdmx_download
+
+_Optional_: Open SDG automatically provides a CSV download, but if you have SDMX files available, you may use this setting to expose SDMX download links to the user. The available settings are:
+
+* `indicator`: A pattern used to generate links to indicator-specific SDMX files. Within the pattern, any occurence of `[id]` will be replace with the indicator ID (dash-delimited). For example, on indicator 1.1.1, the pattern `data-sdmx/[id].xml` would produce `data-sdmx/1-1-1.xml`.
+
+Here is an example of using these settings:
+
+```yaml
+sdmx_download:
+    indicator: data-sdmx/[id].xml
+
 ### search_index_boost
 
 _Optional_: This setting can be used to give a "boost" to one or more fields in the search index. The boost number should be a positive integer. The higher the number, the more "relevant" that field will be in search results. If omitted, the following defaults will be used:

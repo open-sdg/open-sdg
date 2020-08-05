@@ -12,10 +12,11 @@ Feature: Indicator
     And I click on "the Table tab"
     Then I should see a "sortable table" element
 
-  Scenario: Indicators have buttons for downloading CSV data
+  Scenario: Indicators have buttons for downloading CSV and SDMX data
     And I click on "the Table tab"
     Then I should see "Download Table CSV"
     And I should see "Download Source CSV"
+    And I should see "Download Source SDMX"
 
   Scenario: Indicators have a "Chart" tab which displays data as a chart
     And I click on "the Table tab"

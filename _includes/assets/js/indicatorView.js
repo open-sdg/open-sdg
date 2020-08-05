@@ -651,6 +651,24 @@ var indicatorView = function (model, options) {
       'class': 'btn btn-primary btn-download',
       'tabindex': 0
     }));
+    {% if site.sdmx_download.indicator %}
+    var gaLabel = 'Download Source SDMX: ' + indicatorId;
+    var sdmxDownload = '{{ site.sdmx_download.indicator }}'.replace('[id]', indicatorId);
+    if (!sdmxDownload.startsWith('http')) {
+      if (!sdmxDownload.startsWith('/')) {
+        sdmxDownload = '/' + sdmxDownload;
+      }
+      sdmxDownload = opensdg.remoteDataBaseUrl + sdmxDownload
+    }
+    $(el).append($('<a />').text('Download Source SDMX')
+    .attr(opensdg.autotrack('download_data_source_sdmx', 'Downloads', 'Download SDMX', gaLabel))
+    .attr({
+      'href': sdmxDownload,
+      'title': 'Download source data as SDMX',
+      'class': 'btn btn-primary btn-download',
+      'tabindex': 0
+    }));
+    {% endif %}
   }
 
   this.createTable = function(table, indicatorId, el) {

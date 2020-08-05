@@ -174,3 +174,6 @@ frontpage_cards:
       * [Publication](https://example.com)
     button_label: View more publications
     button_link: https://example.com
+
+sdmx_download:
+  indicator: 'foobar'
