@@ -1,55 +1,26 @@
+// Not specifically about the language toggle. Possibly needs moving
+// to another file, like right_to_left.scss.
 .language-ar {
   direction: rtl;
 }
-.language-options {
-  display: none;
-  position: absolute;
-  z-index: 999;
-  left: 12px;
-  background: $backgroundColor;
-  border-radius: 3px;
-  box-shadow: 0px 0px 2px 0px $languageToggle-dropDown-shadowColor;
-  padding: .2em 1em .2em .2em;
-  li {
-    padding: 5px;
-    padding-left: 0;
-  }
-}
 
-.language-toggle-button {
-  cursor: pointer;
-}
-.navbar ul.navbar-nav .language-toggle-links,
-.navbar ul.navbar-nav li a.language-toggle-button {
-  display: none;
-  @media only screen and (min-width: 768px) {
-    display: block;
-  }
+// Because the mobile dropdown uses abbreviations only, it can be smaller.
+.language-toggle-mobile .dropdown-menu {
+  min-width: auto;
 }
 .language-toggle-mobile {
-  position: relative;
-  padding-top: 20px;
-  padding-right: 10px;
   float: right;
-  .language-options {
-    left: -36px;
-    li {
-      padding-left: 5px;
-    }
-  }
-  a {
-    .language-toggle-text {
-      display: none;
-    }
-    .language-toggle {
-      display: none !important;
-    }
-    .fa-globe {
-      font-size: 2em;
-    }
-  }
+  margin-top: 8px;
+  margin-right: 10px;
 }
-
+// If the language toggle is in the navbar menu, separate it from the
+// normal menu items to call attention to it.
+.language-toggle-menu-header .language-toggle-container,
+.language-toggle-menu-footer .language-toggle-container {
+  margin-left: 40px;
+}
+// This logic is to display language abbreviations on mobile,
+// but full language names on desktop.
 @media only screen and (max-width: 768px) {
   .language-name {
     display: none !important;
@@ -69,14 +40,23 @@
 .language-abbreviation {
   text-transform: uppercase;
 }
-
-.navbar ul.navbar-nav .language-toggle-links,
-.language-toggle-links {
-  .fa-globe {
-    position: relative;
-    top: 2px;
+.language-toggle-container .fa-globe {
+  display: none;
+  @media only screen and (min-width: 480px) {
+    display: inline-block;
   }
-  margin-left: 50px;
+}
+.language-toggle-globe-links {
+  float: left;
+  margin-right: 5px;
+  padding-top: 2px;
+}
+.language-toggle-menu-footer .language-toggle-globe-links {
+  padding-top: 6px;
+}
+.language-toggle-links {
+  padding-left: 0;
+  float: left;
   li {
     display: inline;
     .language-toggle-link {
@@ -93,45 +73,13 @@
     content: " | ";
   }
 }
-.navbar ul.navbar-nav .language-toggle-links {
-  li {
-    .language-toggle-link, .language-toggle-active-language {
-      font-size: 13px;
-    }
-  }
+header .language-toggle-links {
+  font-size: 13px;
+  margin-top: 4px;
 }
-footer #footerLinks ul.language-toggle-links > li {
-  display: inline;
-  margin-left: 2px;
-  margin-right: 2px;
+.language-toggle-menu-header .language-toggle-globe-links {
+  padding-top: 6px;
 }
-footer #footerLinks > ul > li {
-  position: relative;
-}
-footer #footerLinks .language-options {
-  bottom: 30px;
-  left: 5px;
-}
-
-.contrast-high {
-  .language-toggle-mobile, ul.navbar-nav {
-    .language-options a, .language-toggle-link, .language-toggle-link span {
-      color: $color-highlight-highContrast;
-      &:hover {
-        color: $color-highlight-highContrast;
-      }
-    }
-    .language-toggle-active-language {
-      color: $color-light-highContrast;
-    }
-  }
-
-  .navbar ul.navbar-nav .language-toggle-links,
-  .language-toggle-links {
-    li {
-      .language-toggle-link, .language-toggle-link span {
-        color: $color-highlight-highContrast;
-      }
-    }
-  }
+footer #footerLinks .language-toggle-menu-footer {
+  margin-bottom: -4px;
 }

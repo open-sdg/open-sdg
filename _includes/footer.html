@@ -22,7 +22,7 @@
               {% endfor %}
             {% endif %}
             {%- if site.languages.size > 1 and site.footer_language_toggle and site.footer_language_toggle != 'none' -%}
-            <li>
+            <li class="language-toggle-menu-footer">
               {% include components/language-toggle.html location="footer" %}
             </li>
             {%- endif -%}

@@ -25,11 +25,11 @@ a.btn{
   text-decoration: none;
 }
 
-.navbar ul.navbar-nav li:not(.contrast) a{
+.navbar ul.navbar-nav > li:not(.contrast) > a{
     border-bottom: 2px solid transparent;
 }
 
-.navbar ul.navbar-nav li:not(.contrast) a:hover{
+.navbar ul.navbar-nav > li:not(.contrast) > a:hover{
     border-bottom: 2px solid $menu-link-borderBottomColor-hover;
 }
 

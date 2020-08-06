@@ -1,14 +1,23 @@
-<a class="language-toggle-button" onclick="$(this).find('.language-toggle').toggle(); $(this).next('.language-toggle').toggle(); return false;">
-  <i class="fa fa-globe"></i>
-  <span class="language-toggle-text">{{ page.t.languages[page.language] }}</span>
-  <i class="language-toggle fa fa-chevron-down" {% if include.location == 'footer' %}style="display:none;"{% endif %}></i>
-  <i class="language-toggle fa fa-chevron-up" {% if include.location == 'header' %}style="display:none;"{% endif %}></i>
-</a>
-
-<ul class="language-options language-toggle">
-{%- for language in site.languages -%}
-  {%- if language != page.language -%}
-    <li><a href="{{ page.url_by_language[language] }}">{{ page.t.languages[language] }}</a></li>
-  {%- endif -%}
-{%- endfor -%}
-</ul>
+<div class="language-toggle-container">
+  <i class="fa fa-globe language-toggle-globe-dropdown"></i>
+  {% assign location = include.location %}
+  <div class="btn-group language-toggle-dropdown {% if location == 'footer' %} dropup{% endif %}">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="language-name">{{ page.t.languages[page.language] }}</span>
+      <span class="language-abbreviation">{{ page.language }}</span>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      {%- for language in site.languages -%}
+        {%- if language != page.language -%}
+          <li>
+            <a href="{{ page.url_by_language[language] }}">
+              <span class="language-name">{{ page.t.languages[language] }}</span>
+              <span class="language-abbreviation">{{ language }}</span>
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
