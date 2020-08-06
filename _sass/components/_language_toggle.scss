@@ -83,3 +83,19 @@ header .language-toggle-links {
 footer #footerLinks .language-toggle-menu-footer {
   margin-bottom: -4px;
 }
+
+.contrast-high {
+  .language-toggle-link span, .language-toggle-link {
+    color: $color-highlight-highContrast;
+    &:hover, &:visited {
+      color: $color-highlight-highContrast;
+    }
+  }
+  .language-toggle-dropdown {
+    .dropdown-toggle, .dropdown-menu {
+      span {
+        color: $color-dark-highContrast;
+      }
+    }
+  }
+}
