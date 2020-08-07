@@ -85,6 +85,9 @@ footer #footerLinks .language-toggle-menu-footer {
 }
 
 .contrast-high {
+  .fa-globe {
+    color: $color-light-highContrast;
+  }
   .language-toggle-link span, .language-toggle-link {
     color: $color-highlight-highContrast;
     &:hover, &:visited {
