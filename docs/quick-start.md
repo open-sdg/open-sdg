@@ -67,11 +67,15 @@ To get started with customising your implementation of Open SDG, try any of thes
 1. [Adding indicators](tutorials/add-indicator.md)
 1. [Adding languages](tutorials/add-language.md)
 1. [Changing colors](tutorials/change-colors.md)
-1. [Changing HTML markup](tutorials/override-markup.md)
+1. [Changing the site-wide banner](tutorials/change-banner.md)
 
 ## Maintenance
 
 To help with maintenance of your implementation, the following automation is recommended:
 
 1. [Protection from breaking changes](automation/github.md)
-2. [Triggered site builds](automation/triggered-site-builds.md)
+1. [Triggered site builds](automation/triggered-site-builds.md)
+
+## Troubleshooting
+
+If this did not appear to work, please consult the [troubleshooting page](troubleshooting.md).
