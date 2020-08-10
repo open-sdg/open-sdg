@@ -41,7 +41,7 @@ Next you will override that `_includes/components/dev-disclaimer.html` file, by 
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. **Change the name of the branch to `banner-tutorial`. You will use this same branch name for all changes in this tutorial.**
 1. Beneath this, click "Propose new file".
-1. Change the name of the pull request to "Tutorial banner".
+1. Change the name of the pull request to "Banner tutorial".
 1. Click on the green "Create pull request" button.
 
 In contrast to past tutorials, **do not "merge" this pull request.** You will be adding several more changes to the pull-request before merging it.
@@ -191,7 +191,7 @@ So here is the final update needed for this tutorial:
 Now you are finished with the updates needed for this tutorial. In order to see the changes, all that is left is to merge the pull request.
 
 1. In your site repository, click on "Pull requests".
-1. Click on the "Tutorial banner" pull request.
+1. Click on the "Banner tutorial" pull request.
 1. At the bottom click on the green "Merge pull request" button.
 
 ## View your results
