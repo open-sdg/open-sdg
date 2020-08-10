@@ -17,10 +17,17 @@ function getTextLinesOnCanvas(ctx, text, maxWidth) {
   return lines;
 }
 
+// This plugin displays a message to the user whenever a chart has no data.
 Chart.plugins.register({
   afterDraw: function(chart) {
     if (chart.data.datasets.length === 0) {
-      // No data is present
+
+      // @deprecated start
+      if (typeof translations.indicator.data_not_available === 'undefined') {
+        translations.indicator.data_not_available = 'This data is not available. Please choose alternative data to display.';
+      }
+      // @deprecated end
+
       var ctx = chart.chart.ctx;
       var width = chart.chart.width;
       var height = chart.chart.height
