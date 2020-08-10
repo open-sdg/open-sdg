@@ -2,6 +2,16 @@
 
 This tutorial will describe how to change the color scheme on your Open SDG implementation. This is intended to be a continuation of the [quick start](../quick-start.md) tutorial. We will change the color of the buttons that appear throughout the site.
 
+### Topics covered
+
+* CSS colors
+* Sass variables
+* Changing files in Github
+
+### Level of difficulty
+
+This tutorial involves a mechanism known as "Sass variables". Although it sounds technical, it does not require previous experience. Anyone will be able to follow the steps in this tutorial and then extend the lessons to other purposes.
+
 ## Find the variable of the color you would like to change
 
 Before we change our button color, we need to find the name of the "variable" that controls it. All of Open SDG's color variables are contained in [this _colors.scss file](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss). The button colors, specifically, are on [lines 59-62](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss#L59-L62). These lines read:
@@ -55,3 +65,14 @@ If you like the color change, feel free to leave it. Otherwise, you can remove t
 1. Find the names of the variables you would like to change, in [the Open SDG color variables file](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss).
 1. Choose new colors. There are various tools available, such as [this color picker](https://www.w3schools.com/colors/colors_picker.asp).
 1. In your site repository, edit the `_sass/variables.scss` file and assign your new colors to the chosen variable names.
+
+## Troubleshooting
+
+If this did not appear to work, here are a few areas to check on:
+
+1. Have you waited long enough? It can take about five minutes for the site to rebuild.
+1. Is your browser holding onto the old files? Sometimes a browser can aggressively cache outdated files. Doing a "hard refresh" can help. For most browsers this is done by pressing CTRL and F5, or SHIFT and F5.
+1. Did you type in the variable names precisely? For example, if you typed `$button-colors` (plural) instead of `$button-color` then it will not work.
+1. Did you forget a `$` (dollar sign) in front of the variable names?
+1. Did you forget a `:` (colon) after the variable names?
+1. Did you forget a `;` (semi-colon) at the end of the lines?
