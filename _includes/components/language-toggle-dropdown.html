@@ -1,8 +1,8 @@
 <div class="language-toggle-container">
-  <i class="fa fa-globe language-toggle-globe-dropdown"></i>
   {% assign location = include.location %}
   <div class="btn-group language-toggle-dropdown {% if location == 'footer' %} dropup{% endif %}">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="language-globe-in-dropdown"><i class="fa fa-globe language-toggle-globe-dropdown"></i></span>
       <span class="language-name">{{ page.t.languages[page.language] }}</span>
       <span class="language-abbreviation">{{ site.languages_public[page.language] | default: page.language }}</span>
       <span class="caret"></span>
@@ -13,8 +13,7 @@
         {%- if language != page.language -%}
           <li>
             <a href="{{ page.url_by_language[language] }}">
-              <span class="language-name">{{ page.t.languages[language] }}</span>
-              <span class="language-abbreviation">{{ language_abbreviation }}</span>
+              {{ page.t.languages[language] }}
             </a>
           </li>
         {%- endif -%}
