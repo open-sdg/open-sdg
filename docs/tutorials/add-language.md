@@ -2,13 +2,13 @@
 
 This tutorial will describe how to add a new language to your Open SDG implementation. This is intended to be a continuation of the [quick start](../quick-start.md) tutorial.
 
-### Topics covered
+## Topics covered
 
 * SDG Translations project
 * Data and site configuration
 * Pages and posts
 
-### Level of difficulty
+## Level of difficulty
 
 This tutorial involves working with text files, but requires no previous technical expertise.
 

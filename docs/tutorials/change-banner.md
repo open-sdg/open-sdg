@@ -2,14 +2,14 @@
 
 This tutorial will describe how to change the banner that appears at the top of each page on your Open SDG implementation. This is intended to be a continuation of the [quick start](../quick-start.md) tutorial. We will take an example of adding a banner required by all United States federal websites.
 
-### Topics covered
+## Topics covered
 
 * Jekyll overrides
 * Adding CSS files
 * Adding javascript files
 * Adding images
 
-### Level of difficulty
+## Level of difficulty
 
 This tutorial involves a variety of technical subjects. Anyone can follow the steps to complete the tutorial, however you will be using HTML, CSS, and javascript that has already been created. In order to extend these lessons for your own customizations and purposes, expertise in writing your own HTML, CSS, and/or javascript may be required.
 

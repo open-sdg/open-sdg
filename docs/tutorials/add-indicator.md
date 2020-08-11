@@ -2,13 +2,13 @@
 
 This tutorial will describe how to add a new indicator to your Open SDG implementation. This is intended to be a continuation of the [quick start](../quick-start.md) tutorial.
 
-### Topics covered
+## Topics covered
 
 * Data updates
 * Metadata updates
 * Data and site builds
 
-### Level of difficulty
+## Level of difficulty
 
 This tutorial involves working with text files, but requires no previous technical expertise.
 

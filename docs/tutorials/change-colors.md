@@ -2,13 +2,13 @@
 
 This tutorial will describe how to change the color scheme on your Open SDG implementation. This is intended to be a continuation of the [quick start](../quick-start.md) tutorial. We will change the color of the buttons that appear throughout the site.
 
-### Topics covered
+## Topics covered
 
 * CSS colors
 * Sass variables
 * Changing files in Github
 
-### Level of difficulty
+## Level of difficulty
 
 This tutorial involves a mechanism known as "Sass variables". Although it sounds technical, it does not require previous experience. Anyone will be able to follow the steps in this tutorial and then extend the lessons to other purposes.
 

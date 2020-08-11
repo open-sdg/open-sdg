@@ -2,20 +2,20 @@
 
 This tutorial will describe how to use some configuration options for the frontpage of your Open SDG implementation. This is intended to be a continuation of the [quick start](../quick-start.md) tutorial.
 
-### Topics covered
+## Topics covered
 
 * Site configuration
 * Custom translations
 
 Note that this tutorial involves translation, and assumes that your Open SDG implementation is using the two languages included in the Quick Start: English and Spanish. If you have already added/removed languages, then when you see mentions of languages later in this tutorial, you may need to interpret accordingly.
 
-### Level of difficulty
+## Level of difficulty
 
 This tutorial involves working with text files, but requires no previous technical expertise.
 
 ## Customize some text on the frontpage
 
-Take a look at the frontpage of your Open SDG implementation (if you have not already done so, complete the [quick start](../quick-start.md) tutorial). Notice how, about the grid of goal icons, it says:
+Take a look at the frontpage of your Open SDG implementation (if you have not already done so, complete the [quick start](../quick-start.md) tutorial). Notice how, above the grid of goal icons, it says:
 
 ```
 Our data for Sustainable Development Goal indicators
