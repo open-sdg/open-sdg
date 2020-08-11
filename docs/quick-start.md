@@ -27,10 +27,10 @@ This step is necessary before continuing, and also serves to demonstrate how to 
 
 1. Go to the data repository.
 1. In the list of files, click on `config_data.yml`.
-1. Click the pencil icon on the right (You can find it next to the History button.)
+1. Click the pencil icon on the right (You can find it next to the "Raw" and "Blame" buttons.)
 1. Add a new line at the top: `# This is a comment`
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. Beneath this, click "Propose file changes".
+1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.
 1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
 1. Wait until you see "All checks have passed". This takes about 5 minutes.
@@ -40,10 +40,10 @@ This step is necessary before continuing, and also serves to demonstrate how to 
 
 1. Go to the site repository.
 1. In the list of files, click on `_config.yml`.
-1. Click the pencil icon on the right (You can find it next to the History button.)
+1. Click the pencil icon on the right (You can find it next to the "Raw" and "Blame" buttons.)
 1. You will see some instructions at the top of the file. Update those few lines as directed.
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. Beneath this, click "Propose file changes".
+1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.
 1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
 1. Wait until you see "All checks have passed". This takes about 5 minutes.
