@@ -44,9 +44,10 @@ We will use a [blue color (#005ea2)](https://www.w3schools.com/colors/colors_pic
 ## Add your new colors
 
 1. Add two new lines at the bottom:
-
-        $button-color: #005ea2;
-        $button-color-pressed: #162e51;
+    ```
+    $button-color: #005ea2;
+    $button-color-pressed: #162e51;
+    ```
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.

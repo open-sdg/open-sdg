@@ -157,13 +157,13 @@ Although you have now uploaded the assets, the CSS and Javascript are not yet be
 1. In your site repository (still in the `banner-tutorial` branch) navigate to the `_config.yml` file.
 1. Click the pencil icon to begin editing it.
 1. Add the bottom of the file, add these snippets:
+    ```
+    custom_css:
+      - /assets/css/uswds.min.css
 
-        custom_css:
-          - /assets/css/uswds.min.css
-
-        custom_js:
-          - /assets/js/uswds.min.js
-
+    custom_js:
+      - /assets/js/uswds.min.js
+    ```
 1. At the bottom you should see "Commit directly to the `banner-tutorial` branch".
 1. Click the "Commit changes" button.
 

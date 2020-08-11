@@ -53,10 +53,10 @@ The translations will be put in the data repository. You will be creating one fi
 1. Under "Edit new file", type `my-goals-grid-title: ` followed by the text you entered above (in the "frontpage_goals_grid" section for "title").
 1. On the next line, type `my-goals-grid-description: ` followed by the text you entered above (in the "frontpage_goals_grid" section for "description").
 1. Confirm that you have something that looks roughly like this:
-
-        my-goals-grid-title: Some text...
-        my-goals-grid-description: Some other text...
-
+    ```
+    my-goals-grid-title: Some text...
+    my-goals-grid-description: Some other text...
+    ```
 1. At the bottom select `Create a new branch for this commit and start a pull request.`
 1. Click "Propose new file".
 1. Click on the green "Create pull request" button.
@@ -72,10 +72,10 @@ Next you will repeat these steps, but for Spanish:
 1. Under "Edit new file", type `my-goals-grid-title: ` followed by a *Spanish translation* of the text you entered above (in the "frontpage_goals_grid" section for "title").
 1. On the next line, type `my-goals-grid-description: ` followed by a *Spanish translation* of the text you entered above (in the "frontpage_goals_grid" section for "description").
 1. Confirm that you have something that looks roughly like this:
-
-        my-goals-grid-title: Algún texto...
-        my-goals-grid-description: Algún otro texto...
-
+    ```
+    my-goals-grid-title: Algún texto...
+    my-goals-grid-description: Algún otro texto...
+    ```
 1. At the bottom select `Create a new branch for this commit and start a pull request.`
 1. Click "Propose new file".
 1. Click on the green "Create pull request" button.
@@ -93,10 +93,10 @@ Now you need to go back to the site repository and tell it to use these new tran
 1. Click the pencil icon on the right to begin editing the file.
 1. As before, look for the `frontpage_goals_grid` section.
 1. Change the two lines below it to the following:
-
-        title: my-custom-translations.my-goals-grid-title
-        description: my-custom-translations.my-goals-grid-description
-
+    ```
+    title: my-custom-translations.my-goals-grid-title
+    description: my-custom-translations.my-goals-grid-description
+    ```
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.

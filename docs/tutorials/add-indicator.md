@@ -73,18 +73,18 @@ This step is most easily done directly in Github.com.
 1. Press the "Add file" drop-down and select "Create a new file".
 1. For "Name your file" enter `15-3-1-a.md` (this is an Open SDG convention as well).
 1. Under "edit new file", enter the following lines:
-
-        ---
-        indicator_name: Proportion of wetland that is degraded over total wetland area
-        indicator_number: 15.3.1.a
-        computation_units: Percentage
-        source_active_1: true
-        source_organisation_1: Wetland Statistics Agency
-        source_url_1: "https://wetlandstaticsagency.org"
-        reporting_status: complete
-        ---
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-
+    ```
+    ---
+    indicator_name: Proportion of wetland that is degraded over total wetland area
+    indicator_number: 15.3.1.a
+    computation_units: Percentage
+    source_active_1: true
+    source_organisation_1: Wetland Statistics Agency
+    source_url_1: "https://wetlandstaticsagency.org"
+    reporting_status: complete
+    ---
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+    ```
 1. At the bottom you should see "Commit directly to the `indicator-tutorial` branch".
 1. Click the "Commit changes" button.
 
