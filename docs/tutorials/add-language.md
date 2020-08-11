@@ -161,4 +161,4 @@ Your site will now begin rebuilding. After about 5 minutes, if you visit your si
 
 ## Troubleshooting
 
-If this did not appear to work, please consult the [troubleshooting page](troubleshooting.md).
+If this did not appear to work, please consult the [troubleshooting page](../troubleshooting.md).
