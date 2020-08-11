@@ -4,9 +4,9 @@ This tutorial will describe how to add a new language to your Open SDG implement
 
 ### Topics covered
 
-* Data and site configuration
 * SDG Translations project
-* Custom translations and pages
+* Data and site configuration
+* Pages and posts
 
 ### Level of difficulty
 
