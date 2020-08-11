@@ -129,7 +129,7 @@ The site repository is automatically rebuilt every 24 hours, so you could simply
 1. Click `Create pull request`.
 1. Wait for the tests to complete, and then click `Merge pull request`.
 
-> For a way to automate this process, see the [triggered site builds](automation/triggered-site-builds.md) documentation.
+> For a way to automate this process, see the [triggered site builds](../automation/triggered-site-builds.md) documentation.
 
 ## View your results
 
