@@ -48,7 +48,7 @@ We will use a [blue color (#005ea2)](https://www.w3schools.com/colors/colors_pic
         $button-color: #005ea2;
         $button-color-pressed: #162e51;
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. Beneath this, click "Propose file changes".
+1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.
 1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
 1. Wait until you see "All checks have passed". This takes about 5 minutes.
