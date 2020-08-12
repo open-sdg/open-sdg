@@ -47,6 +47,11 @@ Chart.plugins.register({
         yLine += lineHeight;
       }
       ctx.restore();
+
+      $('#selectionsChart').addClass('chart-has-no-data');
+    }
+    else {
+      $('#selectionsChart').removeClass('chart-has-no-data');
     }
   }
 });

@@ -458,6 +458,11 @@
   }
 
   #selectionsTable {
+    &.table-has-no-data {
+      #selectionTableFooter {
+        display: none;
+      }
+    }
     div.dataTables_wrapper {
       overflow-x: auto;
 
@@ -509,6 +514,11 @@
 
   #selectionsChart {
     padding-bottom: 20px;
+    &.chart-has-no-data {
+      #selectionChartFooter {
+        display: none;
+      }
+    }
   }
 
   #selectionChartFooter {
