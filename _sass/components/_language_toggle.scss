@@ -5,7 +5,7 @@
 }
 
 .language-toggle-dropdown {
-  margin-top: -3px;
+  margin-top: -2px;
   .dropdown-toggle, .dropdown-menu {
     border-radius: 0;
   }
@@ -18,10 +18,6 @@
     }
     &:focus {
       outline: 1px dotted $color-dark;
-    }
-    .language-abbreviation, .language-name, .caret {
-      position: relative;
-      bottom: 3px;
     }
   }
   .dropdown-menu {
@@ -38,10 +34,24 @@
   margin-top: 8px;
   margin-right: 5px;
 }
+.language-toggle-mobile .language-toggle-dropdown {
+  .language-abbreviation, .language-toggle-caret {
+    position: relative;
+    bottom: 2px;
+  }
+  @media only screen and (min-width: 480px) {
+    .language-toggle-caret {
+      margin-left: 4px;
+    }
+  }
+}
 // If the language toggle is in the navbar menu, separate it from the
 // normal menu items to call attention to it.
 .language-toggle-menu-header .language-toggle-container {
   margin-left: 40px;
+}
+.language-toggle-menu-header .language-toggle-globe-links {
+  padding-top: 5px;
 }
 // This logic is to display language abbreviations on mobile,
 // but full language names on desktop.
@@ -81,7 +91,12 @@
   text-transform: uppercase;
 }
 .language-toggle-container .fa-globe {
-  font-size: 28px;
+  font-size: 18px;
+}
+.language-toggle-mobile {
+  .language-toggle-container .fa-globe {
+    font-size: 25px;
+  }
 }
 .language-toggle-globe-links {
   float: left;
@@ -90,6 +105,9 @@
 }
 .language-toggle-menu-footer .language-toggle-links {
   margin-top: 2px;
+}
+.language-toggle-menu-footer .language-toggle-globe-links {
+  padding-top: 5px;
 }
 .language-toggle-links {
   padding-left: 0;
@@ -115,7 +133,15 @@ header .language-toggle-links {
   margin-top: 4px;
 }
 footer #footerLinks .language-toggle-menu-footer {
-  margin-bottom: -4px;
+  margin-bottom: -5px;
+}
+.language-toggle-menu-footer .language-toggle-dropdown {
+  .language-globe-in-dropdown {
+    margin-right: 5px;
+  }
+  .language-toggle-caret {
+    margin-left: 5px;
+  }
 }
 
 .contrast-high {

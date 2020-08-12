@@ -21,17 +21,15 @@
                 </li>
               {% endfor %}
             {% endif %}
+            {%- if site.languages.size > 1 and site.footer_language_toggle and site.footer_language_toggle != 'none' -%}
+            <li class="language-toggle-menu-footer">
+              {% include components/language-toggle.html location="footer" %}
+            </li>
+            {%- endif -%}
           </ul>
         </div>
       </div>
     </div>
-    {%- if site.languages.size > 1 and site.footer_language_toggle and site.footer_language_toggle != 'none' -%}
-    <div class="row">
-      <div class="col-xs-12 language-toggle-menu-footer">
-        {% include components/language-toggle.html location="footer" %}
-      </div>
-    </div>
-    {%- endif -%}
   </div>
 </footer>
 
