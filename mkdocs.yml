@@ -38,7 +38,9 @@ pages:
     - Requirements: requirements.md
     - Quick start: quick-start.md
     - Data providers:
-        - Making updates: making-updates.md
+        - Making updates: 
+            - Making updates by uploading files: making-updates/uploading-files.md.md
+            - Making updates using Prose.io: making-updates/using-prose.md
         - Metadata format: metadata-format.md
         - Metadata file formats: metadata-file-formats.md
         - Data format: data-format.md
