@@ -1,6 +1,6 @@
 <h1>Making updates to data and metadata</h1>
 
-This document will describe how to update data and metadata for the Open SDG platform.
+Below we describe what is required before you can start making updates to your Open SDG platform
 
 ## Before you start
 
@@ -20,3 +20,6 @@ These steps have four pre-requisites:
 For all of the steps, you will need to be logged into GitHub.com, in whatever web browser you are using. To check just visit [GitHub.com](https://github.com). If you are not already logged in, click "Sign in" to log in.
 
 NOTE: As long as you continue using the same web browser that you used to log in, the following steps will work. If you switch browsers, or clear your browser cache, you will need to log into GitHub.com again before continuing.
+
+
+Now that you're ready to start making updates, see the subsections of this guidance.
