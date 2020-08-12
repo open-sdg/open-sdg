@@ -715,7 +715,7 @@ var indicatorView = function (model, options) {
       initialiseDataTable(el);
 
     } else {
-      $(el).append($('<p />').text(translations.indicator.data_not_available));
+      $(el).append($('<h3 />').text(translations.indicator.data_not_available));
     }
   };
 
