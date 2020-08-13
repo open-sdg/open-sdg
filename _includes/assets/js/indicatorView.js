@@ -743,6 +743,23 @@ var indicatorView = function (model, options) {
       'class': 'btn btn-primary btn-download',
       'tabindex': 0
     }));
+    {% if site.data[page.language].indicator_downloads %}
+      {% for download_type in site.data[page.language].indicator_downloads %}
+        {% if site.data[page.language].indicator_downloads[download_type][page.indicator.number] %}
+          {% assign button_label = indicator_download | t %}
+          var gaLabel = '{{ button_label }}: ' + indicatorId;
+          var downloadHref = opensdg.remoteDataBaseUrl + '/{{ site.data[page.language].indicator_downloads[download_type][page.indicator.number] }}';
+          $(el).append($('<a />').text('{{ button_label }}')
+          .attr(opensdg.autotrack('indicator_download', 'Downloads', '{{ button_label }}', gaLabel))
+          .attr({
+            'href': downloadHref,
+            'title': '{{ button_label }}',
+            'class': 'btn btn-primary btn-download',
+            'tabindex': 0
+          }));
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   }
 
   this.tableHasData = function(table) {
