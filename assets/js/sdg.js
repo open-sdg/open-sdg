@@ -4,6 +4,7 @@
 {%- include assets/js/autotrack-element.js -%}
 {%- include assets/js/plugins/jquery.sdgMap.js -%}
 {%- include assets/js/chartjs/rescaler.js -%}
+{%- include assets/js/chartjs/noDataMessage.js -%}
 {%- include assets/js/event.js -%}
 {%- include assets/js/accessibility.js -%}
 {%- include assets/js/chartColors.js -%}
