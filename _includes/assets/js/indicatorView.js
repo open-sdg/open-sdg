@@ -454,6 +454,7 @@ var indicatorView = function (model, options) {
 
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
     this.createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
+    this.createIndicatorDownloadButtons(chartInfo.indicatorDownloads, chartInfo.shortIndicatorId, '#selectionsChart');
 
     $("#btnSave").click(function() {
       var filename = chartInfo.indicatorId + '.png',
@@ -614,6 +615,7 @@ var indicatorView = function (model, options) {
     $('#tableSelectionDownload').empty();
     this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload');
     this.createSourceButton(chartInfo.shortIndicatorId, '#tableSelectionDownload');
+    this.createIndicatorDownloadButtons(chartInfo.indicatorDownloads, chartInfo.shortIndicatorId, '#selectionsTable');
   };
 
 
@@ -743,23 +745,25 @@ var indicatorView = function (model, options) {
       'class': 'btn btn-primary btn-download',
       'tabindex': 0
     }));
-    {% if site.data[page.language].indicator_downloads %}
-      {% for download_type in site.data[page.language].indicator_downloads %}
-        {% if site.data[page.language].indicator_downloads[download_type][page.indicator.number] %}
-          {% assign button_label = indicator_download | t %}
-          var gaLabel = '{{ button_label }}: ' + indicatorId;
-          var downloadHref = opensdg.remoteDataBaseUrl + '/{{ site.data[page.language].indicator_downloads[download_type][page.indicator.number] }}';
-          $(el).append($('<a />').text('{{ button_label }}')
-          .attr(opensdg.autotrack('indicator_download', 'Downloads', '{{ button_label }}', gaLabel))
-          .attr({
-            'href': downloadHref,
-            'title': '{{ button_label }}',
-            'class': 'btn btn-primary btn-download',
-            'tabindex': 0
-          }));
-        {% endif %}
-      {% endfor %}
-    {% endif %}
+  }
+
+  this.createIndicatorDownloadButtons = function(indicatorDownloads, indicatorId, el) {
+    if (indicatorDownloads) {
+      for (var buttonLabel of Object.keys(indicatorDownloads)) {
+        var href = indicatorDownloads[buttonLabel].href;
+        var buttonLabelTranslated = translations.t(buttonLabel);
+        var gaLabel = buttonLabel + ': ' + indicatorId;
+        $(el).append($('<a />').text(buttonLabelTranslated)
+        .attr(opensdg.autotrack(buttonLabel, 'Downloads', buttonLabel, gaLabel))
+        .attr({
+          'href': opensdg.remoteDataBaseUrl + '/' + href,
+          'download': href.split('/').pop(),
+          'title': buttonLabelTranslated,
+          'class': 'btn btn-primary btn-download',
+          'tabindex': 0
+        }));
+      }
+    }
   }
 
   this.tableHasData = function(table) {
