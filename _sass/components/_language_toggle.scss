@@ -24,6 +24,21 @@
     font-size: 16px;
   }
 }
+.language-toggle-menu-header .language-toggle-dropdown {
+  margin-top: 0px;
+  .dropdown-toggle, .dropdown-menu {
+    font-size: 14px;
+  }
+  .dropdown-toggle {
+    position: relative;
+    .language-globe-in-dropdown {
+      display: inline-block;
+      position: relative;
+      top: 1px;
+      margin-right: 5px;
+    }
+  }
+}
 
 // Because the mobile dropdown uses abbreviations only, it can be smaller.
 .language-toggle-mobile .dropdown-menu {
@@ -35,6 +50,9 @@
   margin-right: 5px;
 }
 .language-toggle-mobile .language-toggle-dropdown {
+  .dropdown-toggle, .dropdown-menu {
+    font-size: 14px;
+  }
   .language-abbreviation, .language-toggle-caret {
     position: relative;
     bottom: 2px;
@@ -42,6 +60,11 @@
   @media only screen and (min-width: 480px) {
     .language-toggle-caret {
       margin-left: 4px;
+    }
+  }
+  .dropdown-menu {
+    a, a:hover {
+      text-decoration: none;
     }
   }
 }
@@ -52,6 +75,12 @@
 }
 .language-toggle-menu-header .language-toggle-globe-links {
   padding-top: 5px;
+}
+.nav > li.language-toggle-menu-header {
+  display: none;
+  @media only screen and (min-width: 768px) {
+    display: block;
+  }
 }
 // This logic is to display language abbreviations on mobile,
 // but full language names on desktop.
@@ -132,11 +161,17 @@ header .language-toggle-links {
   font-size: 14px;
   margin-top: 4px;
 }
+.language-toggle-menu-header
 .language-toggle-menu-header .language-globe-in-dropdown {
   margin-right: 5px;
 }
 footer #footerLinks .language-toggle-menu-footer {
   margin-bottom: -5px;
+  .dropdown-menu {
+    a {
+      text-decoration: none;
+    }
+  }
 }
 .language-toggle-menu-footer .language-toggle-dropdown {
   .language-globe-in-dropdown {
@@ -162,13 +197,24 @@ footer #footerLinks .language-toggle-menu-footer {
       &, &:hover, &:active, &:focus {
         background: $color-dark-highContrast !important;
       }
-      span {
-        color: $color-light-highContrast;
+      &, span, .language-toggle-caret {
+        color: $color-light-highContrast !important;
       }
     }
     .dropdown-menu {
-      span {
-        color: $color-dark-highContrast;
+      &, a:hover, a:focus {
+        background: $color-dark-highContrast;
+      }
+      border-color: $color-light-highContrast;
+    }
+  }
+  .language-toggle-mobile .language-toggle-dropdown {
+    .dropdown-menu {
+      a:visited {
+        color: $color-light-highContrast;
+      }
+      a:hover, a:focus {
+        color: $color-highlight-highContrast;
       }
     }
   }
