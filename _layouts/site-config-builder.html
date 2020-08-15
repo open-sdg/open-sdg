@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Open SDG site configuration</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/ace.min.js"></script>
+
+    <style>
+      .container {
+        max-width:960px;
+        margin: 0 auto
+      }
+      .columns > div[data-schematype] {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+      }
+      .column > .je-panel > div > div[data-schemapath] > select {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='columns'>
+        <h1 class='col-md-12'>Open SDG site configuration</h1>
+      </div>
+      <div class='columns'>
+        <div class='column col-md-12' id='editor_holder'></div>
+      </div>
+    </div>
+
+    <script>
+      window.ace.config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/");
+
+      var editor = new JSONEditor(document.getElementById('editor_holder'), {
+        theme: 'spectre',
+        iconlib: 'spectre',
+        ajax: true,
+        disable_array_delete_all_rows: true,
+        disable_array_delete_last_row: true,
+        disable_array_reorder: true,
+        disable_edit_json: true,
+        disable_properties: true,
+        remove_button_labels: true,
+
+        // The schema for the editor
+        schema: {
+          $ref: "assets/js/site-config-schema.json"
+        },
+      });
+    </script>
+  </body>
+</html>
