@@ -312,19 +312,10 @@ hide_empty_metadata: true
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
 
-Note that the [Jekyll defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) mechanism should also be used, to ensure that all pages on the will be assigned a default language.
-
 ```nohighlight
 languages:
   - es
   - en
-
-defaults:
-  -
-    scope:
-      path: ""
-    values:
-      language: "es"
 ```
 
 ### languages_public
