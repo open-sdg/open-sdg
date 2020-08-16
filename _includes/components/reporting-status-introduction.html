@@ -8,6 +8,6 @@
 
 {% if site.reporting_status.description %}
 <div class="reporting-status-description">
-  {{ site.reporting_status.description | t }}
+  {{ site.reporting_status.description | t | markdownify }}
 </div>
 {% endif %}
