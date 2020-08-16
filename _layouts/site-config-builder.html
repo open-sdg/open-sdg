@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
 
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/ace.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
-
     <style>
       .container {
         max-width:960px;
@@ -28,18 +23,34 @@
         font-size: 1.2rem;
         font-weight: 500;
       }
+      #button_holder {
+        margin-bottom: 30px;
+        margin-top: 15px;
+      }
     </style>
   </head>
   <body>
-    <div class='container'>
-      <div class='columns'>
-        <h1 class='col-md-12'>Open SDG site configuration</h1>
+    <div class="container">
+      <div class="columns">
+        <h1 class="col-md-12">Open SDG site configuration</h1>
       </div>
-      <div class='columns'>
-        <div class='column col-md-12' id='editor_holder'></div>
+      <div class="columns">
+        <div class="column col-md-12" id="button_holder">
+          <button id="import">Import</button>
+          <button id="export">Export</button>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column col-md-12" id="editor_holder"></div>
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/ace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
     <script>
       window.ace.config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/");
 
@@ -53,11 +64,35 @@
         disable_edit_json: true,
         disable_properties: true,
         remove_button_labels: true,
+        remove_empty_properties: true,
 
         // The schema for the editor
         schema: {
-          $ref: "assets/js/site-config-schema.json"
+          $ref: "{{ site.baseurl }}/assets/js/site-config-schema.json"
         },
+      });
+
+      editor.on('ready', function() {
+        document.getElementById('import').addEventListener('click', function() {
+          alert('Import not yet implemented');
+        });
+
+        new ClipboardJS('#export', {
+          text: function() {
+            var config = editor.getValue();
+            if (typeof config.additional_settings !== 'undefined') {
+              var additional = jsyaml.safeLoad(config.additional_settings);
+              delete config.additional_settings;
+              if (additional) {
+                for (var key of Object.keys(additional)) {
+                  config[key] = additional[key];
+                }
+              }
+            }
+            alert('Site configuration copied to clipboard.');
+            return jsyaml.safeDump(config);
+          }
+        });
       });
     </script>
   </body>

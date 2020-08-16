@@ -546,6 +546,7 @@
             "title": "Graph color number",
             "type": "integer",
             "description": "This setting can be used to limit the length of the list of colors selected via graph_color_set.",
+            "default": 6,
             "links": [
                 {
                     "rel": "More information",
