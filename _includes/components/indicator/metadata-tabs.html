@@ -1,8 +1,14 @@
 <ul class="nav nav-tabs spacer medium" role="tablist">
 {% if site.metadata_tabs %}
 {% for tab in site.metadata_tabs %}
+  {% comment %} @deprecated start {% endcomment %}
   {% assign tab_key = tab[0] %}
   {% assign tab_obj = tab[1] %}
+  {% comment %} @deprecated end {% endcomment %}
+  {% if tab.scope %}
+    {% assign tab_key = tab.scope %}
+    {% assign tab_obj = tab %}
+  {% endif %}
   {% assign tab_preset = "tab_meta_" | append: tab_key %}
   {% assign tab_label = "Change to " | append: tab_obj.title | append: " tab" %}
   <li role="presentation" class="nav-item {% if forloop.first %}active{% endif %}">
