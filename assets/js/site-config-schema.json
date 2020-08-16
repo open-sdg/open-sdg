@@ -389,7 +389,8 @@
                     "title": {
                         "type": "string",
                         "title": "Title",
-                        "description": "The card's title."
+                        "description": "The card's title.",
+                        "default": "My card title"
                     },
                     "content": {
                         "type": "string",
