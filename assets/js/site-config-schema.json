@@ -50,29 +50,14 @@
             "options": {
                 "collapsed": true
             },
+            "format": "table",
             "type": "array",
             "title": "Languages",
             "description": "This setting controls the languages to be used on the site.",
             "default": ["en"],
-            "examples": [
-                [
-                    "en"
-                ]
-            ],
-            "additionalItems": true,
             "items": {
-                "title": "Language",
-                "anyOf": [
-                    {
-                        "type": "string",
-                        "title": "Language",
-                        "description": "This is a language code.",
-                        "default": "",
-                        "examples": [
-                            "en"
-                        ]
-                    }
-                ]
+                "type": "string",
+                "title": "Language"
             },
             "links": [
                 {
@@ -86,7 +71,6 @@
             "title": "Environment",
             "description": "Which environment (staging or production) this configuration is for.",
             "default": "staging",
-            "examples": [],
             "format": "choices",
             "enum": ["staging", "production"],
             "links": [
@@ -101,9 +85,6 @@
             "title": "Goal image base URL",
             "description": "This setting controls the base URL for downloading the imagery for the goals.",
             "default": "https://open-sdg.github.io/sdg-translations/assets/img/goals",
-            "examples": [
-                "https://open-sdg.github.io/sdg-translations/assets/img/goals"
-            ],
             "links": [
                 {
                     "rel": "More information",
@@ -115,6 +96,7 @@
             "options": {
                 "collapsed": true
             },
+            "format": "table",
             "type": "array",
             "title": "Main menu",
             "description": "The links to display in the main menu.",
@@ -128,60 +110,8 @@
                     "translation_key": "menu.about"
                 }
             ],
-            "examples": [
-                [
-                    {
-                        "path": "/reporting-status",
-                        "translation_key": "menu.reporting_status"
-                    },
-                    {
-                        "path": "/about",
-                        "translation_key": "menu.about"
-                    }
-                ]
-            ],
-            "additionalItems": true,
             "items": {
-                "title": "Main menu item",
-                "anyOf": [
-                    {
-                        "type": "object",
-                        "title": "Menu item",
-                        "description": "This is one menu item in the header.",
-                        "default": {},
-                        "examples": [
-                            {
-                                "path": "/reporting-status",
-                                "translation_key": "menu.reporting_status"
-                            }
-                        ],
-                        "required": [
-                            "path",
-                            "translation_key"
-                        ],
-                        "properties": {
-                            "path": {
-                                "type": "string",
-                                "title": "Path",
-                                "description": "Path or URL that the menu item should link to.",
-                                "default": "",
-                                "examples": [
-                                    "/reporting-status"
-                                ]
-                            },
-                            "translation_key": {
-                                "type": "string",
-                                "title": "Label",
-                                "description": "Label (or translation key) for the link.",
-                                "default": "",
-                                "examples": [
-                                    "menu.reporting_status"
-                                ]
-                            }
-                        },
-                        "additionalProperties": true
-                    }
-                ]
+                "$ref": "#/definitions/menu_item"
             },
             "links": [
                 {
@@ -194,64 +124,22 @@
             "options": {
                 "collapsed": true
             },
+            "format": "table",
             "type": "array",
             "title": "Footer menu",
             "description": "The links to display in the footer menu.",
-            "default": [{}],
-            "examples": [
-                [
-                    {
-                        "path": "mailto:my-email-address@example.com",
-                        "translation_key": "menu.contact_us"
-                    },
-                    {
-                        "path": "https://twitter.com/MyTwitterAccount",
-                        "translation_key": "general.twitter"
-                    }
-                ]
+            "default": [
+                {
+                    "path": "mailto:my-email-address@example.com",
+                    "translation_key": "menu.contact_us"
+                },
+                {
+                    "path": "https://twitter.com/MyTwitterAccount",
+                    "translation_key": "general.twitter"
+                }
             ],
-            "additionalItems": true,
             "items": {
-                "title": "Footer menu item",
-                "anyOf": [
-                    {
-                        "type": "object",
-                        "title": "Menu item",
-                        "description": "This is one menu item in the footer.",
-                        "default": {},
-                        "examples": [
-                            {
-                                "path": "mailto:my-email-address@example.com",
-                                "translation_key": "menu.contact_us"
-                            }
-                        ],
-                        "required": [
-                            "path",
-                            "translation_key"
-                        ],
-                        "properties": {
-                            "path": {
-                                "type": "string",
-                                "title": "Path",
-                                "description": "Path or URL that the menu item should link to.",
-                                "default": "",
-                                "examples": [
-                                    "mailto:my-email-address@example.com"
-                                ]
-                            },
-                            "translation_key": {
-                                "type": "string",
-                                "title": "Label",
-                                "description": "Label (or translation key) for the link.",
-                                "default": "",
-                                "examples": [
-                                    "menu.contact_us"
-                                ]
-                            }
-                        },
-                        "additionalProperties": true
-                    }
-                ]
+                "$ref": "#/definitions/menu_item"
             },
             "links": [
                 {
@@ -271,12 +159,6 @@
                 "name": "Australia",
                 "adjective": "Australian"
             },
-            "examples": [
-                {
-                    "name": "Australia",
-                    "adjective": "Australian"
-                }
-            ],
             "required": [
                 "name",
                 "adjective"
@@ -285,21 +167,14 @@
                 "name": {
                     "type": "string",
                     "title": "Name",
-                    "description": "The name of your country/region/locality/etc.",
-                    "examples": [
-                        "Australia"
-                    ]
+                    "description": "The name of your country/region/locality/etc."
                 },
                 "adjective": {
                     "type": "string",
                     "title": "Adjective",
-                    "description": "Adjective form of your country/region/locality/etc.",
-                    "examples": [
-                        "Australian"
-                    ]
+                    "description": "Adjective form of your country/region/locality/etc."
                 }
             },
-            "additionalProperties": true,
             "links": [
                 {
                     "rel": "More information",
@@ -314,14 +189,11 @@
             "type": "object",
             "title": "Email addresses",
             "description": "Email addresses to publish on your platform.",
-            "default": {},
-            "examples": [
-                {
-                    "questions": "test@example.com",
-                    "suggestions": "test@example.com",
-                    "functional": "test@example.com"
-                }
-            ],
+            "default": {
+                "questions": "test@example.com",
+                "suggestions": "test@example.com",
+                "functional": "test@example.com"
+            },
             "required": [
                 "questions",
                 "suggestions",
@@ -356,7 +228,6 @@
                     ]
                 }
             },
-            "additionalProperties": true,
             "links": [
                 {
                     "rel": "More information",
@@ -369,9 +240,6 @@
             "title": "Data edit URL",
             "description": "This setting controls the URL of the 'Edit Data' buttons that appear on the staging site's indicator pages.",
             "default": "http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv",
-            "examples": [
-                "http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv"
-            ],
             "links": [
                 {
                     "rel": "More information",
@@ -384,9 +252,6 @@
             "title": "Metadata edit URL",
             "description": "This setting controls the URL of the 'Edit Metadata' buttons that appear on the staging site's indicator pages.",
             "default": "http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md",
-            "examples": [
-                "http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md"
-            ],
             "links": [
                 {
                     "rel": "More information",
@@ -398,30 +263,14 @@
             "options": {
                 "collapsed": true
             },
+            "format": "table",
             "type": "array",
             "title": "Plugins",
             "description": "This setting controls the Jekyll plugins to be used on the site.",
             "default": ["jekyll-remote-theme", "jekyll-open-sdg-plugins"],
-            "examples": [
-                [
-                    "jekyll-remote-theme",
-                    "jekyll-open-sdg-plugins"
-                ]
-            ],
-            "additionalItems": true,
             "items": {
-                "title": "Plugin",
-                "anyOf": [
-                    {
-                        "type": "string",
-                        "title": "Plugin",
-                        "description": "This is a Jekyll plugin.",
-                        "default": "",
-                        "examples": [
-                            "jekyll-remote-theme"
-                        ]
-                    }
-                ]
+                "type": "string",
+                "title": "Plugin"
             },
             "links": [
                 {
@@ -437,23 +286,13 @@
             "type": "object",
             "title": "Google Analytics",
             "description": "If these settings are used, usage statistics will be sent to Google Analytics.",
-            "examples": [
-                {
-                    "ga_prod": "UA1234567"
-                }
-            ],
             "properties": {
                 "ga_prod": {
                     "type": "string",
                     "title": "Google Analytics tracking ID",
-                    "description": "The tracking ID (UA code) for your property on Google Analytics.",
-                    "default": "",
-                    "examples": [
-                        "UA1234567"
-                    ]
+                    "description": "The tracking ID (UA code) for your property on Google Analytics."
                 }
             },
-            "additionalProperties": true,
             "links": [
                 {
                     "rel": "More information",
@@ -478,23 +317,14 @@
                 "phase": {
                     "type": "string",
                     "title": "Phase",
-                    "description": "The development phase of your platform (alpha, beta, etc.)",
-                    "default": "",
-                    "examples": [
-                        "BETA"
-                    ]
+                    "description": "The development phase of your platform (alpha, beta, etc.)"
                 },
                 "message": {
                     "type": "string",
                     "title": "Message",
-                    "description": "A short disclaimer message.",
-                    "default": "",
-                    "examples": [
-                        "This is my disclaimer message."
-                    ]
+                    "description": "A short disclaimer message."
                 }
             },
-            "additionalProperties": true,
             "links": [
                 {
                     "rel": "More information",
@@ -521,92 +351,49 @@
                     }
                 ]
             ],
-            "additionalItems": true,
             "items": {
-                "title": "Card",
-                "anyOf": [
-                    {
-                        "type": "object",
-                        "title": "Frontpage card",
-                        "description": "This is a frontpage card.",
-                        "default": {},
+                "type": "object",
+                "title": "Frontpage card",
+                "required": [
+                    "title"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Title",
+                        "description": "The card's title."
+                    },
+                    "content": {
+                        "type": "string",
+                        "title": "Content",
+                        "description": "The card's content.",
+                        "format": "markdown"
+                    },
+                    "include": {
+                        "type": "string",
+                        "title": "Include file",
+                        "description": "A Jekyll include file to place inside the card."
+                    },
+                    "button_label": {
+                        "type": "string",
+                        "title": "Button label",
+                        "description": "A label for a button to display at the bottom of the card.",
+                        "default": "",
                         "examples": [
-                            {
-                                "title": "My card title",
-                                "content": "My card content"
-                            }
-                        ],
-                        "required": [
-                            "title"
-                        ],
-                        "properties": {
-                            "rule_color": {
-                                "type": "string",
-                                "title": "Rule color",
-                                "description": "The color of the horizontal line appearing above the card.",
-                                "default": "",
-                                "examples": [
-                                    "red"
-                                ]
-                            },
-                            "title": {
-                                "type": "string",
-                                "title": "Title",
-                                "description": "The card's title.",
-                                "default": "",
-                                "examples": [
-                                    "My card title"
-                                ]
-                            },
-                            "content": {
-                                "type": "string",
-                                "title": "Content",
-                                "description": "The card's content.",
-                                "default": "",
-                                "examples": [
-                                    "My card content"
-                                ],
-                                "format": "markdown",
-                                "options": {
-                                    "ace": {
-                                        "theme": "ace/theme/dawn",
-                                        "tabSize": 2,
-                                        "useSoftTabs": true,
-                                        "wrap": true
-                                    }
-                                }
-                            },
-                            "include": {
-                                "type": "string",
-                                "title": "Include file",
-                                "description": "A Jekyll include file to place inside the card.",
-                                "default": "",
-                                "examples": [
-                                    "components/download-all-data.html"
-                                ]
-                            },
-                            "button_label": {
-                                "type": "string",
-                                "title": "Button label",
-                                "description": "A label for a button to display at the bottom of the card.",
-                                "default": "",
-                                "examples": [
-                                    "My button label"
-                                ]
-                            },
-                            "button_link": {
-                                "type": "string",
-                                "title": "Button link",
-                                "description": "A path or URL for the card's button to link to.",
-                                "default": "",
-                                "examples": [
-                                    "https://example.com",
-                                    "path/to/my-page"
-                                ]
-                            }
-                        }
+                            "My button label"
+                        ]
+                    },
+                    "button_link": {
+                        "type": "string",
+                        "title": "Button link",
+                        "description": "A path or URL for the card's button to link to."
+                    },
+                    "rule_color": {
+                        "type": "string",
+                        "title": "Rule color",
+                        "description": "The color of the horizontal line appearing above the card."
                     }
-                ]
+                }
             },
             "links": [
                 {
@@ -622,25 +409,7 @@
             "type": "object",
             "title": "Frontpage goals grid",
             "description": "This setting is only used in the frontpage-alt layout. It can display a title and description above the grid of goal tiles.",
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "title": "Title",
-                    "description": "The title to display above the goals grid.",
-                    "examples": [
-                        "My title"
-                    ]
-                },
-                "description": {
-                    "type": "string",
-                    "title": "Description",
-                    "description": "The description to display above the goals grid.",
-                    "examples": [
-                        "My description"
-                    ]
-                }
-            },
-            "additionalProperties": true,
+            "$ref": "#/definitions/title_and_description",
             "links": [
                 {
                     "rel": "More information",
@@ -683,25 +452,7 @@
             "type": "object",
             "title": "Frontpage introduction banner",
             "description": "This setting is only used in the frontpage-alt layout. It can display a title and description in a banner at the top of the frontpage.",
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "title": "Title",
-                    "description": "The title to display at the top of the frontpage.",
-                    "examples": [
-                        "My title"
-                    ]
-                },
-                "description": {
-                    "type": "string",
-                    "title": "Description",
-                    "description": "The description to display at the top of the frontpage.",
-                    "examples": [
-                        "My description"
-                    ]
-                }
-            },
-            "additionalProperties": true,
+            "$ref": "#/definitions/title_and_description",
             "links": [
                 {
                     "rel": "More information",
@@ -716,25 +467,7 @@
             "type": "object",
             "title": "Goals page",
             "description": "This setting is used in the 'goals' layout. It can display a title and description above the grid of goal tiles.",
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "title": "Title",
-                    "description": "The title to display above the goals grid.",
-                    "examples": [
-                        "My title"
-                    ]
-                },
-                "description": {
-                    "type": "string",
-                    "title": "Description",
-                    "description": "The description to display above the goals grid.",
-                    "examples": [
-                        "My description"
-                    ]
-                }
-            },
-            "additionalProperties": true,
+            "$ref": "#/definitions/title_and_description",
             "links": [
                 {
                     "rel": "More information",
@@ -764,25 +497,18 @@
             "type": "object",
             "title": "Goal pages",
             "description": "This setting can be used to automatically create the goal pages.",
-            "examples": [
-                {
-                    "layout": "goal-by-target-vertical"
-                }
-            ],
+            "default": {
+                "layout": "goal-by-target-vertical"
+            },
             "properties": {
                 "layout": {
                     "type": "string",
                     "title": "Layout",
                     "description": "The layout to use for the goal pages.",
-                    "default": "goal-by-target-vertical",
-                    "examples": [
-                        "goal-by-target-vertical"
-                    ],
                     "format": "choices",
                     "enum": ["goal", "goal-by-target", "goal-by-target-vertical"]
                 }
             },
-            "additionalProperties": true,
             "links": [
                 {
                     "rel": "More information",
@@ -797,23 +523,18 @@
             "type": "object",
             "title": "Indicator pages",
             "description": "This setting can be used to automatically create the indicator pages.",
-            "examples": [
-                {
-                    "layout": "indicator"
-                }
-            ],
+            "default": {
+                "layout": "indicator"
+            },
             "properties": {
                 "layout": {
                     "type": "string",
                     "title": "Layout",
                     "description": "The layout to use for the indicator pages.",
-                    "default": "indicator",
-                    "examples": [
-                        "indicator"
-                    ]
+                    "format": "choices",
+                    "enum": ["indicator"]
                 }
             },
-            "additionalProperties": true,
             "links": [
                 {
                     "rel": "More information",
@@ -825,6 +546,7 @@
             "options": {
                 "collapsed": true
             },
+            "format": "table",
             "type": "array",
             "title": "Create pages",
             "description": "This setting can be used to automatically create the pages.",
@@ -851,90 +573,34 @@
                     "layout": "search"
                 }
             ],
-            "examples": [
-                [
-                    {
-                        "filename": "index.html",
-                        "folder": "/",
-                        "layout": "frontpage-alt"
-                    },
-                    {
-                        "filename": "index.html",
-                        "folder": "/goals",
-                        "layout": "goals"
-                    },
-                    {
-                        "filename": "index.html",
-                        "folder": "/reporting-status",
-                        "layout": "reportingstatus"
-                    },
-                    {
-                        "filename": "indicators.json",
-                        "folder": "/",
-                        "layout": "indicators.json"
-                    },
-                    {
-                        "filename": "index.html",
-                        "folder": "/search",
-                        "layout": "search"
-                    }
-                ]
-            ],
-            "additionalItems": true,
             "items": {
+                "type": "object",
                 "title": "Page",
-                "anyOf": [
-                    {
-                        "type": "object",
-                        "title": "Page",
-                        "description": "This is one page.",
-                        "default": {},
-                        "examples": [
-                            {
-                                "filename": "",
-                                "folder": "/my-folder",
-                                "layout": "my-layout"
-                            }
-                        ],
-                        "required": [
-                            "layout",
-                            "folder",
-                            "filename"
-                        ],
-                        "properties": {
-                            "filename": {
-                                "type": "string",
-                                "title": "Filename",
-                                "description": "The filename for the page - usually 'index.html'.",
-                                "default": "index.html",
-                                "examples": [
-                                    "index.html",
-                                    "indicators.json"
-                                ]
-                            },
-                            "folder": {
-                                "type": "string",
-                                "title": "Folder",
-                                "description": "The folder path for the page.",
-                                "default": "/",
-                                "examples": [
-                                    "/",
-                                    "/my-folder"
-                                ]
-                            },
-                            "layout": {
-                                "type": "string",
-                                "title": "Layout",
-                                "description": "The layout to use for the page.",
-                                "default": "",
-                                "examples": [
-                                    "my-layout"
-                                ]
-                            }
-                        },
-                        "additionalProperties": true
+                "default": {
+                    "filename": "index.html"
+                },
+                "required": [
+                    "layout",
+                    "folder",
+                    "filename"
+                ],
+                "properties": {
+                    "filename": {
+                        "type": "string",
+                        "title": "Filename",
+                        "description": "The filename for the page - usually 'index.html'."
+                    },
+                    "folder": {
+                        "type": "string",
+                        "title": "Folder",
+                        "description": "The folder path for the page."
+                    },
+                    "layout": {
+                        "type": "string",
+                        "title": "Layout",
+                        "description": "The layout to use for the page."
                     }
-                ]
+                }
             },
             "links": [
                 {
@@ -947,29 +613,13 @@
             "options": {
                 "collapsed": true
             },
+            "format": "table",
             "type": "array",
             "title": "Custom JavaScript files",
             "description": "This setting can be used to load additional JavaScript files on each page.",
-            "default": [""],
-            "examples": [
-                [
-                    "assets/js/custom.js"
-                ]
-            ],
-            "additionalItems": true,
             "items": {
-                "title": "Custom JavaScript file",
-                "anyOf": [
-                    {
-                        "type": "string",
-                        "title": "Custom JavaScript file",
-                        "description": "This is a reference to a custom JavaScript file.",
-                        "default": "",
-                        "examples": [
-                            "assets/js/custom.js"
-                        ]
-                    }
-                ]
+                "type": "string",
+                "title": "Custom JavaScript file"
             },
             "links": [
                 {
@@ -982,29 +632,13 @@
             "options": {
                 "collapsed": true
             },
+            "format": "table",
             "type": "array",
             "title": "Custom CSS files",
             "description": "Deprecated: instead of using this, it is recommended to put custom CSS in a _sass/custom.scss file.",
-            "default": [""],
-            "examples": [
-                [
-                    "assets/css/custom.css"
-                ]
-            ],
-            "additionalItems": true,
             "items": {
-                "title": "Custom CSS file",
-                "anyOf": [
-                    {
-                        "type": "string",
-                        "title": "Custom CSS file",
-                        "description": "This is a reference to a custom CSS file.",
-                        "default": "",
-                        "examples": [
-                            "assets/css/custom.css"
-                        ]
-                    }
-                ]
+                "type": "string",
+                "title": "Custom CSS file"
             },
             "links": [
                 {
@@ -1028,5 +662,45 @@
             }
         }
     },
-    "additionalProperties": true
+    "additionalProperties": true,
+    "definitions": {
+        "menu_item": {
+            "type": "object",
+            "title": "Menu item",
+            "required": [
+                "path",
+                "translation_key"
+            ],
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "title": "Path",
+                    "description": "Path or URL that the menu item should link to."
+                },
+                "translation_key": {
+                    "type": "string",
+                    "title": "Label",
+                    "description": "Label (or translation key) for the link."
+                }
+            }
+        },
+        "title_and_description": {
+            "type": "object",
+            "required": [
+                "title",
+                "description"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "format": "markdown"
+                }
+            }
+        }
+    }
 }

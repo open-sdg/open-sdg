@@ -8,22 +8,25 @@
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
 
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ace-builds@latest/src-noconflict/ace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
 
     <style>
       .container {
         max-width:960px;
         margin: 0 auto
       }
-      .columns > div[data-schematype] {
+      div[data-schemapath="root"] > .je-panel > .container > div > .columns {
         margin-bottom: 30px;
         padding-bottom: 30px;
       }
-      .column > .je-panel > div > div[data-schemapath] > select {
-        display: none !important;
+      div[data-schemapath="root"] > .je-panel > .container > div > .columns > div[data-schematype] > .form-group > .je-label {
+        font-size: 1.2rem;
+        font-weight: 500;
       }
     </style>
   </head>
