@@ -36,7 +36,6 @@
       </div>
       <div class="columns">
         <div class="column col-md-12" id="button_holder">
-          <button id="import">Import</button>
           <button id="export">Export</button>
         </div>
       </div>
@@ -70,18 +69,13 @@
 
       // Set values according to this site's configuration.
       var propertyEditor;
-      {%- for config_setting in site.data.config-schema.properties -%}
+      {%- for config_setting in site.data.schema-site-config.properties -%}
       {%- assign config_key = config_setting[0] -%}
       {% if site[config_key] %}
       propertyEditor = editor.getEditor('root.{{ config_key }}');
       propertyEditor.setValue({{ site[config_key] | jsonify }});
       {% endif %}
       {%- endfor -%}
-
-      // Import functionality.
-      document.getElementById('import').addEventListener('click', function() {
-        alert('Import not yet implemented');
-      });
 
       // Export functionality.
       new ClipboardJS('#export', {
