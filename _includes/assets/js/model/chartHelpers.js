@@ -25,15 +25,16 @@ function getChartTitle(currentTitle, allTitles, selectedUnit) {
  * @param {string} defaultLabel
  * @param {Array} colors
  * @param {Array} selectableFields Field names
+ * @param {Array} colorsUsedByCombination
  * @return {Array} Datasets suitable for Chart.js
  */
-function getDatasets(headline, data, combinations, years, defaultLabel, colors, selectableFields) {
+function getDatasets(headline, data, combinations, years, defaultLabel, colors, selectableFields, colorsUsedByCombination) {
   var datasets = [], index = 0, dataset, color, background, border;
   combinations.forEach(function(combination) {
     var filteredData = getDataMatchingCombination(data, combination, selectableFields);
     if (filteredData.length > 0) {
-      color = getColor(index, colors);
-      background = getBackground(index, colors);
+      color = getColor(colorsUsedByCombination, combination);
+      background = getBackground(index, colors, color);
       border = getBorderDash(index, colors);
       dataset = makeDataset(years, filteredData, combination, defaultLabel, color, background, border);
       datasets.push(dataset);
@@ -63,29 +64,57 @@ function getDataMatchingCombination(data, combination, selectableFields) {
 }
 
 /**
- * @param {int} datasetIndex
- * @param {Array} colors
- * @return Color from a list
+ * @param {Array} colorsUsedByCombination
+ * @param {Array} combinations
+ * @param {Array} availableColors
+ * return Updated version of colorsUsedByCombination
  */
-function getColor(datasetIndex, colors) {
-  if (datasetIndex >= colors.length) {
-    // Support double the number of colors, because we'll use striped versions.
-    return '#' + colors[datasetIndex - colors.length];
-  } else {
-    return '#' + colors[datasetIndex];
-  }
+function getColorsUsedByCombinations(colorsUsedByCombination, combinations, availableColors) {
+  var lastColorUsed = colorsUsedByCombination.length % availableColors.length;
+  var colorCodesUsed = availableColors.slice(0, lastColorUsed);
+  combinations.forEach(function(combination) {
+    var combinationKey = JSON.stringify(combination);
+    // If we have used up all of the available colors, clear the list so that we can use the same colors
+    // again, but with a variation in pattern (eg, stripes).
+    if (colorsUsedByCombination.length === availableColors.length) {
+      colorCodesUsed = [];
+    }
+    if (!colorsUsedByCombination.some(function(color) { return color.combinationKey == combinationKey })) {
+      for (var i = 0; i < availableColors.length; i++) {
+        if (!colorCodesUsed.includes(availableColors[i])) {
+          colorsUsedByCombination.push({
+            combinationKey: combinationKey,
+            color: availableColors[i],
+          })
+          colorCodesUsed.push(availableColors[i]);
+          break;
+        }
+      }
+    }
+  });
+  return colorsUsedByCombination;
+}
+
+/**
+ * @param {Array} colorsUsedByCombination
+ * @param {Array} combination
+ * @return Matching color from colorsUsedByCombination
+ */
+function getColor(colorsUsedByCombination, combination) {
+  var combinationKey = JSON.stringify(combination);
+  var colorForCombination = colorsUsedByCombination.find(function(color) { return color.combinationKey === combinationKey });
+  return '#' + colorForCombination.color;
 }
 
 /**
  * @param {int} datasetIndex
  * @param {Array} colors
+ * @param {string} color
  * @return Background color or pattern
  */
-function getBackground(datasetIndex, colors) {
-  var color = getColor(datasetIndex, colors);
-
+function getBackground(datasetIndex, colors, color) {
   if (datasetIndex >= colors.length) {
-    color = getStripes(color);
+    return getStripes(color);
   }
 
   return color;

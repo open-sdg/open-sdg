@@ -61,6 +61,7 @@ var indicatorModel = function (options) {
   this.data = helpers.prepareData(this.data);
   this.footerFields = helpers.footerFields(this);
   this.colors = opensdg.chartColors(this.indicatorId);
+  this.colorsUsed = [];
   this.maxDatasetCount = 2 * this.colors.length;
   this.hasStartValues = Array.isArray(this.startValues) && this.startValues.length > 0;
 
@@ -188,7 +189,8 @@ var indicatorModel = function (options) {
     }
 
     var combinations = helpers.getCombinationData(this.selectedFields);
-    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields);
+    this.colorsUsed = helpers.getColorsUsedByCombinations(this.colorsUsed, combinations, this.colors);
+    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorsUsed);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
 
     var datasetCountExceedsMax = false;
