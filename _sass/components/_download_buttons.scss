@@ -8,7 +8,7 @@
   border-radius: 0;
   position: relative;
 
-  &:hover, &:active, &:focus {
+  &:hover, &:active {
     background: $button-color-pressed !important;
   }
   &:visited {
@@ -16,6 +16,10 @@
   }
   &:active {
     top: 2px;
+  }
+  &:focus {
+    background: $button-color-focus !important;
+    color: $button-foregroundColor-focus !important;
   }
 }
 
