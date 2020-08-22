@@ -63,6 +63,11 @@ $button-foregroundColor-visited: white !default;
 
 $backToTop-backgroundColor: $link-color-dark !default;
 
+$breadcrumbs-color: $text-color !default;
+$breadcrumbs-color-highContrast: $color-light-highContrast !default;
+$breadcrumbs-backgroundColor: $backgroundColor !default;
+$breadcrumbs-backgroundColor-highContrast: $color-dark-highContrast !default;
+
 $loader-color: #FF6700 !default;
 
 // Component-level color variables.
