@@ -4,12 +4,18 @@
   border: none !important;
   background: $button-color !important;
   color: $button-foregroundColor !important;
+  box-shadow: 0 2px 0 $button-color-dropShadow;
+  border-radius: 0;
+  position: relative;
 
   &:hover, &:active, &:focus {
     background: $button-color-pressed !important;
   }
   &:visited {
     color: $button-foregroundColor-visited !important;
+  }
+  &:active {
+    top: 2px;
   }
 }
 
