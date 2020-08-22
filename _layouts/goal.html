@@ -20,10 +20,7 @@
 
   {{ content }}
 
-  <ol class="breadcrumb">
-    <li><a href="{{ page.baseurl }}">{{ page.t.general.home }}</a></li>
-    <li class="active">{{ page.t.general.goal }} {{ page.goal.number }}</li>
-  </ol>
+  {% include components/goal/breadcrumbs.html %}
 
   {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number %}
   {% for indicator in goal_indicators %}

@@ -8,6 +8,31 @@
     display: inline;
     color: $text-color;
   }
+  > li {
+    position: relative;
+  }
+  > li + li {
+    margin-left: 10px;
+    padding-left: 17px;
+  }
+  > li + li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    width: 7px;
+    height: 7px;
+    margin: auto 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border: solid;
+    border-width: 1px 1px 0 0;
+    border-color: $text-color;
+    padding: 0;
+  }
 }
 
 body.contrast-high {

@@ -1,0 +1,12 @@
+{% if site.breadcrumbs.post %}
+<ol class="breadcrumb">
+  {% for item in site.breadcrumbs.post %}
+    {%- assign item_path = item.path -%}
+    {%- assign item_path_first = item_path | slice: 0 %}
+    {%- if item_path_first == '/' -%}
+      {%- assign item_path = item_path | slice: 1, item_path.size -%}
+    {%- endif -%}
+    <li><a href="{{ page.baseurl }}{{ item_path }}">{{ item.label | t }}</a></li>
+  {% endfor %}
+</ol>
+{% endif %}

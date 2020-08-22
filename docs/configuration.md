@@ -15,6 +15,53 @@ analytics:
   ga_prod: 'paste ID here'
 ```
 
+### breadcrumbs
+
+_Optional_: This setting can contain breadcrumb settings for each of the supported collection types: `goal`, `indicator`, and `post`. Each should have a list of label/path objects. For example, the following configuration would add the breadcumbs `Home > Updates` at the top of each post:
+
+```nohighlight
+breadcrumbs:
+  post:
+    - label: Home
+      path: /
+    - label: Updates
+      path: /news
+```
+
+Or with the addition of translation keys for multilingual sites:
+
+```nohighlight
+breadcrumbs:
+  post:
+    - label: general.home
+      path: /
+    - label: menu.updates
+      path: /news
+```
+
+Here is a full exmaple including `goal` and `indicator` as well:
+
+```nohighlight
+breadcrumbs:
+  post:
+    - label: general.home
+      path: /
+    - label: menu.updates
+      path: /news
+  goal:
+    - label: general.home
+      path: /
+    - label: general.goals
+      path: /goals
+  indicator:
+    - label: general.home
+      path: /
+    - label: general.goals
+      path: /goals
+```
+
+Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
+
 ### contrast_type
 
 _Optional_: This setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.

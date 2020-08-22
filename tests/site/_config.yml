@@ -174,3 +174,20 @@ frontpage_cards:
       * [Publication](https://example.com)
     button_label: View more publications
     button_link: https://example.com
+
+breadcrumbs:
+  post:
+    - label: general.home
+      path: /
+    - label: menu.updates
+      path: /news
+  goal:
+    - label: general.home
+      path: /
+    - label: general.goals
+      path: /goals
+  indicator:
+    - label: general.home
+      path: /
+    - label: general.goals
+      path: /goals
