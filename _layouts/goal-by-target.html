@@ -70,23 +70,23 @@
       {% assign tag_classes = tag_classes | join: " " %}
 
       <div class="col-md-12 {{ tag_classes }} goal-indicator">
-        <a href="{{ indicator.url }}">
-          <span>
-            {{ indicator.number }}
-            <span class="status {{ status_css }}">
-              {{ status_desc }}
-            </span>
+        <span>
+          {{ indicator.number }}
+          <span class="status {{ status_css }}">
+            {{ status_desc }}
           </span>
+        </span>
+        <a href="{{ indicator.url }}">
           {{ indicator.name }}
-          {% if indicator.tags %}
-            <ul class="tags">
-            {% for tag in indicator.tags %}
-              {% assign tag_class = tag | slugify %}
-              <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
-            {% endfor %}
-            </ul>
-          {% endif %}
         </a>
+        {% if indicator.tags %}
+          <ul class="tags">
+          {% for tag in indicator.tags %}
+            {% assign tag_class = tag | slugify %}
+            <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
       </div>
     {% endfor %}
     </div>
