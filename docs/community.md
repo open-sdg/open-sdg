@@ -30,6 +30,7 @@ Below is a list of some of the countries and localities that are currently using
 
 |City/region|Link|
 |----|----|
+|Bristol|In development|
 |City of Los Angeles|<https://sdgdata.lamayor.org/>|
 |Lombardy|In development|
 |Madrid|In development|
