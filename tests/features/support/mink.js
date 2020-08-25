@@ -44,7 +44,7 @@ const driver = new mink.Mink({
     "success data notice": "div.alert.success",
     "disaggregation sidebar": "#indicator-sidebar:not(.indicator-sidebar-hidden)",
     "available indicator": '.metadata-available-indicator',
-    "unit-specific value": "input[value='unit-specific-value']"
+    "available disaggregation value": ".variable-options label[data-has-data='true']"
   }
 });
 
