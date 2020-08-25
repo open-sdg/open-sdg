@@ -19,3 +19,10 @@ Feature: Unit of measurement
     Then I should see a "disaggregation filter" element
     And I click on "the last unit of measurement"
     Then I should not see a "disaggregation filter" element
+
+  Scenario: Unit-specific disaggregation values only display when their unit is selected
+    Given I am on "/2-3-2"
+    And I wait 3 seconds
+    Then I should not see "Unit-specific value"
+    And I click on "the last unit of measurement"
+    Then I should see "Unit-specific value"

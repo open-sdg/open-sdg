@@ -80,5 +80,7 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    getValuesWithDataByField: getValuesWithDataByField,
+    updateAvailableFieldValues: updateAvailableFieldValues,
   }
 })();

@@ -11,3 +11,5 @@ Year,Group,Units,Value
 2016,A,passengers,100
 2016,B,passengers,300
 2016,,passengers,200
+2015,Unit-specific value,tons,3
+2016,Unit-specific value,tons,4

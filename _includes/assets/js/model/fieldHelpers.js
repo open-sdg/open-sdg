@@ -363,9 +363,47 @@ function removeOrphanSelections(selectedFields, edges) {
  * @return {Array} Rows
  */
 function getDataBySelectedFields(rows, selectedFields) {
+  if (selectedFields.length == 0) {
+    return rows;
+  }
   return rows.filter(function(row) {
     return selectedFields.some(function(field) {
       return field.values.includes(row[field.field]);
+    });
+  });
+}
+
+/**
+ * @param {Array} rows
+ * @param {Array} allowedFields
+ * @return {Object} Arrays of values with data, keyed by field name
+ */
+function getValuesWithDataByField(rows, allowedFields) {
+  var valuesByField = {};
+  allowedFields.forEach(function(allowedField) {
+    valuesByField[allowedField] = getUniqueValuesByProperty(allowedField, rows);
+  });
+  return valuesByField;
+}
+
+/**
+ * @param {Array} fieldItemStates
+ * @param {Object} valuesWithDataByField Output of getValuesWithDataByField
+ */
+function updateAvailableFieldValues(fieldItemStates, valuesWithDataByField) {
+  fieldItemStates.forEach(function(fieldItemState) {
+    var field = fieldItemState['field'];
+    var fieldHasData = typeof valuesWithDataByField[field] !== 'undefined';
+    fieldItemState['hasData'] = fieldHasData;
+    fieldItemState.values.forEach(function(fieldItemStateValue) {
+      if (fieldHasData) {
+        var value = fieldItemStateValue['value'];
+        var valueHasData = valuesWithDataByField[field].includes(value);
+        fieldItemStateValue['hasData'] = valueHasData;
+      }
+      else {
+        fieldItemStateValue['hasData'] = false;
+      }
     });
   });
 }
