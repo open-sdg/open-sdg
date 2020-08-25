@@ -23,6 +23,6 @@ Feature: Unit of measurement
   Scenario: Unit-specific disaggregation values only display when their unit is selected
     Given I am on "/2-3-2"
     And I wait 3 seconds
-    Then I should not see "Unit-specific value"
+    Then I should not see a "unit-specific value" element
     And I click on "the last unit of measurement"
-    Then I should see "Unit-specific value"
+    Then I should see a "unit-specific value" element
