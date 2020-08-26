@@ -67,6 +67,7 @@
               {{ status_desc }}
             </span>
             {% if indicator.tags %}
+            <span class="sr-only">Tags</span>
             <span class="tags">
             {% for tag in indicator.tags %}
               {% assign tag_class = tag | slugify %}
