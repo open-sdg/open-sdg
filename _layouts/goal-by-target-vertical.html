@@ -30,8 +30,8 @@
     {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
     {% for group in goal_indicators %}
       {% assign target = group.name | sdg_lookup %}
-      <div class="row no-gutters target-and-indicators">
-        <h3 class="target">
+      <div class="row no-gutters goal-target-and-indicators">
+        <h3 class="goal-target">
           <span class="target-number">{{ target.number }}</span>
           <span class="target-name">{{ target.name }}</span>
         </h3>
@@ -59,7 +59,7 @@
           {% endif %}
           {% assign tag_classes = tag_classes | join: " " %}
 
-          <h4 class="indicator">
+          <h4 class="goal-indicator">
             <span class="indicator-number">{{ indicator.number }}</span>
             <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
             <span class="sr-only">Indicator status</span>

@@ -1,21 +1,21 @@
 $goal-by-target-indentation: 50px;
 
 .layout-goal-by-target-vertical {
-  .target, .indicator {
+  .goal-target, .goal-indicator {
     font-size: 16px;
     font-weight: normal;
     clear: both;
     display: inline-block;
   }
-  .target {
+  .goal-target {
     margin-bottom: 20px;
   }
-  #main-content h4.indicator {
+  #main-content h4.goal-indicator {
     margin-top: 0;
     margin-bottom: 15px;
   }
 
-  .target-and-indicators {
+  .goal-target-and-indicators {
     margin-bottom: 20px;
     &::after {
       content: "";
@@ -31,7 +31,7 @@ $goal-by-target-indentation: 50px;
     }
   }
 
-  .indicator {
+  .goal-indicator {
     @media screen and (min-width: 769px) {
       margin-left: $goal-by-target-indentation;
       position: relative;
