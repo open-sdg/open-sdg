@@ -1,6 +1,6 @@
 <h1>Jekyll and Open SDG</h1>
 
-Jekyll is a popular, free and open source static website generator which works like a content management system (for example, Drupal and WordPress) but unlike those systems, Jekyll generates at build-time rather than at request-time. Jekyll creates static websites with some templating abilities. In this way, Jekyll is similar to other static site generators, like [Next.js](https://nextjs.org/) and [Hugo](https://gohugo.io/).
+Jekyll is a popular, free and open source static website generator which works like a content management system such as [Drupal](https://www.drupal.org/) and [WordPress](https://wordpress.com/). However, unlike those systems, Jekyll generates at build-time rather than at request-time. Jekyll creates static websites with some templating abilities. In this way, Jekyll is similar to other static site generators, like [Next.js](https://nextjs.org/) and [Hugo](https://gohugo.io/).
 
 ## Advantages of static sites
 
@@ -8,7 +8,7 @@ The Open SDG platform is built with Jekyll and therefore gets all the advantages
 
 ### Simple to maintain 
 
-Given that static websites are just a set of files, the capability requirements of the server are lowered, compared to that of a dynamic website, and therefore its simpler create and maintain. The web server need only be capable of serving those files. 
+Given that static websites are just a set of files, the capability requirements of the server are lowered compared to that of a dynamic website, and therefore its simpler create and maintain. The web server need only be capable of serving those files. 
 
 ### Speed 
 
@@ -16,7 +16,7 @@ As the server is simply returning/sending files when they are requested and noth
 
 ### Stability 
 
-The dynamic website server involves several software components working together, and if any one component fails the website will fail to be served properly. By contrast a web server, such as one provided by Jekyll, serves only static files, so is less likely to fail. 
+The dynamic website server involves several software components working together, and if any one component fails the website will fail to be served properly. By contrast a web server, such as one provided by Jekyll, serves only static files so is less likely to fail. 
 
 ### Security 
 
