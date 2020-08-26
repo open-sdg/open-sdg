@@ -1,8 +1,10 @@
-<h1>Reasons for using Jekyll</h1>
+<h1>Jekyll and Open SDG</h1>
 
-Jekyll is a popular, free and open source static website generator which works like a content management system (for example, Drupal and WordPress) but unlike those systems, Jekyll generates at build-time rather than at request-time. Jekyll creates static websites with some templating abilities. 
+Jekyll is a popular, free and open source static website generator which works like a content management system (for example, Drupal and WordPress) but unlike those systems, Jekyll generates at build-time rather than at request-time. Jekyll creates static websites with some templating abilities. In this way, Jekyll is similar to other static site generators, like [Next.js](https://nextjs.org/) and [Hugo](https://gohugo.io/).
 
-## Advantages of Jekyll 
+## Advantages of static sites
+
+The Open SDG platform is built with Jekyll and therefore gets all the advantages of using a static site generator.
 
 ### Simple to maintain 
 
@@ -22,9 +24,9 @@ Security risks such as SQL injection attacks are impossible on a static website 
 
 ### Version-controlled 
 
-Jekyll allows all of the content for Open SDG platforms to be hosted and version-controlled on GitHub. 
+Static sites are a collection of files, which makes them easy to maintain using open-source version-control software like Git. Free services like Github.com are a perfect tool for any static site.
 
-## Disadvantages of Jekyll 
+## Disadvantages of static sites
 
 ### No Graphical Interface 
 
@@ -34,6 +36,3 @@ Jekyll is a command-line tool, which could be difficult to use for non-technical
 
 Open SDG platforms can take several minutes to build. Slow build times can slow down development (especially when debugging) because the developer has to wait for the build to complete before they can see the result. 
 
-### Limited themes 
-
-Jekyll has limited themes, relative to popular content management systems. 
