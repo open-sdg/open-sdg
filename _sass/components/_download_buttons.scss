@@ -55,6 +55,12 @@ h5 + .btn-download {
   }
 }
 
+#selectionsChart, #selectionsTable {
+  .btn-download {
+    float: left;
+  }
+}
+
 body.contrast-high {
   .btn { background: $color-light-highContrast !important; color: $color-dark-highContrast !important;
     &:hover {
