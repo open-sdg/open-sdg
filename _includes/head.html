@@ -16,15 +16,15 @@
         <!-- Title and meta description
         ================================================== -->
 
-        <title>
-          {% if page.indicator %}
-            {{ page.t.general.indicator | escape }} {{ page.indicator.number }} - {{ page.t.general.goal | escape }} {{ page.goal.number }}
-          {% elsif page.goal %}
-            {{ page.t.general.goal | escape }} {{ page.goal.number }} - {{ page.goal.short | escape }}
-          {% else %}
-            {{ site.title | escape }}
-          {% endif %}
-        </title>
+        {% if page.indicator %}
+        <title>{{ page.t.general.indicator | escape }} {{ page.indicator.number }} - {{ page.t.general.goal | escape }} {{ page.goal.number }}</title>
+        {% elsif page.goal %}
+        <title>{{ page.t.general.goal | escape }} {{ page.goal.number }} - {{ page.goal.short | escape }}</title>
+        {% elsif page.title %}
+        <title>{{ page.title | t | escape }}</title>
+        {% else %}
+        <title>{{ site.title | t | escape }}</title>
+        {% endif %}
 
         <meta name="description" content="">
         <meta property="og:description" content="">
