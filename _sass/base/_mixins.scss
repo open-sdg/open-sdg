@@ -18,6 +18,31 @@
   }
 }
 
+@mixin status {
+  color: $color-dark;
+  font-weight: normal;
+  border: none;
+  padding: 4px;
+  font-size: 12px;
+
+  &.complete {
+    color: $status-color-complete;
+    border: $status-border-complete;
+  }
+  &.inprogress{
+    color: $status-color-inprogress;
+    border: $status-border-inprogress;
+  }
+  &.notstarted {
+    color: $status-color-notstarted;
+    border: $status-border-notstarted;
+  }
+  &.notapplicable {
+    color: $status-color-notapplicable;
+    border: $status-border-notapplicable;
+  }
+}
+
 @mixin indicatorcards {
   .indicator-cards {
     a {
@@ -42,32 +67,11 @@
       padding: 5px 0;
 
       &.status {
-        color: $color-dark;
-        font-weight: normal;
-        border: none;
-        padding: 4px;
+        @include status;
         position: absolute;
         top: -1px;
         right: 0;
         display: inline;
-        font-size: 12px;
-
-        &.complete {
-          color: $status-color-complete;
-          border: $status-border-complete;
-        }
-        &.inprogress{
-          color: $status-color-inprogress;
-          border: $status-border-inprogress;
-        }
-        &.notstarted {
-          color: $status-color-notstarted;
-          border: $status-border-notstarted;
-        }
-        &.notapplicable {
-          color: $status-color-notapplicable;
-          border: $status-border-notapplicable;
-        }
       }
 
     }
