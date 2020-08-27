@@ -1,6 +1,10 @@
 {% include head.html %}
 {% include header.html %}
 
+<div class="container">
+  {% include components/goal/breadcrumbs.html %}
+</div>
+
 <div class="heading goal-banner goal-{{ page.goal.number }}">
   <div class="container">
     <div class="row">
@@ -19,11 +23,6 @@
 <div id="main-content" class="container goal-indicators goal-{{ page.goal.number }}">
 
   {{ content }}
-
-  <ol class="breadcrumb">
-    <li><a href="{{ page.baseurl }}">{{ page.t.general.home }}</a></li>
-    <li class="active">{{ page.t.general.goal }} {{ page.goal.number }}</li>
-  </ol>
 
   {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number %}
   {% for indicator in goal_indicators %}
