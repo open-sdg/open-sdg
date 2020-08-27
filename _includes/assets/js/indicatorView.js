@@ -413,8 +413,8 @@ var indicatorView = function (model, options) {
     });
 
     this.createTableFooter('selectionChartFooter', chartInfo.footerFields, '#chart-canvas');
-    this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#selectionsChart');
-    this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsChart');
+    this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
+    this.createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
 
     $("#btnSave").click(function() {
       var filename = chartInfo.indicatorId + '.png',
@@ -559,8 +559,9 @@ var indicatorView = function (model, options) {
   this.createSelectionsTable = function(chartInfo) {
     this.createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', true);
     this.createTableFooter('selectionTableFooter', chartInfo.footerFields, '#selectionsTable');
-    this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#selectionsTable');
-    this.createSourceButton(chartInfo.shortIndicatorId, '#selectionsTable');
+    $('#selectionsTable').append('<div id="tableSelectionDownload" class="clearfix"></div>');
+    this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload');
+    this.createSourceButton(chartInfo.shortIndicatorId, '#tableSelectionDownload');
   };
 
 
