@@ -5,7 +5,7 @@ layout: default
   <div class="row">
     <div class="col-md-9 push-md-3">
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <h2 class="post-title" itemprop="name headline">{{ page.title }}</h2>
+        <h1 class="post-title" itemprop="name headline">{{ page.title | t }}</h1>
         <p><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | t_date: "standard" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
 
         <div class="post-content" itemprop="articleBody">

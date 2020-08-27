@@ -4,6 +4,9 @@ layout: default
 <div id="main-content" class="container newslist">
   <div class="row">
     <div class="col-md-9 push-md-3">
+      {% if page.title %}
+      <h1>{{ page.title | t }}</h1>
+      {% endif %}
       {{content}}
       {% assign posts = site.posts | where: 'language', page.language %}
       {% for post in posts %}
