@@ -16,7 +16,7 @@ release) this can replace frontpage.html.
     {% if site.frontpage_introduction_banner %}
     <div class="site-intro">
         <h1>{{ site.frontpage_introduction_banner.title | t }}</h1>
-        <p class="lead-copy">{{ site.frontpage_introduction_banner.description | t }}</p>
+        <div class="lead-copy">{{ site.frontpage_introduction_banner.description | t | markdownify }}</div>
     </div>
     {% endif %}
 

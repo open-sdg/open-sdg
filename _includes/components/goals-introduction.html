@@ -8,6 +8,6 @@
 
 {% if site.goals_page.description %}
 <div class="goals-page-description">
-  {{ site.goals_page.description | t }}
+  {{ site.goals_page.description | t | markdownify }}
 </div>
 {% endif %}
