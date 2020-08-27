@@ -76,6 +76,7 @@ The following fields are not strictly required, but are recommended because they
 * `goal_meta_link_text` - the text to display as the link to the official UN metadata for this indicator. Examples:
     * United Nations Sustainable Development Goals Metadata (pdf 894kB)
 * `tags` - an optional list of "tags" to display under an indicator when it is listed on its goal page. Unlike most other fields, the `tags` field should be a list. Here is an example of what it might look like, in YAML form:
+
     ```
     tags:
       - My tag
