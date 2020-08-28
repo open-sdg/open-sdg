@@ -25,10 +25,9 @@ create_pages:
       title: My homepage title
     - folder: /goals
       layout: goals
-      title: Goals page
+      title: custom.goals_page_title
     - folder: /reporting-status
       layout: reportingstatus
-      title: Reporting status page
     - filename: indicators.json
       folder: /
       layout: indicator-json
