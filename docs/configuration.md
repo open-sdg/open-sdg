@@ -393,24 +393,24 @@ metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
 
 ### metadata_tabs
 
-_Optional_: This setting can control the metadata tabs which appear on the indicator pages. This is directly tied to the "schema" of your data repository (ie, the `_prose.yml` file). This keys of this object must correspond to the "scope" of the fields in that schema file. The following configuration is assumed if this setting is omitted:
+_Optional_: This setting can control the metadata tabs which appear on the indicator pages. This is directly tied to the "schema" of your data repository (ie, the `_prose.yml` file). The "scope" in each object must correspond to the "scope" of the fields in that schema file. The following configuration is assumed if this setting is omitted:
 
 ```nohighlight
 metadata_tabs:
-  national:
+  - scope: national
     title: indicator.national_metadata
-    blurb: indicator.national_metadata_blurb
-  global:
+    description: indicator.national_metadata_blurb
+  - scope: global
     title: indicator.global_metadata
-    blurb: indicator.global_metadata_blurb
-  sources:
+    description: indicator.global_metadata_blurb
+  - scope: sources
     title: indicator.sources
-    blurb: ''
+    description: ''
 ```
 
 About the "Sources" tab:
 
-While the "keys" above, such as "national" and "global", are arbitrary, the "sources" key is special. The "Sources" tab will only display if the key under `metadata_tabs` is specifically `sources`.
+While the "scopes" above, such as "national" and "global", are arbitrary, the "sources" scope is special. The "Sources" tab will only display if the scope under `metadata_tabs` is specifically `sources`.
 
 ### menu
 

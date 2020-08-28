@@ -111,15 +111,15 @@ map_layers:
     label: indicator.regions
 
 metadata_tabs:
-  national:
+  - scope: national
     title: My national metadata title
-    blurb: My national metadata blurb
-  global:
+    description: My national metadata blurb
+  - scope: global
     title: My global metadata title
-    blurb: My global metadata blurb
-  sources:
+    description: My global metadata blurb
+  - scope: sources
     title: My sources title
-    blurb: My sources blurb
+    description: My sources blurb
 
 hide_empty_metadata: true
 
