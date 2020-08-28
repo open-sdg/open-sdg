@@ -390,9 +390,11 @@
   &.goal-indicators {
     @include indicatorcards;
     &.goal-by-target {
+      .goal-indicator {
+        margin-bottom: 2.5rem;
+      }
       .indicator-cards a {
         padding: 0;
-        margin-bottom: 2.5rem;
 
         .tags li{
           color: $color-dark;
