@@ -22,8 +22,10 @@ create_pages:
       layout: frontpage
     - folder: /
       layout: frontpage-alt
+      title: My homepage title
     - folder: /goals
       layout: goals
+      title: custom.goals_page_title
     - folder: /reporting-status
       layout: reportingstatus
     - filename: indicators.json
