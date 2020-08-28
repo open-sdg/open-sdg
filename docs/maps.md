@@ -25,7 +25,29 @@ Each "feature" in the The GeoJSON must have the following in their `properties` 
 1. A property that holds the unique ID for the boundary (which must correspond to the GeoCode data column mentioned above)
 2. A property that holds the human-readable name of the boundary
 
-The specific keys for these properties are configured in the data repository.
+The specific keys for these properties are configured in the data repository. Here is an example of the relevant configuration settings for the data repository:
+
+```
+map_layers:
+  -
+    # This can be a local relative path or a remote URL.
+    geojson_file: path/to/my/regions.geojson
+    # This is the property in the GeoJSON that holds the name of the region.
+    name_property: rgn17nm
+    # This is the property in the GeoJSON that holds the "geocode" of the region.
+    id_property: rgn17cd
+    # This controls the subfolder that the GeoJSON file will be created in.
+    output_subfolder: regions
+    # This adds a prefix to all the GeoJSON filenames.
+    filename_prefix: indicator_
+  -
+    # Add any number of additional layers, such as one for counties.
+    geojson_file: path/to/my/counties.geojson
+    name_property: cntynm
+    id_property: cntycd
+    output_subfolder: counties
+    filename_prefix: indicator_
+```
 
 ## Site configuration: map_options and map_layers
 
