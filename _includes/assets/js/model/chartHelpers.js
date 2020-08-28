@@ -6,13 +6,29 @@
  * @param {string} currentTitle
  * @param {Array} allTitles Objects containing 'unit' and 'title'
  * @param {String} selectedUnit
+ * @param {String} selectedSeries
  * @return {String} Updated title
  */
-function getChartTitle(currentTitle, allTitles, selectedUnit) {
+function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
   var newTitle = currentTitle;
   if (allTitles && allTitles.length > 0) {
-    var unitTitle = allTitles.find(function(title) { return title.unit === selectedUnit });
-    newTitle = (unitTitle) ? unitTitle.title : allTitles[0].title;
+    var matchedTitle;
+    if (selectedUnit && selectedSeries) {
+      matchedTitle = allTitles.find(function(title) {
+        return title.unit === selectedUnit && title.series === selectedSeries;
+      });
+    }
+    if (!matchedTitle && selectedSeries) {
+      matchedTitle = allTitles.find(function(title) {
+        return title.series === selectedSeries;
+      });
+    }
+    if (!matchedTitle && selectedUnit) {
+      matchedTitle = allTitles.find(function(title) {
+        return title.unit === selectedUnit;
+      });
+    }
+    newTitle = (matchedTitle) ? matchedTitle.title : allTitles[0].title;
   }
   return newTitle;
 }

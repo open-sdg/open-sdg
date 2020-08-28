@@ -128,11 +128,19 @@ function getChildFieldNames(edges) {
  * @param {Array} selectedFields Field items
  * @return {Array} Field item states
  */
-function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, selectedFields) {
+function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, fieldsBySeries, selectedSeries, dataHasSeriesSpecificFields, selectedFields) {
   var states = fieldItemStates.map(function(item) { return item; });
-  if (dataHasUnitSpecificFields) {
+  if (dataHasUnitSpecificFields && dataHasSeriesSpecificFields) {
+    states = fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries);
+    states = fieldItemStatesForUnit(states, fieldsByUnit, selectedUnit);
+  }
+  else if (dataHasSeriesSpecificFields) {
+    states = fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries);
+  }
+  else if (dataHasUnitSpecificFields) {
     states = fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit);
   }
+
   if (selectedFields.length > 0) {
     states.forEach(function(fieldItem) {
       var selectedField = selectedFields.find(function(selectedItem) {
@@ -163,6 +171,21 @@ function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
       return fieldByUnit.unit === selectedUnit;
     })[0];
     return fieldsBySelectedUnit.fields.includes(fis.field);
+  });
+}
+
+/**
+ * @param {Array} fieldItemStates
+ * @param {Array} fieldsBySeries Objects containing 'series' and 'fields'
+ * @param {string} selectedSeries
+ * @return {Array} Field item states
+ */
+function fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries) {
+  return fieldItemStates.filter(function(fis) {
+    var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
+      return fieldBySeries.series === selectedSeries;
+    })[0];
+    return fieldsBySelectedSeries.fields.includes(fis.field);
   });
 }
 

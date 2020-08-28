@@ -41,6 +41,7 @@
   {% include assets/js/model/constants.js %}
   {% include assets/js/model/utils.js %}
   {% include assets/js/model/unitHelpers.js %}
+  {% include assets/js/model/seriesHelpers.js %}
   {% include assets/js/model/fieldHelpers.js %}
   {% include assets/js/model/chartHelpers.js %}
   {% include assets/js/model/tableHelpers.js %}
@@ -48,21 +49,27 @@
 
   return {
     UNIT_COLUMN: UNIT_COLUMN,
+    SERIES_COLUMN: SERIES_COLUMN,
     GEOCODE_COLUMN: GEOCODE_COLUMN,
     YEAR_COLUMN: YEAR_COLUMN,
     VALUE_COLUMN: VALUE_COLUMN,
+    SERIES_TOGGLE: SERIES_TOGGLE,
     convertJsonFormatToRows: convertJsonFormatToRows,
     getUniqueValuesByProperty: getUniqueValuesByProperty,
     dataHasUnits: dataHasUnits,
     dataHasGeoCodes: dataHasGeoCodes,
+    dataHasSerieses: dataHasSerieses,
     getFirstUnitInData: getFirstUnitInData,
     getDataByUnit: getDataByUnit,
+    getDataBySeries: getDataBySeries,
     getDataBySelectedFields: getDataBySelectedFields,
     getUnitFromStartValues: getUnitFromStartValues,
     selectFieldsFromStartValues: selectFieldsFromStartValues,
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
+    fieldsUsedBySeries: fieldsUsedBySeries,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
+    dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
     validParentsByChild: validParentsByChild,
     getFieldNames: getFieldNames,

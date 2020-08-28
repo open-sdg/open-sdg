@@ -123,6 +123,8 @@ metadata_tabs:
 
 hide_empty_metadata: true
 
+series_toggle: true
+
 # Search.feature
 search_index_extra_fields:
   - un_custodian_agency

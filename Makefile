@@ -55,7 +55,7 @@ serve.docs: build.docs
 
 test.html: serve.detached
 	# HTML proofer.
-	cd site-starter && bundle exec htmlproofer --disable-external ./_site
+	cd site-starter && bundle exec htmlproofer --file-ignore '/documentation/' --disable-external ./_site
 
 test.features: serve.detached
 	# Cucumber.

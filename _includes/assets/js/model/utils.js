@@ -61,7 +61,7 @@ function getFieldColumnsFromData(rows) {
  * All other data columns can be considered "field columns".
  */
 function nonFieldColumns() {
-  return [
+  var columns = [
     YEAR_COLUMN,
     VALUE_COLUMN,
     UNIT_COLUMN,
@@ -70,4 +70,8 @@ function nonFieldColumns() {
     'Unit multiplier',
     'Unit measure',
   ];
+  if (SERIES_TOGGLE) {
+    columns.push(SERIES_COLUMN);
+  }
+  return columns;
 }

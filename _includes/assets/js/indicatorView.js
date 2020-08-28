@@ -90,6 +90,10 @@ var indicatorView = function (model, options) {
     view_obj.initialiseUnits(args);
   });
 
+  this._model.onSeriesesComplete.attach(function(sender, args) {
+    view_obj.initialiseSerieses(args);
+  });
+
   this._model.onFieldsCleared.attach(function(sender, args) {
     $(view_obj._rootElement).find(':checkbox').prop('checked', false);
     $(view_obj._rootElement).find('#clear').addClass('disabled').attr('aria-disabled', 'true');
@@ -167,6 +171,10 @@ var indicatorView = function (model, options) {
 
   $(this._rootElement).on('change', '#units input', function() {
     view_obj._model.updateSelectedUnit($(this).val());
+  });
+
+  $(this._rootElement).on('change', '#serieses input', function() {
+    view_obj._model.updateSelectedSeries($(this).val());
   });
 
   // generic helper function, used by clear all/select all and individual checkbox changes:
@@ -272,6 +280,21 @@ var indicatorView = function (model, options) {
 
     if(!units.length) {
       $(this._rootElement).addClass('no-units');
+    }
+  };
+
+  this.initialiseSerieses = function(args) {
+    var template = _.template($('#series_template').html()),
+        serieses = args.serieses || [],
+        selectedSeries = args.selectedSeries || null;
+
+    $('#serieses').html(template({
+      serieses: serieses,
+      selectedSeries: selectedSeries
+    }));
+
+    if(!serieses.length) {
+      $(this._rootElement).addClass('no-serieses');
     }
   };
 
