@@ -50,6 +50,7 @@ pages:
         - Configuration: configuration.md
         - Customisation: customisation.md
         - Jekyll templates: jekyll-templates.md
+        - Jekyll and Open SDG: jekyll-and-open-sdg.md
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md
