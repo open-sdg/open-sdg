@@ -23,22 +23,16 @@ function getChartTitle(currentTitle, allTitles, selectedUnit) {
  * @param {Array} combinations Objects representing disaggregation combinations
  * @param {Array} years
  * @param {string} defaultLabel
- * @param {Array} colors
  * @param {Array} selectableFields Field names
- * @param {Array} colorsUsedByCombination
- * @return {Array} Datasets suitable for Chart.js
+ * @return {Array} Datasets almost suitable for Chart.js (colors are applied later)
  */
-function getDatasets(headline, data, combinations, years, defaultLabel, colors, selectableFields, colorsUsedByCombination) {
-  var datasets = [], index = 0, dataset, color, background, border;
+function getDatasets(headline, data, combinations, years, defaultLabel, selectableFields) {
+  var datasets = [], dataset;
   combinations.forEach(function(combination) {
     var filteredData = getDataMatchingCombination(data, combination, selectableFields);
     if (filteredData.length > 0) {
-      color = getColor(colorsUsedByCombination, combination);
-      background = getBackground(index, colors, color);
-      border = getBorderDash(index, colors);
-      dataset = makeDataset(years, filteredData, combination, defaultLabel, color, background, border);
+      dataset = makeDataset(years, filteredData, combination, defaultLabel);
       datasets.push(dataset);
-      index++;
     }
   }, this);
   datasets.sort(function(a, b) { return a.label > b.label; });
@@ -47,6 +41,24 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
     datasets.unshift(dataset);
   }
   return datasets;
+}
+
+/**
+ * @param {Array} datasets Dataset objects without colors
+ * @param {Array} colors
+ * @param {Array} colorsUsedByCombination
+ */
+function applyColorToDatasets(datasets, colors, colorsUsedByCombination) {
+  var index, color, background, border;
+  datasets.forEach(function(dataset) {
+    if (dataset.disaggregation) {
+      index = getColorIndex(colorsUsedByCombination, dataset.disaggregation);
+      color = getColor(colorsUsedByCombination, index);
+      background = getBackground(index, colors, color);
+      border = getBorderDash(index, colors);
+      applyColorToDataset(dataset, color, background, border);
+    }
+  }, this);
 }
 
 /**
@@ -65,29 +77,31 @@ function getDataMatchingCombination(data, combination, selectableFields) {
 
 /**
  * @param {Array} colorsUsedByCombination
- * @param {Array} combinations
+ * @param {Array} datasets
  * @param {Array} availableColors
  * return Updated version of colorsUsedByCombination
  */
-function getColorsUsedByCombinations(colorsUsedByCombination, combinations, availableColors) {
+function getColorsUsedByDatasets(colorsUsedByCombination, datasets, availableColors) {
   var lastColorUsed = colorsUsedByCombination.length % availableColors.length;
   var colorCodesUsed = availableColors.slice(0, lastColorUsed);
-  combinations.forEach(function(combination) {
-    var combinationKey = JSON.stringify(combination);
-    // If we have used up all of the available colors, clear the list so that we can use the same colors
-    // again, but with a variation in pattern (eg, stripes).
-    if (colorsUsedByCombination.length === availableColors.length) {
-      colorCodesUsed = [];
-    }
-    if (!colorsUsedByCombination.some(function(color) { return color.combinationKey == combinationKey })) {
-      for (var i = 0; i < availableColors.length; i++) {
-        if (!colorCodesUsed.includes(availableColors[i])) {
-          colorsUsedByCombination.push({
-            combinationKey: combinationKey,
-            color: availableColors[i],
-          })
-          colorCodesUsed.push(availableColors[i]);
-          break;
+  datasets.forEach(function(dataset) {
+    if (dataset.disaggregation) {
+      var combinationKey = JSON.stringify(dataset.disaggregation);
+      // If we have used up all of the available colors, clear the list so that we can use the same colors
+      // again, but with a variation in pattern (eg, stripes).
+      if (colorsUsedByCombination.length === availableColors.length) {
+        colorCodesUsed = [];
+      }
+      if (!colorsUsedByCombination.some(function(color) { return color.combinationKey == combinationKey })) {
+        for (var i = 0; i < availableColors.length; i++) {
+          if (!colorCodesUsed.includes(availableColors[i])) {
+            colorsUsedByCombination.push({
+              combinationKey: combinationKey,
+              color: availableColors[i],
+            })
+            colorCodesUsed.push(availableColors[i]);
+            break;
+          }
         }
       }
     }
@@ -97,23 +111,31 @@ function getColorsUsedByCombinations(colorsUsedByCombination, combinations, avai
 
 /**
  * @param {Array} colorsUsedByCombination
- * @param {Array} combination
+ * @param {Array} index
  * @return Matching color from colorsUsedByCombination
  */
-function getColor(colorsUsedByCombination, combination) {
-  var combinationKey = JSON.stringify(combination);
-  var colorForCombination = colorsUsedByCombination.find(function(color) { return color.combinationKey === combinationKey });
-  return '#' + colorForCombination.color;
+function getColor(colorsUsedByCombination, index) {
+  return '#' + colorsUsedByCombination[index].color;
 }
 
 /**
- * @param {int} datasetIndex
+ * @param {Array} colorsUsedByCombination
+ * @param {Array} combination
+ * @return Index of matching color from colorsUsedByCombination
+ */
+function getColorIndex(colorsUsedByCombination, combination) {
+  var combinationKey = JSON.stringify(combination);
+  return colorsUsedByCombination.findIndex(function(color) { return color.combinationKey === combinationKey });
+}
+
+/**
+ * @param {int} colorIndex
  * @param {Array} colors
  * @param {string} color
  * @return Background color or pattern
  */
-function getBackground(datasetIndex, colors, color) {
-  if (datasetIndex >= colors.length) {
+function getBackground(colorIndex, colors, color) {
+  if (colorIndex >= colors.length) {
     return getStripes(color);
   }
 
@@ -132,12 +154,12 @@ function getStripes(color) {
 }
 
 /**
- * @param {int} datasetIndex
+ * @param {int} colorIndex
  * @param {Array} colors
  * @return {Array|undefined} An array produces dashed lines on the chart
  */
-function getBorderDash(datasetIndex, colors) {
-  return datasetIndex >= colors.length ? [5, 5] : undefined;
+function getBorderDash(colorIndex, colors) {
+  return colorIndex >= colors.length ? [5, 5] : undefined;
 }
 
 /**
@@ -145,23 +167,29 @@ function getBorderDash(datasetIndex, colors) {
  * @param {Array} rows
  * @param {Object} combination
  * @param {string} labelFallback
- * @param {string} color
- * @param {string} background
- * @param {Array} border
  * @return {Object} Dataset object for Chart.js
  */
-function makeDataset(years, rows, combination, labelFallback, color, background, border) {
+function makeDataset(years, rows, combination, labelFallback) {
   var dataset = getBaseDataset();
   return Object.assign(dataset, {
     label: getCombinationDescription(combination, labelFallback),
     disaggregation: combination,
-    borderColor: color,
-    backgroundColor: background,
-    pointBorderColor: color,
-    borderDash: border,
-    borderWidth: 2,
     data: prepareDataForDataset(years, rows),
   });
+}
+
+/**
+ * @param {Object} dataset Dataset object without color
+ * @param {string} color
+ * @param {string} background
+ * @param {Array} border
+ */
+function applyColorToDataset(dataset, color, background, border) {
+  dataset.borderColor = color;
+  dataset.backgroundColor = background;
+  dataset.pointBorderColor = color;
+  dataset.borderDash = border;
+  dataset.borderWidth = 2;
 }
 
 /**

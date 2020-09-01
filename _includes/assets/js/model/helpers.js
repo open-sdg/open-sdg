@@ -80,6 +80,7 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
-    getColorsUsedByCombinations: getColorsUsedByCombinations,
+    getColorsUsedByDatasets: getColorsUsedByDatasets,
+    applyColorToDatasets: applyColorToDatasets
   }
 })();
