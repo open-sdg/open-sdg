@@ -383,20 +383,6 @@
   canvas {
     @include noselect;
   }
-  .no-gutters img {
-    width: calc(100% - 10px);
-    border: 0;
-    padding: 0;
-    margin: 5px 10px 5px 0;
-
-    &:not(#goal-18){
-      box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor;
-
-      &:hover{
-        box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor-hover;
-      }
-    }
-  }
 
   &.goal-indicators {
     @include indicatorcards;

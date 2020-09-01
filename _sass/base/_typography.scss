@@ -83,3 +83,24 @@ h3{ font-size: $h3-fontSize; }
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+[contentEditable="true"]:focus,
+[href]:focus,
+[tabindex]:focus,
+iframe:focus,
+.navbar #search input:focus,
+.navbar #search button:focus {
+  outline: .25rem solid $focusColor;
+  outline-offset: 0;
+}
+body.contrast-high {
+  [contentEditable="true"]:focus,
+  [href]:focus,
+  [tabindex]:focus,
+  iframe:focus,
+  .navbar #search input:focus,
+  .navbar #search button:focus {
+    outline: .25rem solid $focusColor-highContrast;
+    outline-offset: 0;
+  }
+}
