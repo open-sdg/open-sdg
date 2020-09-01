@@ -14,7 +14,7 @@
     {% if tab_key == 'sources' %}
       {% assign tab_include = 'components/indicator/sources.html' %}
     {% endif %}
-    <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
+    <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}" tabindex="0">
       <article>
         {% if tab_description %}{{ tab_description | t | markdownify }}{% endif %}
         {% include {{ tab_include }} scope=tab_key %}
@@ -25,7 +25,7 @@
     {% include components/indicator/metadata-panes-default.html %}
   {% endif %}
   {% if site.environment == 'staging' %}
-  <div role="tabpanel" class="tab-pane" id="edit">
+  <div role="tabpanel" class="tab-pane" id="edit" tabindex="0">
     {% include components/indicator/edit-buttons.html %}
   </div>
   {% endif %}
