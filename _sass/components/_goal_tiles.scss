@@ -22,6 +22,9 @@
 
 #main-content {
   .goal-tiles {
+    .goal-tile {
+      padding-bottom: 10px;
+    }
     .no-gutters img {
       width: calc(100% - 10px);
       border: 0;
