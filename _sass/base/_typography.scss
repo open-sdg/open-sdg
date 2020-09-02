@@ -90,7 +90,9 @@ h3{ font-size: $h3-fontSize; }
 iframe:focus,
 .navbar #search input:focus,
 .navbar #search button:focus {
-  outline: .25rem solid $focusColor;
+  color: $focusColor;
+  outline: .25rem solid $focusOutlineColor;
+  background-color: $focusBackgroundColor;
   outline-offset: 0;
 }
 body.contrast-high {
@@ -100,7 +102,8 @@ body.contrast-high {
   iframe:focus,
   .navbar #search input:focus,
   .navbar #search button:focus {
-    outline: .25rem solid $focusColor-highContrast;
-    outline-offset: 0;
+    color: $focusColor-highContrast;
+    outline: .25rem solid $focusOutlineColor-highContrast;
+    background-color: $focusBackgroundColor-highContrast;
   }
 }

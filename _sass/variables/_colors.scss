@@ -1,8 +1,13 @@
 // Top-level color variables.
 // [color|backgroundColor|etc] - [...modifiers]
 $backgroundColor: white !default;
-$focusColor: #1d70b8 !default;
-$focusColor-highContrast: #fd0 !default;
+
+$focusColor: #0b0c0c !default;
+$focusBackgroundColor: #ffdd00 !default;
+$focusOutlineColor: #ffdd00 !default;
+$focusColor-highContrast: #0b0c0c !default;
+$focusBackgroundColor-highContrast: #ffdd00 !default;
+$focusOutlineColor-highContrast: #ffdd00 !default;
 
 $color-dark: #0b0c0c !default;
 $color-light: white !default;
