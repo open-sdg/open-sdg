@@ -1,6 +1,10 @@
 body{
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: $fontSize;
+  color: $text-color;
+}
+body.contrast-high {
+  color: $text-color-highContrast;
 }
 
 h1{ font-size: $h1-fontSize; }
