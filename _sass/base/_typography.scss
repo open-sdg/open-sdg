@@ -90,9 +90,11 @@ iframe:focus,
 input:focus,
 button:focus {
   color: $focusColor !important;
-  outline: .25rem solid $focusOutlineColor !important;
+  outline: 3px solid transparent !important;
   background-color: $focusBackgroundColor !important;
   outline-offset: 0 !important;
+  box-shadow: 0 -2px $focusOutlineColor,0 4px $focusColor !important;
+  text-decoration: none !important;
 }
 body.contrast-high {
   [contentEditable="true"]:focus,
@@ -102,7 +104,7 @@ body.contrast-high {
   input:focus,
   button:focus {
     color: $focusColor-highContrast !important;
-    outline: .25rem solid $focusOutlineColor-highContrast !important;
     background-color: $focusBackgroundColor-highContrast !important;
+    box-shadow: 0 -2px $focusOutlineColor-highContrast,0 4px $focusColor-highContrast !important;
   }
 }
