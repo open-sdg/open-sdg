@@ -7,18 +7,20 @@
 <header role="banner">
   <div class="container">
 
-    <a class="navbar-brand" href="{{ page.baseurl }}" id="home">
-      <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ page.t.general.sdg }} - {{ page.t.header.tag_line }}" />
-    </a>
+    <div class="logo-and-mobile-widgets">
+      <a class="navbar-brand" href="{{ page.baseurl }}" id="home">
+        <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ page.t.general.sdg }} - {{ page.t.header.tag_line }}" />
+      </a>
 
-  <div class='hidden visible-xs float-right'>
-    <ul id='accessibility-nav' class='contrast-switcher'></ul>
-    {%- if site.languages.size > 1 -%}
-    <div class="language-toggle-mobile">
-      {% include components/language-toggle.html %}
+      <div class="mobile-widgets">
+        <ul id='accessibility-nav' class='contrast-switcher'></ul>
+        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+        <div class="language-toggle-mobile">
+          {% include components/language-toggle-dropdown.html location="header" %}
+        </div>
+        {%- endif -%}
+      </div>
     </div>
-    {%- endif -%}
-  </div>
 
     <nav class="navbar navbar-default" id="main-nav">
 
@@ -34,7 +36,7 @@
       </ul>
 
       {% include search.html %}
-      
+
       <ul class="nav navbar-nav menu-target contrast-switcher" id="menu">
         {%- if site.menu -%}
           {%- assign current_path_no_slash = page.url | remove: '/' -%}
@@ -50,14 +52,12 @@
           </li>
           {%- endfor -%}
         {%- endif -%}
-        {%- if site.languages.size > 1 -%}
-        <li>
+        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+        <li class="language-toggle-menu-header">
           {% include components/language-toggle.html %}
         </li>
         {%- endif -%}
       </ul>
-
-      
 
     </nav>
   </div>

@@ -19,9 +19,9 @@ footer {
     }
   }
 
-  #footerLinks ul {
+  #footerLinks > ul {
     padding-left: 0;
-    li {
+    > li {
       display: inline-block;
       margin: 3px 9px;
       &:first-child {

@@ -1,0 +1,31 @@
+<div class="language-toggle-container">
+  <i class="fa fa-globe language-toggle-globe-links"></i>
+  <ul class="language-toggle-links">
+  {%- for language in site.languages -%}
+    {%- assign language_abbreviation = site.languages_public[language] | default: language -%}
+    {%- if language != page.language -%}
+    <li>
+      <a class="language-toggle-link" href="{{ page.url_by_language[language] }}">
+        {%- if include.location != 'footer' -%}
+        <span class="language-name">{{ page.t.languages[language] }}</span>
+        <span class="language-abbreviation">{{ language_abbreviation }}</span>
+        {%- else -%}
+        {{ page.t.languages[language] }}
+        {%- endif -%}
+      </a>
+    </li>
+    {%- elsif site.languages.size > 2 -%}
+    <li>
+      <span class="language-toggle-active-language">
+        {%- if include.location != 'footer' -%}
+        <span class="language-name">{{ page.t.languages[language] }}</span>
+        <span class="language-abbreviation">{{ language_abbreviation }}</span>
+        {%- else -%}
+        {{ page.t.languages[language] }}
+        {%- endif -%}
+      </span>
+    </li>
+    {%- endif -%}
+  {%- endfor -%}
+  </ul>
+</div>

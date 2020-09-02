@@ -1,60 +1,220 @@
+// Not specifically about the language toggle. Possibly needs moving
+// to another file, like right_to_left.scss.
 .language-ar {
   direction: rtl;
 }
-.language-options {
-  display: none;
-  position: absolute;
-  z-index: 999;
-  left: 12px;
-  background: $backgroundColor;
-  border-radius: 3px;
-  box-shadow: 0px 0px 2px 0px $languageToggle-dropDown-shadowColor;
-  padding: .2em 1em .2em .2em;
-  li {
+
+.language-toggle-dropdown {
+  margin-top: -2px;
+  .dropdown-toggle, .dropdown-menu {
+    border-radius: 0;
+  }
+  .dropdown-toggle {
+    border: none;
     padding: 5px;
-    padding-left: 0;
+    font-size: 16px;
+    &, &:hover, &:active, &:focus {
+      background-color: $backgroundColor;
+    }
+    &:focus {
+      outline: 1px dotted $color-dark;
+    }
+  }
+  .dropdown-menu {
+    font-size: 16px;
+  }
+}
+.language-toggle-menu-header .language-toggle-dropdown {
+  margin-top: 0px;
+  .dropdown-toggle, .dropdown-menu {
+    font-size: 14px;
+  }
+  .dropdown-toggle {
+    position: relative;
+    .language-globe-in-dropdown {
+      display: inline-block;
+      position: relative;
+      top: 1px;
+      margin-right: 5px;
+    }
   }
 }
 
-.language-toggle-button {
-  cursor: pointer;
+// Because the mobile dropdown uses abbreviations only, it can be smaller.
+.language-toggle-mobile .dropdown-menu {
+  min-width: auto;
 }
-.navbar ul.navbar-nav li a.language-toggle-button {
+.language-toggle-mobile {
+  float: right;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+.language-toggle-mobile .language-toggle-dropdown {
+  .dropdown-toggle, .dropdown-menu {
+    font-size: 14px;
+  }
+  .language-abbreviation, .language-toggle-caret {
+    position: relative;
+    bottom: 2px;
+  }
+  @media only screen and (min-width: 480px) {
+    .language-toggle-caret {
+      margin-left: 4px;
+    }
+  }
+  .dropdown-menu {
+    a, a:hover {
+      text-decoration: none;
+    }
+  }
+}
+// If the language toggle is in the navbar menu, separate it from the
+// normal menu items to call attention to it.
+.language-toggle-menu-header .language-toggle-container {
+  margin-left: 40px;
+}
+.language-toggle-menu-header .language-toggle-globe-links {
+  padding-top: 5px;
+}
+.nav > li.language-toggle-menu-header {
   display: none;
   @media only screen and (min-width: 768px) {
     display: block;
   }
 }
-.language-toggle-mobile {
-  position: relative;
-  padding-top: 20px;
-  padding-right: 10px;
-  float: right;
-  .language-options {
-    left: -36px;
-    li {
-      padding-left: 5px;
-    }
+// This logic is to display language abbreviations on mobile,
+// but full language names on desktop.
+.language-name {
+  display: none;
+}
+.language-abbreviation {
+  display: inline;
+}
+.language-globe-in-dropdown {
+  display: inline;
+}
+@media only screen and (min-width: 480px) {
+  .language-abbreviation {
+    display: inline;
   }
-  a {
-    text-transform: uppercase;
-    .language-toggle-text {
-      display: none;
-    }
-    .language-toggle {
-      display: none !important;
-    }
-    .fa-globe {
-      font-size: 2em;
+}
+@media only screen and (max-width: 480px) {
+  .language-toggle-mobile {
+    .dropdown-toggle {
+      .language-abbreviation {
+        display: none;
+      }
     }
   }
 }
-.contrast-high {
-  .language-toggle-mobile, ul.navbar-nav {
-    .language-options a {
-      color: $color-dark-highContrast;
+@media only screen and (min-width: 768px) {
+  .language-name {
+    display: inline;
+  }
+  .language-abbreviation {
+    display: none;
+  }
+}
+
+.language-abbreviation {
+  text-transform: uppercase;
+}
+.language-toggle-container .fa-globe {
+  font-size: 18px;
+}
+.language-toggle-mobile {
+  .language-toggle-container .fa-globe {
+    font-size: 25px;
+  }
+}
+.language-toggle-globe-links {
+  float: left;
+  margin-right: 5px;
+  padding-top: 2px;
+}
+.language-toggle-menu-footer .language-toggle-links {
+  margin-top: 2px;
+}
+.language-toggle-menu-footer .language-toggle-globe-links {
+  padding-top: 5px;
+}
+.language-toggle-links {
+  padding-left: 0;
+  float: left;
+  li {
+    display: inline;
+    .language-toggle-link {
+      margin-left: 2px;
+      margin-right: 2px;
+      color: $link-color;
+      text-decoration: underline;
       &:hover {
-        color: $color-dark-highContrast;
+        border: none;
+      }
+    }
+  }
+  li + li::before {
+    content: " | ";
+  }
+}
+header .language-toggle-links {
+  font-size: 14px;
+  margin-top: 4px;
+}
+.language-toggle-menu-header
+.language-toggle-menu-header .language-globe-in-dropdown {
+  margin-right: 5px;
+}
+footer #footerLinks .language-toggle-menu-footer {
+  margin-bottom: -5px;
+  .dropdown-menu {
+    a {
+      text-decoration: none;
+    }
+  }
+}
+.language-toggle-menu-footer .language-toggle-dropdown {
+  .language-globe-in-dropdown {
+    margin-right: 5px;
+  }
+  .language-toggle-caret {
+    margin-left: 5px;
+  }
+}
+
+.contrast-high {
+  .fa-globe {
+    color: $color-light-highContrast;
+  }
+  .language-toggle-link span, .language-toggle-link {
+    color: $color-highlight-highContrast;
+    &:hover, &:visited {
+      color: $color-highlight-highContrast;
+    }
+  }
+  .language-toggle-dropdown {
+    .dropdown-toggle {
+      &, &:hover, &:active, &:focus {
+        background: $color-dark-highContrast !important;
+      }
+      &, span, .language-toggle-caret {
+        color: $color-light-highContrast !important;
+      }
+    }
+    .dropdown-menu {
+      &, a:hover, a:focus {
+        background: $color-dark-highContrast;
+      }
+      border-color: $color-light-highContrast;
+    }
+  }
+  .language-toggle-mobile .language-toggle-dropdown {
+    .dropdown-menu {
+      a:visited {
+        color: $color-light-highContrast;
+      }
+      a:hover, a:focus {
+        color: $color-highlight-highContrast;
       }
     }
   }

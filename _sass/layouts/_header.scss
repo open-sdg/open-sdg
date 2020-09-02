@@ -29,6 +29,26 @@ header {
   }
 }
 
+.mobile-widgets {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .logo-and-mobile-widgets {
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    position: relative;
+    .mobile-widgets {
+      display: block;
+      position: absolute;
+      bottom: 10px;
+      right: 5px;
+    }
+  }
+}
+
 .navbar-brand {
   display: block;
   width: 75%;
@@ -51,8 +71,8 @@ header {
     margin-top: 12px;
     clear: both;
 
-    li {
-      a {
+    > li {
+      > a {
         padding: 2px;
         margin: 2px 15px;
         color: $menu-link-color;
@@ -60,7 +80,7 @@ header {
 
       }
 
-      &.active a {
+      &.active > a {
         border-bottom: 2px solid $text-color;
         background: transparent;
         color: $text-color;
@@ -70,7 +90,7 @@ header {
         }
       }
 
-      a:last-child {
+      > a:last-child {
         margin-right: 0;
       }
 
@@ -85,6 +105,7 @@ header {
         max-height: 25px;
         text-align: center;
         margin-left: 0.5em;
+        margin-top: 4px;
         a {
           margin: auto;
           text-decoration: none;
