@@ -549,15 +549,15 @@ body.contrast-high {
     }
   }
 
-  #toolbar {
+  #main-content #toolbar {
     button {
-      background-color: $color-dark-highContrast !important;
+      background-color: $color-dark-highContrast;
       border-color: $color-light-highContrast;
       color: $color-light-highContrast;
     }
   }
 
-  .variable-options {
+  #main-content #fields .variable-selector .variable-options {
     background: $color-dark-highContrast;
     color: $color-light-highContrast;
     div {
@@ -566,7 +566,7 @@ body.contrast-high {
     }
     button {
       background: $color-dark-highContrast;
-      color: $color-light-highContrast !important;
+      color: $color-light-highContrast;
       border-color: $color-light-highContrast;
     }
   }

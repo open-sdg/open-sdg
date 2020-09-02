@@ -88,22 +88,22 @@ h3{ font-size: $h3-fontSize; }
 [href]:focus,
 [tabindex]:focus,
 iframe:focus,
-.navbar #search input:focus,
-.navbar #search button:focus {
-  color: $focusColor;
-  outline: .25rem solid $focusOutlineColor;
-  background-color: $focusBackgroundColor;
-  outline-offset: 0;
+input:focus,
+button:focus {
+  color: $focusColor !important;
+  outline: .25rem solid $focusOutlineColor !important;
+  background-color: $focusBackgroundColor !important;
+  outline-offset: 0 !important;
 }
 body.contrast-high {
   [contentEditable="true"]:focus,
   [href]:focus,
   [tabindex]:focus,
   iframe:focus,
-  .navbar #search input:focus,
-  .navbar #search button:focus {
-    color: $focusColor-highContrast;
-    outline: .25rem solid $focusOutlineColor-highContrast;
-    background-color: $focusBackgroundColor-highContrast;
+  input:focus,
+  button:focus {
+    color: $focusColor-highContrast !important;
+    outline: .25rem solid $focusOutlineColor-highContrast !important;
+    background-color: $focusBackgroundColor-highContrast !important;
   }
 }
