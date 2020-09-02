@@ -24,6 +24,9 @@
   .goal-tiles {
     .goal-tile {
       padding-bottom: 10px;
+      a:focus {
+        outline: 6px $focusOutlineColor solid !important;
+      }
     }
     .no-gutters img {
       width: calc(100% - 10px);
