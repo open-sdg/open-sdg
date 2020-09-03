@@ -97,6 +97,9 @@
     width: 115px;
     float: left;
     min-height: 1px;
+    > a:focus {
+      outline: 6px $focusOutlineColor solid !important;
+    }
   }
   .details {
     width: calc(100% - 125px);
