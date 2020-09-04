@@ -192,18 +192,31 @@ footer #footerLinks .language-toggle-menu-footer {
       color: $color-highlight-highContrast;
     }
   }
+  .language-toggle-link:focus {
+    &, span {
+      color: $focusColor-highContrast !important;
+    }
+  }
   .language-toggle-dropdown {
     .dropdown-toggle {
-      &, &:hover, &:active, &:focus {
+      &, &:hover, &:active {
         background: $color-dark-highContrast !important;
       }
       &, span, .language-toggle-caret {
         color: $color-light-highContrast !important;
       }
+      &:focus, &:focus span, &:focus i {
+        background: $focusBackgroundColor-highContrast !important;
+        color: $focusColor-highContrast !important;
+      }
     }
     .dropdown-menu {
-      &, a:hover, a:focus {
+      &, a:hover {
         background: $color-dark-highContrast;
+      }
+      a:focus {
+        background: $focusBackgroundColor-highContrast;
+        color: $focusColor-highContrast;
       }
       border-color: $color-light-highContrast;
     }
@@ -213,8 +226,11 @@ footer #footerLinks .language-toggle-menu-footer {
       a:visited {
         color: $color-light-highContrast;
       }
-      a:hover, a:focus {
+      a:hover {
         color: $color-highlight-highContrast;
+      }
+      a:focus {
+        color: $focusColor-highContrast
       }
     }
   }

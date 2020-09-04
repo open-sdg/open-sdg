@@ -73,7 +73,7 @@ body.contrast-high {
       background: $color-highlight-highContrast !important;
     }
     &:focus {
-      background: $color-highlight-highContrast !important;
+      background: $focusBackgroundColor-highContrast !important;
     }
   }
   #zip-download-info {
