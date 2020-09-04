@@ -7,10 +7,12 @@
  * @param {Array} rows
  */
 function getUniqueValuesByProperty(prop, rows) {
-  return rows
-    .map(function(row) { return row[prop]; })
-    .filter(isElementUniqueInArray)
-    .filter(function(row) { return row; })
+  var uniques = new Set();
+  rows.forEach(function(r) {
+    uniques.add(r[prop])
+  });
+  return Array.from(uniques)
+    .filter(function(value) { return value; })
     .sort();
 }
 
