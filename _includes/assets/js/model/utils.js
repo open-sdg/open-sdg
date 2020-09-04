@@ -8,12 +8,12 @@
  */
 function getUniqueValuesByProperty(prop, rows) {
   var uniques = new Set();
-  rows.forEach(function(r) {
-    uniques.add(r[prop])
+  rows.forEach(function(row) {
+    if (row[prop] != null) {
+      uniques.add(row[prop])
+    }
   });
-  return Array.from(uniques)
-    .filter(function(value) { return value; })
-    .sort();
+  return Array.from(uniques).sort();
 }
 
 // Use as a callback to Array.prototype.filter to get unique elements
