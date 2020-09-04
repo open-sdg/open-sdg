@@ -2,7 +2,7 @@
   <% if(serieses.length) { %>
     <h4>{{ page.t.indicator.series }}</h4>
     <fieldset>
-      <legend><span class="sr-only">{{ page.t.indicator.series }}</span></legend>
+      <legend class="sr-only">{{ page.t.indicator.series }}</legend>
       <% _.each(serieses, function(seriesItem, index) { %>
         <% var checked = (selectedSeries) ? (selectedSeries==seriesItem) : (index==0); %>
         <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>

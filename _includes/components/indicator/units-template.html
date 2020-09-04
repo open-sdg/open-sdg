@@ -2,7 +2,7 @@
   <% if(units.length) { %>
     <h4>{{ page.t.indicator.units_type }}</h4>
     <fieldset>
-      <legend><span class="sr-only">{{ page.t.indicator.units_type }}</span></legend>
+      <legend class="sr-only">{{ page.t.indicator.units_type }}</legend>
       <% _.each(units, function(unitsItem, index) { %>
         <% var checked = (selectedUnit) ? (selectedUnit==unitsItem) : (index==0); %>
         <label><input type="radio" name="unit" value="<%=unitsItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(unitsItem)%></label>
