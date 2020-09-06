@@ -666,12 +666,12 @@ var indicatorView = function (model, options) {
   }
 
   this.updateIndicatorDataViewStatus = function(chartInfo) {
-    var status = 'Chart and table include no data.';
+    var status = 'Chart and table shows no data.';
     if (chartInfo.datasets.length > 0) {
       var labels = chartInfo.datasets.map(function(dataset) {
         return dataset.label;
       });
-      status = 'Chart and table include data disaggregated by ' + labels.join(' and ') + '.';
+      status = 'Chart and table shows datasets for ' + labels.join(' and ') + '.';
       if (chartInfo.selectedUnit) {
         status += ' Selected unit of measurement is ' + chartInfo.selectedUnit + '.';
       }
