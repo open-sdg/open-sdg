@@ -7,10 +7,7 @@ $goal-by-target-indentation: 50px;
     clear: both;
     display: inline-block;
   }
-  .goal-target {
-    margin-bottom: 20px;
-  }
-  #main-content h4.goal-indicator {
+  #main-content .goal-indicator h4 {
     margin-top: 0;
     margin-bottom: 15px;
   }
@@ -18,7 +15,7 @@ $goal-by-target-indentation: 50px;
   .goal-target-and-indicators {
     margin-bottom: 20px;
     &::after {
-      content: "";
+      content: "" / "";
       height: 1px;
       width: calc(100% - #{$goal-by-target-indentation});
       border-bottom: 1px solid $goalTarget-horizontalRule-color;
@@ -53,7 +50,17 @@ $goal-by-target-indentation: 50px;
   }
 
   .target-number, .indicator-number {
-    position: absolute;
+    margin-top: 3px;
+  }
+
+  .goal-target, .goal-indicator h4 {
+    clear: left;
+    float: left;
+    margin-top: 0;
+  }
+
+  .goal-indicator {
+    margin-top: 20px;
   }
 
   .target-name, .indicator-name {
