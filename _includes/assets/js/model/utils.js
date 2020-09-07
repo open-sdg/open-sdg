@@ -7,11 +7,13 @@
  * @param {Array} rows
  */
 function getUniqueValuesByProperty(prop, rows) {
-  return rows
-    .map(function(row) { return row[prop]; })
-    .filter(isElementUniqueInArray)
-    .filter(function(row) { return row; })
-    .sort();
+  var uniques = new Set();
+  rows.forEach(function(row) {
+    if (row[prop] != null) {
+      uniques.add(row[prop])
+    }
+  });
+  return Array.from(uniques).sort();
 }
 
 // Use as a callback to Array.prototype.filter to get unique elements
