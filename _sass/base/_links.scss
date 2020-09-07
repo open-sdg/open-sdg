@@ -48,3 +48,7 @@ footer a:hover{
 body.contrast-high footer a:visited{
   color: $footer-link-color-highContrast;
 }
+
+*[disabled], *[aria-disabled="true"] {
+  cursor: default;
+}
