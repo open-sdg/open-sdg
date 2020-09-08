@@ -333,7 +333,7 @@ var indicatorView = function (model, options) {
     view_obj._chartInstance.update(1000, true);
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
-
+    view_obj.updateIndicatorDataViewStatus(chartInfo);
     view_obj.updateChartDownloadButton(chartInfo.selectionsTable);
   };
 
@@ -486,6 +486,7 @@ var indicatorView = function (model, options) {
     });
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
+    view_obj.updateIndicatorDataViewStatus(chartInfo);
   };
 
   this.getGridColor = function(contrast) {
@@ -662,6 +663,23 @@ var indicatorView = function (model, options) {
           .data('csvdata', tableCsv);
       }
     }
+  }
+
+  this.updateIndicatorDataViewStatus = function(chartInfo) {
+    var status = 'Chart and table shows no data.';
+    if (chartInfo.datasets.length > 0) {
+      var labels = chartInfo.datasets.map(function(dataset) {
+        return dataset.label;
+      });
+      status = 'Chart and table shows datasets for ' + labels.join(' and ') + '.';
+      if (chartInfo.selectedUnit) {
+        status += ' Selected unit of measurement is ' + chartInfo.selectedUnit + '.';
+      }
+      if (chartInfo.selectedSeries) {
+        status += ' Selected series is ' + chartInfo.selectedSeries + '.';
+      }
+    }
+    $('#indicator-data-view-status').html(status);
   }
 
   this.createSourceButton = function(indicatorId, el) {
