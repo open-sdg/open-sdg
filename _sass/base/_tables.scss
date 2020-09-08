@@ -35,50 +35,19 @@ table {
       .sort {
         background-image: none !important;
       }
-      &[aria-sort="descending"], &[aria-sort="ascending"] {
-        position: relative;
-        &:first-child:after, &:last-child:before {
-          content: " ";
-          border-left: 0.4em solid transparent;
-          border-right: 0.4em solid transparent;
-          position: relative;
+      .fa-sort-down, .fa-sort-up {
+        display: none;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      &[aria-sort="descending"] {
+        .fa-sort-down {
+          display: inline-block;
         }
       }
-      &[aria-sort="descending"]:first-child:after,
-      &[aria-sort="descending"]:last-child:before {
-        border-top: 0.4em solid black;
-        top: 15px;
-      }
-      &[aria-sort="ascending"]:first-child:after,
-      &[aria-sort="ascending"]:last-child:before {
-        border-bottom: 0.4em solid black;
-        bottom: 15px;
-      }
-      &[aria-sort]:first-child:after {
-        left: auto;
-        right: 1em;
-      }
-      &[aria-sort]:last-child:before {
-        left: 1em;
-        right: auto;
-      }
-    }
-  }
-}
-
-body.contrast-high {
-  table {
-    thead {
-      th {
-        &[aria-sort="descending"] {
-          &:first-child:after, &:last-child:before {
-            border-top-color: $color-light-highContrast;
-          }
-        }
-        &[aria-sort="ascending"] {
-          &:first-child:after, &:last-child:before {
-            border-bottom-color: $color-light-highContrast;
-          }
+      &[aria-sort="ascending"] {
+        .fa-sort-up {
+          display: inline-block;
         }
       }
     }

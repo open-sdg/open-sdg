@@ -724,9 +724,9 @@ var indicatorView = function (model, options) {
       var table_head = '<thead><tr>';
 
       var getHeading = function(heading, index) {
-        var span = '<span class="sort" />';
-        var span_heading = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
-        return (!index || heading.toLowerCase() == 'units') ? span_heading + span : span + span_heading;
+        var arrows = '<span class="sort"><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
+        var button = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
+        return (!index || heading.toLowerCase() == 'units') ? button + arrows : arrows + button;
       };
 
       table.headings.forEach(function (heading, index) {
