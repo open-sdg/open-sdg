@@ -725,7 +725,7 @@ var indicatorView = function (model, options) {
 
       var getHeading = function(heading, index) {
         var span = '<span class="sort" />';
-        var span_heading = '<span>' + translations.t(heading) + '</span>';
+        var span_heading = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
         return (!index || heading.toLowerCase() == 'units') ? span_heading + span : span + span_heading;
       };
 
@@ -757,6 +757,8 @@ var indicatorView = function (model, options) {
       initialiseDataTable(el);
 
       $(el).removeClass('table-has-no-data');
+
+      $(el).find('th').removeAttr('tabindex');
     } else {
       $(el).append($('<h3 />').text(translations.indicator.data_not_available));
       $(el).addClass('table-has-no-data');
