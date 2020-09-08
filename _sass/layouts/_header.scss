@@ -225,24 +225,17 @@ header {
           background: $menu-link-backgroundColor-mobile-active;
         }
 
-        span {
-          color: $menu-link-color-mobile;
-          display: block;
-          padding: 15px;
-          &[data-target="search"] {
-            text-transform: capitalize;
-          }
-        }
-
       	button {
           color: $menu-link-color-mobile;
           display: block;
           padding: 15px;
           border: 0;
-          text-transform: uppercase;
           background-color: inherit;
           text-align: left;
           width: 100%;
+          &[data-target="search"] {
+            text-transform: capitalize;
+          }
         }
       }
     }

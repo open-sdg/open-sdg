@@ -27,12 +27,14 @@
       <ul class="top-level">
         <li id="menuToggle"
             aria-label="Menu toggle. Click to expand or collapse the menu."
-            aria-haspopup="true"
-            aria-expanded="false">
-          <span data-target="menu" tabindex="0"
-          role="navigation">{{ page.t.menu.menu }}</span>
+            aria-haspopup="true">
+          <button data-target="menu" aria-expanded="false">{{ page.t.menu.menu }}</button>
         </li>
-        <li><span data-target="search">{{ page.t.search.search }}</span></li>
+        <li id="searchToggle"
+            aria-label="Search toggle. Click to expand or collapse the search bar."
+            aria-haspopup="true">
+          <button data-target="search" aria-expanded="false">{{ page.t.search.search }}</button>
+        </li>
       </ul>
 
       {% include search.html %}
