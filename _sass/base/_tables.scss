@@ -28,3 +28,28 @@
     border-bottom: 1pt solid $color-dark;
   }
 }
+
+table {
+  thead {
+    th {
+      .sort {
+        background-image: none !important;
+      }
+      .fa-sort-down, .fa-sort-up {
+        display: none;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      &[aria-sort="descending"] {
+        .fa-sort-down {
+          display: inline-block;
+        }
+      }
+      &[aria-sort="ascending"] {
+        .fa-sort-up {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
