@@ -2,7 +2,7 @@
 // [color|backgroundColor|etc] - [...modifiers]
 $backgroundColor: white !default;
 
-$color-dark: black !default;
+$color-dark: #0b0c0c !default;
 $color-light: white !default;
 
 $color-dark-highContrast: black !default;
@@ -20,7 +20,8 @@ $color-success: #5cb85c !default;
 // [element] - [color|backgroundColor|etc] - [...modifiers]
 $goal-colors: #E52B3D #DDA63A #4C9F38 #C42130 #FF3E24 #28BCE1 #FCC30B #A21942 #FD6925 #DD1367 #FD9C27 #BF8B2E #417D46 #0A96D8 #57BE2F #00689C #1F4A6A !default;
 
-$text-color: #333 !default;
+$text-color: $color-dark !default;
+$text-color-highContrast: $color-light !default;
 $link-color: #1d70b8 !default;
 $link-color-dark: #0275d8 !default;
 $link-color-hover: #003078 !default;

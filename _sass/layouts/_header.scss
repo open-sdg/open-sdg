@@ -355,6 +355,11 @@ body.contrast-high {
         }
       }
     }
+    #search {
+      input, label {
+        color: $color-dark-highContrast;
+      }
+    }
   }
 
   @media screen and (max-width: 768px) {

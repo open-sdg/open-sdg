@@ -55,3 +55,11 @@ body.contrast-high {
     }
   }
 }
+
+body.contrast-high.layout-search {
+  form {
+    input, label {
+      color: $color-dark-highContrast;
+    }
+  }
+}
