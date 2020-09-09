@@ -111,3 +111,9 @@ body.contrast-high {
 input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus {
   box-shadow: 0px 0px 0px 4px $focusOutlineColor !important;
 }
+input[type="text"]:focus,
+body.contrast-high input[type="text"]:focus {
+  background-color: $backgroundColor !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor !important;
+}
