@@ -42,6 +42,12 @@ h5 + .btn-download {
       margin-bottom: 10px;
     }
   }
+  .hide-during-image-download {
+    display: none;
+  }
+  #legend {
+    margin-top: -32px;
+  }
 }
 
 .zip-download-container {
