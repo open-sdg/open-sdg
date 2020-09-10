@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div id="main-content" class="container goal-indicators goal-{{ page.goal.number }}">
+<div id="main-content" class="container">
 
   {{ content }}
 
@@ -30,15 +30,12 @@
     {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
     {% for group in goal_indicators %}
       {% assign target = group.name | sdg_lookup %}
-      <div class="row no-gutters goal-target">
-        <div class="col-md-1">
-          {{ target.number }}
-        </div>
-        <div class="col-md-11">
-          {{ target.name }}
-        </div>
+      <div class="row no-gutters goal-target-and-indicators">
+        <h3 class="goal-target">
+          <span class="target-number"><span class="sr-only">{{ page.t.general.target }}</span> {{ target.number }}</span>
+        </h3>
+        <span class="target-name">{{ target.name }}</span>
         {% for indicator in group.items %}
-        <div class="row no-gutters goal-indicator indicator-cards">
 
           {% assign status_css = indicator.reporting_status | slugify %}
           {% if indicator.reporting_status == 'notapplicable' %}
@@ -62,26 +59,25 @@
           {% endif %}
           {% assign tag_classes = tag_classes | join: " " %}
 
-          <div class="col-md-1 col-md-offset-1">{{ indicator.number }}</div>
-          <div class="col-md-8">
-            <a href="{{ indicator.url }}">{{ indicator.name }}</a>
-          </div>
-          <div class="col-md-2 status-column">
+          <div class="goal-indicator">
+            <h4>
+              <span class="indicator-number"><span class="sr-only">{{ page.t.general.indicator }}</span> {{ indicator.number }}</span>
+            </h4>
+            <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
+            <span class="sr-only">Indicator status</span>
             <span class="status {{ status_css }}">
               {{ status_desc }}
             </span>
-          </div>
-          {% if indicator.tags %}
-          <div class="col-md-offset-2 col-md-10">
-            <ul class="tags">
+            {% if indicator.tags %}
+            <span class="sr-only">Tags</span>
+            <span class="tags">
             {% for tag in indicator.tags %}
               {% assign tag_class = tag | slugify %}
-              <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
+              <span class="tag tag-{{ tag_class }} warning">{{ tag | t }}</span>
             {% endfor %}
-            </ul>
+            </span>
+            {% endif %}
           </div>
-          {% endif %}
-        </div>
         {% endfor %}
       </div>
     {% endfor %}

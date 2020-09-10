@@ -1,38 +1,106 @@
+$goal-by-target-indentation: 50px;
+
 .layout-goal-by-target-vertical {
-  .tags {
-    @include tags;
+  .goal-target, .goal-indicator {
+    font-size: 16px;
+    font-weight: normal;
+    clear: both;
+    display: inline-block;
   }
-  .goal-target, .goal-target > div {
+  #main-content .goal-indicator h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  .goal-target-and-indicators {
     margin-bottom: 20px;
-  }
-
-  .goal-target::after {
-    content : "";
-    height: 1px;
-    width: 84%;
-    border-bottom: 1px solid $goalTarget-horizontalRule-color;
-    margin: 0 auto;
-    padding-bottom: 10px;
-  }
-
-  #main-content.goal-indicators .indicator-cards a {
-    padding: 0;
-  }
-
-  #main-content.goal-indicators .indicator-cards .status-column {
-    .status {
-      position: static;
+    &::after {
+      content: "" / "";
+      height: 1px;
+      width: calc(100% - #{$goal-by-target-indentation});
+      border-bottom: 1px solid $goalTarget-horizontalRule-color;
+      margin-left: $goal-by-target-indentation;
+      padding-bottom: 10px;
+      @media screen and (min-width: 769px) {
+        padding-bottom: 20px;
+      }
       display: inline-block;
-      margin-top: 10px;
-      margin-bottom: 10px;
     }
-    @media only screen and (min-width: 992px) {
-      text-align: right;
+  }
+
+  .goal-indicator {
+    @media screen and (min-width: 769px) {
+      margin-left: $goal-by-target-indentation;
+      position: relative;
+      width: calc(100% - #{$goal-by-target-indentation});
+      .indicator-name {
+        width: 75%;
+      }
       .status {
         position: absolute;
-        right: 15px;
+        right: 0;
+        top: 0;
         margin-top: 0;
-        margin-bottom: 0;
+      }
+    }
+  }
+
+  .target-number, .target-name, .indicator-number, .indicator-name {
+    display: block;
+  }
+
+  .target-number, .indicator-number {
+    margin-top: 3px;
+  }
+
+  .goal-target, .goal-indicator h4 {
+    clear: left;
+    float: left;
+    margin-top: 0;
+  }
+
+  .goal-indicator {
+    margin-top: 20px;
+  }
+
+  .target-name, .indicator-name {
+    margin-left: 50px;
+    box-decoration-break: clone;
+  }
+
+  .status {
+    display: block;
+    float: left;
+    clear: left;
+    @include status;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .tags {
+    float: left;
+    clear: left;
+    @include tags;
+    margin-top: 10px;
+    @media screen and (min-width: 769px) {
+      margin-top: 20px;
+    }
+    margin-bottom: 5px;
+    .tag {
+      margin-right: 6px;
+      padding: 4px 6px;
+      border-radius: 10px;
+    }
+  }
+
+  .status, .tags {
+    margin-left: $goal-by-target-indentation;
+  }
+
+  &.contrast-high {
+    .tags {
+      .tag {
+        color: $color-dark-highContrast;
       }
     }
   }
