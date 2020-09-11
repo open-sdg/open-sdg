@@ -8,9 +8,11 @@
     </div>
     {% include components/indicator/table.html %}
   </div>
+  {%- if page.indicator.data_show_map -%}
   <div role="tabpanel" class="tab-pane" id="mapview" class="map">
     {% include components/indicator/map.html %}
   </div>
+  {%- endif -%}
   {% if page.indicator.embedded_feature_url or page.indicator.embedded_feature_html %}
   <div role="tabpanel" class="tab-pane" id="embeddedmapview" class="embedded-map">
     {% include components/indicator/embedded-feature.html %}

@@ -5,9 +5,11 @@
   <li role="presentation" class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab" {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}>{{ page.t.indicator.table }}</a>
   </li>
+  {%- if page.indicator.data_show_map -%}
   <li role="presentation" class="nav-item map" style="display:none">
     <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}>{{ page.t.indicator.map }}</a>
   </li>
+  {%- endif -%}
   {%- if page.indicator.embedded_feature_url or page.indicator.embedded_feature_html -%}
   <li role="presentation" class="nav-item embedded-map">
     <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ page.indicator.embedded_feature_tab_title }}</a>

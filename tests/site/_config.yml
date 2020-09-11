@@ -195,3 +195,5 @@ breadcrumbs:
       path: /
     - label: general.goals
       path: /goals
+
+accessible_tabs: true
