@@ -108,7 +108,8 @@ body.contrast-high {
     box-shadow: 0 -2px $focusOutlineColor-highContrast,0 4px $focusColor-highContrast !important;
   }
 }
-input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus {
+input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus,
+input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
   box-shadow: 0px 0px 0px 4px $focusOutlineColor !important;
 }
 input[type="text"]:focus,
