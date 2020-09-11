@@ -1,9 +1,12 @@
 <script type="text/template" id="series_template">
   <% if(serieses.length) { %>
     <h4>{{ page.t.indicator.series }}</h4>
-    <% _.each(serieses, function(seriesItem, index) { %>
-      <% var checked = (selectedSeries) ? (selectedSeries==seriesItem) : (index==0); %>
-      <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
-    <% }); %>
+    <fieldset>
+      <legend class="sr-only">{{ page.t.indicator.series }}</legend>
+      <% _.each(serieses, function(seriesItem, index) { %>
+        <% var checked = (selectedSeries) ? (selectedSeries==seriesItem) : (index==0); %>
+        <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
+      <% }); %>
+    </fieldset>
   <% } %>
 </script>
