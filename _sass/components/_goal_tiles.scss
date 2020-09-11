@@ -19,3 +19,28 @@
     }
   }
 }
+
+#main-content {
+  .goal-tiles {
+    .goal-tile {
+      padding-bottom: 10px;
+      a:focus {
+        outline: 6px $focusOutlineColor solid !important;
+      }
+    }
+    .no-gutters img {
+      width: calc(100% - 10px);
+      border: 0;
+      padding: 0;
+      margin: 0;
+
+      &:not(#goal-18){
+        box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor;
+
+        &:hover{
+          box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor-hover;
+        }
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@
     <div class="goal-tiles">
         <div class="row no-gutters">
             {% for goal in page.goals %}
-            <div class="col-xs-4 col-md-2">
+            <div class="col-xs-4 col-md-2 goal-tile">
                 <a href="{{ goal.url }}">
                     <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" />
                 </a>
@@ -18,7 +18,7 @@
             out more symmetrically.
             {% endcomment %}
             {% if page.goals.size == 17 %}
-            <div class="col-xs-4 col-md-2">
+            <div class="col-xs-4 col-md-2 goal-tile">
                 <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" />
             </div>
             {% endif %}

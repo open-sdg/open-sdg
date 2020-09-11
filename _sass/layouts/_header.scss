@@ -52,13 +52,26 @@ header {
 .navbar-brand {
   display: block;
   width: 75%;
-  max-width: 300px;
+  max-width: 350px;
   padding: 15px;
+  height: auto;
+  &:focus {
+    background-color: transparent !important;
+    outline: 7px solid $focusOutlineColor !important;
+  }
   @media screen and (min-width: 769px) {
     padding: 5px 15px 15px 0;
   }
   img {
     width: 100%;
+  }
+}
+body.contrast-high {
+  .navbar-brand {
+    &:focus {
+      background-color: transparent !important;
+      outline: 7px solid $focusOutlineColor !important;
+    }
   }
 }
 

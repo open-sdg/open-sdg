@@ -37,7 +37,6 @@ h3{ font-size: $h3-fontSize; }
 
   img {
     max-width: 100%;
-    margin-top: 10px;
   }
 }
 
@@ -82,4 +81,40 @@ h3{ font-size: $h3-fontSize; }
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
+}
+
+[contentEditable="true"]:focus,
+[href]:focus,
+[tabindex]:focus,
+iframe:focus,
+input:focus,
+button:focus {
+  color: $focusColor !important;
+  outline: 3px solid transparent !important;
+  background-color: $focusBackgroundColor !important;
+  outline-offset: 0 !important;
+  box-shadow: 0 -2px $focusOutlineColor,0 4px $focusColor !important;
+  text-decoration: none !important;
+}
+body.contrast-high {
+  [contentEditable="true"]:focus,
+  [href]:focus,
+  [tabindex]:focus,
+  iframe:focus,
+  input:focus,
+  button:focus {
+    color: $focusColor-highContrast !important;
+    background-color: $focusBackgroundColor-highContrast !important;
+    box-shadow: 0 -2px $focusOutlineColor-highContrast,0 4px $focusColor-highContrast !important;
+  }
+}
+input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus,
+input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
+  box-shadow: 0px 0px 0px 4px $focusOutlineColor !important;
+}
+input[type="text"]:focus,
+body.contrast-high input[type="text"]:focus {
+  background-color: $backgroundColor !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor !important;
 }

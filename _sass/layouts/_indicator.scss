@@ -383,20 +383,6 @@
   canvas {
     @include noselect;
   }
-  .no-gutters img {
-    width: calc(100% - 10px);
-    border: 0;
-    padding: 0;
-    margin: 5px 10px 5px 0;
-
-    &:not(#goal-18){
-      box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor;
-
-      &:hover{
-        box-shadow: 5px 5px 5px 0px $goalTiles-tile-shadowColor-hover;
-      }
-    }
-  }
 
   &.goal-indicators {
     @include indicatorcards;
@@ -563,15 +549,15 @@ body.contrast-high {
     }
   }
 
-  #toolbar {
+  #main-content #toolbar {
     button {
-      background-color: $color-dark-highContrast !important;
+      background-color: $color-dark-highContrast;
       border-color: $color-light-highContrast;
       color: $color-light-highContrast;
     }
   }
 
-  .variable-options {
+  #main-content #fields .variable-selector .variable-options {
     background: $color-dark-highContrast;
     color: $color-light-highContrast;
     div {
@@ -580,7 +566,7 @@ body.contrast-high {
     }
     button {
       background: $color-dark-highContrast;
-      color: $color-light-highContrast !important;
+      color: $color-light-highContrast;
       border-color: $color-light-highContrast;
     }
   }
@@ -620,5 +606,11 @@ body.contrast-high {
         width: 100%;
       }
     }
+  }
+}
+
+.goal-banner {
+  .goal-icon {
+    margin-top: 10px;
   }
 }

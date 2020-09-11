@@ -11,4 +11,9 @@
   h1, p {
     color: $goal-banner-color;
   }
+  .goal-icon {
+    a:focus {
+      outline: 6px $focusOutlineColor solid !important;
+    }
+  }
 }

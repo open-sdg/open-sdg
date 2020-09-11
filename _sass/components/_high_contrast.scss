@@ -39,6 +39,16 @@
   }
 }
 
+.contrast-switcher .contrast-high a:focus {
+  background-color: $focusColor !important;
+  color: $focusOutlineColor !important;
+  box-shadow: 0 -2px $focusColor,0 4px $focusOutlineColor !important;
+}
+body.contrast-high .contrast-switcher .contrast-high a:focus {
+  box-shadow: none !important;
+  outline: 2px solid $focusOutlineColor !important;
+}
+
 body.contrast-high {
 
   li {
