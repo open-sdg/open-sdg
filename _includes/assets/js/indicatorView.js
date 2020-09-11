@@ -96,7 +96,10 @@ var indicatorView = function (model, options) {
 
   this._model.onFieldsCleared.attach(function(sender, args) {
     $(view_obj._rootElement).find(':checkbox').prop('checked', false);
-    $(view_obj._rootElement).find('#clear').addClass('disabled').attr('aria-disabled', 'true');
+    $(view_obj._rootElement).find('#clear')
+      .addClass('disabled')
+      .attr('aria-disabled', 'true')
+      .attr('disabled', 'disabled');
 
     // reset available/unavailable fields
     updateWithSelectedFields();
@@ -106,10 +109,16 @@ var indicatorView = function (model, options) {
 
   this._model.onSelectionUpdate.attach(function(sender, args) {
     if (args.selectedFields.length) {
-      $(view_obj._rootElement).find('#clear').removeClass('disabled').attr('aria-disabled', 'false');
+      $(view_obj._rootElement).find('#clear')
+        .removeClass('disabled')
+        .attr('aria-disabled', 'false')
+        .removeAttr('disabled');
     }
     else {
-      $(view_obj._rootElement).find('#clear').addClass('disabled').attr('aria-disabled', 'true');
+      $(view_obj._rootElement).find('#clear')
+        .addClass('disabled')
+        .attr('aria-disabled', 'true')
+        .attr('disabled', 'disabled');
     }
 
     // loop through the available fields:
@@ -252,7 +261,7 @@ var indicatorView = function (model, options) {
       var template = _.template($("#item_template").html());
 
       if(!$('button#clear').length) {
-        $('<button id="clear" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
+        $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
       }
 
       $('#fields').html(template({
