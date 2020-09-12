@@ -16,7 +16,7 @@ opensdg.chartConfigAlter(function(config, info) {
             },
         },
         plugins: [{
-            afterDraw: function(chart) {
+            beforeDraw: function(chart) {
                 if (chart.tooltip._active && chart.tooltip._active.length) {
                     var activePoint = chart.tooltip._active[0],
                         ctx = chart.ctx,
