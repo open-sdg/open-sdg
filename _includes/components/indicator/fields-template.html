@@ -3,7 +3,7 @@
     <fieldset>
       <legend class="sr-only">{{ page.t.indicator.sub_categories }} - <%=translations.t(fieldItem.field)%></legend>
       <div class="variable-selector<% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed child<% }%>" data-field="<%=fieldItem.field%>">
-        <button class='accessBtn' tabindex='0' aria-expanded='false' aria-described-by='variable-hint-<%=fieldItem.field%>'>
+        <button class='accessBtn' tabindex='0' aria-expanded='false' aria-describedby='variable-hint-<%=fieldItem.field%>'>
           <h5><%=translations.t(fieldItem.field)%><i class="fa fa-chevron-down"></i></h5>
         </button>
         <div class="bar">
