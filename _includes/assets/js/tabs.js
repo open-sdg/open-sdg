@@ -1,38 +1,38 @@
 {% if site.accessible_tabs %}
 $(document).ready(function() {
     $('.nav-tabs').each(function() {
-        var $tabsList = $(this);
-        var $tabs = $tabsList.find('li > a');
-        var $panes = $tabsList.parent().find('.tab-pane');
+        var tabsList = $(this);
+        var tabs = tabsList.find('li > a');
+        var panes = tabsList.parent().find('.tab-pane');
 
-        $panes.attr({
+        panes.attr({
             'class': 'tabPanel',
             'role': 'tabpanel',
             'aria-hidden': 'true',
         }).hide();
 
-        $tabsList.attr({
+        tabsList.attr({
             'role': 'tablist',
         });
 
-        $tabs.each(function(idx) {
-            var $tab = $(this);
-            var tabId = 'tab-' + $tab.attr('href').slice(1);
-            var $pane = $tabsList.parent().find($tab.attr('href'));
+        tabs.each(function(idx) {
+            var tab = $(this);
+            var tabId = 'tab-' + tab.attr('href').slice(1);
+            var pane = tabsList.parent().find(tab.attr('href'));
 
-            $tab.attr({
+            tab.attr({
                 'id': tabId,
                 'role': 'tab',
                 'aria-selected': 'false',
                 'tabindex': '-1',
             }).parent().attr('role', 'presentation');
 
-            $pane.attr('aria-labelledby', tabId);
+            pane.attr('aria-labelledby', tabId);
 
-            $tab.click(function(e) {
+            tab.click(function(e) {
                 e.preventDefault();
 
-                $tabsList.find('> li.active')
+                tabsList.find('> li.active')
                     .removeClass('active')
                     .find('> a')
                     .attr({
@@ -40,45 +40,45 @@ $(document).ready(function() {
                         'tabindex': '-1',
                     });
                 
-                $panes.filter(':visible').attr('aria-hidden', 'true').hide();
+                panes.filter(':visible').attr('aria-hidden', 'true').hide();
 
-                $pane.attr('aria-hidden', 'false').show();
+                pane.attr('aria-hidden', 'false').show();
 
-                $tab.attr({
+                tab.attr({
                     'aria-selected': 'true',
                     'tabindex': '0',
                 }).parent().addClass('active');
-                $tab.focus();
+                tab.focus();
             });
         });
 
         // Show the first tabPanel
-        $panes.first().attr('aria-hidden', 'false').show();
+        panes.first().attr('aria-hidden', 'false').show();
 
         // Set state for the first tabsList li
-        $tabsList.find('li:first').addClass('active').find(' > a').attr({
+        tabsList.find('li:first').addClass('active').find(' > a').attr({
             'aria-selected': 'true',
             'tabindex': '0',
         });
 
         // Set keydown events on tabList item for navigating tabs
-        $tabsList.delegate('a', 'keydown', function(e) {
-            var $tab = $(this);
+        tabsList.delegate('a', 'keydown', function(e) {
+            var tab = $(this);
             switch (e.which) {
                 case 37:
-                    if ($tab.parent().prev().length != 0) {
-                        $tab.parent().prev().find('> a').click();
+                    if (tab.parent().prev().length != 0) {
+                        tab.parent().prev().find('> a').click();
                     }
                     else {
-                        $tabsList.find('li:last > a').click();
+                        tabsList.find('li:last > a').click();
                     }
                     break;
                 case 39:
-                    if ($tab.parent().next().length != 0) {
-                        $tab.parent().next().find('> a').click();
+                    if (tab.parent().next().length != 0) {
+                        tab.parent().next().find('> a').click();
                     }
                     else {
-                        $tabsList.find('li:first > a').click();
+                        tabsList.find('li:first > a').click();
                     }
                     break;
             }
