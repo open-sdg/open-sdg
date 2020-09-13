@@ -1,10 +1,6 @@
 <h1>Configuration</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples.
-
-**All of these settings go in the `site_config.yml` file in your data folder (usually `data/site_config.yml`).**
-
-Alternatively you can add these settings directly to your Jekyll `_config.yml` file.
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_config.yml` file.** Alternatively, you can add any/all of these settings to a `site_config.yml` file in your data folder (usually `data/site_config.yml`).
 
 _Note about "strings": Many of the settings detailed here contain human-readable "strings" (ie, text). In most cases, they can be replaced by [translation keys](translation.md) for better multilingual support. For example, "Indicator" could be replaced with "general.indicator"._
 
