@@ -168,17 +168,6 @@ body.contrast-high {
       margin-bottom: 0;
     }
 
-    label {
-      position: absolute;
-      top: 5px;
-      right: 0px;
-      font-size: 1.40em;
-
-      span {
-        display: none;
-      }
-    }
-
     input {
       padding: 5px;
       padding-left: 5px;
@@ -189,11 +178,17 @@ body.contrast-high {
       margin-top: 5px;
       font-size: $searchBar-input-fontSize;
     }
+
+    button {
+      height: 34px;
+      color: $color-dark;
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      font-size: 1.40em;
+      line-height: 15px;
+    }
   }
-}
-#search-btn {
-  line-height: 15px;
-  height: 34px;
 }
 
 .table {
@@ -300,27 +295,15 @@ body.contrast-high {
       width: 100%;
       padding: 20px;
 
-      label {
-        top: 23px;
-        left: 25px;
-        color: $color-dark;
-      }
-
-      button {
-        display: inline-flex;
-        position: absolute;
-        right: 20px;
-        top: -3px
-      }
-
       input {
         width: 100%;
         color: $text-color;
         margin-top: 0;
+      }
 
-        &:focus {
-          width: 100%;
-        }
+      button {
+        right: 20px;
+        bottom: 20px;
       }
     }
   }
@@ -369,7 +352,7 @@ body.contrast-high {
       }
     }
     #search {
-      input, label {
+      input, button {
         color: $color-dark-highContrast;
       }
     }
