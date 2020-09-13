@@ -1,8 +1,7 @@
 <div id="search" class="menu-target">
   <form action="{{ page.baseurl }}search">
     <input type="text" name="q" id="indicator_search" title="{{ page.t.search.search }}" />
-    <label for="indicator_search">
-      <button aria-label="{{ page.t.search.search }}" id="search-btn" type="submit"><i class="fa fa-search" aria-hidden="false"></i></button><span>{{ page.t.search.search }}:</span>
-    </label>
+    <label class="sr-only" for="indicator_search">{{ page.t.search.search }}:</label>
+    <button aria-label="{{ page.t.search.search }}" id="search-btn" type="submit"><i class="fa fa-search" aria-hidden="false"></i></button>
   </form>
 </div>
