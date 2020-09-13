@@ -1,6 +1,10 @@
 <h1>Configuration</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_config.yml` file.**
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples.
+
+**All of these settings go in the `site_config.yml` file in your data folder (usually `data/site_config.yml`).**
+
+Alternatively you can add these settings directly to your Jekyll `_config.yml` file.
 
 _Note about "strings": Many of the settings detailed here contain human-readable "strings" (ie, text). In most cases, they can be replaced by [translation keys](translation.md) for better multilingual support. For example, "Indicator" could be replaced with "general.indicator"._
 
@@ -117,19 +121,20 @@ If you would like to use the alternative frontpage (`frontpage-alt`) alongside a
 
 ```nohighlight
 create_pages:
-  pages:
-    - folder: /
-      layout: frontpage-alt
-    - folder: /goals
-      layout: goals
-    - folder: /reporting-status
-      layout: reportingstatus
-    - filename: indicators.json
-      folder: /
-      layout: indicator-json
-    - folder: /search
-      layout: search
+  - folder: /
+    layout: frontpage-alt
+  - folder: /goals
+    layout: goals
+  - folder: /reporting-status
+    layout: reportingstatus
+  - filename: indicators.json
+    folder: /
+    layout: indicator-json
+  - folder: /search
+    layout: search
 ```
+
+The `folder` property is required, and controls the URL path of the page. The `filename` property is optional, and is needed only in the rare case where your page needs an unusual filename (such as "indicators.json" in the example above). All other properties are treated like "frontmatter" in a regular Jekyll page, such as the `layout` properties above.
 
 ### custom_css
 
@@ -161,16 +166,21 @@ data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].
 
 ### date_formats
 
-_Optional_: This setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, using an arbitrary key, such as "standard". Each date format should have a variant for each of your languages. For example, here is how you might configure a "standard" date format:
+_Optional_: This setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, and each must have an arbitrary `type`, such as "standard". Make sure that each `type` has a variant for each of your languages. For example, here is how you might configure a "standard" date format:
 
 ```nohighlight
 date_formats:
-  standard:
-    en: "%b %d, %Y"
-    es: "%d de %b de %Y"
+  - type: standard
+    language: en
+    format: "%b %d, %Y"
+  - type: standard
+    language: es
+    format: "%d de %b de %Y"
 ```
 
 The `%` variables in the formats correspond to the variables listed in this [Ruby DateTime documentation](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
+
+Note that the "standard" type is used in Open SDG's news/post functionality. Additional format types can be added for custom purposes.
 
 ### disclaimer
 
@@ -309,10 +319,20 @@ frontpage_introduction_banner:
 
 ### goal_image_base
 
-**_Required_**: This setting controls the base URL for downloading the imagery for the goals (PNG files). The platform will use this as a base, and complete the URLs (behind the scenes) by adding a language and number. For example, if you set this to `https://example.com`, then the platform will try to download the Spanish image for Goal 4 at: `https://example.com/en/4.png`.
+_Optional_: This setting controls the base URL for downloading the imagery for the goal images. The platform will use this as a base, and complete the URLs (behind the scenes) by adding a language and number. For example, if you set this to `https://example.com`, then the platform will try to download the Spanish image for Goal 4 at: `https://example.com/en/4.png`.
+
+If omitted, the following default will be used:
 
 ```nohighlight
-goal_image_base: https://open-sdg.github.io/sdg-translations/assets/img/goals
+goal_image_base: https://open-sdg.org/sdg-translations/assets/img/goals
+```
+
+### goal_image_extension
+
+_Optional_: This setting controls the type of file (the file "extension") that will be used for the goal images. If omitted, the default will be `png`. The precending dot (eg, `.png`) is **not** needed.
+
+```nohighlight
+goal_image_extension: png
 ```
 
 ### goals_page
@@ -387,7 +407,8 @@ _Optional_: This setting can be used if you are not happy with any of the standa
 
 ```nohighlight
 languages_public:
-  xyz: abc
+  - language: xyz
+    language_public: abc
 ```
 
 ### metadata_edit_url
