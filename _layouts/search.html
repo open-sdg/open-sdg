@@ -3,7 +3,7 @@
 
 <script type="text/template" class="results-template">
   <% if(resultsCount) { %>
-    <p><%= resultsCount %> results found</p>
+    <p role="status"><%= resultsCount %> results found</p>
     <% _.each(searchResults, function(result){ %>
       <div class="row search-result">
         <div class="col col-xs-12">
@@ -19,7 +19,7 @@
     <% }); %>
 
   <% } else { %>
-    <p>
+    <p role="status">
       {{ page.t.search.no_results }}
       <% if(didYouMean) { %>
       - {{ page.t.search.did_you_mean }}:
