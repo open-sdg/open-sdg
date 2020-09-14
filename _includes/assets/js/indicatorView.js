@@ -790,9 +790,12 @@ var indicatorView = function (model, options) {
       'id': divid,
       'class': 'table-footer-text'
     });
+    var footList = $('<dl>');
+    footdiv.append(footList);
 
     _.each(footerFields, function(val, key) {
-      footdiv.append($('<p />').text(key + ': ' + val));
+      footList.append($('<dt />').text(key + ': '));
+      footList.append($('<dd />').text(val));
     });
 
     $(el).append(footdiv);
