@@ -769,7 +769,12 @@ var indicatorView = function (model, options) {
 
       $(el).removeClass('table-has-no-data');
 
-      $(el).find('th').removeAttr('tabindex');
+      $(el).find('th')
+        .removeAttr('tabindex')
+        .click(function() {
+          var sortDirection = $(this).attr('aria-sort');
+          $(this).find('span[role="button"]').attr('aria-sort', sortDirection);
+        });
     } else {
       $(el).append($('<h3 />').text(translations.indicator.data_not_available));
       $(el).addClass('table-has-no-data');
