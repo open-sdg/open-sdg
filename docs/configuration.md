@@ -6,6 +6,14 @@ _Note about "strings": Many of the settings detailed here contain human-readable
 
 > To see many of these options in action, the [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml).
 
+### accessible_tabs
+
+_Optional_: This setting can be set to `true` to enable tab functionality that is compliant with the [WAI-ARIA best practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). This adds improved keyboard navigation of the tabs. If omitted, this defaults to `false`, however setting this to `true` is recommended.
+
+```nohighlight
+accessible_tabs: false
+```
+
 ### analytics
 
 _Optional_: This setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](analytics.md) page.
