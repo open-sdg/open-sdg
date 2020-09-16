@@ -133,7 +133,14 @@ var indicatorView = function (model, options) {
       $(element).find('.bar .selected').css('width', width);
 
       // is this an allowed field:
-      $(element)[_.contains(args.allowedFields, currentField) ? 'removeClass' : 'addClass']('disallowed');
+      if (_.contains(args.allowedFields, currentField)) {
+        $(element).removeClass('disallowed');
+        $(element).find('> button').removeAttr('aria-describedby');
+      }
+      else {
+        $(element).addClass('disallowed');
+        $(element).find('> button').attr('aria-describedby', 'variable-hint-' + currentField);
+      }
     });
   });
 
