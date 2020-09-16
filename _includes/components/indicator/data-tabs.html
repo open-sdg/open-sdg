@@ -1,16 +1,16 @@
 <div style="display: none;">
-  <span id="chart-details">For tabular data alternative see Table tab</span>
+  <span id="table-alternative">For tabular data alternative see Table tab</span>
 </div>
 <ul class="nav nav-tabs data-view" role="tablist">
   <li role="presentation" class="nav-item active">
-    <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab" {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %} aria-describedby="chart-details">{{ page.t.indicator.chart }}</a>
+    <a class="nav-link" data-toggle="tab" href="#chartview" aria-controls="chartview" role="tab" {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %} aria-describedby="table-alternative">{{ page.t.indicator.chart }}</a>
   </li>
   <li role="presentation" class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#tableview" aria-controls="tableview" role="tab" {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}>{{ page.t.indicator.table }}</a>
   </li>
   {%- if page.indicator.data_show_map -%}
   <li role="presentation" class="nav-item map" style="display:none">
-    <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %} aria-describedby="chart-details">{{ page.t.indicator.map }}</a>
+    <a data-no-disagg="true" class="nav-link" data-toggle="tab" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %} aria-describedby="table-alternative">{{ page.t.indicator.map }}</a>
   </li>
   {%- endif -%}
   {%- if page.indicator.embedded_feature_url or page.indicator.embedded_feature_html -%}
