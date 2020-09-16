@@ -1,7 +1,7 @@
 {% comment %}
 The "binary" graphs builds on top of "bar", with a few configuration overrides.
 {% endcomment %}
-<canvas></canvas>
+{% include components/charts/canvas.html %}
 <script>
 opensdg.chartConfigAlter(function(config) {
   var overrides = {
