@@ -331,6 +331,8 @@ _Optional_: This setting controls the type of file (the file "extension") that w
 goal_image_extension: png
 ```
 
+**NOTE**: Please ensure that files of this type are available at the location specified in `goal_image_base` in each language that you use. For example, if your `goal_image_base` is `https://example.com`, and your `goal_image_extension` is `svg`, and your language is French, the goal 5 icon should be available at: `https://example.com/fr/5.svg`.
+
 ### goals_page
 
 _Optional_: This setting controls certain aspects of the `goals` layout. The available settings are:
