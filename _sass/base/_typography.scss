@@ -89,12 +89,7 @@ h3{ font-size: $h3-fontSize; }
 iframe:focus,
 input:focus,
 button:focus {
-  color: $focusColor !important;
-  outline: 3px solid transparent !important;
-  background-color: $focusBackgroundColor !important;
-  outline-offset: 0 !important;
-  box-shadow: 0 -2px $focusOutlineColor,0 4px $focusColor !important;
-  text-decoration: none !important;
+  @include focus;
 }
 body.contrast-high {
   [contentEditable="true"]:focus,

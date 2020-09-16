@@ -21,6 +21,12 @@
       .title {
         margin-bottom: 5px;
         font-size: 18px;
+        display: inline-block;
+      }
+      &:focus {
+        .title {
+          @include focus;
+        }
       }
       &:hover {
         .title {
