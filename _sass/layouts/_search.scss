@@ -22,15 +22,15 @@
         margin-bottom: 5px;
         font-size: 18px;
       }
-      .url {
-        color: $search-resultURL-color;
-        font-size: 16px;
-      }
       &:hover {
         .title {
           text-decoration: underline;
         }
       }
+    }
+    .url {
+      color: $search-resultURL-color;
+      font-size: 16px;
     }
   }
 }
@@ -44,10 +44,8 @@ body.contrast-high {
     }
 
     .search-result {
-      a {
-        .url {
-          color: $color-highlight-highContrast !important;
-        }
+      .url {
+        color: $color-highlight-highContrast !important;
       }
       .content {
         color: $color-light-highContrast !important;
