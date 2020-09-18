@@ -1,9 +1,11 @@
+{% if site.accessible_charts %}
 // This plugin allows users to cycle through tooltips by keyboard.
 Chart.plugins.register({
     afterInit: function(chart) {
         var plugin = this;
         plugin.chart = chart;
         plugin.currentTooltip = null;
+        plugin.initElements();
         $(chart.canvas).keydown(function(e) {
             switch (e.which) {
                 case 37:
@@ -16,6 +18,22 @@ Chart.plugins.register({
                     break;
             }
         });
+    },
+    initElements: function() {
+        $('<span/>')
+            .addClass('sr-only')
+            .attr('id', 'chart-tooltip-status')
+            .attr('role', 'status')
+            .appendTo('#chart');
+        $('<span/>')
+            .css('display', 'none')
+            .attr('id', 'chart-keyboard')
+            .text(', Use arrow keys to browse data points.')
+            .appendTo('#chart');
+        var describedBy = $('#chart canvas').attr('aria-describedby');
+        $('#chart canvas')
+            .attr('role', 'application')
+            .attr('aria-describedby', 'chart-keyboard ' + describedBy);  
     },
     afterDatasetsDraw: function() {
         var plugin = this;
@@ -123,3 +141,4 @@ Chart.plugins.register({
         }
     }
 });
+{% endif %}
