@@ -27,6 +27,8 @@ $(document).ready(function() {
                 'tabindex': '-1',
             }).parent().attr('role', 'presentation');
 
+            tab.removeAttr('href');
+
             pane.attr('aria-labelledby', tabId);
 
             tab.click(function(e) {
