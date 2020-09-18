@@ -349,7 +349,7 @@
 
       &.notshown {
         button {
-          text-decoration: line-through;
+          text-decoration: line-through !important;
         }
       }
     }
