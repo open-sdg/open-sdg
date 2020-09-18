@@ -124,11 +124,11 @@ Chart.plugins.register({
                 if (typeof labels[year] === 'undefined') {
                     labels[year] = [];
                 }
-                labels[year].push(label + ' ' + value);
+                labels[year].push(label + ': ' + value);
             }
             var announcement = '';
             Object.keys(labels).forEach(function(year) {
-                announcement += year + ': ';
+                announcement += year + ' ';
                 labels[year].forEach(function(label) {
                     announcement += label + ', ';
                 });
