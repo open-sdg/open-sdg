@@ -36,8 +36,12 @@ Chart.plugins.register({
             for (var pointIndex = 0; pointIndex < datasets[0].data.length; pointIndex++) {
                 var verticalTooltips = [];
                 for (var datasetIndex = 0; datasetIndex < datasets.length; datasetIndex++) {
+                    var meta = this.chart.getDatasetMeta(datasetIndex);
+                    if (meta.hidden) {
+                        continue;
+                    }
                     if (datasets[datasetIndex].data[pointIndex] !== null) {
-                        verticalTooltips.push(this.chart.getDatasetMeta(datasetIndex).data[pointIndex]);
+                        verticalTooltips.push(meta.data[pointIndex]);
                     }
                 }
                 if (verticalTooltips.length > 0) {
@@ -48,9 +52,13 @@ Chart.plugins.register({
         // For other charts, each point gets its own tooltip.
         else {
             for (var datasetIndex = 0; datasetIndex < datasets.length; datasetIndex++) {
+                var meta = this.chart.getDatasetMeta(datasetIndex);
+                if (meta.hidden) {
+                    continue;
+                }
                 for (var pointIndex = 0; pointIndex < datasets[datasetIndex].data.length; pointIndex++) {
-                    var singleTooltip = this.chart.getDatasetMeta(datasetIndex).data[pointIndex];
-                    allTooltips.push(singleTooltip);
+                    var singleTooltip = meta.data[pointIndex];
+                    allTooltips.push([singleTooltip]);
                 }
             } 
         }
@@ -110,7 +118,7 @@ Chart.plugins.register({
             });
             var currentAnnouncement = $('#chart-tooltip-status').text();
             if (currentAnnouncement != announcement) {
-                $('#chart-tooltip-status').text('Tooltip active: ' + announcement);
+                $('#chart-tooltip-status').text(announcement);
             }
         }
     }
