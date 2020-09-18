@@ -1,4 +1,3 @@
-{% if site.accessible_charts %}
 // This plugin allows users to cycle through tooltips by keyboard.
 Chart.plugins.register({
     afterInit: function(chart) {
@@ -141,4 +140,3 @@ Chart.plugins.register({
         }
     }
 });
-{% endif %}

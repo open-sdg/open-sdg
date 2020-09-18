@@ -1,4 +1,3 @@
-{% if site.accessible_tabs %}
 $(document).ready(function() {
     $('.nav-tabs').each(function() {
         var tabsList = $(this);
@@ -91,4 +90,3 @@ $(document).ready(function() {
         });
     });
 });
-{% endif %}
