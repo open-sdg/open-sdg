@@ -12,7 +12,7 @@
   {% assign tab_preset = "tab_meta_" | append: tab_key %}
   {% assign tab_label = "Change to " | append: tab_obj.title | append: " tab" %}
   <li role="presentation" class="nav-item {% if forloop.first %}active{% endif %}">
-    <a class="nav-link" data-toggle="tab" href="#{{ tab_key }}" aria-controls="{{ tab_key }}" role="tab" {% include autotrack.html preset=tab_preset category="Tab change" action="Change metadata view" label=tab_label %}>{{ tab_obj.title | t }}</a>
+    <a class="nav-link" data-toggle="tab" id="tab-{{ tab_key }}" href="#{{ tab_key }}" aria-controls="{{ tab_key }}" role="tab" {% include autotrack.html preset=tab_preset category="Tab change" action="Change metadata view" label=tab_label %}>{{ tab_obj.title | t }}</a>
   </li>
 {% endfor %}
 {% else %}

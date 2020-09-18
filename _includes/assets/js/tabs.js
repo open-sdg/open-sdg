@@ -27,6 +27,8 @@ $(document).ready(function() {
                 'tabindex': '-1',
             }).parent().attr('role', 'presentation');
 
+            tab.removeAttr('href');
+
             pane.attr('aria-labelledby', tabId);
 
             tab.click(function(e) {
@@ -68,17 +70,21 @@ $(document).ready(function() {
                 case 37:
                     if (tab.parent().prev().length != 0) {
                         tab.parent().prev().find('> a').click();
+                        e.preventDefault();
                     }
                     else {
                         tabsList.find('li:last > a').click();
+                        e.preventDefault();
                     }
                     break;
                 case 39:
                     if (tab.parent().next().length != 0) {
                         tab.parent().next().find('> a').click();
+                        e.preventDefault();
                     }
                     else {
                         tabsList.find('li:first > a').click();
+                        e.preventDefault();
                     }
                     break;
             }

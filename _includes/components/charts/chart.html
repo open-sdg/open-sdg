@@ -6,20 +6,17 @@
     </div>
 
     {% assign graph_template = 'components/charts/' | append: include.graph_type | append: '.html' %}
+    {% assign graph_title = page.indicator.graph_titles.first.title | default: page.indicator.graph_title %}
     <div id="selectionsChart">
-      <div id="chart-canvas">
-        <h4 class="chart-title">
-          {% if page.indicator.graph_titles %}
-            {{ page.indicator.graph_titles.first.title }}
-          {% else %}
-            {{ page.indicator.graph_title }}
-          {% endif %}
-        </h4>
-        <div id="chart" class="plot-container">
-          {% include {{ graph_template }} %}
+      <figure role="group">
+        <div id="chart-canvas">
+          <h4 id="chart-heading" class="chart-title">{{ graph_title }}</h4>
+          <div id="chart" class="plot-container">
+            {% include {{ graph_template }} %}
+          </div>
+          <div id="plotLegend"></div>
         </div>
-        <div id="plotLegend"></div>
-      </div>
+      </figure>
       <div id="chartSelectionDownload" class="clearfix">
         <button id="btnSave" title="{{ page.t.indicator.download_chart_image_title }}" class='btn btn-primary btn-download'>
           {{ page.t.indicator.download_chart_image }}
