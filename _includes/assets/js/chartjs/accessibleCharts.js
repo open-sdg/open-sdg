@@ -33,7 +33,7 @@ Chart.plugins.register({
         var describedBy = $('#chart canvas').attr('aria-describedby');
         $('#chart canvas')
             .attr('role', 'application')
-            .attr('aria-describedby', 'chart-keyboard ' + describedBy);  
+            .attr('aria-describedby', 'chart-keyboard ' + describedBy);
     },
     afterDatasetsDraw: function() {
         var plugin = this;
@@ -78,7 +78,7 @@ Chart.plugins.register({
                     var singleTooltip = meta.data[pointIndex];
                     allTooltips.push([singleTooltip]);
                 }
-            } 
+            }
         }
         return allTooltips;
     },
@@ -93,7 +93,7 @@ Chart.plugins.register({
         }
         plugin.activateTooltips(plugin.allTooltips[newTooltip]);
         plugin.currentTooltip = newTooltip;
-    }, 
+    },
     nextTooltip: function() {
         var plugin = this,
             newTooltip = 0;
@@ -115,7 +115,7 @@ Chart.plugins.register({
     announceTooltips: function(tooltips) {
         if (tooltips.length > 0) {
             var labels = {};
-            for (var i = 0; i < tooltips.length; i++) { 
+            for (var i = 0; i < tooltips.length; i++) {
                 var datasetIndex = tooltips[i]._datasetIndex,
                     pointIndex = tooltips[i]._index,
                     year = this.chart.data.labels[pointIndex],
