@@ -197,3 +197,4 @@ breadcrumbs:
       path: /goals
 
 accessible_tabs: true
+accessible_charts: true

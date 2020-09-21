@@ -383,6 +383,10 @@
 
   canvas {
     @include noselect;
+    &:focus {
+      background-color: transparent !important;
+      outline: 6px $focusOutlineColor solid !important;
+    }
   }
 
   &.goal-indicators {
