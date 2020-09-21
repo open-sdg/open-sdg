@@ -26,6 +26,9 @@
       &:focus {
         .title {
           @include focus;
+          span.match {
+            background-color: transparent;
+          }
         }
       }
       &:hover {
