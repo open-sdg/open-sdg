@@ -21,16 +21,28 @@
       .title {
         margin-bottom: 5px;
         font-size: 18px;
+        display: inline-block;
       }
-      .url {
-        color: $search-resultURL-color;
-        font-size: 16px;
+      &:focus {
+        .title {
+          @include focus;
+          span.match {
+            background-color: transparent;
+          }
+        }
       }
       &:hover {
         .title {
           text-decoration: underline;
         }
       }
+    }
+    .url {
+      color: $search-resultURL-color;
+      font-size: 16px;
+    }
+    .content {
+      margin-top: 2px;
     }
   }
 }
@@ -44,10 +56,8 @@ body.contrast-high {
     }
 
     .search-result {
-      a {
-        .url {
-          color: $color-highlight-highContrast !important;
-        }
+      .url {
+        color: $color-highlight-highContrast !important;
       }
       .content {
         color: $color-light-highContrast !important;
