@@ -16,15 +16,7 @@
         <!-- Title and meta description
         ================================================== -->
 
-        {% if page.indicator %}
-        <title>{{ page.t.general.indicator | escape }} {{ page.indicator.number }} - {{ page.indicator.name | escape }}</title>
-        {% elsif page.goal %}
-        <title>{{ page.t.general.goal | escape }} {{ page.goal.number }} - {{ page.goal.short | escape }}</title>
-        {% elsif page.title %}
-        <title>{{ page.title | t | escape }}</title>
-        {% else %}
-        <title>{{ site.title | t | escape }}</title>
-        {% endif %}
+        {% include title-tag.html %}
 
         <meta name="description" content="">
         <meta property="og:description" content="">
