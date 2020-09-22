@@ -21,8 +21,10 @@ create_pages:
     layout: frontpage
   - folder: /
     layout: frontpage-alt
+    title: My homepage title
   - folder: /goals
     layout: goals
+    title: custom.goals_page_title
   - folder: /reporting-status
     layout: reportingstatus
   - filename: indicators.json
@@ -91,7 +93,8 @@ languages:
 
 # We will display "fr" as "fr-CA" (French Canadian) for testing purposes.
 languages_public:
-  fr: fr-CA
+  - language: fr
+    language_public: fr-CA
 
 goal_image_base: /img/goals
 
@@ -207,3 +210,6 @@ accessible_charts: true
 
 custom_js:
   - /custom.js
+
+validate_site_config: true
+validate_indicator_config: true
