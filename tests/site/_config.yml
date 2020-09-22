@@ -213,3 +213,6 @@ custom_js:
 
 validate_site_config: true
 validate_indicator_config: true
+
+data_edit_url: https://github.com/open-sdg/open-sdg/edit/master/tests/data/data/indicator_[id].csv
+metadata_edit_url: https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md
