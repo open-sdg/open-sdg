@@ -130,6 +130,9 @@ series_toggle: true
 # Search.feature
 search_index_extra_fields:
   - un_custodian_agency
+search_index_boost:
+  - field: title
+    boost: 10
 
 # News.feature
 date_formats:
