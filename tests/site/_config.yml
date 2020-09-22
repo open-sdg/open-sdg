@@ -133,10 +133,15 @@ search_index_boost:
 
 # News.feature
 date_formats:
-  standard:
-    en: '%B %d, %Y'
-    es: '%d de %B de %Y'
-    fr: '%d %B %Y'
+  - type: standard
+    language: en
+    format: '%B %d, %Y'
+  - type: standard
+    language: es
+    format: '%d de %B de %Y'
+  - type: standard
+    language: fr
+    format: '%d %B %Y'
 
 frontpage_introduction_banner:
   title: custom.frontpage_introduction_banner_title
