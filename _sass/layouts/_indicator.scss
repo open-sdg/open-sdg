@@ -311,7 +311,6 @@
   }
 
   .plot-container {
-    margin-bottom: 4.5rem;
     padding: 10px;
   }
 
@@ -323,29 +322,13 @@
   #legend {
     padding-left: 0;
     text-align: center;
-    li {
+    margin-bottom: 20px;
+    > li {
       font-size: 13px;
       list-style-type: none;
       display: inline-block;
       color: $indicator-legendSwatch-fillColor;
-      line-height: 18px;
-      cursor: pointer;
-
-      button {
-        border: none;
-        background: none;
-        padding: 5px;
-      }
-
-      &:hover {
-        background: $indicator-legendSwatch-backgroundColor-hover;
-      }
-
-      &.notshown {
-        button {
-          text-decoration: line-through !important;
-        }
-      }
+      padding: 5px;
     }
     .swatch {
       display: inline-block;
@@ -368,11 +351,6 @@
       display: table;
       clear: both;
     }
-  }
-
-  #legend-help {
-    text-align: center;
-    margin-top: -32px;
   }
 
   canvas {

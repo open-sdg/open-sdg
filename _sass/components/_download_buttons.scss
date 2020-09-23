@@ -36,6 +36,9 @@ h5 + .btn-download {
     padding: 0;
     margin: 0;
   }
+  #chart-canvas {
+    margin-top: -30px;
+  }
   #selectionChartFooter {
     padding-left: 20px;
     p {
@@ -44,9 +47,6 @@ h5 + .btn-download {
   }
   .hide-during-image-download {
     display: none;
-  }
-  #legend {
-    margin-top: -32px;
   }
 }
 
