@@ -144,6 +144,28 @@ The following fields affect the display of graphs. Currently only longitudinal g
 
         graph_stacked_disaggregation: Age
 
+* `graph_annotations` - this can be used to add annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator. Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Other than the special `unit` and `series` properties, all the properties can be directly taken from the [Chart.js annotations plugin](https://github.com/chartjs/chartjs-plugin-annotation#line-annotations). For example:
+
+        graph_annotations:
+          - unit: tons
+            type: line
+            value: 19
+            borderColor: red
+          - unit: passengers
+            type: line
+            value: 1900
+            borderColor: red
+
+    Alternatively you can use a `preset` for common Open SDG annotations. The only available preset is `target_line`. For example:
+
+        graph_annotations:
+          - unit: tons
+            value: 19
+            preset: target_line
+          - unit: passengers
+            value: 1900
+            preset: target_line
+
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
 

@@ -6,6 +6,7 @@ We also check for "graph_stacked_disaggregation" here to support stacked bars.
 {% endcomment %}
 {% include components/charts/canvas.html %}
 {% include components/charts/graph_limits.html %}
+{% include components/charts/graph_annotations.html %}
 <script>
 opensdg.chartConfigAlter(function(config, info) {
   if (info.stackedDisaggregation) {
