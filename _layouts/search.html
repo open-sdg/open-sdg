@@ -32,8 +32,23 @@
 opensdg.searchItems = {{ site.data.search_items[page.language] | jsonify }};
 {% if site.search_index_boost %}
 opensdg.searchIndexBoost = {{ site.search_index_boost | jsonify }};
+// @deprecated start
+if (!Array.isArray(opensdg.searchIndexBoost)) {
+  var searchIndexBoost = [];
+  Object.keys(opensdg.searchIndexBoost).forEach(function(key) {
+    searchIndexBoost.push({
+      field: key,
+      boost: opensdg.searchIndexBoost[key],
+    });
+  });
+  opensdg.searchIndexBoost = searchIndexBoost;
+}
+// @deprecated end
 {% else %}
-opensdg.searchIndexBoost = {};
+opensdg.searchIndexBoost = [{
+  field: 'title',
+  boost: 10,
+}];
 {% endif %}
 {% if site.search_index_extra_fields %}
 opensdg.searchIndexExtraFields = {{ site.search_index_extra_fields | jsonify }};

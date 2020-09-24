@@ -533,7 +533,8 @@ _Optional_: This setting can be used to give a "boost" to one or more fields in 
 
 ```
 search_index_boost:
-  title: 10
+  - field: title
+    boost: 10
 ```
 
 The following example shows additional fields that can be boosted:
@@ -541,11 +542,14 @@ The following example shows additional fields that can be boosted:
 ```
 search_index_boost:
   # The title of the indicator, goal, or page.
-  title: 10
+  - field: title
+    boost: 10
   # The content of the indicator, goal, or page.
-  content: 1
+  - field: content
+    boost: 1
   # The id number of the indicator or goal.
-  id: 5
+  - field: id
+    boost: 5
 ```
 
 Additionally, any fields set in the `search_index_extra_fields` setting may also be boosted. For example:
@@ -553,7 +557,8 @@ Additionally, any fields set in the `search_index_extra_fields` setting may also
 ```
 search_index_boost:
   # Assumes that "national_agency" was set in "search_index_extra_fields".
-  national_agency: 5
+  - field: national_agency
+    boost: 5
 ```
 
 ### search_index_extra_fields
