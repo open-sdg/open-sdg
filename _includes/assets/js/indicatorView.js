@@ -327,6 +327,7 @@ var indicatorView = function (model, options) {
   }
 
   this.updatePlot = function(chartInfo) {
+    this.updateIndicatorDataViewStatus(view_obj._chartInstance.data.datasets, chartInfo.datasets);
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
 
     if(chartInfo.selectedUnit) {
@@ -349,7 +350,6 @@ var indicatorView = function (model, options) {
     view_obj._chartInstance.update(1000, true);
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
-    view_obj.updateIndicatorDataViewStatus(chartInfo);
     view_obj.addLegendClickBehavior(this._legendElement, view_obj._chartInstance);
     view_obj.updateChartDownloadButton(chartInfo.selectionsTable);
   };
@@ -504,7 +504,6 @@ var indicatorView = function (model, options) {
     });
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
-    view_obj.updateIndicatorDataViewStatus(chartInfo);
     view_obj.addLegendClickBehavior(this._legendElement, view_obj._chartInstance);
   };
 
@@ -691,21 +690,43 @@ var indicatorView = function (model, options) {
     }
   }
 
-  this.updateIndicatorDataViewStatus = function(chartInfo) {
-    var status = 'Chart and table shows no data.';
-    if (chartInfo.datasets.length > 0) {
-      var labels = chartInfo.datasets.map(function(dataset) {
-        return dataset.label;
-      });
-      status = 'Chart and table shows datasets for ' + labels.join(' and ') + '.';
-      if (chartInfo.selectedUnit) {
-        status += ' Selected unit of measurement is ' + chartInfo.selectedUnit + '.';
-      }
-      if (chartInfo.selectedSeries) {
-        status += ' Selected series is ' + chartInfo.selectedSeries + '.';
-      }
+  this.updateIndicatorDataViewStatus = function(oldDatasets, newDatasets) {
+    var status = '',
+        hasData = newDatasets.length > 0,
+        dataAdded = newDatasets.length > oldDatasets.length,
+        dataRemoved = newDatasets.length < oldDatasets.length,
+        getDatasetLabel = function(dataset) { return dataset.label; },
+        oldLabels = oldDatasets.map(getDatasetLabel),
+        newLabels = newDatasets.map(getDatasetLabel);
+
+    if (!hasData) {
+      status = 'Chart and table shows no data.';
     }
-    $('#indicator-data-view-status').html(status);
+    else if (dataAdded) {
+      status = 'Chart and table updated to include data.';
+      var addedLabels = [];
+      newLabels.forEach(function(label) {
+        if (!oldLabels.includes(label)) {
+          addedLabels.push(label);
+        }
+      });
+      status += ' ' + addedLabels.join(', ');
+    }
+    else if (dataRemoved) {
+      status = 'Chart and table updated to exclude data.';
+      var removedLabels = [];
+      oldLabels.forEach(function(label) {
+        if (!newLabels.includes(label)) {
+          removedLabels.push(label);
+        }
+      });
+      status += ' ' + removedLabels.join(', ');
+    }
+
+    var current = $('#indicator-data-view-status').text();
+    if (current != status) {
+      $('#indicator-data-view-status').text(status);
+    }
   }
 
   this.createSourceButton = function(indicatorId, el) {
