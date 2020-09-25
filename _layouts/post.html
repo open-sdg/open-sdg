@@ -7,7 +7,7 @@ layout: default
 
 <div id="main-content" class="container">
   <div class="row">
-    <div class="col-md-9 push-md-3">
+    <div>
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline">{{ page.title | t }}</h1>
         <p><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | t_date: "standard" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
@@ -26,9 +26,6 @@ layout: default
         </ul>
         {% endif %}
       </article>
-    </div>
-    <div class="col-md-3 pull-md-9">
-      {% include components/post-categories.html %}
     </div>
   </div>
 </div>
