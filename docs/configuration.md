@@ -468,6 +468,12 @@ menu:
     translation_key: menu.faq
 ```
 
+### news
+
+_Optional_: This setting can be used to control the behavior of the `news` and `post` layouts. The available settings are:
+
+* `category_links`: Whether you would like the `categories` of posts to generate links to dedicated category pages. Default is `true`, but set to `false` to disable category links.
+
 ### non_global_metadata
 
 _Optional_: This setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](translation.md) is recommended for better multilingual support.
