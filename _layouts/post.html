@@ -19,9 +19,7 @@ layout: default
         {% if page.categories %}
         <ul class="post-categories">
           {% for category in page.categories %}
-          <li class="warning">
-            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="View all posts in the {{category | t}} category">{{ category | t }}</a>
-          </li>
+          <li class="warning">{{ category | t }}</li>
           {% endfor %}
         </ul>
         {% endif %}
