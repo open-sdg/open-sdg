@@ -73,9 +73,9 @@
   {%- for goalreport in reporting_data.goals -%}
     {%- assign goal = goalreport.goal | downcase | sdg_lookup -%}
     <div class="goal reporting-status-item">
-        <div class="frame">
+        <div class="frame goal-tiles">
           <a href="{{ goal.url }}">
-            <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" />
+            <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" id="goal-{{ goal.number }}"/>
           </a>
         </div>
         <div class="details">
