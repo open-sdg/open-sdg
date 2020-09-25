@@ -19,17 +19,12 @@ layout: default
         {% if post.categories %}
         <ul class="post-categories">
           {% for category in post.categories %}
-          <li class="warning">
-            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category }}">{{ category | t }}</a>
-          </li>
+          <li class="warning">{{ category | t }}</li>
           {% endfor %}
         </ul>
         {% endif %}
       </article>
       {% endfor %}
-    </div>
-    <div class="col-md-3 pull-md-9">
-      {% include components/post-categories.html %}
     </div>
   </div>
 </div>
