@@ -194,12 +194,6 @@ function sortFieldsForView(fieldItemStates, edges) {
     else if (parents.includes(b.field) && !parents.includes(a.field)) {
       return 1;
     }
-    else if (a.field > b.field) {
-      return 1;
-    }
-    else if (b.field > a.field) {
-      return -1;
-    }
     return 0;
   });
 }
