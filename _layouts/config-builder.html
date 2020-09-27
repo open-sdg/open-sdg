@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Open SDG site configuration</title>
+    <title>{{ page.title }}</title>
 
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
@@ -32,7 +32,7 @@
   <body>
     <div class="container">
       <div class="columns">
-        <h1 class="col-md-12">Open SDG site configuration</h1>
+        <h1 class="col-md-12">{{ page.title }}</h1>
       </div>
       <div class="columns">
         <div class="column col-md-12" id="button_holder">
@@ -50,7 +50,12 @@
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
     <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
     <script>
-      var schema = {{ site.data.schema-site-config | jsonify }};
+      {% if page.config_type == 'site' %}
+        {% assign json_schema = site.data.schema-site-config %}
+      {% elsif page.config_type == 'indicator' %}
+        {% assign json_schema = site.data.schema-indicator-config %}
+      {% endif %}
+      var schema = {{ json_schema | jsonify }};
 
       var editor = new JSONEditor(document.getElementById('editor_holder'), {
         theme: 'spectre',
@@ -69,12 +74,17 @@
 
       // Set values according to this site's configuration.
       var propertyEditor;
-      {%- for config_setting in site.data.schema-site-config.properties -%}
+      {%- for config_setting in json_schema.properties -%}
       {%- assign config_key = config_setting[0] -%}
-      {% if site[config_key] %}
+      {%- if page.config_type == 'site' -%}
+        {%- assign current_value = site[config_key] -%}
+      {%- elsif page.config_type == 'indicator' -%}
+        {%- assign current_value = page.meta[config_key] -%}
+      {%- endif -%}
+      {% if current_value %}
       propertyEditor = editor.getEditor('root.{{ config_key }}');
       try {
-        propertyEditor.setValue({{ site[config_key] | jsonify }});
+        propertyEditor.setValue({{ current_value | jsonify }});
       }
       catch (e) {
         console.log('Unable to set config key: {{ config_key }}');
@@ -94,7 +104,7 @@
       document.getElementById('export').addEventListener('click', function() {
         var config = editor.getValue();
         var yaml = jsyaml.safeDump(config);
-        SaveAsFile(yaml, 'site_config.yml', 'text/plain;charset=utf-8');
+        SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
       });
     </script>
   </body>

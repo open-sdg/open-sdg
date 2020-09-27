@@ -10,4 +10,6 @@
   {% else %}
   <a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/meta/{{ page.indicator.slug }}.md">{{ page.t.indicator.edit_metadata }}</a>
   {% endif %}
+
+  <a class="btn btn-primary" href="{{ site.baseurl }}/config/{{ page.indicator.slug }}">Edit configuration</a>
 </div>
