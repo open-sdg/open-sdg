@@ -14,9 +14,7 @@
     }
   }
   .goal-tiles #goal-#{$i} {
-    &:hover {
-      background-color: $c;
-    }
+    background-color: $c;
   }
 }
 
