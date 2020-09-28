@@ -32,6 +32,11 @@ create_pages:
     layout: indicator-json
   - folder: /search
     layout: search
+  - folder: /config
+    layout: config-builder
+    title: Open SDG site configuration
+    config_type: site
+    config_filename: site_config.yml
 
 analytics:
   ga_prod: ''
