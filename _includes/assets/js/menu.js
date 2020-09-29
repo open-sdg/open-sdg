@@ -80,6 +80,15 @@ $(function() {
     }
   });
 
+  // Hack to focus on search when using the keyboard
+  // to tab past the final menu item, in mobile.
+  $('#menu .nav-link').last().focusout(function(e) {
+    if (topLevelMenuToggle.classList.contains("active")) {
+      $('#menuToggle button').click();
+      $('#searchToggle button').focus();
+    }
+  });
+
   $(window).on('resize', function(e) {
     var viewportWidth = window.innerWidth,
         previousWidth = $('body').data('vwidth'),

@@ -60,7 +60,7 @@ var accessibilitySwitcher = function() {
     var gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', contrast);
     var contrastTitle = getContrastToggleTitle(contrast);
     $('.contrast-switcher').append($('<li />').attr({
-      'class': 'nav-link contrast contrast-' + contrast
+      'class': 'contrast contrast-' + contrast
     }).html($('<a />').attr(gaAttributes).attr({
       'href': 'javascript:void(0)',
       'title': contrastTitle,
