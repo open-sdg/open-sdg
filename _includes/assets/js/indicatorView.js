@@ -601,7 +601,7 @@ var indicatorView = function (model, options) {
     datatables_options.aaSorting = [];
 
     table.DataTable(datatables_options);
-
+    table.removeAttr('role');
     setDataTableWidth(table);
   };
 
