@@ -410,6 +410,25 @@ _Optional_: This setting can be used to hide any metadata fields that are empty.
 hide_empty_metadata: true
 ```
 
+### indicator_config_form
+
+_Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
+
+* `dropdowns`: This can be used to convert any `string` field into a dropdown. Each item should have these properties:
+
+    * `jsonschema`: The path into the jsonschema's `properties` object, to the property that you would like to convert into a dropdown. In most cases this is simply the name of the property, but in nested situations, you can use dot-syntax to drill down into the jsonschema object.
+    * `values`: A list of values for the dropdown.
+    * `labels`: An optional list of human-readable labels, corresponding to the `values` list.
+
+  For example, the following would convert the `reporting_status` property into a dropdown:
+
+      site_config_form:
+        dropdowns:
+          - jsonschema: reporting_status
+            values:
+              - complete
+              - notstarted
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
@@ -534,6 +553,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
 * `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](metadata-format.md#recommended-special-fields).
+* `status_types`: Controls the status types that are listed on the reporting status page. This also affects the options available in the indicator configuration form. If omitted, the defaults are `complete`, `inprogress`, `notstarted`, and `notapplicable`. Each item should include a `value` and `label`.
 
 Here is an example of using these settings:
 
@@ -542,6 +562,11 @@ reporting_status:
     title: title goes here
     description: description goes here
     disaggregation_tabs: true
+    status_types:
+      - value: complete
+        label: Complete
+      - value: notstarted
+        label: Not started
 ```
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
@@ -597,6 +622,20 @@ _Optional_: This setting enables the special treatment of the "Series" column in
 series_toggle: true
 ```
 
+### site_config_form
+
+_Optional_: This setting controls the behavior of the site config form. The available settings are:
+
+* `dropdowns`: This works the same as in the `indicator_config_form` setting.
+
 ### sharethis_property
 
 _Optional_: This setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
+
+### validate_indicator_config
+
+_Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.
+
+### validate_site_config
+
+_Optional_: This setting, if true, will run a validation of the site configuration during the site build. This defaults to `false`.

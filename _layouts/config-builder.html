@@ -52,10 +52,26 @@
     <script>
       {% if page.config_type == 'site' %}
         {% assign json_schema = site.data.schema-site-config %}
+        {% assign config_form = site.site_config_form %}
       {% elsif page.config_type == 'indicator' %}
         {% assign json_schema = site.data.schema-indicator-config %}
+        {% assign config_form = site.indicator_config_form %}
       {% endif %}
       var schema = {{ json_schema | jsonify }};
+      {% if config_form %}
+        {% if config_form.dropdowns %}
+          {% for dropdown in config_form.dropdowns %}
+            if (schema.properties.{{ dropdown.jsonschema }}) {
+              schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
+              schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
+              {% if choices.labels %}
+                schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
+                schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
+              {% endif %}
+            }
+          {% endfor %}
+        {% endif %}
+      {% endif %}
 
       var editor = new JSONEditor(document.getElementById('editor_holder'), {
         theme: 'spectre',
