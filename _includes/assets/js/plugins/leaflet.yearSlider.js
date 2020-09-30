@@ -44,6 +44,62 @@
       else {
         return L.Control.TimeDimension.prototype._createButton.call(this, title, container);
       }
+    },
+
+    // Override the _createSliderTime method to give the slider accessibility features.
+    _createSliderTime: function(className, container) {
+      var knob = L.Control.TimeDimension.prototype._createSliderTime.call(this, className, container),
+          control = this,
+          times = this._timeDimension.getAvailableTimes(),
+          years = times.map(function(time) {
+            var date = new Date(time);
+            return control._getDisplayDateFormat(date);
+          }),
+          minYear = years[0],
+          maxYear = years[years.length - 1],
+          knobElement = knob._element;
+
+      knobElement.setAttribute('tabindex', '0');
+      knobElement.setAttribute('role', 'slider');
+      knobElement.setAttribute('aria-label', 'Year slider');
+      knobElement.setAttribute('aria-valuemin', minYear);
+      knobElement.setAttribute('aria-valuemax', maxYear);
+
+      function updateSliderAttributes() {
+        var yearIndex = 0;
+        if (knob.getValue()) {
+          yearIndex = knob.getValue();
+        }
+        knobElement.setAttribute('aria-valuenow', years[yearIndex]);
+      }
+      updateSliderAttributes();
+
+      // Give the slider left/right keyboard functionality.
+      knobElement.addEventListener('keydown', function(e) {
+        if (e.which === 37 || e.which === 40) {
+          var min = knob.getMinValue();
+          var value = knob.getValue();
+          value = value - 1;
+          if (value >= min) {
+            knob.setValue(value);
+            control._sliderTimeValueChanged(value);
+            updateSliderAttributes();
+          }
+          e.preventDefault();
+        }
+        else if (e.which === 39 || e.which === 38) {
+          var max = knob.getMaxValue();
+          var value = knob.getValue();
+          value = value + 1;
+          if (value <= max) {
+            knob.setValue(value);
+            control._sliderTimeValueChanged(value);
+            updateSliderAttributes();
+          }
+          e.preventDefault();
+        }
+      });
+      return knob;
     }
 
   });
