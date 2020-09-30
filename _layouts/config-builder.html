@@ -1,127 +1,114 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>{{ page.title }}</title>
+{% include head.html %}
+{% include header.html %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
+<style>
+  .well {
+    background: none;
+    padding: 0;
+    border: none;
+  }
+  div[data-schemapath="root"] > .well > div > div > .row {
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    background-color: #f5f5f5;
+  }
+  div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div > label {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div a {
+    margin-top: 15px;
+    display: inline-block;
+  }
+  #button_holder {
+    margin-top: 15px;
+    text-align: right;
+  }
+</style>
+<div id="main-content" class="container" role="main">
+  <div id="button_holder"><button id="export">Export</button></div>
+  <div class="col-md-12" id="editor_holder"></div>
 
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
-
-    <style>
-      .container {
-        max-width:960px;
-        margin: 0 auto
-      }
-      div[data-schemapath="root"] > .je-panel > .container > div > .columns {
-        margin-bottom: 30px;
-        padding-bottom: 30px;
-      }
-      div[data-schemapath="root"] > .je-panel > .container > div > .columns > div[data-schematype] > .form-group > .form-label {
-        font-size: 1.2rem;
-        font-weight: 500;
-      }
-      #button_holder {
-        margin-bottom: 30px;
-        margin-top: 15px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="columns">
-        <h1 class="col-md-12">{{ page.title }}</h1>
-      </div>
-      <div class="columns">
-        <div class="column col-md-12" id="button_holder">
-          <button id="export">Export</button>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column col-md-12" id="editor_holder"></div>
-      </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
-    <script>
-      {% if page.config_type == 'site' %}
-        {% assign json_schema = site.data.schema-site-config %}
-        {% assign config_form = site.site_config_form %}
-      {% elsif page.config_type == 'indicator' %}
-        {% assign json_schema = site.data.schema-indicator-config %}
-        {% assign config_form = site.indicator_config_form %}
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script>
+    {% if page.config_type == 'site' %}
+      {% assign json_schema = site.data.schema-site-config %}
+      {% assign config_form = site.site_config_form %}
+    {% elsif page.config_type == 'indicator' %}
+      {% assign json_schema = site.data.schema-indicator-config %}
+      {% assign config_form = site.indicator_config_form %}
+    {% endif %}
+    var schema = {{ json_schema | jsonify }};
+    {% if config_form %}
+      {% if config_form.dropdowns %}
+        {% for dropdown in config_form.dropdowns %}
+          if (schema.properties.{{ dropdown.jsonschema }}) {
+            schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
+            schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
+            {% if choices.labels %}
+              schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
+              schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
+            {% endif %}
+          }
+        {% endfor %}
       {% endif %}
-      var schema = {{ json_schema | jsonify }};
-      {% if config_form %}
-        {% if config_form.dropdowns %}
-          {% for dropdown in config_form.dropdowns %}
-            if (schema.properties.{{ dropdown.jsonschema }}) {
-              schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
-              schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
-              {% if choices.labels %}
-                schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
-                schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
-              {% endif %}
-            }
-          {% endfor %}
-        {% endif %}
-      {% endif %}
+    {% endif %}
 
-      var editor = new JSONEditor(document.getElementById('editor_holder'), {
-        theme: 'spectre',
-        iconlib: 'spectre',
-        disable_array_delete_all_rows: true,
-        disable_array_delete_last_row: true,
-        disable_array_reorder: true,
-        disable_edit_json: true,
-        disable_properties: true,
-        remove_button_labels: true,
-        remove_empty_properties: true,
+    var editor = new JSONEditor(document.getElementById('editor_holder'), {
+      theme: 'bootstrap3',
+      iconlib: 'fontawesome4',
+      disable_array_delete_all_rows: true,
+      disable_array_delete_last_row: true,
+      disable_array_reorder: true,
+      disable_edit_json: true,
+      disable_properties: true,
+      remove_button_labels: true,
+      remove_empty_properties: true,
 
-        // The schema for the editor
-        schema: schema
-      });
+      // The schema for the editor
+      schema: schema
+    });
 
-      // Set values according to this site's configuration.
-      var propertyEditor;
-      {%- for config_setting in json_schema.properties -%}
-      {%- assign config_key = config_setting[0] -%}
-      {%- if page.config_type == 'site' -%}
-        {%- assign current_value = site[config_key] -%}
-      {%- elsif page.config_type == 'indicator' -%}
-        {%- assign current_value = page.meta[config_key] -%}
-      {%- endif -%}
-      {% if current_value %}
-      propertyEditor = editor.getEditor('root.{{ config_key }}');
+    // Set values according to this site's configuration.
+    var propertyEditor;
+    {%- for config_setting in json_schema.properties -%}
+    {%- assign config_key = config_setting[0] -%}
+    {%- if page.config_type == 'site' -%}
+      {%- assign current_value = site[config_key] -%}
+    {%- elsif page.config_type == 'indicator' -%}
+      {%- assign current_value = page.meta[config_key] -%}
+    {%- endif -%}
+    {% if current_value %}
+    propertyEditor = editor.getEditor('root.{{ config_key }}');
+    try {
+      propertyEditor.setValue({{ current_value | jsonify }});
+    }
+    catch (e) {
+      console.log('Unable to set config key: {{ config_key }}');
+    }
+    {% endif %}
+    {%- endfor -%}
+
+    function SaveAsFile(t,f,m) {
       try {
-        propertyEditor.setValue({{ current_value | jsonify }});
+        var b = new Blob([t],{type:m});
+        saveAs(b, f);
+      } catch (e) {
+        window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
       }
-      catch (e) {
-        console.log('Unable to set config key: {{ config_key }}');
-      }
-      {% endif %}
-      {%- endfor -%}
+    }
 
-      function SaveAsFile(t,f,m) {
-        try {
-          var b = new Blob([t],{type:m});
-          saveAs(b, f);
-        } catch (e) {
-          window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
-        }
-      }
-
-      document.getElementById('export').addEventListener('click', function() {
-        var config = editor.getValue();
-        var yaml = jsyaml.safeDump(config);
-        SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
-      });
-    </script>
-  </body>
-</html>
+    document.getElementById('export').addEventListener('click', function() {
+      var config = editor.getValue();
+      var yaml = jsyaml.safeDump(config);
+      SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
+    });
+  </script>
+</div>
+{% include footer.html %}
