@@ -400,6 +400,11 @@
         plugin.map.setZoom(plugin.options.maxZoom);
         plugin.map.setZoom(zoom);
 
+        // Hide the loading image.
+        $('.map-loading-image').hide();
+        // Make the map unfocusable.
+        $('#map').removeAttr('tabindex');
+
         // The list of handlers to apply to each feature on a GeoJson layer.
         function onEachFeature(feature, layer) {
           if (plugin.featureShouldDisplay(feature)) {
