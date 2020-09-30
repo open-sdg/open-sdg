@@ -32,6 +32,18 @@
     // Hijack the displayed date format.
     _getDisplayDateFormat: function(date){
       return date.getFullYear();
+    },
+
+    // Override the _createButton method to prevent the date from being a link.
+    _createButton: function(title, container) {
+      if (title === 'Date') {
+        var span = L.DomUtil.create('span', this.options.styleNS + ' timecontrol-' + title.toLowerCase(), container);
+        span.title = title;
+        return span;
+      }
+      else {
+        return L.Control.TimeDimension.prototype._createButton.call(this, title, container);
+      }
     }
 
   });
