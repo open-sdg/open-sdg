@@ -19,18 +19,30 @@
     }
 
     .leaflet-control {
-      .timecontrol-date {
-        min-width: 80px;
-        padding: 0 10px;
-      }
-      @media only screen and (max-width: 680px) {
-        .timecontrol-slider {
-          display: none;
-        }
-      }
       .download-geojson-button {
         display: block;
         cursor: pointer;
+      }
+    }
+    .leaflet-bar-timecontrol {
+      border-color: $text-color;
+      .timecontrol-date {
+        min-width: 80px;
+        padding: 0 10px;
+        color: $text-color;
+        text-align: center;
+      }
+      .timecontrol-slider {
+        @media only screen and (max-width: 680px) {
+          display: none;
+        }
+        .knob {
+          background-color: lighten($text-color, 50%);
+          border-color: $text-color;
+        }
+        .slider {
+          border-color: lighten($text-color, 25%);
+        }
       }
     }
     .disaggregation-select-container {
