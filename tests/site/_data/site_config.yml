@@ -125,7 +125,6 @@ languages:
   - en
   - es
   - fr
-  - untranslated
 languages_public:
   - language: fr
     language_public: fr-CA
@@ -148,7 +147,6 @@ metadata_tabs:
     title: My sources title
     description: My sources blurb
 non_global_metadata: indicator.national_metadata
-#remote_data_prefix: 'https://my-github-org.github.io/my-data-repository'
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description

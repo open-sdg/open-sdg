@@ -2,33 +2,18 @@
 {% include header.html %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
-<style>
-  .well {
-    background: none;
-    padding: 0;
-    border: none;
-  }
-  div[data-schemapath="root"] > .well > div > div > .row {
-    margin-bottom: 30px;
-    padding-bottom: 5px;
-    padding-top: 10px;
-    background-color: #f5f5f5;
-  }
-  div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div > label {
-    font-size: 24px;
-    font-weight: 700;
-  }
-  div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div a {
-    margin-top: 15px;
-    display: inline-block;
-  }
-  #button_holder {
-    margin-top: 15px;
-    text-align: right;
-  }
-</style>
 <div id="main-content" class="container" role="main">
-  <div id="button_holder"><button id="export">Export</button></div>
+  <div class="col-md-12"><h1>{{ page.title }}</h1></div>
+  <div class="config-widgets col-md-12">
+    <div class="col-md-6" id="search_holder">
+      <label for="config-search">Filter settings</label>
+      <input id="config-search" />
+    </div>
+    <div class="col-md-6" id="button_holder"><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
+  </div>
+  <div class="col-md-12" id="no_results" style="display:none" role="status">
+    There are no settings that match those keywords.
+  </div>
   <div class="col-md-12" id="editor_holder"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -37,6 +22,37 @@
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
   <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
   <script>
+
+    // Dynamic filtering functionality.
+    var configSearch = document.getElementById('config-search');
+    var itemSelector = 'div[data-schemapath="root"] > .well > div > div > .row';
+    configSearch.addEventListener('keyup', function(e) {
+      var keywords = this.value.toLowerCase();
+      if (keywords.length > 2) {
+        var noMatches = true;
+        $(itemSelector).each(function(item) {
+          var title = $(this).find('label').first().text().toLowerCase();
+          if (title.includes(keywords)) {
+            noMatches = false;
+            $(this).show();
+          }
+          else {
+            $(this).hide();
+          }
+        });
+        if (noMatches) {
+          $('#no_results').show();
+        }
+        else {
+          $('#no_results').hide();
+        }
+      }
+      else {
+        $(itemSelector).show();
+        $('#no_results').hide();
+      }  
+    });
+
     {% if page.config_type == 'site' %}
       {% assign json_schema = site.data.schema-site-config %}
       {% assign config_form = site.site_config_form %}
