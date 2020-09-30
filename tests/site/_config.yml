@@ -2,62 +2,17 @@
 
 # Replace this title as needed.
 title: Indicators For The Sustainable Development Goals
-frontpage_heading: custom.frontpage_heading
-frontpage_instructions: custom.frontpage_instructions
+
 # Replace the baseurl with the name of this repository.
 baseurl: ""
 url: ""
-environment: staging
 local_data_folder: _build
-
-# Automatically create indicator pages, goal pages,
-# and some other required pages.
-create_indicators:
-  layout: indicator
-create_goals:
-  layout: goal
-create_pages:
-  - folder: /frontpage-legacy
-    layout: frontpage
-  - folder: /
-    layout: frontpage-alt
-    title: My homepage title
-  - folder: /goals
-    layout: goals
-    title: custom.goals_page_title
-  - folder: /reporting-status
-    layout: reportingstatus
-  - filename: indicators.json
-    folder: /
-    layout: indicator-json
-  - folder: /search
-    layout: search
-  - folder: /config
-    layout: config-builder
-    title: Open SDG site configuration
-    config_type: site
-    config_filename: site_config.yml
-
-analytics:
-  ga_prod: ''
-
-# Replace the email addresses below.
-email_contacts:
-  questions: test@example.com
-  suggestions: test@example.com
-  functional: test@example.com
 
 # Build settings
 markdown: kramdown
 
 # Travis Support
 exclude: [vendor, scripts, remotedata]
-
-# International Support
-# Eg name: Australia and adjective: Australian
-country:
-  name: Australia
-  adjective: Australian
 
 # Pages
 collections:
@@ -71,37 +26,6 @@ collections:
     output: true
   goals:
     output: true
-
-# Menu
-menu:
-  # Use these to customise the main navigation.
-  - path: reporting-status
-    translation_key: menu.reporting_status
-  - path: about
-    translation_key: menu.about
-  - path: frontpage-legacy
-    translation_key: Legacy frontpage
-
-footer_menu:
-  - path: mailto:test@example.com
-    translation_key: menu.contact_us
-  - path: https://twitter.com/MyTwitterAccount
-    translation_key: general.twitter
-  - path: https://facebook.com/MyFacebookAccount
-    translation_key: general.facebook
-
-# The list of languages that are translated. The first one is the default.
-languages:
-  - en
-  - es
-  - fr
-
-# We will display "fr" as "fr-CA" (French Canadian) for testing purposes.
-languages_public:
-  - language: fr
-    language_public: fr-CA
-
-goal_image_base: /img/goals
 
 plugins:
   - jekyll-open-sdg-plugins
@@ -221,3 +145,21 @@ validate_indicator_config: true
 
 data_edit_url: https://github.com/open-sdg/open-sdg/edit/master/tests/data/data/indicator_[id].csv
 metadata_edit_url: https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md
+
+indicator_config_form:
+  dropdowns:
+    - jsonschema: reporting_status
+      values:
+        - notstarted
+        - complete
+      labels:
+        - Not started
+        - Complete
+
+site_config_form:
+  dropdowns:
+    - jsonschema: create_goals.properties.layout
+      values:
+        - goal
+        - goal-by-target
+        - goal-by-target-vertical

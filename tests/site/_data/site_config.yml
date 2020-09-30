@@ -1,0 +1,160 @@
+﻿accessible_charts: true
+accessible_tabs: true
+breadcrumbs:
+  goal:
+    - path: /
+      label: general.home
+    - path: /goals
+      label: general.goals
+  indicator:
+    - path: /
+      label: general.home
+    - path: /goals
+      label: general.goals
+  post:
+    - path: /
+      label: general.home
+    - path: /news
+      label: menu.updates
+country:
+  name: Australia
+  adjective: Australian
+create_goals:
+  layout: goal
+create_indicators:
+  layout: indicator
+create_pages:
+  - filename: index.html
+    folder: /frontpage-legacy
+    layout: frontpage
+  - filename: index.html
+    folder: /
+    layout: frontpage-alt
+    title: My homepage title
+  - filename: index.html
+    folder: /goals
+    layout: goals
+    title: custom.goals_page_title
+  - filename: indicators.json
+    folder: /reporting-status
+    layout: reportingstatus
+  - filename: indicators.json
+    folder: /
+    layout: indicator-json
+    title: search.search
+  - filename: index.html
+    folder: /search
+    layout: search
+  - filename: index.html
+    folder: /config
+    layout: config-builder
+    title: Open SDG site configuration
+    config_type: site
+    config_filename: site_config.yml
+custom_css: []
+custom_js: []
+data_edit_url: >-
+  https://github.com/open-sdg/open-sdg/edit/master/tests/data/data/indicator_[id].csv
+date_formats:
+  - type: standard
+    language: en
+    format: '%B %d, %Y'
+  - type: standard
+    language: es
+    format: '%d de %B de %Y'
+  - type: standard
+    language: fr
+    format: '%d %B %Y'
+disclaimer:
+  phase: header.alpha
+  message: custom.disclaimer_message
+email_contacts:
+  questions: test@example.com
+  suggestions: test@example.com
+  functional: test@example.com
+environment: staging
+footer_language_toggle: none
+footer_menu:
+  - path: 'mailto:test@example.com'
+    translation_key: menu.contact_us
+  - path: 'https://twitter.com/MyTwitterAccount'
+    translation_key: general.twitter
+  - path: 'https://facebook.com/MyFacebookAccount'
+    translation_key: general.facebook
+frontpage_cards:
+  - title: Download all data
+    include: components/download-all-data.html
+    rule_color: green
+  - title: Useful resources
+    content: |
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+    rule_color: blue
+  - title: Publications
+    content: |
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+    button_label: View more publications
+    button_link: 'https://example.com'
+    rule_color: orange
+frontpage_goals_grid:
+  title: My custom frontpage goals grid title
+  description: >-
+    Click on each [goal](goals) for data for Sustainable Development Goal global
+    indicators.
+frontpage_heading: custom.frontpage_heading
+frontpage_instructions: custom.frontpage_instructions
+frontpage_introduction_banner:
+  title: custom.frontpage_introduction_banner_title
+  description: My frontpage introduction banner description
+goal_image_base: /img/goals
+goal_image_extension: png
+goals_page:
+  title: custom.goals_page_title
+  description: custom.goals_page_description
+graph_color_set: default
+graph_color_list: []
+graph_color_number: 6
+header_language_toggle: dropdown
+hide_empty_metadata: true
+languages:
+  - en
+  - es
+  - fr
+  - untranslated
+languages_public:
+  - language: fr
+    language_public: fr-CA
+menu:
+  - path: reporting-status
+    translation_key: menu.reporting_status
+  - path: about
+    translation_key: menu.about
+  - path: frontpage-legacy
+    translation_key: Legacy frontpage
+metadata_edit_url: 'https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md'
+metadata_tabs:
+  - scope: national
+    title: My national metadata title
+    description: My national metadata blurb
+  - scope: global
+    title: My global metadata title
+    description: My global metadata blurb
+  - scope: sources
+    title: My sources title
+    description: My sources blurb
+non_global_metadata: indicator.national_metadata
+#remote_data_prefix: 'https://my-github-org.github.io/my-data-repository'
+reporting_status:
+  title: custom.reporting_status_title
+  description: custom.reporting_status_description
+search_index_boost: []
+search_index_extra_fields:
+  - un_custodian_agency
+series_toggle: true
+validate_indicator_config: true
+validate_site_config: true
