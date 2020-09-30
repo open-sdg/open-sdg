@@ -43,7 +43,7 @@ var indicatorView = function (model, options) {
           hideSidebar = $(this).data('no-disagg'),
           mobile = window.matchMedia("screen and (max-width: 990px)");
       if (hideSidebar) {
-        $sidebar.addClass('indicator-sidebar-hidden').attr('aria-hidden', 'true');
+        $sidebar.addClass('indicator-sidebar-hidden');
         $main.addClass('indicator-main-full');
         // On mobile, this can be confusing, so we need to scroll to the tabs.
         if (mobile.matches) {
@@ -53,7 +53,7 @@ var indicatorView = function (model, options) {
         }
       }
       else {
-        $sidebar.removeClass('indicator-sidebar-hidden').removeAttr('aria-hidden');
+        $sidebar.removeClass('indicator-sidebar-hidden');
         $main.removeClass('indicator-main-full');
       }
     });
