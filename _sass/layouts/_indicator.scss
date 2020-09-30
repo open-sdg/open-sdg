@@ -20,18 +20,11 @@
 
   // For shrinking the sidebar.
   .indicator-sidebar-hidden {
-    padding: 0;
-    width: 0;
-    height: 0;
-    overflow: hidden;
+    display: none;
   }
   // For expanding the main section.
   .indicator-main-full {
     width: 100%;
-  }
-  // To make the shrinking/expanding animated.
-  #indicator-sidebar, #indicator-main {
-    transition: width 0.3s ease;
   }
 
   #toolbar {
