@@ -4,47 +4,146 @@ header.header-accessible {
     .navbar-default {
         background: none;
         border: none;
+        margin-bottom: 0;
     }
     .navbar-brand {
         display: block;
         width: 75%;
         max-width: 350px;
-        padding: 15px;
+        padding: 5px 15px 15px 0;
         height: auto;
         &:focus {
             background-color: transparent !important;
             outline: 7px solid $focusOutlineColor !important;
         }
-        @media screen and (min-width: 769px) {
-            padding: 5px 15px 15px 0;
-        }
         img {
             width: 100%;
         }
     }
-    .navbar ul.navbar-nav > li > a {
-        padding: 2px;
-        margin: 2px 15px;
+    .navbar-toggle {
+        margin-right: 0;
+        border-color: $text-color;
+        .icon-bar {
+            background-color: $text-color;
+        }
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    #menu {
+        clear: both;
+        float: left;
+    }
+    #menu > li {
+        > a {
+            padding: 2px;
+            margin: 15px 15px 0px 5px;
+            @media screen and (min-width: 768px) {
+                margin: 2px 15px;
+            }
+            color: $menu-link-color;
+            font-size: 16px;
+            display: inline-block;
+        }
+        &.active > a {
+            border-bottom: 2px solid $text-color;
+            background: transparent;
+            color: $text-color;
+
+            &:hover {
+                background: transparent;
+            }
+        }
+    }
+    .contrast-switcher {
+        float: right;
+        margin: 15px 5px 0 0;
+        @media screen and (min-width: 768px) {
+            margin: 0;
+        }
+        list-style-type: none;
+        li {
+            &.language-toggle-menu-header {
+                display: block;
+                .language-name {
+                    display: inline;
+                }
+                .language-abbreviation {
+                    display: none;
+                }
+                .language-toggle-dropdown {
+                    .dropdown-menu {
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+            &.contrast {
+                font-size: 1.3em;
+                font-weight: bold;
+                border-radius: 50%;
+                width: 25px;
+                max-height: 25px;
+                text-align: center;
+                margin-left: 0.5em;
+                margin-top: 4px;
+                float: left;
+                a {
+                    margin: auto;
+                    text-decoration: none;
+                    padding: 2px;
+                    color: $menu-link-color;
+                    line-height: 20px;
+                    display: block;
+                }
+            }
+
+            &.contrast-default {
+                background: $color-light-highContrast;
+                a {
+                    color: $color-dark-highContrast;
+                }
+            }
+
+            &.contrast-high {
+                background: $color-dark-highContrast;
+                a {
+                    color: $color-highlight-highContrast;
+                }
+            }
+            &.language-toggle-menu-header {
+                display: block;
+                float: left;
+            }
+        }
+    }
+    @media screen and (min-width: 768px) {
+        #menu > li:first-child > a {
+            margin-left: 0;
+        }
     }
     #collapsible-nav-menu {
-        padding-left: 0;
-        padding-right: 0;
+        padding: 0 0 20px 0;
+        &.in {
+            overflow-y: visible;
+        }
+        &.in, &.collapsing {
+            border-top: none;
+            border-bottom: 1px solid $horizontalRule-color;
+        }
     }
     #search {
         position: relative;
-        float: right;
-  
         input {
             padding: 5px;
             padding-left: 5px;
             padding-right: 45px;
-            width: 240px;
+            width: 100%;
             height: 34px;
-            transition: width 0.4s;
             margin-top: 5px;
             font-size: $searchBar-input-fontSize;
         }
-  
         button {
             height: 34px;
             color: $color-dark;
@@ -53,6 +152,78 @@ header.header-accessible {
             bottom: 0px;
             font-size: 1.40em;
             line-height: 15px;
+        }
+        @media screen and (min-width: 768px) {
+            float: right;
+            input {
+                width: 240px;
+            }
+        }
+    }
+}
+
+body.contrast-high {
+    header.header-accessible {
+        .navbar-brand {
+            &:focus {
+                background-color: transparent !important;
+                outline: 7px solid $focusOutlineColor !important;
+            }
+        }
+        .navbar-toggle {
+            border-color: $color-light-highContrast;
+            .icon-bar {
+                background-color: $color-light-highContrast;
+            }
+            &:hover, &:focus {
+                background: $color-highlight-highContrast;
+                .icon-bar {
+                    background-color: $color-dark-highContrast;
+                }
+            }
+        }
+        #menu {
+            > li {
+                > a {
+                    color: $color-light-highContrast;
+                    &:hover, &:focus {
+                        color: $color-highlight-highContrast;
+                    }
+                }
+            }
+            > li.active {
+                > a {
+                    color: $color-highlight-highContrast;
+                    border-color: $color-highlight-highContrast;
+                    &:hover {
+                        color: $color-highlight-highContrast;
+                    }
+                    &:focus {
+                        color: $color-highlight-highContrast;
+                    }
+                }
+            }
+        }
+        #search {
+            input, button {
+                color: $color-dark-highContrast;
+            }
+        }
+        .contrast-switcher {
+            li {
+                &.language-toggle-menu-header {
+                    .language-toggle-dropdown {
+                        .dropdown-menu {
+                            a {
+                                color: $color-light-highContrast;
+                                &:hover {
+                                    color: $color-highlight-highContrast;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

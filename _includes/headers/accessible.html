@@ -8,20 +8,20 @@
   <div class="container">
     <nav class="navbar navbar-default" id="main-nav">
       <div class="navbar-header">
+        <a class="navbar-brand" href="{{ page.baseurl }}" id="home">
+          <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ page.t.general.sdg }} - {{ page.t.header.tag_line }}" />
+        </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible-nav-menu" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ page.baseurl }}" id="home">
-          <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ page.t.general.sdg }} - {{ page.t.header.tag_line }}" />
-        </a>
       </div>
 
       <div class="collapse navbar-collapse" id="collapsible-nav-menu">
         {% include search.html %}
-        <ul class="nav navbar-nav contrast-switcher" id="menu">
+        <ul class="nav navbar-nav" id="menu">
           {%- if site.menu -%}
             {%- assign current_path_no_slash = page.url | remove: '/' -%}
             {%- for item in site.menu -%}
@@ -36,6 +36,8 @@
             </li>
             {%- endfor -%}
           {%- endif -%}
+        </ul>
+        <ul class="contrast-switcher">
           {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
           <li class="language-toggle-menu-header">
             {% include components/language-toggle.html %}
