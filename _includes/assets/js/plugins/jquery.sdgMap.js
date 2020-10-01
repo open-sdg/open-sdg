@@ -380,7 +380,7 @@
         plugin.map.addControl(plugin.selectionLegend);
 
         // Add the search feature.
-        plugin.searchControl = new L.Control.Search({
+        plugin.searchControl = new L.Control.SearchAccessible({
           layer: plugin.getAllLayers(),
           propertyName: 'name',
           marker: false,
