@@ -25,17 +25,6 @@ var indicatorView = function (model, options) {
       }
     });
 
-    $(view_obj._legendElement).on('click', 'li', function(e) {
-      $(this).toggleClass('notshown');
-
-      var ci = view_obj._chartInstance,
-          index = $(this).data('datasetindex'),
-          meta = ci.getDatasetMeta(index);
-
-      meta.hidden = meta.hidden === null? !ci.data.datasets[index].hidden : null;
-      ci.update();
-    });
-
     // Provide the hide/show functionality for the sidebar.
     $('.data-view .nav-link').on('click', function(e) {
       var $sidebar = $('.indicator-sidebar'),
@@ -359,7 +348,6 @@ var indicatorView = function (model, options) {
     view_obj._chartInstance.update(1000, true);
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
-    view_obj.addLegendClickBehavior(this._legendElement, view_obj._chartInstance);
     view_obj.updateChartDownloadButton(chartInfo.selectionsTable);
   };
 
@@ -407,16 +395,13 @@ var indicatorView = function (model, options) {
           }]
         },
         legendCallback: function(chart) {
-            var text = ['<p id="legend-help" class="hide-during-image-download">' + translations.indicator.legend_help + '</p>'];
-            text.push('<ul id="legend" aria-labelledby="legend-help">');
-
-            _.each(chart.data.datasets, function(dataset, datasetIndex) {
-              text.push('<li data-datasetindex="' + datasetIndex + '">');
-              text.push('<button aria-pressed="false" aria-label="Press to hide the data set' + ' ' + dataset.label + '">')
+            var text = [];
+            text.push('<ul id="legend">');
+            _.each(chart.data.datasets, function(dataset) {
+              text.push('<li>');
               text.push('<span class="swatch' + (dataset.borderDash ? ' dashed' : '') + '" style="background-color: ' + dataset.borderColor + '">');
               text.push('</span>');
               text.push(translations.t(dataset.label));
-              text.push('</button>');
               text.push('</li>');
             });
             text.push('</ul>');
@@ -513,15 +498,7 @@ var indicatorView = function (model, options) {
     });
 
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
-    view_obj.addLegendClickBehavior(this._legendElement, view_obj._chartInstance);
   };
-
-  this.addLegendClickBehavior = function(legendElement, chartInstance) {
-    $(legendElement).find('li').click(function(e) {
-      var isBeingPressed = !($(this).hasClass('notshown'));
-      $(this).find('button').attr('aria-pressed', isBeingPressed);
-    })
-  }
 
   this.getGridColor = function(contrast) {
     return this.isHighContrast(contrast) ? '#222' : '#ddd';
