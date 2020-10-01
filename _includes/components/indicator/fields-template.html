@@ -35,7 +35,7 @@
             {%- endcapture -%}
             {{ page.t.indicator.variable_hint | replace_first: '%field', var_hint_replacement }}
           </div>
-          <div class="no-data-hint">
+          <div class="no-data-hint" id="no-data-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
             {{ page.t.indicator.no_data_hint }}
           </div>
         <% }%>
