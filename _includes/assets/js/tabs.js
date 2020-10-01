@@ -41,9 +41,15 @@ $(document).ready(function() {
                         'tabindex': '-1',
                     });
                 
-                panes.filter(':visible').attr('aria-hidden', 'true').hide();
+                panes.filter(':visible').attr({
+                    'aria-hidden': 'true',
+                    'tabindex': '-1',
+                }).hide();
 
-                pane.attr('aria-hidden', 'false').show();
+                pane.attr({
+                    'aria-hidden': 'false',
+                    'tabindex': '0',
+                }).show();
 
                 tab.attr({
                     'aria-selected': 'true',
