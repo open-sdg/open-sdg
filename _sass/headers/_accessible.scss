@@ -1,0 +1,58 @@
+@import "common";
+
+header.header-accessible {
+    .navbar-default {
+        background: none;
+        border: none;
+    }
+    .navbar-brand {
+        display: block;
+        width: 75%;
+        max-width: 350px;
+        padding: 15px;
+        height: auto;
+        &:focus {
+            background-color: transparent !important;
+            outline: 7px solid $focusOutlineColor !important;
+        }
+        @media screen and (min-width: 769px) {
+            padding: 5px 15px 15px 0;
+        }
+        img {
+            width: 100%;
+        }
+    }
+    .navbar ul.navbar-nav > li > a {
+        padding: 2px;
+        margin: 2px 15px;
+    }
+    #collapsible-nav-menu {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #search {
+        position: relative;
+        float: right;
+  
+        input {
+            padding: 5px;
+            padding-left: 5px;
+            padding-right: 45px;
+            width: 240px;
+            height: 34px;
+            transition: width 0.4s;
+            margin-top: 5px;
+            font-size: $searchBar-input-fontSize;
+        }
+  
+        button {
+            height: 34px;
+            color: $color-dark;
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            font-size: 1.40em;
+            line-height: 15px;
+        }
+    }
+}

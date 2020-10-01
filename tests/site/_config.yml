@@ -201,3 +201,6 @@ breadcrumbs:
 
 accessible_tabs: true
 accessible_charts: true
+
+header:
+  template: accessible

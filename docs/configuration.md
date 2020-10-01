@@ -234,12 +234,19 @@ email_contacts:
 environment: staging
 ```
 
-### footer_language_toggle
+### footer
 
-_Optional_: This setting controls the type of language toggle to be used in the footer. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `none`.
+_Optional_: This setting can control aspects of the footer that is displayed at the bottom of each page. The available options are:
+
+* `template`: This specifies an `.html` include file, assumed to be inside of `_includes/footers/`. If omitted, the default is `classic`, which refers to the `_includes/footers/classic.html` file. A corresponding Sass file is expected to be in the `_sass` folder, named like so: `_sass/footer_classic.scss`.
+* `language_toggle`: This controls the type of language toggle to be used in the footer. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `none`. The general recommendation is to use `dropdown` if you have more than 3 languages, and otherwise to use `links`.
+
+Here is an example, showing the defaults that are used if this setting is omitted:
 
 ```nohighlight
-footer_language_toggle: none
+footer:
+    template: classic
+    language_toggle: none
 ```
 
 ### footer_menu
@@ -389,12 +396,19 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
 
-### header_language_toggle
+### header
 
-_Optional_: This setting controls the type of language toggle to be used in the header. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `dropdown`. The general recommendation is to use `dropdown` if you have more than 3 languages, and otherwise to use `links`.
+_Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
+
+* `template`: This specifies an `.html` include file, assumed to be inside of `_includes/headers/`. If omitted, the default is `classic`, which refers to the `_includes/headers/classic.html` file. A corresponding Sass file is expected to be in the `_sass` folder, named like so: `_sass/header_classic.scss`.
+* `language_toggle`: This controls the type of language toggle to be used in the header. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `dropdown`. The general recommendation is to use `dropdown` if you have more than 3 languages, and otherwise to use `links`.
+
+Here is an example, showing the defaults that are used if this setting is omitted:
 
 ```nohighlight
-header_language_toggle: dropdown
+header:
+    template: classic
+    language_toggle: dropdown
 ```
 
 ### hide_empty_metadata

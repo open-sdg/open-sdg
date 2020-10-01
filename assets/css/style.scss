@@ -3,4 +3,10 @@
 
 @import "variables";
 @import "open-sdg";
+{% if site.header.template and site.header.template != 'classic' %}
+@import "headers/{{ site.header.template }}";
+{% endif %}
+{% if site.footer.template and site.footer.template != 'classic' %}
+@import "footers/{{ site.footer.template }}";
+{% endif %}
 @import "custom";

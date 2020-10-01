@@ -19,7 +19,9 @@ body{
   display: block;
 }
 
-header {
+// Most of this file selects header without any classes, to
+// target the _components/headers/classic.html template.
+header:not([class]) {
   .container {
     padding-top: 20px;
     min-height: 113px;
@@ -27,353 +29,350 @@ header {
       border: none;
     }
   }
-}
 
-.mobile-widgets {
-  display: none;
-}
-@media screen and (max-width: 768px) {
-  .logo-and-mobile-widgets {
-    &::after {
-      content: "";
-      display: block;
-      clear: both;
-    }
-    position: relative;
-    .mobile-widgets {
-      display: block;
-      position: absolute;
-      bottom: 10px;
-      right: 5px;
+  .mobile-widgets {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .logo-and-mobile-widgets {
+      &::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      position: relative;
+      .mobile-widgets {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+      }
     }
   }
-}
 
-.navbar-brand {
-  display: block;
-  width: 75%;
-  max-width: 350px;
-  padding: 15px;
-  height: auto;
-  &:focus {
-    background-color: transparent !important;
-    outline: 7px solid $focusOutlineColor !important;
-  }
-  @media screen and (min-width: 769px) {
-    padding: 5px 15px 15px 0;
-  }
-  img {
-    width: 100%;
-  }
-}
-body.contrast-high {
   .navbar-brand {
+    display: block;
+    width: 75%;
+    max-width: 350px;
+    padding: 15px;
+    height: auto;
     &:focus {
       background-color: transparent !important;
       outline: 7px solid $focusOutlineColor !important;
     }
-  }
-}
-
-.navbar {
-
-  margin-bottom: 32px;
-
-  ul.navbar-nav {
-    float: right;
-    margin-top: 12px;
-    clear: both;
-
-    > li {
-      > a {
-        padding: 2px;
-        margin: 2px 15px;
-        color: $menu-link-color;
-        font-size: 16px;
-
-      }
-
-      &.active > a {
-        border-bottom: 2px solid $text-color;
-        background: transparent;
-        color: $text-color;
-
-        &:hover {
-          background: transparent;
-        }
-      }
-
-      > a:last-child {
-        margin-right: 0;
-      }
-
-      &.contrast {
-        @media only screen and (max-width: 768px) {
-          display: none;
-        }
-        font-size: 1.3em;
-        font-weight: bold;
-        border-radius: 50%;
-        width: 25px;
-        max-height: 25px;
-        text-align: center;
-        margin-left: 0.5em;
-        margin-top: 4px;
-        a {
-          margin: auto;
-          text-decoration: none;
-        }
-      }
-
-      &.contrast-default {
-        background: $color-light-highContrast;
-        a {
-          color: $color-dark-highContrast;
-        }
-      }
-
-      &.contrast-high {
-        background: $color-dark-highContrast;
-        a {
-          color: $color-highlight-highContrast;
-        }
-      }
-
-    }
     @media screen and (min-width: 769px) {
-      > li:first-child {
-        a {
-          margin-left: 0;
+      padding: 5px 15px 15px 0;
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  .navbar {
+
+    margin-bottom: 32px;
+
+    ul.navbar-nav {
+      float: right;
+      margin-top: 12px;
+      clear: both;
+
+      > li {
+        > a {
+          padding: 2px;
+          margin: 2px 15px;
+          color: $menu-link-color;
+          font-size: 16px;
+
+        }
+
+        &.active > a {
+          border-bottom: 2px solid $text-color;
+          background: transparent;
+          color: $text-color;
+
+          &:hover {
+            background: transparent;
+          }
+        }
+
+        > a:last-child {
+          margin-right: 0;
+        }
+
+        &.contrast {
+          @media only screen and (max-width: 768px) {
+            display: none;
+          }
+          font-size: 1.3em;
+          font-weight: bold;
+          border-radius: 50%;
+          width: 25px;
+          max-height: 25px;
+          text-align: center;
+          margin-left: 0.5em;
+          margin-top: 4px;
+          a {
+            margin: auto;
+            text-decoration: none;
+          }
+        }
+
+        &.contrast-default {
+          background: $color-light-highContrast;
+          a {
+            color: $color-dark-highContrast;
+          }
+        }
+
+        &.contrast-high {
+          background: $color-dark-highContrast;
+          a {
+            color: $color-highlight-highContrast;
+          }
+        }
+
+      }
+      @media screen and (min-width: 769px) {
+        > li:first-child {
+          a {
+            margin-left: 0;
+          }
         }
       }
     }
-  }
 
-  &.navbar-default {
-    background: transparent;
-    border: none;
-    float: right;
-  }
-
-  .top-level {
-    display: none;
-  }
-
-  #search {
-    position: relative;
-    clear: both;
-    float: right;
-    margin-bottom: 20px;
-    @media only screen and (max-width: 768px) {
-      margin-bottom: 0;
+    &.navbar-default {
+      background: transparent;
+      border: none;
+      float: right;
     }
 
-    input {
-      padding: 5px;
-      padding-left: 5px;
-      padding-right: 45px;
-      width: 240px;
-      height: 34px;
-      transition: width 0.4s;
-      margin-top: 5px;
-      font-size: $searchBar-input-fontSize;
+    .top-level {
+      display: none;
     }
 
-    button {
-      height: 34px;
-      color: $color-dark;
-      position: absolute;
-      right: 0px;
-      bottom: 0px;
-      font-size: 1.40em;
-      line-height: 15px;
+    #search {
+      position: relative;
+      clear: both;
+      float: right;
+      margin-bottom: 20px;
+      @media only screen and (max-width: 768px) {
+        margin-bottom: 0;
+      }
+
+      input {
+        padding: 5px;
+        padding-left: 5px;
+        padding-right: 45px;
+        width: 240px;
+        height: 34px;
+        transition: width 0.4s;
+        margin-top: 5px;
+        font-size: $searchBar-input-fontSize;
+      }
+
+      button {
+        height: 34px;
+        color: $color-dark;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        font-size: 1.40em;
+        line-height: 15px;
+      }
     }
   }
-}
-
-.table {
-  .table-value {
-    text-align: right;
+  ul {
+    margin: 0;
+    padding-left: 0;
+    list-style-type: none;
   }
 }
 
 @media only screen and (max-width: 768px) {
 
-  header .container {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .navbar-brand {
-    height: auto;
-  }
-
-  .navbar {
-    clear: left;
-
-    &.navbar-default {
-      color: $menu-link-color-mobile;
-      background: $menu-link-backgroundColor-mobile;
-      margin-bottom: 10px;
-      width: 100%;
-      float: none;
+  header:not([class]) {
+    .container {
+      padding-left: 0;
+      padding-right: 0;
     }
 
-    .top-level {
-      display: block;
-      font-size: 1em;
-      @include noselect;
-
-      li {
-        float: left;
-        width: 50%;
-        cursor: pointer;
-
-        &.active {
-          background: $menu-link-backgroundColor-mobile-active;
-        }
-
-      	button {
-          color: $menu-link-color-mobile;
-          display: block;
-          padding: 15px;
-          border: 0;
-          background-color: inherit;
-          text-align: left;
-          width: 100%;
-          &[data-target="search"] {
-            text-transform: capitalize;
-          }
-        }
-      }
+    .navbar-brand {
+      height: auto;
     }
 
-    & .menu-target {
-      background: $menu-link-backgroundColor-mobile-active;
-    }
-
-    ul.navbar-nav {
-      float: none;
-      display: none;
+    .navbar {
       clear: left;
-      margin: 0;
 
-      font-size: 0.938em;
-
-      li {
-        cursor: pointer;
-        a {
-          display: block;
-          background: $menu-link-backgroundColor-mobile-active;
-          padding: 6px 0 6px;
-          color: $menu-link-color-mobile;
-          font-size: 15px;
-
-          &:hover, &:focus {
-            color: $menu-link-color-mobile;
-          }
-        }
-
-        &.nav-link.active a {
-          color: $menu-link-color-mobile-active;
-          background: $menu-link-backgroundColor-mobile-active;
-          font-weight: bold;
-
-          &:hover {
-            color: $menu-link-color-mobile-active;
-          }
-        }
-
-        &:last-child {
-          padding-bottom: 10px;
-        }
-      }
-    }
-
-    #search {
-      display: none;
-      width: 100%;
-      padding: 20px;
-
-      input {
+      &.navbar-default {
+        color: $menu-link-color-mobile;
+        background: $menu-link-backgroundColor-mobile;
+        margin-bottom: 10px;
         width: 100%;
-        color: $text-color;
-        margin-top: 0;
+        float: none;
       }
 
-      button {
-        right: 20px;
-        bottom: 20px;
+      .top-level {
+        display: block;
+        font-size: 1em;
+        @include noselect;
+
+        li {
+          float: left;
+          width: 50%;
+          cursor: pointer;
+
+          &.active {
+            background: $menu-link-backgroundColor-mobile-active;
+          }
+
+          button {
+            color: $menu-link-color-mobile;
+            display: block;
+            padding: 15px;
+            border: 0;
+            background-color: inherit;
+            text-align: left;
+            width: 100%;
+            &[data-target="search"] {
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
+
+      & .menu-target {
+        background: $menu-link-backgroundColor-mobile-active;
+      }
+
+      ul.navbar-nav {
+        float: none;
+        display: none;
+        clear: left;
+        margin: 0;
+
+        font-size: 0.938em;
+
+        li {
+          cursor: pointer;
+          a {
+            display: block;
+            background: $menu-link-backgroundColor-mobile-active;
+            padding: 6px 0 6px;
+            color: $menu-link-color-mobile;
+            font-size: 15px;
+
+            &:hover, &:focus {
+              color: $menu-link-color-mobile;
+            }
+          }
+
+          &.nav-link.active a {
+            color: $menu-link-color-mobile-active;
+            background: $menu-link-backgroundColor-mobile-active;
+            font-weight: bold;
+
+            &:hover {
+              color: $menu-link-color-mobile-active;
+            }
+          }
+
+          &:last-child {
+            padding-bottom: 10px;
+          }
+        }
+      }
+
+      #search {
+        display: none;
+        width: 100%;
+        padding: 20px;
+
+        input {
+          width: 100%;
+          color: $text-color;
+          margin-top: 0;
+        }
+
+        button {
+          right: 20px;
+          bottom: 20px;
+        }
       }
     }
   }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 991px)  {
-  .navbar {
-    width: 100%;
-    ul.navbar-nav {
-      float: none;
-      margin-top: 40px;
+  header:not([class]) {
+    .navbar {
+      width: 100%;
+      ul.navbar-nav {
+        float: none;
+        margin-top: 40px;
+      }
+    }
+
+    #search {
+      margin-top: -100px;
     }
   }
-
-  #search {
-    margin-top: -100px;
-  }
-}
-
-header ul {
-  margin: 0;
-  padding-left: 0;
-  list-style-type: none;
 }
 
 body.contrast-high {
-  .navbar {
-    li {
-      a {
-        color: $color-light-highContrast;
-        &:hover, &:focus {
+  header:not([class]) {
+    .navbar-brand {
+      &:focus {
+        background-color: transparent !important;
+        outline: 7px solid $focusOutlineColor !important;
+      }
+    }
+    .navbar {
+      li {
+        a {
+          color: $color-light-highContrast;
+          &:hover, &:focus {
+            color: $color-highlight-highContrast;
+          }
+        }
+      }
+      li.active {
+        a {
           color: $color-highlight-highContrast;
+          border-color: $color-highlight-highContrast;
+          &:hover {
+            color: $color-highlight-highContrast;
+          }
+          &:focus {
+            color: $color-highlight-highContrast;
+          }
+        }
+      }
+      #search {
+        input, button {
+          color: $color-dark-highContrast;
         }
       }
     }
-    li.active {
-      a {
-        color: $color-highlight-highContrast;
-        border-color: $color-highlight-highContrast;
-        &:hover {
-          color: $color-highlight-highContrast;
-        }
-        &:focus {
-          color: $color-highlight-highContrast;
-        }
-      }
-    }
-    #search {
-      input, button {
-        color: $color-dark-highContrast;
-      }
-    }
-  }
 
-  @media screen and (max-width: 768px) {
-    .navbar.navbar-default {
-      background: $color-dark-highContrast;
-      color: $color-light-highContrast;
-    }
-    .navbar .top-level li.active {
-      background: $color-light-highContrast;
-      span {
-        color: $color-dark-highContrast;
+    @media screen and (max-width: 768px) {
+      .navbar.navbar-default {
+        background: $color-dark-highContrast;
+        color: $color-light-highContrast;
       }
-    }
-    .navbar .menu-target {
-      background: $color-dark-highContrast;
-    }
-    .navbar ul.navbar-nav li a {
-      background: $color-dark-highContrast;
+      .navbar .top-level li.active {
+        background: $color-light-highContrast;
+        span {
+          color: $color-dark-highContrast;
+        }
+      }
+      .navbar .menu-target {
+        background: $color-dark-highContrast;
+      }
+      .navbar ul.navbar-nav li a {
+        background: $color-dark-highContrast;
+      }
     }
   }
 }
