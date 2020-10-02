@@ -1,3 +1,4 @@
+<span style="display: none;" id="chart-annotations" role="status"></span>
 <script>
 {% include components/charts/annotation_presets.js %}
 // Add a chart alteration to support the chart_annotations metadata field.
@@ -39,6 +40,10 @@ opensdg.chartConfigAlter(function(config, info) {
                     annotation.scaleID = 'x-axis-0';
                 }
             }
+            // Translate any label content.
+            if (annotation.label && annotation.label.content) {
+                annotation.label.content = translations.t(annotation.label.content);
+            }
             // Save some original values for later used when contrast mode is switched.
             if (typeof annotation.defaultContrast === 'undefined') {
                 annotation.defaultContrast = {};
@@ -68,6 +73,26 @@ opensdg.chartConfigAlter(function(config, info) {
             };
             // Add these overrides onto the normal config.
             $.extend(true, config, overrides);
+
+            // Update the chart annotations element.
+            var descriptions = annotations.map(function(annotation) {
+                var description = '';
+                if (annotation.description) {
+                    if (typeof annotation.description === 'function') {
+                        description = annotation.description.call(annotation);
+                    }
+                    else {
+                        description = translations.t(annotation.description);
+                    }
+                }
+                return description;
+            }).filter(function(description) { return description != ''; });
+
+            var currentDescription = $('#chart-annotations').text();
+            var newDescription = descriptions.join('. ');
+            if (currentDescription != newDescription) {
+                $('#chart-annotations').text(newDescription);
+            }
         }
     }
 });
