@@ -1,6 +1,8 @@
 opensdg.annotationPresets = {
     common: {
         // This "common" preset is applied to all annotations automatically.
+        borderColor: '#505a5f',
+        type: 'line',
         label: {
             backgroundColor: 'black',
             fontColor: 'white',
@@ -38,9 +40,7 @@ opensdg.annotationPresets = {
         },
     },
     target_line: {
-        type: 'line',
         mode: 'horizontal',
-        borderColor: '#505a5f',
         borderDash: [5, 5],
         label: {
             position: 'right',

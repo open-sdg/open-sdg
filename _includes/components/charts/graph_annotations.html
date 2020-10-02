@@ -31,7 +31,7 @@ opensdg.chartConfigAlter(function(config, info) {
             if (!annotation.mode && annotation.type === 'line') {
                 annotation.mode = 'horizontal';
             }
-            // Provide the obscure scaleID property on user's behalf.
+            // Provide the obscure scaleID properties on user's behalf.
             if (!annotation.scaleID && annotation.type === 'line') {
                 if (annotation.mode === 'horizontal') {
                     annotation.scaleID = 'y-axis-0';
@@ -39,6 +39,12 @@ opensdg.chartConfigAlter(function(config, info) {
                 if (annotation.mode === 'vertical') {
                     annotation.scaleID = 'x-axis-0';
                 }
+            }
+            if (!annotation.xScaleID && annotation.type === 'box') {
+                annotation.xScaleID = 'x-axis-0';
+            }
+            if (!annotation.yScaleID && annotation.type === 'box') {
+                annotation.yScaleID = 'y-axis-0';
             }
             // Provide the "enabled" label property on the user's behalf.
             if (annotation.label && annotation.label.content) {
