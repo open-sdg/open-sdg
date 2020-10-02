@@ -419,12 +419,16 @@ var indicatorView = function (model, options) {
       }
     };
     this.alterChartConfig(chartConfig, chartInfo);
+    if (this.isHighContrast()) {
+      this.updateGraphAnnotationColors('high', chartConfig);
+    }
 
     this._chartInstance = new Chart($(this._rootElement).find('canvas'), chartConfig);
 
     window.addEventListener('contrastChange', function(e) {
       var gridColor = that.getGridColor(e.detail);
       var tickColor = that.getTickColor(e.detail);
+      that.updateGraphAnnotationColors(e.detail, view_obj._chartInstance);
       view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.fontColor = tickColor;
       view_obj._chartInstance.options.scales.yAxes[0].gridLines.color = gridColor;
       view_obj._chartInstance.options.scales.yAxes[0].ticks.fontColor = tickColor;
@@ -514,6 +518,19 @@ var indicatorView = function (model, options) {
     }
     else {
       return $('body').hasClass('contrast-high');
+    }
+  };
+
+  this.updateGraphAnnotationColors = function(contrast, chartInfo) {
+    if (chartInfo.options.annotation) {
+      chartInfo.options.annotation.annotations.forEach(function(annotation) {
+        if (contrast === 'default') {
+          $.extend(true, annotation, annotation.defaultContrast);
+        }
+        else if (contrast === 'high') {
+          $.extend(true, annotation, annotation.highContrast);
+        }
+      });
     }
   };
 

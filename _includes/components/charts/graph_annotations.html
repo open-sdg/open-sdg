@@ -1,10 +1,10 @@
 <script>
+{% include components/charts/annotation_presets.js %}
 // Add a chart alteration to support the chart_annotations metadata field.
 opensdg.chartConfigAlter(function(config, info) {
     if (info.graphAnnotations) {
         var annotations = info.graphAnnotations.filter(function(annotation) {
             var match = true;
-            console.log(annotation);
             if (match && info.selectedUnit) {
                 match = (info.selectedUnit === annotation.unit);
             }
@@ -14,17 +14,16 @@ opensdg.chartConfigAlter(function(config, info) {
             return match;
         });
         // Apply some helpers/fixes to the annotations.
-        {% include components/charts/annotation_presets.js %}
-        annotations.forEach(function(annotation) {
+        annotations = annotations.map(function(annotation) {
+            // Apply the "common" preset.
+            if (opensdg.annotationPresets.common) {
+                annotation = $.extend(true, {}, opensdg.annotationPresets.common, annotation);
+            }
             // Apply any specified presets.
             if (annotation.preset) {
                 var preset = annotation.preset;
-                if (annotationPresets[preset]) {
-                    Object.keys(annotationPresets[preset]).forEach(function(key) {
-                        if (typeof annotation[key] === 'undefined') {
-                            annotation[key] = annotationPresets[preset][key];
-                        }
-                    });
+                if (opensdg.annotationPresets[preset]) {
+                    annotation = $.extend(true, {}, opensdg.annotationPresets[preset], annotation);
                 }
             }
             // Default to horizontal lines.
@@ -40,6 +39,23 @@ opensdg.chartConfigAlter(function(config, info) {
                     annotation.scaleID = 'x-axis-0';
                 }
             }
+            // Save some original values for later used when contrast mode is switched.
+            if (typeof annotation.defaultContrast === 'undefined') {
+                annotation.defaultContrast = {};
+                if (annotation.borderColor) {
+                    annotation.defaultContrast.borderColor = annotation.borderColor;
+                }
+                if (annotation.label) {
+                    annotation.defaultContrast.label = {};
+                    if (annotation.label.fontColor) {
+                        annotation.defaultContrast.label.fontColor = annotation.label.fontColor;
+                    }
+                    if (annotation.label.backgroundColor) {
+                        annotation.defaultContrast.label.backgroundColor = annotation.label.backgroundColor;
+                    }
+                }
+            }
+            return annotation;
         });
         if (annotations.length > 0) {
             var overrides = {
