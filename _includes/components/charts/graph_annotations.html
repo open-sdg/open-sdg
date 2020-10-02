@@ -40,6 +40,10 @@ opensdg.chartConfigAlter(function(config, info) {
                     annotation.scaleID = 'x-axis-0';
                 }
             }
+            // Provide the "enabled" label property on the user's behalf.
+            if (annotation.label && annotation.label.content) {
+                annotation.label.enabled = true;
+            }
             // Translate any label content.
             if (annotation.label && annotation.label.content) {
                 annotation.label.content = translations.t(annotation.label.content);
@@ -49,6 +53,9 @@ opensdg.chartConfigAlter(function(config, info) {
                 annotation.defaultContrast = {};
                 if (annotation.borderColor) {
                     annotation.defaultContrast.borderColor = annotation.borderColor;
+                }
+                if (annotation.backgroundColor) {
+                    annotation.defaultContrast.backgroundColor = annotation.backgroundColor;
                 }
                 if (annotation.label) {
                     annotation.defaultContrast.label = {};

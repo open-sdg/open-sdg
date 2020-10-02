@@ -35,7 +35,6 @@ opensdg.annotationPresets = {
         borderDash: [5, 5],
         label: {
             position: 'right',
-            enabled: true,
             content: '2030 Target',
         },
     },
