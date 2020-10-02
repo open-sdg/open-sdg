@@ -362,7 +362,7 @@
         plugin.map.addControl(L.Control.zoomHome());
 
         // Add full-screen functionality.
-        plugin.map.addControl(new L.Control.fullscreenAccessible());
+        plugin.map.addControl(new L.Control.FullscreenAccessible());
 
         // Add the year slider.
         plugin.map.addControl(L.Control.yearSlider({

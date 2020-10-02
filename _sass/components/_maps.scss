@@ -32,6 +32,10 @@
         display: block;
         cursor: pointer;
       }
+      .leaflet-control-fullscreen-button {
+        background-image: none;
+        font-size: 20px;
+      }
     }
     .disaggregation-select-container {
       background: $backgroundColor;
