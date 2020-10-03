@@ -32,6 +32,12 @@
         display: block;
         cursor: pointer;
       }
+      &.leaflet-control-attribution {
+        background: $backgroundColor;
+        a {
+          color: $link-color;
+        }
+      }
     }
     .disaggregation-select-container {
       background: $backgroundColor;
