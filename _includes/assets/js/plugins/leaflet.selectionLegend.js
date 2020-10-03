@@ -19,27 +19,71 @@
     },
 
     addSelection: function(selection) {
+      var selectionStatus = L.DomUtil.get('selection-status');
+      var parsedSelection = this.parseSelection(selection);
+      selectionStatus.innerHTML = 'Selection added: ' + parsedSelection.name + ': ' + parsedSelection.value + '.';
       this.selections.push(selection);
       this.update();
+      this.focusOnSelection(this.selections.length - 1);
     },
 
     removeSelection: function(selection) {
+      var selectionStatus = L.DomUtil.get('selection-status');
+      var parsedSelection = this.parseSelection(selection);
+      selectionStatus.innerHTML = 'Selection removed: ' + parsedSelection.name + '.';
       var index = this.selections.indexOf(selection);
       this.selections.splice(index, 1);
       this.update();
+      this.focusOnSelection(index);
+    },
+
+    focusOnSelection: function(index) {
+      var selectionList = L.DomUtil.get('selection-list'),
+          selectionItems = selectionList.getElementsByTagName('li');
+      if (selectionItems[index]) {
+        selectionItems[index].focus();
+      }
+      else if (selectionItems[0]) {
+        selectionItems[0].focus();
+      }
     },
 
     isSelected: function(selection) {
       return (this.selections.indexOf(selection) !== -1);
     },
 
+    parseSelection: function(selection) {
+      var plugin = this.plugin,
+          valueRange = this.plugin.valueRange,
+          value = plugin.getData(selection.feature.properties),
+          percentage,
+          valueStatus;
+      if (value) {
+        valueStatus = 'has-value';
+        var fraction = (value - valueRange[0]) / (valueRange[1] - valueRange[0]);
+        percentage = Math.round(fraction * 100);
+      }
+      else {
+        value = '';
+        valueStatus = 'no-value';
+        percentage = 0;
+      }
+      return {
+        name: selection.feature.properties.name,
+        valueStatus: valueStatus,
+        percentage: percentage,
+        value: value,
+      };
+    },
+
     onAdd: function() {
       var controlTpl = '' +
-        '<ul id="selection-list"></ul>' +
+        '<div id="selection-status" role="status" class="sr-only"></div>' +
+        '<ul id="selection-list" aria-label="Selected regions: press items to remove them from the list."></ul>' +
         '<div class="legend-swatches">' +
-          '{legendSwatches}' +
+          '{legendSwatches}'
         '</div>' +
-        '<div class="legend-values">' +
+        '<div class="legend-values" aria-label="Mapped values range from {lowValue} to {highValue}.">' +
           '<span class="legend-value left">{lowValue}</span>' +
           '<span class="arrow left"></span>' +
           '<span class="legend-value right">{highValue}</span>' +
@@ -65,43 +109,30 @@
     update: function() {
       var selectionList = L.DomUtil.get('selection-list');
       var selectionTpl = '' +
-        '<li class="{valueStatus}">' +
+        '<li tabindex="0" role="button" aria-label="Press to remove {name} from the list." class="{valueStatus}">' +
           '<span class="selection-name">{name}</span>' +
           '<span class="selection-value" style="left: {percentage}%;">{value}</span>' +
           '<span class="selection-bar" style="width: {percentage}%;"></span>' +
           '<i class="selection-close fa fa-remove"></i>' +
         '</li>';
-      var plugin = this.plugin;
-      var valueRange = this.plugin.valueRange;
+      var control = this;
       selectionList.innerHTML = this.selections.map(function(selection) {
-        var value = plugin.getData(selection.feature.properties);
-        var percentage, valueStatus;
-        if (value) {
-          valueStatus = 'has-value';
-          var fraction = (value - valueRange[0]) / (valueRange[1] - valueRange[0]);
-          percentage = Math.round(fraction * 100);
-        }
-        else {
-          value = '';
-          valueStatus = 'no-value';
-          percentage = 0;
-        }
-        return L.Util.template(selectionTpl, {
-          name: selection.feature.properties.name,
-          valueStatus: valueStatus,
-          percentage: percentage,
-          value: value,
-        });
+        return L.Util.template(selectionTpl, control.parseSelection(selection));
       }).join('');
 
-      // Assign click behavior.
-      var control = this;
+      // Assign click/enter behavior.
       $('#selection-list li').click(function(e) {
         var index = $(e.target).closest('li').index()
         var selection = control.selections[index];
         control.removeSelection(selection);
         control.plugin.unhighlightFeature(selection);
+      }).keyup(function(e) {
+        if (e.keyCode === 13) {
+          e.preventDefault();
+          $(this).click();
+        }
       });
+
     }
 
   });
