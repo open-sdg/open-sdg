@@ -35,4 +35,5 @@ Feature: Map
     And I should see "My Spanish regions"
 
   Scenario: The data footer should display in the map pane
-    And I should see a "map footer" element
+    And I click on "the Map tab"
+    Then I should see a "map footer" element
