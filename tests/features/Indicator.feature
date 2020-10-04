@@ -52,3 +52,9 @@ Feature: Indicator
 
   Scenario: Indicators can display a free form blurb at the top.
     Then I should see "This is the page content in English."
+
+  Scenario: Indicators can show certain metadata fields beneath the table, chart, and map
+    Then I should see "My organisation"
+    And I should see "My unit of measurement"
+    And I click on "the Table tab"
+    Then I should see "My unit of measurement"

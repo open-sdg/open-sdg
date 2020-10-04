@@ -75,7 +75,6 @@
     getFieldNames: getFieldNames,
     getInitialAllowedFields: getInitialAllowedFields,
     prepareData: prepareData,
-    footerFields: footerFields,
     getHeadline: getHeadline,
     sortData: sortData,
     getHeadlineTable: getHeadlineTable,

@@ -74,7 +74,6 @@ var indicatorModel = function (options) {
   this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
   this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
   this.data = helpers.prepareData(this.data);
-  this.footerFields = helpers.footerFields(this);
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
   this.hasStartValues = Array.isArray(this.startValues) && this.startValues.length > 0;
@@ -283,7 +282,6 @@ var indicatorModel = function (options) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
-      footerFields: this.footerFields,
       graphLimits: this.graphLimits,
       stackedDisaggregation: this.stackedDisaggregation,
       chartTitle: this.chartTitle

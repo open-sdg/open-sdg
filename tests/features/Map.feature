@@ -33,3 +33,6 @@ Feature: Map
     And I click on "the Map tab"
     And I should see "Descargar GeoJSON"
     And I should see "My Spanish regions"
+
+  Scenario: The data footer should display in the map pane
+    And I should see "My unit of measurement"
