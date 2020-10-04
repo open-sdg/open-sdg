@@ -593,7 +593,7 @@ var indicatorView = function (model, options) {
 
   this.createSelectionsTable = function(chartInfo) {
     this.createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', true);
-    $('#tableview').append('<div id="tableSelectionDownload" class="clearfix"></div>');
+    $('#tableSelectionDownload').empty();
     this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload');
     this.createSourceButton(chartInfo.shortIndicatorId, '#tableSelectionDownload');
   };
