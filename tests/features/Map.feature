@@ -37,3 +37,4 @@ Feature: Map
   Scenario: The data footer should display in the map pane
     And I click on "the Map tab"
     Then I should see a "map footer" element
+    And I should see a "map footer item" element

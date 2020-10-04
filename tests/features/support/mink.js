@@ -49,10 +49,13 @@ const driver = new mink.Mink({
     "disaggregation sidebar": "#indicator-sidebar:not(.indicator-sidebar-hidden)",
     "available indicator": '.metadata-available-indicator',
     "chart footer": "#selectionChartFooter",
+    "chart footer item": "#selectionChartFooter dt",
     "table footer": "#selectionTableFooter",
+    "table footer item": "#selectionTableFooter dt",
     "map footer": "#mapFooter",
-    "chart has no data": "#selectionsTable.table-has-no-data h3",
-    "table has no data": "#selectionsChart.chart-has-no-data canvas",
+    "map footer item": "#mapFooter dt",
+    "table has no data": "#selectionsTable.table-has-no-data h3",
+    "chart has no data": "#selectionsChart.chart-has-no-data canvas",
   }
 });
 
