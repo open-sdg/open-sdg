@@ -434,9 +434,6 @@
   }
 
   #selectionTableFooter, #mapFooter {
-    &.table-has-no-data {
-      display: none;
-    }
     p {
       font-size: 0.85em;
       margin: 0 0 5px;

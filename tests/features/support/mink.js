@@ -47,7 +47,10 @@ const driver = new mink.Mink({
     "the 'Clear selections' button": "button#clear",
     "success data notice": "div.alert.success",
     "disaggregation sidebar": "#indicator-sidebar:not(.indicator-sidebar-hidden)",
-    "available indicator": '.metadata-available-indicator'
+    "available indicator": '.metadata-available-indicator',
+    "chart footer": "#selectionChartFooter",
+    "table footer": "#selectionTableFooter",
+    "map footer": "#mapFooter"
   }
 });
 

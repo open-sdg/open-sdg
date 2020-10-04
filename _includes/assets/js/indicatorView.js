@@ -788,7 +788,8 @@ var indicatorView = function (model, options) {
       // initialise data table
       initialiseDataTable(el);
 
-      $(el, '#selectionTableFooter').removeClass('table-has-no-data');
+      $(el).removeClass('table-has-no-data');
+      $('#selectionTableFooter').show();
 
       $(el).find('th')
         .removeAttr('tabindex')
@@ -798,7 +799,8 @@ var indicatorView = function (model, options) {
         });
     } else {
       $(el).append($('<h3 />').text(translations.indicator.data_not_available));
-      $(el, '#selectionTableFooter').addClass('table-has-no-data');
+      $(el).addClass('table-has-no-data');
+      $('#selectionTableFooter').hide();
     }
   };
 

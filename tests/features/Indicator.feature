@@ -55,6 +55,6 @@ Feature: Indicator
 
   Scenario: Indicators can show certain metadata fields beneath the table, chart, and map
     Then I should see "My organisation"
-    And I should see "My unit of measurement"
+    And I should see a "chart footer" element
     And I click on "the Table tab"
-    Then I should see "My unit of measurement"
+    Then I should see a "table footer" element

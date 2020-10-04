@@ -35,4 +35,4 @@ Feature: Map
     And I should see "My Spanish regions"
 
   Scenario: The data footer should display in the map pane
-    And I should see "My unit of measurement"
+    And I should see a "map footer" element
