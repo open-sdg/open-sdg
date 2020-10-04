@@ -50,7 +50,9 @@ const driver = new mink.Mink({
     "available indicator": '.metadata-available-indicator',
     "chart footer": "#selectionChartFooter",
     "table footer": "#selectionTableFooter",
-    "map footer": "#mapFooter"
+    "map footer": "#mapFooter",
+    "chart has no data": "#selectionsTable.table-has-no-data h3",
+    "table has no data": "#selectionsChart.chart-has-no-data canvas",
   }
 });
 
