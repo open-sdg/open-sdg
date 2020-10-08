@@ -23,9 +23,15 @@
 {% include multilingual-js.html key="general.hide" %}
 {% include multilingual-js.html key="search.search" %}
 <script src='{{ site.baseurl }}/assets/js/sdg.js?v={{ cache_bust }}'></script>
+{% include scripts-custom.html %}
 {%- if site.custom_js -%}
   {%- for custom_js_file in site.custom_js -%}
-    <script src="{{ site.baseurl }}{{ custom_js_file }}?v={{ cache_bust }}"></script>
+    {% assign script_src = custom_js_file %}
+    {% assign src_start = script_src | slice: 0, 4 %}
+    {% if src_start != 'http' %}
+      {%- assign script_src = site.baseurl | append: script_src | append: "?v=" | append: cache_bust %}
+    {% endif %}
+    <script src="{{ script_src }}"></script>
   {%- endfor -%}
 {%- endif -%}
 <script>

@@ -47,6 +47,18 @@ As you can see, the [main Javascript file](https://github.com/open-sdg/open-sdg/
 
 The main takeaway here is that these indivdual Javascript files are in `_includes` rather than `assets`, as you might normally expect.
 
+## Adding custom Javascript
+
+Custom javascript can be added in 2 ways:
+
+### 1. `custom_js` site configuration
+
+The site configuration has a `custom_js` setting which can contain any number of paths to relative or remote javascript files.
+
+### 2. `scripts-custom.html` include file
+
+The `_includes/scripts-custom.html` file can be overridden to contain any HTML you would like. This HTML is automatically placed close to the closing `</body>` tag and is intended to have custom local or third-party javascript.
+
 ## Adding custom CSS
 
 To add custom styles on top of the out-of-the-box Open SDG styles, it is recommended to put a `custom.scss` in your site repository's `_sass` folder. This has the effect of overriding [this placeholder file in the starter repository](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss).

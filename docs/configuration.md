@@ -161,11 +161,12 @@ NOTE: This approach is deprecated. It is recommended to instead [put your custom
 
 ### custom_js
 
-_Optional_: This setting can be used to load additional JavaScript files on each page. It should be a list of relative paths to JavaScript files.
+_Optional_: This setting can be used to load additional JavaScript files on each page. It should be a list of relative paths to JavaScript files, or remote paths to third-party Javascript files.
 
 ```
 custom_js:
   - /assets/js/custom.js
+  - https://example.com/index.js
 ```
 
 ### data_edit_url
