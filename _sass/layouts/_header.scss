@@ -159,7 +159,7 @@ body.contrast-high {
     display: none;
   }
 
-  #search {
+  #search, #search-mobile {
     position: relative;
     clear: both;
     float: right;
@@ -224,7 +224,7 @@ body.contrast-high {
       font-size: 1em;
       @include noselect;
 
-      li {
+      > li {
         float: left;
         width: 50%;
         cursor: pointer;
@@ -233,7 +233,7 @@ body.contrast-high {
           background: $menu-link-backgroundColor-mobile-active;
         }
 
-      	button {
+        > button {
           color: $menu-link-color-mobile;
           display: block;
           padding: 15px;
@@ -252,11 +252,12 @@ body.contrast-high {
       background: $menu-link-backgroundColor-mobile-active;
     }
 
-    ul.navbar-nav {
+    #menu-mobile {
       float: none;
       display: none;
       clear: left;
       margin: 0;
+      width: 200%;
 
       font-size: 0.938em;
 
@@ -265,7 +266,8 @@ body.contrast-high {
         a {
           display: block;
           background: $menu-link-backgroundColor-mobile-active;
-          padding: 6px 0 6px;
+          padding: 6px 0 6px 15px;
+          margin-left: 0;
           color: $menu-link-color-mobile;
           font-size: 15px;
 
@@ -290,9 +292,10 @@ body.contrast-high {
       }
     }
 
-    #search {
+    #search-mobile {
       display: none;
-      width: 100%;
+      width: 200%;
+      margin-left: -100%;
       padding: 20px;
 
       input {
@@ -331,29 +334,39 @@ header ul {
 
 body.contrast-high {
   .navbar {
-    li {
-      a {
-        color: $color-light-highContrast;
-        &:hover, &:focus {
+    #menu, #menu-mobile {
+      li {
+        a {
+          color: $color-light-highContrast;
+          background-color: $color-dark-highContrast;
+          &:hover, &:focus {
+            color: $color-highlight-highContrast;
+          }
+        }
+      }
+      li.active {
+        a {
           color: $color-highlight-highContrast;
+          border-color: $color-highlight-highContrast;
+          &:hover {
+            color: $color-highlight-highContrast;
+          }
+          &:focus {
+            color: $color-highlight-highContrast;
+          }
         }
       }
     }
-    li.active {
-      a {
-        color: $color-highlight-highContrast;
-        border-color: $color-highlight-highContrast;
-        &:hover {
-          color: $color-highlight-highContrast;
-        }
-        &:focus {
-          color: $color-highlight-highContrast;
-        }
-      }
-    }
-    #search {
+    #search, #search-mobile {
       input, button {
         color: $color-dark-highContrast;
+      }
+    }
+    .top-level {
+      > li.active {
+        button {
+          color: $color-dark-highContrast;
+        }
       }
     }
   }
@@ -375,5 +388,12 @@ body.contrast-high {
     .navbar ul.navbar-nav li a {
       background: $color-dark-highContrast;
     }
+  }
+}
+
+#search, #menu {
+  display: none;
+  @media screen and (min-width: 769px) {
+    display: block;
   }
 }
