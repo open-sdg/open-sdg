@@ -338,7 +338,6 @@ body.contrast-high {
       li {
         a {
           color: $color-light-highContrast;
-          background-color: $color-dark-highContrast;
           &:hover, &:focus {
             color: $color-highlight-highContrast;
           }
@@ -354,6 +353,13 @@ body.contrast-high {
           &:focus {
             color: $color-highlight-highContrast;
           }
+        }
+      }
+    }
+    #menu-mobile {
+      li {
+        a {
+          background-color: $color-dark-highContrast;
         }
       }
     }
