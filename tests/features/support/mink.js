@@ -19,7 +19,7 @@ const driver = new mink.Mink({
     "the Sources metadata tab": "#tab-sources",
     "goal indicator": ".goal-indicator",
     "goal target": ".goal-target",
-    "the high-contrast button": ".nav .contrast-high a",
+    "the high-contrast button": "#menu .contrast-high a",
     "goal icon": ".goal-tiles a img",
     "high-contrast goal icon": ".goal-tiles a img[src*='high-contrast']",
     "the language toggle dropdown": "#menu .dropdown-toggle",
