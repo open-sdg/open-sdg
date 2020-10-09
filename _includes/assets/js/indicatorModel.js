@@ -227,7 +227,8 @@ var indicatorModel = function (options) {
           this.fieldsBySeries,
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
-          this.selectedFields
+          this.selectedFields,
+          this.edgesData
         ),
         allowedFields: this.allowedFields,
         edges: this.edgesData,

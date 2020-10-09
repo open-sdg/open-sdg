@@ -125,10 +125,14 @@ function getChildFieldNames(edges) {
  * @param {Array} fieldsByUnit Objects containing 'unit' and 'fields'
  * @param {string} selectedUnit
  * @param {boolean} dataHasUnitSpecificFields
+ * @param {Array} fieldsBySeries Objects containing 'series' and 'fields'
+ * @param {string} selectedSeries
+ * @param {boolean} dataHasSeriesSpecificFields
  * @param {Array} selectedFields Field items
+ * @param {Array} edges
  * @return {Array} Field item states
  */
-function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, fieldsBySeries, selectedSeries, dataHasSeriesSpecificFields, selectedFields) {
+function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, fieldsBySeries, selectedSeries, dataHasSeriesSpecificFields, selectedFields, edges) {
   var states = fieldItemStates.map(function(item) { return item; });
   if (dataHasUnitSpecificFields && dataHasSeriesSpecificFields) {
     states = fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries);
@@ -156,7 +160,42 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
       }
     });
   }
+  sortFieldsForView(states, edges);
   return states;
+}
+
+/**
+ * @param {Array} fieldItemStates
+ * @param {Array} edges
+ */
+function sortFieldsForView(fieldItemStates, edges) {
+  var grandparents = [],
+      parents = [];
+  edges.forEach(function(edge) {
+    if (!parents.includes(edge.From)) {
+      parents.push(edge.From);
+    }
+  });
+  edges.forEach(function(edge) {
+    if (parents.includes(edge.To)) {
+      grandparents.push(edge.From);
+    }
+  });
+  fieldItemStates.sort(function(a, b) {
+    if (grandparents.includes(a.field) && !grandparents.includes(b.field)) {
+      return -1;
+    }
+    else if (grandparents.includes(b.field) && !grandparents.includes(a.field)) {
+      return 1;
+    }
+    else if (parents.includes(a.field) && !parents.includes(b.field)) {
+      return -1;
+    }
+    else if (parents.includes(b.field) && !parents.includes(a.field)) {
+      return 1;
+    }
+    return 0;
+  });
 }
 
 /**
