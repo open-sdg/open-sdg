@@ -221,18 +221,3 @@ function makeHeadlineDataset(years, rows, label) {
     data: prepareDataForDataset(years, rows),
   });
 }
-
-/**
- * @param {Object} model
- * @return {Object} Translated footer fields keyed to values
- */
-function footerFields(model) {
-  var fields = {}
-  fields[translations.indicator.source] = model.dataSource;
-  fields[translations.indicator.geographical_area] = model.geographicalArea;
-  fields[translations.indicator.unit_of_measurement] = model.measurementUnit;
-  fields[translations.indicator.copyright] = model.copyright;
-  fields[translations.indicator.footnote] = model.footnote;
-  // Filter out the empty values.
-  return _.pick(fields, _.identity);
-}

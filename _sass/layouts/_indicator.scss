@@ -433,12 +433,26 @@
 		}
   }
 
-  #selectionsTable {
-    &.table-has-no-data {
-      #selectionTableFooter {
-        display: none;
+  #selectionTableFooter, #mapFooter {
+    p {
+      font-size: 0.85em;
+      margin: 0 0 5px;
+    }
+    dl {
+      font-size: 0.85em;
+      dd {
+        margin: 0 0 5px;
       }
     }
+    padding-left: 20px;
+  }
+
+  #mapFooter {
+    margin-top: 30px;
+    padding-left: 0;
+  }
+
+  #selectionsTable {
     div.dataTables_wrapper {
       overflow-x: auto;
 
@@ -478,20 +492,6 @@
     }
 
     padding-bottom: 20px;
-
-    .table-footer-text {
-      p {
-        font-size: 0.85em;
-        margin: 0 0 5px;
-      }
-      dl {
-        font-size: 0.85em;
-        dd {
-          margin: 0 0 5px;
-        }
-      }
-      padding-left: 20px;
-    }
   }
 
   #selectionsChart {

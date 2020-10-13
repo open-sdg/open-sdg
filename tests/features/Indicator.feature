@@ -52,3 +52,11 @@ Feature: Indicator
 
   Scenario: Indicators can display a free form blurb at the top.
     Then I should see "This is the page content in English."
+
+  Scenario: Indicators can show certain metadata fields beneath the table, chart, and map
+    Then I should see "My organisation"
+    And I should see a "chart footer" element
+    And I should see 5 "chart footer item" elements
+    And I click on "the Table tab"
+    Then I should see a "table footer" element
+    And I should see 5 "table footer item" elements

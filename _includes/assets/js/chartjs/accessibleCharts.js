@@ -48,6 +48,9 @@ Chart.plugins.register({
     getAllTooltips: function() {
         var datasets = this.chart.data.datasets;
         var allTooltips = [];
+        if (datasets.length == 0) {
+            return allTooltips;
+        }
         // For line charts, we group points into vertical tooltips.
         if (this.chart.config.type == 'line') {
             for (var pointIndex = 0; pointIndex < datasets[0].data.length; pointIndex++) {

@@ -447,7 +447,6 @@ var indicatorView = function (model, options) {
       }
     });
 
-    this.createTableFooter('selectionChartFooter', chartInfo.footerFields, '#chart-canvas');
     this.createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
     this.createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
 
@@ -594,8 +593,7 @@ var indicatorView = function (model, options) {
 
   this.createSelectionsTable = function(chartInfo) {
     this.createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', true);
-    this.createTableFooter('selectionTableFooter', chartInfo.footerFields, '#selectionsTable');
-    $('#selectionsTable').append('<div id="tableSelectionDownload" class="clearfix"></div>');
+    $('#tableSelectionDownload').empty();
     this.createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload');
     this.createSourceButton(chartInfo.shortIndicatorId, '#tableSelectionDownload');
   };
@@ -791,6 +789,7 @@ var indicatorView = function (model, options) {
       initialiseDataTable(el);
 
       $(el).removeClass('table-has-no-data');
+      $('#selectionTableFooter').show();
 
       $(el).find('th')
         .removeAttr('tabindex')
@@ -801,25 +800,9 @@ var indicatorView = function (model, options) {
     } else {
       $(el).append($('<h3 />').text(translations.indicator.data_not_available));
       $(el).addClass('table-has-no-data');
+      $('#selectionTableFooter').hide();
     }
   };
-
-  this.createTableFooter = function(divid, footerFields, el) {
-    var footdiv = $('<div />').attr({
-      'id': divid,
-      'class': 'table-footer-text'
-    });
-    var footList = $('<dl>');
-    footdiv.append(footList);
-
-    _.each(footerFields, function(val, key) {
-      footList.append($('<dt />').text(key + ': '));
-      footList.append($('<dd />').text(val));
-    });
-
-    $(el).append(footdiv);
-  };
-
 
   this.sortFieldGroup = function(fieldGroupElement) {
     var sortLabels = function(a, b) {
