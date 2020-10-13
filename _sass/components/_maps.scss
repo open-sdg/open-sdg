@@ -44,6 +44,12 @@
           border-color: lighten($text-color, 25%);
         }
       }
+      &.leaflet-control-attribution {
+        background: $backgroundColor;
+        a {
+          color: $link-color;
+        }
+      }
     }
     .disaggregation-select-container {
       background: $backgroundColor;
