@@ -15,6 +15,8 @@
     onAdd: function(map) {
       var container = L.Control.Search.prototype.onAdd.call(this, map);
 
+      this._input.setAttribute('aria-label', this._input.placeholder);
+
       this._button.setAttribute('role', 'button');
       this._accessibleCollapse();
       this._button.innerHTML = '<i class="fa fa-search" aria-hidden="true"></i>';

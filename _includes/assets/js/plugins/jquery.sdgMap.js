@@ -381,6 +381,8 @@
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
+          textPlaceholder: 'Search map',
+          autoCollapseTime: 5000,
           layer: plugin.getAllLayers(),
           propertyName: 'name',
           marker: false,
