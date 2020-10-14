@@ -96,3 +96,10 @@
   box-shadow: 0 -2px $focusOutlineColor,0 4px $focusColor !important;
   text-decoration: none !important;
 }
+
+@mixin preserveOriginalColors {
+  @media (-ms-high-contrast: active), (forced-colors: active) {
+    -ms-high-contrast-adjust: none;
+    forced-color-adjust: none;
+  }
+}
