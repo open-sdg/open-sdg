@@ -72,6 +72,7 @@
       padding: 0;
       width: 300px;
       .legend-swatches {
+        forced-color-adjust: none;
         height: 10px;
         .legend-swatch {
           display: block;
