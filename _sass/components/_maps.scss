@@ -18,10 +18,24 @@
       }
     }
 
-    .leaflet-control {
-      .download-geojson-button {
-        display: block;
-        cursor: pointer;
+    .leaflet-control-search {
+      .search-button {
+        background-image: none;
+        font-size: 20px;
+        padding-left: 6px;
+        color: $text-color;
+      }
+      .search-cancel {
+        background-image: none;
+        color: $text-color;
+        font-size: 16px;
+        line-height: 16px;
+        height: 22px;
+        padding: 5px;
+        margin: 3px 1px;
+      }
+      .search-input {
+        color: $text-color;
       }
     }
     .leaflet-bar-timecontrol {
