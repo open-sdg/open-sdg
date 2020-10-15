@@ -382,7 +382,7 @@
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
           textPlaceholder: 'Search map',
-          autoCollapseTime: 5000,
+          autoCollapseTime: 7000,
           layer: plugin.getAllLayers(),
           propertyName: 'name',
           marker: false,
@@ -393,7 +393,6 @@
               plugin.selectionLegend.addSelection(latlng.layer);
             }
           },
-          autoCollapse: true,
         });
         plugin.map.addControl(plugin.searchControl);
         // The search plugin messes up zoomShowHide, so we have to reset that
