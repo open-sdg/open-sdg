@@ -81,6 +81,7 @@
         }
       }
       .legend-values {
+        @include preserveOriginalColors;
         position: absolute;
         bottom: -10px;
         width: 100%;
@@ -104,6 +105,7 @@
           }
         }
         .legend-value {
+          color: $text-color;
           padding: 0 4px;
           background: $backgroundColor;
           position: absolute;
