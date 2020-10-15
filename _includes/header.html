@@ -28,38 +28,20 @@
         <li id="menuToggle"
             aria-label="Menu toggle. Click to expand or collapse the menu."
             aria-haspopup="true">
-          <button data-target="menu" aria-expanded="false">{{ page.t.menu.menu }}</button>
+          <button data-target="menu-mobile" aria-expanded="false">{{ page.t.menu.menu }}</button>
+          {% include navigation.html id="menu-mobile" %}
         </li>
         <li id="searchToggle"
             aria-label="Search toggle. Click to expand or collapse the search bar."
             aria-haspopup="true">
-          <button data-target="search" aria-expanded="false">{{ page.t.search.search }}</button>
+          <button data-target="search-mobile" aria-expanded="false">{{ page.t.search.search }}</button>
+          {% include search.html id="search-mobile" %}
         </li>
       </ul>
 
-      {% include search.html %}
+      {% include search.html id="search" %}
 
-      <ul class="nav navbar-nav menu-target contrast-switcher" id="menu">
-        {%- if site.menu -%}
-          {%- assign current_path_no_slash = page.url | remove: '/' -%}
-          {%- for item in site.menu -%}
-          {%- assign item_path_no_slash = item.path | remove: '/' -%}
-          {%- assign item_path = item.path -%}
-          {%- assign item_path_first = item_path | slice: 0 %}
-          {%- if item_path_first == '/' -%}
-            {%- assign item_path = item_path | slice: 1, item_path.size -%}
-          {%- endif -%}
-          <li class="nav-link {% if current_path_no_slash == item_path_no_slash %}active{% endif %}">
-            <a href="{{ page.baseurl }}{{ item_path }}">{{ item.translation_key | t }}</a>
-          </li>
-          {%- endfor -%}
-        {%- endif -%}
-        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
-        <li class="language-toggle-menu-header">
-          {% include components/language-toggle.html %}
-        </li>
-        {%- endif -%}
-      </ul>
+      {% include navigation.html id="menu" %}
 
     </nav>
   </div>

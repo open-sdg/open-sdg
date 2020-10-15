@@ -28,7 +28,7 @@ Feature: Search
     And I send key "Enter" in "the search box" element
     And I wait 7 seconds
     Then I should see "1 results found"
-    And I follow "About"
+    And I follow "My about page title"
     Then I should be on "/about/"
 
   Scenario: Search indexes can include extra fields
