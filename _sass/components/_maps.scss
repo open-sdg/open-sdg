@@ -72,6 +72,7 @@
       padding: 0;
       width: 300px;
       .legend-swatches {
+        @include preserveOriginalColors;
         height: 10px;
         .legend-swatch {
           display: block;
@@ -80,6 +81,7 @@
         }
       }
       .legend-values {
+        @include preserveOriginalColors;
         position: absolute;
         bottom: -10px;
         width: 100%;
@@ -103,6 +105,7 @@
           }
         }
         .legend-value {
+          color: $text-color;
           padding: 0 4px;
           background: $backgroundColor;
           position: absolute;
