@@ -14,7 +14,9 @@
           <div id="chart" class="plot-container">
             {% include {{ graph_template }} %}
           </div>
-          <div id="plotLegend"></div>
+          <div id="plotLegend">
+            <h5 class="sr-only">Plot legend: list of lines included in chart</h5>
+          </div>
           {% include components/indicator/data-footer.html %}
         </div>
       </figure>
