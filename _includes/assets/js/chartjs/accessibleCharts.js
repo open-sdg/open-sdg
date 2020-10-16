@@ -27,7 +27,7 @@ Chart.plugins.register({
         $('<span/>')
             .css('display', 'none')
             .attr('id', 'chart-keyboard')
-            .text(', Use arrow keys to browse data points.')
+            .text(', Use left and right arrow keys to browse data points.')
             .appendTo('#chart');
         var describedBy = $('#chart canvas').attr('aria-describedby');
         $('#chart canvas')
