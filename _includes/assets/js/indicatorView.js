@@ -587,7 +587,7 @@ var indicatorView = function (model, options) {
 
     table.DataTable(datatables_options);
     table.removeAttr('role');
-    table.find('thead th').removeAttr('rowspan').removeAttr('colspan');
+    table.find('thead th').removeAttr('rowspan').removeAttr('colspan').removeAttr('aria-label');
     setDataTableWidth(table);
   };
 
