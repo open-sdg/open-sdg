@@ -8,6 +8,7 @@ $(document).ready(function() {
             'class': 'tabPanel',
             'role': 'tabpanel',
             'aria-hidden': 'true',
+            'tabindex': '0',
         }).hide();
 
         tabsList.attr({
@@ -40,15 +41,13 @@ $(document).ready(function() {
                         'aria-selected': 'false',
                         'tabindex': '-1',
                     });
-                
+
                 panes.filter(':visible').attr({
                     'aria-hidden': 'true',
-                    'tabindex': '-1',
                 }).hide();
 
                 pane.attr({
                     'aria-hidden': 'false',
-                    'tabindex': '0',
                 }).show();
 
                 tab.attr({
