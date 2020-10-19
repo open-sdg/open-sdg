@@ -17,6 +17,12 @@ Chart.plugins.register({
                     break;
             }
         });
+        if (window.innerWidth <= 768) {
+            chart.canvas.innerHTML = 'Chart. For tabular data alternative see Table tab.';
+        }
+        else {
+            chart.canvas.innerHTML = 'Chart. Press enter to browse data points with left and right arrow keys.';
+        }
     },
     initElements: function() {
         $('<span/>')
@@ -27,7 +33,7 @@ Chart.plugins.register({
         $('<span/>')
             .css('display', 'none')
             .attr('id', 'chart-keyboard')
-            .text(', Use left and right arrow keys to browse data points.')
+            .text(', Press enter to browse data points with left and right arrow keys.')
             .appendTo('#chart');
         var describedBy = $('#chart canvas').attr('aria-describedby');
         $('#chart canvas')
