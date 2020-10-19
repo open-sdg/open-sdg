@@ -41,6 +41,7 @@ var indicatorModel = function (options) {
   this.showMap = options.showMap;
   this.graphLimits = options.graphLimits;
   this.stackedDisaggregation = options.stackedDisaggregation;
+  this.graphAnnotations = options.graphAnnotations;
 
   // calculate some initial values:
   this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
@@ -280,6 +281,7 @@ var indicatorModel = function (options) {
       selectedSeries: this.selectedSeries,
       graphLimits: this.graphLimits,
       stackedDisaggregation: this.stackedDisaggregation,
+      graphAnnotations: this.graphAnnotations,
       chartTitle: this.chartTitle
     });
   };
