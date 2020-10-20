@@ -1,0 +1,49 @@
+{% include head.html %}
+{% include header.html %}
+
+{% assign disagg_data = site.data.disaggregation %}
+{% if site.data[page.language].disaggregation %}
+  {% assign disagg_data = site.data[page.language].disaggregation %}
+{% endif %}
+
+<div id="main-content" class="container disaggregationstatus">
+
+  {% include components/disaggregation-status-introduction.html %}
+
+  <div class="status-summary">
+    <div class="statuses">
+      <div>
+        <span class="status disaggregated">{{ disagg_data.disaggregated }}</span>
+        <strong>Fully disaggregated</strong><span class="value">{{ disagg_data.disaggregated_percent | round }}%</span>
+      </div>
+      <div>
+        <span class="status not-disaggregated">{{ disagg_data.not_disaggregated }}</span>
+        <strong>Not fully disaggregated</strong><span class="value">{{ disagg_data.not_disaggregated_percent | round }}%</span>
+      </div>
+    </div>
+  </div>
+  <div class="goal-stats">
+
+    {% assign total_precise = disagg_data.total | times: 1.0 %}
+    {% assign disaggregated_precise = disagg_data.disaggregated | times: 1.0 %}
+    {% assign disaggregated_percent_precise = disaggregated_precise | divided_by: total_precise | times: 100 %}
+
+    <span
+      class="disaggregated"
+      style="width:{{ disaggregated_percent_precise }}%"
+      title="Disaggregated: {{ disagg_data.disaggregated_percent | round }}%"
+    ></span>
+
+    {% assign not_disaggregated_precise = disagg_data.not_disaggregated | times: 1.0 %}
+    {% assign not_disaggregated_percent_precise = not_disaggregated_precise | divided_by: total_precise | times: 100 %}
+
+    <span
+      class="not-disaggregated"
+      style="width:{{ not_disaggregated_percent_precise }}%"
+      title="Not disaggregated: {{ disagg_data.not_disaggregated_percent | round }}%"
+    ></span>
+
+  </div>
+</div>
+
+{% include footer.html %}
