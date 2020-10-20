@@ -33,6 +33,9 @@ create_pages:
       layout: indicator-json
     - folder: /search
       layout: search
+    - folder: /disaggregation-status
+      title: Disaggregation status
+      layout: disaggregationstatus
 
 analytics:
   ga_prod: ''
