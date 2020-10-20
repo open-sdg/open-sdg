@@ -41,7 +41,9 @@ This step is necessary before continuing, and also serves to demonstrate how to 
 1. Go to the site repository.
 1. In the list of files, click on `_config.yml`.
 1. Click the pencil icon on the right (You can find it next to the "Raw" and "Blame" buttons.)
-1. You will see some instructions at the top of the file. Update those few lines as directed.
+1. Update the `baseurl` (line 8) according to the instructions above it. Note that the instructions refer to your **site** repository.
+1. Update the `remote_data_prefix` (line 12) according to the instruction above it. Note that the instructions refer to your **data** repository.
+1. Update the `data_edit_url` and `metadata_edit_url` (lines 16 and 18) according to the instructions above them.
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.
