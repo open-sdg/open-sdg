@@ -40,7 +40,8 @@ Next we will replace the "favicon" (the small image that appears in browser tabs
 1. In a browser visit any online favicon generator. The next steps may vary depending on which generator you are using, but we will assume you are using [favicon.io](https://favicon.io/favicon-converter/).
 1. Drag in your new `SDG_logo.png` file or click to browse for it.
 1. Click `Download`.
-1. Extract the zip file somewhere on the computer. It should contain a file called `favicon.ico`.
+1. Unzip the zip file somewhere on the computer. It should contain several versions of your logo image.
+1. Go to the unzipped folder and rename the `android-chrome-192x192` file to `favicon`. (To rename an image, right-click the image and select "Rename".)
 
 ## Upload the favicon
 
@@ -49,7 +50,7 @@ Finally we will upload the favicon to your site repository.
 1. In a browser go to your site repository.
 1. In the list of files, navigate to the `assets/img/favicons` folder.
 1. Click `Add a file` and then `Upload files`.
-1. Drag in the `favicon.ico` file or click to browse for it.
+1. From the unzipped folder of images, drag in both of the files named `favicon`, or click to browse for them.
 1. At the bottom select `Create a new branch for this commit and start a pull request.`
 1. Click `Commit changes`.
 1. Click `Create pull request`.
