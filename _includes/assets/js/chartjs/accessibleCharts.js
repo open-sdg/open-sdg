@@ -25,7 +25,7 @@ Chart.plugins.register({
             .attr('role', 'status')
             .appendTo('#chart');
         if (window.innerWidth <= 768) {
-            this.chart.canvas.innerHTML = 'Chart. For tabular data alternative see Table tab.';
+            $(this.chart.canvas).text('Chart. For tabular data alternative see Table tab.');
         }
         else {
             var keyboardInstructions = 'Press enter to browse data points with left and right arrow keys.';
