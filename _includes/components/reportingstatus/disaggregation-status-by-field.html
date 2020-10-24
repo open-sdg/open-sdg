@@ -1,0 +1,13 @@
+{% assign disagg_data = site.data.disaggregation %}
+{% if site.data[page.language].disaggregation %}
+    {% assign disagg_data = site.data[page.language].disaggregation %}
+{% endif %}
+
+{% assign extra_field_name = include.extra_field[0] %}
+{% assign extra_field_translated = extra_field_name | translate_metadata_field %}
+
+{%- assign indicator_singular = page.t.general.indicator | downcase -%}
+{%- assign indicators_plural = page.t.general.indicators | downcase -%}
+
+<h2>{{ page.t.status.status_by_field | replace: "%field", extra_field_translated }}</h2>
+<p>To do...</p>

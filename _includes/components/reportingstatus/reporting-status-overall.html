@@ -1,0 +1,34 @@
+{% assign reporting_data = site.data.reporting %}
+{% if site.data[page.language].reporting %}
+  {% assign reporting_data = site.data[page.language].reporting %}
+{% endif %}
+{%- assign overall = reporting_data.overall -%}
+{%- assign indicators_plural = page.t.general.indicators | downcase -%}
+
+<div class="goal goal-overall">
+    <div class="details">
+        <h2 class="status-goal">
+            {{ page.t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
+        </h2>
+        <div class="summary">
+            <div class="statuses">
+            {%- for status in overall.statuses -%}
+            <div>
+                <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+            </div>
+            {%- endfor -%}
+
+            <br style="clear:both;">
+            </div>
+        </div>
+        <div class="goal-stats">
+            {%- for status in overall.statuses -%}
+            {% assign status_count_precise = status.count | times: 1.0 %}
+            {% assign overall_total_precise = overall.totals.total  | times: 1.0 %}
+            {% assign percentage_precise = status_count_precise | divided_by: overall_total_precise | times: 100 %}
+            <span class="{{ status.status | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status.translation_key | t }}: {{ status.percentage | round }}%"></span>
+            {%- endfor -%}
+        </div>
+    </div>
+    <br style="clear:both;">
+</div>

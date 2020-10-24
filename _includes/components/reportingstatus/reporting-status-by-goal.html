@@ -1,0 +1,44 @@
+{% assign reporting_data = site.data.reporting %}
+{% if site.data[page.language].reporting %}
+    {% assign reporting_data = site.data[page.language].reporting %}
+{% endif %}
+
+{%- assign indicators_plural = page.t.general.indicators | downcase -%}
+
+<h2>{{ page.t.status.status_by_goal }}</h2>
+{%- for goalreport in reporting_data.goals -%}
+{%- assign goal = goalreport.goal | downcase | sdg_lookup -%}
+<div class="goal reporting-status-item">
+    <div class="frame goal-tiles">
+        <a href="{{ goal.url }}">
+        <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" id="goal-{{ goal.number }}"/>
+        </a>
+    </div>
+    <div class="details">
+        <h3 class="status-goal">
+            <a href="{{ goal.url }}">{{ goal.short }}</a>
+            <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
+        </h3>
+        <div class="summary">
+            <div class="statuses">
+                {%- for status in goalreport.statuses -%}
+                <div>
+                    <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+                </div>
+                {%- endfor -%}
+                <br style="clear:both;">
+            </div>
+        </div>
+        <div class="goal-stats">
+            {%- for status in goalreport.statuses -%}
+                {% assign status_count_precise = status.count | times: 1.0 %}
+                {% assign goalreport_total_precise = goalreport.totals.total  | times: 1.0 %}
+                {% assign percentage_precise = status_count_precise | divided_by: goalreport_total_precise | times: 100 %}
+                <span class="{{ status.status | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status.translation_key | t }}: {{ status.percentage | round }}%"></span>
+            {%- endfor -%}
+        </div>
+        <div class="divider"></div>
+    </div>
+    <br style="clear:both;">
+</div>
+{%- endfor -%}

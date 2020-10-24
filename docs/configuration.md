@@ -527,6 +527,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+* `disaggregation_tabs`: Whether or not to display disaggregation status tabs.
 
 Here is an example of using these settings:
 

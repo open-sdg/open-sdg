@@ -33,9 +33,6 @@ create_pages:
       layout: indicator-json
     - folder: /search
       layout: search
-    - folder: /disaggregation-status
-      title: Disaggregation status
-      layout: disaggregationstatus
 
 analytics:
   ga_prod: ''
@@ -155,6 +152,7 @@ disclaimer:
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
+  disaggregation_tabs: true
 
 goals_page:
   title: custom.goals_page_title

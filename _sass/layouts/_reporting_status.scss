@@ -115,6 +115,11 @@
       line-height: 24px;
     }
   }
+  [data-extra-field] {
+    .details {
+      width: 100%;
+    }
+  }
   .goal-overall {
     margin-bottom: 20px;
 
