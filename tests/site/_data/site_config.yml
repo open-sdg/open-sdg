@@ -45,12 +45,6 @@ create_pages:
   - filename: index.html
     folder: /search
     layout: search
-  - filename: index.html
-    folder: /config
-    layout: config-builder
-    title: Open SDG site configuration
-    config_type: site
-    config_filename: site_config.yml
 custom_css: []
 custom_js: []
 data_edit_url: >-
