@@ -137,6 +137,16 @@ languages:
 languages_public:
   - language: fr
     language_public: fr-CA
+map_layers:
+  - min_zoom: 5
+    max_zoom: 10
+    subfolder: regions
+    label: indicator.regions
+map_options:
+  minZoom: 5
+  tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  tileOptions:
+    attribution: 'My map attribution'
 menu:
   - path: reporting-status
     translation_key: menu.reporting_status
