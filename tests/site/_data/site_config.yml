@@ -121,6 +121,20 @@ graph_color_list: []
 graph_color_number: 6
 header_language_toggle: dropdown
 hide_empty_metadata: true
+indicator_config_form:
+  dropdowns:
+    - jsonschema: reporting_status
+      values:
+        - notstarted
+        - complete
+      labels:
+        - Not started
+        - Complete
+    - jsonschema: graph_annotations.items.properties.preset
+      values:
+        - target_line
+      labels:
+        - Target line
 languages:
   - en
   - es
@@ -146,6 +160,8 @@ metadata_tabs:
   - scope: sources
     title: My sources title
     description: My sources blurb
+news:
+  category_links: true
 non_global_metadata: indicator.national_metadata
 reporting_status:
   title: custom.reporting_status_title
@@ -154,5 +170,12 @@ search_index_boost: []
 search_index_extra_fields:
   - un_custodian_agency
 series_toggle: true
+site_config_form:
+  dropdowns:
+    - jsonschema: create_goals.properties.layout
+      values:
+        - goal
+        - goal-by-target
+        - goal-by-target-vertical
 validate_indicator_config: true
 validate_site_config: true
