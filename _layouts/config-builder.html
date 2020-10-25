@@ -50,7 +50,7 @@
       else {
         $(itemSelector).show();
         $('#no_results').hide();
-      }  
+      }
     });
 
     {% if page.config_type == 'site' %}
@@ -103,6 +103,7 @@
     {% if current_value %}
     propertyEditor = editor.getEditor('root.{{ config_key }}');
     try {
+      propertyEditor.setValue(null);
       propertyEditor.setValue({{ current_value | jsonify }});
     }
     catch (e) {

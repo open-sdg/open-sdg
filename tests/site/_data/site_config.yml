@@ -35,16 +35,17 @@ create_pages:
     folder: /goals
     layout: goals
     title: custom.goals_page_title
-  - filename: indicators.json
+  - filename: index.html
     folder: /reporting-status
     layout: reportingstatus
+    title: Reporting status
   - filename: indicators.json
     folder: /
     layout: indicator-json
-    title: search.search
   - filename: index.html
     folder: /search
     layout: search
+    title: search.search
 custom_css: []
 custom_js: []
 data_edit_url: >-
