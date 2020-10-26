@@ -1,0 +1,19 @@
+﻿data_non_statistical: false
+data_notice_class: success
+data_notice_heading: My data notice heading
+data_notice_text: My data notice text
+data_show_map: false
+data_start_values: []
+graph_annotations: []
+graph_limits: []
+graph_title: >-
+  Proportion of population living below the national poverty line, by sex and
+  age
+graph_titles: []
+graph_type: line
+indicator_name: >-
+  Proportion of population living below the national poverty line, by sex and
+  age
+indicator_number: 1.2.1
+reporting_status: complete
+tags: []

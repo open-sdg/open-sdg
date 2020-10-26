@@ -1,0 +1,12 @@
+﻿data_non_statistical: false
+data_show_map: false
+data_start_values: []
+graph_annotations: []
+graph_limits: []
+graph_title: Maternal mortality ratio
+graph_titles: []
+graph_type: line
+indicator_name: Maternal mortality ratio
+indicator_number: 3.1.1
+reporting_status: complete
+tags: []

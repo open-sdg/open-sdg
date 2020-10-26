@@ -1,0 +1,21 @@
+﻿computation_units: My unit of measurement
+data_non_statistical: false
+data_show_map: true
+data_start_values: []
+graph_annotations: []
+graph_limits: []
+graph_title: >-
+  Proportion of population covered by social protection floors/systems, by sex,
+  distinguishing children, unemployed persons, older persons, persons with
+  disabilities, pregnant women, newborns, work-injury victims and the poor and
+  the vulnerable
+graph_titles: []
+graph_type: line
+indicator_name: >-
+  Proportion of population covered by social protection floors/systems, by sex,
+  distinguishing children, unemployed persons, older persons, persons with
+  disabilities, pregnant women, newborns, work-injury victims and the poor and
+  the vulnerable
+indicator_number: 1.3.1
+reporting_status: complete
+tags: []

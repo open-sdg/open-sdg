@@ -1,0 +1,16 @@
+﻿data_non_statistical: false
+data_show_map: false
+data_start_values: []
+graph_annotations: []
+graph_limits: []
+graph_title: >-
+  Number of deaths, missing persons and directly affected persons attributed to
+  disasters per 100,000 population
+graph_titles: []
+graph_type: line
+indicator_name: >-
+  Number of deaths, missing persons and directly affected persons attributed to
+  disasters per 100,000 population
+indicator_number: 1.5.1
+reporting_status: complete
+tags: []

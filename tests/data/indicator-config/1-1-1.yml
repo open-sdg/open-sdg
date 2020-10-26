@@ -1,0 +1,22 @@
+﻿computation_units: My unit of measurement
+copyright: My copyright
+data_footnote: My footnote
+data_non_statistical: false
+data_show_map: false
+data_start_values: []
+graph_annotations: []
+graph_limits: []
+graph_title: >-
+  Proportion of population below the international poverty line, by sex, age,
+  employment status and geographical location (urban/rural)
+graph_titles: []
+graph_type: line
+indicator_name: >-
+  Proportion of population below the international poverty line, by sex, age,
+  employment status and geographical location (urban/rural)
+indicator_number: 1.1.1
+national_geographical_coverage: National
+reporting_status: complete
+tags:
+  - My untranslated tag
+  - My English tag

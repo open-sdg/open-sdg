@@ -1,0 +1,25 @@
+﻿data_non_statistical: false
+data_show_map: false
+data_start_values:
+  - field: Group
+    value: A
+  - field: Group
+    value: B
+  - field: Fruit
+    value: Orange
+  - field: Fruit
+    value: Apple
+graph_annotations: []
+graph_limits: []
+graph_stacked_disaggregation: Group
+graph_title: >-
+  Volume of production per labour unit by classes of farming/pastoral/forestry
+  enterprise size
+graph_titles: []
+graph_type: bar
+indicator_name: >-
+  Volume of production per labour unit by classes of farming/pastoral/forestry
+  enterprise size
+indicator_number: 2.3.1
+reporting_status: complete
+tags: []

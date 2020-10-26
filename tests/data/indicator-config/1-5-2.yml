@@ -1,0 +1,20 @@
+﻿data_non_statistical: false
+data_show_map: false
+data_start_values: []
+graph_annotations: []
+graph_limits: []
+graph_title: >-
+  Direct economic loss attributed to disasters in relation to global gross
+  domestic product (GDP)
+graph_titles:
+  - title: My untranslated graph title for percent
+    unit: Percent
+  - title: My English graph title for total
+    unit: Total
+graph_type: line
+indicator_name: >-
+  Direct economic loss attributed to disasters in relation to global gross
+  domestic product (GDP)
+indicator_number: 1.5.2
+reporting_status: complete
+tags: []

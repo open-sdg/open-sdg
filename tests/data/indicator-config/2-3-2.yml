@@ -1,0 +1,19 @@
+﻿computation_units: This is a non-translated unit of measurement
+data_non_statistical: false
+data_show_map: false
+data_start_values: []
+graph_annotations: []
+graph_limits:
+  - minimum: 0
+    maximum: 4
+    unit: Tons (Engish)
+  - minimum: 50
+    maximum: 450
+    unit: Passengers (English)
+graph_title: 'Average income of small-scale food producers, by sex and indigenous status'
+graph_titles: []
+graph_type: bar
+indicator_name: 'Average income of small-scale food producers, by sex and indigenous status'
+indicator_number: 2.3.2
+reporting_status: complete
+tags: []
