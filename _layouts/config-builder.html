@@ -91,8 +91,28 @@
       schema: schema
     });
 
+    function deepMerge(varA, varB) {
+      if (typeof varA === 'undefined') {
+        return varB;
+      }
+      if (typeof varA !== 'object') {
+        if (typeof varB !== 'undefined') {
+          return varB;
+        }
+        else {
+          return varA;
+        }
+      }
+      if (typeof varB !== 'object') {
+        return varB;
+      }
+      for (var key of Object.keys(varB)) {
+        varA[key] = deepMerge(varA[key], varB[key]);
+      }
+      return varA;
+    }
+
     // Set values according to this site's configuration.
-    var propertyEditor;
     {%- for config_setting in json_schema.properties -%}
     {%- assign config_key = config_setting[0] -%}
     {%- if page.config_type == 'site' -%}
@@ -101,12 +121,22 @@
       {%- assign current_value = page.meta[config_key] -%}
     {%- endif -%}
     {% if current_value %}
-    propertyEditor = editor.getEditor('root.{{ config_key }}');
     try {
+      var currentValue = {{ current_value | jsonify }};
+
+      // A strange problem with object properties - need to manually
+      // set default values in order to get all fields to appear.
+      var currentSchema = {{ config_setting[1] | jsonify }};
+      if (currentSchema.type === 'object' && typeof currentSchema.default !== 'undefined') {
+        currentValue = deepMerge(currentSchema.default, currentValue);
+      }
+
+      var propertyEditor = editor.getEditor('root.{{ config_key }}');
       propertyEditor.setValue(null);
-      propertyEditor.setValue({{ current_value | jsonify }});
+      propertyEditor.setValue(currentValue);
     }
     catch (e) {
+      console.log(e.message);
       console.log('Unable to set config key: {{ config_key }}');
     }
     {% endif %}
