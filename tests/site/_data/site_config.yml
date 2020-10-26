@@ -138,15 +138,35 @@ languages_public:
   - language: fr
     language_public: fr-CA
 map_layers:
-  - min_zoom: 5
-    max_zoom: 10
-    subfolder: regions
+  - subfolder: regions
     label: indicator.regions
+    min_zoom: 5
+    max_zoom: 10
+    staticBorders: false
 map_options:
   minZoom: 5
+  maxZoom: 10
   tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   tileOptions:
-    attribution: 'My map attribution'
+    attribution: My map attribution
+  colorRange: chroma.brewer.BuGn
+  noValueColor: '#f0f0f0'
+  styleNormal:
+    weight: 1
+    opacity: 1
+    fillOpacity: 0.7
+    color: '#000000'
+  styleHighlighted:
+    weight: 1
+    opacity: 1
+    fillOpacity: 0.7
+    color: '#000000'
+  styleStatic:
+    weight: 2
+    opacity: 1
+    fillOpacity: 0
+    color: '#172d44'
+    dashArray: '5,5'
 menu:
   - path: reporting-status
     translation_key: menu.reporting_status
