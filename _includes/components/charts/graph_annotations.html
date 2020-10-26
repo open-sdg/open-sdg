@@ -3,7 +3,7 @@
 {% include components/charts/annotation_presets.js %}
 // Add a chart alteration to support the chart_annotations metadata field.
 opensdg.chartConfigAlter(function(config, info) {
-    if (info.graphAnnotations) {
+    if (info.graphAnnotations && info.graphAnnotations.length > 0) {
         var annotations = info.graphAnnotations.filter(function(annotation) {
             var match = true;
             if (match && info.selectedUnit) {
