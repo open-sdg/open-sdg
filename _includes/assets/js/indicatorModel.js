@@ -168,7 +168,7 @@ var indicatorModel = function (options) {
       // Decide on a starting series.
       if (this.hasSerieses) {
         var startingSeries = this.selectedSeries;
-        if (this.startValues) {
+        if (this.hasStartValues) {
           var seriesInStartValues = helpers.getSeriesFromStartValues(this.startValues);
           if (seriesInStartValues) {
             startingSeries = seriesInStartValues;
