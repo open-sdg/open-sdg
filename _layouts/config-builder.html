@@ -152,9 +152,15 @@
     }
 
     document.getElementById('export').addEventListener('click', function() {
-      var config = editor.getValue();
-      var yaml = jsyaml.safeDump(config);
-      SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
+      var errors = editor.validate();
+      if (errors.length) {
+        alert('Please correct the errors listed below, before downloading.');
+      }
+      else {
+        var config = editor.getValue();
+        var yaml = jsyaml.safeDump(config);
+        SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
+      }
     });
   </script>
 </div>
