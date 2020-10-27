@@ -188,6 +188,7 @@ metadata_tabs:
 news:
   category_links: true
 non_global_metadata: indicator.national_metadata
+remote_data_prefix: _build
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description

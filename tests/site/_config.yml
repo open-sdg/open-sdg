@@ -6,7 +6,6 @@ title: Indicators For The Sustainable Development Goals
 # Replace the baseurl with the name of this repository.
 baseurl: ""
 url: ""
-local_data_folder: _build
 
 # Build settings
 markdown: kramdown
