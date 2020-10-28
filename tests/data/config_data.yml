@@ -19,13 +19,13 @@ src_dir: ''
 inputs:
   - class: InputCsvData
     path_pattern: data/*-*.csv
-  - class: InputYamlMeta
-    path_pattern: indicator-config/*.yml
-    git: false
   - class: InputYamlMdMeta
     path_pattern: meta/*-*.md
     git: false
     git_data_dir: data
+  - class: InputYamlMeta
+    path_pattern: indicator-config/*.yml
+    git: false
 
 translations:
   - class: TranslationInputYaml

@@ -12,14 +12,10 @@ data_start_values:
 graph_annotations: []
 graph_limits: []
 graph_stacked_disaggregation: Group
-graph_title: >-
-  Volume of production per labour unit by classes of farming/pastoral/forestry
-  enterprise size
+graph_title: global_indicators.2-3-1-title
 graph_titles: []
 graph_type: bar
-indicator_name: >-
-  Volume of production per labour unit by classes of farming/pastoral/forestry
-  enterprise size
+indicator_name: global_indicators.2-3-1-title
 indicator_number: 2.3.1
 reporting_status: complete
 tags: []

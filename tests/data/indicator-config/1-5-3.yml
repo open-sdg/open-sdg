@@ -3,16 +3,10 @@ data_show_map: false
 data_start_values: []
 graph_annotations: []
 graph_limits: []
-graph_title: >-
-  Number of countries that adopt and implement national disaster risk reduction
-  strategies in line with the Sendai Framework for Disaster Risk Reduction
-  2015–2030
+graph_title: global_indicators.1-5-3-title
 graph_titles: []
 graph_type: line
-indicator_name: >-
-  Number of countries that adopt and implement national disaster risk reduction
-  strategies in line with the Sendai Framework for Disaster Risk Reduction
-  2015–2030
+indicator_name: global_indicators.1-5-3-title
 indicator_number: 1.5.3
 reporting_status: complete
 tags: []

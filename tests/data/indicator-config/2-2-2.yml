@@ -11,13 +11,10 @@ graph_annotations:
     label:
       content: Bar
 graph_limits: []
-graph_title: >-
-  Prevalence of malnutrition (weight for height >+2 or <-2 standard deviation
-  from the median of the WHO Child Growth Standards) among children under 5
-  years of age, by type (wasting and overweight)
+graph_title: global_indicators.2-2-2-title
 graph_titles: []
 graph_type: line
-indicator_name: This is a non-translated indicator name
+indicator_name: metadata.indicator-name-key
 indicator_number: 2.2.2
 reporting_status: complete
 tags: []

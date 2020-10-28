@@ -3,9 +3,7 @@ data_show_map: false
 data_start_values: []
 graph_annotations: []
 graph_limits: []
-graph_title: >-
-  Proportion of local breeds classified as being at risk, not at risk or at
-  unknown level of risk of extinction
+graph_title: global_indicators.2-5-2-title
 graph_titles:
   - title: Title with A and Percent
     unit: Percent
@@ -20,9 +18,9 @@ graph_titles:
     unit: Total
     series: B
 graph_type: bar
-indicator_name: >-
-  Proportion of local breeds classified as being at risk, not at risk or at
-  unknown level of risk of extinction
+indicator_name: global_indicators.2-5-2-title
 indicator_number: 2.5.2
+page_content: |
+  This indicator is provided to demonstrate the special "Series" column.
 reporting_status: complete
 tags: []

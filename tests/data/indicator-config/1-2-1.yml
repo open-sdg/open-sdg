@@ -6,14 +6,10 @@ data_show_map: false
 data_start_values: []
 graph_annotations: []
 graph_limits: []
-graph_title: >-
-  Proportion of population living below the national poverty line, by sex and
-  age
+graph_title: global_indicators.1-2-1-title
 graph_titles: []
 graph_type: line
-indicator_name: >-
-  Proportion of population living below the national poverty line, by sex and
-  age
+indicator_name: global_indicators.1-2-1-title
 indicator_number: 1.2.1
 reporting_status: complete
 tags: []
