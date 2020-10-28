@@ -32,16 +32,16 @@ h5 + .btn-download {
 }
 
 .image-download-in-progress {
-  color: $color-dark;
-  
   &, * {
     padding: 0;
     margin: 0;
   }
   #chart-canvas {
     margin-top: -30px;
+    color: $color-dark;
   }
   #selectionChartFooter {
+    color: $color-dark;
     padding-left: 20px;
     p {
       margin-bottom: 10px;
