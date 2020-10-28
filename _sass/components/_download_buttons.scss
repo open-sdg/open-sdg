@@ -33,6 +33,7 @@ h5 + .btn-download {
 
 .image-download-in-progress {
   &, * {
+    color: $color-dark;
     padding: 0;
     margin: 0;
   }
