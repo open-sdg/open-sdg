@@ -21,6 +21,9 @@
                 </li>
               {% endfor %}
             {% endif %}
+            {% if site.environment == 'staging' %}
+            <li><a href="{{ page.baseurl }}config">Configuration</a></li>
+            {% endif %}
             {%- if site.languages.size > 1 and site.footer_language_toggle and site.footer_language_toggle != 'none' -%}
             <li class="language-toggle-menu-footer">
               {% include components/language-toggle.html location="footer" %}
