@@ -130,6 +130,15 @@
       if (currentSchema.type === 'object' && typeof currentSchema.default !== 'undefined') {
         currentValue = deepMerge(currentSchema.default, currentValue);
       }
+      // Also happens with arrays of objects.
+      else if (currentSchema.type === 'array' && typeof currentSchema.items !== 'undefined') {
+        if (currentSchema.items.type === 'object' && typeof currentSchema.items.default !== 'undefined') {
+          for (var currentValueIndex = 0; currentValueIndex < currentValue.length; currentValueIndex++) {
+            var defaultClone = Object.assign({}, currentSchema.items.default);
+            currentValue[currentValueIndex] = deepMerge(defaultClone, currentValue[currentValueIndex]);
+          }
+        }
+      }
 
       var propertyEditor = editor.getEditor('root.{{ config_key }}');
       propertyEditor.setValue(null);
