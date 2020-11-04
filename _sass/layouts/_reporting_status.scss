@@ -2,7 +2,7 @@
   background-color: $status-backgroundColor-notapplicable;
   background: $status-backgroundColor-notapplicable;
 }
-.notstarted {
+.notstarted, .not-disaggregated {
   background-color: $status-backgroundColor-notstarted;
   background: $status-backgroundColor-notstarted;
 }
@@ -44,7 +44,7 @@
           border: $status-border-inprogress;
           color: $status-color-inprogress;
         }
-        &.notstarted {
+        &.notstarted, &.not-disaggregated {
           border: $status-border-notstarted;
           color: $status-color-notstarted;
         }
