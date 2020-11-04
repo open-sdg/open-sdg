@@ -1,14 +1,10 @@
-{% assign reporting_data = site.data.reporting %}
-{% if site.data[page.language].reporting %}
-  {% assign reporting_data = site.data[page.language].reporting %}
-{% endif %}
-{%- assign overall = reporting_data.overall -%}
+{%- assign overall = include.overall -%}
 {%- assign indicators_plural = page.t.general.indicators | downcase -%}
 
 <div class="goal goal-overall">
     <div class="details">
         <h2 class="status-goal">
-            {{ page.t.status.overall_reporting_status }} <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
+            {{ include.title }} <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
         </h2>
         <div class="summary">
             <div class="statuses">

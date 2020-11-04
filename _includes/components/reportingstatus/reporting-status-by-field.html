@@ -4,7 +4,7 @@
 {%- assign indicator_singular = page.t.general.indicator | downcase -%}
 {%- assign indicators_plural = page.t.general.indicators | downcase -%}
 
-<h2>{{ page.t.status.status_by_field | replace: "%field", extra_field_translated }}</h2>
+<h2>{{ include.title | replace: "%field", extra_field_translated }}</h2>
 {%- for fieldreport in include.extra_field[1] -%}
     <div class="goal details reporting-status-item">
         <h3 class="status-goal">
