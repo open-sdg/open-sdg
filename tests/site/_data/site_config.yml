@@ -1,5 +1,7 @@
 ﻿accessible_charts: true
 accessible_tabs: true
+analytics:
+  ga_prod: ''
 breadcrumbs:
   goal:
     - path: /
@@ -27,6 +29,7 @@ create_pages:
   - filename: index.html
     folder: /frontpage-legacy
     layout: frontpage
+    title: ''
   - filename: index.html
     folder: /
     layout: frontpage-alt
@@ -42,6 +45,7 @@ create_pages:
   - filename: indicators.json
     folder: /
     layout: indicator-json
+    title: ''
   - filename: index.html
     folder: /search
     layout: search
@@ -78,7 +82,10 @@ footer_menu:
     translation_key: general.facebook
 frontpage_cards:
   - title: Download all data
+    content: ''
     include: components/download-all-data.html
+    button_label: ''
+    button_link: ''
     rule_color: green
   - title: Useful resources
     content: |
@@ -87,12 +94,16 @@ frontpage_cards:
       * [Useful resource](https://example.com)
       * [Useful resource](https://example.com)
       * [Useful resource](https://example.com)
+    include: ''
+    button_label: ''
+    button_link: ''
     rule_color: blue
   - title: Publications
     content: |
       * [Publication](https://example.com)
       * [Publication](https://example.com)
       * [Publication](https://example.com)
+    include: ''
     button_label: View more publications
     button_link: 'https://example.com'
     rule_color: orange
@@ -148,6 +159,8 @@ map_options:
   maxZoom: 10
   tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   tileOptions:
+    id: ''
+    accessToken: ''
     attribution: My map attribution
   colorRange: chroma.brewer.BuGn
   noValueColor: '#f0f0f0'
@@ -156,11 +169,13 @@ map_options:
     opacity: 1
     fillOpacity: 0.7
     color: '#000000'
+    dashArray: ''
   styleHighlighted:
     weight: 1
     opacity: 1
     fillOpacity: 0.7
     color: '#111111'
+    dashArray: ''
   styleStatic:
     weight: 2
     opacity: 1
@@ -196,6 +211,7 @@ search_index_boost: []
 search_index_extra_fields:
   - un_custodian_agency
 series_toggle: true
+sharethis_property: ''
 site_config_form:
   dropdowns:
     - jsonschema: create_goals.properties.layout
@@ -203,5 +219,6 @@ site_config_form:
         - goal
         - goal-by-target
         - goal-by-target-vertical
+      labels: []
 validate_indicator_config: true
 validate_site_config: true
