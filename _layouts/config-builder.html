@@ -84,32 +84,11 @@
       disable_array_reorder: true,
       disable_edit_json: true,
       disable_properties: true,
-      remove_empty_properties: true,
+      required_by_default: true,
 
       // The schema for the editor
       schema: schema
     });
-
-    function deepMerge(varA, varB) {
-      if (typeof varA === 'undefined') {
-        return varB;
-      }
-      if (typeof varA !== 'object') {
-        if (typeof varB !== 'undefined') {
-          return varB;
-        }
-        else {
-          return varA;
-        }
-      }
-      if (typeof varB !== 'object') {
-        return varB;
-      }
-      for (var key of Object.keys(varB)) {
-        varA[key] = deepMerge(varA[key], varB[key]);
-      }
-      return varA;
-    }
 
     // Set values according to this site's configuration.
     {%- for config_setting in json_schema.properties -%}
@@ -122,23 +101,6 @@
     {% if current_value %}
     try {
       var currentValue = {{ current_value | jsonify }};
-
-      // A strange problem with object properties - need to manually
-      // set default values in order to get all fields to appear.
-      var currentSchema = {{ config_setting[1] | jsonify }};
-      if (currentSchema.type === 'object' && typeof currentSchema.default !== 'undefined') {
-        currentValue = deepMerge(currentSchema.default, currentValue);
-      }
-      // Also happens with arrays of objects.
-      else if (currentSchema.type === 'array' && typeof currentSchema.items !== 'undefined') {
-        if (currentSchema.items.type === 'object' && typeof currentSchema.items.default !== 'undefined') {
-          for (var currentValueIndex = 0; currentValueIndex < currentValue.length; currentValueIndex++) {
-            var defaultClone = Object.assign({}, currentSchema.items.default);
-            currentValue[currentValueIndex] = deepMerge(defaultClone, currentValue[currentValueIndex]);
-          }
-        }
-      }
-
       var propertyEditor = editor.getEditor('root.{{ config_key }}');
       propertyEditor.setValue(null);
       propertyEditor.setValue(currentValue);
