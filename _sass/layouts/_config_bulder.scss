@@ -45,4 +45,40 @@
         color: $color-error;
         font-weight: bold;
     }
+    .config-required {
+        color: $color-error;
+    }
+    &.contrast-high {
+        .config-widgets {
+            background-color: $color-dark-highContrast;
+        }
+        div[data-schemapath="root"] > .well > div > div > .row {
+            background-color: $color-dark-highContrast;
+        }
+        .help-block {
+            color: $text-color-highContrast;
+        }
+        #no_results {
+            background-color: $color-highlight-highContrast;
+            color: $color-dark-highContrast;
+        }
+        .errormsg {
+            color: $color-error;
+        }
+        .config-required {
+            color: $color-error;
+        }
+        .editor-toolbar {
+            background-color: $color-light-highContrast;
+            opacity: 1;
+            border-bottom: 2px solid $color-dark-highContrast;
+        }
+        .btn-group {
+            .btn {
+                span {
+                    color: $color-dark-highContrast;
+                }
+            }
+        }
+    }
 }
