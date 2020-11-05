@@ -1,4 +1,4 @@
-{% include head.html %}
+{% include head.html noindex=true %}
 {% include header.html %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
@@ -99,17 +99,74 @@
       {%- assign current_value = page.meta[config_key] -%}
     {%- endif -%}
     {% if current_value %}
+      try {
+        var currentValue = {{ current_value | jsonify }};
+        var propertyEditor = editor.getEditor('root.{{ config_key }}');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: {{ config_key }}');
+      }
+    {% endif %}
+    {%- assign config_schema = config_setting[1] -%}
+    {%- if config_schema.minItems or config_schema.minimum or config_schema.minLength -%}
+      try {
+        var propertyEditor = editor.getEditor('root.{{ config_key }}');
+        if (typeof propertyEditor.label !== 'undefined') {
+          propertyEditor.label.innerHTML += ' -- <span class="config-required">required</span>';
+        }
+        else if (typeof propertyEditor.header !== 'undefined') {
+          propertyEditor.header.innerHTML += ' -- <span class="config-required">required</span>';
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set "required" flag: {{ config_key }}');
+      }
+    {%- endif -%}
+
     try {
-      var currentValue = {{ current_value | jsonify }};
       var propertyEditor = editor.getEditor('root.{{ config_key }}');
-      propertyEditor.setValue(null);
-      propertyEditor.setValue(currentValue);
+      switch (propertyEditor.schema.type) {
+        case 'string':
+        case 'boolean':
+          propertyEditor.input.setAttribute('id', propertyEditor.formname);
+          propertyEditor.label.setAttribute('for', propertyEditor.formname);
+          if (typeof propertyEditor.description !== 'undefined') {
+            var descriptionId = propertyEditor.formname + '-description';
+            propertyEditor.description.setAttribute('id', descriptionId);
+            propertyEditor.input.setAttribute('aria-describedby', descriptionId);
+          }
+          break;
+        case 'array':
+          var headerId = propertyEditor.formname + '-header';
+          propertyEditor.header.setAttribute('id', headerId);
+          propertyEditor.toggle_button.setAttribute('aria-labelledby', headerId);
+          if (typeof propertyEditor.description !== 'undefined') {
+            var descriptionId = propertyEditor.formname + '-description';
+            propertyEditor.description.setAttribute('id', descriptionId);
+            propertyEditor.toggle_button.setAttribute('aria-describedby', descriptionId);
+          }
+          break;
+        case 'object':
+          var headerId = propertyEditor.formname + '-header';
+          propertyEditor.header.setAttribute('id', headerId);
+          propertyEditor.collapse_control.setAttribute('aria-labelledby', headerId);
+          if (typeof propertyEditor.description !== 'undefined') {
+            var descriptionId = propertyEditor.formname + '-description';
+            propertyEditor.description.setAttribute('id', descriptionId);
+            propertyEditor.collapse_control.setAttribute('aria-describedby', descriptionId);
+          }
+          break;
+      }
     }
     catch (e) {
-      console.log(e.message);
-      console.log('Unable to set config key: {{ config_key }}');
+      // something
+      console.log(propertyEditor);
+      console.log(e);
     }
-    {% endif %}
     {%- endfor -%}
 
     function SaveAsFile(t,f,m) {
