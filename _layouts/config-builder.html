@@ -124,7 +124,12 @@
     document.getElementById('export').addEventListener('click', function() {
       var errors = editor.validate();
       if (errors.length) {
-        alert('Please correct the errors listed below, before downloading.');
+        var alertText = 'Please correct the errors listed below';
+        var fieldNames = []
+        for (var error of errors) {
+          fieldNames.push(error.path.replace('root.', ''));
+        }
+        alert(alertText + ' (' + fieldNames.join(', ') + ').');
       }
       else {
         var config = editor.getValue();
