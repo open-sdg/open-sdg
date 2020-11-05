@@ -17,22 +17,22 @@
         <dd>{{ uniqSources }}</dd>
         {% endif %}
 
-        {% if page.indicator.national_geographical_coverage %}
+        {% if page.indicator.national_geographical_coverage and page.indicator.national_geographical_coverage != '' %}
         <dt>{{ page.t.indicator.geographical_area }}:</dt>
         <dd>{{ page.indicator.national_geographical_coverage }}</dd>
         {% endif %}
 
-        {% if page.indicator.computation_units %}
+        {% if page.indicator.computation_units and page.indicator.computation_units != '' %}
         <dt>{{ page.t.indicator.unit_of_measurement }}:</dt>
         <dd>{{ page.indicator.computation_units }}</dd>
         {% endif %}
 
-        {% if page.indicator.copyright %}
+        {% if page.indicator.copyright and page.indicator.copyright != '' %}
         <dt>{{ page.t.metadata_fields.copyright }}:</dt>
         <dd>{{ page.indicator.copyright }}</dd>
         {% endif %}
 
-        {% if page.indicator.data_footnote %}
+        {% if page.indicator.data_footnote and page.indicator.data_footnote != '' %}
         <dt>{{ page.t.indicator.footnote }}:</dt>
         <dd>{{ page.indicator.data_footnote }}</dd>
         {% endif %}
