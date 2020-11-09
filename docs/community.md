@@ -14,6 +14,7 @@ Below is a list of some of the countries and localities that are currently using
 |Iceland|<https://visar.hagstofa.is/heimsmarkmidin/>|
 |Kazakhstan|In development|
 |Kyrgyzstan|<https://sustainabledevelopment-kyrgyzstan.github.io/>|
+|Lao PDR|In development|
 |Malta|In development|
 |Moldova|In development|
 |Myanmar|In development|
