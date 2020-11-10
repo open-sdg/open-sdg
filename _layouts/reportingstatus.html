@@ -19,7 +19,7 @@
 {% assign show_tabs = false %}
 {% if extra_fields %}
   {% assign show_tabs = true %}
-{% elsif site.reporting_status.disaggregation_tabs %}
+{% elsif site.reporting_status.disaggregation_tabs and disagg_data %}
   {% assign show_tabs = true %}
 {% endif %}
 
@@ -68,9 +68,11 @@
   {% endif %}
   {% include components/reportingstatus/reporting-status-overall.html overall=reporting_data.overall title=page.t.status.overall_reporting_status %}
   {% include components/reportingstatus/reporting-status-by-goal.html goals=reporting_data.goals title=page.t.status.status_by_goal %}
+  {% if show_tabs %}
+    </div>
+  {% endif %}
 
   {% if extra_fields %}
-    </div>
     {%- for extra_field in reporting_data.extra_fields -%}
     {% assign extra_field_name = extra_field[0] %}
     <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}view" data-extra-field="true">
@@ -80,7 +82,7 @@
     {%- endfor -%}
   {% endif %}
 
-  {% if site.reporting_status.disaggregation_tabs %}
+  {% if site.reporting_status.disaggregation_tabs and disagg_data %}
     <div role="tabpanel" class="tab-pane" id="disaggregationsview">
       {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title="Overall disaggregation status" %}
       {% include components/reportingstatus/reporting-status-by-goal.html goals=disagg_data.goals title=page.t.status.status_by_goal %}
