@@ -21,6 +21,8 @@ breadcrumbs:
 country:
   name: Australia
   adjective: Australian
+create_config_forms:
+  layout: config-builder
 create_goals:
   layout: goal
 create_indicators:
@@ -216,9 +218,14 @@ site_config_form:
   dropdowns:
     - jsonschema: create_goals.properties.layout
       values:
+        - ''
         - goal
         - goal-by-target
         - goal-by-target-vertical
-      labels: []
+      labels:
+        - Do not automatically create goals
+        - goal
+        - goal-by-target
+        - goal-by-target-vertical
 validate_indicator_config: true
 validate_site_config: true
