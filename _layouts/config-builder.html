@@ -1,6 +1,5 @@
 {% include head.html noindex=true %}
 {% include header.html %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
 <div id="main-content" class="container" role="main">
   <div class="col-md-12"><h1>{{ page.title }}</h1></div>
@@ -16,7 +15,6 @@
   </div>
   <div class="col-md-12" id="editor_holder"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
@@ -90,6 +88,65 @@
       schema: schema
     });
 
+    function collapseButtonClick() {
+      var title = this.getAttribute('title');
+      this.setAttribute('aria-expanded', title === 'Collapse');
+      var ariaLabel = this.getAttribute('aria-label');
+      if (title === 'Collapse') {
+        ariaLabel = ariaLabel.replace('Expand', 'Collapse');
+      }
+      else {
+        ariaLabel = ariaLabel.replace('Collapse', 'Expand');
+      }
+      this.setAttribute('aria-label', ariaLabel);
+    }
+
+    function propertyEditorAccessibilityFixes(propertyEditor) {
+      try {
+        // Variety of accessibility fixes.
+        switch (propertyEditor.schema.type) {
+          case 'string':
+          case 'boolean':
+            propertyEditor.input.setAttribute('id', propertyEditor.formname);
+            propertyEditor.label.setAttribute('for', propertyEditor.formname);
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+              propertyEditor.input.setAttribute('aria-describedby', descriptionId);
+            }
+            break;
+          case 'array':
+          case 'object':
+            var toggleButton = (propertyEditor.schema.type === 'array') ? propertyEditor.toggle_button : propertyEditor.collapse_control;
+            var headerId = propertyEditor.formname + '-header';
+            propertyEditor.header.setAttribute('id', headerId);
+            var headerText = propertyEditor.header.innerHTML;
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+            }
+            if (typeof toggleButton !== 'undefined') {
+              toggleButton.setAttribute('aria-label', 'Activate to Collapse the ' + headerText + ' section.')
+              collapseButtonClick.call(toggleButton);
+              toggleButton.addEventListener('click', collapseButtonClick);
+              if (typeof propertyEditor.description !== 'undefined') {
+                toggleButton.setAttribute('aria-describedby', descriptionId);
+              }
+            }
+            if (typeof propertyEditor.editors !== 'undefined') {
+              for (var editorKey of Object.keys(propertyEditor.editors)) {
+                propertyEditorAccessibilityFixes(propertyEditor.editors[editorKey]);
+              }
+            }
+            break;
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to do accessibility fixes: ' + propertyEditor.formname);
+      }
+    }
+
     // Set values according to this site's configuration.
     {%- for config_setting in json_schema.properties -%}
     {%- assign config_key = config_setting[0] -%}
@@ -127,46 +184,8 @@
       }
     {%- endif -%}
 
-    try {
-      var propertyEditor = editor.getEditor('root.{{ config_key }}');
-      switch (propertyEditor.schema.type) {
-        case 'string':
-        case 'boolean':
-          propertyEditor.input.setAttribute('id', propertyEditor.formname);
-          propertyEditor.label.setAttribute('for', propertyEditor.formname);
-          if (typeof propertyEditor.description !== 'undefined') {
-            var descriptionId = propertyEditor.formname + '-description';
-            propertyEditor.description.setAttribute('id', descriptionId);
-            propertyEditor.input.setAttribute('aria-describedby', descriptionId);
-          }
-          break;
-        case 'array':
-          var headerId = propertyEditor.formname + '-header';
-          propertyEditor.header.setAttribute('id', headerId);
-          propertyEditor.toggle_button.setAttribute('aria-labelledby', headerId);
-          if (typeof propertyEditor.description !== 'undefined') {
-            var descriptionId = propertyEditor.formname + '-description';
-            propertyEditor.description.setAttribute('id', descriptionId);
-            propertyEditor.toggle_button.setAttribute('aria-describedby', descriptionId);
-          }
-          break;
-        case 'object':
-          var headerId = propertyEditor.formname + '-header';
-          propertyEditor.header.setAttribute('id', headerId);
-          propertyEditor.collapse_control.setAttribute('aria-labelledby', headerId);
-          if (typeof propertyEditor.description !== 'undefined') {
-            var descriptionId = propertyEditor.formname + '-description';
-            propertyEditor.description.setAttribute('id', descriptionId);
-            propertyEditor.collapse_control.setAttribute('aria-describedby', descriptionId);
-          }
-          break;
-      }
-    }
-    catch (e) {
-      // something
-      console.log(propertyEditor);
-      console.log(e);
-    }
+    propertyEditorAccessibilityFixes(editor.getEditor('root.{{ config_key }}'));
+
     {%- endfor -%}
 
     function SaveAsFile(t,f,m) {
