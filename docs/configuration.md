@@ -98,6 +98,15 @@ country:
   adjective: Australian
 ```
 
+### create_config_forms
+
+_Optional_: This setting can be used to automatically create the configuration form pages. Without this setting, you will need to maintain your site and indicator configuration using a text editor. This setting should include another (indented) setting indicating the Jekyll layout to use for the config form pages (usually `config-builder`). After setting this, you will have a site configuration form available through a link in the footer, as well as indicator configuration forms available in the "Edit" tab.
+
+```nohighlight
+create_config_forms:
+  layout: config-builder
+```
+
 ### create_goals
 
 _Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
