@@ -29,6 +29,7 @@ async function testFile(filePath) {
     const diff = await git.diff(filePath)
     if (diff === '') {
         await git.checkout(filePath)
+        console.log('That file has not changed.')
     }
     else {
         await runTests(filePath)
