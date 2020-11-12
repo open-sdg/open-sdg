@@ -13,17 +13,14 @@ async function main() {
         console.error('Indicate a file to test. Eg: node tests/release/back-compat.js _layouts/goal.html')
     }
     else {
-        clean()
-        await git.clone('https://github.com/open-sdg/open-sdg.git', majorFolder, {
-            '--depth': 1,
-            '--branch': '1.0.0',
-        })
+        if (!fs.existsSync(majorFolder)) {
+            await git.clone('https://github.com/open-sdg/open-sdg.git', majorFolder, {
+                '--depth': 1,
+                '--branch': '1.0.0',
+            })
+        }
         await testFile(args[2])
     }
-}
-
-function clean() {
-    fs.rmdirSync(majorFolder, { recursive: true });
 }
 
 async function testFile(filePath) {
@@ -46,7 +43,7 @@ async function runTests(filePath) {
             if (err) {
                 console.log(stdout)
                 console.log(err)
-                console.error('Failed while testing: ' + filePath + '. See above for errors.')
+                console.error('Failed while testing: ' + filePath + '. See above for errors. Press CTRL-c to stop test.')
             }
             else {
                 git.checkout(filePath)
