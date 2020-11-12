@@ -5,6 +5,7 @@
     "dependencies": {
         "cucumber": "latest",
         "cucumber-mink": "git://github.com/brockfanning/cucumber-mink.git#circleci-compatibility",
-        "pa11y-ci": "2.3.0"
+        "pa11y-ci": "2.3.0",
+        "simple-git": "^2.21.0"
     }
 }
