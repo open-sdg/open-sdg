@@ -71,4 +71,8 @@ test.docs: build.docs
 	gem install html-proofer
 	htmlproofer site --disable_external
 
+test.only:
+	cd site-starter && bundle exec htmlproofer --file-ignore '/documentation/' --disable-external ./_site
+	cd tests && npx cucumber-js
+
 test: test.html test.features test.accessibility test.docs
