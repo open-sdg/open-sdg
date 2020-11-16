@@ -1,8 +1,9 @@
 <h1>Community</h1>
 
-## Who is using this platform?
+## Who is using OpenSDG?
 
-Below is a list of some of the countries and localities that are currently using this platform. If you know of an implementation that should be added to this list, please let us know via a GitHub pull request or issue.
+Below is a list of some of the countries and localities that are currently using the Open SDG platform.
+If you know of an implementation that should be added to this list, please let us know at [opensdg@googlegroups.com](mailto:opensdg@googlegroups.com).
 
 ### Countries
 
@@ -37,3 +38,4 @@ Below is a list of some of the countries and localities that are currently using
 |Madrid|In development|
 
 \*Using older version of platform that Open SDG is based on.
+
