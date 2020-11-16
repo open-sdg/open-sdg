@@ -79,9 +79,11 @@ var indicatorView = function (model, options) {
     view_obj.initialiseUnits(args);
   });
 
-  this._model.onSeriesesComplete.attach(function(sender, args) {
-    view_obj.initialiseSerieses(args);
-  });
+  if (this._model.onSeriesesComplete) {
+    this._model.onSeriesesComplete.attach(function(sender, args) {
+      view_obj.initialiseSerieses(args);
+    });
+  }
 
   this._model.onFieldsCleared.attach(function(sender, args) {
     $(view_obj._rootElement).find(':checkbox').prop('checked', false);

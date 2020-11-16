@@ -47,6 +47,12 @@
   {% include assets/js/model/tableHelpers.js %}
   {% include assets/js/model/dataHelpers.js %}
 
+  function deprecated(name) {
+    return function() {
+      console.log('The ' + name + ' function has been removed. Please update any overridden files.');
+    }
+  }
+
   return {
     UNIT_COLUMN: UNIT_COLUMN,
     SERIES_COLUMN: SERIES_COLUMN,
@@ -86,5 +92,7 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    // Backwards compatibility.
+    footerFields: deprecated('helpers.footerFields'),
   }
 })();

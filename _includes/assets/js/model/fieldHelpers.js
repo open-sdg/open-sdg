@@ -145,7 +145,7 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
     states = fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit);
   }
 
-  if (selectedFields.length > 0) {
+  if (selectedFields && selectedFields.length > 0) {
     states.forEach(function(fieldItem) {
       var selectedField = selectedFields.find(function(selectedItem) {
         return selectedItem.field === fieldItem.field;
@@ -171,16 +171,18 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
 function sortFieldsForView(fieldItemStates, edges) {
   var grandparents = [],
       parents = [];
-  edges.forEach(function(edge) {
-    if (!parents.includes(edge.From)) {
-      parents.push(edge.From);
-    }
-  });
-  edges.forEach(function(edge) {
-    if (parents.includes(edge.To)) {
-      grandparents.push(edge.From);
-    }
-  });
+  if (edges) {
+    edges.forEach(function(edge) {
+      if (!parents.includes(edge.From)) {
+        parents.push(edge.From);
+      }
+    });
+    edges.forEach(function(edge) {
+      if (parents.includes(edge.To)) {
+        grandparents.push(edge.From);
+      }
+    });
+  }
   fieldItemStates.sort(function(a, b) {
     if (grandparents.includes(a.field) && !grandparents.includes(b.field)) {
       return -1;
