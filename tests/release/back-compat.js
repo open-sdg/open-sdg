@@ -25,6 +25,10 @@ async function main() {
 
 async function testFile(filePath) {
     await git.checkout(filePath)
+    if (!fs.existsSync(path.join(majorFolder, filePath))) {
+        console.log('The file did not exist before.')
+        return
+    }
     fs.copyFileSync(path.join(majorFolder, filePath), filePath)
     const diff = await git.diff(filePath)
     if (diff === '') {
