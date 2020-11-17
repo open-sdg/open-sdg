@@ -188,6 +188,10 @@ body.contrast-high {
       font-size: 1.40em;
       line-height: 15px;
     }
+    // Backwards compat.
+    form > label > span {
+      @include screenreaderOnly;
+    }
   }
 }
 
