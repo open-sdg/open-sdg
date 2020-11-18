@@ -2,7 +2,7 @@
   background-color: $status-backgroundColor-notapplicable;
   background: $status-backgroundColor-notapplicable;
 }
-.notstarted, .not-disaggregated {
+.notstarted {
   background-color: $status-backgroundColor-notstarted;
   background: $status-backgroundColor-notstarted;
 }
@@ -10,7 +10,7 @@
   background-color: $status-backgroundColor-inprogress;
   background: $status-backgroundColor-inprogress;
 }
-.complete, .fully-disaggregated {
+.complete  {
   background-color: $status-backgroundColor-complete;
   background: $status-backgroundColor-complete;
 }
@@ -36,7 +36,7 @@
         text-align: center;
         font-size: 16px;
 
-        &.complete, &.fully-disaggregated {
+        &.complete {
           border: $status-border-complete;
           color: $status-color-complete;
         }
@@ -44,7 +44,7 @@
           border: $status-border-inprogress;
           color: $status-color-inprogress;
         }
-        &.notstarted, &.not-disaggregated {
+        &.notstarted {
           border: $status-border-notstarted;
           color: $status-color-notstarted;
         }
