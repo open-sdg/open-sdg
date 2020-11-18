@@ -45,7 +45,7 @@
 
     {% if site.reporting_status.disaggregation_tabs %}
       <li role="presentation" class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#disaggregationsview" aria-controls="disaggregations" role="tab" {% include autotrack.html preset="tab_reporting_status_disaggregations" category="Tab change" action="Change reporting status view" label="Change reporting status view to disaggregations" %}>Disaggregation status</a>
+        <a class="nav-link" data-toggle="tab" href="#disaggregationsview" aria-controls="disaggregations" role="tab" {% include autotrack.html preset="tab_reporting_status_disaggregations" category="Tab change" action="Change reporting status view" label="Change reporting status view to disaggregations" %}>{{ page.t.status.disaggregation_status }}</a>
       </li>
       {% if extra_fields %}
         {% for extra_field in reporting_data.extra_fields %}
@@ -53,7 +53,7 @@
         {% assign extra_field_translated = extra_field_name | translate_metadata_field %}
         {% assign extra_field_autotrack = 'Change disaggregation status view to ' | append: extra_field_name %}
         <li role="presentation" class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#{{ extra_field_name }}-disaggregationsview" aria-controls="{{ extra_field_name }}-disaggregations" role="tab" {% include autotrack.html preset="tab_disaggregation_status_extra_field" category="Tab change" action="Change disaggregation status view" label=extra_field_autotrack %}>Disaggregation by {{ extra_field_translated }}</a>
+          <a class="nav-link" data-toggle="tab" href="#{{ extra_field_name }}-disaggregationsview" aria-controls="{{ extra_field_name }}-disaggregations" role="tab" {% include autotrack.html preset="tab_disaggregation_status_extra_field" category="Tab change" action="Change disaggregation status view" label=extra_field_autotrack %}>{{ page.t.status.disaggregation_status_by_field | replace: "%field", extra_field_translated }}</a>
         </li>
         {% endfor %}
       {% endif %}
@@ -84,7 +84,7 @@
 
   {% if site.reporting_status.disaggregation_tabs and disagg_data %}
     <div role="tabpanel" class="tab-pane" id="disaggregationsview">
-      {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title="Overall disaggregation status" %}
+      {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title=page.t.status.disaggregation_status_overall %}
       {% include components/reportingstatus/reporting-status-by-goal.html goals=disagg_data.goals title=page.t.status.status_by_goal %}
     </div>
 
@@ -92,8 +92,8 @@
       {%- for extra_field in disagg_data.extra_fields -%}
       {% assign extra_field_name = extra_field[0] %}
       <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}-disaggregationsview" data-extra-field="true">
-        {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title="Overall disaggregation status" %}
-        {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status_by_field %}
+        {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title=page.t.status.disaggregation_status_overall %}
+        {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status.disaggregation_status_by_field %}
       </div>
       {%- endfor -%}
     {% endif %}
