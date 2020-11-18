@@ -84,9 +84,12 @@
 * Alt tag for loading image #758
 * Javascript fixes for IE support #757
 
-The release involved significant changes, in part to resolve serious accessibility issues. Extensive testing has helped us avoid breaking changes, except for one unavoidable change:
+The release involved significant changes, in part to resolve serious accessibility issues. Extensive testing has helped us avoid breaking changes, except in regards to chart/table footer fields:
 
-* _includes/components/charts/chart.html - If you have overridden this file, your chart/table "footer fields" may not display properly.
+* _includes/components/charts/chart.html
+* _includes/components/indicator/table.html
+
+If you have overridden either to these two files, your chart/table "footer fields" may not display properly.
 
 Most files in the _includes and _layouts folders underwent some change in this release. If you are overriding any of those files, your implementation might not benefit from the various enhancements/fixes in the release.
 
