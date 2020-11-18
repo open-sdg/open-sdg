@@ -72,3 +72,4 @@ pages:
     - Upgrades:
         - Upgrade process: upgrades/upgrade-process.md
         - Upgrading to 1.0.0: upgrades/upgrading-1-0-0.md
+        - Upgrading to 1.2.0: upgrades/upgrading-1-2-0.md

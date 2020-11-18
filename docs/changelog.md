@@ -89,9 +89,11 @@ The release involved significant changes, in part to resolve serious accessibili
 * _includes/components/charts/chart.html
 * _includes/components/indicator/table.html
 
-If you have overridden either to these two files, your chart/table "footer fields" may not display properly.
+If you have overridden either to these two files, your chart/table "footer fields" may not display properly. More information on the necessary updates is on the [1.2.0 upgrade instructions](upgrades/upgrading-1-2-0.md).
 
 Most files in the _includes and _layouts folders underwent some change in this release. If you are overriding any of those files, your implementation might not benefit from the various enhancements/fixes in the release.
+
+For details on upgrading from 1.0.0 or higher to 1.2.0, see the [1.2.0 upgrade instructions](upgrades/upgrading-1-2-0.md).
 
 ## 1.1.0
 
