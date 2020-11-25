@@ -10,7 +10,7 @@
             <div class="statuses">
             {%- for status in overall.statuses -%}
             <div>
-                <span class="status {{ status.status | slugify }}">{{ status.count }}</span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+                <span class="status {{ status.status | slugify }}"><span class="status-inner">{{ status.count }}</span></span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
             </div>
             {%- endfor -%}
 
