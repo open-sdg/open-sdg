@@ -6,7 +6,7 @@
 <div class="goal reporting-status-item">
     <div class="frame goal-tiles">
         <a href="{{ goal.url }}">
-        <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" id="goal-{{ goal.number }}"/>
+        <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" class="goal-icon-{{ goal.number }}"/>
         </a>
     </div>
     <div class="details">
