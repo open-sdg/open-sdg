@@ -34,7 +34,7 @@
 * Translate page titles and content #891
 * Use aside instead of div for news sidebar #890
 * Search button outside of label #886
-* Revamp of chart/table/map footers #885, #948 (breaking - chart.html)
+* Revamp of chart/table/map footers #885, #948
 * Use text color for disclaimer text #883
 * Add aria-label to contrast toggle #882
 * Accessibility fixes for sorting tables #880
@@ -71,7 +71,6 @@
 * Configurable reporting status title and description #778
 * Vertical goal-by-target layout #776, #838
 * More usage of variables with status colors and borders #773
-* Alternate frontpage layout #772
 * Syntax fix - map tooltips #768
 * Support translations in the reporting status extra fields #767
 * Fix styling of mobile menu items #765
