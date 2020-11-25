@@ -55,14 +55,14 @@ $status-backgroundColor-inprogress-highContrast: $color-medium-highContrast !def
 $status-backgroundColor-notstarted-highContrast: $color-dark-highContrast !default;
 $status-backgroundColor-notapplicable-highContrast: $status-backgroundColor-notapplicable !default;
 
-$status-border-complete: none !default;
-$status-border-inprogress: none !default;
+$status-border-complete: 1px solid transparent !default;
+$status-border-inprogress: 1px solid transparent !default;
 $status-border-notstarted: 1px solid $color-dark !default;
-$status-border-notapplicable: none !default;
-$status-border-complete-highContrast: none !default;
-$status-border-inprogress-highContrast: none !default;
+$status-border-notapplicable: 1px solid transparent !default;
+$status-border-complete-highContrast: 1px solid transparent !default;
+$status-border-inprogress-highContrast: 1px solid transparent !default;
 $status-border-notstarted-highContrast: 1px solid $color-light-highContrast !default;
-$status-border-notapplicable-highContrast: none !default;
+$status-border-notapplicable-highContrast: 1px solid transparent !default;
 
 $button-color: #00703c !default;
 $button-color-pressed: #005a30 !default;
