@@ -25,7 +25,7 @@
   {{ content }}
 
   <div class="container">
-    <h2>Targets and indicators</h2>
+    <h2>{{ page.t.general.targets_and_indicators }}</h2>
 
     {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
     {% for group in goal_indicators %}
@@ -64,12 +64,12 @@
               <span class="indicator-number"><span class="sr-only">{{ page.t.general.indicator }}</span> {{ indicator.number }}</span>
             </h4>
             <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
-            <span class="sr-only">Indicator status</span>
+            <span class="sr-only">{{ page.t.indicator.status }}</span>
             <span class="status {{ status_css }}">
               {{ status_desc }}
             </span>
             {% if indicator.tags %}
-            <span class="sr-only">Tags</span>
+            <span class="sr-only">{{ page.t.indicator.tags }}</span>
             <span class="tags">
             {% for tag in indicator.tags %}
               {% assign tag_class = tag | slugify %}

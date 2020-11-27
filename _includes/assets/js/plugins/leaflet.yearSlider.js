@@ -61,7 +61,7 @@
 
       knobElement.setAttribute('tabindex', '0');
       knobElement.setAttribute('role', 'slider');
-      knobElement.setAttribute('aria-label', 'Year slider');
+      knobElement.setAttribute('aria-label', translations.indicator.map_year_slider);
       knobElement.setAttribute('aria-valuemin', minYear);
       knobElement.setAttribute('aria-valuemax', maxYear);
 
