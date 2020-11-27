@@ -396,7 +396,7 @@ var indicatorView = function (model, options) {
         },
         legendCallback: function(chart) {
             var text = [];
-            text.push('<h5 class="sr-only">{{ page.t.indicator.plot_legend_description }}</h5>');
+            text.push('<h5 class="sr-only">' + translations.indicator.plot_legend_description + '</h5>');
             text.push('<ul id="legend">');
             _.each(chart.data.datasets, function(dataset) {
               text.push('<li>');
