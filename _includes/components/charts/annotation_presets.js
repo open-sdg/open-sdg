@@ -20,7 +20,7 @@ opensdg.annotationPresets = {
         //     description: 'Chart annotation showing a 2030 target of 15%'
         //
         description: function() {
-            var descriptionParts = ['Chart annotation'];
+            var descriptionParts = [translations.indicator.chart_annotation];
             if (this.label && this.label.content) {
                 descriptionParts.push(translations.t(this.label.content));
             }
@@ -44,7 +44,7 @@ opensdg.annotationPresets = {
         borderDash: [5, 5],
         label: {
             position: 'right',
-            content: '2030 Target',
+            content: translations.indicator.annotation_2030_target,
         },
     },
 };

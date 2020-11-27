@@ -25,10 +25,10 @@ Chart.plugins.register({
             .attr('role', 'status')
             .appendTo('#chart');
         if (window.innerWidth <= 768) {
-            $(this.chart.canvas).text('Chart. For tabular data alternative see Table tab.');
+            $(this.chart.canvas).text(translations.indicator.chart + '. ' + translations.indicator.data_tabular_alternative);
         }
         else {
-            var keyboardInstructions = 'Press enter to browse data points with left and right arrow keys.';
+            var keyboardInstructions = translations.indicator.data_keyboard_navigation;
             $('<span/>')
                 .css('display', 'none')
                 .attr('id', 'chart-keyboard')

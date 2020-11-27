@@ -31,11 +31,11 @@
       return container;
     },
     _accessibleExpand: function() {
-      this._accessibleDescription('Hide search');
+      this._accessibleDescription(translations.indicator.map_search_hide);
       this._button.setAttribute('aria-expanded', 'true');
     },
     _accessibleCollapse: function() {
-      this._accessibleDescription('Show search');
+      this._accessibleDescription(translations.indicator.map_search_show);
       this._button.setAttribute('aria-expanded', 'false');
     },
     _accessibleDescription: function(description) {
@@ -59,7 +59,7 @@
     },
     showTooltip: function(records) {
       L.Control.Search.prototype.showTooltip.call(this, records);
-      this._accessibleDescription('Search');
+      this._accessibleDescription(translations.indicator.map_search);
       this._button.removeAttribute('aria-expanded');
       return this._countertips;
     },
