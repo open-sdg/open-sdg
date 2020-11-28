@@ -56,6 +56,7 @@ const driver = new mink.Mink({
     "map footer item": "#mapFooter dt",
     "table has no data": "#selectionsTable.table-has-no-data h3",
     "chart has no data": "#selectionsChart.chart-has-no-data canvas",
+    "breadcrumbs": ".breadcrumb",
   }
 });
 
