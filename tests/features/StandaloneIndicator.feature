@@ -17,4 +17,4 @@ Feature: Standalone indicator
   Scenario: Standalone indicators do not display certain other elements
     Then I should not see a "goal icon" element
     And I should not see a "the Global metadata tab" element
-    And I should see a "breadcrumb" element
+    And I should not see a "breadcrumb" element
