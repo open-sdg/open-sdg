@@ -18,3 +18,9 @@ Feature: Standalone indicator
     Then I should not see a "goal icon" element
     And I should not see a "the Global metadata tab" element
     And I should not see a "breadcrumb" element
+
+  Scenario: Standalone indicators can be listed
+    Given I am on "/my-standalone-indicator-list"
+    Then I should see "Content for my standalone indicator list"
+    And I click on "My standalone indicator title"
+    Then I should see "My standalone indicator content"

@@ -1,0 +1,36 @@
+{% include head.html %}
+{% include header.html %}
+
+<div class="heading goal-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>{{ page.title | t }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="main-content" class="container goal-indicators">
+  {{ content }}
+  <ul class="standalone-indicator-list">
+  {% for indicator_number in page.standalone_indicators %}
+    {% assign indicator = indicator_number | sdg_lookup %}
+    <li>
+      <a href="{{ indicator.url }}">
+        {{ indicator.name }}
+        {% if indicator.tags %}
+          <ul class="tags">
+          {% for tag in indicator.tags %}
+            {% assign tag_class = tag | slugify %}
+            <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      </a>
+    </li>
+	{% endfor %}
+  </ul>
+</div>
+
+{% include footer.html %}
