@@ -13,7 +13,9 @@
       {% endunless %}
         <div>
           <h1>
+            {% unless page.indicator.standalone %}
             {{ page.t.general.indicator }} {{ page.indicator.number }}
+            {% endunless %}
             <span class="lead-copy">{{ page.indicator.name }}</span>
           </h1>
         </div>
