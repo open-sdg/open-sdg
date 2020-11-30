@@ -43,6 +43,7 @@ For the remainder of this tutorial, we will assume the chosen language is Russia
     ```
     languages:
       - en
+      - es
       - ru
     ```
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
@@ -104,7 +105,7 @@ permalink: /ru/test-post-1/
 Now you can continue to add the new file to your branch:
 
 1. At the bottom you should see "Commit directly to the `language-tutorial` branch".
-1. Click the "Commit changes" button.
+1. Click the "Commit new file" button.
 
 ## Create new versions of pages
 

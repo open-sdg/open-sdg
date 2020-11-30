@@ -29,7 +29,7 @@ Next we will upload the logo to your site repository.
 1. Click `Add a file` and then `Upload files`.
 1. Drag in your new `SDG_logo.png` file or click to browse for it.
 1. At the bottom select `Create a new branch for this commit and start a pull request.`
-1. Click `Commit changes`.
+1. Click `Propose changes`.
 1. Click `Create pull request`.
 1. Wait for the tests to complete, and then click `Merge pull request`.
 
@@ -52,7 +52,7 @@ Finally we will upload the favicon to your site repository.
 1. Click `Add a file` and then `Upload files`.
 1. From the unzipped folder of images, drag in both of the files named `favicon`, or click to browse for them.
 1. At the bottom select `Create a new branch for this commit and start a pull request.`
-1. Click `Commit changes`.
+1. Click `Propose changes`.
 1. Click `Create pull request`.
 1. Wait for the tests to complete, and then click `Merge pull request`.
 

@@ -21,7 +21,7 @@ To solve this problem, the following steps can be taken to set up an automatic s
 1. Go to the site repository.
 1. Under the repository name, click "Settings".
 1. In the left sidebar, click "Secrets".
-1. Click "Add a new secret".
+1. Click "New repository secret".
 1. Under "Name", type the following (case-sensitive): `token`
 1. Under "Value", paste in the access token you copied earlier.
 1. Click the green "Add secret" button.
@@ -31,7 +31,7 @@ Then repeat this for the data repository, as follows:
 1. Go to the data repository.
 1. Under the repository name, click "Settings".
 1. In the left sidebar, click "Secrets".
-1. Click "Add a new secret".
+1. Click "New repository secret".
 1. Under "Name", type the following (case-sensitive): `token`
 1. Under "Value", paste in the access token you copied earlier.
 1. Click the green "Add secret" button.
@@ -42,8 +42,9 @@ Then repeat this for the data repository, as follows:
 1. Click on `deploy-to-staging.yml`.
 1. Click the pencil to edit the file.
 1. Make changes to the file by following the instructions in the notes.
-1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. Beneath this, click "Propose file changes".
+1. Towards the right, click "Start commit"
+1. Select "Create a new branch for this commit and start a pull request."
+1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.
 1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
 1. Wait until you see "All checks have passed". This takes about 5 minutes.

@@ -125,7 +125,7 @@ Because the U.S. Web Design System requires its own CSS, javascript, and images,
 
 ### Upload the CSS file
 
-1. In your site repository (still in the `banner-tutorial` branch) navigate to the `asssets/css` folder.
+1. In your site repository (still in the `banner-tutorial` branch) navigate to the `assets/css` folder.
 1. Press the "Add file" drop-down and select "Upload files".
 1. From your local computer, find the extracted files and select the `css/uswds.min.css` file.
 1. At the bottom you should see "Commit directly to the `banner-tutorial` branch".
@@ -133,7 +133,7 @@ Because the U.S. Web Design System requires its own CSS, javascript, and images,
 
 ### Upload the Javascript file
 
-1. In your site repository (still in the `banner-tutorial` branch) navigate to the `asssets/js` folder.
+1. In your site repository (still in the `banner-tutorial` branch) navigate to the `assets/js` folder.
 1. Press the "Add file" drop-down and select "Upload files".
 1. From your local computer, find the extracted files and select the `js/uswds.min.js` file.
 1. At the bottom you should see "Commit directly to the `banner-tutorial` branch".
@@ -141,7 +141,7 @@ Because the U.S. Web Design System requires its own CSS, javascript, and images,
 
 ### Upload three image files
 
-1. In your site repository (still in the `banner-tutorial` branch) navigate to the `asssets/img` folder.
+1. In your site repository (still in the `banner-tutorial` branch) navigate to the `assets/img` folder.
 1. Press the "Add file" drop-down and select "Upload files".
 1. From your local computer, find the extracted files and select these three images:
     * `img/icon-dot-gov.svg`
