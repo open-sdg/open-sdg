@@ -107,6 +107,7 @@ input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus,
 input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
   box-shadow: 0px 0px 0px 4px $focusOutlineColor !important;
 }
+.nav-tabs .nav-item .nav-link:focus,
 .tabPanel:focus,
 input[type="text"]:focus,
 body.contrast-high input[type="text"]:focus {
