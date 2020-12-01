@@ -1,12 +1,53 @@
+#main-content {
+  .nav-tabs {
+    border-bottom: 1px solid $tabs-borderColor;
+    .nav-item {
+      padding: 10px 15px;
+      margin-right: 2px;
+      background-color: $tabs-backgroundColor-inactive;
+      a {
+        display: inline-block;
+        padding: 0;
+        border: none;
+        margin-right: 0;
+        text-decoration: underline;
+        color: $color-dark;
+      }
+      &.active {
+        background-color: $tabs-backgroundColor-active;
+        border: 1px solid $tabs-borderColor;
+        border-bottom: 0;
+        border-radius: 4px 4px 0 0;
+        a {
+          border: none;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .tab-content {
+    border: 1px solid $tabs-borderColor;
+    padding: 15px;
+    border-top:  0;
+
+    .tab-pane {
+      padding-top: 1.5rem;
+    }
+  }
+}
+
 body.contrast-high {
   .nav-tabs {
     border-color: $color-highlight-highContrast;
   }
 
-  #main-content .nav-tabs .nav-item.active a {
+  #main-content .nav-tabs .nav-item.active {
     background: $color-highlight-highContrast;
-    color: $color-dark-highContrast;
-    border-color: $color-highlight-highContrast; }
+    border-color: $color-highlight-highContrast;
+    a {
+      color: $color-dark-highContrast;
+    }
+  }
 
   a.nav-link:focus {
     background: $color-light-highContrast;

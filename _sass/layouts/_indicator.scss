@@ -389,41 +389,8 @@
     display: table;
     clear: both;
   }
-  .nav-tabs {
-    border-bottom: 1px solid $indicator-tabs-borderColor;
-    .nav-item {
-      background: none;
-      border: none;
-      a {
-        border: none;
-        color: $color-dark;
-      }
-      &.active {
-        a {
-          border: 1px solid $indicator-tabs-borderColor;
-          border-bottom: 0;
-        }
-      }
-      &:not(.active){
-        a{
-          background-color: $indicator-tabs-backgroundColor-inactive;
-          &:hover{
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  }
   .tab-content {
-    border: 1px solid $indicator-tabs-borderColor;
-    padding: 15px;
-    border-top:  0;
-
     .tab-pane {
-      padding-top: 1.5rem;
-      // th {
-      //   width: 35%;
-      // }
       #datatable {
         overflow-x: auto;
       }
