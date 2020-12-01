@@ -37,23 +37,29 @@
 }
 
 body.contrast-high {
-  .nav-tabs {
-    border-color: $color-highlight-highContrast;
-  }
-
-  #main-content .nav-tabs .nav-item.active {
-    background: $color-highlight-highContrast;
-    border-color: $color-highlight-highContrast;
-    a {
-      color: $color-dark-highContrast;
+  #main-content {
+    .nav-tabs {
+      border-color: $color-highlight-highContrast;
+      .nav-item {
+        a:focus {
+          box-shadow: none !important;
+          background-color: $color-highlight-highContrast !important;
+        }
+        &.active {
+          background: $color-highlight-highContrast;
+          border-color: $color-highlight-highContrast;
+          a {
+            color: $color-dark-highContrast;
+            background: $color-highlight-highContrast;
+            &:focus {
+              background-color: $color-highlight-highContrast !important;
+              box-shadow: 0 -2px $color-highlight-highContrast,0 4px $focusColor !important;
+            }
+          }
+        }
+      }
     }
   }
-
-  a.nav-link:focus {
-    background: $color-light-highContrast;
-    color: $color-dark-highContrast;
-  }
-
 }
 
 @media only screen and (max-width: 768px) {
