@@ -1,5 +1,99 @@
 <h1>Change Log</h1>
 
+## 1.2.0
+
+* Different canvas fallback for mobile/desktop. #968
+* Remove aria-label from table headers #967
+* Move fieldset/legend to different spot in markup #966
+* Keep swatch colors in Edge/IE + high-contrast mode #957
+* Remove rowspan and colspan from table headers #954
+* Fix the mobile navigation tab order #952
+* Better support for third-party and remote javascript files. #951
+* Map color contrast fixes #946
+* Map search accessibility #945
+* Map fullscreen accessibility #944, #958
+* Map slider accessibility #941
+* More descriptive disaggregation button label/hierarchy for screenreaders #935
+* Use aria-hidden when hiding sidebar #934
+* aria-describedby for no-data-hint #933
+* Remove role from datatable #927
+* Make map unfocusable and remove loading image #926
+* Consider hierarchy when sorting fields #920
+* Add background colour to goal icons #919
+* Allow disabling of news category links #917
+* Remove legend clickability #914
+* Support for Chart.js annotations #912
+* Backwards-compatible array-style for search_index_boost #907
+* Add site title to page title #906
+* Full indicator name in the page title and h1 #905
+* Accessible charts #904, #963
+* Use text-colour for table caption #903
+* Alert role and screenreader-only warning label for too-many-datasets #902
+* Search results link fixes #901
+* Chart/table accessibility #894
+* Translate page titles and content #891
+* Use aside instead of div for news sidebar #890
+* Search button outside of label #886
+* Revamp of chart/table/map footers #885, #948
+* Use text color for disclaimer text #883
+* Add aria-label to contrast toggle #882
+* Accessibility fixes for sorting tables #880
+* Accessibility improvements for chart legends #878
+* Remove alert role from disclaimer #877
+* Default mouse cursor on disabled elements #876
+* Announce changes to the chart/table #875, #916
+* Use buttons for the mobile menu/search drop-downs #874
+* aria-described-by for indicator disaggregation variable hint #873
+* H4 instead of H3 for chart title #872
+* More efficient unique function for better support of large datasets #871
+* Use darker text color and default to white text in high-contrast #865
+* More obvious focus colors #864
+* Fieldsets around radios and checkboxes #863
+* Better keyboard accessibility for tabbed content #862, #884, #925, #953, #965
+* Add an anchor for any back-to-top links #836
+* H1 in news and post layouts #835
+* Page titles #834
+* Allow translated href in footer menu links #825
+* More space beneath reporting status goal items #824
+* Only link indicator name in goal-by-target #823
+* Button revamp #822
+* New breadcrumb configuration and separator #821
+* Add vertical hover lines to line charts #816
+* Refactor metadata tabs to support array structure #812
+* Support markdown in the description property of some config settings #811
+* Custom source-file downloads #809
+* Pad the search bar to avoid hiding terms #807
+* Skip map layers that do not have data #806
+* Line height fix for Firefox search icon #797
+* Simplify goals layout and allow configurable intro #793
+* Display a no-data message when chart has no data #786
+* Optional setting for language toggle as links #784
+* Configurable reporting status title and description #778
+* Vertical goal-by-target layout #776, #838
+* More usage of variables with status colors and borders #773
+* Syntax fix - map tooltips #768
+* Support translations in the reporting status extra fields #767
+* Fix styling of mobile menu items #765
+* Hide map selection legend on mobile #764
+* Update tooltips of active selections when the year changes #763
+* Translate mobile search buttons #762
+* Correct selector to avoid infinite loop #761
+* Sort the disaggregations that display in table headers #760
+* Visited color for download buttons #759
+* Alt tag for loading image #758
+* Javascript fixes for IE support #757
+
+The release involved significant changes, in part to resolve serious accessibility issues. Extensive testing has helped us avoid breaking changes, except in regards to chart/table footer fields:
+
+* _includes/components/charts/chart.html
+* _includes/components/indicator/table.html
+
+If you have overridden either to these two files, your chart/table "footer fields" may not display properly. More information on the necessary updates is on the [1.2.0 upgrade instructions](upgrades/upgrading-1-2-0.md).
+
+Most files in the _includes and _layouts folders underwent some change in this release. If you are overriding any of those files, your implementation might not benefit from the various enhancements/fixes in the release.
+
+For details on upgrading from 1.0.0 or higher to 1.2.0, see the [1.2.0 upgrade instructions](upgrades/upgrading-1-2-0.md).
+
 ## 1.1.0
 
 * Embed using either Pym parent or iframe (#751)

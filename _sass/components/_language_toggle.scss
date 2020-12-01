@@ -235,3 +235,21 @@ footer #footerLinks .language-toggle-menu-footer {
     }
   }
 }
+
+// @deprecated start
+.language-toggle-menu-header > .language-toggle.language-options {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  left: 12px;
+  color: #222;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 2px 0px #a6a6a6;
+  padding: .2em 1em .2em .2em;
+  text-shadow: #f5f5f5 0 1px 0;
+  li {
+    padding: 5px;
+  }
+}
+// @deprecated end

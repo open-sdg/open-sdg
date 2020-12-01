@@ -188,6 +188,11 @@ body.contrast-high {
       font-size: 1.40em;
       line-height: 15px;
     }
+    // @deprecated start
+    form > label > span {
+      @include screenreaderOnly;
+    }
+    // @deprecated end
   }
 }
 

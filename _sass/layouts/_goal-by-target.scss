@@ -1,0 +1,9 @@
+// @deprecated start
+.layout-goal-by-target {
+  .indicator-cards.target {
+    @media screen and (max-width: 768px) {
+      padding-top: 20px;
+    }
+  }
+}
+// @deprecated end

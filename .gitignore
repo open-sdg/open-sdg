@@ -8,3 +8,4 @@ make-cache
 venv
 /site
 .vscode
+version-*

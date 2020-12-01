@@ -79,9 +79,11 @@ var indicatorView = function (model, options) {
     view_obj.initialiseUnits(args);
   });
 
-  this._model.onSeriesesComplete.attach(function(sender, args) {
-    view_obj.initialiseSerieses(args);
-  });
+  if (this._model.onSeriesesComplete) {
+    this._model.onSeriesesComplete.attach(function(sender, args) {
+      view_obj.initialiseSerieses(args);
+    });
+  }
 
   this._model.onFieldsCleared.attach(function(sender, args) {
     $(view_obj._rootElement).find(':checkbox').prop('checked', false);
@@ -298,17 +300,20 @@ var indicatorView = function (model, options) {
   };
 
   this.initialiseSerieses = function(args) {
-    var template = _.template($('#series_template').html()),
-        serieses = args.serieses || [],
-        selectedSeries = args.selectedSeries || null;
+    var templateElement = $('#series_template');
+    if (templateElement.length > 0) {
+      var template = _.template(templateElement.html()),
+          serieses = args.serieses || [],
+          selectedSeries = args.selectedSeries || null;
 
-    $('#serieses').html(template({
-      serieses: serieses,
-      selectedSeries: selectedSeries
-    }));
+      $('#serieses').html(template({
+        serieses: serieses,
+        selectedSeries: selectedSeries
+      }));
 
-    if(!serieses.length) {
-      $(this._rootElement).addClass('no-serieses');
+      if(!serieses.length) {
+        $(this._rootElement).addClass('no-serieses');
+      }
     }
   };
 

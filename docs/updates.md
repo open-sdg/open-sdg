@@ -2,6 +2,28 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.2.0
+
+1 December 2020
+
+This release includes the following:
+
+* Improved keyboard navigation across the platform, such as in charts, tabs, and maps
+* Improved screenreader support across the platform, such as with disaggregation controls on indicator pages
+* Improved accessibility through unique page titles and more semantic HTML markup
+* Design and user-experience improvements for buttons, links, breadcrumbs, and "focus" treatment
+* Darker text color for better contrast
+* Better support for Windows high-contrast mode
+* User-experience improvements on mobile
+* Simplified chart legends without clickability
+* Support for annotations/labels on charts (such as adding a line for "2030 target")
+* Support for translation of contents and titles of custom pages
+* Ability for footer menu to use different links per language
+* Vertical "hover lines" on charts
+* A "no data" message for when a chart/table has no data
+* New layout available for goal pages: goal_by_target_vertical
+* Faster performance on large datasets
+
 ## 1.1.0
 
 29 July 2020
