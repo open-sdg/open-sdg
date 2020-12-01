@@ -507,6 +507,12 @@ plugins:
 remote_data_prefix: https://my-github-org.github.io/my-data-repository
 ```
 
+Note that this is typically a remote URL, but it also works as a relative path to a local folder on disk. For example:
+
+```nohighlight
+remote_data_prefix: my-data-build-folder
+```
+
 ### remote_theme
 
 **_Required_**: This is not specific to Open SDG, but it is very important to always use a specific version of Open SDG (as opposed to using the latest version). For example, to use version 0.8.0 of the platform, use the following:
