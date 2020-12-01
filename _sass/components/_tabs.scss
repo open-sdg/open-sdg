@@ -57,18 +57,22 @@ body.contrast-high {
 }
 
 @media only screen and (max-width: 768px) {
-  #main-content .nav-tabs .nav-item {
-    width: 100%;
-    a {
-      margin-right: 0;
-    }
-    &.active {
-      margin-bottom: 1px;
-      border-bottom: 1px solid black;
-    }
-    &:not(.active) {
-      border-bottom: 1px solid black;
-      margin-bottom: 0;
+  #main-content .nav-tabs {
+    &:not(.non-stacking-tabs) {
+      .nav-item {
+        width: 100%;
+        a {
+          margin-right: 0;
+        }
+        &.active {
+          margin-bottom: 1px;
+          border-bottom: 1px solid black;
+        }
+        &:not(.active) {
+          border-bottom: 1px solid black;
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
