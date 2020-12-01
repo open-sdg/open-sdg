@@ -8,7 +8,8 @@ Feature: Reporting status page
     Given I am on "/reporting-status"
 
   Scenario: All available goals are listed
-    Then I should see 4 "goal status" elements
+    # 4 under "Reporting status" and 4 under "Disaggregation status"
+    Then I should see 8 "goal status" elements
 
   Scenario: Extra fields can be used to group status and are properly translated
     And I click on "the second reporting status tab"

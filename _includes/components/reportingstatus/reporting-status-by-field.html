@@ -1,0 +1,41 @@
+{% assign extra_field_name = include.extra_field[0] %}
+{% assign extra_field_translated = extra_field_name | translate_metadata_field %}
+
+{%- assign indicator_singular = page.t.general.indicator | downcase -%}
+{%- assign indicators_plural = page.t.general.indicators | downcase -%}
+
+<h2>{{ include.title | replace: "%field", extra_field_translated }}</h2>
+{%- for fieldreport in include.extra_field[1] -%}
+    <div class="goal details reporting-status-item">
+        <h3 class="status-goal">
+            <span class="status-field">{{ fieldreport[extra_field_name] | t }}</span>
+            <span class="total">{{ fieldreport.totals.total }}
+                {% if fieldreport.totals.total == 1 %}
+                    {{ indicator_singular }}
+                {% else %}
+                    {{ indicators_plural }}
+                {% endif %}
+            </span>
+        </h3>
+        <div class="summary">
+            <div class="statuses">
+                {%- for status in fieldreport.statuses -%}
+                    <div>
+                        <span class="status {{ status.status | slugify }}"><span class="status-inner">{{ status.count }}</span></span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+                    </div>
+                {%- endfor -%}
+                <br style="clear:both;">
+            </div>
+        </div>
+        <div class="goal-stats">
+            {%- for status in fieldreport.statuses -%}
+                {% assign status_count_precise = status.count | times: 1.0 %}
+                {% assign fieldreport_total_precise = fieldreport.totals.total  | times: 1.0 %}
+                {% assign percentage_precise = status_count_precise | divided_by: fieldreport_total_precise | times: 100 %}
+                <span class="{{ status.status | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status.translation_key | t }}: {{ status.percentage | round }}%"></span>
+            {%- endfor -%}
+        </div>
+        <div class="divider"></div>
+    </div>
+    <br style="clear:both;">
+{%- endfor -%}

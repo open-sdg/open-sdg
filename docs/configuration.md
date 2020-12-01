@@ -369,7 +369,7 @@ goals_page:
     description: description goes here
 ```
 
-As always, for multilingual support, these settings can refer to translation keys.
+As always, for multilingual support, these settings can refer to translation keys, and the description can include Markdown.
 
 ### graph_color_set
 
@@ -527,6 +527,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+* `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](metadata-format.md#recommended-special-fields).
 
 Here is an example of using these settings:
 
@@ -534,9 +535,10 @@ Here is an example of using these settings:
 reporting_status:
     title: title goes here
     description: description goes here
+    disaggregation_tabs: true
 ```
 
-As always, for multilingual support, these settings can refer to translation keys.
+As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
 
 ### search_index_boost
 

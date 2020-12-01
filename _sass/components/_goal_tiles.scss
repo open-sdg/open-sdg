@@ -13,7 +13,8 @@
       }
     }
   }
-  .goal-tiles #goal-#{$i} {
+  .goal-tiles #goal-#{$i},
+  .goal-tiles .goal-icon-#{$i} {
     background-color: $c;
   }
 }

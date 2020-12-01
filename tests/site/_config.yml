@@ -152,6 +152,7 @@ disclaimer:
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
+  disaggregation_tabs: true
 
 goals_page:
   title: custom.goals_page_title

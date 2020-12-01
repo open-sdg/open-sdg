@@ -54,7 +54,14 @@ The following fields are not strictly required, but are recommended because they
 
 * `indicator_available` - an alternate name for the indicator, intended for when the global indicator name might not accurately describe the available national/regional statistics
 * `computation_units` - the unit used in the headline series for this indicator. Examples:
-    * Metric tons * my_translations.metric_tons
+    * Metric tons
+    * my_translations.metric_tons
+* `expected_disaggregations` - a list of the disaggregations (ie, columns in the CSV file) that this indicator should have. Setting this value will supply metrics to the disaggregation status report (see the [reporting_status site configuration](configuration.md#reporting_status)). Here is an example for an indicator that should have disaggregation for "Age" and "Sex":
+
+        expected_disaggregations:
+          - Age
+          - Sex
+
 * `source_active_1` - whether source #1 should be displayed. Examples:
     true
     false
@@ -68,7 +75,7 @@ The following fields are not strictly required, but are recommended because they
     * my_translations.click_here
 * `un_designated_tier` - the "tier" for this indicator. Examples:
     * 1
-    * 2.
+    * 2
 * `un_custodian_agency` - the custodian agency for this indicator. Examples:
     * World Bank
 * `goal_meta_link` - URL of the official UN metadata for this indicator. Examples:
@@ -77,11 +84,9 @@ The following fields are not strictly required, but are recommended because they
     * United Nations Sustainable Development Goals Metadata (pdf 894kB)
 * `tags` - an optional list of "tags" to display under an indicator when it is listed on its goal page. Unlike most other fields, the `tags` field should be a list. Here is an example of what it might look like, in YAML form:
 
-    ```
-    tags:
-      - My tag
-      - My other tag
-    ```
+        tags:
+          - My tag
+          - My other tag
 
 ## Data Sources Metadata
 
