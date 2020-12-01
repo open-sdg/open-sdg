@@ -5,6 +5,7 @@
       padding: 10px 15px;
       margin-right: 2px;
       background-color: $tabs-backgroundColor-inactive;
+      border-radius: 4px 4px 0 0;
       a {
         display: inline-block;
         padding: 0;
@@ -17,7 +18,6 @@
         background-color: $tabs-backgroundColor-active;
         border: 1px solid $tabs-borderColor;
         border-bottom: 0;
-        border-radius: 4px 4px 0 0;
         a {
           border: none;
           text-decoration: none;
