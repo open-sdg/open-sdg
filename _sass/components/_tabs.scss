@@ -23,6 +23,10 @@
           text-decoration: none;
         }
       }
+      &:not(.active) {
+        border: 1px solid $tabs-backgroundColor-inactive;
+        padding-bottom: 8px;
+      }
     }
   }
   .tab-content {
