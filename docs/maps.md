@@ -78,13 +78,13 @@ map_options:
   styleNormal:
     weight: 1
     opacity: 1
-    color: #888
+    color: #888888
     fillOpacity: 0.7
   # Set the style for boundaries that have been selected/highlighted:
   styleHighlighted:
     weight: 1
     opacity: 1
-    color: #111
+    color: #111111
     fillOpacity: 0.7
   # Set the style for top-level boundaries that are displaying in other layers.
   # Note: This is only applicable when using the "nested zoom" feature (see below).
