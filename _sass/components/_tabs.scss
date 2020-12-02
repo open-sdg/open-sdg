@@ -26,6 +26,7 @@
       &:not(.active) {
         border: 1px solid $tabs-backgroundColor-inactive;
         padding-bottom: 8px;
+        cursor: pointer;
       }
     }
   }
