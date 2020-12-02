@@ -54,7 +54,7 @@ create_pages:
     title: search.search
 custom_css: []
 custom_js:
-  - custom.js
+  - /custom.js
 data_edit_url: >-
   https://github.com/open-sdg/open-sdg/edit/master/tests/data/data/indicator_[id].csv
 date_formats:
