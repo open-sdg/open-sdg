@@ -1,0 +1,50 @@
+{% include multilingual-js.html key="header" %}
+<a class="sr-only sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">{{ page.t.header.skip_link }}</a>
+<div id="disclaimer">
+  {% include components/dev-disclaimer.html %}
+</div>
+
+<header role="banner">
+  <div class="container">
+
+    <div class="logo-and-mobile-widgets">
+      <a class="navbar-brand" href="{{ page.baseurl }}" id="home">
+        <img src="{{ site.baseurl }}/assets/img/SDG_logo.png" alt="{{ page.t.general.sdg }} - {{ page.t.header.tag_line }}" />
+      </a>
+
+      <div class="mobile-widgets">
+        <ul id='accessibility-nav' class='contrast-switcher'></ul>
+        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+        <div class="language-toggle-mobile">
+          {% include components/language-toggle-dropdown.html location="header" %}
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <nav class="navbar navbar-default" id="main-nav">
+
+      <ul class="top-level">
+        <li id="menuToggle"
+            aria-label="{{ page.t.header.toggle_menu }}"
+            aria-haspopup="true">
+          <button data-target="menu-mobile" aria-expanded="false">{{ page.t.menu.menu }}</button>
+          {% include navigation.html id="menu-mobile" %}
+        </li>
+        <li id="searchToggle"
+            aria-label="{{ page.t.header.toggle_search }}"
+            aria-haspopup="true">
+          <button data-target="search-mobile" aria-expanded="false">{{ page.t.search.search }}</button>
+          {% include search.html id="search-mobile" %}
+        </li>
+      </ul>
+
+      {% include search.html id="search" %}
+
+      {% include navigation.html id="menu" %}
+
+    </nav>
+  </div>
+
+</header>
+{% include components/page-top.html %}
