@@ -53,7 +53,8 @@ create_pages:
     layout: search
     title: search.search
 custom_css: []
-custom_js: []
+custom_js:
+  - custom.js
 data_edit_url: >-
   https://github.com/open-sdg/open-sdg/edit/master/tests/data/data/indicator_[id].csv
 date_formats:
@@ -209,6 +210,7 @@ remote_data_prefix: _build
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
+  disaggregation_tabs: true
 search_index_boost: []
 search_index_extra_fields:
   - un_custodian_agency
