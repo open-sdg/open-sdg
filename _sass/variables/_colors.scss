@@ -89,6 +89,10 @@ $breadcrumbs-backgroundColor-highContrast: $color-dark-highContrast !default;
 
 $loader-color: #FF6700 !default;
 
+$tabs-borderColor: #888 !default;
+$tabs-backgroundColor-active: $backgroundColor !default;
+$tabs-backgroundColor-inactive: #eeeeee !default;
+
 // Component-level color variables.
 // [component] - [element] - [color|backgroundColor|etc] - [...modifiers]
 $goal-banner-backgroundColors: $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor $backgroundColor !default;
@@ -152,5 +156,7 @@ $indicator-datasetWarning-backgroundColor: #FFCC0B !default;
 $indicator-legendSwatch-fillColor: #666 !default;
 $indicator-legendSwatch-backgroundColor-hover: #eee !default;
 
-$indicator-tabs-borderColor: #888 !default;
-$indicator-tabs-backgroundColor-inactive: #eeeeee !default;
+// @deprecated start
+$indicator-tabs-borderColor: $tabs-borderColor !default;
+$indicator-tabs-backgroundColor-inactive: $tabs-backgroundColor-inactive !default;
+// @deprecated end
