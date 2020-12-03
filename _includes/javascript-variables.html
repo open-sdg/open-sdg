@@ -11,6 +11,12 @@ var opensdg = {
     this.chartConfigAlterations.push(callback);
   },
 
+  tableConfigAlterations: [],
+  // A hook which can be used to modify the configuration for Datatables.
+  tableConfigAlter: function(callback) {
+    this.tableConfigAlterations.push(callback);
+  },
+
   // A hook which can be replaced to alter whether/how the values that are
   // displayed on indicator tables/graphs get rounded.
   dataRounding: function(value) {
