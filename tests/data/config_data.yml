@@ -23,6 +23,9 @@ inputs:
     path_pattern: meta/*-*.md
     git: false
     git_data_dir: data
+  - class: InputYamlMeta
+    path_pattern: indicator-config/*.yml
+    git: false
 
 translations:
   - class: TranslationInputYaml

@@ -2,7 +2,7 @@ opensdg.chartColors = function(indicatorId) {
   var colorSet = {{ site.graph_color_set | jsonify }};
   var numberOfColors = {{ site.graph_color_number | jsonify }};
   var customColorList = {{ site.graph_color_list | jsonify }};
-  
+
   this.goalNumber = parseInt(indicatorId.slice(indicatorId.indexOf('_')+1,indicatorId.indexOf('-')));
   this.goalColors = [['e5243b', '891523', 'ef7b89', '2d070b', 'f4a7b0', 'b71c2f', 'ea4f62', '5b0e17', 'fce9eb'],
                 ['e5b735', '896d1f', 'efd385', '2d240a', 'f4e2ae', 'b7922a', 'eac55d', '5b4915', 'f9f0d6'],
@@ -28,7 +28,7 @@ opensdg.chartColors = function(indicatorId) {
   if(Object.keys(this.colorSets).indexOf(colorSet) == -1 || (colorSet=='custom' && customColorList == null)){
     return this.colorSets['default'];
   }
-  this.numberOfColors = (numberOfColors>this.colorSets[colorSet].length || numberOfColors == null) ? this.colorSets[colorSet].length : numberOfColors;
+  this.numberOfColors = (numberOfColors>this.colorSets[colorSet].length || numberOfColors == null || numberOfColors == 0) ? this.colorSets[colorSet].length : numberOfColors;
   this.colors = this.colorSets[colorSet].slice(0,this.numberOfColors);
 
   return this.colors;

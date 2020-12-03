@@ -14,8 +14,10 @@
   </li>
   {%- endif -%}
   {%- if page.indicator.embedded_feature_url or page.indicator.embedded_feature_html -%}
-  <li role="presentation" class="nav-item embedded-map">
-    <a data-no-disagg="true" class="nav-link" data-toggle="tab" id="tab-embeddedmapview" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ page.indicator.embedded_feature_tab_title }}</a>
-  </li>
+    {%- if page.indicator.embedded_feature_url != '' or page.indicator.embedded_feature_html != '' -%}
+    <li role="presentation" class="nav-item embedded-map">
+      <a data-no-disagg="true" class="nav-link" data-toggle="tab" id="tab-embeddedmapview" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ page.indicator.embedded_feature_tab_title }}</a>
+    </li>
+    {%- endif -%}
   {%- endif -%}
 </ul>

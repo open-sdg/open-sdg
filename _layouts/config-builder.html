@@ -1,0 +1,218 @@
+{% include head.html noindex=true %}
+{% include header.html %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
+<div id="main-content" class="container" role="main">
+  <div class="col-md-12"><h1>{{ page.title }}</h1></div>
+  <div class="config-widgets col-md-12">
+    <div class="col-md-6" id="search_holder">
+      <label for="config-search">Filter settings</label>
+      <input id="config-search" />
+    </div>
+    <div class="col-md-6" id="button_holder"><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
+  </div>
+  <div class="col-md-12" id="no_results" style="display:none" role="status">
+    There are no settings that match those keywords.
+  </div>
+  <div class="col-md-12" id="editor_holder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script>
+
+    // Dynamic filtering functionality.
+    var configSearch = document.getElementById('config-search');
+    var itemSelector = 'div[data-schemapath="root"] > .well > div > div > .row';
+    configSearch.addEventListener('keyup', function(e) {
+      var keywords = this.value.toLowerCase();
+      if (keywords.length > 2) {
+        var noMatches = true;
+        $(itemSelector).each(function(item) {
+          var title = $(this).find('label').first().text().toLowerCase();
+          if (title.includes(keywords)) {
+            noMatches = false;
+            $(this).show();
+          }
+          else {
+            $(this).hide();
+          }
+        });
+        if (noMatches) {
+          $('#no_results').show();
+        }
+        else {
+          $('#no_results').hide();
+        }
+      }
+      else {
+        $(itemSelector).show();
+        $('#no_results').hide();
+      }
+    });
+
+    {% if page.config_type == 'site' %}
+      {% assign json_schema = site.data.schema-site-config %}
+      {% assign config_form = site.site_config_form %}
+    {% elsif page.config_type == 'indicator' %}
+      {% assign json_schema = site.data.schema-indicator-config %}
+      {% assign config_form = site.indicator_config_form %}
+    {% endif %}
+    var schema = {{ json_schema | jsonify }};
+    {% if config_form %}
+      {% if config_form.dropdowns %}
+        {% for dropdown in config_form.dropdowns %}
+          if (schema.properties.{{ dropdown.jsonschema }}) {
+            schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
+            schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
+            {% if choices.labels %}
+              schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
+              schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
+            {% endif %}
+          }
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+
+    var editor = new JSONEditor(document.getElementById('editor_holder'), {
+      theme: 'bootstrap3',
+      iconlib: 'fontawesome4',
+      disable_array_delete_all_rows: true,
+      disable_array_delete_last_row: true,
+      disable_array_reorder: true,
+      disable_edit_json: true,
+      disable_properties: true,
+      required_by_default: true,
+
+      // The schema for the editor
+      schema: schema
+    });
+
+    function collapseButtonClick() {
+      var title = this.getAttribute('title');
+      this.setAttribute('aria-expanded', title === 'Collapse');
+      var ariaLabel = this.getAttribute('aria-label');
+      if (title === 'Collapse') {
+        ariaLabel = ariaLabel.replace('Expand', 'Collapse');
+      }
+      else {
+        ariaLabel = ariaLabel.replace('Collapse', 'Expand');
+      }
+      this.setAttribute('aria-label', ariaLabel);
+    }
+
+    function propertyEditorAccessibilityFixes(propertyEditor) {
+      try {
+        // Variety of accessibility fixes.
+        switch (propertyEditor.schema.type) {
+          case 'string':
+          case 'boolean':
+            propertyEditor.input.setAttribute('id', propertyEditor.formname);
+            propertyEditor.label.setAttribute('for', propertyEditor.formname);
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+              propertyEditor.input.setAttribute('aria-describedby', descriptionId);
+            }
+            break;
+          case 'array':
+          case 'object':
+            var toggleButton = (propertyEditor.schema.type === 'array') ? propertyEditor.toggle_button : propertyEditor.collapse_control;
+            var headerId = propertyEditor.formname + '-header';
+            propertyEditor.header.setAttribute('id', headerId);
+            var headerText = propertyEditor.header.innerHTML;
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+            }
+            if (typeof toggleButton !== 'undefined') {
+              toggleButton.setAttribute('aria-label', 'Activate to Collapse the ' + headerText + ' section.')
+              collapseButtonClick.call(toggleButton);
+              toggleButton.addEventListener('click', collapseButtonClick);
+              if (typeof propertyEditor.description !== 'undefined') {
+                toggleButton.setAttribute('aria-describedby', descriptionId);
+              }
+            }
+            if (typeof propertyEditor.editors !== 'undefined') {
+              for (var editorKey of Object.keys(propertyEditor.editors)) {
+                propertyEditorAccessibilityFixes(propertyEditor.editors[editorKey]);
+              }
+            }
+            break;
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to do accessibility fixes: ' + propertyEditor.formname);
+      }
+    }
+
+    // Set values according to this site's configuration.
+    {%- for config_setting in json_schema.properties -%}
+    {%- assign config_key = config_setting[0] -%}
+    {%- if page.config_type == 'site' -%}
+      {%- assign current_value = site[config_key] -%}
+    {%- elsif page.config_type == 'indicator' -%}
+      {%- assign current_value = page.meta[config_key] -%}
+    {%- endif -%}
+    {% if current_value %}
+      try {
+        var currentValue = {{ current_value | jsonify }};
+        var propertyEditor = editor.getEditor('root.{{ config_key }}');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: {{ config_key }}');
+      }
+    {% endif %}
+    {%- assign config_schema = config_setting[1] -%}
+    {%- if config_schema.minItems or config_schema.minimum or config_schema.minLength -%}
+      try {
+        var propertyEditor = editor.getEditor('root.{{ config_key }}');
+        if (typeof propertyEditor.label !== 'undefined') {
+          propertyEditor.label.innerHTML += ' -- <span class="config-required">required</span>';
+        }
+        else if (typeof propertyEditor.header !== 'undefined') {
+          propertyEditor.header.innerHTML += ' -- <span class="config-required">required</span>';
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set "required" flag: {{ config_key }}');
+      }
+    {%- endif -%}
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.{{ config_key }}'));
+
+    {%- endfor -%}
+
+    function SaveAsFile(t,f,m) {
+      try {
+        var b = new Blob([t],{type:m});
+        saveAs(b, f);
+      } catch (e) {
+        window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
+      }
+    }
+
+    document.getElementById('export').addEventListener('click', function() {
+      var errors = editor.validate();
+      if (errors.length) {
+        var alertText = 'Please correct the errors listed below';
+        var fieldNames = []
+        for (var error of errors) {
+          fieldNames.push(error.path.replace('root.', ''));
+        }
+        alert(alertText + ' (' + fieldNames.join(', ') + ').');
+      }
+      else {
+        var config = editor.getValue();
+        var yaml = jsyaml.safeDump(config);
+        SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
+      }
+    });
+  </script>
+</div>
+{% include footer.html %}

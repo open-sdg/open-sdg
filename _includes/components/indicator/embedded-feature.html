@@ -1,21 +1,21 @@
 <div class="row">
   <div class="col-xs-12">
-    {% if page.indicator.embedded_feature_title %}
+    {% if page.indicator.embedded_feature_title and page.indicator.embedded_feature_title != '' %}
       <h3>{{ page.indicator.embedded_feature_title }}</h3>
     {% endif %}
-    {% if page.indicator.embedded_feature_url %}
+    {% if page.indicator.embedded_feature_url and page.indicator.embedded_feature_url != '' %}
       <div class="embedded-map" id="embeddedmapframe">
         <script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
         <script>document.querySelector("li.nav-item.embedded-map").addEventListener("click",function(){ var pymParent = new pym.Parent('embeddedmapframe', '{{ page.indicator.embedded_feature_url }}', {});})</script>
       </div>
     {% endif %}
-    {% if page.indicator.embedded_feature_html %}
+    {% if page.indicator.embedded_feature_html and page.indicator.embedded_feature_html != '' %}
       <div class="embedded-map" id="embeddedmapframe">
          {{ page.indicator.embedded_feature_html }}
       </div>
     {% endif %}
     <div class="embedded-map" id="embeddedmapframe">
-    {% if page.indicator.embedded_feature_footer %}
+    {% if page.indicator.embedded_feature_footer and page.indicator.embedded_feature_footer != '' %}
       <div id="embedfooter" class="table-footer-text">
         <p>{{ page.indicator.embedded_feature_footer | markdownify}}</p>
       </div>

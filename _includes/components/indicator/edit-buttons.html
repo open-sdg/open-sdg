@@ -10,4 +10,8 @@
   {% else %}
   <a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/meta/{{ page.indicator.slug }}.md">{{ page.t.indicator.edit_metadata }}</a>
   {% endif %}
+
+  {% if site.create_config_forms and site.create_config_forms.layout and site.create_config_forms.layout != '' %}
+  <a class="btn btn-primary" href="{{ page.baseurl }}config/{{ page.indicator.slug }}">Edit configuration</a>
+  {% endif %}
 </div>

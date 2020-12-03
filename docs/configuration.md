@@ -98,6 +98,15 @@ country:
   adjective: Australian
 ```
 
+### create_config_forms
+
+_Optional_: This setting can be used to automatically create the configuration form pages. Without this setting, you will need to maintain your site and indicator configuration using a text editor. This setting should include another (indented) setting indicating the Jekyll layout to use for the config form pages (usually `config-builder`). After setting this, you will have a site configuration form available through a link in the footer, as well as indicator configuration forms available in the "Edit" tab.
+
+```nohighlight
+create_config_forms:
+  layout: config-builder
+```
+
 ### create_goals
 
 _Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
@@ -410,6 +419,25 @@ _Optional_: This setting can be used to hide any metadata fields that are empty.
 hide_empty_metadata: true
 ```
 
+### indicator_config_form
+
+_Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
+
+* `dropdowns`: This can be used to convert any `string` field into a dropdown. Each item should have these properties:
+
+    * `jsonschema`: The path into the jsonschema's `properties` object, to the property that you would like to convert into a dropdown. In most cases this is simply the name of the property, but in nested situations, you can use dot-syntax to drill down into the jsonschema object.
+    * `values`: A list of values for the dropdown.
+    * `labels`: An optional list of human-readable labels, corresponding to the `values` list.
+
+  For example, the following would convert the `reporting_status` property into a dropdown:
+
+      site_config_form:
+        dropdowns:
+          - jsonschema: reporting_status
+            values:
+              - complete
+              - notstarted
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
@@ -597,6 +625,20 @@ _Optional_: This setting enables the special treatment of the "Series" column in
 series_toggle: true
 ```
 
+### site_config_form
+
+_Optional_: This setting controls the behavior of the site config form. The available settings are:
+
+* `dropdowns`: This works the same as in the `indicator_config_form` setting.
+
 ### sharethis_property
 
 _Optional_: This setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
+
+### validate_indicator_config
+
+_Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.
+
+### validate_site_config
+
+_Optional_: This setting, if true, will run a validation of the site configuration during the site build. This defaults to `false`.

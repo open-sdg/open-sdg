@@ -27,13 +27,13 @@
     styleNormal: {
       weight: 1,
       opacity: 1,
-      color: '#888',
+      color: '#888888',
       fillOpacity: 0.7
     },
     styleHighlighted: {
       weight: 1,
       opacity: 1,
-      color: '#111',
+      color: '#111111',
       fillOpacity: 0.7
     },
     styleStatic: {
@@ -57,6 +57,24 @@
   function Plugin(element, options) {
 
     this.element = element;
+
+    // Support colorRange map option in string format.
+    if (typeof options.mapOptions.colorRange === 'string') {
+      var colorRangeParts = options.mapOptions.colorRange.split('.'),
+          colorRange = window,
+          overrideColorRange = true;
+      for (var colorRangePart of colorRangeParts) {
+        if (typeof colorRange[colorRangePart] !== 'undefined') {
+          colorRange = colorRange[colorRangePart];
+        }
+        else {
+          overrideColorRange = false;
+          break;
+        }
+      }
+      options.mapOptions.colorRange = (overrideColorRange) ? colorRange : defaults.colorRange;
+    }
+
     this.options = $.extend(true, {}, defaults, options.mapOptions);
     this.mapLayers = [];
     this.indicatorId = options.indicatorId;
@@ -238,7 +256,9 @@
       this.map.addControl(L.control.scale({position: 'bottomright'}));
 
       // Add tile imagery.
-      L.tileLayer(this.options.tileURL, this.options.tileOptions).addTo(this.map);
+      if (this.options.tileURL && this.options.tileURL !== 'undefined' && this.options.tileURL != '') {
+        L.tileLayer(this.options.tileURL, this.options.tileOptions).addTo(this.map);
+      }
 
       // Because after this point, "this" rarely works.
       var plugin = this;

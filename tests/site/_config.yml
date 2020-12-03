@@ -2,58 +2,16 @@
 
 # Replace this title as needed.
 title: Indicators For The Sustainable Development Goals
-frontpage_heading: custom.frontpage_heading
-frontpage_instructions: custom.frontpage_instructions
+
 # Replace the baseurl with the name of this repository.
 baseurl: ""
 url: ""
-environment: staging
-local_data_folder: _build
-
-# Automatically create indicator pages, goal pages,
-# and some other required pages.
-create_indicators:
-  layout: indicator
-create_goals:
-  layout: goal
-create_pages:
-  pages:
-    - folder: /frontpage-legacy
-      layout: frontpage
-    - folder: /
-      layout: frontpage-alt
-      title: My homepage title
-    - folder: /goals
-      layout: goals
-      title: custom.goals_page_title
-    - folder: /reporting-status
-      layout: reportingstatus
-    - filename: indicators.json
-      folder: /
-      layout: indicator-json
-    - folder: /search
-      layout: search
-
-analytics:
-  ga_prod: ''
-
-# Replace the email addresses below.
-email_contacts:
-  questions: test@example.com
-  suggestions: test@example.com
-  functional: test@example.com
 
 # Build settings
 markdown: kramdown
 
 # Travis Support
 exclude: [vendor, scripts, remotedata]
-
-# International Support
-# Eg name: Australia and adjective: Australian
-country:
-  name: Australia
-  adjective: Australian
 
 # Pages
 collections:
@@ -68,140 +26,5 @@ collections:
   goals:
     output: true
 
-# Menu
-menu:
-  # Use these to customise the main navigation.
-  - path: reporting-status
-    translation_key: menu.reporting_status
-  - path: about
-    translation_key: menu.about
-  - path: frontpage-legacy
-    translation_key: Legacy frontpage
-
-footer_menu:
-  - path: mailto:test@example.com
-    translation_key: menu.contact_us
-  - path: https://twitter.com/MyTwitterAccount
-    translation_key: general.twitter
-  - path: https://facebook.com/MyFacebookAccount
-    translation_key: general.facebook
-
-# The list of languages that are translated. The first one is the default.
-languages:
-  - en
-  - es
-  - fr
-
-# We will display "fr" as "fr-CA" (French Canadian) for testing purposes.
-languages_public:
-  fr: fr-CA
-
-goal_image_base: /img/goals
-
 plugins:
   - jekyll-open-sdg-plugins
-
-map_options:
-  minZoom: 5
-  tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-  tileOptions:
-    attribution: 'My map attribution'
-map_layers:
-  - min_zoom: 5
-    max_zoom: 10
-    subfolder: regions
-    label: indicator.regions
-
-metadata_tabs:
-  - scope: national
-    title: My national metadata title
-    description: My national metadata blurb
-  - scope: global
-    title: My global metadata title
-    description: My global metadata blurb
-  - scope: sources
-    title: My sources title
-    description: My sources blurb
-
-hide_empty_metadata: true
-
-series_toggle: true
-
-# Search.feature
-search_index_extra_fields:
-  - un_custodian_agency
-search_index_boost:
-  - field: title
-    boost: 10
-
-# News.feature
-date_formats:
-  standard:
-    en: '%B %d, %Y'
-    es: '%d de %B de %Y'
-    fr: '%d %B %Y'
-
-frontpage_introduction_banner:
-  title: custom.frontpage_introduction_banner_title
-  description: My frontpage introduction banner description
-
-disclaimer:
-  phase: header.alpha
-  message: custom.disclaimer_message
-
-reporting_status:
-  title: custom.reporting_status_title
-  description: custom.reporting_status_description
-  disaggregation_tabs: true
-
-goals_page:
-  title: custom.goals_page_title
-  description: custom.goals_page_description
-
-frontpage_goals_grid:
-  title: My custom frontpage goals grid title
-  description: Click on each [goal](goals) for data for Sustainable Development Goal global indicators.
-
-frontpage_cards:
-  - title: Download all data
-    include: components/download-all-data.html
-    rule_color: green
-  - title: Useful resources
-    rule_color: blue
-    content: |
-      * [Useful resource](https://example.com)
-      * [Useful resource](https://example.com)
-      * [Useful resource](https://example.com)
-      * [Useful resource](https://example.com)
-      * [Useful resource](https://example.com)
-  - title: Publications
-    rule_color: orange
-    content: |
-      * [Publication](https://example.com)
-      * [Publication](https://example.com)
-      * [Publication](https://example.com)
-    button_label: View more publications
-    button_link: https://example.com
-
-breadcrumbs:
-  post:
-    - label: general.home
-      path: /
-    - label: menu.updates
-      path: /news
-  goal:
-    - label: general.home
-      path: /
-    - label: general.goals
-      path: /goals
-  indicator:
-    - label: general.home
-      path: /
-    - label: general.goals
-      path: /goals
-
-accessible_tabs: true
-accessible_charts: true
-
-custom_js:
-  - /custom.js

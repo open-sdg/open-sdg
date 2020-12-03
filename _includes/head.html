@@ -20,7 +20,7 @@
 
         <meta name="description" content="">
         <meta property="og:description" content="">
-        {% if site.environment == 'staging' %}
+        {% if site.environment == 'staging' or include.noindex %}
         <meta name="robots" content="noindex, nofollow">
         {% endif %}
         <link rel="canonical" href="/">
@@ -73,7 +73,7 @@
         {%- endif -%}
 
         <!-- ShareThis BEGIN -->
-        {%- if site.sharethis_property -%}
+        {%- if site.sharethis_property and site.sharethis_property != '' -%}
           <script async src="https://platform-api.sharethis.com/js/sharethis.js#property={{ site.sharethis_property }}&product='sticky-share-buttons'"></script>
         {%- endif -%}
         <!-- ShareThis END -->

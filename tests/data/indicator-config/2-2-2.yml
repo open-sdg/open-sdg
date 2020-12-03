@@ -1,0 +1,64 @@
+﻿computation_units: ''
+copyright: ''
+data_footnote: ''
+data_non_statistical: false
+data_notice_class: ''
+data_notice_heading: ''
+data_notice_text: ''
+data_show_map: false
+data_start_values: []
+embedded_feature_footer: ''
+embedded_feature_html: ''
+embedded_feature_tab_title: ''
+embedded_feature_title: ''
+embedded_feature_url: ''
+graph_annotations:
+  - preset: target_line
+    value: 1.1
+    endValue: 0
+    description: ''
+    unit: ''
+    series: ''
+    mode: horizontal
+    borderColor: '#000000'
+    borderDash: ''
+    label:
+      position: top
+      content: Foo
+      fontColor: '#000000'
+      backgroundColor: '#000000'
+    highContrast:
+      borderColor: '#ffffff'
+      label:
+        fontColor: '#ffffff'
+        backgroundColor: '#000000'
+  - preset: target_line
+    value: 1.3
+    endValue: 0
+    description: ''
+    unit: ''
+    series: ''
+    mode: horizontal
+    borderColor: '#000000'
+    borderDash: ''
+    label:
+      position: top
+      content: Bar
+      fontColor: '#000000'
+      backgroundColor: '#000000'
+    highContrast:
+      borderColor: '#ffffff'
+      label:
+        fontColor: '#ffffff'
+        backgroundColor: '#000000'
+graph_limits: []
+graph_stacked_disaggregation: ''
+graph_title: global_indicators.2-2-2-title
+graph_titles: []
+graph_type: line
+indicator_name: metadata.indicator-name-key
+indicator_number: 2.2.2
+national_geographical_coverage: ''
+page_content: ''
+reporting_status: complete
+tags: []
