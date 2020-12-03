@@ -1,17 +1,8 @@
 {% include head.html %}
 {% include header.html %}
 
-<div class="heading goal-banner">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>{{ page.title | t }}</h1>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div id="main-content" class="container goal-indicators">
+  <h1>{{ page.title | t }}</h1>
   {{ content }}
   <ul class="standalone-indicator-list">
   {% for indicator_number in page.standalone_indicators %}
