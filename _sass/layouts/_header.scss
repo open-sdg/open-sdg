@@ -408,3 +408,32 @@ body.contrast-high {
     display: block;
   }
 }
+
+.header--left-aligned {
+  .search-and-desktop-widgets {
+    float: right;
+    display: none;
+    @media screen and (min-width: 769px) {
+      display: block;
+    }
+    #search {
+      margin-top: 0;
+    }
+    .navbar .navbar-nav {
+      margin-top: 0;
+    }
+  }
+  .menu-without-widgets {
+    clear: both;
+    float: left;
+    .navbar-nav {
+      margin-top: 0;
+    }
+  }
+  .widgets-without-menu {
+    margin-top: 20px;
+    .navbar-nav {
+      float: right;
+    }
+  }
+}
