@@ -3,6 +3,9 @@
 
 <div class="container">
   {% include components/goal/breadcrumbs.html %}
+  {% if site.create_goals.previous_next_links %}
+    {% include components/previous-next-links.html previous_label=page.t.goal.previous next_label=page.t.goal.next %}
+  {% endif %}
 </div>
 
 <div class="heading goal-banner goal-{{ page.goal.number }}">
