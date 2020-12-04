@@ -24,6 +24,8 @@
   {% endif %}
 
   {% if site.create_config_forms and site.create_config_forms.layout and site.create_config_forms.layout != '' %}
-  <a class="btn btn-primary" href="{{ page.baseurl }}config/{{ page.indicator.slug }}">Edit configuration</a>
+  {% assign config_base = page.baseurl | append: 'config/' %}
+  {% assign config_path = page.indicator.url | replace: page.baseurl, config_base %}
+  <a class="btn btn-primary" href="{{ config_path }}">Edit configuration</a>
   {% endif %}
 </div>
