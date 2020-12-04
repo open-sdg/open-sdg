@@ -20,7 +20,7 @@ That code will render the footer fields. The placement of the code is left to yo
 In your data repository, update your `requirements.txt` file to:
 
 ```
-git+git://github.com/open-sdg/sdg-build@1.2.0-beta1
+git+git://github.com/open-sdg/sdg-build@1.2.0
 ```
 
 ## Update version of Open SDG to 1.2.0
@@ -28,7 +28,7 @@ git+git://github.com/open-sdg/sdg-build@1.2.0-beta1
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@1.2.0-beta1
+remote_theme: open-sdg/open-sdg@1.2.0
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 1.2.0
@@ -36,7 +36,7 @@ remote_theme: open-sdg/open-sdg@1.2.0-beta1
 In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugins like so:
 
 ```
-gem "jekyll-open-sdg-plugins", "1.2.0.pre.beta4"
+gem "jekyll-open-sdg-plugins", "1.2.0"
 ```
 
 ## Recommended updates to the `_config.yml` file
