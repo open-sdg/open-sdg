@@ -23,6 +23,7 @@ This release includes the following:
 * A "no data" message for when a chart/table has no data
 * New layout available for goal pages: goal_by_target_vertical
 * Faster performance on large datasets
+* Tab for displaying a report on indicator disaggregation
 
 ## 1.1.0
 

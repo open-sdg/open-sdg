@@ -2,6 +2,7 @@
 
 ## 1.2.0
 
+* Disaggregation status tab #970
 * Different canvas fallback for mobile/desktop. #968
 * Remove aria-label from table headers #967
 * Move fieldset/legend to different spot in markup #966
