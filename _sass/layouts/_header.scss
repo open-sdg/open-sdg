@@ -158,48 +158,48 @@ body.contrast-high {
   .top-level {
     display: none;
   }
-
-  #search, #search-mobile {
-    position: relative;
-    clear: both;
-    float: right;
-    margin-bottom: 20px;
-    @media only screen and (max-width: 768px) {
-      margin-bottom: 0;
-    }
-
-    input {
-      padding: 5px;
-      padding-left: 5px;
-      padding-right: 45px;
-      width: 240px;
-      height: 34px;
-      transition: width 0.4s;
-      margin-top: 5px;
-      font-size: $searchBar-input-fontSize;
-    }
-
-    button {
-      height: 34px;
-      color: $color-dark;
-      position: absolute;
-      right: 0px;
-      bottom: 0px;
-      font-size: 1.40em;
-      line-height: 15px;
-    }
-    // @deprecated start
-    form > label > span {
-      @include screenreaderOnly;
-    }
-    // @deprecated end
-  }
 }
 
 .table {
   .table-value {
     text-align: right;
   }
+}
+
+#search, #search-mobile {
+  position: relative;
+  clear: both;
+  float: right;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 0;
+  }
+
+  input {
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 45px;
+    width: 240px;
+    height: 34px;
+    transition: width 0.4s;
+    margin-top: 5px;
+    font-size: $searchBar-input-fontSize;
+  }
+
+  button {
+    height: 34px;
+    color: $color-dark;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    font-size: 1.40em;
+    line-height: 15px;
+  }
+  // @deprecated start
+  form > label > span {
+    @include screenreaderOnly;
+  }
+  // @deprecated end
 }
 
 @media only screen and (max-width: 768px) {
@@ -418,6 +418,8 @@ body.contrast-high {
     }
     #search {
       margin-top: 0;
+      margin-bottom: 0;
+      float: none;
     }
     .navbar .navbar-nav {
       margin-top: 0;
@@ -426,12 +428,14 @@ body.contrast-high {
   .menu-without-widgets {
     clear: both;
     float: left;
+    margin-bottom: 0;
     .navbar-nav {
       margin-top: 0;
     }
   }
   .widgets-without-menu {
     margin-top: 20px;
+    margin-bottom: 0;
     .navbar-nav {
       float: right;
     }
