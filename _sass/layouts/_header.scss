@@ -177,16 +177,19 @@ body.contrast-high {
       transition: width 0.4s;
       margin-top: 5px;
       font-size: $searchBar-input-fontSize;
+      box-shadow: $text-color 0px 0px 0px 1px;
     }
 
     button {
       height: 34px;
-      color: $color-dark;
+      color: $button-foregroundColor;
       position: absolute;
       right: 0px;
       bottom: 0px;
       font-size: 1.40em;
       line-height: 15px;
+      background-color: $button-color;
+      border: none;
     }
     // @deprecated start
     form > label > span {
@@ -369,8 +372,12 @@ body.contrast-high {
       }
     }
     #search, #search-mobile {
-      input, button {
+      input {
         color: $color-dark-highContrast;
+      }
+      button {
+        background-color: $color-medium-highContrast;
+        color: $color-light-highContrast;
       }
     }
     .top-level {
