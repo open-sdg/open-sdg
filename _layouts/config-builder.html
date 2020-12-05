@@ -104,6 +104,7 @@
         // Variety of accessibility fixes.
         switch (propertyEditor.schema.type) {
           case 'string':
+          case 'integer':
           case 'boolean':
             propertyEditor.input.setAttribute('id', propertyEditor.formname);
             propertyEditor.label.setAttribute('for', propertyEditor.formname);
