@@ -407,7 +407,7 @@ _Optional_: This setting can be used to limit the length of the list of colors s
 
 _Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
 
-* `include`: This specifies an include file, assumed to be inside of `_includes/components/headers/`, to use for the header.
+* `include`: This specifies an include file, assumed to be inside of `_includes/components/header/`, to use for the header.
 
 Here is an example, showing the default that is used if this setting is omitted:
 
@@ -416,7 +416,7 @@ header:
     include: default.html
 ```
 
-The configuration above will include the file `_includes/components/headers/default.html` at the top of each page.
+The configuration above will include the file `_includes/components/header/default.html` at the top of each page.
 
 ### header_language_toggle
 

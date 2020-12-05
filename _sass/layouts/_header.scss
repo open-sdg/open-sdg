@@ -409,7 +409,7 @@ body.contrast-high {
   }
 }
 
-.header--left-aligned {
+.header-menu-left-aligned {
   .search-and-desktop-widgets {
     float: right;
     display: none;
@@ -419,7 +419,6 @@ body.contrast-high {
     #search {
       margin-top: 0;
       margin-bottom: 0;
-      float: none;
     }
     .navbar .navbar-nav {
       margin-top: 0;
@@ -436,6 +435,7 @@ body.contrast-high {
   .widgets-without-menu {
     margin-top: 20px;
     margin-bottom: 0;
+    clear: both;
     .navbar-nav {
       float: right;
     }

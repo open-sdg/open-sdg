@@ -128,9 +128,9 @@ goals_page:
 graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
-header_language_toggle: dropdown
+header_language_toggle: links
 header:
-  include: left-aligned.html
+  include: header-menu-left-aligned.html
 hide_empty_metadata: true
 indicator_config_form:
   dropdowns:
