@@ -215,6 +215,16 @@
         SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
       }
     });
+
+    function addNewTabMessage(link) {
+      if (!link.querySelector('.sr-only')) {
+        link.insertAdjacentHTML('beforeend', '<span class="sr-only">(opens in a new tab)</span>');
+      }
+    }
+
+    document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+      addNewTabMessage(link);
+    });
   </script>
 </div>
 {% include footer.html %}
