@@ -132,7 +132,9 @@
               }
             }
             if (typeof propertyEditor.editors !== 'undefined') {
-              for (var editorKey of Object.keys(propertyEditor.editors)) {
+              var editorKeys = Object.keys(propertyEditor.editors);
+              for (var i = 0; i < editorKeys.length; i++) {
+                var editorKey = editorKeys[i];
                 propertyEditorAccessibilityFixes(propertyEditor.editors[editorKey]);
               }
             }
@@ -200,7 +202,8 @@
       if (errors.length) {
         var alertText = 'Please correct the errors listed below';
         var fieldNames = []
-        for (var error of errors) {
+        for (i = 0; i < errors.length; i++) {
+          var error = errors[i];
           fieldNames.push(error.path.replace('root.', ''));
         }
         alert(alertText + ' (' + fieldNames.join(', ') + ').');
