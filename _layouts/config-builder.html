@@ -6,12 +6,11 @@
     <div class="col-md-6" id="search_holder">
       <label for="config-search">Filter settings</label>
       <input id="config-search" />
+      <input id="config-search-button" type="button" value="Filter">
     </div>
     <div class="col-md-6" id="button_holder"><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
   </div>
-  <div class="col-md-12" id="no_results" style="display:none" role="status">
-    There are no settings that match those keywords.
-  </div>
+  <div class="col-md-12" id="results-status" role="status"></div>
   <div class="col-md-12" id="editor_holder"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
@@ -21,9 +20,18 @@
 
     // Dynamic filtering functionality.
     var configSearch = document.getElementById('config-search');
+    var configSearchButton = document.getElementById('config-search-button');
+    var resultsStatus = document.getElementById('results-status');
     var itemSelector = 'div[data-schemapath="root"] > .well > div > div > .row';
+    configSearchButton.addEventListener('click', performSearch);
     configSearch.addEventListener('keyup', function(e) {
-      var keywords = this.value.toLowerCase();
+      if (e.key === "Enter") {
+        performSearch();
+      }
+    });
+    function performSearch() {
+      var keywords = configSearch.value.toLowerCase();
+      var numResults = 0;
       if (keywords.length > 2) {
         var noMatches = true;
         $(itemSelector).each(function(item) {
@@ -31,23 +39,24 @@
           if (title.includes(keywords)) {
             noMatches = false;
             $(this).show();
+            numResults += 1;
           }
           else {
             $(this).hide();
           }
         });
         if (noMatches) {
-          $('#no_results').show();
+          $(resultsStatus).text('There are no settings that match those keywords.');
         }
         else {
-          $('#no_results').hide();
+          var settingsText = (numResults > 1) ? 'settings' : 'setting';
+          $(resultsStatus).text(numResults + ' matching ' + settingsText + ' found.');
         }
       }
       else {
-        $(itemSelector).show();
-        $('#no_results').hide();
+        $(resultsStatus).text('');
       }
-    });
+    };
 
     {% if page.config_type == 'site' %}
       {% assign json_schema = site.data.schema-site-config %}
