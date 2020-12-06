@@ -5,8 +5,13 @@
   <h1>{{ page.title | t }}</h1>
   {{ content }}
   <ul class="standalone-indicator-list">
+  {% assign indicator_objects = '' | split: ',' %}
   {% for indicator_number in page.standalone_indicators %}
     {% assign indicator = indicator_number | sdg_lookup %}
+    {% assign indicator_objects = indicator_objects | push: indicator %}
+  {% endfor %}
+  {% assign indicator_objects = indicator_objects | sort: 'sort' %}
+  {% for indicator in indicator_objects %}
     <li>
       <a href="{{ indicator.url }}">
         {{ indicator.name }}
