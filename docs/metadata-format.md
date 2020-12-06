@@ -258,6 +258,15 @@ standalone: true
 permalink: my-custom-indicator-path
 ```
 
+## Sorting in lists
+
+The order in which indicators are displayed in lists is determined behind the scenes, according to the indicator number. This is done by automatically converting the indicator number to a string which sorts correctly when alphabetized. (For example, indicator 1.2.1 gets sorted as '010201'.) However you can override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator. For example:
+
+```
+# Ensure this indicator appears at the end of goal 1, target 2.
+sort: 0102zz
+```
+
 ## Schema
 
 The actual fields available on each indicator is fully configurable by editing the `_prose.yml` file in your data repository. For a full list of fields available out-of-the-box in the starter repository, see the [starter repository's `_prose.yml` file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml). This file also serves to control the behavior of the Prose.io service, which is the usual way that metadata is edited. (For technical information about Prose.io schema, see [the official Prose.io documentation](https://github.com/prose/prose/wiki/Prose-Configuration).)
@@ -307,7 +316,6 @@ The following keys cannot be used as metadata fields, because they are used for 
 * language
 * name
 * number
-* sort
 * global
 * url
 * goal_number
