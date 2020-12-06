@@ -26,8 +26,8 @@ create_config_forms:
 create_goals:
   layout: goal
   goals:
-    - number: "1"
-      content: custom.goal_1_content
+    - content: custom.goal_1_content
+    - content: My goal 2 content
 create_indicators:
   layout: indicator
 create_pages:

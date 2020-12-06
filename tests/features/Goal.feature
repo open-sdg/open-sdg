@@ -32,3 +32,5 @@ Feature: Goal page
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
     Then I should see "My translated content for goal 1"
+    And I am on "/2"
+    Then I should see "My goal 2 content"
