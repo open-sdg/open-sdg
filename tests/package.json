@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Integration testing for Open SDG",
     "dependencies": {
-        "cucumber": "latest",
+        "cucumber": "5.0.2",
         "cucumber-mink": "git://github.com/brockfanning/cucumber-mink.git#circleci-compatibility",
         "pa11y-ci": "2.3.0",
         "simple-git": "^2.21.0"
