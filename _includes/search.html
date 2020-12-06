@@ -1,4 +1,4 @@
-<div id="{{ include.id | default: 'search' }}" class="menu-target">
+<div id="{{ include.id | default: 'search' }}" {% unless include.not_in_menu %}class="menu-target"{% endunless %}>
   <form action="{{ page.baseurl }}search">
     <input type="text" name="q" id="indicator_{{ include.id | default: 'search' }}" title="{{ page.t.search.search }}" />
     <label class="sr-only" for="indicator_{{ include.id | default: 'search' }}">{{ page.t.search.search }}</label>

@@ -115,3 +115,53 @@
   white-space: nowrap;
   width: 1px;
 }
+
+@mixin searchBar {
+  position: relative;
+  clear: both;
+  float: right;
+  margin-bottom: 20px;
+  @media only screen and (max-width: 768px) {
+    margin-bottom: 0;
+  }
+
+  input {
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 45px;
+    width: 300px;
+    width: 33ch;
+    height: 34px;
+    transition: width 0.4s;
+    margin-top: 5px;
+    font-size: $searchBar-input-fontSize;
+    box-shadow: $text-color 0px 0px 0px 1px;
+  }
+
+  button {
+    height: 34px;
+    color: $button-foregroundColor;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    font-size: 1.40em;
+    line-height: 15px;
+    background-color: $button-color;
+    border: none;
+  }
+  // @deprecated start
+  form > label > span {
+    @include screenreaderOnly;
+  }
+  // @deprecated end
+}
+
+@mixin searchBarHighContrast {
+  input {
+    color: $color-dark-highContrast;
+  }
+  button {
+    background-color: $color-medium-highContrast;
+    color: $color-light-highContrast;
+  }
+}

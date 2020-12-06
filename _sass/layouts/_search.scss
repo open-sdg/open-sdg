@@ -4,6 +4,16 @@
   }
 }
 
+#search-bar-on-page {
+  @include searchBar;
+  float: none;
+  button {
+    position: relative;
+    right: 41px;
+    top: 1px;
+  }
+}
+
 #search-results {
 
   span.match {
@@ -63,6 +73,10 @@ body.contrast-high {
         color: $color-light-highContrast !important;
       }
     }
+  }
+
+  #search-bar-on-page {
+    @include searchBarHighContrast;
   }
 }
 
