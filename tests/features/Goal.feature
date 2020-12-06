@@ -25,3 +25,10 @@ Feature: Goal page
     Then I should see "Targets and indicators"
     And I should see 5 "goal target" elements
     And I should see 10 "goal indicator" elements
+
+  Scenario: Goals can have custom content
+    Given I am on "/1"
+    Then I should see "My content for goal 1"
+    And I click on "the language toggle dropdown"
+    And I follow "the first language option"
+    Then I should see "My translated content for goal 1"
