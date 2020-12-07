@@ -92,6 +92,7 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    getColorsToUse: getColorsToUse,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),
   }

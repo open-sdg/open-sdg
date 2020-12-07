@@ -75,6 +75,7 @@ var indicatorModel = function (options) {
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
   this.hasStartValues = Array.isArray(this.startValues) && this.startValues.length > 0;
+  this.colorMap = {};
 
   this.clearSelectedFields = function() {
     this.selectedFields = [];
@@ -253,7 +254,23 @@ var indicatorModel = function (options) {
     }
 
     var combinations = helpers.getCombinationData(this.selectedFields);
-    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields);
+    var colorsToUse = [];
+    for (var i = 0; i < combinations.length; i++) {
+      var colorMapKey = JSON.stringify(combinations[i]);
+      if (!this.colorMap[colorMapKey]) {
+        var colorsUsed = Object.values(this.colorMap);
+        for (var j = 0; j < this.colors.length; j++) {
+          if (!(colorsUsed.includes(this.colors[j]))) {
+            this.colorMap[colorMapKey] = this.colors[j];
+            break;
+          }
+        }
+      }
+      if (this.colorMap[colorMapKey]) {
+        colorsToUse.push(this.colorMap[colorMapKey]);
+      }
+    }
+    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, colorsToUse, this.selectableFields);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
 
     var datasetCountExceedsMax = false;

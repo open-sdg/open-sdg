@@ -221,3 +221,28 @@ function makeHeadlineDataset(years, rows, label) {
     data: prepareDataForDataset(years, rows),
   });
 }
+
+/**
+ * @param {Array} combinations Array of key/value combination objects
+ * @param {Object} colorMap Key/value mapping serialized combinations to colors
+ * @param {Array} colors All colors available to be used
+ */
+function getColorsToUse(combinations, colorMap, colors) {
+  var colorsToUse = [];
+  for (var i = 0; i < combinations.length; i++) {
+    var colorMapKey = JSON.stringify(combinations[i]);
+    if (!colorMap[colorMapKey]) {
+      var colorsUsed = Object.values(colorMap);
+      for (var j = 0; j < colors.length; j++) {
+        if (!(colorsUsed.includes(colors[j]))) {
+          colorMap[colorMapKey] = colors[j];
+          break;
+        }
+      }
+    }
+    if (colorMap[colorMapKey]) {
+      colorsToUse.push(colorMap[colorMapKey]);
+    }
+  }
+  return colorsToUse;
+}
