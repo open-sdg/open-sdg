@@ -15,8 +15,9 @@
 {%- include assets/js/mapView.js -%}
 {%- include assets/js/indicatorView.js -%}
 {%- include assets/js/indicatorController.js -%}
-{% if site.accessible_tabs %}
 {%- include assets/js/tabs.js -%}
+{% if site.accessible_tabs %}
+{%- include assets/js/accessibleTabs.js -%}
 {% endif %}
 {%- include assets/js/search.js -%}
 {%- include assets/js/menu.js -%}
