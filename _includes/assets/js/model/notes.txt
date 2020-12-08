@@ -1,0 +1,77 @@
+Ocean waves
+Each wave carries 0 to 5 unique species of fish
+Each wave will have the same species as the last wave,
+  but with either one unknown species or one less.
+Each species must be put into its own bucket
+If a species does not show up in a wave, its bucket is marked "endangered"
+When a species arrives but there are no buckets, it gets the first available endangered bucket
+
+Sets of combinations
+Each set has 0 to (colors.length * 2) combinations
+Each set will be more or less than the last one
+Each combination is placed into an indexed list of color assignments and assigned a color
+    Color assignment:
+        - combination
+        - color
+        - striped?
+        - ready for eviction?
+If a set has less than the last one
+    Any assigned combinations not in the set are marked as ready for eviction
+If a set has more than the last one
+    Are there are enough color assignments left?
+        Yes?
+            Are any of the new combinations already in ready-for-eviction assignments?
+                Yes? Remove the ready-for-eviction flag
+            Place combinations in color assignments as usual
+        No? Evict any "ready for eviction" assignments to make room
+    Place combinations in color assignments as usual
+
+Need a color?
+    Return the color and stripedness
+
+
+
+Assuming max of 5 colors, solid and striped
+
+User selects combo 1
+Combo 1 is mapped to color 1
+User selects combo 2
+Combo 2 is mapped to color 2
+User selects combo 3
+Combo 3 is mapped to color 3
+User selects combo 4
+Combo 4 is mapped to color 4
+User selects combo 5
+Combo 5 is mapped to color 5
+
+User unselects combo 1
+Combo 1 remains mapped to color 1 (but is not used)
+
+User selects combo 6
+Should this use a color 1 striped?
+Or should it use the color 1 normal?
+
+In this case: striped version.
+
+User selects combo 7
+Combo 7 is mapped to color 2 striped
+User selects combo 8
+Combo 8 is mapped to color 3 striped
+User selects combo 9
+Combo 9 is mapped to color 4 striped
+User selects combo 10
+Combo 10 is mapped to color 5 striped
+
+Everything is now mapped, but color 1 is not being used.
+
+User selects combo 11
+Should this use color 1? (Yes, because there is nothing left.)
+
+User unselects combo 2
+Combo 2 remains mapped to color 2 (but is not used)
+
+User selects combo 12
+Should this use color 2? (Yes, because there is nothing left.)
+
+User selects combo 13
+Everything is already mapped, the dataset gets gray and is not displayed.
