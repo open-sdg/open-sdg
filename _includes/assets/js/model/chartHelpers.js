@@ -41,17 +41,15 @@ function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
  * @param {string} defaultLabel
  * @param {Array} colors
  * @param {Array} selectableFields Field names
- * @param {Array} colorAssignments Indexed set of color assignments for disaggregation combinations
+ * @param {Array} colorAssignments Color/striping assignments for disaggregation combinations
  * @return {Array} Datasets suitable for Chart.js
  */
 function getDatasets(headline, data, combinations, years, defaultLabel, colors, selectableFields, colorAssignments) {
   var datasets = [], index = 0, dataset, colorIndex, color, background, border, striped, excess, combinationKey, colorAssignment;
   var numColors = colors.length,
       maxColorAssignments = numColors * 2;
-  if (colorAssignments.length < maxColorAssignments) {
-    prepareColorAssignments(colorAssignments, maxColorAssignments);
-  }
 
+  prepareColorAssignments(colorAssignments, maxColorAssignments);
   setAllColorAssignmentsReadyForEviction(colorAssignments);
 
   combinations.forEach(function(combination) {
@@ -66,7 +64,6 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
       else {
         combinationKey = JSON.stringify(combination);
         colorAssignment = getColorAssignmentByCombination(colorAssignments, combinationKey);
-
         if (colorAssignment !== undefined) {
           colorIndex = colorAssignment.colorIndex;
           striped = colorAssignment.striped;
@@ -80,21 +77,13 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
           colorIndex = openColorInfo.colorIndex;
           striped = openColorInfo.striped;
           colorAssignment = getAvailableColorAssignment(colorAssignments);
-          colorAssignment.colorIndex = colorIndex;
-          colorAssignment.striped = striped;
-          colorAssignment.combination = combinationKey;
-          colorAssignment.readyForEviction = false;
+          assignColor(colorAssignment, combination, colorIndex, striped);
         }
       }
 
       color = getColor(colorIndex, colors);
       background = getBackground(color, striped);
       border = getBorderDash(striped);
-
-      if (areThereDuplicateColors(colorAssignments)) {
-        console.log('Dupes!');
-        console.log(colorAssignments);
-      }
 
       dataset = makeDataset(years, filteredData, combination, defaultLabel, color, background, border, excess);
       datasets.push(dataset);
@@ -110,6 +99,10 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
   return datasets;
 }
 
+/**
+ * @param {Array} colorAssignments
+ * @param {int} maxColorAssignments
+ */
 function prepareColorAssignments(colorAssignments, maxColorAssignments) {
   while (colorAssignments.length < maxColorAssignments) {
     colorAssignments.push({
@@ -121,24 +114,56 @@ function prepareColorAssignments(colorAssignments, maxColorAssignments) {
   }
 }
 
-function areThereDuplicateColors(colorAssignments) {
-  var stuff = {};
+/**
+ * @param {Array} colorAssignments
+ */
+function setAllColorAssignmentsReadyForEviction(colorAssignments) {
   for (var i = 0; i < colorAssignments.length; i++) {
-    if (colorAssignments[i].colorIndex === null) {
-      continue;
-    }
-    var key = colorAssignments[i].colorIndex;
-    key += (colorAssignments[i].striped) ? '-striped' : '';
-    if (typeof stuff[key] !== 'undefined') {
-      console.log(i, 'dupe index');
-      console.log(key, 'dupe key');
-      return true;
-    }
-    stuff[key] = true;
+    colorAssignments[i].readyForEviction = true;
   }
-  return false;
 }
 
+/**
+ * @param {Array} rows
+ * @param {Object} combination Key/value representation of a field combo
+ * @param {Array} selectableFields Field names
+ * @return {Array} Matching rows
+ */
+function getDataMatchingCombination(data, combination, selectableFields) {
+  return data.filter(function(row) {
+    return selectableFields.every(function(field) {
+      return row[field] === combination[field];
+    });
+  });
+}
+
+/**
+ * @param {Array} colorAssignments
+ * @param {string} combination
+ * @return {Object|undefined} Color assignment object if found.
+ */
+function getColorAssignmentByCombination(colorAssignments, combination) {
+  return colorAssignments.find(function(assignment) {
+    return assignment.combination === combination;
+  });
+}
+
+/**
+ * @param {Array} colorAssignments
+ * @return {boolean}
+ */
+function colorAssignmentsAreFull(colorAssignments) {
+  for (var i = 0; i < colorAssignments.length; i++) {
+    if (colorAssignments[i].combination === null) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * @param {Array} colorAssignments
+ */
 function evictColorAssignment(colorAssignments) {
   for (var i = 0; i < colorAssignments.length; i++) {
     if (colorAssignments[i].readyForEviction) {
@@ -152,6 +177,11 @@ function evictColorAssignment(colorAssignments) {
   throw 'Could not evict color assignment';
 }
 
+/**
+ * @param {Array} colorAssignments
+ * @param {Array} colors
+ * @return {Object} Object with 'colorIndex' and 'striped' properties.
+ */
 function getOpenColorInfo(colorAssignments, colors) {
   // First look for normal colors, then striped.
   var stripedStates = [false, true];
@@ -176,59 +206,36 @@ function getOpenColorInfo(colorAssignments, colors) {
   throw 'Could not find open color';
 }
 
-function colorAssignmentsAreFull(colorAssignments) {
-  for (var i = 0; i < colorAssignments.length; i++) {
-    if (colorAssignments[i].combination === null) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function getColorAssignmentByCombination(colorAssignments, combination) {
-  return colorAssignments.find(function(assignment) {
-    return assignment.combination === combination;
-  });
-}
-
+/**
+ * @param {Array} colorAssignments
+ * @return {Object|undefined} Color assignment object if found.
+ */
 function getAvailableColorAssignment(colorAssignments) {
   return colorAssignments.find(function(assignment) {
     return assignment.combination === null;
   });
 }
 
-function setAllColorAssignmentsReadyForEviction(colorAssignments) {
-  for (var i = 0; i < colorAssignments.length; i++) {
-    colorAssignments[i].readyForEviction = true;
-  }
-}
-
 /**
- * @param {Array} rows
- * @param {Object} combination Key/value representation of a field combo
- * @param {Array} selectableFields Field names
- * @return {Array} Matching rows
+ * @param {Object} colorAssignment
+ * @param {string} combination
+ * @param {int} colorIndex
+ * @param {boolean} striped
  */
-function getDataMatchingCombination(data, combination, selectableFields) {
-  return data.filter(function(row) {
-    return selectableFields.every(function(field) {
-      return row[field] === combination[field];
-    });
-  });
+function assignColor(colorAssignment, combination, colorIndex, striped) {
+  colorAssignment.combination = combination;
+  colorAssignment.colorIndex = colorIndex;
+  colorAssignment.striped = striped;
+  colorAssignment.readyForEviction = false;
 }
 
 /**
- * @param {int} datasetIndex
+ * @param {int} colorIndex
  * @param {Array} colors
  * @return Color from a list
  */
-function getColor(datasetIndex, colors) {
-  if (datasetIndex >= colors.length) {
-    // Support double the number of colors, because we'll use striped versions.
-    return '#' + colors[datasetIndex - colors.length];
-  } else {
-    return '#' + colors[datasetIndex];
-  }
+function getColor(colorIndex, colors) {
+  return '#' + colors[colorIndex];
 }
 
 /**
