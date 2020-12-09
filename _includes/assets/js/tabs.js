@@ -4,8 +4,9 @@ $(document).ready(function() {
 
         // Allow clicking on the <li> to trigger tab click.
         tabsList.find('li').click(function(event) {
-            $(event.target).find('> a').click();
-            event.stopPropagation();
+            if (event.target.tagName === 'LI') {
+                $(event.target).find('> a').click();
+            }
         });
     });
 });
