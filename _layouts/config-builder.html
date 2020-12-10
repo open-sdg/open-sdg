@@ -86,6 +86,29 @@
       if (key == 'create_pages' && value && value.pages) {
         return value.pages;
       }
+      if (key == 'date_formats' && value && !Array.isArray(value)) {
+        var date_formats = [];
+        Object.keys(value).forEach(function(type) {
+          Object.keys(value[type]).forEach(function(language) {
+            date_formats.push({
+              type: type,
+              language: language,
+              format: value[type][language],
+            });
+          })
+        });
+        return date_formats;
+      }
+      if (key == 'languages_public' && value && !Array.isArray(value)) {
+        var languages_public = [];
+        Object.keys(value).forEach(function(language) {
+          languages_public.push({
+            language: language,
+            language_public: value[language],
+          });
+        });
+        return languages_public;
+      }
       // @deprecated end
       return value;
     }
