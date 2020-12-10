@@ -190,6 +190,11 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
+  - path: dropdownpages
+    translation_key: My dropdowns
+    dropdown:
+      - path: https://www.google.com
+        translation_key: Foobar
   - path: frontpage-legacy
     translation_key: Legacy frontpage
 metadata_edit_url: 'https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md'

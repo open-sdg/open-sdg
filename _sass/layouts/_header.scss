@@ -337,6 +337,27 @@ header ul {
   list-style-type: none;
 }
 
+.btn-group.menu-dropdown {
+  .dropdown-toggle {
+    margin: 0 0 2px 15px;
+    padding: 2px;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    border-bottom: 2px solid transparent;
+    color: $menu-link-color;
+    &:hover {
+      background: none;
+      border-bottom: 2px solid $menu-link-borderBottomColor-hover;
+    }
+  }
+  .dropdown-menu {
+    border-radius: 0;
+    margin-left: 15px;
+  }
+}
+
+
 body.contrast-high {
   .navbar {
     #menu, #menu-mobile {
