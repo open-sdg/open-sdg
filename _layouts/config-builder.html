@@ -83,7 +83,7 @@
 
     function normalizeCurrentValue(key, value) {
       // @deprecated start
-      if (key == 'create_pages' && value.pages) {
+      if (key == 'create_pages' && value && value.pages) {
         return value.pages;
       }
       // @deprecated end
