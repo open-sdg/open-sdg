@@ -81,6 +81,15 @@
       {% endif %}
     {% endif %}
 
+    function normalizeCurrentValue(key, value) {
+      // @deprecated start
+      if (key == 'create_pages' && value.pages) {
+        return value.pages;
+      }
+      // @deprecated end
+      return value;
+    }
+
     // Change the theme to create div instead of H3 elements for headers.
     JSONEditor.defaults.themes.bootstrap3.prototype.getHeader = function(text) {
       var el = document.createElement('div')
@@ -179,7 +188,7 @@
     {%- endif -%}
     {% if current_value %}
       try {
-        var currentValue = {{ current_value | jsonify }};
+        var currentValue = normalizeCurrentValue('{{ config_key }}', {{ current_value | jsonify }});
         var propertyEditor = editor.getEditor('root.{{ config_key }}');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
