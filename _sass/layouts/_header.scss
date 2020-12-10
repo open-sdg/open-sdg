@@ -401,6 +401,32 @@ body.contrast-high {
         }
       }
     }
+
+    #menu {
+      .btn-group.menu-dropdown {
+        .dropdown-toggle {
+          color: $color-light-highContrast !important;
+          background: $color-dark-highContrast !important;
+          &:hover {
+            color: $color-highlight-highContrast !important;
+          }
+          &:focus {
+            background: $focusBackgroundColor-highContrast !important;
+            color: $focusColor-highContrast !important;
+          }
+        }
+        .dropdown-menu {
+          li {
+            a {
+              color: $color-dark-highContrast;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   @media screen and (max-width: 768px) {
