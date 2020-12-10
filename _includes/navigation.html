@@ -8,8 +8,9 @@
         {%- if item_path_first == '/' -%}
         {%- assign item_path = item_path | slice: 1, item_path.size -%}
         {%- endif -%}
+        {%- if include.dropdowns -%}
         <li class="nav-link {% if current_path_no_slash == item_path_no_slash %}active{% endif %}">
-            {%- if item.dropdown and item.dropdown.size > 0 and include.dropdowns -%}
+            {%- if item.dropdown and item.dropdown.size > 0 -%}
                 <div class="btn-group menu-dropdown">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ item.translation_key | t }}
@@ -33,6 +34,25 @@
                 <a href="{{ page.baseurl }}{{ item_path }}">{{ item.translation_key | t }}</a>
             {%- endif -%}
         </li>
+        {%- else -%}
+            {%- if item.dropdown and item.dropdown.size > 0 -%}
+                {%- for dropdown_item in item.dropdown -%}
+                    {%- assign dropdown_item_path_no_slash = dropdown_item.path | remove: '/' -%}
+                    {%- assign dropdown_item_path = dropdown_item.path -%}
+                    {%- assign dropdown_item_path_first = dropdown_item_path | slice: 0 %}
+                    {%- if dropdown_item_path_first == '/' -%}
+                    {%- assign dropdown_item_path = dropdown_item_path | slice: 1, dropdown_item_path.size -%}
+                    {%- endif -%}
+                    <li class="nav-link {% if current_path_no_slash == dropdown_item_path_no_slash %}active{% endif %}">
+                        <a href="{{ page.baseurl }}{{ dropdown_item_path }}">{{ dropdown_item.translation_key | t }}</a>
+                    </li>
+                {%- endfor -%}
+            {%- else -%}
+                <li class="nav-link {% if current_path_no_slash == item_path_no_slash %}active{% endif %}">
+                    <a href="{{ page.baseurl }}{{ item_path }}">{{ item.translation_key | t }}</a>
+                </li>
+            {%- endif -%}
+        {%- endif -%}
     {%- endfor -%}
 {%- endif -%}
 {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
