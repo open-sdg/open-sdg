@@ -270,16 +270,13 @@ body.contrast-high {
       width: 200%;
       margin-left: -100%;
       padding: 20px;
-
       input {
-        width: 100%;
+        width: calc(100% - 45px);
         color: $text-color;
-        margin-top: 0;
       }
-
       button {
-        right: 20px;
-        bottom: 20px;
+        width: 36px;
+        height: 33px;
       }
     }
   }

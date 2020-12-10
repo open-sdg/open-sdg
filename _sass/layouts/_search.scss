@@ -7,10 +7,13 @@
 #search-bar-on-page {
   @include searchBar;
   float: none;
+  input {
+    width: 400px;
+    max-width: calc(100% - 42px);
+  }
   button {
-    position: relative;
-    right: 41px;
-    top: 1px;
+    right: 1px;
+    line-height: 22px;
   }
 }
 
