@@ -81,6 +81,18 @@
       {% endif %}
     {% endif %}
 
+    // Change the theme to create div instead of H3 elements for headers.
+    JSONEditor.defaults.themes.bootstrap3.prototype.getHeader = function(text) {
+      var el = document.createElement('div')
+      if (typeof text === 'string') {
+        el.textContent = text;
+      } else {
+        el.appendChild(text);
+      }
+      el.classList.add('je-header');
+      return el;
+    }
+
     var editor = new JSONEditor(document.getElementById('editor_holder'), {
       theme: 'bootstrap3',
       iconlib: 'fontawesome4',
