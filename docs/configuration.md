@@ -501,6 +501,20 @@ menu:
     translation_key: menu.faq
 ```
 
+Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "/about" and "/faq" under a "More information" dropdown:
+
+```nohighlight
+menu:
+  - path: /reporting-status
+    translation_key: menu.reporting_status
+  - translation_key: More information
+    dropdown:
+      - path: /faq
+        translation_key: menu.faq
+      - path: /about
+        translation_key: menu.about
+```
+
 ### news
 
 _Optional_: This setting can be used to control the behavior of the `news` and `post` layouts. The available settings are:
