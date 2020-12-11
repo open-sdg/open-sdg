@@ -354,6 +354,18 @@ header ul {
   .dropdown-menu {
     border-radius: 0;
     margin-left: 15px;
+    a {
+      color: $menu-link-color;
+    }
+    .active {
+      a {
+        background: none;
+        color: $menu-link-color;
+        &:hover {
+          background: $menu-dropdownLink-backgroundColor-hover;
+        }
+      }
+    }
   }
 }
 
