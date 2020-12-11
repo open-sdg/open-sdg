@@ -1,3 +1,13 @@
 .previous-next-links {
     margin-top: 20px;
 }
+
+body.contrast-high {
+    .previous-next-links {
+        .btn {
+            span {
+                color: $button-foregroundColor-highContrast;
+            }
+        }
+    }
+}
