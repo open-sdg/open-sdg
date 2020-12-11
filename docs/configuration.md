@@ -109,20 +109,22 @@ create_config_forms:
 
 ### create_goals
 
-_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
+_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals. You can optionally turn on previous/next links as well.
 
 ```nohighlight
 create_goals:
   layout: goal
+  previous_next_links: true
 ```
 
 ### create_indicators
 
-_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators.
+_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators. You can optionally turn on previous/next links as well.
 
 ```nohighlight
 create_indicators:
   layout: indicator
+  previous_next_links: true
 ```
 
 ### create_pages
