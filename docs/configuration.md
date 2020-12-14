@@ -188,6 +188,24 @@ custom_js:
 data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
 ```
 
+### data_fields
+
+_Optional_: This setting can be used if your data source has non-standard fields for unit and/or series -- for example, if you have CSV files with units in a "UNIT_MEASURE" column, rather than the usual "Units". If this is omitted, the following defaults are used:
+
+```nohighlight
+data_fields:
+  series: Series
+  units: Units
+```
+
+If your data source is coming directly from SDMX, for example, you might use something like this:
+
+```nohighlight
+data_fields:
+  series: SERIES
+  units: UNIT_MEASURE
+```
+
 ### date_formats
 
 _Optional_: This setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, and each must have an arbitrary `type`, such as "standard". Make sure that each `type` has a variant for each of your languages. For example, here is how you might configure a "standard" date format:
