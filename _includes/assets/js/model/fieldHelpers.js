@@ -7,8 +7,8 @@
  * @param {Array} edges
  * @return {Array} Field item states
  */
-function getInitialFieldItemStates(rows, edges) {
-  var initial = getFieldColumnsFromData(rows).map(function(field) {
+function getInitialFieldItemStates(rows, edges, columns) {
+  var initial = getFieldColumnsFromData(columns).map(function(field) {
     return {
       field: field,
       hasData: true,

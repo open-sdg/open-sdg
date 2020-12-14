@@ -48,7 +48,7 @@ var indicatorModel = function (options) {
     if (this.hasUnits) {
       this.units = helpers.getUniqueValuesByProperty(helpers.UNIT_COLUMN, this.data);
       this.selectedUnit = this.units[0];
-      this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data);
+      this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data, this.allColumns);
       this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
     }
   }
@@ -56,13 +56,13 @@ var indicatorModel = function (options) {
   this.refreshSeries = function() {
     if (this.hasSerieses) {
       this.data = helpers.getDataBySeries(this.allData, this.selectedSeries);
-      this.fieldsBySeries = helpers.fieldsUsedBySeries(this.serieses, this.data);
+      this.fieldsBySeries = helpers.fieldsUsedBySeries(this.serieses, this.data, this.allColumns);
       this.dataHasSeriesSpecificFields = helpers.dataHasSeriesSpecificFields(this.fieldsBySeries);
     }
   }
 
   this.initialiseFields = function() {
-    this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData);
+    this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns);
     this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
     this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
     this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
@@ -70,7 +70,8 @@ var indicatorModel = function (options) {
 
   // Before continuing, we may need to filter by Series, so set up all the Series stuff.
   this.allData = helpers.prepareData(this.data);
-  this.hasSerieses = helpers.SERIES_TOGGLE && helpers.dataHasSerieses(this.allData);
+  this.allColumns = helpers.getColumnsFromData(this.allData);
+  this.hasSerieses = helpers.SERIES_TOGGLE && helpers.dataHasSerieses(this.allColumns);
   this.serieses = this.hasSerieses ? helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.allData) : [];
   this.hasStartValues = Array.isArray(this.startValues) && this.startValues.length > 0;
   if (this.hasSerieses) {
@@ -87,7 +88,7 @@ var indicatorModel = function (options) {
   // calculate some initial values:
   this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
   this.hasGeoData = helpers.dataHasGeoCodes(this.data);
-  this.hasUnits = helpers.dataHasUnits(this.data);
+  this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
@@ -127,7 +128,6 @@ var indicatorModel = function (options) {
   };
 
   this.updateSelectedSeries = function(selectedSeries) {
-    console.log('here');
     this.selectedSeries = selectedSeries;
     this.refreshSeries();
     this.clearSelectedFields();
