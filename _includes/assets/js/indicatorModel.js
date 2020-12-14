@@ -128,15 +128,15 @@ var indicatorModel = function (options) {
   };
 
   this.updateSelectedSeries = function(selectedSeries) {
+    // Updating the Series is akin to loading a whole new indicator, so
+    // here we re-initialise most everything on the page.
     this.selectedSeries = selectedSeries;
     this.refreshSeries();
     this.clearSelectedFields();
     this.initialiseUnits();
     this.initialiseFields();
     this.selectedFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
-    this.getData({
-      updateFields: this.dataHasSeriesSpecificFields
-    });
+    this.getData({ updateFields: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
     this.onUnitsComplete.notify({
       units: this.units,
