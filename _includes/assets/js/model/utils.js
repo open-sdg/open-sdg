@@ -52,9 +52,11 @@ function getColumnsFromData(rows) {
  */
 function getFieldColumnsFromData(rows) {
   var omitColumns = nonFieldColumns();
-  return getColumnsFromData(rows).filter(function(col) {
+  //console.log()
+  var foo = getColumnsFromData(rows).filter(function(col) {
     return !omitColumns.includes(col);
   });
+  console.log(foo);
 }
 
 /**
@@ -75,5 +77,6 @@ function nonFieldColumns() {
   if (SERIES_TOGGLE) {
     columns.push(SERIES_COLUMN);
   }
+  console.log(columns);
   return columns;
 }

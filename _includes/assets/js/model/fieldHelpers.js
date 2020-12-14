@@ -349,6 +349,7 @@ function validParentsByChild(edges, fieldItemStates, rows) {
   var childFields = getChildFieldNames(edges);
   var validParentsByChild = {};
   childFields.forEach(function(childField, fieldIndex) {
+    console.log(childField);
     var fieldItemState = fieldItemStates.find(function(fis) {
       return fis.field === childField;
     });
