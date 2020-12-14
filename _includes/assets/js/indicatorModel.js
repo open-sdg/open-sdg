@@ -62,9 +62,7 @@ var indicatorModel = function (options) {
   }
 
   this.initialiseFields = function() {
-    console.log(this.data);
     this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData);
-    console.log(this.fieldItemStates);
     this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
     this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
     this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
@@ -80,7 +78,6 @@ var indicatorModel = function (options) {
     if (this.hasStartValues) {
       this.selectedSeries = helpers.getSeriesFromStartValues(this.startValues) || this.selectedSeries;
     }
-    console.log('bar');
     this.refreshSeries();
   }
   else {
@@ -91,7 +88,6 @@ var indicatorModel = function (options) {
   this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
   this.hasGeoData = helpers.dataHasGeoCodes(this.data);
   this.hasUnits = helpers.dataHasUnits(this.data);
-  console.log('foo');
   this.initialiseUnits();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
