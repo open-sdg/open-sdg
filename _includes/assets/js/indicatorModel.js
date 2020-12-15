@@ -43,6 +43,7 @@ var indicatorModel = function (options) {
   this.stackedDisaggregation = options.stackedDisaggregation;
   this.graphAnnotations = options.graphAnnotations;
   this.indicatorDownloads = options.indicatorDownloads;
+  this.compositeBreakdownLabel = options.compositeBreakdownLabel;
 
   // calculate some initial values:
   this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
@@ -225,7 +226,8 @@ var indicatorModel = function (options) {
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
           this.selectedFields,
-          this.edgesData
+          this.edgesData,
+          this.compositeBreakdownLabel,
         ),
         allowedFields: this.allowedFields,
         edges: this.edgesData,
