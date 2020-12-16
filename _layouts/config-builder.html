@@ -192,6 +192,11 @@
                 propertyEditorAccessibilityFixes(propertyEditor.editors[editorKey]);
               }
             }
+            if (typeof propertyEditor.rows !== 'undefined') {
+              for (var i = 0; i < propertyEditor.rows.length; i++) {
+                propertyEditorAccessibilityFixes(propertyEditor.rows[i]);
+              }
+            }
             break;
         }
       }
@@ -271,7 +276,7 @@
 
     function addNewTabMessage(link) {
       if (!link.querySelector('.sr-only')) {
-        link.insertAdjacentHTML('beforeend', '<span>(opens in a new tab)</span>');
+        link.insertAdjacentHTML('beforeend', ' <span>(opens in a new tab)</span>');
       }
     }
 
