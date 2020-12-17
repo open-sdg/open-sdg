@@ -117,7 +117,6 @@
 }
 
 @mixin searchBar {
-  position: relative;
   clear: both;
   float: right;
   margin-bottom: 20px;
@@ -134,11 +133,11 @@
     width: 300px;
     width: 33ch;
     height: 34px;
-    transition: width 0.4s;
     font-size: $searchBar-input-fontSize;
-    box-shadow: $text-color 0px 0px 0px 1px;
-    border: none;
-    left: 2px;
+    border: 1.25px solid $text-color;
+    border-radius: 0;
+    display: inline-block;
+    vertical-align: middle;
     position: relative;
     z-index: 0;
     &:focus {
@@ -149,12 +148,14 @@
   button {
     height: 34px;
     color: $button-foregroundColor;
-    position: relative;
-    top: 2px;
     font-size: 1.40em;
+    line-height: 1em;
     background-color: $button-color;
-    border: none;
-    box-shadow: $button-color 0px 0px 0px 1px;
+    border: 1.25px solid $button-color;
+    border-radius: 0;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
     z-index: 0;
     &:focus {
       color: $button-foregroundColor !important;
