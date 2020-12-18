@@ -25,6 +25,9 @@ create_config_forms:
   layout: config-builder
 create_goals:
   layout: goal
+  goals:
+    - content: custom.goal_1_content
+    - content: My goal 2 content
 create_indicators:
   layout: indicator
 create_pages:

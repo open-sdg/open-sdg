@@ -109,11 +109,17 @@ create_config_forms:
 
 ### create_goals
 
-_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals.
+_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) `layout` setting indicating the Jekyll layout to use for the goals.
+
+Additionally, there can be a `goals` item that includes an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
 
 ```nohighlight
 create_goals:
   layout: goal
+  goals:
+    - content: My content for goal 1
+    - content: My content for goal 2 with a [link](https://example.com)
+    - content: custom.my_translation_key_for_goal_3
 ```
 
 ### create_indicators
