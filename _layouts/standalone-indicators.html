@@ -8,7 +8,9 @@
   {% assign indicator_objects = '' | split: ',' %}
   {% for indicator_number in page.standalone_indicators %}
     {% assign indicator = indicator_number | sdg_lookup %}
-    {% assign indicator_objects = indicator_objects | push: indicator %}
+    {% if indicator and indicator.sort %}
+      {% assign indicator_objects = indicator_objects | push: indicator %}
+    {% endif %}
   {% endfor %}
   {% assign indicator_objects = indicator_objects | sort: 'sort' %}
   {% for indicator in indicator_objects %}
