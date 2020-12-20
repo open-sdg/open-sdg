@@ -26,7 +26,7 @@ Feature: Series
     And I click on "the second series"
     Then I should see 1 "chart legend item" element
     And I click on "the last series"
-    Then I should see 2 "chart legend item" elements
+    Then I should see 1 "chart legend item" elements
     And I click on "the filter drop-down button"
     And I click on "the last filter option"
-    Then I should see 3 "chart legend item" elements
+    Then I should see 2 "chart legend item" elements
