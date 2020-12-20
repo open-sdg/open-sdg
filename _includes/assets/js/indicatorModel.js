@@ -135,19 +135,15 @@ var indicatorModel = function (options) {
     this.clearSelectedFields();
     this.initialiseUnits();
     this.initialiseFields();
-    this.selectedFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
-    this.getData({ updateFields: true });
+    this.getData({ updateFields: true, changingSeries: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
-    this.onUnitsComplete.notify({
-      units: this.units,
-      selectedUnit: this.selectedUnit
-    });
   };
 
   this.getData = function(options) {
     options = Object.assign({
       initial: false,
-      updateFields: false
+      updateFields: false,
+      changingSeries: false,
     }, options);
 
     var headlineUnfiltered = helpers.getHeadline(this.selectableFields, this.data);
@@ -168,7 +164,7 @@ var indicatorModel = function (options) {
 
     // If this is the initial load, check for special cases.
     var selectionUpdateNeeded = false;
-    if (options.initial) {
+    if (options.initial || options.changingSeries) {
       // Decide on a starting unit.
       if (this.hasUnits) {
         var startingUnit = this.selectedUnit;
@@ -193,7 +189,7 @@ var indicatorModel = function (options) {
       }
 
       // Decide on a starting series.
-      if (this.hasSerieses) {
+      if (this.hasSerieses && !options.changingSeries) {
         var startingSeries = this.selectedSeries;
         if (this.hasStartValues) {
           var seriesInStartValues = helpers.getSeriesFromStartValues(this.startValues);
