@@ -1,4 +1,4 @@
-$goal-by-target-indentation: 50px;
+$goal-by-target-indentation: 60px;
 
 .layout-goal-by-target-vertical {
   .goal-target, .goal-indicator {
@@ -64,7 +64,7 @@ $goal-by-target-indentation: 50px;
   }
 
   .target-name, .indicator-name {
-    margin-left: 50px;
+    margin-left: $goal-by-target-indentation;
     box-decoration-break: clone;
   }
 
