@@ -77,7 +77,7 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
           colorIndex = openColorInfo.colorIndex;
           striped = openColorInfo.striped;
           colorAssignment = getAvailableColorAssignment(colorAssignments);
-          assignColor(colorAssignment, combination, colorIndex, striped);
+          assignColor(colorAssignment, combinationKey, colorIndex, striped);
         }
       }
 
