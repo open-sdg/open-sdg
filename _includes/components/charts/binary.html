@@ -53,10 +53,14 @@ opensdg.chartConfigAlter(function(config) {
 });
 
 opensdg.tableConfigAlter(function(config, info) {
+  var targetColumns = [];
+  for (var i = 1; i < info.table.headings.length; i++) {
+    targetColumns.push(i);
+  }
   var overrides = {
     columnDefs: [
       {
-        targets: -1,
+        targets: targetColumns,
         createdCell: function(td, cellData, rowData, row, col) {
           $(td).text(opensdg.convertBinaryValue(cellData));
         },
