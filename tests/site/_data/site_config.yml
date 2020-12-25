@@ -25,6 +25,9 @@ create_config_forms:
   layout: config-builder
 create_goals:
   layout: goal
+  goals:
+    - content: custom.goal_1_content
+    - content: My goal 2 content
 create_indicators:
   layout: indicator
 create_pages:
@@ -129,6 +132,8 @@ graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
 header_language_toggle: dropdown
+header:
+  include: header-menu-left-aligned.html
 hide_empty_metadata: true
 indicator_config_form:
   dropdowns:
