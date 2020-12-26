@@ -343,6 +343,9 @@ function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
  * @param {Array} fieldItemStates
  * @param {Array} rows
  * @return {Object} Arrays of parents keyed to children
+ *
+ * @TODO: This function can be a bottleneck in large datasets with a lot of
+ * disaggregation values. Can this be further optimized?
  */
 function validParentsByChild(edges, fieldItemStates, rows) {
   var parentFields = getParentFieldNames(edges);
@@ -356,18 +359,17 @@ function validParentsByChild(edges, fieldItemStates, rows) {
       return value.value;
     });
     var parentField = parentFields[fieldIndex];
+    var childRows = rows.filter(function(row) {
+      var childNotEmpty = row[childField];
+      var parentNotEmpty = row[parentField];
+      return childNotEmpty && parentNotEmpty;
+    })
     validParentsByChild[childField] = {};
     childValues.forEach(function(childValue) {
-      var rowsWithParentValues = rows.filter(function(row) {
-        var childMatch = row[childField] == childValue;
-        var parentNotEmpty = row[parentField];
-        return childMatch && parentNotEmpty;
+      var rowsWithParentValues = childRows.filter(function(row) {
+        return row[childField] == childValue;
       });
-      var parentValues = rowsWithParentValues.map(function(row) {
-        return row[parentField];
-      });
-      parentValues = parentValues.filter(isElementUniqueInArray);
-      validParentsByChild[childField][childValue] = parentValues;
+      validParentsByChild[childField][childValue] = getUniqueValuesByProperty(parentField, rowsWithParentValues);
     });
   });
   return validParentsByChild;
