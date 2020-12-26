@@ -77,3 +77,12 @@ function nonFieldColumns() {
   }
   return columns;
 }
+
+/**
+ * Move an item from one position in an array to another.
+ */
+function arrayMove(arr, fromIndex, toIndex) {
+  var element = arr[fromIndex];
+  arr.splice(fromIndex, 1);
+  arr.splice(toIndex, 0, element);
+}
