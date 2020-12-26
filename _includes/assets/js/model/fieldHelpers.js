@@ -169,7 +169,7 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
  * @param {Array} edges
  */
 function sortFieldsForView(fieldItemStates, edges) {
-  if (edges) {
+  if (edges.length > 0 && fieldItemStates.length > 0) {
     edges.forEach(function(edge) {
       // This makes sure children are right after their parents.
       var parentIndex = fieldItemStates.findIndex(function(fieldItem) {
