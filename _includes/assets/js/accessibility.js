@@ -107,6 +107,7 @@ var accessibilitySwitcher = function() {
 
 
   function imageFix(contrast) {
+    {% unless site.goal_image_extension == 'svg' %}
     if (contrast == 'high')  {
       _.each($('img:not([src*=high-contrast])'), function(goalImage){
         if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/") {
@@ -118,6 +119,7 @@ var accessibilitySwitcher = function() {
         $(goalImage).attr('src', $(goalImage).attr('src').replace('high-contrast/', ''));
       })
     }
+    {% endunless %}
   };
 
 };
