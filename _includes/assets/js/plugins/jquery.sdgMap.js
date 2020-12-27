@@ -215,7 +215,7 @@
     // Get the data from a feature's properties, according to the current year.
     getData: function(props) {
       if (props.values && props.values.length && props.values[this.currentDisaggregation][this.currentYear]) {
-        return props.values[this.currentDisaggregation][this.currentYear];
+        return opensdg.dataRounding(props.values[this.currentDisaggregation][this.currentYear]);
       }
       return false;
     },
