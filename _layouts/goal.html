@@ -25,7 +25,7 @@
 
 <div id="main-content" class="container goal-indicators goal-{{ page.goal.number }}" role="main">
 
-  {{ content }}
+  {% include components/goal/goal-content.html content=content %}
 
   {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number %}
   {% for indicator in goal_indicators %}
