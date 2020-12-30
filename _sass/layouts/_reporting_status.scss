@@ -29,7 +29,7 @@
     }
     > div {
       display: inline-block;
-
+      margin-bottom: 5px;
       margin-right: 10px;
 
       .status {
@@ -104,16 +104,18 @@
     border-bottom: 1px solid $horizontalRule-color;
     .total {
        line-height: 1.2;
-       vertical-align: middle;
        font-size: 16px;
        width: auto;
        padding-left: 4px;
        padding-right: 4px;
        text-align: center;
        display: inline-block;
-       margin-left: 10px;
+       margin-bottom: 10px;
        border-radius: 4px;
        border: 1px solid $horizontalRule-color;
+       @media screen and (min-width: 520px) {
+         margin-left: 10px;
+       }
     }
   }
   .frame {
@@ -127,8 +129,16 @@
   .details {
     width: calc(100% - 125px);
     float: left;
+    h2 {
+      @media screen and (min-width: 520px) {
+        display: inline-block;
+      }
+    }
     h3 {
       margin-top: 10px;
+      @media screen and (min-width: 520px) {
+        display: inline-block;
+      }
       @media only screen and (max-width: 720px) {
         margin-top: 3px;
       }
