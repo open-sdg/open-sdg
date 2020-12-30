@@ -23,6 +23,7 @@
 
     &.contrast-default {
       display: none;
+      @include preserveOriginalColors;
       background: $color-light-highContrast;
       a {
         color: $color-dark-highContrast;
@@ -31,6 +32,7 @@
 
     &.contrast-high {
       display: block;
+      @include preserveOriginalColors;
       background: $color-dark-highContrast;
       a {
         color: $color-highlight-highContrast;
