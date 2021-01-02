@@ -13,7 +13,7 @@ function getUniqueValuesByProperty(prop, rows) {
       uniques.add(row[prop])
     }
   });
-  return Array.from(uniques).sort();
+  return Array.from(uniques);
 }
 
 // Use as a callback to Array.prototype.filter to get unique elements

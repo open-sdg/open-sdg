@@ -43,13 +43,15 @@ var indicatorModel = function (options) {
   this.stackedDisaggregation = options.stackedDisaggregation;
   this.graphAnnotations = options.graphAnnotations;
   this.indicatorDownloads = options.indicatorDownloads;
+  this.dataSchema = options.dataSchema;
 
   // calculate some initial values:
-  this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
+  this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data).sort();
   this.hasGeoData = helpers.dataHasGeoCodes(this.data);
   if (helpers.dataHasUnits(this.data)) {
     this.hasUnits = true;
     this.units = helpers.getUniqueValuesByProperty(helpers.UNIT_COLUMN, this.data);
+    helpers.sortFieldValueNames(helpers.UNIT_COLUMN, this.units, this.dataSchema);
     this.selectedUnit = this.units[0];
     this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data);
     this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
@@ -60,6 +62,7 @@ var indicatorModel = function (options) {
   if (helpers.SERIES_TOGGLE && helpers.dataHasSerieses(this.data)) {
     this.hasSerieses = true;
     this.serieses = helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.data);
+    helpers.sortFieldValueNames(helpers.SERIES_COLUMN, this.serieses, this.dataSchema);
     this.selectedSeries = this.serieses[0];
     this.fieldsBySeries = helpers.fieldsUsedBySeries(this.serieses, this.data);
     this.dataHasSeriesSpecificFields = helpers.dataHasSeriesSpecificFields(this.fieldsBySeries);
@@ -67,7 +70,7 @@ var indicatorModel = function (options) {
   else {
     this.hasSerieses = false;
   }
-  this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData);
+  this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.dataSchema);
   this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
   this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
   this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
