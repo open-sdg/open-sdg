@@ -33,7 +33,7 @@ If you know of an implementation that should be added to this list, please let u
 
 |City/region|Link|
 |----|----|
-|Bristol|<https://sdg-bristol.github.io/sdg-site-bristol/>|
+|Bristol|<https://bristolsdgs.github.io/>|
 |City of Los Angeles|<https://sdgdata.lamayor.org/>|
 |Lombardy|In development|
 |Madrid|In development|
