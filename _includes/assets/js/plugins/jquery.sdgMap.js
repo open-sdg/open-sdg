@@ -368,7 +368,7 @@
         plugin.map.addControl(L.Control.yearSlider({
           years: plugin.years,
           yearChangeCallback: function(e) {
-            plugin.currentYear = new Date(e.time).getFullYear();
+            plugin.currentYear = plugin.years[e.target._currentTimeIndex];
             plugin.updateColors();
             plugin.updateTooltips();
             plugin.selectionLegend.update();
