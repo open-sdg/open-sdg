@@ -119,6 +119,9 @@ var indicatorSearch = function() {
       resultsCount: resultItems.length,
       didYouMean: (alternativeSearchTerms.length > 0) ? alternativeSearchTerms : false,
     }));
+
+    // Hide the normal header search.
+    $('#search').css('visibility', 'hidden');
   }
 
   // Helper function to make a search query "fuzzier", using the ~ syntax.

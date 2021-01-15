@@ -48,3 +48,17 @@ Feature: Search
     And I follow "popul"
     And I wait 5 seconds
     Then I should see "results found"
+
+  Scenario: Searching for words also matches their stems
+    Given I am on the homepage
+    And I fill in "the search box" with "proportions"
+    And I send key "Enter" in "the search box" element
+    And I wait 5 seconds
+    Then I should see "10 results found"
+
+  Scenario: Searching for words also matches their stems in other languages
+    Given I am on "/es"
+    And I fill in "the search box" with "proporciónes"
+    And I send key "Enter" in "the search box" element
+    And I wait 5 seconds
+    Then I should see "10 results found"
