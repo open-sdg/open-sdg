@@ -82,7 +82,18 @@ function nonFieldColumns() {
  * Move an item from one position in an array to another.
  */
 function arrayMove(arr, fromIndex, toIndex) {
-  var element = arr[fromIndex];
-  arr.splice(fromIndex, 1);
-  arr.splice(toIndex, 0, element);
+  while (fromIndex < 0) {
+    fromIndex += arr.length;
+  }
+  while (toIndex < 0) {
+    toIndex += arr.length;
+  }
+  if (toIndex >= arr.length) {
+    var k = toIndex - arr.length;
+    while ((k--) + 1) {
+      arr.push(undefined);
+    }
+  }
+  arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
+  return arr;
 }
