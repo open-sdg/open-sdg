@@ -190,10 +190,10 @@ function sortFieldsForView(fieldItemStates, edges) {
  * @return {Array} Field item states
  */
 function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
+  var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
+    return fieldByUnit.unit === selectedUnit;
+  })[0];
   return fieldItemStates.filter(function(fis) {
-    var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
-      return fieldByUnit.unit === selectedUnit;
-    })[0];
     return fieldsBySelectedUnit.fields.includes(fis.field);
   });
 }
@@ -205,10 +205,10 @@ function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
  * @return {Array} Field item states
  */
 function fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries) {
+  var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
+    return fieldBySeries.series === selectedSeries;
+  })[0];
   return fieldItemStates.filter(function(fis) {
-    var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
-      return fieldBySeries.series === selectedSeries;
-    })[0];
     return fieldsBySelectedSeries.fields.includes(fis.field);
   });
 }
