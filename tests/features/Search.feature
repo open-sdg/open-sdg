@@ -61,4 +61,4 @@ Feature: Search
     And I fill in "the search box" with "proporciónes"
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
-    Then I should see "Results found: 10"
+    Then I should see "Results found (translated): 10"
