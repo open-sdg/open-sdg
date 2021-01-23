@@ -24,6 +24,12 @@ var opensdg = {
     return value;
   },
 
+  // A hook which can be used to alter the data before it is displayed on charts/tables.
+  dataDisplayAlterations: [],
+  dataDisplayAlter: function(callback) {
+    this.dataDisplayAlterations.push(callback);
+  },
+
   language: '{{ page.language }}',
 };
 

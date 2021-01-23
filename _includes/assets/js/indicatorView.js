@@ -50,6 +50,8 @@ var indicatorView = function (model, options) {
 
   this._model.onDataComplete.attach(function (sender, args) {
 
+    view_obj.precision = args.precision;
+
     if(view_obj._model.showData) {
 
       $('#dataset-size-warning')[args.datasetCountExceedsMax ? 'show' : 'hide']();
@@ -329,9 +331,26 @@ var indicatorView = function (model, options) {
     });
   };
 
+  this.alterDataDisplay = function(value, info) {
+    value = view_obj.forcePrecision(value);
+    opensdg.dataDisplayAlterations.forEach(function(callback) {
+      value = callback(value, info);
+    });
+    return value;
+  }
+
   this.updateChartTitle = function(chartTitle) {
     if (typeof chartTitle !== 'undefined') {
       $('.chart-title').text(chartTitle);
+    }
+  }
+
+  this.forcePrecision = function(value) {
+    if (view_obj.precision || view_obj.precision === 0) {
+      return value.toFixed(view_obj.precision);
+    }
+    else {
+      return value;
     }
   }
 
@@ -397,6 +416,9 @@ var indicatorView = function (model, options) {
             ticks: {
               suggestedMin: 0,
               fontColor: tickColor,
+              callback: function(value) {
+                return view_obj.alterDataDisplay(value);
+              },
             },
             scaleLabel: {
               display: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
@@ -424,6 +446,13 @@ var indicatorView = function (model, options) {
         },
         title: {
           display: false
+        },
+        tooltips: {
+          callbacks: {
+            label: function(tooltipItems, data) {
+              return tooltipItems.label + ': ' + view_obj.alterDataDisplay(tooltipItems.yLabel, data);
+            },
+          },
         },
         plugins: {
           scaler: {}

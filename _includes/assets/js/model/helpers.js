@@ -93,6 +93,8 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    getPrecision: getPrecision,
+    getGraphLimits: getGraphLimits,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),
   }

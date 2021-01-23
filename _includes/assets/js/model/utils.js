@@ -77,3 +77,30 @@ function nonFieldColumns() {
   }
   return columns;
 }
+
+/**
+ * @param {Array} items Objects optionally containing 'unit' and/or 'series'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {String} The first match given the selected unit/series
+ */
+function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
+  if (!items || items.length < 0) {
+    return false;
+  }
+  if (!selectedUnit && !selectedSeries) {
+    return items[0];
+  }
+  var match = items.find(function(item) {
+    if (selectedUnit && selectedSeries) {
+      return item.unit === selectedUnit && item.series === selectedSeries;
+    }
+    else if (selectedUnit) {
+      return item.unit === selectedUnit;
+    }
+    else if (selectedSeries) {
+      return item.series === selectedSeries;
+    }
+  });
+  return match || items[0];
+}

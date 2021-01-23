@@ -73,3 +73,14 @@ function sortData(rows, selectedUnit) {
   var column = selectedUnit ? UNIT_COLUMN : YEAR_COLUMN;
   return _.sortBy(rows, column);
 }
+
+/**
+ * @param {Array} precisions Objects containing 'unit' and 'title'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {int|undefined} number of decimal places, if any
+ */
+function getPrecision(precisions, selectedUnit, selectedSeries) {
+  var match = getMatchByUnitSeries(precisions, selectedUnit, selectedSeries);
+  return (match) ? match.decimals : false;
+}
