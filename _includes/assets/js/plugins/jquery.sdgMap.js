@@ -78,6 +78,7 @@
     this.options = $.extend(true, {}, defaults, options.mapOptions);
     this.mapLayers = [];
     this.indicatorId = options.indicatorId;
+    this.precision = options.precision;
     this.currentDisaggregation = 0;
 
     // Require at least one geoLayer.
@@ -117,7 +118,7 @@
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
       if (tooltipData) {
-        tooltipContent += ': ' + tooltipData;
+        tooltipContent += ': ' + this.alterData(tooltipData);
       }
       return tooltipContent;
     },
@@ -210,6 +211,17 @@
       this.selectionLegend.selections.forEach(function(selection) {
         plugin.updateTooltip(selection);
       });
+    },
+
+    // Alter data before displaying it.
+    alterData: function(value) {
+      if (this.precision || this.precision === 0) {
+        value = Number.parseFloat(value).toFixed(this.precision);
+      }
+      opensdg.dataDisplayAlterations.forEach(function(callback) {
+        value = callback(value);
+      });
+      return value;
     },
 
     // Get the data from a feature's properties, according to the current year.

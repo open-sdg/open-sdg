@@ -73,7 +73,7 @@ var indicatorView = function (model, options) {
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
-      view_obj._mapView.initialise(args.indicatorId);
+      view_obj._mapView.initialise(args.indicatorId, args.precision);
     }
   });
 
@@ -332,7 +332,9 @@ var indicatorView = function (model, options) {
   };
 
   this.alterDataDisplay = function(value, info) {
-    value = view_obj.forcePrecision(value);
+    if (view_obj.precision || view_obj.precision === 0) {
+      value = Number.parseFloat(value).toFixed(view_obj.precision);
+    }
     opensdg.dataDisplayAlterations.forEach(function(callback) {
       value = callback(value, info);
     });
@@ -342,15 +344,6 @@ var indicatorView = function (model, options) {
   this.updateChartTitle = function(chartTitle) {
     if (typeof chartTitle !== 'undefined') {
       $('.chart-title').text(chartTitle);
-    }
-  }
-
-  this.forcePrecision = function(value) {
-    if (view_obj.precision || view_obj.precision === 0) {
-      return value.toFixed(view_obj.precision);
-    }
-    else {
-      return value;
     }
   }
 
@@ -639,7 +632,15 @@ var indicatorView = function (model, options) {
       bAutoWidth: false,
       searching: false,
       responsive: false,
-      order: [[0, 'asc']]
+      order: [[0, 'asc']],
+      columnDefs: [
+        {
+          targets: -1,
+          createdCell: function(td, cellData, rowData, row, col) {
+            $(td).text(view_obj.alterDataDisplay(cellData, rowData));
+          },
+        },
+      ],
     }, table = $(el).find('table');
 
     datatables_options.aaSorting = [];
