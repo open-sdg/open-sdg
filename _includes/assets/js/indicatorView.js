@@ -334,15 +334,15 @@ var indicatorView = function (model, options) {
   };
 
   this.alterDataDisplay = function(value, info) {
+    opensdg.dataDisplayAlterations.forEach(function(callback) {
+      value = callback(value, info);
+    });
     if (view_obj._precision || view_obj._precision === 0) {
       value = Number.parseFloat(value).toFixed(view_obj._precision);
     }
     if (view_obj._decimalSeparator) {
       value = value.toString().replace('.', view_obj._decimalSeparator);
     }
-    opensdg.dataDisplayAlterations.forEach(function(callback) {
-      value = callback(value, info);
-    });
     return value;
   }
 
@@ -631,6 +631,10 @@ var indicatorView = function (model, options) {
   };
 
   var initialiseDataTable = function(el, info) {
+    var nonYearColumns = [];
+    for (var i = 1; i < info.table.headings.length; i++) {
+      nonYearColumns.push(i);
+    }
     var datatables_options = options.datatables_options || {
       paging: false,
       bInfo: false,
@@ -640,7 +644,7 @@ var indicatorView = function (model, options) {
       order: [[0, 'asc']],
       columnDefs: [
         {
-          targets: -1,
+          targets: nonYearColumns,
           createdCell: function(td, cellData, rowData, row, col) {
             $(td).text(view_obj.alterDataDisplay(cellData, rowData));
           },

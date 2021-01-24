@@ -216,15 +216,15 @@
 
     // Alter data before displaying it.
     alterData: function(value) {
+      opensdg.dataDisplayAlterations.forEach(function(callback) {
+        value = callback(value);
+      });
       if (this._precision || this._precision === 0) {
         value = Number.parseFloat(value).toFixed(this._precision);
       }
       if (this._decimalSeparator) {
         value = value.toString().replace('.', this._decimalSeparator);
       }
-      opensdg.dataDisplayAlterations.forEach(function(callback) {
-        value = callback(value);
-      });
       return value;
     },
 

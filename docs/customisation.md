@@ -78,12 +78,11 @@ To apply a site-wide data-rounding function, you can override the `opensdg.dataR
 ```
 opensdg.dataRounding = function(value) {
     // Round to 2 decimal places.
-    return Math.round(parseFloat(value) * 100) / 100;
+    return Math.round(value * 100) / 100;
 }
 ```
 
 * You may get unexpected behavior if you return a string - so it is recommended to return a number.
-* The passed value could either be a number or string, so make sure to use `parseFloat` as above if you need to operate on a number.
 
 ## Altering data values before displaying
 
