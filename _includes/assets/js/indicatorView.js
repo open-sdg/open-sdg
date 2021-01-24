@@ -10,6 +10,8 @@ var indicatorView = function (model, options) {
   this._tableColumnDefs = options.tableColumnDefs;
   this._mapView = undefined;
   this._legendElement = options.legendElement;
+  this._precision = undefined;
+  this._decimalSeparator = options.decimalSeparator;
 
   var chartHeight = screen.height < options.maxChartHeight ? screen.height : options.maxChartHeight;
 
@@ -50,7 +52,7 @@ var indicatorView = function (model, options) {
 
   this._model.onDataComplete.attach(function (sender, args) {
 
-    view_obj.precision = args.precision;
+    view_obj._precision = args.precision;
 
     if(view_obj._model.showData) {
 
@@ -73,7 +75,7 @@ var indicatorView = function (model, options) {
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
-      view_obj._mapView.initialise(args.indicatorId, args.precision);
+      view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator);
     }
   });
 
@@ -332,8 +334,11 @@ var indicatorView = function (model, options) {
   };
 
   this.alterDataDisplay = function(value, info) {
-    if (view_obj.precision || view_obj.precision === 0) {
-      value = Number.parseFloat(value).toFixed(view_obj.precision);
+    if (view_obj._precision || view_obj._precision === 0) {
+      value = Number.parseFloat(value).toFixed(view_obj._precision);
+    }
+    if (view_obj._decimalSeparator) {
+      value = value.toString().replace('.', view_obj._decimalSeparator);
     }
     opensdg.dataDisplayAlterations.forEach(function(callback) {
       value = callback(value, info);

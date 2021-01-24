@@ -78,7 +78,8 @@
     this.options = $.extend(true, {}, defaults, options.mapOptions);
     this.mapLayers = [];
     this.indicatorId = options.indicatorId;
-    this.precision = options.precision;
+    this._precision = options.precision;
+    this._decimalSeparator = options.decimalSeparator;
     this.currentDisaggregation = 0;
 
     // Require at least one geoLayer.
@@ -215,8 +216,11 @@
 
     // Alter data before displaying it.
     alterData: function(value) {
-      if (this.precision || this.precision === 0) {
-        value = Number.parseFloat(value).toFixed(this.precision);
+      if (this._precision || this._precision === 0) {
+        value = Number.parseFloat(value).toFixed(this._precision);
+      }
+      if (this._decimalSeparator) {
+        value = value.toString().replace('.', this._decimalSeparator);
       }
       opensdg.dataDisplayAlterations.forEach(function(callback) {
         value = callback(value);
