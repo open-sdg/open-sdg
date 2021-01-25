@@ -9,6 +9,9 @@
     {% assign tab_key = tab.scope %}
     {% assign tab_obj = tab %}
   {% endif %}
+  {% if tab_key == 'global' and page.indicator.standalone %}
+    {% continue %}
+  {% endif %}
   {% assign tab_preset = "tab_meta_" | append: tab_key %}
   {% assign tab_label = "Change to " | append: tab_obj.title | append: " tab" %}
   <li role="presentation" class="nav-item {% if forloop.first %}active{% endif %}">
