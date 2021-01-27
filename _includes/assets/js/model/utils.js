@@ -79,7 +79,7 @@ function nonFieldColumns() {
 }
 
 /**
- * Move an item from one position in an array to another.
+ * Move an item from one position in an array to another, in place.
  */
 function arrayMove(arr, fromIndex, toIndex) {
   while (fromIndex < 0) {
@@ -88,12 +88,20 @@ function arrayMove(arr, fromIndex, toIndex) {
   while (toIndex < 0) {
     toIndex += arr.length;
   }
+  var paddingAdded = [];
   if (toIndex >= arr.length) {
     var k = toIndex - arr.length;
     while ((k--) + 1) {
       arr.push(undefined);
+      paddingAdded.push(arr.length - 1);
     }
   }
   arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
-  return arr;
+
+  // Get rid of the undefined elements that were added.
+  paddingAdded.sort();
+  while (paddingAdded.length > 0) {
+    var paddingIndex = paddingAdded.pop() - 1;
+    arr.splice(paddingIndex, 1);
+  }
 }
