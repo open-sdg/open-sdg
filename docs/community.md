@@ -10,6 +10,7 @@ If you know of an implementation that should be added to this list, please let u
 |Country|Link|
 |----|----|
 |Armenia|<https://armstat.github.io/sdg-site-armenia/>|
+|Bosnia and Herzegovina|<https://sdg.bhas.gov.ba/>|
 |Germany|<https://sustainabledevelopment-germany.github.io/>|
 |Ghana* |<https://sustainabledevelopment-ghana.github.io/>|
 |Iceland|<https://visar.hagstofa.is/heimsmarkmidin/>|
@@ -19,6 +20,7 @@ If you know of an implementation that should be added to this list, please let u
 |Malta|In development|
 |Moldova|In development|
 |Myanmar|In development|
+|Nepal|In development|
 |Poland* |<http://sdg.gov.pl/>|
 |Rwanda|<https://sustainabledevelopment-rwanda.github.io/>|
 |Sierra Leone|In development|
@@ -28,11 +30,11 @@ If you know of an implementation that should be added to this list, please let u
 
 
 
-### Cities and regions 
+### Cities and regions
 
 |City/region|Link|
 |----|----|
-|Bristol|In development|
+|Bristol|<https://bristolsdgs.github.io/>|
 |City of Los Angeles|<https://sdgdata.lamayor.org/>|
 |Lombardy|In development|
 |Madrid|In development|
