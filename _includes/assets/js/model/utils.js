@@ -82,7 +82,7 @@ function nonFieldColumns() {
  * @param {Array} items Objects optionally containing 'unit' and/or 'series'
  * @param {String} selectedUnit
  * @param {String} selectedSeries
- * @return {String} The first match given the selected unit/series
+ * @return {object|false} The first match given the selected unit/series, or false
  */
 function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
   if (!items || items.length < 0) {
@@ -102,5 +102,5 @@ function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
       return item.series === selectedSeries;
     }
   });
-  return match || items[0];
+  return match || false;
 }
