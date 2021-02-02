@@ -34,10 +34,19 @@ translations:
     source: custom-translations
 
 map_layers:
+  - geojson_file: uk-countries.geojson
+    name_property: ctry19nm
+    id_property: ctry19cd
+    output_subfolder: countries
+    exclude_columns:
+      - Country
+      - Region
   - geojson_file: england-regions.geojson
     name_property: rgn17nm
     id_property: rgn17cd
+    output_subfolder: regions
     exclude_columns:
+      - Country
       - Region
 
 reporting_status_extra_fields:

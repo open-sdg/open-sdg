@@ -193,15 +193,21 @@
       });
     },
 
+    placeSelectionLegend: function() {
+      if (typeof this.selectionLegend !== 'undefined') {
+        this.map.removeControl(this.selectionLegend);
+      }
+      this.selectionLegend = L.Control.selectionLegend(this);
+      this.map.addControl(this.selectionLegend);
+    },
+
     // Update the colors of the Features on the map.
     updateColors: function() {
       var plugin = this;
-      this.getAllLayers().eachLayer(function(layer) {
-        layer.setStyle(function(feature) {
-          return {
-            fillColor: plugin.getColor(feature.properties),
-          }
-        });
+      plugin.currentLayer.setStyle(function(feature) {
+        return {
+          fillColor: plugin.getColor(feature.properties),
+        }
       });
     },
 
@@ -211,6 +217,33 @@
       this.selectionLegend.selections.forEach(function(selection) {
         plugin.updateTooltip(selection);
       });
+    },
+
+    // Calculate data-related info about some geojson features.
+    calculateDataInfo: function(features) {
+      var plugin = this;
+      var minimumValues = [];
+      var maximumValues = [];
+      var availableYears = [];
+      _.each(features, function(feature) {
+        if (feature.properties.values && feature.properties.values.length) {
+          var featureYears = Object.keys(feature.properties.values[plugin.currentDisaggregation]);
+          var featureValues = Object.values(feature.properties.values[plugin.currentDisaggregation]);
+          availableYears = availableYears.concat(featureYears);
+          minimumValues.push(_.min(featureValues));
+          maximumValues.push(_.max(featureValues));
+        }
+      });
+      var valueRange = [_.min(minimumValues), _.max(maximumValues)];
+      var colorScale = chroma.scale(plugin.options.colorRange)
+        .domain(valueRange)
+        .classes(plugin.options.colorRange.length);
+      var years = _.uniq(availableYears).sort();
+      return {
+        valueRange: valueRange,
+        colorScale: colorScale,
+        years: years,
+      };
     },
 
     // Get the data from a feature's properties, according to the current year.
@@ -225,7 +258,7 @@
     getColor: function(props) {
       var data = this.getData(props);
       if (data) {
-        return this.colorScale(data).hex();
+        return this.currentLayer.dataInfo.colorScale(data).hex();
       }
       else {
         return this.options.noValueColor;
@@ -263,11 +296,6 @@
 
       // Because after this point, "this" rarely works.
       var plugin = this;
-
-      // Below we'll be figuring out the min/max values and available years.
-      var minimumValues = [],
-          maximumValues = [],
-          availableYears = [];
 
       // At this point we need to load the GeoJSON layer/s.
       var geoURLs = this.mapLayers.map(function(item) {
@@ -337,6 +365,8 @@
             style: plugin.options.styleNormal,
             onEachFeature: onEachFeature,
           });
+          // Calculate the data info for this layer.
+          layer.dataInfo = plugin.calculateDataInfo(geoJson.features);
           // Set the "boundaries" for when this layer should be zoomed out of.
           layer.min_zoom = plugin.mapLayers[i].min_zoom;
           layer.max_zoom = plugin.mapLayers[i].max_zoom;
@@ -357,23 +387,13 @@
             .attr('title', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
             .text(translations.indicator.download_geojson + ' - ' + downloadLabel);
           $(plugin.element).parent().append(downloadButton);
-
-          // Keep track of the minimums and maximums.
-          _.each(geoJson.features, function(feature) {
-            if (feature.properties.values && feature.properties.values.length) {
-              availableYears = availableYears.concat(Object.keys(feature.properties.values[0]));
-              minimumValues.push(_.min(Object.values(feature.properties.values[0])));
-              maximumValues.push(_.max(Object.values(feature.properties.values[0])));
-            }
-          });
         }
 
-        // Calculate the ranges of values, years and colors.
-        plugin.valueRange = [_.min(minimumValues), _.max(maximumValues)];
-        plugin.colorScale = chroma.scale(plugin.options.colorRange)
-          .domain(plugin.valueRange)
-          .classes(plugin.options.colorRange.length);
-        plugin.years = _.uniq(availableYears).sort();
+        // These state variables will be changed as the user zooms in/out
+        // and cycles through the years.
+        plugin.currentLayer = plugin.dynamicLayers.layers[0];
+        // For simplicity we assume that all layers have the same years.
+        plugin.years = plugin.currentLayer.dataInfo.years;
         plugin.currentYear = plugin.years[0];
 
         // And we can now update the colors.
@@ -397,8 +417,7 @@
         }));
 
         // Add the selection legend.
-        plugin.selectionLegend = L.Control.selectionLegend(plugin);
-        plugin.map.addControl(plugin.selectionLegend);
+        plugin.placeSelectionLegend();
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
@@ -476,7 +495,10 @@
         }
         // Event handler for when a geoJson layer is zoomed into.
         function zoomInHandler(e) {
+          plugin.currentLayer = e.target;
+          plugin.updateColors();
           plugin.updateStaticLayers();
+          plugin.placeSelectionLegend();
         }
       });
 

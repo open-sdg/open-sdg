@@ -157,13 +157,18 @@ languages_public:
   - language: fr
     language_public: fr-CA
 map_layers:
+  - subfolder: countries
+    label: Countries
+    min_zoom: 1
+    max_zoom: 5
+    staticBorders: true
   - subfolder: regions
     label: indicator.regions
-    min_zoom: 5
+    min_zoom: 6
     max_zoom: 10
     staticBorders: false
 map_options:
-  minZoom: 5
+  minZoom: 1
   maxZoom: 10
   tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   tileOptions:

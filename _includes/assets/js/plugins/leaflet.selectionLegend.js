@@ -55,8 +55,8 @@
       }).join('');
       var div = L.DomUtil.create('div', 'selection-legend');
       div.innerHTML = L.Util.template(controlTpl, {
-        lowValue: opensdg.dataRounding(this.plugin.valueRange[0]),
-        highValue: opensdg.dataRounding(this.plugin.valueRange[1]),
+        lowValue: opensdg.dataRounding(this.plugin.currentLayer.dataInfo.valueRange[0]),
+        highValue: opensdg.dataRounding(this.plugin.currentLayer.dataInfo.valueRange[1]),
         legendSwatches: swatches,
       });
       return div;
@@ -72,7 +72,7 @@
           '<i class="selection-close fa fa-remove"></i>' +
         '</li>';
       var plugin = this.plugin;
-      var valueRange = this.plugin.valueRange;
+      var valueRange = plugin.currentLayer.dataInfo.valueRange;
       selectionList.innerHTML = this.selections.map(function(selection) {
         var value = plugin.getData(selection.feature.properties);
         var percentage, valueStatus;
