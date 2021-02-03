@@ -333,17 +333,34 @@ var indicatorView = function (model, options) {
     });
   };
 
-  this.alterDataDisplay = function(value, info) {
+  this.alterDataDisplay = function(value, info, context) {
+    // If value is empty, we will not alter it.
+    if (value == null) {
+      return value;
+    }
+    // Before passing to user-defined dataDisplayAlterations, let's
+    // do our best to ensure that it starts out as a number.
+    var altered = value;
+    if (typeof altered !== 'number') {
+      altered = Number(value);
+    }
+    // If that gave us a non-number, return original.
+    if (Number.isNaN(altered)) {
+      return value;
+    }
+    // Now go ahead with user-defined alterations.
     opensdg.dataDisplayAlterations.forEach(function(callback) {
-      value = callback(value, info);
+      altered = callback(altered, info, context);
     });
+    // Now apply our custom precision control if needed.
     if (view_obj._precision || view_obj._precision === 0) {
-      value = Number.parseFloat(value).toFixed(view_obj._precision);
+      altered = Number.parseFloat(altered).toFixed(view_obj._precision);
     }
+    // Now apply our custom decimal separator if needed.
     if (view_obj._decimalSeparator) {
-      value = value.toString().replace('.', view_obj._decimalSeparator);
+      altered = altered.toString().replace('.', view_obj._decimalSeparator);
     }
-    return value;
+    return altered;
   }
 
   this.updateChartTitle = function(chartTitle) {
@@ -415,7 +432,7 @@ var indicatorView = function (model, options) {
               suggestedMin: 0,
               fontColor: tickColor,
               callback: function(value) {
-                return view_obj.alterDataDisplay(value);
+                return view_obj.alterDataDisplay(value, undefined, 'chart y-axis tick');
               },
             },
             scaleLabel: {
@@ -448,7 +465,7 @@ var indicatorView = function (model, options) {
         tooltips: {
           callbacks: {
             label: function(tooltipItems, data) {
-              return tooltipItems.label + ': ' + view_obj.alterDataDisplay(tooltipItems.yLabel, data);
+              return tooltipItems.label + ': ' + view_obj.alterDataDisplay(tooltipItems.yLabel, data, 'chart tooltip');
             },
           },
         },
@@ -646,7 +663,7 @@ var indicatorView = function (model, options) {
         {
           targets: nonYearColumns,
           createdCell: function(td, cellData, rowData, row, col) {
-            $(td).text(view_obj.alterDataDisplay(cellData, rowData));
+            $(td).text(view_obj.alterDataDisplay(cellData, rowData, 'table cell'));
           },
         },
       ],
