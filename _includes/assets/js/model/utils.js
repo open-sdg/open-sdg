@@ -102,5 +102,16 @@ function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
       return item.series === selectedSeries;
     }
   });
+  if (!match) {
+    // If no match was found, allow for a partial match (eg, unit only).
+    match = items.find(function(item) {
+      if (selectedUnit) {
+        return item.unit === selectedUnit;
+      }
+      else if (selectedSeries) {
+        return item.series === selectedSeries;
+      }
+    });
+  }
   return match || false;
 }
