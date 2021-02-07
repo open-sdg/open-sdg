@@ -107,6 +107,16 @@ create_config_forms:
   layout: config-builder
 ```
 
+To also have config forms for metadata, you can specify the "scopes" of the metadata that should get a config form. Each scope will have its own form. These correspond to the "scope" in the schema from the data repository(eg, _prose.yml file). For example:
+
+```nohighlight
+create_config_forms:
+  layout: config-builder
+  metadata_scopes:
+    - scope: national
+      label: National metadata
+```
+
 ### create_goals
 
 _Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) `layout` setting indicating the Jekyll layout to use for the goals.
