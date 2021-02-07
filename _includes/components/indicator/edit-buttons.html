@@ -23,6 +23,14 @@
   <a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/meta/{{ page.indicator.slug }}.md">{{ page.t.indicator.edit_metadata }}</a>
   {% endif %}
 
+  {% if site.create_config_forms and site.create_config_forms.metadata_scopes %}
+  {% for scope in site.create_config_forms.metadata_scopes %}
+  {% assign config_base = page.baseurl | append: 'config/' | append: scope['scope'] | append: '/' %}
+  {% assign config_path = page.indicator.url | replace: page.baseurl, config_base %}
+  <a class="btn btn-primary" href="{{ config_path }}">{{ page.t.indicator.edit }} - {{ scope['label'] | t }}</a>
+  {% endfor %}
+  {% endif %}
+
   {% if site.create_config_forms and site.create_config_forms.layout and site.create_config_forms.layout != '' %}
   {% assign config_base = page.baseurl | append: 'config/' %}
   {% assign config_path = page.indicator.url | replace: page.baseurl, config_base %}
