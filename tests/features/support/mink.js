@@ -11,6 +11,7 @@ const driver = new mink.Mink({
     "the Table tab": "#tab-tableview",
     "the Chart tab": "#tab-chartview",
     "the Map tab": "#tab-mapview",
+    "the Edit tab": "#tab-edit",
     "sortable table": "#tableview table",
     "visual chart": "#chartview canvas",
     "map": "#mapview #map.leaflet-container",
