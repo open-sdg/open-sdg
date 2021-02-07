@@ -6,6 +6,7 @@ Feature: Configuration forms
 
   Background:
     Given I am on "/1-1-1"
+    And I wait 3 seconds
 
   Scenario: The site configuration is available on a configuration form
     Given I follow "Configuration"
