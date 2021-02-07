@@ -71,6 +71,7 @@ pages:
         - TravisCI: automation/travis-ci.md
         - Jenkins: automation/jenkins.md
         - Github integration: automation/github.md
+        - Triggered site builds: automation/triggered-site-builds.md
     - Hosting:
         - Github pages: hosting/github-pages.md
         - AWS S3: hosting/aws-s3.md

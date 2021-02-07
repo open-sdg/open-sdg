@@ -55,8 +55,8 @@
       }).join('');
       var div = L.DomUtil.create('div', 'selection-legend');
       div.innerHTML = L.Util.template(controlTpl, {
-        lowValue: this.plugin.valueRange[0],
-        highValue: this.plugin.valueRange[1],
+        lowValue: opensdg.dataRounding(this.plugin.valueRange[0]),
+        highValue: opensdg.dataRounding(this.plugin.valueRange[1]),
         legendSwatches: swatches,
       });
       return div;

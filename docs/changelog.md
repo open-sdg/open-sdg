@@ -2,6 +2,11 @@
 
 ## 1.2.0
 
+* Tweak page-content styles for goal pages #1034
+* Margin below descriptions on reporting-status and goals pages #1032
+* Fix bottom margin on frontpage goal tiles #1009
+* Support for goal content #1005
+* Tab focus design fixes #990
 * Disaggregation status tab #970
 * Different canvas fallback for mobile/desktop. #968
 * Remove aria-label from table headers #967
