@@ -64,6 +64,9 @@
     {% elsif page.config_type == 'indicator' %}
       {% assign json_schema = site.data.schema-indicator-config %}
       {% assign config_form = site.indicator_config_form %}
+    {% elsif page.config_type == 'metadata' %}
+      {% assign json_schema = site.data.schema-indicator-metadata[page.metadata_scope] %}
+      {% assign config_form = site.metadata_config_form %}
     {% endif %}
     var schema = {{ json_schema | jsonify }};
     {% if config_form %}
@@ -213,6 +216,8 @@
     {%- if page.config_type == 'site' -%}
       {%- assign current_value = site[config_key] -%}
     {%- elsif page.config_type == 'indicator' -%}
+      {%- assign current_value = page.meta[config_key] -%}
+    {%- elsif page.config_type == 'metadata' -%}
       {%- assign current_value = page.meta[config_key] -%}
     {%- endif -%}
     {% if current_value %}
