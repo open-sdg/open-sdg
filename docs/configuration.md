@@ -80,6 +80,14 @@ breadcrumbs:
 
 Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
 
+### configuration_edit_url
+
+_Optional_: This setting controls the URL of the "Edit Configuration" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+configuration_edit_url: http://prose.io/#my-org/my-repo/edit/develop/indicator-settings/[id].md
+```
+
 ### contrast_type
 
 _Optional_: This setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
@@ -107,14 +115,32 @@ create_config_forms:
   layout: config-builder
 ```
 
-To also have config forms for metadata, you can specify the "scopes" of the metadata that should get a config form. Each scope will have its own form. These correspond to the "scope" in the schema from the data repository(eg, _prose.yml file). For example:
+To date there are three different types of config forms: "site", "indicator_settings", and "indicator_metadata". Each of these can have additional settings, as demonstrated below:
 
 ```nohighlight
 create_config_forms:
   layout: config-builder
-  metadata_scopes:
-    - scope: national
-      label: National metadata
+  site:
+    # A link to display on the configuration form.
+    repository_link: https://example.com/my-site-config-folder/
+  indicator_settings:
+    # A link to display on the configuration form.
+    repository_link: https://example.com/my-indicator-settings-folder/
+  indicator_metadata:
+    # A link to display on the configuration form.
+    repository_link: https://example.com/my-indicator-metadata-folder/
+    # A list of metadata "scopes" to include on the form.
+    # Defaults to "national" and "global".
+    scopes:
+      - national
+      - global
+    # A list of fields you would like to exclude from the form. Here
+    # is an example if you wanted to exclude some auto-generated fields:
+    exclude_fields:
+      - national_data_update_url
+      - national_data_update_url_text
+      - national_metadata_update_url
+      - national_metadata_update_url_text
 ```
 
 ### create_goals
