@@ -23,9 +23,18 @@ country:
   adjective: Australian
 create_config_forms:
   layout: config-builder
-  metadata_scopes:
-    - scope: national
-      label: National metadata
+  site:
+    repository_link: https://example.com
+  indicator_metadata:
+    repository_link: https://example.com
+    scopes:
+      - national
+      - global
+    exclude_fields:
+      - national_data_update_url
+      - national_data_update_url_text
+      - national_metadata_update_url
+      - national_metadata_update_url_text
 create_goals:
   layout: goal
   goals:
