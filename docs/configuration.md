@@ -108,40 +108,14 @@ country:
 
 ### create_config_forms
 
-_Optional_: This setting can be used to automatically create the configuration form pages. Without this setting, you will need to maintain your site and indicator configuration using a text editor. This setting should include another (indented) setting indicating the Jekyll layout to use for the config form pages (usually `config-builder`). After setting this, you will have a site configuration form available through a link in the footer, as well as indicator configuration forms available in the "Edit" tab.
+_Optional_: This setting can be used to automatically create the configuration form pages. Without this setting, you will need to maintain your site and indicator configuration using a text editor. This setting should include another (indented) setting indicating the Jekyll layout to use for the config form pages (usually `config-builder`). After setting this, you will have a site configuration form available through a link in the footer, as well as indicator configuration and metadata forms available in the "Edit" tab.
 
 ```nohighlight
 create_config_forms:
   layout: config-builder
 ```
 
-To date there are three different types of config forms: "site", "indicator_settings", and "indicator_metadata". Each of these can have additional settings, as demonstrated below:
-
-```nohighlight
-create_config_forms:
-  layout: config-builder
-  site:
-    # A link to display on the configuration form.
-    repository_link: https://example.com/my-site-config-folder/
-  indicator_settings:
-    # A link to display on the configuration form.
-    repository_link: https://example.com/my-indicator-settings-folder/
-  indicator_metadata:
-    # A link to display on the configuration form.
-    repository_link: https://example.com/my-indicator-metadata-folder/
-    # A list of metadata "scopes" to include on the form.
-    # Defaults to "national" and "global".
-    scopes:
-      - national
-      - global
-    # A list of fields you would like to exclude from the form. Here
-    # is an example if you wanted to exclude some auto-generated fields:
-    exclude_fields:
-      - national_data_update_url
-      - national_data_update_url_text
-      - national_metadata_update_url
-      - national_metadata_update_url_text
-```
+To configure the behavior of these forms, see the separate `site_config_form`, `indicator_config_form`, and `indicator_metadata_form` settings.
 
 ### create_goals
 
@@ -495,6 +469,19 @@ _Optional_: This setting controls the behavior of the indicator config forms. Th
               - complete
               - notstarted
 
+* `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
+* `translation_link`: This will display a  "Go to translation" link beneath each metadata field. You can enter a pattern with `[id]` and/or `[field]` and it will be replaced as described above.
+
+### indicator_metadata_form
+
+_Optional_: This setting controls the behavior of the indicator metadata forms. The available settings are the same as in  `indicator_config_form` above, plus the following extra options:
+
+* `scopes`: A list of the "scopes" that you would like to include in the form. If let blank, this will default to "national" and "global".
+* `exclude_fields`: A list of the fields that you would like to omit from the form.
+  - national
+  - global
+```
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
@@ -684,9 +671,7 @@ series_toggle: true
 
 ### site_config_form
 
-_Optional_: This setting controls the behavior of the site config form. The available settings are:
-
-* `dropdowns`: This works the same as in the `indicator_config_form` setting.
+_Optional_: This setting controls the behavior of the site config form. The available the same as in the `indicator_config_form` described above.
 
 ### sharethis_property
 

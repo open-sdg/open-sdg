@@ -26,6 +26,13 @@
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
   <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
   <script>
+    // For this page, it is helpful to have every single translation.
+    var allTranslations = {{ page.t | jsonify }};
+    var translationGroups = Object.keys(allTranslations);
+    for (var i = 0; i < translationGroups.length; i++) {
+      var key = translationGroups[i];
+      translations[key] = allTranslations[key];
+    }
 
     // Dynamic filtering functionality.
     var configSearch = document.getElementById('config-search');
@@ -69,14 +76,12 @@
 
     {% if page.config_type == 'site' %}
       {% assign json_schema = site.data.schema-site-config %}
-      {% assign config_form = site.site_config_form %}
     {% elsif page.config_type == 'indicator' %}
       {% assign json_schema = site.data.schema-indicator-config %}
-      {% assign config_form = site.indicator_config_form %}
     {% elsif page.config_type == 'metadata' %}
       {% assign json_schema = site.data.schema-indicator-metadata %}
-      {% assign config_form = site.metadata_config_form %}
     {% endif %}
+    {% assign config_form = page.form_settings %}
     var schema = {{ json_schema | jsonify }};
     {% if config_form %}
       {% if config_form.dropdowns %}
@@ -235,6 +240,11 @@
         var propertyEditor = editor.getEditor('root.{{ config_key }}');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
+        {% if config_form.translation_link and config_form.translation_link != '' %}
+        if (isTranslationKey(currentValue)) {
+          propertyEditor.description.innerHTML += '<br>' + getTranslationLink(propertyEditor);
+        }
+        {% endif %}
       }
       catch (e) {
         console.log(e.message);
@@ -261,6 +271,23 @@
     propertyEditorAccessibilityFixes(editor.getEditor('root.{{ config_key }}'));
 
     {%- endfor -%}
+
+    function isTranslationKey(text) {
+      var translation = translations.t(text);
+      if (translation !== text) {
+        return true;
+      }
+      return false;
+    }
+
+    function getTranslationLink(propertyEditor) {
+      var parts = propertyEditor.value.split('.');
+      var translationLink = '{{ config_form.translation_link }}';
+      translationLink = translationLink.replace('[id]', '{{ page.indicator_number }}');
+      translationLink = translationLink.replace('[group]', parts[0]);
+      translationLink = translationLink.replace('[key]', parts[1]);
+      return '<a target="_blank" href="' + translationLink + '">Go to translation for ' + propertyEditor.key + '</a>';
+    }
 
     function SaveAsFile(t,f,m) {
       try {

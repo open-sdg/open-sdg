@@ -23,18 +23,6 @@ country:
   adjective: Australian
 create_config_forms:
   layout: config-builder
-  site:
-    repository_link: https://example.com
-  indicator_metadata:
-    repository_link: https://example.com
-    scopes:
-      - national
-      - global
-    exclude_fields:
-      - national_data_update_url
-      - national_data_update_url_text
-      - national_metadata_update_url
-      - national_metadata_update_url_text
 create_goals:
   layout: goal
   goals:
@@ -143,9 +131,9 @@ goals_page:
 graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
-header_language_toggle: dropdown
 header:
   include: header-menu-left-aligned.html
+header_language_toggle: dropdown
 hide_empty_metadata: true
 indicator_config_form:
   dropdowns:
@@ -161,6 +149,20 @@ indicator_config_form:
         - target_line
       labels:
         - Target line
+  repository_link: 'https://example.com'
+  translation_link: ''
+indicator_metadata_form:
+  dropdowns: []
+  repository_link: 'https://example.com'
+  translation_link: 'https://example.com?[id]&[group]&[key]'
+  scopes:
+    - national
+    - global
+  exclude_fields:
+    - national_data_update_url
+    - national_data_update_url_text
+    - national_metadata_update_url
+    - national_metadata_update_url_text
 languages:
   - en
   - es
@@ -209,7 +211,7 @@ menu:
     translation_key: menu.about
   - path: frontpage-legacy
     translation_key: Legacy frontpage
-metadata_edit_url: 'https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md'
+metadata_edit_url: metadata
 metadata_tabs:
   - scope: national
     title: My national metadata title
@@ -246,5 +248,7 @@ site_config_form:
         - goal
         - goal-by-target
         - goal-by-target-vertical
+  repository_link: ''
+  translation_link: ''
 validate_indicator_config: true
 validate_site_config: true
