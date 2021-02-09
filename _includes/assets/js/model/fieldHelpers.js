@@ -7,8 +7,8 @@
  * @param {Array} edges
  * @return {Array} Field item states
  */
-function getInitialFieldItemStates(rows, edges) {
-  var initial = getFieldColumnsFromData(rows).map(function(field) {
+function getInitialFieldItemStates(rows, edges, columns) {
+  var initial = getFieldColumnsFromData(columns).map(function(field) {
     return {
       field: field,
       hasData: true,
@@ -325,6 +325,10 @@ function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
   // But actually we want the top-priority sort to be the "size" of the
   // rows. In other words we want the row with the fewest number of fields.
   filteredData = _.sortBy(filteredData, function(row) { return Object.keys(row).length; });
+
+  if (filteredData.length === 0) {
+    return [];
+  }
 
   // Convert to an array of objects with 'field' and 'values' keys, omitting
   // any non-field columns.

@@ -93,6 +93,7 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    getColumnsFromData: getColumnsFromData,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),
   }
