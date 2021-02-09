@@ -95,6 +95,7 @@
     tableDataFromDatasets: tableDataFromDatasets,
     getPrecision: getPrecision,
     getGraphLimits: getGraphLimits,
+    getColumnsFromData: getColumnsFromData,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),
   }
