@@ -28,11 +28,6 @@
   <script>
     // For this page, it is helpful to have every single translation.
     var allTranslations = {{ page.t | jsonify }};
-    var translationGroups = Object.keys(allTranslations);
-    for (var i = 0; i < translationGroups.length; i++) {
-      var key = translationGroups[i];
-      translations[key] = allTranslations[key];
-    }
 
     // Dynamic filtering functionality.
     var configSearch = document.getElementById('config-search');
@@ -273,11 +268,17 @@
     {%- endfor -%}
 
     function isTranslationKey(text) {
-      var translation = translations.t(text);
-      if (translation !== text) {
-        return true;
+      var parts = text.split('.');
+      if (parts.length !== 2) {
+        return false;
       }
-      return false;
+      if (typeof allTranslations[parts[0]] === 'undefined') {
+        return false;
+      }
+      if (typeof allTranslations[parts[0]][parts[1]] === 'undefined') {
+        return false;
+      }
+      return true;
     }
 
     function getTranslationLink(propertyEditor) {
