@@ -6,8 +6,8 @@
  * @param {Array} rows
  * @return {boolean}
  */
-function dataHasUnits(rows) {
-  return dataHasColumn(UNIT_COLUMN, rows);
+function dataHasUnits(columns) {
+  return columns.includes(UNIT_COLUMN);
 }
 
 /**
@@ -25,8 +25,8 @@ function dataHasUnitSpecificFields(fieldsUsedByUnit) {
  * @param {Array} rows
  * @return {Array} Field names
  */
-function fieldsUsedByUnit(units, rows) {
-  var fields = getFieldColumnsFromData(rows);
+function fieldsUsedByUnit(units, rows, columns) {
+  var fields = getFieldColumnsFromData(columns);
   return units.map(function(unit) {
     return {
       unit: unit,

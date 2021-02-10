@@ -24,9 +24,9 @@ Feature: Series
     Given I am on "/2-5-2"
     And I wait 3 seconds
     And I click on "the second series"
-    And I click on "the last unit of measurement"
+    Then I should see 1 "chart legend item" element
+    And I click on "the last series"
+    Then I should see 1 "chart legend item" elements
     And I click on "the filter drop-down button"
     And I click on "the last filter option"
-    Then I should see 1 "chart legend item" element
-    And I click on "the first filter option"
-    Then I should see 1 "chart legend item" element
+    Then I should see 2 "chart legend item" elements

@@ -264,7 +264,10 @@ var indicatorView = function (model, options) {
   }
 
   this.initialiseFields = function(args) {
-    if(args.fields.length) {
+    var fieldsContainValues = args.fields.some(function(field) {
+      return field.values.length > 0;
+    });
+    if (fieldsContainValues) {
       var template = _.template($("#item_template").html());
 
       if(!$('button#clear').length) {
@@ -323,6 +326,12 @@ var indicatorView = function (model, options) {
     });
   };
 
+  this.alterTableConfig = function(config, info) {
+    opensdg.tableConfigAlterations.forEach(function(callback) {
+      callback(config, info);
+    });
+  };
+
   this.updateChartTitle = function(chartTitle) {
     if (typeof chartTitle !== 'undefined') {
       $('.chart-title').text(chartTitle);
@@ -332,6 +341,9 @@ var indicatorView = function (model, options) {
   this.updatePlot = function(chartInfo) {
     this.updateIndicatorDataViewStatus(view_obj._chartInstance.data.datasets, chartInfo.datasets);
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
+    view_obj._chartInstance.data.labels = chartInfo.labels;
+    // TODO: Investigate assets/js/chartjs/rescaler.js and why "allLabels" is needed.
+    view_obj._chartInstance.data.allLabels = chartInfo.labels;
 
     if(chartInfo.selectedUnit) {
       view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
@@ -597,7 +609,7 @@ var indicatorView = function (model, options) {
     }
   };
 
-  var initialiseDataTable = function(el) {
+  var initialiseDataTable = function(el, info) {
     var datatables_options = options.datatables_options || {
       paging: false,
       bInfo: false,
@@ -609,6 +621,7 @@ var indicatorView = function (model, options) {
 
     datatables_options.aaSorting = [];
 
+    view_obj.alterTableConfig(datatables_options, info);
     table.DataTable(datatables_options);
     table.removeAttr('role');
     table.find('thead th').removeAttr('rowspan').removeAttr('colspan').removeAttr('aria-label');
@@ -754,7 +767,9 @@ var indicatorView = function (model, options) {
 
   this.createIndicatorDownloadButtons = function(indicatorDownloads, indicatorId, el) {
     if (indicatorDownloads) {
-      for (var buttonLabel of Object.keys(indicatorDownloads)) {
+      var buttonLabels = Object.keys(indicatorDownloads);
+      for (var i = 0; i < buttonLabels.length; i++) {
+        var buttonLabel = buttonLabels[i];
         var href = indicatorDownloads[buttonLabel].href;
         var buttonLabelTranslated = translations.t(buttonLabel);
         var gaLabel = buttonLabel + ': ' + indicatorId;
@@ -802,11 +817,11 @@ var indicatorView = function (model, options) {
       var getHeading = function(heading, index) {
         var arrows = '<span class="sort"><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
         var button = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
-        return (!index || heading.toLowerCase() == 'units') ? button + arrows : arrows + button;
+        return (!index) ? button + arrows : arrows + button;
       };
 
       table.headings.forEach(function (heading, index) {
-        table_head += '<th' + (!index || heading.toLowerCase() == 'units' ? '': ' class="table-value"') + ' scope="col">' + getHeading(heading, index) + '</th>';
+        table_head += '<th' + (!index ? '': ' class="table-value"') + ' scope="col">' + getHeading(heading, index) + '</th>';
       });
 
       table_head += '</tr></thead>';
@@ -817,11 +832,10 @@ var indicatorView = function (model, options) {
         var row_html = '<tr>';
         table.headings.forEach(function (heading, index) {
           // For accessibility set the Year column to a "row" scope th.
-          var isYear = (index == 0 || heading.toLowerCase() == 'year');
-          var isUnits = (heading.toLowerCase() == 'units');
+          var isYear = (index == 0);
           var cell_prefix = (isYear) ? '<th scope="row"' : '<td';
           var cell_suffix = (isYear) ? '</th>' : '</td>';
-          row_html += cell_prefix + (isYear || isUnits ? '' : ' class="table-value"') + '>' + (data[index] !== null ? data[index] : '-') + cell_suffix;
+          row_html += cell_prefix + (isYear ? '' : ' class="table-value"') + '>' + (data[index] !== null ? data[index] : '-') + cell_suffix;
         });
         row_html += '</tr>';
         currentTable.find('tbody').append(row_html);
@@ -829,8 +843,12 @@ var indicatorView = function (model, options) {
 
       $(el).append(currentTable);
 
-      // initialise data table
-      initialiseDataTable(el);
+      // initialise data table and provide some info for alterations.
+      var alterationInfo = {
+        table: table,
+        indicatorId: indicatorId,
+      };
+      initialiseDataTable(el, alterationInfo);
 
       $(el).removeClass('table-has-no-data');
       $('#selectionTableFooter').show();
