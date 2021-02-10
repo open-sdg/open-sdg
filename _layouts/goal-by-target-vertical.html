@@ -68,15 +68,7 @@
             <span class="status {{ status_css }}">
               {{ status_desc }}
             </span>
-            {% if indicator.tags %}
-            <span class="sr-only">{{ page.t.indicator.tags }}</span>
-            <span class="tags">
-            {% for tag in indicator.tags %}
-              {% assign tag_class = tag | slugify %}
-              <span class="tag tag-{{ tag_class }} warning">{{ tag | t }}</span>
-            {% endfor %}
-            </span>
-            {% endif %}
+            {% include components/indicator/tags.html tags=indicator.tags %}
           </div>
         {% endfor %}
       </div>
