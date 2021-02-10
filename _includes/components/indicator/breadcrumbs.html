@@ -1,3 +1,4 @@
+{% unless page.indicator.standalone %}
 <ol class="breadcrumb">
   {% if site.breadcrumbs.indicator %}
   {% for item in site.breadcrumbs.indicator %}
@@ -15,3 +16,4 @@
   <li class="active">{{ page.t.general.indicator }} {{ page.indicator.number }}</li>
   {% endif %}
 </ol>
+{% endunless %}
