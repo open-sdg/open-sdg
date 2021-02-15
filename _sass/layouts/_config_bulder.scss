@@ -48,6 +48,10 @@
     .config-required {
         color: $color-error;
     }
+    .translation-link {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
     &.contrast-high {
         .config-widgets {
             background-color: $color-dark-highContrast;

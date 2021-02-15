@@ -164,6 +164,40 @@
       this.setAttribute('aria-label', ariaLabel);
     }
 
+    function propertyEditorTranslationLinks(propertyEditor) {
+      try {
+        if (typeof propertyEditor.value === 'undefined') {
+          return;
+        }
+        switch (propertyEditor.schema.type) {
+          case 'string':
+            if (isTranslationKey(propertyEditor.value)) {
+              addTranslationLink(propertyEditor);
+            }
+            break;
+          case 'array':
+          case 'object':
+            if (typeof propertyEditor.editors !== 'undefined') {
+              var editorKeys = Object.keys(propertyEditor.editors);
+              for (var i = 0; i < editorKeys.length; i++) {
+                var editorKey = editorKeys[i];
+                propertyEditorTranslationLinks(propertyEditor.editors[editorKey]);
+              }
+            }
+            if (typeof propertyEditor.rows !== 'undefined') {
+              for (var i = 0; i < propertyEditor.rows.length; i++) {
+                propertyEditorTranslationLinks(propertyEditor.rows[i]);
+              }
+            }
+            break;
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to add translation links: ' + propertyEditor.formname);
+      }
+    }
+
     function propertyEditorAccessibilityFixes(propertyEditor) {
       try {
         // Variety of accessibility fixes.
@@ -236,9 +270,7 @@
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
         {% if config_form.translation_link and config_form.translation_link != '' %}
-        if (isTranslationKey(currentValue)) {
-          propertyEditor.description.innerHTML += '<br>' + getTranslationLink(propertyEditor);
-        }
+        propertyEditorTranslationLinks(propertyEditor);
         {% endif %}
       }
       catch (e) {
@@ -281,13 +313,18 @@
       return true;
     }
 
-    function getTranslationLink(propertyEditor) {
+    function addTranslationLink(propertyEditor) {
       var parts = propertyEditor.value.split('.');
       var translationLink = '{{ config_form.translation_link }}';
       translationLink = translationLink.replace('[id]', '{{ page.indicator_number }}');
       translationLink = translationLink.replace('[group]', parts[0]);
       translationLink = translationLink.replace('[key]', parts[1]);
-      return '<a target="_blank" href="' + translationLink + '">Go to translation for ' + propertyEditor.key + '</a>';
+      var element = document.createElement('a');
+      element.setAttribute('target', '_blank');
+      element.setAttribute('href', translationLink);
+      element.setAttribute('class', 'translation-link');
+      element.innerHTML = 'Go to translation for ' + propertyEditor.key;
+      propertyEditor.addLink(element);
     }
 
     function SaveAsFile(t,f,m) {
