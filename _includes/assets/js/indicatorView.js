@@ -433,6 +433,16 @@ var indicatorView = function (model, options) {
         },
         plugins: {
           scaler: {}
+        },
+        tooltips: {
+          callbacks: {
+            afterBody: function() {
+              var unit = view_obj._model.selectedUnit ? translations.t(view_obj._model.selectedUnit) : view_obj._model.measurementUnit;
+              if (typeof unit !== 'undefined' && unit !== '') {
+                return '\n' + translations.indicator.unit + ': ' + unit;
+              }
+            }
+          }
         }
       }
     };
