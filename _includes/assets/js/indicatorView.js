@@ -533,7 +533,7 @@ var indicatorView = function (model, options) {
   };
 
   this.getGridColor = function(contrast) {
-    return this.isHighContrast(contrast) ? '#222' : '#ddd';
+    return this.isHighContrast(contrast) ? '#5C5C5C' : '#949494';
   };
 
   this.getTickColor = function(contrast) {
