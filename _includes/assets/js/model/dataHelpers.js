@@ -31,7 +31,7 @@ function getHeadline(selectableFields, rows) {
     });
   }).map(function (row) {
     // Remove null fields in each row.
-    return _.pickBy(row, _.identity);
+    return _.pickBy(row, function(val) { return val !== null });
   });
 }
 
