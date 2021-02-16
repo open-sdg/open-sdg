@@ -72,7 +72,7 @@
           if (schema.properties.{{ dropdown.jsonschema }}) {
             schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
             schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
-            {% if choices.labels %}
+            {% if dropdown.labels %}
               schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
               schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
             {% endif %}
