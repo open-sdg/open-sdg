@@ -232,6 +232,14 @@ The `%` variables in the formats correspond to the variables listed in this [Rub
 
 Note that the "standard" type is used in Open SDG's news/post functionality. Additional format types can be added for custom purposes.
 
+### decimal_separator
+
+_Optional_: This setting can be used to replace the default decimal separator -- `.` -- with any other symbol. For example, the following is how you could use a comma as a decimal separator:
+
+```
+decimal_separator: ','
+```
+
 ### disclaimer
 
 _Optional_: This setting controls the content of the disclaimer that appears at the top of each page. If you are not happy with the default ("ALPHA: This is a development website. We welcome your feedback.") then you can use something like the following example configuration:

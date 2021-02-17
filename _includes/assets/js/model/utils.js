@@ -72,6 +72,44 @@ function nonFieldColumns() {
 }
 
 /**
+ * @param {Array} items Objects optionally containing 'unit' and/or 'series'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {object|false} The first match given the selected unit/series, or false
+ */
+function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
+  if (!items || items.length < 0) {
+    return false;
+  }
+  if (!selectedUnit && !selectedSeries) {
+    return items[0];
+  }
+  var match = items.find(function(item) {
+    if (selectedUnit && selectedSeries) {
+      return item.unit === selectedUnit && item.series === selectedSeries;
+    }
+    else if (selectedUnit) {
+      return item.unit === selectedUnit;
+    }
+    else if (selectedSeries) {
+      return item.series === selectedSeries;
+    }
+  });
+  if (!match) {
+    // If no match was found, allow for a partial match (eg, unit only).
+    match = items.find(function(item) {
+      if (selectedUnit) {
+        return item.unit === selectedUnit;
+      }
+      else if (selectedSeries) {
+        return item.series === selectedSeries;
+      }
+    });
+  }
+  return match || false;
+}
+
+/**
  * Move an item from one position in an array to another, in place.
  */
 function arrayMove(arr, fromIndex, toIndex) {

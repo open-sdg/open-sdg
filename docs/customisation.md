@@ -70,3 +70,55 @@ In many cases, you may want to override the colors being used throughout the sit
 You can find a full list of Sass variables related to color in [this Sass variables file](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss).
 
 By contrast to the method for overriding layouts and includes (mentioned above), overriding Sass variables can be done in a more easily-maintainable way. Instead of overriding the file containing the Sass variables, you instead override [this placeholder file for Sass variable overrides](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables.scss). This allows you to override only the specific variables you need to change.
+
+## Rounding data values
+
+To apply a site-wide data-rounding function, you can override the `opensdg.dataRounding` function. For example, you could include this in your custom javascript:
+
+```
+opensdg.dataRounding = function(value) {
+    // Round to 2 decimal places.
+    return Math.round(value * 100) / 100;
+}
+```
+
+* You may get unexpected behavior if you return a string - so it is recommended to return a number.
+
+## Altering data values before displaying
+
+If you need to make any last-minute changes to data values before displaying, you can pass a callback function to the `opensdg.dataDisplayAlter` function. For example, you could include this in your custom javascript:
+
+```
+opensdg.dataDisplayAlter(function(value) {
+    // Perform any alterations here.
+    return value;
+});
+```
+
+* Unlike with dataRounding, you can feel free to return a string here.
+
+## Altering the Chart.js configuration
+
+The charts in Open SDG use [Chart.js](https://www.chartjs.org/). You can perform any alterations you would like by passing a callback function to the `opensdg.chartConfigAlter` function. For example, you could include this in your custom javascript:
+
+```
+opensdg.chartConfigAlter(function(config) {
+    var overrides = {
+        // Override any configuration here.
+    };
+    $.extend(true, config, overrides);
+});
+```
+
+## Altering the jQuery Datatables configuration
+
+The tables in Open SDG use [jQuery Datatables](https://datatables.net/). You can perform any alterations you would like by passing a callback function to the `opensdg.tableConfigAlter` function. For example, you could include this in your custom javascript:
+
+```
+opensdg.tableConfigAlter(function(config) {
+    var overrides = {
+        // Override any configuration here.
+    };
+    $.extend(true, config, overrides);
+});
+```
