@@ -1,5 +1,10 @@
 {% if page.indicator %}
-    <title>{{ page.t.general.indicator | escape }} {{ page.indicator.number }} - {{ page.indicator.name | escape }} - {{ site.title | t | escape }}</title>
+    <title>
+        {% unless page.indicator.standalone %}
+        {{ page.t.general.indicator | escape }} {{ page.indicator.number }} -
+        {% endunless %}
+        {{ page.indicator.name | escape }} - {{ site.title | t | escape }}
+    </title>
 {% elsif page.goal %}
     <title>{{ page.t.general.goal | escape }} {{ page.goal.number }} - {{ page.goal.short | escape }} - {{ site.title | t | escape }}</title>
 {% elsif page.title %}

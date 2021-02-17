@@ -1,8 +1,8 @@
 <script type="text/template" id="units_template">
   <% if(units.length) { %>
-    <h4>{{ page.t.indicator.units_type }}</h4>
+    <h4>{{ page.t.indicator.unit_of_measurement }}</h4>
     <fieldset>
-      <legend class="sr-only">{{ page.t.indicator.units_type }}</legend>
+      <legend class="sr-only">{{ page.t.indicator.unit_of_measurement }}</legend>
       <% _.each(units, function(unitsItem, index) { %>
         <% var checked = (selectedUnit) ? (selectedUnit==unitsItem) : (index==0); %>
         <label><input type="radio" name="unit" value="<%=unitsItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(unitsItem)%></label>

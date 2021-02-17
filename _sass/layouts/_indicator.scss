@@ -562,6 +562,14 @@ body.contrast-high {
   }
 }
 
+.layout-indicator {
+  #page-content {
+    border-top: 1px solid $indicatorContent-horizontalRule-color;
+    border-bottom: 1px solid $indicatorContent-horizontalRule-color;
+    padding-top: 10px;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   body.layout-indicator{
     .container{
@@ -585,5 +593,11 @@ body.contrast-high {
       display: block;
       margin-top: 10px;
     }
+  }
+}
+
+#sources {
+  .row > div:nth-child(odd) {
+    clear: left;
   }
 }
