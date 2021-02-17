@@ -181,3 +181,57 @@
     color: $color-light-highContrast;
   }
 }
+
+@mixin dropdownToggle {
+  margin: 0 0 2px 15px;
+  padding: 2px;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  border-bottom: 2px solid transparent;
+  color: $menu-link-color;
+  &:hover {
+    background: none;
+    border-bottom: 2px solid $menu-link-borderBottomColor-hover;
+  }
+}
+
+@mixin dropdownToggleHighContrast {
+  color: $color-light-highContrast !important;
+  background: $color-dark-highContrast !important;
+  &:hover {
+    color: $color-highlight-highContrast !important;
+    background: $color-dark-highContrast !important;
+  }
+  &:focus {
+    background: $focusBackgroundColor-highContrast !important;
+    color: $focusColor-highContrast !important;
+  }
+}
+
+@mixin dropdownMenu {
+  border-radius: 0;
+  a {
+    color: $menu-dropdownLink-color;
+  }
+  .active {
+    a {
+      background: none;
+      color: $menu-dropdownLink-color;
+      &:hover {
+        background: $menu-dropdownLink-backgroundColor-hover;
+      }
+    }
+  }
+}
+
+@mixin dropdownMenuHighContrast {
+  li {
+    a {
+      color: $color-dark-highContrast;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

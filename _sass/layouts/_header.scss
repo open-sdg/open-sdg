@@ -300,33 +300,11 @@ header ul {
 
 .btn-group.menu-dropdown {
   .dropdown-toggle {
-    margin: 0 0 2px 15px;
-    padding: 2px;
-    border: none;
-    border-radius: 0;
-    font-size: 16px;
-    border-bottom: 2px solid transparent;
-    color: $menu-link-color;
-    &:hover {
-      background: none;
-      border-bottom: 2px solid $menu-link-borderBottomColor-hover;
-    }
+    @include dropdownToggle;
   }
   .dropdown-menu {
-    border-radius: 0;
+    @include dropdownMenu;
     margin-left: 15px;
-    a {
-      color: $menu-link-color;
-    }
-    .active {
-      a {
-        background: none;
-        color: $menu-link-color;
-        &:hover {
-          background: $menu-dropdownLink-backgroundColor-hover;
-        }
-      }
-    }
   }
 }
 
@@ -376,25 +354,10 @@ body.contrast-high {
     #menu {
       .btn-group.menu-dropdown {
         .dropdown-toggle {
-          color: $color-light-highContrast !important;
-          background: $color-dark-highContrast !important;
-          &:hover {
-            color: $color-highlight-highContrast !important;
-          }
-          &:focus {
-            background: $focusBackgroundColor-highContrast !important;
-            color: $focusColor-highContrast !important;
-          }
+          @include dropdownToggleHighContrast;
         }
         .dropdown-menu {
-          li {
-            a {
-              color: $color-dark-highContrast;
-              &:hover {
-                text-decoration: underline;
-              }
-            }
-          }
+          @include dropdownMenuHighContrast;
         }
       }
     }
