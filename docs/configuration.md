@@ -109,13 +109,14 @@ create_config_forms:
 
 ### create_goals
 
-_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) `layout` setting indicating the Jekyll layout to use for the goals.
+_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals. You can optionally turn on previous/next links as well.
 
 Additionally, there can be a `goals` item that includes an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
 
 ```nohighlight
 create_goals:
   layout: goal
+  previous_next_links: true
   goals:
     - content: My content for goal 1
     - content: My content for goal 2 with a [link](https://example.com)
@@ -124,11 +125,12 @@ create_goals:
 
 ### create_indicators
 
-_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators.
+_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators. You can optionally turn on previous/next links as well.
 
 ```nohighlight
 create_indicators:
   layout: indicator
+  previous_next_links: true
 ```
 
 ### create_pages
@@ -192,6 +194,24 @@ custom_js:
 
 ```nohighlight
 data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
+```
+
+### data_fields
+
+_Optional_: This setting can be used if your data source has non-standard fields for unit and/or series -- for example, if you have CSV files with units in a "UNIT_MEASURE" column, rather than the usual "Units". If this is omitted, the following defaults are used:
+
+```nohighlight
+data_fields:
+  series: Series
+  units: Units
+```
+
+If your data source is coming directly from SDMX, for example, you might use something like this:
+
+```nohighlight
+data_fields:
+  series: SERIES
+  units: UNIT_MEASURE
 ```
 
 ### date_formats

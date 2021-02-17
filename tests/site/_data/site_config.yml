@@ -25,11 +25,13 @@ create_config_forms:
   layout: config-builder
 create_goals:
   layout: goal
+  previous_next_links: true
   goals:
     - content: custom.goal_1_content
     - content: My goal 2 content
 create_indicators:
   layout: indicator
+  previous_next_links: true
 create_pages:
   - filename: index.html
     folder: /frontpage-legacy
