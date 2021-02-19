@@ -41,9 +41,6 @@ h5 + .btn-download {
     padding: 0;
     margin: 0;
   }
-  #chart-canvas {
-    margin-top: -30px;
-  }
   #selectionChartFooter {
     padding-left: 20px;
     p {
@@ -52,6 +49,17 @@ h5 + .btn-download {
   }
   .hide-during-image-download {
     display: none;
+  }
+  &.contrast-high {
+    #indicator-main {
+      width: 120%;
+    }
+    #chart-canvas {
+      background-color: $color-dark-highContrast !important;
+    }
+    #chart-heading, #selectionChartFooter {
+      max-width: 90%;
+    }
   }
 }
 

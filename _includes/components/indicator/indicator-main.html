@@ -21,6 +21,7 @@
   data-graphannotations="{{ page.indicator.graph_annotations | jsonify | xml_escape }}"
   data-indicatordownloads="{{ site.data[page.language].indicator_downloads[page.indicator.number] | jsonify | xml_escape }}"
   data-compositebreakdownlabel="{{ page.indicator.composite_breakdown_label }}"
+  data-precision="{{ page.indicator.precision | jsonify | xml_escape }}"
 >
   {% if show_data %}
   <span role="status" class="sr-only" id="indicator-data-view-status"></span>

@@ -66,6 +66,7 @@
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
     getFirstUnitInData: getFirstUnitInData,
+    getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
     getDataBySeries: getDataBySeries,
     getDataBySelectedFields: getDataBySelectedFields,
@@ -92,6 +93,9 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    getPrecision: getPrecision,
+    getGraphLimits: getGraphLimits,
+    getColumnsFromData: getColumnsFromData,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),
   }
