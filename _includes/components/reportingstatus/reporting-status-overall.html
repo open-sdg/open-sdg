@@ -4,8 +4,9 @@
 <div class="goal goal-overall">
     <div class="details">
         <h2 class="status-goal">
-            {{ include.title }} <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
+            {{ include.title }}
         </h2>
+        <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
         <div class="summary">
             <div class="statuses">
             {%- for status in overall.statuses -%}

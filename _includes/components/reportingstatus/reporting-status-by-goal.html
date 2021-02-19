@@ -12,8 +12,8 @@
     <div class="details">
         <h3 class="status-goal">
             <a href="{{ goal.url }}">{{ goal.short }}</a>
-            <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
         </h3>
+        <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
         <div class="summary">
             <div class="statuses">
                 {%- for status in goalreport.statuses -%}
