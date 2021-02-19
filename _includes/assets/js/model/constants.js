@@ -6,5 +6,6 @@ var SERIES_COLUMN = '{{ site.data_fields.series | default: "Series" }}';
 var GEOCODE_COLUMN = 'GeoCode';
 var YEAR_COLUMN = 'Year';
 var VALUE_COLUMN = 'Value';
+// Note this headline color is overridden in indicatorView.js.
 var HEADLINE_COLOR = '#777777';
 var SERIES_TOGGLE = {{ site.series_toggle | default: false }};
