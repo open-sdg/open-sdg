@@ -18,6 +18,7 @@ breadcrumbs:
       label: general.home
     - path: /news
       label: menu.updates
+configuration_edit_url: config
 country:
   name: Australia
   adjective: Australian
@@ -136,6 +137,7 @@ header:
 header_language_toggle: dropdown
 hide_empty_metadata: true
 indicator_config_form:
+  enabled: true
   dropdowns:
     - jsonschema: reporting_status
       values:
@@ -152,6 +154,7 @@ indicator_config_form:
   repository_link: 'https://example.com'
   translation_link: ''
 indicator_metadata_form:
+  enabled: true
   dropdowns: []
   repository_link: 'https://example.com'
   translation_link: 'https://example.com?[id]&[group]&[key]'
@@ -236,6 +239,7 @@ search_index_extra_fields:
 series_toggle: true
 sharethis_property: ''
 site_config_form:
+  enabled: true
   dropdowns:
     - jsonschema: create_goals.properties.layout
       values:
