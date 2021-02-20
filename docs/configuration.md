@@ -106,17 +106,6 @@ country:
   adjective: Australian
 ```
 
-### create_config_forms
-
-_Optional_: This setting can be used to automatically create the configuration form pages. Without this setting, you will need to maintain your site and indicator configuration using a text editor. This setting should include another (indented) setting indicating the Jekyll layout to use for the config form pages (usually `config-builder`). After setting this, you will have a site configuration form available through a link in the footer, as well as indicator configuration and metadata forms available in the "Edit" tab.
-
-```nohighlight
-create_config_forms:
-  layout: config-builder
-```
-
-To configure the behavior of these forms, see the separate `site_config_form`, `indicator_config_form`, and `indicator_metadata_form` settings.
-
 ### create_goals
 
 _Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals. You can optionally turn on previous/next links as well.
@@ -482,6 +471,7 @@ hide_empty_metadata: true
 
 _Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
 
+* `enabled`: Whether or not to generate these configuration forms
 * `dropdowns`: This can be used to convert any `string` field into a dropdown. Each item should have these properties:
 
     * `jsonschema`: The path into the jsonschema's `properties` object, to the property that you would like to convert into a dropdown. In most cases this is simply the name of the property, but in nested situations, you can use dot-syntax to drill down into the jsonschema object.
@@ -500,6 +490,8 @@ _Optional_: This setting controls the behavior of the indicator config forms. Th
 * `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
 * `translation_link`: This will display a  "Go to translation" link beneath each metadata field. You can enter a pattern with `[id]` and/or `[field]` and it will be replaced as described above.
 
+Links to the forms appear in the "Edit" tab on indicator pages.
+
 ### indicator_metadata_form
 
 _Optional_: This setting controls the behavior of the indicator metadata forms. The available settings are the same as in  `indicator_config_form` above, plus the following extra options:
@@ -509,6 +501,8 @@ _Optional_: This setting controls the behavior of the indicator metadata forms. 
   - national
   - global
 ```
+
+Links to the forms appear in the "Edit" tab on indicator pages.
 
 ### languages
 
@@ -700,6 +694,8 @@ series_toggle: true
 ### site_config_form
 
 _Optional_: This setting controls the behavior of the site config form. The available the same as in the `indicator_config_form` described above.
+
+The default location for the site configuration page is `/config`.
 
 ### sharethis_property
 
