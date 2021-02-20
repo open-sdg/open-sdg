@@ -498,8 +498,17 @@ _Optional_: This setting controls the behavior of the indicator metadata forms. 
 
 * `scopes`: A list of the "scopes" that you would like to include in the form. If let blank, this will default to "national" and "global".
 * `exclude_fields`: A list of the fields that you would like to omit from the form.
-  - national
-  - global
+
+For example:
+
+```
+indicator_metadata_form:
+  enabled: true
+  scopes:
+    - national
+    - global
+  exclude_fields:
+    - my_excluded_field_name
 ```
 
 Links to the forms appear in the "Edit" tab on indicator pages.
