@@ -22,20 +22,11 @@ function isElementUniqueInArray(element, index, arr) {
 }
 
 /**
- * @param {Array} rows
+ * @param {Array} columns
  * @return {boolean}
  */
-function dataHasGeoCodes(rows) {
-  return dataHasColumn(GEOCODE_COLUMN, rows);
-}
-
-/**
- * @param {string} column
- * @param {Array} rows
- * @return {boolean}
- */
-function dataHasColumn(column, rows) {
-  return getColumnsFromData(rows).includes(column);
+function dataHasGeoCodes(columns) {
+  return columns.includes(GEOCODE_COLUMN);
 }
 
 /**
@@ -43,16 +34,18 @@ function dataHasColumn(column, rows) {
  * @return {Array} Columns from first row
  */
 function getColumnsFromData(rows) {
-  return Object.keys(rows[0]);
+  return Object.keys(rows.reduce(function(result, obj) {
+    return Object.assign(result, obj);
+  }, {}));
 }
 
 /**
- * @param {Array} rows
- * @return {Array} Columns from first row, omitting non-fields
+ * @param {Array} columns
+ * @return {Array} Columns without non-fields
  */
-function getFieldColumnsFromData(rows) {
+function getFieldColumnsFromData(columns) {
   var omitColumns = nonFieldColumns();
-  return getColumnsFromData(rows).filter(function(col) {
+  return columns.filter(function(col) {
     return !omitColumns.includes(col);
   });
 }
@@ -76,4 +69,70 @@ function nonFieldColumns() {
     columns.push(SERIES_COLUMN);
   }
   return columns;
+}
+
+/**
+ * @param {Array} items Objects optionally containing 'unit' and/or 'series'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {object|false} The first match given the selected unit/series, or false
+ */
+function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
+  if (!items || items.length < 0) {
+    return false;
+  }
+  if (!selectedUnit && !selectedSeries) {
+    return items[0];
+  }
+  var match = items.find(function(item) {
+    if (selectedUnit && selectedSeries) {
+      return item.unit === selectedUnit && item.series === selectedSeries;
+    }
+    else if (selectedUnit) {
+      return item.unit === selectedUnit;
+    }
+    else if (selectedSeries) {
+      return item.series === selectedSeries;
+    }
+  });
+  if (!match) {
+    // If no match was found, allow for a partial match (eg, unit only).
+    match = items.find(function(item) {
+      if (selectedUnit) {
+        return item.unit === selectedUnit;
+      }
+      else if (selectedSeries) {
+        return item.series === selectedSeries;
+      }
+    });
+  }
+  return match || false;
+}
+
+/**
+ * Move an item from one position in an array to another, in place.
+ */
+function arrayMove(arr, fromIndex, toIndex) {
+  while (fromIndex < 0) {
+    fromIndex += arr.length;
+  }
+  while (toIndex < 0) {
+    toIndex += arr.length;
+  }
+  var paddingAdded = [];
+  if (toIndex >= arr.length) {
+    var k = toIndex - arr.length;
+    while ((k--) + 1) {
+      arr.push(undefined);
+      paddingAdded.push(arr.length - 1);
+    }
+  }
+  arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
+
+  // Get rid of the undefined elements that were added.
+  paddingAdded.sort();
+  while (paddingAdded.length > 0) {
+    var paddingIndex = paddingAdded.pop() - 1;
+    arr.splice(paddingIndex, 1);
+  }
 }

@@ -190,6 +190,27 @@ The following fields affect the display of graphs. Currently only longitudinal g
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
 
+## Precision
+
+Normally trailing zeroes are removed from decimals before being displayed. For example, "23.60" will be displayed as "23.6". If you would like to force a particular number of decimal places, you can use the `precision` field. The following would force values to have 2 decimals places:
+
+```
+precision:
+  - decimals: 2
+```
+
+For example, with the configuration above, "23.60" would actually display as "23.60". Along the same lines, "23" would display as "23.00".
+
+You can also specify multiple precisions, and each one can apply to a particular unit and/or series. Here is an example if you want to force a precision of 2 on "percentage" units, and a precision of 1 on "total" units:
+
+```
+precision:
+  - unit: percentage
+    decimals: 2
+  - unit: total
+    decimals: 1
+```
+
 ## Footer
 
 The following fields will appear on indicator pages below the graph and the table.

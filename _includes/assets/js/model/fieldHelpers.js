@@ -7,8 +7,8 @@
  * @param {Array} edges
  * @return {Array} Field item states
  */
-function getInitialFieldItemStates(rows, edges) {
-  var initial = getFieldColumnsFromData(rows).map(function(field) {
+function getInitialFieldItemStates(rows, edges, columns) {
+  var initial = getFieldColumnsFromData(columns).map(function(field) {
     return {
       field: field,
       hasData: true,
@@ -169,35 +169,18 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
  * @param {Array} edges
  */
 function sortFieldsForView(fieldItemStates, edges) {
-  var grandparents = [],
-      parents = [];
-  if (edges) {
+  if (edges.length > 0 && fieldItemStates.length > 0) {
     edges.forEach(function(edge) {
-      if (!parents.includes(edge.From)) {
-        parents.push(edge.From);
-      }
-    });
-    edges.forEach(function(edge) {
-      if (parents.includes(edge.To)) {
-        grandparents.push(edge.From);
-      }
+      // This makes sure children are right after their parents.
+      var parentIndex = fieldItemStates.findIndex(function(fieldItem) {
+        return fieldItem.field == edge.From;
+      });
+      var childIndex = fieldItemStates.findIndex(function(fieldItem) {
+        return fieldItem.field == edge.To;
+      });
+      arrayMove(fieldItemStates, childIndex, parentIndex + 1);
     });
   }
-  fieldItemStates.sort(function(a, b) {
-    if (grandparents.includes(a.field) && !grandparents.includes(b.field)) {
-      return -1;
-    }
-    else if (grandparents.includes(b.field) && !grandparents.includes(a.field)) {
-      return 1;
-    }
-    else if (parents.includes(a.field) && !parents.includes(b.field)) {
-      return -1;
-    }
-    else if (parents.includes(b.field) && !parents.includes(a.field)) {
-      return 1;
-    }
-    return 0;
-  });
 }
 
 /**
@@ -207,10 +190,10 @@ function sortFieldsForView(fieldItemStates, edges) {
  * @return {Array} Field item states
  */
 function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
+  var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
+    return fieldByUnit.unit === selectedUnit;
+  })[0];
   return fieldItemStates.filter(function(fis) {
-    var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
-      return fieldByUnit.unit === selectedUnit;
-    })[0];
     return fieldsBySelectedUnit.fields.includes(fis.field);
   });
 }
@@ -222,10 +205,10 @@ function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
  * @return {Array} Field item states
  */
 function fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries) {
+  var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
+    return fieldBySeries.series === selectedSeries;
+  })[0];
   return fieldItemStates.filter(function(fis) {
-    var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
-      return fieldBySeries.series === selectedSeries;
-    })[0];
     return fieldsBySelectedSeries.fields.includes(fis.field);
   });
 }
@@ -325,6 +308,10 @@ function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
   // But actually we want the top-priority sort to be the "size" of the
   // rows. In other words we want the row with the fewest number of fields.
   filteredData = _.sortBy(filteredData, function(row) { return Object.keys(row).length; });
+
+  if (filteredData.length === 0) {
+    return [];
+  }
 
   // Convert to an array of objects with 'field' and 'values' keys, omitting
   // any non-field columns.

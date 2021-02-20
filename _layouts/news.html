@@ -15,29 +15,7 @@ layout: default
       {{content}}
       {% assign posts = site.posts | where: 'language', page.language %}
       {% for post in posts %}
-      <article>
-        <h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h5>
-        <p><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | t_date: 'standard' }}</time></p>
-        <div class="post-excerpt">
-          {{ post.excerpt | markdownify }}
-        </div>
-        {% if post.categories %}
-        <ul class="post-categories">
-          {% for category in post.categories %}
-          <li class="warning">
-            {% if category_links %}
-            {% assign category_translated = category | t %}
-            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category_translated }}">
-            {% endif %}
-            {{ category | t }}
-            {% if category_links %}
-            </a>
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </article>
+        {% include components/post/post-listing.html category_links=category_links %}
       {% endfor %}
     </div>
     {% if category_links %}

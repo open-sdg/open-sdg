@@ -595,3 +595,9 @@ body.contrast-high {
     }
   }
 }
+
+#sources {
+  .row > div:nth-child(odd) {
+    clear: left;
+  }
+}

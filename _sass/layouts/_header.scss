@@ -126,6 +126,7 @@ body.contrast-high {
       }
 
       &.contrast-default {
+        @include preserveOriginalColors;
         background: $color-light-highContrast;
         a {
           color: $color-dark-highContrast;
@@ -133,6 +134,7 @@ body.contrast-high {
       }
 
       &.contrast-high {
+        @include preserveOriginalColors;
         background: $color-dark-highContrast;
         a {
           color: $color-highlight-highContrast;
