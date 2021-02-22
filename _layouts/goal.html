@@ -55,22 +55,15 @@
     {% cycle 'add row' : '<div class="indicator-cards row no-gutters">', '', '', '' %}
         <div class="col-md-6 col-lg-3 {{ tag_classes }} goal-indicator">
           <a href="{{ indicator.url }}">
-            <span>
+            <span class="indicator-card-number">
               {{ indicator.number }}
               <span class="status {{ status_css }}">
                 {{ status_desc }}
               </span>
             </span>
             {{ indicator.name }}
-            {% if indicator.tags %}
-              <ul class="tags">
-              {% for tag in indicator.tags %}
-                {% assign tag_class = tag | slugify %}
-                <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
-              {% endfor %}
-              </ul>
-            {% endif %}
           </a>
+          {% include components/indicator/tags.html tags=indicator.tags %}
         </div>
     {% cycle 'end row' : '', '', '', '</div>' %}
     {% endfor %}

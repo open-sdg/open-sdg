@@ -1,0 +1,9 @@
+{% if include.tags %}
+    <span class="sr-only">{{ page.t.indicator.tags }}</span>
+    <span class="tags">
+    {% for tag in include.tags %}
+        {% assign tag_class = tag | slugify %}
+        <span class="tag tag-{{ tag_class }}">{{ tag | t }}</span>
+    {% endfor %}
+    </span>
+{% endif %}
