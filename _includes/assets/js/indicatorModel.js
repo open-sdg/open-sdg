@@ -43,6 +43,7 @@ var indicatorModel = function (options) {
   this.stackedDisaggregation = options.stackedDisaggregation;
   this.graphAnnotations = options.graphAnnotations;
   this.indicatorDownloads = options.indicatorDownloads;
+  this.compositeBreakdownLabel = options.compositeBreakdownLabel;
   this.precision = options.precision;
 
   this.initialiseUnits = function() {
@@ -251,7 +252,8 @@ var indicatorModel = function (options) {
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
           this.selectedFields,
-          this.edgesData
+          this.edgesData,
+          this.compositeBreakdownLabel,
         ),
         allowedFields: this.allowedFields,
         edges: this.edgesData,
