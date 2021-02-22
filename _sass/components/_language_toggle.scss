@@ -6,30 +6,20 @@
 
 .language-toggle-dropdown {
   margin-top: -2px;
-  .dropdown-toggle, .dropdown-menu {
-    border-radius: 0;
-  }
   .dropdown-toggle {
-    border: none;
+    @include dropdownToggle;
+    color: $text-color;
     padding: 5px;
     font-size: 16px;
-    &, &:hover, &:active, &:focus {
-      background-color: $backgroundColor;
-    }
-    &:focus {
-      outline: 1px dotted $color-dark;
-    }
   }
   .dropdown-menu {
-    font-size: 16px;
+    @include dropdownMenu;
   }
 }
 .language-toggle-menu-header .language-toggle-dropdown {
   margin-top: 0px;
-  .dropdown-toggle, .dropdown-menu {
-    font-size: 14px;
-  }
   .dropdown-toggle {
+    font-size: 14px;
     position: relative;
     .language-globe-in-dropdown {
       display: inline-block;
@@ -60,11 +50,6 @@
   @media only screen and (min-width: 480px) {
     .language-toggle-caret {
       margin-left: 4px;
-    }
-  }
-  .dropdown-menu {
-    a, a:hover {
-      text-decoration: none;
     }
   }
 }
@@ -150,6 +135,7 @@
       text-decoration: underline;
       &:hover {
         border: none;
+        text-decoration: underline;
       }
     }
   }
@@ -167,11 +153,6 @@ header .language-toggle-links {
 }
 footer #footerLinks .language-toggle-menu-footer {
   margin-bottom: -5px;
-  .dropdown-menu {
-    a {
-      text-decoration: none;
-    }
-  }
 }
 .language-toggle-menu-footer .language-toggle-dropdown {
   .language-globe-in-dropdown {
@@ -187,9 +168,9 @@ footer #footerLinks .language-toggle-menu-footer {
     color: $color-light-highContrast;
   }
   .language-toggle-link span, .language-toggle-link {
-    color: $color-highlight-highContrast;
+    color: $color-highlight-highContrast !important;
     &:hover, &:visited {
-      color: $color-highlight-highContrast;
+      color: $color-highlight-highContrast !important;
     }
   }
   .language-toggle-link:focus {
@@ -199,39 +180,20 @@ footer #footerLinks .language-toggle-menu-footer {
   }
   .language-toggle-dropdown {
     .dropdown-toggle {
-      &, &:hover, &:active {
-        background: $color-dark-highContrast !important;
+      @include dropdownToggleHighContrast;
+      &:hover {
+        span, i {
+          color: $color-highlight-highContrast !important;
+        }
       }
-      &, span, .language-toggle-caret {
-        color: $color-light-highContrast !important;
-      }
-      &:focus, &:focus span, &:focus i {
-        background: $focusBackgroundColor-highContrast !important;
-        color: $focusColor-highContrast !important;
+      &:focus {
+        span, i {
+          color: $color-dark-highContrast !important;
+        }
       }
     }
     .dropdown-menu {
-      &, a:hover {
-        background: $color-dark-highContrast;
-      }
-      a:focus {
-        background: $focusBackgroundColor-highContrast;
-        color: $focusColor-highContrast;
-      }
-      border-color: $color-light-highContrast;
-    }
-  }
-  .language-toggle-mobile .language-toggle-dropdown {
-    .dropdown-menu {
-      a:visited {
-        color: $color-light-highContrast;
-      }
-      a:hover {
-        color: $color-highlight-highContrast;
-      }
-      a:focus {
-        color: $focusColor-highContrast
-      }
+      @include dropdownMenuHighContrast;
     }
   }
 }
