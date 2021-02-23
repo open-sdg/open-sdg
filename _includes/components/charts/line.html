@@ -31,7 +31,8 @@ opensdg.chartConfigAlter(function(config, info) {
                     ctx.moveTo(x, topY);
                     ctx.lineTo(x, bottomY);
                     ctx.lineWidth = 2;
-                    ctx.strokeStyle = '#F36C12';
+                    ctx.strokeStyle = '#757575';
+                    ctx.setLineDash([5, 2]);
                     ctx.stroke();
                     ctx.restore();
                 }

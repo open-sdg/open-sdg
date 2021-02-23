@@ -391,7 +391,8 @@ var indicatorView = function (model, options) {
           xAxes: [{
             maxBarThickness: 150,
             gridLines: {
-              color: gridColor,
+              color: 'transparent',
+              zeroLineColor: '#757575',
             },
             ticks: {
               fontColor: tickColor,
@@ -400,6 +401,8 @@ var indicatorView = function (model, options) {
           yAxes: [{
             gridLines: {
               color: gridColor,
+              zeroLineColor: '#757575',
+              drawBorder: false,
             },
             ticks: {
               suggestedMin: 0,
@@ -540,11 +543,11 @@ var indicatorView = function (model, options) {
   };
 
   this.getHeadlineColor = function(contrast) {
-    return this.isHighContrast(contrast) ? '#FFFF00' : '#004B70'
+    return this.isHighContrast(contrast) ? '#FFDD00' : '#004466'
   }
 
   this.getGridColor = function(contrast) {
-    return this.isHighContrast(contrast) ? '#5C5C5C' : '#949494';
+    return this.isHighContrast(contrast) ? '#222' : '#ddd';
   };
 
   this.getTickColor = function(contrast) {
