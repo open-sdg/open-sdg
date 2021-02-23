@@ -126,6 +126,7 @@ body.contrast-high {
       }
 
       &.contrast-default {
+        @include preserveOriginalColors;
         background: $color-light-highContrast;
         a {
           color: $color-dark-highContrast;
@@ -133,6 +134,7 @@ body.contrast-high {
       }
 
       &.contrast-high {
+        @include preserveOriginalColors;
         background: $color-dark-highContrast;
         a {
           color: $color-highlight-highContrast;
@@ -298,6 +300,17 @@ header ul {
   list-style-type: none;
 }
 
+.btn-group.menu-dropdown {
+  .dropdown-toggle {
+    @include dropdownToggle;
+  }
+  .dropdown-menu {
+    @include dropdownMenu;
+    margin-left: 15px;
+  }
+}
+
+
 body.contrast-high {
   .navbar {
     #menu, #menu-mobile {
@@ -336,6 +349,17 @@ body.contrast-high {
       > li.active {
         button {
           color: $color-dark-highContrast;
+        }
+      }
+    }
+
+    #menu {
+      .btn-group.menu-dropdown {
+        .dropdown-toggle {
+          @include dropdownToggleHighContrast;
+        }
+        .dropdown-menu {
+          @include dropdownMenuHighContrast;
         }
       }
     }

@@ -5,6 +5,15 @@
   }
 }
 
+.layout-goal {
+  .tags {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 10px;
+    margin-bottom: 15px;
+  }
+}
+
 body.contrast-high {
   .goal-indicators {
     div {
@@ -17,7 +26,7 @@ body.contrast-high {
       &.target {
         color: $color-light-highContrast !important;
       }
-      span.status, .tags li{
+      span.status, .tags .tag {
         color: $color-dark-highContrast !important;
       }
 

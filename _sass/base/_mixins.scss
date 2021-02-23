@@ -6,18 +6,6 @@
   -o-user-select: none;
 }
 
-@mixin tags {
-  padding: 0;
-  margin: 15px 10px 0 0;
-  list-style-type: none;
-  li {
-    margin-right: 6px;
-    padding: 4px 6px;
-    display: inline;
-    border-radius: 10px;
-  }
-}
-
 @mixin status {
   color: $color-dark;
   font-weight: normal;
@@ -43,6 +31,17 @@
   }
 }
 
+@mixin tags {
+  .tag {
+    @include status;
+    margin-right: 6px;
+    color: $tag-color;
+    border: $tag-border;
+    background: $tag-backgroundColor;
+    white-space: nowrap;
+  }
+}
+
 @mixin indicatorcards {
   .indicator-cards {
     a {
@@ -57,7 +56,10 @@
       }
     }
 
-    span {
+    .indicator-card-number,
+    // @deprecated start
+    span:not(.tags):not(.tag):not(.sr-only) {
+    // @deprecated end (use .indicator-card-number instead)
       display: block;
       margin-bottom: 0.5rem;
       font-weight: bold;
@@ -179,5 +181,59 @@
   button {
     background-color: $color-medium-highContrast;
     color: $color-light-highContrast;
+  }
+}
+
+@mixin dropdownToggle {
+  margin: 0 0 2px 15px;
+  padding: 2px;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  border-bottom: 2px solid transparent;
+  color: $menu-link-color;
+  &:hover {
+    background: none;
+    border-bottom: 2px solid $menu-link-borderBottomColor-hover;
+  }
+}
+
+@mixin dropdownToggleHighContrast {
+  color: $color-light-highContrast !important;
+  background: $color-dark-highContrast !important;
+  &:hover {
+    color: $color-highlight-highContrast !important;
+    background: $color-dark-highContrast !important;
+  }
+  &:focus {
+    background: $focusBackgroundColor-highContrast !important;
+    color: $focusColor-highContrast !important;
+  }
+}
+
+@mixin dropdownMenu {
+  border-radius: 0;
+  a {
+    color: $menu-dropdownLink-color;
+  }
+  .active {
+    a {
+      background: none;
+      color: $menu-dropdownLink-color;
+      &:hover {
+        background: $menu-dropdownLink-backgroundColor-hover;
+      }
+    }
+  }
+}
+
+@mixin dropdownMenuHighContrast {
+  li {
+    a {
+      color: $color-dark-highContrast;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

@@ -15,7 +15,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
-  <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
   <script>
 
     // Dynamic filtering functionality.
@@ -72,7 +72,7 @@
           if (schema.properties.{{ dropdown.jsonschema }}) {
             schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
             schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
-            {% if choices.labels %}
+            {% if dropdown.labels %}
               schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
               schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
             {% endif %}
