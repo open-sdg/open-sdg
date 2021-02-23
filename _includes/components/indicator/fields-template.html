@@ -32,7 +32,7 @@
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
           {%- capture var_hint_replacement -%}
-            {% raw %}<%= translations.t(_.findWhere(edges, { To: fieldItem.field }).From) %>{% endraw %}
+            {% raw %}<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>{% endraw %}
           {%- endcapture -%}
           {{ page.t.indicator.variable_hint | replace_first: '%field', var_hint_replacement }}
         </div>
