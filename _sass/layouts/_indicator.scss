@@ -503,11 +503,11 @@ caption {
 }
 
 body.contrast-high {
-  #main-content #fields label {
+  #main-content #fields .variable-selector .variable-options label {
     background: $color-dark-highContrast;
     color: $color-light-highContrast;
     &:hover {
-      background: $color-light-highContrast;
+      background: $color-highlight-highContrast;
       color: $color-dark-highContrast;
     }
     &:focus {
