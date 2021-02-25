@@ -197,6 +197,10 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
+  - translation_key: My dropdowns
+    dropdown:
+      - path: about
+        translation_key: Another link to about page
   - path: frontpage-legacy
     translation_key: Legacy frontpage
 metadata_edit_url: 'https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md'

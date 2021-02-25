@@ -131,6 +131,16 @@ data_start_values:
 
 ...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
 
+## Composite Breakdown label
+
+When importing data from SDMX it is common for disaggregations to be in COMPOSITE_BREAKDOWN. This is not particularly informative to the user, so it is possible to specify a more useful label for this particular data column. Whatever is specified here will be used as a label for the COMPOSITE_BREAKDOWN column, if it appears in the indicator data. Translation keys are supported, as always.
+
+The example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
+
+```nohighlight
+composite_breakdown_label: Hazard type
+```
+
 ## Graph Metadata
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
@@ -189,6 +199,27 @@ The following fields affect the display of graphs. Currently only longitudinal g
 
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
+
+## Precision
+
+Normally trailing zeroes are removed from decimals before being displayed. For example, "23.60" will be displayed as "23.6". If you would like to force a particular number of decimal places, you can use the `precision` field. The following would force values to have 2 decimals places:
+
+```
+precision:
+  - decimals: 2
+```
+
+For example, with the configuration above, "23.60" would actually display as "23.60". Along the same lines, "23" would display as "23.00".
+
+You can also specify multiple precisions, and each one can apply to a particular unit and/or series. Here is an example if you want to force a precision of 2 on "percentage" units, and a precision of 1 on "total" units:
+
+```
+precision:
+  - unit: percentage
+    decimals: 2
+  - unit: total
+    decimals: 1
+```
 
 ## Footer
 

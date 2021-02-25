@@ -10,6 +10,8 @@ var indicatorView = function (model, options) {
   this._tableColumnDefs = options.tableColumnDefs;
   this._mapView = undefined;
   this._legendElement = options.legendElement;
+  this._precision = undefined;
+  this._decimalSeparator = options.decimalSeparator;
 
   var chartHeight = screen.height < options.maxChartHeight ? screen.height : options.maxChartHeight;
 
@@ -50,6 +52,8 @@ var indicatorView = function (model, options) {
 
   this._model.onDataComplete.attach(function (sender, args) {
 
+    view_obj._precision = args.precision;
+
     if(view_obj._model.showData) {
 
       $('#dataset-size-warning')[args.datasetCountExceedsMax ? 'show' : 'hide']();
@@ -71,7 +75,7 @@ var indicatorView = function (model, options) {
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
-      view_obj._mapView.initialise(args.indicatorId);
+      view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator);
     }
   });
 
@@ -117,14 +121,14 @@ var indicatorView = function (model, options) {
       var currentField = $(element).data('field');
 
       // any info?
-      var match = _.findWhere(args.selectedFields, { field : currentField });
+      var match = _.find(args.selectedFields, { field : currentField });
       var element = $(view_obj._rootElement).find('.variable-selector[data-field="' + currentField + '"]');
       var width = match ? (Number(match.values.length / element.find('.variable-options label').length) * 100) + '%' : '0';
 
       $(element).find('.bar .selected').css('width', width);
 
       // is this an allowed field:
-      if (_.contains(args.allowedFields, currentField)) {
+      if (args.allowedFields.includes(currentField)) {
         $(element).removeClass('disallowed');
         $(element).find('> button').removeAttr('aria-describedby');
       }
@@ -203,7 +207,7 @@ var indicatorView = function (model, options) {
     })).groupBy('field').map(function(value, key) {
       return {
         field: key,
-        values: _.pluck(value, 'value')
+        values: _.map(value, 'value')
       };
     }).value());
   }
@@ -332,6 +336,36 @@ var indicatorView = function (model, options) {
     });
   };
 
+  this.alterDataDisplay = function(value, info, context) {
+    // If value is empty, we will not alter it.
+    if (value == null) {
+      return value;
+    }
+    // Before passing to user-defined dataDisplayAlterations, let's
+    // do our best to ensure that it starts out as a number.
+    var altered = value;
+    if (typeof altered !== 'number') {
+      altered = Number(value);
+    }
+    // If that gave us a non-number, return original.
+    if (Number.isNaN(altered)) {
+      return value;
+    }
+    // Now go ahead with user-defined alterations.
+    opensdg.dataDisplayAlterations.forEach(function(callback) {
+      altered = callback(altered, info, context);
+    });
+    // Now apply our custom precision control if needed.
+    if (view_obj._precision || view_obj._precision === 0) {
+      altered = Number.parseFloat(altered).toFixed(view_obj._precision);
+    }
+    // Now apply our custom decimal separator if needed.
+    if (view_obj._decimalSeparator) {
+      altered = altered.toString().replace('.', view_obj._decimalSeparator);
+    }
+    return altered;
+  }
+
   this.updateChartTitle = function(chartTitle) {
     if (typeof chartTitle !== 'undefined') {
       $('.chart-title').text(chartTitle);
@@ -407,6 +441,9 @@ var indicatorView = function (model, options) {
             ticks: {
               suggestedMin: 0,
               fontColor: tickColor,
+              callback: function(value) {
+                return view_obj.alterDataDisplay(value, undefined, 'chart y-axis tick');
+              },
             },
             scaleLabel: {
               display: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
@@ -434,6 +471,13 @@ var indicatorView = function (model, options) {
         },
         title: {
           display: false
+        },
+        tooltips: {
+          callbacks: {
+            label: function(tooltipItems, data) {
+              return tooltipItems.label + ': ' + view_obj.alterDataDisplay(tooltipItems.yLabel, data, 'chart tooltip');
+            },
+          },
         },
         plugins: {
           scaler: {}
@@ -647,13 +691,25 @@ var indicatorView = function (model, options) {
   };
 
   var initialiseDataTable = function(el, info) {
+    var nonYearColumns = [];
+    for (var i = 1; i < info.table.headings.length; i++) {
+      nonYearColumns.push(i);
+    }
     var datatables_options = options.datatables_options || {
       paging: false,
       bInfo: false,
       bAutoWidth: false,
       searching: false,
       responsive: false,
-      order: [[0, 'asc']]
+      order: [[0, 'asc']],
+      columnDefs: [
+        {
+          targets: nonYearColumns,
+          createdCell: function(td, cellData, rowData, row, col) {
+            $(td).text(view_obj.alterDataDisplay(cellData, rowData, 'table cell'));
+          },
+        },
+      ],
     }, table = $(el).find('table');
 
     datatables_options.aaSorting = [];

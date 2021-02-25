@@ -58,3 +58,6 @@ Feature: Disaggregation
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
     Then I should see "A-translated (Spanish)" in the "data table" element
+
+  Scenario: The "COMPOSITE_BREAKDOWN" field can be renamed
+    Then I should see "My composite breakdown label"

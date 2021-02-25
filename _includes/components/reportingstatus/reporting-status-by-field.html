@@ -9,14 +9,14 @@
     <div class="goal details reporting-status-item">
         <h3 class="status-goal">
             <span class="status-field">{{ fieldreport[extra_field_name] | t }}</span>
-            <span class="total">{{ fieldreport.totals.total }}
-                {% if fieldreport.totals.total == 1 %}
-                    {{ indicator_singular }}
-                {% else %}
-                    {{ indicators_plural }}
-                {% endif %}
-            </span>
         </h3>
+        <span class="total">{{ fieldreport.totals.total }}
+            {% if fieldreport.totals.total == 1 %}
+                {{ indicator_singular }}
+            {% else %}
+                {{ indicators_plural }}
+            {% endif %}
+        </span>
         <div class="summary">
             <div class="statuses">
                 {%- for status in fieldreport.statuses -%}

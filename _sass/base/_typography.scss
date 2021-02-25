@@ -11,6 +11,7 @@ h1{ font-size: $h1-fontSize; }
 h2{ font-size: $h2-fontSize; }
 h3{ font-size: $h3-fontSize; }
 .lead-copy { font-size: $leadCopy-fontSize; }
+.small-text { font-size: $smallText-fontSize; }
 
 .goal-banner {
   a {
@@ -109,8 +110,15 @@ input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
 }
 .tabPanel:focus,
 input[type="text"]:focus,
-body.contrast-high input[type="text"]:focus {
+body.contrast-high input[type="text"]:focus,
+div[tabindex]:focus {
   background-color: $backgroundColor !important;
   box-shadow: none !important;
   outline: 3px solid $focusOutlineColor !important;
+}
+
+body.contrast-high div[tabindex]:focus {
+  background-color: $color-dark-highContrast !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor-highContrast !important;
 }

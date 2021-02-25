@@ -560,6 +560,10 @@ body.contrast-high {
       }
     }
   }
+
+  #dataset-size-warning {
+    color: $color-dark-highContrast;
+  }
 }
 
 .layout-indicator {
@@ -593,5 +597,11 @@ body.contrast-high {
       display: block;
       margin-top: 10px;
     }
+  }
+}
+
+#sources {
+  .row > div:nth-child(odd) {
+    clear: left;
   }
 }

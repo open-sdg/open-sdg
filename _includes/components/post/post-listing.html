@@ -1,0 +1,27 @@
+<article class="post-listing">
+    <h2 class="post-title">
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+    </h2>
+    <div class="post-excerpt">
+        {{ post.excerpt | markdownify }}
+    </div>
+    <div class="post-date small-text">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | t_date: 'standard' }}</time>
+    </div>
+    {% if post.categories %}
+    <ul class="post-categories small-text">
+        {% for category in post.categories %}
+        <li>
+            {% if include.category_links %}
+                {% assign category_translated = category | t %}
+                <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category_translated }}">
+            {% endif %}
+            {{ category | t }}
+            {% if include.category_links %}
+                </a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</article>
