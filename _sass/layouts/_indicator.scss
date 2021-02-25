@@ -521,6 +521,11 @@ body.contrast-high {
       background-color: $color-dark-highContrast;
       border-color: $color-light-highContrast;
       color: $color-light-highContrast;
+      &:focus {
+        span {
+          color: $color-dark-highContrast;
+        }
+      }
     }
   }
 
