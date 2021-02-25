@@ -91,4 +91,10 @@ $goal-by-target-indentation: 60px;
   .status, .tags {
     margin-left: $goal-by-target-indentation;
   }
+
+  &.contrast-high {
+    .status {
+      @include statusHighContrast;
+    }
+  }
 }
