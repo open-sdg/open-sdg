@@ -1,13 +1,8 @@
 {% if page.indicator.data_notice_heading and page.indicator.data_notice_heading != '' %}
-<div class="row" id="data-notice">
-  <div class="col-xs-12">
-    <div class="alert {{ page.indicator.data_notice_class }}">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-      <div class="data-notice">
-        <h4>{{ page.indicator.data_notice_heading | markdownify }}</h4>
-        <p>{{ page.indicator.data_notice_text | markdownify }}</p>
-      </div>
-    </div>
-  </div>
+<div class="panel panel-border-wide alert-{{ page.indicator.data_notice_class }}" id="data-notice">
+  <h2 class="govuk-heading-s">{{ page.indicator.data_notice_heading | markdownify }}</h2>
+  <p>{{ page.indicator.data_notice_text | markdownify }}</p>
 </div>
 {% endif %}
+
+
