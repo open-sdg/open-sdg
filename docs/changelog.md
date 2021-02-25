@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* New 'accessible' color-set option for optimal contrast #1103
 * Fix support for indicator ID searches in all languages #1110
 
 ## 1.2.0
