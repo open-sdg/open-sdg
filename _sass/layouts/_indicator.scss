@@ -559,10 +559,6 @@ body.contrast-high {
     li {
       color: $color-light-highContrast !important;
       border: 1px solid transparent;
-      &:hover {
-        background: transparent !important;
-        border: 1px solid $color-light-highContrast;
-      }
     }
   }
 
