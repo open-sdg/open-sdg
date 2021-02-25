@@ -31,6 +31,25 @@
   }
 }
 
+@mixin statusHighContrast {
+  &.complete {
+    color: $status-color-complete-highContrast;
+    border: $status-border-complete-highContrast;
+  }
+  &.inprogress{
+    color: $status-color-inprogress-highContrast;
+    border: $status-border-inprogress-highContrast;
+  }
+  &.notstarted {
+    color: $status-color-notstarted-highContrast;
+    border: $status-border-notstarted-highContrast;
+  }
+  &.notapplicable {
+    color: $status-color-notapplicable-highContrast;
+    border: $status-border-notapplicable-highContrast;
+  }
+}
+
 @mixin tags {
   .tag {
     @include status;

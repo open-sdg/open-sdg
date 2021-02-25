@@ -556,6 +556,10 @@ body.contrast-high {
       border: 1px solid transparent;
     }
   }
+
+  #dataset-size-warning {
+    color: $color-dark-highContrast;
+  }
 }
 
 .layout-indicator {

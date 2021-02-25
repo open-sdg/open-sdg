@@ -110,8 +110,15 @@ input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
 }
 .tabPanel:focus,
 input[type="text"]:focus,
-body.contrast-high input[type="text"]:focus {
+body.contrast-high input[type="text"]:focus,
+div[tabindex]:focus {
   background-color: $backgroundColor !important;
   box-shadow: none !important;
   outline: 3px solid $focusOutlineColor !important;
+}
+
+body.contrast-high div[tabindex]:focus {
+  background-color: $color-dark-highContrast !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor-highContrast !important;
 }
