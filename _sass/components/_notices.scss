@@ -17,20 +17,18 @@ h3.govuk-heading-s {
   border-left-width: 10px;
 }
 
-.panel-border-wide.alert-default {
-  border-color: #2b8cc4;
-  background-color: #dbeff9;
-}
-
-.panel-border-wide.alert-warning1 {
-  border-color: #28a197;
-  background-color: #c6ece9;
-}
-
-.panel-border-wide.alert-error {
-  border-color: #c42b2b;
-  background-color: #f3dede;
-}
+.danger {
+    background-color: $color-danger-light;
+    border-colour: $color-danger;
+  }
+  .warning {
+    background-color: $color-warning-light;
+    border-colour$color-warning;
+  }
+  .success {
+    background-color: $color-success-light;
+    border-color: $color-success;
+  }
 
 body.contrast-high {
 
@@ -45,12 +43,15 @@ body.contrast-high {
   }
 
   .danger {
-    background-color: $color-danger-highContrast;
+    background-color: $color-danger-light-highContrast;
+    border-colour: $color-danger-highContrast;
   }
   .warning {
-    background-color: $color-highlight-highContrast;
+    background-color: $color-warning-light-highContrast;
+    border-colour$color-highlight-highContrast;
   }
   .success {
-    background-color: $color-success-highContrast;
+    background-color: $color-success-light-highContrast;
+    border-color: $color-success-highContrast;
   }
 }
