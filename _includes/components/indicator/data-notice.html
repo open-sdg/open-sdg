@@ -1,7 +1,7 @@
 {% if page.indicator.data_notice_heading and page.indicator.data_notice_heading != '' %}
 <div id="data-notice">
   <div class="panel panel-border-wide alert-{{ page.indicator.data_notice_class }}" id="data-notice">
-    <span class="fa fa-exclamation-circle" aria-hidden="true">!</span>
+    <span class="fa fa-exclamation-circle" aria-hidden="true"></span>
     <div class="data-notice">
       <h2>{{ page.indicator.data_notice_heading | markdownify }}</h2>
       <p>{{ page.indicator.data_notice_text | markdownify }}</p>
