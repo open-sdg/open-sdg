@@ -26,6 +26,16 @@ function getGraphLimits(graphLimits, selectedUnit, selectedSeries) {
 }
 
 /**
+ * @param {Array} graphAnnotations Objects containing 'unit' or 'series' or more
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {Array} Graph annotations objects, if any
+ */
+function getGraphAnnotations(graphAnnotations, selectedUnit, selectedSeries) {
+  return getMatchesByUnitSeries(graphAnnotations, selectedUnit, selectedSeries, false, true);
+}
+
+/**
  * @param {Array} headline Rows
  * @param {Array} rows
  * @param {Array} combinations Objects representing disaggregation combinations

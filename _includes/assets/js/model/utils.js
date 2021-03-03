@@ -75,16 +75,31 @@ function nonFieldColumns() {
  * @param {Array} items Objects optionally containing 'unit' and/or 'series'
  * @param {String} selectedUnit
  * @param {String} selectedSeries
+ * @param {Boolean} requireFullMatch Whether to require both unit and series to match
+ * @param {Boolean} allowFallback Whether to fallback to non-unit/non-series items if necessary
  * @return {object|false} The first match given the selected unit/series, or false
  */
-function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
-  if (!items || items.length < 0) {
-    return false;
+function getMatchByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, allowFallback) {
+  var matches = getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, allowFallback);
+  return (matches.length > 0) ? matches[0] : false;
+}
+
+/**
+ * @param {Array} items Objects optionally containing 'unit' and/or 'series'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @param {Boolean} requireFullMatch Whether to require both unit and series to match
+ * @param {Boolean} allowFallback Whether to fallback to non-unit/non-series items if necessary
+ * @return {Array} All matches given the selected unit/series, if any.
+ */
+function getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, allowFallback) {
+  if (!items || items.length === 0) {
+    return [];
   }
   if (!selectedUnit && !selectedSeries) {
-    return items[0];
+    return items;
   }
-  var match = items.find(function(item) {
+  var matches = items.filter(function(item) {
     if (selectedUnit && selectedSeries) {
       return item.unit === selectedUnit && item.series === selectedSeries;
     }
@@ -95,9 +110,9 @@ function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
       return item.series === selectedSeries;
     }
   });
-  if (!match) {
+  if (matches.length === 0 && !requireFullMatch) {
     // If no match was found, allow for a partial match (eg, unit only).
-    match = items.find(function(item) {
+    matches = items.filter(function(item) {
       if (selectedUnit) {
         return item.unit === selectedUnit;
       }
@@ -106,7 +121,20 @@ function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
       }
     });
   }
-  return match || false;
+  if (matches.length === 0 && allowFallback) {
+    matches = items.filter(function(item) {
+      if (selectedUnit && selectedSeries) {
+        return !item.unit && !item.series;
+      }
+      else if (selectedSeries) {
+        return !item.series;
+      }
+      else if (selectedUnit) {
+        return !item.unit;
+      }
+    });
+  }
+  return matches;
 }
 
 /**
