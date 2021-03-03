@@ -81,6 +81,6 @@ function sortData(rows, selectedUnit) {
  * @return {int|false} number of decimal places, if any
  */
 function getPrecision(precisions, selectedUnit, selectedSeries) {
-  var match = getMatchByUnitSeries(precisions, selectedUnit, selectedSeries);
+  var match = getMatchByUnitSeries(precisions, selectedUnit, selectedSeries, false, true);
   return (match) ? match.decimals : false;
 }

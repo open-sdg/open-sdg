@@ -21,8 +21,7 @@ function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
  * @return {Object|false} Graph limit object, if any
  */
 function getGraphLimits(graphLimits, selectedUnit, selectedSeries) {
-  var match = getMatchByUnitSeries(graphLimits, selectedUnit, selectedSeries);
-  return (match) ? match : false;
+  return getMatchByUnitSeries(graphLimits, selectedUnit, selectedSeries, false, true);
 }
 
 /**
