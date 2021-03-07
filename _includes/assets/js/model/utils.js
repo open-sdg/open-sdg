@@ -76,11 +76,11 @@ function nonFieldColumns() {
  * @param {String} selectedUnit
  * @param {String} selectedSeries
  * @param {Boolean} requireFullMatch Whether to require both unit and series to match
- * @param {Boolean} allowFallback Whether to fallback to non-unit/non-series items if necessary
+ * @param {Boolean} disallowFallbacks Whether to disallow fallbacks to non-unit/non-series items
  * @return {object|false} The first match given the selected unit/series, or false
  */
-function getMatchByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, allowFallback) {
-  var matches = getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, allowFallback);
+function getMatchByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, disallowFallback) {
+  var matches = getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, disallowFallback);
   return (matches.length > 0) ? matches[0] : false;
 }
 
@@ -89,10 +89,10 @@ function getMatchByUnitSeries(items, selectedUnit, selectedSeries, requireFullMa
  * @param {String} selectedUnit
  * @param {String} selectedSeries
  * @param {Boolean} requireFullMatch Whether to require both unit and series to match
- * @param {Boolean} allowFallback Whether to fallback to non-unit/non-series items if necessary
+ * @param {Boolean} disallowFallback Whether to disallow fallbacks to non-unit/non-series items
  * @return {Array} All matches given the selected unit/series, if any.
  */
-function getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, allowFallback) {
+function getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, disallowFallback) {
   if (!items || items.length === 0) {
     return [];
   }
@@ -121,7 +121,7 @@ function getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFull
       }
     });
   }
-  if (matches.length === 0 && allowFallback) {
+  if (matches.length === 0 && !disallowFallback) {
     matches = items.filter(function(item) {
       if (selectedUnit && selectedSeries) {
         return !item.unit && !item.series;

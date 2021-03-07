@@ -21,7 +21,7 @@ function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
  * @return {Object|false} Graph limit object, if any
  */
 function getGraphLimits(graphLimits, selectedUnit, selectedSeries) {
-  return getMatchByUnitSeries(graphLimits, selectedUnit, selectedSeries, false, true);
+  return getMatchByUnitSeries(graphLimits, selectedUnit, selectedSeries);
 }
 
 /**
@@ -31,7 +31,7 @@ function getGraphLimits(graphLimits, selectedUnit, selectedSeries) {
  * @return {Array} Graph annotations objects, if any
  */
 function getGraphAnnotations(graphAnnotations, selectedUnit, selectedSeries) {
-  return getMatchesByUnitSeries(graphAnnotations, selectedUnit, selectedSeries, false, true);
+  return getMatchesByUnitSeries(graphAnnotations, selectedUnit, selectedSeries);
 }
 
 /**
