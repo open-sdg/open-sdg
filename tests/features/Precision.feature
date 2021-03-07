@@ -1,4 +1,4 @@
-Feature: Series
+Feature: Precision
 
   As a site visitor
   I need to be able to see data with the correct precision
