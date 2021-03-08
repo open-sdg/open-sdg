@@ -450,10 +450,12 @@ Here is an example, showing the default that is used if this setting is omitted:
 
 ```nohighlight
 header:
-    include: default.html
+    include: header-default.html
 ```
 
-The configuration above will include the file `_includes/components/header/default.html` at the top of each page.
+The configuration above will include the file `_includes/components/header/header-default.html` at the top of each page.
+
+The `header-menu-left-aligned.html` option is also available, and is recommended.
 
 ### header_language_toggle
 
