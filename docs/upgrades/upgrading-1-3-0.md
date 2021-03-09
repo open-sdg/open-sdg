@@ -4,7 +4,23 @@ This document is intended for developers, to help with the process of upgrading 
 
 ## Breaking changes
 
-TBD
+We try not to introduce breaking changes in minor releases, but there was one change made for improved performance which may require some adjustments. In the rare case that your implementation is overriding the following file, you may need to adjust your overrides as you upgrade to 1.3.0:
+
+* _includes/scripts.html
+
+If you are in this situation, you will need to replace the following line...
+
+```
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+```
+
+...with this new line:
+
+```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
+```
+
+Also note that you may not need to override this file at all. If you were overriding the file in order to get javascript into the platform, you might consider using the `custom_js` site configuration, or overriding `_includes/scripts-custom.html` instead.
 
 ## Upgrade data repository to sdg-build 1.3.0
 
