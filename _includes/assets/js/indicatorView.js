@@ -586,7 +586,7 @@ var indicatorView = function (model, options) {
   };
 
   this.getHeadlineColor = function(contrast) {
-    return this.isHighContrast(contrast) ? '#FFDD00' : '#004466'
+    return this.isHighContrast(contrast) ? '{{ site.graph_color_headline_high_contrast | default: "#55a6e5" }}' : '{{ site.graph_color_headline | default: "#004466" }}';
   }
 
   this.getGridColor = function(contrast) {
