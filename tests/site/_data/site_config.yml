@@ -158,6 +158,16 @@ languages:
 languages_public:
   - language: fr
     language_public: fr-CA
+logos:
+  - language: en
+    alt: My English logo alt text
+    src: assets/img/SDG_logo.png
+  - language: es
+    alt: My Spanish logo alt text
+    src: assets/img/SDG_logo.png
+  - language: fr
+    alt: My French logo alt text
+    src: assets/img/SDG_logo.png
 map_layers:
   - subfolder: regions
     label: indicator.regions

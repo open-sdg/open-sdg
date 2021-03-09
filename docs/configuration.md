@@ -510,6 +510,28 @@ languages_public:
     language_public: abc
 ```
 
+### logos
+
+_Optional_: Normally Open SDG uses a logo at `assets/img/SDG_logo.png`, with the alt text of "Sustainable Development Goals - 17 Goals to Transform our World". However you can use this setting to take full control of the logo and alt text:
+
+```nohighlight
+logos:
+  - src: assets/img/my-other-image-file.png
+    alt: My other alt text
+```
+
+You can also specify multiple logos, one per language:
+
+```nohighlight
+logos:
+  - language: en
+    src: assets/img/en/logo.png
+    alt: my alt text
+  - language: es
+    src: assets/img/es/logo.png
+    alt: mi texto alternativo
+```
+
 ### metadata_edit_url
 
 **_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
