@@ -414,6 +414,14 @@ goals_page:
 
 As always, for multilingual support, these settings can refer to translation keys, and the description can include Markdown.
 
+### graph_color_headline
+
+_Optional_: This setting can be used to control the color of the "headline" (eg, the national dataset, without any disaggregations selected) on charts. The default is #004466.
+
+### graph_color_headline_high_contrast
+
+_Optional_: This setting can be used to control the color of the "headline" (eg, the national dataset, without any disaggregations selected) on charts, in high-contrast mode. The default is #55a6e5.
+
 ### graph_color_set
 
 _Optional_: This setting can be used to customize the color set used in the charts. There are five possible entries:
