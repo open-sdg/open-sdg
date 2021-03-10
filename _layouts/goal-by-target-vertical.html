@@ -2,80 +2,73 @@
 {% include header.html %}
 
 <div class="container">
-  {% include components/goal/breadcrumbs.html %}
-  {% if site.create_goals.previous_next_links %}
-    {% include components/previous-next-links.html previous_label=page.t.goal.previous next_label=page.t.goal.next %}
-  {% endif %}
+    {% include components/goal/breadcrumbs.html %}
+    {% if site.create_goals.previous_next_links %}
+        {% include components/previous-next-links.html previous_label=page.t.goal.previous next_label=page.t.goal.next %}
+    {% endif %}
 </div>
 
 <div class="heading goal-banner goal-{{ page.goal.number }}">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4 col-md-3 col-lg-2 goal-tiles">
-        <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" id="goal-{{ page.goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
-      </div>
-      <div class="col-xs-8 col-md-9 col-lg-10">
-        <h1>
-          <span class="hidden-sm hidden-md hidden-lg">{{ page.t.general.goal }} {{ page.goal.number }}: </span>{{ page.goal.name }}
-        </h1>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-md-3 col-lg-2 goal-tiles">
+                <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" id="goal-{{ page.goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}"/>
+            </div>
+            <div class="col-xs-8 col-md-9 col-lg-10">
+                <h1>
+                    <span class="hidden-sm hidden-md hidden-lg">{{ page.t.general.goal }}
+                        {{ page.goal.number }}:
+                    </span>
+                    {{ page.goal.name }}
+                </h1>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<div id="main-content" class="container" role="main">
+<div class="container" id="main-content" role="main">
 
-  {% include components/goal/goal-content.html content=content %}
+    {% include components/goal/goal-content.html content=content %}
 
-  <div class="container">
-    <h2>{{ page.t.general.targets_and_indicators }}</h2>
+    <div class="container">
+        <h2>{{ page.t.general.targets_and_indicators }}</h2>
 
-    {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
-    {% for group in goal_indicators %}
-      {% assign target = group.name | sdg_lookup %}
-      <div class="row no-gutters goal-target-and-indicators">
-        <h3 class="goal-target">
-          <span class="target-number"><span class="sr-only">{{ page.t.general.target }}</span> {{ target.number }}</span>
-        </h3>
-        <span class="target-name">{{ target.name }}</span>
-        {% for indicator in group.items %}
-
-          {% assign status_css = indicator.reporting_status | slugify %}
-          {% case status_css %}
-            {% when "notapplicable" %}
-                {% assign status_desc = page.t.status.not_applicable %}
-            {% when "notstarted" %}
-                {% assign status_desc = page.t.status.exploring_data_sources %}
-            {% when "inprogress" %}
-                {% assign status_desc = page.t.status.statistics_in_progress %}
-            {% when "complete" %}
-                {% assign status_desc = page.t.status.reported_online %}
-          {% endcase %}
-
-          {% assign tag_classes = "" | split: "," %}
-          {% if indicator.tags %}
-            {% for tag in indicator.tags %}
-              {% assign tag_slug = "indicator-" | append: tag | slugify %}
-              {% assign tag_classes = tag_classes | push: tag_slug %}
-            {% endfor %}
-          {% endif %}
-          {% assign tag_classes = tag_classes | join: " " %}
-
-          <div class="goal-indicator">
-            <h4>
-              <span class="indicator-number"><span class="sr-only">{{ page.t.general.indicator }}</span> {{ indicator.number }}</span>
-            </h4>
-            <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
-            <span class="sr-only">{{ page.t.indicator.status }}</span>
-            <span class="status {{ status_css }}">
-              {{ status_desc }}
-            </span>
-            {% include components/indicator/tags.html tags=indicator.tags %}
-          </div>
+        {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
+        {% for group in goal_indicators %}
+            {% assign target = group.name | sdg_lookup %}
+            <div class="row no-gutters goal-target-and-indicators">
+                <h3 class="goal-target">
+                    <span class="target-number">
+                        <span class="sr-only">{{ page.t.general.target }}</span>
+                        {{ target.number }}</span>
+                </h3>
+                <span class="target-name">{{ target.name }}</span>
+                {% for indicator in group.items %}
+                    {% assign tag_classes = "" | split: "," %}
+                    {% if indicator.tags %}
+                        {% for tag in indicator.tags %}
+                            {% assign tag_slug = "indicator-" | append: tag | slugify %}
+                            {% assign tag_classes = tag_classes | push: tag_slug %}
+                        {% endfor %}
+                    {% endif %}
+                    {% assign tag_classes = tag_classes | join: " " %}
+                    <div class="goal-indicator">
+                        <h4>
+                            <span class="indicator-number">
+                                <span class="sr-only">{{ page.t.general.indicator }}</span>
+                                {{ indicator.number }}</span>
+                        </h4>
+                        <span class="indicator-name">
+                            <a href="{{ indicator.url }}">{{ indicator.name }}</a>
+                        </span>
+                        <span class="sr-only">{{ page.t.indicator.status }}</span>
+                        {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
+                        {% include components/indicator/tags.html tags=indicator.tags %}
+                    </div>
+                {% endfor %}
+            </div>
         {% endfor %}
-      </div>
-    {% endfor %}
-  </div>
+    </div>
 </div>
 
 {% include footer.html %}

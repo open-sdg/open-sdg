@@ -29,18 +29,6 @@
 
   {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number %}
   {% for indicator in goal_indicators %}
-
-    {% assign status_css = indicator.reporting_status | slugify %}
-    {% case status_css %}
-      {% when "notapplicable" %}
-          {% assign status_desc = page.t.status.not_applicable %}
-      {% when "notstarted" %}
-          {% assign status_desc = page.t.status.exploring_data_sources %}
-      {% when "inprogress" %}
-          {% assign status_desc = page.t.status.statistics_in_progress %}
-      {% when "complete" %}
-          {% assign status_desc = page.t.status.reported_online %}
-    {% endcase %}
     {% assign tag_classes = "" | split: "," %}
     {% if indicator.tags %}
       {% for tag in indicator.tags %}
@@ -49,15 +37,13 @@
       {% endfor %}
     {% endif %}
     {% assign tag_classes = tag_classes | join: " " %}
-
     {% cycle 'add row' : '<div class="indicator-cards row no-gutters">', '', '', '' %}
         <div class="col-md-6 col-lg-3 {{ tag_classes }} goal-indicator">
           <a href="{{ indicator.url }}">
             <span class="indicator-card-number">
               {{ indicator.number }}
-              <span class="status {{ status_css }}">
-                {{ status_desc }}
-              </span>
+              {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
+            </span>
             </span>
             {{ indicator.name }}
           </a>
