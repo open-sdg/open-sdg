@@ -253,7 +253,7 @@ var indicatorModel = function (options) {
           this.dataHasSeriesSpecificFields,
           this.selectedFields,
           this.edgesData,
-          this.compositeBreakdownLabel,
+          this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
         edges: this.edgesData,

@@ -348,7 +348,7 @@ var indicatorView = function (model, options) {
       altered = Number(value);
     }
     // If that gave us a non-number, return original.
-    if (Number.isNaN(altered)) {
+    if (isNaN(altered)) {
       return value;
     }
     // Now go ahead with user-defined alterations.
