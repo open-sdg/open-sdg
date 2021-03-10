@@ -2,6 +2,7 @@
 
 ## 1.3.0
 
+* Configurable chart headline colors #1145
 * High contrast fix: hover color for disaggregation values in dropdown #1122
 * Avoid highlighting entire div on focus #1120
 * High contrast fix: Remove hover styles for chart legend #1119
