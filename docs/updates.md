@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 1.3.0
 
-1 March 2021
+11 March 2021
 
 * Multiple fixes and improvements for high-contrast mode
 * Fix for searching by indicator ID
