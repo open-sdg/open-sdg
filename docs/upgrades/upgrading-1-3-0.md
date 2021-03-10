@@ -65,3 +65,9 @@ In 1.3.0 we have introduced an optional left-aligned site header. We recommend u
 header:
     include: header-menu-left-aligned.html
 ```
+
+In addition, there is a new recommended color set for charts that is optimized for accessibility and contrast. To use this optional color set, try this configuration:
+
+```
+graph_color_set: accessible
+```
