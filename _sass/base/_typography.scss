@@ -121,4 +121,5 @@ body.contrast-high div[tabindex]:focus {
   background-color: $color-dark-highContrast !important;
   box-shadow: none !important;
   outline: 3px solid $focusOutlineColor-highContrast !important;
+  color: $text-color-highContrast !important;
 }
