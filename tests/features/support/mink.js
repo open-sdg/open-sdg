@@ -1,4 +1,4 @@
-const cucumber = require('cucumber');
+const cucumber = require('@cucumber/cucumber');
 const mink = require('cucumber-mink');
 
 const driver = new mink.Mink({

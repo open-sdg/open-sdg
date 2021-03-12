@@ -157,8 +157,9 @@
       }
       // Otherwise we get the year from the beginning of the string.
       else {
-        for (var delimiter of ['-', '.', ' ', '/']) {
-          var parts = year.split(delimiter);
+        var delimiters = ['-', '.', ' ', '/'];
+        for (var i = 0; i < delimiters.length; i++) {
+          var parts = year.split(delimiters[i]);
           if (parts.length > 1 && isYear(parts[0])) {
             mapped.time = parts[0] + '-01-0' + day;
             day += 1;
