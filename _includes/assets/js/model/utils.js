@@ -75,12 +75,10 @@ function nonFieldColumns() {
  * @param {Array} items Objects optionally containing 'unit' and/or 'series'
  * @param {String} selectedUnit
  * @param {String} selectedSeries
- * @param {Boolean} requireFullMatch Whether to require both unit and series to match
- * @param {Boolean} disallowFallbacks Whether to disallow fallbacks to non-unit/non-series items
  * @return {object|false} The first match given the selected unit/series, or false
  */
-function getMatchByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, disallowFallback) {
-  var matches = getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, disallowFallback);
+function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
+  var matches = getMatchesByUnitSeries(items, selectedUnit, selectedSeries);
   return (matches.length > 0) ? matches[0] : false;
 }
 
@@ -88,49 +86,42 @@ function getMatchByUnitSeries(items, selectedUnit, selectedSeries, requireFullMa
  * @param {Array} items Objects optionally containing 'unit' and/or 'series'
  * @param {String} selectedUnit
  * @param {String} selectedSeries
- * @param {Boolean} requireFullMatch Whether to require both unit and series to match
- * @param {Boolean} disallowFallback Whether to disallow fallbacks to non-unit/non-series items
  * @return {Array} All matches given the selected unit/series, if any.
  */
-function getMatchesByUnitSeries(items, selectedUnit, selectedSeries, requireFullMatch, disallowFallback) {
+function getMatchesByUnitSeries(items, selectedUnit, selectedSeries) {
   if (!items || items.length === 0) {
     return [];
   }
   if (!selectedUnit && !selectedSeries) {
     return items;
   }
+  // First pass to find any exact matches.
   var matches = items.filter(function(item) {
+    var seriesMatch = item.series === selectedSeries,
+        unitMatch = item.unit === selectedUnit;
     if (selectedUnit && selectedSeries) {
-      return item.unit === selectedUnit && item.series === selectedSeries;
+      return seriesMatch && unitMatch;
     }
     else if (selectedUnit) {
-      return item.unit === selectedUnit;
+      return unitMatch;
     }
     else if (selectedSeries) {
-      return item.series === selectedSeries;
+      return seriesMatch;
     }
   });
-  if (matches.length === 0 && !requireFullMatch) {
-    // If no match was found, allow for a partial match (eg, unit only).
+  // Second pass to find any partial matches with unspecified unit/series.
+  if (matches.length === 0) {
     matches = items.filter(function(item) {
-      if (selectedUnit) {
-        return item.unit === selectedUnit;
-      }
-      else if (selectedSeries) {
-        return item.series === selectedSeries;
-      }
-    });
-  }
-  if (matches.length === 0 && !disallowFallback) {
-    matches = items.filter(function(item) {
+      var seriesMatch = item.series === selectedSeries && item.series && !item.unit;
+      var unitMatch = item.unit === selectedUnit && item.unit && !item.series;
       if (selectedUnit && selectedSeries) {
-        return !item.unit && !item.series;
+        return seriesMatch || unitMatch;
+      }
+      if (selectedUnit) {
+        return unitMatch;
       }
       else if (selectedSeries) {
-        return !item.series;
-      }
-      else if (selectedUnit) {
-        return !item.unit;
+        return seriesMatch;
       }
     });
   }
