@@ -113,12 +113,8 @@ function getMatchesByUnitSeries(items, selectedUnit, selectedSeries) {
   if (matches.length === 0) {
     matches = items.filter(function(item) {
       var seriesMatch = item.series === selectedSeries && item.series && !item.unit,
-          unitMatch = item.unit === selectedUnit && item.unit && !item.series,
-          nothingSpecified = !item.unit && !item.series
-      if (nothingSpecified) {
-        return true;
-      }
-      else if (selectedUnit && selectedSeries) {
+          unitMatch = item.unit === selectedUnit && item.unit && !item.series;
+      if (selectedUnit && selectedSeries) {
         return seriesMatch || unitMatch;
       }
       else if (selectedUnit) {
@@ -127,6 +123,13 @@ function getMatchesByUnitSeries(items, selectedUnit, selectedSeries) {
       else if (selectedSeries) {
         return seriesMatch;
       }
+    });
+  }
+  // Third pass to catch cases where nothing at all was specified.
+  if (matches.length === 0) {
+    matches = items.filter(function(item) {
+      var nothingSpecified = !item.unit && !item.series;
+      return nothingSpecified;
     });
   }
   return matches;
