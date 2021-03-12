@@ -112,12 +112,12 @@ function getMatchesByUnitSeries(items, selectedUnit, selectedSeries) {
   // Second pass to find any partial matches with unspecified unit/series.
   if (matches.length === 0) {
     matches = items.filter(function(item) {
-      var seriesMatch = item.series === selectedSeries && item.series && !item.unit;
-      var unitMatch = item.unit === selectedUnit && item.unit && !item.series;
+      var seriesMatch = item.series === selectedSeries && item.series && !item.unit,
+          unitMatch = item.unit === selectedUnit && item.unit && !item.series;
       if (selectedUnit && selectedSeries) {
         return seriesMatch || unitMatch;
       }
-      if (selectedUnit) {
+      else if (selectedUnit) {
         return unitMatch;
       }
       else if (selectedSeries) {

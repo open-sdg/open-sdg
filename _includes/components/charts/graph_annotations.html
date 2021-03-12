@@ -98,10 +98,8 @@ opensdg.chartConfigAlter(function(config, info) {
             }
         }
     }
-    else {
-        if (config.options && config.options.annotation) {
-            delete config.options.annotation;
-        }
+    else if (config.options && config.options.annotation) {
+        delete config.options.annotation;
     }
 });
 </script>
