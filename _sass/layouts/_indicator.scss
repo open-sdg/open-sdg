@@ -503,11 +503,11 @@ caption {
 }
 
 body.contrast-high {
-  #main-content #fields label {
+  #main-content #fields .variable-selector .variable-options label {
     background: $color-dark-highContrast;
     color: $color-light-highContrast;
     &:hover {
-      background: $color-light-highContrast;
+      background: $color-highlight-highContrast;
       color: $color-dark-highContrast;
     }
     &:focus {
@@ -521,6 +521,11 @@ body.contrast-high {
       background-color: $color-dark-highContrast;
       border-color: $color-light-highContrast;
       color: $color-light-highContrast;
+      &:focus {
+        span {
+          color: $color-dark-highContrast;
+        }
+      }
     }
   }
 
@@ -554,11 +559,11 @@ body.contrast-high {
     li {
       color: $color-light-highContrast !important;
       border: 1px solid transparent;
-      &:hover {
-        background: transparent !important;
-        border: 1px solid $color-light-highContrast;
-      }
     }
+  }
+
+  #dataset-size-warning {
+    color: $color-dark-highContrast;
   }
 }
 
@@ -593,5 +598,11 @@ body.contrast-high {
       display: block;
       margin-top: 10px;
     }
+  }
+}
+
+#sources {
+  .row > div:nth-child(odd) {
+    clear: left;
   }
 }

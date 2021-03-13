@@ -1,4 +1,4 @@
-$goal-by-target-indentation: 50px;
+$goal-by-target-indentation: 60px;
 
 .layout-goal-by-target-vertical {
   .goal-target, .goal-indicator {
@@ -64,7 +64,7 @@ $goal-by-target-indentation: 50px;
   }
 
   .target-name, .indicator-name {
-    margin-left: 50px;
+    margin-left: $goal-by-target-indentation;
     box-decoration-break: clone;
   }
 
@@ -86,11 +86,6 @@ $goal-by-target-indentation: 50px;
       margin-top: 20px;
     }
     margin-bottom: 5px;
-    .tag {
-      margin-right: 6px;
-      padding: 4px 6px;
-      border-radius: 10px;
-    }
   }
 
   .status, .tags {
@@ -98,10 +93,8 @@ $goal-by-target-indentation: 50px;
   }
 
   &.contrast-high {
-    .tags {
-      .tag {
-        color: $color-dark-highContrast;
-      }
+    .status {
+      @include statusHighContrast;
     }
   }
 }

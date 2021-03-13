@@ -109,13 +109,14 @@ create_config_forms:
 
 ### create_goals
 
-_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) `layout` setting indicating the Jekyll layout to use for the goals.
+_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals. You can optionally turn on previous/next links as well.
 
 Additionally, there can be a `goals` item that includes an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
 
 ```nohighlight
 create_goals:
   layout: goal
+  previous_next_links: true
   goals:
     - content: My content for goal 1
     - content: My content for goal 2 with a [link](https://example.com)
@@ -124,11 +125,12 @@ create_goals:
 
 ### create_indicators
 
-_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators.
+_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators. You can optionally turn on previous/next links as well.
 
 ```nohighlight
 create_indicators:
   layout: indicator
+  previous_next_links: true
 ```
 
 ### create_pages
@@ -194,6 +196,24 @@ custom_js:
 data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
 ```
 
+### data_fields
+
+_Optional_: This setting can be used if your data source has non-standard fields for unit and/or series -- for example, if you have CSV files with units in a "UNIT_MEASURE" column, rather than the usual "Units". If this is omitted, the following defaults are used:
+
+```nohighlight
+data_fields:
+  series: Series
+  units: Units
+```
+
+If your data source is coming directly from SDMX, for example, you might use something like this:
+
+```nohighlight
+data_fields:
+  series: SERIES
+  units: UNIT_MEASURE
+```
+
 ### date_formats
 
 _Optional_: This setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, and each must have an arbitrary `type`, such as "standard". Make sure that each `type` has a variant for each of your languages. For example, here is how you might configure a "standard" date format:
@@ -211,6 +231,14 @@ date_formats:
 The `%` variables in the formats correspond to the variables listed in this [Ruby DateTime documentation](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html#method-i-strftime).
 
 Note that the "standard" type is used in Open SDG's news/post functionality. Additional format types can be added for custom purposes.
+
+### decimal_separator
+
+_Optional_: This setting can be used to replace the default decimal separator -- `.` -- with any other symbol. For example, the following is how you could use a comma as a decimal separator:
+
+```
+decimal_separator: ','
+```
 
 ### disclaimer
 
@@ -386,17 +414,28 @@ goals_page:
 
 As always, for multilingual support, these settings can refer to translation keys, and the description can include Markdown.
 
+### graph_color_headline
+
+_Optional_: This setting can be used to control the color of the "headline" (eg, the national dataset, without any disaggregations selected) on charts. The default is #004466.
+
+### graph_color_headline_high_contrast
+
+_Optional_: This setting can be used to control the color of the "headline" (eg, the national dataset, without any disaggregations selected) on charts, in high-contrast mode. The default is #55a6e5.
+
 ### graph_color_set
 
-_Optional_: This setting can be used to customize the color set used in the charts. There are four possible entries:
-Use `graph_color_set: 'default'` for using the 6 default colors,
-`graph_color_set: 'sdg'` to use the 17 SDG colors in all charts,
-`graph_color_set: 'goal'` to use shades of the color of the current indicator's goal,
-`graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
+_Optional_: This setting can be used to customize the color set used in the charts. There are five possible entries:
+
+* `graph_color_set: 'accessible'` a 6-color set that is specifically chosen for optimal accessibility (recommended)
+* `graph_color_set: 'default'` a deprecated 6-color set that is still the default (for reasons of backwards compatibility)
+* `graph_color_set: 'sdg'` to use the 17 SDG colors in all charts
+* `graph_color_set: 'goal'` to use shades of the color of the current indicator's goal
+* `graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
 
 > **NOTE**: Whatever color scheme you choose here, please ensure that all colors satisfy
 > the accessibility (minimum contrast) standards in your region. These colors will need to
-> be visible on white and black backgrounds.
+> be visible on white and black backgrounds. The `accessible` color scheme is designed to
+> meet this requirement, and so it is recommended.
 
 ### graph_color_list
 
@@ -408,6 +447,23 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 ### graph_color_number
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
+
+### header
+
+_Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
+
+* `include`: This specifies an include file, assumed to be inside of `_includes/components/header/`, to use for the header.
+
+Here is an example, showing the default that is used if this setting is omitted:
+
+```nohighlight
+header:
+    include: header-default.html
+```
+
+The configuration above will include the file `_includes/components/header/header-default.html` at the top of each page.
+
+The `header-menu-left-aligned.html` option is also available, and is recommended.
 
 ### header_language_toggle
 
@@ -505,6 +561,20 @@ menu:
     translation_key: menu.about
   - path: /faq
     translation_key: menu.faq
+```
+
+Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "/about" and "/faq" under a "More information" dropdown:
+
+```nohighlight
+menu:
+  - path: /reporting-status
+    translation_key: menu.reporting_status
+  - translation_key: More information
+    dropdown:
+      - path: /faq
+        translation_key: menu.faq
+      - path: /about
+        translation_key: menu.about
 ```
 
 ### news

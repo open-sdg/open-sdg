@@ -3,13 +3,16 @@
 
 <div class="container">
   {% include components/goal/breadcrumbs.html %}
+  {% if site.create_goals.previous_next_links %}
+    {% include components/previous-next-links.html previous_label=page.t.goal.previous next_label=page.t.goal.next %}
+  {% endif %}
 </div>
 
 <div class="heading goal-banner goal-{{ page.goal.number }}">
   <div class="container">
     <div class="row">
       <div class="col-xs-4 col-md-3 col-lg-2 goal-tiles">
-        <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" id="goal-{{ page.goal.number }}" />
+        <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" id="goal-{{ page.goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
       </div>
       <div class="col-xs-8 col-md-9 col-lg-10">
         <h1>
@@ -37,7 +40,7 @@
   {% for group in goal_indicators %}
     {% assign target = group.name | sdg_lookup %}
     <div class="indicator-cards target goal-target col-md-6">
-      <span>
+      <span class="indicator-card-number">
         <label class="hidden-md hidden-lg">{{ page.t.general.target }}</label>
         {{ target.number }}
       </span>
@@ -69,7 +72,7 @@
       {% assign tag_classes = tag_classes | join: " " %}
 
       <div class="col-md-12 {{ tag_classes }} goal-indicator">
-        <span>
+        <span class="indicator-card-number">
           {{ indicator.number }}
           <span class="status {{ status_css }}">
             {{ status_desc }}
@@ -78,14 +81,7 @@
         <a href="{{ indicator.url }}">
           {{ indicator.name }}
         </a>
-        {% if indicator.tags %}
-          <ul class="tags">
-          {% for tag in indicator.tags %}
-            {% assign tag_class = tag | slugify %}
-            <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
-          {% endfor %}
-          </ul>
-        {% endif %}
+        {% include components/indicator/tags.html tags=indicator.tags %}
       </div>
     {% endfor %}
     </div>

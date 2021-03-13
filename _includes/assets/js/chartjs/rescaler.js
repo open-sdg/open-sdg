@@ -23,7 +23,7 @@ Chart.plugins.register({
       return meta && meta.visible;
     });
 
-    var ranges = _.chain(datasets).pluck('allData').map(function (data) {
+    var ranges = _.chain(datasets).map('allData').map(function (data) {
       return {
         min: _.findIndex(data, function(val) { return val !== null }),
         max: _.findLastIndex(data, function(val) { return val !== null })
@@ -31,8 +31,8 @@ Chart.plugins.register({
     }).value();
 
     var dataRange = ranges.length ? {
-      min: _.chain(ranges).pluck('min').min().value(),
-      max: _.chain(ranges).pluck('max').max().value()
+      min: _.chain(ranges).map('min').min().value(),
+      max: _.chain(ranges).map('max').max().value()
     } : undefined;
 
     if (dataRange) {

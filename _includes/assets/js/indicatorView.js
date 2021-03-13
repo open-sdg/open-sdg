@@ -10,6 +10,8 @@ var indicatorView = function (model, options) {
   this._tableColumnDefs = options.tableColumnDefs;
   this._mapView = undefined;
   this._legendElement = options.legendElement;
+  this._precision = undefined;
+  this._decimalSeparator = options.decimalSeparator;
 
   var chartHeight = screen.height < options.maxChartHeight ? screen.height : options.maxChartHeight;
 
@@ -50,6 +52,8 @@ var indicatorView = function (model, options) {
 
   this._model.onDataComplete.attach(function (sender, args) {
 
+    view_obj._precision = args.precision;
+
     if(view_obj._model.showData) {
 
       $('#dataset-size-warning')[args.datasetCountExceedsMax ? 'show' : 'hide']();
@@ -71,7 +75,7 @@ var indicatorView = function (model, options) {
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
-      view_obj._mapView.initialise(args.indicatorId);
+      view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator);
     }
   });
 
@@ -117,14 +121,14 @@ var indicatorView = function (model, options) {
       var currentField = $(element).data('field');
 
       // any info?
-      var match = _.findWhere(args.selectedFields, { field : currentField });
+      var match = _.find(args.selectedFields, { field : currentField });
       var element = $(view_obj._rootElement).find('.variable-selector[data-field="' + currentField + '"]');
       var width = match ? (Number(match.values.length / element.find('.variable-options label').length) * 100) + '%' : '0';
 
       $(element).find('.bar .selected').css('width', width);
 
       // is this an allowed field:
-      if (_.contains(args.allowedFields, currentField)) {
+      if (args.allowedFields.includes(currentField)) {
         $(element).removeClass('disallowed');
         $(element).find('> button').removeAttr('aria-describedby');
       }
@@ -203,7 +207,7 @@ var indicatorView = function (model, options) {
     })).groupBy('field').map(function(value, key) {
       return {
         field: key,
-        values: _.pluck(value, 'value')
+        values: _.map(value, 'value')
       };
     }).value());
   }
@@ -264,7 +268,10 @@ var indicatorView = function (model, options) {
   }
 
   this.initialiseFields = function(args) {
-    if(args.fields.length) {
+    var fieldsContainValues = args.fields.some(function(field) {
+      return field.values.length > 0;
+    });
+    if (fieldsContainValues) {
       var template = _.template($("#item_template").html());
 
       if(!$('button#clear').length) {
@@ -323,6 +330,42 @@ var indicatorView = function (model, options) {
     });
   };
 
+  this.alterTableConfig = function(config, info) {
+    opensdg.tableConfigAlterations.forEach(function(callback) {
+      callback(config, info);
+    });
+  };
+
+  this.alterDataDisplay = function(value, info, context) {
+    // If value is empty, we will not alter it.
+    if (value == null) {
+      return value;
+    }
+    // Before passing to user-defined dataDisplayAlterations, let's
+    // do our best to ensure that it starts out as a number.
+    var altered = value;
+    if (typeof altered !== 'number') {
+      altered = Number(value);
+    }
+    // If that gave us a non-number, return original.
+    if (isNaN(altered)) {
+      return value;
+    }
+    // Now go ahead with user-defined alterations.
+    opensdg.dataDisplayAlterations.forEach(function(callback) {
+      altered = callback(altered, info, context);
+    });
+    // Now apply our custom precision control if needed.
+    if (view_obj._precision || view_obj._precision === 0) {
+      altered = Number.parseFloat(altered).toFixed(view_obj._precision);
+    }
+    // Now apply our custom decimal separator if needed.
+    if (view_obj._decimalSeparator) {
+      altered = altered.toString().replace('.', view_obj._decimalSeparator);
+    }
+    return altered;
+  }
+
   this.updateChartTitle = function(chartTitle) {
     if (typeof chartTitle !== 'undefined') {
       $('.chart-title').text(chartTitle);
@@ -332,6 +375,10 @@ var indicatorView = function (model, options) {
   this.updatePlot = function(chartInfo) {
     this.updateIndicatorDataViewStatus(view_obj._chartInstance.data.datasets, chartInfo.datasets);
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
+    view_obj._chartInstance.data.labels = chartInfo.labels;
+    this.updateHeadlineColor(this.isHighContrast() ? 'high' : 'default', view_obj._chartInstance);
+    // TODO: Investigate assets/js/chartjs/rescaler.js and why "allLabels" is needed.
+    view_obj._chartInstance.data.allLabels = chartInfo.labels;
 
     if(chartInfo.selectedUnit) {
       view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
@@ -378,7 +425,8 @@ var indicatorView = function (model, options) {
           xAxes: [{
             maxBarThickness: 150,
             gridLines: {
-              color: gridColor,
+              color: 'transparent',
+              zeroLineColor: '#757575',
             },
             ticks: {
               fontColor: tickColor,
@@ -387,10 +435,15 @@ var indicatorView = function (model, options) {
           yAxes: [{
             gridLines: {
               color: gridColor,
+              zeroLineColor: '#757575',
+              drawBorder: false,
             },
             ticks: {
               suggestedMin: 0,
               fontColor: tickColor,
+              callback: function(value) {
+                return view_obj.alterDataDisplay(value, undefined, 'chart y-axis tick');
+              },
             },
             scaleLabel: {
               display: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
@@ -421,12 +474,29 @@ var indicatorView = function (model, options) {
         },
         plugins: {
           scaler: {}
+        },
+        tooltips: {
+          callbacks: {
+            label: function(tooltipItems, data) {
+              return tooltipItems.label + ': ' + view_obj.alterDataDisplay(tooltipItems.yLabel, data, 'chart tooltip');
+            },
+            afterBody: function() {
+              var unit = view_obj._model.selectedUnit ? translations.t(view_obj._model.selectedUnit) : view_obj._model.measurementUnit;
+              if (typeof unit !== 'undefined' && unit !== '') {
+                return '\n' + translations.indicator.unit + ': ' + unit;
+              }
+            }
+          }
         }
       }
     };
     this.alterChartConfig(chartConfig, chartInfo);
     if (this.isHighContrast()) {
       this.updateGraphAnnotationColors('high', chartConfig);
+      this.updateHeadlineColor('high', chartConfig);
+    }
+    else {
+      this.updateHeadlineColor('default', chartConfig);
     }
 
     this._chartInstance = new Chart($(this._rootElement).find('canvas'), chartConfig);
@@ -434,13 +504,14 @@ var indicatorView = function (model, options) {
     window.addEventListener('contrastChange', function(e) {
       var gridColor = that.getGridColor(e.detail);
       var tickColor = that.getTickColor(e.detail);
+      that.updateHeadlineColor(e.detail, view_obj._chartInstance);
       that.updateGraphAnnotationColors(e.detail, view_obj._chartInstance);
       view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.fontColor = tickColor;
       view_obj._chartInstance.options.scales.yAxes[0].gridLines.color = gridColor;
       view_obj._chartInstance.options.scales.yAxes[0].ticks.fontColor = tickColor;
-      view_obj._chartInstance.options.scales.xAxes[0].gridLines.color = gridColor;
       view_obj._chartInstance.options.scales.xAxes[0].ticks.fontColor = tickColor;
       view_obj._chartInstance.update();
+      $(view_obj._legendElement).html(view_obj._chartInstance.generateLegend());
     });
 
     Chart.pluginService.register({
@@ -510,6 +581,10 @@ var indicatorView = function (model, options) {
     $(this._legendElement).html(view_obj._chartInstance.generateLegend());
   };
 
+  this.getHeadlineColor = function(contrast) {
+    return this.isHighContrast(contrast) ? '{{ site.graph_color_headline_high_contrast | default: "#FFDD00" }}' : '{{ site.graph_color_headline | default: "#00006a" }}';
+  }
+
   this.getGridColor = function(contrast) {
     return this.isHighContrast(contrast) ? '#222' : '#ddd';
   };
@@ -539,6 +614,20 @@ var indicatorView = function (model, options) {
       });
     }
   };
+
+  this.updateHeadlineColor = function(contrast, chartInfo) {
+    if (chartInfo.data.datasets.length > 0) {
+      var firstDataset = chartInfo.data.datasets[0];
+      var isHeadline = (typeof firstDataset.disaggregation === 'undefined');
+      if (isHeadline) {
+        var newColor = this.getHeadlineColor(contrast);
+        firstDataset.backgroundColor = newColor;
+        firstDataset.borderColor = newColor;
+        firstDataset.pointBackgroundColor = newColor;
+        firstDataset.pointBorderColor = newColor;
+      }
+    }
+  }
 
   this.toCsv = function (tableData) {
     var lines = [],
@@ -597,18 +686,31 @@ var indicatorView = function (model, options) {
     }
   };
 
-  var initialiseDataTable = function(el) {
+  var initialiseDataTable = function(el, info) {
+    var nonYearColumns = [];
+    for (var i = 1; i < info.table.headings.length; i++) {
+      nonYearColumns.push(i);
+    }
     var datatables_options = options.datatables_options || {
       paging: false,
       bInfo: false,
       bAutoWidth: false,
       searching: false,
       responsive: false,
-      order: [[0, 'asc']]
+      order: [[0, 'asc']],
+      columnDefs: [
+        {
+          targets: nonYearColumns,
+          createdCell: function(td, cellData, rowData, row, col) {
+            $(td).text(view_obj.alterDataDisplay(cellData, rowData, 'table cell'));
+          },
+        },
+      ],
     }, table = $(el).find('table');
 
     datatables_options.aaSorting = [];
 
+    view_obj.alterTableConfig(datatables_options, info);
     table.DataTable(datatables_options);
     table.removeAttr('role');
     table.find('thead th').removeAttr('rowspan').removeAttr('colspan').removeAttr('aria-label');
@@ -804,11 +906,11 @@ var indicatorView = function (model, options) {
       var getHeading = function(heading, index) {
         var arrows = '<span class="sort"><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
         var button = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
-        return (!index || heading.toLowerCase() == 'units') ? button + arrows : arrows + button;
+        return (!index) ? button + arrows : arrows + button;
       };
 
       table.headings.forEach(function (heading, index) {
-        table_head += '<th' + (!index || heading.toLowerCase() == 'units' ? '': ' class="table-value"') + ' scope="col">' + getHeading(heading, index) + '</th>';
+        table_head += '<th' + (!index ? '': ' class="table-value"') + ' scope="col">' + getHeading(heading, index) + '</th>';
       });
 
       table_head += '</tr></thead>';
@@ -819,11 +921,10 @@ var indicatorView = function (model, options) {
         var row_html = '<tr>';
         table.headings.forEach(function (heading, index) {
           // For accessibility set the Year column to a "row" scope th.
-          var isYear = (index == 0 || heading.toLowerCase() == 'year');
-          var isUnits = (heading.toLowerCase() == 'units');
+          var isYear = (index == 0);
           var cell_prefix = (isYear) ? '<th scope="row"' : '<td';
           var cell_suffix = (isYear) ? '</th>' : '</td>';
-          row_html += cell_prefix + (isYear || isUnits ? '' : ' class="table-value"') + '>' + (data[index] !== null ? data[index] : '-') + cell_suffix;
+          row_html += cell_prefix + (isYear ? '' : ' class="table-value"') + '>' + (data[index] !== null ? data[index] : '-') + cell_suffix;
         });
         row_html += '</tr>';
         currentTable.find('tbody').append(row_html);
@@ -831,8 +932,12 @@ var indicatorView = function (model, options) {
 
       $(el).append(currentTable);
 
-      // initialise data table
-      initialiseDataTable(el);
+      // initialise data table and provide some info for alterations.
+      var alterationInfo = {
+        table: table,
+        indicatorId: indicatorId,
+      };
+      initialiseDataTable(el, alterationInfo);
 
       $(el).removeClass('table-has-no-data');
       $('#selectionTableFooter').show();

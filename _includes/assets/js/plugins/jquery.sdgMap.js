@@ -79,6 +79,8 @@
     this.options = $.extend(true, {}, defaults, options.mapOptions);
     this.mapLayers = [];
     this.indicatorId = options.indicatorId;
+    this._precision = options.precision;
+    this._decimalSeparator = options.decimalSeparator;
     this.currentDisaggregation = 0;
 
     // Require at least one geoLayer.
@@ -118,7 +120,7 @@
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
       if (tooltipData) {
-        tooltipContent += ': ' + tooltipData;
+        tooltipContent += ': ' + this.alterData(tooltipData);
       }
       return tooltipContent;
     },
@@ -213,10 +215,24 @@
       });
     },
 
+    // Alter data before displaying it.
+    alterData: function(value) {
+      opensdg.dataDisplayAlterations.forEach(function(callback) {
+        value = callback(value);
+      });
+      if (this._precision || this._precision === 0) {
+        value = Number.parseFloat(value).toFixed(this._precision);
+      }
+      if (this._decimalSeparator) {
+        value = value.toString().replace('.', this._decimalSeparator);
+      }
+      return value;
+    },
+
     // Get the data from a feature's properties, according to the current year.
     getData: function(props) {
       if (props.values && props.values.length && props.values[this.currentDisaggregation][this.currentYear]) {
-        return props.values[this.currentDisaggregation][this.currentYear];
+        return opensdg.dataRounding(props.values[this.currentDisaggregation][this.currentYear]);
       }
       return false;
     },
@@ -389,7 +405,7 @@
         plugin.map.addControl(L.Control.yearSlider({
           years: plugin.years,
           yearChangeCallback: function(e) {
-            plugin.currentYear = new Date(e.time).getFullYear();
+            plugin.currentYear = plugin.years[e.target._currentTimeIndex];
             plugin.updateColors();
             plugin.updateTooltips();
             plugin.selectionLegend.update();

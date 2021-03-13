@@ -25,11 +25,13 @@ create_config_forms:
   layout: config-builder
 create_goals:
   layout: goal
+  previous_next_links: true
   goals:
     - content: custom.goal_1_content
     - content: My goal 2 content
 create_indicators:
   layout: indicator
+  previous_next_links: true
 create_pages:
   - filename: index.html
     folder: /frontpage-legacy
@@ -132,6 +134,8 @@ graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
 header_language_toggle: dropdown
+header:
+  include: header-menu-left-aligned.html
 hide_empty_metadata: true
 indicator_config_form:
   dropdowns:
@@ -142,11 +146,6 @@ indicator_config_form:
       labels:
         - Not started
         - Complete
-    - jsonschema: graph_annotations.items.properties.preset
-      values:
-        - target_line
-      labels:
-        - Target line
 languages:
   - en
   - es
@@ -193,6 +192,10 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
+  - translation_key: My dropdowns
+    dropdown:
+      - path: about
+        translation_key: Another link to about page
   - path: frontpage-legacy
     translation_key: Legacy frontpage
 metadata_edit_url: 'https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md'

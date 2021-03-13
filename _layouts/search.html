@@ -3,7 +3,7 @@
 
 <script type="text/template" class="results-template">
   <% if(resultsCount) { %>
-    <p><%= resultsCount %> results found</p>
+    <p>{{ page.t.search.results_found }}: <%= resultsCount %></p>
     <% _.each(searchResults, function(result){ %>
       <div class="row search-result">
         <div class="col col-xs-12">
@@ -59,10 +59,7 @@ opensdg.searchIndexExtraFields = [];
 
 <div id="main-content" class="container" role="main">
   <h1>{{ page.t.search.search_results_for }} '<span id="search-term"></span>'</h1>
-  <form>
-    <input id="search-bar-on-page" type="text" name="q">
-    <input type="submit" value="{{ page.t.search.search }}">
-  </form>
+  {% include search.html id="search-bar-on-page" not_in_menu=true %}
   {% include components/loading.html %}
   <div id="search-results" class="results"></div>
 </div>

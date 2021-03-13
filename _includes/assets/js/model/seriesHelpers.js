@@ -3,11 +3,11 @@
  */
 
 /**
- * @param {Array} rows
+ * @param {Array} columns
  * @return {boolean}
  */
-function dataHasSerieses(rows) {
-  return dataHasColumn(SERIES_COLUMN, rows);
+function dataHasSerieses(columns) {
+  return columns.includes(SERIES_COLUMN);
 }
 
 /**
@@ -15,8 +15,8 @@ function dataHasSerieses(rows) {
  * @return {boolean}
  */
 function dataHasSeriesSpecificFields(fieldsUsedBySeries) {
-  return !_.every(_.pluck(fieldsUsedBySeries, 'fields'), function(fields) {
-    return _.isEqual(_.sortBy(_.pluck(fieldsUsedBySeries, 'fields')[0]), _.sortBy(fields));
+  return !_.every(_.map(fieldsUsedBySeries, 'fields'), function(fields) {
+    return _.isEqual(_.sortBy(_.map(fieldsUsedBySeries, 'fields')[0]), _.sortBy(fields));
   });
 }
 
@@ -25,8 +25,8 @@ function dataHasSeriesSpecificFields(fieldsUsedBySeries) {
  * @param {Array} rows
  * @return {Array} Field names
  */
-function fieldsUsedBySeries(serieses, rows) {
-  var fields = getFieldColumnsFromData(rows);
+function fieldsUsedBySeries(serieses, rows, columns) {
+  var fields = getFieldColumnsFromData(columns);
   return serieses.map(function(series) {
     return {
       series: series,

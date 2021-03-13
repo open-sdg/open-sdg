@@ -1,4 +1,4 @@
-const cucumber = require('cucumber');
+const cucumber = require('@cucumber/cucumber');
 const mink = require('cucumber-mink');
 
 const driver = new mink.Mink({
@@ -19,15 +19,15 @@ const driver = new mink.Mink({
     "the Sources metadata tab": "#tab-sources",
     "goal indicator": ".goal-indicator",
     "goal target": ".goal-target",
-    "the high-contrast button": "#menu .contrast-high a",
+    "the high-contrast button": ".navbar .contrast-high a",
     "goal icon": ".goal-tiles a img",
     "high-contrast goal icon": ".goal-tiles a img[src*='high-contrast']",
-    "the language toggle dropdown": "#menu .dropdown-toggle",
-    "the first language option": "#menu .dropdown-menu li:first-child a",
-    "the last language option": "#menu .dropdown-menu li:last-child a",
+    "the language toggle dropdown": ".navbar .dropdown-toggle",
+    "the first language option": ".navbar .dropdown-menu li:first-child a",
+    "the last language option": ".navbar .dropdown-menu li:last-child a",
     "goal status": ".goal .frame",
     "the second reporting status tab": ".nav-tabs.reporting-status-view li:last-child a",
-    "the search box": ".navbar #indicator_search",
+    "the search box": "#indicator_search",
     "disaggregation filter": ".variable-selector",
     "the filter drop-down button": ".variable-selector .accessBtn",
     "the first filter option": ".variable-selector .variable-options label",
@@ -56,6 +56,7 @@ const driver = new mink.Mink({
     "map footer item": "#mapFooter dt",
     "table has no data": "#selectionsTable.table-has-no-data h3",
     "chart has no data": "#selectionsChart.chart-has-no-data canvas",
+    "breadcrumbs": ".breadcrumb",
   }
 });
 
