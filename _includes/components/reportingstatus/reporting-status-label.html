@@ -1,4 +1,4 @@
-{% assign status_css = indicator.reporting_status | slugify %}
+{% assign status_css = include.indicator.reporting_status | slugify %}
 {% case status_css %}
     {% when "notapplicable" %}
         {% assign status_desc = page.t.status.not_applicable %}
