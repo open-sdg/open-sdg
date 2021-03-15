@@ -29,6 +29,7 @@
 
   {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number %}
   {% for indicator in goal_indicators %}
+
     {% assign tag_classes = "" | split: "," %}
     {% if indicator.tags %}
       {% for tag in indicator.tags %}
@@ -37,13 +38,13 @@
       {% endfor %}
     {% endif %}
     {% assign tag_classes = tag_classes | join: " " %}
+
     {% cycle 'add row' : '<div class="indicator-cards row no-gutters">', '', '', '' %}
         <div class="col-md-6 col-lg-3 {{ tag_classes }} goal-indicator">
           <a href="{{ indicator.url }}">
             <span class="indicator-card-number">
               {{ indicator.number }}
               {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
-            </span>
             </span>
             {{ indicator.name }}
           </a>
