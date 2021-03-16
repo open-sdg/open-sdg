@@ -2,6 +2,7 @@
 
 ## Not released
 
+* Darker color for main nav #1142
 * Move goal header to include file #1128
 
 ## 1.3.0
