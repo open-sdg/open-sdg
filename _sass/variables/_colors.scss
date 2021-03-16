@@ -114,12 +114,12 @@ $footer-link-color-highContrast-hover: $color-highlight-highContrast !default;
 $footer-text-backgroundColor: $backgroundColor !default;
 $footer-text-backgroundColor-highContrast: $color-dark-highContrast !default;
 
-$menu-link-color: #595959 !default;
+$menu-link-color: $color-dark !default;
 $menu-link-color-mobile: #E5E6E7 !default;
 $menu-link-color-mobile-active: white !default;
 $menu-link-backgroundColor-mobile: #414042 !default;
 $menu-link-backgroundColor-mobile-active: #58595B !default;
-$menu-link-borderBottomColor-hover: #aaaaaa !default;
+$menu-link-borderBottomColor-hover: $menu-link-color !default;
 
 $menu-dropdownLink-color: $text-color !default;
 $menu-dropdownLink-backgroundColor-hover: #f5f5f5 !default;
