@@ -1,5 +1,9 @@
 <h1>Change Log</h1>
 
+## Not released
+
+* Move goal header to include file #1128
+
 ## 1.3.0
 
 * Configurable chart headline colors #1145
