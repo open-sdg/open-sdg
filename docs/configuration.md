@@ -414,6 +414,14 @@ goals_page:
 
 As always, for multilingual support, these settings can refer to translation keys, and the description can include Markdown.
 
+### graph_color_headline
+
+_Optional_: This setting can be used to control the color of the "headline" (eg, the national dataset, without any disaggregations selected) on charts. The default is #004466.
+
+### graph_color_headline_high_contrast
+
+_Optional_: This setting can be used to control the color of the "headline" (eg, the national dataset, without any disaggregations selected) on charts, in high-contrast mode. The default is #55a6e5.
+
 ### graph_color_set
 
 _Optional_: This setting can be used to customize the color set used in the charts. There are five possible entries:
@@ -450,10 +458,12 @@ Here is an example, showing the default that is used if this setting is omitted:
 
 ```nohighlight
 header:
-    include: default.html
+    include: header-default.html
 ```
 
-The configuration above will include the file `_includes/components/header/default.html` at the top of each page.
+The configuration above will include the file `_includes/components/header/header-default.html` at the top of each page.
+
+The `header-menu-left-aligned.html` option is also available, and is recommended.
 
 ### header_language_toggle
 

@@ -36,19 +36,6 @@
     <div class="indicator-cards col-md-6 row no-gutters">
     {% for indicator in group.items %}
 
-      {% assign status_css = indicator.reporting_status | slugify %}
-      {% if indicator.reporting_status == 'notapplicable' %}
-        {% assign status_desc = page.t.status.not_applicable %}
-      {% endif %}
-      {% if indicator.reporting_status == 'notstarted' %}
-        {% assign status_desc = page.t.status.exploring_data_sources %}
-      {% endif %}
-      {% if indicator.reporting_status == 'inprogress' %}
-        {% assign status_desc = page.t.status.statistics_in_progress %}
-      {% endif %}
-      {% if indicator.reporting_status == 'complete' %}
-        {% assign status_desc = page.t.status.reported_online %}
-      {% endif %}
       {% assign tag_classes = "" | split: "," %}
       {% if indicator.tags %}
         {% for tag in indicator.tags %}
@@ -61,9 +48,7 @@
       <div class="col-md-12 {{ tag_classes }} goal-indicator">
         <span class="indicator-card-number">
           {{ indicator.number }}
-          <span class="status {{ status_css }}">
-            {{ status_desc }}
-          </span>
+          {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
         </span>
         <a href="{{ indicator.url }}">
           {{ indicator.name }}
