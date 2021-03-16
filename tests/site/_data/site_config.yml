@@ -146,11 +146,6 @@ indicator_config_form:
       labels:
         - Not started
         - Complete
-    - jsonschema: graph_annotations.items.properties.preset
-      values:
-        - target_line
-      labels:
-        - Target line
 languages:
   - en
   - es

@@ -1,9 +1,52 @@
 <h1>Change Log</h1>
 
-## Unreleased
+## 1.3.0
 
-* New 'accessible' color-set option for optimal contrast #1103
+* Configurable chart headline colors #1145
+* High contrast fix: hover color for disaggregation values in dropdown #1122
+* Avoid highlighting entire div on focus #1120
+* High contrast fix: Remove hover styles for chart legend #1119
+* High contrast fix: Too-many-datasets message #1117
+* High contrast fix: Focus color on dropdowns #1116
+* High contrast fix: Fix reporting status type styling in goal-by-target-vertical #1112
 * Fix support for indicator ID searches in all languages #1110
+* Tweak the link/visited colors in high contrast mode #1104
+* New 'accessible' color-set option for optimal contrast #1103
+* Add gutter to sources tab #1096
+* Color adjustments for chart grids #1095
+* Switch to Lodash instead of Underscrore #1092
+* Bug fix - variable name in config builder #1091
+* Use https to avoid mixed content error on config forms #1090
+* Do not use empty titles in head #1089
+* Refactor and style updates for tags on goal pages #1088
+* Fix layout issues with odd-numbered indicator sources #1087
+* Reset button for config forms #1086
+* Updates to news layout markup/style #1078
+* Precision, decimal separator, and data display alterations #1073
+* Allow numeric disaggregation #1072
+* Translate 'Results found' #1071
+* Use configured zip filename #1061
+* High contrast fix: chart image downloads #1048
+* Reporting status accessibility fixes #1044
+* HTML 'lang' attribute should depend on current language #1042
+* Map data should use rounding function #1040
+* Do not change SVG images in high-contrast mode #1039, #1121
+* Show units in chart tooltips #1038
+* Improvements to hierarchical sorting of disaggregation controls #1037
+* Optimization of validParentsByChild #1036
+* Allow alternative unit and series columns #1027
+* Per-indicator label for COMPOSITE_BREAKDOWN column #1026
+* Changing series should affect the visible units/fields #1025
+* Dropdowns in the main menu #1016
+* Consistent color-assignments for disaggregations on chart #1011
+* Increase goal-by-target-vertical indentation #1008
+* Optional left-aligned header, increase awareness for search box, and search results-page tweaks #1002
+* Optional previous/next navigation for indicators and goals #1001
+* Allow alteration of DataTable configuration and fix tables for "binary" indicators #995
+* Support non-numeric years in maps #993
+* Standalone (non-SDG) indicators #988
+
+For data-related updates, see the [SDG Build changelog](https://github.com/open-sdg/sdg-build/blob/master/CHANGELOG.md).
 
 ## 1.2.0
 

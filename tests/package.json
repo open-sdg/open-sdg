@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "description": "Integration testing for Open SDG",
     "dependencies": {
-        "cucumber": "5.0.2",
-        "cucumber-mink": "git://github.com/brockfanning/cucumber-mink.git#circleci-compatibility",
-        "pa11y-ci": "2.3.0",
-        "simple-git": "^2.21.0"
+        "@cucumber/cucumber": "latest",
+        "cucumber-mink": "latest",
+        "pa11y-ci": "latest",
+        "simple-git": "latest"
     }
 }
