@@ -1,8 +1,8 @@
 <h1>Translation</h1>
 
-This platform is designed to be multilingual, and leverages the translations being maintained in a separate repository:
+This platform is designed to be multilingual, and leverages the translations being maintained in a [separate repository](https://github.com/open-sdg/sdg-translations) which is maintained via Weblate at this address:
 
-* [SDG Translations](https://github.com/open-sdg/sdg-translations)
+* [SDG Translations](https://hosted.weblate.org/projects/sdg-translations/)
 
 This document provides an overview of how the platform accomplishes this, and how it can be extended.
 
@@ -14,15 +14,35 @@ In order to compile the platform in multiple languages, Jekyll needs the transla
 
 ## Adding new languages
 
-There are 4 requirements for adding a new language to the platform
+There are 4 steps in adding a new language to your platform
 
-1. Check that the new language is implemented in the repository mentioned above. If it is not, you can copy that repository and implement the language yourself.
-    * Specifically, you will need to translate all the YAML files in [this folder English source](https://github.com/open-sdg/sdg-translations/tree/master/translations/en).
-2. Make sure that translated goal icons have been created. These are currently maintained in [the sdg-translations project](https://github.com/open-sdg/sdg-translations/).
-    * Specifically, you will need to produce translated versions of all the PNG files in [this folder of goal images](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/goals/en) and [this folder of high-contrast goal images](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/high-contrast/goals/en) (for high contrast versions).
-3. Add the new language in the 'languages' list in your data config (`config_data.yml`) file.
-4. Create new versions of any Jekyll pages that you would like to have available in the new language. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
-5. Add the new language in the 'languages' list in your site config (`_config.yml`).
+### 1. Add the language to SDG Translations
+
+First, check [SDG Translations](https://github.com/open-sdg/sdg-translations/tree/1.4.0-dev/translations) and see if the desired language is already there. If so, you can skip to step 2.
+
+Next, check to see if you can use [Weblate](https://hosted.weblate.org/projects/sdg-translations/) to add the translations. On Weblate, click on any of the "components", such as [General](https://hosted.weblate.org/projects/sdg-translations/general/). Press "Start new translation" at the bottom to get started, and then follow the prompts to choose your language.
+
+You can then proceed to translate each "component" in Weblate, such as General, Calendar, etc. For more details on using Weblate, see the [official Weblate documentation](https://docs.weblate.org/en/latest/user/basic.html).
+
+Note, if your language is not available in Weblate, you will need to manually translate all of the YAML files from the [Github repository](https://github.com/open-sdg/sdg-translations) and then submit your translations as a pull-request.
+
+### 2. Make sure that translated goal icons have been created. These are currently maintained in [the sdg-translations project](https://github.com/open-sdg/sdg-translations/).
+
+Specifically, you will need to produce translated versions of all the PNG files in [this folder of goal images](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/goals/en) and [this folder of high-contrast goal images](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/high-contrast/goals/en) (for high contrast versions).
+
+Note that if you use the SVG format for the images, you do not need to make high-contrast versions.
+
+### 3. Update data configuration
+
+Add the new language in the 'languages' list in your data config (`config_data.yml`) file.
+
+### 4. Translate site pages and posts
+
+Create new versions of any files in the `_pages` and `_posts` folders of your site repository. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
+
+### 5. Update site configuration
+
+Add the new language in the 'languages' list in your site config (`_config.yml`).
 
 ## Using translated text in Jekyll templates
 
