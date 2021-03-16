@@ -8,20 +8,7 @@
   {% endif %}
 </div>
 
-<div class="heading goal-banner goal-{{ page.goal.number }}">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4 col-md-3 col-lg-2 goal-tiles">
-        <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" id="goal-{{ page.goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
-      </div>
-      <div class="col-xs-8 col-md-9 col-lg-10">
-        <h1>
-          <span class="hidden-sm hidden-md hidden-lg">{{ page.t.general.goal }} {{ page.goal.number }}: </span>{{ page.goal.name }}
-        </h1>
-      </div>
-    </div>
-  </div>
-</div>
+{% include components/goal/header.html %}
 
 <div id="main-content" class="container goal-indicators goal-{{ page.goal.number }} goal-by-target" role="main">
 
