@@ -60,7 +60,7 @@ function prepareData(rows) {
     return item;
   }, this).filter(function(item) {
     // Remove anything without a value (allowing for zero as a value).
-    return item[VALUE_COLUMN] || item[VALUE_COLUMN] === 0;
+    return item[VALUE_COLUMN] || item[VALUE_COLUMN] === 0 || item[VALUE_COLUMN] == null;
   }, this);
 }
 
