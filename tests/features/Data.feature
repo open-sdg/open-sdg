@@ -6,5 +6,5 @@ Feature: Data
 
     Scenario: Missing values still appear in the table, as dashes
         Given I am on "/1-2-1"
-        Then I should see 3 "table value" elements
+        Then I should see 6 "table cell" elements
         And I should not see "undefined"
