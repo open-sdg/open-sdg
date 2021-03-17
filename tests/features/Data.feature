@@ -5,6 +5,6 @@ Feature: Data
     So that the platform viewers can see the data as I intended
 
     Scenario: Missing values still appear in the table, as dashes
-        Given I am on "/1-2-1"
-        Then I should see 6 "table cell" elements
+        Given I am on "/1-1-1"
+        Then I should see 3 "table value" elements
         And I should not see "undefined" in the "table cell" element
