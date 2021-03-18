@@ -57,6 +57,7 @@ const driver = new mink.Mink({
     "table has no data": "#selectionsTable.table-has-no-data h3",
     "chart has no data": "#selectionsChart.chart-has-no-data canvas",
     "breadcrumbs": ".breadcrumb",
+    "table value": "#tableview tbody .table-value",
   }
 });
 
