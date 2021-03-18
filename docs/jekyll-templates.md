@@ -92,6 +92,16 @@ The following variables can be used on any page:
     <a href="{{ page.url_by_language.es }}">Spanish version</a>
     ```
 
+* `page.logo`
+
+    This contains properties for two attributes of the main logo image: "src" and "alt". This is useful to ensure that the logo for the current language is being displayed.
+
+    Usage example - printing the logo image with alt text:
+
+    ```
+    <img src="{{ page.logo.src }}" alt="{{ page.logo.alt }}" />
+    ```
+
 ## Variables available on Goal pages only
 
 The following variables can be used on goal pages only:

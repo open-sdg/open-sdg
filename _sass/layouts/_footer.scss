@@ -23,10 +23,7 @@ footer {
     padding-left: 0;
     > li {
       display: inline-block;
-      margin: 3px 9px;
-      &:first-child {
-        margin-left: 0px;
-      }
+      margin: 3px 18px 3px 0;
     }
   }
 }

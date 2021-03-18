@@ -217,6 +217,11 @@
 
     // Alter data before displaying it.
     alterData: function(value) {
+      // @deprecated start
+      if (typeof opensdg.dataDisplayAlterations === 'undefined') {
+        opensdg.dataDisplayAlterations = [];
+      }
+      // @deprecated end
       opensdg.dataDisplayAlterations.forEach(function(callback) {
         value = callback(value);
       });
