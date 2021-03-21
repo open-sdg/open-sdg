@@ -17,6 +17,16 @@ This tutorial is mostly about content, but does involve the editing of some conf
 
 In practice, you will need to come up with the title and content for the new page. This may involve some content work, but for now we will just use example text.
 
+## Start a branch
+
+Like many tutorials, we will be changing multiple files. So it is best to create a branch first.
+
+1. In your site repository on Github.com, open the dropdown in the top left which says "develop".
+2. Type "create-pages-tutorial"
+3. In the dropdown select "Create branch: create-pages-tutorial from 'develop'".
+
+This creates a branch called "create-pages-tutorial" and switches to that branch. We will be working on this branch for the rest of the tutorial.
+
 ## Start the new page
 
 1. In your site repository on Github.com, go into the `_pages` folder.
@@ -77,22 +87,8 @@ layout: page
 This is my page content.
 ```
 
-1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. **Change the name of the branch to `create-pages-tutorial`. You will use this same branch name for all changes in this tutorial.**
-1. Beneath this, click "Propose new file".
-1. Change the name of the pull request to "Create pages tutorial".
-1. Click on the green "Create pull request" button.
-
-> In contrast to some tutorials, **do not "merge" this pull request.** You will be adding more changes to the pull-request before merging it.
->
-> Before going further, switch to your newly-created branch:
->
-> 1. Go to the root of your site repository.
-> 1. Above the list of files, press the drop-down that says `develop`, and select `create-pages-tutorial`.
->
-> This *switches* you to the `create-pages-tutorial` branch, which you will use for the remainder of the tutorial.
->
-> Think of this process as bundling several related changes together.
+1. At the bottom select "Commit directly to the `create-pages-tutorial` branch".
+1. Click the "Commit changes" button.
 
 ## Multilingual: translated versions
 
@@ -104,7 +100,8 @@ In Open SDG, the expectation is that every page will be translated into every la
 
 This is nearly identical to the previous step, but we will put the file in a subfolder for Spanish pages: "es".
 
-1. In your site repository on Github.com, (still in the `create-pages-tutorial` branch) go into the `_pages` folder.
+1. In your site repository on Github.com, make sure you are still in the `create-pages-tutorial` branch. If not, select in the dropdown on the top left.
+1. Go into the `_pages` folder.
 1. Press "Add file" and then "Create new file".
 1. Name your file "es/example.md". (The "es/" is what creates the subfolder.)
 
@@ -146,7 +143,8 @@ Now we can add this change to our branch.
 
 This step is not required, if you would like to add a link to the new page in your main menu, here are the steps:
 
-1. In the root of your site repository on Github.com, (still in the `create-pages-tutorial` branch) click on `_config.yml`.
+1. In the root of your site repository on Github.com, make sure you are still in the `create-pages-tutorial` branch. If not, select it from the dropdown on the top left.
+1. Click on `_config.yml`.
 1. Click the pencil icon on the right to begin editing the file.
 1. Look for the `menu` section.
 1. Add an item at the bottom of the list, using the same syntax and indentation as the others:
@@ -166,11 +164,12 @@ Now we can add this change to our branch.
 
 ## Merge the pull request
 
-We have now added a page to our site and menu. Perform these last steps to merge the pull-request.
+We have now added a page to our site and menu. Perform these last steps to create and merge the pull-request.
 
-1. Go to the "Pull requests" section.
-2. Click on the "Create pages tutorial" pull-request.
-1. You may see a message that says "Test PRs / test (pull_request) - in progress".
+1. In the root of your site repository on Github.com, make sure you are still in the `create-pages-tutorial` branch. If not, select it from the dropdown on the top left.
+1. Press the "Pull request" button which is just to the left of "Compare".
+1. Click on the green "Create pull request" button.
+1. Wait until you see a message that says "Test PRs / test (pull_request) - in progress".
 1. Wait until you see "All checks have passed". This could take about 5 minutes.
 1. Click on the green "Merge pull request" button.
 
