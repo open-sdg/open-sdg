@@ -158,7 +158,7 @@ This step is not required, if you would like to add a link to the new page in yo
 Let's go over what these fields do:
 
 * **path**: This is the path for the page. This should correspond to the "permalink" we chose in the original page's "front matter".
-* **translation_key**: This is the label of the menu item. As its name implies, it can be a "translation key". In the example above, for simplicity we just used "My menu item". In a multilingual implementation, we would certainly want to use a translation key (eg, "custom.my-example-page") instead.
+* **translation_key**: This is the label of the menu item. As its name implies, it can be a "translation key" (for more details on translation keys, see the [glossary page in the "translation keys" section](../glossary.md#translation-keys)). In the example above, for simplicity we just used "My menu item". However, in a multilingual implementation, we would certainly want to use a translation key. For example, if you have a translation file called custom.yml with an item in it called "example-menu-label", then you would put "custom.example-menu-label" here.
 
 Now we can add this change to our branch.
 
