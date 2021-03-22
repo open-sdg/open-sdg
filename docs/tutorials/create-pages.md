@@ -32,10 +32,13 @@ This creates a branch called "create-pages-tutorial" and switches to that branch
 1. In your site repository on Github.com, go into the `_pages` folder.
 2. Press "Add file" and then "Create new file".
 3. Name your file "example.md". Or substitute any other name, as long as it ends with ".md". This extension stands for [Markdown](https://daringfireball.net/projects/markdown/), which will be discussed in more detail below.
+4. After typing the name, click into the editor which is open below, in which you can proceed to the next section.
 
 ## Add the page's "front matter"
 
-With any Jekyll site your pages need to have a "[front matter](https://jekyllrb.com/docs/front-matter/)" section at the top. This section must be formatted in a certain way, and must have 4 required "fields". Here are the steps:
+> The term "front matter" refers to a series of key/value pairs in YAML syntax, commonly used in Jekyll and other software. For more information, here is the [Jekyll documentation on front matter](https://jekyllrb.com/docs/front-matter/) and here is an [introductory primer on YAML](https://www.youtube.com/watch?v=1uFVr15xDGg). However, these resources are not required for this tutorial.
+
+With any Jekyll site your pages need to have a "front matter" section at the top. This section must be formatted in a certain way. In our case, it must have 4 particular "fields" (key/value pairs). Here are the steps:
 
 1. Click into the body of the page (under "Edit new file").
 2. On the first line, type three dashes: `---`
@@ -116,7 +119,7 @@ So this time the front matter will be:
 ```
 ---
 title: Este es mi título de ejemplo
-language: en
+language: es
 permalink: /es/my-example-page
 layout: page
 ---
@@ -127,7 +130,7 @@ Next we will add our Spanish content below. So for example, all together it migh
 ```
 ---
 title: Este es mi título de ejemplo
-language: en
+language: es
 permalink: /es/my-example-page
 layout: page
 ---
