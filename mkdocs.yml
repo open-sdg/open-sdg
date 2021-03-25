@@ -44,6 +44,7 @@ pages:
         - "Tutorial: Adding languages": tutorials/add-language.md
         - "Tutorial: Changing colors": tutorials/change-colors.md
         - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
+        - "Tutorial: Contibuting to SDG Translations": tutorials/contribute-translations.md
     - Data providers:
         - Making updates: making-updates.md
         - Metadata format: metadata-format.md
