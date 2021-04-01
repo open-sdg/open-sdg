@@ -74,7 +74,7 @@ In the top-level menu, click the "Languages" dropdown menu and select "Manage tr
 
 Underneath the "Interface Language" heading, use the dropdown to select the language you want to use Weblate in.
 
-### Show string in another existing language
+### Translating from a non-English language
 
 When checking the available languages, if the language you want is not available or hasn't yet been translated but there is another language that you would prefer to translate from you can add this as a secondary source language.
 
