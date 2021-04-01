@@ -66,4 +66,21 @@ Otherwise, after the translation is corrected, press the "Save" button. This tak
 
 After you have contributed translations in the way detailed above, the Open SDG team will review and approve the changes, and eventually they will be available in a future release. If there are any questions, you may be contacted via Weblate's comment section.
 
+## Optional steps
+
+### Change interface language
+
+In the top-level menu, click the "Languages" dropdown menu and select "Manage translated languages".
+
+Underneath the "Interface Language" heading, use the dropdown to select the language you want to use Weblate in.
+
+### Show string in another existing language
+
+When checking the available languages, if you the language you want is not available or hasn't yet been translated but there is another language that you would prefer to translate from you can add this as a secondary source language.
+
+To do this, in the top-level menu, click "Languages" dropdown menu and select "Manage translated languages".
+
+Underneath the "Secondary languages" heading, select the language which you would also like terms to display in when translating.
+
+
 **Thank you for contributing to the project!**
