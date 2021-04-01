@@ -76,7 +76,7 @@ Underneath the "Interface Language" heading, use the dropdown to select the lang
 
 ### Show string in another existing language
 
-When checking the available languages, if you the language you want is not available or hasn't yet been translated but there is another language that you would prefer to translate from you can add this as a secondary source language.
+When checking the available languages, if the language you want is not available or hasn't yet been translated but there is another language that you would prefer to translate from you can add this as a secondary source language.
 
 To do this, in the top-level menu, click "Languages" dropdown menu and select "Manage translated languages".
 
