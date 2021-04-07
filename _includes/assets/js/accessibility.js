@@ -26,10 +26,12 @@ var accessibilitySwitcher = function() {
   function flipAllContrastLinks(newContrast, oldContrast) {
     var title = getContrastToggleTitle(newContrast),
         label = getContrastToggleLabel(newContrast);
+        gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', newContrast);
     $('[data-contrast-switch-to]')
       .data('contrast-switch-to', newContrast)
       .attr('title', title)
       .attr('aria-label', title)
+      .attr(gaAttributes)
       .html(label)
       .parent()
         .addClass('contrast-' + newContrast)
