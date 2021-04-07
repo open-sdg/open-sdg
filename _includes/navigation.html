@@ -1,4 +1,4 @@
-<ul class="nav navbar-nav menu-target {% unless include.no_contrast %}contrast-switcher{% endunless %}" id="{{ include.id | default: 'menu' }}">
+<ul class="nav navbar-nav menu-target" id="{{ include.id | default: 'menu' }}">
 {%- if site.menu -%}
     {%- for item in site.menu -%}
         {%- if include.dropdowns and item.dropdown and item.dropdown.size > 0 -%}
@@ -30,5 +30,8 @@
     {% include components/language-toggle.html %}
 </li>
 {%- endif -%}
+{% endunless %}
+{% unless include.no_contrast %}
+{% include components/contrast-toggle.html %}
 {% endunless %}
 </ul>

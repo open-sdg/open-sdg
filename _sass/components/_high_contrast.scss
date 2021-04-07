@@ -133,9 +133,6 @@ body.contrast-high {
 }
 
 body.long.contrast-default{
-  li.contrast-default{
-    display: none;
-  }
   li.contrast-high{
     display: block;
     @media only screen and (max-width: 767px) {
@@ -150,9 +147,6 @@ body.long.contrast-high{
     @media only screen and (max-width: 767px) {
       width: 60px;
     }
-  }
-  li.contrast-high{
-    display: none;
   }
 }
 

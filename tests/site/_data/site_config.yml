@@ -18,6 +18,7 @@ breadcrumbs:
       label: general.home
     - path: /news
       label: menu.updates
+contrast_type: single
 country:
   name: Australia
   adjective: Australian

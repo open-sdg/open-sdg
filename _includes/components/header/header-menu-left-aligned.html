@@ -15,12 +15,13 @@
     <div class="search-and-desktop-widgets">
       {% include search.html id="search" %}
       <div class="navbar navbar-default widgets-without-menu">
-        <ul class="nav navbar-nav contrast-switcher">
+        <ul class="nav navbar-nav">
         {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
           <li class="language-toggle-menu-header">
             {% include components/language-toggle.html %}
         </li>
         {%- endif -%}
+        {% include components/contrast-toggle.html %}
         </ul>
       </div>
     </div>
