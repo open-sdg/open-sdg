@@ -44,7 +44,7 @@ With any Jekyll site your pages need to have a "front matter" section at the top
 2. On the first line, type three dashes: `---`
 3. On the next line, type the title field: `title: This is my example title`
 4. On the next line, type the language field: `language: en`
-5. On the next line, type the permalink field: `permalink: /my-example-page`
+5. On the next line, type the permalink field: `permalink: my-example-page/`
 6. On the next line, type the layout field: `layout: page`
 7. On the next line, type three more dashes: `---`
 
@@ -54,7 +54,7 @@ Afterwards it should look something like this:
 ---
 title: This is my example title
 language: en
-permalink: /my-example-page
+permalink: my-example-page/
 layout: page
 ---
 ```
@@ -63,7 +63,7 @@ Let's go over what these fields do:
 
 * **title**: This is the title of the page. Feel free to change the value here as needed.
 * **language**: This is the language of the page, and should correspond to the correct language abbreviation.
-* **permalink**: This determines the URL for the page. It should start/end with a slash, and can have any number of slashes within it. For example, this is also fine: `/my/example/page/`. Like any URL, it should not contains spaces. Typically dashes are used instead.
+* **permalink**: This determines the URL for the page. It should end with a slash, and can have any number of slashes within it. For example, this is also fine: `my/example/page/`. Like any URL, it should not contains spaces. Typically dashes are used instead.
 * **layout**: This determines the Jekyll "layout" that is used, and should usually be set to "page".
 
 Finally the triple-dash lines are important because they identify this section as "front matter".
@@ -84,7 +84,7 @@ So, all together with the front matter we added earlier, you should have somethi
 ---
 title: This is my example title
 language: en
-permalink: /my-example-page
+permalink: my-example-page/
 layout: page
 ---
 This is my page content.
@@ -112,7 +112,7 @@ As before we will add "front matter", but there will be three important differen
 
 1. The "title" will be translated into Spanish.
 1. The language will be "es" instead of "en".
-1. The permalink will be identical, but it will start with "/es".
+1. The permalink will be identical, but it will start with "es/".
 
 So this time the front matter will be:
 
@@ -120,7 +120,7 @@ So this time the front matter will be:
 ---
 title: Este es mi título de ejemplo
 language: es
-permalink: /es/my-example-page
+permalink: es/my-example-page/
 layout: page
 ---
 ```
@@ -131,7 +131,7 @@ Next we will add our Spanish content below. So for example, all together it migh
 ---
 title: Este es mi título de ejemplo
 language: es
-permalink: /es/my-example-page
+permalink: es/my-example-page/
 layout: page
 ---
 Este es el contenido de mi página.
@@ -152,7 +152,7 @@ This step is not required, if you would like to add a link to the new page in yo
 1. Look for the `menu` section.
 1. Add an item at the bottom of the list, using the same syntax and indentation as the others:
 
-        - path: my-example-page
+        - path: my-example-page/
           translation_key: My menu item
 
 Let's go over what these fields do:
