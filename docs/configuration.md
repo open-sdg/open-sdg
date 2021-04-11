@@ -43,7 +43,7 @@ breadcrumbs:
     - label: Home
       path: /
     - label: Updates
-      path: /news
+      path: news/
 ```
 
 Or with the addition of translation keys for multilingual sites:
@@ -54,7 +54,7 @@ breadcrumbs:
     - label: general.home
       path: /
     - label: menu.updates
-      path: /news
+      path: news/
 ```
 
 Here is a full exmaple including `goal` and `indicator` as well:
@@ -65,17 +65,17 @@ breadcrumbs:
     - label: general.home
       path: /
     - label: menu.updates
-      path: /news
+      path: news/
   goal:
     - label: general.home
       path: /
     - label: general.goals
-      path: /goals
+      path: goals/
   indicator:
     - label: general.home
       path: /
     - label: general.goals
-      path: /goals
+      path: goals/
 ```
 
 Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
@@ -302,9 +302,9 @@ footer_menu:
     translation_key: general.twitter
   - path: https://facebook.com/MyFacebookAccount
     translation_key: general.facebook
-  - path: /faq
+  - path: faq/
     translation_key: menu.faq
-  - path: /cookies
+  - path: cookies/
     translation_key: menu.cookies
 ```
 
@@ -577,25 +577,25 @@ While the "scopes" above, such as "national" and "global", are arbitrary, the "s
 
 ```nohighlight
 menu:
-  - path: /reporting-status
+  - path: reporting-status/
     translation_key: menu.reporting_status
-  - path: /about
+  - path: about/
     translation_key: menu.about
-  - path: /faq
+  - path: faq/
     translation_key: menu.faq
 ```
 
-Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "/about" and "/faq" under a "More information" dropdown:
+Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "about/" and "faq/" under a "More information" dropdown:
 
 ```nohighlight
 menu:
-  - path: /reporting-status
+  - path: reporting-status/
     translation_key: menu.reporting_status
   - translation_key: More information
     dropdown:
-      - path: /faq
+      - path: faq/
         translation_key: menu.faq
-      - path: /about
+      - path: about/
         translation_key: menu.about
 ```
 
