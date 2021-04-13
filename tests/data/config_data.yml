@@ -47,3 +47,7 @@ docs_subfolder: documentation
 
 datapackage:
   sorting: alphabetical
+
+data_schema:
+  class: DataSchemaInputTableSchemaYaml
+  source: data-schema/*.yml
