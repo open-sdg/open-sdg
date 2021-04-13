@@ -46,4 +46,4 @@ reporting_status_extra_fields:
 docs_subfolder: documentation
 
 datapackage:
-  sorting: default
+  sorting: alphabetical
