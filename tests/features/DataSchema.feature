@@ -8,12 +8,12 @@ Feature: Data schema
     Given I am on "/1-3-1"
     And I wait 3 seconds
     And I click on "the filter drop-down button"
-    And I click on "the second filter option"
+    And I click on "the last filter option"
     Then I should see "Male" in the "chart legend" element
 
   Scenario: This order can be overriden by a data schema (male before female)
     Given I am on "/3-1-1"
     And I wait 3 seconds
     And I click on "the filter drop-down button"
-    And I click on "the second filter option"
+    And I click on "the last filter option"
     Then I should see "Female" in the "chart legend" element
