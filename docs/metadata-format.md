@@ -8,6 +8,34 @@ Metadata values can either be filled in with normal text ("My field value") or w
 
 As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
 
+## Note about unit-specific and series-specific settings
+
+Several indicator settings can be limited to a particular Unit and/or Series. For example, the `graph_titles` setting can be configured like this:
+
+```
+graph_titles:
+  - unit: Percent
+    title: My title for percent
+  - unit: Total
+    title: My title for total
+```
+
+In addition to graph_titles, the other fields like this include:
+
+* graph_annotations
+* graph_limits
+* precision
+
+These fields are described below. Note that if a unit/series is not specified, then the item will apply to any unit/series. For example:
+
+```
+graph_titles:
+  - series: SERIES123
+    title: This title will appear for SERIES123 only
+  - series: ''
+    title: This title will appear for all other series
+```
+
 ## Mandatory fields
 
 The following fields are required on all indicators:
@@ -130,6 +158,16 @@ data_start_values:
 ```
 
 ...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
+
+## Composite Breakdown label
+
+When importing data from SDMX it is common for disaggregations to be in COMPOSITE_BREAKDOWN. This is not particularly informative to the user, so it is possible to specify a more useful label for this particular data column. Whatever is specified here will be used as a label for the COMPOSITE_BREAKDOWN column, if it appears in the indicator data. Translation keys are supported, as always.
+
+The example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
+
+```nohighlight
+composite_breakdown_label: Hazard type
+```
 
 ## Graph Metadata
 

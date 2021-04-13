@@ -10,6 +10,5 @@ Feature: Disclaimer
     And I should see "This is my disclaimer message."
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
-    And I take a screenshot
     Then I should see "Alfa"
     And I should see "This is my Spanish disclaimer message."

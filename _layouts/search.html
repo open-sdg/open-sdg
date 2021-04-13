@@ -3,7 +3,7 @@
 
 <script type="text/template" class="results-template">
   <% if(resultsCount) { %>
-    <p><%= resultsCount %> results found</p>
+    <p>{{ page.t.search.results_found }}: <%= resultsCount %></p>
     <% _.each(searchResults, function(result){ %>
       <div class="row search-result">
         <div class="col col-xs-12">

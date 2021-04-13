@@ -78,35 +78,61 @@ function nonFieldColumns() {
  * @return {object|false} The first match given the selected unit/series, or false
  */
 function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
-  if (!items || items.length < 0) {
-    return false;
+  var matches = getMatchesByUnitSeries(items, selectedUnit, selectedSeries);
+  return (matches.length > 0) ? matches[0] : false;
+}
+
+/**
+ * @param {Array} items Objects optionally containing 'unit' and/or 'series'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {Array} All matches given the selected unit/series, if any.
+ */
+function getMatchesByUnitSeries(items, selectedUnit, selectedSeries) {
+  if (!items || items.length === 0) {
+    return [];
   }
   if (!selectedUnit && !selectedSeries) {
-    return items[0];
+    return items;
   }
-  var match = items.find(function(item) {
+  // First pass to find any exact matches.
+  var matches = items.filter(function(item) {
+    var seriesMatch = item.series === selectedSeries,
+        unitMatch = item.unit === selectedUnit;
     if (selectedUnit && selectedSeries) {
-      return item.unit === selectedUnit && item.series === selectedSeries;
+      return seriesMatch && unitMatch;
     }
     else if (selectedUnit) {
-      return item.unit === selectedUnit;
+      return unitMatch;
     }
     else if (selectedSeries) {
-      return item.series === selectedSeries;
+      return seriesMatch;
     }
   });
-  if (!match) {
-    // If no match was found, allow for a partial match (eg, unit only).
-    match = items.find(function(item) {
-      if (selectedUnit) {
-        return item.unit === selectedUnit;
+  // Second pass to find any partial matches with unspecified unit/series.
+  if (matches.length === 0) {
+    matches = items.filter(function(item) {
+      var seriesMatch = item.series === selectedSeries && item.series && !item.unit,
+          unitMatch = item.unit === selectedUnit && item.unit && !item.series;
+      if (selectedUnit && selectedSeries) {
+        return seriesMatch || unitMatch;
+      }
+      else if (selectedUnit) {
+        return unitMatch;
       }
       else if (selectedSeries) {
-        return item.series === selectedSeries;
+        return seriesMatch;
       }
     });
   }
-  return match || false;
+  // Third pass to catch cases where nothing at all was specified.
+  if (matches.length === 0) {
+    matches = items.filter(function(item) {
+      var nothingSpecified = !item.unit && !item.series;
+      return nothingSpecified;
+    });
+  }
+  return matches;
 }
 
 /**

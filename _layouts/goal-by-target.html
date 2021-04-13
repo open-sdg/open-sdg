@@ -8,20 +8,7 @@
   {% endif %}
 </div>
 
-<div class="heading goal-banner goal-{{ page.goal.number }}">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4 col-md-3 col-lg-2 goal-tiles">
-        <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" id="goal-{{ page.goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
-      </div>
-      <div class="col-xs-8 col-md-9 col-lg-10">
-        <h1>
-          <span class="hidden-sm hidden-md hidden-lg">{{ page.t.general.goal }} {{ page.goal.number }}: </span>{{ page.goal.name }}
-        </h1>
-      </div>
-    </div>
-  </div>
-</div>
+{% include components/goal/header.html %}
 
 <div id="main-content" class="container goal-indicators goal-{{ page.goal.number }} goal-by-target" role="main">
 
@@ -40,7 +27,7 @@
   {% for group in goal_indicators %}
     {% assign target = group.name | sdg_lookup %}
     <div class="indicator-cards target goal-target col-md-6">
-      <span>
+      <span class="indicator-card-number">
         <label class="hidden-md hidden-lg">{{ page.t.general.target }}</label>
         {{ target.number }}
       </span>
@@ -49,19 +36,6 @@
     <div class="indicator-cards col-md-6 row no-gutters">
     {% for indicator in group.items %}
 
-      {% assign status_css = indicator.reporting_status | slugify %}
-      {% if indicator.reporting_status == 'notapplicable' %}
-        {% assign status_desc = page.t.status.not_applicable %}
-      {% endif %}
-      {% if indicator.reporting_status == 'notstarted' %}
-        {% assign status_desc = page.t.status.exploring_data_sources %}
-      {% endif %}
-      {% if indicator.reporting_status == 'inprogress' %}
-        {% assign status_desc = page.t.status.statistics_in_progress %}
-      {% endif %}
-      {% if indicator.reporting_status == 'complete' %}
-        {% assign status_desc = page.t.status.reported_online %}
-      {% endif %}
       {% assign tag_classes = "" | split: "," %}
       {% if indicator.tags %}
         {% for tag in indicator.tags %}
@@ -72,23 +46,14 @@
       {% assign tag_classes = tag_classes | join: " " %}
 
       <div class="col-md-12 {{ tag_classes }} goal-indicator">
-        <span>
+        <span class="indicator-card-number">
           {{ indicator.number }}
-          <span class="status {{ status_css }}">
-            {{ status_desc }}
-          </span>
+          {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
         </span>
         <a href="{{ indicator.url }}">
           {{ indicator.name }}
         </a>
-        {% if indicator.tags %}
-          <ul class="tags">
-          {% for tag in indicator.tags %}
-            {% assign tag_class = tag | slugify %}
-            <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
-          {% endfor %}
-          </ul>
-        {% endif %}
+        {% include components/indicator/tags.html tags=indicator.tags %}
       </div>
     {% endfor %}
     </div>

@@ -7,8 +7,8 @@
         <% }%>
       >
         <% if(allowedFields.indexOf(fieldItem.field) == -1) { %><h6><% } else { %><h5><% } %>
-          <span aria-hidden="true"><%=translations.t(fieldItem.field)%><i class="fa fa-chevron-down"></i></span>
-          <span class="sr-only">{{ page.t.indicator.sub_categories_show }} <%=translations.t(fieldItem.field)%></span>
+          <span aria-hidden="true"><%=translations.t(fieldItem.label)%><i class="fa fa-chevron-down"></i></span>
+          <span class="sr-only">{{ page.t.indicator.sub_categories_show }} <%=translations.t(fieldItem.label)%></span>
         <% if(allowedFields.indexOf(fieldItem.field) == -1) { %></h6><% } else { %></h5><% } %>
       </button>
       <div class="bar">
@@ -32,7 +32,7 @@
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
           {%- capture var_hint_replacement -%}
-            {% raw %}<%= translations.t(_.findWhere(edges, { To: fieldItem.field }).From) %>{% endraw %}
+            {% raw %}<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>{% endraw %}
           {%- endcapture -%}
           {{ page.t.indicator.variable_hint | replace_first: '%field', var_hint_replacement }}
         </div>

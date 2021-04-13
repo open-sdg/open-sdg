@@ -146,11 +146,6 @@ indicator_config_form:
       labels:
         - Not started
         - Complete
-    - jsonschema: graph_annotations.items.properties.preset
-      values:
-        - target_line
-      labels:
-        - Target line
   repository_link: 'https://example.com'
   translation_link: ''
 indicator_metadata_form:
@@ -173,6 +168,16 @@ languages:
 languages_public:
   - language: fr
     language_public: fr-CA
+logos:
+  - language: en
+    alt: My English logo alt text
+    src: assets/img/SDG_logo.png
+  - language: es
+    alt: My Spanish logo alt text
+    src: assets/img/SDG_logo.png
+  - language: fr
+    alt: My French logo alt text
+    src: assets/img/SDG_logo.png
 map_layers:
   - subfolder: regions
     label: indicator.regions
@@ -212,6 +217,10 @@ menu:
     translation_key: menu.reporting_status
   - path: about
     translation_key: menu.about
+  - translation_key: My dropdowns
+    dropdown:
+      - path: about
+        translation_key: Another link to about page
   - path: frontpage-legacy
     translation_key: Legacy frontpage
 metadata_edit_url: metadata

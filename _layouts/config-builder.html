@@ -7,6 +7,7 @@
       <label for="config-search">Filter settings</label>
       <input id="config-search" />
       <input id="config-search-button" type="button" value="Filter">
+      <input id="config-reset-button" type="button" value="Reset">
     </div>
     <div class="col-md-6" id="button_holder">
       <div><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
@@ -24,7 +25,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
-  <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
   <script>
     // For this page, it is helpful to have every single translation.
     var allTranslations = {{ page.t | jsonify }};
@@ -32,6 +33,7 @@
     // Dynamic filtering functionality.
     var configSearch = document.getElementById('config-search');
     var configSearchButton = document.getElementById('config-search-button');
+    var configResetButton = document.getElementById('config-reset-button');
     var resultsStatus = document.getElementById('results-status');
     var itemSelector = 'div[data-schemapath="root"] > .well > div > div > .row';
     configSearchButton.addEventListener('click', performSearch);
@@ -40,10 +42,11 @@
         performSearch();
       }
     });
+    configResetButton.addEventListener('click', resetSearch);
     function performSearch() {
       var keywords = configSearch.value.toLowerCase();
       var numResults = 0;
-      if (keywords.length > 2) {
+      if (keywords.length > 0) {
         var noMatches = true;
         $(itemSelector).each(function(item) {
           var title = $(this).find('label').first().text().toLowerCase();
@@ -65,9 +68,14 @@
         }
       }
       else {
-        $(resultsStatus).text('');
+        resetSearch();
       }
     };
+    function resetSearch() {
+      configSearch.value = '';
+      $(resultsStatus).text('');
+      $(itemSelector).show();
+    }
 
     {% if page.config_type == 'site' %}
       {% assign json_schema = site.data.schema-site-config %}
@@ -84,7 +92,7 @@
           if (schema.properties.{{ dropdown.jsonschema }}) {
             schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
             schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
-            {% if choices.labels %}
+            {% if dropdown.labels %}
               schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
               schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
             {% endif %}

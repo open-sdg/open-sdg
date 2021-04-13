@@ -21,6 +21,14 @@ var indicatorSearch = function() {
       }
     }
 
+    // Recognize an indicator id as a special case that does not need Lunr.
+    var searchWords = searchTermsToUse.split(' '),
+        indicatorIdParts = searchWords[0].split('.'),
+        isIndicatorSearch = (searchWords.length === 1 && indicatorIdParts.length >= 3);
+    if (isIndicatorSearch) {
+      useLunr = false;
+    }
+
     var results = [];
     var alternativeSearchTerms = [];
 

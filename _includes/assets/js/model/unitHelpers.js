@@ -15,8 +15,8 @@ function dataHasUnits(columns) {
  * @return {boolean}
  */
 function dataHasUnitSpecificFields(fieldsUsedByUnit) {
-  return !_.every(_.pluck(fieldsUsedByUnit, 'fields'), function(fields) {
-    return _.isEqual(_.sortBy(_.pluck(fieldsUsedByUnit, 'fields')[0]), _.sortBy(fields));
+  return !_.every(_.map(fieldsUsedByUnit, 'fields'), function(fields) {
+    return _.isEqual(_.sortBy(_.map(fieldsUsedByUnit, 'fields')[0]), _.sortBy(fields));
   });
 }
 

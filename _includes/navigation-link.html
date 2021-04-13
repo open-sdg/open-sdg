@@ -1,0 +1,10 @@
+{%- assign current_path_no_slash = page.url | remove: '/' -%}
+{%- assign item_path_no_slash = include.item.path | remove: '/' -%}
+{%- assign item_path = include.item.path -%}
+{%- assign item_path_first = item_path | slice: 0 %}
+{%- if item_path_first == '/' -%}
+{%- assign item_path = item_path | slice: 1, item_path.size -%}
+{%- endif -%}
+<li class="nav-link {% if current_path_no_slash == item_path_no_slash %}active{% endif %}">
+    <a href="{% unless item_path contains 'http' %}{{ page.baseurl }}{% endunless %}{{ item_path }}">{{ include.item.translation_key | t }}</a>
+</li>
