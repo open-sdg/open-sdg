@@ -12,6 +12,8 @@ function getInitialFieldItemStates(rows, edges, columns, dataSchema) {
   var fields = getFieldColumnsFromData(columns);
   sortFieldNames(fields, dataSchema);
   var initial = fields.map(function(field) {
+    var values = getUniqueValuesByProperty(field, rows);
+    sortFieldValueNames(field, values, dataSchema);
     return {
       field: field,
       hasData: true,
