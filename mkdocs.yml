@@ -44,6 +44,7 @@ pages:
         - "Tutorial: Adding languages": tutorials/add-language.md
         - "Tutorial: Changing colors": tutorials/change-colors.md
         - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
+        - "Tutorial: Creating pages": tutorials/create-pages.md
     - Data providers:
         - Making updates: making-updates.md
         - Metadata format: metadata-format.md
@@ -82,3 +83,4 @@ pages:
         - Upgrade process: upgrades/upgrade-process.md
         - Upgrading to 1.0.0: upgrades/upgrading-1-0-0.md
         - Upgrading to 1.2.0: upgrades/upgrading-1-2-0.md
+        - Upgrading to 1.3.0: upgrades/upgrading-1-3-0.md

@@ -10,27 +10,28 @@
  * @return {String} Updated title
  */
 function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
-  var newTitle = currentTitle;
-  if (allTitles && allTitles.length > 0) {
-    var matchedTitle;
-    if (selectedUnit && selectedSeries) {
-      matchedTitle = allTitles.find(function(title) {
-        return title.unit === selectedUnit && title.series === selectedSeries;
-      });
-    }
-    if (!matchedTitle && selectedSeries) {
-      matchedTitle = allTitles.find(function(title) {
-        return title.series === selectedSeries;
-      });
-    }
-    if (!matchedTitle && selectedUnit) {
-      matchedTitle = allTitles.find(function(title) {
-        return title.unit === selectedUnit;
-      });
-    }
-    newTitle = (matchedTitle) ? matchedTitle.title : allTitles[0].title;
-  }
-  return newTitle;
+  var match = getMatchByUnitSeries(allTitles, selectedUnit, selectedSeries);
+  return (match) ? match.title : currentTitle;
+}
+
+/**
+ * @param {Array} graphLimits Objects containing 'unit' and 'title'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {Object|false} Graph limit object, if any
+ */
+function getGraphLimits(graphLimits, selectedUnit, selectedSeries) {
+  return getMatchByUnitSeries(graphLimits, selectedUnit, selectedSeries);
+}
+
+/**
+ * @param {Array} graphAnnotations Objects containing 'unit' or 'series' or more
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {Array} Graph annotations objects, if any
+ */
+function getGraphAnnotations(graphAnnotations, selectedUnit, selectedSeries) {
+  return getMatchesByUnitSeries(graphAnnotations, selectedUnit, selectedSeries);
 }
 
 /**

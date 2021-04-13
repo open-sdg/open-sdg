@@ -7,12 +7,11 @@
  * @param {Array} edges
  * @return {Array} Field item states
  */
-function getInitialFieldItemStates(rows, edges, dataSchema) {
-  var fields = getFieldColumnsFromData(rows);
+
+function getInitialFieldItemStates(rows, edges, columns, dataSchema) {
+  var fields = getFieldColumnsFromData(columns);
   sortFieldNames(fields, dataSchema);
   var initial = fields.map(function(field) {
-    var values = getUniqueValuesByProperty(field, rows);
-    sortFieldValueNames(field, values, dataSchema);
     return {
       field: field,
       hasData: true,
@@ -135,9 +134,10 @@ function getChildFieldNames(edges) {
  * @param {boolean} dataHasSeriesSpecificFields
  * @param {Array} selectedFields Field items
  * @param {Array} edges
- * @return {Array} Field item states
+ * @param {string} compositeBreakdownLabel Alternate label for COMPOSITE_BREAKDOWN fields
+ * @return {Array} Field item states (with additional "label" properties)
  */
-function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, fieldsBySeries, selectedSeries, dataHasSeriesSpecificFields, selectedFields, edges) {
+function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, fieldsBySeries, selectedSeries, dataHasSeriesSpecificFields, selectedFields, edges, compositeBreakdownLabel) {
   var states = fieldItemStates.map(function(item) { return item; });
   if (dataHasUnitSpecificFields && dataHasSeriesSpecificFields) {
     states = fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries);
@@ -166,7 +166,13 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
     });
   }
   sortFieldsForView(states, edges);
-  return states;
+  return states.map(function(item) {
+    item.label = item.field;
+    if (item.field === 'COMPOSITE_BREAKDOWN' && compositeBreakdownLabel !== '') {
+      item.label = compositeBreakdownLabel;
+    }
+    return item;
+  });
 }
 
 /**
@@ -174,35 +180,18 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
  * @param {Array} edges
  */
 function sortFieldsForView(fieldItemStates, edges) {
-  var grandparents = [],
-      parents = [];
-  if (edges) {
+  if (edges.length > 0 && fieldItemStates.length > 0) {
     edges.forEach(function(edge) {
-      if (!parents.includes(edge.From)) {
-        parents.push(edge.From);
-      }
-    });
-    edges.forEach(function(edge) {
-      if (parents.includes(edge.To)) {
-        grandparents.push(edge.From);
-      }
+      // This makes sure children are right after their parents.
+      var parentIndex = fieldItemStates.findIndex(function(fieldItem) {
+        return fieldItem.field == edge.From;
+      });
+      var childIndex = fieldItemStates.findIndex(function(fieldItem) {
+        return fieldItem.field == edge.To;
+      });
+      arrayMove(fieldItemStates, childIndex, parentIndex + 1);
     });
   }
-  fieldItemStates.sort(function(a, b) {
-    if (grandparents.includes(a.field) && !grandparents.includes(b.field)) {
-      return -1;
-    }
-    else if (grandparents.includes(b.field) && !grandparents.includes(a.field)) {
-      return 1;
-    }
-    else if (parents.includes(a.field) && !parents.includes(b.field)) {
-      return -1;
-    }
-    else if (parents.includes(b.field) && !parents.includes(a.field)) {
-      return 1;
-    }
-    return 0;
-  });
 }
 
 /**
@@ -212,10 +201,10 @@ function sortFieldsForView(fieldItemStates, edges) {
  * @return {Array} Field item states
  */
 function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
+  var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
+    return fieldByUnit.unit === selectedUnit;
+  })[0];
   return fieldItemStates.filter(function(fis) {
-    var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
-      return fieldByUnit.unit === selectedUnit;
-    })[0];
     return fieldsBySelectedUnit.fields.includes(fis.field);
   });
 }
@@ -227,10 +216,10 @@ function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
  * @return {Array} Field item states
  */
 function fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries) {
+  var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
+    return fieldBySeries.series === selectedSeries;
+  })[0];
   return fieldItemStates.filter(function(fis) {
-    var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
-      return fieldBySeries.series === selectedSeries;
-    })[0];
     return fieldsBySelectedSeries.fields.includes(fis.field);
   });
 }
@@ -331,6 +320,10 @@ function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
   // rows. In other words we want the row with the fewest number of fields.
   filteredData = _.sortBy(filteredData, function(row) { return Object.keys(row).length; });
 
+  if (filteredData.length === 0) {
+    return [];
+  }
+
   // Convert to an array of objects with 'field' and 'values' keys, omitting
   // any non-field columns.
   return Object.keys(filteredData[0]).filter(function(key) {
@@ -348,6 +341,9 @@ function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
  * @param {Array} fieldItemStates
  * @param {Array} rows
  * @return {Object} Arrays of parents keyed to children
+ *
+ * @TODO: This function can be a bottleneck in large datasets with a lot of
+ * disaggregation values. Can this be further optimized?
  */
 function validParentsByChild(edges, fieldItemStates, rows) {
   var parentFields = getParentFieldNames(edges);
@@ -361,18 +357,17 @@ function validParentsByChild(edges, fieldItemStates, rows) {
       return value.value;
     });
     var parentField = parentFields[fieldIndex];
+    var childRows = rows.filter(function(row) {
+      var childNotEmpty = row[childField];
+      var parentNotEmpty = row[parentField];
+      return childNotEmpty && parentNotEmpty;
+    })
     validParentsByChild[childField] = {};
     childValues.forEach(function(childValue) {
-      var rowsWithParentValues = rows.filter(function(row) {
-        var childMatch = row[childField] == childValue;
-        var parentNotEmpty = row[parentField];
-        return childMatch && parentNotEmpty;
+      var rowsWithParentValues = childRows.filter(function(row) {
+        return row[childField] == childValue;
       });
-      var parentValues = rowsWithParentValues.map(function(row) {
-        return row[parentField];
-      });
-      parentValues = parentValues.filter(isElementUniqueInArray);
-      validParentsByChild[childField][childValue] = parentValues;
+      validParentsByChild[childField][childValue] = getUniqueValuesByProperty(parentField, rowsWithParentValues);
     });
   });
   return validParentsByChild;

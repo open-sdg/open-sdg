@@ -8,7 +8,7 @@
 {% endfor %}
 
 {% if n_sources > 0 %}
-  <div class="row no-gutters">
+  <div class="row">
   {% for i in (1..n_sources) %}
     {% assign src_active = "source_active_" | append: i %}
     {% assign src_scope = "source_" | append: i %}

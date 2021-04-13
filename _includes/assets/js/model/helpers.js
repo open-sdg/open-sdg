@@ -95,6 +95,10 @@
     tableDataFromDatasets: tableDataFromDatasets,
     sortFieldNames: sortFieldNames,
     sortFieldValueNames: sortFieldValueNames,
+    getPrecision: getPrecision,
+    getGraphLimits: getGraphLimits,
+    getGraphAnnotations: getGraphAnnotations,
+    getColumnsFromData: getColumnsFromData,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),
   }

@@ -38,7 +38,7 @@ Chart.plugins.register({
             $(this.chart.canvas)
                 .attr('role', 'application')
                 .attr('aria-describedby', 'chart-keyboard ' + describedBy)
-                .text('Chart. ' + keyboardInstructions)
+                .html('<span class="hide-during-image-download">Chart. ' + keyboardInstructions + '</span>')
         }
     },
     afterDatasetsDraw: function() {

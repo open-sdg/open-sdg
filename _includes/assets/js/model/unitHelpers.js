@@ -6,8 +6,8 @@
  * @param {Array} rows
  * @return {boolean}
  */
-function dataHasUnits(rows) {
-  return dataHasColumn(UNIT_COLUMN, rows);
+function dataHasUnits(columns) {
+  return columns.includes(UNIT_COLUMN);
 }
 
 /**
@@ -15,8 +15,8 @@ function dataHasUnits(rows) {
  * @return {boolean}
  */
 function dataHasUnitSpecificFields(fieldsUsedByUnit) {
-  return !_.every(_.pluck(fieldsUsedByUnit, 'fields'), function(fields) {
-    return _.isEqual(_.sortBy(_.pluck(fieldsUsedByUnit, 'fields')[0]), _.sortBy(fields));
+  return !_.every(_.map(fieldsUsedByUnit, 'fields'), function(fields) {
+    return _.isEqual(_.sortBy(_.map(fieldsUsedByUnit, 'fields')[0]), _.sortBy(fields));
   });
 }
 
@@ -25,8 +25,8 @@ function dataHasUnitSpecificFields(fieldsUsedByUnit) {
  * @param {Array} rows
  * @return {Array} Field names
  */
-function fieldsUsedByUnit(units, rows) {
-  var fields = getFieldColumnsFromData(rows);
+function fieldsUsedByUnit(units, rows, columns) {
+  var fields = getFieldColumnsFromData(columns);
   return units.map(function(unit) {
     return {
       unit: unit,

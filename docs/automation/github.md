@@ -14,5 +14,3 @@ The procedure is the same for both the site repository and the data repository:
 1. Under "Status checks found in the last week for this repository" check the appropriate box.
 
 The last step above depends on your choice of automation service, but that is where you tell GitHub that some tests need to pass. Perform the steps above for both the site repository and the data repository.
-
-Note that if you used the [Quick start](../quick-start.md) then you have already performed these steps.

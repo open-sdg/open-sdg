@@ -28,7 +28,7 @@ Feature: Indicator
     And I click on "the National metadata tab"
     Then I should see "Indicator description"
     And I click on "the Sources metadata tab"
-    And I should see "My organisation"
+    And I should see "My first organisation with a long title"
 
   Scenario: The metadata tab titles and blurbs can both be configured
     Then I should see "My national metadata title"
@@ -54,7 +54,7 @@ Feature: Indicator
     Then I should see "This is the page content in English."
 
   Scenario: Indicators can show certain metadata fields beneath the table, chart, and map
-    Then I should see "My organisation"
+    Then I should see "My first organisation with a long title"
     And I should see a "chart footer" element
     And I should see 5 "chart footer item" elements
     And I click on "the Table tab"

@@ -8,6 +8,34 @@ Metadata values can either be filled in with normal text ("My field value") or w
 
 As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
 
+## Note about unit-specific and series-specific settings
+
+Several indicator settings can be limited to a particular Unit and/or Series. For example, the `graph_titles` setting can be configured like this:
+
+```
+graph_titles:
+  - unit: Percent
+    title: My title for percent
+  - unit: Total
+    title: My title for total
+```
+
+In addition to graph_titles, the other fields like this include:
+
+* graph_annotations
+* graph_limits
+* precision
+
+These fields are described below. Note that if a unit/series is not specified, then the item will apply to any unit/series. For example:
+
+```
+graph_titles:
+  - series: SERIES123
+    title: This title will appear for SERIES123 only
+  - series: ''
+    title: This title will appear for all other series
+```
+
 ## Mandatory fields
 
 The following fields are required on all indicators:
@@ -131,6 +159,16 @@ data_start_values:
 
 ...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
 
+## Composite Breakdown label
+
+When importing data from SDMX it is common for disaggregations to be in COMPOSITE_BREAKDOWN. This is not particularly informative to the user, so it is possible to specify a more useful label for this particular data column. Whatever is specified here will be used as a label for the COMPOSITE_BREAKDOWN column, if it appears in the indicator data. Translation keys are supported, as always.
+
+The example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
+
+```nohighlight
+composite_breakdown_label: Hazard type
+```
+
 ## Graph Metadata
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
@@ -190,6 +228,27 @@ The following fields affect the display of graphs. Currently only longitudinal g
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
 
+## Precision
+
+Normally trailing zeroes are removed from decimals before being displayed. For example, "23.60" will be displayed as "23.6". If you would like to force a particular number of decimal places, you can use the `precision` field. The following would force values to have 2 decimals places:
+
+```
+precision:
+  - decimals: 2
+```
+
+For example, with the configuration above, "23.60" would actually display as "23.60". Along the same lines, "23" would display as "23.00".
+
+You can also specify multiple precisions, and each one can apply to a particular unit and/or series. Here is an example if you want to force a precision of 2 on "percentage" units, and a precision of 1 on "total" units:
+
+```
+precision:
+  - unit: percentage
+    decimals: 2
+  - unit: total
+    decimals: 1
+```
+
 ## Footer
 
 The following fields will appear on indicator pages below the graph and the table.
@@ -245,6 +304,28 @@ You may want to display some very important information which site viewers must 
     * warning (amber)
     * danger (red)
 
+## Standalone indicators
+
+If you would like to post statistical indicators that are not part of the SDGs (such as Covid-19 data) then you can set the indicators to be `standalone`. This prevents the indicator from appearing as part of a goal, and keeps the indicator off the reporting status, disaggregation status, and other disaggregation reports.
+
+In this case you may also want to control the URL of the indicator. You can do this with the `permalink` metadata field. This does not require any preceding/trailing slashes.
+
+Here is an example of using `standalone` and `permalink` in a YAML metadata structure:
+
+```
+standalone: true
+permalink: my-custom-indicator-path
+```
+
+## Sorting in lists
+
+The order in which indicators are displayed in lists is determined behind the scenes, according to the indicator number. This is done by automatically converting the indicator number to a string which sorts correctly when alphabetized. (For example, indicator 1.2.1 gets sorted as '010201'.) However you can override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator. For example:
+
+```
+# Ensure this indicator appears at the end of goal 1, target 2.
+sort: 0102zz
+```
+
 ## Schema
 
 The actual fields available on each indicator is fully configurable by editing the `_prose.yml` file in your data repository. For a full list of fields available out-of-the-box in the starter repository, see the [starter repository's `_prose.yml` file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml). This file also serves to control the behavior of the Prose.io service, which is the usual way that metadata is edited. (For technical information about Prose.io schema, see [the official Prose.io documentation](https://github.com/prose/prose/wiki/Prose-Configuration).)
@@ -294,7 +375,6 @@ The following keys cannot be used as metadata fields, because they are used for 
 * language
 * name
 * number
-* sort
 * global
 * url
 * goal_number

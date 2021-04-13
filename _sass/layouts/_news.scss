@@ -1,35 +1,23 @@
-.post-categories {
-  @include tags;
-  li {
-    a {
-      color: $color-dark;
-    }
-  }
-}
+.layout-news {
+  .post-listing {
+    clear: both;
 
-.post-title {
-  margin-top: 0;
-}
-
-.newslist{
-  article {
-    p {
-      margin: 0;
-
-      &:first {
-        font-size: 90%;
+    .post-categories {
+      list-style-type: none;
+      li {
+        display: inline-block;
+        margin-right: 20px;
       }
     }
 
-    h5 {
-      margin: 3px 0;
-      font-size: 120%;
+    .post-title {
+      font-size: $fontSize;
+      margin-bottom: 7px !important;
     }
 
-    time {
-      margin: 0;
+    .post-date {
+      float: left;
+      margin-right: 40px;
     }
-
-    margin-bottom: 20px;
   }
 }

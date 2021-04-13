@@ -1,55 +1,70 @@
 {% include head.html noindex=true %}
 {% include header.html %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css" integrity="sha512-lB03MbtC3LxImQ+BKnZIyvVHTQ8SSmQ15AhVh5U/+CCp4wKtZMvgLGXbZIjIBBbnKsmk3/6n2vcF8a9CtVVSfA==" crossorigin="anonymous" />
 <div id="main-content" class="container" role="main">
   <div class="col-md-12"><h1>{{ page.title }}</h1></div>
   <div class="config-widgets col-md-12">
     <div class="col-md-6" id="search_holder">
       <label for="config-search">Filter settings</label>
       <input id="config-search" />
+      <input id="config-search-button" type="button" value="Filter">
+      <input id="config-reset-button" type="button" value="Reset">
     </div>
     <div class="col-md-6" id="button_holder"><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
   </div>
-  <div class="col-md-12" id="no_results" style="display:none" role="status">
-    There are no settings that match those keywords.
-  </div>
+  <div class="col-md-12" id="results-status" role="status"></div>
   <div class="col-md-12" id="editor_holder"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js" integrity="sha512-ksSfTk6JIdsze75yZ8c+yDVLu09SNefa9IicxEE+HZvWo9kLPY1vrRlmucEMHQReWmEdKqusQWaDMpkTb3M2ug==" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
-  <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
   <script>
 
     // Dynamic filtering functionality.
     var configSearch = document.getElementById('config-search');
+    var configSearchButton = document.getElementById('config-search-button');
+    var configResetButton = document.getElementById('config-reset-button');
+    var resultsStatus = document.getElementById('results-status');
     var itemSelector = 'div[data-schemapath="root"] > .well > div > div > .row';
+    configSearchButton.addEventListener('click', performSearch);
     configSearch.addEventListener('keyup', function(e) {
-      var keywords = this.value.toLowerCase();
-      if (keywords.length > 2) {
+      if (e.key === "Enter") {
+        performSearch();
+      }
+    });
+    configResetButton.addEventListener('click', resetSearch);
+    function performSearch() {
+      var keywords = configSearch.value.toLowerCase();
+      var numResults = 0;
+      if (keywords.length > 0) {
         var noMatches = true;
         $(itemSelector).each(function(item) {
           var title = $(this).find('label').first().text().toLowerCase();
           if (title.includes(keywords)) {
             noMatches = false;
             $(this).show();
+            numResults += 1;
           }
           else {
             $(this).hide();
           }
         });
         if (noMatches) {
-          $('#no_results').show();
+          $(resultsStatus).text('There are no settings that match those keywords.');
         }
         else {
-          $('#no_results').hide();
+          var settingsText = (numResults > 1) ? 'settings' : 'setting';
+          $(resultsStatus).text(numResults + ' matching ' + settingsText + ' found.');
         }
       }
       else {
-        $(itemSelector).show();
-        $('#no_results').hide();
+        resetSearch();
       }
-    });
+    };
+    function resetSearch() {
+      configSearch.value = '';
+      $(resultsStatus).text('');
+      $(itemSelector).show();
+    }
 
     {% if page.config_type == 'site' %}
       {% assign json_schema = site.data.schema-site-config %}
@@ -65,7 +80,7 @@
           if (schema.properties.{{ dropdown.jsonschema }}) {
             schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
             schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
-            {% if choices.labels %}
+            {% if dropdown.labels %}
               schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
               schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
             {% endif %}
@@ -73,6 +88,50 @@
         {% endfor %}
       {% endif %}
     {% endif %}
+
+    function normalizeCurrentValue(key, value) {
+      // @deprecated start
+      if (key == 'create_pages' && value && value.pages) {
+        return value.pages;
+      }
+      if (key == 'date_formats' && value && !Array.isArray(value)) {
+        var date_formats = [];
+        Object.keys(value).forEach(function(type) {
+          Object.keys(value[type]).forEach(function(language) {
+            date_formats.push({
+              type: type,
+              language: language,
+              format: value[type][language],
+            });
+          })
+        });
+        return date_formats;
+      }
+      if (key == 'languages_public' && value && !Array.isArray(value)) {
+        var languages_public = [];
+        Object.keys(value).forEach(function(language) {
+          languages_public.push({
+            language: language,
+            language_public: value[language],
+          });
+        });
+        return languages_public;
+      }
+      // @deprecated end
+      return value;
+    }
+
+    // Change the theme to create div instead of H3 elements for headers.
+    JSONEditor.defaults.themes.bootstrap3.prototype.getHeader = function(text) {
+      var el = document.createElement('div')
+      if (typeof text === 'string') {
+        el.textContent = text;
+      } else {
+        el.appendChild(text);
+      }
+      el.classList.add('je-header');
+      return el;
+    }
 
     var editor = new JSONEditor(document.getElementById('editor_holder'), {
       theme: 'bootstrap3',
@@ -106,7 +165,9 @@
         // Variety of accessibility fixes.
         switch (propertyEditor.schema.type) {
           case 'string':
+          case 'integer':
           case 'boolean':
+          case 'number':
             propertyEditor.input.setAttribute('id', propertyEditor.formname);
             propertyEditor.label.setAttribute('for', propertyEditor.formname);
             if (typeof propertyEditor.description !== 'undefined') {
@@ -134,8 +195,15 @@
               }
             }
             if (typeof propertyEditor.editors !== 'undefined') {
-              for (var editorKey of Object.keys(propertyEditor.editors)) {
+              var editorKeys = Object.keys(propertyEditor.editors);
+              for (var i = 0; i < editorKeys.length; i++) {
+                var editorKey = editorKeys[i];
                 propertyEditorAccessibilityFixes(propertyEditor.editors[editorKey]);
+              }
+            }
+            if (typeof propertyEditor.rows !== 'undefined') {
+              for (var i = 0; i < propertyEditor.rows.length; i++) {
+                propertyEditorAccessibilityFixes(propertyEditor.rows[i]);
               }
             }
             break;
@@ -157,7 +225,7 @@
     {%- endif -%}
     {% if current_value %}
       try {
-        var currentValue = {{ current_value | jsonify }};
+        var currentValue = normalizeCurrentValue('{{ config_key }}', {{ current_value | jsonify }});
         var propertyEditor = editor.getEditor('root.{{ config_key }}');
         propertyEditor.setValue(null);
         propertyEditor.setValue(currentValue);
@@ -202,7 +270,8 @@
       if (errors.length) {
         var alertText = 'Please correct the errors listed below';
         var fieldNames = []
-        for (var error of errors) {
+        for (i = 0; i < errors.length; i++) {
+          var error = errors[i];
           fieldNames.push(error.path.replace('root.', ''));
         }
         alert(alertText + ' (' + fieldNames.join(', ') + ').');
@@ -212,6 +281,16 @@
         var yaml = jsyaml.safeDump(config);
         SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
       }
+    });
+
+    function addNewTabMessage(link) {
+      if (!link.querySelector('.sr-only')) {
+        link.insertAdjacentHTML('beforeend', ' <span>(opens in a new tab)</span>');
+      }
+    }
+
+    document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+      addNewTabMessage(link);
     });
   </script>
 </div>

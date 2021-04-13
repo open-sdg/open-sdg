@@ -107,11 +107,28 @@ var accessibilitySwitcher = function() {
 
 
   function imageFix(contrast) {
+    var doNotSwitchTheseSuffixes = ['.svg'];
+    var doNotSwitchThesePrefixes = ['https://platform-cdn.sharethis.com/'];
     if (contrast == 'high')  {
-      _.each($('img:not([src*=high-contrast])'), function(goalImage){
-        if ($(goalImage).attr('src').slice(0, 35) != "https://platform-cdn.sharethis.com/") {
-        $(goalImage).attr('src', $(goalImage).attr('src').replace('img/', 'img/high-contrast/'));
-        }})
+      _.each($('img:not([src*=high-contrast])'), function(image) {
+        var src = $(image).attr('src').toLowerCase();
+        var switchThisImage = true;
+        for (var i = 0; i < doNotSwitchTheseSuffixes.length; i++) {
+          var suffix = doNotSwitchTheseSuffixes[i];
+          if (src.slice(0 - suffix.length) === suffix) {
+            switchThisImage = false;
+          }
+        }
+        for (var i = 0; i < doNotSwitchThesePrefixes.length; i++) {
+          var prefix = doNotSwitchThesePrefixes[i];
+          if (src.slice(0, prefix.length) === prefix) {
+            switchThisImage = false;
+          }
+        }
+        if (switchThisImage) {
+          $(image).attr('src', $(image).attr('src').replace('img/', 'img/high-contrast/'));
+        }
+      });
     } else {
       // Remove high-contrast
       _.each($('img[src*=high-contrast]'), function(goalImage){
