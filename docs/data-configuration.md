@@ -4,6 +4,40 @@ Typically an Open SDG implementation is split into a [site repository](glossary.
 
 > To see many of these options in action, the [data starter repository](https://github.com/open-sdg/open-sdg-data-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/data_config.yml).
 
+### csvw
+
+This optional setting will generate CSVW output. It supports the parameters from `datapackage`, as well as the following:
+
+* `common_properties`: Optional dict of common properties to add to the CSVW metadata. For a list of support properties see [common properties](https://w3c.github.io/csvw/metadata/#common-properties). Note that this can also be set per-indicator in a "csvw" metadata property.
+* `at_properties`: Optional dict of "at" properties (those starting with @). Note that this can also be set per-indicator in a "csvw" metadata property.
+* `table_schema_properties`: Optional dict of properties to add to the CSVW table schema. Note that this can also be set per-indicator in a "csvw" metadata property.
+* `column_properties`: Optional dict of dicts of properties to add to the CSVW columns, keyed by column name. Note that this can also be set per-indicator in a "csvw" metadata property.
+
+For more details on these parameters, see the [OutputDataPackage class](https://github.com/open-sdg/sdg-build/blob/1.4.0-dev/sdg/outputs/OutputCsvw.py).
+
+### data_schema
+
+This option is needed to enable [data schemas](data-schema.md). This should be include the name of the class to use, as well as any parameters. Here is the recommended configuration for using data schemas, as described in the documentation linked above:
+
+```
+data_schema:
+  class: DataSchemaInputTableSchemaYaml
+  source: data-schema/*.yml
+```
+
+### datapackage
+
+This option controls some of the behavior of the datapackage output. The available parameters are:
+
+* `sorting`: Either "alphabetical" or "default". This specifies the fallback sorting logic, for any indicators that do not have a data schema. If ommitted, this will default to "alphabetical".
+    * `alphabetical`: This will sort the fields and field values alphabetically, by their untranslated value.
+    * `default`: This will sort the fields and field values by their position in the source data.
+* `package_properties`: Common properties to add to all the data packages. Note that this can also be set per-indicator in a "datapackage" metadata property.
+* `resource_properties`: Common properties to add to the resource in all data packages. Note that this can also be set per-indicator in a "datapackage" metadata property.
+* `field_properties`: Properties to add to specific fields, keyed by field name. Note that this can also be set per-indicator in a "datapackage" metadata property.
+
+For more details on these parameters, see the [OutputDataPackage class](https://github.com/open-sdg/sdg-build/blob/1.4.0-dev/sdg/outputs/OutputDataPackage.py).
+
 ### docs_branding
 
 The data repository will automatically generate a website which summarizes the available endpoints in your build. The `docs_*` settings affect how that website is built.
