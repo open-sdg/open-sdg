@@ -2,6 +2,8 @@
 
 ## Not released
 
+* New date-only Git-based metadata fields open-sdg/sdg-build#244
+* Metadata fields containing "_date" will be formatted as dates #1175
 * Darker color for main nav #1142
 * Move goal header to include file #1128
 
