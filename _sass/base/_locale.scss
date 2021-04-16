@@ -1,0 +1,20 @@
+/**
+ * CSS rules specific to certain languages.
+ */
+
+// Right-to-left for certain languages. This list of languages
+// may need tweaking over time.
+.language-ar {
+    direction: rtl;
+}
+
+// Line-breaks for certain languages. This list of selectors
+// (and languages) may need tweaking over time.
+.language-km {
+    #page-content,
+    #toolbar,
+    #national,
+    #global {
+        line-break: anywhere;
+    }
+}
