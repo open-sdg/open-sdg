@@ -99,9 +99,7 @@ body.contrast-high {
   iframe:focus,
   input:focus,
   button:focus {
-    color: $focusColor-highContrast !important;
-    background-color: $focusBackgroundColor-highContrast !important;
-    box-shadow: 0 -2px $focusOutlineColor-highContrast,0 4px $focusColor-highContrast !important;
+    @include focusHighContrast;
   }
 }
 input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus,
@@ -111,15 +109,16 @@ input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
 .tabPanel:focus,
 input[type="text"]:focus,
 body.contrast-high input[type="text"]:focus,
+.variable-selector button.accessBtn:focus,
 div[tabindex]:focus {
-  background-color: $backgroundColor !important;
-  box-shadow: none !important;
-  outline: 3px solid $focusOutlineColor !important;
+  @include focusOutlineOnly;
 }
-
+body.contrast-high .variable-selector button.accessBtn:focus {
+  @include focusOutlineOnlyHighContrast;
+  &, span {
+    color: $text-color-highContrast !important;
+  }
+}
 body.contrast-high div[tabindex]:focus {
-  background-color: $color-dark-highContrast !important;
-  box-shadow: none !important;
-  outline: 3px solid $focusOutlineColor-highContrast !important;
-  color: $text-color-highContrast !important;
+  @include focusOutlineOnlyHighContrast;
 }
