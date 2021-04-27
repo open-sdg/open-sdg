@@ -161,6 +161,7 @@ indicator_metadata_form:
     - national_data_update_url_text
     - national_metadata_update_url
     - national_metadata_update_url_text
+  translated: true
 languages:
   - en
   - es

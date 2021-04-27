@@ -511,6 +511,7 @@ _Optional_: This setting controls the behavior of the indicator metadata forms. 
 
 * `scopes`: A list of the "scopes" that you would like to include in the form. If let blank, this will default to "national" and "global".
 * `exclude_fields`: A list of the fields that you would like to omit from the form.
+* `translated`: This setting is only for multilingual implementations that are using the "subfolder approach" for multilingual metadata. When this option is enabled, the contents of the metadata forms are translated (based on the current language), to allow you to save different files for each language. If you are not using the "subfolder approach" for multilingual metadata (or you don't know what that is) then you can safely leave this disabled.
 
 For example:
 
@@ -522,6 +523,7 @@ indicator_metadata_form:
     - global
   exclude_fields:
     - my_excluded_field_name
+  translated: false
 ```
 
 Links to the forms appear in the "Edit" tab on indicator pages.
