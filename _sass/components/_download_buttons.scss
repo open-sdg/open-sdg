@@ -13,8 +13,11 @@
   border-radius: 0;
   position: relative;
 
-  &:hover, &:active {
+  &:active {
     background: $button-color-pressed !important;
+  }
+  &:hover {
+    background: $button-color-hover !important;
   }
   &:visited {
     color: $button-foregroundColor-visited !important;
@@ -81,9 +84,11 @@ h5 + .btn-download {
 }
 
 body.contrast-high {
-  .btn { background: $color-light-highContrast !important; color: $color-dark-highContrast !important;
+  .btn {
+    background: $button-color-highContrast !important;
+    color: $color-dark-highContrast !important;
     &:hover {
-      background: $color-highlight-highContrast !important;
+      background: $button-color-hover-highContrast !important;
     }
     &:focus {
       background: $focusBackgroundColor-highContrast !important;
