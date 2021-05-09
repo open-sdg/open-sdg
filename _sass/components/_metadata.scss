@@ -1,8 +1,8 @@
 #global {
-    td > h1:first-child {
+    td > h1:first-of-type {
         display: none;
     }
-    td > h2:first-child {
+    td > h2:first-of-type {
         margin-top: 0;
     }
 }
