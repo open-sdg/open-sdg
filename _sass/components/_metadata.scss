@@ -2,4 +2,7 @@
     td > h1:first-child {
         display: none;
     }
+    td > h2:first-child {
+        margin-top: 0;
+    }
 }
