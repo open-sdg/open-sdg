@@ -5,4 +5,8 @@
     td > h2:first-of-type {
         display: none;
     }
+    td > h2 {
+        font-size: inherit;
+        font-weight: bold;
+    }
 }
