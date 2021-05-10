@@ -1,4 +1,257 @@
-<h1>Metadata format</h1>
+<<h1>Metadata format</h1>
+
+In your [data repository](glossary.md#data-repository) the metadata is maintained on an indicator-by-indicator basis. This metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml) (see the "Schema" section below) in your data repository. However, by default the metadata fields are based on SDG SDMX detailed metadata concepts and the template metadata file in the data starter is based on these fields.
+
+Alternatively, you can use the SDG SDMX main metadata concepts, which are a level above the detailed concepts and encapsulate many fields under one heading. A template for the main concepts is available.
+
+Note: You should use either the detailed metadata concepts or main metadata concepts, not both or a combination. 
+
+It is recommended that one version of the SDMX SDG metadata concepts is used as they follow the format that is requested by the UN and allows metadata to compared.
+
+Note: Due to the large number of metadata fields with some maybe not being applicable, empty metadata fields are hidden by default using `hide_empty_metadata: true` in the site configuration file. If you want metdata fields to show regardless, you should change this option to false. For more information about this configuration setting see the [hide_empty_metadata configuration option documentation](https://open-sdg.readthedocs.io/en/latest/configuration/#hide_empty_metadata).
+
+The default fields are listed below along with the UN-defined definition:
+
+## 0. Indicator information
+
+### 0.a. Goal: 
+
+SDG Goal number and name.
+
+`SDG_GOAL`
+
+### 0.b. Target:
+
+SDG Target number and name.
+
+`SDG_TARGET`
+
+### 0.c. Indicator:
+
+SDG Indicator number and name.
+
+`SDG_INDICATOR`
+
+### 0.d. Series:
+
+Description of SDG data series.
+
+`SDG_SERIES_DESCR`
+
+### 0.e. Metadata update:
+
+The date when this metadata report was last updated.
+
+`META_LAST_UPDATE`
+
+### 0.f. Related indicators:
+
+Linkages with any other Goals and Targets.
+
+`SDG_RELATED_INDICATORS`
+
+### 0.g. International organisations(s) responsible for global monitoring:
+
+Global reporting: International organizations (departments/offices) responsible for monitoring this indicator at the global level.
+Country reporting: This concept has no national counterpart.
+
+`SDG_CUSTODIAN_AGENCIES`
+
+## 1. Data reporter
+
+### 1.a. Organisation:
+
+Organisation unit information of the contact points for the data or metadata.
+
+`CONTACT_ORGANISATION`
+
+### 1.b. Contact person(s):
+
+Name of the contact points for the data or metadata.
+
+`CONTACT_NAME`
+
+### 1.c. Contact organisation unit
+
+
+
+`ORGANISATION_UNIT`
+
+### 1.d. Contact person function:
+
+Functional title(s) of the contact points for the data or metadata.
+
+`CONTACT_FUNCT`
+
+### 1.e. Contact phone:
+
+Phone number(s) of the contact points for the data or metadata.
+
+`CONTACT_PHONE`
+
+### 1.f. Contact mail:
+
+Mailing address(es) of the contact points for the data or metadata.
+
+`CONTACT_MAIL`
+
+### 1.g. Contact emails:
+
+E-mail address(es) of the contact points for the data or metadata.
+
+`CONTACT_EMAIL`
+
+## 2. Definition, concepts and classifications
+
+### 2.a. Definition and concepts:
+
+Precise definition of the indicator preferably relying on internationally agreed definitions. The indicator definition should be unambiguous and be expressed in universally applicable terms. Precise definition of all different concepts and terms associated with the indicator, also including reference to any associated classifications.
+
+`STAT_CONC_DEF`
+
+### 2.b. Unit of measure:
+
+Description of the unit of measurement (proportion, dollars, number of people, etc.)
+
+`UNIT_MEASURE`
+
+### 2.c. Classifications:
+
+Describe references to both national and international standards and classification being used.
+
+`CLASS_SYSTEM`
+
+## 3. Data source type and data collection method
+
+### 3.a. Data sources:
+
+Description of all actual and recommended sources of data. This description should include, when applicable, any changes of the data source over time, details of denominator (if from a different source) and any other relevant information related to the origin of the source or indicator. Similar details should be given for administrative sources.
+
+`SOURCE_TYPE`
+
+### 3.b. Data collection method:
+
+Description of all methods used for data collection. This description should include, when applicable, the sample frame used, the questions used to collect the data, the type of interview, the dates/duration of fieldwork, the sample size and the response rate. Some additional information on questionnaire design and testing, interviewer training, methods used to monitor non-response etc. should be provided here. Questionnaires used should be annexed (if very long: via hyperlink). 	
+
+`COLL_METHOD:`
+
+### 3.c. Data collection calendar:
+
+Dates when source collection is next planned.
+
+`FREQ_COLL`
+
+### 3.d. Data release calendar:
+
+Expected dates of release of new data for this indicator, including the year (or, ideally, the quarter/month when the next data point associated with the indicator will become available).
+
+`REL_CAL_POLICY`
+
+### 3.e. Data providers:
+
+Identification of national and/or international data provider(s), specifying the organization(s) responsible for producing the data.
+
+`DATA_SOURCE`
+
+### 3.f. Data compilers:
+
+Organization(s) responsible for compilation of this indicator either at national or global level.
+
+`COMPILING_ORG`
+
+### 3.g. Institutional mandate:
+
+Description of the set of rules or other formal set of instructions assigning responsibility as well as the authority to an organisation for the collection, processing, and dissemination of statistics for this indicator.
+
+`INST_MANDATE`
+
+## 4. Other methodological considerations
+
+### 4.a. Rationale:
+
+Description of the purpose and rationale behind the indicator, as well as examples and guidance on its correct interpretation and meaning.
+
+`RATIONALE`
+
+### 4.b. Comment and limitations:
+
+Comments on the feasibility, suitability, relevance and limitations of the indicator. Also includes data comparability issues, presence of wide confidence intervals (such as for maternal mortality ratios); provides further details on additional non-official indicators commonly used together with the indicator.
+
+`REC_USE_LIM`
+
+### 4.c. Method of computation:
+
+Explanation of how the indicator is calculated, including mathematical formulas and descriptive information of computations made on the source data to produce the indicator (including adjustments and weighting). This explanation should also highlight cases in which mixed sources are used or where the calculation has changed over time (i.e., discontinuities in the series).
+
+`DATA_COMP`
+
+### 4.d. Validation:
+
+Description of process of monitoring the results of data compilation and ensuring the quality of the statistical results, including consultation process with countries on the national data submitted to the SDGs Indicators Database. Descriptions and links to all relevant reference materials should be provided.
+
+`DATA_VALIDATION`
+
+### 4.e. Adjustments:
+Global reporting: Description of any adjustments with respect to use of standard classifications and harmonization of breakdowns for age group and other dimensions, or adjustments made for compliance with specific international or national definitions.
+National reporting:  This concept is typically not applicable for national reporting.
+
+`ADJUSTMENT`
+
+### 4.f. Treatment of missing values (i) at country level and (ii) at regional level:
+Global reporting: (National level) Description of the methodology employed for producing estimates for the indicator when country data are not available, including any mathematical formulas and description of additional variables used as input into the estimation process. (Regional level) Description of how missing values for individual countries or areas are imputed or otherwise estimated by international agencies to derive regional or global aggregates of the indicator.
+National reporting: This concept is not applicable for national reporting.
+
+`IMPUTATION`
+
+### 4.g. Regional aggregations:
+Global reporting: Description of the methodology, including any mathematical formulas, used for the calculation of the regional/global aggregates from the country values. Description of the weighting structure used for aggregating country indicator values to regional and global levels. Additional methodological details on how the data from countries or areas is assembled by custodian international agencies to provide regional and global aggregates. This is distinct from the method of computation, which looks at how the indicator is compiled at a national level.
+National reporting: This concept is not applicable for national reporting.
+
+`REG_AGG`
+
+### 4.h. Methods and guidance available to countries for the compilation of the data at the national level:
+Global reporting: Description of methodology used by countries for the compilation of data at national level and the relevant international recommendations and guidelines available to countries. Descriptions and links to all relevant reference materials should be provided.
+National reporting: For national reporting a country may refer to the globally available metadata and explain how it is being used.
+
+`DOC_METHOD`
+
+### 4.i. Quality management:
+
+Description of systems and frameworks in place within an organisation to manage the quality of statistical products and processes.
+
+`QUALITY_MGMNT`
+
+### 4.j Quality assurance:
+Description of practices and guidelines focusing on quality in general and dealing with quality of statistical programmes at your agency, including measures for ensuring the efficient use of resources.
+
+`QUALITY_ASSURE`
+
+### 4.k Quality assessment:
+
+Description of overall evaluation of fulfilling quality requirements, based on standard quality criteria.
+
+`QUALITY_ASSMNT`
+
+
+Note: There are only main concepts for 5, 6 and 7 so they should be used even if you are using the detailed concepts elsewhere
+
+## 5. Data availability and disaggregation
+Global reporting: Indicate for how many countries the data for this indicator are already currently available on a regular basis. Data availability by regional breakdowns and time periods can also be descibed here. Describe the specification of the dimensions and levels used for disaggregation of the indicator (e.g., income, sex, age group, geographic location, disability status, etc.).
+National reporting: Data availability by sub-national breakdowns and time periods can be descibed here. Describe the specification of the dimensions and levels used for disaggregation of the indicator (e.g., income, sex, age group, geographic location, disability status, etc.).
+
+`COVERAGE`
+
+## 6. Comparability/deviation from international standards
+
+Explanation on the differences between country produced and internationally estimated data on this indicator, highlighting and summarising the main sources of differences.
+
+`COMPARABILITY`
+
+## 7. References and documentation
+
+Descriptions and links to all relevant reference materials related to this indicator.
+
+`OTHER_DOC`h1>Metadata format</h1>
 
 In your [data repository](glossary.md#data-repository) the metadata is maintained on an indicator-by-indicator basis. This metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml) (see the "Schema" section below) in your data repository. Some fields, however, are mandatory and/or have specific uses in Open SDG. This page details those fields.
 
