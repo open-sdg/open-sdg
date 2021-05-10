@@ -11,7 +11,9 @@
     {% endif %}
   </div>
   <div class="editor-wrapper col-md-12">
-    <div id="editor-holder"></div>
+    <div id="editor-holder">
+      <button id="hot-activator"></button>
+    </div>
   </div>
 
   <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
@@ -38,7 +40,9 @@
       if (httpRequest.status === 200) {
         var csvString = httpRequest.responseText;
         var csvData = Papa.parse(csvString);
-        hot = new Handsontable(document.getElementById('editor-holder'), {
+        var container = document.getElementById('editor-holder');
+        var activator = document.getElementById('hot-activator');
+        hot = new Handsontable(container, {
           data: csvData.data,
           rowHeaders: true,
           colHeaders: false,
@@ -47,8 +51,37 @@
           contextMenu: true,
           autoWrapCol: false,
           fixedRowsTop: 1,
-          persistentState: true,
+          beforeKeyDown: function(event) {
+            // Only consider TAB key when HOT is listening.
+            if (event.keyCode !== 9 || !this.isListening()) {
+              return;
+            }
+            var sel = this.getSelected();
+            var lastRow = this.countRows() - 1;
+            var lastCol = this.countCols() - 1;
+            var selectedRow = sel[0][0];
+            var selectedCol = sel[0][1];
+
+            if ((!event.shiftKey && selectedRow === lastRow && selectedCol === lastCol) ||
+                (event.shiftKey && selectedRow === 0 && selectedCol === 0)) {
+
+              activator.focus();
+              this.unlisten();
+              this.deselectCell();
+            }
+          },
           licenseKey: 'non-commercial-and-evaluation',
+        });
+        activator.addEventListener('focus', function(event) {
+          // Only do when HOT is not listening.
+          if (hot.isListening()) {
+            return;
+          }
+          // Hacky way to select the first cell.
+          hot.selectCell(0, 0);
+          setTimeout(function() {
+            hot.getActiveEditor().finishEditing();
+          }, 0);
         });
       } else {
         alert('There was a problem when loading the data. Please edit the data in some other way (such as in Github).');
