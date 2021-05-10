@@ -148,6 +148,9 @@ indicator_config_form:
         - Complete
   repository_link: 'https://example.com'
   translation_link: ''
+indicator_data_form:
+  enabled: true
+  repository_link: 'https://example.com'
 indicator_metadata_form:
   enabled: true
   dropdowns: []

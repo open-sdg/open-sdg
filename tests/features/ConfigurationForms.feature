@@ -21,3 +21,8 @@ Feature: Configuration forms
     Given I click on "the Edit tab"
     And I follow "Edit Metadata"
     Then I should see "Edit Metadata: 1.1.1"
+
+  Scenario: The indicator data is available on a configuration form
+    Given I click on "the Edit tab"
+    And I follow "Edit Data"
+    Then I should see "Edit Data: 1.1.1"

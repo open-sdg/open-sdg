@@ -1,0 +1,67 @@
+{% include head.html noindex=true %}
+{% include header.html %}
+<div id="main-content" class="container" role="main">
+  <div class="col-md-12"><h1>{{ page.title }}</h1></div>
+  <div class="col-md-12">
+    <button class="btn btn-primary btn-download" id="export">Download data</button>
+    {% if page.form_settings.repository_link and page.form_settings.repository_link != '' %}
+    <a class="btn btn-primary btn-download" target="_blank" href="{{ page.form_settings.repository_link }}">
+      Go to repository
+    </a>
+    {% endif %}
+  </div>
+  <div class="editor-wrapper col-md-12">
+    <div id="editor-holder"></div>
+  </div>
+
+  <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handsontable@8.3.2/dist/handsontable.full.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@8.3.2/dist/handsontable.full.min.css">
+
+  <script>
+  var httpRequest;
+  var hot;
+  function makeRequest() {
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = displaySpreadsheet;
+    httpRequest.open('GET', '{{ page.remote_data_prefix_untranslated }}/data/{{ page.indicator_number }}.csv');
+    httpRequest.send();
+  }
+
+  function displaySpreadsheet() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        var csvString = httpRequest.responseText;
+        var csvData = Papa.parse(csvString);
+        hot = new Handsontable(document.getElementById('editor-holder'), {
+          data: csvData.data,
+          rowHeaders: true,
+          colHeaders: false,
+          filters: false,
+          dropdownMenu: true,
+          contextMenu: true,
+          autoWrapCol: false,
+          fixedRowsTop: 1,
+          persistentState: true,
+          licenseKey: 'non-commercial-and-evaluation',
+        });
+      } else {
+        alert('There was a problem when loading the data. Please edit the data in some other way (such as in Github).');
+      }
+    }
+  }
+
+  makeRequest();
+
+  document.getElementById('export').onclick = function () {
+      var exportPlugin = hot.getPlugin('exportFile');
+      exportPlugin.downloadFile('csv', {filename: '{{ page.config_filename }}'});
+  }
+  </script>
+</div>
+{% include footer.html %}
