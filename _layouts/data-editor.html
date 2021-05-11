@@ -1,17 +1,32 @@
 {% include head.html noindex=true %}
 {% include header.html %}
 <div id="main-content" class="container" role="main">
-  <div class="col-md-12"><h1>{{ page.title }}</h1></div>
-  <div class="col-md-12">
-    <button class="btn btn-primary btn-download" id="export">Download data</button>
-    {% if page.form_settings.repository_link and page.form_settings.repository_link != '' %}
-    <a class="btn btn-primary btn-download" target="_blank" href="{{ page.form_settings.repository_link }}">
-      Go to repository
-    </a>
-    {% endif %}
+  <div class="row no-gutters">
+    <div class="col-md-12"><h1>{{ page.title }}</h1></div>
   </div>
-  <div class="editor-wrapper col-md-12">
-    <div id="editor-holder" style="height: 900px; width: 100%;" class="ag-theme-alpine"></div>
+  <div class="col-md-12 config-widgets">
+    <div class="col-md-6 data-grid-buttons">
+      <label for="add-column-name">Column name</label>
+      <input id="add-column-name" />
+      <button class="btn btn-primary btn-download" id="add-column">Add column</a>
+    </div>
+    <div class="col-md-6 data-download-buttons">
+      <div>
+        <button class="btn btn-primary btn-download" id="export">Download data</button>
+      </div>
+      {% if page.form_settings.repository_link and page.form_settings.repository_link != '' %}
+      <div>
+        <a class="btn btn-primary btn-download" target="_blank" href="{{ page.form_settings.repository_link }}">
+          Go to repository
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row no-gutters">
+    <div class="editor-wrapper col-md-12">
+      <div id="editor-holder" style="height: 900px; width: 100%;" class="ag-theme-alpine"></div>
+    </div>
   </div>
 
   <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
@@ -44,7 +59,7 @@
         if (csvData.data.length > 0) {
           rowData = csvData.data;
           columnDefs = Object.keys(rowData[0]).map(function(key) {
-            return { field: key };
+            return { field: key, headerName: key };
           });
         }
         var container = document.getElementById('editor-holder');
@@ -60,8 +75,15 @@
           undoRedoCellEditing: true,
           undoRedoCellEditingLimit: 5,
           enableCellChangeFlash: true,
-          enterMovesDown: true,
-
+          enterMovesDownAfterEdit: true,
+          suppressDragLeaveHidesColumns: true,
+          onCellValueChanged: function(info) {
+            if (info.rowIndex + 1 === this.api.getDisplayedRowCount()) {
+              this.api.applyTransaction({
+                add: [{}],
+              });
+            }
+          }
         };
 
         new agGrid.Grid(container, gridOptions);
@@ -75,10 +97,22 @@
     makeRequest();
   });
 
-  document.getElementById('export').onclick = function () {
+  document.getElementById('export').onclick = function() {
     gridOptions.api.exportDataAsCsv({
       fileName: '{{ page.config_filename }}',
     });
+  }
+
+  document.getElementById('add-column').onclick = function() {
+    var columnName = document.getElementById('add-column-name').value;
+    if (columnName && columnName !== '') {
+      var columnDefs = gridOptions.columnDefs;
+      columnDefs.push({ field: columnName, headerName: columnName });
+      gridOptions.api.setColumnDefs(columnDefs);
+    }
+    else {
+      alert('Please enter a column name first and then try again.');
+    }
   }
   </script>
 </div>
