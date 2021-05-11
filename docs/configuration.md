@@ -448,6 +448,14 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
 
+### graph_title_from_series
+
+_Optional_: This setting can be set to `true` to use the currently-selected series as the chart title, whenever possible. Example:
+
+```yaml
+graph_title_from_series: true
+```
+
 ### header
 
 _Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
