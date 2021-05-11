@@ -11,18 +11,17 @@
     {% endif %}
   </div>
   <div class="editor-wrapper col-md-12">
-    <div id="editor-holder">
-      <button id="hot-activator"></button>
-    </div>
+    <div id="editor-holder" style="height: 900px; width: 100%;" class="ag-theme-alpine"></div>
   </div>
 
   <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/handsontable@8.3.2/dist/handsontable.full.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@8.3.2/dist/handsontable.full.min.css">
+  <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
 
   <script>
   var httpRequest;
-  var hot;
+  var gridOptions;
   function makeRequest() {
     httpRequest = new XMLHttpRequest();
 
@@ -39,61 +38,47 @@
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
       if (httpRequest.status === 200) {
         var csvString = httpRequest.responseText;
-        var csvData = Papa.parse(csvString);
+        var csvData = Papa.parse(csvString, {header: true});
+        var columnDefs = [],
+            rowData = [];
+        if (csvData.data.length > 0) {
+          rowData = csvData.data;
+          columnDefs = Object.keys(rowData[0]).map(function(key) {
+            return { field: key };
+          });
+        }
         var container = document.getElementById('editor-holder');
-        var activator = document.getElementById('hot-activator');
-        hot = new Handsontable(container, {
-          data: csvData.data,
-          rowHeaders: true,
-          colHeaders: false,
-          filters: false,
-          dropdownMenu: true,
-          contextMenu: true,
-          autoWrapCol: false,
-          fixedRowsTop: 1,
-          beforeKeyDown: function(event) {
-            // Only consider TAB key when HOT is listening.
-            if (event.keyCode !== 9 || !this.isListening()) {
-              return;
-            }
-            var sel = this.getSelected();
-            var lastRow = this.countRows() - 1;
-            var lastCol = this.countCols() - 1;
-            var selectedRow = sel[0][0];
-            var selectedCol = sel[0][1];
-
-            if ((!event.shiftKey && selectedRow === lastRow && selectedCol === lastCol) ||
-                (event.shiftKey && selectedRow === 0 && selectedCol === 0)) {
-
-              activator.focus();
-              this.unlisten();
-              this.deselectCell();
-            }
+        gridOptions = {
+          defaultColDef: {
+            editable: true,
+            resizable: true,
+            minWidth: 100,
+            flex: 1,
           },
-          licenseKey: 'non-commercial-and-evaluation',
-        });
-        activator.addEventListener('focus', function(event) {
-          // Only do when HOT is not listening.
-          if (hot.isListening()) {
-            return;
-          }
-          // Hacky way to select the first cell.
-          hot.selectCell(0, 0);
-          setTimeout(function() {
-            hot.getActiveEditor().finishEditing();
-          }, 0);
-        });
+          columnDefs: columnDefs,
+          rowData: rowData,
+          undoRedoCellEditing: true,
+          undoRedoCellEditingLimit: 5,
+          enableCellChangeFlash: true,
+          enterMovesDown: true,
+
+        };
+
+        new agGrid.Grid(container, gridOptions);
       } else {
         alert('There was a problem when loading the data. Please edit the data in some other way (such as in Github).');
       }
     }
   }
 
-  makeRequest();
+  document.addEventListener('DOMContentLoaded', function() {
+    makeRequest();
+  });
 
   document.getElementById('export').onclick = function () {
-      var exportPlugin = hot.getPlugin('exportFile');
-      exportPlugin.downloadFile('csv', {filename: '{{ page.config_filename }}'});
+    gridOptions.api.exportDataAsCsv({
+      fileName: '{{ page.config_filename }}',
+    });
   }
   </script>
 </div>
