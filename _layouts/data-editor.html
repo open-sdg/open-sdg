@@ -77,6 +77,7 @@
           enableCellChangeFlash: true,
           enterMovesDownAfterEdit: true,
           suppressDragLeaveHidesColumns: true,
+          applyColumnDefOrder: true,
           onCellValueChanged: function(info) {
             if (info.rowIndex + 1 === this.api.getDisplayedRowCount()) {
               this.api.applyTransaction({
@@ -107,7 +108,15 @@
     var columnName = document.getElementById('add-column-name').value;
     if (columnName && columnName !== '') {
       var columnDefs = gridOptions.columnDefs;
-      columnDefs.push({ field: columnName, headerName: columnName });
+      var newColumn = { field: columnName, headerName: columnName };
+      if (columnDefs.length > 1) {
+        // Put it second-to-last if possible.
+        columnDefs.splice(columnDefs.length - 1, 0, newColumn);
+      }
+      else {
+        // Otherwise just last.
+        columnDefs.push(newColumn);
+      }
       gridOptions.api.setColumnDefs(columnDefs);
     }
     else {
