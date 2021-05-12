@@ -500,8 +500,19 @@ _Optional_: This setting controls the behavior of the indicator config forms. Th
               - complete
               - notstarted
 
-* `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
-* `translation_link`: This will display a  "Go to translation" link beneath each metadata field. You can enter a pattern with `[id]` and/or `[field]` and it will be replaced as described above.
+* `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with the placeholder `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
+* `translation_link`: This will display a  "Go to translation" link beneath each metadata field. This is used to give the editor a shortcut to whereever it is that the translations are maintained. You can enter a pattern with the placeholder `[id]` it will be replaced as described above. In addition, your pattern can include these other placeholders:
+    * `[language]`: This will be replaced with the current language.
+    * `[group]`: This will be replaced with the first part of the translation key. Eg, if the translation key is `foo.bar` then `[group]` will be replaced with `foo`.
+    * `[key]`: This will be replaced with the second part of the translation key. Eg, if the translation key is `foo.bar` then `[key]` will be replaced with `bar`.
+
+  The appropriate value for this translation_link setting depends on the specifics of how you maintain translations. For example, if your translations are maintained in Weblate then you might take advantage of Weblate's useful search feature, but having a translation_link of:
+
+  `https://hosted.weblate.org/search/my-project/[group]/?q=+context%3A%3D[key]`
+
+  For another example, if you are maintaining translations in the `translations` folder in your data repository, then you might have a translation_link of:
+
+  `https://github.com/my-org/my-data-repo/tree/develop/translations/[language]/[group].yml`
 
 Links to the forms appear in the "Edit" tab on indicator pages.
 

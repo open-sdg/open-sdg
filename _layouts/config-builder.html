@@ -327,6 +327,7 @@
       translationLink = translationLink.replace('[id]', '{{ page.indicator_number }}');
       translationLink = translationLink.replace('[group]', parts[0]);
       translationLink = translationLink.replace('[key]', parts[1]);
+      translationLink = translationLink.replace('[language]', '{{ page.language }}');
       var element = document.createElement('a');
       element.setAttribute('target', '_blank');
       element.setAttribute('href', translationLink);
