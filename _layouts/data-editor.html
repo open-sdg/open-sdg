@@ -99,6 +99,7 @@
   });
 
   document.getElementById('export').onclick = function() {
+    gridOptions.api.stopEditing();
     gridOptions.api.exportDataAsCsv({
       fileName: '{{ page.config_filename }}',
     });
