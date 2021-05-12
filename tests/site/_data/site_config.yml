@@ -132,6 +132,7 @@ goals_page:
 graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
+graph_title_from_series: true
 header:
   include: header-menu-left-aligned.html
 header_language_toggle: dropdown

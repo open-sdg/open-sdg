@@ -38,7 +38,8 @@ const driver = new mink.Mink({
     "the last unit of measurement": "#units label:last-child input",
     "the first series": "#serieses label:nth-of-type(1) input",
     "the second series": "#serieses label:nth-of-type(2) input",
-    "the last series": "#serieses label:last-child input",
+    "the third series": "#serieses label:nth-of-type(3) input",
+    "the fourth series": "#serieses label:nth-of-type(4) input",
     "chart legend": "#legend li",
     "chart legend item": "#legend li",
     "data table": "#selectionsTable",
@@ -60,6 +61,7 @@ const driver = new mink.Mink({
     "breadcrumbs": ".breadcrumb",
     "table value": "#tableview tbody .table-value",
     "main logo": ".navbar-brand img",
+    "chart title": "#chart-heading",
   }
 });
 
