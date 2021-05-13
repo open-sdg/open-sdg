@@ -257,12 +257,11 @@ function getCombinationData(fieldItems) {
       // The following conditional reflects that we're not interested in combinations
       // within the same field. (Eg, not interested in combination of Female and Male).
       if (Object.keys(fieldValuePair)[0] !== Object.keys(fieldValuePairToAdd)[0]) {
-        var candidate = Object.assign({}, combinationsForCurrentPair, fieldValuePairToAdd);
-        var combinationKeys = Object.keys(candidate).sort();
-        var combinationValues = Object.values(candidate).sort();
+        Object.assign(combinationsForCurrentPair, fieldValuePairToAdd);
+        var combinationKeys = Object.keys(combinationsForCurrentPair).sort();
+        var combinationValues = Object.values(combinationsForCurrentPair).sort();
         var combinationUniqueId = JSON.stringify(combinationKeys.concat(combinationValues));
         if (!(combinationUniqueId in fieldValuePairCombinations)) {
-          combinationsForCurrentPair = candidate;
           fieldValuePairCombinations[combinationUniqueId] = Object.assign({}, combinationsForCurrentPair);
         }
       }
