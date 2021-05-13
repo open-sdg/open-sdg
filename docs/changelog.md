@@ -2,6 +2,7 @@
 
 ## Not released
 
+* Remove the selection-bar from the disaggregation control dropdowns #1203
 * Option to use series for chart titles when available #1168
 * Darker color for main nav #1142
 * Move goal header to include file #1128
