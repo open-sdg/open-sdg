@@ -21,6 +21,8 @@ graph_type: binary
 indicator_name: global_indicators.2-4-1-title
 indicator_number: 2.4.1
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is not used in any automated tests but is include
+  for manual testing of the binary graph type.
 reporting_status: complete
 tags: []

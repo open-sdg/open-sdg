@@ -29,6 +29,8 @@ graph_type: bar
 indicator_name: global_indicators.2-3-2-title
 indicator_number: 2.3.2
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is used in MultilingualMetadata.feature to test
+  that metadata can be translated using translation keys.
 reporting_status: complete
 tags: []

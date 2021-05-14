@@ -21,6 +21,8 @@ graph_type: line
 indicator_name: global_indicators.1-4-2-title
 indicator_number: 1.4.2
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is used in UnitOfMeasurement.feature to confirm that
+  indicators without disaggregation do not show the left sidebar.
 reporting_status: complete
 tags: []

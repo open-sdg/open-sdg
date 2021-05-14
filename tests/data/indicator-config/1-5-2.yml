@@ -31,7 +31,16 @@ graph_type: line
 indicator_name: global_indicators.1-5-2-title
 indicator_number: 1.5.2
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is used in multiple scenarios under tests/features:
+
+
+  * Headline.feature (testing a multi-unit no-headline indicator with a single
+  disaggregations)
+
+  * Precision.feature
+
+  * UnitOfMeasurement (confirming that units can affect the graph title)
 permalink: ''
 precision:
   - series: ''
