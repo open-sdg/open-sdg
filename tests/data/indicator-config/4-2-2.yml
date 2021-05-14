@@ -1,4 +1,5 @@
-﻿computation_units: ''
+﻿composite_breakdown_label: ''
+computation_units: ''
 copyright: ''
 data_footnote: ''
 data_non_statistical: false
@@ -12,6 +13,7 @@ embedded_feature_html: ''
 embedded_feature_tab_title: ''
 embedded_feature_title: ''
 embedded_feature_url: ''
+expected_disaggregations: []
 graph_annotations: []
 graph_limits: []
 graph_stacked_disaggregation: ''
@@ -21,6 +23,13 @@ graph_type: line
 indicator_name: global_indicators.4-2-2-title
 indicator_number: 4.2.2
 national_geographical_coverage: ''
-page_content: ''
+page_content: >-
+  This indicator is intended to test functionality related to multiple
+  multi-level disaggregations. See the test scenarios in:
+  tests/features/Disaggregation.feature
+permalink: ''
+precision: []
 reporting_status: complete
+sort: ''
+standalone: false
 tags: []
