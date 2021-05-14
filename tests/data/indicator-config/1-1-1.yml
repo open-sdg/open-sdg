@@ -44,6 +44,9 @@ page_content: >
 
   * MultilingualMetadata.feature (confirming that the "subfolder approach" for
   metadata works).
+
+
+  This is also used to show multiple items in the "Sources" tab.
 permalink: ''
 precision: []
 reporting_status: complete
