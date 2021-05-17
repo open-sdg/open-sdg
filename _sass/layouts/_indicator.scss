@@ -37,6 +37,9 @@
       padding: 10px 7px 14px 7px;
       font-size: 0.875em;
       margin-right: 8px;
+      &[aria-expanded="true"] {
+        margin-bottom: 9px;
+      }
 
       i {
         position: absolute;
@@ -94,17 +97,6 @@
           border-color: $indicator-field-backgroundColor-disabled;
         }
       }
-      &.possible {
-        background-color: $indicator-field-backgroundColor-possible;
-      }
-      &.excluded {
-        background-color: $indicator-field-backgroundColor-excluded;
-        color: $color-light;
-
-        & input {
-          display: none;
-        }
-      }
     }
 
     h5, h6 {
@@ -118,34 +110,6 @@
         position: absolute;
         top: 0;
         right: 6px;
-      }
-    }
-
-    .bar {
-      height: 7px;
-      border: 1px solid $indicator-field-borderColor;
-      margin: 8px 2px 2px 2px;
-      padding: 0;
-      position: relative;
-
-      > div {
-        height: 5px;
-        float: left;
-      }
-      .selected {
-        background-color: $indicator-field-backgroundColor-selected;
-      }
-
-      .default {
-        background-color: $backgroundColor;
-      }
-
-      .possible {
-        background-color: $indicator-field-backgroundColor-possible;
-      }
-
-      .excluded {
-        background-color: $indicator-field-backgroundColor-excluded;
       }
     }
 
@@ -203,6 +167,14 @@
           }
         }
 
+        button[data-type="select"] {
+          margin-bottom: 5px;
+          margin-left: 5px;
+        }
+        button[data-type="clear"] {
+          margin-bottom: 5px;
+        }
+
         label {
           padding-left: 7px;
           padding-right: 25px;
@@ -243,9 +215,6 @@
 
       &[data-has-data="false"],
       &.disallowed {
-        .bar {
-          display: none;
-        }
 
         .variable-options {
           > div {
@@ -542,8 +511,6 @@ body.contrast-high {
       border-color: $color-light-highContrast;
     }
   }
-
-  #main-content #fields .bar .selected { background-color: $color-light-highContrast; }
 
   #main-content #fields .variable-selector .variable-hint { color: $color-light-highContrast; }
 
