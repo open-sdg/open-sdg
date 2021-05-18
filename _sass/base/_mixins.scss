@@ -201,6 +201,7 @@
     &, &:focus {
       background-color: $button-color-highContrast !important;
       color: $button-foregroundColor-highContrast !important;
+      border-color: $button-foregroundColor-highContrast !important;
     }
     &:hover {
       background-color: $button-color-hover-highContrast !important;
