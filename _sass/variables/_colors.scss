@@ -79,11 +79,14 @@ $tag-backgroundColor: #ffdc8e !default;
 
 $button-color: #00703c !default;
 $button-color-pressed: #005a30 !default;
+$button-color-hover: $button-color-pressed !default;
 $button-foregroundColor: white !default;
 $button-foregroundColor-visited: white !default;
 $button-foregroundColor-focus: $text-color;
 $button-color-dropShadow: #002d18 !default;
 $button-color-focus: #fd0 !default;
+$button-color-highContrast: #eeeeee !default;
+$button-color-hover-highContrast: #DBDAD9 !default;
 $button-foregroundColor-highContrast: $color-dark-highContrast !default;
 
 $backToTop-backgroundColor: $link-color-dark !default;
