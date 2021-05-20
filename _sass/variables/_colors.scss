@@ -35,6 +35,7 @@ $link-color-dark: #0275d8 !default;
 $link-color-hover: #003078 !default;
 $link-color-visited: #4c2c92 !default;
 $link-color-visited-highContrast: #AD6800 !default;
+$text-backgroundColor-hover: #EEEEEE !default;
 
 $horizontalRule-color: #ccc !default;
 
@@ -151,6 +152,8 @@ $map-legendValue-color-noValue: repeating-linear-gradient(45deg, #FFF, #FFF 2px,
 $map-legendValue-color: #ddd !default;
 $map-legendBar-color: white !default;
 
+$table-row-backgroundColor-hover: $text-backgroundColor-hover !default;
+
 $indicator-field-color-disabled: #777 !default;
 $indicator-field-backgroundColor-disabled: #ccc !default;
 $indicator-field-borderColor-hover: #acacac !default;
@@ -161,6 +164,7 @@ $indicator-hint-color: #666 !default;
 $indicator-fieldButton-borderColor: #555 !default;
 $indicator-fieldButton-borderColor-hover: #f5f3f3 !default;
 $indicator-fieldLabel-borderColor: #cdcdcd !default;
+$indicator-fieldOption-backgroundColor-hover: $text-backgroundColor-hover !default;
 $indicator-datasetWarning-backgroundColor: #FFCC0B !default;
 $indicator-legendSwatch-fillColor: #666 !default;
 $indicator-legendSwatch-backgroundColor-hover: #eee !default;
