@@ -2,6 +2,7 @@
 
 ## Not released
 
+* Bug fix: allow multiple multi-level disaggregations #1205
 * Remove the selection-bar from the disaggregation control dropdowns #1203
 * Option to use series for chart titles when available #1168
 * Darker color for main nav #1142

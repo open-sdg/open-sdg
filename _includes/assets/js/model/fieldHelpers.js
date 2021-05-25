@@ -249,28 +249,41 @@ function getCombinationData(fieldItems) {
     });
   });
 
-  // Next get a list of each single pair combined with every other.
-  var fieldValuePairCombinations = {};
-  fieldValuePairs.forEach(function(fieldValuePair) {
-    var combinationsForCurrentPair = Object.assign({}, fieldValuePair);
-    fieldValuePairs.forEach(function(fieldValuePairToAdd) {
-      // The following conditional reflects that we're not interested in combinations
-      // within the same field. (Eg, not interested in combination of Female and Male).
-      if (Object.keys(fieldValuePair)[0] !== Object.keys(fieldValuePairToAdd)[0]) {
-        Object.assign(combinationsForCurrentPair, fieldValuePairToAdd);
-        var combinationKeys = Object.keys(combinationsForCurrentPair).sort();
-        var combinationValues = Object.values(combinationsForCurrentPair).sort();
-        var combinationUniqueId = JSON.stringify(combinationKeys.concat(combinationValues));
-        if (!(combinationUniqueId in fieldValuePairCombinations)) {
-          fieldValuePairCombinations[combinationUniqueId] = Object.assign({}, combinationsForCurrentPair);
-        }
+  // Now compute all combinations of those.
+  var getAllSubsets = function(combinationSet) {
+    if (combinationSet.length == 0) {
+      return [];
+    }
+    var subsets = [combinationSet];
+    if (combinationSet.length == 1) {
+      return subsets;
+    }
+    for (var i = 0; i < combinationSet.length; i++) {
+      var subset = combinationSet.filter(function(item, index) {
+        return index !== i;
+      });
+      if (subset.length > 0) {
+        subsets = subsets.concat(getAllSubsets(subset));
       }
+    }
+    return subsets;
+  }
+  var allSubsets = getAllSubsets(fieldValuePairs);
+  var fieldValuePairCombinations = {};
+  allSubsets.forEach(function(subset) {
+    var combinedSubset = {};
+    subset.forEach(function(keyValue) {
+      Object.assign(combinedSubset, keyValue);
     });
+    var combinationKeys = Object.keys(combinedSubset).sort();
+    var combinationValues = Object.values(combinedSubset).sort();
+    var combinationUniqueId = JSON.stringify(combinationKeys.concat(combinationValues));
+    if (!(combinationUniqueId in fieldValuePairCombinations)) {
+      fieldValuePairCombinations[combinationUniqueId] = combinedSubset;
+    }
   });
-  fieldValuePairCombinations = Object.values(fieldValuePairCombinations);
 
-  // Return a combination of both.
-  return fieldValuePairs.concat(fieldValuePairCombinations);
+  return Object.values(fieldValuePairCombinations);
 }
 
 /**
