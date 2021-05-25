@@ -43,7 +43,7 @@ breadcrumbs:
     - label: Home
       path: /
     - label: Updates
-      path: /news
+      path: news/
 ```
 
 Or with the addition of translation keys for multilingual sites:
@@ -54,7 +54,7 @@ breadcrumbs:
     - label: general.home
       path: /
     - label: menu.updates
-      path: /news
+      path: news/
 ```
 
 Here is a full exmaple including `goal` and `indicator` as well:
@@ -65,17 +65,17 @@ breadcrumbs:
     - label: general.home
       path: /
     - label: menu.updates
-      path: /news
+      path: news/
   goal:
     - label: general.home
       path: /
     - label: general.goals
-      path: /goals
+      path: goals/
   indicator:
     - label: general.home
       path: /
     - label: general.goals
-      path: /goals
+      path: goals/
 ```
 
 Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
@@ -308,9 +308,9 @@ footer_menu:
     translation_key: general.twitter
   - path: https://facebook.com/MyFacebookAccount
     translation_key: general.facebook
-  - path: /faq
+  - path: faq/
     translation_key: menu.faq
-  - path: /cookies
+  - path: cookies/
     translation_key: menu.cookies
 ```
 
@@ -454,6 +454,14 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
 
+### graph_title_from_series
+
+_Optional_: This setting can be set to `true` to use the currently-selected series as the chart title, whenever possible. Example:
+
+```yaml
+graph_title_from_series: true
+```
+
 ### header
 
 _Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
@@ -583,25 +591,25 @@ While the "scopes" above, such as "national" and "global", are arbitrary, the "s
 
 ```nohighlight
 menu:
-  - path: /reporting-status
+  - path: reporting-status/
     translation_key: menu.reporting_status
-  - path: /about
+  - path: about/
     translation_key: menu.about
-  - path: /faq
+  - path: faq/
     translation_key: menu.faq
 ```
 
-Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "/about" and "/faq" under a "More information" dropdown:
+Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "about/" and "faq/" under a "More information" dropdown:
 
 ```nohighlight
 menu:
-  - path: /reporting-status
+  - path: reporting-status/
     translation_key: menu.reporting_status
   - translation_key: More information
     dropdown:
-      - path: /faq
+      - path: faq/
         translation_key: menu.faq
-      - path: /about
+      - path: about/
         translation_key: menu.about
 ```
 

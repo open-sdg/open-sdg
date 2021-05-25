@@ -35,6 +35,7 @@ $link-color-dark: #0275d8 !default;
 $link-color-hover: #003078 !default;
 $link-color-visited: #4c2c92 !default;
 $link-color-visited-highContrast: #AD6800 !default;
+$text-backgroundColor-hover: #EEEEEE !default;
 
 $horizontalRule-color: #ccc !default;
 
@@ -79,11 +80,14 @@ $tag-backgroundColor: #ffdc8e !default;
 
 $button-color: #00703c !default;
 $button-color-pressed: #005a30 !default;
+$button-color-hover: $button-color-pressed !default;
 $button-foregroundColor: white !default;
 $button-foregroundColor-visited: white !default;
 $button-foregroundColor-focus: $text-color;
 $button-color-dropShadow: #002d18 !default;
 $button-color-focus: #fd0 !default;
+$button-color-highContrast: #eeeeee !default;
+$button-color-hover-highContrast: #DBDAD9 !default;
 $button-foregroundColor-highContrast: $color-dark-highContrast !default;
 
 $backToTop-backgroundColor: $link-color-dark !default;
@@ -148,12 +152,11 @@ $map-legendValue-color-noValue: repeating-linear-gradient(45deg, #FFF, #FFF 2px,
 $map-legendValue-color: #ddd !default;
 $map-legendBar-color: white !default;
 
+$table-row-backgroundColor-hover: $text-backgroundColor-hover !default;
+
 $indicator-field-color-disabled: #777 !default;
 $indicator-field-backgroundColor-disabled: #ccc !default;
 $indicator-field-borderColor-hover: #acacac !default;
-$indicator-field-backgroundColor-selected: #555 !default;
-$indicator-field-backgroundColor-possible: #dedede !default;
-$indicator-field-backgroundColor-excluded: #666 !default;
 $indicator-field-borderColor: #dedede !default;
 $indicator-selector-borderColor: #ccc !default;
 $indicator-selected-borderColor-hover: #555 !default;
@@ -161,6 +164,7 @@ $indicator-hint-color: #666 !default;
 $indicator-fieldButton-borderColor: #555 !default;
 $indicator-fieldButton-borderColor-hover: #f5f3f3 !default;
 $indicator-fieldLabel-borderColor: #cdcdcd !default;
+$indicator-fieldOption-backgroundColor-hover: $text-backgroundColor-hover !default;
 $indicator-datasetWarning-backgroundColor: #FFCC0B !default;
 $indicator-legendSwatch-fillColor: #666 !default;
 $indicator-legendSwatch-backgroundColor-hover: #eee !default;
