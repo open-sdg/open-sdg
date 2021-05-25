@@ -7,17 +7,17 @@
     display: inline-block;
     list-style: none;
     &.contrast {
-      font-size: 1.3em;
       font-weight: bold;
       border-radius: 50%;
       width: 25px;
       max-height: 25px;
       text-align: center;
       margin: 0.25em;
-      margin-top: 0.1em;
+      margin-top: 2px;
       a {
         margin: auto;
         text-decoration: none;
+        display: block;
       }
     }
 
