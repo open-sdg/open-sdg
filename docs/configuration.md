@@ -82,10 +82,16 @@ Note that `indicator` will automatically add a final item, which is a link to th
 
 ### contrast_type
 
-_Optional_: This setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+_Optional_: This setting allows you to change the type of contrast button your site uses. The available settings are:
+
+* `default`: Two buttons containing "A" - one for on and one for off (this is the default if you omit this setting)
+* `long`: If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+* `single`: One button containing "A" which toggles on/off, depending on which mode of contrast is active. This is recommended for the cleanest display.
+
+Example:
 
 ```nohighlight
-contrast_type: long
+contrast_type: single
 ```
 
 ### country
@@ -447,6 +453,14 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 ### graph_color_number
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
+
+### graph_title_from_series
+
+_Optional_: This setting can be set to `true` to use the currently-selected series as the chart title, whenever possible. Example:
+
+```yaml
+graph_title_from_series: true
+```
 
 ### header
 

@@ -9,3 +9,4 @@ var VALUE_COLUMN = 'Value';
 // Note this headline color is overridden in indicatorView.js.
 var HEADLINE_COLOR = '#777777';
 var SERIES_TOGGLE = {{ site.series_toggle | default: false }};
+var GRAPH_TITLE_FROM_SERIES = {{ site.graph_title_from_series | default: false }};

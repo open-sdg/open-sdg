@@ -127,29 +127,17 @@ prose:
             label: "Other information"
             translation_key: metadata_fields.comments_limitations
             scope: national
-      - name: "national_data_update_url"
+      - name: "national_data_updated_date"
         field:
             element: hidden
             label: "Data last updated"
             translation_key: metadata_fields.national_data_update_url
             scope: national
-      - name: "national_data_update_url_text"
-        field:
-            element: hidden
-            label: "Data last updated"
-            translation_key: metadata_fields.national_data_update_url_text
-            scope: national
-      - name: "national_metadata_update_url"
+      - name: "national_metadata_updated_date"
         field:
             element: hidden
             label: "Metadata last updated"
             translation_key: metadata_fields.national_metadata_update_url
-            scope: national
-      - name: "national_metadata_update_url_text"
-        field:
-            element: hidden
-            label: "Metadata last updated"
-            translation_key: metadata_fields.national_metadata_update_url_text
             scope: national
        ######### Data Info #########
       - name: "reporting_status"
