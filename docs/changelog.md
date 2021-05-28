@@ -6,6 +6,7 @@
 * Bug fix: allow multiple multi-level disaggregations #1205
 * Remove the selection-bar from the disaggregation control dropdowns #1203
 * Hide first-element H1s in metadata for better display of global templates #1199
+* In reporting status display "Reported" instead of "Reported online" #1180
 * Metadata fields containing "_date" will be formatted as dates #1175
 * New date-only Git-based metadata fields open-sdg/sdg-build#244
 * Option for a single-icon high-contrast toggle #1171
