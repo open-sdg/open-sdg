@@ -31,4 +31,7 @@
 </li>
 {%- endif -%}
 {% endunless %}
+{% unless include.no_contrast %}
+{% include components/contrast-toggle.html %}
+{% endunless %}
 </ul>

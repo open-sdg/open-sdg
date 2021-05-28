@@ -1,8 +1,20 @@
 <h1>Working with Jekyll templates</h1>
 
-Jekyll provides a `page` variable for use in any of files in `_layouts` and `_includes` (referred to here as "templates"). This `page` variable contains helpful contextual information about the current page being rendered. Open SDG adds additional information for your use.
+## Jekyll include files
+
+There are assorted [Jekyll include files](https://jekyllrb.com/docs/includes/) available for use inside of Jekyll content. Note that these "includes" cannot be used in site configuration settings or indicator configuration settings. They are primarily intended for use in page/post content, layouts, or other include files.
+
+### Back-to-top links
+
+For displaying a link that takes the user back to the top of the page. Example:
+
+```
+{% include back-to-top.html %}
+```
 
 ## Variables available on all pages
+
+Jekyll provides a `page` variable for use in any of files in `_layouts` and `_includes` (referred to here as "templates"). This `page` variable contains helpful contextual information about the current page being rendered. Open SDG adds additional information for your use.
 
 The following variables can be used on any page:
 

@@ -17,3 +17,4 @@ Year,Series,Units,Group,Value
 2016,B,Percent,D,95
 2015,AA,Total,E,3
 2016,AA,Total,E,4
+2015,custom.title_from_series,Percent,,50
