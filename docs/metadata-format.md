@@ -249,6 +249,15 @@ precision:
     decimals: 1
 ```
 
+## Seperator
+
+Decimal separator
+To change the decimal_separator you can use `decimal_separator` to replace the default in the site _config.yml. For example this would use a comma:
+
+```
+decimal_separator: ','
+```
+
 ## Footer
 
 The following fields will appear on indicator pages below the graph and the table.
