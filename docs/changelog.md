@@ -2,6 +2,7 @@
 
 ## Not released
 
+* Include file for custom `<HEAD>` content #1215
 * Include file for easier overriding of body classes #1212
 * Bug fix: allow multiple multi-level disaggregations #1205
 * Remove the selection-bar from the disaggregation control dropdowns #1203
