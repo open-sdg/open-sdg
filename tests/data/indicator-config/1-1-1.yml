@@ -1,4 +1,5 @@
-﻿computation_units: My unit of measurement
+﻿composite_breakdown_label: My composite breakdown label
+computation_units: My unit of measurement
 copyright: My copyright
 data_footnote: My footnote
 data_non_statistical: false
@@ -23,9 +24,34 @@ graph_type: line
 indicator_name: global_indicators.1-1-1-title
 indicator_number: 1.1.1
 national_geographical_coverage: National
-page_content: |
+page_content: >
   This is the page content in English.
+
+
+  This indicator is used in multiple scenarios under tests/features:
+
+
+  * Analytics.feature (for Google Analytics)
+
+  * Data.feature (confirm the proper treatment of missing values)
+
+  * Disaggregation.feature (general disaggregation functionality)
+
+  * Indicator.feature (other functionality on the indicator pages)
+
+  * LanguageSwitcher.feature (language-switcher functionality on indicator
+  pages)
+
+  * MultilingualMetadata.feature (confirming that the "subfolder approach" for
+  metadata works).
+
+
+  This is also used to show multiple items in the "Sources" tab.
+permalink: ''
+precision: []
 reporting_status: complete
+sort: ''
+standalone: false
 tags:
   - My untranslated tag
   - tags.my-tag

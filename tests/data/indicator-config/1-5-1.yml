@@ -21,6 +21,13 @@ graph_type: line
 indicator_name: global_indicators.1-5-1-title
 indicator_number: 1.5.1
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is used in multiple scenarios under tests/features:
+
+
+  * Headline.feature (testing no-headline indicators with double and
+  single disaggregations)
+
+  * SetMinMaxValues.feature
 reporting_status: complete
 tags: []
