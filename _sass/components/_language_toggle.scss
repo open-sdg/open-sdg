@@ -198,6 +198,22 @@ footer #footerLinks .language-toggle-menu-footer {
   }
 }
 
+.contrast-type-single {
+  a:focus {
+    border-radius: 50%;
+    box-shadow: none !important;
+    outline: 4px solid $focusOutlineColor !important;
+  }
+}
+.contrast-high {
+  .contrast-type-single {
+    a:focus {
+      background-color: inherit !important;
+      box-shadow: 1px 1px white, -1px -1px white !important;
+    }
+  }
+}
+
 // @deprecated start
 .language-toggle-menu-header > .language-toggle.language-options {
   display: none;

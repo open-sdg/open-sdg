@@ -21,6 +21,8 @@ graph_type: line
 indicator_name: global_indicators.4-2-1-title
 indicator_number: 4.2.1
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is used in Headline.feature to confirm that
+  indicators with only a headline do not display the sidebar.
 reporting_status: complete
 tags: []

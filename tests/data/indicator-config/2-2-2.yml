@@ -59,6 +59,8 @@ graph_type: line
 indicator_name: metadata.indicator-name-key
 indicator_number: 2.2.2
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is used in MultilingualMetadata.feature to confirm
+  that indicator names can be translated using translation keys.
 reporting_status: complete
 tags: []
