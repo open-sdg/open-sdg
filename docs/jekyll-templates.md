@@ -2,7 +2,7 @@
 
 ## Jekyll include files
 
-There are assorted [Jekyll include files](https://jekyllrb.com/docs/includes/) available for use inside of Jekyll content. Note that these "includes" cannot be used in site configuration settings or indicator configuration settings. They are primarily intended for use in page/post content, layouts, or other include files.
+There are assorted [Jekyll include files](https://jekyllrb.com/docs/includes/) available for use inside of Jekyll content. Note that these "includes" cannot be used in site configuration settings or indicator configuration settings. They are primarily intended for use in page/post content, layouts, overrides, or other include files.
 
 ### Back-to-top links
 
@@ -11,6 +11,10 @@ For displaying a link that takes the user back to the top of the page. Example:
 ```
 {% include back-to-top.html %}
 ```
+
+### Custom content for the head
+
+To add custom content in the `<head>` element (such as web fonts) you can override the `_includes/head-custom.html` file. In your version you can add anything you'd like, as needed.
 
 ## Variables available on all pages
 
