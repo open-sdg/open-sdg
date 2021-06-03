@@ -14,6 +14,7 @@
 * Option to use series for chart titles when available #1168
 * Darker color for main nav #1142
 * Move goal header to include file #1128
+* Metadata and data forms and other improvements to config forms #1082
 
 ## 1.3.0
 
