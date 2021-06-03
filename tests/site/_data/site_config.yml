@@ -18,12 +18,10 @@ breadcrumbs:
       label: general.home
     - path: /news
       label: menu.updates
-graph_title_from_series: true
+configuration_edit_url: config
 country:
   name: Australia
   adjective: Australian
-create_config_forms:
-  layout: config-builder
 create_goals:
   layout: goal
   previous_next_links: true
@@ -134,11 +132,13 @@ goals_page:
 graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
-header_language_toggle: dropdown
+graph_title_from_series: true
 header:
   include: header-menu-left-aligned.html
+header_language_toggle: dropdown
 hide_empty_metadata: true
 indicator_config_form:
+  enabled: true
   dropdowns:
     - jsonschema: reporting_status
       values:
@@ -147,6 +147,25 @@ indicator_config_form:
       labels:
         - Not started
         - Complete
+  repository_link: 'https://example.com'
+  translation_link: ''
+indicator_data_form:
+  enabled: true
+  repository_link: 'https://example.com'
+indicator_metadata_form:
+  enabled: true
+  dropdowns: []
+  repository_link: 'https://example.com'
+  translation_link: 'https://example.com?[id]&[group]&[key]'
+  scopes:
+    - national
+    - global
+  exclude_fields:
+    - national_data_update_url
+    - national_data_update_url_text
+    - national_metadata_update_url
+    - national_metadata_update_url_text
+  translated: true
 languages:
   - en
   - es
@@ -209,7 +228,7 @@ menu:
         translation_key: Another link to about page
   - path: frontpage-legacy
     translation_key: Legacy frontpage
-metadata_edit_url: 'https://github.com/open-sdg/open-sdg/edit/master/tests/data/meta/[id].md'
+metadata_edit_url: metadata
 metadata_tabs:
   - scope: national
     title: My national metadata title
@@ -234,6 +253,7 @@ search_index_extra_fields:
 series_toggle: true
 sharethis_property: ''
 site_config_form:
+  enabled: true
   dropdowns:
     - jsonschema: create_goals.properties.layout
       values:
@@ -246,5 +266,7 @@ site_config_form:
         - goal
         - goal-by-target
         - goal-by-target-vertical
+  repository_link: ''
+  translation_link: ''
 validate_indicator_config: true
 validate_site_config: true
