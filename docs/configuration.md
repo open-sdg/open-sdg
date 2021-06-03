@@ -90,10 +90,16 @@ configuration_edit_url: http://prose.io/#my-org/my-repo/edit/develop/indicator-s
 
 ### contrast_type
 
-_Optional_: This setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+_Optional_: This setting allows you to change the type of contrast button your site uses. The available settings are:
+
+* `default`: Two buttons containing "A" - one for on and one for off (this is the default if you omit this setting)
+* `long`: If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+* `single`: One button containing "A" which toggles on/off, depending on which mode of contrast is active. This is recommended for the cleanest display.
+
+Example:
 
 ```nohighlight
-contrast_type: long
+contrast_type: single
 ```
 
 ### country

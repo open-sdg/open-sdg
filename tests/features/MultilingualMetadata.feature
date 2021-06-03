@@ -22,3 +22,10 @@ Feature: Multilingual Metadata
     And I follow "the first language option"
     Then I should see "Spanish translation of available indicator"
     And I should see "This is the page content translated into Spanish."
+
+  Scenario: Metadata fields with "_date" get parsed and translated as dates
+    Given I am on "/1-1-1"
+    Then I should see "April 01, 2021"
+    And I click on "the language toggle dropdown"
+    And I follow "the first language option"
+    Then I should see "01 de abril de 2021"
