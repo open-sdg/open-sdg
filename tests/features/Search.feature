@@ -65,7 +65,7 @@ Feature: Search
 
   Scenario: Searching for nothing displays no results
     Given I am on the homepage
-    And I fill in the "the search box" with ""
+    And I fill in "the search box" with ""
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
     Then I should see "No results"
