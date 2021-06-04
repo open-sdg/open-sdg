@@ -302,13 +302,26 @@
     .swatch {
       display: inline-block;
       width: 45px;
-      height: 15px;
+      height: 10px;
       margin-right: 3px;
 
       &.dashed {
         background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAABCAYAAADn9T9+AAAAFklEQVQImWP8////fwY0wMjIyIguBgCaAgQCms5tJwAAAABJRU5ErkJggg==');
         background-repeat: repeat;
         background-position: -5px 0;
+      }
+
+      .swatch-inner {
+
+        width: 15px;
+        height: 18px;
+        display: inline-block;
+        margin-top: -11px;
+        border-radius: 50px;
+
+        &.headline {
+          border-radius: 0;
+        }
       }
     }
     span {

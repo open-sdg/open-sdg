@@ -444,6 +444,7 @@ var indicatorView = function (model, options) {
             _.each(chart.data.datasets, function(dataset) {
               text.push('<li>');
               text.push('<span class="swatch' + (dataset.borderDash ? ' dashed' : '') + '" style="background-color: ' + dataset.borderColor + '">');
+              text.push('<span class="swatch-inner' + (dataset.headline ? ' headline' : '') + '" style="background-color: ' + dataset.borderColor + '"></span>');
               text.push('</span>');
               text.push(translations.t(dataset.label));
               text.push('</li>');
