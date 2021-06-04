@@ -19,4 +19,18 @@
     .goal-banner {
         line-break: anywhere;
     }
+
+    // And some exceptions.
+    #main-content {
+        .status-inner {
+            line-break: normal;
+        }
+    }
+    #indicator-main {
+        #national, #global {
+            th[scope="row"] {
+                min-width: 100px;
+            }
+        }
+    }
 }
