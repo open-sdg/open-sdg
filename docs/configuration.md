@@ -715,6 +715,20 @@ search_index_extra_fields:
   - national_agency
 ```
 
+Another example of how `search_index_extra_fields` could be used, is to configure search terms for indicator pages. For example, if you wanted indicator 3.a.1 to show as a result of 'smoking' or 'smokers' being searched for, you could set an indicator configuration field called `data_keywords` and then "index" that field, like so:
+
+```nohighlight
+search_index_extra_fields:
+  - data_keywords
+```
+
+Then in your indicator configuration you would have:
+
+```nohighlight
+data_keywords: smoking, smokers
+```
+
+
 ### series_toggle
 
 _Optional_: This setting enables the special treatment of the "Series" column in the data. If set to `true`, when an indicator's data includes a "Series" column, it will be displayed above "Units" as radio buttons. If omitted or `false`, the normal behavior is that the "Series" column will display below "Units" as checkboxes. Example:
