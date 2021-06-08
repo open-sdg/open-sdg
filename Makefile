@@ -38,7 +38,7 @@ build: clean cache
 	cd site-starter && bundle exec jekyll build
 
 build.docs:
-	pip install mkdocs
+	pip install -r docs/requirements.txt
 	mkdocs build
 
 serve: build
