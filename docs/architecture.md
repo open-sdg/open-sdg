@@ -32,14 +32,12 @@
       </span>
     </div>
     <div class="node service row1 data-column" id="prose-io">
-      Github and<br>Prose.io
+      Github or<br>other source
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        <a href="https://prose.io">Prose.io</a> is a free cloud service that allows
-        for user-friendly editing of the data and metadata files that are stored on <a href="https://github.com">Github</a>.
+        Data and metadata files can be stored on <a href="https://github.com">Github</a> and edited with built-in forms or offline.
         <br><br>
-        This functions as a data management system for curating the statistics in
-        the platform.
+        Many alternative data sources can be used as well, such as APIs.
       </span>
     </div>
     <div class="node local row2 data-column" id="data-repo">
@@ -189,7 +187,7 @@ jsPlumb.ready(function () {
   jsPlumb.connect({
     source: 'prose-io',
     target: 'data-repo',
-    overlays: connectorTip('Edits made in Prose.io are pushed to the data repository.'),
+    overlays: connectorTip('Edits to the data/metadata are pushed to the data repository.'),
   });
   jsPlumb.connect({
     source: 'data-repo',
