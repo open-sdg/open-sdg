@@ -4,7 +4,7 @@ Whatever service you choose for automation, you will need to enable the "hooks" 
 
 The procedure is the same for both the site repository and the data repository:
 
-First you will need to have created any pull request and merged it. You can skip this part if you have already done created a pull request and merged it in both repositories.
+First you will need to have created any pull request and merged it. You can skip this part if you have already created a pull request and merged it in both repositories.
 
 1. Go to the repository in GitHub.
 1. Go to any file in the repository, such as README.md, and click the pencil icon to edit it.
