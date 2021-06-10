@@ -23,7 +23,7 @@ country:
   name: Australia
   adjective: Australian
 create_goals:
-  layout: goal-by-target-vertical
+  layout: goal
   previous_next_links: true
   goals:
     - content: custom.goal_1_content
