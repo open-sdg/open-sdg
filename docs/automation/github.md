@@ -4,6 +4,8 @@ Whatever service you choose for automation, you will need to enable the "hooks" 
 
 The procedure is the same for both the site repository and the data repository:
 
+## Initial pull-requests
+
 First you will need to have created any pull request and merged it. You can skip this part if you have already created a pull request and merged it in both repositories.
 
 1. Go to the repository in GitHub.
@@ -17,6 +19,8 @@ First you will need to have created any pull request and merged it. You can skip
 1. Click on the green "Merge pull request" button.
 
 Perform the steps above for both the site repository and the data repository.
+
+## Add branch protection rules
 
 Next you can add the "branch protection rule" to require these tests to pass:
 
@@ -32,3 +36,7 @@ Next you can add the "branch protection rule" to require these tests to pass:
 The last step above may be different depending on your choice of automation service, but that is where you tell GitHub that some tests need to pass.
 
 Perform the steps above for both the site repository and the data repository.
+
+## Results
+
+Now that you have set up these branch protection rules, any time a pull-request is created, the "Merge" button will be disabled until the pull-requests passed all tests. This helps avoid the possibility of a breaking change making it onto your site.
