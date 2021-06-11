@@ -46,9 +46,9 @@ You now have a working site and a working data service, however they are not yet
 1. From the previous step you should now be on your *site*. If not, go back there using your bookmark.
 1. In the footer menu at the bottom of any page, click "Configuration".
 1. Scroll down to the "Remote data prefix" setting.
-1. In this field, paste in the URL of your *data service* (which you bookmarked above).
+1. In this field, replacing what is already there, paste in the URL of your *data service* (which you bookmarked above).
 1. Continue down to the "Repository URL - Data" setting.
-1. In this field, paste in the URL of your *data repository* (which you bookmarked above).
+1. In this field, replacing what is already there, paste in the URL of your *data repository* (which you bookmarked above).
 1. Scroll to the top and press "Download configuration". You will receive a file download called "site_config.yml".
 1. Press "Go to repository".
 1. Upload the downloaded "site_config.yml" file by dragging it onto the page.
