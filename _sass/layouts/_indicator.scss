@@ -55,10 +55,13 @@
 
     }
 
-		.accessBtn {
-			padding: 0px !important;
-			border: none;
-		}
+    .accessBtn {
+      padding: 0px !important;
+      border: 1px solid transparent;
+      &:focus {
+        border: 1px solid $indicator-selected-borderColor-hover;
+      }
+    }
 
     > p {
       font-size: 96%;
