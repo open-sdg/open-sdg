@@ -21,6 +21,8 @@ graph_type: line
 indicator_name: global_indicators.1-2-2-title
 indicator_number: 1.2.2
 national_geographical_coverage: ''
-page_content: ''
-reporting_status: notstarted
+page_content: >
+  This indicator is not used in any automated tests, but is
+  included to show an example of a "notapplicable" indicator.
+reporting_status: notapplicable
 tags: []

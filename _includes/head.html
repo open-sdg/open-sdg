@@ -78,6 +78,7 @@
         {%- endif -%}
         <!-- ShareThis END -->
 
+        {% include head-custom.html %}
     </head>
-<body class="language-{{ page.language }} layout-{{ page.layout }}">
+<body class="{% include body-classes.html %}">
 <!-- <div class="container"> -->

@@ -1,0 +1,37 @@
+{% assign contrast_type = site.contrast_type | default: 'default' %}
+{% if contrast_type == 'long' %}
+    <li class="nav-link contrast contrast-default contrast-type-long">
+        <a title="{{ page.t.header.enable_high_contrast }}"
+           aria-label="{{ page.t.header.enable_high_contrast }}"
+           data-contrast-switch-to="high"
+           href="javascript:void(0)"
+           {% include autotrack.html preset="switch_contrast" category="Accessibility" action="Change contrast setting" label="high" %}
+        >{{ page.t.header.default_contrast | replace: ' ', '<br>' }}</a>
+    </li>
+{% elsif contrast_type == 'single' %}
+    <li class="nav-link contrast contrast-high contrast-type-single">
+        <a title="{{ page.t.header.enable_high_contrast }}"
+           aria-label="{{ page.t.header.enable_high_contrast }}"
+           data-contrast-switch-to="high"
+           href="javascript:void(0)"
+           {% include autotrack.html preset="switch_contrast" category="Accessibility" action="Change contrast setting" label="high" %}
+        >A</a>
+    </li>
+{% else %}
+    <li class="nav-link contrast contrast-default contrast-type-default">
+        <a title="{{ page.t.header.disable_high_contrast }}"
+           aria-label="{{ page.t.header.disable_high_contrast }}"
+           data-contrast-switch-to="default"
+           href="javascript:void(0)"
+           {% include autotrack.html preset="switch_contrast" category="Accessibility" action="Change contrast setting" label="default" %}
+        >A</a>
+    </li>
+    <li class="nav-link contrast contrast-high contrast-type-default">
+        <a title="{{ page.t.header.enable_high_contrast }}"
+           aria-label="{{ page.t.header.enable_high_contrast }}"
+           data-contrast-switch-to="high"
+           href="javascript:void(0)"
+           {% include autotrack.html preset="switch_contrast" category="Accessibility" action="Change contrast setting" label="high" %}
+        >A</a>
+    </li>
+{% endif %}
