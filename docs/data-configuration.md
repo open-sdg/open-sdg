@@ -2,21 +2,98 @@
 
 Typically an Open SDG implementation is split into a [site repository](glossary.md#site-repository) and a [data repository](glossary.md#data-repository). For this reason the Open SDG configuration is split into [site configuration](configuration.md) and data configuration. This document details the available settings for data configuration.
 
+These settings are mostly related to the conversion/alteration of data, metadata, translations, and schema. Also, many of these settings (those that start with "docs_") affect the construction of the "data documentation" mini-website that is automatically generated to document your particular data service. This website includes examples of each type of output, as well as a useful disaggregation report.
+
 > To see many of these options in action, the [data starter repository](https://github.com/open-sdg/open-sdg-data-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/data_config.yml).
+
+### csvw
+
+_Optional_: If specified, then your data will be converted into [CSVW](https://www.w3.org/TR/tabular-data-primer/) format. The available parameters correspond to the parameters available in the [OutputCsvw class](https://github.com/open-sdg/sdg-build/blob/master/sdg/outputs/OutputCsvw.py).
+
+* `common_properties`: Key/value pairs showing common properties to add to the CSVW metadata. Here is a [list of support properties](https://w3c.github.io/csvw/metadata/#common-properties). Note that this can also be set per-indicator in a "csvw" metadata property.
+* `at_properties`: Key/value pairs showing "at" properties (those starting with @). Note that this can also be set per-indicator in a "csvw" metadata property.
+* `table_schema_properties`: Key/value pairs showing properties to add to the CSVW table schema. Supported properties include (but may not be limited to) "aboutUrl". Note that this can also be set per-indicator in a "csvw" metadata property.
+* `column_properties`: Key/value pairs (where each value is itself key/value pairs) showing properties to add to the CSVW columns, keyed by column name. Supported properties include (but may not be limited to) "propertyUrl" and "valueUrl". Note that this can also be set per-indicator in a "csvw" metadata property.
+* `sorting`: This works the same as in the `datapackage` setting below.
+
+### datapackage
+
+_Optional_: Your data will automatically be converted into a machine-readable standard known as [datapackages](https://frictionlessdata.io/data-package/). This setting can be used to affect the way that these datapackages are constructed.
+
+**NOTE**: These datapackages are actually used in Open SDG to determine the order in which the disaggregations and their values are displayed to the end-user. So, the "sorting" option described below has a direct effect on your Open SDG site.
+
+The available parameters correspond to the parameters available in the [OutputDataPackage class](https://github.com/open-sdg/sdg-build/blob/master/sdg/outputs/OutputDataPackage.py):
+
+* `field_properties`: Key/value pairs (where each value is itself a set of key/value pairs) showing properties to add to specific fields, keyed by field name. Note that this can also be set per-indicator in a "datapackage" metadata property.
+* `package_properties`: Key/value pairs showing common properties to add to all the data packages. Note that this can also be set per-indicator in a "datapackage" metadata property.
+* `resource_properties`: Key/value pairs showing common properties to add to the resource in all data packages. Note that this can also be set per-indicator in a "datapackage" metadata property.
+* `sorting`: Which strategy to use when sorting the columns and values. The available options are:
+
+  - alphabetical: Sort columns/values in alphabetical order. For example, assuming the data came from the following CSV file, "Age" would be before "Sex", and "Female" would be before "Male":
+
+          Year,Sex,Age,Value
+          2021,Male,5 years,43
+          2021,Female,5 years,53
+
+    Note that this alphabetizing happens before the columns/values are translated.
+
+  - default: Sort columns/values according to their position in the source data. For example, assuming the data came from the same CSV shown above, "Sex" would be before "Age", and "Male" would be before "Female".
+
+  For backwards-compatibility reasons, if `sorting` is not specified, Open SDG assumes that you want "alphabetical".
+
+  If you require more direct control over the sorting of your data columns/values, see the `data_schema` setting below.
+
+### data_schema
+
+_Optional_: If you need direct control of the sorting and/or validation of your data column/values, you can maintain individual "data schema" for selected indicators. Note that if this is omitted, all indicators will have an "inferred" data schema. So this setting is rarely used -- typically only in cases where you are not happy with the inferred data schema (such as if you are not happy with the order of the disaggregation controls in Open SDG).
+
+The specifics of these "data schema" depend on which of the [data schema classes](https://github.com/open-sdg/sdg-build/tree/master/sdg/data_schemas) you use, which you can specify with the "class" option. The available classes are:
+
+**DataSchemaInputSdmxDsd**: Use an SDMX DSD to import the data schema. Note that this single schema will apply to all indicators. The available parameters are:
+
+  * `source`: The path or remote URL to the SDMX DSD. For example, this would use the global DSD:
+
+          data_schema:
+            class: DataSchemaInputSdmxDsd
+            source: 'https://registry.sdmx.org/ws/public/sdmxapi/rest/datastructure/IAEG-SDGs/SDG/latest/?format=sdmx-2.1&detail=full&references=children'
+
+**DataSchemaInputTableSchemaYaml**: Import data schema from a folder of YAML files following the [Table Schema spec](https://specs.frictionlessdata.io/table-schema/) and named according to their indicator (eg, "1-1-1.yml"). Note that each of these files applies to only one particular indicator. Indicators that do not have a data schema file will get an "inferred" schema based on its data. The available parameters are:
+
+  * `source`: The folder/file pattern to use to load the files. For example, this would use a local folder called "data-schema":
+
+          data_schema:
+            class: DataSchemaInputTableSchemaYaml
+            source: data-schema/*.yml
+
+### docs_baseurl
+
+**_Required_**: A baseurl to put at the beginning of all absolute links in the "data documentation" website. If this is not set then there may be some incorrect links in the "data documentation". This is usually the name of your data repository, after a slash. For example, if your data repository is "data", then this should be:
+
+```nohighlight
+docs_baseurl: /data
+```
 
 ### docs_branding
 
-The data repository will automatically generate a website which summarizes the available endpoints in your build. The `docs_*` settings affect how that website is built.
-
-_Optional_: This `docs_branding` setting controls the title which displays at the top of these website pages. The default if omitted is shown below:
+_Optional_: This setting controls the title which displays at the top of the data documentation website. The default if omitted is shown below:
 
 ```nohighlight
 docs_branding: Build docs
 ```
 
+### docs_extra_disaggregation
+
+_Optional_: An optional list of extra columns that would not otherwise be included in the data documentation website's "disaggregation report". Common columns included here are the Series and/or Units columns (SERIES and UNIT_MEASURE, if using SDMX column names) since they would not normally be considered "disaggregation", but are still useful to include in this report. For example:
+
+```nohighlight
+docs_extra_disaggregation:
+  - Series
+  - Units
+```
+
 ### docs_intro
 
-_Optional_: This adds an introductory paragraph on the homepage of the automatically-generated website. If omitted, no introductory paragraph will appear. Here is an example:
+_Optional_: This adds an introductory paragraph on the homepage of the data documentation website. If omitted, no introductory paragraph will appear. Here is an example:
 
 ```nohighlight
 docs_intro: This is a list of examples of endpoints and output that are
@@ -26,10 +103,26 @@ docs_intro: This is a list of examples of endpoints and output that are
 
 ### docs_indicator_url
 
-_Optional_: This can be used to convert any indicator IDs in the automatically-generated website into actual links to your implementation's indicator pages. If omitted, the indicator IDs will not be hyperlinked. Here is an example:
+_Optional_: This can be used to convert any indicator IDs in the data documentation website into actual links to your implementation's indicator pages. If omitted, the indicator IDs will not be hyperlinked. Here is an example:
 
 ```nohighlight
 docs_indicator_url: https://my-github-org.github.io/my-site-repository/[id]
+```
+
+### docs_subfolder
+
+_Optional_: This can be used to put your documentation website into a subfolder. This is rarely used. Typically it is only used if you have combined your data repository and site repository into one single repository. Eg:
+
+```nohighlight
+docs_subfolder: my-subfolder
+```
+
+### docs_translate_disaggregations
+
+_Optional_: If set to true, then the documentation website's "disaggregation report" will include extra columns showing the translations of each disaggregation into the languages you specified in `languages`. For example:
+
+```nohighlight
+docs_translate_disaggregations: true
 ```
 
 ### indicator_downloads
@@ -53,11 +146,21 @@ indicator_downloads:
     indicator_id_pattern: indicator_(.*)
 ```
 
+### indicator_export_filename
+
+Open SDG will automatically convert all data to CSV and provide a zip file. This setting controls the name of that file. Note that the ".zip" extension should not be added here. The following example shows the default, if omitted:
+
+```nohighlight
+indicator_export_filename: all_indicators
+```
+
 ### indicator_options
 
 _Optional_: This controls how your indicators are loaded. The available parameters are:
 
 * non_disaggregation_columns: This specifies a list of columns that should not be considered disaggregations.
+* series_column: The name of the data column that should be considered the series. Historically this has been "Series", but if your data source is SDMX then it may be "SERIES".
+* unit_column: The name of the data column that should be considered the unit of measurement. Historically this has been "Units", but if your data source is SDMX then it may be "UNIT_MEASURE".
 
 Here are the defaults that are assumed if this is omitted:
 
@@ -72,11 +175,13 @@ indicator_options:
     - Observation status
     - Unit multiplier
     - Unit measure
+  series_column: Series
+  unit_column: Units
 ```
 
 ### inputs
 
-_Optional_: This setting identifies the source (or sources) of your data and metadata. This can be omitted if you are using the standard Open SDG approach of CSV data and YAML metadata. But if you would like to use non-standard inputs (such as SDMX) then you can use this as needed.
+_Optional_: This setting identifies the source (or sources) of your data and metadata. This can be omitted if you are using the legacy Open SDG approach of CSV data and YAML/markdown metadata, _but it is strongly recommended to specify your inputs using this setting_. This is required if you are using any other input, such as SDMX or Word templates.
 
 Each item must have a "class" which corresponds to classes in the [/sdg/inputs folder of the sdg-build library](https://github.com/open-sdg/sdg-build/tree/master/sdg/inputs). Further, each item can have any/all of the parameters that class uses. Below are full descriptions of all the possible inputs and their corresponding parameters.
 
@@ -139,6 +244,8 @@ Now here are specific descriptions and parameters available for each class:
   * `repo_subfolder`: If using a Git repository, the name of the folder within the repo to use as the main folder.
   * `default_language`: Which language is your site's main language.
 
+> For more technical information see the [InputSdgMetadata class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputSdgMetadata.py).
+
 **InputSdmxJson**: Input data from an SDMX-JSON file or endpoint. The available parameters are:
 
   * `source`: Remote URL of the SDMX source, or path to local SDMX file.
@@ -158,6 +265,8 @@ Now here are specific descriptions and parameters available for each class:
 
 **InputSdmxMeta**: Input metadata from SDMX, either remote inputs or a local file. The available parameters are the same as in InputSdmxJson.
 
+> For more technical information see the [InputSdmxMeta class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputSdmxMeta.py).
+
 **InputSdmxMl_Multiple**: Input data from multiple SDMX-ML files (which can be a mix of either "Structure" or "Structure Specific"). The available parameters are the same as in InputSdmxJson, along with these additional parameters:
 
   * `path_pattern`: Same as described above in other inputs.
@@ -172,11 +281,20 @@ Now here are specific descriptions and parameters available for each class:
 
 > For more technical information see the [InputSdmxMl_StructureSpecific class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMl_StructureSpecific.py).
 
-**InputSdmxMl_UnitedNationsApi**: Input data from the United Nations Global SDG Database. The available parameters are the same as in InputSdmxJson.
+**InputSdmxMl_UnitedNationsApi**: Input data from the United Nations Global SDG Database. The available parameters are the same as in InputSdmxJson, plus the following:
 
-**InputWordMeta**: Input data from the [Microsoft Word templates](https://github.com/sdmx-sdgs/metadata) popular for SDG metdata. The available parameters are:
+  * `reference_area`: The SDMX in the REF_AREA dimension. Defaults to '1' (world).
+  * `dimension_query`: Key/value pairs for SDMX dimensions to use in generating the query. For details see the [UN SDG API manual](https://unstats.un.org/sdgs/files/SDMX_SDG_API_MANUAL.pdf).
 
-  *  `reference_area`: FINISH ME!!!!!!!!!!!!!!!!!
+> For more technical information see the [InputSdmxMl_UnitedNationsApi class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputSdmxMl_UnitedNationsApi.py).
+
+**InputWordMeta**: Input data from the [Microsoft Word templates](https://github.com/sdmx-sdgs/metadata) popular for SDG metdata. The available parameters are the same as InputCsvMeta.
+
+> For more technical information see the [InputWordMeta class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputWordMeta.py).
+
+**InputYamlMeta**: Input metadata from YAML files. The available parameters are the same as InputCsvMeta.
+
+> For more technical information see the [InputYamlMeta class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputYamlMeta.py).
 
 **InputYamlMdMeta**: Input metadata from a folder of YAML/Markdown files. The available parameters are the same as in InputCsvMeta.
 
@@ -184,7 +302,7 @@ Note that YAML/Markdown files should have a `---` at the bottom. Any Markdown te
 
 > For more technical information see the [InputYamlMdMeta class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputYamlMdMeta.py) and an [example of InputYamlMdMeta configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config.yml#L33).
 
-**Defaults**: As mentioned above, this `inputs` setting is optional. The defaults below show what is assumed if `inputs` is omitted entirely.
+**Defaults**: As mentioned above, this `inputs` setting is optional. The defaults below show what is assumed if `inputs` is omitted entirely. Note that these defaults should not be considered the recommended approach -- they are left only for backwards compatibility.
 
 ```nohighlight
 inputs:
@@ -198,12 +316,26 @@ inputs:
 
 ### languages
 
-_Optional_: This setting corresponds exactly to the [language setting in the site configuration](configuration.md#languages). However it is optional here. If you use this setting, your data will be translated and placed in language subfolders. For more information on how this translation works, see documentation on [translating metadata](translation.md#translating-indicator-metadata) and [translating data](translation.md#translating-data-disaggregations-and-columns).
+_Optional_: This setting corresponds exactly to the [language setting in the site configuration](configuration.md#languages). It is technically optional, but **strongly recommended**, and will be required in future releases. If you use this setting, your data will be translated and placed in language subfolders. For more information on how this translation works, see documentation on [translating metadata](translation.md#translating-indicator-metadata) and [translating data](translation.md#translating-data-disaggregations-and-columns).
 
 ```nohighlight
 languages:
   - es
   - en
+```
+
+### logging
+
+_Optional_: This determines the types of logs that will appear when the Python code is running to perform these "builds". The available log types are:
+
+  * `warn`: Show warnings - ie, things that may be problems but that are not so bad that they halt the build.
+  * `debug`: Show more details on every step of the build - usually used to help with development of sdg-build.
+
+The default is just "warn". So if omitted, the following is assumed:
+
+```nohighlight
+logging:
+  - warn
 ```
 
 ### map_layers
@@ -277,7 +409,7 @@ schema:
 
 ### schema_file
 
-_Optional_: This identifies a file containing the schema (possible fields) for metadata. Currently this needs to be a prose.io config, and defaults to '_prose.yml'.
+_Optional_: This identifies a file containing the schema (possible fields) for metadata. Currently this needs to be a prose.io config, and defaults to '_prose.yml'. Note that if you are using the `schema` setting described above, you do not need to use `schema_file` (and vice versa).
 
 ```nohighlight
 schema_file: _prose.yml
@@ -285,7 +417,7 @@ schema_file: _prose.yml
 
 ### site_dir
 
-_Optional_: This identifies a directory to hold the "built" files. The default is '_site'.
+_Optional_: This identifies a directory to hold the "built" files. The default is '_site' and you usually do not need to change this.
 
 ```nohighlight
 site_dir: _site
