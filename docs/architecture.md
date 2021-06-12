@@ -35,7 +35,7 @@
       Github or<br>other source
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        Data and metadata files can be stored on <a href="https://github.com">Github</a> and edited with built-in forms or offline.
+        Data, metadata, and indicator configuration files can be stored on <a href="https://github.com">Github</a> and edited with built-in forms or offline.
         <br><br>
         Many alternative data sources can be used as well, such as APIs.
       </span>
@@ -44,9 +44,9 @@
       Data repository
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        This contains all the data and metadata for your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-data-starter">here</a>.
+        This contains all the data, metadata, and indicator configuration for your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-data-starter">here</a>.
         <br><br>
-        Data and metadata imports, validation, and pre-processing are all
+        Data, metadata, indicator configuration, translation, and schema imports, validation, and pre-processing are all
         handled here.
       </span>
     </div>
@@ -87,7 +87,7 @@
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/sdg-build">SDG Build</a> handles the
-        requisite pre-processing of your data and metadata.
+        requisite pre-processing of your data, metadata, and indicator configuration.
         <br><br>
         This is a stand-alone library which does not require customisation.
       </span>
@@ -187,7 +187,7 @@ jsPlumb.ready(function () {
   jsPlumb.connect({
     source: 'prose-io',
     target: 'data-repo',
-    overlays: connectorTip('Edits to the data/metadata are pushed to the data repository.'),
+    overlays: connectorTip('Edits to the data/metadata/configuration are pushed to the data repository.'),
   });
   jsPlumb.connect({
     source: 'data-repo',
