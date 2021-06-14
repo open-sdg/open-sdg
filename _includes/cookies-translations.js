@@ -35,9 +35,9 @@ klaroConfig.translations = {
                 description: {{ page.t.cookies.purposes_functional_description | jsonify }},
                 title: {{ page.t.cookies.purposes_functional_title | jsonify }},
             },
-            performance: {
-                description: {{ page.t.cookies.purposes_performance_description | jsonify }},
-                title: {{ page.t.cookies.purposes_performance_title | jsonify }},
+            analytics: {
+                description: {{ page.t.cookies.purposes_analytics_description | jsonify }},
+                title: {{ page.t.cookies.purposes_analytics_title | jsonify }},
             },
         },
         save: {{ page.t.cookies.save | jsonify }},
