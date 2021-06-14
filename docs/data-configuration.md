@@ -64,7 +64,6 @@ The specifics of these "data schema" depend on which of the [data schema classes
           data_schema:
             class: DataSchemaInputTableSchemaYaml
             source: data-schema/*.yml
->>>>>>> 1.4.0-dev
 
 ### docs_baseurl
 
