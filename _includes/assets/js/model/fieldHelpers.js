@@ -469,6 +469,10 @@ function getDataBySelectedFields(rows, selectedFields) {
 function sortFieldNames(fieldNames, dataSchema) {
   if (dataSchema && dataSchema.fields) {
     var schemaFieldNames = dataSchema.fields.map(function(field) { return field.name; });
+    // If field names have been translated, we may need to use titles.
+    if (schemaFieldNames.length > 0 && !(fieldNames.includes(schemaFieldNames[0]))) {
+      schemaFieldNames = dataSchema.fields.map(function(field) { return field.title; });
+    }
     fieldNames.sort(function(a, b) {
       return schemaFieldNames.indexOf(a) - schemaFieldNames.indexOf(b);
     });
@@ -486,6 +490,10 @@ function sortFieldNames(fieldNames, dataSchema) {
 function sortFieldValueNames(fieldName, fieldValues, dataSchema) {
   if (dataSchema && dataSchema.fields) {
     var fieldSchema = dataSchema.fields.find(function(x) { return x.name == fieldName; });
+    // If field names have been translated, we may need to use titles.
+    if (!fieldSchema) {
+      fieldSchema = dataSchema.fields.find(function(x) { return x.title == fieldName; });
+    }
     if (fieldSchema && fieldSchema.constraints && fieldSchema.constraints.enum) {
       fieldValues.sort(function(a, b) {
         return fieldSchema.constraints.enum.indexOf(a) - fieldSchema.constraints.enum.indexOf(b);
