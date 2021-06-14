@@ -2,6 +2,7 @@
 
 ## Not released
 
+* Include file for custom `<HEAD>` content #1215
 * Include file for easier overriding of body classes #1212
 * Bug fix: allow multiple multi-level disaggregations #1205
 * Remove the selection-bar from the disaggregation control dropdowns #1203
@@ -13,6 +14,7 @@
 * Option to use series for chart titles when available #1168
 * Darker color for main nav #1142
 * Move goal header to include file #1128
+* Metadata and data forms and other improvements to config forms #1082
 
 ## 1.3.0
 
