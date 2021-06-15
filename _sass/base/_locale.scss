@@ -22,7 +22,8 @@
 
     // And some exceptions.
     #main-content {
-        .status-inner {
+        .status-inner,
+        .status {
             line-break: normal;
         }
     }
