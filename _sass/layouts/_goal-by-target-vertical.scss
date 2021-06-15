@@ -41,8 +41,7 @@ $goal-by-target-indentation: 60px;
         right: 0;
         top: 0;
         margin-top: 0;
-        max-width: 100px;
-        text-align: right;
+        width: min-content;
       }
     }
   }
