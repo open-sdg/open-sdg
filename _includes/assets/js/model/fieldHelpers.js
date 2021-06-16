@@ -255,41 +255,47 @@ function getCombinationData(fieldItems) {
     });
   });
 
-  // Now compute all combinations of those.
-  var getAllSubsets = function(combinationSet) {
-    if (combinationSet.length == 0) {
-      return [];
+  // Generate all possible subsets of these key/value pairs.
+  var powerset = [[]];
+  for (var i = 0; i < fieldValuePairs.length; i++) {
+    for (var j = 0, len = powerset.length; j < len; j++) {
+      powerset.push(powerset[j].concat(fieldValuePairs[i]));
     }
-    var subsets = [combinationSet];
-    if (combinationSet.length == 1) {
-      return subsets;
-    }
-    for (var i = 0; i < combinationSet.length; i++) {
-      var subset = combinationSet.filter(function(item, index) {
-        return index !== i;
-      });
-      if (subset.length > 0) {
-        subsets = subsets.concat(getAllSubsets(subset));
-      }
-    }
-    return subsets;
   }
-  var allSubsets = getAllSubsets(fieldValuePairs);
-  var fieldValuePairCombinations = {};
-  allSubsets.forEach(function(subset) {
+  // But we require special filtering on top of this.
+  return powerset.filter(function(combinations) {
+    // We don't need the empty set.
+    if (combinations.length === 0) {
+      return false;
+    }
+    else if (combinations.length === 1) {
+      return true;
+    }
+    // We don't want any sets that include multiples of the same field.
+    // Eg, we do not need to consider a set containing both "Female" and
+    // "Male". So filter them out here.
+    else {
+      var fieldsUsed = [];
+      for (var i = 0, len = combinations.length; i < len; i++) {
+        var thisField = Object.keys(combinations[i])[0];
+        if (fieldsUsed.includes(thisField)) {
+          // Abort as soon as we find a duplicate.
+          return false;
+        }
+        else {
+          fieldsUsed.push(thisField);
+        }
+      }
+      return true;
+    }
+  }).map(function(combinations) {
+    // We also want to merge these into a single object.
     var combinedSubset = {};
-    subset.forEach(function(keyValue) {
+    combinations.forEach(function(keyValue) {
       Object.assign(combinedSubset, keyValue);
     });
-    var combinationKeys = Object.keys(combinedSubset).sort();
-    var combinationValues = Object.values(combinedSubset).sort();
-    var combinationUniqueId = JSON.stringify(combinationKeys.concat(combinationValues));
-    if (!(combinationUniqueId in fieldValuePairCombinations)) {
-      fieldValuePairCombinations[combinationUniqueId] = combinedSubset;
-    }
+    return combinedSubset;
   });
-
-  return Object.values(fieldValuePairCombinations);
 }
 
 /**
