@@ -32,23 +32,21 @@
       </span>
     </div>
     <div class="node service row1 data-column" id="prose-io">
-      Github and<br>Prose.io
+      Github or<br>other source
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        <a href="https://prose.io">Prose.io</a> is a free cloud service that allows
-        for user-friendly editing of the data and metadata files that are stored on <a href="https://github.com">Github</a>.
+        Data, metadata, and indicator configuration files can be stored on <a href="https://github.com">Github</a> and edited with built-in forms or offline.
         <br><br>
-        This functions as a data management system for curating the statistics in
-        the platform.
+        Many alternative data sources can be used as well, such as APIs.
       </span>
     </div>
     <div class="node local row2 data-column" id="data-repo">
       Data repository
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
-        This contains all the data and metadata for your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-data-starter">here</a>.
+        This contains all the data, metadata, and indicator configuration for your implementation. A starter template is available <a href="https://github.com/open-sdg/open-sdg-data-starter">here</a>.
         <br><br>
-        Data and metadata imports, validation, and pre-processing are all
+        Data, metadata, indicator configuration, translation, and schema imports, validation, and pre-processing are all
         handled here.
       </span>
     </div>
@@ -89,7 +87,7 @@
       <i tabindex="0" class="fa fa-info-circle"></i>
       <span class="info">
         <a href="https://github.com/open-sdg/sdg-build">SDG Build</a> handles the
-        requisite pre-processing of your data and metadata.
+        requisite pre-processing of your data, metadata, and indicator configuration.
         <br><br>
         This is a stand-alone library which does not require customisation.
       </span>
@@ -189,7 +187,7 @@ jsPlumb.ready(function () {
   jsPlumb.connect({
     source: 'prose-io',
     target: 'data-repo',
-    overlays: connectorTip('Edits made in Prose.io are pushed to the data repository.'),
+    overlays: connectorTip('Edits to the data/metadata/configuration are pushed to the data repository.'),
   });
   jsPlumb.connect({
     source: 'data-repo',
