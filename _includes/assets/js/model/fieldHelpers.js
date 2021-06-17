@@ -204,7 +204,7 @@ function sortFieldsForView(fieldItemStates, edges) {
       var childIndex = fieldItemStates.findIndex(function(fieldItem) {
         return fieldItem.field == edge.To;
       });
-      arrayMove(fieldItemStates, childIndex, parentIndex);
+      arrayMove(fieldItemStates, childIndex, parentIndex + 1);
     });
   }
 }
