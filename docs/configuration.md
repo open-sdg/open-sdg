@@ -725,6 +725,26 @@ reporting_status:
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
 
+### repository_url_data
+
+_Optional_: This setting specifies the URL of the data repository, which is used in other settings. Currently this -- if available -- will be used as a prefix for the "repository_link" options in `indicator_config_form`, `indicator_metadata_form`, and `indicator_data_form`.
+
+Here is an example of using this setting:
+
+```yaml
+repository_url_data: https://github.com/my-github-org/data
+```
+
+### repository_url_site
+
+_Optional_: This setting specifies the URL of the site repository, which is used in other settings. Currently this -- if available -- will be used as a prefix for the "repository_link" option in `site_config_form`.
+
+Here is an example of using this setting:
+
+```yaml
+repository_url_site: https://github.com/my-github-org/site
+```
+
 ### search_index_boost
 
 _Optional_: This setting can be used to give a "boost" to one or more fields in the search index. The boost number should be a positive integer. The higher the number, the more "relevant" that field will be in search results. If omitted, the following defaults will be used:

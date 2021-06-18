@@ -147,15 +147,15 @@ indicator_config_form:
       labels:
         - Not started
         - Complete
-  repository_link: 'https://example.com'
+  repository_link: '/tree/master/tests/data/indicator-config'
   translation_link: ''
 indicator_data_form:
   enabled: true
-  repository_link: 'https://example.com'
+  repository_link: '/tree/master/tests/data/data'
 indicator_metadata_form:
   enabled: true
   dropdowns: []
-  repository_link: 'https://example.com'
+  repository_link: '/tree/master/tests/data/meta'
   translation_link: 'https://example.com?[id]&[group]&[key]'
   scopes:
     - national
@@ -247,6 +247,8 @@ reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
   disaggregation_tabs: true
+repository_url_data: https://github.com/open-sdg/open-sdg
+repository_url_site: https://github.com/open-sdg/open-sdg
 search_index_boost: []
 search_index_extra_fields:
   - un_custodian_agency
@@ -266,7 +268,7 @@ site_config_form:
         - goal
         - goal-by-target
         - goal-by-target-vertical
-  repository_link: ''
+  repository_link: '/tree/master/tests/site/_data'
   translation_link: ''
 validate_indicator_config: true
 validate_site_config: true

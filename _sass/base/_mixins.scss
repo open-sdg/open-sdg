@@ -118,6 +118,25 @@
   text-decoration: none !important;
 }
 
+@mixin focusOutlineOnly {
+  background-color: $backgroundColor !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor !important;
+}
+
+@mixin focusHighContrast {
+  color: $focusColor-highContrast !important;
+  background-color: $focusBackgroundColor-highContrast !important;
+  box-shadow: 0 -2px $focusOutlineColor-highContrast,0 4px $focusColor-highContrast !important;
+}
+
+@mixin focusOutlineOnlyHighContrast {
+  background-color: $color-dark-highContrast !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor-highContrast !important;
+  color: $text-color-highContrast !important;
+}
+
 @mixin preserveOriginalColors {
   @media (-ms-high-contrast: active), (forced-colors: active) {
     -ms-high-contrast-adjust: none;

@@ -1,0 +1,14 @@
+fields:
+  - name: Value
+    type: number
+  - name: Year
+    type: integer
+  - name: Sex
+    type: string
+    constraints:
+      enum:
+        - ""
+        - Male
+        - Female
+  - name: Numeric Disaggregation
+    type: integer

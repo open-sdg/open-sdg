@@ -1,0 +1,37 @@
+/**
+ * CSS rules specific to certain languages.
+ */
+
+// Right-to-left for certain languages. This list of languages
+// may need tweaking over time.
+.language-ar {
+    direction: rtl;
+}
+
+// Line-breaks for certain languages. This list of selectors
+// (and languages) may need tweaking over time.
+.language-km,
+.language-lo {
+    #page-content,
+    #indicator-sidebar,
+    #indicator-main,
+    #main-content,
+    .goal-banner {
+        line-break: anywhere;
+    }
+
+    // And some exceptions.
+    #main-content {
+        .status-inner,
+        .status {
+            line-break: normal;
+        }
+    }
+    #indicator-main {
+        #national, #global {
+            th[scope="row"] {
+                min-width: 100px;
+            }
+        }
+    }
+}
