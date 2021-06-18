@@ -71,6 +71,16 @@ You can find a full list of Sass variables related to color in [this Sass variab
 
 By contrast to the method for overriding layouts and includes (mentioned above), overriding Sass variables can be done in a more easily-maintainable way. Instead of overriding the file containing the Sass variables, you instead override [this placeholder file for Sass variable overrides](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables.scss). This allows you to override only the specific variables you need to change.
 
+## Fonts and custom `<head>` content
+
+The `_includes/head-custom.html` file can be overridden to contain any HTML you would like. This HTML is automatically placed close to the closing `</head>` tag and is intended to have custom local or third-party assets (most commonly fonts).
+
+For example, to use the "Open Sans" Google Webfont, you could place the following in your copy of `_includes/head-custom.html`:
+
+`<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet" crossorigin="">`
+
+Note that you can easily override the "font family" used on your platform by overriding the `$fontFamily` Sass variable, in the same way as described above with colors.
+
 ## Rounding data values
 
 To apply a site-wide data-rounding function, you can override the `opensdg.dataRounding` function. For example, you could include this in your custom javascript:
