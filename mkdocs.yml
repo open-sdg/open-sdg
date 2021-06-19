@@ -51,6 +51,7 @@ pages:
         - Metadata file formats: metadata-file-formats.md
         - Data format: data-format.md
         - Data sources: data-sources.md
+        - Data schema: data-schema.md
         - Chart types: charts.md
     - Developers:
         - Local development: development.md
