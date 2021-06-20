@@ -102,9 +102,13 @@ $(function() {
   });
 
   // Add the cookie settings link in the footer.
-  var cookieLink = $('<li class="cookie-settings"><a>' + translations.cookies.cookie_settings + '</a></li>');
-  $(cookieLink).click(function() {
-      klaro.show();
-  });
-  $('#footerLinks ul').append(cookieLink);
+  {% if site.cookie_consent_form.enabled %}
+  if (klaroConfig && klaroConfig.noAutoLoad !== true) {
+    var cookieLink = $('<li class="cookie-settings"><a>' + translations.cookies.cookie_settings + '</a></li>');
+    $(cookieLink).click(function() {
+        klaro.show();
+    });
+    $('#footerLinks ul').append(cookieLink);
+  }
+  {% endif %}
 });

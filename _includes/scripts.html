@@ -22,18 +22,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.3/dist/html2canvas.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
+
+{% if site.cookie_consent_form.enabled %}
 <script>
   {% include cookies-config.js %}
   {% include cookies-translations.js %}
 </script>
 <script src="https://cdn.kiprotect.com/klaro/v0.7/klaro-no-css.js"></script>
-{% include multilingual-js.html key="general.hide" %}
-{% include multilingual-js.html key="search.search" %}
 {% include multilingual-js.html key="cookies.cookie_settings" %}
-<script src='{{ site.baseurl }}/assets/js/sdg.js?v={{ cache_bust }}'></script>
-<script type="text/plain" data-type="application/javascript" data-name="google-analytics">
+{% endif %}
+
+<script {% if site.cookie_consent_form.enabled %}type="text/plain" data-type="application/javascript" data-name="google-analytics"{% endif %}>
   {% include assets/js/googleAnalytics.js %}
 </script>
+
+{% include multilingual-js.html key="general.hide" %}
+{% include multilingual-js.html key="search.search" %}
+<script src='{{ site.baseurl }}/assets/js/sdg.js?v={{ cache_bust }}'></script>
 {% include scripts-custom.html %}
 {%- if site.custom_js -%}
   {%- for custom_js_file in site.custom_js -%}
