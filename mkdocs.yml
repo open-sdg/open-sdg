@@ -55,6 +55,7 @@ pages:
         - Chart types: charts.md
     - Developers:
         - Local development: development.md
+        - Cookies and privacy: cookies.md
         - Deployment: deployment.md
         - Site configuration: configuration.md
         - Data configuration: data-configuration.md
