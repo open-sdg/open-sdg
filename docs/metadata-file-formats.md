@@ -1,19 +1,32 @@
 <h1>Metadata file formats</h1>
 
-Metadata can be uploaded in three different formats:
+Metadata can be uploaded in many different formats:
+- YAML (.yml) - default
+- SDMX (.xml)
+- Word SDMX template files (.docx)
 - Markdown (.md)
 - Excel (.xlsx)
 - CSV (.csv)
 
 ## Naming your metadata files
 When naming your metadata files, you should follow a set naming convention - indicator code separated with dashes followed by the file extension. For example:
-- 1-1-1.md
-- 1-1-1.xlsx
-- 1-1-1.csv
+- 1-1-1.yml
+- 1-1-1.xml
+- 1-1-1.docx
+
+## YAML
+
+By default, metadata in the data starter repository are YAML files. These files should be maintained in the way as described on the [Metadata format page](metadata-format.md) (optionally making use of the indicator metadata forms).
+
+## SDMX
+
+## Word SDMX template files
+
+The Word (SDMX) metadata input option supports Word files generated using standard SDG SDMX MSD compliant template that have been populated in line with the guidance
 
 ## Markdown
 
-By default, Metadata in the data starter repository are Markdown files which contain YAML and Markdown. These files should be maintained in the way as described on the [Metadata format page](metadata-format.md)
+The Markdown metadata input option supports Markdown files which contain YAML and Markdown and should be maintained in the way as the YAML files (mentioned above).
 
 ## Excel and CSV
 
