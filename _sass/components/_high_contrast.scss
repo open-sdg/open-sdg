@@ -7,17 +7,17 @@
     display: inline-block;
     list-style: none;
     &.contrast {
-      font-size: 1.3em;
       font-weight: bold;
       border-radius: 50%;
       width: 25px;
       max-height: 25px;
       text-align: center;
       margin: 0.25em;
-      margin-top: 0.1em;
+      margin-top: 2px;
       a {
         margin: auto;
         text-decoration: none;
+        display: block;
       }
     }
 
@@ -133,9 +133,6 @@ body.contrast-high {
 }
 
 body.long.contrast-default{
-  li.contrast-default{
-    display: none;
-  }
   li.contrast-high{
     display: block;
     @media only screen and (max-width: 767px) {
@@ -150,9 +147,6 @@ body.long.contrast-high{
     @media only screen and (max-width: 767px) {
       width: 60px;
     }
-  }
-  li.contrast-high{
-    display: none;
   }
 }
 

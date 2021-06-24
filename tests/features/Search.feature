@@ -62,3 +62,11 @@ Feature: Search
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
     Then I should see "Results found (translated): 10"
+
+  Scenario: Searching for nothing displays no results
+    Given I am on the homepage
+    And I fill in "the search box" with ""
+    And I send key "Enter" in "the search box" element
+    And I wait 5 seconds
+    Then I should see "No results"
+    And I should see "Try adjusting your search to find what you're looking for."

@@ -28,7 +28,8 @@
     }
     div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div a {
         margin-top: 15px;
-        display: inline-block;
+        display: block;
+        margin-bottom: 15px;
     }
     div[data-schemapath="root"] > .je-header {
         display: none !important;
@@ -47,6 +48,10 @@
     }
     .config-required {
         color: $color-error;
+    }
+    .translation-link {
+        margin-top: 0;
+        margin-bottom: 20px;
     }
     &.contrast-high {
         .config-widgets {
