@@ -76,7 +76,7 @@ Linkages with any other Goals and Targets.
 
 ### 1.a. Organisation:
 
-Organisation unit information of the contact points for the data or metadata.
+Organisation which is responsible for the indicator (i.e. who can be contacted about the data or metadata).
 
 `CONTACT_ORGANISATION`
 
@@ -88,7 +88,7 @@ Name of the contact points for the data or metadata.
 
 ### 1.c. Contact organisation unit
 
-Department NameWai
+Department/division/unit of contact person within the organisation mentioned in 1.a.
 
 `ORGANISATION_UNIT`
 
@@ -164,13 +164,13 @@ Expected dates of release of new data for this indicator, including the year (or
 
 ### 3.e. Data providers:
 
-Identification of national and/or international data provider(s), specifying the organization(s) responsible for producing the data.
+Identification of national and/or international data provider(s), specifying the organization(s) responsible for producing the source data.
 
 `DATA_SOURCE`
 
 ### 3.f. Data compilers:
 
-Organization(s) responsible for compilation of this indicator either at national or global level.
+Organization(s) responsible for compilation of this indicator either at national level, which is often the same as 1.a.
 
 `COMPILING_ORG`
 
