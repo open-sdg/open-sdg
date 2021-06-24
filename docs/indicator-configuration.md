@@ -49,115 +49,14 @@ graph_titles:
     title: This title will appear for all other series
 ```
 
-## Mandatory fields
+## Indicator configuration fields
 
-The following fields are required on all indicators:
+### composite_breakdown_label
 
-### data_not_statistical
-
-**_Required_**: This setting is used to specify whether the indicator is statistical (can be charted/graphed) or not. If you have uploaded data that you want to display on a chart/table for an indicator, set this to `false`.
+**_Optional_** This setting is used when importing data from SDMX to specify a more useful label for the COMPOSITE_BREAKDOWN column (if present). Translation keys are supported, as always. Using the example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
 
 ```nohighlight
-data_non_statistical: false
-```
-
-### indicator_name
-
-**_Required_**: This setting is used to specify the name of the indicator, which displays at the top of the indicator page.
-
-```nohighlight
-indicator_name: Proportion of population living below the national poverty line, by sex and age
-```
-
-With translation key:
-
-```nohighlight
-indicator_name: global_indicators.1-2-1-title
-```
-
-### indicator_number
-
-**_Required_**: This setting is used to specify the number (or "id") for the indicator.
-
-```nohighlight
-indicator_number: 1.2.1
-```
-
-### reporting_status
-
-**_Required_**: This setting is used to specify the status of the indicator. This feeds into the reporting status page and also displays on the goal pages.
-
-```nohighlight
-reporting_status: complete
-```
-
-Options out-of-the-box are:
-* complete
-* inprogress
-* notstarted
-* notapplicable
-
-### graph_title
-
-**_Required_** (for statistical indicators): This setting is used to specify the title that displays above the graph/chart. This can be simple text (or a translation key) if you would like the chart title to be the same for all units of measurement.
-
-```nohighlight
-graph_title: My graph title for 1.1.1
-```
-
-With translation key:
-
-```nohighlight
-graph_title: my_translations.1-1-1-graph_title
-```
-
-### graph_title
-
-**_Required_** (for statistical indicators): This setting is used if you would like the chart title to depend on the user-selected unit of measurement. It has a more complex structure than `graph_title` (*singular*)
-
-```nohighlight
-graph_titles:
-          - unit: Percent
-            title: My title for percentages
-          - unit: Total
-            title: My alternate title for totals
-```
-
-  Note: To use the currently-selected series as the chart title (where possible), set the site configuration option [graph_title_from_series](configuration.md#graph_title_from_series) to `true`.
-  
-### graph_type
-
-**_Required_** (for statistical indicators): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
-
-```nohighlight
-graph_type: line
-```
-
-Options out-of-the-box are:
-* line
-* bar
-* binary (Yes/No graph)
-
-### national_geographical_coverage
-
-**_Required_** (for statistical indicators): This setting is used to specify what label should be used in the absence of any disaggregation (i.e. for headline data)
-
-```nohighlight
-national_geographical_coverage: Australia
-```
-
-With translation key:
-
-```nohighlight
-national_geographical_coverage: my_translations.australia
-```
-
-### indicator_available
-
-**_Recommended_**: This setting is intended for use when the global indicator name might not accurately describe the available national/regional statistics. It should provide an alternate name for the indicator. If specified it will display just below the indicator banner.
-
-```nohighlight
-indicator_available: A more suitable name for the data that is provided
+composite_breakdown_label: Hazard type
 ```
 
 ### computation_units
@@ -174,26 +73,94 @@ With translation key:
 computation_units: my_translations.metric_tons
 ```
 
-### expected_disaggregations
+### copyright
 
-**_Optional_**: This setting is used to supply metrics to the disaggregation status report (see the [reporting_status site configuration](configuration.md#reporting_status)). It should contain a list of the disaggregations (i.e. columns in the CSV file) that the indicator should have.
-
-```nohighlight
-expected_disaggregations:
-  - Age
-  - Sex
-```
-
-### tags
-
-**_Optional_**: This setting is used to supply a list of "tags" to display under the indicator when it is listed on its goal page
+**_Optional_**: This setting can be used to display copyright information below the graph and table on the indicator page.
 
 ```nohighlight
-expected_disaggregations:
-  - My tag
-  - My other tag
+copyright: Copyright 2019 - My organisation
 ```
 
+With translation key:
+
+```nohighlight
+copyright: my_translations.copyright_message
+```
+
+### data_footnote
+
+**_Optional_**: This setting can be used to display additional inforamtion about the data below the graph and table on the indicator page.
+
+
+```nohighlight
+data_footnote: My additional information
+```
+
+With translation key:
+
+```nohighlight
+data_footnote: my_translations.1-1-1-footnote
+```
+
+
+### data_not_statistical
+
+**_Required_**: This setting is used to specify whether the indicator is statistical (can be charted/graphed) or not. If you have uploaded data that you want to display on a chart/table for an indicator, set this to `false`.
+
+```nohighlight
+data_non_statistical: false
+```
+
+You may want to display some very important information which site viewers must keep in mind when using the data provided. To display a notice above the graph in a coloured box, you can use the following fields within the metadata file.
+
+### data_notice_class
+
+**_Optional_**: This setting can be used to set the colour of a data notice using CSS classes.
+
+```nohighlight
+standalone: success
+```
+
+Options out-of-the-box are:
+* success (green)
+* warning (amber)
+* danger (red)
+
+### data_notice_heading
+
+**_Optional_**: This setting can be used to set the title of a data notice.
+
+```nohighlight
+data_notice_heading: Important Note
+```
+
+With translation key:
+
+```nohighlight
+data_notice_heading: my_translations.important_note
+```
+
+### data_notice_text
+
+**_Optional_**: This setting can be used to set the text to display within a data notice.
+
+```nohighlight
+data_notice_text: My note text
+```
+
+With translation key:
+
+```nohighlight
+data_notice_text: my_translations.1-1-1-data-notice
+```
+
+### data_show_map
+
+**_Optional_** This setting can be used to specify whether or not to display a map for the indicator, if you have configured maps. See the [Maps guidance](maps.md) for more information on how to configure maps.
+
+```nohighlight
+data_show_map: true
+```
 
 ### data_start_values
 
@@ -207,39 +174,59 @@ data_start_values:
     value: 15 to 19
 ```
 
-### composite_breakdown_label
+You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following fields to the metadata file. You can either specify a URL (use `embedded_feature_url`) or some HTML (use `embedded_feature_html`) for the feature you want to embed.
 
-**_Optional_** This setting is used when importing data from SDMX to specify a more useful label for the COMPOSITE_BREAKDOWN column (if present). Translation keys are supported, as always. Using the example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
+### embedded_feature_footer
+
+**_Recommended_** (if using embedded feature): This setting can be used to specify information about an embedded feature which displays below embed.
 
 ```nohighlight
-composite_breakdown_label: Hazard type
+embedded_feature_footer: This graph is provided by "My Organisation"
 ```
 
-## Graph Metadata
+### embedded_feature_html
+
+**_Required_** (if not using embedded_feature_url when using embedded feature): This setting can be used to specify HTML code of the feature that you want to embed. You may use this when you don't have control of the original feature that you want to embed, and so need to make some changes e.g. to the size, title, or other attributes.
+
+```nohighlight
+embedded_feature_html: <iframe width="1110" height="700" title="Childhood Vaccination Coverage Statistics" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3NWZhNzItMTIyZS00OWM2LTg0MzMtOGY5YTJjMGY0MjI1IiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+```
+
+### embedded_feature_tab_title
+
+**_Required_** (if using embedded feature): This setting can be used to specify the text that will display on the tab which your embedded feature will display within.
+
+```nohighlight
+embedded_feature_tab_title: Embedded Chart
+```
+
+### embedded_feature_title
+
+**_Recommended_** (if using embedded feature): This setting can be used to specify the title to be shown above the embedded feature
+
+```nohighlight
+embedded_feature_title: My embedded chart
+```
+
+### embedded_feature_url
+
+**_Required_** (if not using embedded_feature_html when using embedded feature): This setting can be used to specify the the URL of feature that you want to embed. You may use this when you have control over the original feature that you want to embed, and don't need to make any changes e.g. if the feature is already the correct size.
+
+```nohighlight
+embedded_feature_url: http://example.com/embed-1-1-1.html
+```
+
+### expected_disaggregations
+
+**_Optional_**: This setting is used to supply metrics to the disaggregation status report (see the [reporting_status site configuration](configuration.md#reporting_status)). It should contain a list of the disaggregations (i.e. columns in the CSV file) that the indicator should have.
+
+```nohighlight
+expected_disaggregations:
+  - Age
+  - Sex
+```
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
-
-### graph_limits
-
-**_Optional_**: This setting can be used to control the lowest/highest values to be shown on the y-axis by specifying min/max limits. Optionally they can refer to a specific unit of measurement or series. Note that this involves a slightly more complex metadata structure.
-
-```nohighlight
-graph_limits:
-  - unit: tons
-    minimum: 2
-    maximimum: 20
-  - unit: passengers
-    minimum: 200
-    maximum: 2000
-```
-
-### graph_stacked_disaggregation
-
-**_Optional_**: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
-        
-```nohighlight
-graph_stacked_disaggregation: Age
-```
 
 ### graph_annotations
 
@@ -285,7 +272,133 @@ graph_annotations:
     preset: target_line
 ```
 
-## precision
+### graph_limits
+
+**_Optional_**: This setting can be used to control the lowest/highest values to be shown on the y-axis by specifying min/max limits. Optionally they can refer to a specific unit of measurement or series. Note that this involves a slightly more complex metadata structure.
+
+```nohighlight
+graph_limits:
+  - unit: tons
+    minimum: 2
+    maximimum: 20
+  - unit: passengers
+    minimum: 200
+    maximum: 2000
+```
+
+### graph_stacked_disaggregation
+
+**_Optional_**: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
+        
+```nohighlight
+graph_stacked_disaggregation: Age
+```
+
+### graph_title
+
+**_Required_** (for statistical indicators): This setting is used to specify the title that displays above the graph/chart. This can be simple text (or a translation key) if you would like the chart title to be the same for all units of measurement.
+
+```nohighlight
+graph_title: My graph title for 1.1.1
+```
+
+With translation key:
+
+```nohighlight
+graph_title: my_translations.1-1-1-graph_title
+```
+
+### graph_titles
+
+**_Required_** (for statistical indicators): This setting is used if you would like the chart title to depend on the user-selected unit of measurement. It has a more complex structure than `graph_title` (*singular*)
+
+```nohighlight
+graph_titles:
+          - unit: Percent
+            title: My title for percentages
+          - unit: Total
+            title: My alternate title for totals
+```
+
+  Note: To use the currently-selected series as the chart title (where possible), set the site configuration option [graph_title_from_series](configuration.md#graph_title_from_series) to `true`.
+  
+### graph_type
+
+**_Required_** (for statistical indicators): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
+
+```nohighlight
+graph_type: line
+```
+
+Options out-of-the-box are:
+* line
+* bar
+* binary (Yes/No graph)
+
+
+### indicator_available
+
+**_Recommended_**: This setting is intended for use when the global indicator name might not accurately describe the available national/regional statistics. It should provide an alternate name for the indicator. If specified it will display just below the indicator banner.
+
+```nohighlight
+indicator_available: A more suitable name for the data that is provided
+```
+
+### indicator_name
+
+**_Required_**: This setting is used to specify the name of the indicator, which displays at the top of the indicator page.
+
+```nohighlight
+indicator_name: Proportion of population living below the national poverty line, by sex and age
+```
+
+With translation key:
+
+```nohighlight
+indicator_name: global_indicators.1-2-1-title
+```
+
+### indicator_number
+
+**_Required_**: This setting is used to specify the number (or "id") for the indicator.
+
+```nohighlight
+indicator_number: 1.2.1
+```
+
+### national_geographical_coverage
+
+**_Required_** (for statistical indicators): This setting is used to specify what label should be used in the absence of any disaggregation (i.e. for headline data)
+
+```nohighlight
+national_geographical_coverage: Australia
+```
+
+With translation key:
+
+```nohighlight
+national_geographical_coverage: my_translations.australia
+```
+
+### page_content
+
+**_Optional_**: This setting can be use to add content (e.g. tables, lists, links, headings, etc.) above the graph near the top of the screen. This is a useful place to add information about an indicator that doesn't fit in with the rest of the metadata.
+
+See this [guide to writing Markdown](https://guides.github.com/features/mastering-markdown/).
+
+```nohighlight
+page_content: My additional information about the indicator
+```
+
+### permalink
+
+**_Optional_**: This setting can be used to control the URL of a standalone indicator. This does not require any preceding/trailing slashes. See the `standalone` metadata field below for information on how to set an indicator as standalone.
+
+```nohighlight
+permalink: my-custom-indicator-path
+```
+
+### precision
 
 **_Optional_**: This setting is used to force a particular number of decimal places. 
 
@@ -308,143 +421,30 @@ precision:
     decimals: 1
 ```
 
+### reporting_status
 
-
-### copyright
-
-**_Optional_**: This setting can be used to display copyright information below the graph and table on the indicator page.
+**_Required_**: This setting is used to specify the status of the indicator. This feeds into the reporting status page and also displays on the goal pages.
 
 ```nohighlight
-copyright: Copyright 2019 - My organisation
-```
-
-With translation key:
-
-```nohighlight
-copyright: my_translations.copyright_message
-```
-
-### data_footnote
-
-**_Optional_**: This setting can be used to display additional inforamtio about the data below the graph and table on the indicator page.
-
-
-```nohighlight
-data_footnote: My additional information
-```
-
-With translation key:
-
-```nohighlight
-data_footnote: my_translations.1-1-1-footnote
-```
-
-
-### data_show_map
-
-**_Optional_** This setting can be used to specify whether or not to display a map for the indicator, if you have configured maps. See the [Maps guidance](maps.md) for more information on how to configure maps.
-
-```nohighlight
-data_show_map: true
-```
-
-## Embedded feature metadata
-
-You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following fields to the metadata file. You can either specify a URL (use `embedded_feature_url`) or some HTML (use `embedded_feature_html`) for the feature you want to embed.
-
-### embedded_feature_footer
-
-**_Recommended_** (if using embedded feature): This setting can be used to specify information about an embedded feature which displays below embed.
-
-```nohighlight
-embedded_feature_footer: This graph is provided by "My Organisation"
-```
-
-### embedded_feature_html
-
-**_Optional_**: This setting can be used to specify HTML code of the feature that you want to embed. You may use this when you don't have control of the original feature that you want to embed, and so need to make some changes e.g. to the size, title, or other attributes.
-
-```nohighlight
-embedded_feature_html: <iframe width="1110" height="700" title="Childhood Vaccination Coverage Statistics" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3NWZhNzItMTIyZS00OWM2LTg0MzMtOGY5YTJjMGY0MjI1IiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
-```
-
-### embedded_feature_tab_title
-
-**_Required_** (if using embedded feature): This setting can be used to specify the text that will display on the tab which your embedded feature will display within.
-
-```nohighlight
-embedded_feature_tab_title: Embedded Chart
-```
-
-### embedded_feature_title
-
-**_Recommended_** (if using embedded feature): This setting can be used to specify the title to be shown above the embedded feature
-
-```nohighlight
-embedded_feature_title: My embedded chart
-```
-
-### embedded_feature_url
-
-**_Optional_**: This setting can be used to specify the the URL of feature that you want to embed. You may use this when you have control over the original feature that you want to embed, and don't need to make any changes e.g. if the feature is already the correct size.
-
-```nohighlight
-embedded_feature_url: http://example.com/embed-1-1-1.html
-```
-
-### page_content
-
-**_Optional_**: This setting can be use to add content (e.g. tables, lists, links, headings, etc.) above the graph near the top of the screen. This is a useful place to add information about an indicator that doesn't fit in with the rest of the metadata.
-
-See this [guide to writing Markdown](https://guides.github.com/features/mastering-markdown/).
-
-```nohighlight
-page_content: My additional information about the indicator
-```
-
-## Data Notice
-
-You may want to display some very important information which site viewers must keep in mind when using the data provided. To display a notice above the graph in a coloured box, you can use the following fields within the metadata file.
-
-### data_notice_class
-
-**_Optional_**: This setting can be used to set the colour of a data notice using CSS classes.
-
-```nohighlight
-standalone: success
+reporting_status: complete
 ```
 
 Options out-of-the-box are:
-* success (green)
-* warning (amber)
-* danger (red)
+* complete
+* inprogress
+* notstarted
+* notapplicable
 
-### data_notice_heading
 
-**_Optional_**: This setting can be used to set the title of a data notice.
 
-```nohighlight
-data_notice_heading: Important Note
-```
+### sort
 
-With translation key:
+**_Optional_**: This setting can be used to override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator.
 
-```nohighlight
-data_notice_heading: my_translations.important_note
-```
-
-### data_notice_text
-
-**_Optional_**: This setting can be used to set the text to display within a data notice.
+The order in which indicators are displayed in lists is determined behind the scenes, according to the indicator number. This is done by automatically converting the indicator number to a string which sorts correctly when alphabetized. (For example, indicator 1.2.1 gets sorted as '010201'.) The example below shows how this setting could be used to make 1.2.1 appear at the end of goal 1, target 2.
 
 ```nohighlight
-data_notice_text: My note text
-```
-
-With translation key:
-
-```nohighlight
-data_notice_text: my_translations.1-1-1-data-notice
+sort: 0102zz
 ```
 
 ### standalone
@@ -457,20 +457,12 @@ standalone: true
 
 In this case you may also want to control the URL of the indicator. You can do this with the `permalink` metadata field (see above).
 
-### permalink
+### tags
 
-**_Optional_**: This setting can be used to control the URL of a standalone indicator. This does not require any preceding/trailing slashes. See the `standalone` metadata field below for information on how to set an indicator as standalone.
-
-```nohighlight
-permalink: my-custom-indicator-path
-```
-
-### sort
-
-**_Optional_**: This setting can be used to override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator.
-
-The order in which indicators are displayed in lists is determined behind the scenes, according to the indicator number. This is done by automatically converting the indicator number to a string which sorts correctly when alphabetized. (For example, indicator 1.2.1 gets sorted as '010201'.) The example below shows how this setting could be used to make 1.2.1 appear at the end of goal 1, target 2.
+**_Optional_**: This setting is used to supply a list of "tags" to display under the indicator when it is listed on its goal page
 
 ```nohighlight
-sort: 0102zz
+expected_disaggregations:
+  - My tag
+  - My other tag
 ```
