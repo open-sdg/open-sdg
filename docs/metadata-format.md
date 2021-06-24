@@ -8,6 +8,16 @@ Whilst it is possible to use the SDG SDMX main metadata concepts (which are a le
 
 Note: If you do choose to use the main metadata concepts, they should not be used in combination with the detailed metadata concepts.
 
+## Note about metadata file formats
+
+By default, Open SDG platforms expect the individual indicator metadata files to be uploaded in YML format to the "meta" folder. See this [example in the data starter repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/meta/1-1-1.yml)
+
+### Indicator metadata forms
+
+To help with specifying indicator metadata, you can optionally enable user-friendly indicator metadata forms, which will allow you to fill in a form and then download a YML file which will be ready to upload to your platform.
+
+For more details on how to enable these forms, see the [indicator_metadata_form site configuration setting](configuration.md#indicator_metadata_form).
+
 ## Note about empty metadata fields
 
 Due to the large number of metadata fields with some maybe not being applicable, empty metadata fields are hidden by default using `hide_empty_metadata: true` in the site configuration file.
