@@ -43,7 +43,7 @@ breadcrumbs:
     - label: Home
       path: /
     - label: Updates
-      path: /news
+      path: news/
 ```
 
 Or with the addition of translation keys for multilingual sites:
@@ -54,7 +54,7 @@ breadcrumbs:
     - label: general.home
       path: /
     - label: menu.updates
-      path: /news
+      path: news/
 ```
 
 Here is a full exmaple including `goal` and `indicator` as well:
@@ -65,27 +65,41 @@ breadcrumbs:
     - label: general.home
       path: /
     - label: menu.updates
-      path: /news
+      path: news/
   goal:
     - label: general.home
       path: /
     - label: general.goals
-      path: /goals
+      path: goals/
   indicator:
     - label: general.home
       path: /
     - label: general.goals
-      path: /goals
+      path: goals/
 ```
 
 Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
 
-### contrast_type
+### configuration_edit_url
 
-_Optional_: This setting allows you to change the type of contrast button your site uses. By default there are two buttons containing 'A'. If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+_Optional_: This setting controls the URL of the "Edit Configuration" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
 
 ```nohighlight
-contrast_type: long
+configuration_edit_url: http://prose.io/#my-org/my-repo/edit/develop/indicator-settings/[id].md
+```
+
+### contrast_type
+
+_Optional_: This setting allows you to change the type of contrast button your site uses. The available settings are:
+
+* `default`: Two buttons containing "A" - one for on and one for off (this is the default if you omit this setting)
+* `long`: If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
+* `single`: One button containing "A" which toggles on/off, depending on which mode of contrast is active. This is recommended for the cleanest display.
+
+Example:
+
+```nohighlight
+contrast_type: single
 ```
 
 ### country
@@ -96,15 +110,6 @@ contrast_type: long
 country:
   name: Australia
   adjective: Australian
-```
-
-### create_config_forms
-
-_Optional_: This setting can be used to automatically create the configuration form pages. Without this setting, you will need to maintain your site and indicator configuration using a text editor. This setting should include another (indented) setting indicating the Jekyll layout to use for the config form pages (usually `config-builder`). After setting this, you will have a site configuration form available through a link in the footer, as well as indicator configuration forms available in the "Edit" tab.
-
-```nohighlight
-create_config_forms:
-  layout: config-builder
 ```
 
 ### create_goals
@@ -302,9 +307,9 @@ footer_menu:
     translation_key: general.twitter
   - path: https://facebook.com/MyFacebookAccount
     translation_key: general.facebook
-  - path: /faq
+  - path: faq/
     translation_key: menu.faq
-  - path: /cookies
+  - path: cookies/
     translation_key: menu.cookies
 ```
 
@@ -448,6 +453,14 @@ graph_color_list': ['3fd64f','cfd63f','4eecec','ec4ed9']
 
 _Optional_: This setting can be used to limit the length of the list of colors selected via `graph_color_set`. The maximum value for `graph_color_set: 'default'` is 6, for `graph_color_set: 'sdg'` is 17, for `graph_color_set: 'goal'` is 9 and for `graph_color_set: 'custom'` the length of `graph_color_list`. If nothing is defined here, the corresponding maximum is used. Be aware that the number selected here affects how many datasets can be displayed simultaneously in the charts (2 times this value - once as a normal line or bar and once as a dashed line or bar).
 
+### graph_title_from_series
+
+_Optional_: This setting can be set to `true` to use the currently-selected series as the chart title, whenever possible. Example:
+
+```yaml
+graph_title_from_series: true
+```
+
 ### header
 
 _Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
@@ -485,6 +498,7 @@ hide_empty_metadata: true
 
 _Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
 
+* `enabled`: Whether or not to generate these configuration forms
 * `dropdowns`: This can be used to convert any `string` field into a dropdown. Each item should have these properties:
 
     * `jsonschema`: The path into the jsonschema's `properties` object, to the property that you would like to convert into a dropdown. In most cases this is simply the name of the property, but in nested situations, you can use dot-syntax to drill down into the jsonschema object.
@@ -499,6 +513,45 @@ _Optional_: This setting controls the behavior of the indicator config forms. Th
             values:
               - complete
               - notstarted
+
+* `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with the placeholder `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
+* `translation_link`: This will display a  "Go to translation" link beneath each metadata field. This is used to give the editor a shortcut to whereever it is that the translations are maintained. You can enter a pattern with the placeholder `[id]` it will be replaced as described above. In addition, your pattern can include these other placeholders:
+    * `[language]`: This will be replaced with the current language.
+    * `[group]`: This will be replaced with the first part of the translation key. Eg, if the translation key is `foo.bar` then `[group]` will be replaced with `foo`.
+    * `[key]`: This will be replaced with the second part of the translation key. Eg, if the translation key is `foo.bar` then `[key]` will be replaced with `bar`.
+
+  The appropriate value for this translation_link setting depends on the specifics of how you maintain translations. For example, if your translations are maintained in Weblate then you might take advantage of Weblate's useful search feature, but having a translation_link of:
+
+  `https://hosted.weblate.org/search/my-project/[group]/?q=+context%3A%3D[key]`
+
+  For another example, if you are maintaining translations in the `translations` folder in your data repository, then you might have a translation_link of:
+
+  `https://github.com/my-org/my-data-repo/tree/develop/translations/[language]/[group].yml`
+
+Links to the forms appear in the "Edit" tab on indicator pages.
+
+### indicator_metadata_form
+
+_Optional_: This setting controls the behavior of the indicator metadata forms. The available settings are the same as in  `indicator_config_form` above, plus the following extra options:
+
+* `scopes`: A list of the "scopes" that you would like to include in the form. If let blank, this will default to "national" and "global".
+* `exclude_fields`: A list of the fields that you would like to omit from the form.
+* `translated`: This setting is only for multilingual implementations that are using the "subfolder approach" for multilingual metadata. When this option is enabled, the contents of the metadata forms are translated (based on the current language), to allow you to save different files for each language. If you are not using the "subfolder approach" for multilingual metadata (or you don't know what that is) then you can safely leave this disabled.
+
+For example:
+
+```
+indicator_metadata_form:
+  enabled: true
+  scopes:
+    - national
+    - global
+  exclude_fields:
+    - my_excluded_field_name
+  translated: false
+```
+
+Links to the forms appear in the "Edit" tab on indicator pages.
 
 ### languages
 
@@ -577,25 +630,25 @@ While the "scopes" above, such as "national" and "global", are arbitrary, the "s
 
 ```nohighlight
 menu:
-  - path: /reporting-status
+  - path: reporting-status/
     translation_key: menu.reporting_status
-  - path: /about
+  - path: about/
     translation_key: menu.about
-  - path: /faq
+  - path: faq/
     translation_key: menu.faq
 ```
 
-Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "/about" and "/faq" under a "More information" dropdown:
+Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "about/" and "faq/" under a "More information" dropdown:
 
 ```nohighlight
 menu:
-  - path: /reporting-status
+  - path: reporting-status/
     translation_key: menu.reporting_status
   - translation_key: More information
     dropdown:
-      - path: /faq
+      - path: faq/
         translation_key: menu.faq
-      - path: /about
+      - path: about/
         translation_key: menu.about
 ```
 
@@ -672,6 +725,26 @@ reporting_status:
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
 
+### repository_url_data
+
+_Optional_: This setting specifies the URL of the data repository, which is used in other settings. Currently this -- if available -- will be used as a prefix for the "repository_link" options in `indicator_config_form`, `indicator_metadata_form`, and `indicator_data_form`.
+
+Here is an example of using this setting:
+
+```yaml
+repository_url_data: https://github.com/my-github-org/data
+```
+
+### repository_url_site
+
+_Optional_: This setting specifies the URL of the site repository, which is used in other settings. Currently this -- if available -- will be used as a prefix for the "repository_link" option in `site_config_form`.
+
+Here is an example of using this setting:
+
+```yaml
+repository_url_site: https://github.com/my-github-org/site
+```
+
 ### search_index_boost
 
 _Optional_: This setting can be used to give a "boost" to one or more fields in the search index. The boost number should be a positive integer. The higher the number, the more "relevant" that field will be in search results. If omitted, the following defaults will be used:
@@ -725,9 +798,9 @@ series_toggle: true
 
 ### site_config_form
 
-_Optional_: This setting controls the behavior of the site config form. The available settings are:
+_Optional_: This setting controls the behavior of the site config form. The available the same as in the `indicator_config_form` described above.
 
-* `dropdowns`: This works the same as in the `indicator_config_form` setting.
+The default location for the site configuration page is `/config`.
 
 ### sharethis_property
 

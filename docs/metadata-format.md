@@ -292,6 +292,19 @@ You can either specify a URL or some HTML for the feature you want to embed:
 * `embedded_feature_html` - HTML code of the feature that you want to embed. You may use this when you don't have control of the original feature that you want to embed, and so need to make some changes e.g. to the size, title, or other attributes. Example:
     * `<iframe width="1110" height="700" title="Childhood Vaccination Coverage Statistics" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3NWZhNzItMTIyZS00OWM2LTg0MzMtOGY5YTJjMGY0MjI1IiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>`
 
+## URL fields
+
+Some metadata fields may be intended to be only a link. Any field that includes "_url" in the field name will be formatted as a link. The text of the link will be "Link" by default, but you can control it through another metadata field with the same field name plus "_text". For example:
+
+```
+my_field_url: https://example.com
+my_field_url_text: The text for my link to example.com
+```
+
+## Date fields
+
+Some metadata fields may be intended to be only a date. Any field that includes "_date" in the field name will be formatted as a date. This means that it will work with the [`date_formats` site configuration setting](configuration.md#date_formats). It will use the "standard" date format.
+
 ## Non-Standard Information
 
 In the Prose editor, you can add free Markdown text in the same file as the metadata. This is the `edit` section in prose and is part of the metadata. In the raw .md file this is the content underneath the yaml header. You can add any content you like in this section and the content will be converted to html and placed above the graph near the top of the screen.

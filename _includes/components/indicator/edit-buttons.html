@@ -23,9 +23,8 @@
   <a class="btn btn-primary" href="http://prose.io/#{{ site.org_name }}/{{ site.repo_name }}/edit/{{ site.branch }}/meta/{{ page.indicator.slug }}.md">{{ page.t.indicator.edit_metadata }}</a>
   {% endif %}
 
-  {% if site.create_config_forms and site.create_config_forms.layout and site.create_config_forms.layout != '' %}
-  {% assign config_base = page.baseurl | append: 'config/' %}
-  {% assign config_path = page.indicator.url | replace: page.baseurl, config_base %}
-  <a class="btn btn-primary" href="{{ config_path }}">Edit configuration</a>
+  {% if site.configuration_edit_url and site.configuration_edit_url != '' %}
+  <a class="btn btn-primary" href="{{ site.configuration_edit_url | replace: '[id]', page.indicator.slug }}">{{ page.t.indicator.edit_configuration }}</a>
   {% endif %}
+
 </div>

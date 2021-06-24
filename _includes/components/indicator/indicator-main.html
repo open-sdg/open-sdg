@@ -2,6 +2,7 @@
 {% if page.indicator.reporting_status == "complete" and page.indicator.data_non_statistical != true %}
   {% assign show_data = true %}
 {% endif %}
+{% assign datapackage_resource = site.data[page.language].data_packages.resources | where: "name", page.indicator.slug | first %}
 
 <div class="row"
   id="indicatorData"
@@ -20,6 +21,7 @@
   data-stackeddisaggregation="{{ page.indicator.graph_stacked_disaggregation }}"
   data-graphannotations="{{ page.indicator.graph_annotations | jsonify | xml_escape }}"
   data-indicatordownloads="{{ site.data[page.language].indicator_downloads[page.indicator.number] | jsonify | xml_escape }}"
+  data-dataschema="{{ datapackage_resource.schema | jsonify | xml_escape }}"
   data-compositebreakdownlabel="{{ page.indicator.composite_breakdown_label }}"
   data-precision="{{ page.indicator.precision | jsonify | xml_escape }}"
 >
