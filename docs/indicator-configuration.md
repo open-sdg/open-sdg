@@ -1,8 +1,10 @@
 In your [data repository](glossary.md#data-repository) the indicator configuration is maintained on an indicator-by-indicator basis. This indicator configuration contains set fields, which have specific uses in Open SDG. This page details those fields.
 
+## Note about indicator configuration file formats
+
 By default, Open SDG platforms expect the individual indicator configuration files to be uploaded in YML format to the "indicator-config" folder. See this [example in the data starter repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/indicator-config/1-1-1.yml)
 
-## Indicator configuration forms
+### Indicator configuration forms
 To help with configuring indicators, you can optionally enable user-friendly indicator configuration forms, which will allow you to fill in a form and then download a YML file which will be ready to upload to your platform.
 
 For more details on how to enable these forms, see the [indicator_config_form site configuration setting](configuration.md#indicator_config_form).
