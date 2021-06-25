@@ -12,8 +12,6 @@ For more details on how to enable these forms, see the [indicator_config_form si
 ## Note about translation keys
 Indicator configuration values can either be filled in with normal text ("My field value") or with [translation keys](glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
 
-As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
-
 ## Note about unit-specific and series-specific settings
 
 Several indicator configuration settings can be limited to a particular Unit and/or Series. For example, the `graph_titles` setting can be configured like this:
@@ -63,7 +61,7 @@ composite_breakdown_label: Hazard type
 
 ### computation_units
 
-**_Recommended_**: This setting is used to specify the unit used in the headline data for the indicator.
+**_Recommended_**: This setting is used to specify the unit used in the headline data for the indicator. It will display below the graph and table, on the graph y-axis, and on the graph tooltips on the indicator page.
 
 ```nohighlight
 computation_units: Metric tons
@@ -112,6 +110,8 @@ data_footnote: my_translations.1-1-1-footnote
 ```nohighlight
 data_non_statistical: false
 ```
+
+### Data notices
 
 You may want to display some very important information which site viewers must keep in mind when using the data provided. To display a notice above the graph in a coloured box, you can use the following fields within the metadata file.
 
@@ -175,6 +175,8 @@ data_start_values:
   - field: Age
     value: 15 to 19
 ```
+
+### Embedded feature settings
 
 You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following fields to the metadata file. You can either specify a URL (use `embedded_feature_url`) or some HTML (use `embedded_feature_html`) for the feature you want to embed.
 
