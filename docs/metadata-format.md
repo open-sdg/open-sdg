@@ -1,8 +1,8 @@
-<<h1>Metadata format</h1>
+<h1>Metadata format</h1>
 
 In your [data repository](glossary.md#data-repository) the metadata is maintained on an indicator-by-indicator basis. 
 
-By default the metadata fields are based on SDG SDMX detailed metadata concepts and the template metadata file in the data starter is based on these fields. It is recommended that you use the default fields as they follow the format that is requested by the UN and allow metadata to compared. However, the metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/metadata_schema.yml) (see the "Schema" section below) in your data repository. However, 
+By default the metadata fields are based on SDG SDMX detailed metadata concepts e.g. **0.c. Indicator:** and the template metadata file in the data starter is based on these fields. It is recommended that you use the default fields as they follow the format that is requested by the UN and allow metadata to compared. However, the metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/metadata_schema.yml) (see the "Schema" section below) in your data repository.
 
 Whilst it is possible to use the SDG SDMX main metadata concepts (which are a level above the detailed concepts) e.g. **0. Indicator information**, the UNSD strongly recommends that the detailed concepts are used.
 
@@ -24,13 +24,11 @@ Due to the large number of metadata fields with some maybe not being applicable,
 
 If you want metdata fields to show regardless, you should change this option to false. Alternatively, if you want some fields to hide by default but want to purposely not provide any information for other fields, you could populate the fields with some standard text e.g. "Not available"
 
-For more information about this configuration setting see the [hide_empty_metadata configuration option documentation](https://open-sdg.readthedocs.io/en/latest/configuration/#hide_empty_metadata).
+For more information about this configuration setting see the [hide_empty_metadata configuration option documentation](configuration.md#hide_empty_metadata).
 
 ## Note about translation keys
 
 Metadata values can either be filled in with normal text ("My field value") or with [translation keys](glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
-
-As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
 
 The default fields are listed below along with the UN-defined definition:
 
