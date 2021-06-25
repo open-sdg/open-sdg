@@ -44,3 +44,10 @@ reporting_status_extra_fields:
   - un_custodian_agency
 
 docs_subfolder: documentation
+
+datapackage:
+  sorting: alphabetical
+
+data_schema:
+  class: DataSchemaInputTableSchemaYaml
+  source: data-schema/*.yml

@@ -29,6 +29,8 @@
             {% for item in page.indicator[indicator_metadata.name] %}
               {{ item | t }}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
+          {% elsif indicator_metadata.name contains "_date" %}
+            {{ page.indicator[indicator_metadata.name] | t_date: "standard" }}
           {% else %}
             {{ page.indicator[indicator_metadata.name] | markdownify }}
           {% endif %}

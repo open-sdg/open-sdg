@@ -365,6 +365,12 @@ body.contrast-high {
     }
   }
 
+  .header-menu-left-aligned {
+    #search, #search-mobile {
+      @include searchBarHighContrast;
+    }
+  }
+
   @media screen and (max-width: 768px) {
     .navbar.navbar-default {
       background: $color-dark-highContrast;

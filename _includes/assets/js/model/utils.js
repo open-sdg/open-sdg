@@ -13,7 +13,7 @@ function getUniqueValuesByProperty(prop, rows) {
       uniques.add(row[prop])
     }
   });
-  return Array.from(uniques).sort();
+  return Array.from(uniques);
 }
 
 // Use as a callback to Array.prototype.filter to get unique elements
@@ -139,6 +139,13 @@ function getMatchesByUnitSeries(items, selectedUnit, selectedSeries) {
  * Move an item from one position in an array to another, in place.
  */
 function arrayMove(arr, fromIndex, toIndex) {
+
+  // if moving something "forwards", then the toIndex needs to be 1 less,
+  // because after removing the fromIndex, the array will be 1 shorter.
+  if (toIndex > fromIndex) {
+    toIndex -= 1;
+  }
+
   while (fromIndex < 0) {
     fromIndex += arr.length;
   }

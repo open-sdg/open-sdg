@@ -7,7 +7,7 @@
     {% when "inprogress" %}
         {% assign status_desc = page.t.status.statistics_in_progress %}
     {% when "complete" %}
-        {% assign status_desc = page.t.status.reported_online %}
+        {% assign status_desc = page.t.status.reported | default: page.t.status.reported_online %}
 {% endcase %}
 
 <span class="status {{ status_css }}">

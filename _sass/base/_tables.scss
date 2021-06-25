@@ -1,6 +1,6 @@
 .table-hover {
   tbody tr:hover {
-    background: darken($backgroundColor, 12%);
+    background: $table-row-backgroundColor-hover;
   }
 }
 

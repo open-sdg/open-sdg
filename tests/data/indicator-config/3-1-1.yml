@@ -21,6 +21,8 @@ graph_type: line
 indicator_name: global_indicators.3-1-1-title
 indicator_number: 3.1.1
 national_geographical_coverage: ''
-page_content: ''
+page_content: >
+  This indicator is used in Headline.feature to test a no-headline
+  indicator with a single disaggregation.
 reporting_status: complete
 tags: []
