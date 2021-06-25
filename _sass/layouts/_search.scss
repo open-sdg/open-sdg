@@ -4,6 +4,19 @@
   }
 }
 
+#search-bar-on-page {
+  @include searchBar;
+  float: none;
+  input {
+    width: 400px;
+    max-width: calc(100% - 42px);
+  }
+  button {
+    right: 1px;
+    line-height: 22px;
+  }
+}
+
 #search-results {
 
   span.match {
@@ -21,16 +34,28 @@
       .title {
         margin-bottom: 5px;
         font-size: 18px;
+        display: inline-block;
       }
-      .url {
-        color: $search-resultURL-color;
-        font-size: 16px;
+      &:focus {
+        .title {
+          @include focus;
+          span.match {
+            background-color: transparent;
+          }
+        }
       }
       &:hover {
         .title {
           text-decoration: underline;
         }
       }
+    }
+    .url {
+      color: $search-resultURL-color;
+      font-size: 16px;
+    }
+    .content {
+      margin-top: 2px;
     }
   }
 }
@@ -44,14 +69,24 @@ body.contrast-high {
     }
 
     .search-result {
-      a {
-        .url {
-          color: $color-highlight-highContrast !important;
-        }
+      .url {
+        color: $color-highlight-highContrast !important;
       }
       .content {
         color: $color-light-highContrast !important;
       }
+    }
+  }
+
+  #search-bar-on-page {
+    @include searchBarHighContrast;
+  }
+}
+
+body.contrast-high.layout-search {
+  form {
+    input, label {
+      color: $color-dark-highContrast;
     }
   }
 }

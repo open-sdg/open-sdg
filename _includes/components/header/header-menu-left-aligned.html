@@ -1,0 +1,37 @@
+{% include multilingual-js.html key="header" %}
+<a class="sr-only sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">{{ page.t.header.skip_link }}</a>
+<div id="disclaimer">
+  {% include components/dev-disclaimer.html %}
+</div>
+
+<header role="banner" class="header-menu-left-aligned">
+  <div class="container">
+
+    <div class="logo-and-mobile-widgets">
+      {% include components/header/logo.html %}
+      {% include components/header/widgets-mobile.html %}
+    </div>
+
+    <div class="search-and-desktop-widgets">
+      {% include search.html id="search" %}
+      <div class="navbar navbar-default widgets-without-menu">
+        <ul class="nav navbar-nav contrast-switcher">
+        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+          <li class="language-toggle-menu-header">
+            {% include components/language-toggle.html %}
+        </li>
+        {%- endif -%}
+        {% include components/contrast-toggle.html %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="navbar navbar-default menu-without-widgets" id="main-nav">
+      {% include components/header/navigation-mobile.html %}
+      {% include navigation.html no_contrast=true no_language_toggle=true dropdowns=true %}
+    </div>
+
+  </div>
+
+</header>
+{% include components/page-top.html %}

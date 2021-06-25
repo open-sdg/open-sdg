@@ -29,16 +29,49 @@ header {
   }
 }
 
+.mobile-widgets {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .logo-and-mobile-widgets {
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    position: relative;
+    .mobile-widgets {
+      display: block;
+      position: absolute;
+      bottom: 10px;
+      right: 5px;
+    }
+  }
+}
+
 .navbar-brand {
   display: block;
   width: 75%;
-  max-width: 300px;
+  max-width: 350px;
   padding: 15px;
+  height: auto;
+  &:focus {
+    background-color: transparent !important;
+    outline: 7px solid $focusOutlineColor !important;
+  }
   @media screen and (min-width: 769px) {
     padding: 5px 15px 15px 0;
   }
   img {
     width: 100%;
+  }
+}
+body.contrast-high {
+  .navbar-brand {
+    &:focus {
+      background-color: transparent !important;
+      outline: 7px solid $focusOutlineColor !important;
+    }
   }
 }
 
@@ -51,8 +84,8 @@ header {
     margin-top: 12px;
     clear: both;
 
-    li {
-      a {
+    > li {
+      > a {
         padding: 2px;
         margin: 2px 15px;
         color: $menu-link-color;
@@ -60,7 +93,7 @@ header {
 
       }
 
-      &.active a {
+      &.active > a {
         border-bottom: 2px solid $text-color;
         background: transparent;
         color: $text-color;
@@ -70,7 +103,7 @@ header {
         }
       }
 
-      a:last-child {
+      > a:last-child {
         margin-right: 0;
       }
 
@@ -85,6 +118,7 @@ header {
         max-height: 25px;
         text-align: center;
         margin-left: 0.5em;
+        margin-top: 4px;
         a {
           margin: auto;
           text-decoration: none;
@@ -92,6 +126,7 @@ header {
       }
 
       &.contrast-default {
+        @include preserveOriginalColors;
         background: $color-light-highContrast;
         a {
           color: $color-dark-highContrast;
@@ -99,6 +134,7 @@ header {
       }
 
       &.contrast-high {
+        @include preserveOriginalColors;
         background: $color-dark-highContrast;
         a {
           color: $color-highlight-highContrast;
@@ -124,46 +160,16 @@ header {
   .top-level {
     display: none;
   }
-
-  #search {
-    position: relative;
-    clear: both;
-    float: right;
-    margin-bottom: 20px;
-    @media only screen and (max-width: 768px) {
-      margin-bottom: 0;
-    }
-
-    label {
-      position: absolute;
-      top: 5px;
-      right: 0px;
-      font-size: 1.40em;
-
-      span {
-        display: none;
-      }
-    }
-
-    input {
-      padding: 5px;
-      padding-left: 5px;
-      width: 240px;
-      height: 34px;
-      transition: width 0.4s;
-      margin-top: 5px;
-      font-size: $searchBar-input-fontSize;
-    }
-  }
 }
-#search-btn {
-  height: 34px;
-  }
 
 .table {
   .table-value {
     text-align: right;
   }
+}
+
+#search, #search-mobile {
+  @include searchBar;
 }
 
 @media only screen and (max-width: 768px) {
@@ -193,7 +199,7 @@ header {
       font-size: 1em;
       @include noselect;
 
-      li {
+      > li {
         float: left;
         width: 50%;
         cursor: pointer;
@@ -202,24 +208,17 @@ header {
           background: $menu-link-backgroundColor-mobile-active;
         }
 
-        span {
-          color: $menu-link-color-mobile;
-          display: block;
-          padding: 15px;
-          &[data-target="search"] {
-            text-transform: capitalize;
-          }
-        }
-
-      	button {
+        > button {
           color: $menu-link-color-mobile;
           display: block;
           padding: 15px;
           border: 0;
-          text-transform: uppercase;
           background-color: inherit;
           text-align: left;
           width: 100%;
+          &[data-target="search"] {
+            text-transform: capitalize;
+          }
         }
       }
     }
@@ -228,11 +227,12 @@ header {
       background: $menu-link-backgroundColor-mobile-active;
     }
 
-    ul.navbar-nav {
+    #menu-mobile {
       float: none;
       display: none;
       clear: left;
       margin: 0;
+      width: 200%;
 
       font-size: 0.938em;
 
@@ -241,7 +241,8 @@ header {
         a {
           display: block;
           background: $menu-link-backgroundColor-mobile-active;
-          padding: 6px 0 6px;
+          padding: 6px 0 6px 15px;
+          margin-left: 0;
           color: $menu-link-color-mobile;
           font-size: 15px;
 
@@ -266,32 +267,14 @@ header {
       }
     }
 
-    #search {
+    #search-mobile {
       display: none;
-      width: 100%;
+      width: 200%;
+      margin-left: -100%;
       padding: 20px;
-
-      label {
-        top: 23px;
-        left: 25px;
-        color: $color-dark;
-      }
-
-      button {
-        display: inline-flex;
-        position: absolute;
-        right: 20px;
-        top: -3px
-      }
-
       input {
-        width: 100%;
+        width: calc(100% - 45px);
         color: $text-color;
-        margin-top: 0;
-
-        &:focus {
-          width: 100%;
-        }
       }
     }
   }
@@ -317,27 +300,74 @@ header ul {
   list-style-type: none;
 }
 
+.btn-group.menu-dropdown {
+  .dropdown-toggle {
+    @include dropdownToggle;
+  }
+  .dropdown-menu {
+    @include dropdownMenu;
+    margin-left: 15px;
+  }
+}
+
+
 body.contrast-high {
   .navbar {
-    li {
-      a {
-        color: $color-light-highContrast;
-        &:hover, &:focus {
+    #menu, #menu-mobile {
+      li {
+        a {
+          color: $color-light-highContrast;
+          &:hover, &:focus {
+            color: $color-highlight-highContrast;
+          }
+        }
+      }
+      li.active {
+        a {
           color: $color-highlight-highContrast;
+          border-color: $color-highlight-highContrast;
+          &:hover {
+            color: $color-highlight-highContrast;
+          }
+          &:focus {
+            color: $color-highlight-highContrast;
+          }
         }
       }
     }
-    li.active {
-      a {
-        color: $color-highlight-highContrast;
-        border-color: $color-highlight-highContrast;
-        &:hover {
-          color: $color-highlight-highContrast;
-        }
-        &:focus {
-          color: $color-highlight-highContrast;
+    #menu-mobile {
+      li {
+        a {
+          background-color: $color-dark-highContrast;
         }
       }
+    }
+    #search, #search-mobile {
+      @include searchBarHighContrast;
+    }
+    .top-level {
+      > li.active {
+        button {
+          color: $color-dark-highContrast;
+        }
+      }
+    }
+
+    #menu {
+      .btn-group.menu-dropdown {
+        .dropdown-toggle {
+          @include dropdownToggleHighContrast;
+        }
+        .dropdown-menu {
+          @include dropdownMenuHighContrast;
+        }
+      }
+    }
+  }
+
+  .header-menu-left-aligned {
+    #search, #search-mobile {
+      @include searchBarHighContrast;
     }
   }
 
@@ -357,6 +387,46 @@ body.contrast-high {
     }
     .navbar ul.navbar-nav li a {
       background: $color-dark-highContrast;
+    }
+  }
+}
+
+#search, #menu {
+  display: none;
+  @media screen and (min-width: 769px) {
+    display: block;
+  }
+}
+
+.header-menu-left-aligned {
+  .search-and-desktop-widgets {
+    float: right;
+    display: none;
+    @media screen and (min-width: 769px) {
+      display: block;
+    }
+    #search {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .navbar .navbar-nav {
+      margin-top: 0;
+    }
+  }
+  .menu-without-widgets {
+    clear: both;
+    float: left;
+    margin-bottom: 0;
+    .navbar-nav {
+      margin-top: 0;
+    }
+  }
+  .widgets-without-menu {
+    margin-top: 20px;
+    margin-bottom: 0;
+    clear: both;
+    .navbar-nav {
+      float: right;
     }
   }
 }

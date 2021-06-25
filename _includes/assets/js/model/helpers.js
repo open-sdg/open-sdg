@@ -41,34 +41,48 @@
   {% include assets/js/model/constants.js %}
   {% include assets/js/model/utils.js %}
   {% include assets/js/model/unitHelpers.js %}
+  {% include assets/js/model/seriesHelpers.js %}
   {% include assets/js/model/fieldHelpers.js %}
   {% include assets/js/model/chartHelpers.js %}
   {% include assets/js/model/tableHelpers.js %}
   {% include assets/js/model/dataHelpers.js %}
 
+  function deprecated(name) {
+    return function() {
+      console.log('The ' + name + ' function has been removed. Please update any overridden files.');
+    }
+  }
+
   return {
     UNIT_COLUMN: UNIT_COLUMN,
+    SERIES_COLUMN: SERIES_COLUMN,
     GEOCODE_COLUMN: GEOCODE_COLUMN,
     YEAR_COLUMN: YEAR_COLUMN,
     VALUE_COLUMN: VALUE_COLUMN,
+    SERIES_TOGGLE: SERIES_TOGGLE,
+    GRAPH_TITLE_FROM_SERIES: GRAPH_TITLE_FROM_SERIES,
     convertJsonFormatToRows: convertJsonFormatToRows,
     getUniqueValuesByProperty: getUniqueValuesByProperty,
     dataHasUnits: dataHasUnits,
     dataHasGeoCodes: dataHasGeoCodes,
+    dataHasSerieses: dataHasSerieses,
     getFirstUnitInData: getFirstUnitInData,
+    getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
+    getDataBySeries: getDataBySeries,
     getDataBySelectedFields: getDataBySelectedFields,
     getUnitFromStartValues: getUnitFromStartValues,
     selectFieldsFromStartValues: selectFieldsFromStartValues,
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
+    fieldsUsedBySeries: fieldsUsedBySeries,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
+    dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
     validParentsByChild: validParentsByChild,
     getFieldNames: getFieldNames,
     getInitialAllowedFields: getInitialAllowedFields,
     prepareData: prepareData,
-    footerFields: footerFields,
     getHeadline: getHeadline,
     sortData: sortData,
     getHeadlineTable: getHeadlineTable,
@@ -80,5 +94,13 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    sortFieldNames: sortFieldNames,
+    sortFieldValueNames: sortFieldValueNames,
+    getPrecision: getPrecision,
+    getGraphLimits: getGraphLimits,
+    getGraphAnnotations: getGraphAnnotations,
+    getColumnsFromData: getColumnsFromData,
+    // Backwards compatibility.
+    footerFields: deprecated('helpers.footerFields'),
   }
 })();

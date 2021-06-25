@@ -58,3 +58,19 @@ Feature: Disaggregation
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
     Then I should see "A-translated (Spanish)" in the "data table" element
+
+  Scenario: The "COMPOSITE_BREAKDOWN" field can be renamed
+    Then I should see "My composite breakdown label"
+
+  Scenario: Multiple hierarchical disaggregations appear correctly
+    And I am on "/4-2-2"
+    And I wait 3 seconds
+    And I click on "the first filter drop-down button"
+    And I click on "the first filter option in the first filter drop-down"
+    And I click on "the second filter drop-down button"
+    And I click on "the first filter option in the second filter drop-down"
+    And I click on "the third filter drop-down button"
+    And I click on "the first filter option in the third filter drop-down"
+    And I click on "the fourth filter drop-down button"
+    And I click on "the first filter option in the fourth filter drop-down"
+    Then I should see 5 "chart legend item" elements

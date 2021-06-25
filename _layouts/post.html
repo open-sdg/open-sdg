@@ -1,11 +1,20 @@
 ---
 layout: default
 ---
-<div id="main-content" class="container">
+<div class="container">
+  {% include components/post/breadcrumbs.html %}
+</div>
+
+{% if site.news.category_links == false %}
+  {% assign category_links = false %}
+{% else %}
+  {% assign category_links = true %}
+{% endif %}
+<div id="main-content" class="container" role="main">
   <div class="row">
-    <div class="col-md-9 push-md-3">
+    <div class="{% if category_links %}col-md-9 push-md-3{% else %}col-md-12{% endif %}">
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-        <h2 class="post-title" itemprop="name headline">{{ page.title }}</h2>
+        <h1 class="post-title" itemprop="name headline">{{ page.title | t }}</h1>
         <p><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | t_date: "standard" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
 
         <div class="post-content" itemprop="articleBody">
@@ -16,16 +25,25 @@ layout: default
         <ul class="post-categories">
           {% for category in page.categories %}
           <li class="warning">
-            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="View all posts in the {{category | t}} category">{{ category | t }}</a>
+            {% if category_links %}
+            {% assign category_translated = category | t %}
+            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category_translated }}">
+            {% endif %}
+            {{ category | t }}
+            {% if category_links %}
+            </a>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
         {% endif %}
       </article>
     </div>
+    {% if category_links %}
     <div class="col-md-3 pull-md-9">
       {% include components/post-categories.html %}
     </div>
+    {% endif %}
   </div>
 </div>
 

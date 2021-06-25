@@ -2,3 +2,12 @@ frontpage_heading: My custom frontpage heading
 frontpage_instructions: My custom frontpage instructions
 category: My English custom category
 disclaimer_message: This is my disclaimer message.
+reporting_status_title: My reporting status title
+reporting_status_description: My reporting status description
+goals_page_title: My goals page title
+goals_page_description: My goals page description
+frontpage_introduction_banner_title: My frontpage introduction banner title
+about_title: My about page title
+about_content: This is placeholder content for the About page. The English version has the word "platypus".
+goal_1_content: My content for goal 1
+title_from_series: Title from series column

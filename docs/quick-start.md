@@ -1,130 +1,77 @@
 <h1>Quick Start</h1>
 
-This document will go over the quickest way to get this platform up and running. Here we will choose the simplest approach for automation and hosting, which is to use GitHub Actions. Note, however, that there are alternatives to this approach, as detailed under the Automation and Hosting sections.
-
-> #### Need a quicker quick start?
-> This document recommends a double-repository approach,
-> which separates your platform into a "site repository" and a "data repository".
-> This is a good practice in general, and provides several logistical benefits.
-> However, a simpler single-repository approach may be preferred if you just
-> want to try out Open SDG locally. In this case, see
-> the [open-sdg-simple-starter project](https://github.com/open-sdg/open-sdg-simple-starter).
+This document will go over the quickest way to get this platform up and running. Here we will choose the simplest approach for automation and hosting, which is to use GitHub. Note, however, that there are alternatives to this approach, as detailed under the Automation and Hosting sections.
 
 ## Signing up and creating repositories
 
 1. If you don't already have a Github.com account, [go to Github.com](https://github.com/) to sign up and then log in.
 1. Go to the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and click the green "Use this template" button.
-1. Next you will be prompted to choose a name for your new repository. This will affect the URL at which you access the site later, so choose carefully. A suggestion might be: `sdg-site-australia` (adjusted for your country). Note that you can change this later if needed.
-1. Enter a description if you would like. Leave "Public" selected, and click "Create repository from template".
-    * Bookmark the created repository -- this is your "__site repository__".
+1. You can enter any name for the repository. Here we recommend using "site".
+1. Leave "Public" selected. (**required**)
+1. Check the "Include all branches" box. (**required**)
+1. Click "Create repository from template".
+    * Bookmark the created repository -- this is your *site repository*.
 1. Go to the [data starter](https://github.com/open-sdg/open-sdg-data-starter) and click the green "Use this template" button.
-1. As before, choose a name. This one should refer to "data" instead of "site" (eg, `sdg-data-australia`). As before, leave "Public" selected and click "Create repository from template".
-    * Bookmark the created repository -- this is your "__data repository__".
+1. As before, you can enter any name for the repository. Here we recommend using "data".
+1. As before, leave "Public" selected. (**required**)
+1. As before, check the "Include all branches" box. (**required**)
+1. Click "Create repository from template".
+    * Bookmark the created repository -- this is your *data repository*.
 
-## Creating an access token
+## Wait for the builds to complete
 
-This step is temporarily necessary because of a bug involving GitHub Actions and GitHub Pages. The bug is being discussed in [this GitHub discussion thread](https://github.community/t5/GitHub-Actions/Github-action-not-triggering-gh-pages-upon-push/td-p/26869/highlight/true).
+At this point, both your site repository and your data repository will be performing automatic "builds". These take about 5 minutes to complete. You can monitor the progress in each repository by going to the "Actions" section under the repository name. When you see a green checkmark here, the build is complete.
 
-1. Create an access token described in [this official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
-    * Select the `repo` permission, as indicated in those instructions.
-    * Save the token somewhere private.
-1. Copy the access token so that you can paste in the next steps.
-1. Go to the site repository you bookmarked earlier.
+## View the completed builds
+
+Once the builds are complete, you can view them, using the following steps:
+
+1. Go to the *data repository*.
 1. Under the repository name, click "Settings".
-1. In the left sidebar, click "Secrets".
-1. Click "Add a new secret".
-1. Under "Name", type the following (case-sensitive): `token`
-1. Under "Value", paste in the access token you copied earlier.
-1. Click the green "Add secret" button.
-1. Repeat all the steps above, but for the "data" repository you bookmarked earlier.
-
-## Update the data repository configuration
-
-This step is necessary before continuing, and also serves to demonstrate how to edit files on Github.com.
-
-1. Go to the data repository.
-1. In the list of files, click on `config_data.yml`.
-1. Click the pencil icon on the right (You can find it next to the History button.)
-1. Adjust the list of language codes under `languages` by adding or changing as needed. If you would like multiple languages, they should be one per line, like so:
-
-    ```
-    languages:
-      - fr
-      - es
-    ```
-
-1. If you did not need to adjust the list of language codes, simply make any other change in the file. For example, add a new line at the top: `# This is a comment`
-1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. Beneath this, click "Propose file changes".
-1. Click on the green "Create pull request" button.
-1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
-1. Wait until you see "All checks have passed". This takes about 5 minutes.
-1. Click on the green "Merge pull request" button.
-
-Next, you will need to edit the deploy-to-staging workflow to allow the site repository to be rebuilt automatically once a change has been made in the data repository:
-
-1. In the list of files in the data repository, click on `.github/workflows`.
-1. Click on `deploy-to-staging.yml`.
-1. Click the pencil to edit the file.
-1. Make changes to the file by following the instructions in the notes.
-1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. Beneath this, click "Propose file changes".
-1. Click on the green "Create pull request" button.
-1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
-1. Wait until you see "All checks have passed". This takes about 5 minutes.
-1. Click on the green "Merge pull request" button.
-
-This is a commonly-used way to edit files in GitHub. In summary, the steps are:
-
-* Find the file
-* Edit the file
-* Create the pull request
-* Merge the pull request
-
-## Update the site repository configuration
-
-1. Go to the site repository.
-1. In the list of files, click on `_config.yml`.
-1. Click the pencil icon on the right (You can find it next to the History button.)
-1. You will see some instructions in the file. Update the code as directed.
-1. In particular, adjust the language codes under `languages` in the same way you did with the data repository.
-1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
-1. Beneath this, click "Propose file changes".
-1. Click on the green "Create pull request" button.
-1. Wait a moment to see the message that says "Test PRs / test (pull_request) - in progress"
-1. Wait until you see "All checks have passed". This takes about 5 minutes.
-1. Click on the green "Merge pull request" button.
-
-## View the site
-
-1. GitHub will now build and publish the site. Wait about 5 minutes.
-1. Go to the site repository.
-1. Under the repository name, click "Settings".
-1. Scroll down to the "GitHub Pages" section.
+1. In the sidebar, click on "Pages".
 1. You should see "Your site is published at" next to a link.
-1. Click that link to view your site.
-
-## Turn on automated testing
-
-Both the site repository and the data repository can benefit from automated tests. Automated tests will ensure that changes do not break your site. Use the following steps to turn this on:
-
-1. Go to the data repository
+1. Click that link to view your data service.
+1. Bookmark this page -- this is your *data service*.
+1. Go to the *site repository*.
 1. Under the repository name, click "Settings".
-1. In the left sidebar, click "Branches".
-1. Make sure the "default" branch is: `develop`
-1. Under "Branch protection rules" click "Add rule"
-1. Under "Branch name pattern" enter `develop`
-1. Check the box "Require status checks to pass before merging"
-1. Under "Status checks found in the last week for this repository" check the box for "test".
-1. Click the green "Create" button.
-1. Repeat the above steps, but for the site repository.
+1. In the sidebar, click on "Pages".
+1. You should see "Your site is published at" next to a link.
+1. Click that link to view your data service.
+1. Bookmark this page -- this is your *site*.
 
-## Results
+## Connect your site to your data service
 
-At this point, any new proposed file changes in the repositories will trigger the automated tests. Also, when approved (aka "merged") the updated builds are automatically deployed to "GitHub Pages". These "GitHub Pages" URLs are your __staging__ environments.
+You now have a working site and a working data service, however they are not yet connected to each other. We need to tell the site where to find the data service.
 
-## Possible next steps?
+1. From the previous step you should now be on your *site*. If not, go back there using your bookmark.
+1. In the footer menu at the bottom of any page, click "Configuration".
+1. Scroll down to the "Remote data prefix" setting.
+1. In this field, replacing what is already there, paste in the URL of your *data service* (which you bookmarked above).
+1. Continue down to the "Repository URL - Data" setting.
+1. In this field, replacing what is already there, paste in the URL of your *data repository* (which you bookmarked above).
+1. Scroll to the top and press "Download configuration". You will receive a file download called "site_config.yml".
+1. Press "Go to repository".
+1. Upload the downloaded "site_config.yml" file by dragging it onto the page.
+1. Scroll down and press "Commit changes".
 
-1. [Add data and metadata to the data repository](making-updates.md)
-1. [Tweak and customise the site repository as needed](customisation.md)
-1. [Set up separate "production" environments](deployment.md)
+## Recommended
+
+To help with maintenance of your implementation, the following automation is *strongly* recommended:
+
+1. [Protection from breaking changes](automation/github.md)
+1. [Triggered site builds](automation/triggered-site-builds.md)
+
+## Next steps
+
+To get started with customising your implementation of Open SDG, try any of these tutorials:
+
+1. [Changing the logo and favicon](tutorials/change-logo.md)
+1. [Frontpage configuration](tutorials/frontpage-config.md)
+1. [Adding indicators](tutorials/add-indicator.md)
+1. [Adding languages](tutorials/add-language.md)
+1. [Changing colors](tutorials/change-colors.md)
+1. [Changing the site-wide banner](tutorials/change-banner.md)
+
+## Troubleshooting
+
+If this did not appear to work, please consult the [troubleshooting page](troubleshooting.md).

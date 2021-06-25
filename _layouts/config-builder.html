@@ -1,0 +1,377 @@
+{% include head.html noindex=true %}
+{% include header.html %}
+<div id="main-content" class="container" role="main">
+  <div class="col-md-12"><h1>{{ page.title }}</h1></div>
+  <div class="config-widgets col-md-12">
+    <div class="col-md-6" id="search_holder">
+      <label for="config-search">Filter settings</label>
+      <input id="config-search" />
+      <input id="config-search-button" type="button" value="Filter">
+      <input id="config-reset-button" type="button" value="Reset">
+    </div>
+    <div class="col-md-6" id="button_holder">
+      <div><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
+      {% if page.form_settings.repository_link and page.form_settings.repository_link != '' %}
+      <div>
+        <a class="btn btn-primary btn-download" target="_blank" href="{{ page.form_settings.repository_link }}">
+          Go to repository
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-12" id="results-status" role="status"></div>
+  <div class="col-md-12" id="editor_holder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
+  <script>
+    // For this page, it is helpful to have every single translation.
+    var allTranslations = {{ page.t | jsonify }};
+
+    // Dynamic filtering functionality.
+    var configSearch = document.getElementById('config-search');
+    var configSearchButton = document.getElementById('config-search-button');
+    var configResetButton = document.getElementById('config-reset-button');
+    var resultsStatus = document.getElementById('results-status');
+    var itemSelector = 'div[data-schemapath="root"] > .well > div > div > .row';
+    configSearchButton.addEventListener('click', performSearch);
+    configSearch.addEventListener('keyup', function(e) {
+      if (e.key === "Enter") {
+        performSearch();
+      }
+    });
+    configResetButton.addEventListener('click', resetSearch);
+    function performSearch() {
+      var keywords = configSearch.value.toLowerCase();
+      var numResults = 0;
+      if (keywords.length > 0) {
+        var noMatches = true;
+        $(itemSelector).each(function(item) {
+          var title = $(this).find('label').first().text().toLowerCase();
+          if (title.includes(keywords)) {
+            noMatches = false;
+            $(this).show();
+            numResults += 1;
+          }
+          else {
+            $(this).hide();
+          }
+        });
+        if (noMatches) {
+          $(resultsStatus).text('There are no settings that match those keywords.');
+        }
+        else {
+          var settingsText = (numResults > 1) ? 'settings' : 'setting';
+          $(resultsStatus).text(numResults + ' matching ' + settingsText + ' found.');
+        }
+      }
+      else {
+        resetSearch();
+      }
+    };
+    function resetSearch() {
+      configSearch.value = '';
+      $(resultsStatus).text('');
+      $(itemSelector).show();
+    }
+
+    {% if page.config_type == 'site' %}
+      {% assign json_schema = site.data.schema-site-config %}
+    {% elsif page.config_type == 'indicator' %}
+      {% assign json_schema = site.data.schema-indicator-config %}
+    {% elsif page.config_type == 'metadata' %}
+      {% assign json_schema = site.data.schema-indicator-metadata %}
+    {% endif %}
+    {% assign config_form = page.form_settings %}
+    var schema = {{ json_schema | jsonify }};
+    {% if config_form %}
+      {% if config_form.dropdowns %}
+        {% for dropdown in config_form.dropdowns %}
+          if (schema.properties.{{ dropdown.jsonschema }}) {
+            schema.properties.{{ dropdown.jsonschema }}.format = 'choices';
+            schema.properties.{{ dropdown.jsonschema }}.enum = {{ dropdown.values | jsonify }};
+            {% if dropdown.labels %}
+              schema.properties.{{ dropdown.jsonschema }}.options = schema.properties.{{ dropdown.jsonschema }}.options || {};
+              schema.properties.{{ dropdown.jsonschema }}.options.enum_titles = {{ dropdown.labels | jsonify }};
+            {% endif %}
+          }
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+
+    function normalizeCurrentValue(key, value) {
+      // @deprecated start
+      if (key == 'create_pages' && value && value.pages) {
+        return value.pages;
+      }
+      if (key == 'date_formats' && value && !Array.isArray(value)) {
+        var date_formats = [];
+        Object.keys(value).forEach(function(type) {
+          Object.keys(value[type]).forEach(function(language) {
+            date_formats.push({
+              type: type,
+              language: language,
+              format: value[type][language],
+            });
+          })
+        });
+        return date_formats;
+      }
+      if (key == 'languages_public' && value && !Array.isArray(value)) {
+        var languages_public = [];
+        Object.keys(value).forEach(function(language) {
+          languages_public.push({
+            language: language,
+            language_public: value[language],
+          });
+        });
+        return languages_public;
+      }
+      // @deprecated end
+      return value;
+    }
+
+    // Change the theme to create div instead of H3 elements for headers.
+    JSONEditor.defaults.themes.bootstrap3.prototype.getHeader = function(text) {
+      var el = document.createElement('div')
+      if (typeof text === 'string') {
+        el.textContent = text;
+      } else {
+        el.appendChild(text);
+      }
+      el.classList.add('je-header');
+      return el;
+    }
+
+    var editor = new JSONEditor(document.getElementById('editor_holder'), {
+      theme: 'bootstrap3',
+      iconlib: 'fontawesome4',
+      disable_array_delete_all_rows: true,
+      disable_array_delete_last_row: true,
+      disable_array_reorder: true,
+      disable_edit_json: true,
+      disable_properties: true,
+      required_by_default: true,
+
+      // The schema for the editor
+      schema: schema
+    });
+
+    function collapseButtonClick() {
+      var title = this.getAttribute('title');
+      this.setAttribute('aria-expanded', title === 'Collapse');
+      var ariaLabel = this.getAttribute('aria-label');
+      if (title === 'Collapse') {
+        ariaLabel = ariaLabel.replace('Expand', 'Collapse');
+      }
+      else {
+        ariaLabel = ariaLabel.replace('Collapse', 'Expand');
+      }
+      this.setAttribute('aria-label', ariaLabel);
+    }
+
+    function propertyEditorTranslationLinks(propertyEditor) {
+      try {
+        if (typeof propertyEditor.value === 'undefined') {
+          return;
+        }
+        switch (propertyEditor.schema.type) {
+          case 'string':
+            if (isTranslationKey(propertyEditor.value)) {
+              addTranslationLink(propertyEditor);
+            }
+            break;
+          case 'array':
+          case 'object':
+            if (typeof propertyEditor.editors !== 'undefined') {
+              var editorKeys = Object.keys(propertyEditor.editors);
+              for (var i = 0; i < editorKeys.length; i++) {
+                var editorKey = editorKeys[i];
+                propertyEditorTranslationLinks(propertyEditor.editors[editorKey]);
+              }
+            }
+            if (typeof propertyEditor.rows !== 'undefined') {
+              for (var i = 0; i < propertyEditor.rows.length; i++) {
+                propertyEditorTranslationLinks(propertyEditor.rows[i]);
+              }
+            }
+            break;
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to add translation links: ' + propertyEditor.formname);
+      }
+    }
+
+    function propertyEditorAccessibilityFixes(propertyEditor) {
+      try {
+        // Variety of accessibility fixes.
+        switch (propertyEditor.schema.type) {
+          case 'string':
+          case 'integer':
+          case 'boolean':
+          case 'number':
+            propertyEditor.input.setAttribute('id', propertyEditor.formname);
+            propertyEditor.label.setAttribute('for', propertyEditor.formname);
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+              propertyEditor.input.setAttribute('aria-describedby', descriptionId);
+            }
+            break;
+          case 'array':
+          case 'object':
+            var toggleButton = (propertyEditor.schema.type === 'array') ? propertyEditor.toggle_button : propertyEditor.collapse_control;
+            var headerId = propertyEditor.formname + '-header';
+            propertyEditor.header.setAttribute('id', headerId);
+            var headerText = propertyEditor.header.innerHTML;
+            if (typeof propertyEditor.description !== 'undefined') {
+              var descriptionId = propertyEditor.formname + '-description';
+              propertyEditor.description.setAttribute('id', descriptionId);
+            }
+            if (typeof toggleButton !== 'undefined') {
+              toggleButton.setAttribute('aria-label', 'Activate to Collapse the ' + headerText + ' section.')
+              collapseButtonClick.call(toggleButton);
+              toggleButton.addEventListener('click', collapseButtonClick);
+              if (typeof propertyEditor.description !== 'undefined') {
+                toggleButton.setAttribute('aria-describedby', descriptionId);
+              }
+            }
+            if (typeof propertyEditor.editors !== 'undefined') {
+              var editorKeys = Object.keys(propertyEditor.editors);
+              for (var i = 0; i < editorKeys.length; i++) {
+                var editorKey = editorKeys[i];
+                propertyEditorAccessibilityFixes(propertyEditor.editors[editorKey]);
+              }
+            }
+            if (typeof propertyEditor.rows !== 'undefined') {
+              for (var i = 0; i < propertyEditor.rows.length; i++) {
+                propertyEditorAccessibilityFixes(propertyEditor.rows[i]);
+              }
+            }
+            break;
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to do accessibility fixes: ' + propertyEditor.formname);
+      }
+    }
+
+    // Set values according to this site's configuration.
+    {%- for config_setting in json_schema.properties -%}
+    {%- assign config_key = config_setting[0] -%}
+    {%- if page.config_type == 'site' -%}
+      {%- assign current_value = site[config_key] -%}
+    {%- elsif page.config_type == 'indicator' -%}
+      {%- assign current_value = page.meta[config_key] -%}
+    {%- elsif page.config_type == 'metadata' -%}
+      {%- assign current_value = page.meta[config_key] -%}
+    {%- endif -%}
+    {% if current_value %}
+      try {
+        var currentValue = normalizeCurrentValue('{{ config_key }}', {{ current_value | jsonify }});
+        var propertyEditor = editor.getEditor('root.{{ config_key }}');
+        propertyEditor.setValue(null);
+        propertyEditor.setValue(currentValue);
+        {% if config_form.translation_link and config_form.translation_link != '' %}
+        propertyEditorTranslationLinks(propertyEditor);
+        {% endif %}
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set config key: {{ config_key }}');
+      }
+    {% endif %}
+    {%- assign config_schema = config_setting[1] -%}
+    {%- if config_schema.minItems or config_schema.minimum or config_schema.minLength -%}
+      try {
+        var propertyEditor = editor.getEditor('root.{{ config_key }}');
+        if (typeof propertyEditor.label !== 'undefined') {
+          propertyEditor.label.innerHTML += ' -- <span class="config-required">required</span>';
+        }
+        else if (typeof propertyEditor.header !== 'undefined') {
+          propertyEditor.header.innerHTML += ' -- <span class="config-required">required</span>';
+        }
+      }
+      catch (e) {
+        console.log(e.message);
+        console.log('Unable to set "required" flag: {{ config_key }}');
+      }
+    {%- endif -%}
+
+    propertyEditorAccessibilityFixes(editor.getEditor('root.{{ config_key }}'));
+
+    {%- endfor -%}
+
+    function isTranslationKey(text) {
+      var parts = text.split('.');
+      if (parts.length !== 2) {
+        return false;
+      }
+      if (typeof allTranslations[parts[0]] === 'undefined') {
+        return false;
+      }
+      if (typeof allTranslations[parts[0]][parts[1]] === 'undefined') {
+        return false;
+      }
+      return true;
+    }
+
+    function addTranslationLink(propertyEditor) {
+      var parts = propertyEditor.value.split('.');
+      var translationLink = '{{ config_form.translation_link }}';
+      translationLink = translationLink.replace('[id]', '{{ page.indicator_number }}');
+      translationLink = translationLink.replace('[group]', parts[0]);
+      translationLink = translationLink.replace('[key]', parts[1]);
+      translationLink = translationLink.replace('[language]', '{{ page.language }}');
+      var element = document.createElement('a');
+      element.setAttribute('target', '_blank');
+      element.setAttribute('href', translationLink);
+      element.setAttribute('class', 'translation-link');
+      element.innerHTML = 'Go to translation for ' + propertyEditor.key;
+      propertyEditor.addLink(element);
+    }
+
+    function SaveAsFile(t,f,m) {
+      try {
+        var b = new Blob([t],{type:m});
+        saveAs(b, f);
+      } catch (e) {
+        window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
+      }
+    }
+
+    document.getElementById('export').addEventListener('click', function() {
+      var errors = editor.validate();
+      if (errors.length) {
+        var alertText = 'Please correct the errors listed below';
+        var fieldNames = []
+        for (i = 0; i < errors.length; i++) {
+          var error = errors[i];
+          fieldNames.push(error.path.replace('root.', ''));
+        }
+        alert(alertText + ' (' + fieldNames.join(', ') + ').');
+      }
+      else {
+        var config = editor.getValue();
+        var yaml = jsyaml.safeDump(config);
+        SaveAsFile(yaml, '{{ page.config_filename }}', 'text/plain;charset=utf-8');
+      }
+    });
+
+    function addNewTabMessage(link) {
+      if (!link.querySelector('.sr-only')) {
+        link.insertAdjacentHTML('beforeend', ' <span>(opens in a new tab)</span>');
+      }
+    }
+
+    document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+      addNewTabMessage(link);
+    });
+  </script>
+</div>
+{% include footer.html %}

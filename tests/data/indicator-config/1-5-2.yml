@@ -1,0 +1,55 @@
+﻿composite_breakdown_label: ''
+computation_units: ''
+copyright: ''
+data_footnote: ''
+data_non_statistical: false
+data_notice_class: ''
+data_notice_heading: ''
+data_notice_text: ''
+data_show_map: false
+data_start_values: []
+embedded_feature_footer: ''
+embedded_feature_html: ''
+embedded_feature_tab_title: ''
+embedded_feature_title: ''
+embedded_feature_url: ''
+expected_disaggregations: []
+graph_annotations: []
+graph_limits: []
+graph_stacked_disaggregation: ''
+graph_title: >-
+  Direct economic loss attributed to disasters in relation to global gross
+  domestic product (GDP)
+graph_titles:
+  - series: ''
+    unit: Percent
+    title: My untranslated graph title for percent
+  - series: ''
+    unit: Total
+    title: graph-titles.1-5-2-total
+graph_type: line
+indicator_name: global_indicators.1-5-2-title
+indicator_number: 1.5.2
+national_geographical_coverage: ''
+page_content: >
+  This indicator is used in multiple scenarios under tests/features:
+
+
+  * Headline.feature (testing a multi-unit no-headline indicator with a single
+  disaggregations)
+
+  * Precision.feature
+
+  * UnitOfMeasurement (confirming that units can affect the graph title)
+permalink: ''
+precision:
+  - series: ''
+    unit: ''
+    decimals: 4
+  - series: ''
+    unit: 'Total'
+    decimals: 2
+reporting_status: complete
+sort: ''
+standalone: false
+tags: []

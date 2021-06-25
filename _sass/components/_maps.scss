@@ -18,20 +18,56 @@
       }
     }
 
-    .leaflet-control {
+    .leaflet-control-search {
+      .search-button {
+        background-image: none;
+        font-size: 20px;
+        padding-left: 6px;
+        color: $text-color;
+      }
+      .search-cancel {
+        background-image: none;
+        color: $text-color;
+        font-size: 16px;
+        line-height: 16px;
+        height: 22px;
+        padding: 5px;
+        margin: 3px 1px;
+      }
+      .search-input {
+        color: $text-color;
+      }
+    }
+    .leaflet-bar-timecontrol {
+      border-color: $text-color;
       .timecontrol-date {
         min-width: 80px;
         padding: 0 10px;
+        color: $text-color;
+        text-align: center;
       }
-      @media only screen and (max-width: 680px) {
-        .timecontrol-slider {
+      .timecontrol-slider {
+        @media only screen and (max-width: 680px) {
           display: none;
         }
+        .knob {
+          background-color: lighten($text-color, 50%);
+          border-color: $text-color;
+        }
+        .slider {
+          border-color: lighten($text-color, 25%);
+        }
       }
-      .download-geojson-button {
-        display: block;
-        cursor: pointer;
+      &.leaflet-control-attribution {
+        background: $backgroundColor;
+        a {
+          color: $link-color;
+        }
       }
+    }
+    .leaflet-control-fullscreen-button {
+      background-image: none;
+      font-size: 20px;
     }
     .disaggregation-select-container {
       background: $backgroundColor;
@@ -42,6 +78,12 @@
         margin-right: 4px;
       }
     }
+    .leaflet-control-attribution {
+      @media only screen and (max-width: 480px) {
+        max-width: 100px;
+        text-align: right;
+      }
+    }
     .selection-legend {
       @media only screen and (max-width: 680px) {
         display: none;
@@ -50,6 +92,7 @@
       padding: 0;
       width: 300px;
       .legend-swatches {
+        @include preserveOriginalColors;
         height: 10px;
         .legend-swatch {
           display: block;
@@ -58,6 +101,7 @@
         }
       }
       .legend-values {
+        @include preserveOriginalColors;
         position: absolute;
         bottom: -10px;
         width: 100%;
@@ -81,6 +125,7 @@
           }
         }
         .legend-value {
+          color: $text-color;
           padding: 0 4px;
           background: $backgroundColor;
           position: absolute;

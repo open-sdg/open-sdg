@@ -36,31 +36,44 @@ pages:
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
     - Requirements: requirements.md
-    - Quick start: quick-start.md
+    - Quick start:
+        - Installation: quick-start.md
+        - "Tutorial: Changing the logo and favicon": tutorials/change-logo.md
+        - "Tutorial: Frontpage configuration": tutorials/frontpage-config.md
+        - "Tutorial: Adding indicators": tutorials/add-indicator.md
+        - "Tutorial: Adding languages": tutorials/add-language.md
+        - "Tutorial: Changing colors": tutorials/change-colors.md
+        - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
+        - "Tutorial: Creating pages": tutorials/create-pages.md
     - Data providers:
         - Making updates: making-updates.md
         - Metadata format: metadata-format.md
         - Metadata file formats: metadata-file-formats.md
         - Data format: data-format.md
         - Data sources: data-sources.md
+        - Data schema: data-schema.md
         - Chart types: charts.md
     - Developers:
         - Local development: development.md
         - Deployment: deployment.md
-        - Configuration: configuration.md
+        - Site configuration: configuration.md
+        - Data configuration: data-configuration.md
         - Customisation: customisation.md
         - Jekyll templates: jekyll-templates.md
+        - Jekyll and Open SDG: jekyll-and-open-sdg.md
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md
         - Reporting status: reporting-status.md
         - Social media sharing: social-media-sharing.md
+        - Troubleshooting: troubleshooting.md
     - Automation:
         - GitHub Actions: automation/github-actions.md
         - CircleCI: automation/circle-ci.md
         - TravisCI: automation/travis-ci.md
         - Jenkins: automation/jenkins.md
         - Github integration: automation/github.md
+        - Triggered site builds: automation/triggered-site-builds.md
     - Hosting:
         - Github pages: hosting/github-pages.md
         - AWS S3: hosting/aws-s3.md
@@ -70,3 +83,5 @@ pages:
     - Upgrades:
         - Upgrade process: upgrades/upgrade-process.md
         - Upgrading to 1.0.0: upgrades/upgrading-1-0-0.md
+        - Upgrading to 1.2.0: upgrades/upgrading-1-2-0.md
+        - Upgrading to 1.3.0: upgrades/upgrading-1-3-0.md

@@ -1,12 +1,17 @@
 body{
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-size: $fontSize;
+  color: $text-color;
+}
+body.contrast-high {
+  color: $text-color-highContrast;
 }
 
 h1{ font-size: $h1-fontSize; }
 h2{ font-size: $h2-fontSize; }
 h3{ font-size: $h3-fontSize; }
 .lead-copy { font-size: $leadCopy-fontSize; }
+.small-text { font-size: $smallText-fontSize; }
 
 .goal-banner {
   a {
@@ -33,7 +38,6 @@ h3{ font-size: $h3-fontSize; }
 
   img {
     max-width: 100%;
-    margin-top: 10px;
   }
 }
 
@@ -78,4 +82,43 @@ h3{ font-size: $h3-fontSize; }
   overflow: hidden;
   clip: rect(0,0,0,0);
   border: 0;
+}
+
+[contentEditable="true"]:focus,
+[href]:focus,
+[tabindex]:focus,
+iframe:focus,
+input:focus,
+button:focus {
+  @include focus;
+}
+body.contrast-high {
+  [contentEditable="true"]:focus,
+  [href]:focus,
+  [tabindex]:focus,
+  iframe:focus,
+  input:focus,
+  button:focus {
+    @include focusHighContrast;
+  }
+}
+input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus,
+input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
+  box-shadow: 0px 0px 0px 4px $focusOutlineColor !important;
+}
+.tabPanel:focus,
+input[type="text"]:focus,
+body.contrast-high input[type="text"]:focus,
+.variable-selector button.accessBtn:focus,
+div[tabindex]:focus {
+  @include focusOutlineOnly;
+}
+body.contrast-high .variable-selector button.accessBtn:focus {
+  @include focusOutlineOnlyHighContrast;
+  &, span {
+    color: $text-color-highContrast !important;
+  }
+}
+body.contrast-high div[tabindex]:focus {
+  @include focusOutlineOnlyHighContrast;
 }

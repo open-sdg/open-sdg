@@ -1,15 +1,10 @@
 .table-hover {
   tbody tr:hover {
-    background: darken($backgroundColor, 12%);
+    background: $table-row-backgroundColor-hover;
   }
 }
 
 #page-content {
-
-  border-top: 1px solid $indicatorContent-horizontalRule-color;
-  border-bottom: 1px solid $indicatorContent-horizontalRule-color;
-  padding-top: 10px;
-
   table {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -26,5 +21,30 @@
   thead {
     padding-bottom: 10px;
     border-bottom: 1pt solid $color-dark;
+  }
+}
+
+table {
+  thead {
+    th {
+      .sort {
+        background-image: none !important;
+      }
+      .fa-sort-down, .fa-sort-up {
+        display: none;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      &[aria-sort="descending"] {
+        .fa-sort-down {
+          display: inline-block;
+        }
+      }
+      &[aria-sort="ascending"] {
+        .fa-sort-up {
+          display: inline-block;
+        }
+      }
+    }
   }
 }

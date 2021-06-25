@@ -8,6 +8,34 @@ Metadata values can either be filled in with normal text ("My field value") or w
 
 As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
 
+## Note about unit-specific and series-specific settings
+
+Several indicator settings can be limited to a particular Unit and/or Series. For example, the `graph_titles` setting can be configured like this:
+
+```
+graph_titles:
+  - unit: Percent
+    title: My title for percent
+  - unit: Total
+    title: My title for total
+```
+
+In addition to graph_titles, the other fields like this include:
+
+* graph_annotations
+* graph_limits
+* precision
+
+These fields are described below. Note that if a unit/series is not specified, then the item will apply to any unit/series. For example:
+
+```
+graph_titles:
+  - series: SERIES123
+    title: This title will appear for SERIES123 only
+  - series: ''
+    title: This title will appear for all other series
+```
+
 ## Mandatory fields
 
 The following fields are required on all indicators:
@@ -54,7 +82,14 @@ The following fields are not strictly required, but are recommended because they
 
 * `indicator_available` - an alternate name for the indicator, intended for when the global indicator name might not accurately describe the available national/regional statistics
 * `computation_units` - the unit used in the headline series for this indicator. Examples:
-    * Metric tons * my_translations.metric_tons
+    * Metric tons
+    * my_translations.metric_tons
+* `expected_disaggregations` - a list of the disaggregations (ie, columns in the CSV file) that this indicator should have. Setting this value will supply metrics to the disaggregation status report (see the [reporting_status site configuration](configuration.md#reporting_status)). Here is an example for an indicator that should have disaggregation for "Age" and "Sex":
+
+        expected_disaggregations:
+          - Age
+          - Sex
+
 * `source_active_1` - whether source #1 should be displayed. Examples:
     true
     false
@@ -68,7 +103,7 @@ The following fields are not strictly required, but are recommended because they
     * my_translations.click_here
 * `un_designated_tier` - the "tier" for this indicator. Examples:
     * 1
-    * 2.
+    * 2
 * `un_custodian_agency` - the custodian agency for this indicator. Examples:
     * World Bank
 * `goal_meta_link` - URL of the official UN metadata for this indicator. Examples:
@@ -76,11 +111,10 @@ The following fields are not strictly required, but are recommended because they
 * `goal_meta_link_text` - the text to display as the link to the official UN metadata for this indicator. Examples:
     * United Nations Sustainable Development Goals Metadata (pdf 894kB)
 * `tags` - an optional list of "tags" to display under an indicator when it is listed on its goal page. Unlike most other fields, the `tags` field should be a list. Here is an example of what it might look like, in YAML form:
-    ```
-    tags:
-      - My tag
-      - My other tag
-    ```
+
+        tags:
+          - My tag
+          - My other tag
 
 ## Data Sources Metadata
 
@@ -125,6 +159,16 @@ data_start_values:
 
 ...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
 
+## Composite Breakdown label
+
+When importing data from SDMX it is common for disaggregations to be in COMPOSITE_BREAKDOWN. This is not particularly informative to the user, so it is possible to specify a more useful label for this particular data column. Whatever is specified here will be used as a label for the COMPOSITE_BREAKDOWN column, if it appears in the indicator data. Translation keys are supported, as always.
+
+The example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
+
+```nohighlight
+composite_breakdown_label: Hazard type
+```
+
 ## Graph Metadata
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
@@ -143,8 +187,67 @@ The following fields affect the display of graphs. Currently only longitudinal g
 
         graph_stacked_disaggregation: Age
 
+* `graph_annotations` - this can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator. Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
+
+    * `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
+    * `description`: Either a string or function returning a description of the annotation. This is necessary for accessibility, as the description is read by screenreaders. The description does not appear visually on the page.
+    * `unit`: If specified, the annotation will only display when the user is looking at this unit of measurement.
+    * `series`: If specified, the annotation will only display when the user is looking at this series.
+    * `mode`: Can be "vertical" or "horizontal". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `borderColor`: The color of the line/box. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `borderDash`: The type of dashes for a line. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `value`: Used for line annotations. The value at which to draw the line. For horizontal lines, this number corresponds to your actual data. For vertical lines, this number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `endValue`: Used for line annotations. Optional value at which the line ends. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `label`: Additional settings for controlling the label:
+        * `position`: Can be "top", "bottom", "left", "right", or "center". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+        * `content`: The text of the label (can be a translation key). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+        * `fontColor`: The color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+        * `backgroundColor`: The background color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js).
+
+    Here is an example of using annotations:
+
+        graph_annotations:
+          - unit: tons
+            value: 19
+            borderColor: red
+          - unit: passengers
+            value: 1900
+            borderColor: red
+
+    Here is an example of using the `target_line` preset:
+
+        graph_annotations:
+          - unit: tons
+            value: 19
+            preset: target_line
+          - unit: passengers
+            value: 1900
+            preset: target_line
+
 * `graph_title` - mentioned above
 * `graph_type` - mentioned above
+
+## Precision
+
+Normally trailing zeroes are removed from decimals before being displayed. For example, "23.60" will be displayed as "23.6". If you would like to force a particular number of decimal places, you can use the `precision` field. The following would force values to have 2 decimals places:
+
+```
+precision:
+  - decimals: 2
+```
+
+For example, with the configuration above, "23.60" would actually display as "23.60". Along the same lines, "23" would display as "23.00".
+
+You can also specify multiple precisions, and each one can apply to a particular unit and/or series. Here is an example if you want to force a precision of 2 on "percentage" units, and a precision of 1 on "total" units:
+
+```
+precision:
+  - unit: percentage
+    decimals: 2
+  - unit: total
+    decimals: 1
+```
 
 ## Footer
 
@@ -172,13 +275,26 @@ You may want to add an additional feature which isn't created from data, such as
 * `embedded_feature_title` - the title to be shown above the embedded feature. Examples:
     * My embedded chart
     * my_translatins.1-1-1-embedded-chart
-    
+
 You can either specify a URL or some HTML for the feature you want to embed:
 
 * `embedded_feature_url` - the URL of feature that you want to embed. You may use this when you have control over the original feature that you want to embed, and don't need to make any changes e.g. if the feature is already the correct size. Examples:
     * http://example.com/embed-1-1-1.html
 * `embedded_feature_html` - HTML code of the feature that you want to embed. You may use this when you don't have control of the original feature that you want to embed, and so need to make some changes e.g. to the size, title, or other attributes. Example:
     * `<iframe width="1110" height="700" title="Childhood Vaccination Coverage Statistics" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3NWZhNzItMTIyZS00OWM2LTg0MzMtOGY5YTJjMGY0MjI1IiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>`
+
+## URL fields
+
+Some metadata fields may be intended to be only a link. Any field that includes "_url" in the field name will be formatted as a link. The text of the link will be "Link" by default, but you can control it through another metadata field with the same field name plus "_text". For example:
+
+```
+my_field_url: https://example.com
+my_field_url_text: The text for my link to example.com
+```
+
+## Date fields
+
+Some metadata fields may be intended to be only a date. Any field that includes "_date" in the field name will be formatted as a date. This means that it will work with the [`date_formats` site configuration setting](configuration.md#date_formats). It will use the "standard" date format.
 
 ## Non-Standard Information
 
@@ -200,6 +316,28 @@ You may want to display some very important information which site viewers must 
     * success (green)
     * warning (amber)
     * danger (red)
+
+## Standalone indicators
+
+If you would like to post statistical indicators that are not part of the SDGs (such as Covid-19 data) then you can set the indicators to be `standalone`. This prevents the indicator from appearing as part of a goal, and keeps the indicator off the reporting status, disaggregation status, and other disaggregation reports.
+
+In this case you may also want to control the URL of the indicator. You can do this with the `permalink` metadata field. This does not require any preceding/trailing slashes.
+
+Here is an example of using `standalone` and `permalink` in a YAML metadata structure:
+
+```
+standalone: true
+permalink: my-custom-indicator-path
+```
+
+## Sorting in lists
+
+The order in which indicators are displayed in lists is determined behind the scenes, according to the indicator number. This is done by automatically converting the indicator number to a string which sorts correctly when alphabetized. (For example, indicator 1.2.1 gets sorted as '010201'.) However you can override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator. For example:
+
+```
+# Ensure this indicator appears at the end of goal 1, target 2.
+sort: 0102zz
+```
 
 ## Schema
 
@@ -250,7 +388,6 @@ The following keys cannot be used as metadata fields, because they are used for 
 * language
 * name
 * number
-* sort
 * global
 * url
 * goal_number

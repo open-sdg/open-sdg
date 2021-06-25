@@ -1,0 +1,15 @@
+{% assign status_css = include.indicator.reporting_status | slugify %}
+{% case status_css %}
+    {% when "notapplicable" %}
+        {% assign status_desc = page.t.status.not_applicable %}
+    {% when "notstarted" %}
+        {% assign status_desc = page.t.status.exploring_data_sources %}
+    {% when "inprogress" %}
+        {% assign status_desc = page.t.status.statistics_in_progress %}
+    {% when "complete" %}
+        {% assign status_desc = page.t.status.reported | default: page.t.status.reported_online %}
+{% endcase %}
+
+<span class="status {{ status_css }}">
+    {{ status_desc }}
+</span>

@@ -1,15 +1,22 @@
 <div class="tab-content">
-  {% if site.metadata_tabs %}
+  {% if site.metadata_tabs and site.metadata_tabs.size > 0 %}
     {% for tab in site.metadata_tabs %}
+    {% comment %} @deprecated start {% endcomment %}
     {% assign tab_key = tab[0] %}
     {% assign tab_obj = tab[1] %}
+    {% comment %} @deprecated end {% endcomment %}
+    {% if tab.scope %}
+      {% assign tab_key = tab.scope %}
+      {% assign tab_obj = tab %}
+    {% endif %}
+    {% assign tab_description = tab_obj.description | default: tab_obj.blurb %}
     {% assign tab_include = 'components/indicator/metadata.html' %}
     {% if tab_key == 'sources' %}
       {% assign tab_include = 'components/indicator/sources.html' %}
     {% endif %}
     <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
       <article>
-        {% if tab_obj.blurb %}<p>{{ tab_obj.blurb | t }}</p>{% endif %}
+        {% if tab_description %}{{ tab_description | t | markdownify }}{% endif %}
         {% include {{ tab_include }} scope=tab_key %}
       </article>
     </div>

@@ -1,0 +1,8 @@
+{% assign goal_page_content_raw = include.content | strip %}
+{% if goal_page_content_raw != '' %}
+<div class="row" id="page-content">
+  <div class="col-xs-12">
+    {{ goal_page_content_raw | t | markdownify }}
+  </div>
+</div>
+{% endif %}

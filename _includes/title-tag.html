@@ -1,0 +1,14 @@
+{% if page.indicator %}
+    <title>
+        {% unless page.indicator.standalone %}
+        {{ page.t.general.indicator | escape }} {{ page.indicator.number }} -
+        {% endunless %}
+        {{ page.indicator.name | escape }} - {{ site.title | t | escape }}
+    </title>
+{% elsif page.goal %}
+    <title>{{ page.t.general.goal | escape }} {{ page.goal.number }} - {{ page.goal.short | escape }} - {{ site.title | t | escape }}</title>
+{% elsif page.title and page.title != '' %}
+    <title>{{ page.title | t | escape }} - {{ site.title | t | escape }}</title>
+{% else %}
+    <title>{{ site.title | t | escape }}</title>
+{% endif %}

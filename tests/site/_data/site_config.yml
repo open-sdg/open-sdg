@@ -1,0 +1,274 @@
+﻿accessible_charts: true
+accessible_tabs: true
+analytics:
+  ga_prod: ''
+breadcrumbs:
+  goal:
+    - path: /
+      label: general.home
+    - path: /goals
+      label: general.goals
+  indicator:
+    - path: /
+      label: general.home
+    - path: /goals
+      label: general.goals
+  post:
+    - path: /
+      label: general.home
+    - path: /news
+      label: menu.updates
+configuration_edit_url: config
+country:
+  name: Australia
+  adjective: Australian
+create_goals:
+  layout: goal
+  previous_next_links: true
+  goals:
+    - content: custom.goal_1_content
+    - content: My goal 2 content
+create_indicators:
+  layout: indicator
+  previous_next_links: true
+create_pages:
+  - filename: index.html
+    folder: /frontpage-legacy
+    layout: frontpage
+    title: ''
+  - filename: index.html
+    folder: /
+    layout: frontpage-alt
+    title: My homepage title
+  - filename: index.html
+    folder: /goals
+    layout: goals
+    title: custom.goals_page_title
+  - filename: index.html
+    folder: /reporting-status
+    layout: reportingstatus
+    title: Reporting status
+  - filename: indicators.json
+    folder: /
+    layout: indicator-json
+    title: ''
+  - filename: index.html
+    folder: /search
+    layout: search
+    title: search.search
+custom_css: []
+custom_js:
+  - /custom.js
+data_edit_url: >-
+  https://github.com/open-sdg/open-sdg/edit/master/tests/data/data/indicator_[id].csv
+date_formats:
+  - type: standard
+    language: en
+    format: '%B %d, %Y'
+  - type: standard
+    language: es
+    format: '%d de %B de %Y'
+  - type: standard
+    language: fr
+    format: '%d %B %Y'
+disclaimer:
+  phase: header.alpha
+  message: custom.disclaimer_message
+email_contacts:
+  questions: test@example.com
+  suggestions: test@example.com
+  functional: test@example.com
+environment: staging
+footer_language_toggle: none
+footer_menu:
+  - path: 'mailto:test@example.com'
+    translation_key: menu.contact_us
+  - path: 'https://twitter.com/MyTwitterAccount'
+    translation_key: general.twitter
+  - path: 'https://facebook.com/MyFacebookAccount'
+    translation_key: general.facebook
+frontpage_cards:
+  - title: Download all data
+    content: ''
+    include: components/download-all-data.html
+    button_label: ''
+    button_link: ''
+    rule_color: green
+  - title: Useful resources
+    content: |
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+      * [Useful resource](https://example.com)
+    include: ''
+    button_label: ''
+    button_link: ''
+    rule_color: blue
+  - title: Publications
+    content: |
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+      * [Publication](https://example.com)
+    include: ''
+    button_label: View more publications
+    button_link: 'https://example.com'
+    rule_color: orange
+frontpage_goals_grid:
+  title: My custom frontpage goals grid title
+  description: >-
+    Click on each [goal](goals) for data for Sustainable Development Goal global
+    indicators.
+frontpage_heading: custom.frontpage_heading
+frontpage_instructions: custom.frontpage_instructions
+frontpage_introduction_banner:
+  title: custom.frontpage_introduction_banner_title
+  description: My frontpage introduction banner description
+goal_image_base: /img/goals
+goal_image_extension: png
+goals_page:
+  title: custom.goals_page_title
+  description: custom.goals_page_description
+graph_color_set: default
+graph_color_list: []
+graph_color_number: 6
+graph_title_from_series: true
+header:
+  include: header-menu-left-aligned.html
+header_language_toggle: dropdown
+hide_empty_metadata: true
+indicator_config_form:
+  enabled: true
+  dropdowns:
+    - jsonschema: reporting_status
+      values:
+        - notstarted
+        - complete
+      labels:
+        - Not started
+        - Complete
+  repository_link: '/tree/master/tests/data/indicator-config'
+  translation_link: ''
+indicator_data_form:
+  enabled: true
+  repository_link: '/tree/master/tests/data/data'
+indicator_metadata_form:
+  enabled: true
+  dropdowns: []
+  repository_link: '/tree/master/tests/data/meta'
+  translation_link: 'https://example.com?[id]&[group]&[key]'
+  scopes:
+    - national
+    - global
+  exclude_fields:
+    - national_data_update_url
+    - national_data_update_url_text
+    - national_metadata_update_url
+    - national_metadata_update_url_text
+  translated: true
+languages:
+  - en
+  - es
+  - fr
+languages_public:
+  - language: fr
+    language_public: fr-CA
+logos:
+  - language: en
+    alt: My English logo alt text
+    src: assets/img/SDG_logo.png
+  - language: es
+    alt: My Spanish logo alt text
+    src: assets/img/SDG_logo.png
+  - language: fr
+    alt: My French logo alt text
+    src: assets/img/SDG_logo.png
+map_layers:
+  - subfolder: regions
+    label: indicator.regions
+    min_zoom: 5
+    max_zoom: 10
+    staticBorders: false
+map_options:
+  minZoom: 5
+  maxZoom: 10
+  tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  tileOptions:
+    id: ''
+    accessToken: ''
+    attribution: My map attribution
+  colorRange: chroma.brewer.BuGn
+  noValueColor: '#f0f0f0'
+  styleNormal:
+    weight: 1
+    opacity: 1
+    fillOpacity: 0.7
+    color: '#000000'
+    dashArray: ''
+  styleHighlighted:
+    weight: 1
+    opacity: 1
+    fillOpacity: 0.7
+    color: '#111111'
+    dashArray: ''
+  styleStatic:
+    weight: 2
+    opacity: 1
+    fillOpacity: 0
+    color: '#172d44'
+    dashArray: '5,5'
+menu:
+  - path: reporting-status
+    translation_key: menu.reporting_status
+  - path: about
+    translation_key: menu.about
+  - translation_key: My dropdowns
+    dropdown:
+      - path: about
+        translation_key: Another link to about page
+  - path: frontpage-legacy
+    translation_key: Legacy frontpage
+metadata_edit_url: metadata
+metadata_tabs:
+  - scope: national
+    title: My national metadata title
+    description: My national metadata blurb
+  - scope: global
+    title: My global metadata title
+    description: My global metadata blurb
+  - scope: sources
+    title: My sources title
+    description: My sources blurb
+news:
+  category_links: true
+non_global_metadata: indicator.national_metadata
+remote_data_prefix: _build
+reporting_status:
+  title: custom.reporting_status_title
+  description: custom.reporting_status_description
+  disaggregation_tabs: true
+repository_url_data: https://github.com/open-sdg/open-sdg
+repository_url_site: https://github.com/open-sdg/open-sdg
+search_index_boost: []
+search_index_extra_fields:
+  - un_custodian_agency
+series_toggle: true
+sharethis_property: ''
+site_config_form:
+  enabled: true
+  dropdowns:
+    - jsonschema: create_goals.properties.layout
+      values:
+        - ''
+        - goal
+        - goal-by-target
+        - goal-by-target-vertical
+      labels:
+        - Do not automatically create goals
+        - goal
+        - goal-by-target
+        - goal-by-target-vertical
+  repository_link: '/tree/master/tests/site/_data'
+  translation_link: ''
+validate_indicator_config: true
+validate_site_config: true

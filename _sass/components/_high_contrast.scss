@@ -1,28 +1,29 @@
 #accessibility-nav {
-  padding-top: 20px;
-  padding-right: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
   float: right;
   text-align: right;
   li {
     display: inline-block;
     list-style: none;
     &.contrast {
-      font-size: 1.3em;
       font-weight: bold;
       border-radius: 50%;
       width: 25px;
       max-height: 25px;
       text-align: center;
       margin: 0.25em;
-      margin-top: 0.1em;
+      margin-top: 2px;
       a {
         margin: auto;
         text-decoration: none;
+        display: block;
       }
     }
 
     &.contrast-default {
       display: none;
+      @include preserveOriginalColors;
       background: $color-light-highContrast;
       a {
         color: $color-dark-highContrast;
@@ -31,12 +32,23 @@
 
     &.contrast-high {
       display: block;
+      @include preserveOriginalColors;
       background: $color-dark-highContrast;
       a {
         color: $color-highlight-highContrast;
       }
     }
   }
+}
+
+.contrast-switcher .contrast-high a:focus {
+  background-color: $focusColor !important;
+  color: $focusOutlineColor !important;
+  box-shadow: 0 -2px $focusColor,0 4px $focusOutlineColor !important;
+}
+body.contrast-high .contrast-switcher .contrast-high a:focus {
+  box-shadow: none !important;
+  outline: 2px solid $focusOutlineColor !important;
 }
 
 body.contrast-high {
@@ -121,9 +133,6 @@ body.contrast-high {
 }
 
 body.long.contrast-default{
-  li.contrast-default{
-    display: none;
-  }
   li.contrast-high{
     display: block;
     @media only screen and (max-width: 767px) {
@@ -138,9 +147,6 @@ body.long.contrast-high{
     @media only screen and (max-width: 767px) {
       width: 60px;
     }
-  }
-  li.contrast-high{
-    display: none;
   }
 }
 

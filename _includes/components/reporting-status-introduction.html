@@ -1,0 +1,13 @@
+<h1>
+  {% if site.reporting_status.title %}
+    {{ site.reporting_status.title | t }}
+  {% else %}
+    {{ page.t.status.reporting_status }}
+  {% endif %}
+</h1>
+
+{% if site.reporting_status.description %}
+<div class="reporting-status-description">
+  {{ site.reporting_status.description | t | markdownify }}
+</div>
+{% endif %}

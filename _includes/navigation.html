@@ -1,0 +1,37 @@
+<ul class="nav navbar-nav menu-target {% unless include.no_contrast %}contrast-switcher{% endunless %}" id="{{ include.id | default: 'menu' }}">
+{%- if site.menu -%}
+    {%- for item in site.menu -%}
+        {%- if include.dropdowns and item.dropdown and item.dropdown.size > 0 -%}
+        <li class="nav-link">
+            <div class="btn-group menu-dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ item.translation_key | t }}
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+                <ul class="dropdown-menu">
+                {%- for dropdown_item in item.dropdown -%}
+                    {% include navigation-link.html item=dropdown_item %}
+                {%- endfor -%}
+                </ul>
+            </div>
+        </li>
+        {%- elsif item.dropdown and item.dropdown.size > 0 -%}
+            {%- for dropdown_item in item.dropdown -%}
+                {% include navigation-link.html item=dropdown_item %}
+            {%- endfor -%}
+        {%- else -%}
+            {% include navigation-link.html item=item %}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endif -%}
+{% unless include.no_language_toggle %}
+{%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+<li class="language-toggle-menu-header">
+    {% include components/language-toggle.html %}
+</li>
+{%- endif -%}
+{% endunless %}
+{% unless include.no_contrast %}
+{% include components/contrast-toggle.html %}
+{% endunless %}
+</ul>

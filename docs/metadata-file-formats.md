@@ -57,7 +57,7 @@ Unfortunately, there are some metadata fields which can't be set in an Excel or 
 
 These are fields that require a list:
 
-- tag
+- tags
     - Note: if you are only using one tag for an indicator, this field can be set in the Excel/CSV file. If you are using more than one tag for an indicator, this field will need to be set in a Markdown file.
 - data_start_values (see the [Starting values section on the Metadata format page](metadata-format.md#starting-values) for more information about this field.)
 - graph_titles (see graph_titles under the [mandatory fields section on the Metadata format page](metadata-format.md#mandatory-for-statistical-indicators) for more information about this field.)

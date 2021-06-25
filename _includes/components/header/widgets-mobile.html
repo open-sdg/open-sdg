@@ -1,0 +1,10 @@
+<div class="mobile-widgets">
+    <ul id='accessibility-nav' class='contrast-switcher'>
+        {% include components/contrast-toggle.html %}
+    </ul>
+    {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+    <div class="language-toggle-mobile">
+        {% include components/language-toggle-dropdown.html location="header" %}
+    </div>
+    {%- endif -%}
+</div>

@@ -2,6 +2,72 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.3.0
+
+11 March 2021
+
+* Multiple fixes and improvements for high-contrast mode
+* Fix for searching by indicator ID
+* New color scheme for charts, for optimal contrast
+* Fixes and improvements to the "Sources" tab
+* Remove horizontal chart grid lines, for cleaner chart display
+* Style improvements for display of "tags" on goal pages
+* Reset button for config forms
+* Style improvements for news layout
+* Control decimal places per indicator/unit/series
+* Control decimal separator site-wide
+* Accessibility fixes on the reporting status page
+* HTML 'lang' attribute reflects current language
+* Map data now uses rounding function
+* Better support for SVG images
+* Show units in chart tooltips
+* Improvements to hierarchical sorting of disaggregation controls
+* Improvements for SDMX input support
+* Series support: users see only units/fields for the selected series
+* Optional dropdowns in the main menu
+* Consistent color-assignments for disaggregations on chart
+* Optional left-aligned header
+* Improvements to search styles and behavior
+* Optional previous/next navigation for indicators and goals
+* Standalone indicators (such as for COVID-19 statistics)
+
+## 1.2.0
+
+1 December 2020
+
+This release includes the following:
+
+* Improved keyboard navigation across the platform, such as in charts, tabs, and maps
+* Improved screenreader support across the platform, such as with disaggregation controls on indicator pages
+* Improved accessibility through unique page titles and more semantic HTML markup
+* Design and user-experience improvements for buttons, links, breadcrumbs, and "focus" treatment
+* Darker text color for better contrast
+* Better support for Windows high-contrast mode
+* User-experience improvements on mobile
+* Simplified chart legends without clickability
+* Support for annotations/labels on charts (such as adding a line for "2030 target")
+* Support for translation of contents and titles of custom pages
+* Ability for footer menu to use different links per language
+* Vertical "hover lines" on charts
+* A "no data" message for when a chart/table has no data
+* New layout available for goal pages: goal_by_target_vertical
+* Faster performance on large datasets
+* Tab for displaying a report on indicator disaggregation
+
+## 1.1.0
+
+29 July 2020
+
+This release includes the following:
+
+* New optional alternate homepage design which includes additional sections for more introductory content and resources
+* New optional alternate goal layout, organised by target and displayed in a vertical indented list
+* The title and/or description on the Reporting Status page is now configurable
+* Increased font size for normal text
+* More control over embedded iframes on indicator pages
+* Fixes for Internet Exporer problems
+* Style and functionality bug-fixes for mobile, maps, and charts
+
 ## 1.0.0
 
 8 April 2020

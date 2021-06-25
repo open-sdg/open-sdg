@@ -23,6 +23,9 @@ inputs:
     path_pattern: meta/*-*.md
     git: false
     git_data_dir: data
+  - class: InputYamlMeta
+    path_pattern: indicator-config/*.yml
+    git: false
 
 translations:
   - class: TranslationInputYaml
@@ -39,3 +42,12 @@ map_layers:
 
 reporting_status_extra_fields:
   - un_custodian_agency
+
+docs_subfolder: documentation
+
+datapackage:
+  sorting: alphabetical
+
+data_schema:
+  class: DataSchemaInputTableSchemaYaml
+  source: data-schema/*.yml

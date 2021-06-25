@@ -1,5 +1,211 @@
 <h1>Change Log</h1>
 
+## Not released
+
+* Include file for custom `<HEAD>` content #1215
+* Include file for easier overriding of body classes #1212
+* Bug fix: allow multiple multi-level disaggregations #1205
+* Remove the selection-bar from the disaggregation control dropdowns #1203
+* Hide first-element H1s in metadata for better display of global templates #1199
+* In reporting status display "Reported" instead of "Reported online" #1180
+* Metadata fields containing "_date" will be formatted as dates #1175
+* New date-only Git-based metadata fields open-sdg/sdg-build#244
+* Option for a single-icon high-contrast toggle #1171
+* Option to use series for chart titles when available #1168
+* Darker color for main nav #1142
+* Move goal header to include file #1128
+* Metadata and data forms and other improvements to config forms #1082
+
+## 1.3.0
+
+* Configurable chart headline colors #1145
+* High contrast fix: hover color for disaggregation values in dropdown #1122
+* Avoid highlighting entire div on focus #1120
+* High contrast fix: Remove hover styles for chart legend #1119
+* High contrast fix: Too-many-datasets message #1117
+* High contrast fix: Focus color on dropdowns #1116
+* High contrast fix: Fix reporting status type styling in goal-by-target-vertical #1112
+* Fix support for indicator ID searches in all languages #1110
+* Tweak the link/visited colors in high contrast mode #1104
+* New 'accessible' color-set option for optimal contrast #1103
+* Add gutter to sources tab #1096
+* Color adjustments for chart grids #1095
+* Switch to Lodash instead of Underscrore #1092
+* Bug fix - variable name in config builder #1091
+* Use https to avoid mixed content error on config forms #1090
+* Do not use empty titles in head #1089
+* Refactor and style updates for tags on goal pages #1088
+* Fix layout issues with odd-numbered indicator sources #1087
+* Reset button for config forms #1086
+* Updates to news layout markup/style #1078
+* Precision, decimal separator, and data display alterations #1073
+* Allow numeric disaggregation #1072
+* Translate 'Results found' #1071
+* Use configured zip filename #1061
+* High contrast fix: chart image downloads #1048
+* Reporting status accessibility fixes #1044
+* HTML 'lang' attribute should depend on current language #1042
+* Map data should use rounding function #1040
+* Do not change SVG images in high-contrast mode #1039, #1121
+* Show units in chart tooltips #1038
+* Improvements to hierarchical sorting of disaggregation controls #1037
+* Optimization of validParentsByChild #1036
+* Allow alternative unit and series columns #1027
+* Per-indicator label for COMPOSITE_BREAKDOWN column #1026
+* Changing series should affect the visible units/fields #1025
+* Dropdowns in the main menu #1016
+* Consistent color-assignments for disaggregations on chart #1011
+* Increase goal-by-target-vertical indentation #1008
+* Optional left-aligned header, increase awareness for search box, and search results-page tweaks #1002
+* Optional previous/next navigation for indicators and goals #1001
+* Allow alteration of DataTable configuration and fix tables for "binary" indicators #995
+* Support non-numeric years in maps #993
+* Standalone (non-SDG) indicators #988
+
+For data-related updates, see the [SDG Build changelog](https://github.com/open-sdg/sdg-build/blob/master/CHANGELOG.md).
+
+## 1.2.0
+
+* Tweak page-content styles for goal pages #1034
+* Margin below descriptions on reporting-status and goals pages #1032
+* Fix bottom margin on frontpage goal tiles #1009
+* Support for goal content #1005
+* Tab focus design fixes #990
+* Disaggregation status tab #970
+* Different canvas fallback for mobile/desktop. #968
+* Remove aria-label from table headers #967
+* Move fieldset/legend to different spot in markup #966
+* Keep swatch colors in Edge/IE + high-contrast mode #957
+* Remove rowspan and colspan from table headers #954
+* Fix the mobile navigation tab order #952
+* Better support for third-party and remote javascript files. #951
+* Map color contrast fixes #946
+* Map search accessibility #945
+* Map fullscreen accessibility #944, #958
+* Map slider accessibility #941
+* More descriptive disaggregation button label/hierarchy for screenreaders #935
+* Use aria-hidden when hiding sidebar #934
+* aria-describedby for no-data-hint #933
+* Remove role from datatable #927
+* Make map unfocusable and remove loading image #926
+* Consider hierarchy when sorting fields #920
+* Add background colour to goal icons #919
+* Allow disabling of news category links #917
+* Remove legend clickability #914
+* Support for Chart.js annotations #912
+* Backwards-compatible array-style for search_index_boost #907
+* Add site title to page title #906
+* Full indicator name in the page title and h1 #905
+* Accessible charts #904, #963
+* Use text-colour for table caption #903
+* Alert role and screenreader-only warning label for too-many-datasets #902
+* Search results link fixes #901
+* Chart/table accessibility #894
+* Translate page titles and content #891
+* Use aside instead of div for news sidebar #890
+* Search button outside of label #886
+* Revamp of chart/table/map footers #885, #948
+* Use text color for disclaimer text #883
+* Add aria-label to contrast toggle #882
+* Accessibility fixes for sorting tables #880
+* Accessibility improvements for chart legends #878
+* Remove alert role from disclaimer #877
+* Default mouse cursor on disabled elements #876
+* Announce changes to the chart/table #875, #916
+* Use buttons for the mobile menu/search drop-downs #874
+* aria-described-by for indicator disaggregation variable hint #873
+* H4 instead of H3 for chart title #872
+* More efficient unique function for better support of large datasets #871
+* Use darker text color and default to white text in high-contrast #865
+* More obvious focus colors #864
+* Fieldsets around radios and checkboxes #863
+* Better keyboard accessibility for tabbed content #862, #884, #925, #953, #965
+* Add an anchor for any back-to-top links #836
+* H1 in news and post layouts #835
+* Page titles #834
+* Allow translated href in footer menu links #825
+* More space beneath reporting status goal items #824
+* Only link indicator name in goal-by-target #823
+* Button revamp #822
+* New breadcrumb configuration and separator #821
+* Add vertical hover lines to line charts #816
+* Refactor metadata tabs to support array structure #812
+* Support markdown in the description property of some config settings #811
+* Custom source-file downloads #809
+* Pad the search bar to avoid hiding terms #807
+* Skip map layers that do not have data #806
+* Line height fix for Firefox search icon #797
+* Simplify goals layout and allow configurable intro #793
+* Display a no-data message when chart has no data #786
+* Optional setting for language toggle as links #784
+* Configurable reporting status title and description #778
+* Vertical goal-by-target layout #776, #838
+* More usage of variables with status colors and borders #773
+* Syntax fix - map tooltips #768
+* Support translations in the reporting status extra fields #767
+* Fix styling of mobile menu items #765
+* Hide map selection legend on mobile #764
+* Update tooltips of active selections when the year changes #763
+* Translate mobile search buttons #762
+* Correct selector to avoid infinite loop #761
+* Sort the disaggregations that display in table headers #760
+* Visited color for download buttons #759
+* Alt tag for loading image #758
+* Javascript fixes for IE support #757
+
+The release involved significant changes, in part to resolve serious accessibility issues. Extensive testing has helped us avoid breaking changes, except in regards to chart/table footer fields:
+
+* _includes/components/charts/chart.html
+* _includes/components/indicator/table.html
+
+If you have overridden either to these two files, your chart/table "footer fields" may not display properly. More information on the necessary updates is on the [1.2.0 upgrade instructions](upgrades/upgrading-1-2-0.md).
+
+Most files in the _includes and _layouts folders underwent some change in this release. If you are overriding any of those files, your implementation might not benefit from the various enhancements/fixes in the release.
+
+For details on upgrading from 1.0.0 or higher to 1.2.0, see the [1.2.0 upgrade instructions](upgrades/upgrading-1-2-0.md).
+
+## 1.1.0
+
+* Embed using either Pym parent or iframe (#751)
+* Use increased font size (#750)
+* Link to new site in footer (#746)
+* Default to country name for headline label on charts/tables (#744)
+* Join data points when data is missing (#742)
+* Javascript fixes for IE support (#757)
+* Alt tag for loading image (#758)
+* Visited color for download buttons (#759)
+* Sort the disaggregations that display in table headers (#760)
+* Correct selector to avoid infinite loop (#761)
+* Translate mobile search buttons (#762)
+* Update tooltips of active selections when the year changes (#763, #768)
+* Hide map selection legend on mobile (#764)
+* Fix styling of mobile menu items (#765)
+* Support translations in the reporting status extra fields (#767)
+* Syntax fix - map tooltips (#768)
+* Backwards compatibility for code mobile search button text (#771)
+* Alternate frontpage layout (#772)
+* More usage of variables with status colors and borders (#773)
+* Vertical goal-by-target layout (#776)
+* Configurable reporting status title and description (#778)
+
+The release contains no breaking changes. However, if you are overriding any of the following files, your implementation might not benefit from the various enhancements/fixes in the release:
+
+* _includes/assets/js/indicatorView.js
+* _includes/assets/js/menu.js
+* _includes/assets/js/model/chartHelpers.js
+* _includes/assets/js/plugins/jquery.sdgMap.js
+* _includes/components/indicator/data-panes.html
+* _includes/components/indicator/data-tabs.html
+* _includes/components/indicator/embedded-feature.html
+* _includes/components/indicator/indicator-main.html
+* _includes/footer.html
+* _includes/polyfills.html
+* _includes/scripts.html
+* _layouts/frontpage.html
+* _layouts/goal-by-target.html
+* _layouts/goal.html
+* _layouts/reportingstatus.html
+
 ## 1.0.0
 
 * More consistent template variables without globals (#394)

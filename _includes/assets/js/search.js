@@ -21,10 +21,19 @@ var indicatorSearch = function() {
       }
     }
 
+    // Recognize an indicator id as a special case that does not need Lunr.
+    var searchWords = searchTermsToUse.split(' '),
+        indicatorIdParts = searchWords[0].split('.'),
+        isIndicatorSearch = (searchWords.length === 1 && indicatorIdParts.length >= 3);
+    if (isIndicatorSearch) {
+      useLunr = false;
+    }
+
     var results = [];
     var alternativeSearchTerms = [];
+    var noTermsProvided = (searchTerms === '');
 
-    if (useLunr) {
+    if (useLunr && !noTermsProvided) {
       // Engish-specific tweak for words separated only by commas.
       if (opensdg.language == 'en') {
         lunr.tokenizer.separator = /[\s\-,]+/
@@ -70,7 +79,7 @@ var indicatorSearch = function() {
         }
       }
     }
-    else {
+    else if (!noTermsProvided) {
       // Non-Lunr basic search functionality.
       results = _.filter(opensdg.searchItems, function(item) {
         var i, match = false;
@@ -119,6 +128,9 @@ var indicatorSearch = function() {
       resultsCount: resultItems.length,
       didYouMean: (alternativeSearchTerms.length > 0) ? alternativeSearchTerms : false,
     }));
+
+    // Hide the normal header search.
+    $('#search').css('visibility', 'hidden');
   }
 
   // Helper function to make a search query "fuzzier", using the ~ syntax.
@@ -144,8 +156,19 @@ var indicatorSearch = function() {
   // Helper function to get a boost score, if any.
   function getSearchFieldOptions(field) {
     var opts = {}
-    if (opensdg.searchIndexBoost[field]) {
-      opts['boost'] = parseInt(opensdg.searchIndexBoost[field])
+    // @deprecated start
+    if (opensdg.searchIndexBoost && !Array.isArray(opensdg.searchIndexBoost)) {
+      if (opensdg.searchIndexBoost[field]) {
+        opts['boost'] = parseInt(opensdg.searchIndexBoost[field])
+      }
+      return opts;
+    }
+    // @deprecated end
+    var fieldBoost = opensdg.searchIndexBoost.find(function(boost) {
+      return boost.field === field;
+    });
+    if (fieldBoost) {
+      opts['boost'] = parseInt(fieldBoost.boost)
     }
     return opts
   }

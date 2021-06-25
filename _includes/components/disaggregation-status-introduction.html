@@ -1,0 +1,13 @@
+<h1>
+  {% if site.disaggregation_status.title %}
+    {{ site.disaggregation_status.title | t }}
+  {% else %}
+    Disaggregation status
+  {% endif %}
+</h1>
+
+{% if site.disaggregation_status.description %}
+<div class="disaggregation-status-description">
+  {{ site.disaggregation_status.description | t | markdownify }}
+</div>
+{% endif %}

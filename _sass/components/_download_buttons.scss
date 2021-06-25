@@ -1,15 +1,33 @@
+.btn-primary {
+  &:visited {
+    color: $button-foregroundColor-visited;
+  }
+}
 .btn-download {
   margin-top: 1.5rem;
   margin-right: 0.8rem;
   border: none !important;
   background: $button-color !important;
   color: $button-foregroundColor !important;
+  box-shadow: 0 2px 0 $button-color-dropShadow;
+  border-radius: 0;
+  position: relative;
 
-  &:hover, &:active, &:focus {
+  &:active {
     background: $button-color-pressed !important;
+  }
+  &:hover {
+    background: $button-color-hover !important;
   }
   &:visited {
     color: $button-foregroundColor-visited !important;
+  }
+  &:active {
+    top: 2px;
+  }
+  &:focus {
+    background: $button-color-focus !important;
+    color: $button-foregroundColor-focus !important;
   }
 }
 
@@ -32,6 +50,20 @@ h5 + .btn-download {
       margin-bottom: 10px;
     }
   }
+  .hide-during-image-download {
+    display: none;
+  }
+  &.contrast-high {
+    #indicator-main {
+      width: 120%;
+    }
+    #chart-canvas {
+      background-color: $color-dark-highContrast !important;
+    }
+    #chart-heading, #selectionChartFooter {
+      max-width: 90%;
+    }
+  }
 }
 
 .zip-download-container {
@@ -45,13 +77,22 @@ h5 + .btn-download {
   }
 }
 
+#selectionsChart, #selectionsTable {
+  .btn-download {
+    float: left;
+  }
+}
+
 body.contrast-high {
-  .btn { background: $color-light-highContrast !important; color: $color-dark-highContrast !important;
+  .btn {
+    background: $button-color-highContrast !important;
+    color: $color-dark-highContrast !important;
+    box-shadow: 0 2px 0 $color-dark-highContrast;
     &:hover {
-      background: $color-highlight-highContrast !important;
+      background: $button-color-hover-highContrast !important;
     }
     &:focus {
-      background: $color-highlight-highContrast !important;
+      background: $focusBackgroundColor-highContrast !important;
     }
   }
   #zip-download-info {

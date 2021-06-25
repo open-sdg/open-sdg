@@ -7,11 +7,13 @@
  * @param {Array} rows
  */
 function getUniqueValuesByProperty(prop, rows) {
-  return rows
-    .map(function(row) { return row[prop]; })
-    .filter(isElementUniqueInArray)
-    .filter(function(row) { return row; })
-    .sort();
+  var uniques = new Set();
+  rows.forEach(function(row) {
+    if (row[prop] != null) {
+      uniques.add(row[prop])
+    }
+  });
+  return Array.from(uniques);
 }
 
 // Use as a callback to Array.prototype.filter to get unique elements
@@ -20,20 +22,11 @@ function isElementUniqueInArray(element, index, arr) {
 }
 
 /**
- * @param {Array} rows
+ * @param {Array} columns
  * @return {boolean}
  */
-function dataHasGeoCodes(rows) {
-  return dataHasColumn(GEOCODE_COLUMN, rows);
-}
-
-/**
- * @param {string} column
- * @param {Array} rows
- * @return {boolean}
- */
-function dataHasColumn(column, rows) {
-  return getColumnsFromData(rows).includes(column);
+function dataHasGeoCodes(columns) {
+  return columns.includes(GEOCODE_COLUMN);
 }
 
 /**
@@ -41,16 +34,18 @@ function dataHasColumn(column, rows) {
  * @return {Array} Columns from first row
  */
 function getColumnsFromData(rows) {
-  return Object.keys(rows[0]);
+  return Object.keys(rows.reduce(function(result, obj) {
+    return Object.assign(result, obj);
+  }, {}));
 }
 
 /**
- * @param {Array} rows
- * @return {Array} Columns from first row, omitting non-fields
+ * @param {Array} columns
+ * @return {Array} Columns without non-fields
  */
-function getFieldColumnsFromData(rows) {
+function getFieldColumnsFromData(columns) {
   var omitColumns = nonFieldColumns();
-  return getColumnsFromData(rows).filter(function(col) {
+  return columns.filter(function(col) {
     return !omitColumns.includes(col);
   });
 }
@@ -61,7 +56,7 @@ function getFieldColumnsFromData(rows) {
  * All other data columns can be considered "field columns".
  */
 function nonFieldColumns() {
-  return [
+  var columns = [
     YEAR_COLUMN,
     VALUE_COLUMN,
     UNIT_COLUMN,
@@ -70,4 +65,107 @@ function nonFieldColumns() {
     'Unit multiplier',
     'Unit measure',
   ];
+  if (SERIES_TOGGLE) {
+    columns.push(SERIES_COLUMN);
+  }
+  return columns;
+}
+
+/**
+ * @param {Array} items Objects optionally containing 'unit' and/or 'series'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {object|false} The first match given the selected unit/series, or false
+ */
+function getMatchByUnitSeries(items, selectedUnit, selectedSeries) {
+  var matches = getMatchesByUnitSeries(items, selectedUnit, selectedSeries);
+  return (matches.length > 0) ? matches[0] : false;
+}
+
+/**
+ * @param {Array} items Objects optionally containing 'unit' and/or 'series'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {Array} All matches given the selected unit/series, if any.
+ */
+function getMatchesByUnitSeries(items, selectedUnit, selectedSeries) {
+  if (!items || items.length === 0) {
+    return [];
+  }
+  if (!selectedUnit && !selectedSeries) {
+    return items;
+  }
+  // First pass to find any exact matches.
+  var matches = items.filter(function(item) {
+    var seriesMatch = item.series === selectedSeries,
+        unitMatch = item.unit === selectedUnit;
+    if (selectedUnit && selectedSeries) {
+      return seriesMatch && unitMatch;
+    }
+    else if (selectedUnit) {
+      return unitMatch;
+    }
+    else if (selectedSeries) {
+      return seriesMatch;
+    }
+  });
+  // Second pass to find any partial matches with unspecified unit/series.
+  if (matches.length === 0) {
+    matches = items.filter(function(item) {
+      var seriesMatch = item.series === selectedSeries && item.series && !item.unit,
+          unitMatch = item.unit === selectedUnit && item.unit && !item.series;
+      if (selectedUnit && selectedSeries) {
+        return seriesMatch || unitMatch;
+      }
+      else if (selectedUnit) {
+        return unitMatch;
+      }
+      else if (selectedSeries) {
+        return seriesMatch;
+      }
+    });
+  }
+  // Third pass to catch cases where nothing at all was specified.
+  if (matches.length === 0) {
+    matches = items.filter(function(item) {
+      var nothingSpecified = !item.unit && !item.series;
+      return nothingSpecified;
+    });
+  }
+  return matches;
+}
+
+/**
+ * Move an item from one position in an array to another, in place.
+ */
+function arrayMove(arr, fromIndex, toIndex) {
+
+  // if moving something "forwards", then the toIndex needs to be 1 less,
+  // because after removing the fromIndex, the array will be 1 shorter.
+  if (toIndex > fromIndex) {
+    toIndex -= 1;
+  }
+
+  while (fromIndex < 0) {
+    fromIndex += arr.length;
+  }
+  while (toIndex < 0) {
+    toIndex += arr.length;
+  }
+  var paddingAdded = [];
+  if (toIndex >= arr.length) {
+    var k = toIndex - arr.length;
+    while ((k--) + 1) {
+      arr.push(undefined);
+      paddingAdded.push(arr.length - 1);
+    }
+  }
+  arr.splice(toIndex, 0, arr.splice(fromIndex, 1)[0]);
+
+  // Get rid of the undefined elements that were added.
+  paddingAdded.sort();
+  while (paddingAdded.length > 0) {
+    var paddingIndex = paddingAdded.pop() - 1;
+    arr.splice(paddingIndex, 1);
+  }
 }

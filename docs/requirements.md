@@ -36,10 +36,6 @@ All the services described here can be used without paying fees.
 
     Although these docs will focus on Github Actions, other automation services like [CircleCI](https://circleci.com) and [TravisCI](https://travis-ci.org) are equivalent. Or for a more do-it-yourself approach: open-source [Jenkins](https://jenkins.io).
 
-### Prose.io
-
-[Prose.io](https://prose.io) provides a data management interface, which allows non-technical data providers to update data and metadata, using only their web browser.
-
 ## Expertise
 
 The notes below apply to developers tasked with implementing this platform, adding/changing functionality, and/or updating the look-and-feel.
@@ -58,10 +54,12 @@ Since this is a web platform, customisation of markup, style, and behavior will 
 
 Additionally — although most implementations will not require alterations to advanced functionality like filtering, charts, and maps — developers should be aware of the Javascript libraries used:
 
-* Filtering: [Underscore.js](https://underscorejs.org/)
+* Filtering: [Lodash](https://lodash.com/)
 * Charts: [Chart.js](https://www.chartjs.org/)
 * Maps: [Leaflet](https://leafletjs.com/)
+* Search: [Lunr](https://lunrjs.com/)
+* General: [jQuery](https://jquery.com/)
 
 ### Continuous integration
 
-Some experience with continuous integration (CI) — such as with integrating Github sites with GitHub Actions, TravisCI, or CircleCI — will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices.
+Some experience with continuous integration (CI) — such as with integrating Github sites with GitHub Actions, TravisCI, or CircleCI — will be helpful. Developers will NOT need to implement this integration from scratch, but any customisation of the automation workflows will require some basic familiarity with open-source CI practices. All starter projects use [Github Actions](https://github.com/features/actions).

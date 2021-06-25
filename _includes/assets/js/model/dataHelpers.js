@@ -13,7 +13,7 @@ function convertJsonFormatToRows(data) {
   }
 
   return data[keys[0]].map(function(item, index) {
-    return _.object(keys, keys.map(function(key) {
+    return _.zipObject(keys, keys.map(function(key) {
       return data[key][index];
     }));
   });
@@ -31,7 +31,7 @@ function getHeadline(selectableFields, rows) {
     });
   }).map(function (row) {
     // Remove null fields in each row.
-    return _.pick(row, function(val) { return val !== null });
+    return _.pickBy(row, function(val) { return val !== null });
   });
 }
 
@@ -58,9 +58,6 @@ function prepareData(rows) {
     });
 
     return item;
-  }, this).filter(function(item) {
-    // Remove anything without a value (allowing for zero as a value).
-    return item[VALUE_COLUMN] || item[VALUE_COLUMN] === 0;
   }, this);
 }
 
@@ -72,4 +69,15 @@ function prepareData(rows) {
 function sortData(rows, selectedUnit) {
   var column = selectedUnit ? UNIT_COLUMN : YEAR_COLUMN;
   return _.sortBy(rows, column);
+}
+
+/**
+ * @param {Array} precisions Objects containing 'unit' and 'title'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {int|false} number of decimal places, if any
+ */
+function getPrecision(precisions, selectedUnit, selectedSeries) {
+  var match = getMatchByUnitSeries(precisions, selectedUnit, selectedSeries);
+  return (match) ? match.decimals : false;
 }

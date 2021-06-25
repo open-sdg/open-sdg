@@ -7,12 +7,17 @@
  * @param {Array} edges
  * @return {Array} Field item states
  */
-function getInitialFieldItemStates(rows, edges) {
-  var initial = getFieldColumnsFromData(rows).map(function(field) {
+
+function getInitialFieldItemStates(rows, edges, columns, dataSchema) {
+  var fields = getFieldColumnsFromData(columns);
+  sortFieldNames(fields, dataSchema);
+  var initial = fields.map(function(field) {
+    var values = getUniqueValuesByProperty(field, rows);
+    sortFieldValueNames(field, values, dataSchema);
     return {
       field: field,
       hasData: true,
-      values: getUniqueValuesByProperty(field, rows).map(function(value) {
+      values: values.map(function(value) {
         return {
           value: value,
           state: 'default',
@@ -23,7 +28,7 @@ function getInitialFieldItemStates(rows, edges) {
     };
   }, this);
 
-  return sortFieldItemStates(initial, edges);
+  return sortFieldItemStates(initial, edges, dataSchema);
 }
 
 /**
@@ -31,15 +36,16 @@ function getInitialFieldItemStates(rows, edges) {
  * @param {Array} edges
  * return {Array} Sorted field item states
  */
-function sortFieldItemStates(fieldItemStates, edges) {
+function sortFieldItemStates(fieldItemStates, edges, dataSchema) {
   if (edges.length > 0) {
-    var froms = getUniqueValuesByProperty('From', edges);
-    var tos = getUniqueValuesByProperty('To', edges);
+    var froms = getUniqueValuesByProperty('From', edges).sort();
+    var tos = getUniqueValuesByProperty('To', edges).sort();
     var orderedEdges = froms.concat(tos);
     var fieldsNotInEdges = fieldItemStates
       .map(function(fis) { return fis.field; })
       .filter(function(field) { return !orderedEdges.includes(field); });
     var customOrder = orderedEdges.concat(fieldsNotInEdges);
+    sortFieldNames(customOrder, dataSchema);
 
     return _.sortBy(fieldItemStates, function(item) {
       return customOrder.indexOf(item.field);
@@ -125,15 +131,28 @@ function getChildFieldNames(edges) {
  * @param {Array} fieldsByUnit Objects containing 'unit' and 'fields'
  * @param {string} selectedUnit
  * @param {boolean} dataHasUnitSpecificFields
+ * @param {Array} fieldsBySeries Objects containing 'series' and 'fields'
+ * @param {string} selectedSeries
+ * @param {boolean} dataHasSeriesSpecificFields
  * @param {Array} selectedFields Field items
- * @return {Array} Field item states
+ * @param {Array} edges
+ * @param {string} compositeBreakdownLabel Alternate label for COMPOSITE_BREAKDOWN fields
+ * @return {Array} Field item states (with additional "label" properties)
  */
-function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, selectedFields) {
+function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dataHasUnitSpecificFields, fieldsBySeries, selectedSeries, dataHasSeriesSpecificFields, selectedFields, edges, compositeBreakdownLabel) {
   var states = fieldItemStates.map(function(item) { return item; });
-  if (dataHasUnitSpecificFields) {
+  if (dataHasUnitSpecificFields && dataHasSeriesSpecificFields) {
+    states = fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries);
+    states = fieldItemStatesForUnit(states, fieldsByUnit, selectedUnit);
+  }
+  else if (dataHasSeriesSpecificFields) {
+    states = fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries);
+  }
+  else if (dataHasUnitSpecificFields) {
     states = fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit);
   }
-  if (selectedFields.length > 0) {
+
+  if (selectedFields && selectedFields.length > 0) {
     states.forEach(function(fieldItem) {
       var selectedField = selectedFields.find(function(selectedItem) {
         return selectedItem.field === fieldItem.field;
@@ -148,7 +167,46 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
       }
     });
   }
-  return states;
+  sortFieldsForView(states, edges);
+  return states.map(function(item) {
+    item.label = item.field;
+    if (item.field === 'COMPOSITE_BREAKDOWN' && compositeBreakdownLabel !== '') {
+      item.label = compositeBreakdownLabel;
+    }
+    return item;
+  });
+}
+
+/**
+ * @param {Array} fieldItemStates
+ * @param {Array} edges
+ */
+function sortFieldsForView(fieldItemStates, edges) {
+  if (edges.length > 0 && fieldItemStates.length > 0) {
+
+    // We need to sort the edges so that we process parents before children.
+    var parents = edges.map(function(edge) { return edge.From; });
+    edges.sort(function(a, b) {
+      if (!parents.includes(a.To) && parents.includes(b.To)) {
+        return 1;
+      }
+      if (!parents.includes(b.To) && parents.includes(a.To)) {
+        return -1;
+      }
+      return 0;
+    });
+
+    edges.forEach(function(edge) {
+      // This makes sure children are right after their parents.
+      var parentIndex = fieldItemStates.findIndex(function(fieldItem) {
+        return fieldItem.field == edge.From;
+      });
+      var childIndex = fieldItemStates.findIndex(function(fieldItem) {
+        return fieldItem.field == edge.To;
+      });
+      arrayMove(fieldItemStates, childIndex, parentIndex + 1);
+    });
+  }
 }
 
 /**
@@ -158,11 +216,26 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
  * @return {Array} Field item states
  */
 function fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit) {
+  var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
+    return fieldByUnit.unit === selectedUnit;
+  })[0];
   return fieldItemStates.filter(function(fis) {
-    var fieldsBySelectedUnit = fieldsByUnit.filter(function(fieldByUnit) {
-      return fieldByUnit.unit === selectedUnit;
-    })[0];
     return fieldsBySelectedUnit.fields.includes(fis.field);
+  });
+}
+
+/**
+ * @param {Array} fieldItemStates
+ * @param {Array} fieldsBySeries Objects containing 'series' and 'fields'
+ * @param {string} selectedSeries
+ * @return {Array} Field item states
+ */
+function fieldItemStatesForSeries(fieldItemStates, fieldsBySeries, selectedSeries) {
+  var fieldsBySelectedSeries = fieldsBySeries.filter(function(fieldBySeries) {
+    return fieldBySeries.series === selectedSeries;
+  })[0];
+  return fieldItemStates.filter(function(fis) {
+    return fieldsBySelectedSeries.fields.includes(fis.field);
   });
 }
 
@@ -182,28 +255,47 @@ function getCombinationData(fieldItems) {
     });
   });
 
-  // Next get a list of each single pair combined with every other.
-  var fieldValuePairCombinations = {};
-  fieldValuePairs.forEach(function(fieldValuePair) {
-    var combinationsForCurrentPair = Object.assign({}, fieldValuePair);
-    fieldValuePairs.forEach(function(fieldValuePairToAdd) {
-      // The following conditional reflects that we're not interested in combinations
-      // within the same field. (Eg, not interested in combination of Female and Male).
-      if (Object.keys(fieldValuePair)[0] !== Object.keys(fieldValuePairToAdd)[0]) {
-        Object.assign(combinationsForCurrentPair, fieldValuePairToAdd);
-        var combinationKeys = Object.keys(combinationsForCurrentPair).sort();
-        var combinationValues = Object.values(combinationsForCurrentPair).sort();
-        var combinationUniqueId = JSON.stringify(combinationKeys.concat(combinationValues));
-        if (!(combinationUniqueId in fieldValuePairCombinations)) {
-          fieldValuePairCombinations[combinationUniqueId] = Object.assign({}, combinationsForCurrentPair);
+  // Generate all possible subsets of these key/value pairs.
+  var powerset = [[]];
+  for (var i = 0; i < fieldValuePairs.length; i++) {
+    for (var j = 0, len = powerset.length; j < len; j++) {
+      powerset.push(powerset[j].concat(fieldValuePairs[i]));
+    }
+  }
+  // But we require special filtering on top of this.
+  return powerset.filter(function(combinations) {
+    // We don't need the empty set.
+    if (combinations.length === 0) {
+      return false;
+    }
+    else if (combinations.length === 1) {
+      return true;
+    }
+    // We don't want any sets that include multiples of the same field.
+    // Eg, we do not need to consider a set containing both "Female" and
+    // "Male". So filter them out here.
+    else {
+      var fieldsUsed = [];
+      for (var i = 0, len = combinations.length; i < len; i++) {
+        var thisField = Object.keys(combinations[i])[0];
+        if (fieldsUsed.includes(thisField)) {
+          // Abort as soon as we find a duplicate.
+          return false;
+        }
+        else {
+          fieldsUsed.push(thisField);
         }
       }
+      return true;
+    }
+  }).map(function(combinations) {
+    // We also want to merge these into a single object.
+    var combinedSubset = {};
+    combinations.forEach(function(keyValue) {
+      Object.assign(combinedSubset, keyValue);
     });
+    return combinedSubset;
   });
-  fieldValuePairCombinations = Object.values(fieldValuePairCombinations);
-
-  // Return a combination of both.
-  return fieldValuePairs.concat(fieldValuePairCombinations);
 }
 
 /**
@@ -262,6 +354,10 @@ function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
   // rows. In other words we want the row with the fewest number of fields.
   filteredData = _.sortBy(filteredData, function(row) { return Object.keys(row).length; });
 
+  if (filteredData.length === 0) {
+    return [];
+  }
+
   // Convert to an array of objects with 'field' and 'values' keys, omitting
   // any non-field columns.
   return Object.keys(filteredData[0]).filter(function(key) {
@@ -279,6 +375,9 @@ function selectMinimumStartingFields(rows, selectableFieldNames, selectedUnit) {
  * @param {Array} fieldItemStates
  * @param {Array} rows
  * @return {Object} Arrays of parents keyed to children
+ *
+ * @TODO: This function can be a bottleneck in large datasets with a lot of
+ * disaggregation values. Can this be further optimized?
  */
 function validParentsByChild(edges, fieldItemStates, rows) {
   var parentFields = getParentFieldNames(edges);
@@ -292,18 +391,17 @@ function validParentsByChild(edges, fieldItemStates, rows) {
       return value.value;
     });
     var parentField = parentFields[fieldIndex];
+    var childRows = rows.filter(function(row) {
+      var childNotEmpty = row[childField];
+      var parentNotEmpty = row[parentField];
+      return childNotEmpty && parentNotEmpty;
+    })
     validParentsByChild[childField] = {};
     childValues.forEach(function(childValue) {
-      var rowsWithParentValues = rows.filter(function(row) {
-        var childMatch = row[childField] == childValue;
-        var parentNotEmpty = row[parentField];
-        return childMatch && parentNotEmpty;
+      var rowsWithParentValues = childRows.filter(function(row) {
+        return row[childField] == childValue;
       });
-      var parentValues = rowsWithParentValues.map(function(row) {
-        return row[parentField];
-      });
-      parentValues = parentValues.filter(isElementUniqueInArray);
-      validParentsByChild[childField][childValue] = parentValues;
+      validParentsByChild[childField][childValue] = getUniqueValuesByProperty(parentField, rowsWithParentValues);
     });
   });
   return validParentsByChild;
@@ -368,4 +466,50 @@ function getDataBySelectedFields(rows, selectedFields) {
       return field.values.includes(row[field.field]);
     });
   });
+}
+
+/**
+ * @param {Array} fieldNames
+ * @param {Object} dataSchema
+ */
+function sortFieldNames(fieldNames, dataSchema) {
+  if (dataSchema && dataSchema.fields) {
+    var schemaFieldNames = dataSchema.fields.map(function(field) { return field.name; });
+    // If field names have been translated, we may need to use titles.
+    if (schemaFieldNames.length > 0 && !(fieldNames.includes(schemaFieldNames[0]))) {
+      schemaFieldNames = dataSchema.fields.map(function(field) { return field.title; });
+    }
+    fieldNames.sort(function(a, b) {
+      return schemaFieldNames.indexOf(a) - schemaFieldNames.indexOf(b);
+    });
+  }
+  else {
+    fieldNames.sort();
+  }
+}
+
+/**
+ * @param {string} fieldName
+ * @param {Array} fieldValues
+ * @param {Object} dataSchema
+ */
+function sortFieldValueNames(fieldName, fieldValues, dataSchema) {
+  if (dataSchema && dataSchema.fields) {
+    var fieldSchema = dataSchema.fields.find(function(x) { return x.name == fieldName; });
+    // If field names have been translated, we may need to use titles.
+    if (!fieldSchema) {
+      fieldSchema = dataSchema.fields.find(function(x) { return x.title == fieldName; });
+    }
+    if (fieldSchema && fieldSchema.constraints && fieldSchema.constraints.enum) {
+      fieldValues.sort(function(a, b) {
+        return fieldSchema.constraints.enum.indexOf(a) - fieldSchema.constraints.enum.indexOf(b);
+      });
+    }
+    else {
+      fieldValues.sort();
+    }
+  }
+  else {
+    fieldValues.sort();
+  }
 }

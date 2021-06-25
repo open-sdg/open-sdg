@@ -2,16 +2,24 @@
 // [color|backgroundColor|etc] - [...modifiers]
 $backgroundColor: white !default;
 
-$color-dark: black !default;
+$focusColor: #0b0c0c !default;
+$focusBackgroundColor: #ffdd00 !default;
+$focusOutlineColor: #ffdd00 !default;
+$focusColor-highContrast: #0b0c0c !default;
+$focusBackgroundColor-highContrast: #ffdd00 !default;
+$focusOutlineColor-highContrast: #ffdd00 !default;
+
+$color-dark: #0b0c0c !default;
 $color-light: white !default;
 
 $color-dark-highContrast: black !default;
 $color-light-highContrast: white !default;
-$color-highlight-highContrast: yellow !default;
+$color-highlight-highContrast: #FFDD00 !default;
 $color-success-highContrast: green !default;
 $color-danger-highContrast: red !default;
 $color-medium-highContrast: #767676 !default;
 
+$color-error: #a94442 !default;
 $color-danger: #E27874 !default;
 $color-warning: #f0ad4e !default;
 $color-success: #5cb85c !default;
@@ -20,12 +28,14 @@ $color-success: #5cb85c !default;
 // [element] - [color|backgroundColor|etc] - [...modifiers]
 $goal-colors: #E52B3D #DDA63A #4C9F38 #C42130 #FF3E24 #28BCE1 #FCC30B #A21942 #FD6925 #DD1367 #FD9C27 #BF8B2E #417D46 #0A96D8 #57BE2F #00689C #1F4A6A !default;
 
-$text-color: #333 !default;
+$text-color: $color-dark !default;
+$text-color-highContrast: $color-light !default;
 $link-color: #1d70b8 !default;
 $link-color-dark: #0275d8 !default;
 $link-color-hover: #003078 !default;
 $link-color-visited: #4c2c92 !default;
-$link-color-visited-highContrast: #F47738 !default;
+$link-color-visited-highContrast: #AD6800 !default;
+$text-backgroundColor-hover: #EEEEEE !default;
 
 $horizontalRule-color: #ccc !default;
 
@@ -36,25 +46,62 @@ $status-color-notapplicable: $text-color !default;
 $status-backgroundColor-complete: #2B2B2B !default;
 $status-backgroundColor-inprogress: #757575 !default;
 $status-backgroundColor-notstarted: white !default;
-$status-backgroundColor-notapplicable: repeating-linear-gradient(135deg, #ccc, white 10px, #ccc 10px, white 20px) !default;
+$status-backgroundColor-notapplicable: repeating-linear-gradient(135deg, $status-backgroundColor-inprogress, white 10px, $status-backgroundColor-inprogress 10px, white 20px) !default;
+$status-backgroundColor-inner-complete: $status-backgroundColor-complete !default;
+$status-backgroundColor-inner-inprogress: $status-backgroundColor-inprogress !default;
+$status-backgroundColor-inner-notstarted: $status-backgroundColor-notstarted !default;
+$status-backgroundColor-inner-notapplicable: rgba(255, 255, 255, 0.8) !default;
 
 $status-color-complete-highContrast: $color-dark-highContrast !default;
-$status-color-inprogress-highContrast: $color-dark-highContrast !default;
+$status-color-inprogress-highContrast: $color-light-highContrast !default;
 $status-color-notstarted-highContrast: $color-light-highContrast !default;
 $status-color-notapplicable-highContrast: $color-dark-highContrast !default;
 $status-backgroundColor-complete-highContrast: $color-light-highContrast !default;
 $status-backgroundColor-inprogress-highContrast: $color-medium-highContrast !default;
 $status-backgroundColor-notstarted-highContrast: $color-dark-highContrast !default;
 $status-backgroundColor-notapplicable-highContrast: $status-backgroundColor-notapplicable !default;
+$status-backgroundColor-inner-complete-highContrast: $status-backgroundColor-complete-highContrast !default;
+$status-backgroundColor-inner-inprogress-highContrast: $status-backgroundColor-inprogress-highContrast !default;
+$status-backgroundColor-inner-notstarted-highContrast: $status-backgroundColor-notstarted-highContrast !default;
+$status-backgroundColor-inner-notapplicable-highContrast: $status-backgroundColor-notapplicable-highContrast !default;
 
-$button-color: #0F8243 !default;
-$button-color-pressed: #0b5d30 !default;
+$status-border-complete: 1px solid transparent !default;
+$status-border-inprogress: 1px solid transparent !default;
+$status-border-notstarted: 1px solid $color-dark !default;
+$status-border-notapplicable: 1px solid $color-dark !default;
+$status-border-complete-highContrast: 1px solid transparent !default;
+$status-border-inprogress-highContrast: 1px solid transparent !default;
+$status-border-notstarted-highContrast: 1px solid $color-light-highContrast !default;
+$status-border-notapplicable-highContrast: 1px solid $color-light-highContrast !default;
+
+$tag-color: $color-dark !default;
+$tag-border: 1px solid transparent !default;
+$tag-backgroundColor: #ffdc8e !default;
+
+$button-color: #00703c !default;
+$button-color-pressed: #005a30 !default;
+$button-color-hover: $button-color-pressed !default;
 $button-foregroundColor: white !default;
 $button-foregroundColor-visited: white !default;
+$button-foregroundColor-focus: $text-color;
+$button-color-dropShadow: #002d18 !default;
+$button-color-focus: #fd0 !default;
+$button-color-highContrast: #eeeeee !default;
+$button-color-hover-highContrast: #DBDAD9 !default;
+$button-foregroundColor-highContrast: $color-dark-highContrast !default;
 
 $backToTop-backgroundColor: $link-color-dark !default;
 
+$breadcrumbs-color: $text-color !default;
+$breadcrumbs-color-highContrast: $color-light-highContrast !default;
+$breadcrumbs-backgroundColor: $backgroundColor !default;
+$breadcrumbs-backgroundColor-highContrast: $color-dark-highContrast !default;
+
 $loader-color: #FF6700 !default;
+
+$tabs-borderColor: #888 !default;
+$tabs-backgroundColor-active: $backgroundColor !default;
+$tabs-backgroundColor-inactive: #eeeeee !default;
 
 // Component-level color variables.
 // [component] - [element] - [color|backgroundColor|etc] - [...modifiers]
@@ -71,21 +118,29 @@ $footer-link-color-highContrast-hover: $color-highlight-highContrast !default;
 $footer-text-backgroundColor: $backgroundColor !default;
 $footer-text-backgroundColor-highContrast: $color-dark-highContrast !default;
 
-$menu-link-color: #595959 !default;
+$menu-link-color: $color-dark !default;
 $menu-link-color-mobile: #E5E6E7 !default;
 $menu-link-color-mobile-active: white !default;
 $menu-link-backgroundColor-mobile: #414042 !default;
 $menu-link-backgroundColor-mobile-active: #58595B !default;
-$menu-link-borderBottomColor-hover: #aaaaaa !default;
+$menu-link-borderBottomColor-hover: $menu-link-color !default;
+
+$menu-dropdownLink-color: $text-color !default;
+$menu-dropdownLink-backgroundColor-hover: #f5f5f5 !default;
+
+$card-horizontalRule-color: $horizontalRule-color !default;
+$frontpageGrid-horizontalRule-color: $horizontalRule-color !default;
 
 $indicatorContent-horizontalRule-color: #faebcc !default;
+
+$goalTarget-horizontalRule-color: $horizontalRule-color !default;
 
 $search-resultMatch-color: yellow !default;
 $search-resultURL-color: green !default;
 
 $disclaimer-tag-backgroundColor: #005ea5 !default;
 $disclaimer-tag-color: $color-light !default;
-$disclaimer-text-color: #3D3D3D !default;
+$disclaimer-text-color: $text-color !default;
 
 $goalTiles-tile-shadowColor: rgba(5,5,5,0.3) !default;
 $goalTiles-tile-shadowColor-hover: rgba(5,5,5,0.6) !default;
@@ -97,12 +152,11 @@ $map-legendValue-color-noValue: repeating-linear-gradient(45deg, #FFF, #FFF 2px,
 $map-legendValue-color: #ddd !default;
 $map-legendBar-color: white !default;
 
+$table-row-backgroundColor-hover: $text-backgroundColor-hover !default;
+
 $indicator-field-color-disabled: #777 !default;
 $indicator-field-backgroundColor-disabled: #ccc !default;
 $indicator-field-borderColor-hover: #acacac !default;
-$indicator-field-backgroundColor-selected: #555 !default;
-$indicator-field-backgroundColor-possible: #dedede !default;
-$indicator-field-backgroundColor-excluded: #666 !default;
 $indicator-field-borderColor: #dedede !default;
 $indicator-selector-borderColor: #ccc !default;
 $indicator-selected-borderColor-hover: #555 !default;
@@ -110,9 +164,12 @@ $indicator-hint-color: #666 !default;
 $indicator-fieldButton-borderColor: #555 !default;
 $indicator-fieldButton-borderColor-hover: #f5f3f3 !default;
 $indicator-fieldLabel-borderColor: #cdcdcd !default;
+$indicator-fieldOption-backgroundColor-hover: $text-backgroundColor-hover !default;
 $indicator-datasetWarning-backgroundColor: #FFCC0B !default;
 $indicator-legendSwatch-fillColor: #666 !default;
 $indicator-legendSwatch-backgroundColor-hover: #eee !default;
 
-$indicator-tabs-borderColor: #888 !default;
-$indicator-tabs-backgroundColor-inactive: #eeeeee !default;
+// @deprecated start
+$indicator-tabs-borderColor: $tabs-borderColor !default;
+$indicator-tabs-backgroundColor-inactive: $tabs-backgroundColor-inactive !default;
+// @deprecated end

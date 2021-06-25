@@ -2,42 +2,16 @@
 
 # Replace this title as needed.
 title: Indicators For The Sustainable Development Goals
-frontpage_heading: custom.frontpage_heading
-frontpage_instructions: custom.frontpage_instructions
+
 # Replace the baseurl with the name of this repository.
 baseurl: ""
 url: ""
-environment: staging
-local_data_folder: _build
-
-# Automatically create indicator pages, goal pages,
-# and some other required pages.
-create_indicators:
-  layout: indicator
-create_goals:
-  layout: goal
-create_pages: true
-
-analytics:
-  ga_prod: ''
-
-# Replace the email addresses below.
-email_contacts:
-  questions: test@example.com
-  suggestions: test@example.com
-  functional: test@example.com
 
 # Build settings
 markdown: kramdown
 
 # Travis Support
 exclude: [vendor, scripts, remotedata]
-
-# International Support
-# Eg name: Australia and adjective: Australian
-country:
-  name: Australia
-  adjective: Australian
 
 # Pages
 collections:
@@ -52,76 +26,5 @@ collections:
   goals:
     output: true
 
-# Menu
-menu:
-  # Use these to customise the main navigation.
-  - path: reporting-status
-    translation_key: menu.reporting_status
-  - path: about
-    translation_key: menu.about
-
-footer_menu:
-  - path: mailto:test@example.com
-    translation_key: menu.contact_us
-  - path: https://twitter.com/MyTwitterAccount
-    translation_key: general.twitter
-  - path: https://facebook.com/MyFacebookAccount
-    translation_key: general.facebook
-
-# The list of languages that are translated. The first one is the default.
-languages:
-  - en
-  - es
-  - fr
-
-# We will display "fr" as "fr-CA" (French Canadian) for testing purposes.
-languages_public:
-  fr: fr-CA
-
-goal_image_base: /img/goals
-
 plugins:
   - jekyll-open-sdg-plugins
-
-map_options:
-  minZoom: 5
-  tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-  tileOptions:
-    attribution: 'My map attribution'
-map_layers:
-  - min_zoom: 5
-    max_zoom: 10
-    subfolder: regions
-    label: indicator.regions
-
-metadata_tabs:
-  national:
-    title: My national metadata title
-    blurb: My national metadata blurb
-  global:
-    title: My global metadata title
-    blurb: My global metadata blurb
-  sources:
-    title: My sources title
-    blurb: My sources blurb
-
-hide_empty_metadata: true
-
-# Search.feature
-search_index_extra_fields:
-  - un_custodian_agency
-
-# News.feature
-date_formats:
-  standard:
-    en: '%B %d, %Y'
-    es: '%d de %B de %Y'
-    fr: '%d %B %Y'
-
-frontpage_introduction_banner:
-  title: My frontpage introduction banner title
-  description: My frontpage introduction banner description
-
-disclaimer:
-  phase: header.alpha
-  message: custom.disclaimer_message
