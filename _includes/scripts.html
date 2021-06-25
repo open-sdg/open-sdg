@@ -36,6 +36,14 @@
   {% include assets/js/googleAnalytics.js %}
 </script>
 
+{% unless site.cookie_consent_form.enabled %}
+  {% if site.analytics.ga_prod and site.analytics.ga_prod != '' %}
+    <script>
+      initialiseGoogleAnalytics();
+    </script>
+  {% endif %}
+{% endunless %}
+
 {% include multilingual-js.html key="general.hide" %}
 {% include multilingual-js.html key="search.search" %}
 <script src='{{ site.baseurl }}/assets/js/sdg.js?v={{ cache_bust }}'></script>
