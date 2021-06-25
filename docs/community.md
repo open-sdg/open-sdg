@@ -11,6 +11,7 @@ If you know of an implementation that should be added to this list, please let u
 |----|----|
 |Armenia|<https://armstat.github.io/sdg-site-armenia/>|
 |Bosnia and Herzegovina|<https://sdg.bhas.gov.ba/>|
+|Canada|<https://sdgcif-data-canada-oddcic-donnee.github.io/>|
 |Germany|<https://sustainabledevelopment-germany.github.io/>|
 |Ghana* |<https://sustainabledevelopment-ghana.github.io/>|
 |Iceland|<https://visar.hagstofa.is/heimsmarkmidin/>|
@@ -25,6 +26,8 @@ If you know of an implementation that should be added to this list, please let u
 |Rwanda|<https://sustainabledevelopment-rwanda.github.io/>|
 |Sierra Leone|In development|
 |South Korea|In development|
+|Tajikistan|In development|
+|Turkey|In development|
 |United Kingdom|<https://sdgdata.gov.uk/>|
 |United States|<https://sdg.data.gov/>|
 
@@ -40,4 +43,3 @@ If you know of an implementation that should be added to this list, please let u
 |Madrid|In development|
 
 \*Using older version of platform that Open SDG is based on.
-
