@@ -1,6 +1,6 @@
 <h1>Change Log</h1>
 
-## Not released
+## 1.4.0
 
 * Include file for custom `<HEAD>` content #1215
 * Include file for easier overriding of body classes #1212
