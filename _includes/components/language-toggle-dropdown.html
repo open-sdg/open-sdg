@@ -19,7 +19,7 @@
       {%- for language in site.languages -%}
         {%- assign language_abbreviation = site.languages_public[language] | default: language -%}
         {%- if language != page.language -%}
-          <li>
+          <li class="language-option-{{ language }}">
             <a href="{{ page.url_by_language[language] }}">
               {{ page.t.languages[language] }}
             </a>
