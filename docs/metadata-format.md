@@ -20,6 +20,15 @@ graph_titles:
     title: My title for total
 ```
 
+Indicator setting for a specific Series-Unit combination can be configured like this:
+
+```
+graph_titles:
+  - series: Wastewater treated
+    unit: Percent
+    title: My title for percent of wastewater treated
+```
+
 In addition to graph_titles, the other fields like this include:
 
 * graph_annotations
