@@ -466,7 +466,7 @@ In this case you may also want to control the URL of the indicator. You can do t
 **_Optional_**: This setting is used to supply a list of "tags" to display under the indicator when it is listed on its goal page
 
 ```nohighlight
-expected_disaggregations:
+tags:
   - My tag
   - My other tag
 ```
