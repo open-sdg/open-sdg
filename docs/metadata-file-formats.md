@@ -60,4 +60,4 @@ These are fields that require a list:
 - tags
     - Note: if you are only using one tag for an indicator, this field can be set in the Excel/CSV file. If you are using more than one tag for an indicator, this field will need to be set in a Markdown file.
 - data_start_values (see the [guidance on the indicator configuration page](indicator-configuration.md#data_start_values) for more information about this field.)
-- graph_titles (see the [guidance on the indicator configuration page](indicator_configuration.md#graph_titles) for more information about this field.)
+- graph_titles (see the [guidance on the indicator configuration page](indicator-configuration.md#graph_titles) for more information about this field.)
