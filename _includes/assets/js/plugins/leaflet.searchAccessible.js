@@ -58,6 +58,7 @@
     _accessibleCollapse: function() {
       this._accessibleDescription(translations.indicator.map_search_show);
       this._button.setAttribute('aria-expanded', 'false');
+      this._button.focus();
     },
     _accessibleDescription: function(description) {
       this._button.title = description;
