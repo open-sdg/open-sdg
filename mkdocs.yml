@@ -59,6 +59,7 @@ pages:
         - Deployment: deployment.md
         - Site configuration: configuration.md
         - Data configuration: data-configuration.md
+        - Indicator configuration: indicator-configuration.md
         - Customisation: customisation.md
         - Jekyll templates: jekyll-templates.md
         - Jekyll and Open SDG: jekyll-and-open-sdg.md
