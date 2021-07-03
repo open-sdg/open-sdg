@@ -55,7 +55,7 @@ An examples of embedded content as main content is a [macro-economic dashboard o
 
 Content can also be embedded on a data tab next to the Chart and Table tabs.
 
-Embedded features are configured in the metadata files. See the Metadata format page [Embedded feature metadata](metadata-format.md#embedded-feature-metadata) section for more guidance.
+Embedded features are configured in the indicator configuration files. See the [Embedded feature settings](indicator-configuration.md#embedded-feature-settings) section for more guidance.
 
 ## Targets on goal pages
 By default, targets are not shown on the goal pages. An example of this is the [UK Open SDG platform](https://sustainabledevelopment-uk.github.io/1/).

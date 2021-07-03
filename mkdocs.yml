@@ -44,6 +44,7 @@ pages:
         - "Tutorial: Adding languages": tutorials/add-language.md
         - "Tutorial: Changing colors": tutorials/change-colors.md
         - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
+        - "Tutorial: Contibuting to SDG Translations": tutorials/contribute-translations.md
         - "Tutorial: Creating pages": tutorials/create-pages.md
     - Data providers:
         - Making updates: making-updates.md
@@ -58,6 +59,7 @@ pages:
         - Deployment: deployment.md
         - Site configuration: configuration.md
         - Data configuration: data-configuration.md
+        - Indicator configuration: indicator-configuration.md
         - Customisation: customisation.md
         - Jekyll templates: jekyll-templates.md
         - Jekyll and Open SDG: jekyll-and-open-sdg.md
