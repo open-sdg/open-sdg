@@ -2,6 +2,24 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.4.0
+
+Releasing soon
+
+* Configurable and multilingual logos
+* Accessibility improvements in the mapping feature
+* Usability improvements on line charts
+* Built-in forms for editing configuration, metadata, and data
+* Darker font color for main navigation
+* Optional single-icon high-contrast toggle
+* Simplify disaggregation controls
+* Improved handling of hierarchical disaggregation
+* Microsoft Word metadata input
+* SDMX metadata input and output
+* Added control over SDMX data output
+* PxWeb and JSON-Stat data inputs
+* Streamlined and simplified quick-start
+
 ## 1.3.0
 
 11 March 2021
