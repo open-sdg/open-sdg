@@ -1,7 +1,15 @@
 <h1>Change Log</h1>
 
-## Not released
+## 1.4.0
 
+* Graph limits fix #1260
+* Add slash after 'search' in URL #1256
+* Remove unused assets: tether.js, d3 #1234
+* Max width so that status will wrap on goal-by-target-vertical #1233
+* Fixes for some zoom issues on maps #1228
+* Aria attributes to improve accessibility of map search suggestions #1222
+* Square points for headline on line charts #1220
+* Handle searches with no input #1219
 * Include file for custom `<HEAD>` content #1215
 * Include file for easier overriding of body classes #1212
 * Bug fix: allow multiple multi-level disaggregations #1205
@@ -320,7 +328,7 @@ This is a major version upgrade and contains some breaking changes. Full technic
 * The `remotedatabaseurl` setting is no longer supported. Use `remote_data_prefix` instead.
 * The `custom_css` configuration option is deprecated. Override [the `_sass/custom.scss` file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
 * The H2 on indicator pages is now controlled by the `indicator_available` metadata field, rather than `graph_title`.
-* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](metadata-format.md#starting-values).
+* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](indicator-configuration.md#data_start_values).
 
 ## 0.10.0
 

@@ -18,4 +18,4 @@ The Open SDG development team can also be reached by email at [opensdg@googlegro
 
 ## Specific implementations
 
-To get details on specific implementations of this platform, please check with the maintainers of those implementations. For a list, see the [Community](community.md) page.
+To get details on specific implementations of this platform, please check with the maintainers of those implementations. For a list, see the [Community](https://open-sdg.org/community) page.

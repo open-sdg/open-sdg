@@ -57,7 +57,7 @@ If you are not able to use this new YAML-based configuration approach, or you wo
 
 ### Update some special metadata fields, if you use them
 
-The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](../metadata-format.md#starting-values). If you use `data_start_values` for any indicators, update their structure before going further.
+The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](../indicator-configuration.md#data_start_values). If you use `data_start_values` for any indicators, update their structure before going further.
 
 ### Confirm that your data and metadata passes validation
 
