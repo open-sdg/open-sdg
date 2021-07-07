@@ -6,6 +6,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 15 July 2021
 
+* Configurable and multilingual logos
 * Accessibility improvements in the mapping feature
 * Usability improvements on line charts
 * Built-in forms for editing configuration, metadata, and data
@@ -15,7 +16,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 * Improved handling of hierarchical disaggregation
 * Microsoft Word metadata input
 * SDMX metadata input and output
-* SDMX output - constrain data for compatibility with DSD
+* Added control over SDMX data output
 * PxWeb and JSON-Stat data inputs
 * Streamlined and simplified quick-start
 

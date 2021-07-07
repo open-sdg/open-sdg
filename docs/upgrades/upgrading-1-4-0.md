@@ -4,7 +4,12 @@ This document is intended for developers, to help with the process of upgrading 
 
 ## Breaking changes
 
-We try not to introduce breaking changes in minor releases, but...
+We try not to introduce breaking changes in minor releases, but some minor changes were necessary due to enhancements with the high-contrast toggle button and configuration forms. In the uncommon case that you are overriding any of the following files, you may need to update your overrides according to the latest code:
+
+* _includes/assets/js/accessibility.js
+* _includes/components/header/header-menu-left-aligned.html
+* _includes/navigation.html
+* _includes/components/indicator/edit-buttons.html
 
 ## Upgrade data repository to sdg-build 1.4.0-beta1
 
@@ -30,7 +35,7 @@ translations:
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@1.4.0-beta1
+remote_theme: open-sdg/open-sdg@1.4.0-beta3
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 1.4.0.pre.beta1
@@ -40,5 +45,3 @@ In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugi
 ```
 gem "jekyll-open-sdg-plugins", "1.4.0.pre.beta1"
 ```
-
-## Recommended updates to the `_config.yml` file
