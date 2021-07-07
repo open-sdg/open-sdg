@@ -19,14 +19,6 @@ pages:
     - Open SDG features: open-sdg-features.md
     - Potential users: potential-users.md
     - Frequently Asked Questions: faq.md
-    - Open SDG users:
-        - List of users: community.md
-        - "Case study: Armenia": case-studies/armenia.md
-        - "Case study: City of Los Angeles": case-studies/cityoflosangeles.md
-        - "Case study: Germany": case-studies/germany.md
-        - "Case study: Kyrgyzstan": case-studies/kyrgyzstan.md
-        - "Case study: Rwanda": case-studies/rwanda.md
-        - "Case study: United Kingdom": case-studies/uk.md
     - Community:
         - Platform updates: updates.md
         - Support: support.md
@@ -87,3 +79,4 @@ pages:
         - Upgrading to 1.0.0: upgrades/upgrading-1-0-0.md
         - Upgrading to 1.2.0: upgrades/upgrading-1-2-0.md
         - Upgrading to 1.3.0: upgrades/upgrading-1-3-0.md
+        - Upgrading to 1.4.0: upgrades/upgrading-1-4-0.md
