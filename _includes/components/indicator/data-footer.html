@@ -34,7 +34,7 @@
 
         {% if page.indicator.data_footnote and page.indicator.data_footnote != '' %}
         <dt>{{ page.t.indicator.footnote }}:</dt>
-        <dd>{{ page.indicator.data_footnote }}</dd>
+        <dd>{{ page.indicator.data_footnote | markdownify }}</dd>
         {% endif %}
     <dl>
 </div>
