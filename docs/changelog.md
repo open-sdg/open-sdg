@@ -2,6 +2,8 @@
 
 ## 1.4.0
 
+* Optimization of getCombinationData #1269
+* Fixes related to data_start_values and series/units #1265, #1270
 * Graph limits fix #1260
 * Add slash after 'search' in URL #1256
 * Remove unused assets: tether.js, d3 #1234
