@@ -723,7 +723,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
-* `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](metadata-format.md#recommended-special-fields).
+* `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
 
 Here is an example of using these settings:
 
@@ -798,6 +798,20 @@ _Optional_: This setting can be used to "index" additional metadata fields in yo
 search_index_extra_fields:
   - national_agency
 ```
+
+Another example of how `search_index_extra_fields` could be used, is to configure search terms for indicator pages. For example, if you wanted indicator 3.a.1 to show as a result of 'smoking' or 'smokers' being searched for, you could set an indicator configuration field called `data_keywords` and then "index" that field, like so:
+
+```nohighlight
+search_index_extra_fields:
+  - data_keywords
+```
+
+Then in your indicator configuration you would have:
+
+```nohighlight
+data_keywords: smoking, smokers
+```
+
 
 ### series_toggle
 
