@@ -21,7 +21,6 @@ var klaroConfig = {
         {
             name: 'contrast',
             default: true,
-            title: 'High-contrast mode',
             purposes: ['functional'],
             cookies: ['contrast'],
             required: true,
@@ -31,7 +30,6 @@ var klaroConfig = {
         {% if site.analytics.ga_prod and site.analytics.ga_prod != '' %}
         {
             name: 'google-analytics',
-            title: 'Google Analytics',
             default: false,
             purposes: ['analytics'],
             cookies: ['_gat', '_gid', 'ga'],

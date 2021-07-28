@@ -59,3 +59,21 @@ klaroConfig.translations = {
         },
     },
 };
+klaroConfig.services.forEach(function(service) {
+    if (service.name === 'contrast') {
+        service.translations = {
+            {{ page.language }}: {
+                description: {{ page.t.cookies.contrast_description | jsonify }},
+                title: {{ page.t.cookies.contrast_title | jsonify }},
+            },
+        }
+    }
+    else if (service.name === 'google-analytics') {
+        service.translations = {
+            {{ page.language }}: {
+                description: {{ page.t.cookies.google_analytics_description | jsonify }},
+                title: {{ page.t.cookies.google_analytics_title | jsonify }},
+            },
+        }
+    }
+});
