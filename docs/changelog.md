@@ -1,5 +1,9 @@
 <h1>Change Log</h1>
 
+## Unreleased
+
+* Self-host Open Sans instead of using Google Webfonts #1285
+
 ## 1.4.0
 
 * Optimization of getCombinationData #1269
