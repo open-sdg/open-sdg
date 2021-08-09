@@ -33,6 +33,7 @@
       margin-right: 10px;
 
       .status {
+        @include status;
         display: inline-block;
         margin-right: 3px;
         padding: 2px 5px;
@@ -45,35 +46,6 @@
         .status-inner {
           padding: 0 2px;
           border-radius: 5px;
-        }
-
-        &.complete {
-          border: $status-border-complete;
-          color: $status-color-complete;
-          .status-inner {
-            background-color: $status-backgroundColor-inner-complete;
-          }
-        }
-        &.inprogress {
-          border: $status-border-inprogress;
-          color: $status-color-inprogress;
-          .status-inner {
-            background-color: $status-backgroundColor-inner-inprogress;
-          }
-        }
-        &.notstarted {
-          border: $status-border-notstarted;
-          color: $status-color-notstarted;
-          .status-inner {
-            background-color: $status-backgroundColor-inner-notstarted;
-          }
-        }
-        &.notapplicable {
-          border: $status-border-notapplicable;
-          color: $status-color-notapplicable;
-          .status-inner {
-            background-color: $status-backgroundColor-inner-notapplicable;
-          }
         }
       }
     }
@@ -186,44 +158,20 @@ body.contrast-high {
     border: $status-border-notstarted-highContrast !important;
   }
 
-  .complete{
-    background-color: $status-backgroundColor-complete-highContrast;
-    background: $status-backgroundColor-complete-highContrast;
-    color: $status-color-complete-highContrast !important;
-    .status-inner {
-      background-color: $status-backgroundColor-inner-complete-highContrast !important;
-      color: $status-color-complete-highContrast !important;
-    }
+  .complete {
+    @include statusHighContrast;
   }
 
   .inprogress{
-    background-color: $status-backgroundColor-inprogress-highContrast;
-    background: $status-backgroundColor-inprogress-highContrast;
-    color: $status-color-inprogress-highContrast;
-    .status-inner {
-      background-color: $status-backgroundColor-inner-inprogress-highContrast !important;
-      color: $status-color-inprogress-highContrast;
-    }
+    @include statusHighContrast;
   }
 
   .notstarted {
-    background-color: $status-backgroundColor-notstarted-highContrast;
-    background: $status-backgroundColor-notstarted-highContrast;
-    color: $status-color-notstarted-highContrast !important;
-    .status-inner {
-      background-color: $status-backgroundColor-inner-notstarted-highContrast !important;
-      color: $status-color-notstarted-highContrast !important;
-    }
+    @include statusHighContrast;
   }
 
   .notapplicable{
-    background-color: $status-backgroundColor-notapplicable-highContrast;
-    background: $status-backgroundColor-notapplicable-highContrast;
-    color: $status-color-notapplicable-highContrast !important;
-    .status-inner {
-      background-color: $status-backgroundColor-inner-notapplicable-highContrast !important;
-      color: $status-color-notapplicable-highContrast !important;
-    }
+    @include statusHighContrast;
   }
 
   .reporting-status-description {
