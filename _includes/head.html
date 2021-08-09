@@ -54,12 +54,6 @@
           {%- endfor -%}
         {%- endif -%}
 
-        <!-- ShareThis BEGIN -->
-        {%- if site.sharethis_property and site.sharethis_property != '' -%}
-          <script async src="https://platform-api.sharethis.com/js/sharethis.js#property={{ site.sharethis_property }}&product='sticky-share-buttons'"></script>
-        {%- endif -%}
-        <!-- ShareThis END -->
-
         {% include head-custom.html %}
     </head>
 <body class="{% include body-classes.html %}">
