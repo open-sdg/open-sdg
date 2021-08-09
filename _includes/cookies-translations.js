@@ -59,7 +59,11 @@ klaroConfig.translations = {
         },
     },
 };
+var allRequired = true;
 klaroConfig.services.forEach(function(service) {
+    if (!service.required) {
+        allRequired = false;
+    }
     if (service.name === 'contrast') {
         service.translations = {
             {{ page.language }}: {
@@ -77,3 +81,8 @@ klaroConfig.services.forEach(function(service) {
         }
     }
 });
+
+if (allRequired) {
+    klaroConfig.translations['{{ page.language }}'].consentNotice.description = {{ page.t.cookies.all_required_notice | jsonify }};
+    klaroConfig.hideDeclineAll = true;
+}
