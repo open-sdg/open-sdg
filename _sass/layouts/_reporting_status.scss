@@ -160,22 +160,27 @@ body.contrast-high {
 
   .complete {
     @include statusHighContrast;
+    border: none !important;
   }
 
   .inprogress{
     @include statusHighContrast;
+    border: none !important;
   }
 
   .notstarted {
     @include statusHighContrast;
+    border: none !important;
   }
 
   .notapplicable{
     @include statusHighContrast;
+    border: none !important;
   }
 
   .reporting-status-description {
     color: $color-light-highContrast;
+    border: none !important;
   }
 
 }
