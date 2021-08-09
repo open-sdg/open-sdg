@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Self-host Open Sans instead of using Google Webfonts #1285
+* Remove Sharethis option #1284
 
 ## 1.4.0
 
