@@ -816,10 +816,6 @@ _Optional_: This setting controls the behavior of the site config form. The avai
 
 The default location for the site configuration page is `/config`.
 
-### sharethis_property
-
-_Optional_: This setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
-
 ### validate_indicator_config
 
 _Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.
