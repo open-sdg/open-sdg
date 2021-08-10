@@ -276,7 +276,7 @@ var indicatorView = function (model, options) {
       selectedUnit: selectedUnit
     }));
 
-    if(!units.length) {
+    if(units.length <= 1) {
       $(this._rootElement).addClass('no-units');
     }
   };
