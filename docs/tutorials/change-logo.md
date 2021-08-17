@@ -37,7 +37,7 @@ Next we will upload the logo to your site repository.
 
 Next we will replace the "favicon" (the small image that appears in browser tabs). Again, the actual image is up to your preference. A common choice, again, is to your your country's flag. For this tutorial we will use the logo you uploaded above.
 
-1. In a browser visit any online favicon generator. The next steps may vary depending on which generator you are using, but we will assume you are using [favicon.io](https://favicon.io/favicon-converter/).
+1. In a browser visit [favicon.io](https://favicon.io/favicon-converter/).
 1. Drag in your new `SDG_logo.png` file or click to browse for it.
 1. Click `Download`.
 1. Unzip the zip file somewhere on the computer. It should contain several versions of your logo image.
