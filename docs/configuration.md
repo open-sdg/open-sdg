@@ -494,6 +494,22 @@ _Optional_: This setting can be used to hide any metadata fields that are empty.
 hide_empty_metadata: true
 ```
 
+### hide_single_series
+
+_Optional_: This setting can be used to hide the "Series" toggle on indicator pages whenever there is only a single series to chose from.
+
+```nohighlight
+hide_single_series: true
+```
+
+### hide_single_unit
+
+_Optional_: This setting can be used to hide the "Unit" toggle whenever there is only a single unit to chose from.
+
+```nohighlight
+hide_single_unit: true
+```
+
 ### indicator_config_form
 
 _Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
