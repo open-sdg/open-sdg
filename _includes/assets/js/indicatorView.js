@@ -276,7 +276,11 @@ var indicatorView = function (model, options) {
       selectedUnit: selectedUnit
     }));
 
-    if(units.length <= 1) {
+    {% if site.hide_single_unit %}
+    if (units.length <= 1) {
+    {% else %}
+    if (units.length < 1) {
+    {% endif %}
       $(this._rootElement).addClass('no-units');
     }
   };
@@ -293,7 +297,11 @@ var indicatorView = function (model, options) {
         selectedSeries: selectedSeries
       }));
 
-      if(!serieses.length) {
+      {% if site.hide_single_series %}
+      if (serieses.length <= 1) {
+      {% else %}
+      if (serieses.length < 1) {
+      {% endif %}
         $(this._rootElement).addClass('no-serieses');
       }
     }
