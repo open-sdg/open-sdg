@@ -41,7 +41,6 @@ Next we will replace the "favicon" (the small image that appears in browser tabs
 1. Drag in your new `SDG_logo.png` file or click to browse for it.
 1. Click `Download`.
 1. Unzip the zip file somewhere on the computer. It should contain several versions of your logo image.
-1. Go to the unzipped folder and rename the `android-chrome-192x192` file to `favicon`. (To rename an image, right-click the image and select "Rename".)
 
 ## Upload the favicon
 
@@ -50,7 +49,7 @@ Finally we will upload the favicon to your site repository.
 1. In a browser go to your site repository.
 1. In the list of files, navigate to the `assets/img/favicons` folder.
 1. Click `Add a file` and then `Upload files`.
-1. From the unzipped folder of images, drag in both of the files named `favicon`, or click to browse for them.
+1. From the unzipped folder of images, drag in all of the images. Or click to browse for them and select all the images from that unzipped folder.
 1. At the bottom select `Create a new branch for this commit and start a pull request.`
 1. Click `Propose changes`.
 1. Click `Create pull request`.
@@ -69,4 +68,4 @@ If this did not appear to work, here are a few areas to check on:
 1. Have you waited long enough? It can take about five minutes for the site to rebuild.
 1. Is your browser holding onto the old files? Sometimes a browser can aggressively cache outdated image files. Doing a "hard refresh" can help. For most browsers this is done by pressing CTRL and F5, or SHIFT and F5.
 1. Did you name the logo file exactly `SDG_logo.png`? Even a small difference will prevent Open SDG from "seeing" the file. For example, `sdg_logo.png` will not work, because the `sdg` is not capitalized. Similarly, `SDG-logo.png` will not work, because the `-` should be a `_` (underscore).
-1. Did the files get uploaded to the right place? After completing this tutorial, your new logo should be in the site repository at `assets/img/SDG_logo.png`. And your new favicon should be in the site repository at `assets/img/favicons/favicon.ico`. For example, if your favicon got uploaded to `assets/img/favion.ico` (without the `favicons` subfolder) then it will not work.
+1. Did the files get uploaded to the right place? After completing this tutorial, your new logo should be in the site repository at `assets/img/SDG_logo.png`. And your new favicon images should be in the site repository at `assets/img/favicons/`. For example, if your favicons got uploaded to `assets/img/` (without the `favicons` subfolder) then it will not work.
