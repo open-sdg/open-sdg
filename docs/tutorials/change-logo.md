@@ -49,7 +49,7 @@ Finally we will upload the favicon to your site repository.
 1. In a browser go to your site repository.
 1. In the list of files, navigate to the `assets/img/favicons` folder.
 1. Click `Add a file` and then `Upload files`.
-1. From the unzipped folder of images, drag in all of the images. Or click to browse for them and select all the images from that unzipped folder.
+1. From the unzipped folder of images, drag in all of the files. Or click to browse for them and select all the files from that unzipped folder.
 1. At the bottom select `Create a new branch for this commit and start a pull request.`
 1. Click `Propose changes`.
 1. Click `Create pull request`.
