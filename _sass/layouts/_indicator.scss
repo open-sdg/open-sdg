@@ -496,6 +496,10 @@ caption {
 	cursor: pointer;
 }
 
+.chart-title {
+  margin-left: 20px;
+}
+
 body.contrast-high {
   #main-content #fields .variable-selector .variable-options label {
     background: $color-dark-highContrast;
