@@ -72,6 +72,14 @@ klaroConfig.services.forEach(function(service) {
             },
         }
     }
+    else if (service.name === 'cookie_settings') {
+        service.translations = {
+            {{ page.language }}: {
+                description: {{ page.t.cookies.cookie_settings_description | jsonify }},
+                title: {{ page.t.cookies.cookie_settings | jsonify }},
+            },
+        }
+    }
     else if (service.name === 'google-analytics') {
         service.translations = {
             {{ page.language }}: {
