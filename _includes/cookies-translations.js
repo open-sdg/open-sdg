@@ -92,6 +92,7 @@ klaroConfig.services.forEach(function(service) {
 
 if (allRequired) {
     klaroConfig.translations['{{ page.language }}'].consentNotice.description = {{ page.t.cookies.all_required_notice | jsonify }};
+    klaroConfig.translations['{{ page.language }}'].ok = {{ page.t.cookies.all_required_ok | jsonify }};
     klaroConfig.hideDeclineAll = true;
     klaroConfig.hideLearnMore = true;
 }
