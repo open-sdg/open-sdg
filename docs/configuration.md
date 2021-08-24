@@ -834,3 +834,7 @@ _Optional_: This setting, if true, will run a validation of each indicator's con
 ### validate_site_config
 
 _Optional_: This setting, if true, will run a validation of the site configuration during the site build. This defaults to `false`.
+
+### x_axis_label
+
+_Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this is also available on the configuration of individual indicators, where it will override this setting.

@@ -271,3 +271,4 @@ site_config_form:
   translation_link: ''
 validate_indicator_config: true
 validate_site_config: true
+x_axis_label: Year
