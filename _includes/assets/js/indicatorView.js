@@ -416,6 +416,13 @@ var indicatorView = function (model, options) {
             ticks: {
               fontColor: tickColor,
             },
+            scaleLabel: {
+              display: this._model.xAxisLabel ? true : false,
+              labelString: this._model.xAxisLabel,
+              fontColor: tickColor,
+              fontSize: 14,
+              fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
+            }
           }],
           yAxes: [{
             gridLines: {
@@ -434,6 +441,8 @@ var indicatorView = function (model, options) {
               display: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
               labelString: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
               fontColor: tickColor,
+              fontSize: 14,
+              fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
             }
           }]
         },

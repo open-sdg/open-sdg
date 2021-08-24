@@ -55,3 +55,4 @@ standalone: false
 tags:
   - My untranslated tag
   - tags.my-tag
+x_axis_label: My axis label for 1.1.1
