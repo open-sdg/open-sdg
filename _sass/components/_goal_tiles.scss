@@ -6,7 +6,7 @@
     padding-bottom: 30px;
     &.goal-indicators {
       div {
-        span {
+        span:not(.status-inner) {
           border-color: $dark-c;
           color: $dark-c;
         }
