@@ -26,12 +26,33 @@ accessible_tabs: false
 
 ### analytics
 
-_Optional_: This setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](analytics.md) page.
+_Optional_: This setting can be used to facilitate the installation of Google Analytics. You can do this in multiple ways:
+
+* ua (analytics.js)
+* gtag (gtag.js)
+* gtm (Google Tag Manager)
+
+Google provides a number that would be used in each of these cases. The numbers typically have the following prefixes:
+
+* UA-xxxxxxxx
+* G-xxxxxxxx
+* GTM-xxxxxxxx
+
+To use this setting, put the appropriate number next to the corresponding item. For example:
 
 ```nohighlight
 analytics:
-  ga_prod: 'paste ID here'
+  ua: UA-xxxxxxxx
+  gtag: G-xxxxxxxx
+  gtm: GTM-xxxxxxxx
 ```
+
+Notes:
+
+1. The don't need to use all of them. You can use 1, 2, or none at all.
+1. The `ua` option was previously called `ga_prod` which also still works.
+1. As an alternative to using these settings, you can alternatively override the `_includes/head-custom.html` and/or `_includes/scripts-custom.html` files in order to insert any Google Analytics snippets you might need.
+1. The `ua` option also captures certain custom events, such as the clicking of the contrast toggle button.
 
 ### breadcrumbs
 

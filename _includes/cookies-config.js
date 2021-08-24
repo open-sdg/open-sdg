@@ -42,11 +42,39 @@ var klaroConfig = {
             default: false,
             purposes: ['analytics'],
             cookies: ['_gat', '_gid', 'ga'],
-            callback: function(consent, service) {
-                if (consent) {
-                    initialiseGoogleAnalytics();
-                }
-            },
+            required: false,
+            optOut: false,
+            onlyOnce: false,
+        },
+        {% endif %}
+        {% if site.analytics.ua and site.analytics.ua != '' %}
+        {
+            name: 'google-analytics',
+            default: false,
+            purposes: ['analytics'],
+            cookies: ['_gat', '_gid', 'ga'],
+            required: false,
+            optOut: false,
+            onlyOnce: false,
+        },
+        {% endif %}
+        {% if site.analytics.gtag and site.analytics.gtag != '' %}
+        {
+            name: 'google-analytics',
+            default: false,
+            purposes: ['analytics'],
+            cookies: ['_gat', '_gid', 'ga'],
+            required: false,
+            optOut: false,
+            onlyOnce: false,
+        },
+        {% endif %}
+        {% if site.analytics.gtm and site.analytics.gtm != '' %}
+        {
+            name: 'google-analytics',
+            default: false,
+            purposes: ['analytics'],
+            cookies: ['_gat', '_gid', 'ga'],
             required: false,
             optOut: false,
             onlyOnce: false,

@@ -1,0 +1,15 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script
+    {% if site.cookie_consent_form.enabled %}type="text/plain" data-type="application/javascript" data-name="google-analytics"{% endif %}
+    async
+    {% if site.cookie_consent_form.enabled %}data-{% endif %}src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.gtag }}"></script>
+<script {% if site.cookie_consent_form.enabled %}type="text/plain" data-type="application/javascript" data-name="google-analytics"{% endif %}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.analytics.gtag }}', {
+    'anonymize_ip': true,
+    'forceSSL': true,
+  });
+</script>

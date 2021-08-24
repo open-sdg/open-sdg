@@ -50,6 +50,13 @@
           {%- endfor -%}
         {%- endif -%}
 
+        {% if site.analytics.gtag and site.analytics.gtag != '' %}
+          {% include components/analytics/ga-gtag.html %}
+        {% endif %}
+        {% if site.analytics.gtm and site.analytics.gtm != '' %}
+          {% include components/analytics/ga-gtm.html %}
+        {% endif %}
+
         {% include head-custom.html %}
     </head>
 <body class="{% include body-classes.html %}">
