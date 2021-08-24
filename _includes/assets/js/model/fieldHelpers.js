@@ -256,40 +256,37 @@ function getCombinationData(fieldItems) {
   });
 
   // Generate all possible subsets of these key/value pairs.
-  var powerset = [[]];
+  var powerset = [];
+  // Start off with an empty item.
+  powerset.push([]);
   for (var i = 0; i < fieldValuePairs.length; i++) {
     for (var j = 0, len = powerset.length; j < len; j++) {
-      powerset.push(powerset[j].concat(fieldValuePairs[i]));
+      var candidate = powerset[j].concat(fieldValuePairs[i]);
+      if (!hasDuplicateField(candidate)) {
+        powerset.push(candidate);
+      }
     }
   }
-  // But we require special filtering on top of this.
-  return powerset.filter(function(combinations) {
-    // We don't need the empty set.
-    if (combinations.length === 0) {
-      return false;
-    }
-    else if (combinations.length === 1) {
-      return true;
-    }
-    // We don't want any sets that include multiples of the same field.
-    // Eg, we do not need to consider a set containing both "Female" and
-    // "Male". So filter them out here.
-    else {
-      var fieldsUsed = [];
-      for (var i = 0, len = combinations.length; i < len; i++) {
-        var thisField = Object.keys(combinations[i])[0];
-        if (fieldsUsed.includes(thisField)) {
-          // Abort as soon as we find a duplicate.
-          return false;
-        }
-        else {
-          fieldsUsed.push(thisField);
-        }
+
+  function hasDuplicateField(pairs) {
+    var fields = [], i;
+    for (i = 0; i < pairs.length; i++) {
+      var field = Object.keys(pairs[i])[0]
+      if (fields.includes(field)) {
+        return true;
       }
-      return true;
+      else {
+        fields.push(field);
+      }
     }
-  }).map(function(combinations) {
-    // We also want to merge these into a single object.
+    return false;
+  }
+
+  // Remove the empty item.
+  powerset.shift();
+
+  return powerset.map(function(combinations) {
+    // We want to merge these into a single object.
     var combinedSubset = {};
     combinations.forEach(function(keyValue) {
       Object.assign(combinedSubset, keyValue);

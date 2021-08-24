@@ -102,6 +102,17 @@ Example:
 contrast_type: single
 ```
 
+### cookie_consent_form
+
+_Optional_: This setting allows you to turn on a cookie consent form that users will see as soon as they visit the site, which allows users to control whether the certain services and cookies are used. See the [cookies and privacy documentation](cookies.md) for more details.
+
+Here is an example showing the available options and their default values:
+
+```nohighlight
+cookie_consent_form:
+  enabled: false
+```
+
 ### country
 
 **_Required_**: This setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
@@ -494,6 +505,22 @@ _Optional_: This setting can be used to hide any metadata fields that are empty.
 hide_empty_metadata: true
 ```
 
+### hide_single_series
+
+_Optional_: This setting can be used to hide the "Series" toggle on indicator pages whenever there is only a single series to chose from.
+
+```nohighlight
+hide_single_series: true
+```
+
+### hide_single_unit
+
+_Optional_: This setting can be used to hide the "Unit" toggle whenever there is only a single unit to chose from.
+
+```nohighlight
+hide_single_unit: true
+```
+
 ### indicator_config_form
 
 _Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
@@ -712,7 +739,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
-* `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](metadata-format.md#recommended-special-fields).
+* `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
 
 Here is an example of using these settings:
 
@@ -788,6 +815,20 @@ search_index_extra_fields:
   - national_agency
 ```
 
+Another example of how `search_index_extra_fields` could be used, is to configure search terms for indicator pages. For example, if you wanted indicator 3.a.1 to show as a result of 'smoking' or 'smokers' being searched for, you could set an indicator configuration field called `data_keywords` and then "index" that field, like so:
+
+```nohighlight
+search_index_extra_fields:
+  - data_keywords
+```
+
+Then in your indicator configuration you would have:
+
+```nohighlight
+data_keywords: smoking, smokers
+```
+
+
 ### series_toggle
 
 _Optional_: This setting enables the special treatment of the "Series" column in the data. If set to `true`, when an indicator's data includes a "Series" column, it will be displayed above "Units" as radio buttons. If omitted or `false`, the normal behavior is that the "Series" column will display below "Units" as checkboxes. Example:
@@ -802,10 +843,6 @@ _Optional_: This setting controls the behavior of the site config form. The avai
 
 The default location for the site configuration page is `/config`.
 
-### sharethis_property
-
-_Optional_: This setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
-
 ### validate_indicator_config
 
 _Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.
@@ -813,3 +850,7 @@ _Optional_: This setting, if true, will run a validation of each indicator's con
 ### validate_site_config
 
 _Optional_: This setting, if true, will run a validation of the site configuration during the site build. This defaults to `false`.
+
+### x_axis_label
+
+_Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this is also available on the configuration of individual indicators, where it will override this setting.
