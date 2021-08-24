@@ -2,8 +2,12 @@
 
 ## Unreleased
 
+* Cleanup of favicon code #1295
+* Optional label for the horizontal (x) axis #1293
+* Left-aligned graph titles #1292
 * Self-host Open Sans instead of using Google Webfonts #1285
 * Remove Sharethis option #1284
+* Cookie consent form #1235
 
 ## 1.4.0
 

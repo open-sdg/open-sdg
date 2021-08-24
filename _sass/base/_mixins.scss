@@ -13,40 +13,81 @@
   padding: 4px;
   font-size: 12px;
 
+  .status-inner {
+    padding: 0 2px;
+    border-radius: 5px;
+  }
+
   &.complete {
     color: $status-color-complete;
     border: $status-border-complete;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-complete;
+    }
   }
   &.inprogress{
     color: $status-color-inprogress;
     border: $status-border-inprogress;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-inprogress;
+    }
   }
   &.notstarted {
     color: $status-color-notstarted;
     border: $status-border-notstarted;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notstarted;
+    }
   }
   &.notapplicable {
     color: $status-color-notapplicable;
     border: $status-border-notapplicable;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notapplicable;
+    }
   }
 }
 
 @mixin statusHighContrast {
   &.complete {
-    color: $status-color-complete-highContrast;
     border: $status-border-complete-highContrast;
+    background-color: $status-backgroundColor-complete-highContrast;
+    background: $status-backgroundColor-complete-highContrast;
+    color: $status-color-complete-highContrast !important;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-complete-highContrast !important;
+      color: $status-color-complete-highContrast !important;
+    }
   }
   &.inprogress{
-    color: $status-color-inprogress-highContrast;
     border: $status-border-inprogress-highContrast;
+    background-color: $status-backgroundColor-inprogress-highContrast;
+    background: $status-backgroundColor-inprogress-highContrast;
+    color: $status-color-inprogress-highContrast;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-inprogress-highContrast !important;
+      color: $status-color-inprogress-highContrast;
+    }
   }
   &.notstarted {
-    color: $status-color-notstarted-highContrast;
     border: $status-border-notstarted-highContrast;
+    background-color: $status-backgroundColor-notstarted-highContrast;
+    background: $status-backgroundColor-notstarted-highContrast;
+    color: $status-color-notstarted-highContrast !important;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notstarted-highContrast !important;
+      color: $status-color-notstarted-highContrast !important;
+    }
   }
   &.notapplicable {
-    color: $status-color-notapplicable-highContrast;
     border: $status-border-notapplicable-highContrast;
+    background-color: $status-backgroundColor-notapplicable-highContrast;
+    background: $status-backgroundColor-notapplicable-highContrast;
+    color: $status-color-notapplicable-highContrast !important;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notapplicable-highContrast !important;
+      color: $status-color-notapplicable-highContrast !important;
+    }
   }
 }
 
@@ -77,7 +118,7 @@
 
     .indicator-card-number,
     // @deprecated start
-    span:not(.tags):not(.tag):not(.sr-only) {
+    span:not(.tags):not(.tag):not(.sr-only):not(.status-inner) {
     // @deprecated end (use .indicator-card-number instead)
       display: block;
       margin-bottom: 0.5rem;
