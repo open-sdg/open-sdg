@@ -102,6 +102,17 @@ Example:
 contrast_type: single
 ```
 
+### cookie_consent_form
+
+_Optional_: This setting allows you to turn on a cookie consent form that users will see as soon as they visit the site, which allows users to control whether the certain services and cookies are used. See the [cookies and privacy documentation](cookies.md) for more details.
+
+Here is an example showing the available options and their default values:
+
+```nohighlight
+cookie_consent_form:
+  enabled: false
+```
+
 ### country
 
 **_Required_**: This setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
