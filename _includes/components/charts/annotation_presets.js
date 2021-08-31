@@ -1,17 +1,19 @@
 opensdg.annotationPresets = {
     common: {
         // This "common" preset is applied to all annotations automatically.
-        borderColor: '#505a5f',
+        borderColor: '#949494',
         type: 'line',
+        borderDash: [10, 5],
+        borderWidth: 1,
         label: {
-            backgroundColor: 'black',
-            fontColor: 'white',
+            backgroundColor: 'white',
+            fontColor: 'black',
         },
         // This "highContrast" overrides colors when in high-contrast mode.
         highContrast: {
             label: {
-                backgroundColor: 'white',
-                fontColor: 'black'
+                backgroundColor: 'black',
+                fontColor: 'white'
             }
         },
         // This callback is used to generate a generic description for screenreaders.
