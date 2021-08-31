@@ -21,10 +21,19 @@ var indicatorSearch = function() {
       }
     }
 
+    // Recognize an indicator id as a special case that does not need Lunr.
+    var searchWords = searchTermsToUse.split(' '),
+        indicatorIdParts = searchWords[0].split('.'),
+        isIndicatorSearch = (searchWords.length === 1 && indicatorIdParts.length >= 3);
+    if (isIndicatorSearch) {
+      useLunr = false;
+    }
+
     var results = [];
     var alternativeSearchTerms = [];
+    var noTermsProvided = (searchTerms === '');
 
-    if (useLunr) {
+    if (useLunr && !noTermsProvided) {
       // Engish-specific tweak for words separated only by commas.
       if (opensdg.language == 'en') {
         lunr.tokenizer.separator = /[\s\-,]+/
@@ -70,7 +79,7 @@ var indicatorSearch = function() {
         }
       }
     }
-    else {
+    else if (!noTermsProvided) {
       // Non-Lunr basic search functionality.
       results = _.filter(opensdg.searchItems, function(item) {
         var i, match = false;

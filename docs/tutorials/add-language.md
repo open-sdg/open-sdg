@@ -40,12 +40,14 @@ For the remainder of this tutorial, we will assume the chosen language is Russia
 1. In the list of files, click on `config_data.yml`.
 1. Click the pencil icon on the right to begin editing the file.
 1. Under `languages` add a new line with `- ru`, copying the same indentation and spacing as the previous line. For example:
+
     ```
     languages:
       - en
       - es
       - ru
     ```
+    
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
 1. Beneath this, click "Propose changes".
 1. Click on the green "Create pull request" button.

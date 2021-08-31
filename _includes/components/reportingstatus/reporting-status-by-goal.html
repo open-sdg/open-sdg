@@ -6,14 +6,14 @@
 <div class="goal reporting-status-item">
     <div class="frame goal-tiles">
         <a href="{{ goal.url }}">
-        <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" class="goal-icon-{{ goal.number }}"/>
+        <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" class="goal-icon-{{ goal.number }} goal-icon-image goal-icon-image-{{ site.goal_image_extension }}"/>
         </a>
     </div>
     <div class="details">
         <h3 class="status-goal">
             <a href="{{ goal.url }}">{{ goal.short }}</a>
-            <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
         </h3>
+        <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
         <div class="summary">
             <div class="statuses">
                 {%- for status in goalreport.statuses -%}

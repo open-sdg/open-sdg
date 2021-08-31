@@ -30,6 +30,7 @@ $goal-by-target-indentation: 60px;
 
   .goal-indicator {
     @media screen and (min-width: 769px) {
+      min-height: 80px;
       margin-left: $goal-by-target-indentation;
       position: relative;
       width: calc(100% - #{$goal-by-target-indentation});
@@ -41,6 +42,13 @@ $goal-by-target-indentation: 60px;
         right: 0;
         top: 0;
         margin-top: 0;
+        width: min-content;
+      }
+    }
+    @media screen and (min-width: 992px) {
+      min-height: auto;
+      .status {
+        width: auto;
       }
     }
   }
@@ -86,11 +94,6 @@ $goal-by-target-indentation: 60px;
       margin-top: 20px;
     }
     margin-bottom: 5px;
-    .tag {
-      margin-right: 6px;
-      padding: 4px 6px;
-      border-radius: 10px;
-    }
   }
 
   .status, .tags {
@@ -98,10 +101,8 @@ $goal-by-target-indentation: 60px;
   }
 
   &.contrast-high {
-    .tags {
-      .tag {
-        color: $color-dark-highContrast;
-      }
+    .status {
+      @include statusHighContrast;
     }
   }
 }

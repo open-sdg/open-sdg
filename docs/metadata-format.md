@@ -1,298 +1,280 @@
 <h1>Metadata format</h1>
 
-In your [data repository](glossary.md#data-repository) the metadata is maintained on an indicator-by-indicator basis. This metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml) (see the "Schema" section below) in your data repository. Some fields, however, are mandatory and/or have specific uses in Open SDG. This page details those fields.
+In your [data repository](glossary.md#data-repository) the metadata is maintained on an indicator-by-indicator basis. 
+
+By default the metadata fields are based on SDG SDMX detailed metadata concepts e.g. **0.c. Indicator:** and the template metadata file in the data starter is based on these fields. It is recommended that you use the default fields as they follow the format that is requested by the UN and allow metadata to compared. However, the metadata can include any number of custom fields, as defined in a [schema file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/metadata_schema.yml) (see the "Schema" section below) in your data repository.
+
+Whilst it is possible to use the SDG SDMX main metadata concepts (which are a level above the detailed concepts) e.g. **0. Indicator information**, the UNSD strongly recommends that the detailed concepts are used.
+
+Note: If you do choose to use the main metadata concepts, they should not be used in combination with the detailed metadata concepts.
+
+## Note about metadata file formats
+
+By default, Open SDG platforms expect the individual indicator metadata files to be uploaded in YML format to the "meta" folder. See this [example in the data starter repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/meta/1-1-1.yml)
+
+### Indicator metadata forms
+
+To help with specifying indicator metadata, you can optionally enable user-friendly indicator metadata forms, which will allow you to fill in a form and then download a YML file which will be ready to upload to your platform.
+
+For more details on how to enable these forms, see the [indicator_metadata_form site configuration setting](configuration.md#indicator_metadata_form).
+
+## Note about empty metadata fields
+
+Due to the large number of metadata fields with some maybe not being applicable, empty metadata fields are hidden by default using `hide_empty_metadata: true` in the site configuration file.
+
+If you want metdata fields to show regardless, you should change this option to false. Alternatively, if you want some fields to hide by default but want to purposely not provide any information for other fields, you could populate the fields with some standard text e.g. "Not available"
+
+For more information about this configuration setting see the [hide_empty_metadata configuration option documentation](configuration.md#hide_empty_metadata).
 
 ## Note about translation keys
 
 Metadata values can either be filled in with normal text ("My field value") or with [translation keys](glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
 
-As an optional shorthand, if the translation key is in the `data` group, then the group can be omitted. For example, the translation key `data.female` can be written as simply `female`.
-
-## Mandatory fields
-
-The following fields are required on all indicators:
-
-* `data_non_statistical` - whether the indicator is statistical (can be charted/graphed) or not. Examples:
-    * true (if non-statistical)
-    * false (if statistical)
-* `indicator_name` - the name for the indicator, which displays at the top of the indicator page. Examples:
-    * Proportion of population living below the national poverty line, by sex and age
-    * global_indicators.1-2-1-title
-* `indicator_number` - the number (or "id") for the indicator. Examples:
-    * 1.1.1
-    * 1.2.1
-* `reporting_status` - the status of the indicator. Examples:
-    * complete
-    * notstarted
-
-## Mandatory for statistical indicators
-
-If the indicator is going to display a graph, the following fields are required:
-
-* `graph_title` - the title that displays above the graph/chart. This can be simple text (or a translation key) if you would like the chart title to be the same for all units of measurement. Examples:
-    * My graph title for 1.1.1
-    * my_translations.1-1-1-graph_title
-* `graph_titles` - However if you would like the chart title to depend on the user-selected unit of measurement, then you can use `graph_titles` (*plural*) with a more complex structure:
+The default fields are listed below along with the UN-defined definition:
 
-        graph_titles:
-          - unit: Percent
-            title: My title for percentages
-          - unit: Total
-            title: My alternate title for totals
+## 0. Indicator information
 
-* `graph_type` - what type of graph to use for the indicator. [More information here](charts.md). Examples:
-    * line
-    * bar
-    * binary
-* `national_geographical_coverage` - a label used in the absence of any disaggregation. Examples:
-    * Australia
-    * my_translations.australia
+### 0.a. Goal: 
 
-## Recommended special fields
+SDG Goal number and name.
 
-The following fields are not strictly required, but are recommended because they serve special purposes:
+`SDG_GOAL`
 
-* `indicator_available` - an alternate name for the indicator, intended for when the global indicator name might not accurately describe the available national/regional statistics
-* `computation_units` - the unit used in the headline series for this indicator. Examples:
-    * Metric tons
-    * my_translations.metric_tons
-* `expected_disaggregations` - a list of the disaggregations (ie, columns in the CSV file) that this indicator should have. Setting this value will supply metrics to the disaggregation status report (see the [reporting_status site configuration](configuration.md#reporting_status)). Here is an example for an indicator that should have disaggregation for "Age" and "Sex":
+### 0.b. Target:
 
-        expected_disaggregations:
-          - Age
-          - Sex
-
-* `source_active_1` - whether source #1 should be displayed. Examples:
-    true
-    false
-* `source_organisation_1` - the name of the source #1 organisation. Examples:
-    * My organisation name
-    my_translations.my_organisation
-* `source_url_1` - the URL of the source #1 website. Examples:
-    * http://example.com
-* `source_url_text_1` - the text to display as the link to the source #1 website. Examples:
-    * Click here for my organisation's website
-    * my_translations.click_here
-* `un_designated_tier` - the "tier" for this indicator. Examples:
-    * 1
-    * 2
-* `un_custodian_agency` - the custodian agency for this indicator. Examples:
-    * World Bank
-* `goal_meta_link` - URL of the official UN metadata for this indicator. Examples:
-    * https://unstats.un.org/sdgs/metadata/files/Metadata-01-01-01a.pdf
-* `goal_meta_link_text` - the text to display as the link to the official UN metadata for this indicator. Examples:
-    * United Nations Sustainable Development Goals Metadata (pdf 894kB)
-* `tags` - an optional list of "tags" to display under an indicator when it is listed on its goal page. Unlike most other fields, the `tags` field should be a list. Here is an example of what it might look like, in YAML form:
-
-        tags:
-          - My tag
-          - My other tag
-
-## Data Sources Metadata
-
-Metadata about "data sources" must follow a special format. The keys for the metadata fields must start with `source_` and end with a `_#`, where "#" is number like 1, 2, 3, etc. For example:
-* source_organisation_1
-* source_contact_1
-* source_organisation_2
-* source_contact_2
-* etc.
-
-In this way, all of the source fields ending in "_1" refer to source #1. And all the source fields ending in "_2" refer to source #2, etc.
-
-### Caution about URLs
-
-Especially long sequences of characters, like those in a long URL, can cause formatting issues on webpages. It is recommended that particularly long URLs be included as links, instead of as plain text. For example:
-
-Good:
-
-`[This is a link to a long URL](https://example.com/abc/def/ghi/jkl/mno/pqr/stu?vwxyz=foo&bar=1234567890)`
-
-Avoid:
+SDG Target number and name.
 
-`This a long plain-text URL: https://example.com/abc/def/ghi/jkl/mno/pqr/stu?vwxyz=foo&bar=1234567890`
+`SDG_TARGET`
 
-## Data Info
+### 0.c. Indicator:
 
-Some of the metadata are not intended to be displayed on the site. These are put into a "scope" called "data" in the `_prose.yml` file. For example, see the [`data_non_statistical` field](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L205).
+SDG Indicator number and name.
 
-Use this method to hide any fields needed, by putting them into the "data" scope.
+`SDG_INDICATOR`
 
-## Starting values
+### 0.d. Series:
 
-If you would like an indicator load with certain disaggregation values already selected, you can use the `data_start_values` field. For example by setting this in the metadata for an indicator...
+Description of SDG data series.
 
-```
-data_start_values:
-  - field: Fruit
-    value: Apples
-  - field: Grade
-    value: A
-```
+`SDG_SERIES_DESCR`
 
-...Open SDG will start with both "Apples" and "A" selected, instead of "Oranges".
+### 0.e. Metadata update:
 
-## Graph Metadata
+The date when this metadata report was last updated.
 
-The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
+`META_LAST_UPDATE`
 
-* `graph_limits` - a list of min/max limits controlling the lowest/highest values to be shown on the y-axis. Optionally they can refer to a specific unit of measurement. Note that this involves a slightly more complex metadata structure. If using Prose.io, this will need to be set under "Raw Metadata". For example:
+### 0.f. Related indicators:
 
-        graph_limits:
-          - unit: tons
-            minimum: 2
-            maximimum: 20
-          - unit: passengers
-            minimum: 200
-            maximum: 2000
+Linkages with any other Goals and Targets.
 
-* `graph_stacked_disaggregation` - this can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars. For example:
+`SDG_RELATED_INDICATORS`
 
-        graph_stacked_disaggregation: Age
+## 1. Data reporter
 
-* `graph_annotations` - this can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator. Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
+### 1.a. Organisation:
 
-    * `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
-    * `description`: Either a string or function returning a description of the annotation. This is necessary for accessibility, as the description is read by screenreaders. The description does not appear visually on the page.
-    * `unit`: If specified, the annotation will only display when the user is looking at this unit of measurement.
-    * `series`: If specified, the annotation will only display when the user is looking at this series.
-    * `mode`: Can be "vertical" or "horizontal". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `borderColor`: The color of the line/box. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `borderDash`: The type of dashes for a line. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `value`: Used for line annotations. The value at which to draw the line. For horizontal lines, this number corresponds to your actual data. For vertical lines, this number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `endValue`: Used for line annotations. Optional value at which the line ends. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `label`: Additional settings for controlling the label:
-        * `position`: Can be "top", "bottom", "left", "right", or "center". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-        * `content`: The text of the label (can be a translation key). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-        * `fontColor`: The color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-        * `backgroundColor`: The background color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js).
+Organisation which is responsible for the indicator (i.e. who can be contacted about the data or metadata).
 
-    Here is an example of using annotations:
+`CONTACT_ORGANISATION`
 
-        graph_annotations:
-          - unit: tons
-            value: 19
-            borderColor: red
-          - unit: passengers
-            value: 1900
-            borderColor: red
+### 1.b. Contact person(s):
 
-    Here is an example of using the `target_line` preset:
+Name of the contact points for the data or metadata.
 
-        graph_annotations:
-          - unit: tons
-            value: 19
-            preset: target_line
-          - unit: passengers
-            value: 1900
-            preset: target_line
+`CONTACT_NAME`
 
-* `graph_title` - mentioned above
-* `graph_type` - mentioned above
+### 1.c. Contact organisation unit
 
-## Footer
+Department/division/unit of contact person within the organisation mentioned in 1.a.
 
-The following fields will appear on indicator pages below the graph and the table.
+`ORGANISATION_UNIT`
 
-* `computation_units` - mentioned above
-* `copyright` - information about the copyright. Examples:
-    * Copyright 2019 - My organisation
-    * my_translations.copyright_message
-* `data_footnote` - additional information on the data. Examples:
-    * My additional information
-    * my_translations.1-1-1-footnote
-* `national_geographical_coverage` - mentioned above
+### 1.d. Contact person function:
 
-## Embedded Feature Metadata
+Functional title(s) of the contact points for the data or metadata.
 
-You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following fields to the metadata file.
+`CONTACT_FUNCT`
 
-* `embedded_feature_footer` - information about the embedded feature which displays below embed. Examples:
-    * This graph provided by "My Organisation"
-    * my_translations.info_about_my_organisation
-* `embedded_feature_tab_title` - tab title. Examples:
-    * Embedded Chart
-    * my_translations.embedded_chart
-* `embedded_feature_title` - the title to be shown above the embedded feature. Examples:
-    * My embedded chart
-    * my_translatins.1-1-1-embedded-chart
+### 1.e. Contact phone:
 
-You can either specify a URL or some HTML for the feature you want to embed:
+Phone number(s) of the contact points for the data or metadata.
 
-* `embedded_feature_url` - the URL of feature that you want to embed. You may use this when you have control over the original feature that you want to embed, and don't need to make any changes e.g. if the feature is already the correct size. Examples:
-    * http://example.com/embed-1-1-1.html
-* `embedded_feature_html` - HTML code of the feature that you want to embed. You may use this when you don't have control of the original feature that you want to embed, and so need to make some changes e.g. to the size, title, or other attributes. Example:
-    * `<iframe width="1110" height="700" title="Childhood Vaccination Coverage Statistics" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3NWZhNzItMTIyZS00OWM2LTg0MzMtOGY5YTJjMGY0MjI1IiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>`
+`CONTACT_PHONE`
 
-## Non-Standard Information
+### 1.f. Contact mail:
 
-In the Prose editor, you can add free Markdown text in the same file as the metadata. This is the `edit` section in prose and is part of the metadata. In the raw .md file this is the content underneath the yaml header. You can add any content you like in this section and the content will be converted to html and placed above the graph near the top of the screen.
+Mailing address(es) of the contact points for the data or metadata.
 
-A guide to writing [Markdown is here](https://guides.github.com/features/mastering-markdown/) and you can write your own tables, lists, links, headings, and so on. This is a useful place to add information about an indicator that doesn't fit in with the rest of the metadata.
+`CONTACT_MAIL`
 
-## Data Notice
+### 1.g. Contact emails:
 
-You may want to display some very important information which site viewers must keep in mind when using the data provided. To display a notice above the graph in a coloured box, you can use the following fields within the metadata file.
+E-mail address(es) of the contact points for the data or metadata.
 
-* `data_notice_heading` - title of data notice. Examples:
-    * Important Note
-    * my_translations.important_note
-* `data_notice_text` - text you want to display within the notice. Examples:
-    * My note text
-    * my_translations.1-1-1-data-notice
-* `data_notice_class` - a CSS class to set on the notice. Examples:
-    * success (green)
-    * warning (amber)
-    * danger (red)
+`CONTACT_EMAIL`
 
-## Standalone indicators
+## 2. Definition, concepts and classifications
 
-If you would like to post statistical indicators that are not part of the SDGs (such as Covid-19 data) then you can set the indicators to be `standalone`. This prevents the indicator from appearing as part of a goal, and keeps the indicator off the reporting status, disaggregation status, and other disaggregation reports.
+### 2.a. Definition and concepts:
 
-In this case you may also want to control the URL of the indicator. You can do this with the `permalink` metadata field. This does not require any preceding/trailing slashes.
+Precise definition of the indicator preferably relying on internationally agreed definitions. The indicator definition should be unambiguous and be expressed in universally applicable terms. Precise definition of all different concepts and terms associated with the indicator, also including reference to any associated classifications.
 
-Here is an example of using `standalone` and `permalink` in a YAML metadata structure:
+`STAT_CONC_DEF`
 
-```
-standalone: true
-permalink: my-custom-indicator-path
-```
+### 2.b. Unit of measure:
 
-## Sorting in lists
+Description of the unit of measurement (proportion, dollars, number of people, etc.)
 
-The order in which indicators are displayed in lists is determined behind the scenes, according to the indicator number. This is done by automatically converting the indicator number to a string which sorts correctly when alphabetized. (For example, indicator 1.2.1 gets sorted as '010201'.) However you can override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator. For example:
+`UNIT_MEASURE`
 
-```
-# Ensure this indicator appears at the end of goal 1, target 2.
-sort: 0102zz
-```
+### 2.c. Classifications:
+
+Describe references to both national and international standards and classification being used.
+
+`CLASS_SYSTEM`
+
+## 3. Data source type and data collection method
+
+### 3.a. Data sources:
+
+Description of all actual and recommended sources of data. This description should include, when applicable, any changes of the data source over time, details of denominator (if from a different source) and any other relevant information related to the origin of the source or indicator. Similar details should be given for administrative sources.
+
+`SOURCE_TYPE`
+
+### 3.b. Data collection method:
+
+Description of all methods used for data collection. This description should include, when applicable, the sample frame used, the questions used to collect the data, the type of interview, the dates/duration of fieldwork, the sample size and the response rate. Some additional information on questionnaire design and testing, interviewer training, methods used to monitor non-response etc. should be provided here. Questionnaires used should be annexed (if very long: via hyperlink). 	
+
+`COLL_METHOD:`
+
+### 3.c. Data collection calendar:
+
+Dates when source collection is next planned.
+
+`FREQ_COLL`
+
+### 3.d. Data release calendar:
+
+Expected dates of release of new data for this indicator, including the year (or, ideally, the quarter/month when the next data point associated with the indicator will become available).
+
+`REL_CAL_POLICY`
+
+### 3.e. Data providers:
+
+Identification of national and/or international data provider(s), specifying the organization(s) responsible for producing the source data.
+
+`DATA_SOURCE`
+
+### 3.f. Data compilers:
+
+Organization(s) responsible for compilation of this indicator either at national level, which is often the same as 1.a.
+
+`COMPILING_ORG`
+
+### 3.g. Institutional mandate:
+
+Description of the set of rules or other formal set of instructions assigning responsibility as well as the authority to an organisation for the collection, processing, and dissemination of statistics for this indicator.
+
+`INST_MANDATE`
+
+## 4. Other methodological considerations
+
+### 4.a. Rationale:
+
+Description of the purpose and rationale behind the indicator, as well as examples and guidance on its correct interpretation and meaning.
+
+`RATIONALE`
+
+### 4.b. Comment and limitations:
+
+Comments on the feasibility, suitability, relevance and limitations of the indicator. Also includes data comparability issues, presence of wide confidence intervals (such as for maternal mortality ratios); provides further details on additional non-official indicators commonly used together with the indicator.
+
+`REC_USE_LIM`
+
+### 4.c. Method of computation:
+
+Explanation of how the indicator is calculated, including mathematical formulas and descriptive information of computations made on the source data to produce the indicator (including adjustments and weighting). This explanation should also highlight cases in which mixed sources are used or where the calculation has changed over time (i.e., discontinuities in the series).
+
+`DATA_COMP`
+
+### 4.d. Validation:
+
+Description of process of monitoring the results of data compilation and ensuring the quality of the statistical results, including consultation process with countries on the national data submitted to the SDGs Indicators Database. Descriptions and links to all relevant reference materials should be provided.
+
+`DATA_VALIDATION`
+
+### 4.h. Methods and guidance available to countries for the compilation of the data at the national level:
+Reference the globally available metadata and explain how it is being used.
+
+`DOC_METHOD`
+
+### 4.i. Quality management:
+
+Description of systems and frameworks in place within an organisation to manage the quality of statistical products and processes.
+
+`QUALITY_MGMNT`
+
+### 4.j Quality assurance:
+
+Description of practices and guidelines focusing on quality in general and dealing with quality of statistical programmes at your agency, including measures for ensuring the efficient use of resources.
+
+`QUALITY_ASSURE`
+
+### 4.k Quality assessment:
+
+Description of overall evaluation of fulfilling quality requirements, based on standard quality criteria.
+
+`QUALITY_ASSMNT`
+
+
+Note: There are only main concepts for 5, 6 and 7 so they should be used even if you are using the detailed concepts elsewhere
+
+## 5. Data availability and disaggregation
+
+Data availability by sub-national breakdowns and time periods can be descibed here. Describe the specification of the dimensions and levels used for disaggregation of the indicator (e.g., income, sex, age group, geographic location, disability status, etc.).
+
+`COVERAGE`
+
+## 6. Comparability/deviation from international standards
+
+Explanation on the differences between country produced and internationally estimated data on this indicator, highlighting and summarising the main sources of differences.
+
+`COMPARABILITY`
+
+## 7. References and documentation
+
+Descriptions and links to all relevant reference materials related to this indicator.
+
+`OTHER_DOC`h1>Metadata format</h1>
+
 
 ## Schema
 
-The actual fields available on each indicator is fully configurable by editing the `_prose.yml` file in your data repository. For a full list of fields available out-of-the-box in the starter repository, see the [starter repository's `_prose.yml` file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml). This file also serves to control the behavior of the Prose.io service, which is the usual way that metadata is edited. (For technical information about Prose.io schema, see [the official Prose.io documentation](https://github.com/prose/prose/wiki/Prose-Configuration).)
+The actual fields available on each indicator is fully configurable by editing the `metadata_schema.yml` file in your data repository. For example, see the [starter repository's `metadata_schema.yml` file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/metadata_schema.yml). This file also serves to control the behavior of the indicator metadata forms, which can be used to edit the metadata.
 
 ## Renaming metadata fields
 
-In the schema file mentioned above, each field can have a `translation_key` property. These can be changed from the defaults, as needed, to control the public-facing name for each field. For example, perhaps you want to change the public-facing label for the `indicator_name` field. You could update the schema, changing it from this:
+In the schema file mentioned above, each field can have a `translation_key` property. These can be changed from the defaults, as needed, to control the public-facing name for each field. For example, perhaps you want to change the public-facing label for the `SDG_INDICATOR` field. You could update the schema, changing it from this:
 
 ```
-- name: "indicator_name"
+- name: "SDG_INDICATOR"
   field:
     element: text
-    label: "Indicator name"
-    translation_key: metadata_fields.indicator_name
-    scope: global
+    label: "Indicator"
+    translation_key: metadata_fields.SDG_INDICATOR
+    scope: national
 ```
 
 To this:
 
 ```
-- name: "indicator_name"
+- name: "SDG_INDICATOR"
   field:
     element: text
-    label: "Indicator name"
+    label: "Indicator"
     translation_key: my_custom_translations.another_translation
-    scope: global
+    scope: national
 ```
 
 ### Advanced - label vs translation_key
@@ -301,7 +283,7 @@ You may think that it would make more sense for the `label` property above to co
 
 ## Metadata tabs
 
-The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see the [configuration page in the "metadata tabs" section](configuration.md#metadata_tabs).
+The metadata fields can be displayed on indicator pages in a tabbed format. For more information, see the ["metadata tabs" section of the site configuration guidance](configuration.md#metadata_tabs).
 
 ## Reserved metadata fields
 

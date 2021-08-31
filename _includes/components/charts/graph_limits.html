@@ -1,15 +1,14 @@
 <script>
 // Add a chart alteration to support the chart_graph_limits metadata field.
 opensdg.chartConfigAlter(function(config, info) {
-  if (info.graphLimits && info.graphLimits.length > 0) {
-    var limit = _.findWhere(info.graphLimits, { unit: info.selectedUnit }) || info.graphLimits[0];
+  if (info.graphLimits && Object.keys(info.graphLimits).length > 0) {
     var overrides = {
       options: {
         scales: {
           yAxes: [{
             ticks: {
-              min: limit.minimum,
-              max: limit.maximum,
+              min: info.graphLimits.minimum,
+              max: info.graphLimits.maximum,
             }
           }]
         }

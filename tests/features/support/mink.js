@@ -1,4 +1,4 @@
-const cucumber = require('cucumber');
+const cucumber = require('@cucumber/cucumber');
 const mink = require('cucumber-mink');
 
 const driver = new mink.Mink({
@@ -11,6 +11,7 @@ const driver = new mink.Mink({
     "the Table tab": "#tab-tableview",
     "the Chart tab": "#tab-chartview",
     "the Map tab": "#tab-mapview",
+    "the Edit tab": "#tab-edit",
     "sortable table": "#tableview table",
     "visual chart": "#chartview canvas",
     "map": "#mapview #map.leaflet-container",
@@ -30,14 +31,23 @@ const driver = new mink.Mink({
     "the search box": "#indicator_search",
     "disaggregation filter": ".variable-selector",
     "the filter drop-down button": ".variable-selector .accessBtn",
+    "the first filter drop-down button": "#fields > div:nth-of-type(1) .accessBtn",
+    "the second filter drop-down button": "#fields > div:nth-of-type(2) .accessBtn",
+    "the third filter drop-down button": "#fields > div:nth-of-type(3) .accessBtn",
+    "the fourth filter drop-down button": "#fields > div:nth-of-type(4) .accessBtn",
     "the first filter option": ".variable-selector .variable-options label",
     "the last filter option": ".variable-selector .variable-options label:last-child",
+    "the first filter option in the first filter drop-down": "#fields > div:nth-of-type(1) .variable-options label",
+    "the first filter option in the second filter drop-down": "#fields > div:nth-of-type(2) .variable-options label",
+    "the first filter option in the third filter drop-down": "#fields > div:nth-of-type(3) .variable-options label",
+    "the first filter option in the fourth filter drop-down": "#fields > div:nth-of-type(4) .variable-options label",
     "selected unit of measurement": "#units input[checked='']",
     "the first unit of measurement": "#units label:nth-of-type(1) input",
     "the last unit of measurement": "#units label:last-child input",
     "the first series": "#serieses label:nth-of-type(1) input",
     "the second series": "#serieses label:nth-of-type(2) input",
-    "the last series": "#serieses label:last-child input",
+    "the third series": "#serieses label:nth-of-type(3) input",
+    "the fourth series": "#serieses label:nth-of-type(4) input",
     "chart legend": "#legend li",
     "chart legend item": "#legend li",
     "data table": "#selectionsTable",
@@ -57,6 +67,10 @@ const driver = new mink.Mink({
     "table has no data": "#selectionsTable.table-has-no-data h3",
     "chart has no data": "#selectionsChart.chart-has-no-data canvas",
     "breadcrumbs": ".breadcrumb",
+    "table value": "#tableview tbody .table-value",
+    "main logo": ".navbar-brand img",
+    "chart title": "#chart-heading",
+    "configuration form textarea": "textarea.form-control",
   }
 });
 

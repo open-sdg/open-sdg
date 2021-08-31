@@ -1,19 +1,26 @@
 #main-content {
   #indicatorData {
+    &.no-units {
+      #units {
+        display: none;
+      }
+    }
+    &.no-serieses {
+      #serieses {
+        display: none;
+      }
+    }
     &.no-fields {
-
       #series-help, #fields, #clear {
         display: none;
       }
-
-      &.no-units.no-serieses {
-        // no units and no series, hide the column:
-        > .col-md-3 {
-          display: none;
-        }
-        > .col-md-9 {
-          width: 100%;
-        }
+    }
+    &.no-units.no-serieses.no-fields {
+      > .col-md-3 {
+        display: none;
+      }
+      > .col-md-9 {
+        width: 100%;
       }
     }
   }
@@ -37,6 +44,9 @@
       padding: 10px 7px 14px 7px;
       font-size: 0.875em;
       margin-right: 8px;
+      &[aria-expanded="true"] {
+        margin-bottom: 9px;
+      }
 
       i {
         position: absolute;
@@ -52,10 +62,13 @@
 
     }
 
-		.accessBtn {
-			padding: 0px !important;
-			border: none;
-		}
+    .accessBtn {
+      padding: 0px !important;
+      border: 1px solid transparent;
+      &:focus {
+        border: 1px solid $indicator-selected-borderColor-hover;
+      }
+    }
 
     > p {
       font-size: 96%;
@@ -94,17 +107,6 @@
           border-color: $indicator-field-backgroundColor-disabled;
         }
       }
-      &.possible {
-        background-color: $indicator-field-backgroundColor-possible;
-      }
-      &.excluded {
-        background-color: $indicator-field-backgroundColor-excluded;
-        color: $color-light;
-
-        & input {
-          display: none;
-        }
-      }
     }
 
     h5, h6 {
@@ -118,34 +120,6 @@
         position: absolute;
         top: 0;
         right: 6px;
-      }
-    }
-
-    .bar {
-      height: 7px;
-      border: 1px solid $indicator-field-borderColor;
-      margin: 8px 2px 2px 2px;
-      padding: 0;
-      position: relative;
-
-      > div {
-        height: 5px;
-        float: left;
-      }
-      .selected {
-        background-color: $indicator-field-backgroundColor-selected;
-      }
-
-      .default {
-        background-color: $backgroundColor;
-      }
-
-      .possible {
-        background-color: $indicator-field-backgroundColor-possible;
-      }
-
-      .excluded {
-        background-color: $indicator-field-backgroundColor-excluded;
       }
     }
 
@@ -203,6 +177,14 @@
           }
         }
 
+        button[data-type="select"] {
+          margin-bottom: 5px;
+          margin-left: 5px;
+        }
+        button[data-type="clear"] {
+          margin-bottom: 5px;
+        }
+
         label {
           padding-left: 7px;
           padding-right: 25px;
@@ -220,7 +202,7 @@
           }
 
           &:hover {
-            background: $indicator-fieldButton-borderColor-hover;
+            background: $indicator-fieldOption-backgroundColor-hover;
           }
 
           &[data-has-data="false"] {
@@ -243,9 +225,6 @@
 
       &[data-has-data="false"],
       &.disallowed {
-        .bar {
-          display: none;
-        }
 
         .variable-options {
           > div {
@@ -340,6 +319,32 @@
         background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAABCAYAAADn9T9+AAAAFklEQVQImWP8////fwY0wMjIyIguBgCaAgQCms5tJwAAAABJRU5ErkJggg==');
         background-repeat: repeat;
         background-position: -5px 0;
+      }
+    }
+    &.legend-for-line-chart {
+      .swatch {
+        height: 3px;
+        position: relative;
+        .swatch-inner {
+          position: absolute;
+
+          width: 11px;
+          height: 11px;
+          display: inline-block;
+          top: -4px;
+          left: 17px;
+          border-radius: 10px;
+        }
+        &.headline {
+          height: 6px;
+          .swatch-inner {
+            top: -3px;
+            width: 12px;
+            height: 12px;
+            border-radius: 0;
+
+          }
+        }
       }
     }
     span {
@@ -499,15 +504,15 @@ caption {
 }
 
 .chart-title {
-  text-align: center;
+  margin-left: 20px;
 }
 
 body.contrast-high {
-  #main-content #fields label {
+  #main-content #fields .variable-selector .variable-options label {
     background: $color-dark-highContrast;
     color: $color-light-highContrast;
     &:hover {
-      background: $color-light-highContrast;
+      background: $color-highlight-highContrast;
       color: $color-dark-highContrast;
     }
     &:focus {
@@ -521,6 +526,11 @@ body.contrast-high {
       background-color: $color-dark-highContrast;
       border-color: $color-light-highContrast;
       color: $color-light-highContrast;
+      &:focus {
+        span {
+          color: $color-dark-highContrast;
+        }
+      }
     }
   }
 
@@ -538,8 +548,6 @@ body.contrast-high {
     }
   }
 
-  #main-content #fields .bar .selected { background-color: $color-light-highContrast; }
-
   #main-content #fields .variable-selector .variable-hint { color: $color-light-highContrast; }
 
   caption {
@@ -554,11 +562,19 @@ body.contrast-high {
     li {
       color: $color-light-highContrast !important;
       border: 1px solid transparent;
-      &:hover {
-        background: transparent !important;
-        border: 1px solid $color-light-highContrast;
-      }
     }
+  }
+
+  #dataset-size-warning {
+    color: $color-dark-highContrast;
+  }
+}
+
+.layout-indicator {
+  #page-content {
+    border-top: 1px solid $indicatorContent-horizontalRule-color;
+    border-bottom: 1px solid $indicatorContent-horizontalRule-color;
+    padding-top: 10px;
   }
 }
 
@@ -585,5 +601,11 @@ body.contrast-high {
       display: block;
       margin-top: 10px;
     }
+  }
+}
+
+#sources {
+  .row > div:nth-child(odd) {
+    clear: left;
   }
 }

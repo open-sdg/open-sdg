@@ -34,25 +34,25 @@ prose:
             element: text
             label: "Indicator name"
             translation_key: metadata_fields.indicator_name
-            scope: global
+            scope: data
       - name: "indicator"
         field:
             element: hidden
             label: "Indicator number"
             translation_key: metadata_fields.indicator
-            scope: global
+            scope: data
       - name: "target_name"
         field:
             element: text
             label: "Target name"
             translation_key: metadata_fields.target
-            scope: global
+            scope: data
       - name: "target_id"
         field:
             element: text
             label: "Target number"
             translation_key: metadata_fields.target_id
-            scope: global
+            scope: data
       - name: "indicator_definition"
         field:
             element: textarea
@@ -102,13 +102,13 @@ prose:
             element: text
             label: "Geographical coverage"
             translation_key: metadata_fields.national_geographical_coverage
-            scope: national
+            scope: data
       - name: "computation_units"
         field:
             element: text
             label: "Unit of measurement"
             translation_key: metadata_fields.computation_units
-            scope: national
+            scope: data
       - name: "computation_definitions"
         field:
             element: textarea
@@ -127,29 +127,17 @@ prose:
             label: "Other information"
             translation_key: metadata_fields.comments_limitations
             scope: national
-      - name: "national_data_update_url"
+      - name: "national_data_updated_date"
         field:
             element: hidden
             label: "Data last updated"
             translation_key: metadata_fields.national_data_update_url
             scope: national
-      - name: "national_data_update_url_text"
-        field:
-            element: hidden
-            label: "Data last updated"
-            translation_key: metadata_fields.national_data_update_url_text
-            scope: national
-      - name: "national_metadata_update_url"
+      - name: "national_metadata_updated_date"
         field:
             element: hidden
             label: "Metadata last updated"
             translation_key: metadata_fields.national_metadata_update_url
-            scope: national
-      - name: "national_metadata_update_url_text"
-        field:
-            element: hidden
-            label: "Metadata last updated"
-            translation_key: metadata_fields.national_metadata_update_url_text
             scope: national
        ######### Data Info #########
       - name: "reporting_status"

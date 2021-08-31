@@ -10,27 +10,28 @@
  * @return {String} Updated title
  */
 function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
-  var newTitle = currentTitle;
-  if (allTitles && allTitles.length > 0) {
-    var matchedTitle;
-    if (selectedUnit && selectedSeries) {
-      matchedTitle = allTitles.find(function(title) {
-        return title.unit === selectedUnit && title.series === selectedSeries;
-      });
-    }
-    if (!matchedTitle && selectedSeries) {
-      matchedTitle = allTitles.find(function(title) {
-        return title.series === selectedSeries;
-      });
-    }
-    if (!matchedTitle && selectedUnit) {
-      matchedTitle = allTitles.find(function(title) {
-        return title.unit === selectedUnit;
-      });
-    }
-    newTitle = (matchedTitle) ? matchedTitle.title : allTitles[0].title;
-  }
-  return newTitle;
+  var match = getMatchByUnitSeries(allTitles, selectedUnit, selectedSeries);
+  return (match) ? match.title : currentTitle;
+}
+
+/**
+ * @param {Array} graphLimits Objects containing 'unit' and 'title'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {Object|false} Graph limit object, if any
+ */
+function getGraphLimits(graphLimits, selectedUnit, selectedSeries) {
+  return getMatchByUnitSeries(graphLimits, selectedUnit, selectedSeries);
+}
+
+/**
+ * @param {Array} graphAnnotations Objects containing 'unit' or 'series' or more
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {Array} Graph annotations objects, if any
+ */
+function getGraphAnnotations(graphAnnotations, selectedUnit, selectedSeries) {
+  return getMatchesByUnitSeries(graphAnnotations, selectedUnit, selectedSeries);
 }
 
 /**
@@ -91,7 +92,6 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
     }
   }, this);
 
-  datasets.sort(function(a, b) { return (a.label > b.label) ? 1 : -1; });
   if (headline.length > 0) {
     dataset = makeHeadlineDataset(years, headline, defaultLabel);
     datasets.unshift(dataset);
@@ -287,6 +287,8 @@ function makeDataset(years, rows, combination, labelFallback, color, background,
     pointBackgroundColor: background,
     borderDash: border,
     borderWidth: 2,
+    headline: false,
+    pointStyle: 'circle',
     data: prepareDataForDataset(years, rows),
     excess: excess,
   });
@@ -311,7 +313,7 @@ function getBaseDataset() {
  * @return {string} Human-readable description of combo
  */
 function getCombinationDescription(combination, fallback) {
-  var keys = Object.keys(combination).sort();
+  var keys = Object.keys(combination);
   if (keys.length === 0) {
     return fallback;
   }
@@ -358,6 +360,8 @@ function makeHeadlineDataset(years, rows, label) {
     pointBorderColor: getHeadlineColor(),
     pointBackgroundColor: getHeadlineColor(),
     borderWidth: 4,
+    headline: true,
+    pointStyle: 'rect',
     data: prepareDataForDataset(years, rows),
   });
 }

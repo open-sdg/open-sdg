@@ -1,7 +1,98 @@
 <h1>Change Log</h1>
 
+## Unreleased
+
+* Fix for config builder loop issue #1296
+* Cleanup of favicon code #1295
+* Optional label for the horizontal (x) axis #1293
+* Left-aligned graph titles #1292
+* Option to hide single unit and/or single series #1288
+* Self-host Open Sans instead of using Google Webfonts #1285
+* Remove Sharethis option #1284
+* Add language-specific classes to the language-toggle options #1253
+* Cookie consent form #1235
+
+## 1.4.0
+
+* Optimization of getCombinationData #1269
+* Fixes related to data_start_values and series/units #1265, #1270
+* Graph limits fix #1260
+* Add slash after 'search' in URL #1256
+* Remove unused assets: tether.js, d3 #1234
+* Max width so that status will wrap on goal-by-target-vertical #1233
+* Fixes for some zoom issues on maps #1228
+* Aria attributes to improve accessibility of map search suggestions #1222
+* Square points for headline on line charts #1220
+* Handle searches with no input #1219
+* Include file for custom `<HEAD>` content #1215
+* Include file for easier overriding of body classes #1212
+* Bug fix: allow multiple multi-level disaggregations #1205
+* Remove the selection-bar from the disaggregation control dropdowns #1203
+* Hide first-element H1s in metadata for better display of global templates #1199
+* In reporting status display "Reported" instead of "Reported online" #1180
+* Metadata fields containing "_date" will be formatted as dates #1175
+* New date-only Git-based metadata fields open-sdg/sdg-build#244
+* Option for a single-icon high-contrast toggle #1171
+* Option to use series for chart titles when available #1168
+* Darker color for main nav #1142
+* Move goal header to include file #1128
+* Metadata and data forms and other improvements to config forms #1082
+
+## 1.3.0
+
+* Configurable chart headline colors #1145
+* High contrast fix: hover color for disaggregation values in dropdown #1122
+* Avoid highlighting entire div on focus #1120
+* High contrast fix: Remove hover styles for chart legend #1119
+* High contrast fix: Too-many-datasets message #1117
+* High contrast fix: Focus color on dropdowns #1116
+* High contrast fix: Fix reporting status type styling in goal-by-target-vertical #1112
+* Fix support for indicator ID searches in all languages #1110
+* Tweak the link/visited colors in high contrast mode #1104
+* New 'accessible' color-set option for optimal contrast #1103
+* Add gutter to sources tab #1096
+* Color adjustments for chart grids #1095
+* Switch to Lodash instead of Underscrore #1092
+* Bug fix - variable name in config builder #1091
+* Use https to avoid mixed content error on config forms #1090
+* Do not use empty titles in head #1089
+* Refactor and style updates for tags on goal pages #1088
+* Fix layout issues with odd-numbered indicator sources #1087
+* Reset button for config forms #1086
+* Updates to news layout markup/style #1078
+* Precision, decimal separator, and data display alterations #1073
+* Allow numeric disaggregation #1072
+* Translate 'Results found' #1071
+* Use configured zip filename #1061
+* High contrast fix: chart image downloads #1048
+* Reporting status accessibility fixes #1044
+* HTML 'lang' attribute should depend on current language #1042
+* Map data should use rounding function #1040
+* Do not change SVG images in high-contrast mode #1039, #1121
+* Show units in chart tooltips #1038
+* Improvements to hierarchical sorting of disaggregation controls #1037
+* Optimization of validParentsByChild #1036
+* Allow alternative unit and series columns #1027
+* Per-indicator label for COMPOSITE_BREAKDOWN column #1026
+* Changing series should affect the visible units/fields #1025
+* Dropdowns in the main menu #1016
+* Consistent color-assignments for disaggregations on chart #1011
+* Increase goal-by-target-vertical indentation #1008
+* Optional left-aligned header, increase awareness for search box, and search results-page tweaks #1002
+* Optional previous/next navigation for indicators and goals #1001
+* Allow alteration of DataTable configuration and fix tables for "binary" indicators #995
+* Support non-numeric years in maps #993
+* Standalone (non-SDG) indicators #988
+
+For data-related updates, see the [SDG Build changelog](https://github.com/open-sdg/sdg-build/blob/master/CHANGELOG.md).
+
 ## 1.2.0
 
+* Tweak page-content styles for goal pages #1034
+* Margin below descriptions on reporting-status and goals pages #1032
+* Fix bottom margin on frontpage goal tiles #1009
+* Support for goal content #1005
+* Tab focus design fixes #990
 * Disaggregation status tab #970
 * Different canvas fallback for mobile/desktop. #968
 * Remove aria-label from table headers #967
@@ -251,7 +342,7 @@ This is a major version upgrade and contains some breaking changes. Full technic
 * The `remotedatabaseurl` setting is no longer supported. Use `remote_data_prefix` instead.
 * The `custom_css` configuration option is deprecated. Override [the `_sass/custom.scss` file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
 * The H2 on indicator pages is now controlled by the `indicator_available` metadata field, rather than `graph_title`.
-* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](metadata-format.md#starting-values).
+* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](indicator-configuration.md#data_start_values).
 
 ## 0.10.0
 

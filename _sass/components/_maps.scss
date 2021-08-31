@@ -19,6 +19,9 @@
     }
 
     .leaflet-control-search {
+      #map-search-combobox {
+        display: inline;
+      }
       .search-button {
         background-image: none;
         font-size: 20px;
@@ -76,6 +79,12 @@
       border-radius: 5px;
       label {
         margin-right: 4px;
+      }
+    }
+    .leaflet-control-attribution {
+      @media only screen and (max-width: 480px) {
+        max-width: 100px;
+        text-align: right;
       }
     }
     .selection-legend {

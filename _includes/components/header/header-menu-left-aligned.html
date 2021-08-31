@@ -21,13 +21,14 @@
             {% include components/language-toggle.html %}
         </li>
         {%- endif -%}
+        {% include components/contrast-toggle.html %}
         </ul>
       </div>
     </div>
 
     <div class="navbar navbar-default menu-without-widgets" id="main-nav">
       {% include components/header/navigation-mobile.html %}
-      {% include navigation.html no_contrast=true no_language_toggle=true %}
+      {% include navigation.html no_contrast=true no_language_toggle=true dropdowns=true %}
     </div>
 
   </div>

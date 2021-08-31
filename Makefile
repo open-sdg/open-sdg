@@ -36,11 +36,9 @@ build: clean cache
 	# Build the Jekyll site.
 	cd site-starter && bundle install
 	cd site-starter && bundle exec jekyll build
-	# Install the Node.js depedencies.
-	cd tests && npm install
 
 build.docs:
-	pip install mkdocs
+	pip install -r docs/requirements.txt
 	mkdocs build
 
 serve: build
@@ -53,15 +51,19 @@ serve.detached: build
 serve.docs: build.docs
 	mkdocs serve
 
+test.install:
+	# Install the Node.js depedencies.
+	cd tests && npm install
+
 test.html: serve.detached
 	# HTML proofer.
 	cd site-starter && bundle exec htmlproofer --file-ignore '/documentation/' --disable-external ./_site
 
-test.features: serve.detached
+test.features: test.install serve.detached
 	# Cucumber.
 	cd tests && npx cucumber-js
 
-test.accessibility: serve.detached
+test.accessibility: test.install serve.detached
 	# Pa11y.
 	cd tests && npx pa11y-ci --config accessibility/pa11yci-desktop.json
 	cd tests && npx pa11y-ci --config accessibility/pa11yci-mobile.json
@@ -71,7 +73,7 @@ test.docs: build.docs
 	gem install html-proofer
 	htmlproofer site --disable_external
 
-test.only:
+test.only: test.install
 	cd site-starter && bundle exec htmlproofer --file-ignore '/documentation/' --disable-external ./_site
 	cd tests && npx cucumber-js
 

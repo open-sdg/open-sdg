@@ -25,6 +25,7 @@ var indicatorModel = function (options) {
   this.chartTitles = options.chartTitles;
   this.graphType = options.graphType;
   this.measurementUnit = options.measurementUnit;
+  this.xAxisLabel = options.xAxisLabel;
   this.startValues = options.startValues;
   this.showData = options.showData;
   this.selectedFields = [];
@@ -43,38 +44,65 @@ var indicatorModel = function (options) {
   this.stackedDisaggregation = options.stackedDisaggregation;
   this.graphAnnotations = options.graphAnnotations;
   this.indicatorDownloads = options.indicatorDownloads;
+  this.compositeBreakdownLabel = options.compositeBreakdownLabel;
+  this.precision = options.precision;
+  this.dataSchema = options.dataSchema;
+
+  this.initialiseUnits = function() {
+    if (this.hasUnits) {
+      this.units = helpers.getUniqueValuesByProperty(helpers.UNIT_COLUMN, this.data);
+      helpers.sortFieldValueNames(helpers.UNIT_COLUMN, this.units, this.dataSchema);
+      this.selectedUnit = this.units[0];
+      this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data, this.allColumns);
+      this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
+    }
+  }
+
+  this.refreshSeries = function() {
+    if (this.hasSerieses) {
+      if (helpers.GRAPH_TITLE_FROM_SERIES) {
+        this.chartTitle = this.selectedSeries;
+      }
+      this.data = helpers.getDataBySeries(this.allData, this.selectedSeries);
+      this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data).sort();
+      this.fieldsBySeries = helpers.fieldsUsedBySeries(this.serieses, this.data, this.allColumns);
+      this.dataHasSeriesSpecificFields = helpers.dataHasSeriesSpecificFields(this.fieldsBySeries);
+    }
+  }
+
+  this.initialiseFields = function() {
+    this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
+    this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
+    this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
+    this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
+  }
+
+  // Before continuing, we may need to filter by Series, so set up all the Series stuff.
+  this.allData = helpers.prepareData(this.data);
+  this.allColumns = helpers.getColumnsFromData(this.allData);
+  this.hasSerieses = helpers.SERIES_TOGGLE && helpers.dataHasSerieses(this.allColumns);
+  this.serieses = this.hasSerieses ? helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.allData) : [];
+  this.hasStartValues = Array.isArray(this.startValues) && this.startValues.length > 0;
+  if (this.hasSerieses) {
+    helpers.sortFieldValueNames(helpers.SERIES_COLUMN, this.serieses, this.dataSchema);
+    this.selectedSeries = this.serieses[0];
+    if (this.hasStartValues) {
+      this.selectedSeries = helpers.getSeriesFromStartValues(this.startValues) || this.selectedSeries;
+    }
+    this.refreshSeries();
+  }
+  else {
+    this.data = this.allData;
+    this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data).sort();
+  }
 
   // calculate some initial values:
-  this.years = helpers.getUniqueValuesByProperty(helpers.YEAR_COLUMN, this.data);
-  this.hasGeoData = helpers.dataHasGeoCodes(this.data);
-  if (helpers.dataHasUnits(this.data)) {
-    this.hasUnits = true;
-    this.units = helpers.getUniqueValuesByProperty(helpers.UNIT_COLUMN, this.data);
-    this.selectedUnit = this.units[0];
-    this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data);
-    this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
-  }
-  else {
-    this.hasUnits = false;
-  }
-  if (helpers.SERIES_TOGGLE && helpers.dataHasSerieses(this.data)) {
-    this.hasSerieses = true;
-    this.serieses = helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.data);
-    this.selectedSeries = this.serieses[0];
-    this.fieldsBySeries = helpers.fieldsUsedBySeries(this.serieses, this.data);
-    this.dataHasSeriesSpecificFields = helpers.dataHasSeriesSpecificFields(this.fieldsBySeries);
-  }
-  else {
-    this.hasSerieses = false;
-  }
-  this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData);
-  this.validParentsByChild = helpers.validParentsByChild(this.edgesData, this.fieldItemStates, this.data);
-  this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
-  this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
-  this.data = helpers.prepareData(this.data);
+  this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
+  this.hasUnits = helpers.dataHasUnits(this.allColumns);
+  this.initialiseUnits();
+  this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
-  this.hasStartValues = Array.isArray(this.startValues) && this.startValues.length > 0;
   this.colorAssignments = [];
 
   this.clearSelectedFields = function() {
@@ -111,17 +139,22 @@ var indicatorModel = function (options) {
   };
 
   this.updateSelectedSeries = function(selectedSeries) {
+    // Updating the Series is akin to loading a whole new indicator, so
+    // here we re-initialise most everything on the page.
     this.selectedSeries = selectedSeries;
-    this.getData({
-      updateFields: this.dataHasSeriesSpecificFields
-    });
+    this.refreshSeries();
+    this.clearSelectedFields();
+    this.initialiseUnits();
+    this.initialiseFields();
+    this.getData({ updateFields: true, changingSeries: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
   };
 
   this.getData = function(options) {
     options = Object.assign({
       initial: false,
-      updateFields: false
+      updateFields: false,
+      changingSeries: false,
     }, options);
 
     var headlineUnfiltered = helpers.getHeadline(this.selectableFields, this.data);
@@ -142,13 +175,13 @@ var indicatorModel = function (options) {
 
     // If this is the initial load, check for special cases.
     var selectionUpdateNeeded = false;
-    if (options.initial) {
+    if (options.initial || options.changingSeries) {
       // Decide on a starting unit.
       if (this.hasUnits) {
         var startingUnit = this.selectedUnit;
         if (this.hasStartValues) {
           var unitInStartValues = helpers.getUnitFromStartValues(this.startValues);
-          if (unitInStartValues) {
+          if (unitInStartValues && this.units.includes(unitInStartValues)) {
             startingUnit = unitInStartValues;
           }
         }
@@ -167,7 +200,7 @@ var indicatorModel = function (options) {
       }
 
       // Decide on a starting series.
-      if (this.hasSerieses) {
+      if (this.hasSerieses && !options.changingSeries) {
         var startingSeries = this.selectedSeries;
         if (this.hasStartValues) {
           var seriesInStartValues = helpers.getSeriesFromStartValues(this.startValues);
@@ -226,26 +259,25 @@ var indicatorModel = function (options) {
           this.selectedSeries,
           this.dataHasSeriesSpecificFields,
           this.selectedFields,
-          this.edgesData
+          this.edgesData,
+          this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
         showMap: this.showMap,
+        precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
       });
     }
 
-    if (selectionUpdateNeeded || options.unitsChangeSeries) {
+    if (selectionUpdateNeeded || options.updateFields) {
       this.updateFieldStates(this.selectedFields);
     }
 
     var filteredData = helpers.getDataBySelectedFields(this.data, this.selectedFields);
     if (this.hasUnits) {
       filteredData = helpers.getDataByUnit(filteredData, this.selectedUnit);
-    }
-    if (this.hasSerieses) {
-      filteredData = helpers.getDataBySeries(filteredData, this.selectedSeries);
     }
 
     filteredData = helpers.sortData(filteredData, this.selectedUnit);
@@ -281,11 +313,12 @@ var indicatorModel = function (options) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
-      graphLimits: this.graphLimits,
+      graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
-      graphAnnotations: this.graphAnnotations,
+      graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries),
       chartTitle: this.chartTitle,
       indicatorDownloads: this.indicatorDownloads,
+      precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
     });
   };
 };

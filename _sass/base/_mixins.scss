@@ -6,18 +6,6 @@
   -o-user-select: none;
 }
 
-@mixin tags {
-  padding: 0;
-  margin: 15px 10px 0 0;
-  list-style-type: none;
-  li {
-    margin-right: 6px;
-    padding: 4px 6px;
-    display: inline;
-    border-radius: 10px;
-  }
-}
-
 @mixin status {
   color: $color-dark;
   font-weight: normal;
@@ -25,21 +13,92 @@
   padding: 4px;
   font-size: 12px;
 
+  .status-inner {
+    padding: 0 2px;
+    border-radius: 5px;
+  }
+
   &.complete {
     color: $status-color-complete;
     border: $status-border-complete;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-complete;
+    }
   }
   &.inprogress{
     color: $status-color-inprogress;
     border: $status-border-inprogress;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-inprogress;
+    }
   }
   &.notstarted {
     color: $status-color-notstarted;
     border: $status-border-notstarted;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notstarted;
+    }
   }
   &.notapplicable {
     color: $status-color-notapplicable;
     border: $status-border-notapplicable;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notapplicable;
+    }
+  }
+}
+
+@mixin statusHighContrast {
+  &.complete {
+    border: $status-border-complete-highContrast;
+    background-color: $status-backgroundColor-complete-highContrast;
+    background: $status-backgroundColor-complete-highContrast;
+    color: $status-color-complete-highContrast !important;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-complete-highContrast !important;
+      color: $status-color-complete-highContrast !important;
+    }
+  }
+  &.inprogress{
+    border: $status-border-inprogress-highContrast;
+    background-color: $status-backgroundColor-inprogress-highContrast;
+    background: $status-backgroundColor-inprogress-highContrast;
+    color: $status-color-inprogress-highContrast;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-inprogress-highContrast !important;
+      color: $status-color-inprogress-highContrast;
+    }
+  }
+  &.notstarted {
+    border: $status-border-notstarted-highContrast;
+    background-color: $status-backgroundColor-notstarted-highContrast;
+    background: $status-backgroundColor-notstarted-highContrast;
+    color: $status-color-notstarted-highContrast !important;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notstarted-highContrast !important;
+      color: $status-color-notstarted-highContrast !important;
+    }
+  }
+  &.notapplicable {
+    border: $status-border-notapplicable-highContrast;
+    background-color: $status-backgroundColor-notapplicable-highContrast;
+    background: $status-backgroundColor-notapplicable-highContrast;
+    color: $status-color-notapplicable-highContrast !important;
+    .status-inner {
+      background-color: $status-backgroundColor-inner-notapplicable-highContrast !important;
+      color: $status-color-notapplicable-highContrast !important;
+    }
+  }
+}
+
+@mixin tags {
+  .tag {
+    @include status;
+    margin-right: 6px;
+    color: $tag-color;
+    border: $tag-border;
+    background: $tag-backgroundColor;
+    white-space: nowrap;
   }
 }
 
@@ -57,7 +116,10 @@
       }
     }
 
-    span {
+    .indicator-card-number,
+    // @deprecated start
+    span:not(.tags):not(.tag):not(.sr-only):not(.status-inner) {
+    // @deprecated end (use .indicator-card-number instead)
       display: block;
       margin-bottom: 0.5rem;
       font-weight: bold;
@@ -95,6 +157,25 @@
   outline-offset: 0 !important;
   box-shadow: 0 -2px $focusOutlineColor,0 4px $focusColor !important;
   text-decoration: none !important;
+}
+
+@mixin focusOutlineOnly {
+  background-color: $backgroundColor !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor !important;
+}
+
+@mixin focusHighContrast {
+  color: $focusColor-highContrast !important;
+  background-color: $focusBackgroundColor-highContrast !important;
+  box-shadow: 0 -2px $focusOutlineColor-highContrast,0 4px $focusColor-highContrast !important;
+}
+
+@mixin focusOutlineOnlyHighContrast {
+  background-color: $color-dark-highContrast !important;
+  box-shadow: none !important;
+  outline: 3px solid $focusOutlineColor-highContrast !important;
+  color: $text-color-highContrast !important;
 }
 
 @mixin preserveOriginalColors {
@@ -177,7 +258,67 @@
     color: $color-dark-highContrast;
   }
   button {
-    background-color: $color-medium-highContrast;
-    color: $color-light-highContrast;
+    &, &:focus {
+      background-color: $button-color-highContrast !important;
+      color: $button-foregroundColor-highContrast !important;
+      border-color: $button-foregroundColor-highContrast !important;
+    }
+    &:hover {
+      background-color: $button-color-hover-highContrast !important;
+    }
+  }
+}
+
+@mixin dropdownToggle {
+  margin: 0 0 2px 15px;
+  padding: 2px;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  border-bottom: 2px solid transparent;
+  color: $menu-link-color;
+  &:hover {
+    background: none;
+    border-bottom: 2px solid $menu-link-borderBottomColor-hover;
+  }
+}
+
+@mixin dropdownToggleHighContrast {
+  color: $color-light-highContrast !important;
+  background: $color-dark-highContrast !important;
+  &:hover {
+    color: $color-highlight-highContrast !important;
+    background: $color-dark-highContrast !important;
+  }
+  &:focus {
+    background: $focusBackgroundColor-highContrast !important;
+    color: $focusColor-highContrast !important;
+  }
+}
+
+@mixin dropdownMenu {
+  border-radius: 0;
+  a {
+    color: $menu-dropdownLink-color;
+  }
+  .active {
+    a {
+      background: none;
+      color: $menu-dropdownLink-color;
+      &:hover {
+        background: $menu-dropdownLink-backgroundColor-hover;
+      }
+    }
+  }
+}
+
+@mixin dropdownMenuHighContrast {
+  li {
+    a {
+      color: $color-dark-highContrast;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

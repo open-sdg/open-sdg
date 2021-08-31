@@ -1,15 +1,10 @@
 .table-hover {
   tbody tr:hover {
-    background: darken($backgroundColor, 12%);
+    background: $table-row-backgroundColor-hover;
   }
 }
 
 #page-content {
-
-  border-top: 1px solid $indicatorContent-horizontalRule-color;
-  border-bottom: 1px solid $indicatorContent-horizontalRule-color;
-  padding-top: 10px;
-
   table {
     margin-top: 5px;
     margin-bottom: 5px;

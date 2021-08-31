@@ -1,6 +1,7 @@
 // Top-level typography variables.
 // [fontSize|fontWeight|etc] - [...modifiers]
 $fontSize: 16px !default;
+$fontFamily: 'Open Sans', Helvetica, Arial, sans-serif !default;
 
 // Element-level typography variables.
 // [element] - [fontSize|fontWeight|etc] - [...modifiers]
@@ -8,6 +9,7 @@ $h1-fontSize: 36px !default;
 $h2-fontSize: 27px !default;
 $h3-fontSize: 24px !default;
 $leadCopy-fontSize: 22px !default;
+$smallText-fontSize: 85% !default;
 
 // Component-level typography variables.
 // [component] - [element] - [fontSize|fontWeight|etc] - [...modifiers]

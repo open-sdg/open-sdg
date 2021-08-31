@@ -55,8 +55,8 @@
       }).join('');
       var div = L.DomUtil.create('div', 'selection-legend');
       div.innerHTML = L.Util.template(controlTpl, {
-        lowValue: opensdg.dataRounding(this.plugin.valueRange[0]),
-        highValue: opensdg.dataRounding(this.plugin.valueRange[1]),
+        lowValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRange[0])),
+        highValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRange[1])),
         legendSwatches: swatches,
       });
       return div;
@@ -90,7 +90,7 @@
           name: selection.feature.properties.name,
           valueStatus: valueStatus,
           percentage: percentage,
-          value: value,
+          value: plugin.alterData(opensdg.dataRounding(value)),
         });
       }).join('');
 

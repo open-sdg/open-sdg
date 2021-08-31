@@ -2,6 +2,53 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.4.0
+
+Releasing soon
+
+* Configurable and multilingual logos
+* Accessibility improvements in the mapping feature
+* Usability improvements on line charts
+* Built-in forms for editing configuration, metadata, and data
+* Darker font color for main navigation
+* Optional single-icon high-contrast toggle
+* Simplify disaggregation controls
+* Improved handling of hierarchical disaggregation
+* Microsoft Word metadata input
+* SDMX metadata input and output
+* Added control over SDMX data output
+* PxWeb and JSON-Stat data inputs
+* Streamlined and simplified quick-start
+
+## 1.3.0
+
+11 March 2021
+
+* Multiple fixes and improvements for high-contrast mode
+* Fix for searching by indicator ID
+* New color scheme for charts, for optimal contrast
+* Fixes and improvements to the "Sources" tab
+* Remove horizontal chart grid lines, for cleaner chart display
+* Style improvements for display of "tags" on goal pages
+* Reset button for config forms
+* Style improvements for news layout
+* Control decimal places per indicator/unit/series
+* Control decimal separator site-wide
+* Accessibility fixes on the reporting status page
+* HTML 'lang' attribute reflects current language
+* Map data now uses rounding function
+* Better support for SVG images
+* Show units in chart tooltips
+* Improvements to hierarchical sorting of disaggregation controls
+* Improvements for SDMX input support
+* Series support: users see only units/fields for the selected series
+* Optional dropdowns in the main menu
+* Consistent color-assignments for disaggregations on chart
+* Optional left-aligned header
+* Improvements to search styles and behavior
+* Optional previous/next navigation for indicators and goals
+* Standalone indicators (such as for COVID-19 statistics)
+
 ## 1.2.0
 
 1 December 2020

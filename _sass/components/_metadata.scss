@@ -1,0 +1,12 @@
+#global, #national {
+    // Special styling for any H1 that is the first element.
+    // In the global metadata these tend to be duplications of
+    // the field name, so we make the decision here to hide them.
+    td > h1:nth-child(1) {
+        display: none;
+        // Additional special styling of immediately following H2s.
+        & + h2 {
+            margin-top: 0px;
+        }
+    }
+}

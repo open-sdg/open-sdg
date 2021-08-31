@@ -3,6 +3,7 @@
 @import "variables/typography";
 @import "base/grid";
 @import "base/lists";
+@import "base/locale";
 @import "base/mixins";
 @import "base/no_javascript";
 @import "base/tables";
@@ -10,6 +11,7 @@
 @import "base/links";
 @import "components/back_to_top";
 @import "components/breadcrumbs";
+@import "components/previous_next_links";
 @import "components/collapsible";
 @import "components/disclaimer";
 @import "components/download_buttons";
@@ -22,7 +24,10 @@
 @import "components/spacers";
 @import "components/tabs";
 @import "components/card";
+@import "components/tags";
 @import "components/high_contrast";
+@import "components/metadata";
+@import "components/cookies";
 @import "layouts/header";
 @import "layouts/footer";
 @import "layouts/indicator";
@@ -37,3 +42,4 @@
 @import "layouts/frontpage_alt";
 @import "layouts/goals";
 @import "layouts/config_bulder";
+@import "layouts/data_editor";
