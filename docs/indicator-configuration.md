@@ -235,7 +235,7 @@ The following fields affect the display of graphs. Currently only longitudinal g
 ### graph_annotations
 
 **_Optional_**: This setting can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator. Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
-    
+
     * `series`: If specified, the annotation will only display when the user is looking at this series.
     * `unit`: If specified, the annotation will only display when the user is looking at this unit of measurement.
     * `value`: Used for line annotations. The value at which to draw the line. For horizontal lines, this number corresponds to your actual data. For vertical lines, this number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
@@ -262,7 +262,7 @@ graph_annotations:
   - unit: passengers
     value: 1900
     borderColor: red
-```  
+```
 
 This is an example of using the `target_line` preset:
 
@@ -293,7 +293,7 @@ graph_limits:
 ### graph_stacked_disaggregation
 
 **_Optional_**: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
-        
+
 ```nohighlight
 graph_stacked_disaggregation: Age
 ```
@@ -325,7 +325,7 @@ graph_titles:
 ```
 
   Note: To use the currently-selected series as the chart title (where possible), set the site configuration option [graph_title_from_series](configuration.md#graph_title_from_series) to `true`.
-  
+
 ### graph_type
 
 **_Required_** (for statistical indicators): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
@@ -404,7 +404,7 @@ permalink: my-custom-indicator-path
 
 ### precision
 
-**_Optional_**: This setting is used to force a particular number of decimal places. 
+**_Optional_**: This setting is used to force a particular number of decimal places.
 
 Note: Normally trailing zeroes are removed from decimals before being displayed. For example, "23.60" will be displayed as "23.6".
 
@@ -470,3 +470,7 @@ tags:
   - My tag
   - My other tag
 ```
+
+### x_axis_label
+
+_Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this overrides the same setting in the site configuration.
