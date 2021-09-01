@@ -402,6 +402,20 @@ page_content: My additional information about the indicator
 permalink: my-custom-indicator-path
 ```
 
+### placeholder
+
+**_Optonal_**: This setting can be used to give the indicator some placeholder text, which is displayed on goal pages instead of a link to an indicator page. The result is that users will only see the placeholder text, and will not be viewing the indicator page. This also hides the indicator from any reporting status calculations, so it will not affect the Reporting Status page.
+
+```nohighlight
+placeholder: My placeholder text
+```
+
+Translation keys can also be used.
+
+```nohighlight
+placeholder: custom.my-placeholder-for-1-1-1
+```
+
 ### precision
 
 **_Optional_**: This setting is used to force a particular number of decimal places.
