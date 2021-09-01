@@ -46,8 +46,8 @@
             <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
             <span class="sr-only">{{ page.t.indicator.status }}</span>
             {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
-            {% endif %}
             {% include components/indicator/tags.html tags=indicator.tags %}
+            {% endif %}
           </div>
         {% endfor %}
       </div>

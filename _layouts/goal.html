@@ -29,10 +29,12 @@
     {% cycle 'add row' : '<div class="indicator-cards row no-gutters">', '', '', '' %}
         <div class="col-md-6 col-lg-3 {{ tag_classes }} goal-indicator">
           {% if indicator.placeholder and indicator.placeholder != '' %}
+          <div class="indicator-placeholder-wrapper">
             <span class="indicator-card-number">
               {{ indicator.number }}
             </span>
             {{ indicator.placeholder }}
+          </div>
           {% else %}
           <a href="{{ indicator.url }}">
             <span class="indicator-card-number">
@@ -41,8 +43,8 @@
             </span>
             {{ indicator.name }}
           </a>
-          {% endif %}
           {% include components/indicator/tags.html tags=indicator.tags %}
+          {% endif %}
         </div>
     {% cycle 'end row' : '', '', '', '</div>' %}
     {% endfor %}
