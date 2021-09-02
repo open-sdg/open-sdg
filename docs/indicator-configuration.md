@@ -320,7 +320,7 @@ graph_stacked_disaggregation: Age
     * `label`: The text to display on the annotation. Defaults to "2030 target".
     * `value`: The value at which to draw the line. This number corresponds to your actual data.
 
-Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/annotation_presets.js` file.
+Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
 
 ### graph_title
 
