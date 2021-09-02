@@ -40,10 +40,14 @@
             <h4>
               <span class="indicator-number"><span class="sr-only">{{ page.t.general.indicator }}</span> {{ indicator.number }}</span>
             </h4>
+            {% if indicator.placeholder and indicator.placeholder != '' %}
+            <span class="indicator-name">{{ indicator.placeholder }}</span>
+            {% else %}
             <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
             <span class="sr-only">{{ page.t.indicator.status }}</span>
             {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
             {% include components/indicator/tags.html tags=indicator.tags %}
+            {% endif %}
           </div>
         {% endfor %}
       </div>
