@@ -12,6 +12,7 @@
   data-charttitle="{{ page.indicator.graph_title }}"
   data-charttitles="{{ page.indicator.graph_titles | jsonify | xml_escape }}"
   data-measurementunit="{{ page.indicator.computation_units }}"
+  data-xaxislabel="{{ page.indicator.x_axis_label | t | default: site.x_axis_label | t }}"
   data-showdata="{{ show_data }}"
   data-graphtype="{{ page.indicator.graph_type }}"
   data-geocoderegex="{{ page.indicator.data_geocode_regex }}"

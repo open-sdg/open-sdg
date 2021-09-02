@@ -2,7 +2,7 @@
 
 <h2>{{ include.title }}</h2>
 {%- for goalreport in include.goals -%}
-{%- assign goal = goalreport.goal | downcase | sdg_lookup -%}
+{%- assign goal = goalreport.goal | strip | sdg_lookup -%}
 <div class="goal reporting-status-item">
     <div class="frame goal-tiles">
         <a href="{{ goal.url }}">

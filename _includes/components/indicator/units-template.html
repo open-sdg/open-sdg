@@ -1,5 +1,7 @@
 <script type="text/template" id="units_template">
-  <% if(units.length) { %>
+  {% if site.hide_single_unit %}
+  <% if(units.length > 1) { %>
+  {% endif %}
     <h4>{{ page.t.indicator.unit_of_measurement }}</h4>
     <fieldset>
       <legend class="sr-only">{{ page.t.indicator.unit_of_measurement }}</legend>
@@ -8,5 +10,7 @@
         <label><input type="radio" name="unit" value="<%=unitsItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(unitsItem)%></label>
       <% }); %>
     </fieldset>
+  {% if site.hide_single_unit %}
   <% } %>
+  {% endif %}
 </script>

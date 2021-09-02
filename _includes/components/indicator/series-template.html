@@ -1,5 +1,7 @@
 <script type="text/template" id="series_template">
-  <% if(serieses.length) { %>
+  {% if site.hide_single_series %}
+  <% if(serieses.length > 1) { %>
+  {% endif %}
     <h4>{{ page.t.indicator.series }}</h4>
     <fieldset>
       <legend class="sr-only">{{ page.t.indicator.series }}</legend>
@@ -8,5 +10,7 @@
         <label><input type="radio" name="series" value="<%=seriesItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(seriesItem)%></label>
       <% }); %>
     </fieldset>
+  {% if site.hide_single_series %}
   <% } %>
+  {% endif %}
 </script>

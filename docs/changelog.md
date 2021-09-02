@@ -2,8 +2,17 @@
 
 ## Unreleased
 
+* Fix for empty values in map ranges #1311
+* Fix for config builder loop issue #1296
+* Cleanup of favicon code #1295
+* Optional label for the horizontal (x) axis #1293
+* Left-aligned graph titles #1292
+* Option to hide single unit and/or single series #1288
 * Self-host Open Sans instead of using Google Webfonts #1285
 * Remove Sharethis option #1284
+* Add language-specific classes to the language-toggle options #1253
+* Cookie consent form #1235
+* Allow non-numeric goal IDs #1074
 
 ## 1.4.0
 
