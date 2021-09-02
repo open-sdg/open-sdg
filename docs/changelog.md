@@ -5,6 +5,7 @@
 * Fix for empty values in map ranges #1311
 * Fix for config builder loop issue #1296
 * Cleanup of favicon code #1295
+* Lower tooltip opacity on charts #1294
 * Optional label for the horizontal (x) axis #1293
 * Left-aligned graph titles #1292
 * Option to hide single unit and/or single series #1288
