@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Fix for empty values in map ranges #1311
 * Fix for config builder loop issue #1296
 * Cleanup of favicon code #1295
 * Optional label for the horizontal (x) axis #1293
