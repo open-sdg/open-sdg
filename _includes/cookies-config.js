@@ -36,40 +36,7 @@ var klaroConfig = {
             optOut: false,
             onlyOnce: true,
         },
-        {% if site.analytics.ga_prod and site.analytics.ga_prod != '' %}
-        {
-            name: 'google-analytics',
-            default: false,
-            purposes: ['analytics'],
-            cookies: ['_gat', '_gid', 'ga'],
-            required: false,
-            optOut: false,
-            onlyOnce: false,
-        },
-        {% endif %}
-        {% if site.analytics.ua and site.analytics.ua != '' %}
-        {
-            name: 'google-analytics',
-            default: false,
-            purposes: ['analytics'],
-            cookies: ['_gat', '_gid', 'ga'],
-            required: false,
-            optOut: false,
-            onlyOnce: false,
-        },
-        {% endif %}
-        {% if site.analytics.gtag and site.analytics.gtag != '' %}
-        {
-            name: 'google-analytics',
-            default: false,
-            purposes: ['analytics'],
-            cookies: ['_gat', '_gid', 'ga'],
-            required: false,
-            optOut: false,
-            onlyOnce: false,
-        },
-        {% endif %}
-        {% if site.analytics.gtm and site.analytics.gtm != '' %}
+        {% if (site.analytics.ga_prod and site.analytics.ga_prod != '') or (site.analytics.ua and site.analytics.ua != '') or (site.analytics.gtag and site.analytics.gtag != '')  %}
         {
             name: 'google-analytics',
             default: false,
