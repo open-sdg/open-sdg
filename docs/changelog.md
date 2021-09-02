@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Fix for empty values in map ranges #1311
+* Allow for placeholder indicators #1310
 * Fix for config builder loop issue #1296
 * Cleanup of favicon code #1295
 * Lower tooltip opacity on charts #1294
