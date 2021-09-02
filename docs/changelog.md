@@ -11,6 +11,7 @@
 * Remove Sharethis option #1284
 * Add language-specific classes to the language-toggle options #1253
 * Cookie consent form #1235
+* Allow non-numeric goal IDs #1074
 
 ## 1.4.0
 
