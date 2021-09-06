@@ -15,6 +15,8 @@ In order to display the new indicator set on an Open SDG platform, the following
 
 2. Make changes to data and metadata files for indicators that were replaced, revised, added or deleted through the review process:
 
-  - For deleted indicators, delete the data and metadata files.
+  - For replaced and revised indicators, update the data and metadata accordingly. If the change means you no longer report the indicator, delete the data file.
   - For added indicators, add a metadata file and where data is available, add a data file.
-  - For revised and replaced indicators, update the metadata and data accordingly. If the change means you no longer report the indicator, delete the data file.
+  - For deleted indicators, delete the data and metadata files.
+  
+  
