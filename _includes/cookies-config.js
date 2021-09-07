@@ -1,3 +1,6 @@
+{% assign analytics_ga_prod = site.analytics.ga_prod and site.analytics.ga_prod != '' %}
+{% assign analytics_ua = site.analytics.ua and site.analytics.ua != '' %}
+{% assign analytics_gtag = site.analytics.gtag and site.analytics.gtag != '' %}
 var klaroConfig = {
     version: 1,
     elementID: 'klaro',
@@ -36,7 +39,7 @@ var klaroConfig = {
             optOut: false,
             onlyOnce: true,
         },
-        {% if (site.analytics.ga_prod and site.analytics.ga_prod != '') or (site.analytics.ua and site.analytics.ua != '') or (site.analytics.gtag and site.analytics.gtag != '')  %}
+        {% if analytics_ga_prod or analytics_ua or analytics_gtag  %}
         {
             name: 'google-analytics',
             default: false,
