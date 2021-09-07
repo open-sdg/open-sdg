@@ -234,7 +234,9 @@ The following fields affect the display of graphs. Currently only longitudinal g
 
 ### graph_annotations
 
-**_Optional_**: This setting can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator. Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
+**_Optional_**: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
+
+This setting can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator (though, again, there is a separate `graph_target_lines` setting specifically designed for target lines). Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
 
     * `series`: If specified, the annotation will only display when the user is looking at this series.
     * `unit`: If specified, the annotation will only display when the user is looking at this unit of measurement.
@@ -290,6 +292,17 @@ graph_limits:
     maximum: 2000
 ```
 
+### graph_series_breaks
+
+**_Optional_**: This setting can be used to add "series break" annotations (ie, gaps in the years) to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
+
+    * `series`: If specified, the series break will only display when the user is looking at this series.
+    * `unit`: If specified, the series break will only display when the user is looking at this unit of measurement.
+    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `value`: The value at which to draw the line. This number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart).
+
+Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
+
 ### graph_stacked_disaggregation
 
 **_Optional_**: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
@@ -297,6 +310,17 @@ graph_limits:
 ```nohighlight
 graph_stacked_disaggregation: Age
 ```
+
+### graph_target_lines
+
+**_Optional_**: This setting can be used to add "target line" annotations to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
+
+    * `series`: If specified, the target line will only display when the user is looking at this series.
+    * `unit`: If specified, the target line will only display when the user is looking at this unit of measurement.
+    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `value`: The value at which to draw the line. This number corresponds to your actual data.
+
+Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
 
 ### graph_title
 
