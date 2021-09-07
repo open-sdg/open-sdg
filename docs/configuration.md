@@ -53,6 +53,15 @@ Notes:
 1. The `ua` option was previously called `ga_prod` which also still works.
 1. As an alternative to using these settings, you can alternatively override the `_includes/head-custom.html` and/or `_includes/scripts-custom.html` files in order to insert any Google Analytics snippets you might need.
 1. The `ua` option also captures certain custom events, such as the clicking of the contrast toggle button.
+1. If you are using the `cookie_consent_form` setting, these analytics will be automatically included in the cookie consent form. This allows the user to decline the setting of the following cookies: "_gat", "_gid", and "ga". If using the `gtag` approach, then some additional cookies may be set (see the [official documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage#gtagjs_google_analytics_4_-_cookie_usage)). You can specify these with an `extra_cookies` option, for example:
+
+```
+analytics:
+  gtag: G-xxxxxxxx
+  extra_cookies:
+    - _ga_123456789
+    - _gac_gb_123456789
+```
 
 ### breadcrumbs
 

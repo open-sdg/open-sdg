@@ -41,7 +41,11 @@ var klaroConfig = {
             name: 'google-analytics',
             default: false,
             purposes: ['analytics'],
+            {% if site.analytics.extra_cookies %}
+            cookies: [].concat(['_gat', '_gid', 'ga'], {{ site.analytics.extra_cookies | jsonify }}),
+            {% else %}
             cookies: ['_gat', '_gid', 'ga'],
+            {% endif %}
             required: false,
             optOut: false,
             onlyOnce: false,
