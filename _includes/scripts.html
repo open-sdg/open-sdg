@@ -32,17 +32,15 @@
 {% include multilingual-js.html key="cookies.cookie_settings" %}
 {% endif %}
 
-<script {% if site.cookie_consent_form.enabled %}type="text/plain" data-type="application/javascript" data-name="google-analytics"{% endif %}>
-  {% include assets/js/googleAnalytics.js %}
-</script>
-
-{% unless site.cookie_consent_form.enabled %}
-  {% if site.analytics.ga_prod and site.analytics.ga_prod != '' %}
-    <script>
-      initialiseGoogleAnalytics();
-    </script>
-  {% endif %}
-{% endunless %}
+{% if site.analytics.ua and site.analytics.ua != '' %}
+  {% include components/analytics/ga-universal.html %}
+{% endif %}
+{% if site.analytics.ga_prod and site.analytics.ga_prod != '' %}
+  {% include components/analytics/ga-universal.html %}
+{% endif %}
+{% if site.analytics.gtm and site.analytics.gtm != '' %}
+  {% include components/analytics/ga-gtm-noscript.html %}
+{% endif %}
 
 {% include multilingual-js.html key="general.hide" %}
 {% include multilingual-js.html key="search.search" %}
