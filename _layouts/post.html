@@ -22,9 +22,9 @@ layout: default
         </div>
 
         {% if page.categories %}
-        <ul class="post-categories">
+        <ul class="post-categories small-text">
           {% for category in page.categories %}
-          <li class="warning">
+          <li>
             {% if category_links %}
             {% assign category_translated = category | t %}
             <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category_translated }}">

@@ -117,7 +117,24 @@
     border: $tag-border;
     background: $tag-backgroundColor;
     white-space: nowrap;
+    a {
+      color: $tag-color;
+      text-decoration: underline;
+    }
   }
+}
+
+@mixin postCategories {
+  padding-left: 0;
+  list-style-type: none;
+  li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
+
+@mixin postCategoriesHighContrast {
+  @include postCategories;
 }
 
 @mixin indicatorcards {

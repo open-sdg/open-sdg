@@ -1,0 +1,11 @@
+.layout-post {
+  .post-categories {
+    @include postCategories;
+  }
+
+  &.contrast-high {
+    .post-categories {
+      @include postCategoriesHighContrast;
+    }
+  }
+}
