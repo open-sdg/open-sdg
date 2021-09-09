@@ -568,6 +568,10 @@ body.contrast-high {
   #dataset-size-warning {
     color: $color-dark-highContrast;
   }
+
+  #main-content.goal-indicators {
+    @include indicatorcardsHighContrast;
+  }
 }
 
 .layout-indicator {
