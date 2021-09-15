@@ -129,7 +129,14 @@
   list-style-type: none;
   li {
     display: inline-block;
-    margin-right: 20px;
+    &:after {
+      content: ',';
+      padding-right: 1ch;
+    }
+    &:last-child:after {
+      content: '';
+      padding-right: 0;
+    }
   }
 }
 

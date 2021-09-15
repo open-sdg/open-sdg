@@ -15,28 +15,29 @@ layout: default
     <div class="{% if category_links %}col-md-9 push-md-3{% else %}col-md-12{% endif %}">
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
         <h1 class="post-title" itemprop="name headline">{{ page.title | t }}</h1>
-        <p><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | t_date: "standard" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+        <div class="post-header">
+          <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | t_date: "standard" }}</time>
+          {%- if page.categories -%}
+          <ul class="post-categories">
+          {%- for category in page.categories -%}
+            <li>
+            {%- if category_links -%}
+            {%- assign category_translated = category | t -%}
+            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category_translated }}">
+            {%- endif -%}
+            {{ category | t }}{%- if category_links -%}</a>{%- endif -%}
+            </li>
+          {%- endfor -%}
+          </ul>
+          {%- endif -%}
+          {%- if page.author -%}
+          <span class="post-author" itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+          {%- endif -%}
+        </div>
 
         <div class="post-content" itemprop="articleBody">
           {{ content }}
         </div>
-
-        {% if page.categories %}
-        <ul class="post-categories small-text">
-          {% for category in page.categories %}
-          <li>
-            {% if category_links %}
-            {% assign category_translated = category | t %}
-            <a href="{{ page.baseurl }}categories/#{{ category | slugize }}" title="{{ page.t.post.view_all_in_category | replace_first: '%category_name', category_translated }}">
-            {% endif %}
-            {{ category | t }}
-            {% if category_links %}
-            </a>
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
       </article>
     </div>
     {% if category_links %}
