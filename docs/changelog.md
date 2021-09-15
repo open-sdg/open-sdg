@@ -1,6 +1,6 @@
 <h1>Change Log</h1>
 
-## Unreleased
+## 1.5.0
 
 * Fix for empty values in map ranges #1311
 * Allow for placeholder indicators #1310

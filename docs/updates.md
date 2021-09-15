@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 1.5.0
 
-Releasing soon
+15 September 2021
 
 * Cookie consent form
 * New ways to embed Google Analytics
