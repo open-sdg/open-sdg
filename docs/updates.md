@@ -2,9 +2,26 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.5.0
+
+15 September 2021
+
+* Cookie consent form
+* New ways to embed Google Analytics
+* Remove 2 third-party services: Google Webfonts and ShareThis
+* Option to hide units-of-measurement toggle when there is only one
+* Option to hide series toggle when there is only one
+* Left-aligned graph titles
+* Optional graph labels for the X axis
+* More transparency for graph tooltips
+* Setting for 2030 target lines on graphs
+* Setting for series break lines on graphs
+* Support for unlinked "placeholder" indicators
+* Support for non-numeric goal IDs
+
 ## 1.4.0
 
-Releasing soon
+15 July 2021
 
 * Configurable and multilingual logos
 * Accessibility improvements in the mapping feature
