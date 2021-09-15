@@ -1,11 +1,8 @@
-.layout-goal, .layout-goal-by-target, .layout-goal-by-target-vertical {
+.layout-goal {
   #page-content {
     margin-top: -20px;
     margin-bottom: 10px;
   }
-}
-
-.layout-goal {
   .tags {
     display: inline-block;
     margin-top: 0;
@@ -15,43 +12,11 @@
   .indicator-placeholder-wrapper {
     padding: 1rem;
   }
-}
 
-body.contrast-high {
-  .goal-indicators {
-    div {
-      span {
-        border-color: $color-light-highContrast !important;
-        color: $color-light-highContrast !important;
-      }
+  &.contrast-high {
+    .status {
+      color: pink !important;
+      @include statusHighContrast;
     }
-    .indicator-cards {
-      &.target {
-        color: $color-light-highContrast !important;
-      }
-      span.status, .tags .tag {
-        color: $color-dark-highContrast !important;
-      }
-
-      span.status{
-        &.complete,
-        &.notapplicable{
-          color: $color-dark-highContrast !important;
-        }
-
-        &.notstarted,
-        &.inprogress{
-          color: $color-dark-highContrast !important;
-        }
-      }
-
-      span.status.notstarted{
-        color: $color-light-highContrast !important;
-        border: 1px solid $color-light-highContrast !important;
-      }
-    }
-  }
-  #main-content.goal-indicators.goal-by-target .indicator-cards a{
-    color: $color-highlight-highContrast;
   }
 }

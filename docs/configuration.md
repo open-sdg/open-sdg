@@ -326,6 +326,14 @@ email_contacts:
 environment: staging
 ```
 
+### favicons
+
+_Optional_: This setting controls the favicon markup. Possible settings are `legacy` and `favicon.io`. We recommend using `favicon.io` and will default to this in the future. But currently the default is `legacy` if omitted.
+
+```nohighlight
+favicons: favicon.io
+```
+
 ### footer_language_toggle
 
 _Optional_: This setting controls the type of language toggle to be used in the footer. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `none`.
