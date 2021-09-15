@@ -29,12 +29,7 @@
         <script src="{{ site.baseurl }}/assets/js/lib/classList.js"></script>
         <![endif]-->
 
-        <!-- Favicons ================================================== -->
-        <!-- 128x128 -->
-        <link rel="shortcut icon" type="image/ico" href="{{ site.baseurl }}/assets/img/favicons/favicon.ico">
-        <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicons/favicon.png"><!-- 192x192, as recommended for Android
-        http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
-        -->
+        {% include components/favicons.html %}
 
         {% assign cache_bust = site.time | date: "%Y%m%d%H%M%S" %}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" crossorigin="">
@@ -48,11 +43,19 @@
         <link rel="stylesheet" href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css'  crossorigin=""/>
         <link rel="stylesheet" href="https://bowercdn.net/c/leaflet.zoomhome-latest/dist/leaflet.zoomhome.css"  crossorigin=""/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css" crossorigin="">
+        <link rel="stylesheet" href="https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css" crossorigin=""/>
         {%- if site.custom_css -%}
           {%- for custom_css_file in site.custom_css -%}
             <link rel="stylesheet" href="{{ site.baseurl }}{{ custom_css_file }}?v={{ cache_bust }}">
           {%- endfor -%}
         {%- endif -%}
+
+        {% if site.analytics.gtag and site.analytics.gtag != '' %}
+          {% include components/analytics/ga-gtag.html %}
+        {% endif %}
+        {% if site.analytics.gtm and site.analytics.gtm != '' %}
+          {% include components/analytics/ga-gtm.html %}
+        {% endif %}
 
         {% include head-custom.html %}
     </head>

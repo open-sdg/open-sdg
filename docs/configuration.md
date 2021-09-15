@@ -26,11 +26,41 @@ accessible_tabs: false
 
 ### analytics
 
-_Optional_: This setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](analytics.md) page.
+_Optional_: This setting can be used to facilitate the installation of Google Analytics. You can do this in multiple ways:
+
+* ua (analytics.js)
+* gtag (gtag.js)
+* gtm (Google Tag Manager)
+
+Google provides a number that would be used in each of these cases. The numbers typically have the following prefixes:
+
+* UA-xxxxxxxx
+* G-xxxxxxxx
+* GTM-xxxxxxxx
+
+To use this setting, put the appropriate number next to the corresponding item. For example:
 
 ```nohighlight
 analytics:
-  ga_prod: 'paste ID here'
+  ua: UA-xxxxxxxx
+  gtag: G-xxxxxxxx
+  gtm: GTM-xxxxxxxx
+```
+
+Notes:
+
+1. The don't need to use all of them. You can use 1, 2, or none at all.
+1. The `ua` option was previously called `ga_prod` which also still works.
+1. As an alternative to using these settings, you can alternatively override the `_includes/head-custom.html` and/or `_includes/scripts-custom.html` files in order to insert any Google Analytics snippets you might need.
+1. The `ua` option also captures certain custom events, such as the clicking of the contrast toggle button.
+1. If you are using the `cookie_consent_form` setting, these analytics will be automatically included in the cookie consent form. This allows the user to decline the setting of the following cookies: "_gat", "_gid", and "ga". If using the `gtag` approach, then some additional cookies may be set (see the [official documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage#gtagjs_google_analytics_4_-_cookie_usage)). You can specify these with an `extra_cookies` option, for example:
+
+```
+analytics:
+  gtag: G-xxxxxxxx
+  extra_cookies:
+    - _ga_123456789
+    - _gac_gb_123456789
 ```
 
 ### breadcrumbs
@@ -100,6 +130,17 @@ Example:
 
 ```nohighlight
 contrast_type: single
+```
+
+### cookie_consent_form
+
+_Optional_: This setting allows you to turn on a cookie consent form that users will see as soon as they visit the site, which allows users to control whether the certain services and cookies are used. See the [cookies and privacy documentation](cookies.md) for more details.
+
+Here is an example showing the available options and their default values:
+
+```nohighlight
+cookie_consent_form:
+  enabled: false
 ```
 
 ### country
@@ -283,6 +324,14 @@ email_contacts:
 
 ```nohighlight
 environment: staging
+```
+
+### favicons
+
+_Optional_: This setting controls the favicon markup. Possible settings are `legacy` and `favicon.io`. We recommend using `favicon.io` and will default to this in the future. But currently the default is `legacy` if omitted.
+
+```nohighlight
+favicons: favicon.io
 ```
 
 ### footer_language_toggle
@@ -492,6 +541,22 @@ _Optional_: This setting can be used to hide any metadata fields that are empty.
 
 ```nohighlight
 hide_empty_metadata: true
+```
+
+### hide_single_series
+
+_Optional_: This setting can be used to hide the "Series" toggle on indicator pages whenever there is only a single series to chose from.
+
+```nohighlight
+hide_single_series: true
+```
+
+### hide_single_unit
+
+_Optional_: This setting can be used to hide the "Unit" toggle whenever there is only a single unit to chose from.
+
+```nohighlight
+hide_single_unit: true
 ```
 
 ### indicator_config_form
@@ -823,3 +888,7 @@ _Optional_: This setting, if true, will run a validation of each indicator's con
 ### validate_site_config
 
 _Optional_: This setting, if true, will run a validation of the site configuration during the site build. This defaults to `false`.
+
+### x_axis_label
+
+_Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this is also available on the configuration of individual indicators, where it will override this setting.

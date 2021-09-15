@@ -276,7 +276,11 @@ var indicatorView = function (model, options) {
       selectedUnit: selectedUnit
     }));
 
-    if(!units.length) {
+    {% if site.hide_single_unit %}
+    if (units.length <= 1) {
+    {% else %}
+    if (units.length < 1) {
+    {% endif %}
       $(this._rootElement).addClass('no-units');
     }
   };
@@ -293,7 +297,11 @@ var indicatorView = function (model, options) {
         selectedSeries: selectedSeries
       }));
 
-      if(!serieses.length) {
+      {% if site.hide_single_series %}
+      if (serieses.length <= 1) {
+      {% else %}
+      if (serieses.length < 1) {
+      {% endif %}
         $(this._rootElement).addClass('no-serieses');
       }
     }
@@ -416,6 +424,13 @@ var indicatorView = function (model, options) {
             ticks: {
               fontColor: tickColor,
             },
+            scaleLabel: {
+              display: this._model.xAxisLabel ? true : false,
+              labelString: this._model.xAxisLabel,
+              fontColor: tickColor,
+              fontSize: 14,
+              fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
+            }
           }],
           yAxes: [{
             gridLines: {
@@ -434,6 +449,8 @@ var indicatorView = function (model, options) {
               display: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
               labelString: this._model.selectedUnit ? translations.t(this._model.selectedUnit) : this._model.measurementUnit,
               fontColor: tickColor,
+              fontSize: 14,
+              fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
             }
           }]
         },
@@ -462,6 +479,7 @@ var indicatorView = function (model, options) {
           scaler: {}
         },
         tooltips: {
+          backgroundColor: 'rgba(0,0,0,0.7)',
           callbacks: {
             label: function(tooltipItems, data) {
               return data.datasets[tooltipItems.datasetIndex].label + ': ' + view_obj.alterDataDisplay(tooltipItems.yLabel, data, 'chart tooltip');

@@ -1,0 +1,15 @@
+{% assign use_favicon_io = true %}
+{% comment %}@deprecated start{% endcomment %}
+{% if site.favicons != 'favicon.io' %}
+    {% assign use_favicon_io = false %}
+{% endif %}
+{% comment %}@deprecated end{% endcomment %}
+{% if use_favicon_io %}
+<link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/assets/img/favicons/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/img/favicons/favicon.ico" />
+{% else %}
+<link rel="shortcut icon" type="image/ico" href="{{ site.baseurl }}/assets/img/favicons/favicon.ico">
+<link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/img/favicons/favicon.png">
+{% endif %}

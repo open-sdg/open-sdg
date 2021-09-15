@@ -4,11 +4,7 @@
     margin-bottom: 25px;
 
     .post-categories {
-      list-style-type: none;
-      li {
-        display: inline-block;
-        margin-right: 20px;
-      }
+      @include postCategories;
     }
 
     .post-title {
@@ -19,6 +15,12 @@
     .post-date {
       float: left;
       margin-right: 40px;
+    }
+  }
+
+  &.contrast-high {
+    .post-categories {
+      @include postCategoriesHighContrast;
     }
   }
 }

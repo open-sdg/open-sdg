@@ -1,0 +1,16 @@
+.cookie-settings {
+    cursor: pointer;
+}
+.klaro {
+    .cookie-notice {
+        .cn-body {
+            strong {
+                text-transform: lowercase;
+            }
+            .cn-changes {
+                text-decoration: none !important;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -234,23 +234,25 @@ The following fields affect the display of graphs. Currently only longitudinal g
 
 ### graph_annotations
 
-**_Optional_**: This setting can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator. Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
-    
-* `series`: If specified, the annotation will only display when the user is looking at this series.
-* `unit`: If specified, the annotation will only display when the user is looking at this unit of measurement.
-* `value`: Used for line annotations. The value at which to draw the line. For horizontal lines, this number corresponds to your actual data. For vertical lines, this number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-* `endValue`: Used for line annotations. Optional value at which the line ends. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-* `description`: Either a string or function returning a description of the annotation. This is necessary for accessibility, as the description is read by screenreaders. The description does not appear visually on the page.
-* `mode`: Can be "vertical" or "horizontal". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-* `borderColor`: The color of the line/box. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-* `borderDash`: The type of dashes for a line. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-* `label`: Additional settings for controlling the label:
-* `position`: Can be "top", "bottom", "left", "right", or "center". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-  * `content`: The text of the label (can be a translation key). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-  * `fontColor`: The color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-  * `backgroundColor`: The background color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-* `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js).
-* `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
+**_Optional_**: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
+
+This setting can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator (though, again, there is a separate `graph_target_lines` setting specifically designed for target lines). Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
+
+    * `series`: If specified, the annotation will only display when the user is looking at this series.
+    * `unit`: If specified, the annotation will only display when the user is looking at this unit of measurement.
+    * `value`: Used for line annotations. The value at which to draw the line. For horizontal lines, this number corresponds to your actual data. For vertical lines, this number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `endValue`: Used for line annotations. Optional value at which the line ends. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `description`: Either a string or function returning a description of the annotation. This is necessary for accessibility, as the description is read by screenreaders. The description does not appear visually on the page.
+    * `mode`: Can be "vertical" or "horizontal". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `borderColor`: The color of the line/box. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `borderDash`: The type of dashes for a line. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `label`: Additional settings for controlling the label:
+        * `position`: Can be "top", "bottom", "left", "right", or "center". See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+        * `content`: The text of the label (can be a translation key). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+        * `fontColor`: The color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+        * `backgroundColor`: The background color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
+    * `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js).
+    * `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
 
 This is an example of using annotations
 
@@ -262,7 +264,7 @@ graph_annotations:
   - unit: passengers
     value: 1900
     borderColor: red
-```  
+```
 
 This is an example of using the `target_line` preset:
 
@@ -284,19 +286,41 @@ graph_annotations:
 graph_limits:
   - unit: tons
     minimum: 2
-    maximum: 20
+    maximimum: 20
   - unit: passengers
     minimum: 200
     maximum: 2000
 ```
 
+### graph_series_breaks
+
+**_Optional_**: This setting can be used to add "series break" annotations (ie, gaps in the years) to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
+
+    * `series`: If specified, the series break will only display when the user is looking at this series.
+    * `unit`: If specified, the series break will only display when the user is looking at this unit of measurement.
+    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `value`: The value at which to draw the line. This number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart).
+
+Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
+
 ### graph_stacked_disaggregation
 
 **_Optional_**: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
-        
+
 ```nohighlight
 graph_stacked_disaggregation: Age
 ```
+
+### graph_target_lines
+
+**_Optional_**: This setting can be used to add "target line" annotations to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
+
+    * `series`: If specified, the target line will only display when the user is looking at this series.
+    * `unit`: If specified, the target line will only display when the user is looking at this unit of measurement.
+    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `value`: The value at which to draw the line. This number corresponds to your actual data.
+
+Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
 
 ### graph_title
 
@@ -325,7 +349,7 @@ graph_titles:
 ```
 
   Note: To use the currently-selected series as the chart title (where possible), set the site configuration option [graph_title_from_series](configuration.md#graph_title_from_series) to `true`.
-  
+
 ### graph_type
 
 **_Required_** (for statistical indicators): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
@@ -402,9 +426,23 @@ page_content: My additional information about the indicator
 permalink: my-custom-indicator-path
 ```
 
+### placeholder
+
+**_Optonal_**: This setting can be used to give the indicator some placeholder text, which is displayed on goal pages instead of a link to an indicator page. The result is that users will only see the placeholder text, and will not be viewing the indicator page. This also hides the indicator from any reporting status calculations, so it will not affect the Reporting Status page.
+
+```nohighlight
+placeholder: My placeholder text
+```
+
+Translation keys can also be used.
+
+```nohighlight
+placeholder: custom.my-placeholder-for-1-1-1
+```
+
 ### precision
 
-**_Optional_**: This setting is used to force a particular number of decimal places. 
+**_Optional_**: This setting is used to force a particular number of decimal places.
 
 Note: Normally trailing zeroes are removed from decimals before being displayed. For example, "23.60" will be displayed as "23.6".
 
@@ -470,3 +508,7 @@ tags:
   - My tag
   - My other tag
 ```
+
+### x_axis_label
+
+_Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this overrides the same setting in the site configuration.

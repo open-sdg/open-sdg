@@ -262,7 +262,7 @@
     }
 
     // Set values according to this site's configuration.
-    {%- for config_setting in json_schema.properties -%}
+    {% for config_setting in json_schema.properties %}
     {%- assign config_key = config_setting[0] -%}
     {%- if page.config_type == 'site' -%}
       {%- assign current_value = site[config_key] -%}
@@ -305,7 +305,7 @@
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.{{ config_key }}'));
 
-    {%- endfor -%}
+    {% endfor %}
 
     function isTranslationKey(text) {
       var parts = text.split('.');

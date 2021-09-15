@@ -1,0 +1,33 @@
+composite_breakdown_label: ''
+computation_units: ''
+copyright: ''
+data_footnote: ''
+data_non_statistical: false
+data_notice_class: ''
+data_notice_heading: ''
+data_notice_text: ''
+data_show_map: false
+data_start_values: []
+embedded_feature_footer: ''
+embedded_feature_html: ''
+embedded_feature_tab_title: ''
+embedded_feature_title: ''
+embedded_feature_url: ''
+expected_disaggregations: []
+graph_annotations: []
+graph_limits: []
+graph_stacked_disaggregation: ''
+graph_title: 'Testing no metadata'
+graph_titles: []
+graph_type: bar
+indicator_available: ''
+indicator_name: 'Testing no metadata'
+indicator_number: ''
+national_geographical_coverage: ''
+page_content: 'This indicator is for testing behavior when there is no metadata'
+permalink: my-standalone-indicator-3-path
+precision: []
+reporting_status: complete
+sort: ''
+standalone: true
+tags: []

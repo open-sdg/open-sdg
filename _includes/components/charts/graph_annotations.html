@@ -5,18 +5,21 @@
 opensdg.chartConfigAlter(function(config, info) {
     if (info.graphAnnotations && info.graphAnnotations.length > 0) {
         // Apply some helpers/fixes to the annotations.
-        var annotations = info.graphAnnotations.map(function(annotation) {
+        var annotations = info.graphAnnotations.map(function(annotationOverrides) {
+            var annotation = {};
             // Apply the "common" preset.
             if (opensdg.annotationPresets.common) {
-                annotation = $.extend(true, {}, opensdg.annotationPresets.common, annotation);
+                $.extend(true, annotation, opensdg.annotationPresets.common);
             }
             // Apply any specified presets.
-            if (annotation.preset) {
-                var preset = annotation.preset;
+            if (annotationOverrides.preset) {
+                var preset = annotationOverrides.preset;
                 if (opensdg.annotationPresets[preset]) {
-                    annotation = $.extend(true, {}, opensdg.annotationPresets[preset], annotation);
+                    $.extend(true, annotation, opensdg.annotationPresets[preset]);
                 }
             }
+            // Now add any more annotation config.
+            $.extend(true, annotation, annotationOverrides);
             // Default to horizontal lines.
             if (!annotation.mode && annotation.type === 'line') {
                 annotation.mode = 'horizontal';
@@ -69,7 +72,7 @@ opensdg.chartConfigAlter(function(config, info) {
             var overrides = {
                 options: {
                     annotation: {
-                        drawTime: 'afterDatasetsDraw',
+                        drawTime: 'beforeDatasetsDraw',
                         annotations: annotations
                     }
                 }

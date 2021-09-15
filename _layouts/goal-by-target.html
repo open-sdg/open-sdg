@@ -46,6 +46,12 @@
       {% assign tag_classes = tag_classes | join: " " %}
 
       <div class="col-md-12 {{ tag_classes }} goal-indicator">
+        {% if indicator.placeholder and indicator.placeholder != '' %}
+        <span class="indicator-card-number">
+          {{ indicator.number }}
+        </span>
+        {{ indicator.placeholder }}
+        {% else %}
         <span class="indicator-card-number">
           {{ indicator.number }}
           {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
@@ -54,6 +60,7 @@
           {{ indicator.name }}
         </a>
         {% include components/indicator/tags.html tags=indicator.tags %}
+        {% endif %}
       </div>
     {% endfor %}
     </div>
