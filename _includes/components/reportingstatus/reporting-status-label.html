@@ -10,6 +10,6 @@
         {% assign status_desc = page.t.status.reported | default: page.t.status.reported_online %}
 {% endcase %}
 
-<span class="status {{ status_css }}">
+<span class="status {{ status_css }} {% if site.create_goals.inline_reporting_status %}inline-reporting-status{% endif %}">
     <span class="status-inner">{{ status_desc }}</span>
 </span>

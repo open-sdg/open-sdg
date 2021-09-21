@@ -1,0 +1,9 @@
+// This is a for an optional setting ("inline_reporting_status")
+// in "create_goals" which should override the style of the
+// reporting status labels.
+.inline-reporting-status {
+  position: static !important;
+  margin-left: 10px !important;
+  display: inline-block !important;
+  float: none !important;
+}

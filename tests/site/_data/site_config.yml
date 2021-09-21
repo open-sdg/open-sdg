@@ -25,6 +25,7 @@ country:
 create_goals:
   layout: goal
   previous_next_links: true
+  inline_reporting_status: true
   goals:
     - content: custom.goal_1_content
     - content: My goal 2 content

@@ -42,6 +42,14 @@
             </h4>
             {% if indicator.placeholder and indicator.placeholder != '' %}
             <span class="indicator-name">{{ indicator.placeholder }}</span>
+            {% else if site.create_goals.inline_reporting_status %}
+            <span class="indicator-name">
+              <a href="{{ indicator.url }}">
+                {{ indicator.name }} {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
+              </a>
+            </span>
+            <span class="sr-only">{{ page.t.indicator.status }}</span>
+            {% include components/indicator/tags.html tags=indicator.tags %}
             {% else %}
             <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
             <span class="sr-only">{{ page.t.indicator.status }}</span>
