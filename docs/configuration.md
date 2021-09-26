@@ -778,6 +778,10 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
 * `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
+* `status_types`: A list of reporting status types to use. Each item should have these settings:
+    * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'complete').
+    * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.reported_online').
+    * `hide_on_goal_pages`: _Optional_: Whether to hide this status type on goal pages. Useful for the most commonly-occuring type.
 
 Here is an example of using these settings:
 
@@ -786,6 +790,16 @@ reporting_status:
     title: title goes here
     description: description goes here
     disaggregation_tabs: true
+    status_types:
+      - value: notstarted
+        label: status.exploring_data_sources
+        hide_on_goal_pages: false
+      - value: complete
+        label: status.reported_online
+        hide_on_goal_pages: true
+      - value: notapplicable
+        label: status.not_applicable
+        hide_on_goal_pages: false
 ```
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
