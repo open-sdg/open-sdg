@@ -247,6 +247,16 @@ reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
   disaggregation_tabs: true
+  status_types:
+    - value: notstarted
+      label: status.exploring_data_sources
+      hide_on_goal_pages: false
+    - value: complete
+      label: status.reported_online
+      hide_on_goal_pages: true
+    - value: notapplicable
+      label: status.not_applicable
+      hide_on_goal_pages: false
 repository_url_data: https://github.com/open-sdg/open-sdg
 repository_url_site: https://github.com/open-sdg/open-sdg
 search_index_boost: []

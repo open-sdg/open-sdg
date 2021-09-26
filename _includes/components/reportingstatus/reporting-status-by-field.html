@@ -19,26 +19,26 @@
         </span>
         <div class="summary">
             <div class="statuses">
-                {%- for status in fieldreport.statuses -%}
-                    {% assign status_type = site.reporting_status.status_types | where: "value", status.status | first %}
-                    {% assign status_type_value = status_type.value | default: status.status %}
-                    {% assign status_type_label = status_type.label | default: status.status %}
+                {%- for status_type in site.reporting_status.status_types -%}
+                    {% assign status_stats = fieldreport.statuses | where: "status", status_type.value | first %}
+                    {% if status_stats %}
                     <div>
-                        <span class="status {{ status_type_value | slugify }}"><span class="status-inner">{{ status.count }}</span></span><strong>{{ status_type_label | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+                        <span class="status {{ status_type.value | slugify }}"><span class="status-inner">{{ status_stats.count }}</span></span><strong>{{ status_type.label | t }}</strong><span class="value">{{ status_stats.percentage | round }}%</span>
                     </div>
+                    {% endif %}
                 {%- endfor -%}
                 <br style="clear:both;">
             </div>
         </div>
         <div class="goal-stats">
-            {%- for status in fieldreport.statuses -%}
-                {% assign status_type = site.reporting_status.status_types | where: "value", status.status | first %}
-                {% assign status_type_value = status_type.value | default: status.status %}
-                {% assign status_type_label = status_type.label | default: status.status %}
-                {% assign status_count_precise = status.count | times: 1.0 %}
+            {%- for status_type in site.reporting_status.status_types -%}
+                {% assign status_stats = fieldreport.statuses | where: "status", status_type.value | first %}
+                {% if status_stats %}
+                {% assign status_count_precise = status_stats.count | times: 1.0 %}
                 {% assign fieldreport_total_precise = fieldreport.totals.total  | times: 1.0 %}
                 {% assign percentage_precise = status_count_precise | divided_by: fieldreport_total_precise | times: 100 %}
-                <span class="{{ status_type_value | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status_type_label | t }}: {{ status.percentage | round }}%"></span>
+                <span class="{{ status_type.value | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status_type.label | t }}: {{ status_stats.percentage | round }}%"></span>
+                {% endif %}
             {%- endfor -%}
         </div>
         <div class="divider"></div>
