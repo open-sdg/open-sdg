@@ -298,7 +298,7 @@ graph_limits:
 
     * `series`: If specified, the series break will only display when the user is looking at this series.
     * `unit`: If specified, the series break will only display when the user is looking at this unit of measurement.
-    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `label_content`: The text to display on the annotation. Defaults to "2030 target".
     * `value`: The value at which to draw the line. This number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart).
 
 Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
@@ -317,7 +317,7 @@ graph_stacked_disaggregation: Age
 
     * `series`: If specified, the target line will only display when the user is looking at this series.
     * `unit`: If specified, the target line will only display when the user is looking at this unit of measurement.
-    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `label_content`: The text to display on the annotation. Defaults to "2030 target".
     * `value`: The value at which to draw the line. This number corresponds to your actual data.
 
 Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
