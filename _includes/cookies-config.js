@@ -45,9 +45,9 @@ var klaroConfig = {
             default: false,
             purposes: ['analytics'],
             {% if site.analytics.extra_cookies %}
-            cookies: [].concat(['_gat', '_gid', 'ga'], {{ site.analytics.extra_cookies | jsonify }}),
+            cookies: [].concat(['_gat', '_gid', '_ga'], {{ site.analytics.extra_cookies | jsonify }}),
             {% else %}
-            cookies: ['_gat', '_gid', 'ga'],
+            cookies: ['_gat', '_gid', '_ga'],
             {% endif %}
             required: false,
             optOut: false,
