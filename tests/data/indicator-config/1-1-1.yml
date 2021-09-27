@@ -49,6 +49,7 @@ page_content: >
   This is also used to show multiple items in the "Sources" tab.
 permalink: ''
 precision: []
+progress_status: targetachieved
 reporting_status: complete
 sort: ''
 standalone: false
