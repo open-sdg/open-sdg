@@ -1,0 +1,132 @@
+$goal-by-target-indentation: 60px;
+
+.layout-goal-with-progress {
+  #page-content {
+    margin-top: -20px;
+    margin-bottom: 10px;
+  }
+  .goal-target, .goal-indicator {
+    font-size: 16px;
+    font-weight: normal;
+    clear: both;
+    display: inline-block;
+  }
+  #main-content .goal-indicator h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .goal-target-and-indicators {
+    margin-bottom: 20px;
+    &::after {
+      content: "" / "";
+      height: 1px;
+      width: calc(100% - #{$goal-by-target-indentation});
+      border-bottom: 1px solid $goalTarget-horizontalRule-color;
+      margin-left: $goal-by-target-indentation;
+      padding-bottom: 10px;
+      @media screen and (min-width: 769px) {
+        padding-bottom: 20px;
+      }
+      display: inline-block;
+    }
+  }
+
+  .goal-indicator {
+    .goal-with-progress-left, .goal-with-progress-right {
+      clear: both;
+    }
+    .progress-status {
+      font-size: 12px;
+      img {
+        max-width: 100%;
+      }
+    }
+    @media screen and (min-width: 769px) {
+      min-height: 80px;
+      margin-left: $goal-by-target-indentation;
+      position: relative;
+      width: calc(100% - #{$goal-by-target-indentation});
+      .goal-with-progress-left {
+        float: left;
+        clear: none;
+        width: 75%;
+      }
+      .goal-with-progress-right {
+        float: right;
+        clear: none;
+        width: 25%;
+      }
+      .progress-status {
+        max-width: 75%;
+        float: right;
+        margin-top: 0;
+      }
+    }
+    @media screen and (min-width: 992px) {
+      min-height: auto;
+      .status {
+        width: auto;
+      }
+    }
+  }
+
+  .target-number, .target-name, .indicator-number, .indicator-name {
+    display: block;
+  }
+
+  .target-number, .indicator-number {
+    margin-top: 3px;
+  }
+
+  .indicator-number {
+    font-size: 16px;
+  }
+
+  .goal-target, .goal-indicator h4 {
+    clear: left;
+    float: left;
+    margin-top: 0;
+  }
+
+  .goal-indicator {
+    margin-top: 20px;
+  }
+
+  .target-name, .indicator-name {
+    margin-left: $goal-by-target-indentation;
+    box-decoration-break: clone;
+  }
+
+  .status {
+    display: block;
+    float: left;
+    clear: left;
+    @include status;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .tags {
+    float: left;
+    clear: left;
+    @include tags;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .progress-status {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+
+  .status, .tags, .progress-status {
+    margin-left: $goal-by-target-indentation;
+  }
+
+  &.contrast-high {
+    .status {
+      @include statusHighContrast;
+    }
+  }
+}
