@@ -1,4 +1,4 @@
-{% if include.tags %}
+{% if include.tags and include.tags.size > 0 %}
     <span class="sr-only">{{ page.t.indicator.tags }}</span>
     <span class="tags">
     {% for tag in include.tags %}
