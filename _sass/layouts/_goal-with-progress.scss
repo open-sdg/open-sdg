@@ -36,12 +36,6 @@ $goal-by-target-indentation: 60px;
     .goal-with-progress-left, .goal-with-progress-right {
       clear: both;
     }
-    .progress-status {
-      font-size: 12px;
-      img {
-        max-width: 100%;
-      }
-    }
     @media screen and (min-width: 769px) {
       min-height: 80px;
       margin-left: $goal-by-target-indentation;
