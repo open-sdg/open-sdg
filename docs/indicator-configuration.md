@@ -463,6 +463,20 @@ precision:
     decimals: 1
 ```
 
+### progress_status
+
+**_Required_**: This setting is used to specify the status of the indicator's progress. This is displayed on the goal pages and indicator pages.
+
+```nohighlight
+reporting_status: targetachieved
+```
+
+Options out-of-the-box are:
+* notavailable
+* progressneeded
+* approachingtarget
+* targetachieved
+
 ### reporting_status
 
 **_Required_**: This setting is used to specify the status of the indicator. This feeds into the reporting status page and also displays on the goal pages.
@@ -476,8 +490,6 @@ Options out-of-the-box are:
 * inprogress
 * notstarted
 * notapplicable
-
-
 
 ### sort
 

@@ -743,6 +743,35 @@ plugins:
   - jekyll-open-sdg-plugins
 ```
 
+### progress_status
+
+_Optional_: This setting controls certain aspects of the progress status functionality. The available settings are:
+
+* `status_heading`: Controls the heading that describes the progress status, whenever it appears.
+* `status_types`: A list of progress status types to use. Each item should have these settings:
+    * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'targetachieved').
+    * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved').
+    * `image`: The internal path to the image to use (if any) for this progress status.
+    * `alt`: An alt tag for the image above.
+
+Here is an example of using these settings:
+
+```yaml
+progress_status:
+    status_heading: heading goes here
+    status_types:
+      - value: notavailable
+        label: status.not_available
+        image: assets/img/progress/notavailable.png
+        alt: status.not_available
+      - value: targetachieved
+        label: status.target_achieved
+        image: assets/img/progress/targetachieved.png
+        alt: status.target_achieved
+```
+
+As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
+
 ### remote_data_prefix
 
 **_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).

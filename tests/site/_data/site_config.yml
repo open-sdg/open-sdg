@@ -244,7 +244,7 @@ news:
 non_global_metadata: indicator.national_metadata
 remote_data_prefix: _build
 progress_status:
-  status_label: Progress status for 2021
+  status_heading: Progress status for 2021
   status_types:
     - value: notavailable
       image: assets/img/progress/notavailable.png

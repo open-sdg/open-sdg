@@ -50,7 +50,7 @@
               {% include components/indicator/tags.html tags=indicator.tags %}
             </div>
             <div class="goal-with-progress-right">
-              <span class="sr-only">{{ site.progress_status.status_label }}</span>
+              <span class="sr-only">{{ site.progress_status.status_heading | t }}</span>
               {% include components/progress/progress-status.html indicator=indicator %}
             </div>
             {% endif %}
