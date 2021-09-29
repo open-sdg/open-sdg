@@ -45,9 +45,7 @@
               <span class="indicator-name">{{ indicator.placeholder }}</span>
               {% else %}
               <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
-              <span class="sr-only">{{ page.t.indicator.status }}</span>
-              {% include components/reportingstatus/reporting-status-label.html indicator=indicator %}
-              {% include components/indicator/tags.html tags=indicator.tags %}
+              {% include components/indicator/tags.html tags=indicator.tags reporting_status=true indicator=indicator %}
             </div>
             <div class="goal-with-progress-right">
               <span class="sr-only">{{ site.progress_status.status_heading | t }}</span>
