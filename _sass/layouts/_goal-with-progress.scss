@@ -97,8 +97,10 @@ $goal-by-target-indentation: 60px;
     float: left;
     clear: left;
     @include status;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 0;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    padding: 1px;
   }
 
   .tags {
@@ -107,6 +109,12 @@ $goal-by-target-indentation: 60px;
     @include tags;
     margin-bottom: 10px;
     margin-top: 10px;
+    .tag {
+      display: block;
+      float: left;
+      margin-bottom: 6px;
+      padding: 1px;
+    }
   }
 
   .progress-status {
@@ -114,7 +122,7 @@ $goal-by-target-indentation: 60px;
       margin-bottom: 10px;
   }
 
-  .status, .tags, .progress-status {
+  .tags, .progress-status {
     margin-left: $goal-by-target-indentation;
   }
 
