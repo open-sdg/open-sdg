@@ -1,6 +1,12 @@
-{% if include.tags and include.tags.size > 0 %}
+{% assign has_tags = include.tags and include.tags.size > 0 %}
+{% assign show_reporting_status = include.reporting_status and include.indicator %}
+{% if show_reporting_status or has_tags %}
     <span class="sr-only">{{ page.t.indicator.tags }}</span>
     <span class="tags">
+    {% if show_reporting_status %}
+        <span class="sr-only">{{ page.t.indicator.status }}</span>
+        {% include components/reportingstatus/reporting-status-label.html indicator=include.indicator %}
+    {% endif %}
     {% for tag in include.tags %}
         {% assign tag_class = tag | slugify %}
         <span class="tag tag-{{ tag_class }}">{{ tag | t }}</span>
