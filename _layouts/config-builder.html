@@ -12,8 +12,15 @@
     <div class="col-md-6" id="button_holder">
       <div><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
       {% if page.form_settings.repository_link and page.form_settings.repository_link != '' %}
+      {% assign repository_link = page.form_settings.repository_link %}
+      {% assign data_repo = site.repository_url_data %}
+      {% if data_repo and data_repo != '' and data_repo contains 'http' %}
+        {% unless repository_link contains 'http' %}
+          {% assign repository_link = data_repo | append: repository_link %}
+        {% endunless %}
+      {% endif %}
       <div>
-        <a class="btn btn-primary btn-download" target="_blank" href="{{ page.form_settings.repository_link }}">
+        <a class="btn btn-primary btn-download" target="_blank" href="{{ repository_link }}">
           Go to repository
         </a>
       </div>
