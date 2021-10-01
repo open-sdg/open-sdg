@@ -184,7 +184,6 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
 function sortFieldsForView(fieldItemStates, edges) {
   if (edges.length > 0 && fieldItemStates.length > 0) {
 
-    // We need to sort the edges so that we process parents before children.
     var parents = edges.map(function(edge) { return edge.From; });
     var children = edges.map(function(edge) { return edge.To; });
     var topLevelParents = parents.filter(function(parent) {
