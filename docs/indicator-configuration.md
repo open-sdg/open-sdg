@@ -468,7 +468,7 @@ precision:
 **_Required_**: This setting is used to specify the status of the indicator's progress. This is displayed on the goal pages and indicator pages.
 
 ```nohighlight
-reporting_status: targetachieved
+progress_status: targetachieved
 ```
 
 Options out-of-the-box are:
