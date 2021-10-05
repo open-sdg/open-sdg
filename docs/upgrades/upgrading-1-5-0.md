@@ -40,3 +40,12 @@ In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugi
 ```
 gem "jekyll-open-sdg-plugins", "1.5.0"
 ```
+
+## Recommended updates to the site configuration
+
+In 1.5.0 we have introduced two new optional features:
+
+* `hide_single_unit`: If enabled (`true`) this will hide the unit of measurement toggle when there is only one choice.
+* `hide_single_series`: If enabled (`true`) this will hide the series toggle when there is only one choice.
+
+These settings can help reduce unnecessary elements on the indicator pages, so we recommend enabling both of these.
