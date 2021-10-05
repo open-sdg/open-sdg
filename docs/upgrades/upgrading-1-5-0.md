@@ -6,8 +6,6 @@ This document is intended for developers, to help with the process of upgrading 
 
 Though we strive to avoid any breaking changes, there may be a minor issue in the unlikely case that you are overriding the `_includes/assets/js/accessibility.js` file. In this case, you may see a duplicated non-functional contrast toggle. To resolve it, please update your overridden version to match the latest code, and then re-apply your changes.
 
-
-
 ## Upgrade data repository to sdg-build 1.5.0
 
 In your data repository, update your `requirements.txt` file to:
