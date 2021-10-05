@@ -1,5 +1,14 @@
-{% assign has_tags = include.tags and include.tags.size > 0 %}
-{% assign show_reporting_status = include.reporting_status and include.indicator %}
+{% assign has_tags = false %}
+{% if include.tags and include.tags.size > 0 %}
+    {% assign has_tags = true %}
+{% endif %}
+{% assign show_reporting_status = false %}
+{% if include.reporting_status and include.indicator %}
+    {% assign reporting_status_type = site.reporting_status.status_types | where: 'value', include.indicator.reporting_status | first %}
+    {% unless reporting_status_type.hide_on_goal_pages %}
+        {% assign show_reporting_status = true %}
+    {% endunless %}
+{% endif %}
 {% if show_reporting_status or has_tags %}
     <span class="sr-only">{{ page.t.indicator.tags }}</span>
     <span class="tags">

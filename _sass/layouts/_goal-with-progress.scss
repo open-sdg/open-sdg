@@ -24,10 +24,6 @@ $goal-by-target-indentation: 60px;
       width: calc(100% - #{$goal-by-target-indentation});
       border-bottom: 1px solid $goalTarget-horizontalRule-color;
       margin-left: $goal-by-target-indentation;
-      padding-bottom: 10px;
-      @media screen and (min-width: 769px) {
-        padding-bottom: 20px;
-      }
       display: inline-block;
     }
   }
@@ -44,12 +40,12 @@ $goal-by-target-indentation: 60px;
       .goal-with-progress-left {
         float: left;
         clear: none;
-        width: 75%;
+        width: 80%;
       }
       .goal-with-progress-right {
         float: right;
         clear: none;
-        width: 25%;
+        width: 20%;
       }
       .progress-status {
         margin-top: 0;
@@ -71,6 +67,10 @@ $goal-by-target-indentation: 60px;
     margin-top: 3px;
   }
 
+  .target-name {
+    margin-bottom: 20px;
+  }
+
   .indicator-number {
     font-size: 16px;
   }
@@ -81,19 +81,9 @@ $goal-by-target-indentation: 60px;
     margin-top: 0;
   }
 
-  .goal-indicator {
-    margin-top: 20px;
-  }
-
   .target-name, .indicator-name {
     margin-left: $goal-by-target-indentation;
     box-decoration-break: clone;
-  }
-
-  .target-name {
-    @media screen and (min-width: 769px) {
-      max-width: 75%;
-    }
   }
 
   .status {
@@ -117,17 +107,22 @@ $goal-by-target-indentation: 60px;
       display: block;
       float: left;
       margin-bottom: 6px;
-      padding: 1px;
+      padding: 1px 2px;
     }
   }
 
   .progress-status {
       margin-top: 10px;
-      margin-bottom: 10px;
   }
 
   .tags, .progress-status {
     margin-left: $goal-by-target-indentation;
+  }
+
+  .progress-status {
+    @media screen and (min-width: 769px) {
+      margin-left: 20px;
+    }
   }
 
   &.contrast-high {
