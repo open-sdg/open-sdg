@@ -90,6 +90,12 @@ $goal-by-target-indentation: 60px;
     box-decoration-break: clone;
   }
 
+  .target-name {
+    @media screen and (min-width: 769px) {
+      max-width: 75%;
+    }
+  }
+
   .status {
     display: block;
     float: left;
