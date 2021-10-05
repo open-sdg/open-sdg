@@ -735,8 +735,18 @@ var indicatorView = function (model, options) {
     var $targetLines = $('#tableTargetLines');
     $targetLines.empty();
     targetLines.forEach(function(targetLine) {
-      $targetLines.append('<dt>' + targetLine.label.content + '</dt><dd>' + targetLine.value + '</dd>');
+      var targetLineLabel = targetLine.label.content;
+      if (!targetLineLabel) {
+        targetLineLabel = opensdg.annotationPresets.target_line.label.content;
+      }
+      $targetLines.append('<dt>' + targetLineLabel + '</dt><dd>' + targetLine.value + '</dd>');
     });
+    if (targetLines.length === 0) {
+      $targetLines.hide();
+    }
+    else {
+      $targetLines.show();
+    }
   }
 
   this.createDownloadButton = function(table, name, indicatorId, el) {
