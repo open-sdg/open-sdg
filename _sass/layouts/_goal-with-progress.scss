@@ -19,21 +19,20 @@ $goal-by-target-indentation: 60px;
   .goal-target-and-indicators {
     margin-bottom: 20px;
     &::after {
-      content: "" / "";
       height: 1px;
       width: calc(100% - #{$goal-by-target-indentation});
       border-bottom: 1px solid $goalTarget-horizontalRule-color;
       margin-left: $goal-by-target-indentation;
-      display: inline-block;
+      margin-top: 20px;
     }
   }
 
   .goal-indicator {
+    margin-top: 10px;
     .goal-with-progress-left, .goal-with-progress-right {
       clear: both;
     }
     @media screen and (min-width: 769px) {
-      min-height: 80px;
       margin-left: $goal-by-target-indentation;
       position: relative;
       width: calc(100% - #{$goal-by-target-indentation});
@@ -68,7 +67,7 @@ $goal-by-target-indentation: 60px;
   }
 
   .target-name {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .indicator-number {
@@ -91,7 +90,7 @@ $goal-by-target-indentation: 60px;
     float: left;
     clear: left;
     @include status;
-    margin-top: 0;
+    margin-top: 10px;
     margin-right: 6px;
     margin-bottom: 6px;
     padding: 1px;
@@ -101,18 +100,20 @@ $goal-by-target-indentation: 60px;
     float: left;
     clear: left;
     @include tags;
-    margin-bottom: 10px;
-    margin-top: 10px;
     .tag {
       display: block;
       float: left;
-      margin-bottom: 6px;
+      margin-top: 10px;
       padding: 1px 3px;
     }
   }
 
   .progress-status {
       margin-top: 10px;
+      margin-bottom: 10px;
+      @media screen and (min-width: 769px) {
+        margin-bottom: 0;
+      }
   }
 
   .tags, .progress-status {

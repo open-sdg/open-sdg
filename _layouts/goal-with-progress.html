@@ -48,8 +48,10 @@
               {% include components/indicator/tags.html tags=indicator.tags reporting_status=true indicator=indicator %}
             </div>
             <div class="goal-with-progress-right">
+              {% if indicator.progress_status and indicator.progress_status != '' %}
               <span class="sr-only">{{ site.progress_status.status_heading | t }}</span>
               {% include components/progress/progress-status.html indicator=indicator %}
+              {% endif %}
             </div>
             {% endif %}
           </div>
