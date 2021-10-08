@@ -97,7 +97,7 @@ $goal-by-target-indentation: 60px;
   }
 
   .tags {
-    float: left;
+    display: inline-block;
     clear: left;
     @include tags;
     .tag {
