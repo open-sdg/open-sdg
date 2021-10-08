@@ -120,7 +120,7 @@ You may want to display some very important information which site viewers must 
 **_Optional_**: This setting can be used to set the colour of a data notice using CSS classes.
 
 ```nohighlight
-standalone: success
+data_notice_class: success
 ```
 
 Options out-of-the-box are:
