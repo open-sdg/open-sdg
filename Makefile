@@ -11,7 +11,7 @@ clean:
 cache:
 	if [ -d "make-cache" ]; then echo "Using cached versions of files. Use 'make cache.bust' for updated files."; fi
 	if [ ! -d "make-cache" ]; then mkdir make-cache; fi
-	if [ ! -d "make-cache/sdg-translations" ]; then cd make-cache && git clone https://github.com/open-sdg/sdg-translations; fi
+	if [ ! -d "make-cache/sdg-translations" ]; then cd make-cache && git clone https://github.com/brockfanning/sdg-translations -b reporting-progress-mvp; fi
 
 cache.bust:
 	rm -fr make-cache
