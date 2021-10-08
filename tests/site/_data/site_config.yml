@@ -244,24 +244,24 @@ news:
 non_global_metadata: indicator.national_metadata
 remote_data_prefix: _build
 progress_status:
-  status_heading: Progress status for 2021
+  status_heading: status.progress_status
   status_types:
-    - value: notavailable
+    - value: not_available
       image: assets/img/progress/notavailable.png
-      label: Not available
-      alt: Not available
-    - value: progressneeded
+      label: status.progress_not_available
+      alt: status.progress_not_available
+    - value: challenges_remain
       image: assets/img/progress/progressneeded.png
-      label: Progress needed
-      alt: Progress needed
-    - value: approachingtarget
+      label: status.progress_challenges_remain
+      alt: status.progress_challenges_remain
+    - value: approaching_target
       image: assets/img/progress/approachingtarget.png
-      label: Approaching target
-      alt: Approaching target
-    - value: targetachieved
+      label: status.progress_approaching_target
+      alt: status.progress_approaching_target
+    - value: target_achieved
       image: assets/img/progress/targetachieved.png
-      label: Target achieved
-      alt: Target achieved
+      label: status.progress_target_achieved
+      alt: status.progress_target_achieved
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
