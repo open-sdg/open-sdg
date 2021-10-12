@@ -186,8 +186,11 @@ function sortFieldsForView(fieldItemStates, edges) {
 
     var parents = edges.map(function(edge) { return edge.From; });
     var children = edges.map(function(edge) { return edge.To; });
-    var topLevelParents = parents.filter(function(parent) {
-      return !(children.includes(parent));
+    var topLevelParents = [];
+    parents.forEach(function(parent) {
+      if (!(children.includes(parent)) && !(topLevelParents.includes(parent))) {
+        topLevelParents.push(parent);
+      }
     });
 
     var topLevelParentsByChild = {};
@@ -203,13 +206,13 @@ function sortFieldsForView(fieldItemStates, edges) {
       }
     });
     fieldItemStates.forEach(function(fieldItem) {
-      if (topLevelParents.includes(fieldItem.field)) {
+      if (topLevelParents.includes(fieldItem.field) || typeof topLevelParentsByChild[fieldItem.field] === 'undefined') {
         fieldItem.topLevelParent = '';
       }
       else {
         fieldItem.topLevelParent = topLevelParentsByChild[fieldItem.field];
       }
-    })
+    });
 
     // As an intermediary step, create a hierarchical structure grouped
     // by the top-level parent.
