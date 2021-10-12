@@ -303,6 +303,26 @@ graph_limits:
 
 Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
 
+To show a series break midway between 2013 and 2014 on a graph which has years 2005 - 2018, the value would be 2013.5-2005 = 8.5
+
+```nohighlight
+graph_series_breaks:
+  - value: 8.5
+```
+
+or to specify per units/series:
+```nohighlight
+graph_series_breaks:
+  - unit: My computation units name
+    value: 8.5
+```
+
+```nohighlight
+graph_series_breaks:
+  - series: My series name
+    value: 8.5
+```
+
 ### graph_stacked_disaggregation
 
 **_Optional_**: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
@@ -321,6 +341,24 @@ graph_stacked_disaggregation: Age
     * `value`: The value at which to draw the line. This number corresponds to your actual data.
 
 Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
+
+```nohighlight
+graph_target_lines:
+  - value: 2.5
+```
+
+or to specify per units/series:
+```nohighlight
+graph_target_lines:
+  - unit: My computation units name
+    value: 2.5
+```
+
+```nohighlight
+graph_target_lines:
+  - series: My series name
+    value: 2.5
+```
 
 ### graph_title
 
