@@ -18,6 +18,9 @@ expected_disaggregations:
 graph_annotations: []
 graph_limits: []
 graph_stacked_disaggregation: ''
+graph_target_lines:
+  - label_content: My target line
+    value: 2.5
 graph_title: global_indicators.1-1-1-title
 graph_titles: []
 graph_type: line
