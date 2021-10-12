@@ -760,14 +760,14 @@ Here is an example of using these settings:
 progress_status:
     status_heading: heading goes here
     status_types:
-      - value: notavailable
-        label: status.not_available
-        image: assets/img/progress/notavailable.png
-        alt: status.not_available
-      - value: targetachieved
-        label: status.target_achieved
-        image: assets/img/progress/targetachieved.png
-        alt: status.target_achieved
+      - value: not_available
+        label: status.progress_not_available
+        image: assets/img/progress/not-available.svg
+        alt: status.progress_not_available
+      - value: target_achieved
+        label: status.progress_target_achieved
+        image: assets/img/progress/target-achieved.svg
+        alt: status.progress_target_achieved
 ```
 
 As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
