@@ -9,7 +9,7 @@
         {% endif %}
         {% if progress_status.image and progress_status.image != '' %}
             <div class="progress-status-image">
-                <img src="{{ site.baseurl }}/{{ progress_status.image }}" alt="{{ progress_status.alt | default: progress_status.label }}" />
+                <img src="{{ site.baseurl }}/{{ progress_status.image }}" alt="{{ progress_status.alt | default: progress_status.label | t }}" />
             </div>
         {% endif %}
         </div>
