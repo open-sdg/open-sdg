@@ -1,7 +1,25 @@
 var indicatorSearch = function() {
 
+  function sanitizeInput(input) {
+    var doc = new DOMParser().parseFromString(input, 'text/html');
+    var stripped = doc.body.textContent || "";
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        "/": '&#x2F;',
+        "`": '&grave;',
+    };
+    var reg = /[&<>"'/`]/ig;
+    return stripped.replace(reg, function(match) {
+      return map[match];
+    });
+  }
+
   var urlParams = new URLSearchParams(window.location.search);
-  var searchTerms = urlParams.get('q');
+  var searchTerms = sanitizeInput(urlParams.get('q'));
   if (searchTerms !== null) {
     document.getElementById('search-bar-on-page').value = searchTerms;
     document.getElementById('search-term').innerHTML = searchTerms;
