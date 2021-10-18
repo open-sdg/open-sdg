@@ -63,9 +63,9 @@ If you started by using the [site starter](https://github.com/open-sdg/open-sdg-
 
 Find that file in your site repository under `.github/workflows/deploy-to-production.yml`, and change it as instructed in the file. (If you do not have the file already, create a new one in that location using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/.github/workflows/deploy-to-production.yml) as a guide.)
 
-Before we can perform a deployment, we have to tell the site repository where to find the production data. If you started by using the [site starter](https://github.com/open-sdg/open-sdg-site-starter) as a template, then you should have a production-specific config file: [_config_prod.yml](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml). (If you do not have the file already, create a new one in that location, using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml) as a guide.)
+Before we can perform a deployment, we have to tell the site repository where to find the production data. If you started by using the [site starter](https://github.com/open-sdg/open-sdg-site-starter) as a template, then you should have a production-specific config file: [site_config_prod.yml](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml). (If you do not have the file already, create a new one in that location, using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml) as a guide.)
 
-Edit the [remote_data_prefix line](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config_prod.yml#L17) in that file to point to the GitHub Pages URL for your production organisation and repository. For example, if your production organisation is `my-stats-org`, and your production **data** repository is `sdg-data`, then use:
+Edit the [remote_data_prefix line](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml#L19) in that file to point to the GitHub Pages URL for your production organisation and repository. For example, if your production organisation is `my-stats-org`, and your production **data** repository is `sdg-data`, then use:
 
 ```
 remote_data_prefix: "https://my-stats-org.github.io/sdg-data"
