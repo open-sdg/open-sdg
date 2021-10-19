@@ -466,6 +466,20 @@
     padding-bottom: 20px;
   }
 
+  #tableTargetLines {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    dt {
+      float: left;
+      font-weight: normal;
+      max-width: 80%;
+    }
+    dd {
+      text-align: right;
+    }
+  }
+
   #selectionsChart {
     padding-bottom: 20px;
     &.chart-has-no-data {
