@@ -298,10 +298,30 @@ graph_limits:
 
     * `series`: If specified, the series break will only display when the user is looking at this series.
     * `unit`: If specified, the series break will only display when the user is looking at this unit of measurement.
-    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `label_content`: The text to display on the annotation. Defaults to "Series break".
     * `value`: The value at which to draw the line. This number should be between 0 (the left side of the chart) and the number of years minus 1 (the right side of the chart).
 
 Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
+
+To show a series break midway between 2013 and 2014 on a graph which has years 2005 - 2018, the value would be 2013.5-2005 = 8.5
+
+```nohighlight
+graph_series_breaks:
+  - value: 8.5
+```
+
+or to specify per units/series:
+```nohighlight
+graph_series_breaks:
+  - unit: My computation units name
+    value: 8.5
+```
+
+```nohighlight
+graph_series_breaks:
+  - series: My series name
+    value: 8.5
+```
 
 ### graph_stacked_disaggregation
 
@@ -317,10 +337,28 @@ graph_stacked_disaggregation: Age
 
     * `series`: If specified, the target line will only display when the user is looking at this series.
     * `unit`: If specified, the target line will only display when the user is looking at this unit of measurement.
-    * `label`: The text to display on the annotation. Defaults to "2030 target".
+    * `label_content`: The text to display on the annotation. Defaults to "2030 target".
     * `value`: The value at which to draw the line. This number corresponds to your actual data.
 
 Note that this setting relies on the Chart.js annotation plugin. If you would like to tweak any other settings for more site-wide control, you can override the `_includes/components/charts/annotation_presets.js` file.
+
+```nohighlight
+graph_target_lines:
+  - value: 2.5
+```
+
+or to specify per units/series:
+```nohighlight
+graph_target_lines:
+  - unit: My computation units name
+    value: 2.5
+```
+
+```nohighlight
+graph_target_lines:
+  - series: My series name
+    value: 2.5
+```
 
 ### graph_title
 
