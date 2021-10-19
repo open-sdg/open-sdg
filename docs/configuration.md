@@ -762,11 +762,11 @@ progress_status:
     status_types:
       - value: not_available
         label: status.progress_not_available
-        image: assets/img/progress/not-available.svg
+        image: assets/img/progress/not-available.png
         alt: status.progress_not_available
       - value: target_achieved
         label: status.progress_target_achieved
-        image: assets/img/progress/target-achieved.svg
+        image: assets/img/progress/target-achieved.png
         alt: status.progress_target_achieved
 ```
 
