@@ -184,27 +184,60 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
 function sortFieldsForView(fieldItemStates, edges) {
   if (edges.length > 0 && fieldItemStates.length > 0) {
 
-    // We need to sort the edges so that we process parents before children.
     var parents = edges.map(function(edge) { return edge.From; });
-    edges.sort(function(a, b) {
-      if (!parents.includes(a.To) && parents.includes(b.To)) {
-        return 1;
+    var children = edges.map(function(edge) { return edge.To; });
+    var topLevelParents = [];
+    parents.forEach(function(parent) {
+      if (!(children.includes(parent)) && !(topLevelParents.includes(parent))) {
+        topLevelParents.push(parent);
       }
-      if (!parents.includes(b.To) && parents.includes(a.To)) {
-        return -1;
-      }
-      return 0;
     });
 
-    edges.forEach(function(edge) {
-      // This makes sure children are right after their parents.
-      var parentIndex = fieldItemStates.findIndex(function(fieldItem) {
-        return fieldItem.field == edge.From;
+    var topLevelParentsByChild = {};
+    children.forEach(function(child) {
+      var currentParent = edges.find(function(edge) { return edge.To === child; }),
+          currentChild = child;
+      while (currentParent) {
+        currentParent = edges.find(function(edge) { return edge.To === currentChild; });
+        if (currentParent) {
+          currentChild = currentParent.From;
+          topLevelParentsByChild[child] = currentParent.From;
+        }
+      }
+    });
+    fieldItemStates.forEach(function(fieldItem) {
+      if (topLevelParents.includes(fieldItem.field) || typeof topLevelParentsByChild[fieldItem.field] === 'undefined') {
+        fieldItem.topLevelParent = '';
+      }
+      else {
+        fieldItem.topLevelParent = topLevelParentsByChild[fieldItem.field];
+      }
+    });
+
+    // As an intermediary step, create a hierarchical structure grouped
+    // by the top-level parent.
+    var tempHierarchy = [];
+    var tempHierarchyHash = {};
+    fieldItemStates.forEach(function(fieldItem) {
+      if (fieldItem.topLevelParent === '') {
+        fieldItem.children = [];
+        tempHierarchyHash[fieldItem.field] = fieldItem;
+        tempHierarchy.push(fieldItem);
+      }
+    });
+    fieldItemStates.forEach(function(fieldItem) {
+      if (fieldItem.topLevelParent !== '') {
+        tempHierarchyHash[fieldItem.topLevelParent].children.push(fieldItem);
+      }
+    });
+
+    // Now we clear out the field items and add them back as a flat list.
+    fieldItemStates.length = 0;
+    tempHierarchy.forEach(function(fieldItem) {
+      fieldItemStates.push(fieldItem);
+      fieldItem.children.forEach(function(child) {
+        fieldItemStates.push(child);
       });
-      var childIndex = fieldItemStates.findIndex(function(fieldItem) {
-        return fieldItem.field == edge.To;
-      });
-      arrayMove(fieldItemStates, childIndex, parentIndex + 1);
     });
   }
 }
