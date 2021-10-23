@@ -1,6 +1,9 @@
 var indicatorSearch = function() {
 
   function sanitizeInput(input) {
+    if (input === null) {
+      return null;
+    }
     var doc = new DOMParser().parseFromString(input, 'text/html');
     var stripped = doc.body.textContent || "";
     var map = {
