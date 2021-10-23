@@ -25,14 +25,14 @@ translations:
     tag: 1.5.0
 ```
 
-## Update version of Open SDG to 1.5.2
+## Update version of Open SDG to 1.5.3
 
-> Due to hotfix releases, the latest and recommended version for Open SDG is 1.5.2.
+> Due to hotfix releases, the latest and recommended version for Open SDG is 1.5.3.
 
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@1.5.2
+remote_theme: open-sdg/open-sdg@1.5.3
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 1.5.0
