@@ -72,6 +72,7 @@ $(function() {
       }
     } else if (target === 'search-mobile') {
       topLevelMenuToggle.setAttribute('aria-expanded', false);
+      $(topLevelMenuToggle).find('> button').attr('aria-expanded', false);
     } else {
       // menu click, always hide search:
       topLevelSearchLink.removeClass('open');
