@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Bugfix: Avoid changing config settings without user action #1358
 * Feature: Reporting progress on indicator pages and goal pages #1356
 * Bugfix: Correct cookie name for Google Analytics #1332
 * Feature: Configurable favicon setting #1330
