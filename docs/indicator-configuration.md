@@ -501,6 +501,21 @@ precision:
     decimals: 1
 ```
 
+### progress_status
+
+**_Required_**: This setting is used to specify the status of the indicator's progress. This is displayed on the indicator pages. You can also display this on goal pages by setting your goal layout to "goal-with-progress" (this can be done in the [`create_goals` site configuration setting](configuration.md#create_goals)).
+
+```nohighlight
+progress_status: target_achieved
+```
+
+Options out-of-the-box are:
+
+* not_available
+* challenges_remain
+* approaching_target
+* target_achieved
+
 ### reporting_status
 
 **_Required_**: This setting is used to specify the status of the indicator. This feeds into the reporting status page and also displays on the goal pages.
@@ -510,12 +525,11 @@ reporting_status: complete
 ```
 
 Options out-of-the-box are:
+
 * complete
 * inprogress
 * notstarted
 * notapplicable
-
-
 
 ### sort
 

@@ -1,5 +1,13 @@
 <h1>Change Log</h1>
 
+## Unreleased
+
+* Feature: Reporting progress on indicator pages and goal pages #1356
+* Bugfix: Correct cookie name for Google Analytics #1332
+* Feature: Configurable favicon setting #1330
+* Bugfix: Consistent link color in data notices #1329
+* Style: Refactor and fixes for post categories and reporting status #1328
+
 ## 1.5.0
 
 * Fix for empty values in map ranges #1311

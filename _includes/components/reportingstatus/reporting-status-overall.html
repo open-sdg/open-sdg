@@ -9,21 +9,27 @@
         <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
         <div class="summary">
             <div class="statuses">
-            {%- for status in overall.statuses -%}
+            {%- for status_type in site.reporting_status.status_types -%}
+            {% assign status_stats = overall.statuses | where: "status", status_type.value | first %}
+            {% if status_stats %}
             <div>
-                <span class="status {{ status.status | slugify }}"><span class="status-inner">{{ status.count }}</span></span><strong>{{ status.translation_key | t }}</strong><span class="value">{{ status.percentage | round }}%</span>
+                <span class="status {{ status_type.value | slugify }}"><span class="status-inner">{{ status_stats.count }}</span></span><strong>{{ status_type.label | t }}</strong><span class="value">{{ status_stats.percentage | round }}%</span>
             </div>
+            {% endif %}
             {%- endfor -%}
 
             <br style="clear:both;">
             </div>
         </div>
         <div class="goal-stats">
-            {%- for status in overall.statuses -%}
-            {% assign status_count_precise = status.count | times: 1.0 %}
+            {%- for status_type in site.reporting_status.status_types -%}
+            {% assign status_stats = overall.statuses | where: "status", status_type.value | first %}
+            {% if status_stats %}
+            {% assign status_count_precise = status_stats.count | times: 1.0 %}
             {% assign overall_total_precise = overall.totals.total  | times: 1.0 %}
             {% assign percentage_precise = status_count_precise | divided_by: overall_total_precise | times: 100 %}
-            <span class="{{ status.status | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status.translation_key | t }}: {{ status.percentage | round }}%"></span>
+            <span class="{{ status_type.value | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status_type.label | t }}: {{ status_stats.percentage | round }}%"></span>
+            {% endif %}
             {%- endfor -%}
         </div>
     </div>

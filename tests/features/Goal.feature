@@ -34,3 +34,8 @@ Feature: Goal page
     Then I should see "My translated content for goal 1"
     And I am on "/2"
     Then I should see "My goal 2 content"
+
+  Scenario: Reporting status types can be hidden on goals pages
+    Given I am on "/1"
+    Then I should not see "Reported online"
+    And I should see "Not applicable"

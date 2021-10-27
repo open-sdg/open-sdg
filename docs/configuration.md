@@ -155,9 +155,13 @@ country:
 
 ### create_goals
 
-_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals. You can optionally turn on previous/next links as well.
+_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder.
 
-Additionally, there can be a `goals` item that includes an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
+This setting can contain several (indented) sub-settings:
+
+* `layout`: This can be used to specify which Jekyll layout will be used for the goal pages. You can create and use your own layout, but several layouts are included with Open SDG. These can be found in [the _layouts folder in the repository](https://github.com/open-sdg/open-sdg/tree/master/_layouts). For example, to use the "goal-with-progress.html" layout, you would enter "goal-with-progress" (without the ".html") in this setting.
+* `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
+* `goals`: This optional item can include an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key. They should be in order of goal number.
 
 ```nohighlight
 create_goals:
@@ -743,6 +747,37 @@ plugins:
   - jekyll-open-sdg-plugins
 ```
 
+### progress_status
+
+_Optional_: This setting controls certain aspects of the progress status functionality. The available settings are:
+
+* `status_heading`: Controls the heading that describes the progress status, whenever it appears.
+* `status_types`: A list of progress status types to use. Each item should have these settings:
+    * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'target_achieved').
+    * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved').
+    * `image`: The internal path to the image to use (if any) for this progress status.
+    * `alt`: An alt tag for the image above.
+
+Here is an example of using these settings:
+
+```yaml
+progress_status:
+    status_heading: heading goes here
+    status_types:
+      - value: not_available
+        label: status.progress_not_available
+        image: assets/img/progress/not-available.png
+        alt: status.progress_not_available
+      - value: target_achieved
+        label: status.progress_target_achieved
+        image: assets/img/progress/target-achieved.png
+        alt: status.progress_target_achieved
+```
+
+As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
+
+For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
+
 ### remote_data_prefix
 
 **_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
@@ -778,6 +813,10 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
 * `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
+* `status_types`: A list of reporting status types to use. Each item should have these settings:
+    * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'complete').
+    * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.reported_online').
+    * `hide_on_goal_pages`: _Optional_: Whether to hide this status type on goal pages. Useful for the most commonly-occuring type.
 
 Here is an example of using these settings:
 
@@ -786,6 +825,16 @@ reporting_status:
     title: title goes here
     description: description goes here
     disaggregation_tabs: true
+    status_types:
+      - value: notstarted
+        label: status.exploring_data_sources
+        hide_on_goal_pages: false
+      - value: complete
+        label: status.reported_online
+        hide_on_goal_pages: true
+      - value: notapplicable
+        label: status.not_applicable
+        hide_on_goal_pages: false
 ```
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
