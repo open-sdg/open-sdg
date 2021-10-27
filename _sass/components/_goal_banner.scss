@@ -16,9 +16,4 @@
       outline: 6px $focusOutlineColor solid !important;
     }
   }
-  .goal-tiles {
-    @media only screen and (max-width: 300px) {
-      float: none;
-    }
-  }
 }
