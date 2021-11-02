@@ -109,6 +109,19 @@ _Optional_: This can be used to convert any indicator IDs in the data documentat
 docs_indicator_url: https://my-github-org.github.io/my-site-repository/[id]
 ```
 
+### docs_metadata_fields
+
+_Optional_: This can be used to configure the metadata report on the SDG data service site, to add metadata fields to the report you must add the key and label for each field to you wish to display. Here is an example:
+
+```
+docs_metadata_fields:
+    - key: reporting_status
+      label: Reporting status
+    - key: graph_type
+      label: Graph type
+    - key: data_non_statistical
+      label: Non-statistical
+```
 ### docs_subfolder
 
 _Optional_: This can be used to put your documentation website into a subfolder. This is rarely used. Typically it is only used if you have combined your data repository and site repository into one single repository. Eg:
