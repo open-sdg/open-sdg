@@ -4,6 +4,11 @@
 {%- assign indicator_singular = page.t.general.indicator | downcase -%}
 {%- assign indicators_plural = page.t.general.indicators | downcase -%}
 
+{%- assign status_types = site.reporting_status.status_types -%}
+{%- if include.status_types and site[include.status_types] -%}
+    {%- assign status_types = site[include.status_types].status_types -%}
+{%- endif -%}
+
 <h2>{{ include.title | replace: "%field", extra_field_translated }}</h2>
 {%- for fieldreport in include.extra_field[1] -%}
     <div class="goal details reporting-status-item">
@@ -19,7 +24,7 @@
         </span>
         <div class="summary">
             <div class="statuses">
-                {%- for status_type in site.reporting_status.status_types -%}
+                {%- for status_type in status_types -%}
                     {% assign status_stats = fieldreport.statuses | where: "status", status_type.value | first %}
                     {% if status_stats %}
                     <div>
@@ -31,7 +36,7 @@
             </div>
         </div>
         <div class="goal-stats">
-            {%- for status_type in site.reporting_status.status_types -%}
+            {%- for status_type in status_types -%}
                 {% assign status_stats = fieldreport.statuses | where: "status", status_type.value | first %}
                 {% if status_stats %}
                 {% assign status_count_precise = status_stats.count | times: 1.0 %}
