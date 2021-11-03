@@ -111,7 +111,9 @@ docs_indicator_url: https://my-github-org.github.io/my-site-repository/[id]
 
 ### docs_metadata_fields
 
-_Optional_: This can be used to configure the metadata report on the SDG data service site, to add metadata fields to the report you must add the key and label for each field to you wish to display. Here is an example:
+_Optional_: This can be used to configure the metadata report on the SDG data documentation site.
+
+To add metadata fields to the report you must add the key and label for each field to you wish to display. Here is an example:
 
 ```
 docs_metadata_fields:
