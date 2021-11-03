@@ -2,6 +2,16 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.6.0
+
+Date TBD
+
+* Metadata report on data dashboard
+* Reporting progress on goal and indicator pages
+* Configurable favicon settings
+* Design improvements for categories, tags, and status
+* Target lines (eg, "2030 Target") on indicator data tables
+
 ## 1.5.0
 
 15 September 2021
