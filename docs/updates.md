@@ -8,6 +8,7 @@ Date TBD
 
 * Metadata report on data dashboard
 * Reporting progress on goal and indicator pages
+* Option to hide some reporting status types
 * Configurable favicon settings
 * Design improvements for categories, tags, and status
 * Target lines (eg, "2030 Target") on indicator data tables
