@@ -100,6 +100,7 @@ $goal-by-target-indentation: 60px;
     display: inline-block;
     clear: left;
     @include tags;
+    margin-bottom: 0;
     .tag {
       display: block;
       float: left;
