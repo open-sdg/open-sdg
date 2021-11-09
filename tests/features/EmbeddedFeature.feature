@@ -9,7 +9,7 @@ Feature: Embedded feature
     And I wait 3 seconds
     Then I should see "My iframe tab title"
     And I click on "the embedded feature tab"
-    Then I should should see "My iframe title"
+    Then I should see "My iframe title"
     And I should see "My iframe content"
 
   Scenario: Any HTML can be used in the embedded_feature_html setting
@@ -17,5 +17,5 @@ Feature: Embedded feature
     And I wait 3 seconds
     Then I should see "My iframe tab title"
     And I click on "the embedded feature tab"
-    Then I should should see "My iframe title"
+    Then I should see "My iframe title"
     And I should see "My iframe content"
