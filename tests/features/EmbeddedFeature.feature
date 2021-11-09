@@ -10,7 +10,7 @@ Feature: Embedded feature
     Then I should see "My iframe tab title"
     And I click on "the embedded feature tab"
     Then I should see "My iframe title"
-    And I should see "My iframe content"
+    And I should see an "embedded iframe"
 
   Scenario: Any HTML can be used in the embedded_feature_html setting
     Given I am on "/1-2-1"
@@ -18,4 +18,4 @@ Feature: Embedded feature
     Then I should see "My iframe tab title"
     And I click on "the embedded feature tab"
     Then I should see "My iframe title"
-    And I should see "My iframe content"
+    And I should see an "embedded iframe"

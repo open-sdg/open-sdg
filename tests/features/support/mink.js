@@ -72,6 +72,7 @@ const driver = new mink.Mink({
     "main logo": ".navbar-brand img",
     "chart title": "#chart-heading",
     "configuration form textarea": "textarea.form-control",
+    "embedded iframe": "#embeddedmapframe iframe",
   }
 });
 
