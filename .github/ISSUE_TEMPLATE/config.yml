@@ -1,0 +1,7 @@
+contact_links:
+  - name: Open SDG 'Ideas' discussions
+    url: https://github.com/open-sdg/open-sdg/discussions/categories/ideas
+    about: Suggest an idea for new functionality or an enhancement
+  - name: Open SDG 'Q&A' discussions
+    url: https://github.com/open-sdg/open-sdg/discussions/categories/q-a
+    about: Ask the community a question
