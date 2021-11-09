@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 1.6.0
 
-9 Novermber 2021
+9 November 2021
 
 * Metadata report on data dashboard
 * Reporting progress on goal and indicator pages
