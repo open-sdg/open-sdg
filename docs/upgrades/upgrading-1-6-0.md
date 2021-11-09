@@ -2,10 +2,6 @@
 
 This document is intended for developers, to help with the process of upgrading to version 1.6.0 of Open SDG, from 1.5.0 or higher.
 
-## Breaking changes
-
-TBD
-
 ## Upgrade data repository to sdg-build 1.6.0
 
 In your data repository, update your `requirements.txt` file to:
@@ -43,4 +39,6 @@ gem "jekyll-open-sdg-plugins", "1.6.0"
 
 ## Recommended updates to the site configuration
 
-TBD
+If you would like to make use of the new metadata-reporting functionality, set the [`docs_metadata_fields` setting in the data configuration](https://open-sdg.readthedocs.io/en/latest/data-configuration/#docs_metadata_fields). This feature is optional.
+
+If you would like to try the new progress-reporting functionality, see the [`progress_status` setting in the site configuration](https://open-sdg.readthedocs.io/en/latest/configuration/#accessible_tabs). This feature is also optional.
