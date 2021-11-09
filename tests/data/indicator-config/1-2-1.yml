@@ -8,9 +8,9 @@ data_notice_text: My data notice text
 data_show_map: false
 data_start_values: []
 embedded_feature_footer: ''
-embedded_feature_html: ''
-embedded_feature_tab_title: ''
-embedded_feature_title: ''
+embedded_feature_html: 'My iframe content'
+embedded_feature_tab_title: 'My iframe tab title'
+embedded_feature_title: 'My iframe title'
 embedded_feature_url: ''
 graph_annotations: []
 graph_limits: []
@@ -32,5 +32,8 @@ page_content: >
 
   * Indicator.feature (confirming that the indicator_available field shows
   a sub-title)
+
+  * EmbeddedFeature.feature (confirming that the embedded_feature_html
+  setting works)
 reporting_status: complete
 tags: []
