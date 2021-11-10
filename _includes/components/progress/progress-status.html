@@ -1,0 +1,17 @@
+{% if include.indicator.progress_status and include.indicator.progress_status != '' %}
+    {% assign progress_status = site.progress_status.status_types | where: 'value', include.indicator.progress_status | first %}
+    {% if progress_status %}
+        <div class="progress-status">
+        {% if progress_status.label and progress_status.label != '' %}
+            <div class="progress-status-label">
+                {{ progress_status.label | t }}
+            </div>
+        {% endif %}
+        {% if progress_status.image and progress_status.image != '' %}
+            <div class="progress-status-image">
+                <img src="{{ site.baseurl }}/{{ progress_status.image }}" alt="{{ progress_status.alt | default: progress_status.label | t }}" />
+            </div>
+        {% endif %}
+        </div>
+    {% endif %}
+{% endif %}
