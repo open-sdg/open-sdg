@@ -622,6 +622,48 @@ indicator_metadata_form:
 
 Links to the forms appear in the "Edit" tab on indicator pages.
 
+### indicator_tabs
+
+**_Optional_**: This setting controls the order and contents of the data tabs on indicator pages. This can be used to rearrange the tabs, or to hide particular tabs. This can also be overridden for particular indicators in the indicator configuration.
+
+For each of the four tab slots, you can set either: `chart`, `table`, `map`, `embed`, or `hide`.
+
+* `chart`: This will display the chart/graph in the specified tab.
+* `table`: This will display the data table in the specified tab.
+* `map`: This will display map in the specified, so long as the other requirements for displaying a map are met (such as the `data_show_map` setting and a `GeoCode` data column).
+* `embed`: This will display embedded content in the specified tab, so long as the other requirements for displaying embedded content are met (such as the `embedded_feature_url` or `embedded_feature_html` settings).
+* `hide`: This will hide the specified tab altogether.
+
+The default settings, if omitted are the following:
+
+```nohighlight
+indicator_tabs:
+  tab_1: chart
+  tab_2: table
+  tab_3: map
+  tab_4: embed
+```
+
+But for example, if you would like your indicators to start with the table selected, you could do this:
+
+```nohighlight
+indicator_tabs:
+  tab_1: table
+  tab_2: chart
+  tab_3: map
+  tab_4: embed
+```
+
+Or if you would like your indicators to only have tables and maps, you could do this:
+
+```
+indicator_tabs:
+  tab_1: table
+  tab_2: map
+  tab_3: hide
+  tab_4: hide
+```
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.

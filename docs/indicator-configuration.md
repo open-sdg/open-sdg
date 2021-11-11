@@ -432,6 +432,25 @@ indicator_name: global_indicators.1-2-1-title
 indicator_number: 1.2.1
 ```
 
+### indicator_tabs
+
+**_Optional_**: This setting controls the order and contents of the data tabs on indicator pages. This only needs to be used on indicators where you would like to override the `indicator_tabs` site configuration setting.
+
+Note that the `override` parameter is necessary in order for this indicator-specific override to be used.
+
+For example, if you would like a particular indicator to start on the map tab, you could do this:
+
+```nohighlight
+indicator_tabs:
+  override: true
+  tab_1: map
+  tab_2: chart
+  tab_3: table
+  tab_4: embed
+```
+
+For more details on how to use this setting, see the [`indicator_tabs` site configuration setting](configuration.md#indicator_tabs).
+
 ### national_geographical_coverage
 
 **_Required_** (for statistical indicators): This setting is used to specify what label should be used in the absence of any disaggregation (i.e. for headline data)
