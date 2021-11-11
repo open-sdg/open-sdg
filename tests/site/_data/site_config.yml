@@ -1,6 +1,9 @@
 ﻿accessible_charts: true
 accessible_tabs: true
 analytics:
+  ua: ''
+  gtag: ''
+  gtm: ''
   ga_prod: ''
 breadcrumbs:
   goal:
@@ -18,12 +21,14 @@ breadcrumbs:
       label: general.home
     - path: /news
       label: menu.updates
-configuration_edit_url: config
+contrast_type: default
+cookie_consent_form:
+  enabled: false
 country:
   name: Australia
   adjective: Australian
 create_goals:
-  layout: goal-with-progress
+  layout: ''
   previous_next_links: true
   goals:
     - content: custom.goal_1_content
@@ -59,8 +64,10 @@ create_pages:
 custom_css: []
 custom_js:
   - /custom.js
-data_edit_url: >-
-  https://github.com/open-sdg/open-sdg/edit/master/tests/data/data/indicator_[id].csv
+data_edit_url: data
+data_fields:
+  units: ''
+  series: ''
 date_formats:
   - type: standard
     language: en
@@ -79,6 +86,7 @@ email_contacts:
   suggestions: test@example.com
   functional: test@example.com
 environment: staging
+favicons: legacy
 footer_language_toggle: none
 footer_menu:
   - path: 'mailto:test@example.com'
@@ -129,6 +137,8 @@ goal_image_extension: png
 goals_page:
   title: custom.goals_page_title
   description: custom.goals_page_description
+graph_color_headline: '#004466'
+graph_color_headline_high_contrast: '#55a6e5'
 graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
@@ -137,6 +147,8 @@ header:
   include: header-menu-left-aligned.html
 header_language_toggle: dropdown
 hide_empty_metadata: true
+hide_single_series: false
+hide_single_unit: false
 indicator_config_form:
   enabled: true
   dropdowns:
@@ -147,16 +159,17 @@ indicator_config_form:
       labels:
         - Not started
         - Complete
-  repository_link: '/tree/master/tests/data/indicator-config'
+  repository_link: /tree/master/tests/data/indicator-config
   translation_link: ''
 indicator_data_form:
   enabled: true
-  repository_link: '/tree/master/tests/data/data'
+  repository_link: /tree/master/tests/data/data
 indicator_metadata_form:
   enabled: true
   dropdowns: []
-  repository_link: '/tree/master/tests/data/meta'
+  repository_link: /tree/master/tests/data/meta
   translation_link: 'https://example.com?[id]&[group]&[key]'
+  language: ''
   scopes:
     - national
     - global
@@ -166,6 +179,11 @@ indicator_metadata_form:
     - national_metadata_update_url
     - national_metadata_update_url_text
   translated: true
+indicator_tabs:
+  tab_1: ''
+  tab_2: ''
+  tab_3: ''
+  tab_4: ''
 languages:
   - en
   - es
@@ -175,14 +193,14 @@ languages_public:
     language_public: fr-CA
 logos:
   - language: en
+    src: assets/img/SDG_logo.png
     alt: My English logo alt text
-    src: assets/img/SDG_logo.png
   - language: es
+    src: assets/img/SDG_logo.png
     alt: My Spanish logo alt text
-    src: assets/img/SDG_logo.png
   - language: fr
-    alt: My French logo alt text
     src: assets/img/SDG_logo.png
+    alt: My French logo alt text
 map_layers:
   - subfolder: regions
     label: indicator.regions
@@ -220,14 +238,18 @@ map_options:
 menu:
   - path: reporting-status
     translation_key: menu.reporting_status
+    dropdown: []
   - path: about
     translation_key: menu.about
-  - translation_key: My dropdowns
+    dropdown: []
+  - path: uneeded-path
+    translation_key: My dropdowns
     dropdown:
       - path: about
         translation_key: Another link to about page
   - path: frontpage-legacy
     translation_key: Legacy frontpage
+    dropdown: []
 metadata_edit_url: metadata
 metadata_tabs:
   - scope: national
@@ -242,26 +264,26 @@ metadata_tabs:
 news:
   category_links: true
 non_global_metadata: indicator.national_metadata
-remote_data_prefix: _build
 progress_status:
   status_heading: status.progress_status
   status_types:
     - value: not_available
-      image: assets/img/progress/not-available.png
       label: status.progress_not_available
+      image: assets/img/progress/not-available.png
       alt: status.progress_not_available
     - value: challenges_remain
-      image: assets/img/progress/challenges-remain.png
       label: status.progress_challenges_remain
+      image: assets/img/progress/challenges-remain.png
       alt: status.progress_challenges_remain
     - value: approaching_target
-      image: assets/img/progress/approaching-target.png
       label: status.progress_approaching_target
+      image: assets/img/progress/approaching-target.png
       alt: status.progress_approaching_target
     - value: target_achieved
-      image: assets/img/progress/target-achieved.png
       label: status.progress_target_achieved
+      image: assets/img/progress/target-achieved.png
       alt: status.progress_target_achieved
+remote_data_prefix: _build
 reporting_status:
   title: custom.reporting_status_title
   description: custom.reporting_status_description
@@ -276,12 +298,13 @@ reporting_status:
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
-repository_url_data: https://github.com/open-sdg/open-sdg
-repository_url_site: https://github.com/open-sdg/open-sdg
+repository_url_data: 'https://github.com/open-sdg/open-sdg'
+repository_url_site: 'https://github.com/open-sdg/open-sdg'
 search_index_boost: []
 search_index_extra_fields:
   - un_custodian_agency
 series_toggle: true
+sharethis_property: ''
 site_config_form:
   enabled: true
   dropdowns:
@@ -296,7 +319,7 @@ site_config_form:
         - goal
         - goal-by-target
         - goal-by-target-vertical
-  repository_link: '/tree/master/tests/site/_data'
+  repository_link: /tree/master/tests/site/_data
   translation_link: ''
 validate_indicator_config: true
 validate_site_config: true
