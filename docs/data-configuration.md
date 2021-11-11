@@ -434,12 +434,12 @@ schema_file: _prose.yml
 
 _Optional_: If specified, then SDMX-ML will be outputted to your data documentation website. However, your data must also be compliant with the DSD specified in this configuration.
 
-* `dsd`: Remote URL of the SDMX DSD (data structure definition) or path to local file.
+* `dsd`: Remote URL of the SDMX DSD (data structure definition) or path to local file.  If omitted, the global DSD will be assumed.
 * `msd`: Remote URL of the SDMX MSD (metadata structure definition) or path to local file. If omitted, the global MSD will be assumed.
 * `default_values`: Since SDMX output is required to have a value for every dimension/attributeyou may need to specify defaults here. If not specified here, defaults for attributes will be '' and defaults for dimensions will be '_T'.
 * `header_id`: Optional identifying string to put in the "ID" element in the header of the XML. If not specified, it will be "IREF" and a timestamp.
 * `sender_id`: Optional identifying string to put in the "id" attribute of the "Sender" element in the header of the XML. If not specified, it will be the current version of this library.
-* `structure_specific`: Whether to output as StructureSpecific instead of Generic data. Defaults to false
+* `structure_specific`: Whether to output as StructureSpecific instead of Generic data. Defaults to true.
 * `column_map`: Remote URL of CSV column mapping or path to local CSV column mapping file. Expects columns 'Text' (data CSV column name e.g. Sex) and 'Value' (SDMX concept which data CSV column name maps to e.g. SEX).
 * `code_map`: Remote URL of CSV code mapping or path to local CSV code mapping file. Expects columns 'Text' (item within data CSV column e.g. Female), 'Dimension' (SDMX concept that item belongs to e.g. SEX), and 'Value' (SDMX concept code which item maps to e.g. F).
 * `constrain_data`: Whether to use the DSD to remove any rows of data that are not compliant. Defaults to false.
