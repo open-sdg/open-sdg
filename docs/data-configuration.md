@@ -430,6 +430,56 @@ _Optional_: This identifies a file containing the schema (possible fields) for m
 schema_file: _prose.yml
 ```
 
+### sdmx_output
+
+_Optional_: If specified, then SDMX-ML will be outputted to your data documentation website. However, your data must also be compliant with the DSD specified in this configuration.
+
+* `dsd`: Remote URL of the SDMX DSD (data structure definition) or path to local file.
+* `msd`: Remote URL of the SDMX MSD (metadata structure definition) or path to local file. If omitted, the global MSD will be assumed.
+* `default_values`: Since SDMX output is required to have a value for every dimension/attributeyou may need to specify defaults here. If not specified here, defaults for attributes will be '' and defaults for dimensions will be '_T'.
+* `header_id`: Optional identifying string to put in the "ID" element in the header of the XML. If not specified, it will be "IREF" and a timestamp.
+* `sender_id`: Optional identifying string to put in the "id" attribute of the "Sender" element in the header of the XML. If not specified, it will be the current version of this library.
+* `structure_specific`: Whether to output as StructureSpecific instead of Generic data. Defaults to false
+* `column_map`: Remote URL of CSV column mapping or path to local CSV column mapping file. Expects columns 'Text' (data CSV column name e.g. Sex) and 'Value' (SDMX concept which data CSV column name maps to e.g. SEX).
+* `code_map`: Remote URL of CSV code mapping or path to local CSV code mapping file. Expects columns 'Text' (item within data CSV column e.g. Female), 'Dimension' (SDMX concept that item belongs to e.g. SEX), and 'Value' (SDMX concept code which item maps to e.g. F).
+* `constrain_data`: Whether to use the DSD to remove any rows of data that are not compliant. Defaults to false.
+* `constrain_meta`: Whether to use the MSD to remove any metadata fields that are not complaint. Defaults to true.
+* `meta_ref_area`: REF_AREA code to use in the metadata output. If omitted, will use the first available in a REF_AREA data column.
+* `meta_reporting_type`: REPORTING_TYPE code to use in the metadata output. If omitted, will use the first available in a REPORTING_TYPE data column.
+* `global_content_constraints`: Whether to enforce the global content constraints, which is in a draft state.
+* `output_subfolder`: A subfolder in which to place this output. Defaults to 'sdmx'.
+
+### sdmx_output_global
+
+_Optional_: Can be used alone or with `sdmx_output` (above) allowing for multiple SDMX outputs i.e. one national and one global.
+
+This works exactly the same as `sdmx_output`, except the following parameters are automatically set:
+
+```nohighlight
+dsd: (the global DSD)
+msd: (the global MSD)
+structure_specific: true
+constrain_data: true
+constrain_meta: true
+global_content_constraints: true
+output_subfolder: sdmx-global
+```
+
+If no other customizations are needed beyond these, then the sdmx_output_global can simply be set to true. Example:
+
+```nohighlight
+sdmx_output_global: true
+```
+
+Otherwise it can have all the same parameters as the existing sdmx_output option. Example:
+
+```nohighlight
+sdmx_output_global:
+    meta_reporting_type: N
+    meta_ref_area: KG
+    etc...
+```
+
 ### site_dir
 
 _Optional_: This identifies a directory to hold the "built" files. The default is '_site' and you usually do not need to change this.
