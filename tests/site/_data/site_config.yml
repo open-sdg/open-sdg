@@ -137,6 +137,8 @@ header:
   include: header-menu-left-aligned.html
 header_language_toggle: dropdown
 hide_empty_metadata: true
+ignored_disaggregations:
+  - ignored disaggregation column
 indicator_config_form:
   enabled: true
   dropdowns:
