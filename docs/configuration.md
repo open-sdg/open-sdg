@@ -622,6 +622,17 @@ indicator_metadata_form:
 
 Links to the forms appear in the "Edit" tab on indicator pages.
 
+### ignored_disaggregations
+
+_Optional_: This setting causes any number of disaggregations (eg, columns in CSV files) to be ignored. This means that they will not receive drop-downs in the left sidebar on indicator pages.
+
+This can be useful in cases where the source data may contain columns that you prefer not to appear in the platform. For example, perhaps your source data is SDMX, and contains required SDMX fields like UNIT_MULT, which you do not need visible on the platform. You could ignore it with this configuration:
+
+```
+ignored_disaggregations:
+  - UNIT_MULT
+```
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
