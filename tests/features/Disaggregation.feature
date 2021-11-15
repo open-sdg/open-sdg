@@ -78,5 +78,4 @@ Feature: Disaggregation
   Scenario: Disaggregations can be ignored
     And I am on "/2-2-2"
     And I wait 3 seconds
-    Then I should not see "ignored disaggregation column"
-    And I should not see "ignored disaggregation value"
+    Then I should see 1 "disaggregation filter" element
