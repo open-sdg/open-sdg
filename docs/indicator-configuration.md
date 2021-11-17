@@ -286,7 +286,7 @@ graph_annotations:
 graph_limits:
   - unit: tons
     minimum: 2
-    maximimum: 20
+    maximum: 20
   - unit: passengers
     minimum: 200
     maximum: 2000
