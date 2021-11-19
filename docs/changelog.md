@@ -1,5 +1,9 @@
 <h1>Change Log</h1>
 
+## Unreleased
+
+* Feature: Ignore disaggregation columns #1463
+
 ## 1.6.0
 
 * Feature: Metadata report on data dashboard #1406
