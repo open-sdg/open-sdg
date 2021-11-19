@@ -61,9 +61,10 @@ Feature: Indicator
     Then I should see a "table footer" element
     And I should see 5 "table footer item" elements
 
-  Scenario: Indicator can show additional footer fields
+  Scenario: Indicator can show additional footer fields by series or unit
     And I am on "/2-5-2"
     And I wait 3 seconds
-    Then I should see 1 "chart footer item" elements
+    Then I should see a "footer field that says 'Testing label for series A'" element
+    And I should not see a "footer field that says 'Another field label for unit total'" element
     And I click on "the last unit of measurement"
-    Then I should see 2 "chart footer item" elements
+    Then I should see a "footer field that says 'Another field label for unit total'" element
