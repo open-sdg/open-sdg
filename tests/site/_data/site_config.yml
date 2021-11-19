@@ -149,6 +149,8 @@ header_language_toggle: dropdown
 hide_empty_metadata: true
 hide_single_series: false
 hide_single_unit: false
+ignored_disaggregations:
+  - ignored disaggregation column
 indicator_config_form:
   enabled: true
   dropdowns:

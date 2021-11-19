@@ -2,12 +2,35 @@
 
 ## Unreleased
 
+* Feature: Ignore disaggregation columns #1463
+
+## 1.6.0
+
+* Feature: Metadata report on data dashboard #1406
+* Bugfix: Accessibility fix on mobile navigation menu #1389
+* Bugfix: Consistent treatment of parent/child disaggregations #1381
+* Bugfix: Fixes for sorting of hierarchical disaggregations #1360
 * Bugfix: Avoid changing config settings without user action #1358
-* Feature: Reporting progress on indicator pages and goal pages #1356
+* Feature: Reporting progress on indicator pages and goal pages #1356, #1408
+* Feature: Optionally hide some reporting status types on goal pages #1356
+* Feature: Add "target lines" to the data table on indicator pages #1353
 * Bugfix: Correct cookie name for Google Analytics #1332
 * Feature: Configurable favicon setting #1330
 * Bugfix: Consistent link color in data notices #1329
 * Style: Refactor and fixes for post categories and reporting status #1328
+
+## 1.5.3
+
+* Bugfix: Avoid javascript errors on non-search pages #1380
+
+## 1.5.2
+
+* Bugfix: Fix for missing units after changing series #1373
+
+## 1.5.1
+
+* Security: Cross-site-scripting fix for search page #1370
+* Bugfix: Google Analytics cookie fix #1332
 
 ## 1.5.0
 

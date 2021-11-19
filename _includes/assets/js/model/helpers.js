@@ -40,6 +40,7 @@
 
   {% include assets/js/model/constants.js %}
   {% include assets/js/model/utils.js %}
+  var arrayMove = deprecated('utils.arrayMove');
   {% include assets/js/model/unitHelpers.js %}
   {% include assets/js/model/seriesHelpers.js %}
   {% include assets/js/model/fieldHelpers.js %}
@@ -95,12 +96,14 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
-    sortFieldNames: sortFieldNames,
-    sortFieldValueNames: sortFieldValueNames,
+    sortFieldNames: typeof sortFieldNames !== 'undefined' ? sortFieldNames : function() {},
+    sortFieldValueNames: typeof sortFieldValueNames !== 'undefined' ? sortFieldValueNames : function() {},
     getPrecision: getPrecision,
     getGraphLimits: getGraphLimits,
     getGraphAnnotations: getGraphAnnotations,
     getColumnsFromData: getColumnsFromData,
+    inputEdges: inputEdges,
+    inputData: inputData,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),
   }

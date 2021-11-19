@@ -563,6 +563,17 @@ _Optional_: This setting can be used to hide the "Unit" toggle whenever there is
 hide_single_unit: true
 ```
 
+### ignored_disaggregations
+
+_Optional_: This setting causes any number of disaggregations (eg, columns in CSV files) to be ignored. This means that they will not receive drop-downs in the left sidebar on indicator pages.
+
+This can be useful in cases where the source data may contain columns that you prefer not to appear in the platform. For example, perhaps your source data is SDMX, and contains required SDMX fields like UNIT_MULT, which you do not need visible on the platform. You could ignore it with this configuration:
+
+```
+ignored_disaggregations:
+  - UNIT_MULT
+```
+
 ### indicator_config_form
 
 _Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
@@ -596,6 +607,15 @@ _Optional_: This setting controls the behavior of the indicator config forms. Th
   For another example, if you are maintaining translations in the `translations` folder in your data repository, then you might have a translation_link of:
 
   `https://github.com/my-org/my-data-repo/tree/develop/translations/[language]/[group].yml`
+
+Links to the forms appear in the "Edit" tab on indicator pages.
+
+### indicator_data_form
+
+_Optional_: This setting controls the behavior of the indicator data forms. The available settings are:
+
+* `enabled`: Whether or not to generate these data forms
+* `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with the placeholder `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
 
 Links to the forms appear in the "Edit" tab on indicator pages.
 
@@ -656,7 +676,7 @@ indicator_tabs:
 
 Or if you would like your indicators to only have tables and maps, you could do this:
 
-```
+```nohighlight
 indicator_tabs:
   tab_1: table
   tab_2: map
