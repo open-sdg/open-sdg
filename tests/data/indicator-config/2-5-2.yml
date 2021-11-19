@@ -12,6 +12,15 @@ embedded_feature_html: ''
 embedded_feature_tab_title: ''
 embedded_feature_title: ''
 embedded_feature_url: ''
+footer_fields:
+  - series: 'A'
+    unit: ''
+    label: Testing label for series A
+    value: Testing value
+  - series: ''
+    unit: 'Total'
+    label: Another field label for unit total
+    value: Another field value
 graph_annotations: []
 graph_limits: []
 graph_stacked_disaggregation: ''

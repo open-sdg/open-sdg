@@ -60,3 +60,10 @@ Feature: Indicator
     And I click on "the Table tab"
     Then I should see a "table footer" element
     And I should see 5 "table footer item" elements
+
+  Scenario: Indicator can show additional footer fields
+    And I am on "/2-5-2"
+    And I wait 3 seconds
+    Then I should see 1 "chart footer item" elements
+    And I click on "the last unit of measurement"
+    Then I should see 2 "chart footer item" elements
