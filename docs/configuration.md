@@ -563,6 +563,17 @@ _Optional_: This setting can be used to hide the "Unit" toggle whenever there is
 hide_single_unit: true
 ```
 
+### ignored_disaggregations
+
+_Optional_: This setting causes any number of disaggregations (eg, columns in CSV files) to be ignored. This means that they will not receive drop-downs in the left sidebar on indicator pages.
+
+This can be useful in cases where the source data may contain columns that you prefer not to appear in the platform. For example, perhaps your source data is SDMX, and contains required SDMX fields like UNIT_MULT, which you do not need visible on the platform. You could ignore it with this configuration:
+
+```
+ignored_disaggregations:
+  - UNIT_MULT
+```
+
 ### indicator_config_form
 
 _Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
@@ -599,6 +610,15 @@ _Optional_: This setting controls the behavior of the indicator config forms. Th
 
 Links to the forms appear in the "Edit" tab on indicator pages.
 
+### indicator_data_form
+
+_Optional_: This setting controls the behavior of the indicator data forms. The available settings are:
+
+* `enabled`: Whether or not to generate these data forms
+* `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with the placeholder `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
+
+Links to the forms appear in the "Edit" tab on indicator pages.
+
 ### indicator_metadata_form
 
 _Optional_: This setting controls the behavior of the indicator metadata forms. The available settings are the same as in  `indicator_config_form` above, plus the following extra options:
@@ -621,6 +641,48 @@ indicator_metadata_form:
 ```
 
 Links to the forms appear in the "Edit" tab on indicator pages.
+
+### indicator_tabs
+
+**_Optional_**: This setting controls the order and contents of the data tabs on indicator pages. This can be used to rearrange the tabs, or to hide particular tabs. This can also be overridden for particular indicators in the indicator configuration.
+
+For each of the four tab slots, you can set either: `chart`, `table`, `map`, `embed`, or `hide`.
+
+* `chart`: This will display the chart/graph in the specified tab.
+* `table`: This will display the data table in the specified tab.
+* `map`: This will display map in the specified, so long as the other requirements for displaying a map are met (such as the `data_show_map` setting and a `GeoCode` data column).
+* `embed`: This will display embedded content in the specified tab, so long as the other requirements for displaying embedded content are met (such as the `embedded_feature_url` or `embedded_feature_html` settings).
+* `hide`: This will hide the specified tab altogether.
+
+The default settings, if omitted are the following:
+
+```nohighlight
+indicator_tabs:
+  tab_1: chart
+  tab_2: table
+  tab_3: map
+  tab_4: embed
+```
+
+But for example, if you would like your indicators to start with the table selected, you could do this:
+
+```nohighlight
+indicator_tabs:
+  tab_1: table
+  tab_2: chart
+  tab_3: map
+  tab_4: embed
+```
+
+Or if you would like your indicators to only have tables and maps, you could do this:
+
+```nohighlight
+indicator_tabs:
+  tab_1: table
+  tab_2: map
+  tab_3: hide
+  tab_4: hide
+```
 
 ### languages
 

@@ -4,12 +4,19 @@
 
 /**
  * @param {Object} data Object imported from JSON file
+ * @param {Array} dropKeys Array of keys to drop from the rows
  * @return {Array} Rows
  */
-function convertJsonFormatToRows(data) {
+function convertJsonFormatToRows(data, dropKeys) {
   var keys = Object.keys(data);
   if (keys.length === 0) {
     return [];
+  }
+
+  if (dropKeys && dropKeys.length > 0) {
+    keys = keys.filter(function(key) {
+      return !(dropKeys.includes(key));
+    });
   }
 
   return data[keys[0]].map(function(item, index) {
@@ -80,4 +87,34 @@ function sortData(rows, selectedUnit) {
 function getPrecision(precisions, selectedUnit, selectedSeries) {
   var match = getMatchByUnitSeries(precisions, selectedUnit, selectedSeries);
   return (match) ? match.decimals : false;
+}
+
+/**
+ * @param {Object} data Object imported from JSON file
+ * @return {Array} Rows
+ */
+function inputData(data) {
+  var dropKeys = [];
+  {% if site.ignored_disaggregations and site.ignored_disaggregations.size > 0 %}
+  dropKeys = {{ site.ignored_disaggregations | jsonify }};
+  {% endif %}
+  return convertJsonFormatToRows(data, dropKeys);
+}
+
+/**
+ * @param {Object} edges Object imported from JSON file
+ * @return {Array} Rows
+ */
+function inputEdges(edges) {
+  var edgesData = convertJsonFormatToRows(edges);
+  {% if site.ignored_disaggregations and site.ignored_disaggregations.size > 0 %}
+  var ignoredDisaggregations = {{ site.ignored_disaggregations | jsonify }};
+  edgesData = edgesData.filter(function(edge) {
+    if (ignoredDisaggregations.includes(edge.To) || ignoredDisaggregations.includes(edge.From)) {
+      return false;
+    }
+    return true;
+  });
+  {% endif %}
+  return edgesData;
 }

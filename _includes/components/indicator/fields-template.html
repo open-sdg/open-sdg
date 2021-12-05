@@ -2,7 +2,11 @@
   <% _.each(fields, function(fieldItem) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
-      <% if(childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>"
+      <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
+      <% // @deprecated start %>
+      <% if (typeof childFields === 'undefined' && allowedFields.indexOf(fieldItem.field) == -1) { %> child <% }%>
+      <% // @deprecated end %>
+      "
       data-field="<%=fieldItem.field%>"
     >
       <button class='accessBtn' tabindex='0' aria-expanded='false'
