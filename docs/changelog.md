@@ -4,6 +4,7 @@
 
 * Feature: Ignore disaggregation columns #1463
 * Feature: Control the order of the indicator tabs (chart/table/map/etc) #1462
+* Feature: Layout for page-not-found (404) pages #1421
 
 ## 1.6.0
 
