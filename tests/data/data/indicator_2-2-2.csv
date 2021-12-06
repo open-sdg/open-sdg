@@ -1,7 +1,7 @@
-Year,Units,Group,Value
-2015,Percent,A,1
-2015,Percent,B,3
-2015,Percent,,2
-2016,Percent,A,1
-2016,Percent,B,3
-2016,Percent,,2
+Year,Units,Group,ignored disaggregation column,Value
+2015,Percent,A,ignored disaggregation value,1
+2015,Percent,B,ignored disaggregation value,3
+2015,Percent,,ignored disaggregation value,2
+2016,Percent,A,ignored disaggregation value,1
+2016,Percent,B,ignored disaggregation value,3
+2016,Percent,,ignored disaggregation value,2

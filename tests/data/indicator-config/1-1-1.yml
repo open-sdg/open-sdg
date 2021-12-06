@@ -10,14 +10,17 @@ data_show_map: false
 data_start_values: []
 embedded_feature_footer: ''
 embedded_feature_html: ''
-embedded_feature_tab_title: ''
-embedded_feature_title: ''
-embedded_feature_url: ''
+embedded_feature_tab_title: 'My iframe tab title'
+embedded_feature_title: 'My iframe title'
+embedded_feature_url: '/iframe.html'
 expected_disaggregations:
   - Fruit
 graph_annotations: []
 graph_limits: []
 graph_stacked_disaggregation: ''
+graph_target_lines:
+  - label_content: My target line
+    value: 2.5
 graph_title: global_indicators.1-1-1-title
 graph_titles: []
 graph_type: line
@@ -45,13 +48,17 @@ page_content: >
   * MultilingualMetadata.feature (confirming that the "subfolder approach" for
   metadata works).
 
+  * EmbeddedFeature.feature (confirming the embedded_feature_url setting works)
+
 
   This is also used to show multiple items in the "Sources" tab.
 permalink: ''
 precision: []
+progress_status: target_achieved
 reporting_status: complete
 sort: ''
 standalone: false
 tags:
   - My untranslated tag
   - tags.my-tag
+x_axis_label: My axis label for 1.1.1

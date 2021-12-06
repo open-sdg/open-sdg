@@ -12,8 +12,18 @@
     <div class="col-md-6" id="button_holder">
       <div><button class="btn btn-primary btn-download" id="export">Download configuration</button></div>
       {% if page.form_settings.repository_link and page.form_settings.repository_link != '' %}
+      {% assign repository_link = page.form_settings.repository_link %}
+      {% assign repo_url = site.repository_url_data %}
+      {% if page.config_type == 'site' %}
+        {% assign repo_url = site.repository_url_site %}
+      {% endif %}
+      {% if repo_url and repo_url != '' and repo_url contains 'http' %}
+        {% unless repository_link contains 'http' %}
+          {% assign repository_link = repo_url | append: repository_link %}
+        {% endunless %}
+      {% endif %}
       <div>
-        <a class="btn btn-primary btn-download" target="_blank" href="{{ page.form_settings.repository_link }}">
+        <a class="btn btn-primary btn-download" target="_blank" href="{{ repository_link }}">
           Go to repository
         </a>
       </div>
@@ -262,7 +272,7 @@
     }
 
     // Set values according to this site's configuration.
-    {%- for config_setting in json_schema.properties -%}
+    {% for config_setting in json_schema.properties %}
     {%- assign config_key = config_setting[0] -%}
     {%- if page.config_type == 'site' -%}
       {%- assign current_value = site[config_key] -%}
@@ -305,7 +315,7 @@
 
     propertyEditorAccessibilityFixes(editor.getEditor('root.{{ config_key }}'));
 
-    {%- endfor -%}
+    {% endfor %}
 
     function isTranslationKey(text) {
       var parts = text.split('.');

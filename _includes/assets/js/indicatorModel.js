@@ -15,8 +15,8 @@ var indicatorModel = function (options) {
 
   // general members:
   var that = this;
-  this.data = helpers.convertJsonFormatToRows(options.data);
-  this.edgesData = helpers.convertJsonFormatToRows(options.edgesData);
+  this.data = helpers.inputData(options.data);
+  this.edgesData = helpers.inputEdges(options.edgesData);
   this.hasHeadline = true;
   this.country = options.country;
   this.indicatorId = options.indicatorId;
@@ -25,6 +25,7 @@ var indicatorModel = function (options) {
   this.chartTitles = options.chartTitles;
   this.graphType = options.graphType;
   this.measurementUnit = options.measurementUnit;
+  this.xAxisLabel = options.xAxisLabel;
   this.startValues = options.startValues;
   this.showData = options.showData;
   this.selectedFields = [];
@@ -42,6 +43,8 @@ var indicatorModel = function (options) {
   this.graphLimits = options.graphLimits;
   this.stackedDisaggregation = options.stackedDisaggregation;
   this.graphAnnotations = options.graphAnnotations;
+  this.graphTargetLines = options.graphTargetLines;
+  this.graphSeriesBreaks = options.graphSeriesBreaks;
   this.indicatorDownloads = options.indicatorDownloads;
   this.compositeBreakdownLabel = options.compositeBreakdownLabel;
   this.precision = options.precision;
@@ -180,7 +183,7 @@ var indicatorModel = function (options) {
         var startingUnit = this.selectedUnit;
         if (this.hasStartValues) {
           var unitInStartValues = helpers.getUnitFromStartValues(this.startValues);
-          if (unitInStartValues) {
+          if (unitInStartValues && this.units.includes(unitInStartValues)) {
             startingUnit = unitInStartValues;
           }
         }
@@ -314,7 +317,7 @@ var indicatorModel = function (options) {
       selectedSeries: this.selectedSeries,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
-      graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries),
+      graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
       chartTitle: this.chartTitle,
       indicatorDownloads: this.indicatorDownloads,
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),

@@ -1,5 +1,5 @@
 <div id="{{ include.id | default: 'search' }}" {% unless include.not_in_menu %}class="menu-target"{% endunless %}>
-  <form action="{{ page.baseurl }}search">
+  <form action="{{ page.baseurl }}search/">
     <label class="sr-only" for="indicator_{{ include.id | default: 'search' }}">{{ page.t.search.search }}</label>
     <input type="text" name="q" id="indicator_{{ include.id | default: 'search' }}" title="{{ page.t.search.search }}" /><!--
     --><button aria-label="{{ page.t.search.search }}" id="{{ include.id | default: 'search' }}-btn" type="submit"><i class="fa fa-search" aria-hidden="false"></i></button>

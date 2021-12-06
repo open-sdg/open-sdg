@@ -1,7 +1,69 @@
 <h1>Change Log</h1>
 
-## Not released
+## Unreleased
 
+* Feature: Ignore disaggregation columns #1463
+* Feature: Control the order of the indicator tabs (chart/table/map/etc) #1462
+* Feature: Layout for page-not-found (404) pages #1421
+
+## 1.6.0
+
+* Feature: Metadata report on data dashboard #1406
+* Bugfix: Accessibility fix on mobile navigation menu #1389
+* Bugfix: Consistent treatment of parent/child disaggregations #1381
+* Bugfix: Fixes for sorting of hierarchical disaggregations #1360
+* Bugfix: Avoid changing config settings without user action #1358
+* Feature: Reporting progress on indicator pages and goal pages #1356, #1408
+* Feature: Optionally hide some reporting status types on goal pages #1356
+* Feature: Add "target lines" to the data table on indicator pages #1353
+* Bugfix: Correct cookie name for Google Analytics #1332
+* Feature: Configurable favicon setting #1330
+* Bugfix: Consistent link color in data notices #1329
+* Style: Refactor and fixes for post categories and reporting status #1328
+
+## 1.5.3
+
+* Bugfix: Avoid javascript errors on non-search pages #1380
+
+## 1.5.2
+
+* Bugfix: Fix for missing units after changing series #1373
+
+## 1.5.1
+
+* Security: Cross-site-scripting fix for search page #1370
+* Bugfix: Google Analytics cookie fix #1332
+
+## 1.5.0
+
+* Fix for empty values in map ranges #1311
+* Allow for placeholder indicators #1310
+* Fixes and better defaults for graph annotations #1309
+* New "target_lines" and "series_breaks" settings #1309
+* Fix for config builder loop issue #1296
+* Cleanup of favicon code #1295
+* Lower tooltip opacity on charts #1294
+* Optional label for the horizontal (x) axis #1293
+* Left-aligned graph titles #1292
+* Option to hide single unit and/or single series #1288
+* Self-host Open Sans instead of using Google Webfonts #1285
+* Remove Sharethis option #1284
+* Add language-specific classes to the language-toggle options #1253
+* Cookie consent form #1235
+* Allow non-numeric goal IDs #1074
+
+## 1.4.0
+
+* Optimization of getCombinationData #1269
+* Fixes related to data_start_values and series/units #1265, #1270
+* Graph limits fix #1260
+* Add slash after 'search' in URL #1256
+* Remove unused assets: tether.js, d3 #1234
+* Max width so that status will wrap on goal-by-target-vertical #1233
+* Fixes for some zoom issues on maps #1228
+* Aria attributes to improve accessibility of map search suggestions #1222
+* Square points for headline on line charts #1220
+* Handle searches with no input #1219
 * Include file for custom `<HEAD>` content #1215
 * Include file for easier overriding of body classes #1212
 * Bug fix: allow multiple multi-level disaggregations #1205
@@ -320,7 +382,7 @@ This is a major version upgrade and contains some breaking changes. Full technic
 * The `remotedatabaseurl` setting is no longer supported. Use `remote_data_prefix` instead.
 * The `custom_css` configuration option is deprecated. Override [the `_sass/custom.scss` file](https://github.com/open-sdg/open-sdg/blob/master/_sass/custom.scss) instead.
 * The H2 on indicator pages is now controlled by the `indicator_available` metadata field, rather than `graph_title`.
-* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](metadata-format.md#starting-values).
+* The expected structure of the `data_start_values` metadata field has changed to be a list of objects, rather than a list of strings. See an [example of using data_start_values](indicator-configuration.md#data_start_values).
 
 ## 0.10.0
 

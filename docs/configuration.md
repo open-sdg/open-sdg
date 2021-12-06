@@ -26,11 +26,41 @@ accessible_tabs: false
 
 ### analytics
 
-_Optional_: This setting can contain another (indented) setting, `ga_prod`, which should be a [Google Analytics tracking ID](https://support.google.com/analytics/answer/1008080?hl=en#GAID). If these settings are used, usage statistics will be sent to Google Analytics. For more information about this, see the [analytics](analytics.md) page.
+_Optional_: This setting can be used to facilitate the installation of Google Analytics. You can do this in multiple ways:
+
+* ua (analytics.js)
+* gtag (gtag.js)
+* gtm (Google Tag Manager)
+
+Google provides a number that would be used in each of these cases. The numbers typically have the following prefixes:
+
+* UA-xxxxxxxx
+* G-xxxxxxxx
+* GTM-xxxxxxxx
+
+To use this setting, put the appropriate number next to the corresponding item. For example:
 
 ```nohighlight
 analytics:
-  ga_prod: 'paste ID here'
+  ua: UA-xxxxxxxx
+  gtag: G-xxxxxxxx
+  gtm: GTM-xxxxxxxx
+```
+
+Notes:
+
+1. The don't need to use all of them. You can use 1, 2, or none at all.
+1. The `ua` option was previously called `ga_prod` which also still works.
+1. As an alternative to using these settings, you can alternatively override the `_includes/head-custom.html` and/or `_includes/scripts-custom.html` files in order to insert any Google Analytics snippets you might need.
+1. The `ua` option also captures certain custom events, such as the clicking of the contrast toggle button.
+1. If you are using the `cookie_consent_form` setting, these analytics will be automatically included in the cookie consent form. This allows the user to decline the setting of the following cookies: "_gat", "_gid", and "ga". If using the `gtag` approach, then some additional cookies may be set (see the [official documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage#gtagjs_google_analytics_4_-_cookie_usage)). You can specify these with an `extra_cookies` option, for example:
+
+```
+analytics:
+  gtag: G-xxxxxxxx
+  extra_cookies:
+    - _ga_123456789
+    - _gac_gb_123456789
 ```
 
 ### breadcrumbs
@@ -102,6 +132,17 @@ Example:
 contrast_type: single
 ```
 
+### cookie_consent_form
+
+_Optional_: This setting allows you to turn on a cookie consent form that users will see as soon as they visit the site, which allows users to control whether the certain services and cookies are used. See the [cookies and privacy documentation](cookies.md) for more details.
+
+Here is an example showing the available options and their default values:
+
+```nohighlight
+cookie_consent_form:
+  enabled: false
+```
+
 ### country
 
 **_Required_**: This setting should contain two more (indented) settings: `name` and `adjective`. This are intended to allow the platform to refer to the country (or if appropriate, locality or organisation) using the platform.
@@ -114,9 +155,13 @@ country:
 
 ### create_goals
 
-_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the goals. You can optionally turn on previous/next links as well.
+_Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder.
 
-Additionally, there can be a `goals` item that includes an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
+This setting can contain several (indented) sub-settings:
+
+* `layout`: This can be used to specify which Jekyll layout will be used for the goal pages. You can create and use your own layout, but several layouts are included with Open SDG. These can be found in [the _layouts folder in the repository](https://github.com/open-sdg/open-sdg/tree/master/_layouts). For example, to use the "goal-with-progress.html" layout, you would enter "goal-with-progress" (without the ".html") in this setting.
+* `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
+* `goals`: This optional item can include an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key. They should be in order of goal number.
 
 ```nohighlight
 create_goals:
@@ -283,6 +328,14 @@ email_contacts:
 
 ```nohighlight
 environment: staging
+```
+
+### favicons
+
+_Optional_: This setting controls the favicon markup. Possible settings are `legacy` and `favicon.io`. We recommend using `favicon.io` and will default to this in the future. But currently the default is `legacy` if omitted.
+
+```nohighlight
+favicons: favicon.io
 ```
 
 ### footer_language_toggle
@@ -494,6 +547,33 @@ _Optional_: This setting can be used to hide any metadata fields that are empty.
 hide_empty_metadata: true
 ```
 
+### hide_single_series
+
+_Optional_: This setting can be used to hide the "Series" toggle on indicator pages whenever there is only a single series to chose from.
+
+```nohighlight
+hide_single_series: true
+```
+
+### hide_single_unit
+
+_Optional_: This setting can be used to hide the "Unit" toggle whenever there is only a single unit to chose from.
+
+```nohighlight
+hide_single_unit: true
+```
+
+### ignored_disaggregations
+
+_Optional_: This setting causes any number of disaggregations (eg, columns in CSV files) to be ignored. This means that they will not receive drop-downs in the left sidebar on indicator pages.
+
+This can be useful in cases where the source data may contain columns that you prefer not to appear in the platform. For example, perhaps your source data is SDMX, and contains required SDMX fields like UNIT_MULT, which you do not need visible on the platform. You could ignore it with this configuration:
+
+```
+ignored_disaggregations:
+  - UNIT_MULT
+```
+
 ### indicator_config_form
 
 _Optional_: This setting controls the behavior of the indicator config forms. The available settings are:
@@ -530,6 +610,15 @@ _Optional_: This setting controls the behavior of the indicator config forms. Th
 
 Links to the forms appear in the "Edit" tab on indicator pages.
 
+### indicator_data_form
+
+_Optional_: This setting controls the behavior of the indicator data forms. The available settings are:
+
+* `enabled`: Whether or not to generate these data forms
+* `repository_link`: This will display a "Go to repository" link on the configuration page. You can enter a pattern with the placeholder `[id]` and it will be replaced with the indicator id (eg, 1-1-1). For example, on indicator 1-1-1, `https://example.com/[id]` will link to `https://example.com/1-1-1`.
+
+Links to the forms appear in the "Edit" tab on indicator pages.
+
 ### indicator_metadata_form
 
 _Optional_: This setting controls the behavior of the indicator metadata forms. The available settings are the same as in  `indicator_config_form` above, plus the following extra options:
@@ -552,6 +641,48 @@ indicator_metadata_form:
 ```
 
 Links to the forms appear in the "Edit" tab on indicator pages.
+
+### indicator_tabs
+
+**_Optional_**: This setting controls the order and contents of the data tabs on indicator pages. This can be used to rearrange the tabs, or to hide particular tabs. This can also be overridden for particular indicators in the indicator configuration.
+
+For each of the four tab slots, you can set either: `chart`, `table`, `map`, `embed`, or `hide`.
+
+* `chart`: This will display the chart/graph in the specified tab.
+* `table`: This will display the data table in the specified tab.
+* `map`: This will display map in the specified, so long as the other requirements for displaying a map are met (such as the `data_show_map` setting and a `GeoCode` data column).
+* `embed`: This will display embedded content in the specified tab, so long as the other requirements for displaying embedded content are met (such as the `embedded_feature_url` or `embedded_feature_html` settings).
+* `hide`: This will hide the specified tab altogether.
+
+The default settings, if omitted are the following:
+
+```nohighlight
+indicator_tabs:
+  tab_1: chart
+  tab_2: table
+  tab_3: map
+  tab_4: embed
+```
+
+But for example, if you would like your indicators to start with the table selected, you could do this:
+
+```nohighlight
+indicator_tabs:
+  tab_1: table
+  tab_2: chart
+  tab_3: map
+  tab_4: embed
+```
+
+Or if you would like your indicators to only have tables and maps, you could do this:
+
+```nohighlight
+indicator_tabs:
+  tab_1: table
+  tab_2: map
+  tab_3: hide
+  tab_4: hide
+```
 
 ### languages
 
@@ -678,6 +809,37 @@ plugins:
   - jekyll-open-sdg-plugins
 ```
 
+### progress_status
+
+_Optional_: This setting controls certain aspects of the progress status functionality. The available settings are:
+
+* `status_heading`: Controls the heading that describes the progress status, whenever it appears.
+* `status_types`: A list of progress status types to use. Each item should have these settings:
+    * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'target_achieved').
+    * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved').
+    * `image`: The internal path to the image to use (if any) for this progress status.
+    * `alt`: An alt tag for the image above.
+
+Here is an example of using these settings:
+
+```yaml
+progress_status:
+    status_heading: heading goes here
+    status_types:
+      - value: not_available
+        label: status.progress_not_available
+        image: assets/img/progress/not-available.png
+        alt: status.progress_not_available
+      - value: target_achieved
+        label: status.progress_target_achieved
+        image: assets/img/progress/target-achieved.png
+        alt: status.progress_target_achieved
+```
+
+As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
+
+For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
+
 ### remote_data_prefix
 
 **_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
@@ -712,7 +874,11 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
-* `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](metadata-format.md#recommended-special-fields).
+* `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
+* `status_types`: A list of reporting status types to use. Each item should have these settings:
+    * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'complete').
+    * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.reported_online').
+    * `hide_on_goal_pages`: _Optional_: Whether to hide this status type on goal pages. Useful for the most commonly-occuring type.
 
 Here is an example of using these settings:
 
@@ -721,6 +887,16 @@ reporting_status:
     title: title goes here
     description: description goes here
     disaggregation_tabs: true
+    status_types:
+      - value: notstarted
+        label: status.exploring_data_sources
+        hide_on_goal_pages: false
+      - value: complete
+        label: status.reported_online
+        hide_on_goal_pages: true
+      - value: notapplicable
+        label: status.not_applicable
+        hide_on_goal_pages: false
 ```
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
@@ -788,6 +964,20 @@ search_index_extra_fields:
   - national_agency
 ```
 
+Another example of how `search_index_extra_fields` could be used, is to configure search terms for indicator pages. For example, if you wanted indicator 3.a.1 to show as a result of 'smoking' or 'smokers' being searched for, you could set an indicator configuration field called `data_keywords` and then "index" that field, like so:
+
+```nohighlight
+search_index_extra_fields:
+  - data_keywords
+```
+
+Then in your indicator configuration you would have:
+
+```nohighlight
+data_keywords: smoking, smokers
+```
+
+
 ### series_toggle
 
 _Optional_: This setting enables the special treatment of the "Series" column in the data. If set to `true`, when an indicator's data includes a "Series" column, it will be displayed above "Units" as radio buttons. If omitted or `false`, the normal behavior is that the "Series" column will display below "Units" as checkboxes. Example:
@@ -802,10 +992,6 @@ _Optional_: This setting controls the behavior of the site config form. The avai
 
 The default location for the site configuration page is `/config`.
 
-### sharethis_property
-
-_Optional_: This setting creates a [ShareThis](https://sharethis.com/platform/share-buttons/) widget along the left side of every page. It should be the [property id](https://sharethis.com/support/faq/how-do-i-find-my-property-id/) for your ShareThis account. For more information about this, see the [sharing](social-media-sharing.md) page.
-
 ### validate_indicator_config
 
 _Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.
@@ -813,3 +999,7 @@ _Optional_: This setting, if true, will run a validation of each indicator's con
 ### validate_site_config
 
 _Optional_: This setting, if true, will run a validation of the site configuration during the site build. This defaults to `false`.
+
+### x_axis_label
+
+_Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this is also available on the configuration of individual indicators, where it will override this setting.

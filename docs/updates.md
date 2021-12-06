@@ -2,6 +2,52 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.6.0
+
+9 November 2021
+
+* Metadata report on data dashboard
+* Reporting progress on goal and indicator pages
+* Option to hide some reporting status types
+* Configurable favicon settings
+* Design improvements for categories, tags, and status
+* Target lines (eg, "2030 Target") on indicator data tables
+
+## 1.5.0
+
+15 September 2021
+
+* Cookie consent form
+* New ways to embed Google Analytics
+* Remove 2 third-party services: Google Webfonts and ShareThis
+* Option to hide units-of-measurement toggle when there is only one
+* Option to hide series toggle when there is only one
+* Left-aligned graph titles
+* Optional graph labels for the X axis
+* More transparency for graph tooltips
+* Setting for 2030 target lines on graphs
+* Setting for series break lines on graphs
+* Support for unlinked "placeholder" indicators
+* Support for non-numeric goal IDs
+
+## 1.4.0
+
+15 July 2021
+
+* Configurable and multilingual logos
+* Accessibility improvements in the mapping feature
+* Usability improvements on line charts
+* Built-in forms for editing configuration, metadata, and data
+* Darker font color for main navigation
+* Optional single-icon high-contrast toggle
+* Simplify disaggregation controls
+* Improved handling of hierarchical disaggregation
+* Microsoft Word metadata input
+* SDMX metadata input and output
+* Added control over SDMX data output
+* PxWeb and JSON-Stat data inputs
+* Streamlined and simplified quick-start
+
 ## 1.3.0
 
 11 March 2021

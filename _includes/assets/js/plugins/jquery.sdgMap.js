@@ -390,6 +390,11 @@
         }
 
         // Calculate the ranges of values, years and colors.
+        function isMapValueInvalid(val) {
+          return _.isNaN(val) || val === '';
+        }
+        minimumValues = _.reject(minimumValues, isMapValueInvalid);
+        maximumValues = _.reject(maximumValues, isMapValueInvalid);
         plugin.valueRange = [_.min(minimumValues), _.max(maximumValues)];
         plugin.colorScale = chroma.scale(plugin.options.colorRange)
           .domain(plugin.valueRange)
@@ -513,8 +518,16 @@
         }
       });
 
-      // Perform some last-minute tasks when the user clicks on the "Map" tab.
-      $('.map .nav-link').click(function() {
+      // Certain things cannot be done until the map is visible. Because our
+      // map is in a tab which might not be visible, we have to postpone those
+      // things until it becomes visible.
+      if ($('#map').is(':visible')) {
+        finalMapPreparation();
+      }
+      else {
+        $('#tab-mapview').parent().click(finalMapPreparation);
+      }
+      function finalMapPreparation() {
         setTimeout(function() {
           $('#map #loader-container').hide();
           // Leaflet needs "invalidateSize()" if it was originally rendered in a
@@ -542,7 +555,7 @@
             $('#map').height(maxHeight);
           }
         }, 500);
-      });
+      };
     },
 
     featureShouldDisplay: function(feature) {

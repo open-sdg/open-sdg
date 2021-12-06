@@ -1,5 +1,5 @@
 body{
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: $fontFamily;
   font-size: $fontSize;
   color: $text-color;
 }
@@ -59,7 +59,6 @@ h3{ font-size: $h3-fontSize; }
   }
   .alert a {
     display: inline;
-    color: inherit;
     padding: 0;
   }
 

@@ -11,6 +11,8 @@ We recommend the first option. Both are detailed below.
 
 ## 1. Automatically trigger a site build when data changes
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OBbIhiiy9ik" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ### Creating an access token
 
 1. Create an access token described in [this official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:

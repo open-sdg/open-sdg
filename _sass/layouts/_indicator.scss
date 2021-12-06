@@ -1,19 +1,26 @@
 #main-content {
   #indicatorData {
+    &.no-units {
+      #units {
+        display: none;
+      }
+    }
+    &.no-serieses {
+      #serieses {
+        display: none;
+      }
+    }
     &.no-fields {
-
       #series-help, #fields, #clear {
         display: none;
       }
-
-      &.no-units.no-serieses {
-        // no units and no series, hide the column:
-        > .col-md-3 {
-          display: none;
-        }
-        > .col-md-9 {
-          width: 100%;
-        }
+    }
+    &.no-units.no-serieses.no-fields {
+      > .col-md-3 {
+        display: none;
+      }
+      > .col-md-9 {
+        width: 100%;
       }
     }
   }
@@ -459,6 +466,20 @@
     padding-bottom: 20px;
   }
 
+  #tableTargetLines {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    dt {
+      float: left;
+      font-weight: normal;
+      max-width: 80%;
+    }
+    dd {
+      text-align: right;
+    }
+  }
+
   #selectionsChart {
     padding-bottom: 20px;
     &.chart-has-no-data {
@@ -497,7 +518,7 @@ caption {
 }
 
 .chart-title {
-  text-align: center;
+  margin-left: 20px;
 }
 
 body.contrast-high {
@@ -560,6 +581,10 @@ body.contrast-high {
 
   #dataset-size-warning {
     color: $color-dark-highContrast;
+  }
+
+  #main-content.goal-indicators {
+    @include indicatorcardsHighContrast;
   }
 }
 

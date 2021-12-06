@@ -4,7 +4,7 @@
   {%- for language in site.languages -%}
     {%- assign language_abbreviation = site.languages_public[language] | default: language -%}
     {%- if language != page.language -%}
-    <li>
+    <li class="language-option-{{ language }}">
       <a class="language-toggle-link" href="{{ page.url_by_language[language] }}">
         {%- if include.location != 'footer' -%}
         <span class="language-name">{{ page.t.languages[language] }}</span>
@@ -15,7 +15,7 @@
       </a>
     </li>
     {%- elsif site.languages.size > 2 -%}
-    <li>
+    <li class="language-option-{{ language }}">
       <span class="language-toggle-active-language">
         {%- if include.location != 'footer' -%}
         <span class="language-name">{{ page.t.languages[language] }}</span>

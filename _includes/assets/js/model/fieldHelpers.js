@@ -162,7 +162,9 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
           var fieldItemValue = fieldItem.values.find(function(valueItem) {
             return valueItem.value === selectedValue;
           });
-          fieldItemValue.checked = true;
+          if (fieldItemValue) {
+            fieldItemValue.checked = true;
+          }
         })
       }
     });
@@ -184,27 +186,60 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
 function sortFieldsForView(fieldItemStates, edges) {
   if (edges.length > 0 && fieldItemStates.length > 0) {
 
-    // We need to sort the edges so that we process parents before children.
     var parents = edges.map(function(edge) { return edge.From; });
-    edges.sort(function(a, b) {
-      if (!parents.includes(a.To) && parents.includes(b.To)) {
-        return 1;
+    var children = edges.map(function(edge) { return edge.To; });
+    var topLevelParents = [];
+    parents.forEach(function(parent) {
+      if (!(children.includes(parent)) && !(topLevelParents.includes(parent))) {
+        topLevelParents.push(parent);
       }
-      if (!parents.includes(b.To) && parents.includes(a.To)) {
-        return -1;
-      }
-      return 0;
     });
 
-    edges.forEach(function(edge) {
-      // This makes sure children are right after their parents.
-      var parentIndex = fieldItemStates.findIndex(function(fieldItem) {
-        return fieldItem.field == edge.From;
+    var topLevelParentsByChild = {};
+    children.forEach(function(child) {
+      var currentParent = edges.find(function(edge) { return edge.To === child; }),
+          currentChild = child;
+      while (currentParent) {
+        currentParent = edges.find(function(edge) { return edge.To === currentChild; });
+        if (currentParent) {
+          currentChild = currentParent.From;
+          topLevelParentsByChild[child] = currentParent.From;
+        }
+      }
+    });
+    fieldItemStates.forEach(function(fieldItem) {
+      if (topLevelParents.includes(fieldItem.field) || typeof topLevelParentsByChild[fieldItem.field] === 'undefined') {
+        fieldItem.topLevelParent = '';
+      }
+      else {
+        fieldItem.topLevelParent = topLevelParentsByChild[fieldItem.field];
+      }
+    });
+
+    // As an intermediary step, create a hierarchical structure grouped
+    // by the top-level parent.
+    var tempHierarchy = [];
+    var tempHierarchyHash = {};
+    fieldItemStates.forEach(function(fieldItem) {
+      if (fieldItem.topLevelParent === '') {
+        fieldItem.children = [];
+        tempHierarchyHash[fieldItem.field] = fieldItem;
+        tempHierarchy.push(fieldItem);
+      }
+    });
+    fieldItemStates.forEach(function(fieldItem) {
+      if (fieldItem.topLevelParent !== '') {
+        tempHierarchyHash[fieldItem.topLevelParent].children.push(fieldItem);
+      }
+    });
+
+    // Now we clear out the field items and add them back as a flat list.
+    fieldItemStates.length = 0;
+    tempHierarchy.forEach(function(fieldItem) {
+      fieldItemStates.push(fieldItem);
+      fieldItem.children.forEach(function(child) {
+        fieldItemStates.push(child);
       });
-      var childIndex = fieldItemStates.findIndex(function(fieldItem) {
-        return fieldItem.field == edge.To;
-      });
-      arrayMove(fieldItemStates, childIndex, parentIndex + 1);
     });
   }
 }
@@ -256,40 +291,37 @@ function getCombinationData(fieldItems) {
   });
 
   // Generate all possible subsets of these key/value pairs.
-  var powerset = [[]];
+  var powerset = [];
+  // Start off with an empty item.
+  powerset.push([]);
   for (var i = 0; i < fieldValuePairs.length; i++) {
     for (var j = 0, len = powerset.length; j < len; j++) {
-      powerset.push(powerset[j].concat(fieldValuePairs[i]));
+      var candidate = powerset[j].concat(fieldValuePairs[i]);
+      if (!hasDuplicateField(candidate)) {
+        powerset.push(candidate);
+      }
     }
   }
-  // But we require special filtering on top of this.
-  return powerset.filter(function(combinations) {
-    // We don't need the empty set.
-    if (combinations.length === 0) {
-      return false;
-    }
-    else if (combinations.length === 1) {
-      return true;
-    }
-    // We don't want any sets that include multiples of the same field.
-    // Eg, we do not need to consider a set containing both "Female" and
-    // "Male". So filter them out here.
-    else {
-      var fieldsUsed = [];
-      for (var i = 0, len = combinations.length; i < len; i++) {
-        var thisField = Object.keys(combinations[i])[0];
-        if (fieldsUsed.includes(thisField)) {
-          // Abort as soon as we find a duplicate.
-          return false;
-        }
-        else {
-          fieldsUsed.push(thisField);
-        }
+
+  function hasDuplicateField(pairs) {
+    var fields = [], i;
+    for (i = 0; i < pairs.length; i++) {
+      var field = Object.keys(pairs[i])[0]
+      if (fields.includes(field)) {
+        return true;
       }
-      return true;
+      else {
+        fields.push(field);
+      }
     }
-  }).map(function(combinations) {
-    // We also want to merge these into a single object.
+    return false;
+  }
+
+  // Remove the empty item.
+  powerset.shift();
+
+  return powerset.map(function(combinations) {
+    // We want to merge these into a single object.
     var combinedSubset = {};
     combinations.forEach(function(keyValue) {
       Object.assign(combinedSubset, keyValue);
