@@ -203,6 +203,7 @@ logos:
   - language: fr
     src: assets/img/SDG_logo.png
     alt: My French logo alt text
+map_disaggregation_select: true
 map_layers:
   - subfolder: regions
     label: indicator.regions

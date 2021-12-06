@@ -406,6 +406,7 @@
         plugin.updateColors();
 
         // Add the disaggregation select if necessary.
+        {% if site.map_disaggregation_select %}
         var disaggregationOptions = plugin.getVisibleLayers().toGeoJSON().features[0].properties.disaggregations.map(function(disaggregation) {
           return Object.values(disaggregation).filter(function(subcategory) {
             return subcategory;
@@ -416,6 +417,7 @@
         if (disaggregationOptions.length > 1) {
           plugin.map.addControl(L.Control.disaggregationSelect(plugin, disaggregationOptions));
         }
+        {% endif %}
 
         // Add zoom control.
         plugin.map.addControl(L.Control.zoomHome());

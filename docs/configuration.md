@@ -726,6 +726,14 @@ logos:
     alt: mi texto alternativo
 ```
 
+### map_disaggregation_select
+
+_Optional_: Whether to display a select (drop-down) on the maps which allows the user to control which combinations of disaggregations are represented on the map. Defaults to false.
+
+```nohighlight
+map_disaggregation_select: true
+```
+
 ### metadata_edit_url
 
 **_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
