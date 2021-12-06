@@ -2,15 +2,27 @@
 // [fontSize|fontWeight|etc] - [...modifiers]
 $fontSize: 16px !default;
 $fontFamily: 'Open Sans', Helvetica, Arial, sans-serif !default;
+// Font size t-shirt sizes.
+$fontSize-extraLarge: 36px !default;
+$fontSize-large: 27px !default;
+$fontSize-medium: 24px !default;
+$fontSize-small: 14px !default;
 
 // Element-level typography variables.
 // [element] - [fontSize|fontWeight|etc] - [...modifiers]
-$h1-fontSize: 36px !default;
-$h2-fontSize: 27px !default;
-$h3-fontSize: 24px !default;
+$h1-fontSize: $fontSize-extraLarge !default;
+$h2-fontSize: $fontSize-large !default;
+$h3-fontSize: $fontSize-medium !default;
 $leadCopy-fontSize: 22px !default;
-$smallText-fontSize: 85% !default;
+$smallText-fontSize: $fontSize-small !default;
+$breadcrumbs-fontSize: 16px !default;
+$button-fontSize: 14px !default;
+$tag-fontSize: 12px !default;
 
 // Component-level typography variables.
 // [component] - [element] - [fontSize|fontWeight|etc] - [...modifiers]
 $searchBar-input-fontSize: 16px !default;
+$menu-link-fontSize: 16px !default;
+$menu-link-fontSize-mobile: 15px !default;
+$search-result-fontSize: 18px !default;
+$indicator-chartTitle-fontSize: 20px !default;

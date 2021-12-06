@@ -6,7 +6,7 @@ $goal-by-target-indentation: 60px;
     margin-bottom: 10px;
   }
   .goal-target, .goal-indicator {
-    font-size: 16px;
+    font-size: $fontSize;
     font-weight: normal;
     clear: both;
     display: inline-block;
@@ -71,7 +71,7 @@ $goal-by-target-indentation: 60px;
   }
 
   .indicator-number {
-    font-size: 16px;
+    font-size: $fontSize;
   }
 
   .goal-target, .goal-indicator h4 {
