@@ -11,7 +11,7 @@
   font-weight: normal;
   border: none;
   padding: 4px;
-  font-size: 12px;
+  font-size: $tag-fontSize;
 
   .status-inner {
     padding: 0 2px;
@@ -330,7 +330,7 @@
   padding: 2px;
   border: none;
   border-radius: 0;
-  font-size: 16px;
+  font-size: $fontSize;
   border-bottom: 2px solid transparent;
   color: $menu-link-color;
   &:hover {

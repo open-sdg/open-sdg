@@ -23,7 +23,7 @@
 
           width: 40px;
           text-align: center;
-          font-size: 16px;
+          font-size: $fontSize;
 
           .status-inner {
             padding: 0 2px;
@@ -74,7 +74,7 @@
       border-bottom: 1px solid $horizontalRule-color;
       .total {
         line-height: 1.2;
-        font-size: 16px;
+        font-size: $fontSize;
         width: auto;
         padding-left: 4px;
         padding-right: 4px;
