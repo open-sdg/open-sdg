@@ -368,6 +368,7 @@
           layer.geoJsonObject = geoJson;
           // Add the layer to the ZoomShowHide group.
           plugin.dynamicLayers.addLayer(layer);
+          console.log(geoJson);
 
           // Add a download button below the map.
           var downloadLabel = translations.t(plugin.mapLayers[i].label)

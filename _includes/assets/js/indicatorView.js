@@ -92,6 +92,18 @@ var indicatorView = function (model, options) {
     });
   }
 
+  if (this._model.onSeriesesSelectedChanged) {
+    this._model.onSeriesesSelectedChanged.attach(function(sender, args) {
+      console.log(args, 'series changed');
+    });
+  }
+
+  if (this._model.onUnitsSelectedChanged) {
+    this._model.onUnitsSelectedChanged.attach(function(sender, args) {
+      console.log(args, 'units changed');
+    });
+  }
+
   this._model.onFieldsCleared.attach(function(sender, args) {
     $(view_obj._rootElement).find(':checkbox').prop('checked', false);
     $(view_obj._rootElement).find('#clear')
