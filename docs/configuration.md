@@ -728,7 +728,10 @@ logos:
 
 ### map_disaggregation_select
 
-_Optional_: Whether to display a select (drop-down) on the maps which allows the user to control which combinations of disaggregations are represented on the map. Defaults to false.
+_Optional_: Settings related to the select (drop-down) on the maps which allows the user to control which combinations of disaggregations are represented on the map. The following settings are supported:
+
+* `enabled`: Whether the select should display on maps. Defaults to false.
+* `omit_columns`: Any number of columns which should be omitted from the dropdown.
 
 ```nohighlight
 map_disaggregation_select: true
