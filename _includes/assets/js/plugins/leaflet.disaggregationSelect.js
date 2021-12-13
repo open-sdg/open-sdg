@@ -37,7 +37,9 @@
       var that = this;
       L.DomEvent.on(select, 'change', function(event) {
         that.plugin.currentDisaggregation = this.selectedIndex;
+        that.plugin.setColorScale();
         that.plugin.updateColors();
+        that.plugin.selectionLegend.resetSwatches();
         that.plugin.selectionLegend.update();
       });
 
