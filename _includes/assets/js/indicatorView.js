@@ -36,6 +36,7 @@ var indicatorView = function (model, options) {
       var $sidebar = $('.indicator-sidebar'),
           $main = $('.indicator-main'),
           hideSidebar = $(this).data('no-disagg'),
+          hideSubcategories = $(this).data('no-subcategories'),
           mobile = window.matchMedia("screen and (max-width: 990px)");
       if (hideSidebar) {
         $sidebar.addClass('indicator-sidebar-hidden');
@@ -50,6 +51,12 @@ var indicatorView = function (model, options) {
       else {
         $sidebar.removeClass('indicator-sidebar-hidden');
         $main.removeClass('indicator-main-full');
+      }
+      if (hideSubcategories) {
+        $sidebar.addClass('indicator-subcategories-hidden');
+      }
+      else {
+        $sidebar.removeClass('indicator-subcategories-hidden');
       }
     };
   });
@@ -80,8 +87,8 @@ var indicatorView = function (model, options) {
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
-      var mapPlugin = view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator);
-      view_obj._mapPlugin = $.data(mapPlugin.get(0), 'plugin_sdgMap');
+      var mapElement = view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator, args.selectedUnit, args.selectedSeries, view_obj);
+      view_obj._mapPlugin = $.data(mapElement.get(0), 'plugin_sdgMap');
     }
   });
 
@@ -412,6 +419,29 @@ var indicatorView = function (model, options) {
         }
       });
     }
+  }
+
+  this.updateMapDisaggregation = function() {
+    var disaggregationInfo = this._mapPlugin.getDisaggregationInfo();
+    var heading = '<h4>' + translations.t('Map sub-categories') + '</h4>';
+    var html = '';
+    var disaggregations = Object.keys(disaggregationInfo);
+    var values = Object.values(disaggregationInfo);
+    var hasDisaggregation = values.some(function(val) {
+      return val && val !== '';
+    });
+    if (hasDisaggregation) {
+      html += heading;
+      html += '<dl class="alternate-subcategory-list">';
+      for (var i = 0; i < disaggregations.length; i++) {
+        if (values[i] && values[i] !== '') {
+          html += '<dt>' + translations.t(disaggregations[i]) + '</dt>';
+          html += '<dd>' + translations.t(values[i]) + '</dd>';
+        }
+      }
+      html += '</dl>';
+    }
+    $('#alternate-subcategory-display').html(html);
   }
 
   this.updatePlot = function(chartInfo) {

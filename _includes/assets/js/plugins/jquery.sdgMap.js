@@ -81,9 +81,13 @@
     this.indicatorId = options.indicatorId;
     this._precision = options.precision;
     this._decimalSeparator = options.decimalSeparator;
+    this.UNIT_COLUMN = '{{ site.data_fields.units | default: "Units" }}';
+    this.SERIES_COLUMN = '{{ site.data_fields.series | default: "Series" }}';
+    this.selectedSeries = options.selectedSeries || null;
+    this.selectedUnit = options.selectedUnit || null;
+    this.indicatorView = options.indicatorView;
+    this.allDisaggregations = [];
     this.currentDisaggregation = 0;
-    this.selectedSeries = null;
-    this.selectedUnit = null;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -112,17 +116,38 @@
 
   Plugin.prototype = {
 
+    // Getters and setters for series and unit.
     setSeries: function(series) {
       this.selectedSeries = series;
+      this.refreshAfterDataChange();
     },
     getSeries: function() {
       return this.selectedSeries;
     },
     setUnit: function(unit) {
       this.selectedUnit = unit;
+      this.refreshAfterDataChange();
     },
     getUnit: function() {
       return this.selectedUnit;
+    },
+
+    // Update the everything after a potential data change.
+    refreshAfterDataChange: function() {
+      this.updateCurrentDisaggregation();
+      this.setColorScale();
+      this.updateColors();
+      this.updateTooltips();
+      this.selectionLegend.resetSwatches();
+      this.selectionLegend.update();
+    },
+
+    // Get info about the current disaggregation.
+    getDisaggregationInfo: function() {
+      var info = Object.assign({}, this.allDisaggregations[this.currentDisaggregation]);
+      delete info[this.UNIT_COLUMN];
+      delete info[this.SERIES_COLUMN];
+      return info;
     },
 
     // Zoom to a feature.
@@ -275,6 +300,65 @@
           .classes(this.options.colorRange.length);
     },
 
+    // TODO: This assumes all layers have the same disaggregations,
+    // and all features within a layer have the same disaggregations.
+    // Is this a safe assumption?
+    saveDisaggregations: function(layer) {
+      if (this.allDisaggregations.length > 0) {
+        // Only needs to be done once.
+        return;
+      }
+      // We just need to find the first feature with disaggregations,
+      // and we assume all the others will be the same.
+      for (var i = 0; i < layer.geoJsonObject.features.length; i++) {
+        var feature = layer.geoJsonObject.features[i];
+        if (!feature.properties || !feature.properties.disaggregations || feature.properties.disaggregations.length == 0) {
+          continue;
+        }
+        this.allDisaggregations = feature.properties.disaggregations;
+        break;
+      }
+    },
+
+    // Decide which disaggregation should be used.
+    getCorrectDisaggregation() {
+      var i = 0,
+          selectedSeries = this.getSeries(),
+          selectedUnit = this.getUnit();
+
+      if (selectedSeries && !selectedUnit) {
+        for (i = 0; i < this.allDisaggregations.length; i++) {
+          var disagg = this.allDisaggregations[i];
+          if (disagg[this.SERIES_COLUMN] == selectedSeries) {
+            return i;
+          }
+        }
+        return 0
+      }
+      else if (selectedUnit && !selectedSeries) {
+        for (i = 0; i < this.allDisaggregations.length; i++) {
+          var disagg = this.allDisaggregations[i];
+          if (disagg[this.UNIT_COLUMN] == selectedUnit) {
+            return i;
+          }
+        }
+      }
+      else if (selectedSeries && selectedUnit) {
+        for (i = 0; i < this.allDisaggregations.length; i++) {
+          var disagg = this.allDisaggregations[i];
+          if (disagg[this.UNIT_COLUMN] == selectedUnit && disagg[this.SERIES_COLUMN] == selectedSeries) {
+            return i;
+          }
+        }
+      }
+      return 0;
+    },
+
+    updateCurrentDisaggregation: function() {
+      this.currentDisaggregation = this.getCorrectDisaggregation();
+      this.indicatorView.updateMapDisaggregation();
+    },
+
     // Get the (long) URL of a geojson file, given a particular subfolder.
     getGeoJsonUrl: function(subfolder) {
       var fileName = this.indicatorId + '.geojson';
@@ -390,6 +474,8 @@
           layer.geoJsonObject = geoJson;
           // Add the layer to the ZoomShowHide group.
           plugin.dynamicLayers.addLayer(layer);
+          // Save the disaggregations for later use.
+          plugin.saveDisaggregations(layer);
 
           // Add a download button below the map.
           var downloadLabel = translations.t(plugin.mapLayers[i].label)
@@ -428,6 +514,7 @@
           plugin.valueRanges[valueIndex] = [_.min(minimumValues[valueIndex]), _.max(maximumValues[valueIndex])];
         }
 
+        plugin.updateCurrentDisaggregation();
         plugin.setColorScale();
         plugin.years = _.uniq(availableYears).sort();
         plugin.currentYear = plugin.years[0];

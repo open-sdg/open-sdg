@@ -29,6 +29,17 @@
   .indicator-sidebar-hidden {
     display: none;
   }
+  #alternate-subcategory-display {
+    display: none;
+  }
+  .indicator-subcategories-hidden {
+    #toolbar {
+      display: none;
+    }
+    #alternate-subcategory-display {
+      display: block;
+    }
+  }
   // For expanding the main section.
   .indicator-main-full {
     width: 100%;

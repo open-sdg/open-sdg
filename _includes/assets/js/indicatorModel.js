@@ -270,6 +270,8 @@ var indicatorModel = function (options) {
         indicatorId: this.indicatorId,
         showMap: this.showMap,
         precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
+        selectedSeries: this.selectedSeries,
+        selectedUnit: this.selectedUnit,
       });
     }
 
