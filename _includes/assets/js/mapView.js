@@ -4,7 +4,7 @@ var mapView = function () {
 
   this.initialise = function(indicatorId, precision, decimalSeparator) {
     $('.map').show();
-    $('#map').sdgMap({
+    return $('#map').sdgMap({
       indicatorId: indicatorId,
       mapOptions: {{ site.map_options | jsonify }},
       mapLayers: {{ site.map_layers | jsonify }},

@@ -82,6 +82,8 @@
     this._precision = options.precision;
     this._decimalSeparator = options.decimalSeparator;
     this.currentDisaggregation = 0;
+    this.selectedSeries = null;
+    this.selectedUnit = null;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -109,6 +111,19 @@
   }
 
   Plugin.prototype = {
+
+    setSeries: function(series) {
+      this.selectedSeries = series;
+    },
+    getSeries: function() {
+      return this.selectedSeries;
+    },
+    setUnit: function(unit) {
+      this.selectedUnit = unit;
+    },
+    getUnit: function() {
+      return this.selectedUnit;
+    },
 
     // Zoom to a feature.
     zoomToFeature: function(layer) {
@@ -253,6 +268,13 @@
       }
     },
 
+    // Set (or re-set) the choropleth color scale.
+    setColorScale: function() {
+      this.colorScale = chroma.scale(this.options.colorRange)
+          .domain(this.valueRanges[this.currentDisaggregation])
+          .classes(this.options.colorRange.length);
+    },
+
     // Get the (long) URL of a geojson file, given a particular subfolder.
     getGeoJsonUrl: function(subfolder) {
       var fileName = this.indicatorId + '.geojson';
@@ -368,7 +390,6 @@
           layer.geoJsonObject = geoJson;
           // Add the layer to the ZoomShowHide group.
           plugin.dynamicLayers.addLayer(layer);
-          console.log(geoJson);
 
           // Add a download button below the map.
           var downloadLabel = translations.t(plugin.mapLayers[i].label)
@@ -384,8 +405,14 @@
           _.each(geoJson.features, function(feature) {
             if (feature.properties.values && feature.properties.values.length) {
               availableYears = availableYears.concat(Object.keys(feature.properties.values[0]));
-              minimumValues.push(_.min(Object.values(feature.properties.values[0])));
-              maximumValues.push(_.max(Object.values(feature.properties.values[0])));
+              for (var valueIndex = 0; valueIndex < feature.properties.values.length; valueIndex++) {
+                if (minimumValues.length <= valueIndex) {
+                  minimumValues.push([]);
+                  maximumValues.push([]);
+                }
+                minimumValues[valueIndex].push(_.min(Object.values(feature.properties.values[valueIndex])));
+                maximumValues[valueIndex].push(_.max(Object.values(feature.properties.values[valueIndex])));
+              }
             }
           });
         }
@@ -394,12 +421,14 @@
         function isMapValueInvalid(val) {
           return _.isNaN(val) || val === '';
         }
-        minimumValues = _.reject(minimumValues, isMapValueInvalid);
-        maximumValues = _.reject(maximumValues, isMapValueInvalid);
-        plugin.valueRange = [_.min(minimumValues), _.max(maximumValues)];
-        plugin.colorScale = chroma.scale(plugin.options.colorRange)
-          .domain(plugin.valueRange)
-          .classes(plugin.options.colorRange.length);
+        plugin.valueRanges = [];
+        for (var valueIndex = 0; valueIndex < minimumValues.length; valueIndex++) {
+          minimumValues[valueIndex] = _.reject(minimumValues[valueIndex], isMapValueInvalid);
+          maximumValues[valueIndex] = _.reject(maximumValues[valueIndex], isMapValueInvalid);
+          plugin.valueRanges[valueIndex] = [_.min(minimumValues[valueIndex]), _.max(maximumValues[valueIndex])];
+        }
+
+        plugin.setColorScale();
         plugin.years = _.uniq(availableYears).sort();
         plugin.currentYear = plugin.years[0];
 

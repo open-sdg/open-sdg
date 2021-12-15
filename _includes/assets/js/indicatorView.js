@@ -9,6 +9,7 @@ var indicatorView = function (model, options) {
   this._rootElement = options.rootElement;
   this._tableColumnDefs = options.tableColumnDefs;
   this._mapView = undefined;
+  this._mapPlugin = undefined;
   this._legendElement = options.legendElement;
   this._precision = undefined;
   this._decimalSeparator = options.decimalSeparator;
@@ -79,7 +80,8 @@ var indicatorView = function (model, options) {
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
-      view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator);
+      var mapPlugin = view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator);
+      view_obj._mapPlugin = $.data(mapPlugin.get(0), 'plugin_sdgMap');
     }
   });
 
@@ -95,13 +97,17 @@ var indicatorView = function (model, options) {
 
   if (this._model.onSeriesesSelectedChanged) {
     this._model.onSeriesesSelectedChanged.attach(function(sender, args) {
-      console.log(args, 'series changed');
+      if (view_obj._mapPlugin) {
+        view_obj._mapPlugin.setSeries(args);
+      }
     });
   }
 
   if (this._model.onUnitsSelectedChanged) {
     this._model.onUnitsSelectedChanged.attach(function(sender, args) {
-      console.log(args, 'units changed');
+      if (view_obj._mapPlugin) {
+        view_obj._mapPlugin.setUnit(args);
+      }
     });
   }
 
