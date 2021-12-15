@@ -73,6 +73,8 @@ const driver = new mink.Mink({
     "chart title": "#chart-heading",
     "configuration form textarea": "textarea.form-control",
     "embedded iframe": "#embeddedmapframe iframe",
+    "footer field that says 'Testing label for series A'": "#selectionChartFooter dt[data-for-series='A']",
+    "footer field that says 'Another field label for unit total'": "#selectionChartFooter dt[data-for-unit='Total']",
   }
 });
 
