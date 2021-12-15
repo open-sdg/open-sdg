@@ -1,5 +1,7 @@
 <h1>Github and automated tests</h1>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vTel8Ya4MO4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Whatever service you choose for automation, you will need to enable the "hooks" in your Github repositories so that the automated testing will happen. The goal is for automated tests to run every time a "pull request" is created. This way, if the pull request would have broken something, you will know in advance.
 
 The procedure is the same for both the site repository and the data repository:

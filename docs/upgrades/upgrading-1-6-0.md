@@ -29,13 +29,15 @@ In your site repository's `_config.yml` file, update the version of Open SDG in 
 remote_theme: open-sdg/open-sdg@1.6.0
 ```
 
-## Update version of jekyll-open-sdg-plugins to 1.6.0
+## Update version of jekyll-open-sdg-plugins to 1.6.1
 
 In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugins like so:
 
 ```
-gem "jekyll-open-sdg-plugins", "1.6.0"
+gem "jekyll-open-sdg-plugins", "1.6.1"
 ```
+
+> Note the "1.6.1" above is intentional - that project needed a hotfix release.
 
 ## Recommended updates to the site configuration
 

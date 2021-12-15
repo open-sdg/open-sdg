@@ -24,7 +24,7 @@ Our data for Sustainable Development Goal indicators
 In this tutorial you are going to customize that text to better suit your implementation. The steps are as follows:
 
 1. Log in to Github.com, and go to your site repository.
-1. In the list of files, click on `_config.yml`.
+1. In the list of files, click into the `_data` folder and click on `site_config.yml`. Alternatively, you can alter this setting using the site configuration form. If you do not have the `_data` folder (older versions), click on `_config.yml` in the main list of files.
 1. Click the pencil icon on the right to begin editing the file.
 1. Look for the `frontpage_goals_grid` section.
 1. On the next line, change `title: Our data for Sustainable Development Goal indicators` to whatever you would like. For example, you might change the line to read: `title: U.S. data for SDG indicators`.
@@ -89,7 +89,7 @@ If you have added any other language besides English and Spanish, repeat the ste
 Now you need to go back to the site repository and tell it to use these new translations. The steps are as follows:
 
 1. Log in to Github.com, and go to your site repository.
-1. In the list of files, click on `_config.yml`.
+1. In the list of files, click into the `_data` folder and click on `site_config.yml`. Alternatively, you can alter this setting using the site configuration form. If you do not have the `_data` folder (older versions), click on `_config.yml` in the main list of files.
 1. Click the pencil icon on the right to begin editing the file.
 1. As before, look for the `frontpage_goals_grid` section.
 1. Change the two lines below it to the following:
