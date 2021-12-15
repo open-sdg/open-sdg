@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 **Please complete the following information**
-Data repository URL: [e.g. github.com/ONSdigital/sdg-indicators]
+Data repository URL: [e.g. github.com/ONSdigital/sdg-data]
 Data or metadata issue:
 Input format: [e.g. CSV, YAML (Markdown), SDMX]
 

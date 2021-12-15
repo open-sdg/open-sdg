@@ -232,6 +232,32 @@ expected_disaggregations:
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
+### footer_fields
+
+**_Optional_**: This setting is used to add any arbitrary footer fields beneath the chart/table. These display under the other footer field settings, like `copyright` and `data_footnote`.
+
+This setting should include a list of items, each containing at least a `label` (which can be a translation key) and `value`. For example:
+
+```nohighlight
+footer_fields:
+  - label: My field label
+    value: My field content
+  - label: My other field label
+    value: My other field content
+```
+
+You can also limit items to a particular unit or series. For example:
+
+```nohighlight
+footer_fields:
+  - unit: percentage
+    label: My field for percentages
+    value: My field content
+  - unit: total
+    label: My field for totals
+    value: My other field content
+```
+
 ### graph_annotations
 
 **_Optional_**: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
@@ -286,7 +312,7 @@ graph_annotations:
 graph_limits:
   - unit: tons
     minimum: 2
-    maximimum: 20
+    maximum: 20
   - unit: passengers
     minimum: 200
     maximum: 2000

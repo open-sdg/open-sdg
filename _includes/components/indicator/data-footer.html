@@ -36,5 +36,18 @@
         <dt>{{ page.t.indicator.footnote }}:</dt>
         <dd>{{ page.indicator.data_footnote }}</dd>
         {% endif %}
+
+        {% if page.indicator.footer_fields and page.indicator.footer_fields.size > 0 %}
+        {% for footer_field in page.indicator.footer_fields %}
+        <dt
+          data-for-series={{ footer_field.series | jsonify }}
+          data-for-unit={{ footer_field.unit | jsonify }}
+        >{{ footer_field.label | t  }}:</dt>
+        <dd
+          data-for-series={{ footer_field.series | jsonify }}
+          data-for-unit={{ footer_field.unit | jsonify }}
+        >{{ footer_field.value | t  }}</dd>
+        {% endfor %}
+        {% endif %}
     <dl>
 </div>
