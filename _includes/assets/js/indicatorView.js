@@ -159,7 +159,7 @@ var indicatorView = function (model, options) {
   }
 
   this._model.onFieldsCleared.attach(function(sender, args) {
-    $(view_obj._rootElement).find(':checkbox').prop('checked', false);
+    $(view_obj._rootElement).find(':checkbox, :radio').prop('checked', false);
     $(view_obj._rootElement).find('#clear')
       .addClass('disabled')
       .attr('aria-disabled', 'true')
