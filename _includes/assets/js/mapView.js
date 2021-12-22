@@ -2,7 +2,7 @@ var mapView = function () {
 
   "use strict";
 
-  this.initialise = function(indicatorId, precision, decimalSeparator, selectedUnit, selectedSeries, indicatorView) {
+  this.initialise = function(indicatorId, precision, decimalSeparator, selectedUnit, selectedSeries, selectedSubcategories, indicatorView) {
     $('.map').show();
     return $('#map').sdgMap({
       indicatorId: indicatorId,
@@ -12,6 +12,7 @@ var mapView = function () {
       decimalSeparator: decimalSeparator,
       selectedUnit: selectedUnit,
       selectedSeries: selectedSeries,
+      selectedSubcategories: selectedSubcategories,
       indicatorView: indicatorView,
     });
   };

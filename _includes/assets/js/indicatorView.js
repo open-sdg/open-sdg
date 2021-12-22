@@ -36,7 +36,7 @@ var indicatorView = function (model, options) {
       var $sidebar = $('.indicator-sidebar'),
           $main = $('.indicator-main'),
           hideSidebar = $(this).data('no-disagg'),
-          hideSubcategories = $(this).data('no-subcategories'),
+          singleSubcategories = $(this).data('single-subcategories'),
           mobile = window.matchMedia("screen and (max-width: 990px)");
       if (hideSidebar) {
         $sidebar.addClass('indicator-sidebar-hidden');
@@ -52,14 +52,46 @@ var indicatorView = function (model, options) {
         $sidebar.removeClass('indicator-sidebar-hidden');
         $main.removeClass('indicator-main-full');
       }
-      if (hideSubcategories) {
-        $sidebar.addClass('indicator-subcategories-hidden');
+      if (singleSubcategories) {
+        view_obj.singleSubcategoryMode();
       }
       else {
-        $sidebar.removeClass('indicator-subcategories-hidden');
+        view_obj.multipleSubcategoryMode();
       }
     };
   });
+
+  this.singleSubcategoryMode = function() {
+    var $sidebar = $('.indicator-sidebar');
+    $sidebar.addClass('indicator-subcategories-single');
+    $sidebar.find('#fields input[type="checkbox"]').each(function() {
+      // Remember whether it is checked.
+      $(this).data('wasChecked', $(this).is(':checked'));
+      $(this).attr({
+        type: 'radio',
+        name: 'radio-' + $(this).data('field'),
+      });
+    });
+    // Because this may uncheck things, we need to signal a change.
+    updateWithSelectedFields();
+  };
+
+  this.multipleSubcategoryMode = function() {
+    var $sidebar = $('.indicator-sidebar');
+    $sidebar.removeClass('indicator-subcategories-single');
+    var checkedSomething = false;
+    $sidebar.find('#fields input[type="radio"]').each(function() {
+      $(this).attr('type', 'checkbox');
+      $(this).removeAttr('name');
+      if ($(this).data('wasChecked')) {
+        $(this).prop('checked', true);
+        checkedSomething = true;
+      }
+    });
+    if (checkedSomething) {
+      updateWithSelectedFields();
+    }
+  };
 
   this._model.onDataComplete.attach(function (sender, args) {
 
@@ -87,7 +119,15 @@ var indicatorView = function (model, options) {
 
     if(args.hasGeoData && args.showMap) {
       view_obj._mapView = new mapView();
-      var mapElement = view_obj._mapView.initialise(args.indicatorId, args.precision, view_obj._decimalSeparator, args.selectedUnit, args.selectedSeries, view_obj);
+      var mapElement = view_obj._mapView.initialise(
+        args.indicatorId,
+        args.precision,
+        view_obj._decimalSeparator,
+        args.selectedUnit,
+        args.selectedSeries,
+        args.selectedFields,
+        view_obj
+      );
       view_obj._mapPlugin = $.data(mapElement.get(0), 'plugin_sdgMap');
     }
   });
@@ -145,6 +185,10 @@ var indicatorView = function (model, options) {
         .attr('disabled', 'disabled');
     }
 
+    if (view_obj._mapPlugin) {
+      view_obj._mapPlugin.setSubcategories(args.selectedFields);
+    }
+
     // loop through the available fields:
     $('.variable-selector').each(function(index, element) {
       var currentField = $(element).data('field');
@@ -194,11 +238,13 @@ var indicatorView = function (model, options) {
   $(this._rootElement).on('click', '#fields label', function (e) {
 
     if(!$(this).closest('.variable-selector').hasClass('disallowed')) {
-      $(this).find(':checkbox').trigger('click');
+      $(this).find(':checkbox, :radio').trigger('click');
     }
 
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   });
 
   $(this._rootElement).on('change', '#units input', function() {
@@ -226,7 +272,7 @@ var indicatorView = function (model, options) {
 
   $(this._rootElement).on('click', '.variable-options button', function(e) {
     var type = $(this).data('type');
-    var $options = $(this).closest('.variable-options').find(':checkbox');
+    var $options = $(this).closest('.variable-options').find(':checkbox, :radio');
 
     // The clear button can clear all checkboxes.
     if (type == 'clear') {
@@ -242,7 +288,7 @@ var indicatorView = function (model, options) {
     e.stopPropagation();
   });
 
-  $(this._rootElement).on('click', ':checkbox', function(e) {
+  $(this._rootElement).on('click', ':checkbox, :radio', function(e) {
 
     // don't permit disallowed selections:
     if ($(this).closest('.variable-selector').hasClass('disallowed')) {
@@ -293,6 +339,13 @@ var indicatorView = function (model, options) {
 
     } else {
       $(this._rootElement).addClass('no-fields');
+    }
+
+    // Check to see if we need radio buttons.
+    var activeDataTab = $('.nav-tabs.data-view > li.active > a'),
+        singleSubcategories = $(activeDataTab).data('single-subcategories');
+    if (singleSubcategories) {
+      this.singleSubcategoryMode();
     }
   };
 
@@ -419,29 +472,6 @@ var indicatorView = function (model, options) {
         }
       });
     }
-  }
-
-  this.updateMapDisaggregation = function() {
-    var disaggregationInfo = this._mapPlugin.getDisaggregationInfo();
-    var heading = '<h4>' + translations.t('Map sub-categories') + '</h4>';
-    var html = '';
-    var disaggregations = Object.keys(disaggregationInfo);
-    var values = Object.values(disaggregationInfo);
-    var hasDisaggregation = values.some(function(val) {
-      return val && val !== '';
-    });
-    if (hasDisaggregation) {
-      html += heading;
-      html += '<dl class="alternate-subcategory-list">';
-      for (var i = 0; i < disaggregations.length; i++) {
-        if (values[i] && values[i] !== '') {
-          html += '<dt>' + translations.t(disaggregations[i]) + '</dt>';
-          html += '<dd>' + translations.t(values[i]) + '</dd>';
-        }
-      }
-      html += '</dl>';
-    }
-    $('#alternate-subcategory-display').html(html);
   }
 
   this.updatePlot = function(chartInfo) {

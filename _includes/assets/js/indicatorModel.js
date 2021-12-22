@@ -272,6 +272,7 @@ var indicatorModel = function (options) {
         precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
         selectedSeries: this.selectedSeries,
         selectedUnit: this.selectedUnit,
+        selectedFields: this.selectedFields,
       });
     }
 

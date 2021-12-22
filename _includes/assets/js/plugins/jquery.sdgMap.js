@@ -85,6 +85,7 @@
     this.SERIES_COLUMN = '{{ site.data_fields.series | default: "Series" }}';
     this.selectedSeries = options.selectedSeries || null;
     this.selectedUnit = options.selectedUnit || null;
+    this.selectedSubcategories = options.selectedSubcategories || null;
     this.indicatorView = options.indicatorView;
     this.allDisaggregations = [];
     this.currentDisaggregation = 0;
@@ -116,7 +117,7 @@
 
   Plugin.prototype = {
 
-    // Getters and setters for series and unit.
+    // Getters and setters for series, unit, and sub-categories.
     setSeries: function(series) {
       this.selectedSeries = series;
       this.refreshAfterDataChange();
@@ -131,15 +132,29 @@
     getUnit: function() {
       return this.selectedUnit;
     },
+    setSubcategories: function(subcategories) {
+      this.selectedSubcategories = subcategories;
+      if (this.valueRanges) {
+        this.refreshAfterDataChange();
+      }
+    },
+    getSubcategories: function() {
+      return this.selectedSubcategories;
+    },
 
     // Update the everything after a potential data change.
     refreshAfterDataChange: function() {
       this.updateCurrentDisaggregation();
-      this.setColorScale();
-      this.updateColors();
-      this.updateTooltips();
-      this.selectionLegend.resetSwatches();
-      this.selectionLegend.update();
+      if (this.currentDisaggregation === -1) {
+        this.noDataAvailable();
+      }
+      else {
+        this.setColorScale();
+        this.updateColors();
+        this.updateTooltips();
+        this.selectionLegend.resetSwatches();
+        this.selectionLegend.update();
+      }
     },
 
     // Get info about the current disaggregation.
@@ -148,6 +163,10 @@
       delete info[this.UNIT_COLUMN];
       delete info[this.SERIES_COLUMN];
       return info;
+    },
+
+    noDataAvailable: function() {
+      console.log('no data available');
     },
 
     // Zoom to a feature.
@@ -322,37 +341,44 @@
 
     // Decide which disaggregation should be used.
     getCorrectDisaggregation(disaggregations) {
+
       if (typeof disaggregations === 'undefined') {
         disaggregations = this.allDisaggregations;
       }
       var i = 0,
           selectedSeries = this.getSeries(),
-          selectedUnit = this.getUnit();
+          selectedUnit = this.getUnit(),
+          selectedSubcategories = this.getSubcategories();
 
-      if (selectedSeries && !selectedUnit) {
-        for (i = 0; i < disaggregations.length; i++) {
-          if (disaggregations[i][this.SERIES_COLUMN] == selectedSeries) {
-            return i;
+      function disaggregationDoesNotMatch(disagg) {
+        var matches = true;
+        selectedSubcategories.forEach(function(subcategory) {
+          var field = subcategory.field;
+          if (!disagg[field] || !(subcategory.values.includes(disagg[field]))) {
+            matches = false;
           }
-        }
-        return 0
+        });
+        return !matches;
       }
-      else if (selectedUnit && !selectedSeries) {
-        for (i = 0; i < disaggregations.length; i++) {
-          if (disaggregations[i][this.UNIT_COLUMN] == selectedUnit) {
-            return i;
-          }
+
+      for (i = 0; i < disaggregations.length; i++) {
+        var match = true;
+        if (selectedSeries && disaggregations[i][this.SERIES_COLUMN] != selectedSeries) {
+          match = false;
+        }
+        if (selectedUnit && disaggregations[i][this.UNIT_COLUMN] != selectedUnit) {
+          match = false;
+        }
+        if (selectedSubcategories.length > 0 && disaggregationDoesNotMatch(disaggregations[i])) {
+          match = false;
+        }
+        if (match) {
+          return i;
         }
       }
-      else if (selectedSeries && selectedUnit) {
-        for (i = 0; i < disaggregations.length; i++) {
-          if (disaggregations[i][this.UNIT_COLUMN] == selectedUnit &&
-              disaggregations[i][this.SERIES_COLUMN] == selectedSeries) {
-            return i;
-          }
-        }
-      }
-      return 0;
+
+      // Signal with a -1 that no disaggregation was found.
+      return -1;
     },
 
     updateCurrentDisaggregation: function() {
@@ -361,7 +387,6 @@
         layer.currentDisaggregation = that.getCorrectDisaggregation(layer.allDisaggregations);
         that.currentDisaggregation = layer.currentDisaggregation;
       });
-      this.indicatorView.updateMapDisaggregation();
     },
 
     // Get the (long) URL of a geojson file, given a particular subfolder.
