@@ -41,6 +41,9 @@
     },
 
     renderSwatches: function() {
+      if (this.plugin.currentDisaggregation === -1) {
+        return '';
+      }
       var controlTpl = '' +
         '<ul id="selection-list"></ul>' +
         '<div class="legend-swatches">' +
