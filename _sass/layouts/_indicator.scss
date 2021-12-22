@@ -431,6 +431,18 @@
     padding-left: 0;
   }
 
+  .no-map-data-message {
+    display: none;
+  }
+  .no-map-data-available {
+    #map {
+      display: none;
+    }
+    .no-map-data-message {
+      display: block;
+    }
+  }
+
   #selectionsTable {
     div.dataTables_wrapper {
       overflow-x: auto;

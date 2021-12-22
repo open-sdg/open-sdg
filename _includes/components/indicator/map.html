@@ -3,4 +3,7 @@
 <div id="map" aria-describedby="table-alternative">
   <img class="map-loading-image" src="{{ site.baseurl }}/assets/img/loading.gif" alt="{{ page.t.indicator.loading_map }}" />
 </div>
+<h3 class="no-map-data-message">
+  {{ page.t.indicator.data_not_available }}
+</h3>
 {% include components/indicator/data-footer.html footerId='mapFooter' %}

@@ -145,10 +145,11 @@
     // Update the everything after a potential data change.
     refreshAfterDataChange: function() {
       this.updateCurrentDisaggregation();
-      if (this.currentDisaggregation === -1) {
+      if (this.currentDisaggregation == -1) {
         this.noDataAvailable();
       }
       else {
+        this.dataAvailable();
         this.setColorScale();
         this.updateColors();
         this.updateTooltips();
@@ -166,7 +167,11 @@
     },
 
     noDataAvailable: function() {
-      console.log('no data available');
+      $('#mapview').addClass('no-map-data-available');
+    },
+
+    dataAvailable: function() {
+      $('#mapview').removeClass('no-map-data-available');
     },
 
     // Zoom to a feature.
@@ -348,16 +353,29 @@
       var i = 0,
           selectedSeries = this.getSeries(),
           selectedUnit = this.getUnit(),
-          selectedSubcategories = this.getSubcategories();
+          selectedSubcategories = this.getSubcategories(),
+          that = this;
 
       function disaggregationDoesNotMatch(disagg) {
         var matches = true;
-        selectedSubcategories.forEach(function(subcategory) {
-          var field = subcategory.field;
-          if (!disagg[field] || !(subcategory.values.includes(disagg[field]))) {
-            matches = false;
-          }
-        });
+        if (selectedSubcategories.length > 0) {
+          selectedSubcategories.forEach(function(subcategory) {
+            var field = subcategory.field;
+            if (!disagg[field] || !(subcategory.values.includes(disagg[field]))) {
+              matches = false;
+            }
+          });
+        }
+        else {
+          Object.keys(disagg).forEach(function(field) {
+            if (field !== that.SERIES_COLUMN &&
+                field !== that.UNIT_COLUMN &&
+                disagg[field] &&
+                disagg[field] !== '') {
+              matches = false;
+            }
+          });
+        }
         return !matches;
       }
 
@@ -369,7 +387,7 @@
         if (selectedUnit && disaggregations[i][this.UNIT_COLUMN] != selectedUnit) {
           match = false;
         }
-        if (selectedSubcategories.length > 0 && disaggregationDoesNotMatch(disaggregations[i])) {
+        if (disaggregationDoesNotMatch(disaggregations[i])) {
           match = false;
         }
         if (match) {
