@@ -39,4 +39,4 @@ gem "jekyll-open-sdg-plugins", "1.7.0.pre.beta1"
 
 ## Recommended updates to the site configuration
 
-TBD
+If you would like to configure a custom error page, navigate to the `_pages` folder in the site repository and create a new file titled 404.html. This feature is optional. 
