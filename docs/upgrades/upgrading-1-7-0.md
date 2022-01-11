@@ -39,4 +39,4 @@ gem "jekyll-open-sdg-plugins", "1.7.0.pre.beta1"
 
 ## Recommended updates to the site configuration
 
-If you would like to configure a custom error page, navigate to the `_pages` folder in the site repository and create a new file titled 404.html. This feature is optional. 
+This release contains a custom layout for 404 (page-not-found) pages. If you would like to use this layout, navigate to the `_pages` folder in the site repository and create a new file. As a guide you can use the [404 page in the starter repository](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_pages/404.md). Ensure that the `permalink` for the new page is `404.html`, just like it is in the starter repository.
