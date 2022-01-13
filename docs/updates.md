@@ -4,9 +4,9 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 1.7.0
 
-TBD
+13 January 2021
 
-* Ignore disaggregation columns
+* Ignore specified disaggregation columns
 * Control the order of the indicator tabs (chart/table/map/etc)
 * Layout for page-not-found (404) pages
 * Custom footer fields beneath chart/table 
