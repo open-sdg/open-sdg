@@ -11,6 +11,7 @@ const driver = new mink.Mink({
     "the Table tab": "#tab-tableview",
     "the Chart tab": "#tab-chartview",
     "the Map tab": "#tab-mapview",
+    "the embedded feature tab": "#tab-embeddedmapview",
     "the Edit tab": "#tab-edit",
     "sortable table": "#tableview table",
     "visual chart": "#chartview canvas",
@@ -71,6 +72,9 @@ const driver = new mink.Mink({
     "main logo": ".navbar-brand img",
     "chart title": "#chart-heading",
     "configuration form textarea": "textarea.form-control",
+    "embedded iframe": "#embeddedmapframe iframe",
+    "footer field that says 'Testing label for series A'": "#selectionChartFooter dt[data-for-series='A']",
+    "footer field that says 'Another field label for unit total'": "#selectionChartFooter dt[data-for-unit='Total']",
   }
 });
 

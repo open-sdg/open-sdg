@@ -74,3 +74,8 @@ Feature: Disaggregation
     And I click on "the fourth filter drop-down button"
     And I click on "the first filter option in the fourth filter drop-down"
     Then I should see 5 "chart legend item" elements
+
+  Scenario: Disaggregations can be ignored
+    And I am on "/2-2-2"
+    And I wait 3 seconds
+    Then I should see 1 "disaggregation filter" element

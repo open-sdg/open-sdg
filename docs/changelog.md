@@ -1,5 +1,15 @@
 <h1>Change Log</h1>
 
+## 1.7.0
+
+* Feature: Ignore disaggregation columns #1463
+* Feature: Control the order of the indicator tabs (chart/table/map/etc) #1462
+* Feature: Layout for page-not-found (404) pages #1421
+* Bugfix: Handle case where starting value does not exist in series #1479
+* Feature: Custom footer fields beneath chart/table #1484
+* Bugfix: Remove graph limits if there should be none after changing series #1485
+* Feature: More use of Sass variables for font-sizes throughout platform #1496
+
 ## 1.6.0
 
 * Feature: Metadata report on data dashboard #1406

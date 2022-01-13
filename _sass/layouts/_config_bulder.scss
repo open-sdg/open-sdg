@@ -23,7 +23,7 @@
         background-color: #f5f5f5;
     }
     div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div > label {
-        font-size: 24px;
+        font-size: $fontSize-medium;
         font-weight: 700;
     }
     div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div a {

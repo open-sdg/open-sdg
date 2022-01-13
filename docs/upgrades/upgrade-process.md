@@ -1,5 +1,7 @@
 <h1>Upgrade process</h1>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nAAm1d6nZbc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Open SDG dependencies
 
 Your implementation of Open SDG depends on a few projects, which will occasionally release new versions. This is an overview of those dependencies, and the procedure for upgrading them.

@@ -2,22 +2,43 @@
   <span id="table-alternative">{{ page.t.indicator.data_tabular_alternative }}</span>
 </div>
 <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
-  <li role="presentation" class="nav-item active">
-    <a class="nav-link" data-toggle="tab" id="tab-chartview" href="#chartview" aria-controls="chartview" role="tab" {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %} aria-describedby="table-alternative">{{ page.t.indicator.chart }}</a>
+  {% for tab in page.indicator.indicator_tabs_list %}
+  <li role="presentation"
+    class="
+      nav-item
+      {% if tab.type == 'map' %}map{% endif %}
+      {% if tab.type == 'embed' %}embedded-map{% endif %}
+      {% if forloop.first %}active{% endif %}
+    ">
+    <a
+      class="nav-link"
+      data-toggle="tab"
+      role="tab"
+      {% if tab.type == 'chart' %}
+        id="tab-chartview"
+        href="#chartview"
+        aria-controls="chartview"
+        aria-describedby="table-alternative"
+        {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %}
+      {% elsif tab.type == 'table' %}
+        id="tab-tableview"
+        href="#tableview"
+        aria-controls="tableview"
+        {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}
+      {% elsif tab.type == 'map' %}
+        id="tab-mapview"
+        href="#mapview"
+        aria-controls="mapview"
+        data-no-disagg="true"
+        {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}
+      {% elsif tab.type == 'embed' %}
+        id="tab-embeddedmapview"
+        href="#embeddedmapview"
+        aria-controls="embeddedmapview"
+        data-no-disagg="true"
+        {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}
+      {% endif %}
+    >{{ tab.label | t }}</a>
   </li>
-  <li role="presentation" class="nav-item">
-    <a class="nav-link" data-toggle="tab" id="tab-tableview" href="#tableview" aria-controls="tableview" role="tab" {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}>{{ page.t.indicator.table }}</a>
-  </li>
-  {%- if page.indicator.data_show_map -%}
-  <li role="presentation" class="nav-item map" style="display:none">
-    <a data-no-disagg="true" class="nav-link" data-toggle="tab" id="tab-mapview" href="#mapview" aria-controls="mapview" role="tab" {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %} aria-describedby="table-alternative">{{ page.t.indicator.map }}</a>
-  </li>
-  {%- endif -%}
-  {%- if page.indicator.embedded_feature_url or page.indicator.embedded_feature_html -%}
-    {%- if page.indicator.embedded_feature_url != '' or page.indicator.embedded_feature_html != '' -%}
-    <li role="presentation" class="nav-item embedded-map">
-      <a data-no-disagg="true" class="nav-link" data-toggle="tab" id="tab-embeddedmapview" href="#embeddedmapview" aria-controls="embeddedmapview" role="tab" {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}>{{ page.indicator.embedded_feature_tab_title }}</a>
-    </li>
-    {%- endif -%}
-  {%- endif -%}
+  {% endfor %}
 </ul>

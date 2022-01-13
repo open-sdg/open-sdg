@@ -232,6 +232,32 @@ expected_disaggregations:
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
+### footer_fields
+
+**_Optional_**: This setting is used to add any arbitrary footer fields beneath the chart/table. These display under the other footer field settings, like `copyright` and `data_footnote`.
+
+This setting should include a list of items, each containing at least a `label` (which can be a translation key) and `value`. For example:
+
+```nohighlight
+footer_fields:
+  - label: My field label
+    value: My field content
+  - label: My other field label
+    value: My other field content
+```
+
+You can also limit items to a particular unit or series. For example:
+
+```nohighlight
+footer_fields:
+  - unit: percentage
+    label: My field for percentages
+    value: My field content
+  - unit: total
+    label: My field for totals
+    value: My other field content
+```
+
 ### graph_annotations
 
 **_Optional_**: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
@@ -431,6 +457,25 @@ indicator_name: global_indicators.1-2-1-title
 ```nohighlight
 indicator_number: 1.2.1
 ```
+
+### indicator_tabs
+
+**_Optional_**: This setting controls the order and contents of the data tabs on indicator pages. This only needs to be used on indicators where you would like to override the `indicator_tabs` site configuration setting.
+
+Note that the `override` parameter is necessary in order for this indicator-specific override to be used.
+
+For example, if you would like a particular indicator to start on the map tab, you could do this:
+
+```nohighlight
+indicator_tabs:
+  override: true
+  tab_1: map
+  tab_2: chart
+  tab_3: table
+  tab_4: embed
+```
+
+For more details on how to use this setting, see the [`indicator_tabs` site configuration setting](configuration.md#indicator_tabs).
 
 ### national_geographical_coverage
 
