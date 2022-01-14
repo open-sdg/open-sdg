@@ -280,7 +280,7 @@ Now here are specific descriptions and parameters available for each class:
 
 **InputSdmxMeta**: Input metadata from SDMX, either remote inputs or a local file. The available parameters are the same as in InputSdmxJson.
 
-> For more technical information see the [InputSdmxMeta class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputSdmxMeta.py).
+> For more technical information see the [InputSdmxMeta class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMeta.py).
 
 **InputSdmxMl_Multiple**: Input data from multiple SDMX-ML files (which can be a mix of either "Structure" or "Structure Specific"). The available parameters are the same as in InputSdmxJson, along with these additional parameters:
 
