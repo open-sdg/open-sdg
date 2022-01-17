@@ -2,7 +2,7 @@
 name: Report a bug - site
 about: Report a bug with your site build
 title: ''
-labels: 'bug'
+labels: 'bug - unconfirmed'
 assignees: ''
 
 ---
