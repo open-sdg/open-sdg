@@ -2,7 +2,7 @@
 name: Report a bug - data
 about: Report a bug with your data build
 title: ''
-labels: 'bug'
+labels: 'bug - unconfirmed'
 assignees: ''
 
 ---
