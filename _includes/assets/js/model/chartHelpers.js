@@ -15,6 +15,21 @@ function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
 }
 
 /**
+ * @param {string} currentType
+ * @param {Array} allTypes Objects containing 'unit', 'series', and 'type'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @return {String} Updated type
+ */
+function getChartType(currentType, allTypes, selectedUnit, selectedSeries) {
+  if (!currentType) {
+    currentType = 'line';
+  }
+  var match = getMatchByUnitSeries(allTypes, selectedUnit, selectedSeries);
+  return (match) ? match.type : currentType;
+}
+
+/**
  * @param {Array} graphLimits Objects containing 'unit' and 'title'
  * @param {String} selectedUnit
  * @param {String} selectedSeries

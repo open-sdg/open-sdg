@@ -33,6 +33,7 @@ var indicatorInit = function () {
                         xAxisLabel: domData.xaxislabel,
                         showData: domData.showdata,
                         graphType: domData.graphtype,
+                        graphTypes: domData.graphtypes,
                         startValues: domData.startvalues,
                         graphLimits: domData.graphlimits,
                         stackedDisaggregation: domData.stackeddisaggregation,

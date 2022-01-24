@@ -1,15 +1,7 @@
-{% comment %}
-Because the "line" visualization is basic, nothing special needs to be done here,
-apart from providing the canvas tag and supporting graph limits. For details on
-the Chart.js configuration being used, see `createPlot()` in `indicatorView.js`.
-{% endcomment %}
-{% include components/charts/canvas.html %}
-{% include components/charts/graph_limits.html %}
-{% include components/charts/graph_annotations.html %}
-<script>
-// For line charts, add the vertical line hover functionality.
-opensdg.chartConfigAlter(function(config, info) {
+opensdg.chartTypes.line = function(info) {
+    var config = opensdg.chartTypes.base(info);
     var overrides = {
+        type: 'line',
         options: {
             plugins: {
                 tooltip: {
@@ -42,5 +34,5 @@ opensdg.chartConfigAlter(function(config, info) {
     };
     // Add these overrides onto the normal config, and return it.
     _.merge(config, overrides);
-});
-</script>
+    return config;
+}

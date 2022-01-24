@@ -10,6 +10,10 @@
   {% include assets/js/view/unitHelpers.js %}
   {% include assets/js/view/seriesHelpers.js %}
   {% include assets/js/view/chartHelpers.js %}
+  {% include assets/js/view/chartTypeBase.js %}
+  {% include assets/js/view/chartTypeLine.js %}
+  {% include assets/js/view/chartTypeBar.js %}
+  {% include assets/js/view/chartTypeBinary.js %}
   {% include assets/js/view/tableHelpers.js %}
   {% include assets/js/view/dataHelpers.js %}
   {% include assets/js/view/utils.js %}
@@ -33,6 +37,7 @@
     getTickColor: getTickColor,
     updateHeadlineColor: updateHeadlineColor,
     createPlot: createPlot,
+    setPlotEvents: setPlotEvents,
     toCsv: toCsv,
     createIndicatorDownloadButtons: createIndicatorDownloadButtons,
     createSourceButton: createSourceButton,

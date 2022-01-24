@@ -247,13 +247,13 @@ function updateChartDownloadButton(table) {
         var fileName = VIEW._chartDownloadButton.attr('download');
         if (window.navigator && window.navigator.msSaveBlob) {
             // Special behavior for IE.
-            this._chartDownloadButton.off('click.openSdgDownload')
-            this._chartDownloadButton.on('click.openSdgDownload', function (event) {
+            VIEW._chartDownloadButton.off('click.openSdgDownload')
+            VIEW._chartDownloadButton.on('click.openSdgDownload', function (event) {
                 window.navigator.msSaveBlob(blob, fileName);
             });
         }
         else {
-            this._chartDownloadButton
+            VIEW._chartDownloadButton
                 .attr('href', URL.createObjectURL(blob))
                 .data('csvdata', tableCsv);
         }

@@ -21,6 +21,10 @@ breadcrumbs:
       label: general.home
     - path: /news
       label: menu.updates
+chart_types:
+  - line
+  - bar
+  - binary
 contrast_type: default
 cookie_consent_form:
   enabled: false

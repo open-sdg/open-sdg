@@ -6,11 +6,14 @@ var indicatorView = function (model, options) {
         VIEW = this,
         OPTIONS = options;
 
+    var helpers = {% include assets/js/view/helpers.js %}
+
     VIEW._chartInstance = undefined;
     VIEW._tableColumnDefs = OPTIONS.tableColumnDefs;
     VIEW._mapView = undefined;
     VIEW._legendElement = OPTIONS.legendElement;
     VIEW._precision = undefined;
+    VIEW._chartInstances = {};
 
     var chartHeight = screen.height < OPTIONS.maxChartHeight ? screen.height : OPTIONS.maxChartHeight;
     $('.plot-container', OPTIONS.rootElement).css('height', chartHeight + 'px');
@@ -60,6 +63,7 @@ var indicatorView = function (model, options) {
             $('#dataset-size-warning')[args.datasetCountExceedsMax ? 'show' : 'hide']();
             if (!VIEW._chartInstance) {
                 helpers.createPlot(args);
+                helpers.setPlotEvents(args);
             } else {
                 helpers.updatePlot(args);
             }

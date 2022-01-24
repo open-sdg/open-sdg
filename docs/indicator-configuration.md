@@ -37,6 +37,7 @@ In addition to graph_titles, the other fields like this include:
 
 * graph_annotations
 * graph_limits
+* graph_types
 * precision
 
 These fields are described below. Note that if a unit/series is not specified, then the item will apply to any unit/series. For example:
@@ -427,6 +428,17 @@ Options out-of-the-box are:
 * bar
 * binary (Yes/No graph)
 
+### graph_types
+
+**_Required_** (for statistical indicators): This setting is used if you would like the chart type to depend on the user-selected unit of measurement or series. It has a more complex structure than `graph_type` (*singular*). For example:
+
+```nohighlight
+graph_types:
+  - unit: Percent
+    type: line
+  - unit: Total
+    type: bar
+```
 
 ### indicator_available
 

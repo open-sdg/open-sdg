@@ -1,4 +1,4 @@
-Chart.plugins.register({
+Chart.{% unless site.version_2_preview %}plugins.{% endunless %}register({
   id: 'rescaler',
   beforeInit: function (chart, options) {
     chart.config.data.allLabels = chart.config.data.labels.slice(0);

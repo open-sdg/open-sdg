@@ -20,41 +20,6 @@ function updateChartTitle(chartTitle) {
 }
 
 /**
- * @param {Object} chartInfo
- * @return null
- */
-function updatePlot(chartInfo) {
-    updateIndicatorDataViewStatus(VIEW._chartInstance.data.datasets, chartInfo.datasets);
-    VIEW._chartInstance.data.datasets = chartInfo.datasets;
-    VIEW._chartInstance.data.labels = chartInfo.labels;
-    this.updateHeadlineColor(this.isHighContrast() ? 'high' : 'default', VIEW._chartInstance);
-    // TODO: Investigate assets/js/chartjs/rescaler.js and why "allLabels" is needed.
-    VIEW._chartInstance.data.allLabels = chartInfo.labels;
-
-    if (chartInfo.selectedUnit) {
-        VIEW._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
-    }
-
-    // Create a temp object to alter, and then apply. We go to all this trouble
-    // to avoid completely replacing VIEW._chartInstance -- and instead we
-    // just replace it's properties: "type", "data", and "options".
-    var updatedConfig = {
-        type: VIEW._chartInstance.type,
-        data: VIEW._chartInstance.data,
-        options: VIEW._chartInstance.options
-    }
-    alterChartConfig(updatedConfig, chartInfo);
-    VIEW._chartInstance.type = updatedConfig.type;
-    VIEW._chartInstance.data = updatedConfig.data;
-    VIEW._chartInstance.options = updatedConfig.options;
-
-    VIEW._chartInstance.update(1000, true);
-
-    $(VIEW._legendElement).html(VIEW._chartInstance.generateLegend());
-    updateChartDownloadButton(chartInfo.selectionsTable);
-};
-
-/**
  * @param {Array} oldDatasets
  * @param {Array} newDatasets
  * @return null
@@ -141,141 +106,27 @@ function getTickColor(contrast) {
     return isHighContrast(contrast) ? '#fff' : '#000';
 }
 
-/**
- * @param {Object} chartInfo
- * @return null
- */
-function createPlot(chartInfo) {
-
-    var gridColor = getGridColor();
-    var tickColor = getTickColor();
-
-    var chartConfig = {
-        type: MODEL.graphType,
-        data: chartInfo,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            spanGaps: true,
-            scrollX: true,
-            scrollCollapse: true,
-            sScrollXInner: '150%',
-            scales: {
-                xAxes: [{
-                    maxBarThickness: 150,
-                    gridLines: {
-                        color: 'transparent',
-                        zeroLineColor: '#757575',
-                    },
-                    ticks: {
-                        fontColor: tickColor,
-                    },
-                    scaleLabel: {
-                        display: MODEL.xAxisLabel ? true : false,
-                        labelString: MODEL.xAxisLabel,
-                        fontColor: tickColor,
-                        fontSize: 14,
-                        fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
-                    }
-                }],
-                yAxes: [{
-                    gridLines: {
-                        color: gridColor,
-                        zeroLineColor: '#757575',
-                        drawBorder: false,
-                    },
-                    ticks: {
-                        suggestedMin: 0,
-                        fontColor: tickColor,
-                        callback: function (value) {
-                            return alterDataDisplay(value, undefined, 'chart y-axis tick');
-                        },
-                    },
-                    scaleLabel: {
-                        display: MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit,
-                        labelString: MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit,
-                        fontColor: tickColor,
-                        fontSize: 14,
-                        fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
-                    }
-                }]
-            },
-            legendCallback: function (chart) {
-                var text = [];
-                text.push('<h5 class="sr-only">' + translations.indicator.plot_legend_description + '</h5>');
-                text.push('<ul id="legend" class="legend-for-' + chart.config.type + '-chart">');
-                _.each(chart.data.datasets, function (dataset) {
-                    text.push('<li>');
-                    text.push('<span class="swatch' + (dataset.borderDash ? ' dashed' : '') + (dataset.headline ? ' headline' : '') + '" style="background-color: ' + dataset.borderColor + '">');
-                    text.push('<span class="swatch-inner" style="background-color: ' + dataset.borderColor + '"></span>');
-                    text.push('</span>');
-                    text.push(translations.t(dataset.label));
-                    text.push('</li>');
-                });
-                text.push('</ul>');
-                return text.join('');
-            },
-            legend: {
-                display: false
-            },
-            title: {
-                display: false
-            },
-            plugins: {
-                scaler: {}
-            },
-            tooltips: {
-                backgroundColor: 'rgba(0,0,0,0.7)',
-                callbacks: {
-                    label: function (tooltipItems, data) {
-                        return data.datasets[tooltipItems.datasetIndex].label + ': ' + alterDataDisplay(tooltipItems.yLabel, data, 'chart tooltip');
-                    },
-                    afterBody: function () {
-                        var unit = MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit;
-                        if (typeof unit !== 'undefined' && unit !== '') {
-                            return '\n' + translations.indicator.unit + ': ' + unit;
-                        }
-                    }
-                }
-            }
-        }
-    };
-    alterChartConfig(chartConfig, chartInfo);
-    if (isHighContrast()) {
-        updateGraphAnnotationColors('high', chartConfig);
-        updateHeadlineColor('high', chartConfig);
+function getChartConfig(chartInfo) {
+    var chartType = chartInfo.chartType;
+    if (typeof opensdg.chartTypes[chartType] === 'undefined') {
+        console.log('Unknown chart type: ' + chartType + '. Falling back to "line".');
+        chartType = 'line';
     }
-    else {
-        updateHeadlineColor('default', chartConfig);
-    }
+    return opensdg.chartTypes[chartType](chartInfo);
+}
 
-    VIEW._chartInstance = new Chart($(OPTIONS.rootElement).find('canvas'), chartConfig);
-
+function setPlotEvents(chartInfo) {
     window.addEventListener('contrastChange', function (e) {
         var gridColor = getGridColor(e.detail);
         var tickColor = getTickColor(e.detail);
         updateHeadlineColor(e.detail, VIEW._chartInstance);
         updateGraphAnnotationColors(e.detail, VIEW._chartInstance);
-        VIEW._chartInstance.options.scales.yAxes[0].scaleLabel.fontColor = tickColor;
-        VIEW._chartInstance.options.scales.yAxes[0].gridLines.color = gridColor;
-        VIEW._chartInstance.options.scales.yAxes[0].ticks.fontColor = tickColor;
-        VIEW._chartInstance.options.scales.xAxes[0].ticks.fontColor = tickColor;
+        VIEW._chartInstance.options.scales.y.scaleLabel.fontColor = tickColor;
+        VIEW._chartInstance.options.scales.y.gridLines.color = gridColor;
+        VIEW._chartInstance.options.scales.y.ticks.fontColor = tickColor;
+        VIEW._chartInstance.options.scales.x.ticks.fontColor = tickColor;
         VIEW._chartInstance.update();
-        $(VIEW._legendElement).html(VIEW._chartInstance.generateLegend());
-    });
-
-    Chart.pluginService.register({
-        afterDraw: function (chart) {
-            var $canvas = $(OPTIONS.rootElement).find('canvas'),
-                font = '12px Arial',
-                canvas = $canvas.get(0),
-                ctx = canvas.getContext("2d");
-
-            ctx.font = font;
-            ctx.textAlign = 'left';
-            ctx.textBaseline = 'middle';
-            ctx.fillStyle = '#6e6e6e';
-        }
+        $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
     });
 
     createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
@@ -327,8 +178,58 @@ function createPlot(chartInfo) {
             });
         });
     });
+}
 
-    $(VIEW._legendElement).html(VIEW._chartInstance.generateLegend());
+/**
+ * @param {Object} chartInfo
+ * @return null
+ */
+function createPlot(chartInfo) {
+
+    var chartConfig = getChartConfig(chartInfo);
+    alterChartConfig(chartConfig, chartInfo);
+    if (isHighContrast()) {
+        updateGraphAnnotationColors('high', chartConfig);
+        updateHeadlineColor('high', chartConfig);
+    }
+    else {
+        updateHeadlineColor('default', chartConfig);
+    }
+
+    VIEW._chartInstance = new Chart($(OPTIONS.rootElement).find('canvas'), chartConfig);
+    $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
+};
+
+/**
+ * @param {Object} chartInfo
+ * @return null
+ */
+ function updatePlot(chartInfo) {
+    // If we have changed type, we will need to destroy and recreate the chart.
+    // So we can abort here.
+    var updatedConfig = getChartConfig(chartInfo);
+    if (updatedConfig.type !== VIEW._chartInstance.type) {
+        VIEW._chartInstance.destroy();
+        createPlot(chartInfo);
+        return;
+    }
+
+    updateIndicatorDataViewStatus(VIEW._chartInstance.data.datasets, updatedConfig.data.datasets);
+    updateHeadlineColor(isHighContrast() ? 'high' : 'default', updatedConfig);
+
+    if (chartInfo.selectedUnit) {
+        updatedConfig.options.scales.y.scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
+    }
+
+    alterChartConfig(updatedConfig, chartInfo);
+    VIEW._chartInstance.type = updatedConfig.type;
+    VIEW._chartInstance.data = updatedConfig.data;
+    VIEW._chartInstance.options = updatedConfig.options;
+
+    VIEW._chartInstance.update();
+
+    $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
+    updateChartDownloadButton(chartInfo.selectionsTable);
 };
 
 /**
@@ -347,4 +248,24 @@ function updateGraphAnnotationColors(contrast, chartInfo) {
             }
         });
     }
+}
+
+/**
+ * @param {Object} chart
+ * @return {String} The HTML of the chart legend
+ */
+function generateChartLegend(chart) {
+    var text = [];
+    text.push('<h5 class="sr-only">' + translations.indicator.plot_legend_description + '</h5>');
+    text.push('<ul id="legend" class="legend-for-' + chart.config.type + '-chart">');
+    _.each(chart.data.datasets, function (dataset) {
+        text.push('<li>');
+        text.push('<span class="swatch' + (dataset.borderDash ? ' dashed' : '') + (dataset.headline ? ' headline' : '') + '" style="background-color: ' + dataset.borderColor + '">');
+        text.push('<span class="swatch-inner" style="background-color: ' + dataset.borderColor + '"></span>');
+        text.push('</span>');
+        text.push(translations.t(dataset.label));
+        text.push('</li>');
+    });
+    text.push('</ul>');
+    return text.join('');
 }
