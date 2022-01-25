@@ -401,8 +401,6 @@ var indicatorView = function (model, options) {
     view_obj._chartInstance.data.datasets = chartInfo.datasets;
     view_obj._chartInstance.data.labels = chartInfo.labels;
     this.updateHeadlineColor(this.isHighContrast() ? 'high' : 'default', view_obj._chartInstance);
-    // TODO: Investigate assets/js/chartjs/rescaler.js and why "allLabels" is needed.
-    view_obj._chartInstance.data.allLabels = chartInfo.labels;
 
     if(chartInfo.selectedUnit) {
       view_obj._chartInstance.options.scales.yAxes[0].scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
