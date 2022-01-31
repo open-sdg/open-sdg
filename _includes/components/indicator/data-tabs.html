@@ -1,44 +1,55 @@
 <div style="display: none;">
   <span id="table-alternative">{{ page.t.indicator.data_tabular_alternative }}</span>
 </div>
-<ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
+{% include components/tabs/tab-item-group-start.html classes="non-stacking-tabs data-view" %}
   {% for tab in page.indicator.indicator_tabs_list %}
-  <li role="presentation"
-    class="
-      nav-item
-      {% if tab.type == 'map' %}map{% endif %}
-      {% if tab.type == 'embed' %}embedded-map{% endif %}
-      {% if forloop.first %}active{% endif %}
-    ">
-    <a
-      class="nav-link"
-      data-toggle="tab"
-      role="tab"
-      {% if tab.type == 'chart' %}
+    {% if tab.type == 'chart' %}
+      {% include components/tabs/tab-item.html
+        active=forloop.first
+        label=tab.label
         id="tab-chartview"
         href="#chartview"
         aria-controls="chartview"
         aria-describedby="table-alternative"
-        {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %}
-      {% elsif tab.type == 'table' %}
+        autotrack-preset="tab_data_chart"
+        autotrack-action="Change data view"
+        autotrack-label="Change to Chart tab"
+      %}
+    {% elsif tab.type == 'table' %}
+      {% include components/tabs/tab-item.html
+        active=forloop.first
+        label=tab.label
         id="tab-tableview"
         href="#tableview"
         aria-controls="tableview"
-        {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}
-      {% elsif tab.type == 'map' %}
+        autotrack-preset="tab_data_chart"
+        autotrack-action="Change data view"
+        autotrack-label="Change to Table tab"
+      %}
+    {% elsif tab.type == 'map' %}
+      {% include components/tabs/tab-item.html
+        classes="map"
+        active=forloop.first
+        label=tab.label
         id="tab-mapview"
         href="#mapview"
         aria-controls="mapview"
-        data-no-disagg="true"
-        {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}
-      {% elsif tab.type == 'embed' %}
+        autotrack-preset="tab_data_map"
+        autotrack-action="Change data view"
+        autotrack-label="Change to Map tab"
+      %}
+    {% elsif tab.type == 'embed' %}
+      {% include components/tabs/tab-item.html
+        classes="embedded-map"
+        active=forloop.first
+        label=tab.label
         id="tab-embeddedmapview"
         href="#embeddedmapview"
         aria-controls="embeddedmapview"
-        data-no-disagg="true"
-        {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}
-      {% endif %}
-    >{{ tab.label | t }}</a>
-  </li>
+        autotrack-preset="tab_data_map"
+        autotrack-action="Change data view"
+        autotrack-label="Change to embedded item tab"
+      %}
+    {% endif %}
   {% endfor %}
-</ul>
+{% include components/tabs/tab-item-group-end.html %}
