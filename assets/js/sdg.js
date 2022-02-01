@@ -6,9 +6,7 @@
 {%- include assets/js/autotrack-element.js -%}
 {%- include assets/js/plugins/jquery.sdgMap.js -%}
 {%- include assets/js/chartjs/noDataMessage.js -%}
-{% if site.accessible_charts %}
 {%- include assets/js/chartjs/accessibleCharts.js -%}
-{% endif %}
 {%- include assets/js/event.js -%}
 {%- include assets/js/accessibility.js -%}
 {%- include assets/js/chartColors.js -%}
@@ -18,9 +16,7 @@
 {%- include assets/js/indicatorController.js -%}
 {%- include assets/js/indicatorInit.js -%}
 {%- include assets/js/tabs.js -%}
-{% if site.accessible_tabs %}
 {%- include assets/js/accessibleTabs.js -%}
-{% endif %}
 {%- include assets/js/search.js -%}
 {%- include assets/js/menu.js -%}
 {%- include assets/js/lib/classList.js -%}
