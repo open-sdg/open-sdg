@@ -29,16 +29,23 @@ Chart.{% unless site.version_2_preview %}plugins.{% endunless %}register({
       }
       // @deprecated end
 
+      {% if site.version_2_preview %}
       var ctx = chart.ctx;
       var width = chart.width;
-      var height = chart.height
+      var height = chart.height;
+      {% else %}
+      var ctx = chart.chart.ctx;
+      var width = chart.chart.width;
+      var height = chart.chart.height;
+      {% endif %}
+
       chart.clear();
 
       ctx.save();
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.font = "normal 40px 'Open Sans', Helvetica, Arial, sans-serif";
-      var lines = getTextLinesOnCanvas(ctx, translations.indicator.data_not_available, chart.width);
+      var lines = getTextLinesOnCanvas(ctx, translations.indicator.data_not_available, width);
       var numLines = lines.length;
       var lineHeight = 50;
       var xLine = width / 2;

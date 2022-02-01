@@ -10,7 +10,6 @@ opensdg.chartTypes.base = function(info) {
         data: {
             datasets: info.datasets,
             labels: info.labels,
-            allLabels: info.allLabels,
         },
         options: {
             responsive: true,

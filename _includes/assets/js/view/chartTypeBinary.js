@@ -5,7 +5,7 @@ opensdg.convertBinaryValue = function (value) {
     if (value === 1) {
         return 'Yes';
     }
-    else if (value === BINARY_NEGATIVE) {
+    else if (value === -1) {
         return 'No';
     }
     return '';
@@ -35,7 +35,7 @@ opensdg.chartTypes.binary = function (info) {
                     ticks: {
                         // Set the min/max to -1/1 so that the bars will start from the
                         // middle and either go up (for 1) or down (for -1).
-                        min: BINARY_NEGATIVE,
+                        min: -1,
                         max: 1,
                         callback: opensdg.convertBinaryValue,
                     },
@@ -43,6 +43,18 @@ opensdg.chartTypes.binary = function (info) {
             },
         }
     }
+
+    // Tweak the data so that 0 is treated as -1. This is done so that the bar appears
+    // to be pointed down.
+    config.data.datasets = config.data.datasets.map(function(dataset) {
+        dataset.data = dataset.data.map(function(value) {
+            if (value === 0) {
+                return -1;
+            }
+            return value;
+        });
+        return dataset;
+    });
 
     // Add these overrides onto the normal config.
     _.merge(config, overrides);

@@ -8,6 +8,26 @@ _Note about "strings": Many of the settings detailed here contain human-readable
 
 > To see many of these options in action, the [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml).
 
+### accessible_charts
+
+_Optional_: This setting can be set to `true` to enable chart functionality that is intended to increase accessibility by adding support for screenreaders and keyboard navigation. If omitted, this defaults to `false`, however setting this to `true` is recommended.
+
+```nohighlight
+accessible_charts: false
+```
+
+Note that this setting is automatically set to `true` if `version_2_preview` is also `true`. After the next major release of Open SDG (2.0.0) this setting will be removed and charts will automatically be accessible.
+
+### accessible_tabs
+
+_Optional_: This setting can be set to `true` to enable tab functionality that is compliant with the [WAI-ARIA best practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). This adds improved keyboard navigation of the tabs. If omitted, this defaults to `false`, however setting this to `true` is recommended.
+
+```nohighlight
+accessible_tabs: false
+```
+
+Note that this setting is automatically set to `true` if `version_2_preview` is also `true`. After the next major release of Open SDG (2.0.0) this setting will be removed and tabs will automatically be accessible.
+
 ### analytics
 
 _Optional_: This setting can be used to facilitate the installation of Google Analytics. You can do this in multiple ways:
