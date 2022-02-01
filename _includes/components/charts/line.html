@@ -11,34 +11,19 @@ the Chart.js configuration being used, see `createPlot()` in `indicatorView.js`.
 opensdg.chartConfigAlter(function(config, info) {
     var overrides = {
         options: {
-            {% if site.version_2_preview %}
-            plugins: {
-                tooltip: {
-                    mode: 'index',
-                    intersect: false,
-                },
-            },
-            {% else %}
             tooltips: {
                 intersect: false,
                 axis: 'x',
             },
-            {% endif %}
         },
         plugins: [{
             beforeDatasetsDraw: function(chart) {
                 if (chart.tooltip._active && chart.tooltip._active.length) {
                     var activePoint = chart.tooltip._active[0],
                         ctx = chart.ctx,
-                        {% if site.version_2_preview %}
-                        x = activePoint.element.x,
-                        topY = chart.scales.y.top,
-                        bottomY = chart.scales.y.bottom;
-                        {% else %}
                         x = activePoint.tooltipPosition().x,
                         topY = chart.scales['y-axis-0'].top,
                         bottomY = chart.scales['y-axis-0'].bottom;
-                        {% endif %}
 
                     // draw line
                     ctx.save();
@@ -54,6 +39,6 @@ opensdg.chartConfigAlter(function(config, info) {
         }],
     };
     // Add these overrides onto the normal config, and return it.
-    _.merge(config, overrides);
+    $.extend(true, config, overrides);
 });
 </script>
