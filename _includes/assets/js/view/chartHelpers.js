@@ -121,10 +121,10 @@ function setPlotEvents(chartInfo) {
         var tickColor = getTickColor(e.detail);
         updateHeadlineColor(e.detail, VIEW._chartInstance);
         updateGraphAnnotationColors(e.detail, VIEW._chartInstance);
-        VIEW._chartInstance.options.scales.y.scaleLabel.fontColor = tickColor;
+        VIEW._chartInstance.options.scales.y.title.color = tickColor;
         VIEW._chartInstance.options.scales.y.gridLines.color = gridColor;
-        VIEW._chartInstance.options.scales.y.ticks.fontColor = tickColor;
-        VIEW._chartInstance.options.scales.x.ticks.fontColor = tickColor;
+        VIEW._chartInstance.options.scales.y.ticks.color = tickColor;
+        VIEW._chartInstance.options.scales.x.ticks.color = tickColor;
         VIEW._chartInstance.update();
         $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
     });
@@ -218,7 +218,7 @@ function createPlot(chartInfo) {
     updateHeadlineColor(isHighContrast() ? 'high' : 'default', updatedConfig);
 
     if (chartInfo.selectedUnit) {
-        updatedConfig.options.scales.y.scaleLabel.labelString = translations.t(chartInfo.selectedUnit);
+        updatedConfig.options.scales.y.title.text = translations.t(chartInfo.selectedUnit);
     }
 
     alterChartConfig(updatedConfig, chartInfo);

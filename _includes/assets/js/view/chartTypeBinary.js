@@ -32,14 +32,14 @@ opensdg.chartTypes.binary = function (info) {
             },
             scales: {
                 y: {
+                    // Set the min/max to -1/1 so that the bars will start from the
+                    // middle and either go up (for 1) or down (for -1).
+                    min: -1,
+                    max: 1,
                     ticks: {
-                        // Set the min/max to -1/1 so that the bars will start from the
-                        // middle and either go up (for 1) or down (for -1).
-                        min: -1,
-                        max: 1,
                         callback: opensdg.convertBinaryValue,
                     },
-                }
+                },
             },
         }
     }

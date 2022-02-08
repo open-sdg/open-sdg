@@ -20,41 +20,44 @@ opensdg.chartTypes.base = function(info) {
             sScrollXInner: '150%',
             scales: {
                 x: {
-                    maxBarThickness: 150,
-                    gridLines: {
+                    grid: {
                         color: 'transparent',
-                        zeroLineColor: '#757575',
+                        zeroLineColor: '#757575', // not working in Chart.js 3
                     },
                     ticks: {
-                        fontColor: tickColor,
+                        color: tickColor,
                     },
-                    scaleLabel: {
+                    title: {
                         display: MODEL.xAxisLabel ? true : false,
-                        labelString: MODEL.xAxisLabel,
-                        fontColor: tickColor,
-                        fontSize: 14,
-                        fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
-                    }
+                        text: MODEL.xAxisLabel,
+                        font: {
+                            color: tickColor,
+                            size: 14,
+                            family: "'Open Sans', Helvetica, Arial, sans-serif",
+                        },
+                    },
                 },
                 y: {
-                    gridLines: {
+                    grid: {
                         color: gridColor,
-                        zeroLineColor: '#757575',
+                        zeroLineColor: '#757575', // not working in Chart.js 3
                         drawBorder: false,
                     },
+                    suggestedMin: 0,
                     ticks: {
-                        suggestedMin: 0,
-                        fontColor: tickColor,
+                        color: tickColor,
                         callback: function (value) {
                             return alterDataDisplay(value, undefined, 'chart y-axis tick');
                         },
                     },
-                    scaleLabel: {
+                    title: {
                         display: MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit,
-                        labelString: MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit,
-                        fontColor: tickColor,
-                        fontSize: 14,
-                        fontFamily: "'Open Sans', Helvetica, Arial, sans-serif",
+                        text: MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit,
+                        font: {
+                            color: tickColor,
+                            size: 14,
+                            family: "'Open Sans', Helvetica, Arial, sans-serif",
+                        },
                     }
                 }
             },
@@ -90,10 +93,8 @@ opensdg.chartTypes.base = function(info) {
             options: {
                 scales: {
                     y: {
-                        ticks: {
-                            min: info.graphLimits.minimum,
-                            max: info.graphLimits.maximum,
-                        }
+                        min: info.graphLimits.minimum,
+                        max: info.graphLimits.maximum,
                     }
                 }
             }
@@ -104,8 +105,8 @@ opensdg.chartTypes.base = function(info) {
     else {
         // Otherwise remove any min/max that may be there.
         try {
-            delete config.options.scales.y.ticks.min;
-            delete config.options.scales.y.ticks.max;
+            delete config.options.scales.y.min;
+            delete config.options.scales.y.max;
         }
         catch (e) { }
     }
