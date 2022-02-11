@@ -21,8 +21,9 @@ opensdg.chartTypes.base = function(info) {
             scales: {
                 x: {
                     grid: {
-                        color: 'transparent',
-                        zeroLineColor: '#757575', // not working in Chart.js 3
+                        color: function(line) {
+                            return (line.index === 0) ? tickColor : 'transparent';
+                        },
                     },
                     ticks: {
                         color: tickColor,
@@ -30,8 +31,8 @@ opensdg.chartTypes.base = function(info) {
                     title: {
                         display: MODEL.xAxisLabel ? true : false,
                         text: MODEL.xAxisLabel,
+                        color: tickColor,
                         font: {
-                            color: tickColor,
                             size: 14,
                             family: "'Open Sans', Helvetica, Arial, sans-serif",
                         },
@@ -39,8 +40,9 @@ opensdg.chartTypes.base = function(info) {
                 },
                 y: {
                     grid: {
-                        color: gridColor,
-                        zeroLineColor: '#757575', // not working in Chart.js 3
+                        color: function(line) {
+                            return (line.index === 0) ? tickColor : gridColor;
+                        },
                         drawBorder: false,
                     },
                     suggestedMin: 0,
@@ -53,8 +55,8 @@ opensdg.chartTypes.base = function(info) {
                     title: {
                         display: MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit,
                         text: MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit,
+                        color: tickColor,
                         font: {
-                            color: tickColor,
                             size: 14,
                             family: "'Open Sans', Helvetica, Arial, sans-serif",
                         },

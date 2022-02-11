@@ -22,10 +22,6 @@ breadcrumbs:
     - path: /news
       label: menu.updates
 chartjs_3: true
-chart_types:
-  - line
-  - bar
-  - binary
 contrast_type: default
 cookie_consent_form:
   enabled: false

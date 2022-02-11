@@ -122,9 +122,16 @@ function setPlotEvents(chartInfo) {
         updateHeadlineColor(e.detail, VIEW._chartInstance);
         updateGraphAnnotationColors(e.detail, VIEW._chartInstance);
         VIEW._chartInstance.options.scales.y.title.color = tickColor;
-        VIEW._chartInstance.options.scales.y.gridLines.color = gridColor;
+        VIEW._chartInstance.options.scales.x.title.color = tickColor;
         VIEW._chartInstance.options.scales.y.ticks.color = tickColor;
         VIEW._chartInstance.options.scales.x.ticks.color = tickColor;
+        VIEW._chartInstance.options.scales.y.grid.color = function(line) {
+            return (line.index === 0) ? tickColor : gridColor;
+        };
+        VIEW._chartInstance.options.scales.x.grid.color = function(line) {
+            return (line.index === 0) ? tickColor : 'transparent';
+        };
+
         VIEW._chartInstance.update();
         $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
     });
