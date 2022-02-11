@@ -7,7 +7,7 @@ opensdg.annotationPresets = {
         borderWidth: 1,
         label: {
             backgroundColor: 'white',
-            {% if site.version_2_preview %}
+            {% if site.chartjs_3 %}
             color: 'black',
             {% else %}
             fontColor: 'black',
@@ -17,7 +17,7 @@ opensdg.annotationPresets = {
         highContrast: {
             label: {
                 backgroundColor: 'black',
-                {% if site.version_2_preview %}
+                {% if site.chartjs_3 %}
                 color: 'white',
                 {% else %}
                 fontColor: 'white',
@@ -55,7 +55,7 @@ opensdg.annotationPresets = {
         borderDash: [15, 10],
         borderColor: '#757575',
         label: {
-            position: {% if site.version_2_preview %}'end'{% else %}'right'{% endif %},
+            position: {% if site.chartjs_3 %}'end'{% else %}'right'{% endif %},
             content: translations.indicator.annotation_2030_target,
         },
     },

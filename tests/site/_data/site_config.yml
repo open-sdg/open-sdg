@@ -21,6 +21,7 @@ breadcrumbs:
       label: general.home
     - path: /news
       label: menu.updates
+chartjs_3: true
 chart_types:
   - line
   - bar
@@ -329,5 +330,4 @@ site_config_form:
   translation_link: ''
 validate_indicator_config: true
 validate_site_config: true
-version_2_preview: true
 x_axis_label: Year

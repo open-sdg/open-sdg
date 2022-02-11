@@ -18,7 +18,7 @@ function getTextLinesOnCanvas(ctx, text, maxWidth) {
 }
 
 // This plugin displays a message to the user whenever a chart has no data.
-Chart.{% unless site.version_2_preview %}plugins.{% endunless %}register({
+Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
   id: 'open-sdg-no-data-message',
   afterDraw: function(chart) {
     if (chart.data.datasets.length === 0) {
@@ -29,7 +29,7 @@ Chart.{% unless site.version_2_preview %}plugins.{% endunless %}register({
       }
       // @deprecated end
 
-      {% if site.version_2_preview %}
+      {% if site.chartjs_3 %}
       var ctx = chart.ctx;
       var width = chart.width;
       var height = chart.height;

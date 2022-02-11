@@ -440,7 +440,7 @@ graph_types:
     type: bar
 ```
 
-Note that this setting only works if `version_2_preview` is set to `true`.
+Note that this setting only works if `chartjs_3` is set to `true`.
 
 ### indicator_available
 
