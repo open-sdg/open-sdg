@@ -36,7 +36,7 @@ var indicatorView = function (model, options) {
         function toggleSidebar() {
             var $sidebar = $('.indicator-sidebar'),
                 $main = $('.indicator-main'),
-                hideSidebar = $(this).hasClass('hide-sidebar-when-active'),
+                hideSidebar = $(this).parent().hasClass('hide-sidebar-when-active'),
                 mobile = window.matchMedia("screen and (max-width: 990px)");
             if (hideSidebar) {
                 $sidebar.addClass('indicator-sidebar-hidden');
