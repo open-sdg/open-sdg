@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs spacer medium" role="tablist">
+{% include components/tabs/tab-item-group-start.html classes="spacer medium" %}
 {% if site.metadata_tabs and site.metadata_tabs.size > 0 %}
 {% for tab in site.metadata_tabs %}
   {% comment %} @deprecated start {% endcomment %}
@@ -14,16 +14,28 @@
   {% endif %}
   {% assign tab_preset = "tab_meta_" | append: tab_key %}
   {% assign tab_label = "Change to " | append: tab_obj.title | append: " tab" %}
-  <li role="presentation" class="nav-item {% if forloop.first %}active{% endif %}">
-    <a class="nav-link" data-toggle="tab" id="tab-{{ tab_key }}" href="#{{ tab_key }}" aria-controls="{{ tab_key }}" role="tab" {% include autotrack.html preset=tab_preset category="Tab change" action="Change metadata view" label=tab_label %}>{{ tab_obj.title | t }}</a>
-  </li>
+  {% assign tab_id = "tab-" | append: tab_key %}
+  {% assign tab_href = "#" | append: tab_key %}
+  {% assign tab_title = tab_obj.title | t %}
+  {% include components/tabs/tab-item.html
+    active=forloop.first
+    label=tab_title
+    id=tab_id
+    href=tab_href
+    aria-controls=tab_key
+    autotrack-preset=tab_preset
+    autotrack-action="Change metadata view"
+    autotrack-label=tab_label
+  %}
 {% endfor %}
 {% else %}
   {% include components/indicator/metadata-tabs-default.html %}
 {% endif %}
   {% if site.environment == 'staging' %}
-  <li role="presentation" class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#edit" aria-controls="edit" role="tab">{{ page.t.indicator.edit }}</a>
-  </li>
+  {% include components/tabs/tab-item.html
+    label=page.t.indicator.edit
+    href="#edit"
+    aria-controls="edit"
+  %}
   {% endif %}
-</ul>
+{% include components/tabs/tab-item-group-end.html %}

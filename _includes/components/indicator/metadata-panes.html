@@ -1,4 +1,4 @@
-<div class="tab-content">
+{% include components/tabs/tab-pane-group-start.html %}
   {% if site.metadata_tabs and site.metadata_tabs.size > 0 %}
     {% for tab in site.metadata_tabs %}
     {% comment %} @deprecated start {% endcomment %}
@@ -14,19 +14,24 @@
     {% if tab_key == 'sources' %}
       {% assign tab_include = 'components/indicator/sources.html' %}
     {% endif %}
-    <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
+    {% include components/tabs/tab-pane-start.html
+      active=forloop.first
+      id=tab_key
+    %}
       <article>
         {% if tab_description %}{{ tab_description | t | markdownify }}{% endif %}
         {% include {{ tab_include }} scope=tab_key %}
       </article>
-    </div>
+    {% include components/tabs/tab-pane-end.html %}
     {% endfor %}
   {% else %}
     {% include components/indicator/metadata-panes-default.html %}
   {% endif %}
   {% if site.environment == 'staging' %}
-  <div role="tabpanel" class="tab-pane" id="edit">
+  {% include components/tabs/tab-pane-start.html
+    id="edit"
+  %}
     {% include components/indicator/edit-buttons.html %}
-  </div>
+  {% include components/tabs/tab-pane-end.html %}
   {% endif %}
-</div>
+{% include components/tabs/tab-pane-group-end.html %}
