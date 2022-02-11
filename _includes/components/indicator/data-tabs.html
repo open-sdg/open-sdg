@@ -5,6 +5,7 @@
   {% for tab in page.indicator.indicator_tabs_list %}
     {% if tab.type == 'chart' %}
       {% include components/tabs/tab-item.html
+        classes="data-tab-item chart-tab-item"
         active=forloop.first
         label=tab.label
         id="tab-chartview"
@@ -17,6 +18,7 @@
       %}
     {% elsif tab.type == 'table' %}
       {% include components/tabs/tab-item.html
+        classes="data-tab-item table-tab-item"
         active=forloop.first
         label=tab.label
         id="tab-tableview"
@@ -28,7 +30,7 @@
       %}
     {% elsif tab.type == 'map' %}
       {% include components/tabs/tab-item.html
-        classes="map"
+        classes="data-tab-item map-tab-item"
         active=forloop.first
         label=tab.label
         id="tab-mapview"
@@ -40,7 +42,7 @@
       %}
     {% elsif tab.type == 'embed' %}
       {% include components/tabs/tab-item.html
-        classes="embedded-map"
+        classes="data-tab-item embedded-map-tab-item"
         active=forloop.first
         label=tab.label
         id="tab-embeddedmapview"

@@ -30,9 +30,9 @@ var indicatorView = function (model, options) {
         });
 
         // Execute the hide/show functionality for the sidebar, both on
-        // the currently active tab, and each time a tab is clicked on.
-        $('.data-view .nav-item.active .nav-link').each(toggleSidebar);
-        $('.data-view .nav-link').on('click', toggleSidebar);
+        // the currently active (first) tab, and each time a tab is clicked.
+        $('.data-tab-item:first-child > a').each(toggleSidebar);
+        $('.data-tab-item > a').on('click', toggleSidebar);
         function toggleSidebar() {
             var $sidebar = $('.indicator-sidebar'),
                 $main = $('.indicator-main'),
