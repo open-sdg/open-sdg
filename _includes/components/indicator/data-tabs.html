@@ -30,7 +30,7 @@
       %}
     {% elsif tab.type == 'map' %}
       {% include components/tabs/tab-item.html
-        classes="data-tab-item map-tab-item"
+        classes="data-tab-item map-tab-item hide-sidebar-when-active"
         active=forloop.first
         label=tab.label
         id="tab-mapview"
@@ -42,7 +42,7 @@
       %}
     {% elsif tab.type == 'embed' %}
       {% include components/tabs/tab-item.html
-        classes="data-tab-item embedded-map-tab-item"
+        classes="data-tab-item embedded-map-tab-item hide-sidebar-when-active"
         active=forloop.first
         label=tab.label
         id="tab-embeddedmapview"
