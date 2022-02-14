@@ -1,13 +1,6 @@
 @import "variables/colors";
 @import "variables/dimensions";
 @import "variables/typography";
-@import "bootstrap5/components/header";
-@import "components/disclaimer";
-@import "bootstrap5/components/search";
-/*
-@import "variables/colors";
-@import "variables/dimensions";
-@import "variables/typography";
 @import "base/grid";
 @import "base/lists";
 @import "base/locale";
@@ -36,7 +29,7 @@
 @import "components/metadata";
 @import "components/cookies";
 @import "components/progress_status";
-@import "layouts/header-bootstrap-5";
+@import "layouts/header";
 @import "layouts/footer";
 @import "layouts/indicator";
 @import "layouts/goal";
@@ -54,4 +47,3 @@
 @import "layouts/data_editor";
 @import "layouts/post";
 @import "layouts/page-not-found";
-*/

@@ -5,6 +5,7 @@ analytics:
   gtag: ''
   gtm: ''
   ga_prod: ''
+bootstrap_5: true
 breadcrumbs:
   goal:
     - path: /
@@ -144,7 +145,7 @@ graph_color_list: []
 graph_color_number: 6
 graph_title_from_series: true
 header:
-  include: header-menu-left-aligned.html
+  include: header-bootstrap5.html
 header_language_toggle: dropdown
 hide_empty_metadata: true
 hide_single_series: false
@@ -324,5 +325,5 @@ site_config_form:
   repository_link: /tree/master/tests/site/_data
   translation_link: ''
 validate_indicator_config: true
-validate_site_config: true
+validate_site_config: false
 x_axis_label: Year

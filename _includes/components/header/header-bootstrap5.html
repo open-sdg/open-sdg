@@ -1,0 +1,33 @@
+{% include multilingual-js.html key="header" %}
+<a class="{% if site.bootstrap_5 %}visually-hidden-focusable{% else %}sr-only sr-only-focusable{% endif %}" id="skiplink" href="#main-content" tabindex="0">{{ page.t.header.skip_link }}</a>
+<div id="disclaimer">
+    {% include components/dev-disclaimer.html %}
+</div>
+
+<header role="banner" class="">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light flex-wrap">
+            <div class="d-flex w-100 flex-column flex-lg-row justify-content-between">
+                {% include components/header/logo.html %}
+                {% include bootstrap5/components/search.html %}
+            </div>
+            <button class="navbar-toggler position-absolute top-0 end-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="d-flex w-100 justify-content-between">
+                    {% include bootstrap5/components/navigation.html dropdowns=true %}
+                    <ul class="navbar-nav">
+                        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+                            <li class="language-toggle-menu-header">
+                                {% include components/language-toggle.html %}
+                            </li>
+                        {%- endif -%}
+                        {% include components/contrast-toggle.html %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+{% include components/page-top.html %}
