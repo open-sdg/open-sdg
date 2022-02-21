@@ -134,7 +134,7 @@ var indicatorModel = function (options) {
   }
 
   this.updateChartType = function() {
-    this.graphType = helpers.getChartType(this.graphType, this.graphTypes, this.selectedUnit, this.selectedSeries);
+    this.graphType = helpers.getChartType(this.graphType, this.graphTypes, this.selectedUnit, this.selectedSeries, helpers.CHARTJS_3);
   }
 
   this.updateSelectedUnit = function(selectedUnit) {

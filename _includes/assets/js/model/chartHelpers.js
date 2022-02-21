@@ -19,9 +19,13 @@ function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
  * @param {Array} allTypes Objects containing 'unit', 'series', and 'type'
  * @param {String} selectedUnit
  * @param {String} selectedSeries
+ * @param {Boolean} chartjs3
  * @return {String} Updated type
  */
-function getChartType(currentType, allTypes, selectedUnit, selectedSeries) {
+function getChartType(currentType, allTypes, selectedUnit, selectedSeries, chartjs3) {
+  if (!chartjs3) {
+    return currentType;
+  }
   if (!currentType) {
     currentType = 'line';
   }
