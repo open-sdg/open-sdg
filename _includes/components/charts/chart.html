@@ -12,7 +12,11 @@
         <div id="chart-canvas">
           <h4 id="chart-heading" class="chart-title">{{ graph_title }}</h4>
           <div id="chart" class="plot-container">
-            {% include {{ graph_template }} %}
+            {% if site.chartjs_3 %}
+              {% include components/charts/canvas.html %}
+            {% else %}
+              {% include {{ graph_template }} %}
+            {% endif %}
           </div>
           <div id="plotLegend"></div>
           {% include components/indicator/data-footer.html %}

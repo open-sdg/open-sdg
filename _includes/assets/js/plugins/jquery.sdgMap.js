@@ -513,7 +513,7 @@
         finalMapPreparation();
       }
       else {
-        $('#tab-mapview').parent().click(finalMapPreparation);
+        $('.map-tab-item').parent().click(finalMapPreparation);
       }
       function finalMapPreparation() {
         setTimeout(function() {
