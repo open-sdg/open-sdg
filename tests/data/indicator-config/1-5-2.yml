@@ -28,6 +28,11 @@ graph_titles:
     unit: Total
     title: graph-titles.1-5-2-total
 graph_type: line
+graph_types:
+  - unit: Percent
+    type: bar
+  - unit: Total
+    type: line
 indicator_name: global_indicators.1-5-2-title
 indicator_number: 1.5.2
 national_geographical_coverage: ''

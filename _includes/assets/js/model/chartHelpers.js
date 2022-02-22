@@ -15,6 +15,25 @@ function getChartTitle(currentTitle, allTitles, selectedUnit, selectedSeries) {
 }
 
 /**
+ * @param {string} currentType
+ * @param {Array} allTypes Objects containing 'unit', 'series', and 'type'
+ * @param {String} selectedUnit
+ * @param {String} selectedSeries
+ * @param {Boolean} chartjs3
+ * @return {String} Updated type
+ */
+function getChartType(currentType, allTypes, selectedUnit, selectedSeries, chartjs3) {
+  if (!chartjs3) {
+    return currentType;
+  }
+  if (!currentType) {
+    currentType = 'line';
+  }
+  var match = getMatchByUnitSeries(allTypes, selectedUnit, selectedSeries);
+  return (match) ? match.type : currentType;
+}
+
+/**
  * @param {Array} graphLimits Objects containing 'unit' and 'title'
  * @param {String} selectedUnit
  * @param {String} selectedSeries
@@ -339,7 +358,8 @@ function getBaseDataset() {
     pointHoverRadius: 5,
     pointHoverBorderWidth: 1,
     tension: 0,
-    spanGaps: true
+    spanGaps: true,
+    maxBarThickness: 150,
   });
 }
 

@@ -16,6 +16,8 @@ _Optional_: This setting can be set to `true` to enable chart functionality that
 accessible_charts: false
 ```
 
+Note that after the next major release of Open SDG (2.0.0) this setting will be removed and charts will automatically be accessible.
+
 ### accessible_tabs
 
 _Optional_: This setting can be set to `true` to enable tab functionality that is compliant with the [WAI-ARIA best practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). This adds improved keyboard navigation of the tabs. If omitted, this defaults to `false`, however setting this to `true` is recommended.
@@ -23,6 +25,8 @@ _Optional_: This setting can be set to `true` to enable tab functionality that i
 ```nohighlight
 accessible_tabs: false
 ```
+
+Note that after the next major release of Open SDG (2.0.0) this setting will be removed and tabs will automatically be accessible.
 
 ### analytics
 
@@ -109,6 +113,12 @@ breadcrumbs:
 ```
 
 Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
+
+### chartjs_3
+
+_Optional_: This setting enables the latest version of Chart.js (version 3) if set to `true`. By default it is `false`, and Chart.js version 2 will be used.
+
+Note that in the next major version of Open SDG (2.0.0) this setting will be removed and Chart.js version 3 will always be used.
 
 ### configuration_edit_url
 

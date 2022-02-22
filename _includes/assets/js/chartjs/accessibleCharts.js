@@ -1,5 +1,6 @@
 // This plugin allows users to cycle through tooltips by keyboard.
-Chart.plugins.register({
+Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
+    id: 'open-sdg-accessible-charts',
     afterInit: function(chart) {
         var plugin = this;
         plugin.chart = chart;

@@ -39,10 +39,24 @@ graph_titles:
     unit: Total
     series: B
 graph_type: bar
+graph_types:
+  - type: line
+    unit: Percent
+    series: A
+  - type: bar
+    unit: Percent
+    series: B
+  - type: bar
+    unit: Total
+    series: A
+  - type: line
+    unit: Total
+    series: B
 indicator_name: global_indicators.2-5-2-title
 indicator_number: 2.5.2
 national_geographical_coverage: ''
 page_content: |
-  This indicator is provided to demonstrate the special "Series" column.
+  This indicator is provided to demonstrate the special "Series" column, as well as series/unit-specific
+  chart titles, and series/unit-specific chart types.
 reporting_status: complete
 tags: []
