@@ -11,8 +11,10 @@
                 {% include components/header/logo.html %}
                 {% include bootstrap5/components/search.html %}
             </div>
-            <button class="navbar-toggler position-absolute top-0 end-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler collapsed position-absolute top-0 end-0 d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon top-bar"></span>
+                <span class="toggler-icon middle-bar"></span>
+                <span class="toggler-icon bottom-bar"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex w-100 justify-content-between">

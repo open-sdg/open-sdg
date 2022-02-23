@@ -11,11 +11,19 @@
 @import "bootstrap5/base/links";
 @import "bootstrap5/base/dropdowns";
 @import "bootstrap5/base/menus";
+@import "bootstrap5/base/typography";
 @import "bootstrap5/components/header";
-@import "components/disclaimer";
+@import "bootstrap5/components/disclaimer";
 @import "bootstrap5/components/search";
 @import "bootstrap5/components/language_toggle";
 @import "bootstrap5/components/contrast_toggle";
+@import "bootstrap5/components/navbar_toggle";
+@import "bootstrap5/components/frontpage_goals_grid";
+@import "bootstrap5/components/frontpage_intro";
+@import "bootstrap5/components/frontpage_cards";
+@import "bootstrap5/components/goal_tiles";
+@import "bootstrap5/components/card";
+@import "bootstrap5/layouts/default";
 
 /*
 @import "variables/colors";

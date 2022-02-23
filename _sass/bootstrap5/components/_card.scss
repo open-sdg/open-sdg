@@ -1,0 +1,24 @@
+.card {
+    border: none;
+    .card-title {
+        border-top: 2px solid;
+        border-color: $card-horizontalRule-color;
+        padding-top: 7px;
+    }
+    img {
+        max-width: 100%;
+    }
+    .btn {
+        white-space: normal;
+    }
+}
+
+body.contrast-high {
+    .card {
+        color: $color-light-highContrast;
+        background: $color-dark-highContrast;
+        .card-title {
+            border-color: $color-light-highContrast !important;
+        }
+    }
+}

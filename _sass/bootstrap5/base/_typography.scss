@@ -1,0 +1,24 @@
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $text-color;
+}
+body.contrast-high {
+    color: $text-color-highContrast;
+}
+
+h1 {
+    font-size: $h1-fontSize;
+}
+h2 {
+    font-size: $h2-fontSize;
+}
+h3 {
+    font-size: $h3-fontSize;
+}
+.lead-copy {
+    font-size: $leadCopy-fontSize;
+}
+.small-text {
+    font-size: $smallText-fontSize;
+}
