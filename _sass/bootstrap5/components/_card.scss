@@ -1,5 +1,8 @@
 .card {
     border: none;
+    .card-body {
+        padding-left: 0;
+    }
     .card-title {
         border-top: 2px solid;
         border-color: $card-horizontalRule-color;
