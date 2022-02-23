@@ -5,7 +5,7 @@ analytics:
   gtag: ''
   gtm: ''
   ga_prod: ''
-bootstrap_5: true
+bootstrap_5: false
 breadcrumbs:
   goal:
     - path: /
@@ -23,7 +23,7 @@ breadcrumbs:
     - path: /news
       label: menu.updates
 chartjs_3: true
-contrast_type: single
+contrast_type: default
 cookie_consent_form:
   enabled: false
 country:
@@ -146,7 +146,7 @@ graph_color_list: []
 graph_color_number: 6
 graph_title_from_series: true
 header:
-  include: header-bootstrap5.html
+  include: header-menu-left-aligned.html
 header_language_toggle: dropdown
 hide_empty_metadata: true
 hide_single_series: false
