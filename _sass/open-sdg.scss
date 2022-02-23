@@ -1,9 +1,22 @@
 @import "variables/colors";
 @import "variables/dimensions";
 @import "variables/typography";
+@import "bootstrap5/mixins/focus";
+@import "bootstrap5/base/high_contrast";
+@import "bootstrap5/base/buttons";
+@import "bootstrap5/base/focus";
+@import "bootstrap5/base/forms";
+@import "bootstrap5/base/iframes";
+@import "bootstrap5/base/keyboard_navigation";
+@import "bootstrap5/base/links";
+@import "bootstrap5/base/dropdowns";
+@import "bootstrap5/base/menus";
 @import "bootstrap5/components/header";
 @import "components/disclaimer";
 @import "bootstrap5/components/search";
+@import "bootstrap5/components/language_toggle";
+@import "bootstrap5/components/contrast_toggle";
+
 /*
 @import "variables/colors";
 @import "variables/dimensions";

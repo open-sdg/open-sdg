@@ -1,0 +1,12 @@
+// @TODO: Put this in more specific place.
+.tabPanel:focus,
+.variable-selector button.accessBtn:focus {
+    @include focusOutlineOnly;
+}
+body.contrast-high .variable-selector button.accessBtn:focus {
+    @include focusOutlineOnlyHighContrast;
+    &,
+    span {
+        color: $text-color-highContrast !important;
+    }
+}

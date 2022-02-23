@@ -1,5 +1,19 @@
 #search {
+    padding-bottom: 20px;
     input {
         max-width: 300px;
+    }
+    button {
+        color: $button-foregroundColor;
+        background-color: $button-color;
+        border: 1.25px solid $button-color;
+        border-radius: 0;
+        &:focus {
+            color: $button-foregroundColor !important;
+            background-color: $button-color !important;
+            box-shadow: none !important;
+            outline: 3px solid $focusOutlineColor !important;
+            z-index: 1;
+        }
     }
 }

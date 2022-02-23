@@ -1,0 +1,29 @@
+[data-contrast-switch-to] {
+    text-decoration: none;
+    display: block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    &:focus {
+        border-radius: 0;
+    }
+}
+[data-contrast-switch-to="high"] {
+    background-color: $color-dark-highContrast;
+    color: $color-highlight-highContrast;
+    &:hover {
+        color: $color-highlight-highContrast;
+    }
+}
+body.contrast-high {
+    [data-contrast-switch-to="default"] {
+        background-color: $color-light-highContrast;
+        color: $color-dark-highContrast;
+        &:hover {
+            color: $color-dark-highContrast;
+        }
+    }
+}

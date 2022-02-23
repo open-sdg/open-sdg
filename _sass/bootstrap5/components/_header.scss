@@ -3,4 +3,13 @@
     img {
         max-width: 100%;
     }
+    &:focus {
+        background-color: transparent !important;
+        outline: 7px solid $focusOutlineColor !important;
+    }
+}
+
+body {
+    background: $backgroundColor url("../img/sdgbg.png") top left repeat-x;
+    padding-top: 15px;
 }

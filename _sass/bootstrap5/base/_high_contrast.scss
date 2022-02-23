@@ -1,0 +1,120 @@
+body.contrast-high {
+    li {
+        color: $color-light-highContrast;
+    }
+
+    background-color: $color-dark-highContrast;
+    .table {
+        background: $color-dark-highContrast;
+    }
+
+    .table-hover {
+        tbody tr:hover {
+            background: $color-highlight-highContrast;
+            td {
+                color: $color-dark-highContrast;
+            }
+            th {
+                color: $color-dark-highContrast;
+            }
+            a {
+                color: $link-color;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .container,
+    #main-content,
+    header,
+    #disclaimer {
+        background: $color-dark-highContrast;
+        border-color: $color-dark-highContrast;
+    }
+
+    footer {
+        color: $footer-text-color-highContrast;
+        background: $footer-text-backgroundColor-highContrast;
+        border-color: $footer-text-backgroundColor-highContrast;
+        a {
+            color: $footer-link-color-highContrast;
+            &:hover,
+            &:focus {
+                color: $footer-link-color-highContrast-hover;
+            }
+        }
+    }
+
+    .goal-banner {
+        background: $goal-banner-backgroundColor-highContrast;
+        border-color: $goal-banner-backgroundColor-highContrast;
+        h1,
+        p {
+            color: $goal-banner-color-highContrast;
+        }
+    }
+
+    p,
+    h2,
+    h3,
+    h4,
+    span,
+    td,
+    th,
+    a#text {
+        color: $color-light-highContrast;
+    }
+
+    a {
+        color: $color-highlight-highContrast;
+    }
+
+    h1 {
+        color: $color-light-highContrast;
+    }
+
+    li.contrast-default a {
+        color: $color-dark-highContrast !important;
+    }
+}
+
+body.contrast-high .site-intro .description {
+    color: $color-light-highContrast;
+}
+
+body.contrast-high #main-content .no-gutters a > img:not(#goal-18):hover {
+    box-shadow: 0px 0px 0px 5px $color-highlight-highContrast;
+}
+
+body.contrast-high #disclaimer {
+    .phase-tag {
+        background: $color-light-highContrast;
+        color: $color-dark-highContrast;
+    }
+    .disclaimer-alert {
+        color: $color-light-highContrast;
+    }
+
+    .goal-tiles img {
+        background-color: black !important;
+        &:hover {
+            background-color: black !important;
+        }
+    }
+
+    #map {
+        // Temporary code until high-contrast mode is implemented for maps.
+        a {
+            color: $color-dark-highContrast;
+        }
+        .selection-legend {
+            .legend-values,
+            #selection-list {
+                li,
+                span {
+                    color: $color-dark-highContrast;
+                }
+            }
+        }
+    }
+}

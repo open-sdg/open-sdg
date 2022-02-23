@@ -1,0 +1,8 @@
+button:focus {
+    @include focus;
+}
+body.contrast-high {
+    button:focus {
+        @include focusHighContrast;
+    }
+}

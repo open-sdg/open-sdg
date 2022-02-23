@@ -1,0 +1,16 @@
+.language-toggle-container {
+    .dropdown-toggle, .dropdown-item {
+        color: $menu-link-color;
+        font-size: $menu-link-fontSize;
+    }
+}
+body.contrast-high {
+    .language-toggle-container {
+        .dropdown-toggle, .dropdown-item {
+            color: $color-light-highContrast;
+            &:hover, &:focus {
+                color: $color-highlight-highContrast;
+            }
+        }
+    }
+}

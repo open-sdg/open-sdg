@@ -17,13 +17,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-flex w-100 justify-content-between">
                     {% include bootstrap5/components/navigation.html dropdowns=true %}
-                    <ul class="navbar-nav">
+                    <div class="d-flex justify-content-end">
                         {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
-                            <li class="language-toggle-menu-header">
-                                {% include components/language-toggle.html %}
-                            </li>
+                            {% include bootstrap5/components/language-toggle.html %}
                         {%- endif -%}
-                        {% include components/contrast-toggle.html %}
+                        {% include bootstrap5/components/contrast-toggle.html %}
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,8 @@
+[href]:focus {
+    @include focus;
+}
+body.contrast-high {
+    [href]:focus {
+        @include focusHighContrast;
+    }
+}

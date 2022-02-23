@@ -23,7 +23,7 @@ breadcrumbs:
     - path: /news
       label: menu.updates
 chartjs_3: true
-contrast_type: default
+contrast_type: single
 cookie_consent_form:
   enabled: false
 country:
