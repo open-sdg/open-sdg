@@ -1,0 +1,24 @@
+.breadcrumb {
+    background-color: $breadcrumbs-backgroundColor;
+    padding: $breadcrumbs-padding;
+
+    a,
+    & > .active,
+    .breadcrumb-item + .breadcrumb-item::before {
+        color: $breadcrumbs-color;
+    }
+}
+
+body.contrast-high {
+    .breadcrumb {
+        background: $breadcrumbs-backgroundColor-highContrast;
+        a,
+        & > .active,
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: $breadcrumbs-color-highContrast;
+        }
+        a:hover {
+            color: $color-highlight-highContrast;
+        }
+    }
+}

@@ -14,3 +14,15 @@ body {
     background: $backgroundColor url("../img/sdgbg.png") top left repeat-x;
     padding-top: 15px;
 }
+
+header {
+    .navbar {
+        .navbar-nav {
+            .nav-item:first-child {
+                .nav-link {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}
