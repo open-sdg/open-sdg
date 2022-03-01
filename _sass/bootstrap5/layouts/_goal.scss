@@ -1,16 +1,43 @@
+$goal-by-target-indentation: 60px;
+
 .layout-goal-bootstrap5 {
-    .goal-page-indicator {
-        margin-top: 20px;
-    }
     .goal-page-target-number {
+        h3 {
+            line-height: 1.5;
+        }
         .goal-target {
+            font-size: $fontSize;
             margin-bottom: 0;
         }
     }
-    .goal-page-target-name {
-        margin-left: 5px;
+    .goal-page-indicator {
+        margin-top: 20px;
+    }
+    .goal-page-target-rule {
+        color: $goalTarget-horizontalRule-color;
+        height: 2px;
+        margin-bottom: 25px;
     }
     .goal-page-indicator-number {
-        margin-left: 60px;
+        h4 {
+            line-height: 1;
+        }
+        .indicator-number {
+            font-size: $fontSize;
+        }
+    }
+    @media only screen and (min-width: 992px) {
+        .goal-page-target-name {
+            margin-left: 5px;
+        }
+        .goal-page-indicator-number {
+            margin-left: $goal-by-target-indentation;
+        }
+        .goal-page-target-rule {
+            margin-left: $goal-by-target-indentation;
+        }
+    }
+    .tags {
+        margin-top: 10px;
     }
 }

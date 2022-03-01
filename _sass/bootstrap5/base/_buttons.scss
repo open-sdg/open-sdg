@@ -1,6 +1,15 @@
 button:focus {
     @include focus;
 }
+.btn {
+    color: $button-foregroundColor;
+    &:visited {
+        color: $button-foregroundColor-visited;
+    }
+    &:focus {
+        color: $button-foregroundColor-focus;
+    }
+}
 .btn-download {
     border: none !important;
     background: $button-color !important;

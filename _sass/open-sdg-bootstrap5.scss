@@ -2,6 +2,8 @@
 @import "variables/dimensions";
 @import "variables/typography";
 @import "bootstrap5/mixins/focus";
+@import "bootstrap5/mixins/status";
+@import "bootstrap5/mixins/tags";
 @import "bootstrap5/base/high_contrast";
 @import "bootstrap5/base/buttons";
 @import "bootstrap5/base/focus";
@@ -27,5 +29,7 @@
 @import "bootstrap5/components/card";
 @import "bootstrap5/components/breadcrumbs";
 @import "bootstrap5/components/indicator_progress_status";
+@import "bootstrap5/components/indicator_tags";
+@import "bootstrap5/components/indicator_reporting_status";
 @import "bootstrap5/layouts/default";
 @import "bootstrap5/layouts/goal";

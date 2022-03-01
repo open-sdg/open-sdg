@@ -44,7 +44,7 @@
             {% assign indicator_has_progress = true %}
           {% endif %}
 
-          <div class="row goal-page-indicator">
+          <div class="row align-items-start goal-page-indicator">
           
             <div class="col-auto goal-page-indicator-number">
               <h4>
@@ -56,7 +56,7 @@
               <span class="indicator-name">{{ indicator.placeholder }}</span>
               {% else %}
               <span class="indicator-name"><a href="{{ indicator.url }}">{{ indicator.name }}</a></span>
-              {% include components/indicator/tags.html tags=indicator.tags reporting_status=true indicator=indicator %}
+              {% include bootstrap5/components/indicator/tags.html tags=indicator.tags reporting_status=true indicator=indicator %}
             </div>
             {% if indicator_has_progress %}
             <div class="col-1 goal-page-indicator-progress">
@@ -67,6 +67,7 @@
             {% endif %}
           </div>
         {% endfor %}
+        <hr class="goal-page-target-rule" />
     {% endfor %}
     </div>
   </div>

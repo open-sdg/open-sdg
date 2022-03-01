@@ -23,11 +23,14 @@
     .goal-tiles {
         .goal-tile {
             padding-bottom: 10px;
+            a {
+                display: inline-block;
+            }
             a:focus {
                 outline: 6px $focusOutlineColor solid !important;
             }
             img {
-                width: calc(100% - 10px);
+                width: 100%;
                 border: 0;
                 padding: 0;
                 margin: 0;
