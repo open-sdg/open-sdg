@@ -1,7 +1,9 @@
 .navbar-toggler {
     width: 25px;
     height: 25px;
-    position: relative;
+    position: absolute;
+    top: 10px;
+    right: 0px;
     transition: .5s ease-in-out;
 }
 

@@ -7,16 +7,13 @@
 <header role="banner" class="">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light flex-wrap">
-            <div class="d-flex w-100 flex-column flex-lg-row justify-content-between">
-                {% include components/header/logo.html %}
-                {% include bootstrap5/components/search.html %}
-            </div>
-            <button class="navbar-toggler collapsed position-absolute top-0 end-0 d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            {% include components/header/logo.html %}
+            <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="toggler-icon top-bar"></span>
                 <span class="toggler-icon middle-bar"></span>
                 <span class="toggler-icon bottom-bar"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
                 <div class="d-flex w-100 justify-content-between">
                     {% include bootstrap5/components/navigation.html dropdowns=true %}
                     <div class="d-flex justify-content-end">
@@ -24,8 +21,11 @@
                             {% include bootstrap5/components/language-toggle.html %}
                         {%- endif -%}
                         {% include bootstrap5/components/contrast-toggle.html %}
-                    </ul>
+                    </div>
                 </div>
+            </div>
+            <div class="header-search-bar">
+                {% include bootstrap5/components/search.html %}
             </div>
         </nav>
     </div>

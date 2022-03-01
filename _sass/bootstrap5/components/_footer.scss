@@ -28,6 +28,9 @@ body.contrast-high {
             &:hover {
                 color: $footer-link-color-highContrast-hover;
             }
+            &:visited {
+                color: $footer-link-color-highContrast;
+            }
         }
     }
 }

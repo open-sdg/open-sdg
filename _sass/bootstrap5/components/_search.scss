@@ -18,3 +18,13 @@
         }
     }
 }
+
+.header-search-bar {
+    width: 100%;
+    @media only screen and (min-width: 992px) {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        width: auto;
+    }
+}
