@@ -14,19 +14,19 @@
 
   {% include components/goal/goal-content.html content=content %}
 
-  <div class="container">
+  <div class="container g-0">
     <h2>{{ page.t.general.targets_and_indicators }}</h2>
 
     {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
     {% for group in goal_indicators %}
       {% assign target = group.name | sdg_lookup %}
-      <div class="row g-0">
-          <div class="col-1">
+      <div class="row align-items-start goal-page-target">
+          <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">{{ page.t.general.target }}</span> {{ target.number }}</span>
             </h3>
           </div>
-          <div class="col-11">
+          <div class="col goal-page-target-name">
             <span class="target-name">{{ target.name }}</span>
           </div>
       </div>
@@ -44,14 +44,14 @@
             {% assign indicator_has_progress = true %}
           {% endif %}
 
-          <div class="row g-0">
+          <div class="row goal-page-indicator">
           
-            <div class="offset-1 col-1">
+            <div class="col-auto goal-page-indicator-number">
               <h4>
                 <span class="indicator-number"><span class="visually-hidden">{{ page.t.general.indicator }}</span> {{ indicator.number }}</span>
               </h4>
             </div>
-            <div class="{% if indicator_has_progress %} col-9 {% else %} col-10 {% endif %}">
+            <div class="col goal-page-indicator-name">
               {% if indicator.placeholder and indicator.placeholder != '' %}
               <span class="indicator-name">{{ indicator.placeholder }}</span>
               {% else %}
@@ -59,7 +59,7 @@
               {% include components/indicator/tags.html tags=indicator.tags reporting_status=true indicator=indicator %}
             </div>
             {% if indicator_has_progress %}
-            <div class="col-1">
+            <div class="col-1 goal-page-indicator-progress">
               <span class="visually-hidden">{{ site.progress_status.status_heading | t }}</span>
               {% include components/progress/progress-status.html indicator=indicator %}
             </div>
