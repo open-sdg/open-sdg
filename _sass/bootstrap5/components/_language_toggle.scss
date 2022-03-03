@@ -3,6 +3,7 @@
         color: $menu-link-color;
         font-size: $menu-link-fontSize;
     }
+    margin-right: 20px;
 }
 body.contrast-high {
     .language-toggle-container {
@@ -10,6 +11,22 @@ body.contrast-high {
             color: $color-light-highContrast;
             &:hover, &:focus {
                 color: $color-highlight-highContrast;
+            }
+        }
+        .dropdown-toggle {
+            color: $color-light-highContrast !important;
+            &:hover {
+                color: $color-highlight-highContrast !important;
+            }
+            &:focus {
+                color: $color-dark-highContrast !important;
+            }
+        }
+        .dropdown-item {
+            color: $color-dark-highContrast;
+            &:hover,
+            &:focus {
+                color: $color-dark-highContrast;
             }
         }
     }

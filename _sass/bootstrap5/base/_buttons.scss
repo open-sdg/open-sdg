@@ -36,9 +36,18 @@ body.contrast-high {
     button:focus {
         @include focusHighContrast;
     }
+    .btn {
+        color: $button-foregroundColor-highContrast !important;
+        &:visited {
+            color: $color-dark-highContrast !important;
+        }
+        &:focus {
+            color: $color-dark-highContrast !important;
+        }
+    }
+    .btn-primary,
     .btn-download {
         background: $button-color-highContrast !important;
-        color: $button-foregroundColor-highContrast !important;
 
         &:active {
             background: $color-highlight-highContrast !important;
@@ -46,12 +55,8 @@ body.contrast-high {
         &:hover {
             background: $button-color-hover-highContrast !important;
         }
-        &:visited {
-            color: $color-dark-highContrast !important;
-        }
         &:focus {
             background: $color-highlight-highContrast !important;
-            color: $color-dark-highContrast !important;
         }
     }
 }

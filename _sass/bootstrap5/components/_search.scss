@@ -19,6 +19,17 @@
     }
 }
 
+body.contrast-high {
+    #search {
+        button {
+            background-color: $button-color-highContrast;
+            &:focus {
+                background-color: $button-color-highContrast;
+            }
+        }
+    }
+}
+
 .header-search-bar {
     width: 100%;
     @media only screen and (min-width: 992px) {

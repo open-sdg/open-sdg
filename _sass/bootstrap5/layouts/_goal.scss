@@ -2,6 +2,7 @@ $goal-by-target-indentation: 60px;
 
 .layout-goal-bootstrap5 {
     .goal-page-target-number {
+        min-width: $goal-by-target-indentation;
         h3 {
             line-height: 1.5;
         }
@@ -19,6 +20,7 @@ $goal-by-target-indentation: 60px;
         margin-bottom: 25px;
     }
     .goal-page-indicator-number {
+        min-width: $goal-by-target-indentation;
         h4 {
             line-height: 1;
         }
@@ -26,12 +28,25 @@ $goal-by-target-indentation: 60px;
             font-size: $fontSize;
         }
     }
+    .goal-page-indicator-progress {
+        margin-left: $goal-by-target-indentation;
+        .progress-status-image {
+            max-width: 100px;
+        }
+    }
     @media only screen and (min-width: 992px) {
+        .goal-page-indicator-progress {
+            margin-left: 0;
+        }
         .goal-page-target-name {
             margin-left: 5px;
         }
         .goal-page-indicator-number {
             margin-left: $goal-by-target-indentation;
+            min-width: 0;
+        }
+        .goal-page-target-number {
+            min-width: 0;
         }
         .goal-page-target-rule {
             margin-left: $goal-by-target-indentation;

@@ -59,7 +59,7 @@
               {% include bootstrap5/components/indicator/tags.html tags=indicator.tags reporting_status=true indicator=indicator %}
             </div>
             {% if indicator_has_progress %}
-            <div class="col-1 goal-page-indicator-progress">
+            <div class="col-lg-1 goal-page-indicator-progress">
               <span class="visually-hidden">{{ site.progress_status.status_heading | t }}</span>
               {% include components/progress/progress-status.html indicator=indicator %}
             </div>
