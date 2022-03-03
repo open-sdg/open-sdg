@@ -1,17 +1,15 @@
 {% include multilingual-js.html key="header" %}
-<a class="{% if site.bootstrap_5 %}visually-hidden-focusable{% else %}sr-only sr-only-focusable{% endif %}" id="skiplink" href="#main-content" tabindex="0">{{ page.t.header.skip_link }}</a>
+<a class="visually-hidden-focusable" id="skiplink" href="#main-content" tabindex="0">{{ page.t.header.skip_link }}</a>
 <div id="disclaimer">
     {% include components/dev-disclaimer.html %}
 </div>
 
 <header role="banner" class="">
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light flex-wrap">
+        <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
             {% include components/header/logo.html %}
-            <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="toggler-icon top-bar"></span>
-                <span class="toggler-icon middle-bar"></span>
-                <span class="toggler-icon bottom-bar"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
                 <div class="d-flex w-100 justify-content-between">
