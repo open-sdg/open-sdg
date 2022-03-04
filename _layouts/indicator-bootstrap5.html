@@ -1,0 +1,25 @@
+{% include head.html %}
+{% include header.html %}
+
+{% include components/indicator/fields-template.html %}
+{% include components/indicator/units-template.html %}
+{% include components/indicator/series-template.html %}
+{% include multilingual-js.html key="indicator" %}
+{% include multilingual-js.html key="data" %}
+
+<div class="container">
+  {% include bootstrap5/components/indicator/breadcrumbs.html %}
+  {% if site.create_indicators.previous_next_links %}
+    {% include bootstrap5/components/previous-next-links.html previous_label=page.t.indicator.previous next_label=page.t.indicator.next %}
+  {% endif %}
+</div>
+{% include bootstrap5/components/indicator/header.html %}
+<div id="main-content" class="container goal-{{ page.goal.number }}" role="main">
+  {% include components/indicator/data-notice.html %}
+  {% include components/indicator/indicator-available.html %}
+  {% include components/indicator/indicator-progress.html %}
+  {% include components/indicator/indicator-content.html %}
+  {% include components/indicator/indicator-main.html %}
+</div>
+
+{% include footer.html %}
