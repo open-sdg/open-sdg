@@ -4,6 +4,8 @@
 @import "bootstrap5/mixins/focus";
 @import "bootstrap5/mixins/status";
 @import "bootstrap5/mixins/tags";
+@import "bootstrap5/mixins/noselect";
+@import "base/no_javascript";
 @import "bootstrap5/base/high_contrast";
 @import "bootstrap5/base/buttons";
 @import "bootstrap5/base/focus";
@@ -32,5 +34,7 @@
 @import "bootstrap5/components/indicator_tags";
 @import "bootstrap5/components/indicator_reporting_status";
 @import "bootstrap5/components/previous_next_buttons";
+@import "bootstrap5/components/tabs";
 @import "bootstrap5/layouts/default";
 @import "bootstrap5/layouts/goal";
+@import "bootstrap5/layouts/indicator";

@@ -25,7 +25,11 @@
 {%- include assets/js/indicatorInit.js -%}
 {%- include assets/js/tabs.js -%}
 {% if site.accessible_tabs %}
+{%- if site.bootstrap_5 -%}
+{%- include assets/js/bootstrap5/accessibleTabs.js -%}
+{%- else -%}
 {%- include assets/js/accessibleTabs.js -%}
+{%- endif -%}
 {% endif %}
 {%- include assets/js/search.js -%}
 {%- unless site.bootstrap_5 -%}

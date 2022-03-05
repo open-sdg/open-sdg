@@ -1,5 +1,5 @@
 // @TODO: Put this in more specific place.
-.tabPanel:focus,
+.tab-pane:focus,
 .variable-selector button.accessBtn:focus {
     @include focusOutlineOnly;
 }

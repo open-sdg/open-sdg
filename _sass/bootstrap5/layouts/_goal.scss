@@ -30,9 +30,6 @@ $goal-by-target-indentation: 60px;
     }
     .goal-page-indicator-progress {
         margin-left: $goal-by-target-indentation;
-        .progress-status-image {
-            max-width: 100px;
-        }
     }
     @media only screen and (min-width: 992px) {
         .goal-page-indicator-progress {

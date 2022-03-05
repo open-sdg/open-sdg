@@ -1,7 +1,12 @@
 .progress-status {
     .progress-status-image {
+        max-width: 100px;
         img {
             max-width: 100%;
         }
     }
+}
+.indicator-progress {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

@@ -24,7 +24,7 @@
         .goal-tile {
             padding-bottom: 10px;
             a {
-                display: inline-block;
+                display: block;
             }
             a:focus {
                 outline: 6px $focusOutlineColor solid !important;
