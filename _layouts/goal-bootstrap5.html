@@ -20,7 +20,7 @@
     {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
     {% for group in goal_indicators %}
       {% assign target = group.name | sdg_lookup %}
-      <div class="row align-items-start goal-page-target">
+      <div class="row align-items-start goal-target">
           <div class="col-auto goal-page-target-number">
             <h3 class="goal-target">
               <span class="target-number"><span class="visually-hidden">{{ page.t.general.target }}</span> {{ target.number }}</span>
@@ -44,7 +44,7 @@
             {% assign indicator_has_progress = true %}
           {% endif %}
 
-          <div class="row align-items-start goal-page-indicator">
+          <div class="row align-items-start goal-indicator">
           
             <div class="col-auto goal-page-indicator-number">
               <h4>

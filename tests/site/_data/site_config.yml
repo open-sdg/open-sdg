@@ -5,7 +5,7 @@ analytics:
   gtag: ''
   gtm: ''
   ga_prod: ''
-bootstrap_5: false
+bootstrap_5: true
 breadcrumbs:
   goal:
     - path: /
@@ -30,13 +30,13 @@ country:
   name: Australia
   adjective: Australian
 create_goals:
-  layout: goal-with-progress
+  layout: goal-bootstrap5
   previous_next_links: true
   goals:
     - content: custom.goal_1_content
     - content: My goal 2 content
 create_indicators:
-  layout: indicator
+  layout: indicator-bootstrap5
   previous_next_links: true
 create_pages:
   - filename: index.html
@@ -63,7 +63,8 @@ create_pages:
     folder: /search
     layout: search
     title: search.search
-custom_css: []
+custom_css:
+  - /custom.css
 custom_js:
   - /custom.js
 data_edit_url: data
@@ -89,7 +90,7 @@ email_contacts:
   functional: test@example.com
 environment: staging
 favicons: legacy
-footer_language_toggle: none
+footer_language_toggle: dropdown
 footer_menu:
   - path: 'mailto:test@example.com'
     translation_key: menu.contact_us
@@ -298,7 +299,7 @@ reporting_status:
       hide_on_goal_pages: false
     - value: complete
       label: status.reported_online
-      hide_on_goal_pages: true
+      hide_on_goal_pages: false
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false

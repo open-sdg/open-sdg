@@ -57,7 +57,7 @@ test.install:
 
 test.html: serve.detached
 	# HTML proofer.
-	cd site-starter && bundle exec htmlproofer --file-ignore '/documentation/' --disable-external ./_site
+	cd site-starter && bundle exec htmlproofer --allow-hash-href --file-ignore '/documentation/' --disable-external ./_site
 
 test.features: test.install serve.detached
 	# Cucumber.
