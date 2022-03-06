@@ -1,0 +1,27 @@
+.table-footer-text {
+    dl {
+        dt {
+            float: left;
+            margin-right: 5px;
+            font-weight: normal;
+        }
+        dd {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+#selectionsChart {
+    padding-bottom: 20px;
+    &.chart-has-no-data {
+        #selectionChartFooter {
+            display: none;
+        }
+    }
+}
+
+#selectionChartFooter {
+    font-size: $tag-fontSize;
+    line-height: 1.2;
+    padding-left: 20px;
+}

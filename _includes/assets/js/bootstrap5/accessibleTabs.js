@@ -37,7 +37,8 @@ $(document).ready(function() {
                     .attr({
                         'aria-selected': 'false',
                         'tabindex': '-1',
-                    });
+                    })
+                    .removeClass('active');
 
                 panes.filter(':visible').attr({
                     'aria-hidden': 'true',

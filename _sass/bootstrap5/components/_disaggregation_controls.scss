@@ -1,0 +1,335 @@
+#indicatorData {
+    &.no-units {
+        #units {
+            display: none;
+        }
+    }
+    &.no-serieses {
+        #serieses {
+            display: none;
+        }
+    }
+    &.no-fields {
+        #series-help,
+        #fields,
+        #clear {
+            display: none;
+        }
+    }
+    &.no-units.no-serieses.no-fields {
+        > .col-md-3 {
+            display: none;
+        }
+        > .col-md-9 {
+            width: 100%;
+        }
+    }
+}
+
+#toolbar {
+    button {
+        width: 100%;
+        background-color: $backgroundColor;
+        position: relative;
+        border: 1px solid $horizontalRule-color;
+        text-align: left;
+        padding: 10px 7px 14px 7px;
+        font-size: 0.875em;
+        margin-right: 8px;
+        &[aria-expanded="true"] {
+            margin-bottom: 9px;
+        }
+
+        i {
+            position: absolute;
+            top: 11px;
+            right: 6px;
+            font-size: 1.063em;
+        }
+
+        &.disabled {
+            color: $indicator-field-color-disabled;
+            background: $indicator-field-backgroundColor-disabled;
+        }
+    }
+
+    .accessBtn {
+        padding: 0px !important;
+        border: 1px solid transparent;
+        &:focus {
+            border: 1px solid $indicator-selected-borderColor-hover;
+        }
+    }
+
+    > p {
+        font-size: 96%;
+    }
+}
+
+#fields {
+    @include noselect;
+
+    padding-bottom: 14px;
+    font-size: 0.75em;
+    margin-top: 10px;
+
+    label {
+        background-color: $backgroundColor;
+        padding: 7px;
+        display: block;
+        font-weight: normal;
+        margin-bottom: 1px;
+        cursor: pointer;
+        position: relative;
+
+        input {
+            position: absolute;
+            top: 7px;
+            right: 6px;
+        }
+        &:hover {
+            border-color: $indicator-field-borderColor-hover;
+        }
+        &.disabled {
+            color: $indicator-field-color-disabled;
+            cursor: not-allowed;
+            &:hover {
+                border-color: $indicator-field-backgroundColor-disabled;
+            }
+        }
+    }
+
+    h5,
+    h6 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 7px;
+        position: relative;
+        padding-right: 33px;
+        font-size: $fontSize-small;
+
+        i {
+            font-size: 0.875em;
+            position: absolute;
+            top: 0;
+            right: 6px;
+        }
+    }
+
+    .variable-selector {
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+        border: 1px solid $indicator-selector-borderColor;
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 10px;
+
+        &:hover {
+            border-color: $indicator-selected-borderColor-hover;
+        }
+
+        .no-data-hint,
+        .variable-hint {
+            display: none;
+            padding-left: 7px;
+            color: $indicator-hint-color;
+        }
+
+        .variable-options {
+            background-color: $backgroundColor;
+            display: none;
+            position: static;
+            z-index: 100;
+            border-top: 0;
+            right: -1px;
+            left: -1px;
+            overflow: auto;
+
+            > div {
+                text-align: left;
+                padding: 4px;
+            }
+
+            button {
+                width: auto;
+                background-color: $backgroundColor;
+                border: 1px solid $indicator-fieldButton-borderColor;
+                color: $color-dark;
+                float: none;
+                position: static;
+                text-align: center;
+                width: 40%;
+                margin: 0;
+                font-size: 1.2em;
+                padding: inherit;
+                padding-left: 2px;
+                padding-right: 2px;
+                border-radius: 4px;
+
+                &:hover {
+                    background: $indicator-fieldButton-borderColor-hover;
+                }
+            }
+
+            button[data-type="select"] {
+                margin-bottom: 5px;
+                margin-left: 5px;
+            }
+            button[data-type="clear"] {
+                margin-bottom: 5px;
+            }
+
+            label {
+                padding-left: 7px;
+                padding-right: 25px;
+                position: relative;
+                font-size: 1.3em;
+
+                &:not(:first-child) {
+                    border-top: 1px solid $indicator-fieldLabel-borderColor;
+                }
+
+                input {
+                    position: absolute;
+                    top: 4px;
+                    right: 4px;
+                }
+
+                &:hover {
+                    background: $indicator-fieldOption-backgroundColor-hover;
+                }
+
+                &[data-has-data="false"] {
+                    display: none;
+                    cursor: default;
+                    &:hover {
+                        background: $backgroundColor;
+                    }
+                    input {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &.child {
+            margin-left: 20px;
+            width: calc(100% - 20px);
+        }
+
+        &[data-has-data="false"],
+        &.disallowed {
+            .variable-options {
+                > div {
+                    display: none;
+                }
+
+                input {
+                    display: none;
+                }
+
+                label {
+                    cursor: default;
+                    &:hover {
+                        background: $backgroundColor;
+                    }
+                }
+            }
+
+            padding-bottom: 5px;
+        }
+
+        &[data-has-data="false"]:not(.disallowed) {
+            .no-data-hint {
+                display: block;
+            }
+        }
+        &.disallowed {
+            .variable-hint {
+                display: block;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+#units,
+#serieses {
+    clear: left;
+    margin-bottom: 20px;
+
+    label {
+        font-weight: normal;
+        border: 1px solid $indicator-selector-borderColor;
+        padding: 10px;
+        margin-right: 8px;
+        cursor: pointer;
+        width: 100%;
+    }
+}
+
+// For shrinking the sidebar.
+.indicator-sidebar-hidden {
+    display: none;
+}
+
+// For expanding the main section.
+.indicator-main-full {
+    width: 100%;
+}
+
+body.contrast-high {
+    #main-content #fields .variable-selector .variable-options label {
+        background: $color-dark-highContrast;
+        color: $color-light-highContrast;
+        &:hover {
+            background: $color-highlight-highContrast;
+            color: $color-dark-highContrast;
+        }
+        &:focus {
+            background: $color-light-highContrast;
+            color: $color-dark-highContrast;
+        }
+    }
+
+    #main-content #toolbar {
+        button {
+            background-color: $color-dark-highContrast;
+            border-color: $color-light-highContrast;
+            color: $color-light-highContrast;
+            &:focus {
+                span {
+                    color: $color-dark-highContrast;
+                }
+            }
+        }
+    }
+
+    #main-content #fields .variable-selector .variable-options {
+        background: $color-dark-highContrast;
+        color: $color-light-highContrast;
+        div {
+            background: $color-dark-highContrast;
+            color: $color-light-highContrast;
+        }
+        button {
+            background: $color-dark-highContrast;
+            color: $color-light-highContrast;
+            border-color: $color-light-highContrast;
+        }
+    }
+
+    #main-content #fields .variable-selector .variable-hint {
+        color: $color-light-highContrast;
+    }
+
+    caption {
+        color: $color-light-highContrast;
+    }
+
+    div#units,
+    div#serieses {
+        color: $color-light-highContrast;
+    }
+}
