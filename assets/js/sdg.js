@@ -5,7 +5,11 @@
 {%- include assets/js/plugins/jquery.sdgMap.js -%}
 {%- include assets/js/chartjs/noDataMessage.js -%}
 {% if site.accessible_charts %}
+{% if site.chartjs_3 %}
+{%- include assets/js/chartjs/accessibleCharts-chartjs3.js -%}
+{% else %}
 {%- include assets/js/chartjs/accessibleCharts.js -%}
+{% endif %}
 {% endif %}
 {%- include assets/js/event.js -%}
 {%- include assets/js/accessibility.js -%}
