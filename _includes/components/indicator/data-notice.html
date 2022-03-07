@@ -1,13 +1,11 @@
 {% if page.indicator.data_notice_heading and page.indicator.data_notice_heading != '' %}
-<div class="row" id="data-notice">
-  <div class="col-xs-12">
-    <div class="alert {{ page.indicator.data_notice_class }}">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-      <div class="data-notice">
-        <div class="notice-heading" role="alert">{{ page.indicator.data_notice_heading | markdownify }}</div>
-        <div>{{ page.indicator.data_notice_text | markdownify }}</div>
-      </div>
-    </div>
+<div class="row alert {{ page.indicator.data_notice_class }}" id="data-notice">
+  <div class="col-xs-2 col-sm-1">
+    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+  </div>
+  <div class="col-xs-10 col-sm-11 data-notice">
+    <div class="notice-heading" role="alert">{{ page.indicator.data_notice_heading | markdownify }}</div>
+    <div>{{ page.indicator.data_notice_text | markdownify }}</div>
   </div>
 </div>
 {% endif %}
