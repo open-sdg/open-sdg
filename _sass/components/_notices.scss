@@ -25,6 +25,12 @@
 
 body.contrast-high {
 
+  #data-notice {
+    .fa-exclamation-circle {
+      color: $color-light-highContrast;
+    }
+  }
+
   #page-content {
     .alert {
       div {
