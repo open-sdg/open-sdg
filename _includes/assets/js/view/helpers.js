@@ -30,6 +30,7 @@
     updateChartTitle: updateChartTitle,
     updateWithSelectedFields: updateWithSelectedFields,
     updateSeriesAndUnitElements: updateSeriesAndUnitElements,
+    updateUnitElements: updateUnitElements,
     updatePlot: updatePlot,
     isHighContrast: isHighContrast,
     getHeadlineColor: getHeadlineColor,

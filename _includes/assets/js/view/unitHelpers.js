@@ -24,3 +24,18 @@ function initialiseUnits(args) {
         $(OPTIONS.rootElement).removeClass('no-units');
     }
 }
+
+/**
+ * @param {String} selectedUnit
+ * @return null
+ */
+ function updateUnitElements(selectedUnit) {
+    var hasUnit = typeof selectedUnit !== 'undefined';
+    if (hasUnit) {
+        $('.data-controlled-footer-field.unit-from-data').show();
+        $('dd.data-controlled-footer-field.unit-from-data').text(translations.t(selectedUnit));
+    }
+    else {
+        $('.data-controlled-footer-field.unit-from-data').hide();
+    }
+}

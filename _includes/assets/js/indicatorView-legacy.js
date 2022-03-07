@@ -72,6 +72,7 @@ var indicatorView = function (model, options) {
 
     view_obj.updateChartTitle(args.chartTitle);
     view_obj.updateSeriesAndUnitElements(args.selectedSeries, args.selectedUnit);
+    view_obj.updateUnitElements(args.selectedUnit);
   });
 
   this._model.onFieldsComplete.attach(function(sender, args) {
@@ -393,6 +394,17 @@ var indicatorView = function (model, options) {
           $(this).show();
         }
       });
+    }
+  }
+
+  this.updateUnitElements = function(selectedUnit) {
+    var hasUnit = typeof selectedUnit !== 'undefined';
+    if (hasUnit) {
+      $('.data-controlled-footer-field.unit-from-data').show();
+      $('dd.data-controlled-footer-field.unit-from-data').text(translations.t(selectedUnit));
+    }
+    else {
+      $('.data-controlled-footer-field.unit-from-data').hide();
     }
   }
 
