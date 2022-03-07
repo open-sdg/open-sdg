@@ -7,19 +7,15 @@
 }
 body.contrast-high {
     .language-toggle-container {
-        .dropdown-toggle, .dropdown-item {
-            color: $color-light-highContrast;
-            &:hover, &:focus {
-                color: $color-highlight-highContrast;
-            }
-        }
         .dropdown-toggle {
             color: $color-light-highContrast !important;
+            background: $color-dark-highContrast !important;
             &:hover {
                 color: $color-highlight-highContrast !important;
             }
             &:focus {
                 color: $color-dark-highContrast !important;
+                background: $color-highlight-highContrast !important;
             }
         }
         .dropdown-item {

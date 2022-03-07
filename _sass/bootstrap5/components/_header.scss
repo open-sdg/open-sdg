@@ -26,3 +26,12 @@ header {
         }
     }
 }
+
+body.contrast-high {
+    .navbar-brand {
+        &:focus {
+            background-color: transparent !important;
+            outline: 7px solid $focusOutlineColor !important;
+        }
+    }
+}
