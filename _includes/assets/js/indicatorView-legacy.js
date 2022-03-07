@@ -399,12 +399,14 @@ var indicatorView = function (model, options) {
 
   this.updateUnitElements = function(selectedUnit) {
     var hasUnit = typeof selectedUnit !== 'undefined';
-    if (hasUnit) {
-      $('.data-controlled-footer-field.unit-from-data').show();
-      $('dd.data-controlled-footer-field.unit-from-data').text(translations.t(selectedUnit));
+    var fallback = this._model.measurementUnit;
+    if (hasUnit || fallback) {
+        var unitToDisplay = selectedUnit || fallback;
+        $('.data-controlled-footer-field.unit-from-data').show();
+        $('dd.data-controlled-footer-field.unit-from-data').text(translations.t(unitToDisplay));
     }
     else {
-      $('.data-controlled-footer-field.unit-from-data').hide();
+        $('.data-controlled-footer-field.unit-from-data').hide();
     }
   }
 
