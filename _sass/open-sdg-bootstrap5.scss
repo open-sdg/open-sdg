@@ -5,6 +5,9 @@
 @import "bootstrap5/mixins/status";
 @import "bootstrap5/mixins/tags";
 @import "bootstrap5/mixins/noselect";
+@import "bootstrap5/mixins/post_categories";
+@import "bootstrap5/mixins/preserve_original_colors";
+@import "bootstrap5/mixins/search_bar";
 @import "base/no_javascript";
 @import "bootstrap5/base/high_contrast";
 @import "bootstrap5/base/buttons";
@@ -26,6 +29,7 @@
 @import "bootstrap5/components/chart_legend";
 @import "bootstrap5/components/data_download_buttons";
 @import "bootstrap5/components/data_footer";
+@import "bootstrap5/components/data_table";
 @import "bootstrap5/components/frontpage_goals_grid";
 @import "bootstrap5/components/frontpage_intro";
 @import "bootstrap5/components/frontpage_cards";
@@ -38,7 +42,15 @@
 @import "bootstrap5/components/indicator_tags";
 @import "bootstrap5/components/indicator_reporting_status";
 @import "bootstrap5/components/previous_next_buttons";
+@import "bootstrap5/components/sources";
 @import "bootstrap5/components/tabs";
 @import "bootstrap5/layouts/default";
 @import "bootstrap5/layouts/goal";
 @import "bootstrap5/layouts/indicator";
+@import "bootstrap5/layouts/reporting_status";
+@import "layouts/config_bulder";
+@import "layouts/data_editor";
+@import "layouts/news";
+@import "layouts/page-not-found";
+@import "layouts/post";
+@import "layouts/search";

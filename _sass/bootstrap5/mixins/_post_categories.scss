@@ -1,0 +1,19 @@
+@mixin postCategories {
+    padding-left: 0;
+    list-style-type: none;
+    li {
+        display: inline-block;
+        &:after {
+            content: ",";
+            padding-right: 1ch;
+        }
+        &:last-child:after {
+            content: "";
+            padding-right: 0;
+        }
+    }
+}
+
+@mixin postCategoriesHighContrast {
+    @include postCategories;
+}

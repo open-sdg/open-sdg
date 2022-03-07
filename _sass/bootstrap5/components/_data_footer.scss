@@ -25,3 +25,23 @@
     line-height: 1.2;
     padding-left: 20px;
 }
+
+#mapFooter,
+#selectionTableFooter {
+    p {
+        font-size: 0.85em;
+        margin: 0 0 5px;
+    }
+    dl {
+        font-size: 0.85em;
+        dd {
+            margin: 0 0 5px;
+        }
+    }
+    padding-left: 20px;
+}
+
+#mapFooter {
+    margin-top: 30px;
+    padding-left: 0;
+}

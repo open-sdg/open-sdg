@@ -53,7 +53,7 @@ create_pages:
     title: custom.goals_page_title
   - filename: index.html
     folder: /reporting-status
-    layout: reportingstatus
+    layout: reportingstatus-bootstrap5
     title: Reporting status
   - filename: indicators.json
     folder: /
