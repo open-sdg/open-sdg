@@ -31,9 +31,11 @@ function initialiseUnits(args) {
  */
  function updateUnitElements(selectedUnit) {
     var hasUnit = typeof selectedUnit !== 'undefined';
-    if (hasUnit) {
+    var fallback = MODEL.measurementUnit;
+    if (hasUnit || fallback) {
+        var unitToDisplay = selectedUnit || fallback;
         $('.data-controlled-footer-field.unit-from-data').show();
-        $('dd.data-controlled-footer-field.unit-from-data').text(translations.t(selectedUnit));
+        $('dd.data-controlled-footer-field.unit-from-data').text(translations.t(unitToDisplay));
     }
     else {
         $('.data-controlled-footer-field.unit-from-data').hide();

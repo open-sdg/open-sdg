@@ -25,11 +25,6 @@
         <dt class="data-controlled-footer-field unit-from-data">{{ page.t.indicator.unit_of_measurement }}:</dt>
         <dd class="data-controlled-footer-field unit-from-data"></dd>
 
-        {% if page.indicator.computation_units and page.indicator.computation_units != '' %}
-        <dt>{{ page.t.indicator.unit_of_measurement }}:</dt>
-        <dd>{{ page.indicator.computation_units }}</dd>
-        {% endif %}
-
         {% if page.indicator.copyright and page.indicator.copyright != '' %}
         <dt>{{ page.t.metadata_fields.copyright }}:</dt>
         <dd>{{ page.indicator.copyright }}</dd>
