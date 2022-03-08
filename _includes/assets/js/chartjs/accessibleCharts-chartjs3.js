@@ -6,14 +6,17 @@ Chart.register({
         plugin.chart = chart;
         plugin.selectedIndex = -1;
         plugin.currentDataset = 0;
-        plugin.meta = chart.getDatasetMeta(plugin.currentDataset);
+        plugin.setMeta();
         plugin.initElements();
+        console.log('running after init');
         chart.canvas.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowRight') {
+                console.log('firing');
                 plugin.activateNext();
                 e.preventDefault();
             }
             else if (e.key === 'ArrowLeft') {
+                console.log('firing');
                 plugin.activatePrev();
                 e.preventDefault();
             }
@@ -30,6 +33,9 @@ Chart.register({
             plugin.clearActive();
             chart.render();
         });
+    },
+    setMeta: function() {
+        this.meta = this.chart.getDatasetMeta(this.currentDataset);
     },
     initElements: function() {
         $('<span/>')
@@ -66,14 +72,26 @@ Chart.register({
         //this.announceTooltips()
     },
     activateNext: function() {
+        console.log('activateNext');
+        console.log(this.selectedIndex);
         this.clearActive();
-        console.log(this.chart.data);
-        this.selectedIndex = (this.selectedIndex + 1) % this.meta.data.length;
+        this.selectedIndex += 1;
+        if (this.selectedIndex >= this.meta.data.length) {
+            console.log('going back to first index');
+            this.selectedIndex = 0;
+            this.nextDataset();
+        }
         this.activate();
+        console.log('finished');
     },
     activatePrev: function() {
         this.clearActive();
-        this.selectedIndex = (this.selectedIndex || this.meta.data.length) -1;
+        this.selectedIndex -= 1;
+        if (this.selectedIndex < 0) {
+            console.log('jumping to last index');
+            this.prevDataset();
+            this.selectedIndex = this.meta.data.length - 1;
+        }
         this.activate();
     },
     getTooltips: function() {
@@ -81,6 +99,27 @@ Chart.register({
         if (this.chart.config.type == 'line') {
             
         }
+    },
+    nextDataset: function() {
+        console.log('nextDataset');
+        //console.log(this.chart.data.datasets);
+        var numDatasets = this.chart.data.datasets.length;
+        this.currentDataset += 1;
+        if (this.currentDataset >= numDatasets) {
+            console.log('going back to first dataset');
+            this.currentDataset = 0;
+        }
+        this.setMeta();
+    },
+    prevDataset: function() {
+        console.log('prevDataset');
+        var numDatasets = this.chart.data.datasets.length;
+        this.currentDataset -= 1;
+        if (this.currentDataset < 0) {
+            console.log('jumping to last dataset');
+            this.currentDataset = numDatasets - 1;
+        }
+        this.setMeta();
     },
     announceTooltips: function(tooltips) {
         if (tooltips.length > 0) {
