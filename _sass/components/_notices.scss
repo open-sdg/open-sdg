@@ -8,12 +8,23 @@
   background-color: $color-success;
 }
 
-.data-notice {
-  display: inline-block;
-  margin-left: 20px;
+#data-notice {
+  .notice-heading {
+    font-size: 19px;
+    font-weight: bold;
+  }
+  .fa-exclamation-circle {
+    font-size: 60px;
+  }
 }
 
 body.contrast-high {
+
+  #data-notice {
+    .fa-exclamation-circle {
+      color: $color-light-highContrast;
+    }
+  }
 
   #page-content {
     .alert {
