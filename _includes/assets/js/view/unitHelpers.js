@@ -24,3 +24,20 @@ function initialiseUnits(args) {
         $(OPTIONS.rootElement).removeClass('no-units');
     }
 }
+
+/**
+ * @param {String} selectedUnit
+ * @return null
+ */
+ function updateUnitElements(selectedUnit) {
+    var hasUnit = typeof selectedUnit !== 'undefined';
+    var fallback = MODEL.measurementUnit;
+    if (hasUnit || fallback) {
+        var unitToDisplay = selectedUnit || fallback;
+        $('.data-controlled-footer-field.unit-from-data').show();
+        $('dd.data-controlled-footer-field.unit-from-data').text(translations.t(unitToDisplay));
+    }
+    else {
+        $('.data-controlled-footer-field.unit-from-data').hide();
+    }
+}
