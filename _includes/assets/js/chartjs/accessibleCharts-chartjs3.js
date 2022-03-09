@@ -7,32 +7,33 @@ Chart.register({
         plugin.selectedIndex = -1;
         plugin.currentDataset = 0;
         plugin.setMeta();
-        plugin.initElements();
-        console.log('running after init');
-        chart.canvas.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight') {
-                console.log('firing');
-                plugin.activateNext();
-                e.preventDefault();
-            }
-            else if (e.key === 'ArrowLeft') {
-                console.log('firing');
-                plugin.activatePrev();
-                e.preventDefault();
-            }
-        });
-        chart.canvas.addEventListener('focus', function() {
-            if (plugin.selectedIndex === -1) {
-                plugin.activateNext();
-            } else {
-                plugin.activate();
-            }
-        });
 
-        chart.canvas.addEventListener('blur', function() {
-            plugin.clearActive();
-            chart.render();
-        });
+        if (!$(chart.canvas).data('keyboardNavInitialized')) {
+            $(chart.canvas).data('keyboardNavInitialized', true);
+            plugin.initElements();
+            chart.canvas.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    plugin.activateNext();
+                    e.preventDefault();
+                }
+                else if (e.key === 'ArrowLeft') {
+                    plugin.activatePrev();
+                    e.preventDefault();
+                }
+            });
+            chart.canvas.addEventListener('focus', function() {
+                if (plugin.selectedIndex === -1) {
+                    plugin.activateNext();
+                } else {
+                    plugin.activate();
+                }
+            });
+
+            chart.canvas.addEventListener('blur', function() {
+                plugin.clearActive();
+                chart.render();
+            });
+        }
     },
     setMeta: function() {
         this.meta = this.chart.getDatasetMeta(this.currentDataset);
@@ -62,71 +63,111 @@ Chart.register({
     },
     clearActive: function() {
         if (this.selectedIndex > -1) {
-            this.meta.controller.removeHoverStyle(this.meta.data[this.selectedIndex], this.currentDataset, this.selectedIndex);
+            if (this.chart.config.type === 'line') {
+                var numDatasets = this.chart.data.datasets.length;
+                for (var i = 0; i < numDatasets; i++) {
+                    this.meta.controller.removeHoverStyle(this.chart.getDatasetMeta(i).data[this.selectedIndex], i, this.selectedIndex);
+                }
+            }
+            else {
+                this.meta.controller.removeHoverStyle(this.meta.data[this.selectedIndex], this.currentDataset, this.selectedIndex);
+            }
         }
     },
     activate: function() {
-        this.meta.controller.setHoverStyle(this.meta.data[this.selectedIndex], this.currentDataset, this.selectedIndex);
-        this.chart.tooltip.setActiveElements([{datasetIndex: this.currentDataset, index: this.selectedIndex}]);
+        var activeElements = [];
+        if (this.chart.config.type === 'line') {
+            // For line charts, we combined all datasets into a single tooltip.
+            var numDatasets = this.chart.data.datasets.length;
+            for (var i = 0; i < numDatasets; i++) {
+                activeElements.push({datasetIndex: i, index: this.selectedIndex});
+                this.meta.controller.setHoverStyle(this.chart.getDatasetMeta(i).data[this.selectedIndex], i, this.selectedIndex);
+            }
+        }
+        else {
+            activeElements.push({datasetIndex: this.currentDataset, index: this.selectedIndex});
+            this.meta.controller.setHoverStyle(this.meta.data[this.selectedIndex], this.currentDataset, this.selectedIndex);
+        }
+        this.chart.tooltip.setActiveElements(activeElements);
         this.chart.render();
-        //this.announceTooltips()
+        this.announceTooltips()
+    },
+    isSelectedIndexEmpty: function() {
+        var isEmpty = true;
+        if (this.chart.config.type === 'line') {
+            var numDatasets = this.chart.data.datasets.length;
+            for (var i = 0; i < numDatasets; i++) {
+                var dataset = this.chart.data.datasets[i],
+                    value = dataset.data[this.selectedIndex];
+                if (typeof value !== 'undefined') {
+                    isEmpty = false;
+                }
+            }
+        }
+        else {
+            var dataset = this.chart.data.datasets[this.currentDataset],
+                value = dataset.data[this.selectedIndex];
+            if (typeof value !== 'undefined') {
+                isEmpty = false;
+            }
+        }
+        return isEmpty;
     },
     activateNext: function() {
-        console.log('activateNext');
-        console.log(this.selectedIndex);
         this.clearActive();
         this.selectedIndex += 1;
         if (this.selectedIndex >= this.meta.data.length) {
-            console.log('going back to first index');
             this.selectedIndex = 0;
-            this.nextDataset();
+            if (this.chart.config.type !== 'line') {
+                this.nextDataset();
+            }
+        }
+        while (this.isSelectedIndexEmpty()) {
+            // Skip any empty years.
+            this.activateNext();
+            return;
         }
         this.activate();
-        console.log('finished');
     },
     activatePrev: function() {
         this.clearActive();
         this.selectedIndex -= 1;
         if (this.selectedIndex < 0) {
-            console.log('jumping to last index');
-            this.prevDataset();
+            if (this.chart.config.type !== 'line') {
+                this.prevDataset();
+            }
             this.selectedIndex = this.meta.data.length - 1;
+        }
+        while (this.isSelectedIndexEmpty()) {
+            // Skip any empty years.
+            this.activatePrev();
+            return;
         }
         this.activate();
     },
-    getTooltips: function() {
-        var tooltips = [];
-        if (this.chart.config.type == 'line') {
-            
-        }
-    },
     nextDataset: function() {
-        console.log('nextDataset');
-        //console.log(this.chart.data.datasets);
         var numDatasets = this.chart.data.datasets.length;
         this.currentDataset += 1;
         if (this.currentDataset >= numDatasets) {
-            console.log('going back to first dataset');
             this.currentDataset = 0;
         }
         this.setMeta();
     },
     prevDataset: function() {
-        console.log('prevDataset');
         var numDatasets = this.chart.data.datasets.length;
         this.currentDataset -= 1;
         if (this.currentDataset < 0) {
-            console.log('jumping to last dataset');
             this.currentDataset = numDatasets - 1;
         }
         this.setMeta();
     },
-    announceTooltips: function(tooltips) {
+    announceTooltips: function() {
+        var tooltips = this.chart.tooltip.getActiveElements();
         if (tooltips.length > 0) {
             var labels = {};
             for (var i = 0; i < tooltips.length; i++) {
-                var datasetIndex = tooltips[i]._datasetIndex,
-                    pointIndex = tooltips[i]._index,
+                var datasetIndex = tooltips[i].datasetIndex,
+                    pointIndex = tooltips[i].index,
                     year = this.chart.data.labels[pointIndex],
                     dataset = this.chart.data.datasets[datasetIndex],
                     label = dataset.label,
