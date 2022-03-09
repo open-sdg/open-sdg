@@ -72,6 +72,7 @@ var indicatorView = function (model, options) {
         helpers.createSelectionsTable(args);
         helpers.updateChartTitle(args.chartTitle);
         helpers.updateSeriesAndUnitElements(args.selectedSeries, args.selectedUnit);
+        helpers.updateUnitElements(args.selectedUnit);
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {
