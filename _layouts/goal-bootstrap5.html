@@ -15,7 +15,7 @@
   {% include components/goal/goal-content.html content=content %}
 
   <div class="container g-0">
-    <h2>{{ page.t.general.targets_and_indicators }}</h2>
+    <h2 class="goal-page-heading">{{ page.t.general.targets_and_indicators }}</h2>
 
     {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
     {% for group in goal_indicators %}

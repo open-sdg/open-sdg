@@ -8,7 +8,10 @@
     margin-top: 5px;
     margin-left: 5px;
     &:focus {
-        border-radius: 0;
+        box-shadow: none !important;
+        color: $color-highlight-highContrast !important;
+        background-color: $color-dark-highContrast !important;
+        outline: 4px solid $color-highlight-highContrast !important;
     }
 }
 [data-contrast-switch-to="high"] {
@@ -24,6 +27,12 @@ body.contrast-high {
         color: $color-dark-highContrast;
         &:hover {
             color: $color-dark-highContrast;
+        }
+        &:focus {
+            box-shadow: none !important;
+            color: $color-dark-highContrast !important;
+            background-color: $color-light-highContrast !important;
+            outline: 4px solid $color-highlight-highContrast !important;
         }
     }
 }

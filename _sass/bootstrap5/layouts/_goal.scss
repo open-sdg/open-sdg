@@ -1,6 +1,9 @@
 $goal-by-target-indentation: 60px;
 
 .layout-goal-bootstrap5 {
+    .goal-page-heading {
+        margin-bottom: 14px;
+    }
     .goal-page-target-number {
         min-width: $goal-by-target-indentation;
         h3 {
@@ -11,18 +14,22 @@ $goal-by-target-indentation: 60px;
             margin-bottom: 0;
         }
     }
+    .goal-target {
+        margin-top: 0;
+    }
     .goal-indicator {
         margin-top: 20px;
     }
     .goal-page-target-rule {
-        color: $goalTarget-horizontalRule-color;
-        height: 2px;
+        border-top: 1px solid $goalTarget-horizontalRule-color;
         margin-bottom: 25px;
+        opacity: 1;
     }
     .goal-page-indicator-number {
         min-width: $goal-by-target-indentation;
         h4 {
-            line-height: 1;
+            font-size: $fontSize;
+            line-height: 1.5;
         }
         .indicator-number {
             font-size: $fontSize;

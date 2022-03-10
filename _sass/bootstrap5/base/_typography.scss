@@ -7,6 +7,11 @@ body.contrast-high {
     color: $text-color-highContrast;
 }
 
+h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 h1 {
     font-size: $h1-fontSize;
 }

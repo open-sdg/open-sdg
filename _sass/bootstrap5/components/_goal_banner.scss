@@ -2,12 +2,23 @@
     .goal-icon-image {
         max-width: 100%;
     }
+    h1 {
+        margin-top: 12px;
+    }
     .indicator-details {
         h1 {
             .lead-copy {
                 display: block;
                 margin-top: 10px;
             }
+        }
+    }
+}
+
+body.contrast-high {
+    .goal-banner {
+        img {
+            background-color: black !important;
         }
     }
 }

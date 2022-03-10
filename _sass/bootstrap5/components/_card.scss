@@ -16,6 +16,18 @@
     }
 }
 
+.zip-download-container {
+    margin-top: 20px;
+    a.btn {
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    #zip-download-info {
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+}
+
 body.contrast-high {
     .card {
         color: $color-light-highContrast;
