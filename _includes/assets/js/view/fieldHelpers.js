@@ -10,7 +10,7 @@ function initialiseFields(args) {
         var template = _.template($("#item_template").html());
 
         if (!$('button#clear').length) {
-            $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
+            $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="{% if site.bootstrap_5 %}bi bi-x-lg{% else %}fa fa-remove{% endif %}"></i></button>').insertBefore('#fields');
         }
 
         $('#fields').html(template({

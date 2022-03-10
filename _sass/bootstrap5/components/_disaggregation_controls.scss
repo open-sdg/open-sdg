@@ -211,6 +211,10 @@
                     }
                 }
             }
+
+            input[type="checkbox"] {
+                margin-top: 4px;
+            }
         }
 
         &.child {
@@ -277,6 +281,12 @@
 // For expanding the main section.
 .indicator-main-full {
     width: 100%;
+}
+
+#series-help {
+    > h4 {
+        margin-bottom: 1.5rem;
+    }
 }
 
 body.contrast-high {
