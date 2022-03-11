@@ -28,11 +28,6 @@ Chart.register({
                     plugin.activate();
                 }
             });
-
-            chart.canvas.addEventListener('blur', function() {
-                plugin.clearActive();
-                chart.render();
-            });
         }
     },
     setMeta: function() {
@@ -61,19 +56,6 @@ Chart.register({
                 .html('<span class="hide-during-image-download">Chart. ' + keyboardInstructions + '</span>')
         }
     },
-    clearActive: function() {
-        if (this.selectedIndex > -1) {
-            if (this.chart.config.type === 'line') {
-                var numDatasets = this.chart.data.datasets.length;
-                for (var i = 0; i < numDatasets; i++) {
-                    this.meta.controller.removeHoverStyle(this.chart.getDatasetMeta(i).data[this.selectedIndex], i, this.selectedIndex);
-                }
-            }
-            else {
-                this.meta.controller.removeHoverStyle(this.meta.data[this.selectedIndex], this.currentDataset, this.selectedIndex);
-            }
-        }
-    },
     activate: function() {
         var activeElements = [];
         if (this.chart.config.type === 'line') {
@@ -81,12 +63,10 @@ Chart.register({
             var numDatasets = this.chart.data.datasets.length;
             for (var i = 0; i < numDatasets; i++) {
                 activeElements.push({datasetIndex: i, index: this.selectedIndex});
-                this.meta.controller.setHoverStyle(this.chart.getDatasetMeta(i).data[this.selectedIndex], i, this.selectedIndex);
             }
         }
         else {
             activeElements.push({datasetIndex: this.currentDataset, index: this.selectedIndex});
-            this.meta.controller.setHoverStyle(this.meta.data[this.selectedIndex], this.currentDataset, this.selectedIndex);
         }
         this.chart.tooltip.setActiveElements(activeElements);
         this.chart.render();
@@ -114,7 +94,6 @@ Chart.register({
         return isEmpty;
     },
     activateNext: function() {
-        this.clearActive();
         this.selectedIndex += 1;
         if (this.selectedIndex >= this.meta.data.length) {
             this.selectedIndex = 0;
@@ -130,7 +109,6 @@ Chart.register({
         this.activate();
     },
     activatePrev: function() {
-        this.clearActive();
         this.selectedIndex -= 1;
         if (this.selectedIndex < 0) {
             if (this.chart.config.type !== 'line') {
