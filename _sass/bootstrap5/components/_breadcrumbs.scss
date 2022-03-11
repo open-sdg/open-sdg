@@ -1,6 +1,7 @@
 .breadcrumb {
     background-color: $breadcrumbs-backgroundColor;
     padding: $breadcrumbs-padding;
+    margin-top: 10px;
 
     a,
     & > .active,

@@ -1,3 +1,5 @@
+$goal-tile-gutter: 3px;
+
 @for $i from 1 through length($goal-colors) {
     $c: nth($goal-colors, $i);
     $dark-c: darken($c, 20%);
@@ -24,6 +26,8 @@
         .goal-tile {
             a {
                 display: block;
+                width: calc(100% - #{$goal-tile-gutter});
+                margin-bottom: $goal-tile-gutter;
             }
             a:focus {
                 outline: 6px $focusOutlineColor solid !important;
