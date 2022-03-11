@@ -15,7 +15,7 @@
         <% }%>
       >
         <% if(allowedFields.indexOf(fieldItem.field) == -1) { %><h6><% } else { %><h5><% } %>
-          <span aria-hidden="true"><%=translations.t(fieldItem.label)%><i class="{% if site.bootstrap_5 %}bi bi-chevron-down{% else %}fa fa-chevron-down{% endif %}"></i></span>
+          <span aria-hidden="true"><%=translations.t(fieldItem.label)%><i class="fa fa-chevron-down"></i></span>
           <span class="{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}">{{ page.t.indicator.sub_categories_show }} <%=translations.t(fieldItem.label)%></span>
         <% if(allowedFields.indexOf(fieldItem.field) == -1) { %></h6><% } else { %></h5><% } %>
       </button>

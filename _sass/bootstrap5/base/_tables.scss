@@ -31,8 +31,6 @@ table {
             .sort {
                 background-image: none !important;
             }
-            .bi-caret-down-fill,
-            .bi-caret-up-fill,
             .fa-sort-down,
             .fa-sort-up {
                 display: none;
@@ -40,12 +38,12 @@ table {
                 margin-right: 5px;
             }
             &[aria-sort="descending"] {
-                .fa-sort-down, .bi-caret-down-fill {
+                .fa-sort-down {
                     display: inline-block;
                 }
             }
             &[aria-sort="ascending"] {
-                .fa-sort-up, .bi-caret-up-fill {
+                .fa-sort-up {
                     display: inline-block;
                 }
             }

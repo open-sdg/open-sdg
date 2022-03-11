@@ -255,7 +255,7 @@ var indicatorView = function (model, options) {
       var template = _.template($("#item_template").html());
 
       if(!$('button#clear').length) {
-        $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="{% if site.bootstrap_5 %}bi bi-x-lg{% else %}fa fa-remove{% endif %}"></i></button>').insertBefore('#fields');
+        $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
       }
 
       $('#fields').html(template({
@@ -970,7 +970,7 @@ var indicatorView = function (model, options) {
       var table_head = '<thead><tr>';
 
       var getHeading = function(heading, index) {
-        var arrows = '<span class="sort"><i class="{% if site.bootstrap_5 %}bi bi-caret-down-fill{% else %}fa fa-sort-down{% endif %}"></i><i class="{% if site.bootstrap_5 %}bi bi-caret-up-fill{% else %}fa fa-sort-up{% endif %}"></i></span>';
+        var arrows = '<span class="sort"><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
         var button = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
         return (!index) ? button + arrows : arrows + button;
       };

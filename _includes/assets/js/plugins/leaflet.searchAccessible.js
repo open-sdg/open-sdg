@@ -20,11 +20,11 @@
 
       this._button.setAttribute('role', 'button');
       this._accessibleCollapse();
-      this._button.innerHTML = '<i class="{% if site.bootstrap_5 %}bi bi-search{% else %}fa fa-search{% endif %}" aria-hidden="true"></i>';
+      this._button.innerHTML = '<i class="fa fa-search" aria-hidden="true"></i>';
 
       this._cancel.setAttribute('role', 'button');
       this._cancel.setAttribute('aria-label', this._cancel.title);
-      this._cancel.innerHTML = '<i class="{% if site.bootstrap_5 %}bi bi-x-lg{% else %}fa fa-close{% endif %}" aria-hidden="true"></i>';
+      this._cancel.innerHTML = '<i class="fa fa-close" aria-hidden="true"></i>';
 
       // Prevent the delayed collapse when tabbing out of the input box.
       L.DomEvent.on(this._cancel, 'focus', this.collapseDelayedStop, this);

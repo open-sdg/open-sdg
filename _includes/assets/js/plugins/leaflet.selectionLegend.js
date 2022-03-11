@@ -69,7 +69,7 @@
           '<span class="selection-name">{name}</span>' +
           '<span class="selection-value" style="left: {percentage}%;">{value}</span>' +
           '<span class="selection-bar" style="width: {percentage}%;"></span>' +
-          '<i class="selection-close {% if site.bootstrap_5 %}bi bi-x-lg{% else %}fa fa-remove{% endif %}"></i>' +
+          '<i class="selection-close fa fa-remove"></i>' +
         '</li>';
       var plugin = this.plugin;
       var valueRange = this.plugin.valueRange;
