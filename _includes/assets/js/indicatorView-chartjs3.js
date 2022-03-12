@@ -73,6 +73,7 @@ var indicatorView = function (model, options) {
         helpers.updateChartTitle(args.chartTitle);
         helpers.updateSeriesAndUnitElements(args.selectedSeries, args.selectedUnit);
         helpers.updateUnitElements(args.selectedUnit);
+        helpers.updateTimeSeriesAttributes(args.timeSeriesAttributes);
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {

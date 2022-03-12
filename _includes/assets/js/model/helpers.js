@@ -105,6 +105,7 @@
     getGraphAnnotations: getGraphAnnotations,
     getColumnsFromData: getColumnsFromData,
     inputEdges: inputEdges,
+    getTimeSeriesAttributes: getTimeSeriesAttributes,
     inputData: inputData,
     // Backwards compatibility.
     footerFields: deprecated('helpers.footerFields'),

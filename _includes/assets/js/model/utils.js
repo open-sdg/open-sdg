@@ -65,6 +65,10 @@ function nonFieldColumns() {
     'Unit multiplier',
     'Unit measure',
   ];
+  var timeSeriesAttributes = {{ site.time_series_attributes | jsonify }};
+  timeSeriesAttributes.forEach(function(tsAttribute) {
+    columns.push(tsAttribute.field);
+  });
   if (SERIES_TOGGLE) {
     columns.push(SERIES_COLUMN);
   }

@@ -287,6 +287,14 @@ var indicatorModel = function (options) {
       filteredData = helpers.getDataByUnit(filteredData, this.selectedUnit);
     }
 
+    var timeSeriesAttributes = [];
+    if (filteredData.length > 0) {
+      timeSeriesAttributes = helpers.getTimeSeriesAttributes(filteredData);
+    }
+    else if (headline.length > 0) {
+      timeSeriesAttributes = helpers.getTimeSeriesAttributes(headline);
+    }
+
     filteredData = helpers.sortData(filteredData, this.selectedUnit);
     if (headline.length > 0) {
       headline = helpers.sortData(headline, this.selectedUnit);
@@ -328,6 +336,7 @@ var indicatorModel = function (options) {
       chartType: this.graphType,
       indicatorDownloads: this.indicatorDownloads,
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
+      timeSeriesAttributes: timeSeriesAttributes,
     });
   };
 };

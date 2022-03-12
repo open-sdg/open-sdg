@@ -31,6 +31,7 @@
     updateWithSelectedFields: updateWithSelectedFields,
     updateSeriesAndUnitElements: updateSeriesAndUnitElements,
     updateUnitElements: updateUnitElements,
+    updateTimeSeriesAttributes: updateTimeSeriesAttributes,
     updatePlot: updatePlot,
     isHighContrast: isHighContrast,
     getHeadlineColor: getHeadlineColor,

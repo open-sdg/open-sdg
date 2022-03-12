@@ -118,3 +118,27 @@ function inputEdges(edges) {
   {% endif %}
   return edgesData;
 }
+
+/**
+ * @param {Array} rows
+ * @return {Array} Objects containing 'field' and 'value', to be placed in the footer.
+ */
+function getTimeSeriesAttributes(rows) {
+  if (rows.length === 0) {
+    return [];
+  }
+  var timeSeriesAttributes = [],
+      possibleAttributes = {{ site.time_series_attributes | jsonify }},
+      firstRow = rows[0],
+      firstRowKeys = Object.keys(firstRow);
+  possibleAttributes.forEach(function(possibleAttribute) {
+    var field = possibleAttribute.field;
+    if (firstRowKeys.includes(field) && firstRow[field]) {
+      timeSeriesAttributes.push({
+        field: field,
+        value: firstRow[field],
+      });
+    }
+  });
+  return timeSeriesAttributes;
+}
