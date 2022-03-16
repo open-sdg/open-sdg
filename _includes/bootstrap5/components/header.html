@@ -11,19 +11,19 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
-                <div class="d-flex w-100 justify-content-between mb-4 mb-lg-0">
+            <div class="d-flex flex-wrap w-100 justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     {% include bootstrap5/components/navigation.html dropdowns=true %}
-                    <div class="d-flex justify-content-end">
-                        {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
-                            {% include bootstrap5/components/language-toggle.html %}
-                        {%- endif -%}
-                        {% include bootstrap5/components/contrast-toggle.html %}
-                    </div>
                 </div>
-            </div>
-            <div class="header-search-bar">
-                {% include bootstrap5/components/search.html %}
+                <div class="header-search-bar">
+                    {% include bootstrap5/components/search.html %}
+                </div>
+                <div class="header-toggles d-flex">
+                    {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+                    {% include bootstrap5/components/language-toggle.html %}
+                    {%- endif -%}
+                    {% include bootstrap5/components/contrast-toggle.html %}
+                </div>
             </div>
         </nav>
     </div>

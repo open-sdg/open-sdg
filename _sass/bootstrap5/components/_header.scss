@@ -1,6 +1,7 @@
 .navbar-brand {
+    width: calc(100% - 75px);
     max-width: 350px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     img {
         max-width: 100%;
     }
@@ -10,8 +11,20 @@
     }
 }
 
-#navbarSupportedContent {
-    margin-top: 20px;
+.header-search-bar {
+    max-width: 100%;
+    width: 100%;
+    @media only screen and (min-width: 600px) {
+        width: 38ch;
+    }
+}
+
+.header-toggles {
+    margin-left: auto;
+}
+
+#menu {
+    margin-bottom: 20px;
 }
 
 body {

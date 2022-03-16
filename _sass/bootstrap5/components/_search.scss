@@ -1,5 +1,8 @@
 #search {
     padding-bottom: 20px;
+    .input-group {
+        flex-wrap: nowrap;
+    }
     input {
         width: 33ch;
         border: 1.25px solid $color-dark;
@@ -31,7 +34,6 @@ body.contrast-high {
 }
 
 .header-search-bar {
-    width: 100%;
     @media only screen and (min-width: 992px) {
         position: absolute;
         top: 10px;
