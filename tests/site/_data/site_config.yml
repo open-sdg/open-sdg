@@ -25,7 +25,7 @@ breadcrumbs:
 chartjs_3: true
 contrast_type: default
 cookie_consent_form:
-  enabled: false
+  enabled: true
 country:
   name: Australia
   adjective: Australian

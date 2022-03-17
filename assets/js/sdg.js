@@ -32,9 +32,11 @@
 {%- endif -%}
 {% endif %}
 {%- include assets/js/search.js -%}
-{%- unless site.bootstrap_5 -%}
+{%- if site.bootstrap_5 -%}
+{%- include assets/js/bootstrap5/cookieConsent.js -%}
+{%- else -%}
 {%- include assets/js/menu.js -%}
-{%- endunless -%}
+{%- endif -%}
 {%- include assets/js/lib/classList.js -%}
 {%- include assets/js/lib/modernizr-custom.js -%}
 {%- include assets/js/plugins/leaflet.selectionLegend.js -%}
