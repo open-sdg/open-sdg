@@ -73,6 +73,7 @@ var indicatorView = function (model, options) {
     view_obj.updateChartTitle(args.chartTitle);
     view_obj.updateSeriesAndUnitElements(args.selectedSeries, args.selectedUnit);
     view_obj.updateUnitElements(args.selectedUnit);
+    view_obj.updateTimeSeriesAttributes(args.timeSeriesAttributes);
   });
 
   this._model.onFieldsComplete.attach(function(sender, args) {
@@ -408,6 +409,28 @@ var indicatorView = function (model, options) {
     else {
         $('.data-controlled-footer-field.unit-from-data').hide();
     }
+  }
+
+  this.updateTimeSeriesAttributes = function(tsAttributeValues) {
+    var timeSeriesAttributes = {{ site.time_series_attributes | jsonify }};
+    timeSeriesAttributes.forEach(function(tsAttribute) {
+      var field = tsAttribute.field,
+          valueMatch = tsAttributeValues.find(function(tsAttributeValue) {
+            return tsAttributeValue.field === field;
+          }),
+          value = (valueMatch) ? valueMatch.value : '',
+          $labelElement = $('dt[data-ts-attribute="' + field + '"]'),
+          $valueElement = $('dd[data-ts-attribute="' + field + '"]');
+
+      if (!value) {
+        $labelElement.hide();
+        $valueElement.hide();
+      }
+      else {
+        $labelElement.show();
+        $valueElement.show().text(translations.t(value));
+      }
+    });
   }
 
   this.updatePlot = function(chartInfo) {
