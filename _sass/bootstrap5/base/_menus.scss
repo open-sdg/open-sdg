@@ -1,9 +1,19 @@
 .navbar {
     .navbar-nav {
         > .nav-item {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
             > .nav-link {
                 color: $menu-link-color;
                 font-size: $menu-link-fontSize;
+                padding-top: 0.2rem;
+                padding-bottom: 0.2rem;
+                padding-right: 0;
+                padding-left: 0;
+                text-decoration: none;
+                &:hover {
+                    border-bottom: 2px solid $text-color;
+                }
             }
 
             &.active > .nav-link {

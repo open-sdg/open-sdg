@@ -5,7 +5,7 @@
     {% include components/goals-introduction.html %}
 
     <div class="goal-tiles">
-        <div class="row no-gutters">
+        <div class="row {% if site.bootstrap_5 %}g-2{% else %}no-gutters{% endif %}">
             {% for goal in page.goals %}
             <div class="{% if site.bootstrap_5 %}col-4{% else %}col-xs-4{% endif %} col-md-2 goal-tile">
                 <a href="{{ goal.url }}">

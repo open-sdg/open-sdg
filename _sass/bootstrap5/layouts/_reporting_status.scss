@@ -99,6 +99,7 @@
             width: calc(100% - 125px);
             float: left;
             h2 {
+                margin-top: 0;
                 @media screen and (min-width: 520px) {
                     display: inline-block;
                 }
@@ -137,6 +138,12 @@
 
     &.contrast-high {
         #main-content {
+            .goal-tiles {
+                img {
+                    background-color: black !important;
+                }
+            }
+            
             .goal-stats {
                 border: 1px solid $color-light-highContrast !important;
                 .notapplicable {
