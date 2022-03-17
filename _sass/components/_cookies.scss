@@ -5,12 +5,60 @@
 .klaro {
     .cookie-notice {
         .cn-body {
+            .cm-link {
+                color: $link-color;
+                text-decoration: underline;
+            }
             strong {
                 text-transform: lowercase;
             }
             .cn-changes {
                 text-decoration: none !important;
                 font-weight: bold;
+            }
+            .cm-btn {
+                border: none;
+                background: $button-color;
+                color: $button-foregroundColor;
+                box-shadow: 0 2px 0 $button-color-dropShadow;
+                border-radius: 0;
+                &.cm-btn-success {
+                    background: $button-color;
+                }
+                &.cn-decline {
+                    background: $color-warning;
+                    color: $text-color;
+                }
+            }
+        }
+    }
+}
+
+body.contrast-high {
+    .cookie-notice {
+        .cn-body {
+            p span {
+                color: $color-dark-highContrast;
+            }
+            .cm-link {
+                color: $color-dark-highContrast;
+            }
+            strong {
+                text-transform: lowercase;
+            }
+            .cn-changes {
+                text-decoration: none !important;
+                font-weight: bold;
+            }
+            .cm-btn {
+                background: $button-color-highContrast;
+                color: $button-foregroundColor-highContrast;
+                &.cm-btn-success {
+                    background: $button-color-highContrast;
+                }
+                &.cn-decline {
+                    background: $button-color-highContrast;
+                }
             }
         }
     }
