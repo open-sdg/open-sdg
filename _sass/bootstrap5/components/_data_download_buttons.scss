@@ -1,4 +1,5 @@
-#chartSelectionDownload, #tableSelectionDownload {
+#chartSelectionDownload,
+#tableSelectionDownload {
     margin-bottom: 10px;
     clear: left;
     .btn-download {
@@ -6,6 +7,38 @@
         margin-right: 0.8rem;
         &:hover {
             text-decoration: none;
+        }
+    }
+}
+
+.image-download-in-progress {
+    &,
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    #chart-canvas {
+        width: 900px;
+    }
+    #selectionChartFooter {
+        padding-left: 20px;
+        p {
+            margin-bottom: 10px;
+        }
+    }
+    .hide-during-image-download {
+        display: none;
+    }
+    &.contrast-high {
+        #indicator-main {
+            width: 120%;
+        }
+        #chart-canvas {
+            background-color: $color-dark-highContrast !important;
+        }
+        #chart-heading,
+        #selectionChartFooter {
+            max-width: 90%;
         }
     }
 }
