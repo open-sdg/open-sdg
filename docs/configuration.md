@@ -549,6 +549,16 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 header_language_toggle: dropdown
 ```
 
+### hide_disclaimer
+
+_Optional_: This setting can be used to hide the "dev disclaimer" at the top of each page. When your platform is complete and no longer under development (alpha/beta/etc), you may wish to tick this option.
+
+To hide the disclaimer, use the following example:
+
+```nohighlight
+hide_disclaimer: true
+```
+
 ### hide_empty_metadata
 
 _Optional_: This setting can be used to hide any metadata fields that are empty. In other words, this setting can ensure that if an indicator has no data for a particular metadata field, that field will not display at all. The default behavior if for all metadata fields to be displayed, regardless of whether the indicator has the required data.

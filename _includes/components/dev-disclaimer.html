@@ -1,3 +1,4 @@
+{% unless site.hide_disclaimer %}
 <div class="container">
   <div class="disclaimer-alert">
     <strong class="phase-tag">{{ site.disclaimer.phase | default: page.t.header.alpha | t }}</strong>
@@ -6,3 +7,4 @@
     {% include components/dev-disclaimer-custom.html %}
   </div>
 </div>
+{% endunless %}
