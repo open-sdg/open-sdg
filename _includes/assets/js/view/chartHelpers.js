@@ -143,9 +143,8 @@ function setPlotEvents(chartInfo) {
     $("#btnSave").click(function () {
         var filename = chartInfo.indicatorId + '.png',
             element = document.getElementById('chart-canvas'),
-            footer = document.getElementById('selectionChartFooter'),
-            height = element.clientHeight + 25 + ((footer) ? footer.clientHeight : 0),
-            width = element.clientWidth + 25;
+            height = element.clientHeight + 50,
+            width = element.clientWidth + 50;
         var options = {
             // These options fix the height, width, and position.
             height: height,
@@ -156,6 +155,7 @@ function setPlotEvents(chartInfo) {
             y: 0,
             scrollX: 0,
             scrollY: 0,
+            backgroundColor: isHighContrast() ? '#000000' : '#FFFFFF',
             // Allow a chance to alter the screenshot's HTML.
             onclone: function (clone) {
                 // Add a body class so that the screenshot style can be custom.

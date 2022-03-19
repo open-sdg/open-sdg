@@ -21,12 +21,13 @@ Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
     },
     initElements: function() {
         $('<span/>')
-            .addClass('{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}')
+            .addClass('sr-only')
             .attr('id', 'chart-tooltip-status')
             .attr('role', 'status')
             .appendTo('#chart');
         if (window.innerWidth <= 768) {
-            $(this.chart.canvas).text(translations.indicator.chart + '. ' + translations.indicator.data_tabular_alternative);
+            var mobileInstructions = translations.indicator.chart + '. ' + translations.indicator.data_tabular_alternative;
+            $(this.chart.canvas).html('<span class="hide-during-image-download">' + mobileInstructions + '</span>');
         }
         else {
             var keyboardInstructions = translations.indicator.data_keyboard_navigation;
