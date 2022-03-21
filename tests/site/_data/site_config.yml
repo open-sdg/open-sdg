@@ -80,7 +80,7 @@ date_formats:
 disclaimer:
   phase: header.alpha
   message: custom.disclaimer_message
-  hidden: true
+  hidden: false
 email_contacts:
   questions: test@example.com
   suggestions: test@example.com
