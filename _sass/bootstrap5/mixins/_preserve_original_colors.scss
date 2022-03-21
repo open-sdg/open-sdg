@@ -1,0 +1,6 @@
+@mixin preserveOriginalColors {
+    @media (-ms-high-contrast: active), (forced-colors: active) {
+        -ms-high-contrast-adjust: none;
+        forced-color-adjust: none;
+    }
+}

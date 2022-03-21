@@ -16,6 +16,12 @@
       float: left;
       margin-right: 40px;
     }
+
+    .post-excerpt {
+      p:last-child {
+        margin-bottom: 0.5rem;
+      }
+    }
   }
 
   &.contrast-high {

@@ -67,6 +67,18 @@ analytics:
     - _gac_gb_123456789
 ```
 
+### bootstrap_5
+
+_Optional_: This setting enables the latest version of Bootstrap (version 5) if set to `true`. By default it is `false`, and Bootstrap version 3 will be used.
+
+Note that in the next major version of Open SDG (2.0.0) this setting will be removed and Bootstrap version 5 will always be used.
+
+IMPORTANT: This setting has the effect to forcing several other configuration settings at the same time. The reason for this is that not all options are available for Bootstrap 5. As mentioned above, in version Open SDG 2.0.0, Bootstrap 5 will always be used. This means that Open SDG 2.0.0 will be removing some options, in favor of consistent and focused development using best practices. The options being removed can be inferred from the following list of additional effects that setting `bootstrap_5` to `true` will have:
+
+1. The layout for the front page is automatically set to "frontpage-alt" (In Open SDG 2.0.0, there will only be a single frontpage layout.)
+2. The layout for each goal page is automatically set to a new layout which is most similar to "goal-with-progress". (In Open SDG 2.0.0, there will only be a single goal layout.)
+3. The layout for the header is automatically set to a new layout which is most similar to "header-menu-left-aligned". (In Open SDG 2.0.0, there will only be a single header layout.) The main differences in this layout are evident on mobile.
+
 ### breadcrumbs
 
 _Optional_: This setting can contain breadcrumb settings for each of the supported collection types: `goal`, `indicator`, and `post`. Each should have a list of label/path objects. For example, the following configuration would add the breadcumbs `Home > Updates` at the top of each post:
@@ -142,6 +154,8 @@ Example:
 contrast_type: single
 ```
 
+NOTE: This is setting is deprecated, because starting in version 2.0.0, Open SDG will always behave as if this were set to `single`.
+
 ### cookie_consent_form
 
 _Optional_: This setting allows you to turn on a cookie consent form that users will see as soon as they visit the site, which allows users to control whether the certain services and cookies are used. See the [cookies and privacy documentation](cookies.md) for more details.
@@ -169,7 +183,7 @@ _Optional_: This setting can be used to automatically create the goal pages. Wit
 
 This setting can contain several (indented) sub-settings:
 
-* `layout`: This can be used to specify which Jekyll layout will be used for the goal pages. You can create and use your own layout, but several layouts are included with Open SDG. These can be found in [the _layouts folder in the repository](https://github.com/open-sdg/open-sdg/tree/master/_layouts). For example, to use the "goal-with-progress.html" layout, you would enter "goal-with-progress" (without the ".html") in this setting.
+* `layout`: This can be used to specify which Jekyll layout will be used for the goal pages. You can create and use your own layout, but several layouts are included with Open SDG. These can be found in [the _layouts folder in the repository](https://github.com/open-sdg/open-sdg/tree/master/_layouts). For example, to use the "goal-with-progress.html" layout, you would enter "goal-with-progress" (without the ".html") in this setting. NOTE: This setting is deprecated, because in Open SDG 2.0.0 there will only be one choice of layout.
 * `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
 * `goals`: This optional item can include an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key. They should be in order of goal number.
 
@@ -192,6 +206,8 @@ create_indicators:
   layout: indicator
   previous_next_links: true
 ```
+
+NOTE: The `layout` setting is deprecated, because in Open SDG 2.0.0 there will only be one choice for indicator layout.
 
 ### create_pages
 
@@ -427,6 +443,8 @@ _Optional_: This setting can control the heading that appears on the front page.
 frontpage_heading: Australian data for Sustainable Development Goal indicators
 ```
 
+NOTE: Because the `frontpage` layout will no longer be included in Open SDG 2.0.0, this setting is deprecated and will not be used as of 2.0.0.
+
 ### frontpage_instructions
 
 _Optional_: This setting can control the instructions that appear on the front page. This setting is only used in the `frontpage` layout.
@@ -434,6 +452,8 @@ _Optional_: This setting can control the instructions that appear on the front p
 ```nohighlight
 frontpage_instructions: Click on each goal for Australian statistics for Sustainable Development Goal global indicators.
 ```
+
+NOTE: Because the `frontpage` layout will no longer be included in Open SDG 2.0.0, this setting is deprecated and will not be used as of 2.0.0.
 
 ### frontpage_introduction_banner
 
@@ -540,6 +560,8 @@ header:
 The configuration above will include the file `_includes/components/header/header-default.html` at the top of each page.
 
 The `header-menu-left-aligned.html` option is also available, and is recommended.
+
+NOTE: Because the Open SDG 2.0.0 will have only one header layout, this setting is deprecated and will not be used as of 2.0.0.
 
 ### header_language_toggle
 
@@ -817,7 +839,7 @@ _Optional_: This setting can be used to control the text of the tab containing n
 non_global_metadata: indicator.national_metadata
 ```
 
-NOTE: This approach is deprecated. It is now possible to have complete control over all the metadata tabs using the `metadata_tabs` configuration setting (see above).
+NOTE: This approach is deprecated and will not be used as of Open SDG 2.0.0. It is now possible to have complete control over all the metadata tabs using the `metadata_tabs` configuration setting (see above).
 
 ### plugins
 
@@ -1005,6 +1027,8 @@ _Optional_: This setting enables the special treatment of the "Series" column in
 ```nohighlight
 series_toggle: true
 ```
+
+NOTE: The setting is deprecated, because Open SDG 2.0.0 will always behave as if this were set to `true`. If you currently have this set to false, to maintain this behavior you will need to change your data columns to something other than "Series", before upgrading to 2.0.0.
 
 ### site_config_form
 

@@ -1,0 +1,15 @@
+.previous-next-links {
+    .btn-primary {
+        border-radius: 0;
+        border: none;
+    }
+}
+body.contrast-high {
+    .previous-next-links {
+        .btn-primary {
+            span {
+                color: $button-foregroundColor-highContrast !important;
+            }
+        }
+    }
+}

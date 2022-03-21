@@ -21,10 +21,3 @@ Feature: Homepage
     Then I should see "Download all data"
     And I should see "Useful resources"
     And I should see "Publications"
-
-  Scenario: A legacy homepage is available as well
-    And I am on "/frontpage-legacy"
-    Then I should see "My frontpage introduction banner title"
-    And I should see "My frontpage introduction banner description"
-    And I should see "My custom frontpage heading"
-    And I should see 4 "goal icon" elements

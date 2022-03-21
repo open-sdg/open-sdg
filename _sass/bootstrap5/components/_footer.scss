@@ -1,0 +1,36 @@
+footer {
+    color: $footer-text-color;
+    background-color: $footer-text-backgroundColor;
+
+    #footerLinks > ul {
+        padding-left: 0;
+        > li {
+            display: inline-block;
+            margin: 3px 18px 3px 0;
+        }
+    }
+
+    a {
+        color: $footer-link-color;
+        &:hover {
+            color: $link-color-hover;
+        }
+    }
+}
+
+body.contrast-high {
+    footer {
+        color: $footer-text-color-highContrast;
+        background-color: $footer-text-backgroundColor-highContrast;
+    
+        a {
+            color: $footer-link-color-highContrast;
+            &:hover {
+                color: $footer-link-color-highContrast-hover;
+            }
+            &:visited {
+                color: $footer-link-color-highContrast;
+            }
+        }
+    }
+}

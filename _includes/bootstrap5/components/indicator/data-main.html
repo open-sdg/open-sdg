@@ -1,0 +1,14 @@
+{% include components/indicator/headline.html %}
+
+<section>
+
+  <p class="async-loading" data-img="{{ site.baseurl }}/assets/img/loading-small.gif"></p>
+
+  <div class="async-loaded mt-4" style="display:none;">
+
+    {% include bootstrap5/components/indicator/data-tabs.html %}
+    {% include bootstrap5/components/indicator/data-panes.html %}
+
+  </div>
+
+</section>

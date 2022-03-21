@@ -1,0 +1,102 @@
+@mixin status {
+    color: $color-dark;
+    font-weight: normal;
+    border: none;
+    padding: 4px;
+    font-size: $tag-fontSize;
+
+    .status-inner {
+        padding: 0 2px;
+        border-radius: 5px;
+    }
+
+    &.complete {
+        color: $status-color-complete;
+        border: $status-border-complete;
+        // Both background-color and background are included to allow the
+        // use of patterns.
+        background-color: $status-backgroundColor-complete;
+        background: $status-backgroundColor-complete;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-complete;
+            background: $status-backgroundColor-inner-complete;
+        }
+    }
+    &.inprogress {
+        color: $status-color-inprogress;
+        border: $status-border-inprogress;
+        background-color: $status-backgroundColor-inprogress;
+        background: $status-backgroundColor-inprogress;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-inprogress;
+            background: $status-backgroundColor-inner-inprogress;
+        }
+    }
+    &.notstarted {
+        color: $status-color-notstarted;
+        border: $status-border-notstarted;
+        background-color: $status-backgroundColor-notstarted;
+        background: $status-backgroundColor-notstarted;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-notstarted;
+            background: $status-backgroundColor-inner-notstarted;
+        }
+    }
+    &.notapplicable {
+        color: $status-color-notapplicable;
+        border: $status-border-notapplicable;
+        background-color: $status-backgroundColor-notapplicable;
+        background: $status-backgroundColor-notapplicable;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-notapplicable;
+            background: $status-backgroundColor-inner-notapplicable;
+        }
+    }
+}
+
+@mixin statusHighContrast {
+    &.complete {
+        border: $status-border-complete-highContrast;
+        background-color: $status-backgroundColor-complete-highContrast;
+        background: $status-backgroundColor-complete-highContrast;
+        color: $status-color-complete-highContrast !important;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-complete-highContrast !important;
+            background: $status-backgroundColor-inner-complete-highContrast !important;
+            color: $status-color-complete-highContrast !important;
+        }
+    }
+    &.inprogress {
+        border: $status-border-inprogress-highContrast;
+        background-color: $status-backgroundColor-inprogress-highContrast;
+        background: $status-backgroundColor-inprogress-highContrast;
+        color: $status-color-inprogress-highContrast;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-inprogress-highContrast !important;
+            background: $status-backgroundColor-inner-inprogress-highContrast !important;
+            color: $status-color-inprogress-highContrast;
+        }
+    }
+    &.notstarted {
+        border: $status-border-notstarted-highContrast;
+        background-color: $status-backgroundColor-notstarted-highContrast;
+        background: $status-backgroundColor-notstarted-highContrast;
+        color: $status-color-notstarted-highContrast !important;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-notstarted-highContrast !important;
+            background: $status-backgroundColor-inner-notstarted-highContrast !important;
+            color: $status-color-notstarted-highContrast !important;
+        }
+    }
+    &.notapplicable {
+        border: $status-border-notapplicable-highContrast;
+        background-color: $status-backgroundColor-notapplicable-highContrast;
+        background: $status-backgroundColor-notapplicable-highContrast;
+        color: $status-color-notapplicable-highContrast !important;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-notapplicable-highContrast !important;
+            background: $status-backgroundColor-inner-notapplicable-highContrast !important;
+            color: $status-color-notapplicable-highContrast !important;
+        }
+    }
+}

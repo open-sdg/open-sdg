@@ -5,6 +5,7 @@ analytics:
   gtag: ''
   gtm: ''
   ga_prod: ''
+bootstrap_5: true
 breadcrumbs:
   goal:
     - path: /
@@ -24,12 +25,12 @@ breadcrumbs:
 chartjs_3: true
 contrast_type: default
 cookie_consent_form:
-  enabled: false
+  enabled: true
 country:
   name: Australia
   adjective: Australian
 create_goals:
-  layout: goal-with-progress
+  layout: goal
   previous_next_links: true
   goals:
     - content: custom.goal_1_content
@@ -39,12 +40,8 @@ create_indicators:
   previous_next_links: true
 create_pages:
   - filename: index.html
-    folder: /frontpage-legacy
-    layout: frontpage
-    title: ''
-  - filename: index.html
     folder: /
-    layout: frontpage-alt
+    layout: frontpage
     title: My homepage title
   - filename: index.html
     folder: /goals
@@ -62,7 +59,8 @@ create_pages:
     folder: /search
     layout: search
     title: search.search
-custom_css: []
+custom_css:
+  - /custom.css
 custom_js:
   - /custom.js
 data_edit_url: data
@@ -88,7 +86,7 @@ email_contacts:
   functional: test@example.com
 environment: staging
 favicons: legacy
-footer_language_toggle: none
+footer_language_toggle: dropdown
 footer_menu:
   - path: 'mailto:test@example.com'
     translation_key: menu.contact_us
@@ -250,9 +248,6 @@ menu:
     dropdown:
       - path: about
         translation_key: Another link to about page
-  - path: frontpage-legacy
-    translation_key: Legacy frontpage
-    dropdown: []
 metadata_edit_url: metadata
 metadata_tabs:
   - scope: national
@@ -297,7 +292,7 @@ reporting_status:
       hide_on_goal_pages: false
     - value: complete
       label: status.reported_online
-      hide_on_goal_pages: true
+      hide_on_goal_pages: false
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
@@ -325,5 +320,5 @@ site_config_form:
   repository_link: /tree/master/tests/site/_data
   translation_link: ''
 validate_indicator_config: true
-validate_site_config: true
+validate_site_config: false
 x_axis_label: Year
