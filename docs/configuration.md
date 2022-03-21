@@ -1033,6 +1033,33 @@ _Optional_: This setting controls the behavior of the site config form. The avai
 
 The default location for the site configuration page is `/config`.
 
+### time_series_attributes
+
+_Optional_: This setting controls the data columns that should be considered "time-series attributes", as well as the labels that should be used for these columns when displaying their values in the footer beneath charts and tables.
+
+If this setting is left empty, the following defaults are assumed:
+
+```
+time_series_attributes:
+  - field: COMMENT_TS
+    label: indicator.footnote
+  - field: DATA_LAST_UPDATE
+    label: metadata_fields.national_data_update_url
+```
+
+As you can see in the defaults above, the labels can be translation keys.
+
+The "field" above is what is expected to be the column name in the data (eg, the CSV file). The "label" is what you would like to appear in the footer as the label.
+
+These columns are expected to be "time-series attributes" - in other words, they are expected to have the same value for all rows in the same time-series. For example, the following would be a correct way to use a time-series attribute "COMMENT_TS":
+
+Year | Units | COMMENT_TS | Value
+--- | --- | --- | ---
+2020 | Percent | My comment for percentages | 50
+2021 | Percent | My comment for percentages | 60
+2020 | Total | My comment for totals | 5000
+2021 | Total | My comment for totals | 6000
+
 ### validate_indicator_config
 
 _Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.

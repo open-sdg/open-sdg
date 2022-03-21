@@ -51,3 +51,12 @@ datapackage:
 data_schema:
   class: DataSchemaInputTableSchemaYaml
   source: data-schema/*.yml
+
+indicator_options:
+  non_disaggregation_columns:
+    - Year
+    - Units
+    - Series
+    - Value
+    - GeoCode
+    - COMMENT_TS

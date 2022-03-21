@@ -1,10 +1,10 @@
-Year,COMPOSITE_BREAKDOWN,Value
-2015,A,1
-2015,B,3
-2015,,2
-2016,A,
-2016,B,
-2016,,
-2017,A,2
-2017,B,4
-2017,,3
+Year,COMPOSITE_BREAKDOWN,COMMENT_TS,Value
+2015,A,Comment for series A,1
+2015,B,,3
+2015,,Comment for headline,2
+2016,A,Comment for series A,
+2016,B,,
+2016,,Comment for headline,
+2017,A,Comment for series A,2
+2017,B,,
+2017,,Comment for headline,3

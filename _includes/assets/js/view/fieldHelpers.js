@@ -61,3 +61,30 @@ function sortFieldGroup(fieldGroupElement) {
         .sort(sortLabels)
         .appendTo(fieldGroupElement.find('#indicatorData .variable-options'));
 }
+
+/**
+ * @param {Array} tsAttributeValues
+ *   Array of objects containing 'field' and 'value'.
+ * @return null
+ */
+function updateTimeSeriesAttributes(tsAttributeValues) {
+    var timeSeriesAttributes = {{ site.time_series_attributes | jsonify }};
+    timeSeriesAttributes.forEach(function(tsAttribute) {
+        var field = tsAttribute.field,
+            valueMatch = tsAttributeValues.find(function(tsAttributeValue) {
+                return tsAttributeValue.field === field;
+            }),
+            value = (valueMatch) ? valueMatch.value : '',
+            $labelElement = $('dt[data-ts-attribute="' + field + '"]'),
+            $valueElement = $('dd[data-ts-attribute="' + field + '"]');
+
+        if (!value) {
+            $labelElement.hide();
+            $valueElement.hide();
+        }
+        else {
+            $labelElement.show();
+            $valueElement.show().text(translations.t(value));
+        }
+    });
+}

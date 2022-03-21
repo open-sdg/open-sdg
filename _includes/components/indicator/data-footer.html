@@ -47,5 +47,18 @@
         >{{ footer_field.value | t  }}</dd>
         {% endfor %}
         {% endif %}
+
+        {% if site.time_series_attributes and site.time_series_attributes.size > 0 %}
+        {% for ts_attribute in site.time_series_attributes %}
+        <dt
+          class="data-controlled-footer-field"
+          data-ts-attribute={{ ts_attribute.field | jsonify }}
+        >{{ ts_attribute.label | t  }}:</dt>
+        <dd
+          class="data-controlled-footer-field"
+          data-ts-attribute={{ ts_attribute.field | jsonify }}
+        ></dd>
+        {% endfor %}
+        {% endif %}
     <dl>
 </div>
