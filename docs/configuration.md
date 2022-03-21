@@ -337,6 +337,13 @@ disclaimer:
 
 As always, you can use translation keys.
 
+You can also hide the entire disclaimer, like so:
+
+```
+disclaimer:
+  hidden: true
+```
+
 ### email_contacts
 
 **_Required_**: This setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
