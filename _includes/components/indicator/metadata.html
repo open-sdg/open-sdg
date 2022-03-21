@@ -21,7 +21,7 @@
 
             {% if page.indicator[indicator_metadata.name] contains "http" or page.indicator[indicator_metadata.name] contains "mailto" %}
               <a href="{{ page.indicator[indicator_metadata.name] }}" target="_blank">
-                {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
+                {{ url_text }} <span class="{% if site.bootstrap_5 %}visually-hidden{% else %}visuallyhidden{% endif %}">{{ page.t.general.opens_new_window }}</span>
               </a>
             {% endif %}
 

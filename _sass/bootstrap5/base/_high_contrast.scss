@@ -1,0 +1,20 @@
+body.contrast-high {
+
+    background-color: $color-dark-highContrast;
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    span,
+    td,
+    th,
+    li {
+        color: $color-light-highContrast;
+    }
+
+    a {
+        color: $color-highlight-highContrast;
+    }
+}

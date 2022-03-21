@@ -1,0 +1,14 @@
+@mixin tags {
+    .tag {
+        padding: 4px;
+        font-size: $tag-fontSize;
+        color: $tag-color;
+        border: $tag-border;
+        background: $tag-backgroundColor;
+        white-space: nowrap;
+        a {
+            color: $tag-color;
+            text-decoration: underline;
+        }
+    }
+}

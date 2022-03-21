@@ -1,0 +1,21 @@
+<div class="language-toggle-container">
+  {% assign location = include.location %}
+  <div class="btn-group language-toggle-dropdown {% if location == 'footer' %} dropup{% else %} dropdown{% endif %}">
+    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-globe"></i>
+      {{ page.t.languages[page.language] }}
+    </button>
+    <ul class="dropdown-menu">
+      {%- for language in site.languages -%}
+        {%- assign language_abbreviation = site.languages_public[language] | default: language -%}
+        {%- if language != page.language -%}
+          <li>
+            <a class="dropdown-item" href="{{ page.url_by_language[language] }}">
+              {{ page.t.languages[language] }}
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>

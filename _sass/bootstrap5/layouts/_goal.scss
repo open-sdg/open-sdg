@@ -1,0 +1,62 @@
+$goal-by-target-indentation: 60px;
+
+.layout-goal-bootstrap5 {
+    .goal-page-heading {
+        margin-bottom: 14px;
+    }
+    .goal-page-target-number {
+        min-width: $goal-by-target-indentation;
+        h3 {
+            line-height: 1.5;
+        }
+        .goal-target {
+            font-size: $fontSize;
+            margin-bottom: 0;
+        }
+    }
+    .goal-target {
+        margin-top: 0;
+    }
+    .goal-indicator {
+        margin-top: 20px;
+    }
+    .goal-page-target-rule {
+        border-top: 1px solid $goalTarget-horizontalRule-color;
+        margin-bottom: 25px;
+        opacity: 1;
+    }
+    .goal-page-indicator-number {
+        min-width: $goal-by-target-indentation;
+        h4 {
+            font-size: $fontSize;
+            line-height: 1.5;
+        }
+        .indicator-number {
+            font-size: $fontSize;
+        }
+    }
+    .goal-page-indicator-progress {
+        margin-left: $goal-by-target-indentation;
+    }
+    @media only screen and (min-width: 992px) {
+        .goal-page-indicator-progress {
+            margin-left: 0;
+        }
+        .goal-page-target-name {
+            margin-left: 5px;
+        }
+        .goal-page-indicator-number {
+            margin-left: $goal-by-target-indentation;
+            min-width: 0;
+        }
+        .goal-page-target-number {
+            min-width: 0;
+        }
+        .goal-page-target-rule {
+            margin-left: $goal-by-target-indentation;
+        }
+    }
+    .tags {
+        margin-top: 10px;
+    }
+}

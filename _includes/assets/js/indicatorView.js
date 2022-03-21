@@ -499,7 +499,7 @@ var indicatorView = function (model, options) {
         },
         legendCallback: function(chart) {
             var text = [];
-            text.push('<h5 class="sr-only">' + translations.indicator.plot_legend_description + '</h5>');
+            text.push('<h5 class="{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}">' + translations.indicator.plot_legend_description + '</h5>');
             text.push('<ul id="legend" class="legend-for-' + chart.config.type + '-chart">');
             _.each(chart.data.datasets, function(dataset) {
               text.push('<li>');
@@ -582,9 +582,8 @@ var indicatorView = function (model, options) {
     $("#btnSave").click(function() {
       var filename = chartInfo.indicatorId + '.png',
           element = document.getElementById('chart-canvas'),
-          footer = document.getElementById('selectionChartFooter'),
-          height = element.clientHeight + 25 + ((footer) ? footer.clientHeight : 0),
-          width = element.clientWidth + 25;
+          height = element.clientHeight + 70,
+          width = element.clientWidth + 50;
       var options = {
         // These options fix the height, width, and position.
         height: height,
@@ -595,13 +594,14 @@ var indicatorView = function (model, options) {
         y: 0,
         scrollX: 0,
         scrollY: 0,
+        backgroundColor: view_obj.isHighContrast() ? '#000000' : '#FFFFFF',
         // Allow a chance to alter the screenshot's HTML.
-        onclone: function(clone) {
+        onclone: function (clone) {
           // Add a body class so that the screenshot style can be custom.
           clone.body.classList.add('image-download-in-progress');
         },
         // Decide which elements to skip.
-        ignoreElements: function(el) {
+        ignoreElements: function (el) {
           // Keep all style, head, and link elements.
           var keepTags = ['STYLE', 'HEAD', 'LINK'];
           if (keepTags.indexOf(el.tagName) !== -1) {
@@ -617,9 +617,9 @@ var indicatorView = function (model, options) {
         }
       };
       // First convert the target to a canvas.
-      html2canvas(element, options).then(function(canvas) {
+      html2canvas(element, options).then(function (canvas) {
         // Then download that canvas as a PNG file.
-        canvas.toBlob(function(blob) {
+        canvas.toBlob(function (blob) {
           saveAs(blob, filename);
         });
       });

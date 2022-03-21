@@ -1,4 +1,14 @@
 .layout-config-builder {
+    i.fa {
+        color: $text-color;
+    }
+    .btn-group {
+        .btn {
+            span {
+                color: $text-color;
+            }
+        }
+    }
     .config-widgets {
         margin-top: 30px;
         margin-bottom: 10px;
@@ -8,6 +18,7 @@
             text-align: right;
             button {
                 margin-top: 0;
+                margin-bottom: 10px;
             }
         }
     }

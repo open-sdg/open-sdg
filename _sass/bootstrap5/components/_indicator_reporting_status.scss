@@ -1,0 +1,8 @@
+.status {
+    @include status;
+}
+body.contrast-high {
+    .status {
+        @include statusHighContrast;
+    }
+}

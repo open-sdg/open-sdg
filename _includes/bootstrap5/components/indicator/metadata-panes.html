@@ -1,0 +1,29 @@
+<div class="tab-content">
+    {% if site.metadata_tabs and site.metadata_tabs.size > 0 %}
+        {% for tab in site.metadata_tabs %}
+        {% if tab.scope %}
+            {% assign tab_key = tab.scope %}
+            {% assign tab_obj = tab %}
+        {% endif %}
+        {% assign tab_description = tab_obj.description | default: tab_obj.blurb %}
+        {% assign tab_include = 'components/indicator/metadata.html' %}
+        {% if tab_key == 'sources' %}
+            {% assign tab_include = 'components/indicator/sources.html' %}
+        {% endif %}
+        <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
+            <article>
+                {% if tab_description %}{{ tab_description | t | markdownify }}{% endif %}
+                {% include {{ tab_include }} scope=tab_key %}
+            </article>
+        </div>
+        {% endfor %}
+    {% else %}
+        {% include bootstrap5/components/indicator/metadata-panes-default.html %}
+    {% endif %}
+    {% if site.environment == 'staging' %}
+        <div role="tabpanel" class="tab-pane" id="edit">
+            {% include components/indicator/edit-buttons.html %}
+        </div>
+    {% endif %}
+</div>
+  

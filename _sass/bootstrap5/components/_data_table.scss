@@ -1,0 +1,78 @@
+#tableTargetLines {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    dt {
+        float: left;
+        font-weight: normal;
+        max-width: 80%;
+    }
+    dd {
+        text-align: right;
+    }
+}
+
+#selectionsTable {
+    div.dataTables_wrapper {
+        overflow-x: auto;
+
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    table {
+        caption-side: top;
+        thead th {
+            cursor: pointer;
+
+            span.sort {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-color: transparent;
+                display: inline-block;
+                width: 24px;
+                height: 19px;
+                margin-bottom: -3px;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &.sorting_asc {
+                span.sort {
+                    background-image: url(../img/sort_asc.png);
+                }
+            }
+            &.sorting_desc {
+                span.sort {
+                    background-image: url(../img/sort_desc.png);
+                }
+            }
+        }
+        tbody th {
+            font-weight: normal;
+        }
+    }
+
+    padding-bottom: 20px;
+}
+
+caption {
+    color: $text-color;
+}
+
+.roleHeader {
+    cursor: pointer;
+}
+
+#datatable {
+    overflow-x: auto;
+}
+
+.table {
+    .table-value {
+        text-align: right;
+    }
+}

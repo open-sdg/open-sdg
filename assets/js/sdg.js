@@ -12,7 +12,11 @@
 {% endif %}
 {% endif %}
 {%- include assets/js/event.js -%}
+{%- if site.bootstrap_5 %}
+{%- include assets/js/bootstrap5/accessibility.js -%}
+{%- else -%}
 {%- include assets/js/accessibility.js -%}
+{%- endif -%}
 {%- include assets/js/chartColors.js -%}
 {%- include assets/js/indicatorModel.js -%}
 {%- include assets/js/mapView.js -%}
@@ -25,10 +29,18 @@
 {%- include assets/js/indicatorInit.js -%}
 {%- include assets/js/tabs.js -%}
 {% if site.accessible_tabs %}
+{%- if site.bootstrap_5 -%}
+{%- include assets/js/bootstrap5/accessibleTabs.js -%}
+{%- else -%}
 {%- include assets/js/accessibleTabs.js -%}
+{%- endif -%}
 {% endif %}
 {%- include assets/js/search.js -%}
+{%- if site.bootstrap_5 -%}
+{%- include assets/js/bootstrap5/cookieConsent.js -%}
+{%- else -%}
 {%- include assets/js/menu.js -%}
+{%- endif -%}
 {%- include assets/js/lib/classList.js -%}
 {%- include assets/js/lib/modernizr-custom.js -%}
 {%- include assets/js/plugins/leaflet.selectionLegend.js -%}

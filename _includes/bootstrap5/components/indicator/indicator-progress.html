@@ -1,0 +1,10 @@
+{% if page.indicator.progress_status and page.indicator.progress_status != '' %}
+<div class="row indicator-progress">
+    <div class="col-sm-2 progress-status-heading">
+        {{ site.progress_status.status_heading | t }}
+    </div>
+    <div class="col-sm-10">
+        {% include components/progress/progress-status.html indicator=page.indicator %}
+    </div>
+</div>
+{% endif %}

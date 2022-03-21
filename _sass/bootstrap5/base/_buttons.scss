@@ -1,0 +1,62 @@
+button:focus {
+    @include focus;
+}
+.btn {
+    color: $button-foregroundColor;
+    &:visited {
+        color: $button-foregroundColor-visited;
+    }
+    &:focus {
+        color: $button-foregroundColor-focus;
+    }
+}
+.btn-download {
+    border: none !important;
+    background: $button-color !important;
+    color: $button-foregroundColor !important;
+    box-shadow: 0 2px 0 $button-color-dropShadow;
+    border-radius: 0;
+    position: relative;
+
+    &:active {
+        background: $button-color-pressed !important;
+    }
+    &:hover {
+        background: $button-color-hover !important;
+    }
+    &:visited {
+        color: $button-foregroundColor-visited !important;
+    }
+    &:focus {
+        background: $button-color-focus !important;
+        color: $button-foregroundColor-focus !important;
+    }
+}
+body.contrast-high {
+    button:focus {
+        @include focusHighContrast;
+    }
+    .btn {
+        color: $button-foregroundColor-highContrast !important;
+        &:visited {
+            color: $color-dark-highContrast !important;
+        }
+        &:focus {
+            color: $color-dark-highContrast !important;
+        }
+    }
+    .btn-primary,
+    .btn-download {
+        background: $button-color-highContrast !important;
+
+        &:active {
+            background: $color-highlight-highContrast !important;
+        }
+        &:hover {
+            background: $button-color-hover-highContrast !important;
+        }
+        &:focus {
+            background: $color-highlight-highContrast !important;
+        }
+    }
+}

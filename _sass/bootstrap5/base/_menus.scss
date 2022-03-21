@@ -1,0 +1,69 @@
+.navbar {
+    .navbar-nav {
+        > .nav-item {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+            > .nav-link {
+                color: $menu-link-color;
+                font-size: $menu-link-fontSize;
+                padding-top: 0.2rem;
+                padding-bottom: 0.2rem;
+                padding-right: 0;
+                padding-left: 0;
+                text-decoration: none;
+                border-bottom: 2px solid transparent;
+                &:hover {
+                    border-bottom: 2px solid $text-color;
+                }
+            }
+
+            &.active > .nav-link {
+                border-bottom: 2px solid $text-color;
+                background: transparent;
+                color: $text-color;
+
+                &:hover {
+                    background: transparent;
+                }
+            }
+        }
+        .dropdown-item {
+            color: $menu-link-color;
+            font-size: $menu-link-fontSize;
+        }
+    }
+}
+body.contrast-high {
+    .navbar {
+        .navbar-nav {
+            > .nav-item {
+                > .nav-link {
+                    color: $color-light-highContrast;
+                    &:hover,
+                    &:focus {
+                        color: $color-highlight-highContrast;
+                        border-color: $color-highlight-highContrast;
+                    }
+                }
+
+                &.active > .nav-link {
+                    color: $color-highlight-highContrast;
+                    border-color: $color-highlight-highContrast;
+                    &:hover {
+                        color: $color-highlight-highContrast;
+                    }
+                    &:focus {
+                        color: $color-highlight-highContrast;
+                    }
+                }
+            }
+            .dropdown-item {
+                color: $color-dark-highContrast;
+                &:hover,
+                &:focus {
+                    color: $color-dark-highContrast;
+                }
+            }
+        }
+    }
+}

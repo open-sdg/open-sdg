@@ -143,9 +143,8 @@ function setPlotEvents(chartInfo) {
     $("#btnSave").click(function () {
         var filename = chartInfo.indicatorId + '.png',
             element = document.getElementById('chart-canvas'),
-            footer = document.getElementById('selectionChartFooter'),
-            height = element.clientHeight + 25 + ((footer) ? footer.clientHeight : 0),
-            width = element.clientWidth + 25;
+            height = element.clientHeight + 50,
+            width = element.clientWidth + 50;
         var options = {
             // These options fix the height, width, and position.
             height: height,
@@ -156,6 +155,7 @@ function setPlotEvents(chartInfo) {
             y: 0,
             scrollX: 0,
             scrollY: 0,
+            backgroundColor: isHighContrast() ? '#000000' : '#FFFFFF',
             // Allow a chance to alter the screenshot's HTML.
             onclone: function (clone) {
                 // Add a body class so that the screenshot style can be custom.
@@ -263,7 +263,7 @@ function updateGraphAnnotationColors(contrast, chartInfo) {
  */
 function generateChartLegend(chart) {
     var text = [];
-    text.push('<h5 class="sr-only">' + translations.indicator.plot_legend_description + '</h5>');
+    text.push('<h5 class="{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}">' + translations.indicator.plot_legend_description + '</h5>');
     text.push('<ul id="legend" class="legend-for-' + chart.config.type + '-chart">');
     _.each(chart.data.datasets, function (dataset) {
         text.push('<li>');

@@ -1,7 +1,8 @@
 {
+    "runners": ["axe"],
     "defaults": {
         "actions": [
-            "click element .navbar .contrast-high a"
+            "click element a[data-contrast-switch-to]"
         ]
     },
     "urls": [
@@ -10,8 +11,6 @@
         "http://127.0.0.1:4000/4/",
         "http://127.0.0.1:4000/1-1-1/",
         "http://127.0.0.1:4000/reporting-status/",
-        "http://127.0.0.1:4000/testing-goal-by-target/",
-        "http://127.0.0.1:4000/frontpage-legacy/",
         "http://127.0.0.1:4000/goals/"
     ]
 }

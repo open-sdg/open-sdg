@@ -1,0 +1,47 @@
+.table-footer-text {
+    dl {
+        dt {
+            float: left;
+            margin-right: 5px;
+            font-weight: normal;
+        }
+        dd {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+#selectionsChart {
+    padding-bottom: 20px;
+    &.chart-has-no-data {
+        #selectionChartFooter {
+            display: none;
+        }
+    }
+}
+
+#selectionChartFooter {
+    font-size: $tag-fontSize;
+    line-height: 1.2;
+    padding-left: 20px;
+}
+
+#mapFooter,
+#selectionTableFooter {
+    p {
+        font-size: 0.85em;
+        margin: 0 0 5px;
+    }
+    dl {
+        font-size: 0.85em;
+        dd {
+            margin: 0 0 5px;
+        }
+    }
+    padding-left: 20px;
+}
+
+#mapFooter {
+    margin-top: 30px;
+    padding-left: 0;
+}
