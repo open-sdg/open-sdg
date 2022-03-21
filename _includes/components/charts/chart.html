@@ -1,7 +1,7 @@
 {% if include.graph_type %}
 
     <div id="dataset-size-warning" style="display:none" role="alert">
-      <i class="fa fa-bolt"><span class="sr-only">{{ page.t.general.label_warning }}</span></i>
+      <i class="fa fa-bolt"><span class="{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}">{{ page.t.general.label_warning }}</span></i>
       {{ page.t.indicator.dataset_size_warning }}
     </div>
 
@@ -25,8 +25,8 @@
       <div id="chartSelectionDownload" class="clearfix">
         <button id="btnSave" title="{{ page.t.indicator.download_chart_image_title }}" class='btn btn-primary btn-download'>
           {{ page.t.indicator.download_chart_image }}
-        </button>
-      </div>
+        </button><!-- 
+   --></div>
     </div>
 
 {% endif %}

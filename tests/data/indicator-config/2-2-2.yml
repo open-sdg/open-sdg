@@ -21,7 +21,9 @@ graph_annotations:
     series: ''
     mode: horizontal
     borderColor: '#000000'
-    borderDash: ''
+    borderDash:
+      - 2
+      - 2
     label:
       position: top
       content: Foo
@@ -40,7 +42,9 @@ graph_annotations:
     series: ''
     mode: horizontal
     borderColor: '#000000'
-    borderDash: ''
+    borderDash:
+      - 2
+      - 2
     label:
       position: top
       content: Bar

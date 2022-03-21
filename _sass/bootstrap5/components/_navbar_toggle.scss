@@ -1,0 +1,12 @@
+.navbar-toggler {
+    margin-top: .325rem;
+    &:focus {
+        border-color: transparent;
+    }
+}
+
+body.contrast-high {
+    .navbar-toggler {
+        background: $color-light-highContrast;
+    }
+}

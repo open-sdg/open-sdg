@@ -26,7 +26,8 @@ Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
             .attr('role', 'status')
             .appendTo('#chart');
         if (window.innerWidth <= 768) {
-            $(this.chart.canvas).text(translations.indicator.chart + '. ' + translations.indicator.data_tabular_alternative);
+            var mobileInstructions = translations.indicator.chart + '. ' + translations.indicator.data_tabular_alternative;
+            $(this.chart.canvas).html('<span class="hide-during-image-download">' + mobileInstructions + '</span>');
         }
         else {
             var keyboardInstructions = translations.indicator.data_keyboard_navigation;

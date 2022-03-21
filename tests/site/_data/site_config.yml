@@ -5,6 +5,7 @@ analytics:
   gtag: ''
   gtm: ''
   ga_prod: ''
+bootstrap_5: true
 breadcrumbs:
   goal:
     - path: /
@@ -22,9 +23,9 @@ breadcrumbs:
     - path: /news
       label: menu.updates
 chartjs_3: true
-contrast_type: default
+contrast_type: single
 cookie_consent_form:
-  enabled: false
+  enabled: true
 country:
   name: Australia
   adjective: Australian
@@ -38,10 +39,6 @@ create_indicators:
   layout: indicator
   previous_next_links: true
 create_pages:
-  - filename: index.html
-    folder: /frontpage-legacy
-    layout: frontpage
-    title: ''
   - filename: index.html
     folder: /
     layout: frontpage-alt
@@ -62,7 +59,8 @@ create_pages:
     folder: /search
     layout: search
     title: search.search
-custom_css: []
+custom_css:
+  - /custom.css
 custom_js:
   - /custom.js
 data_edit_url: data
@@ -82,13 +80,14 @@ date_formats:
 disclaimer:
   phase: header.alpha
   message: custom.disclaimer_message
+  hidden: false
 email_contacts:
   questions: test@example.com
   suggestions: test@example.com
   functional: test@example.com
 environment: staging
-favicons: legacy
-footer_language_toggle: none
+favicons: favicon.io
+footer_language_toggle: dropdown
 footer_menu:
   - path: 'mailto:test@example.com'
     translation_key: menu.contact_us
@@ -128,8 +127,8 @@ frontpage_goals_grid:
   description: >-
     Click on each [goal](goals) for data for Sustainable Development Goal global
     indicators.
-frontpage_heading: custom.frontpage_heading
-frontpage_instructions: custom.frontpage_instructions
+frontpage_heading: ''
+frontpage_instructions: ''
 frontpage_introduction_banner:
   title: custom.frontpage_introduction_banner_title
   description: My frontpage introduction banner description
@@ -250,9 +249,6 @@ menu:
     dropdown:
       - path: about
         translation_key: Another link to about page
-  - path: frontpage-legacy
-    translation_key: Legacy frontpage
-    dropdown: []
 metadata_edit_url: metadata
 metadata_tabs:
   - scope: national
@@ -266,7 +262,7 @@ metadata_tabs:
     description: My sources blurb
 news:
   category_links: true
-non_global_metadata: indicator.national_metadata
+non_global_metadata: ''
 progress_status:
   status_heading: status.progress_status
   status_types:
@@ -297,7 +293,7 @@ reporting_status:
       hide_on_goal_pages: false
     - value: complete
       label: status.reported_online
-      hide_on_goal_pages: true
+      hide_on_goal_pages: false
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
@@ -325,5 +321,5 @@ site_config_form:
   repository_link: /tree/master/tests/site/_data
   translation_link: ''
 validate_indicator_config: true
-validate_site_config: true
+validate_site_config: false
 x_axis_label: Year

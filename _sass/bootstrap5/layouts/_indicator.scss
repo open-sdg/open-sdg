@@ -1,0 +1,41 @@
+.layout-indicator-bootstrap5 {
+    #page-content {
+        border-top: 1px solid $indicatorContent-horizontalRule-color;
+        border-bottom: 1px solid $indicatorContent-horizontalRule-color;
+        padding-top: 10px;
+    }
+
+    canvas {
+        @include noselect;
+        &:focus {
+            background-color: transparent !important;
+            outline: 6px $focusOutlineColor solid !important;
+        }
+    }
+    .chart-title {
+        margin-bottom: 1.5rem;
+        margin-left: 20px;
+    }
+
+    #indicatorData {
+        margin-top: 20px;
+    }
+
+    .plot-container {
+        padding: 10px;
+    } 
+}
+
+@media only screen and (max-width: 500px) {
+    body.layout-indicator-bootstrap5 {
+        .container {
+            .goal-icon {
+                float: none;
+            }
+            .indicator-details {
+                float: none;
+                width: 100%;
+            }
+        }
+    }
+}

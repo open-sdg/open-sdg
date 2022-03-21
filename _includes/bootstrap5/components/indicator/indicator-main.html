@@ -1,0 +1,44 @@
+{% assign show_data = false %}
+{% if page.indicator.reporting_status == "complete" and page.indicator.data_non_statistical != true %}
+  {% assign show_data = true %}
+{% endif %}
+{% assign datapackage_resource = site.data[page.language].data_packages.resources | where: "name", page.indicator.slug | first %}
+
+<div class="row"
+  id="indicatorData"
+  data-indicatorid='indicator_{{ page.indicator.slug }}'
+  data-id="{{ page.indicator.slug }}"
+  data-country="{{ page.indicator.national_geographical_coverage | default: site.country.name }}"
+  data-charttitle="{{ page.indicator.graph_title }}"
+  data-charttitles="{{ page.indicator.graph_titles | jsonify | xml_escape }}"
+  data-measurementunit="{{ page.indicator.computation_units }}"
+  data-xaxislabel="{{ page.indicator.x_axis_label | t | default: site.x_axis_label | t }}"
+  data-showdata="{{ show_data }}"
+  data-graphtype="{{ page.indicator.graph_type }}"
+  data-graphtypes="{{ page.indicator.graph_types | jsonify | xml_escape }}"
+  data-geocoderegex="{{ page.indicator.data_geocode_regex }}"
+  data-showmap="{{ page.indicator.data_show_map }}"
+  data-startvalues="{{ page.indicator.data_start_values | jsonify | xml_escape }}"
+  data-graphlimits="{{ page.indicator.graph_limits | jsonify | xml_escape }}"
+  data-stackeddisaggregation="{{ page.indicator.graph_stacked_disaggregation }}"
+  data-graphannotations="{{ page.indicator.graph_annotations | jsonify | xml_escape }}"
+  data-graphtargetlines="{{ page.indicator.graph_target_lines | jsonify | xml_escape }}"
+  data-graphseriesbreaks="{{ page.indicator.graph_series_breaks | jsonify | xml_escape }}"
+  data-indicatordownloads="{{ site.data[page.language].indicator_downloads[page.indicator.number] | jsonify | xml_escape }}"
+  data-dataschema="{{ datapackage_resource.schema | jsonify | xml_escape }}"
+  data-compositebreakdownlabel="{{ page.indicator.composite_breakdown_label }}"
+  data-precision="{{ page.indicator.precision | jsonify | xml_escape }}"
+>
+  {% if show_data %}
+  <span role="status" class="visually-hidden" id="indicator-data-view-status"></span>
+  <div id="indicator-sidebar" class="indicator-sidebar col-md-3">
+    {% include components/indicator/data-sidebar.html %}
+  </div>
+  <div id="indicator-main" class="indicator-main col-md-9">
+    {% include bootstrap5/components/indicator/data-main.html %}
+  {% else %}
+  <div id="indicator-main" class="indicator-main col-md-12">
+  {% endif %}
+  {% include bootstrap5/components/indicator/metadata-section.html %}
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{% assign has_tags = false %}
+{% if include.tags and include.tags.size > 0 %}
+    {% assign has_tags = true %}
+{% endif %}
+{% assign show_reporting_status = false %}
+{% if include.reporting_status and include.indicator %}
+    {% assign reporting_status_type = site.reporting_status.status_types | where: 'value', include.indicator.reporting_status | first %}
+    {% unless reporting_status_type.hide_on_goal_pages %}
+        {% assign show_reporting_status = true %}
+    {% endunless %}
+{% endif %}
+{% if show_reporting_status or has_tags %}
+    <ul class="tags list-unstyled list-inline" aria-label="{{ page.t.indicator.tags }}">
+    {%- if show_reporting_status -%}
+        <li class="list-inline-item">
+        <span class="visually-hidden">{{ page.t.indicator.status }}</span>
+        {% include components/reportingstatus/reporting-status-label.html indicator=include.indicator %}
+        </li>
+    {%- endif -%}
+    {%- for tag in include.tags -%}
+        <li class="list-inline-item">
+        {% assign tag_class = tag | slugify %}
+        <span class="tag tag-{{ tag_class }}">{{ tag | t }}</span>
+        </li>
+    {%- endfor -%}
+    </ul>
+{% endif %}

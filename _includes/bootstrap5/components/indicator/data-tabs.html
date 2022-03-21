@@ -1,0 +1,45 @@
+<div style="display: none;">
+    <span id="table-alternative">{{ page.t.indicator.data_tabular_alternative }}</span>
+  </div>
+  <ul class="nav nav-tabs non-stacking-tabs data-view" role="tablist">
+    {% for tab in page.indicator.indicator_tabs_list %}
+    <li role="presentation"
+      class="
+        nav-item
+        {% if tab.type == 'map' %}map{% endif %}
+        {% if tab.type == 'embed' %}embedded-map{% endif %}
+      ">
+      <button
+        class="nav-link {% if forloop.first %}active{% endif %}"
+        data-bs-toggle="tab"
+        role="tab"
+        type="button"
+        {% if tab.type == 'chart' %}
+          id="tab-chartview"
+          data-bs-target="#chartview"
+          aria-controls="chartview"
+          aria-describedby="table-alternative"
+          {% include autotrack.html preset="tab_data_chart" category="Tab change" action="Change data view" label="Change to Chart tab" %}
+        {% elsif tab.type == 'table' %}
+          id="tab-tableview"
+          data-bs-target="#tableview"
+          aria-controls="tableview"
+          {% include autotrack.html preset="tab_data_table" category="Tab change" action="Change data view" label="Change to Table tab" %}
+        {% elsif tab.type == 'map' %}
+          id="tab-mapview"
+          data-bs-target="#mapview"
+          aria-controls="mapview"
+          data-no-disagg="true"
+          {% include autotrack.html preset="tab_data_map" category="Tab change" action="Change data view" label="Change to Map tab" %}
+        {% elsif tab.type == 'embed' %}
+          id="tab-embeddedmapview"
+          data-bs-target="#embeddedmapview"
+          aria-controls="embeddedmapview"
+          data-no-disagg="true"
+          {% include autotrack.html preset="tab_data_embed" category="Tab change" action="Change data view" label="Change to embedded item tab" %}
+        {% endif %}
+      >{{ tab.label | t }}</button>
+    </li>
+    {% endfor %}
+  </ul>
+  

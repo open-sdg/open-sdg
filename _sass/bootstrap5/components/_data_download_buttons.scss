@@ -1,0 +1,71 @@
+#chartSelectionDownload,
+#tableSelectionDownload {
+    margin-bottom: 10px;
+    clear: left;
+    .btn-download {
+        margin-top: 1.5rem;
+        margin-right: 0.8rem;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.image-download-in-progress {
+    &,
+    * {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    #main-content,
+    #indicatorData,
+    #indicator-main,
+    #chartview,
+    #selectionsChart,
+    #chart-canvas,
+    #legend,
+    #chart-heading,
+    #selectionChartFooter {
+        width: 100% !important;
+    }
+    #legend,
+    #chart-heading,
+    #selectionChartFooter {
+        margin-left: 10px !important;
+        max-width: calc(100% - 40px) !important;
+    }
+    #main-content {
+        margin-left: 20px !important;
+        max-width: calc(100% - 20px) !important;
+    }
+    #chart-heading {
+        margin-top: 20px !important;
+        margin-bottom: 40px !important;
+    }
+    #selectionChartFooter {
+        margin-top: 20px !important;
+        dt {
+            margin-right: 5px !important;
+        }
+        dd {
+            margin-bottom: 10px !important;
+        }
+    }
+    .hide-during-image-download {
+        display: none !important;
+    }
+    &.contrast-high {
+        &,
+        #main-content,
+        #indicatorData,
+        #indicator-main,
+        #chartview,
+        #selectionsChart,
+        #chart-canvas,
+        #legend,
+        #chart-heading,
+        #selectionChartFooter {
+            background-color: $color-dark-highContrast !important;
+        }
+    }
+}

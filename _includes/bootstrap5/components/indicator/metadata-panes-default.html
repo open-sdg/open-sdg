@@ -1,0 +1,26 @@
+<div role="tabpanel" class="tab-pane active" id="national">
+    <!-- National Metadata -->
+    <div>
+        <article>
+            <p>
+                {% assign country_name = site.country.name | t %}
+                {% assign country_adjective = site.country.adjective | t %}
+                {{ page.t.indicator.national_metadata_blurb | replace: '%country_name', country_name | replace:
+                '%country_adjective', country_adjective }}
+            </p>
+            {% include components/indicator/metadata.html scope='national' %}
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="global">
+    <!-- Global Metadata -->
+    <div>
+        <article>
+            <p>{{ page.t.indicator.global_metadata_blurb }}</p>
+            {% include components/indicator/metadata.html scope='global' %}
+        </article>
+    </div>
+</div>
+<div role="tabpanel" class="tab-pane" id="sources">
+    {% include components/indicator/sources.html %}
+</div>

@@ -31,6 +31,9 @@ release) this can replace frontpage.html.
         <div class="frontpage-goals-grid-description">{{ site.frontpage_goals_grid.description | t | markdownify }}</div>
         {% endif %}
 
+        {% if site.bootstrap_5 %}
+        {% include bootstrap5/components/goal-tiles.html %}
+        {% else %}
         <div class="goal-tiles">
             <div class="row no-gutters">
                 {% for goal in page.goals %}
@@ -42,6 +45,7 @@ release) this can replace frontpage.html.
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
     </div>
     {% endif %}
 
@@ -54,7 +58,11 @@ release) this can replace frontpage.html.
         <div class="row">
         {% endif %}
 
+        {% if site.bootstrap_5 %}
+        {% include bootstrap5/components/card.html card=card %}
+        {% else %}
         {% include components/card.html card=card %}
+        {% endif %}
 
         {% if remainder == 0 or forloop.last %}
         </div>

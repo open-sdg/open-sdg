@@ -1,0 +1,30 @@
+[tabindex]:focus {
+    @include focus;
+}
+body.contrast-high {
+    [tabindex]:focus {
+        @include focusHighContrast;
+    }
+}
+div[tabindex]:focus {
+    @include focusOutlineOnly;
+}
+body.contrast-high div[tabindex]:focus {
+    @include focusOutlineOnlyHighContrast;
+}
+
+#skiplink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 250px;
+    left: 50%;
+    margin-left: -125px;
+    padding: 10px;
+    background: $backgroundColor;
+    text-align: center;
+    border: 1px solid $color-dark;
+    color: $color-dark;
+    display: block;
+}

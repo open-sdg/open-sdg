@@ -1,0 +1,18 @@
+.frontpage-goals-grid {
+    margin: 40px 0 20px 0;
+    border-top: 2px solid $frontpageGrid-horizontalRule-color;
+
+    .goal-tiles {
+        .goal-tile {
+            @media only screen and (min-width: 992px) {
+                // Display 9-goal rows on desktop.
+                width: 11%;
+            }
+        }
+    }
+
+    .frontpage-goals-grid-title {
+        margin-top: 20px;
+        margin-bottom: 14px;
+    }
+}

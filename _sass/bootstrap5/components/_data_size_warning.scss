@@ -1,0 +1,19 @@
+#dataset-size-warning {
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    vertical-align: middle;
+    background: $indicator-datasetWarning-backgroundColor;
+    border-radius: 4px;
+    padding: 5px;
+
+    i {
+        font-size: 1.2em;
+    }
+}
+
+body.contrast-high {
+    #dataset-size-warning {
+        color: $color-dark-highContrast;
+    }
+}

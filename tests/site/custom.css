@@ -1,0 +1,7 @@
+/* Disable fancy stuff that messes up automated tests. */
+:root {
+    scroll-behavior: auto;
+}
+.btn {
+    transition: none;
+}
