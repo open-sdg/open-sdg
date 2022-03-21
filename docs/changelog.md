@@ -1,5 +1,23 @@
 <h1>Change Log</h1>
 
+## 1.8.0
+
+* Feature: Dispaly time-series attributes in footer #1569
+* Feature: Include file for custom disclaimer content #1568
+* Feature: Include file for custom footer content #1563
+* Design: Styles updates for data notices #1561
+* Feature: Dynamic unit of measurement in data footer #1560
+* Feature: Support for Bootstrap 5 #1558
+* Maintenance: Remove rescaler chartjs plugin #1550
+* Feature: Indicator config 'graph_types' for dynamic chart type per unit/series #1548
+* Feature: Support for Chart.js 3 #1548, #1564, #1565, #1567
+* Maintenance: Docker config for VS Code #1525
+* Bugfix: Page-not-found fix and high-contrast version of color wheel #1522
+* Feature: Change more font-sizes to use variables #1496
+* Bugfix: Remove graph limits if there should be none #1485
+* Feature: Indicator config 'footer_fields' for dynamic footer fields per unit/series #1484
+* Bugfix: Handle case where starting value does not exist in selected series #1479
+
 ## 1.7.0
 
 * Feature: Ignore disaggregation columns #1463
