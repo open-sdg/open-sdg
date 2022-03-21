@@ -337,6 +337,13 @@ disclaimer:
 
 As always, you can use translation keys.
 
+You can also hide the entire disclaimer, like so:
+
+```
+disclaimer:
+  hidden: true
+```
+
 ### email_contacts
 
 **_Required_**: This setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
@@ -569,16 +576,6 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 
 ```nohighlight
 header_language_toggle: dropdown
-```
-
-### hide_disclaimer
-
-_Optional_: This setting can be used to hide the "dev disclaimer" at the top of each page. When your platform is complete and no longer under development (alpha/beta/etc), you may wish to tick this option.
-
-To hide the disclaimer, use the following example:
-
-```nohighlight
-hide_disclaimer: true
 ```
 
 ### hide_empty_metadata
