@@ -5,6 +5,7 @@
         padding-top: 10px;
     }
 
+    &.contrast-high canvas,
     canvas {
         @include noselect;
         &:focus {
