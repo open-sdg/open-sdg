@@ -1,2 +1,2 @@
 # Defining the exact version will make sure things don't break
-mkdocs
+git+https://github.com/mkdocs/mkdocs@96d8b85e02cc822a4628aa010bcdb11e262c3734#egg=mkdocs
