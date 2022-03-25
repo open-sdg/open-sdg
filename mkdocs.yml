@@ -12,7 +12,7 @@ extra_css:
     - css/architecture.css
     - css/home.css
 
-pages:
+nav:
     - Home: index.md
     - About: about.md
     - News & events: news-and-events.md
