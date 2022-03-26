@@ -21,12 +21,12 @@ translations:
     tag: 1.8.0-beta1
 ```
 
-## Update version of Open SDG to 1.8.0-beta2
+## Update version of Open SDG to 1.8.0-beta3
 
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@1.8.0-beta2
+remote_theme: open-sdg/open-sdg@1.8.0-beta3
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 1.8.0-beta1
@@ -50,4 +50,4 @@ bootstrap_5: true
 chartjs_3: true
 ```
 
-The Open SDG team will be posting a more detailed description of how to use these settings to prepare for Open SDG 2.0.0.
+See [this blog post on preparing for Open SDG 2.0.0](https://open-sdg.org/blog/2022-04-01-preparing-for-open-sdg-2/) for a more detailed description.
