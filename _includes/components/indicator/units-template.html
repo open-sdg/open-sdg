@@ -4,7 +4,7 @@
   {% endif %}
     <h4>{{ page.t.indicator.unit_of_measurement }}</h4>
     <fieldset>
-      <legend class="{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}">{{ page.t.indicator.unit_of_measurement }}</legend>
+      <legend class="sr-only">{{ page.t.indicator.unit_of_measurement }}</legend>
       <% _.each(units, function(unitsItem, index) { %>
         <% var checked = (selectedUnit) ? (selectedUnit==unitsItem) : (index==0); %>
         <label><input type="radio" name="unit" value="<%=unitsItem%>" tabindex=0 <%=checked ? 'checked' : ''%> /> <%=translations.t(unitsItem)%></label>

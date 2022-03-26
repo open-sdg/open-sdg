@@ -13,7 +13,7 @@
     <ul class="tags" aria-label="{{ page.t.indicator.tags }}">
     {% if show_reporting_status %}
         <li>
-        <span class="{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}">{{ page.t.indicator.status }}</span>
+        <span class="sr-only">{{ page.t.indicator.status }}</span>
         {% include components/reportingstatus/reporting-status-label.html indicator=include.indicator %}
         </li>
     {% endif %}
