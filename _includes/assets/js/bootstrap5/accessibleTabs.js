@@ -60,7 +60,7 @@ $(document).ready(function() {
         panes.first().attr('aria-hidden', 'false').show();
 
         // Set state for the first tabsList li
-        tabsList.find('li:first').addClass('active').find(' > a').attr({
+        tabsList.find('li:first').addClass('active').find(' > button').attr({
             'aria-selected': 'true',
             'tabindex': '0',
         });
