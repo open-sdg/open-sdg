@@ -13,10 +13,10 @@
             </button>
             <div class="d-flex flex-wrap w-100 justify-content-between">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    {% include bootstrap5/components/navigation.html dropdowns=true %}
+                    {% include bootstrap5/navigation.html dropdowns=true %}
                 </div>
                 <div class="header-search-bar">
-                    {% include bootstrap5/components/search.html %}
+                    {% include bootstrap5/search.html %}
                 </div>
                 <div class="header-toggles d-flex">
                     {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
