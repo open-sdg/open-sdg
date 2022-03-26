@@ -35,7 +35,7 @@ Chart.register({
     },
     initElements: function() {
         $('<span/>')
-            .addClass('{% if site.bootstrap_5 %}visually-hidden{% else %}sr-only{% endif %}')
+            .addClass('sr-only')
             .attr('id', 'chart-tooltip-status')
             .attr('role', 'status')
             .appendTo('#chart');
