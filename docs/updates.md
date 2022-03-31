@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 1.8.0
 
-TBD
+31 March 2022
 
 * Optionally preview Open SDG 2.0.0 (next major release)
 * Support for Bootstrap 5 and Chart.js 3
@@ -15,7 +15,7 @@ TBD
 
 ## 1.7.0
 
-13 January 2021
+13 January 2022
 
 * Ignore specified disaggregation columns
 * Control the order of the indicator tabs (chart/table/map/etc)
