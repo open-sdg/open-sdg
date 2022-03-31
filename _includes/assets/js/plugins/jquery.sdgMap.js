@@ -381,10 +381,21 @@
 
           // Keep track of the minimums and maximums.
           _.each(geoJson.features, function(feature) {
-            if (feature.properties.values && feature.properties.values.length) {
-              availableYears = availableYears.concat(Object.keys(feature.properties.values[0]));
-              minimumValues.push(_.min(Object.values(feature.properties.values[0])));
-              maximumValues.push(_.max(Object.values(feature.properties.values[0])));
+            if (feature.properties.values && feature.properties.values.length > 0) {
+              var validEntries = _.reject(Object.entries(feature.properties.values[0]), function(entry) {
+                return isMapValueInvalid(entry[1]);
+              });
+              if (validEntries.length > 0) {
+                var validKeys = validEntries.map(function(entry) {
+                  return entry[0];
+                });
+                var validValues = validEntries.map(function(entry) {
+                  return entry[1];
+                })
+                availableYears = availableYears.concat(validKeys);
+                minimumValues.push(_.min(validValues));
+                maximumValues.push(_.max(validValues));
+              }
             }
           });
         }
