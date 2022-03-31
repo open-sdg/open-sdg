@@ -2,9 +2,20 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 1.8.0
+
+31 March 2022
+
+* Optionally preview Open SDG 2.0.0 (next major release)
+* Support for Bootstrap 5 and Chart.js 3
+* Display time-series attributes in footer below charts/tables
+* Dynamic display of unit of measurement in footer below charts/tables
+* Dynamic chart types per unit/series
+* Dynamic footer fields per unit/series
+
 ## 1.7.0
 
-13 January 2021
+13 January 2022
 
 * Ignore specified disaggregation columns
 * Control the order of the indicator tabs (chart/table/map/etc)
