@@ -30,6 +30,7 @@
         <![endif]-->
 
         {% include components/favicons.html %}
+        <link rel="manifest" href="{{ site.baseurl }}/manifest.json">
 
         {% assign cache_bust = site.time | date: "%Y%m%d%H%M%S" %}
         {% if site.bootstrap_5 %}
