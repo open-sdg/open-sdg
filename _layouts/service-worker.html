@@ -2,15 +2,21 @@ importScripts(
     'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js'
 );
 
-const {registerRoute} = workbox.routing;
+const {registerRoute, setDefaultHandler} = workbox.routing;
 const {CacheableResponsePlugin} = workbox.cacheableResponse;
 const {ExpirationPlugin} = workbox.expiration;
 const {precacheAndRoute} = workbox.precaching;
+const {offlineFallback} = workbox.recipes;
+
 const {
     NetworkFirst,
     StaleWhileRevalidate,
-    CacheFirst
+    CacheFirst,
+    NetworkOnly,
 } = workbox.strategies;
+
+setDefaultHandler(new NetworkOnly());
+offlineFallback();
 
 /*
 // Do we need to precache all of this?
