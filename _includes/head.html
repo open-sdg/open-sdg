@@ -30,7 +30,9 @@
         <![endif]-->
 
         {% include components/favicons.html %}
+        {% if site.progressive_web_app %}
         <link rel="manifest" href="{{ site.baseurl }}/manifest.json">
+        {% endif %}
 
         {% assign cache_bust = site.time | date: "%Y%m%d%H%M%S" %}
         {% if site.bootstrap_5 %}

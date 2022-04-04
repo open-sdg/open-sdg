@@ -879,6 +879,21 @@ As always, for multilingual support, the label/alt/heading settings can refer to
 
 For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
 
+### progressive_web_app
+
+_Optional_: This setting can be used to make the platform a
+[progressive web app](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps),
+which users can add to their mobile device's home screen and
+use while offline.
+
+```nohighlight
+progressive_web_app: true
+```
+
+If this is enabled, it is recommended to have an "Offline" page
+available at /offline.html. An example of this is available in
+the site-starter repository.
+
 ### remote_data_prefix
 
 **_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
