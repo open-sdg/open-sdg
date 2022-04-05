@@ -884,10 +884,19 @@ For more information on how to use these status types, see the [indicator config
 _Optional_: This setting can be used to make the platform a
 [progressive web app](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps),
 which users can add to their mobile device's home screen and
-use while offline.
+use while offline. The available settings are:
+
+* `enabled`: Whether or not this platform will be a progressive web app
+* `name`: The full name of the app, to be displayed on the splash screen
+* `short_name`: The short name of the app, to be displayed under the homescreen icon
+* `precaching`: Whether all indicator and goal pages should be precached when the app is installed
 
 ```nohighlight
-progressive_web_app: true
+progressive_web_app:
+  enabled: true
+  name: Indicators For The Sustainable Development Goals - Mexico
+  short_name: SDG Mexico
+  precaching: false
 ```
 
 If this is enabled, it is recommended to have an "Offline" page

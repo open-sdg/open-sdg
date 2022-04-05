@@ -1,7 +1,7 @@
 ---
 # Don't delete this line.
 ---
-{%- if site.progressive_web_app -%}
+{%- if site.progressive_web_app.enabled -%}
 {%- include assets/js/serviceWorkerInit.js -%}
 {%- endif -%}
 {%- include assets/js/autotrack-element.js -%}

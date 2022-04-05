@@ -282,7 +282,11 @@ progress_status:
       label: status.progress_target_achieved
       image: assets/img/progress/target-achieved.png
       alt: status.progress_target_achieved
-progressive_web_app: true
+progressive_web_app:
+  enabled: true
+  name: My SDG App Name
+  short_name: SDG App
+  precaching: true
 remote_data_prefix: _build
 reporting_status:
   title: custom.reporting_status_title

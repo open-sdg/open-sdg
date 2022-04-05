@@ -18,28 +18,20 @@ const {
 setDefaultHandler(new NetworkOnly());
 offlineFallback();
 
-/*
-// Do we need to precache all of this?
-// Let's try without precaching for now
-// because the homepage caches a lot.
+{% if site.progressive_web_app.precaching %}
+// Precache the indicator/goal pages.
 precacheAndRoute([
-  {%- for route in site.data.routes.images -%}
+  {%- for route in site.data.routes.indicators -%}
   {url: '{{ route }}', revision: null},
   {%- endfor -%}
-  {%- for route in site.data.routes.pages -%}
-  {url: '{{ route }}', revision: null},
-  {%- endfor -%}
-  {%- for route in site.data.routes.zip -%}
+  {%- for route in site.data.routes.goals -%}
   {url: '{{ route }}', revision: null},
   {%- endfor -%}
   {%- for route in site.data.routes.json -%}
   {url: '{{ route }}', revision: null},
   {%- endfor -%}
-  {%- for route in site.data.routes.csv -%}
-  {url: '{{ route }}', revision: null},
-  {%- endfor -%}
 ]);
-*/
+{% endif %}
 
 // Cache page navigations (html) with a Network First strategy
 registerRoute(

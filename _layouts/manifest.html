@@ -1,11 +1,11 @@
 {
     "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-    "name": "{{ site.title | t }}",
+    "name": "{{ site.progressive_web_app.name | t }}",
     "background_color": "#fff",
-    "short_name": "{{ site.country.name | t }} SDG",
+    "short_name": "{{ site.progressive_web_app.short_name | t }}",
     "start_url": ".",
     "display": "standalone",
-    "description": "{{ site.title | t }}",
+    "description": "",
     "icons": [
         {
             "src": "{{ site.baseurl }}/assets/img/favicons/android-chrome-192x192.png",

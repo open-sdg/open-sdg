@@ -30,7 +30,7 @@
         <![endif]-->
 
         {% include components/favicons.html %}
-        {% if site.progressive_web_app %}
+        {% if site.progressive_web_app.enabled %}
         <link rel="manifest" href="{{ site.baseurl }}/manifest.json">
         {% endif %}
 
