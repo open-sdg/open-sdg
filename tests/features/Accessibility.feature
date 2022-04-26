@@ -6,6 +6,8 @@ Feature: Accessibility
 
   Scenario: Page titles are unique and descriptive
     Given I am on "/"
-    Then I should see "<title>My homepage title - Indicators For The Sustainable Development Goals</title>"
+    Then I should see "<title>My English page title</title>"
+    And I am on "/es"
+    Then I should see "<title>My Spanish page title</title>"
     And I am on "/es/goals"
-    Then I should see "<title>My Spanish goals page title - Indicators For The Sustainable Development Goals</title>"
+    Then I should see "<title>My Spanish goals page title - My Spanish page title</title>"

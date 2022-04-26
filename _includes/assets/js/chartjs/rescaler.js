@@ -1,7 +1,7 @@
 // This "crops" the charts so that empty years are not displayed
 // at the beginning or end of each dataset. This ensures that the
 // chart will fill all the available space.
-Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
+Chart.register({
   id: 'rescaler',
   beforeInit: function (chart, options) {
     chart.config.data.allLabels = chart.config.data.labels.slice(0);

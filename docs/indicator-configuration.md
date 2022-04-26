@@ -440,8 +440,6 @@ graph_types:
     type: bar
 ```
 
-Note that this setting only works if `chartjs_3` is set to `true`.
-
 ### indicator_available
 
 **_Recommended_**: This setting is intended for use when the global indicator name might not accurately describe the available national/regional statistics. It should provide an alternate name for the indicator. If specified it will display just below the indicator banner.

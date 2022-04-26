@@ -127,18 +127,6 @@ prose:
             label: "Other information"
             translation_key: metadata_fields.comments_limitations
             scope: national
-      - name: "national_data_updated_date"
-        field:
-            element: hidden
-            label: "Data last updated"
-            translation_key: metadata_fields.national_data_update_url
-            scope: national
-      - name: "national_metadata_updated_date"
-        field:
-            element: hidden
-            label: "Metadata last updated"
-            translation_key: metadata_fields.national_metadata_update_url
-            scope: national
        ######### Data Info #########
       - name: "reporting_status"
         field:
@@ -203,17 +191,6 @@ prose:
             translation_key: metadata_fields.indicator_sort_order
             scope: data
       ######### Chart Info #########
-      - name: "graph_type"
-        field:
-            element: select
-            label: "Graph type"
-            translation_key: metadata_fields.graph_type
-            options:
-              - name: 'line'
-                value: 'line'
-              - name: 'bar'
-                value: 'bar'
-            scope: graph
       - name: "graph_title"
         field:
             element: text
