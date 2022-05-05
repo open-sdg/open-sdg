@@ -108,10 +108,15 @@ map_layers:
     # The label to use in the "Download GeoJSON" button:
     label: indicator.map
     # The minimum zoom at which this layer should be visible.
+    # For example, if this "min_zoom" is set to 4, then this
+    # layer will be invisible at zoom level 3 or less.
     min_zoom: 0
     # The maximum zoom at which this layer should be visible.
+    # For example, if this "max_zoom" is set to 8, then this
+    # layer will be invisible at zoom level 9 or more.
     max_zoom: 20
-    # Whether or not these boundaries should display statically on lower layers.
+    # Whether or not these boundaries should display statically
+    # on lower layers.
     staticBorders: false
 ```
 

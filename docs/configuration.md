@@ -765,6 +765,14 @@ logos:
     alt: mi texto alternativo
 ```
 
+### map_layers
+
+_Optional_: This setting configures the layers that will be visible on maps on indicator pages. Each layer is a set of boundaries. For example, one layer might be for the province boundaries, and another layer might be for the district boundaries. For more information on this setting, see the [Maps guidance](maps.md).
+
+### map_options
+
+_Optional_: This setting configures general options for maps on indicator pages. For more information on this setting, see the [Maps guidance](maps.md).
+
 ### metadata_edit_url
 
 **_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
