@@ -16,6 +16,7 @@ var indicatorModel = function (options) {
   // general members:
   var that = this;
   this.data = helpers.inputData(options.data);
+  console.log(this.data);
   this.edgesData = helpers.inputEdges(options.edgesData);
   this.hasHeadline = true;
   this.country = options.country;

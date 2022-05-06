@@ -94,11 +94,7 @@ function getPrecision(precisions, selectedUnit, selectedSeries) {
  * @return {Array} Rows
  */
 function inputData(data) {
-  var dropKeys = [];
-  {% if site.ignored_disaggregations and site.ignored_disaggregations.size > 0 %}
-  dropKeys = {{ site.ignored_disaggregations | jsonify }};
-  {% endif %}
-  return convertJsonFormatToRows(data, dropKeys);
+  return convertJsonFormatToRows(data, getNonDisaggregationColumns());
 }
 
 /**
@@ -107,16 +103,41 @@ function inputData(data) {
  */
 function inputEdges(edges) {
   var edgesData = convertJsonFormatToRows(edges);
-  {% if site.ignored_disaggregations and site.ignored_disaggregations.size > 0 %}
-  var ignoredDisaggregations = {{ site.ignored_disaggregations | jsonify }};
-  edgesData = edgesData.filter(function(edge) {
-    if (ignoredDisaggregations.includes(edge.To) || ignoredDisaggregations.includes(edge.From)) {
-      return false;
-    }
-    return true;
-  });
-  {% endif %}
+  var nonDisaggCols = getNonDisaggregationColumns();
+  if (nonDisaggCols.length > 0) {
+    edgesData = edgesData.filter(function(edge) {
+      if (nonDisaggCols.includes(edge.To) || nonDisaggCols.includes(edge.From)) {
+        return false;
+      }
+      return true;
+    });
+  }
   return edgesData;
+}
+
+/**
+ * @return {Array} All columns which should not be considered disaggregations.
+ */
+function getNonDisaggregationColumns() {
+  var cols = [];
+  {% if site.ignored_disaggregations and site.ignored_disaggregations.size > 0 %}
+  cols = cols.concat({{ site.ignored_disaggregations | jsonify }});
+  {% endif %}
+  {% if site.data.data_config.indicator_options.non_disaggregation_columns and site.data.data_config.indicator_options.non_disaggregation_columns.size > 0 %}
+  cols = cols.concat({{ site.data.data_config.indicator_options.non_disaggregation_columns | jsonify }});
+  {% endif %}
+  cols = _.uniq(cols);
+  var toRemove = [
+    UNIT_COLUMN,
+    SERIES_COLUMN,
+    GEOCODE_COLUMN,
+    YEAR_COLUMN,
+    VALUE_COLUMN,
+  ];
+  cols = cols.filter(function(el) {
+    return !(toRemove.includes(el));
+  });
+  return cols;
 }
 
 /**
