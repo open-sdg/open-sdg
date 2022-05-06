@@ -27,8 +27,8 @@ contrast_type: single
 cookie_consent_form:
   enabled: true
 country:
-  name: Australia
-  adjective: Australian
+  name: custom.country_name
+  adjective: custom.country_adjective
 create_goals:
   layout: goal-with-progress
   previous_next_links: true
