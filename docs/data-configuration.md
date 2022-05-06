@@ -173,7 +173,15 @@ indicator_export_filename: all_indicators
 
 _Optional_: This controls how your indicators are loaded. The available parameters are:
 
-* non_disaggregation_columns: This specifies a list of columns that should not be considered disaggregations.
+* non_disaggregation_columns: This specifies a list of columns that should not be considered disaggregations. Adding a column here has several effects:
+    1. Prevents the column from being considered as an "edge" (parent/child column)
+    2. Prevents the column from being used in the "data package" output and CSVW output
+    3. Are used to decide which data rows will be displayed when the chart is first displayed (aka, the "headline" rows). Normally, if a row has content under a disaggregation column, it cannot be considered a headline row. But if that column is in this list, then it can still be considered a headline row.
+    4. Keeps the column out of the disaggregation report
+    5. Keeps the column out of the disaggregation status
+
+    NOTE: This parameter does *not* prevent columns from appearing as dropdowns in the left sidebar on Open SDG indicator pages. In order to prevent columns from appearing as dropdowns, you need to use the [ignored_disaggregations site configuration](configuration.md#ignored_disaggregations).
+
 * series_column: The name of the data column that should be considered the series. Historically this has been "Series", but if your data source is SDMX then it may be "SERIES".
 * unit_column: The name of the data column that should be considered the unit of measurement. Historically this has been "Units", but if your data source is SDMX then it may be "UNIT_MEASURE".
 
