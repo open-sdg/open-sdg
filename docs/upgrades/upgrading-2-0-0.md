@@ -71,7 +71,7 @@ The `layout` option in the `create_goals` site configuration has been removed, a
 
 ### create_pages - automate two pages
 
-Throughout 1.x the `create_pages` site configuration has been expected to contain items for the frontpage and for an "indicators.json" file. These can now be removed from `create_pages` because they will be automatically created. For example, see the difference between the `create_pages` settings from the [1.8.0 site starter](TBD) and the [2.0.0 site starter](TBD).
+Throughout 1.x the `create_pages` site configuration has been expected to contain items for the frontpage and for an "indicators.json" file. These can now be removed from `create_pages` because they will be automatically created. For example, see the difference between the `create_pages` settings from the 1.8.0 site starter and the 2.0.0 site starter (links TBD).
 
 ### create_pages - deprecated structure removed
 
