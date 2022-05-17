@@ -69,9 +69,7 @@ function nonFieldColumns() {
   timeSeriesAttributes.forEach(function(tsAttribute) {
     columns.push(tsAttribute.field);
   });
-  if (SERIES_TOGGLE) {
-    columns.push(SERIES_COLUMN);
-  }
+  columns.push(SERIES_COLUMN);
   return columns;
 }
 

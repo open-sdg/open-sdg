@@ -1,42 +1,58 @@
+{% comment %}
+Currently the "frontpage.html" layout is serving 2 purposes:
+
+1. A front page
+2. A landing page for the 17 goals
+
+This file will serve as a more targetted front page, and thus only serves
+purpose #1 above. It is temporarily called "frontpage-alt.html", so as not to
+conflict with the existing "frontpage.html". Eventually (at the next major
+release) this can replace frontpage.html.
+{% endcomment %}
 {% include head.html %}
 {% include header.html %}
 <div id="main-content" class="container" role="main">
 
     {% if site.frontpage_introduction_banner %}
-    <div class="site-intro spacer medium">
+    <div class="site-intro">
         <h1>{{ site.frontpage_introduction_banner.title | t }}</h1>
-        <p class="lead-copy">{{ site.frontpage_introduction_banner.description | t }}</p>
+        <div class="lead-copy">{{ site.frontpage_introduction_banner.description | t | markdownify }}</div>
     </div>
     {% endif %}
 
-    {% assign country_name = site.country.name | t %}
-    {% assign heading_default = page.t.frontpage.heading | replace: '%name', country_name %}
-    <h2 class="spacer medium">{{ site.frontpage_heading | default: heading_default | t }}</h2>
+    {% if site.frontpage_goals_grid %}
+    <div class="frontpage-goals-grid">
 
-    {% assign instructions_default = page.t.frontpage.instructions | replace_first: '%before_link', '<span id="jump-to-search"><a>' | replace_first: '%after_link', '</a></span>' | replace_first: '%name', country_name %}
-    <p class="spacer medium">{{ site.frontpage_instructions | default: instructions_default | t }}</p>
+        {% if site.frontpage_goals_grid.title %}
+        <h2 class="frontpage-goals-grid-title">{{ site.frontpage_goals_grid.title | t }}</h2>
+        {% endif %}
 
-    <div class="goal-tiles">
-    {% for goal in page.goals %}
-        {% cycle 'add row' : '<div class="row no-gutters">', '', '', '', '', '' %}
-            <div class="col-xs-4 col-md-2">
-                <a href="{{ goal.url }}">
-                  <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
-              </a>
-            </div>
-        {% cycle 'end row' : '', '', '', '', '', '</div>' %}
-    {% endfor %}
-    {% comment %}
-        If there were exactly 17 goals, "pad" it with 1 more, to make it come
-        out more symmetrically.
-    {% endcomment %}
-    {% if page.goals.size == 17 %}
-        <div class="col-xs-4 col-md-2">
-            <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
+        {% if site.frontpage_goals_grid.description %}
+        <div class="frontpage-goals-grid-description">{{ site.frontpage_goals_grid.description | t | markdownify }}</div>
+        {% endif %}
+
+        {% include components/goal-tiles.html %}
+    </div>
+    {% endif %}
+
+    {% if site.frontpage_cards %}
+    <div class="frontpage-cards">
+    {% for card in site.frontpage_cards %}
+        {% assign remainder = forloop.index | modulo: 3 %}
+
+        {% if remainder == 1 or forloop.first %}
+        <div class="row">
+        {% endif %}
+
+        {% include components/card.html card=card %}
+
+        {% if remainder == 0 or forloop.last %}
         </div>
+        {% endif %}
+
+    {% endfor %}
+    </div>
     {% endif %}
-    </div>
-    </div>
-    {% include components/download-all-data.html %}
+
 </div>
 {% include footer.html %}

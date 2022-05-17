@@ -1,7 +1,7 @@
 # Jekyll configuration for Open SDG platform
 
 # Replace this title as needed.
-title: Indicators For The Sustainable Development Goals
+title: custom.page_title
 
 # Replace the baseurl with the name of this repository.
 baseurl: ""

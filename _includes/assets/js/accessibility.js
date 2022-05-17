@@ -1,150 +1,124 @@
-var accessibilitySwitcher = function() {
+var accessibilitySwitcher = function () {
 
-  var contrastIdentifiers = ['default', 'high'],
-      contrastType = "{{ site.contrast_type }}" || "default",
-      singleToggle = (contrastType === 'long' || contrastType === 'single');
-
-  if (contrastType === 'long') {
-    $('body').addClass('long');
-  }
-  function setActiveContrast(newContrast) {
-    var oldContrast = getActiveContrast();
-    if (oldContrast !== newContrast) {
-      _.each(contrastIdentifiers, function(id) {
-        $('body').removeClass('contrast-' + id);
-      });
-      $('body').addClass('contrast-' + newContrast);
-
-      createCookie("contrast", newContrast, 365);
-
-      if (singleToggle) {
-        flipAllContrastLinks(oldContrast, newContrast);
-      }
+    function getActiveContrast() {
+        return $('body').hasClass('contrast-high') ? 'high' : 'default';
     }
-  }
 
-  function flipAllContrastLinks(newContrast, oldContrast) {
-    var title = getContrastToggleTitle(newContrast),
-        label = getContrastToggleLabel(newContrast);
-        gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', newContrast);
-    $('[data-contrast-switch-to]')
-      .data('contrast-switch-to', newContrast)
-      .attr('title', title)
-      .attr('aria-label', title)
-      .attr(gaAttributes)
-      .html(label)
-      .parent()
-        .addClass('contrast-' + newContrast)
-        .removeClass('contrast-' + oldContrast);
-  }
+    function setHighContrast() {
+        $('body')
+            .removeClass('contrast-default')
+            .addClass('contrast-high');
+        var title = translations.header.disable_high_contrast;
+        var gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', 'default');
+        $('[data-contrast-switch-to]')
+            .attr('data-contrast-switch-to', 'default')
+            .attr('title', title)
+            .attr('aria-label', title)
+            .attr(gaAttributes);
 
-  function getActiveContrast() {
-    var contrast = _.filter(contrastIdentifiers, function(id) {
-      return $('body').hasClass('contrast-' + id);
+        imageFix('high');
+        createCookie('contrast', 'high', 365);
+    }
+
+    function setDefaultContrast() {
+        $('body')
+            .removeClass('contrast-high')
+            .addClass('contrast-default');
+        var title = translations.header.enable_high_contrast;
+        var gaAttributes = opensdg.autotrack('switch_contrast', 'Accessibility', 'Change contrast setting', 'high');
+        $('[data-contrast-switch-to]')
+            .attr('data-contrast-switch-to', 'high')
+            .attr('title', title)
+            .attr('aria-label', title)
+            .attr(gaAttributes);
+
+        imageFix('default');
+        createCookie('contrast', 'default', 365);
+
+    }
+
+    $('[data-contrast-switch-to]').click(function () {
+        var newContrast = $(this).attr('data-contrast-switch-to');
+        var oldContrast = getActiveContrast();
+        if (newContrast === oldContrast) {
+            return;
+        }
+        if (newContrast === 'high') {
+            setHighContrast();
+            broadcastContrastChange('high', this);
+        }
+        else {
+            setDefaultContrast();
+            broadcastContrastChange('default', this);
+        }
+
     });
 
-    return contrast.length > 0 ? contrast[0] : contrastIdentifiers[0];
-  }
-
-  function createCookie(name,value,days) {
-    if (days) {
-      var date = new Date();
-      date.setTime(date.getTime()+(days*24*60*60*1000));
-      var expires = "; expires="+date.toGMTString();
+    function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        }
+        else expires = "";
+        document.cookie = name + "=" + value + expires + "; path=/";
     }
-    else expires = "";
-    document.cookie = name+"="+value+expires+"; path=/";
-  }
 
-  function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-      var c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
     }
-    return null;
-  }
 
-  window.onunload = function(e) {
-    var contrast = getActiveContrast();
-    createCookie("contrast", contrast, 365);
-  }
+    function imageFix(contrast) {
+        var doNotSwitchTheseSuffixes = ['.svg'];
+        if (contrast == 'high') {
+            _.each($('img:not([src*=high-contrast])'), function (image) {
+                var src = $(image).attr('src').toLowerCase();
+                var switchThisImage = true;
+                for (var i = 0; i < doNotSwitchTheseSuffixes.length; i++) {
+                    var suffix = doNotSwitchTheseSuffixes[i];
+                    if (src.slice(0 - suffix.length) === suffix) {
+                        switchThisImage = false;
+                    }
+                }
+                if (switchThisImage) {
+                    $(image).attr('src', $(image).attr('src').replace('img/', 'img/high-contrast/'));
+                }
+            });
+        } else {
+            // Remove high-contrast
+            _.each($('img[src*=high-contrast]'), function (goalImage) {
+                $(goalImage).attr('src', $(goalImage).attr('src').replace('high-contrast/', ''));
+            })
+        }
+    };
 
-  var cookie = readCookie("contrast");
-  var contrast = cookie ? cookie : contrastIdentifiers[0];
-  setActiveContrast(contrast);
-  imageFix(contrast);
-
-  ////////////////////////////////////////////////////////////////////////////////////
-
-  $('[data-contrast-switch-to]').click(function() {
-
-    var oldContrast = getActiveContrast();
-    var newContrast = $(this).data('contrast-switch-to');
-
-    if (oldContrast !== newContrast) {
-      setActiveContrast(newContrast);
-      imageFix(newContrast);
-      broadcastContrastChange(newContrast, this);
+    function broadcastContrastChange(contrast, elem) {
+        var event = new CustomEvent('contrastChange', {
+            bubbles: true,
+            detail: contrast
+        });
+        elem.dispatchEvent(event);
     }
-  });
 
-  function broadcastContrastChange(contrast, elem) {
-    var event = new CustomEvent('contrastChange', {
-      bubbles: true,
-      detail: contrast
-    });
-    elem.dispatchEvent(event);
-  }
+    window.onunload = function (e) {
+        var contrast = getActiveContrast();
+        createCookie('contrast', contrast, 365);
+    }
 
-  function getContrastToggleLabel(identifier){
-    if (contrastType === "long") {
-      if (identifier === "default") {
-        return translations.header.default_contrast.replace(' ', '<br>');
-      }
-      else if (identifier === "high") {
-        return translations.header.high_contrast.replace(' ', '<br>');
-      }
+    var cookie = readCookie('contrast');
+    var contrast = cookie ? cookie : 'default';
+    if (contrast === 'high') {
+        setHighContrast();
     }
     else {
-      return 'A'
+        setDefaultContrast();
     }
-  }
-
-  function getContrastToggleTitle(identifier){
-    if (identifier === "default") {
-      return translations.header.disable_high_contrast;
-    }
-    else if (identifier === "high") {
-      return translations.header.enable_high_contrast;
-    }
-  }
-
-
-  function imageFix(contrast) {
-    var doNotSwitchTheseSuffixes = ['.svg'];
-    if (contrast == 'high')  {
-      _.each($('img:not([src*=high-contrast])'), function(image) {
-        var src = $(image).attr('src').toLowerCase();
-        var switchThisImage = true;
-        for (var i = 0; i < doNotSwitchTheseSuffixes.length; i++) {
-          var suffix = doNotSwitchTheseSuffixes[i];
-          if (src.slice(0 - suffix.length) === suffix) {
-            switchThisImage = false;
-          }
-        }
-        if (switchThisImage) {
-          $(image).attr('src', $(image).attr('src').replace('img/', 'img/high-contrast/'));
-        }
-      });
-    } else {
-      // Remove high-contrast
-      _.each($('img[src*=high-contrast]'), function(goalImage){
-        $(goalImage).attr('src', $(goalImage).attr('src').replace('high-contrast/', ''));
-      })
-    }
-  };
 
 };

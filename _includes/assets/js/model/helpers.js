@@ -40,7 +40,6 @@
 
   {% include assets/js/model/constants.js %}
   {% include assets/js/model/utils.js %}
-  var arrayMove = deprecated('utils.arrayMove');
   {% include assets/js/model/unitHelpers.js %}
   {% include assets/js/model/seriesHelpers.js %}
   {% include assets/js/model/fieldHelpers.js %}
@@ -60,9 +59,7 @@
     GEOCODE_COLUMN: GEOCODE_COLUMN,
     YEAR_COLUMN: YEAR_COLUMN,
     VALUE_COLUMN: VALUE_COLUMN,
-    SERIES_TOGGLE: SERIES_TOGGLE,
     GRAPH_TITLE_FROM_SERIES: GRAPH_TITLE_FROM_SERIES,
-    CHARTJS_3: CHARTJS_3,
     convertJsonFormatToRows: convertJsonFormatToRows,
     getUniqueValuesByProperty: getUniqueValuesByProperty,
     dataHasUnits: dataHasUnits,
@@ -107,7 +104,5 @@
     inputEdges: inputEdges,
     getTimeSeriesAttributes: getTimeSeriesAttributes,
     inputData: inputData,
-    // Backwards compatibility.
-    footerFields: deprecated('helpers.footerFields'),
   }
 })();

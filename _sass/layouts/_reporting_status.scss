@@ -1,180 +1,184 @@
 .layout-reportingstatus {
-  .reporting-status-description {
-    margin-bottom: 25px;
-  }
-
-  #main-content {
-    .statuses {
-
-      strong {
-        font-weight: normal;
-      }
-      > div {
-        display: inline-block;
-        margin-bottom: 5px;
-        margin-right: 10px;
-
-        .status {
-          @include status;
-          display: inline-block;
-          margin-right: 3px;
-          padding: 2px 5px;
-          border-radius: 4px;
-
-          width: 40px;
-          text-align: center;
-          font-size: $fontSize;
-
-          .status-inner {
-            padding: 0 2px;
-            border-radius: 5px;
-          }
-        }
-      }
+    .reporting-status-description {
+        margin-bottom: 25px;
     }
-    .value {
-      color: $text-color;
-      font-weight: bold;
-      margin-left: 3px;
-    }
-    .goal-stats {
-      @include preserveOriginalColors;
-      border: 1px solid $color-dark;
-      font-size: 0;
-      margin-top:10px;
-      & span {
-        display: inline-block;
-        height: 10px;
-        font-weight: bold;
-      }
-      .notapplicable {
-        background-color: $status-backgroundColor-notapplicable;
-        background: $status-backgroundColor-notapplicable;
-      }
-      .notstarted {
-        background-color: $status-backgroundColor-notstarted;
-        background: $status-backgroundColor-notstarted;
-      }
-      .inprogress {
-        background-color: $status-backgroundColor-inprogress;
-        background: $status-backgroundColor-inprogress;
-      }
-      .complete {
-        background-color: $status-backgroundColor-complete;
-        background: $status-backgroundColor-complete;
-      }
-    }
-    .divider {
-      height: 15px;
-    }
-    .goal {
-      clear: left;
-      margin-bottom: 4px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid $horizontalRule-color;
-      .total {
-        line-height: 1.2;
-        font-size: $fontSize;
-        width: auto;
-        padding-left: 4px;
-        padding-right: 4px;
-        text-align: center;
-        display: inline-block;
-        margin-bottom: 10px;
-        border-radius: 4px;
-        border: 1px solid $horizontalRule-color;
-        @media screen and (min-width: 520px) {
-          margin-left: 10px;
-        }
-      }
-    }
-    .frame {
-      width: 115px;
-      float: left;
-      min-height: 1px;
-      > a:focus {
-        outline: 6px $focusOutlineColor solid !important;
-      }
-    }
-    .details {
-      width: calc(100% - 125px);
-      float: left;
-      h2 {
-        @media screen and (min-width: 520px) {
-          display: inline-block;
-        }
-      }
-      h3 {
-        margin-top: 10px;
-        @media screen and (min-width: 520px) {
-          display: inline-block;
-        }
-        @media only screen and (max-width: 720px) {
-          margin-top: 3px;
-        }
-        @media only screen and (max-width: 520px) {
-          margin-bottom: 3px;
-        }
-        line-height: 1.2;
-      }
-    }
-    [data-extra-field] {
-      .details {
-        width: 100%;
-      }
-    }
-    .goal-overall {
-      margin-bottom: 20px;
-
-      .details {
-        width: 100%;
-      }
-    }
-  }
-
-  #main-content .reporting-status-item {
-    margin-bottom: 20px;
-  }
-
-  &.contrast-high {
 
     #main-content {
+        .statuses {
+            strong {
+                font-weight: normal;
+            }
+            > div {
+                display: inline-block;
+                margin-bottom: 5px;
+                margin-right: 10px;
 
-      .goal-stats{
-        border: 1px solid $color-light-highContrast !important;
-        .notapplicable {
-          background-color: $status-backgroundColor-notapplicable-highContrast;
-          background: $status-backgroundColor-notapplicable-highContrast;
-        }
-        .notstarted {
-          background-color: $status-backgroundColor-notstarted-highContrast;
-          background: $status-backgroundColor-notstarted-highContrast;
-        }
-        .inprogress {
-          background-color: $status-backgroundColor-inprogress-highContrast;
-          background: $status-backgroundColor-inprogress-highContrast;
-        }
-        .complete {
-          background-color: $status-backgroundColor-complete-highContrast;
-          background: $status-backgroundColor-complete-highContrast;
-        }
-      }
+                .status {
+                    @include status;
+                    display: inline-block;
+                    margin-right: 3px;
+                    padding: 2px 5px;
+                    border-radius: 4px;
 
-      .statuses {
-        strong {
-          color: $color-light-highContrast;
+                    width: 40px;
+                    text-align: center;
+                    font-size: $fontSize;
+
+                    .status-inner {
+                        padding: 0 2px;
+                        border-radius: 5px;
+                    }
+                }
+            }
         }
         .value {
-          color: $color-light-highContrast !important;
+            color: $text-color;
+            font-weight: bold;
+            margin-left: 3px;
         }
-        .status {
-          @include statusHighContrast;
-          border: none !important;
-          &.notstarted {
-            border: $status-border-notstarted-highContrast !important;
-          }
+        .goal-stats {
+            @include preserveOriginalColors;
+            border: 1px solid $color-dark;
+            font-size: 0;
+            margin-top: 10px;
+            & span {
+                display: inline-block;
+                height: 10px;
+                font-weight: bold;
+            }
+            .notapplicable {
+                background-color: $status-backgroundColor-notapplicable;
+                background: $status-backgroundColor-notapplicable;
+            }
+            .notstarted {
+                background-color: $status-backgroundColor-notstarted;
+                background: $status-backgroundColor-notstarted;
+            }
+            .inprogress {
+                background-color: $status-backgroundColor-inprogress;
+                background: $status-backgroundColor-inprogress;
+            }
+            .complete {
+                background-color: $status-backgroundColor-complete;
+                background: $status-backgroundColor-complete;
+            }
         }
-      }
+        .divider {
+            height: 15px;
+        }
+        .goal {
+            clear: left;
+            margin-bottom: 4px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid $horizontalRule-color;
+            .total {
+                line-height: 1.2;
+                font-size: $fontSize;
+                width: auto;
+                padding-left: 4px;
+                padding-right: 4px;
+                text-align: center;
+                display: inline-block;
+                margin-bottom: 10px;
+                border-radius: 4px;
+                border: 1px solid $horizontalRule-color;
+                @media screen and (min-width: 520px) {
+                    margin-left: 10px;
+                }
+            }
+        }
+        .frame {
+            width: 115px;
+            float: left;
+            min-height: 1px;
+            > a:focus {
+                outline: 6px $focusOutlineColor solid !important;
+            }
+        }
+        .details {
+            width: calc(100% - 125px);
+            float: left;
+            h2 {
+                margin-top: 0;
+                @media screen and (min-width: 520px) {
+                    display: inline-block;
+                }
+            }
+            h3 {
+                margin-top: 10px;
+                @media screen and (min-width: 520px) {
+                    display: inline-block;
+                }
+                @media only screen and (max-width: 720px) {
+                    margin-top: 3px;
+                }
+                @media only screen and (max-width: 520px) {
+                    margin-bottom: 3px;
+                }
+                line-height: 1.2;
+            }
+        }
+        [data-extra-field] {
+            .details {
+                width: 100%;
+            }
+        }
+        .goal-overall {
+            margin-bottom: 20px;
+
+            .details {
+                width: 100%;
+            }
+        }
     }
-  }
+
+    #main-content .reporting-status-item {
+        margin-bottom: 20px;
+    }
+
+    &.contrast-high {
+        #main-content {
+            .goal-tiles {
+                img {
+                    background-color: black !important;
+                }
+            }
+            
+            .goal-stats {
+                border: 1px solid $color-light-highContrast !important;
+                .notapplicable {
+                    background-color: $status-backgroundColor-notapplicable-highContrast;
+                    background: $status-backgroundColor-notapplicable-highContrast;
+                }
+                .notstarted {
+                    background-color: $status-backgroundColor-notstarted-highContrast;
+                    background: $status-backgroundColor-notstarted-highContrast;
+                }
+                .inprogress {
+                    background-color: $status-backgroundColor-inprogress-highContrast;
+                    background: $status-backgroundColor-inprogress-highContrast;
+                }
+                .complete {
+                    background-color: $status-backgroundColor-complete-highContrast;
+                    background: $status-backgroundColor-complete-highContrast;
+                }
+            }
+
+            .statuses {
+                strong {
+                    color: $color-light-highContrast;
+                }
+                .value {
+                    color: $color-light-highContrast !important;
+                }
+                .status {
+                    @include statusHighContrast;
+                    border: none !important;
+                    &.notstarted {
+                        border: $status-border-notstarted-highContrast !important;
+                    }
+                }
+            }
+        }
+    }
 }

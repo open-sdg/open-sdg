@@ -1,23 +1,37 @@
 // This plugin allows users to cycle through tooltips by keyboard.
-Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
+Chart.register({
     id: 'open-sdg-accessible-charts',
     afterInit: function(chart) {
         var plugin = this;
         plugin.chart = chart;
-        plugin.currentTooltip = null;
-        plugin.initElements();
-        $(chart.canvas).keydown(function(e) {
-            switch (e.which) {
-                case 37:
-                    plugin.previousTooltip();
+        plugin.selectedIndex = -1;
+        plugin.currentDataset = 0;
+        plugin.setMeta();
+
+        if (!$(chart.canvas).data('keyboardNavInitialized')) {
+            $(chart.canvas).data('keyboardNavInitialized', true);
+            plugin.initElements();
+            chart.canvas.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    plugin.activateNext();
                     e.preventDefault();
-                    break;
-                case 39:
-                    plugin.nextTooltip();
+                }
+                else if (e.key === 'ArrowLeft') {
+                    plugin.activatePrev();
                     e.preventDefault();
-                    break;
-            }
-        });
+                }
+            });
+            chart.canvas.addEventListener('focus', function() {
+                if (plugin.selectedIndex === -1) {
+                    plugin.activateNext();
+                } else {
+                    plugin.activate();
+                }
+            });
+        }
+    },
+    setMeta: function() {
+        this.meta = this.chart.getDatasetMeta(this.currentDataset);
     },
     initElements: function() {
         $('<span/>')
@@ -43,92 +57,96 @@ Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
                 .html('<span class="hide-during-image-download">Chart. ' + keyboardInstructions + '</span>')
         }
     },
-    afterDatasetsDraw: function() {
-        var plugin = this;
-        if (plugin.allTooltips == null) {
-            plugin.allTooltips = plugin.getAllTooltips();
-        }
-    },
-    afterUpdate: function() {
-        var plugin = this;
-        plugin.allTooltips = null;
-        plugin.currentTooltip = null;
-    },
-    getAllTooltips: function() {
-        var datasets = this.chart.data.datasets;
-        var allTooltips = [];
-        if (datasets.length == 0) {
-            return allTooltips;
-        }
-        // For line charts, we group points into vertical tooltips.
-        if (this.chart.config.type == 'line') {
-            for (var pointIndex = 0; pointIndex < datasets[0].data.length; pointIndex++) {
-                var verticalTooltips = [];
-                for (var datasetIndex = 0; datasetIndex < datasets.length; datasetIndex++) {
-                    var meta = this.chart.getDatasetMeta(datasetIndex);
-                    if (meta.hidden) {
-                        continue;
-                    }
-                    if (datasets[datasetIndex].data[pointIndex] !== null) {
-                        verticalTooltips.push(meta.data[pointIndex]);
-                    }
-                }
-                if (verticalTooltips.length > 0) {
-                    allTooltips.push(verticalTooltips);
-                }
+    activate: function() {
+        var activeElements = [];
+        if (this.chart.config.type === 'line') {
+            // For line charts, we combined all datasets into a single tooltip.
+            var numDatasets = this.chart.data.datasets.length;
+            for (var i = 0; i < numDatasets; i++) {
+                activeElements.push({datasetIndex: i, index: this.selectedIndex});
             }
         }
-        // For other charts, each point gets its own tooltip.
         else {
-            for (var datasetIndex = 0; datasetIndex < datasets.length; datasetIndex++) {
-                var meta = this.chart.getDatasetMeta(datasetIndex);
-                if (meta.hidden) {
-                    continue;
-                }
-                for (var pointIndex = 0; pointIndex < datasets[datasetIndex].data.length; pointIndex++) {
-                    var singleTooltip = meta.data[pointIndex];
-                    allTooltips.push([singleTooltip]);
+            activeElements.push({datasetIndex: this.currentDataset, index: this.selectedIndex});
+        }
+        this.chart.tooltip.setActiveElements(activeElements);
+        this.chart.render();
+        this.announceTooltips()
+    },
+    isSelectedIndexEmpty: function() {
+        var isEmpty = true;
+        if (this.chart.config.type === 'line') {
+            var numDatasets = this.chart.data.datasets.length;
+            for (var i = 0; i < numDatasets; i++) {
+                var dataset = this.chart.data.datasets[i],
+                    value = dataset.data[this.selectedIndex];
+                if (typeof value !== 'undefined') {
+                    isEmpty = false;
                 }
             }
         }
-        return allTooltips;
-    },
-    previousTooltip: function() {
-        var plugin = this,
-            newTooltip = 0;
-        if (plugin.currentTooltip !== null) {
-            newTooltip = plugin.currentTooltip - 1;
+        else {
+            var dataset = this.chart.data.datasets[this.currentDataset],
+                value = dataset.data[this.selectedIndex];
+            if (typeof value !== 'undefined') {
+                isEmpty = false;
+            }
         }
-        if (newTooltip < 0) {
-            newTooltip = plugin.allTooltips.length - 1;
-        }
-        plugin.activateTooltips(plugin.allTooltips[newTooltip]);
-        plugin.currentTooltip = newTooltip;
+        return isEmpty;
     },
-    nextTooltip: function() {
-        var plugin = this,
-            newTooltip = 0;
-        if (plugin.currentTooltip !== null) {
-            newTooltip = plugin.currentTooltip + 1;
+    activateNext: function() {
+        this.selectedIndex += 1;
+        if (this.selectedIndex >= this.meta.data.length) {
+            this.selectedIndex = 0;
+            if (this.chart.config.type !== 'line') {
+                this.nextDataset();
+            }
         }
-        if (newTooltip >= plugin.allTooltips.length) {
-            newTooltip = 0;
+        while (this.isSelectedIndexEmpty()) {
+            // Skip any empty years.
+            this.activateNext();
+            return;
         }
-        plugin.activateTooltips(plugin.allTooltips[newTooltip]);
-        plugin.currentTooltip = newTooltip;
+        this.activate();
     },
-    activateTooltips: function(tooltips) {
-        this.chart.tooltip._active = tooltips
-        this.chart.tooltip.update(true);
-        this.chart.draw();
-        this.announceTooltips(tooltips);
+    activatePrev: function() {
+        this.selectedIndex -= 1;
+        if (this.selectedIndex < 0) {
+            if (this.chart.config.type !== 'line') {
+                this.prevDataset();
+            }
+            this.selectedIndex = this.meta.data.length - 1;
+        }
+        while (this.isSelectedIndexEmpty()) {
+            // Skip any empty years.
+            this.activatePrev();
+            return;
+        }
+        this.activate();
     },
-    announceTooltips: function(tooltips) {
+    nextDataset: function() {
+        var numDatasets = this.chart.data.datasets.length;
+        this.currentDataset += 1;
+        if (this.currentDataset >= numDatasets) {
+            this.currentDataset = 0;
+        }
+        this.setMeta();
+    },
+    prevDataset: function() {
+        var numDatasets = this.chart.data.datasets.length;
+        this.currentDataset -= 1;
+        if (this.currentDataset < 0) {
+            this.currentDataset = numDatasets - 1;
+        }
+        this.setMeta();
+    },
+    announceTooltips: function() {
+        var tooltips = this.chart.tooltip.getActiveElements();
         if (tooltips.length > 0) {
             var labels = {};
             for (var i = 0; i < tooltips.length; i++) {
-                var datasetIndex = tooltips[i]._datasetIndex,
-                    pointIndex = tooltips[i]._index,
+                var datasetIndex = tooltips[i].datasetIndex,
+                    pointIndex = tooltips[i].index,
                     year = this.chart.data.labels[pointIndex],
                     dataset = this.chart.data.datasets[datasetIndex],
                     label = dataset.label,
