@@ -7,21 +7,13 @@ opensdg.annotationPresets = {
         borderWidth: 1,
         label: {
             backgroundColor: 'white',
-            {% if site.chartjs_3 %}
             color: 'black',
-            {% else %}
-            fontColor: 'black',
-            {% endif %}
         },
         // This "highContrast" overrides colors when in high-contrast mode.
         highContrast: {
             label: {
                 backgroundColor: 'black',
-                {% if site.chartjs_3 %}
                 color: 'white',
-                {% else %}
-                fontColor: 'white',
-                {% endif %}
             },
         },
         // This callback is used to generate a generic description for screenreaders.
@@ -55,7 +47,7 @@ opensdg.annotationPresets = {
         borderDash: [15, 10],
         borderColor: '#757575',
         label: {
-            position: {% if site.chartjs_3 %}'end'{% else %}'right'{% endif %},
+            position: 'end',
             content: translations.indicator.annotation_2030_target,
         },
     },

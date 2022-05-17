@@ -1,53 +1,25 @@
 .breadcrumb {
-  margin-bottom: 0;
-  background-color: $breadcrumbs-backgroundColor;
-  padding: $breadcrumbs-padding;
+    background-color: $breadcrumbs-backgroundColor;
+    padding: $breadcrumbs-padding;
+    margin-top: 10px;
 
-  a {
-    color: $breadcrumbs-color;
-  }
-  &>.active {
-    display: inline;
-    color: $breadcrumbs-color;
-  }
-  > li {
-    position: relative;
-  }
-  > li + li {
-    margin-left: 10px;
-    padding-left: 17px;
-  }
-  > li + li::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -4px;
-    width: 7px;
-    height: 7px;
-    margin: auto 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border: solid;
-    border-width: 1px 1px 0 0;
-    border-color: $breadcrumbs-color;
-    padding: 0;
-  }
+    a,
+    & > .active,
+    .breadcrumb-item + .breadcrumb-item::before {
+        color: $breadcrumbs-color;
+    }
 }
 
 body.contrast-high {
-  .breadcrumb {
-    background: $breadcrumbs-backgroundColor-highContrast;
-    li, a {
-      color: $breadcrumbs-color-highContrast;
+    .breadcrumb {
+        background: $breadcrumbs-backgroundColor-highContrast;
+        a,
+        & > .active,
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: $breadcrumbs-color-highContrast;
+        }
+        a:hover {
+            color: $color-highlight-highContrast;
+        }
     }
-    a:hover {
-      color: $color-highlight-highContrast;
-    }
-    > li + li::before {
-      border-color: $breadcrumbs-color-highContrast;
-    }
-  }
 }

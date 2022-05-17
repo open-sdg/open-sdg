@@ -1,26 +1,16 @@
 <div class="language-toggle-container">
   {% assign location = include.location %}
-  <div class="btn-group language-toggle-dropdown {% if location == 'footer' %} dropup{% endif %}">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="language-globe-in-dropdown"><i class="fa fa-globe language-toggle-globe-dropdown"></i></span>
-      {%- if include.location != 'footer' -%}
-      <span class="language-name">{{ page.t.languages[page.language] }}</span>
-      <span class="language-abbreviation">{{ site.languages_public[page.language] | default: page.language }}</span>
-      {%- else -%}
+  <div class="btn-group language-toggle-dropdown {% if location == 'footer' %} dropup{% else %} dropdown{% endif %}">
+    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-globe"></i>
       {{ page.t.languages[page.language] }}
-      {%- endif -%}
-      {%- if include.location != 'footer' -%}
-      <i class="language-toggle-caret fa fa-chevron-down"></i>
-      {%- else -%}
-      <i class="language-toggle-caret fa fa-chevron-up"></i>
-      {%- endif -%}
     </button>
     <ul class="dropdown-menu">
       {%- for language in site.languages -%}
         {%- assign language_abbreviation = site.languages_public[language] | default: language -%}
         {%- if language != page.language -%}
-          <li class="language-option-{{ language }}">
-            <a href="{{ page.url_by_language[language] }}">
+          <li>
+            <a class="dropdown-item" href="{{ page.url_by_language[language] }}">
               {{ page.t.languages[language] }}
             </a>
           </li>

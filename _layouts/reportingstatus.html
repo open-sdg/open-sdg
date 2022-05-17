@@ -27,10 +27,11 @@
 
   {% include components/reporting-status-introduction.html %}
 
+  <div>
   {% if show_tabs %}
   <ul class="nav nav-tabs reporting-status-view" role="tablist">
     <li role="presentation" class="nav-item active">
-      <a class="nav-link" data-toggle="tab" href="#goalsview" aria-controls="goals" role="tab" {% include autotrack.html preset="tab_reporting_status_goals" category="Tab change" action="Change reporting status view" label="Change reporting status view to goals" %}>{{ page.t.status.reporting_status }}</a>
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#goalsview" aria-controls="goals" role="tab" {% include autotrack.html preset="tab_reporting_status_goals" category="Tab change" action="Change reporting status view" label="Change reporting status view to goals" %}>{{ page.t.status.reporting_status }}</button>
     </li>
     {% if extra_fields %}
       {% for extra_field in reporting_data.extra_fields %}
@@ -38,14 +39,14 @@
       {% assign extra_field_translated = extra_field_name | translate_metadata_field %}
       {% assign extra_field_autotrack = 'Change reporting status view to ' | append: extra_field_name %}
       <li role="presentation" class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#{{ extra_field_name }}view" aria-controls="{{ extra_field_name }}" role="tab" {% include autotrack.html preset="tab_reporting_status_extra_field" category="Tab change" action="Change reporting status view" label=extra_field_autotrack %}>{{ page.t.status.status_by_field | replace: "%field", extra_field_translated }}</a>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#{{ extra_field_name }}view" aria-controls="{{ extra_field_name }}" role="tab" {% include autotrack.html preset="tab_reporting_status_extra_field" category="Tab change" action="Change reporting status view" label=extra_field_autotrack %}>{{ page.t.status.status_by_field | replace: "%field", extra_field_translated }}</button>
       </li>
       {% endfor %}
     {% endif %}
 
     {% if site.reporting_status.disaggregation_tabs %}
       <li role="presentation" class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#disaggregationsview" aria-controls="disaggregations" role="tab" {% include autotrack.html preset="tab_reporting_status_disaggregations" category="Tab change" action="Change reporting status view" label="Change reporting status view to disaggregations" %}>{{ page.t.status.disaggregation_status }}</a>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#disaggregationsview" aria-controls="disaggregations" role="tab" {% include autotrack.html preset="tab_reporting_status_disaggregations" category="Tab change" action="Change reporting status view" label="Change reporting status view to disaggregations" %}>{{ page.t.status.disaggregation_status }}</button>
       </li>
       {% if extra_fields %}
         {% for extra_field in reporting_data.extra_fields %}
@@ -53,7 +54,7 @@
         {% assign extra_field_translated = extra_field_name | translate_metadata_field %}
         {% assign extra_field_autotrack = 'Change disaggregation status view to ' | append: extra_field_name %}
         <li role="presentation" class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#{{ extra_field_name }}-disaggregationsview" aria-controls="{{ extra_field_name }}-disaggregations" role="tab" {% include autotrack.html preset="tab_disaggregation_status_extra_field" category="Tab change" action="Change disaggregation status view" label=extra_field_autotrack %}>{{ page.t.status.disaggregation_status_by_field | replace: "%field", extra_field_translated }}</a>
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#{{ extra_field_name }}-disaggregationsview" aria-controls="{{ extra_field_name }}-disaggregations" role="tab" {% include autotrack.html preset="tab_disaggregation_status_extra_field" category="Tab change" action="Change disaggregation status view" label=extra_field_autotrack %}>{{ page.t.status.disaggregation_status_by_field | replace: "%field", extra_field_translated }}</button>
         </li>
         {% endfor %}
       {% endif %}
@@ -103,7 +104,7 @@
   </div>
   {% endif %}
 
-  <!--{{ content }}-->
+  </div>
 
 </div>
 {% include footer.html %}

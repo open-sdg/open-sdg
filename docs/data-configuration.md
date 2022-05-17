@@ -39,7 +39,7 @@ The available parameters correspond to the parameters available in the [OutputDa
 
   - default: Sort columns/values according to their position in the source data. For example, assuming the data came from the same CSV shown above, "Sex" would be before "Age", and "Male" would be before "Female".
 
-  For backwards-compatibility reasons, if `sorting` is not specified, Open SDG assumes that you want "alphabetical".
+  If `sorting` is not specified, Open SDG assumes that you want "default".
 
   If you require more direct control over the sorting of your data columns/values, see the `data_schema` setting below.
 

@@ -11,4 +11,4 @@ fields:
         - Male
         - Female
   - name: Numeric Disaggregation
-    type: integer
+    type: any
