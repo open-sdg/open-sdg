@@ -24,8 +24,8 @@ breadcrumbs:
 cookie_consent_form:
   enabled: true
 country:
-  name: Australia
-  adjective: Australian
+  name: custom.country_name
+  adjective: custom.country_adjective
 create_goals:
   previous_next_links: true
   goals:

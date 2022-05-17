@@ -5,9 +5,11 @@ disclaimer_message: This is my French Canadian disclaimer message.
 reporting_status_title: My French Canadian reporting status title
 reporting_status_description: My French Canadian reporting status description
 goals_page_title: My French Canadian goals page title
-goals_page_description: My French Canadian goals page description
+goals_page_description: My goals page description for %country.name
 frontpage_introduction_banner_title: My French Canadian frontpage introduction banner title
 goal_1_content: My translated content for goal 1
 title_from_series: French Canadian title from series column
 x_axis_label: French Canadian X Axis Label
+country_name: Australia (French Canadian)
+country_adjective: Australian (French Canadian)
 page_title: My French Canadian page title
