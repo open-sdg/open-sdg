@@ -1,18 +1,4 @@
 #main-content {
-  #back-to-top {
-    cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    background: lighten($backToTop-backgroundColor, 10%);
-    font-size: 3rem;
-    padding: 0.5rem 1.0rem;
-    &:hover, &:focus {
-      background: $backToTop-backgroundColor;
-    }
-  }
-
   a[href="#top"] {
     display: inline-block;
     margin-bottom: 15px;
@@ -21,6 +7,8 @@
     i.fa-arrow-up {
       margin-right: .3em;
     }
+    text-align: right;
+    width: 100%;
   }
 }
 
