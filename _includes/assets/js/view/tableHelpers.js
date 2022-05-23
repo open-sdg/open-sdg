@@ -143,7 +143,7 @@ function createTable(table, indicatorId, el) {
         var getHeading = function (heading, index) {
             var arrows = '<span class="sort"><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
             var button = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
-            return (!index) ? button + arrows : arrows + button;
+            return button + arrows;
         };
 
         table.headings.forEach(function (heading, index) {
