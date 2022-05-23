@@ -1,7 +1,6 @@
 ---
 # Don't delete this line.
 ---
-{%- include assets/js/no-js.js -%}
 {%- include assets/js/autotrack-element.js -%}
 {%- include assets/js/plugins/jquery.sdgMap.js -%}
 {%- include assets/js/chartjs/rescaler.js -%}
