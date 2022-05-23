@@ -59,4 +59,16 @@ $goal-by-target-indentation: 60px;
     .tags {
         margin-top: 10px;
     }
+
+    @media only screen and (max-width: 500px) {
+        .container {
+            .goal-icon {
+                float: none;
+            }
+            .goal-details {
+                float: none;
+                width: 100%;
+            }
+        }
+    }
 }
