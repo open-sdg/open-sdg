@@ -1,0 +1,1 @@
+$('body').removeClass('no-js');
