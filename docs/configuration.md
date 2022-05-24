@@ -1029,7 +1029,7 @@ NOTE: The setting is deprecated, because Open SDG 2.0.0 will always behave as if
 
 ### site_config_form
 
-_Optional_: This setting controls the behavior of the site config form. The available the same as in the `indicator_config_form` described above.
+_Optional_: This setting controls the behavior of the site config form. The available settings are the same as in the `indicator_config_form` described above.
 
 The default location for the site configuration page is `/config`.
 
