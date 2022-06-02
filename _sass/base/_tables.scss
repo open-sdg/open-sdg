@@ -37,14 +37,24 @@ table {
                 margin-left: 5px;
                 margin-right: 5px;
             }
+            .fa-sort {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
             &[aria-sort="descending"] {
                 .fa-sort-down {
                     display: inline-block;
+                }
+                .fa-sort {
+                    display: none;
                 }
             }
             &[aria-sort="ascending"] {
                 .fa-sort-up {
                     display: inline-block;
+                }
+                .fa-sort {
+                    display: none;
                 }
             }
         }

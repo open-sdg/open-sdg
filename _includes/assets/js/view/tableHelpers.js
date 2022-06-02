@@ -141,7 +141,7 @@ function createTable(table, indicatorId, el) {
         var table_head = '<thead><tr>';
 
         var getHeading = function (heading, index) {
-            var arrows = '<span class="sort"><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
+            var arrows = '<span class="sort"><i class="fa fa-sort"></i><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
             var button = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
             return button + arrows;
         };
