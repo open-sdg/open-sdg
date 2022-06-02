@@ -82,6 +82,7 @@
     this._precision = options.precision;
     this._decimalSeparator = options.decimalSeparator;
     this.currentDisaggregation = 0;
+    this.dataSchema = options.dataSchema;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {

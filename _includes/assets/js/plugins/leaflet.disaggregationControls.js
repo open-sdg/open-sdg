@@ -22,15 +22,48 @@
             this.disaggregations = plugin.getVisibleLayers().toGeoJSON().features[0].properties.disaggregations;
             this.list = null;
             this.form = null;
-            this.setSeries();
-            this.setUnits();
-            this.setDisaggregations();
+            this.currentDisaggregation = 0;
+            this.displayedDisaggregation = 0;
+            this.seriesColumn = '{{ site.data_fields.series | default: "Series" }}';
+            this.unitsColumn = '{{ site.data_fields.units | default: "Units" }}';
+            this.fieldsInOrder = this.getFieldsInOrder();
+            this.valuesInOrder = this.getValuesInOrder();
+            this.allSeries = this.getAllSeries();
+            this.allUnits = this.getAllUnits();
+            this.allDisaggregations = this.getAllDisaggregations();
+            this.hasSeries = (this.allSeries.length > 0);
+            this.hasUnits = (this.allUnits.length > 0);
+            this.hasDisaggregations = this.hasDissagregationsWithValues();
+        },
+
+        getFieldsInOrder: function () {
+            return this.plugin.dataSchema.fields.map(function(field) {
+                return field.name;
+            });
+        },
+
+        getValuesInOrder: function () {
+            var valuesInOrder = {};
+            this.plugin.dataSchema.fields.forEach(function(field) {
+                if (field.constraints && field.constraints.enum) {
+                    valuesInOrder[field.name] = field.constraints.enum;
+                }
+            });
+            return valuesInOrder;
+        },
+
+        hasDissagregationsWithValues: function () {
+            var hasDisaggregations = false;
+            this.allDisaggregations.forEach(function(disaggregation) {
+                if (disaggregation.values.length > 0 && disaggregation.values[0] !== '') {
+                    hasDisaggregations = true;
+                }
+            });
+            return hasDisaggregations;
         },
 
         updateList: function () {
-            var seriesColumn = this.seriesColumn,
-                unitsColumn = this.unitsColumn,
-                list = this.list;
+            var list = this.list;
             list.innerHTML = '';
             if (this.hasSeries) {
                 var title = L.DomUtil.create('dt', 'disaggregation-title'),
@@ -54,21 +87,20 @@
             }
             if (this.hasDisaggregations) {
                 var currentDisaggregation = this.disaggregations[this.currentDisaggregation];
-                Object.keys(currentDisaggregation).forEach(function(key) {
-                    if (key !== seriesColumn && key !== unitsColumn) {
-                        var title = L.DomUtil.create('dt', 'disaggregation-title'),
-                            definition = L.DomUtil.create('dd', 'disaggregation-definition'),
-                            container = L.DomUtil.create('div', 'disaggregation-container');
-                        //title.innerHTML = translations.t(key);
-                        title.innerHTML = key;
-                        //var disaggregationValue = translations.t(currentDisaggregation[key]);
-                        var disaggregationValue = currentDisaggregation[key];
-                        if (disaggregationValue !== '') {
-                            definition.innerHTML = disaggregationValue;
-                            container.append(title);
-                            container.append(definition);
-                            list.append(container);
-                        }
+                this.allDisaggregations.forEach(function(disaggregation) {
+                    var title = L.DomUtil.create('dt', 'disaggregation-title'),
+                        definition = L.DomUtil.create('dd', 'disaggregation-definition'),
+                        container = L.DomUtil.create('div', 'disaggregation-container'),
+                        field = disaggregation.field;
+                    //title.innerHTML = translations.t(key);
+                    title.innerHTML = field;
+                    //var disaggregationValue = translations.t(currentDisaggregation[key]);
+                    var disaggregationValue = currentDisaggregation[field];
+                    if (disaggregationValue !== '') {
+                        definition.innerHTML = disaggregationValue;
+                        container.append(title);
+                        container.append(definition);
+                        list.append(container);
                     }
                 });
             }
@@ -88,14 +120,13 @@
                 fieldset.append(legend);
                 form.append(fieldset);
                 container.append(form);
-                for (var i = 0; i < this.allSeries.length; i++) {
-                    var series = this.allSeries[i],
-                        input = L.DomUtil.create('input', 'disaggregation-input');
+                this.allSeries.forEach(function(series) {
+                    var input = L.DomUtil.create('input', 'disaggregation-input');
                     input.type = 'radio';
                     input.name = 'map-' + seriesColumn;
                     input.value = series;
                     input.tabindex = 0;
-                    input.checked = (series === this.getCurrentSeries()) ? 'checked' : '';
+                    input.checked = (series === that.getCurrentSeries()) ? 'checked' : '';
                     var label = L.DomUtil.create('label', 'disaggregation-label');
                     label.innerHTML = series;
                     label.prepend(input);
@@ -104,7 +135,7 @@
                         that.currentDisaggregation = that.getSelectedDisaggregationIndex();
                         that.updateForm();
                     });
-                }
+                });
             }
             if (this.hasUnits) {
                 var form = L.DomUtil.create('div', 'disaggregation-fieldset-container'),
@@ -114,15 +145,14 @@
                 fieldset.append(legend);
                 form.append(fieldset);
                 container.append(form);
-                for (var i = 0; i < this.allUnits.length; i++) {
-                    var unit = this.allUnits[i],
-                        input = L.DomUtil.create('input', 'disaggregation-input');
-                    if (this.isDisaggegrationValidGivenCurrent(unitsColumn, unit)) {
+                this.allUnits.forEach(function(unit) {
+                    var input = L.DomUtil.create('input', 'disaggregation-input');
+                    if (that.isDisaggegrationValidGivenCurrent(unitsColumn, unit)) {
                         input.type = 'radio';
                         input.name = 'map-' + unitsColumn;
                         input.value = unit;
                         input.tabindex = 0;
-                        input.checked = (unit === this.getCurrentUnit()) ? 'checked' : '';
+                        input.checked = (unit === that.getCurrentUnit()) ? 'checked' : '';
                         var label = L.DomUtil.create('label', 'disaggregation-label');
                         label.innerHTML = unit;
                         label.prepend(input);
@@ -132,31 +162,29 @@
                             that.updateForm();
                         });
                     }
-                }
+                });
             }
             if (this.hasDisaggregations) {
                 var currentDisaggregation = this.disaggregations[this.currentDisaggregation];
-                for (var i = 0; i < this.valuesByDisaggregation.length; i++) {
+                this.allDisaggregations.forEach(function (disaggregation) {
                     var form = L.DomUtil.create('div', 'disaggregation-fieldset-container'),
                         legend = L.DomUtil.create('legend', 'disaggregation-fieldset-legend'),
                         fieldset = L.DomUtil.create('fieldset', 'disaggregation-fieldset'),
-                        disaggregation = this.valuesByDisaggregation[i],
                         field = disaggregation.field;
-                    legend.innerHTML = disaggregation.field;
+                    legend.innerHTML = field;
                     fieldset.append(legend);
                     form.append(fieldset);
                     container.append(form);
-                    for (var j = 0; j < disaggregation.values.length; j++) {
-                        var value = disaggregation.values[j],
-                            input = L.DomUtil.create('input', 'disaggregation-input');
-                        if (this.isDisaggegrationValidGivenCurrent(disaggregation.field, value)) {
+                    disaggregation.values.forEach(function (value) {
+                        var input = L.DomUtil.create('input', 'disaggregation-input');
+                        if (that.isDisaggegrationValidGivenCurrent(field, value)) {
                             input.type = 'radio';
-                            input.name = 'map-' + disaggregation.field;
+                            input.name = 'map-' + field;
                             input.value = value;
                             input.tabindex = 0;
-                            input.checked = (value === currentDisaggregation[disaggregation.field]) ? 'checked' : '';
+                            input.checked = (value === currentDisaggregation[field]) ? 'checked' : '';
                             var label = L.DomUtil.create('label', 'disaggregation-label');
-                            label.innerHTML = value;
+                            label.innerHTML = (value === '') ? 'All' : value;
                             label.prepend(input);
                             fieldset.append(label);
                             input.addEventListener('change', function(e) {
@@ -164,8 +192,8 @@
                                 that.updateForm();
                             });
                         }
-                    }
-                }
+                    });
+                });
             }
 
             var applyButton = L.DomUtil.create('button', 'disaggregation-apply-button'),
@@ -198,24 +226,26 @@
                 list = L.DomUtil.create('dl', 'disaggregation-list'),
                 that = this;
 
-            this.list = list;
-            div.append(list);
-            this.updateList();
+            if (this.hasSeries || this.hasUnits || this.hasDisaggregations) {
+                this.list = list;
+                div.append(list);
+                this.updateList();
 
-            var button = L.DomUtil.create('button', 'disaggregation-button');
-            button.innerHTML = 'Change breakdowns';
-            button.addEventListener('click', function(e) {
-                that.displayedDisaggregation = that.currentDisaggregation;
-                $('.disaggregation-form-outer').show();
-            });
-            div.append(button);
+                var button = L.DomUtil.create('button', 'disaggregation-button');
+                button.innerHTML = 'Change breakdowns';
+                button.addEventListener('click', function(e) {
+                    that.displayedDisaggregation = that.currentDisaggregation;
+                    $('.disaggregation-form-outer').show();
+                });
+                div.append(button);
 
-            var container = L.DomUtil.create('div', 'disaggregation-form');
-            var containerOuter = L.DomUtil.create('div', 'disaggregation-form-outer');
-            containerOuter.append(container);
-            this.form = container;
-            div.append(containerOuter);
-            this.updateForm();
+                var container = L.DomUtil.create('div', 'disaggregation-form');
+                var containerOuter = L.DomUtil.create('div', 'disaggregation-form-outer');
+                containerOuter.append(container);
+                this.form = container;
+                div.append(containerOuter);
+                this.updateForm();
+            }
 
             return div;
         },
@@ -230,63 +260,60 @@
             return disaggregation[this.unitsColumn];
         },
 
-        setSeries: function () {
-            var seriesColumn = '{{ site.data_fields.series | default: "Series" }}';
-            this.seriesColumn = seriesColumn;
+        getAllSeries: function () {
+            var seriesColumn = this.seriesColumn;
             if (typeof this.disaggregations[0][seriesColumn] === 'undefined' || !this.disaggregations[0][seriesColumn]) {
-                this.hasSeries = false;
-                return;
+                return [];
             }
-            this.hasSeries = true;
-            this.allSeries = _.uniq(this.disaggregations.map(function(disaggregation) {
-                //return translations.t(disaggregation[seriesColumn]);
+            var allSeries = _.uniq(this.disaggregations.map(function(disaggregation) {
                 return disaggregation[seriesColumn];
             }));
+            var sortedSeries = this.valuesInOrder[seriesColumn];
+            allSeries.sort(function(a, b) {
+                return sortedSeries.indexOf(a) - sortedSeries.indexOf(b);
+            });
+            return allSeries;
         },
 
-        setUnits: function () {
-            var unitsColumn = '{{ site.data_fields.units | default: "Units" }}';
-            this.unitsColumn = unitsColumn;
-            if (typeof this.disaggregations[0][unitsColumn] === 'undefined' || !typeof this.disaggregations[0][unitsColumn]) {
-                this.hasUnits = false;
-                return;
+        getAllUnits: function () {
+            var unitsColumn = this.unitsColumn;
+            if (typeof this.disaggregations[0][unitsColumn] === 'undefined' || !this.disaggregations[0][unitsColumn]) {
+                return [];
             }
-            this.hasUnits = true;
-            this.allUnits = _.uniq(this.disaggregations.map(function(disaggregation) {
-                //return translations.t(disaggregation[unitsColumn]);
+            var allUnits = _.uniq(this.disaggregations.map(function(disaggregation) {
                 return disaggregation[unitsColumn];
             }));
+            var sortedUnits = this.valuesInOrder[unitsColumn];
+            allUnits.sort(function(a, b) {
+                return sortedUnits.indexOf(a) - sortedUnits.indexOf(b);
+            });
+            return allUnits;
         },
 
-        setDisaggregations: function () {
-            var disaggregations = {},
-                seriesColumn = this.seriesColumn,
-                unitsColumn  = this.unitsColumn,
-                hasDisaggregations = false;
-            this.disaggregations.forEach(function(disaggregation) {
-                Object.keys(disaggregation).forEach(function(key) {
-                    if (key !== seriesColumn && key !== unitsColumn) {
-                        if (typeof disaggregations[key] === 'undefined') {
-                            disaggregations[key] = [];
-                        }
-                        //var value = translations.t(disaggregation[key]);
-                        var value = disaggregation[key];
-                        if (!(disaggregations[key].includes(value))) {
-                            hasDisaggregations = true;
-                            disaggregations[key].push(value);
-                        }
-                    }
-                });
+        getAllDisaggregations: function () {
+            var disaggregations = this.disaggregations,
+                valuesInOrder = this.valuesInOrder,
+                validFields = Object.keys(disaggregations[0]),
+                invalidFields = [this.seriesColumn, this.unitsColumn],
+                allDisaggregations = [];
+
+            this.fieldsInOrder.forEach(function(field) {
+                if (!(invalidFields.includes(field)) && validFields.includes(field)) {
+                    var sortedValues = valuesInOrder[field],
+                        item = {
+                            field: field,
+                            values: _.uniq(disaggregations.map(function(disaggregation) {
+                                return disaggregation[field];
+                            })),
+                        };
+                    item.values.sort(function(a, b) {
+                        return sortedValues.indexOf(a) - sortedValues.indexOf(b);
+                    });
+                    allDisaggregations.push(item);
+                }
             });
-            this.valuesByDisaggregation = Object.keys(disaggregations).map(function(key) {
-                return {
-                    field: key,
-                    values: disaggregations[key],
-                };
-            });
-            this.currentDisaggregation = 0;
-            this.displayedDisaggregation = 0;
-            this.hasDisaggregations = hasDisaggregations;
+
+            return allDisaggregations;
         },
 
         getSelectedDisaggregationIndex: function() {
