@@ -31,6 +31,7 @@
                         {%- if site.languages.size > 1 and site.footer_language_toggle and site.footer_language_toggle != 'none' -%}
                         <li class="language-toggle-menu-footer">
                             {% include components/language-toggle.html location="footer" %}
+                            <span class="no-js-language-toggle">{% include components/language-toggle-links.html %}</span>
                         </li>
                         {%- endif -%}
                     </ul>
