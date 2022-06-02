@@ -231,20 +231,26 @@
                 div.append(list);
                 this.updateList();
 
-                var button = L.DomUtil.create('button', 'disaggregation-button');
-                button.innerHTML = 'Change breakdowns';
-                button.addEventListener('click', function(e) {
-                    that.displayedDisaggregation = that.currentDisaggregation;
-                    $('.disaggregation-form-outer').show();
-                });
-                div.append(button);
+                var numSeries = this.allSeries.length,
+                    numUnits = this.allUnits.length;
 
-                var container = L.DomUtil.create('div', 'disaggregation-form');
-                var containerOuter = L.DomUtil.create('div', 'disaggregation-form-outer');
-                containerOuter.append(container);
-                this.form = container;
-                div.append(containerOuter);
-                this.updateForm();
+                if (this.hasDisaggregations || (numSeries > 1 || numUnits > 1)) {
+
+                    var button = L.DomUtil.create('button', 'disaggregation-button');
+                    button.innerHTML = 'Change breakdowns';
+                    button.addEventListener('click', function(e) {
+                        that.displayedDisaggregation = that.currentDisaggregation;
+                        $('.disaggregation-form-outer').show();
+                    });
+                    div.append(button);
+
+                    var container = L.DomUtil.create('div', 'disaggregation-form');
+                    var containerOuter = L.DomUtil.create('div', 'disaggregation-form-outer');
+                    containerOuter.append(container);
+                    this.form = container;
+                    div.append(containerOuter);
+                    this.updateForm();
+                }
             }
 
             return div;
