@@ -1,10 +1,7 @@
 {% if page.indicator.progress_status and page.indicator.progress_status != '' %}
-<div class="row indicator-progress">
-    <div class="col-sm-2 progress-status-heading">
-        {{ site.progress_status.status_heading | t }}
-    </div>
-    <div class="col-sm-10">
-        {% include components/progress/progress-status.html indicator=page.indicator %}
-    </div>
-</div>
+    {% if progress_status and ['target_achieved', 'close_to_target', 'moderate_distance_to_target','far_from_target', 'very_far_from_target'].includes(progress_status) %}
+        <div>
+            <img src="/assets/img/progress/embed-test.png">
+        </div>
+    {% endif %}
 {% endif %}
