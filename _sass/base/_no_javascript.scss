@@ -8,6 +8,15 @@
 }
 
 .no-js {
+  [data-bs-target="#navbarSupportedContent"] {
+    display: none;
+  }
+  .nav-item.dropdown {
+    display: none;
+  }
+  #navbarSupportedContent {
+    display: block;
+  }
   .language-toggle-dropdown {
     display: none;
   }
