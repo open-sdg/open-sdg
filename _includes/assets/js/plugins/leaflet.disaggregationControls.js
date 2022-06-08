@@ -110,8 +110,11 @@
             var seriesColumn = this.seriesColumn,
                 unitsColumn = this.unitsColumn,
                 container = this.form,
+                formInputs = L.DomUtil.create('div', 'disaggregation-form-inner'),
                 that = this;
             container.innerHTML = '';
+            container.append(formInputs)
+            L.DomEvent.disableScrollPropagation(formInputs);
             if (this.hasSeries) {
                 var form = L.DomUtil.create('div', 'disaggregation-fieldset-container'),
                     legend = L.DomUtil.create('legend', 'disaggregation-fieldset-legend'),
@@ -119,7 +122,7 @@
                 legend.innerHTML = translations.indicator.series;
                 fieldset.append(legend);
                 form.append(fieldset);
-                container.append(form);
+                formInputs.append(form);
                 this.allSeries.forEach(function(series) {
                     var input = L.DomUtil.create('input', 'disaggregation-input');
                     input.type = 'radio';
@@ -144,7 +147,7 @@
                 legend.innerHTML = translations.indicator.unit_of_measurement;
                 fieldset.append(legend);
                 form.append(fieldset);
-                container.append(form);
+                formInputs.append(form);
                 this.allUnits.forEach(function(unit) {
                     var input = L.DomUtil.create('input', 'disaggregation-input');
                     if (that.isDisaggegrationValidGivenCurrent(unitsColumn, unit)) {
@@ -174,7 +177,7 @@
                     legend.innerHTML = field;
                     fieldset.append(legend);
                     form.append(fieldset);
-                    container.append(form);
+                    formInputs.append(form);
                     disaggregation.values.forEach(function (value) {
                         var input = L.DomUtil.create('input', 'disaggregation-input');
                         if (that.isDisaggegrationValidGivenCurrent(field, value)) {
@@ -232,9 +235,10 @@
                 this.updateList();
 
                 var numSeries = this.allSeries.length,
-                    numUnits = this.allUnits.length;
+                    numUnits = this.allUnits.length,
+                    displayForm = {{ site.map_options.disaggregation_controls | jsonify }};
 
-                if (this.hasDisaggregations || (numSeries > 1 || numUnits > 1)) {
+                if (displayForm && (this.hasDisaggregations || (numSeries > 1 || numUnits > 1))) {
 
                     var button = L.DomUtil.create('button', 'disaggregation-button');
                     button.innerHTML = 'Change breakdowns';
