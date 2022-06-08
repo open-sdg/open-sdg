@@ -37,3 +37,8 @@ body.contrast-high {
         }
     }
 }
+.no-js {
+    [data-contrast-switch-to] {
+        display: none;
+    }
+}

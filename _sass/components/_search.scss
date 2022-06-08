@@ -41,3 +41,9 @@ body.contrast-high {
         width: auto;
     }
 }
+
+.no-js {
+    .header-search-bar {
+        display: none;
+    }
+}
