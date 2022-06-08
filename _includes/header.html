@@ -21,6 +21,7 @@
                 <div class="header-toggles d-flex">
                     {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
                     {% include components/language-toggle.html %}
+                    <span class="no-js-language-toggle">{% include components/language-toggle-links.html %}</span>
                     {%- endif -%}
                     {% include components/contrast-toggle.html %}
                 </div>

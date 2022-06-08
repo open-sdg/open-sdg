@@ -2,9 +2,15 @@
   #headlineTable {
     display: none;
   }
+  .no-js-language-toggle {
+    display: none;
+  }
 }
 
 .no-js {
+  .language-toggle-dropdown {
+    display: none;
+  }
   #indicatorData {
     > .col-md-3 {
       display: none;
