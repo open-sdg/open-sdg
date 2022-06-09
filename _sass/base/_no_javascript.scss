@@ -8,6 +8,9 @@
 }
 
 .no-js {
+  .no-js-disaggregation-hint {
+    margin-top: 20px;
+  }
   [data-bs-target="#navbarSupportedContent"] {
     display: none;
   }
