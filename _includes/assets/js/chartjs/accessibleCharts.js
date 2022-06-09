@@ -95,6 +95,10 @@ Chart.register({
         return isEmpty;
     },
     activateNext: function() {
+        // Abort early if no data.
+        if (this.chart.data.datasets.length === 0) {
+            return;
+        }
         this.selectedIndex += 1;
         if (this.selectedIndex >= this.meta.data.length) {
             this.selectedIndex = 0;
@@ -110,6 +114,10 @@ Chart.register({
         this.activate();
     },
     activatePrev: function() {
+        // Abort early if no data.
+        if (this.chart.data.datasets.length === 0) {
+            return;
+        }
         this.selectedIndex -= 1;
         if (this.selectedIndex < 0) {
             if (this.chart.config.type !== 'line') {
