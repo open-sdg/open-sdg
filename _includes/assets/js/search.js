@@ -151,7 +151,7 @@ var indicatorSearch = function() {
     }));
 
     // Hide the normal header search.
-    $('#search').css('visibility', 'hidden');
+    $('.header-search-bar').hide();
   }
 
   // Helper function to make a search query "fuzzier", using the ~ syntax.
