@@ -17,6 +17,15 @@ function getTextLinesOnCanvas(ctx, text, maxWidth) {
   return lines;
 }
 
+function isHighContrast(contrast) {
+  if (contrast) {
+      return contrast === 'high';
+  }
+  else {
+      return $('body').hasClass('contrast-high');
+  }
+}
+
 // This plugin displays a message to the user whenever a chart has no data.
 Chart.register({
   id: 'open-sdg-no-data-message',
@@ -33,6 +42,7 @@ Chart.register({
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.font = "normal 40px 'Open Sans', Helvetica, Arial, sans-serif";
+      ctx.fillStyle = (isHighContrast()) ? 'white' : 'black';
       var lines = getTextLinesOnCanvas(ctx, translations.indicator.data_not_available, width);
       var numLines = lines.length;
       var lineHeight = 50;

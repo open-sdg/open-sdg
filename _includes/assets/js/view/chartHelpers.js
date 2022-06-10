@@ -215,7 +215,7 @@ function createPlot(chartInfo) {
     // If we have changed type, we will need to destroy and recreate the chart.
     // So we can abort here.
     var updatedConfig = getChartConfig(chartInfo);
-    if (updatedConfig.type !== VIEW._chartInstance.type) {
+    if (updatedConfig.type !== VIEW._chartInstance.config.type) {
         VIEW._chartInstance.destroy();
         createPlot(chartInfo);
         return;
@@ -229,8 +229,9 @@ function createPlot(chartInfo) {
     }
 
     alterChartConfig(updatedConfig, chartInfo);
-    VIEW._chartInstance.type = updatedConfig.type;
-    VIEW._chartInstance.data = updatedConfig.data;
+    VIEW._chartInstance.config.type = updatedConfig.type;
+    VIEW._chartInstance.data.datasets = updatedConfig.data.datasets;
+    VIEW._chartInstance.data.labels = updatedConfig.data.labels;
     VIEW._chartInstance.options = updatedConfig.options;
 
     VIEW._chartInstance.update();
