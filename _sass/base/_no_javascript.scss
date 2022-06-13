@@ -8,6 +8,14 @@
 }
 
 .no-js {
+  #headlineTable {
+    .btn-download {
+      margin-right: 10px;
+    }
+  }
+  .no-js-disaggregation-hint {
+    margin-top: 20px;
+  }
   [data-bs-target="#navbarSupportedContent"] {
     display: none;
   }
