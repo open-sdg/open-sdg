@@ -448,7 +448,8 @@
         plugin.map.addControl(plugin.selectionLegend);
 
         // Add the disaggregation controls.
-        plugin.map.addControl(L.Control.disaggregationControls(plugin));
+        plugin.disaggregationControls = L.Control.disaggregationControls(plugin);
+        plugin.map.addControl(plugin.disaggregationControls);
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
@@ -523,10 +524,16 @@
             }
           });
           plugin.updateStaticLayers();
+          if (plugin.disaggregationControls) {
+            plugin.disaggregationControls.update();
+          }
         }
         // Event handler for when a geoJson layer is zoomed into.
         function zoomInHandler(e) {
           plugin.updateStaticLayers();
+          if (plugin.disaggregationControls) {
+            plugin.disaggregationControls.update();
+          }
         }
       });
 
