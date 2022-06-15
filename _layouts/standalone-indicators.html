@@ -1,6 +1,9 @@
 {% include head.html %}
 {% include header.html %}
 
+<div class="container">
+  {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container goal-indicators">
   <h1>{{ page.title | t }}</h1>
   {{ content }}
