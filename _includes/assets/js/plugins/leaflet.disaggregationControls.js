@@ -64,6 +64,8 @@
                 }
             });
             relevantKeys = Object.keys(relevantKeys);
+            relevantKeys.push(this.seriesColumn);
+            relevantKeys.push(this.unitsColumn);
             var pruned = [];
             disaggregations.forEach(function(disaggregation) {
                 var clone = Object.assign({}, disaggregation);
@@ -251,9 +253,9 @@
             var applyButton = L.DomUtil.create('button', 'disaggregation-apply-button'),
                 cancelButton = L.DomUtil.create('button', 'disaggregation-cancel-button'),
                 buttonContainer = L.DomUtil.create('div', 'disaggregation-form-buttons');
-            applyButton.innerHTML = 'Apply';
+            applyButton.innerHTML = translations.indicator.apply;
             buttonContainer.append(applyButton);
-            cancelButton.innerHTML = 'Cancel';
+            cancelButton.innerHTML = translations.indicator.cancel;
             buttonContainer.append(cancelButton);
             container.append(buttonContainer);
 
@@ -290,7 +292,7 @@
                 if (displayForm && (this.hasDisaggregations || (numSeries > 1 || numUnits > 1))) {
 
                     var button = L.DomUtil.create('button', 'disaggregation-button');
-                    button.innerHTML = 'Change breakdowns';
+                    button.innerHTML = translations.indicator.change_breakdowns;
                     button.addEventListener('click', function(e) {
                         that.displayedDisaggregation = that.currentDisaggregation;
                         $('.disaggregation-form-outer').show();
