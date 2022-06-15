@@ -6,6 +6,9 @@ layout: default
 {% else %}
   {% assign category_links = true %}
 {% endif %}
+<div class="container">
+  {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container newslist" role="main">
   <div class="row">
     <div class="{% if category_links %}col-md-9 push-md-3{% else %}col-md-12{% endif %}">
