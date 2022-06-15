@@ -91,71 +91,90 @@
       @media only screen and (max-width: 680px) {
         display: none;
       }
-      background-color: rgba(150, 150, 150, 0.6);
       padding: 0;
-      width: 300px;
-      .legend-swatches {
-        @include preserveOriginalColors;
-        height: 10px;
-        .legend-swatch {
-          display: block;
-          float: left;
-          height: 10px;
+      min-width: 360px;
+      .legend-footer {
+        position: relative;
+        width: 150px;
+        left: 210px;
+        bottom: 0;
+        .legend-swatches, .legend-values {
+          @include preserveOriginalColors;
+          position: relative;
+          bottom: 0;
+          width: 150px;
+          left: 0;
         }
-      }
-      .legend-values {
-        @include preserveOriginalColors;
-        position: absolute;
-        bottom: -10px;
-        width: 100%;
-        .arrow {
-          width: 0;
-          height: 0;
-          border-style: solid;
-          position: absolute;
-          top: -10px;
-          z-index: 1;
-          &.left {
-            border-width: 20px 0 0 20px;
-            border-color: transparent transparent transparent $backgroundColor;
-            left: 0;
+        .legend-swatches {
+          height: 10px;
+          .legend-swatch {
+            display: block;
+            float: left;
+            height: 10px;
           }
-          &.right {
-            border-width: 0 0 20px 20px;
-            border-color: transparent transparent $backgroundColor transparent;
-            right: 1px;
+        }
+        .legend-values {
+          bottom: -10px;
+          .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: absolute;
+            top: -10px;
+            z-index: 1;
+            &.left {
+              border-width: 20px 0 0 20px;
+              border-color: transparent transparent transparent $backgroundColor;
+              left: 0;
+            }
+            &.right {
+              border-width: 0 0 20px 20px;
+              border-color: transparent transparent $backgroundColor transparent;
+              right: 1px;
+              box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
+            }
+          }
+          .legend-value {
+            color: $text-color;
+            padding: 0 4px;
+            background: $backgroundColor;
+            position: absolute;
+            z-index: 2;
+            &.left {
+              left: 0;
+            }
+            &.right {
+              right: 1px;
+            }
             box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
           }
         }
-        .legend-value {
-          color: $text-color;
-          padding: 0 4px;
-          background: $backgroundColor;
-          position: absolute;
-          z-index: 2;
-          &.left {
-            left: 0;
-          }
-          &.right {
-            right: 1px;
-          }
-          box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
-        }
       }
       #selection-list {
-        list-style: none;
         margin-bottom: 0;
-        padding-left: 0;
-        li {
+        dt, dd {
+          min-height: 25px;
+          margin-bottom: 5px;
+        }
+        dt {
+          float: left;
+          clear: left;
+          width: 200px;
+          text-align: right;
+          padding-top: 4px;
+        }
+        dd {
+          margin-left: 210px;
           position: relative;
-          margin-top: 3px;
-          &:first-child {
-            margin-top: 0;
-          }
+          width: 150px;
+          background-color: rgba(150, 150, 150, 0.6);
           cursor: pointer;
-          height: 23px;
-          .selection-bar, .selection-name, .selection-value {
-            height: 23px;
+          .selection-value, .selection-bar {
+            position: absolute;
+            left: 0;
+          }
+          .selection-bar, .selection-value {
+            height: 25px;
             position: absolute;
           }
           .selection-bar {
@@ -163,14 +182,7 @@
             background: $map-legendBar-color;
             z-index: 1;
           }
-          .selection-name {
-            z-index: 2;
-            padding: 3px 20px 3px 3px;
-          }
           &.no-value {
-            .selection-name {
-              background: $map-legendValue-color-noValue;
-            }
             .selection-bar, .selection-value {
               display: none;
             }
