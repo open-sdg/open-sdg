@@ -93,6 +93,7 @@
       }
       padding: 0;
       min-width: 360px;
+      margin-right: 25px;
       .legend-footer {
         position: relative;
         width: 150px;
@@ -162,6 +163,10 @@
           width: 200px;
           text-align: right;
           padding-top: 4px;
+          .selection-name-background {
+            background-color: rgba(255,255,255,0.6);
+            padding: 5px;
+          }
         }
         dd {
           margin-left: 210px;
@@ -195,10 +200,11 @@
             border-radius: 2px;
           }
           .selection-close {
-            top: 6px;
-            right: 5px;
+            top: 1px;
+            right: -20px;
             position: absolute;
             z-index: 3;
+            padding: 6px;
           }
         }
       }

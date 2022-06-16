@@ -67,7 +67,7 @@
     update: function() {
       var selectionList = L.DomUtil.get('selection-list');
       var selectionTpl = '' +
-        '<dt class="selection-name">{name}</dt>' +
+        '<dt class="selection-name"><span class="selection-name-background">{name}</span></dt>' +
         '<dd class="selection-value-item {valueStatus}">' +
           '<span class="selection-value" style="left: {percentage}%;">{value}</span>' +
           '<span class="selection-bar" style="width: {percentage}%;"></span>' +
