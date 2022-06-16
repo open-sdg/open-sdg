@@ -22,7 +22,9 @@
 {% elsif site.reporting_status.disaggregation_tabs and disagg_data %}
   {% assign show_tabs = true %}
 {% endif %}
-
+<div class="container">
+  {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container reportingstatus" role="main">
 
   {% include components/reporting-status-introduction.html %}
@@ -105,6 +107,6 @@
   {% endif %}
 
   </div>
-
+  {% include back-to-top.html %}
 </div>
 {% include footer.html %}

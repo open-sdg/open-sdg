@@ -8,6 +8,23 @@
 }
 
 .no-js {
+  #headlineTable {
+    .btn-download {
+      margin-right: 10px;
+    }
+  }
+  .no-js-disaggregation-hint {
+    margin-top: 20px;
+  }
+  [data-bs-target="#navbarSupportedContent"] {
+    display: none;
+  }
+  .nav-item.dropdown {
+    display: none;
+  }
+  #navbarSupportedContent {
+    display: block;
+  }
   .language-toggle-dropdown {
     display: none;
   }

@@ -1,5 +1,8 @@
 {% include head.html %}
 {% include header.html %}
+<div class="container">
+    {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container" role="main">
     <section>
         <div>
@@ -19,10 +22,6 @@
             </a>
         {% cycle '', '', '</div><div>' %}
     {% endfor %}
-
-<!--     <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="fa fa-arrow-circle-o-up
-"></span></a> -->
-
 
 </div>
 </div>

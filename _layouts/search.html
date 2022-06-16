@@ -47,6 +47,9 @@ opensdg.searchIndexExtraFields = [];
 {% endif %}
 </script>
 
+<div class="container">
+  {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container" role="main">
   <h1>{{ page.t.search.search_results_for }} '<span id="search-term"></span>'</h1>
   {% include search.html id="search-bar-on-page" not_in_menu=true %}
