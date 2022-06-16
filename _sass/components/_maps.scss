@@ -194,11 +194,25 @@
           }
           .selection-value {
             z-index: 2;
-            background-color: $map-legendValue-color;
             padding: 3px;
             border-radius: 2px;
+          }
+          .selection-value-high {
             right: 0;
             text-align: right;
+            background-color: $map-legendValue-color;
+            .selection-value-high-background {
+              background-color: $map-legendValue-backgroundColor;
+              padding: 2px;
+              border-radius: 5px;
+            }
+          }
+          .selection-value-low {
+            .selection-value-low-background {
+              background-color: $map-legendValue-backgroundColor;
+              padding: 2px;
+              border-radius: 5px;
+            }
           }
           .selection-close {
             top: 1px;

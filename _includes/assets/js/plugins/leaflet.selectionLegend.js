@@ -66,30 +66,45 @@
 
     update: function() {
       var selectionList = L.DomUtil.get('selection-list');
-      var selectionTpl = '' +
+      var selectionTplHighValue = '' +
         '<dt class="selection-name"><span class="selection-name-background">{name}</span></dt>' +
         '<dd class="selection-value-item {valueStatus}">' +
           '<span class="selection-bar" style="width: {percentage}%;">' +
-            '<span class="selection-value">{value}</span>' +
+            '<span class="selection-value selection-value-high">' +
+              '<span class="selection-value-high-background">{value}</span>' +
+            '</span>' +
           '</span>' +
           '<i class="selection-close fa fa-remove"></i>' +
         '</dd>';
+      var selectionTplLowValue = '' +
+      '<dt class="selection-name"><span class="selection-name-background">{name}</span></dt>' +
+      '<dd class="selection-value-item {valueStatus}">' +
+        '<span class="selection-bar" style="width: {percentage}%;"></span>' +
+        '<span class="selection-value selection-value-low" style="left: {percentage}%;">' +
+          '<span class="selection-value-low-background">{value}</span>' +
+        '</span>' +
+        '<i class="selection-close fa fa-remove"></i>' +
+      '</dd>';
       var plugin = this.plugin;
       var valueRange = this.plugin.valueRange;
       selectionList.innerHTML = this.selections.map(function(selection) {
         var value = plugin.getData(selection.feature.properties);
         var percentage, valueStatus;
+        var templateToUse = selectionTplHighValue;
         if (value) {
           valueStatus = 'has-value';
           var fraction = (value - valueRange[0]) / (valueRange[1] - valueRange[0]);
           percentage = Math.round(fraction * 100);
+          if (percentage <= 50) {
+            templateToUse = selectionTplLowValue;
+          }
         }
         else {
           value = '';
           valueStatus = 'no-value';
           percentage = 0;
         }
-        return L.Util.template(selectionTpl, {
+        return L.Util.template(templateToUse, {
           name: selection.feature.properties.name,
           valueStatus: valueStatus,
           percentage: percentage,
