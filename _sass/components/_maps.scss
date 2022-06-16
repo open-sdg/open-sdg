@@ -1,7 +1,9 @@
 // Leaflet map styles.
 #main-content {
   #mapFooter {
-    .unit-from-data {
+    .data-controlled-footer-field,
+    [data-for-unit]:not([data-for-unit=""]),
+    [data-for-series]:not([data-for-series=""]) {
       display: none !important;
     }
   }
