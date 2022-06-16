@@ -92,12 +92,12 @@
         display: none;
       }
       padding: 0;
-      min-width: 360px;
+      min-width: 460px;
       margin-right: 25px;
       .legend-footer {
         position: relative;
         width: 150px;
-        left: 210px;
+        left: 310px;
         bottom: 0;
         .legend-swatches, .legend-values {
           @include preserveOriginalColors;
@@ -160,7 +160,7 @@
         dt {
           float: left;
           clear: left;
-          width: 200px;
+          width: 300px;
           text-align: right;
           padding-top: 4px;
           .selection-name-background {
@@ -169,7 +169,7 @@
           }
         }
         dd {
-          margin-left: 210px;
+          margin-left: 310px;
           position: relative;
           width: 150px;
           background-color: rgba(150, 150, 150, 0.6);
