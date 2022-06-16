@@ -69,8 +69,9 @@
       var selectionTpl = '' +
         '<dt class="selection-name"><span class="selection-name-background">{name}</span></dt>' +
         '<dd class="selection-value-item {valueStatus}">' +
-          '<span class="selection-value" style="left: {percentage}%;">{value}</span>' +
-          '<span class="selection-bar" style="width: {percentage}%;"></span>' +
+          '<span class="selection-bar" style="width: {percentage}%;">' +
+            '<span class="selection-value">{value}</span>' +
+          '</span>' +
           '<i class="selection-close fa fa-remove"></i>' +
         '</dd>';
       var plugin = this.plugin;

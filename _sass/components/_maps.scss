@@ -194,10 +194,11 @@
           }
           .selection-value {
             z-index: 2;
-            margin-right: 5px;
             background-color: $map-legendValue-color;
             padding: 3px;
             border-radius: 2px;
+            right: 0;
+            text-align: right;
           }
           .selection-close {
             top: 1px;
