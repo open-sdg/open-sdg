@@ -1,5 +1,10 @@
 // Leaflet map styles.
 #main-content {
+  #mapFooter {
+    .unit-from-data {
+      display: none !important;
+    }
+  }
   #map {
     height: 500px;
     width: 100%;
