@@ -37,4 +37,23 @@ Feature: Map
   Scenario: The data footer should display in the map pane
     And I click on "the Map tab"
     Then I should see a "map footer" element
-    And I should see a "map footer item" element
+    And I should see "My field label"
+    And I should see "My field content"
+
+  Scenario: The map should display the disaggregations, unit, and series
+    And I click on "the Map tab"
+    Then I should see a "map disaggregation" element
+    And I should see 3 "map disaggregation item" elements
+    And I should see "Series A"
+    And I should see "Percent"
+    And I should see "Female"
+
+  Scenario: The map allows the disaggregations, unit, and series to be changed
+    And I click on "the Map tab"
+    And I click on "the 'Change breakdowns' button"
+    Then I should see a "map disaggregation popup" element
+    And I click on "the 'Rural' item under Location"
+    And I click on "the map disaggregation apply button",
+    Then I should see 4 "map disaggregation item" elements
+    And I should see "Location"
+    And I should see "Rural"

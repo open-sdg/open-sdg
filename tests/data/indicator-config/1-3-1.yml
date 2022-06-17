@@ -12,6 +12,12 @@ embedded_feature_html: ''
 embedded_feature_tab_title: ''
 embedded_feature_title: ''
 embedded_feature_url: ''
+footer_fields:
+  - label: My field label
+    value: My field content
+  - label: My field label for series A
+    value: My field content for series A
+    series: Series A
 graph_annotations: []
 graph_limits: []
 graph_stacked_disaggregation: ''
