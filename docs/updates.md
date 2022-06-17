@@ -2,6 +2,18 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 2.0.0
+
+TBD
+
+* Major upgrade: remove deprecated code and settings
+* Disaggregation on maps
+* Consistent breadcrumbs across all pages
+* Improved supported for users without JavaScript
+* Design improvements for navigation, tables, search, cards, map legend, and mobile
+* Support for referencing site configuration within translations
+* Back-to-top added to goals, indicators, status pages
+
 ## 1.8.0
 
 31 March 2022

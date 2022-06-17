@@ -7,7 +7,7 @@ This document is intended for developers, to help with the process of upgrading 
 In your data repository, update your `requirements.txt` file to:
 
 ```
-git+https://github.com/open-sdg/sdg-build@2.0.0
+git+https://github.com/open-sdg/sdg-build@2.0.0-beta1
 ```
 
 ## Upgrade translations to sdg-translations 2.0.0
@@ -18,7 +18,7 @@ In your data repository's config file, update the version of sdg-translations in
 translations:
   - class: TranslationInputSdgTranslations
     source: https://github.com/open-sdg/sdg-translations.git
-    tag: 2.0.0
+    tag: 2.0.0-beta1
 ```
 
 ## Update version of Open SDG to 2.0.0
@@ -26,7 +26,7 @@ translations:
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.0.0
+remote_theme: open-sdg/open-sdg@2.0.0-beta1
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 2.0.0
@@ -34,7 +34,7 @@ remote_theme: open-sdg/open-sdg@2.0.0
 In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugins like so:
 
 ```
-gem "jekyll-open-sdg-plugins", "2.0.0"
+gem "jekyll-open-sdg-plugins", "2.0.0.pre.beta1"
 ```
 
 ## Changes in 2.0.0
@@ -87,7 +87,7 @@ The data build automatically assigns various properties as metadata to each indi
 
 ### data columns/fields - default sorting change
 
-Throughout 1.x the default sorting logic for disaggregation dropdowns and options has been "alphabetical", but now the default will be "default" -- where the sorting is based on position in the data. See the [`datapackage` "sorting" option](https://open-sdg.readthedocs.io/en/latest/data-configuration/#datapackage) for more information.
+Throughout 1.x the default sorting logic for disaggregation dropdowns and options has been "alphabetical", but now the default will be "default" -- where the sorting is based on position in the data. See the [`datapackage` "sorting" option](https://open-sdg.readthedocs.io/en/latest/data-configuration/#datapackage) for more information. To keep alphabetical sorting, you will need to configure your data build as described in the link above, to 'alphabetical'.
 
 ### date_formats - deprecated structure removed
 
@@ -99,15 +99,15 @@ The `favicons` site configuration has been removed and the platform will always 
 
 ### frontpage_heading - removed
 
-The `frontpage_heading` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_introduction_banner`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner).
+The `frontpage_heading` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_introduction_banner`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner). Any custom text that you have in `frontpage_heading` should be copied to `frontpage_introduction_banner`.
 
 ### frontpage_instructions - removed
 
-The `frontpage_instructions` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_goals_grid`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_goals_grid).
+The `frontpage_instructions` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_goals_grid`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_goals_grid). Any custom text that you have in `frontpage_instructions` should be copied to `frontpage_goals_grid`.
 
 ### header - removed
 
-The `header` site configuration has been removed, and the platform will always use a consistent header.
+The `header` site configuration has been removed, and the platform will always use a consistent header. The "include file" that is used for the header is: `_includes/header.html`
 
 ### languages - required
 
