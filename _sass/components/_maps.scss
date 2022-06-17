@@ -184,7 +184,6 @@
           }
           .selection-bar {
             border-radius: 2px 0 0 2px;
-            background: $map-legendBar-color;
             z-index: 1;
           }
           &.no-value {
@@ -200,7 +199,6 @@
           .selection-value-high {
             right: 0;
             text-align: right;
-            background-color: $map-legendValue-color;
             .selection-value-high-background {
               background-color: $map-legendValue-backgroundColor;
               padding: 2px;
