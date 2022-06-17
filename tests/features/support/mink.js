@@ -76,6 +76,12 @@ const driver = new mink.Mink({
     "footer field that says 'Testing label for series A'": "#selectionChartFooter dt[data-for-series='A']",
     "footer field that says 'Another field label for unit total'": "#selectionChartFooter dt[data-for-unit='Total']",
     "time-series footnote": "#selectionChartFooter dt[data-ts-attribute='COMMENT_TS']",
+    "map disaggregation": "#map .disaggregation-list",
+    "map disaggregation item": "#map .disaggregation-list .disaggregation-title",
+    "the 'Change breakdowns' button": "#map .disaggregation-button",
+    "map disaggregation popup": "#map .disaggregation-form-outer",
+    "the 'Rural' item under Location": "#map .disaggregation-form-outer input[value='Rural']",
+    "the map disaggregation apply button": "#map .disaggregation-apply-button",
   }
 });
 

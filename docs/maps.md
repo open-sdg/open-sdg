@@ -59,6 +59,8 @@ Here are possible configuration items for `map_options`. Defaults are listed bel
 
 ```
 map_options:
+  # Whether the map should provide a button and form for changing the displayed disaggregation:
+  disaggregation_controls: false
   # Control the limits on zooming in/out in the map:
   minZoom: 5
   maxZoom: 10

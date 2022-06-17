@@ -34,6 +34,13 @@
     },
 
     onAdd: function() {
+      var div = L.DomUtil.create('div', 'selection-legend');
+      this.legendDiv = div;
+      this.resetSwatches();
+      return div;
+    },
+
+    renderSwatches: function() {
       var controlTpl = '' +
         '<ul id="selection-list"></ul>' +
         '<div class="legend-swatches">' +
@@ -53,13 +60,15 @@
           color: swatchColor,
         });
       }).join('');
-      var div = L.DomUtil.create('div', 'selection-legend');
-      div.innerHTML = L.Util.template(controlTpl, {
-        lowValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRange[0])),
-        highValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRange[1])),
+      return L.Util.template(controlTpl, {
+        lowValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][0])),
+        highValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][1])),
         legendSwatches: swatches,
       });
-      return div;
+    },
+
+    resetSwatches: function() {
+      this.legendDiv.innerHTML = this.renderSwatches();
     },
 
     update: function() {
@@ -72,7 +81,7 @@
           '<i class="selection-close fa fa-remove"></i>' +
         '</li>';
       var plugin = this.plugin;
-      var valueRange = this.plugin.valueRange;
+      var valueRange = this.plugin.valueRanges[this.plugin.currentDisaggregation];
       selectionList.innerHTML = this.selections.map(function(selection) {
         var value = plugin.getData(selection.feature.properties);
         var percentage, valueStatus;

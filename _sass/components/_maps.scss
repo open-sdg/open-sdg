@@ -1,5 +1,12 @@
 // Leaflet map styles.
 #main-content {
+  #mapFooter {
+    .data-controlled-footer-field,
+    [data-for-unit]:not([data-for-unit=""]),
+    [data-for-series]:not([data-for-series=""]) {
+      display: none !important;
+    }
+  }
   #map {
     height: 500px;
     width: 100%;
@@ -72,14 +79,125 @@
       background-image: none;
       font-size: 20px;
     }
-    .disaggregation-select-container {
-      background: $backgroundColor;
-      padding: 5px;
-      border: 2px solid rgba(0,0,0,0.3);
-      border-radius: 5px;
-      label {
-        margin-right: 4px;
+    .disaggregation-controls {
+      z-index: 801;
+      .disaggregation-list {
+        background: $backgroundColor;
+        padding: 5px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        margin-bottom: 5px;
+        .disaggregation-container {
+          display: flex ;
+          margin: 5px 0px 5px 0px ;
+          .disaggregation-title {
+            flex: 0 1 auto ;
+            margin: 0px 0px 0px 0px ;
+            order: 1 ;
+          }
+          &:after {
+            content: "" ;
+            flex: 1 1 auto ;
+            margin: 0px 12px 5px 12px ;
+            order: 2 ;
+          }
+          .disaggregation-definition {
+            flex: 0 1 auto ;
+            margin: 0px 0px 0px 0px ;
+            order: 3 ;
+          }
+        }
       }
+      .disaggregation-button {
+        background: $backgroundColor;
+        padding: 5px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .disaggregation-form-outer {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+
+        top: 50%;
+        left: 50%;
+        height: 400px;
+        margin-top: -200px;
+
+        width: 250px;
+        margin-left: -125px;
+
+        @media only screen and (min-width: 300px) {
+          width: 300px;
+          margin-left: -150px;
+        }
+
+        @media only screen and (min-width: 400px) {
+          width: 400px;
+          margin-left: -200px;
+        }
+
+        @media only screen and (min-width: 500px) {
+          width: 500px;
+          margin-left: -250px;
+        }
+
+        @media only screen and (min-width: 600px) {
+          width: 600px;
+          margin-left: -300px;
+        }
+
+        @media only screen and (min-width: 700px) {
+          width: 700px;
+          margin-left: -350px;
+        }
+
+        @media only screen and (min-width: 800px) {
+          width: 800px;
+          margin-left: -400px;
+        }
+
+        background-color: $backgroundColor;
+        padding: 20px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        .disaggregation-form {
+          height: 100%;
+          .disaggregation-form-inner {
+            display: flex;
+            flex-wrap: wrap;
+            height: 325px;
+            overflow: scroll;
+            width: 100%;
+          }
+          .disaggregation-fieldset-container {
+            flex: 1 0 50%;
+            .disaggregation-fieldset {
+              margin-top: 10px;
+            }
+          }
+          .disaggregation-label {
+            display: block;
+            font-size: $fontSize;
+            .disaggregation-input {
+              margin-right: 10px;
+            }
+          }
+          .disaggregation-form-buttons {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            button {
+              margin-left: 10px;
+              font-size: $fontSize;
+            }
+          }
+        }
+      }
+    }
+    .leaflet-bottom.leaflet-right {
+      z-index: 700;
     }
     .leaflet-control-attribution {
       @media only screen and (max-width: 480px) {

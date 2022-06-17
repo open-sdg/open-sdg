@@ -24,4 +24,5 @@
 {%- include assets/js/plugins/leaflet.yearSlider.js -%}
 {%- include assets/js/plugins/leaflet.fullscreenAccessible.js -%}
 {%- include assets/js/plugins/leaflet.searchAccessible.js -%}
+{%- include assets/js/plugins/leaflet.disaggregationControls.js -%}
 {%- include assets/js/backToTop.js -%}
