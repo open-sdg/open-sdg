@@ -346,3 +346,27 @@
 #embeddedmapview h3 {
   text-align: center;
 }
+
+#mapview {
+  .btn-download {
+    margin-right: 10px;
+  }
+}
+
+body.contrast-high {
+  #main-content {
+    #map {
+      .leaflet-control-zoomhome-in,
+      .leaflet-control-zoomhome-out,
+      .leaflet-control-zoomhome-home,
+      .leaflet-control-fullscreen-button,
+      .leaflet-control-timecontrol,
+      .selection-name span,
+      .selection-value span,
+      .selection-close,
+      .disaggregation-controls {
+        color: $color-dark-highContrast;
+      }
+    }
+  }
+}
