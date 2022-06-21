@@ -28,4 +28,6 @@ permalink: my-standalone-indicator-path
 reporting_status: complete
 sort: standalone_2
 standalone: true
-tags: []
+tags:
+  - My tag
+  - My other tag
