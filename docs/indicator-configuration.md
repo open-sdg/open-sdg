@@ -618,6 +618,10 @@ tags:
   - My other tag
 ```
 
+Note that each tag will receive a unique HTML class, according to the content of the tag. For example, a tag called "National" will receive an HTML class of "tag-national". This gives you precise control of the styling of each individual tag, through the use of custom CSS.
+
+Additionally, the default color of the tags can be controlled by changing the `$tag-backgroundColor` [Sass variable](customisation.md#overriding-color-via-sass-variables).
+
 ### x_axis_label
 
 _Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this overrides the same setting in the site configuration.
