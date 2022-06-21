@@ -439,8 +439,8 @@ _Optional_: This setting can be used to control the color of the "headline" (eg,
 
 _Optional_: This setting can be used to customize the color set used in the charts. There are five possible entries:
 
-* `graph_color_set: 'accessible'` a 6-color set that is specifically chosen for optimal accessibility (recommended)
-* `graph_color_set: 'default'` a deprecated 6-color set that is still the default (for reasons of backwards compatibility)
+* `graph_color_set: 'accessible'` a 6-color set that is specifically chosen for optimal accessibility (default)
+* `graph_color_set: 'classic'` a deprecated 6-color set that was the default in Open SDG 1.x (it was previously called 'default' but was renamed to 'classic' in Open SDG 2.0.0)
 * `graph_color_set: 'sdg'` to use the 17 SDG colors in all charts
 * `graph_color_set: 'goal'` to use shades of the color of the current indicator's goal
 * `graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
@@ -448,7 +448,7 @@ _Optional_: This setting can be used to customize the color set used in the char
 > **NOTE**: Whatever color scheme you choose here, please ensure that all colors satisfy
 > the accessibility (minimum contrast) standards in your region. These colors will need to
 > be visible on white and black backgrounds. The `accessible` color scheme is designed to
-> meet this requirement, and so it is recommended.
+> meet this requirement, and so it is recommended, and it is the default.
 
 ### graph_color_list
 
