@@ -2,7 +2,7 @@
 <div class="container">
   <div class="disclaimer-alert">
     <strong class="phase-tag">{{ site.disclaimer.phase | default: page.t.header.alpha | t }}</strong>
-    {% assign disclaimer_message_default = page.t.header.disclaimer | replace_first: '%email_address', site.email_contacts.suggestions %}
+    {% assign disclaimer_message_default = page.t.header.disclaimer | t%}
     {{ site.disclaimer.message | default: disclaimer_message_default | t }}
     {% include components/dev-disclaimer-custom.html %}
   </div>
