@@ -143,9 +143,7 @@
                         definition = L.DomUtil.create('dd', 'disaggregation-definition'),
                         container = L.DomUtil.create('div', 'disaggregation-container'),
                         field = disaggregation.field;
-                    //title.innerHTML = translations.t(key);
                     title.innerHTML = field;
-                    //var disaggregationValue = translations.t(currentDisaggregation[key]);
                     var disaggregationValue = currentDisaggregation[field];
                     if (disaggregationValue !== '') {
                         definition.innerHTML = disaggregationValue;
@@ -268,6 +266,7 @@
                 that.plugin.currentDisaggregation = that.currentDisaggregation;
                 that.plugin.setColorScale();
                 that.plugin.updateColors();
+                that.plugin.updateTooltips();
                 that.plugin.selectionLegend.resetSwatches();
                 that.plugin.selectionLegend.update();
                 that.updateList();
