@@ -52,3 +52,20 @@ body.contrast-high {
         }
     }
 }
+
+.internet-explorer-message {
+    display: none;
+    color: red;
+    padding: 50px;
+    text-align: center;
+    width: 100%;
+    background: white;
+    border: 5px solid red;
+    box-shadow: 0px 3px 25px black;
+    margin-top: -15px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .internet-explorer-message {
+        display: block;
+    }
+}
