@@ -183,7 +183,7 @@ opensdg.chartTypes.base = function(info) {
                 options: {
                     plugins: {
                         annotation: {
-                            drawTime: 'beforeDatasetsDraw',
+                            drawTime: 'afterDatasetsDraw',
                             annotations: annotations
                         }
                     }

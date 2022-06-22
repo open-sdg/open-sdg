@@ -5,8 +5,7 @@
             <p>
                 {% assign country_name = site.country.name | t %}
                 {% assign country_adjective = site.country.adjective | t %}
-                {{ page.t.indicator.national_metadata_blurb | replace: '%country_name', country_name | replace:
-                '%country_adjective', country_adjective }}
+                {{ page.t.indicator.national_metadata_blurb | t }}
             </p>
             {% include components/indicator/metadata.html scope='national' %}
         </article>

@@ -20,14 +20,7 @@
     <li>
       <a href="{{ indicator.url }}">
         {{ indicator.name }}
-        {% if indicator.tags %}
-          <ul class="tags">
-          {% for tag in indicator.tags %}
-            {% assign tag_class = tag | slugify %}
-            <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
-          {% endfor %}
-          </ul>
-        {% endif %}
+        {% include components/indicator/tags.html tags=indicator.tags indicator=indicator %}
       </a>
     </li>
 	{% endfor %}
