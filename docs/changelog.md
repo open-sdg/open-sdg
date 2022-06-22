@@ -2,6 +2,9 @@
 
 ## 2.0.0
 
+* Feature: Default to accessible chart colorset #1697
+* Bugfix: Draw annotations after datasets #1696
+* Design: Color/markup fixes for tags #1695
 * Bugfix: Fix aria-controls attributes on reporting status page #1687
 * Design: Map selection legend revamp moving name to the left #1680
 * Feature: Breadcrumbs on all pages #1679
@@ -15,7 +18,7 @@
 * Bugfix: Pin to 2.6.1 of json-editor #1660
 * Feature: For no-js: hide hamburger toggle, expand hamburger menu, hide drop-downs #1655
 * Bugfix: Handle null values in current series/unit for footer fields #1652
-* Feature: Map disaggregation #1649
+* Feature: Map disaggregation #1649 #1699 #1705
 * Design: Explicitly turn off text indent on paragraphs #1643
 * Design: Fix for alignment of search button on search page #1642
 * Design: Remove top padding on main-content #1640
@@ -26,7 +29,7 @@
 * Feature: Back-to-top cleanup and added to goals/indicators/status pages #1635
 * Feature: Hide search and contrast, and switch to language-toggle links, when no javascript #1618
 * Bugfix: Do not change map title when series changes #1606
-* Feature: Support for site config and translation keys inside content/translations #1605
+* Feature: Support for site config and translation keys inside content/translations #1605 #1703
 * Bugfix: Fix breadcrumb markup in bootstrap 5 posts #1589
 
 ## 1.8.1

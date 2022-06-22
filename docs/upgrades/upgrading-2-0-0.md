@@ -28,7 +28,7 @@ translations:
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.0.0-beta1
+remote_theme: open-sdg/open-sdg@2.0.0-beta2
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 2.0.0
@@ -36,7 +36,7 @@ remote_theme: open-sdg/open-sdg@2.0.0-beta1
 In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugins like so:
 
 ```
-gem "jekyll-open-sdg-plugins", "2.0.0.pre.beta1"
+gem "jekyll-open-sdg-plugins", "2.0.0.pre.beta2"
 ```
 
 ## Changes in 2.0.0
@@ -106,6 +106,10 @@ The `frontpage_heading` site configuration has been removed. The new setting use
 ### frontpage_instructions - removed
 
 The `frontpage_instructions` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_goals_grid`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_goals_grid). Any custom text that you have in `frontpage_instructions` should be copied to `frontpage_goals_grid`.
+
+### graph_color_set - default changed to "accessible"
+
+The default color set for graphs is now the `accessible` option. Previously it was a different set called `default`. If you would like to continue using this `default` color set, you can change this setting to `classic`.
 
 ### header - removed
 
