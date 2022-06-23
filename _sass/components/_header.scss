@@ -67,8 +67,21 @@ body.contrast-high {
     .internet-explorer-message-body {
         padding: 20px;
         color: $disclaimer-text-color;
-        background-color: #fff;
+        background-color: $backgroundColor;
         margin: 0;
+    }
+}
+body.contrast-high {
+    .internet-explorer-message {
+        border: 5px solid $color-light-highContrast;
+        background-color: $color-light-highContrast;
+        .internet-explorer-message-title {
+            color: $color-dark-highContrast;
+        }
+        .internet-explorer-message-body {
+            color: $color-light-highContrast;
+            background-color: $color-dark-highContrast;
+        }
     }
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
