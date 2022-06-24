@@ -58,6 +58,10 @@
           {% include components/analytics/ga-gtm.html %}
         {% endif %}
 
+        <!--[if IE]>
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ie.css">
+        <![endif]-->
+
         {% include head-custom.html %}
     </head>
 <body class="{% include body-classes.html %}">
