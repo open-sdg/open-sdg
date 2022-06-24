@@ -101,7 +101,7 @@
         var color = '#FFFFFF';
         var percentage, valueStatus;
         var templateToUse = selectionTplHighValue;
-        if (value) {
+        if (typeof value === 'number') {
           color = plugin.colorScale(value).hex();
           valueStatus = 'has-value';
           var fraction = (value - valueRange[0]) / (valueRange[1] - valueRange[0]);
@@ -119,7 +119,7 @@
           name: selection.feature.properties.name,
           valueStatus: valueStatus,
           percentage: percentage,
-          value: plugin.alterData(opensdg.dataRounding(value)),
+          value: plugin.alterData(value),
           color: color,
         });
       }).join('');
