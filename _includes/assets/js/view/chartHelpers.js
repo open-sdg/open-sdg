@@ -234,6 +234,9 @@ function createPlot(chartInfo) {
     VIEW._chartInstance.data.labels = updatedConfig.data.labels;
     VIEW._chartInstance.options = updatedConfig.options;
 
+    // The following is needed in our custom "rescaler" plugin.
+    VIEW._chartInstance.config.data.allLabels = VIEW._chartInstance.config.data.labels.slice(0);
+
     VIEW._chartInstance.update();
 
     $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
