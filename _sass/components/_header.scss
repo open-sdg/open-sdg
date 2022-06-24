@@ -52,3 +52,40 @@ body.contrast-high {
         }
     }
 }
+
+.internet-explorer-message {
+    display: none;
+    border: 5px solid $disclaimer-tag-backgroundColor;
+    background-color: $disclaimer-tag-backgroundColor;
+    padding: 0;
+    .internet-explorer-message-title {
+        padding: 2px 20px 5px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0);
+        margin: 0;
+        color: $disclaimer-tag-color;
+    }
+    .internet-explorer-message-body {
+        padding: 20px;
+        color: $disclaimer-text-color;
+        background-color: $backgroundColor;
+        margin: 0;
+    }
+}
+body.contrast-high {
+    .internet-explorer-message {
+        border: 5px solid $color-light-highContrast;
+        background-color: $color-light-highContrast;
+        .internet-explorer-message-title {
+            color: $color-dark-highContrast;
+        }
+        .internet-explorer-message-body {
+            color: $color-light-highContrast;
+            background-color: $color-dark-highContrast;
+        }
+    }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .internet-explorer-message {
+        display: block;
+    }
+}
