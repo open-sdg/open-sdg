@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 2.0.0
 
-TBD
+24 June 2022
 
 * Major upgrade: remove deprecated code and settings
 * Remove support for Internet Explorer

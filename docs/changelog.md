@@ -2,6 +2,9 @@
 
 ## 2.0.0
 
+* Bugfix: Fix for rescaler plugin when changing series #1715
+* Feature: Alert about not supporting Internet Explorer #1710
+* Bugfix: Translate the chart tooltip labels #1709
 * Feature: Default to accessible chart colorset #1697
 * Bugfix: Draw annotations after datasets #1696
 * Design: Color/markup fixes for tags #1695
@@ -18,7 +21,7 @@
 * Bugfix: Pin to 2.6.1 of json-editor #1660
 * Feature: For no-js: hide hamburger toggle, expand hamburger menu, hide drop-downs #1655
 * Bugfix: Handle null values in current series/unit for footer fields #1652
-* Feature: Map disaggregation #1649 #1699 #1705
+* Feature: Map disaggregation #1649 #1699 #1705 #1714
 * Design: Explicitly turn off text indent on paragraphs #1643
 * Design: Fix for alignment of search button on search page #1642
 * Design: Remove top padding on main-content #1640
