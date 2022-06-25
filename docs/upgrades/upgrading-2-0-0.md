@@ -2,6 +2,8 @@
 
 This document is intended for developers, to help with the process of upgrading to version 2.0.0 of Open SDG, from 1.8.0 or higher.
 
+**Because this is a major upgrade, please ensure you are upgraded to 1.8.0 or higher, and have read this entire document, before proceeding..**
+
 ## Upgrade data repository to sdg-build 2.0.0
 
 In your data repository, update your `requirements.txt` file to:
@@ -87,7 +89,7 @@ The data build automatically assigns various properties as metadata to each indi
 
 ### data columns/fields - default sorting change
 
-Throughout 1.x the default sorting logic for disaggregation dropdowns and options has been "alphabetical", but now the default will be "default" -- where the sorting is based on position in the data. See the [`datapackage` "sorting" option](https://open-sdg.readthedocs.io/en/latest/data-configuration/#datapackage) for more information.
+Throughout 1.x the default sorting logic for disaggregation dropdowns and options has been "alphabetical", but now the default will be "default" -- where the sorting is based on position in the data. See the [`datapackage` "sorting" option](https://open-sdg.readthedocs.io/en/latest/data-configuration/#datapackage) for more information. To keep alphabetical sorting, you will need to configure your data build as described in the link above, to 'alphabetical'.
 
 ### date_formats - deprecated structure removed
 
@@ -99,15 +101,19 @@ The `favicons` site configuration has been removed and the platform will always 
 
 ### frontpage_heading - removed
 
-The `frontpage_heading` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_introduction_banner`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner).
+The `frontpage_heading` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_introduction_banner`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner). Any custom text that you have in `frontpage_heading` should be copied to `frontpage_introduction_banner`.
 
 ### frontpage_instructions - removed
 
-The `frontpage_instructions` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_goals_grid`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_goals_grid).
+The `frontpage_instructions` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_goals_grid`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_goals_grid). Any custom text that you have in `frontpage_instructions` should be copied to `frontpage_goals_grid`.
+
+### graph_color_set - default changed to "accessible"
+
+The default color set for graphs is now the `accessible` option. Previously it was a different set called `default`. If you would like to continue using this `default` color set, you can change this setting to `classic`.
 
 ### header - removed
 
-The `header` site configuration has been removed, and the platform will always use a consistent header.
+The `header` site configuration has been removed, and the platform will always use a consistent header. The "include file" that is used for the header is: `_includes/header.html`
 
 ### languages - required
 
@@ -122,3 +128,67 @@ The `non_global_metadata` setting has been removed. The only affects platforms t
 ### series_toggle - always on
 
 The `series_toggle` setting has been removed and the platform will behave as if it were always on. This means that the series column in your data will be rendered more like a *unit* and less like a *disaggregation*. Note that you can [control the name of the series column](https://open-sdg.readthedocs.io/en/latest/configuration/#data_fields), and you also have control over your data columns, so there are multiple ways to continue to have your series behave like a disaggregation if you would prefer that.
+
+## Upgrading from 1.8.0 with Bootstrap 5
+
+If you are already using Bootstrap 5 (you have `bootstrap_5` set to `true`), and you have overriden any files in `bootstrap/` subfolders, then you will need to change the location of those overrides. Whereas in 1.8.0, using Bootstrap 5 was optional, in 2.0.0 it is required. So, in 2.0.0 we no longer need to use the `bootstrap5` subfolders. Here is a list of these files, and the new location of them in 2.0.0.
+
+**In short, if you are overriding any of the files on the left, you should move your overrides to the location on the right.**
+
+| 1.8.0 location                                                            | 2.0.0 location                                             |
+|---------------------------------------------------------------------------|------------------------------------------------------------|
+| _includes/assets/js/**bootstrap5**/accessibility.js                       | _includes/assets/js/accessibility.js                       |
+| _includes/assets/js/**bootstrap5**/accessibleTabs.js                      | _includes/assets/js/accessibleTabs.js                      |
+| _includes/**bootstrap5**/components/card.html                             | _includes/components/card.html                             |
+| _includes/**bootstrap5**/components/contrast-toggle.html                  | _includes/components/contrast-toggle.html                  |
+| _includes/**bootstrap5**/components/goal/breadcrumbs.html                 | _includes/components/goal/breadcrumbs.html                 |
+| _includes/**bootstrap5**/components/goal/header.html                      | _includes/components/goal/header.html                      |
+| _includes/**bootstrap5**/components/indicator/breadcrumbs.html            | _includes/components/indicator/breadcrumbs.html            |
+| _includes/**bootstrap5**/components/indicator/data-main.html              | _includes/components/indicator/data-main.html              |
+| _includes/**bootstrap5**/components/indicator/data-panes.html             | _includes/components/indicator/data-panes.html             |
+| _includes/**bootstrap5**/components/indicator/data-tabs.html              | _includes/components/indicator/data-tabs.html              |
+| _includes/**bootstrap5**/components/indicator/header.html                 | _includes/components/indicator/header.html                 |
+| _includes/**bootstrap5**/components/indicator/indicator-main.html         | _includes/components/indicator/indicator-main.html         |
+| _includes/**bootstrap5**/components/indicator/indicator-progress.html     | _includes/components/indicator/indicator-progress.html     |
+| _includes/**bootstrap5**/components/indicator/metadata-panes-default.html | _includes/components/indicator/metadata-panes-default.html |
+| _includes/**bootstrap5**/components/indicator/metadata-panes.html         | _includes/components/indicator/metadata-panes.html         |
+| _includes/**bootstrap5**/components/indicator/metadata-section.html       | _includes/components/indicator/metadata-section.html       |
+| _includes/**bootstrap5**/components/indicator/metadata-tabs-default.html  | _includes/components/indicator/metadata-tabs-default.html  |
+| _includes/**bootstrap5**/components/indicator/metadata-tabs.html          | _includes/components/indicator/metadata-tabs.html          |
+| _includes/**bootstrap5**/components/indicator/tags.html                   | _includes/components/indicator/tags.html                   |
+| _includes/**bootstrap5**/components/language-toggle-dropdown.html         | _includes/components/language-toggle-dropdown.html         |
+| _includes/**bootstrap5**/components/language-toggle-links.html            | _includes/components/language-toggle-links.html            |
+| _includes/**bootstrap5**/components/language-toggle.html                  | _includes/components/language-toggle.html                  |
+| _includes/**bootstrap5**/components/previous-next-links.html              | _includes/components/previous-next-links.html              |
+| _includes/**bootstrap5**/components/post/breadcrumbs.html                 | _includes/components/post/breadcrumbs.html                 |
+| _includes/**bootstrap5**/footer.html                                      | _includes/footer.html                                      |
+| _includes/**bootstrap5**/header.html                                      | _includes/header.html                                      |
+| _includes/**bootstrap5**/navigation-link.html                             | _includes/navigation-link.html                             |
+| _includes/**bootstrap5**/navigation.html                                  | _includes/navigation.html                                  |
+| _includes/**bootstrap5**/search.html                                      | _includes/search.html                                      |
+
+In addition, some layouts have had `-bootstrap5` removed from their name. **If you are overriding any of the following files on the left, you should rename them to the version on the right.**
+
+1.8.0 file | 2.0.0 file
+--- | ---
+_layouts/goal<strong>-bootstrap5</strong>.html | _layouts/goal.html
+_layouts/reportingstatus<strong>-bootstrap5</strong>.html | _layouts/reportingstatus.html
+_layouts/indicator<strong>-bootstrap5</strong>.html | _layouts/indicator.html
+
+## Upgrading from 1.8.0 with Chart.js 3
+
+If you are already using Chart.js 3 (you have `chartjs_3` set to `true`), and you have overriden any files with `chartjs3` in the filename, then you will need to rename those overrides. Whereas in 1.8.0, using Chart.js 3 was optional, in 2.0.0 it is required. So, in 2.0.0 we no longer need `chartjs3` versions of files. Here is a list of these files, and the new name for them in 2.0.0.
+
+**In short, if you are overriding any of the files on the left, you should rename them to the version on the right.**
+
+1.8.0 file | 2.0.0 file
+--- | ---
+_includes/assets/js/chartjs/accessibleCharts<strong>-chartjs3</strong>.js | _includes/assets/js/chartjs/accessibleCharts.js
+_includes/assets/js/indicatorView<strong>-chartjs3</strong>.js | _includes/assets/js/indicatorView.js
+
+## Relevant blog posts
+
+Here are blog posts for particular issues related to this upgrade:
+
+* [Details on custom chart types](https://open-sdg.org/blog/2022-04-01-preparing-for-open-sdg-2/#custom-chart-types-in-chartjs-3)
+* [Using a 2-column goal-by-target layout for goal pages](https://open-sdg.org/blog/2022-06-08-goal-by-target-override/)
