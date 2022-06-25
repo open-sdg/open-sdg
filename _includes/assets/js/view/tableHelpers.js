@@ -94,7 +94,7 @@ function createTableTargetLines(graphAnnotations) {
         if (!targetLineLabel) {
             targetLineLabel = opensdg.annotationPresets.target_line.label.content;
         }
-        $targetLines.append('<dt>' + targetLineLabel + '</dt><dd>' + targetLine.value + '</dd>');
+        $targetLines.append('<dt>' + targetLineLabel + '</dt><dd>' + alterDataDisplay(targetLine.value, targetLine, 'target line') + '</dd>');
     });
     if (targetLines.length === 0) {
         $targetLines.hide();
@@ -141,9 +141,9 @@ function createTable(table, indicatorId, el) {
         var table_head = '<thead><tr>';
 
         var getHeading = function (heading, index) {
-            var arrows = '<span class="sort"><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
+            var arrows = '<span class="sort"><i class="fa fa-sort"></i><i class="fa fa-sort-down"></i><i class="fa fa-sort-up"></i></span>';
             var button = '<span tabindex="0" role="button" aria-describedby="column-sort-info">' + translations.t(heading) + '</span>';
-            return (!index) ? button + arrows : arrows + button;
+            return button + arrows;
         };
 
         table.headings.forEach(function (heading, index) {

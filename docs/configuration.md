@@ -8,26 +8,6 @@ _Note about "strings": Many of the settings detailed here contain human-readable
 
 > To see many of these options in action, the [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml).
 
-### accessible_charts
-
-_Optional_: This setting can be set to `true` to enable chart functionality that is intended to increase accessibility by adding support for screenreaders and keyboard navigation. If omitted, this defaults to `false`, however setting this to `true` is recommended.
-
-```nohighlight
-accessible_charts: false
-```
-
-Note that after the next major release of Open SDG (2.0.0) this setting will be removed and charts will automatically be accessible.
-
-### accessible_tabs
-
-_Optional_: This setting can be set to `true` to enable tab functionality that is compliant with the [WAI-ARIA best practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). This adds improved keyboard navigation of the tabs. If omitted, this defaults to `false`, however setting this to `true` is recommended.
-
-```nohighlight
-accessible_tabs: false
-```
-
-Note that after the next major release of Open SDG (2.0.0) this setting will be removed and tabs will automatically be accessible.
-
 ### analytics
 
 _Optional_: This setting can be used to facilitate the installation of Google Analytics. You can do this in multiple ways:
@@ -66,18 +46,6 @@ analytics:
     - _ga_123456789
     - _gac_gb_123456789
 ```
-
-### bootstrap_5
-
-_Optional_: This setting enables the latest version of Bootstrap (version 5) if set to `true`. By default it is `false`, and Bootstrap version 3 will be used.
-
-Note that in the next major version of Open SDG (2.0.0) this setting will be removed and Bootstrap version 5 will always be used.
-
-IMPORTANT: This setting has the effect to forcing several other configuration settings at the same time. The reason for this is that not all options are available for Bootstrap 5. As mentioned above, in version Open SDG 2.0.0, Bootstrap 5 will always be used. This means that Open SDG 2.0.0 will be removing some options, in favor of consistent and focused development using best practices. The options being removed can be inferred from the following list of additional effects that setting `bootstrap_5` to `true` will have:
-
-1. The layout for the front page is automatically set to "frontpage-alt" (In Open SDG 2.0.0, there will only be a single frontpage layout.)
-2. The layout for each goal page is automatically set to a new layout which is most similar to "goal-with-progress". (In Open SDG 2.0.0, there will only be a single goal layout.)
-3. The layout for the header is automatically set to a new layout which is most similar to "header-menu-left-aligned". (In Open SDG 2.0.0, there will only be a single header layout.) The main differences in this layout are evident on mobile.
 
 ### breadcrumbs
 
@@ -126,12 +94,6 @@ breadcrumbs:
 
 Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
 
-### chartjs_3
-
-_Optional_: This setting enables the latest version of Chart.js (version 3) if set to `true`. By default it is `false`, and Chart.js version 2 will be used.
-
-Note that in the next major version of Open SDG (2.0.0) this setting will be removed and Chart.js version 3 will always be used.
-
 ### configuration_edit_url
 
 _Optional_: This setting controls the URL of the "Edit Configuration" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
@@ -139,22 +101,6 @@ _Optional_: This setting controls the URL of the "Edit Configuration" that appea
 ```nohighlight
 configuration_edit_url: http://prose.io/#my-org/my-repo/edit/develop/indicator-settings/[id].md
 ```
-
-### contrast_type
-
-_Optional_: This setting allows you to change the type of contrast button your site uses. The available settings are:
-
-* `default`: Two buttons containing "A" - one for on and one for off (this is the default if you omit this setting)
-* `long`: If you use this option one single button will be displayed with the text 'High contrast' / 'Default contrast', depending on which mode of contrast is active.
-* `single`: One button containing "A" which toggles on/off, depending on which mode of contrast is active. This is recommended for the cleanest display.
-
-Example:
-
-```nohighlight
-contrast_type: single
-```
-
-NOTE: This is setting is deprecated, because starting in version 2.0.0, Open SDG will always behave as if this were set to `single`.
 
 ### cookie_consent_form
 
@@ -363,14 +309,6 @@ email_contacts:
 environment: staging
 ```
 
-### favicons
-
-_Optional_: This setting controls the favicon markup. Possible settings are `legacy` and `favicon.io`. We recommend using `favicon.io` and will default to this in the future. But currently the default is `legacy` if omitted.
-
-```nohighlight
-favicons: favicon.io
-```
-
 ### footer_language_toggle
 
 _Optional_: This setting controls the type of language toggle to be used in the footer. Possible settings are `dropdown`, `links`, and `none`. If this is omitted, the default is `none`.
@@ -403,7 +341,7 @@ Note that the `path` of an item can be a translation key itself. This is useful 
 
 ### frontpage_cards
 
-_Optional_: This setting is only used in the `frontpage-alt` layout. It can display any number of "cards" in 3-column rows, beneath the grid of goal tiles. It should be a list of cards. Each configuration is optional, and here is an displaying one card with all of the options:
+_Optional_: This setting is used on the frontpage. It can display any number of "cards" in 3-column rows, beneath the grid of goal tiles. It should be a list of cards. Each configuration is optional, and here is an displaying one card with all of the options:
 
 ```
 frontpage_cards:
@@ -431,7 +369,7 @@ frontpage_cards:
 
 ### frontpage_goals_grid
 
-_Optional_: This setting is only used in the `frontpage-alt` layout. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
+_Optional_: This setting is used on the frontpage. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
 
 ```
 frontpage_goals_grid:
@@ -442,29 +380,9 @@ frontpage_goals_grid:
 Markdown is supported in the description. However note that all internal links
 should be relative to the frontpage. For example, instead of `[link](/path)` you should use `[link](path)`.
 
-### frontpage_heading
-
-_Optional_: This setting can control the heading that appears on the front page. This setting is only used in the `frontpage` layout.
-
-```nohighlight
-frontpage_heading: Australian data for Sustainable Development Goal indicators
-```
-
-NOTE: Because the `frontpage` layout will no longer be included in Open SDG 2.0.0, this setting is deprecated and will not be used as of 2.0.0.
-
-### frontpage_instructions
-
-_Optional_: This setting can control the instructions that appear on the front page. This setting is only used in the `frontpage` layout.
-
-```nohighlight
-frontpage_instructions: Click on each goal for Australian statistics for Sustainable Development Goal global indicators.
-```
-
-NOTE: Because the `frontpage` layout will no longer be included in Open SDG 2.0.0, this setting is deprecated and will not be used as of 2.0.0.
-
 ### frontpage_introduction_banner
 
-_Optional_: This setting adds a banner to your site's homepage, in order to introduce your users to your site. This setting is used in both the `frontpage` and `frontpage-alt` layouts. To add a banner update the `_config.yml` file with these settings:
+_Optional_: This setting adds a banner to your site's homepage, in order to introduce your users to your site. This setting is used on the frontpage. To add a banner update the site configuration with these settings:
 
 ```yaml
 frontpage_introduction_banner:
@@ -521,8 +439,8 @@ _Optional_: This setting can be used to control the color of the "headline" (eg,
 
 _Optional_: This setting can be used to customize the color set used in the charts. There are five possible entries:
 
-* `graph_color_set: 'accessible'` a 6-color set that is specifically chosen for optimal accessibility (recommended)
-* `graph_color_set: 'default'` a deprecated 6-color set that is still the default (for reasons of backwards compatibility)
+* `graph_color_set: 'accessible'` a 6-color set that is specifically chosen for optimal accessibility (default)
+* `graph_color_set: 'classic'` a deprecated 6-color set that was the default in Open SDG 1.x (it was previously called 'default' but was renamed to 'classic' in Open SDG 2.0.0)
 * `graph_color_set: 'sdg'` to use the 17 SDG colors in all charts
 * `graph_color_set: 'goal'` to use shades of the color of the current indicator's goal
 * `graph_color_set: 'custom'` to use a set of customized colors. In this case, write the hexadecimal color codes of the colors you want to use to the list in `graph_color_list` (see below).
@@ -530,7 +448,7 @@ _Optional_: This setting can be used to customize the color set used in the char
 > **NOTE**: Whatever color scheme you choose here, please ensure that all colors satisfy
 > the accessibility (minimum contrast) standards in your region. These colors will need to
 > be visible on white and black backgrounds. The `accessible` color scheme is designed to
-> meet this requirement, and so it is recommended.
+> meet this requirement, and so it is recommended, and it is the default.
 
 ### graph_color_list
 
@@ -550,25 +468,6 @@ _Optional_: This setting can be set to `true` to use the currently-selected seri
 ```yaml
 graph_title_from_series: true
 ```
-
-### header
-
-_Optional_: This setting can control aspects of the header that is displayed at the top of each page. The available options are:
-
-* `include`: This specifies an include file, assumed to be inside of `_includes/components/header/`, to use for the header.
-
-Here is an example, showing the default that is used if this setting is omitted:
-
-```nohighlight
-header:
-    include: header-default.html
-```
-
-The configuration above will include the file `_includes/components/header/header-default.html` at the top of each page.
-
-The `header-menu-left-aligned.html` option is also available, and is recommended.
-
-NOTE: Because the Open SDG 2.0.0 will have only one header layout, this setting is deprecated and will not be used as of 2.0.0.
 
 ### header_language_toggle
 
@@ -765,6 +664,14 @@ logos:
     alt: mi texto alternativo
 ```
 
+### map_layers
+
+_Optional_: This setting configures the layers that will be visible on maps on indicator pages. Each layer is a set of boundaries. For example, one layer might be for the province boundaries, and another layer might be for the district boundaries. For more information on this setting, see the [Maps guidance](maps.md).
+
+### map_options
+
+_Optional_: This setting configures general options for maps on indicator pages. For more information on this setting, see the [Maps guidance](maps.md).
+
 ### metadata_edit_url
 
 **_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
@@ -827,16 +734,6 @@ menu:
 _Optional_: This setting can be used to control the behavior of the `news` and `post` layouts. The available settings are:
 
 * `category_links`: Whether you would like the `categories` of posts to generate links to dedicated category pages. Default is `true`, but set to `false` to disable category links.
-
-### non_global_metadata
-
-_Optional_: This setting can be used to control the text of the tab containing non-global metadata. The default text is "National Metadata", but if you are implementing a sub-national platform, you could use "Local Metadata", or similar. Note that using a [translation key](translation.md) is recommended for better multilingual support.
-
-```nohighlight
-non_global_metadata: indicator.national_metadata
-```
-
-NOTE: This approach is deprecated and will not be used as of Open SDG 2.0.0. It is now possible to have complete control over all the metadata tabs using the `metadata_tabs` configuration setting (see above).
 
 ### plugins
 
@@ -1015,17 +912,6 @@ Then in your indicator configuration you would have:
 ```nohighlight
 data_keywords: smoking, smokers
 ```
-
-
-### series_toggle
-
-_Optional_: This setting enables the special treatment of the "Series" column in the data. If set to `true`, when an indicator's data includes a "Series" column, it will be displayed above "Units" as radio buttons. If omitted or `false`, the normal behavior is that the "Series" column will display below "Units" as checkboxes. Example:
-
-```nohighlight
-series_toggle: true
-```
-
-NOTE: The setting is deprecated, because Open SDG 2.0.0 will always behave as if this were set to `true`. If you currently have this set to false, to maintain this behavior you will need to change your data columns to something other than "Series", before upgrading to 2.0.0.
 
 ### site_config_form
 

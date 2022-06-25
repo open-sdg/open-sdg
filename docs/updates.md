@@ -2,6 +2,20 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 2.0.0
+
+24 June 2022
+
+* Major upgrade: remove deprecated code and settings
+* Remove support for Internet Explorer
+* Disaggregation on maps
+* Consistent breadcrumbs across all pages
+* Improve support for users without JavaScript
+* Design improvements for navigation, tables, search, cards, map legend, and mobile
+* Support for referencing site configuration within translations
+* Add back-to-top links to goals, indicators, status pages
+* Accessibility improvements to indicator tags for better color contrast
+
 ## 1.8.0
 
 31 March 2022

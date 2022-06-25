@@ -1,11 +1,10 @@
 $(document).ready(function() {
     $('.nav-tabs').each(function() {
         var tabsList = $(this);
-        var tabs = tabsList.find('li > a');
+        var tabs = tabsList.find('li > button');
         var panes = tabsList.parent().find('.tab-pane');
 
         panes.attr({
-            'class': 'tabPanel',
             'role': 'tabpanel',
             'aria-hidden': 'true',
             'tabindex': '0',
@@ -17,8 +16,8 @@ $(document).ready(function() {
 
         tabs.each(function(idx) {
             var tab = $(this);
-            var tabId = 'tab-' + tab.attr('href').slice(1);
-            var pane = tabsList.parent().find(tab.attr('href'));
+            var tabId = 'tab-' + tab.attr('data-bs-target').slice(1);
+            var pane = tabsList.parent().find(tab.attr('data-bs-target'));
 
             tab.attr({
                 'id': tabId,
@@ -27,8 +26,6 @@ $(document).ready(function() {
                 'tabindex': '-1',
             }).parent().attr('role', 'presentation');
 
-            tab.removeAttr('href');
-
             pane.attr('aria-labelledby', tabId);
 
             tab.click(function(e) {
@@ -36,11 +33,12 @@ $(document).ready(function() {
 
                 tabsList.find('> li.active')
                     .removeClass('active')
-                    .find('> a')
+                    .find('> button')
                     .attr({
                         'aria-selected': 'false',
                         'tabindex': '-1',
-                    });
+                    })
+                    .removeClass('active');
 
                 panes.filter(':visible').attr({
                     'aria-hidden': 'true',
@@ -62,32 +60,32 @@ $(document).ready(function() {
         panes.first().attr('aria-hidden', 'false').show();
 
         // Set state for the first tabsList li
-        tabsList.find('li:first').addClass('active').find(' > a').attr({
+        tabsList.find('li:first').addClass('active').find(' > button').attr({
             'aria-selected': 'true',
             'tabindex': '0',
         });
 
         // Set keydown events on tabList item for navigating tabs
-        tabsList.delegate('a', 'keydown', function(e) {
+        tabsList.delegate('button', 'keydown', function(e) {
             var tab = $(this);
             switch (e.which) {
                 case 37:
                     if (tab.parent().prev().length != 0) {
-                        tab.parent().prev().find('> a').click();
+                        tab.parent().prev().find('> button').click();
                         e.preventDefault();
                     }
                     else {
-                        tabsList.find('li:last > a').click();
+                        tabsList.find('li:last > button').click();
                         e.preventDefault();
                     }
                     break;
                 case 39:
                     if (tab.parent().next().length != 0) {
-                        tab.parent().next().find('> a').click();
+                        tab.parent().next().find('> button').click();
                         e.preventDefault();
                     }
                     else {
-                        tabsList.find('li:first > a').click();
+                        tabsList.find('li:first > button').click();
                         e.preventDefault();
                     }
                     break;

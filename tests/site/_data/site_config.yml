@@ -5,7 +5,6 @@ analytics:
   gtag: ''
   gtm: ''
   ga_prod: ''
-bootstrap_5: true
 breadcrumbs:
   goal:
     - path: /
@@ -22,27 +21,19 @@ breadcrumbs:
       label: general.home
     - path: /news
       label: menu.updates
-chartjs_3: true
-contrast_type: single
 cookie_consent_form:
   enabled: true
 country:
-  name: Australia
-  adjective: Australian
+  name: custom.country_name
+  adjective: custom.country_adjective
 create_goals:
-  layout: goal-with-progress
   previous_next_links: true
   goals:
     - content: custom.goal_1_content
     - content: My goal 2 content
 create_indicators:
-  layout: indicator
   previous_next_links: true
 create_pages:
-  - filename: index.html
-    folder: /
-    layout: frontpage-alt
-    title: My homepage title
   - filename: index.html
     folder: /goals
     layout: goals
@@ -51,10 +42,6 @@ create_pages:
     folder: /reporting-status
     layout: reportingstatus
     title: Reporting status
-  - filename: indicators.json
-    folder: /
-    layout: indicator-json
-    title: ''
   - filename: index.html
     folder: /search
     layout: search
@@ -86,7 +73,6 @@ email_contacts:
   suggestions: test@example.com
   functional: test@example.com
 environment: staging
-favicons: favicon.io
 footer_language_toggle: dropdown
 footer_menu:
   - path: 'mailto:test@example.com'
@@ -127,8 +113,6 @@ frontpage_goals_grid:
   description: >-
     Click on each [goal](goals) for data for Sustainable Development Goal global
     indicators.
-frontpage_heading: ''
-frontpage_instructions: ''
 frontpage_introduction_banner:
   title: custom.frontpage_introduction_banner_title
   description: My frontpage introduction banner description
@@ -143,8 +127,7 @@ graph_color_set: default
 graph_color_list: []
 graph_color_number: 6
 graph_title_from_series: true
-header:
-  include: header-menu-left-aligned.html
+header: {}
 header_language_toggle: dropdown
 hide_empty_metadata: true
 hide_single_series: false
@@ -210,6 +193,7 @@ map_layers:
     max_zoom: 10
     staticBorders: false
 map_options:
+  disaggregation_controls: true
   minZoom: 5
   maxZoom: 10
   tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -262,7 +246,6 @@ metadata_tabs:
     description: My sources blurb
 news:
   category_links: true
-non_global_metadata: ''
 progress_status:
   status_heading: status.progress_status
   status_types:
@@ -302,7 +285,6 @@ repository_url_site: 'https://github.com/open-sdg/open-sdg'
 search_index_boost: []
 search_index_extra_fields:
   - un_custodian_agency
-series_toggle: true
 sharethis_property: ''
 site_config_form:
   enabled: true

@@ -1,13 +1,16 @@
 {% include head.html %}
 {% include header.html %}
+<div class="container">
+    {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container" role="main">
 
     {% include components/goals-introduction.html %}
 
     <div class="goal-tiles">
-        <div class="row {% if site.bootstrap_5 %}g-2{% else %}no-gutters{% endif %}">
+        <div class="row g-2">
             {% for goal in page.goals %}
-            <div class="{% if site.bootstrap_5 %}col-4{% else %}col-xs-4{% endif %} col-md-2 goal-tile">
+            <div class="col-4 col-md-2 goal-tile">
                 <a href="{{ goal.url }}">
                     <img src="{{ goal.icon }}" id="goal-{{ goal.number }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
                 </a>
@@ -18,7 +21,7 @@
             out more symmetrically.
             {% endcomment %}
             {% if page.goals.size == 17 %}
-            <div class="{% if site.bootstrap_5 %}col-4{% else %}col-xs-4{% endif %} col-md-2 goal-tile global-goals-extra-icon">
+            <div class="col-4 col-md-2 goal-tile global-goals-extra-icon">
                 <img src="{{ site.goal_image_base }}/{{ page.language }}/18.png" id="goal-18" alt="The Global Goals for Sustainable Development" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
             </div>
             {% endif %}

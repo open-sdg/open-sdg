@@ -2,16 +2,26 @@
 {% if site.data[page.language].headlines[page.indicator.slug] %}
   {% assign sdg_headline_data = site.data[page.language].headlines[page.indicator.slug] %}
 {% endif %}
+{% assign no_headline = true %}
+{% if sdg_headline_data.size > 0 %}
+  {% assign no_headline = false %}
+{% endif %}
 
 <div id="headlineTable">
 
   <div id="datatables">
 
+    {% unless no_headline %}
     <a href="{{ page.remote_data_prefix }}/headline/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download="indicator_{{ page.indicator.slug }}.csv" tabindex="0" role="button">{{ page.t.indicator.download_headline }}</a>
+    {% endunless %}
+    <a href="{{ page.remote_data_prefix }}/data/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download='indicator_{{ page.indicator.slug }}.csv' tabindex='0' role='button'>{{ page.t.indicator.download_source }}</a>
 
-    <a href="{{ page.remote_data_prefix }}/data/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" style='float:left;margin-right:1em' download='indicator_{{ page.indicator.slug }}.csv' tabindex='0' role='button'>{{ page.t.indicator.download_source }}</a>
+    <p class="no-js-disaggregation-hint">{{ page.t.indicator.download_source_for_disaggregations }}</p>
 
-    <h3>Headline data</h3>
+    {% if no_headline %}
+    <h3>{{ page.t.indicator.no_headline_data }}</h3>
+    {% else %}
+    <h3>{{ page.t.indicator.headline_data }}</h3>
     <table class="table-responsive table table-hover dataTable no-footer" role="grid">
       <caption>{{ page.indicator.graph_title }}</caption>
       <thead>
@@ -37,8 +47,10 @@
         {% endfor %}
       </tbody>
     </table>
+    {% endif %}
   </div>
 
+  {% unless no_headline %}
   <div id="datatableFooter">
     {% if page.indicator.source_organisation_1 %}
     <p>{{ page.t.indicator.source }}: {{ page.indicator.source_organisation_1 }}</p>
@@ -53,5 +65,6 @@
     <p>{{ page.t.indicator.footnote }}: {{ page.indicator.data_footnote }}</p>
     {% endif %}
   </div>
+  {% endunless %}
 
 </div>

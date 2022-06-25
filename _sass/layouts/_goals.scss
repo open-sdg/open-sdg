@@ -1,11 +1,31 @@
 .layout-goals {
-  .goals-page-description {
-    margin-bottom: 25px;
-  }
+    #main-content {
+        .goal-tiles {
+            .goal-tile {
+                a {
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+            }
+            .global-goals-extra-icon {
+                img {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
 }
 
-.layout-goals.contrast-high {
-  .goals-page-description {
-    color: $color-light-highContrast;
-  }
+body.contrast-high.layout-goals {
+    #main-content {
+        .goal-tiles {
+            .global-goals-extra-icon {
+                img {
+                    &:hover {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
 }

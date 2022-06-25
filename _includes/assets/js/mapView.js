@@ -2,7 +2,7 @@ var mapView = function () {
 
   "use strict";
 
-  this.initialise = function(indicatorId, precision, decimalSeparator) {
+  this.initialise = function(indicatorId, precision, decimalSeparator, dataSchema) {
     $('.map').show();
     $('#map').sdgMap({
       indicatorId: indicatorId,
@@ -10,6 +10,7 @@ var mapView = function () {
       mapLayers: {{ site.map_layers | jsonify }},
       precision: precision,
       decimalSeparator: decimalSeparator,
+      dataSchema: dataSchema,
     });
   };
 };

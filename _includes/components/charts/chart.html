@@ -5,18 +5,13 @@
       {{ page.t.indicator.dataset_size_warning }}
     </div>
 
-    {% assign graph_template = 'components/charts/' | append: include.graph_type | append: '.html' %}
     {% assign graph_title = page.indicator.graph_titles.first.title | default: page.indicator.graph_title %}
     <div id="selectionsChart">
       <figure role="group">
         <div id="chart-canvas">
           <h4 id="chart-heading" class="chart-title">{{ graph_title }}</h4>
           <div id="chart" class="plot-container">
-            {% if site.chartjs_3 %}
-              {% include components/charts/canvas.html %}
-            {% else %}
-              {% include {{ graph_template }} %}
-            {% endif %}
+            {% include components/charts/canvas.html %}
           </div>
           <div id="plotLegend"></div>
           {% include components/indicator/data-footer.html %}

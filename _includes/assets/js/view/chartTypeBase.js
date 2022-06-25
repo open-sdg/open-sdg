@@ -76,7 +76,7 @@ opensdg.chartTypes.base = function(info) {
                     backgroundColor: 'rgba(0,0,0,0.7)',
                     callbacks: {
                         label: function (tooltipItem) {
-                            return tooltipItem.dataset.label + ': ' + alterDataDisplay(tooltipItem.formattedValue, tooltipItem.dataset, 'chart tooltip');
+                            return translations.t(tooltipItem.dataset.label) + ': ' + alterDataDisplay(tooltipItem.formattedValue, tooltipItem.dataset, 'chart tooltip');
                         },
                         afterBody: function () {
                             var unit = MODEL.selectedUnit ? translations.t(MODEL.selectedUnit) : MODEL.measurementUnit;
@@ -183,7 +183,7 @@ opensdg.chartTypes.base = function(info) {
                 options: {
                     plugins: {
                         annotation: {
-                            drawTime: 'beforeDatasetsDraw',
+                            drawTime: 'afterDatasetsDraw',
                             annotations: annotations
                         }
                     }

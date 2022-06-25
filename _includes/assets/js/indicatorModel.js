@@ -83,7 +83,7 @@ var indicatorModel = function (options) {
   // Before continuing, we may need to filter by Series, so set up all the Series stuff.
   this.allData = helpers.prepareData(this.data);
   this.allColumns = helpers.getColumnsFromData(this.allData);
-  this.hasSerieses = helpers.SERIES_TOGGLE && helpers.dataHasSerieses(this.allColumns);
+  this.hasSerieses = helpers.dataHasSerieses(this.allColumns);
   this.serieses = this.hasSerieses ? helpers.getUniqueValuesByProperty(helpers.SERIES_COLUMN, this.allData) : [];
   this.hasStartValues = Array.isArray(this.startValues) && this.startValues.length > 0;
   if (this.hasSerieses) {
@@ -134,7 +134,7 @@ var indicatorModel = function (options) {
   }
 
   this.updateChartType = function() {
-    this.graphType = helpers.getChartType(this.graphType, this.graphTypes, this.selectedUnit, this.selectedSeries, helpers.CHARTJS_3);
+    this.graphType = helpers.getChartType(this.graphType, this.graphTypes, this.selectedUnit, this.selectedSeries);
   }
 
   this.updateSelectedUnit = function(selectedUnit) {
@@ -275,6 +275,7 @@ var indicatorModel = function (options) {
         indicatorId: this.indicatorId,
         showMap: this.showMap,
         precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
+        dataSchema: this.dataSchema,
       });
     }
 

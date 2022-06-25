@@ -35,7 +35,7 @@
   <div class="row" id="results-status" role="status"></div>
   <div class="row" id="editor_holder"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@2.6.1/dist/jsoneditor.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@3.14.0/dist/js-yaml.min.js"></script>
   <script src="https://cdn.jsdelivr.net/g/filesaver.js"></script>
   <script>
@@ -114,34 +114,7 @@
     {% endif %}
 
     function normalizeCurrentValue(key, value) {
-      // @deprecated start
-      if (key == 'create_pages' && value && value.pages) {
-        return value.pages;
-      }
-      if (key == 'date_formats' && value && !Array.isArray(value)) {
-        var date_formats = [];
-        Object.keys(value).forEach(function(type) {
-          Object.keys(value[type]).forEach(function(language) {
-            date_formats.push({
-              type: type,
-              language: language,
-              format: value[type][language],
-            });
-          })
-        });
-        return date_formats;
-      }
-      if (key == 'languages_public' && value && !Array.isArray(value)) {
-        var languages_public = [];
-        Object.keys(value).forEach(function(language) {
-          languages_public.push({
-            language: language,
-            language_public: value[language],
-          });
-        });
-        return languages_public;
-      }
-      // @deprecated end
+      // This space for backwards-compat fixes.
       return value;
     }
 

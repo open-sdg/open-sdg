@@ -1,6 +1,9 @@
 {% include head.html %}
 {% include header.html %}
 
+<div class="container">
+  {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container goal-indicators">
   <h1>{{ page.title | t }}</h1>
   {{ content }}
@@ -17,14 +20,7 @@
     <li>
       <a href="{{ indicator.url }}">
         {{ indicator.name }}
-        {% if indicator.tags %}
-          <ul class="tags">
-          {% for tag in indicator.tags %}
-            {% assign tag_class = tag | slugify %}
-            <li class="tag-{{ tag_class }} warning">{{ tag | t }}</li>
-          {% endfor %}
-          </ul>
-        {% endif %}
+        {% include components/indicator/tags.html tags=indicator.tags indicator=indicator %}
       </a>
     </li>
 	{% endfor %}

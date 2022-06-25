@@ -1,5 +1,12 @@
 // Leaflet map styles.
 #main-content {
+  #mapFooter {
+    .data-controlled-footer-field,
+    [data-for-unit]:not([data-for-unit=""]),
+    [data-for-series]:not([data-for-series=""]) {
+      display: none !important;
+    }
+  }
   #map {
     height: 500px;
     width: 100%;
@@ -72,14 +79,125 @@
       background-image: none;
       font-size: 20px;
     }
-    .disaggregation-select-container {
-      background: $backgroundColor;
-      padding: 5px;
-      border: 2px solid rgba(0,0,0,0.3);
-      border-radius: 5px;
-      label {
-        margin-right: 4px;
+    .disaggregation-controls {
+      z-index: 801;
+      .disaggregation-list {
+        background: $backgroundColor;
+        padding: 5px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        margin-bottom: 5px;
+        .disaggregation-container {
+          display: flex ;
+          margin: 5px 0px 5px 0px ;
+          .disaggregation-title {
+            flex: 0 1 auto ;
+            margin: 0px 0px 0px 0px ;
+            order: 1 ;
+          }
+          &:after {
+            content: "" ;
+            flex: 1 1 auto ;
+            margin: 0px 12px 5px 12px ;
+            order: 2 ;
+          }
+          .disaggregation-definition {
+            flex: 0 1 auto ;
+            margin: 0px 0px 0px 0px ;
+            order: 3 ;
+          }
+        }
       }
+      .disaggregation-button {
+        background: $backgroundColor;
+        padding: 5px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .disaggregation-form-outer {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+
+        top: 50%;
+        left: 50%;
+        height: 400px;
+        margin-top: -200px;
+
+        width: 250px;
+        margin-left: -125px;
+
+        @media only screen and (min-width: 300px) {
+          width: 300px;
+          margin-left: -150px;
+        }
+
+        @media only screen and (min-width: 400px) {
+          width: 400px;
+          margin-left: -200px;
+        }
+
+        @media only screen and (min-width: 500px) {
+          width: 500px;
+          margin-left: -250px;
+        }
+
+        @media only screen and (min-width: 600px) {
+          width: 600px;
+          margin-left: -300px;
+        }
+
+        @media only screen and (min-width: 700px) {
+          width: 700px;
+          margin-left: -350px;
+        }
+
+        @media only screen and (min-width: 800px) {
+          width: 800px;
+          margin-left: -400px;
+        }
+
+        background-color: $backgroundColor;
+        padding: 20px;
+        border: 2px solid rgba(0,0,0,0.3);
+        border-radius: 5px;
+        .disaggregation-form {
+          height: 100%;
+          .disaggregation-form-inner {
+            display: flex;
+            flex-wrap: wrap;
+            height: 325px;
+            overflow: scroll;
+            width: 100%;
+          }
+          .disaggregation-fieldset-container {
+            flex: 1 0 50%;
+            .disaggregation-fieldset {
+              margin-top: 10px;
+            }
+          }
+          .disaggregation-label {
+            display: block;
+            font-size: $fontSize;
+            .disaggregation-input {
+              margin-right: 10px;
+            }
+          }
+          .disaggregation-form-buttons {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            button {
+              margin-left: 10px;
+              font-size: $fontSize;
+            }
+          }
+        }
+      }
+    }
+    .leaflet-bottom.leaflet-right {
+      z-index: 700;
     }
     .leaflet-control-attribution {
       @media only screen and (max-width: 480px) {
@@ -91,102 +209,133 @@
       @media only screen and (max-width: 680px) {
         display: none;
       }
-      background-color: rgba(150, 150, 150, 0.6);
       padding: 0;
-      width: 300px;
-      .legend-swatches {
-        @include preserveOriginalColors;
-        height: 10px;
-        .legend-swatch {
-          display: block;
-          float: left;
-          height: 10px;
+      min-width: 460px;
+      margin-right: 25px;
+      .legend-footer {
+        position: relative;
+        width: 150px;
+        left: 310px;
+        bottom: 0;
+        .legend-swatches, .legend-values {
+          @include preserveOriginalColors;
+          position: relative;
+          bottom: 0;
+          width: 150px;
+          left: 0;
         }
-      }
-      .legend-values {
-        @include preserveOriginalColors;
-        position: absolute;
-        bottom: -10px;
-        width: 100%;
-        .arrow {
-          width: 0;
-          height: 0;
-          border-style: solid;
-          position: absolute;
-          top: -10px;
-          z-index: 1;
-          &.left {
-            border-width: 20px 0 0 20px;
-            border-color: transparent transparent transparent $backgroundColor;
-            left: 0;
+        .legend-swatches {
+          height: 10px;
+          .legend-swatch {
+            display: block;
+            float: left;
+            height: 10px;
           }
-          &.right {
-            border-width: 0 0 20px 20px;
-            border-color: transparent transparent $backgroundColor transparent;
-            right: 1px;
+        }
+        .legend-values {
+          bottom: -10px;
+          .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: absolute;
+            top: -10px;
+            z-index: 1;
+            &.left {
+              border-width: 20px 0 0 20px;
+              border-color: transparent transparent transparent $backgroundColor;
+              left: 0;
+            }
+            &.right {
+              border-width: 0 0 20px 20px;
+              border-color: transparent transparent $backgroundColor transparent;
+              right: 1px;
+              box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
+            }
+          }
+          .legend-value {
+            color: $text-color;
+            padding: 0 4px;
+            background: $backgroundColor;
+            position: absolute;
+            z-index: 2;
+            &.left {
+              left: 0;
+            }
+            &.right {
+              right: 1px;
+            }
             box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
           }
         }
-        .legend-value {
-          color: $text-color;
-          padding: 0 4px;
-          background: $backgroundColor;
-          position: absolute;
-          z-index: 2;
-          &.left {
-            left: 0;
-          }
-          &.right {
-            right: 1px;
-          }
-          box-shadow: 1px 1px 1px 0px $map-legendValue-shadowColor;
-        }
       }
       #selection-list {
-        list-style: none;
         margin-bottom: 0;
-        padding-left: 0;
-        li {
-          position: relative;
-          margin-top: 3px;
-          &:first-child {
-            margin-top: 0;
+        dt, dd {
+          min-height: 25px;
+          margin-bottom: 5px;
+        }
+        dt {
+          float: left;
+          clear: left;
+          width: 300px;
+          text-align: right;
+          padding-top: 4px;
+          .selection-name-background {
+            background-color: rgba(255,255,255,0.6);
+            padding: 5px;
           }
+        }
+        dd {
+          margin-left: 310px;
+          position: relative;
+          width: 150px;
+          background-color: rgba(150, 150, 150, 0.6);
           cursor: pointer;
-          height: 23px;
-          .selection-bar, .selection-name, .selection-value {
-            height: 23px;
+          .selection-value, .selection-bar {
+            position: absolute;
+            left: 0;
+          }
+          .selection-bar, .selection-value {
+            height: 25px;
             position: absolute;
           }
           .selection-bar {
             border-radius: 2px 0 0 2px;
-            background: $map-legendBar-color;
             z-index: 1;
           }
-          .selection-name {
-            z-index: 2;
-            padding: 3px 20px 3px 3px;
-          }
           &.no-value {
-            .selection-name {
-              background: $map-legendValue-color-noValue;
-            }
             .selection-bar, .selection-value {
               display: none;
             }
           }
           .selection-value {
             z-index: 2;
-            margin-right: 5px;
-            background-color: $map-legendValue-color;
             padding: 3px;
             border-radius: 2px;
           }
+          .selection-value-high {
+            right: 0;
+            text-align: right;
+            .selection-value-high-background {
+              background-color: $map-legendValue-backgroundColor;
+              padding: 2px;
+              border-radius: 5px;
+            }
+          }
+          .selection-value-low {
+            .selection-value-low-background {
+              background-color: $map-legendValue-backgroundColor;
+              padding: 2px;
+              border-radius: 5px;
+            }
+          }
           .selection-close {
-            top: 6px;
-            right: 5px;
+            top: 1px;
+            right: -20px;
             position: absolute;
             z-index: 3;
+            padding: 6px;
           }
         }
       }
@@ -196,4 +345,28 @@
 
 #embeddedmapview h3 {
   text-align: center;
+}
+
+#mapview {
+  .btn-download {
+    margin-right: 10px;
+  }
+}
+
+body.contrast-high {
+  #main-content {
+    #map {
+      .leaflet-control-zoomhome-in,
+      .leaflet-control-zoomhome-out,
+      .leaflet-control-zoomhome-home,
+      .leaflet-control-fullscreen-button,
+      .leaflet-control-timecontrol,
+      .selection-name span,
+      .selection-value span,
+      .selection-close,
+      .disaggregation-controls {
+        color: $color-dark-highContrast;
+      }
+    }
+  }
 }

@@ -34,16 +34,25 @@
     },
 
     onAdd: function() {
+      var div = L.DomUtil.create('div', 'selection-legend');
+      this.legendDiv = div;
+      this.resetSwatches();
+      return div;
+    },
+
+    renderSwatches: function() {
       var controlTpl = '' +
-        '<ul id="selection-list"></ul>' +
-        '<div class="legend-swatches">' +
-          '{legendSwatches}' +
-        '</div>' +
-        '<div class="legend-values">' +
-          '<span class="legend-value left">{lowValue}</span>' +
-          '<span class="arrow left"></span>' +
-          '<span class="legend-value right">{highValue}</span>' +
-          '<span class="arrow right"></span>' +
+        '<dl id="selection-list"></dl>' +
+        '<div class="legend-footer">' +
+          '<div class="legend-swatches">' +
+            '{legendSwatches}' +
+          '</div>' +
+          '<div class="legend-values">' +
+            '<span class="legend-value left">{lowValue}</span>' +
+            '<span class="arrow left"></span>' +
+            '<span class="legend-value right">{highValue}</span>' +
+            '<span class="arrow right"></span>' +
+          '</div>' +
         '</div>';
       var swatchTpl = '<span class="legend-swatch" style="width:{width}%; background:{color};"></span>';
       var swatchWidth = 100 / this.plugin.options.colorRange.length;
@@ -53,52 +62,74 @@
           color: swatchColor,
         });
       }).join('');
-      var div = L.DomUtil.create('div', 'selection-legend');
-      div.innerHTML = L.Util.template(controlTpl, {
-        lowValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRange[0])),
-        highValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRange[1])),
+      return L.Util.template(controlTpl, {
+        lowValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][0])),
+        highValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][1])),
         legendSwatches: swatches,
       });
-      return div;
+    },
+
+    resetSwatches: function() {
+      this.legendDiv.innerHTML = this.renderSwatches();
     },
 
     update: function() {
       var selectionList = L.DomUtil.get('selection-list');
-      var selectionTpl = '' +
-        '<li class="{valueStatus}">' +
-          '<span class="selection-name">{name}</span>' +
-          '<span class="selection-value" style="left: {percentage}%;">{value}</span>' +
-          '<span class="selection-bar" style="width: {percentage}%;"></span>' +
+      var selectionTplHighValue = '' +
+        '<dt class="selection-name"><span class="selection-name-background">{name}</span></dt>' +
+        '<dd class="selection-value-item {valueStatus}">' +
+          '<span class="selection-bar" style="background-color: {color}; width: {percentage}%;">' +
+            '<span class="selection-value selection-value-high">' +
+              '<span class="selection-value-high-background">{value}</span>' +
+            '</span>' +
+          '</span>' +
           '<i class="selection-close fa fa-remove"></i>' +
-        '</li>';
+        '</dd>';
+      var selectionTplLowValue = '' +
+      '<dt class="selection-name"><span class="selection-name-background">{name}</span></dt>' +
+      '<dd class="selection-value-item {valueStatus}">' +
+        '<span class="selection-bar" style="background-color: {color}; width: {percentage}%;"></span>' +
+        '<span class="selection-value selection-value-low" style="left: {percentage}%;">' +
+          '<span class="selection-value-low-background">{value}</span>' +
+        '</span>' +
+        '<i class="selection-close fa fa-remove"></i>' +
+      '</dd>';
       var plugin = this.plugin;
-      var valueRange = this.plugin.valueRange;
+      var valueRange = this.plugin.valueRanges[this.plugin.currentDisaggregation];
       selectionList.innerHTML = this.selections.map(function(selection) {
         var value = plugin.getData(selection.feature.properties);
+        var color = '#FFFFFF';
         var percentage, valueStatus;
-        if (value) {
+        var templateToUse = selectionTplHighValue;
+        if (typeof value === 'number') {
+          color = plugin.colorScale(value).hex();
           valueStatus = 'has-value';
           var fraction = (value - valueRange[0]) / (valueRange[1] - valueRange[0]);
           percentage = Math.round(fraction * 100);
+          if (percentage <= 50) {
+            templateToUse = selectionTplLowValue;
+          }
         }
         else {
           value = '';
           valueStatus = 'no-value';
           percentage = 0;
         }
-        return L.Util.template(selectionTpl, {
+        return L.Util.template(templateToUse, {
           name: selection.feature.properties.name,
           valueStatus: valueStatus,
           percentage: percentage,
-          value: plugin.alterData(opensdg.dataRounding(value)),
+          value: plugin.alterData(value),
+          color: color,
         });
       }).join('');
 
       // Assign click behavior.
-      var control = this;
-      $('#selection-list li').click(function(e) {
-        var index = $(e.target).closest('li').index()
-        var selection = control.selections[index];
+      var control = this,
+          clickSelector = '#selection-list dd';
+      $(clickSelector).click(function(e) {
+        var index = $(clickSelector).index(this),
+            selection = control.selections[index];
         control.removeSelection(selection);
         control.plugin.unhighlightFeature(selection);
       });

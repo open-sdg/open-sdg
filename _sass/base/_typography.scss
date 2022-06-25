@@ -1,118 +1,35 @@
-body{
-  font-family: $fontFamily;
-  font-size: $fontSize;
-  color: $text-color;
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $text-color;
 }
 body.contrast-high {
-  color: $text-color-highContrast;
+    color: $text-color-highContrast;
 }
 
-h1{ font-size: $h1-fontSize; }
-h2{ font-size: $h2-fontSize; }
-h3{ font-size: $h3-fontSize; }
-.lead-copy { font-size: $leadCopy-fontSize; }
-.small-text { font-size: $smallText-fontSize; }
-
-.goal-banner {
-  a {
-    background: transparent;
-    display: block;
-    &:hover {
-      text-decoration: none;
-    }
-  }
-  h1,
-	h2,
-  h3 {
-    color: $color-dark;
-  }
-  h1 {
-    margin-top: 12px;
-  }
-
-  &.indicator {
-    h1 {
-      line-height: normal;
-    }
-  }
-
-  img {
-    max-width: 100%;
-  }
+h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-#main-content {
-  background: $backgroundColor;
-  padding-top: 15px;
-  padding-bottom: 15px;
-
-  h4 {
-    margin-bottom: 1.5rem;
-  }
-
-
-  .fa-info {
-    margin-right: 5px;
-  }
-  .alert {
-    color: $color-dark;
-  }
-  .alert a {
-    display: inline;
-    padding: 0;
-  }
-
-  h2:first-child {
-    margin-bottom: 14px;
-  }
+h1 {
+    font-size: $h1-fontSize;
 }
-
-.visuallyhidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+h2 {
+    font-size: $h2-fontSize;
 }
-
-[contentEditable="true"]:focus,
-[href]:focus,
-[tabindex]:focus,
-iframe:focus,
-input:focus,
-button:focus {
-  @include focus;
+h3 {
+    font-size: $h3-fontSize;
 }
-body.contrast-high {
-  [contentEditable="true"]:focus,
-  [href]:focus,
-  [tabindex]:focus,
-  iframe:focus,
-  input:focus,
-  button:focus {
-    @include focusHighContrast;
-  }
+h4 {
+    font-size: $h4-fontSize;
 }
-input[type="radio"]:focus, body.contrast-high input[type="radio"]:focus,
-input[type="checkbox"]:focus, body.contrast-high input[type="checkbox"]:focus {
-  box-shadow: 0px 0px 0px 4px $focusOutlineColor !important;
+.lead-copy {
+    font-size: $leadCopy-fontSize;
 }
-.tabPanel:focus,
-input[type="text"]:focus,
-body.contrast-high input[type="text"]:focus,
-.variable-selector button.accessBtn:focus,
-div[tabindex]:focus {
-  @include focusOutlineOnly;
+.small-text {
+    font-size: $smallText-fontSize;
 }
-body.contrast-high .variable-selector button.accessBtn:focus {
-  @include focusOutlineOnlyHighContrast;
-  &, span {
-    color: $text-color-highContrast !important;
-  }
-}
-body.contrast-high div[tabindex]:focus {
-  @include focusOutlineOnlyHighContrast;
+p {
+    text-indent: 0;
 }

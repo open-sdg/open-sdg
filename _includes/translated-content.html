@@ -1,0 +1,7 @@
+{% assign translation_key = include.content | strip | strip_html %}
+{% assign translated_content = translation_key | t %}
+{% if translated_content != translation_key %}
+    {{ translated_content | markdownify }}
+{% else %}
+    {{ include.content }}
+{% endif %}
