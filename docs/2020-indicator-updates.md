@@ -11,7 +11,7 @@ In order to display the new indicator set on an Open SDG platform, the following
 
 1. Upgrade to Open SDG version 1.4.0 or later. For technical help in upgrading to this v1.4.0, see our [upgrade instructions for 1.4.0](https://open-sdg.readthedocs.io/en/latest/upgrades/upgrading-1-4-0/).
 
-  Release 1.4.0 contains the translations for the new indicator set.
+    Release 1.4.0 contains the translations for the new indicator set.
 
 2. Make changes to data and metadata files for indicators that were replaced, revised, added or deleted through the review process:
 
