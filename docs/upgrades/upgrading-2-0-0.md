@@ -103,6 +103,10 @@ Throughout 1.x the `date_formats` site configuration has supported an older stru
 
 The `favicons` site configuration has been removed and the platform will always use the `favicon.io` approach. This may be a breaking change for any implementation still using older favicon images, and in this case you would need to create new favicon images according to [this favicon tutorial](https://open-sdg.readthedocs.io/en/latest/tutorials/change-logo/#find-a-favicon).
 
+### frontpage-alt layout removed
+
+The `frontpage-alt` layout has been removed. Now there is only a single layout for frontpage, called `frontpage`.
+
 ### frontpage_heading - removed
 
 The `frontpage_heading` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_introduction_banner`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner). Any custom text that you have in `frontpage_heading` should be copied to `frontpage_introduction_banner`.
