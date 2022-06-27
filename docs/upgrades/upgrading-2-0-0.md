@@ -87,6 +87,10 @@ The data build automatically assigns various properties as metadata to each indi
 * `target_number` instead of `target_id`
 * `goal_number` instead of `sdg_goal`
 
+### data build - SDMX inputs, import_translation_keys change
+
+The parameter for SDMX inputs called `import_translation_keys` has been removed, and replaced with `import_codes`.
+
 ### data columns/fields - default sorting change
 
 Throughout 1.x the default sorting logic for disaggregation dropdowns and options has been "alphabetical", but now the default will be "default" -- where the sorting is based on position in the data. See the [`datapackage` "sorting" option](https://open-sdg.readthedocs.io/en/latest/data-configuration/#datapackage) for more information. To keep alphabetical sorting, you will need to configure your data build as described in the link above, to 'alphabetical'.
