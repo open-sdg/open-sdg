@@ -35,6 +35,13 @@
 }
 
 body.contrast-high {
+    .cookie-modal {
+        .cm-modal {
+            span {
+                color: $color-dark-highContrast;
+            }
+        }
+    }
     .cookie-notice {
         .cn-body {
             p span {
