@@ -269,6 +269,7 @@
                 that.plugin.updateTooltips();
                 that.plugin.selectionLegend.resetSwatches();
                 that.plugin.selectionLegend.update();
+                that.plugin.updateTitle();
                 that.updateList();
                 $('.disaggregation-form-outer').toggle();
             });

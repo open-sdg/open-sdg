@@ -83,6 +83,11 @@
     this._decimalSeparator = options.decimalSeparator;
     this.currentDisaggregation = 0;
     this.dataSchema = options.dataSchema;
+    this.viewHelpers = options.viewHelpers;
+    this.modelHelpers = options.modelHelpers;
+    this.chartTitles = options.chartTitles;
+    console.log(this.viewHelpers, 'viewHelpers');
+    console.log(this.modelHelpers, 'modelHelpers');
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -110,6 +115,23 @@
   }
 
   Plugin.prototype = {
+
+    // Update title.
+    updateTitle: function() {
+      var currentSeries = this.disaggregationControls.getCurrentSeries(),
+          currentUnit = this.disaggregationControls.getCurrentUnit(),
+          newTitle = null;
+      if (this.modelHelpers.GRAPH_TITLE_FROM_SERIES) {
+        newTitle = currentSeries;
+      }
+      else {
+        var currentTitle = $('#map-heading').text();
+        newTitle = this.modelHelpers.getChartTitle(currentTitle, this.chartTitles, currentUnit, currentSeries);
+      }
+      if (newTitle) {
+        $('#map-heading').text(newTitle);
+      }
+    },
 
     // Zoom to a feature.
     zoomToFeature: function(layer) {
@@ -454,6 +476,7 @@
         // Add the disaggregation controls.
         plugin.disaggregationControls = L.Control.disaggregationControls(plugin);
         plugin.map.addControl(plugin.disaggregationControls);
+        plugin.updateTitle();
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
