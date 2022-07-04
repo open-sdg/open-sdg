@@ -86,6 +86,7 @@ var indicatorView = function (model, options) {
             VIEW._mapView.initialise(
                 args.indicatorId,
                 args.precision,
+                args.precisionItems,
                 OPTIONS.decimalSeparator,
                 args.dataSchema,
                 VIEW.helpers,

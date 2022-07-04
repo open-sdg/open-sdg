@@ -276,6 +276,7 @@ var indicatorModel = function (options) {
         indicatorId: this.indicatorId,
         showMap: this.showMap,
         precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
+        precisionItems: this.precision,
         dataSchema: this.dataSchema,
         chartTitles: this.chartTitles,
       });

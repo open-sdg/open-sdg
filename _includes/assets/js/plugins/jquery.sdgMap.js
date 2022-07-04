@@ -80,14 +80,13 @@
     this.mapLayers = [];
     this.indicatorId = options.indicatorId;
     this._precision = options.precision;
+    this.precisionItems = options.precisionItems;
     this._decimalSeparator = options.decimalSeparator;
     this.currentDisaggregation = 0;
     this.dataSchema = options.dataSchema;
     this.viewHelpers = options.viewHelpers;
     this.modelHelpers = options.modelHelpers;
     this.chartTitles = options.chartTitles;
-    console.log(this.viewHelpers, 'viewHelpers');
-    console.log(this.modelHelpers, 'modelHelpers');
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -118,6 +117,9 @@
 
     // Update title.
     updateTitle: function() {
+      if (!this.modelHelpers) {
+        return;
+      }
       var currentSeries = this.disaggregationControls.getCurrentSeries(),
           currentUnit = this.disaggregationControls.getCurrentUnit(),
           newTitle = null;
@@ -131,6 +133,27 @@
       if (newTitle) {
         $('#map-heading').text(newTitle);
       }
+    },
+
+    // Update footer fields.
+    updateFooterFields: function() {
+      if (!this.viewHelpers) {
+        return;
+      }
+      var currentSeries = this.disaggregationControls.getCurrentSeries(),
+          currentUnit = this.disaggregationControls.getCurrentUnit();
+      this.viewHelpers.updateSeriesAndUnitElements(currentSeries, currentUnit);
+      this.viewHelpers.updateUnitElements(currentUnit);
+    },
+
+    // Update precision.
+    updatePrecision: function() {
+      if (!this.modelHelpers) {
+        return;
+      }
+      var currentSeries = this.disaggregationControls.getCurrentSeries(),
+          currentUnit = this.disaggregationControls.getCurrentUnit();
+      this._precision = this.modelHelpers.getPrecision(this.precisionItems, currentUnit, currentSeries);
     },
 
     // Zoom to a feature.
@@ -477,6 +500,8 @@
         plugin.disaggregationControls = L.Control.disaggregationControls(plugin);
         plugin.map.addControl(plugin.disaggregationControls);
         plugin.updateTitle();
+        plugin.updateFooterFields();
+        plugin.updatePrecision();
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({

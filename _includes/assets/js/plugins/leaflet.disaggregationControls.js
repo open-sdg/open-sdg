@@ -264,12 +264,14 @@
             });
             applyButton.addEventListener('click', function(e) {
                 that.plugin.currentDisaggregation = that.currentDisaggregation;
+                that.plugin.updatePrecision();
                 that.plugin.setColorScale();
                 that.plugin.updateColors();
                 that.plugin.updateTooltips();
                 that.plugin.selectionLegend.resetSwatches();
                 that.plugin.selectionLegend.update();
                 that.plugin.updateTitle();
+                that.plugin.updateFooterFields();
                 that.updateList();
                 $('.disaggregation-form-outer').toggle();
             });
