@@ -134,6 +134,7 @@ hide_single_series: false
 hide_single_unit: false
 ignored_disaggregations:
   - ignored disaggregation column
+  - custom.ignore_me
 indicator_config_form:
   enabled: true
   dropdowns:
