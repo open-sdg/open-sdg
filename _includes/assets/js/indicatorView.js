@@ -52,6 +52,12 @@ var indicatorView = function (model, options) {
             else {
                 $sidebar.removeClass('indicator-sidebar-hidden');
                 $main.removeClass('indicator-main-full');
+                // Make sure the unit/series items are updated, in case
+                // they were changed while on the map.
+                helpers.updateChartTitle(VIEW._dataCompleteArgs.chartTitle);
+                helpers.updateSeriesAndUnitElements(VIEW._dataCompleteArgs.selectedSeries, VIEW._dataCompleteArgs.selectedUnit);
+                helpers.updateUnitElements(VIEW._dataCompleteArgs.selectedUnit);
+                helpers.updateTimeSeriesAttributes(VIEW._dataCompleteArgs.timeSeriesAttributes);
             }
         };
     });
@@ -75,6 +81,8 @@ var indicatorView = function (model, options) {
         helpers.updateSeriesAndUnitElements(args.selectedSeries, args.selectedUnit);
         helpers.updateUnitElements(args.selectedUnit);
         helpers.updateTimeSeriesAttributes(args.timeSeriesAttributes);
+
+        VIEW._dataCompleteArgs = args;
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {

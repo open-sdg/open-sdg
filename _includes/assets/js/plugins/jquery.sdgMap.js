@@ -599,6 +599,12 @@
         $('#tab-mapview').parent().click(finalMapPreparation);
       }
       function finalMapPreparation() {
+        // Update the series/unit stuff in case it changed
+        // while on the chart/table.
+        plugin.updateTitle();
+        plugin.updateFooterFields();
+        plugin.updatePrecision();
+        // Delay other things to give time for browser to do stuff.
         setTimeout(function() {
           $('#map #loader-container').hide();
           // Leaflet needs "invalidateSize()" if it was originally rendered in a
