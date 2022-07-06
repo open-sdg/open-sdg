@@ -1,6 +1,33 @@
-{% assign header_include = site.header.include | default: 'header-default.html' %}
-{% if site.bootstrap_5 %}
-{% include bootstrap5/header.html %}
-{% else %}
-{% include components/header/{{ header_include }} %}
-{% endif %}
+{% include multilingual-js.html key="header" %}
+<a class="sr-only-focusable" id="skiplink" href="#main-content" tabindex="0">{{ page.t.header.skip_link }}</a>
+{% include components/header/internet-explorer-message.html %}
+<div id="disclaimer">
+    {% include components/dev-disclaimer.html %}
+</div>
+
+<header role="banner" class="">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light flex-wrap align-items-start">
+            {% include components/header/logo.html %}
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex flex-wrap w-100 justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    {% include navigation.html dropdowns=true %}
+                </div>
+                <div class="header-search-bar">
+                    {% include search.html %}
+                </div>
+                <div class="header-toggles d-flex">
+                    {%- if site.languages.size > 1 and site.header_language_toggle != 'none' -%}
+                    {% include components/language-toggle.html %}
+                    <span class="no-js-language-toggle">{% include components/language-toggle-links.html %}</span>
+                    {%- endif -%}
+                    {% include components/contrast-toggle.html %}
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+{% include components/page-top.html %}

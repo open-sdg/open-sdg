@@ -1,5 +1,44 @@
 <h1>Change Log</h1>
 
+## 2.0.0
+
+* Bugfix: Fix for rescaler plugin when changing series #1715
+* Feature: Alert about not supporting Internet Explorer #1710
+* Bugfix: Translate the chart tooltip labels #1709
+* Feature: Default to accessible chart colorset #1697
+* Bugfix: Draw annotations after datasets #1696
+* Design: Color/markup fixes for tags #1695
+* Bugfix: Fix aria-controls attributes on reporting status page #1687
+* Design: Map selection legend revamp moving name to the left #1680
+* Feature: Breadcrumbs on all pages #1679
+* Major upgrade: Deprecated code and settings removed - see upgrade instructions for details #1601, #1633, #1646, #1672, #1676
+* Bugfix: Alter the value for target lines on tables #1675
+* Bugfix: Allow keyboard access to cookie settings link in footer #1665
+* Bugfix: Fix closing tag in data footer #1664
+* Feature: No-javascript tweaks related to headline data #1663
+* Bugfix: Various chart-related fixes #1662
+* Bugfix: Style fixes for data edit form #1661
+* Bugfix: Pin to 2.6.1 of json-editor #1660
+* Feature: For no-js: hide hamburger toggle, expand hamburger menu, hide drop-downs #1655
+* Bugfix: Handle null values in current series/unit for footer fields #1652
+* Feature: Map disaggregation #1649 #1699 #1705 #1714
+* Design: Explicitly turn off text indent on paragraphs #1643
+* Design: Fix for alignment of search button on search page #1642
+* Design: Remove top padding on main-content #1640
+* Design: Move table column arrows to right #1639
+* Design: Do not float icon on goal page on mobile #1638
+* Design: Less space above frontpage card sections #1637
+* Design: Larger font size for main nav #1636
+* Feature: Back-to-top cleanup and added to goals/indicators/status pages #1635
+* Feature: Hide search and contrast, and switch to language-toggle links, when no javascript #1618
+* Bugfix: Do not change map title when series changes #1606
+* Feature: Support for site config and translation keys inside content/translations #1605 #1703
+* Bugfix: Fix breadcrumb markup in bootstrap 5 posts #1589
+
+## 1.8.1
+
+* Bugfix: Pin to 2.6.1 of json-editor #1670
+
 ## 1.8.0
 
 * Bugfix: Better catching of invalid map values #1588

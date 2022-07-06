@@ -82,6 +82,7 @@
     this._precision = options.precision;
     this._decimalSeparator = options.decimalSeparator;
     this.currentDisaggregation = 0;
+    this.dataSchema = options.dataSchema;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -119,7 +120,7 @@
     getTooltipContent: function(feature) {
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
-      if (tooltipData) {
+      if (typeof tooltipData === 'number') {
         tooltipContent += ': ' + this.alterData(tooltipData);
       }
       return tooltipContent;
@@ -217,11 +218,6 @@
 
     // Alter data before displaying it.
     alterData: function(value) {
-      // @deprecated start
-      if (typeof opensdg.dataDisplayAlterations === 'undefined') {
-        opensdg.dataDisplayAlterations = [];
-      }
-      // @deprecated end
       opensdg.dataDisplayAlterations.forEach(function(callback) {
         value = callback(value);
       });
@@ -236,10 +232,14 @@
 
     // Get the data from a feature's properties, according to the current year.
     getData: function(props) {
-      if (props.values && props.values.length && props.values[this.currentDisaggregation][this.currentYear]) {
-        return opensdg.dataRounding(props.values[this.currentDisaggregation][this.currentYear]);
+      var ret = false;
+      if (props.values && props.values.length && this.currentDisaggregation < props.values.length) {
+        var value = props.values[this.currentDisaggregation][this.currentYear];
+        if (typeof value === 'number') {
+          ret = opensdg.dataRounding(value);
+        }
       }
-      return false;
+      return ret;
     },
 
     // Choose a color for a GeoJSON feature.
@@ -251,6 +251,13 @@
       else {
         return this.options.noValueColor;
       }
+    },
+
+    // Set (or re-set) the choropleth color scale.
+    setColorScale: function() {
+      this.colorScale = chroma.scale(this.options.colorRange)
+        .domain(this.valueRanges[this.currentDisaggregation])
+        .classes(this.options.colorRange.length);
     },
 
     // Get the (long) URL of a geojson file, given a particular subfolder.
@@ -382,19 +389,23 @@
           // Keep track of the minimums and maximums.
           _.each(geoJson.features, function(feature) {
             if (feature.properties.values && feature.properties.values.length > 0) {
-              var validEntries = _.reject(Object.entries(feature.properties.values[0]), function(entry) {
-                return isMapValueInvalid(entry[1]);
-              });
-              if (validEntries.length > 0) {
+              for (var valueIndex = 0; valueIndex < feature.properties.values.length; valueIndex++) {
+                var validEntries = _.reject(Object.entries(feature.properties.values[valueIndex]), function(entry) {
+                  return isMapValueInvalid(entry[1]);
+                });
                 var validKeys = validEntries.map(function(entry) {
                   return entry[0];
                 });
                 var validValues = validEntries.map(function(entry) {
                   return entry[1];
-                })
+                });
                 availableYears = availableYears.concat(validKeys);
-                minimumValues.push(_.min(validValues));
-                maximumValues.push(_.max(validValues));
+                if (minimumValues.length <= valueIndex) {
+                  minimumValues.push([]);
+                  maximumValues.push([]);
+                }
+                minimumValues[valueIndex].push(_.min(validValues));
+                maximumValues[valueIndex].push(_.max(validValues));
               }
             }
           });
@@ -404,12 +415,15 @@
         function isMapValueInvalid(val) {
           return _.isNaN(val) || val === '';
         }
-        minimumValues = _.reject(minimumValues, isMapValueInvalid);
-        maximumValues = _.reject(maximumValues, isMapValueInvalid);
-        plugin.valueRange = [_.min(minimumValues), _.max(maximumValues)];
-        plugin.colorScale = chroma.scale(plugin.options.colorRange)
-          .domain(plugin.valueRange)
-          .classes(plugin.options.colorRange.length);
+
+        plugin.valueRanges = [];
+        for (var valueIndex = 0; valueIndex < minimumValues.length; valueIndex++) {
+          minimumValues[valueIndex] = _.reject(minimumValues[valueIndex], isMapValueInvalid);
+          maximumValues[valueIndex] = _.reject(maximumValues[valueIndex], isMapValueInvalid);
+          plugin.valueRanges[valueIndex] = [_.min(minimumValues[valueIndex]), _.max(maximumValues[valueIndex])];
+        }
+        plugin.setColorScale();
+
         plugin.years = _.uniq(availableYears).sort();
         plugin.currentYear = plugin.years[0];
 
@@ -436,6 +450,10 @@
         // Add the selection legend.
         plugin.selectionLegend = L.Control.selectionLegend(plugin);
         plugin.map.addControl(plugin.selectionLegend);
+
+        // Add the disaggregation controls.
+        plugin.disaggregationControls = L.Control.disaggregationControls(plugin);
+        plugin.map.addControl(plugin.disaggregationControls);
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
@@ -510,10 +528,16 @@
             }
           });
           plugin.updateStaticLayers();
+          if (plugin.disaggregationControls) {
+            plugin.disaggregationControls.update();
+          }
         }
         // Event handler for when a geoJson layer is zoomed into.
         function zoomInHandler(e) {
           plugin.updateStaticLayers();
+          if (plugin.disaggregationControls) {
+            plugin.disaggregationControls.update();
+          }
         }
       });
 

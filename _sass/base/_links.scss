@@ -19,36 +19,11 @@ body.contrast-high a:visited{
   color: $link-color-visited-highContrast;
 }
 
-.nav li a,
-.nav li a:hover,
-a.btn{
-  text-decoration: none;
+[href]:focus {
+    @include focus;
 }
-
-.navbar ul.navbar-nav > li:not(.contrast) > a{
-    border-bottom: 2px solid transparent;
-}
-
-.navbar ul.navbar-nav > li:not(.contrast) > a:hover{
-    border-bottom: 2px solid $menu-link-borderBottomColor-hover;
-}
-
-#search-results .search-result a {
-    text-decoration: none;
-}
-
-footer a{
-    color: $footer-link-color;
-}
-
-footer a:hover{
-    color: lighten($footer-link-color, 20%);
-}
-
-body.contrast-high footer a:visited{
-  color: $footer-link-color-highContrast;
-}
-
-*[disabled], *[aria-disabled="true"] {
-  cursor: default;
+body.contrast-high {
+    [href]:focus {
+        @include focusHighContrast;
+    }
 }

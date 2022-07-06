@@ -131,15 +131,29 @@ NOTE: In contrast to Jekyll, any translation keys you will need in Javascript ne
 {% include multilingual-js.html key="general" %}
 ```
 
+## Using site configurations inside translations or content
+
+Sometimes you might want to utilize a site configuration setting inside a translation, such as `country.name` or `country.adjective`. You can do this by adding a `%` in front. For example, "Statistical data on the SDGs for %country.name". You can also use this approach in page content. For example, "For more information please contact %email_contacts.suggestions".
+
 ## Translating data disaggregations and columns
 
-To translate the disaggregations and columns in your data (such as "Age", "Sex", "Female", etc.) you will need to make sure that the disaggregation values in your CSV files correspond to translation keys. For example, instead of a column called `Sex` you could call it `data.Sex`. Assuming that `data.Sex` refers to an actual translations key in your translations, this will translate the disaggregation according to that entry.
+To translate the disaggregations and columns in your data (such as "Age", "Sex", "Female", etc.) you will need to make sure that the translations exist which correspond to your columns and disaggregation values. The translation of the column itself should be have a translation group and a key both named the same as the column. So for example, the translation key of a "Sex" column should be "Sex.Sex". The translation keys of each disaggregation value belong within the same translation group, eg: "Sex.Female" and "Sex.Male". So, for example, an English translation file which handles the "Sex" column might look like this:
 
-Similarly, instead of a values like `Female`, you could use `data.Female` to correspond to a translation by that key.
+```
+Sex: Sex
+Female: Female
+Male: Male
+```
 
-> NOTE: There is a shortcut available here. Because data disaggregations/columns
-> will almost always refer to the `data` group, you can actually leave the `data.`
-> off.
+While the Chinese version might look like:
+
+```
+Sex: 性别
+Female: 女
+Male: 男
+```
+
+Alternatively, you can use actual translation keys inside your data. For example, your CSV files can include things like "custom.my_translation_key" instead of a column name or disaggregation value. However the recommended approach is to have one translation group per column, as described above.
 
 ## Available translation-related variables
 

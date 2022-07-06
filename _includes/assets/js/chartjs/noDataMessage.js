@@ -17,27 +17,24 @@ function getTextLinesOnCanvas(ctx, text, maxWidth) {
   return lines;
 }
 
+function isHighContrast(contrast) {
+  if (contrast) {
+      return contrast === 'high';
+  }
+  else {
+      return $('body').hasClass('contrast-high');
+  }
+}
+
 // This plugin displays a message to the user whenever a chart has no data.
-Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
+Chart.register({
   id: 'open-sdg-no-data-message',
   afterDraw: function(chart) {
     if (chart.data.datasets.length === 0) {
 
-      // @deprecated start
-      if (typeof translations.indicator.data_not_available === 'undefined') {
-        translations.indicator.data_not_available = 'This data is not available. Please choose alternative data to display.';
-      }
-      // @deprecated end
-
-      {% if site.chartjs_3 %}
       var ctx = chart.ctx;
       var width = chart.width;
       var height = chart.height;
-      {% else %}
-      var ctx = chart.chart.ctx;
-      var width = chart.chart.width;
-      var height = chart.chart.height;
-      {% endif %}
 
       chart.clear();
 
@@ -45,6 +42,7 @@ Chart.{% unless site.chartjs_3 %}plugins.{% endunless %}register({
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.font = "normal 40px 'Open Sans', Helvetica, Arial, sans-serif";
+      ctx.fillStyle = (isHighContrast()) ? 'white' : 'black';
       var lines = getTextLinesOnCanvas(ctx, translations.indicator.data_not_available, width);
       var numLines = lines.length;
       var lineHeight = 50;

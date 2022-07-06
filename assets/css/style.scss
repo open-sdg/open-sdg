@@ -3,9 +3,5 @@
 
 @import "font-face";
 @import "variables";
-{% if site.bootstrap_5 %}
-@import "open-sdg-bootstrap5";
-{% else %}
 @import "open-sdg";
-{% endif %}
 @import "custom";

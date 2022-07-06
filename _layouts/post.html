@@ -2,11 +2,7 @@
 layout: default
 ---
 <div class="container">
-  {% if site.bootstrap_5 %}
-  {% include bootstrap5/components/post/breadcrumbs.html %}
-  {% else %}
   {% include components/post/breadcrumbs.html %}
-  {% endif %}
 </div>
 
 {% if site.news.category_links == false %}
@@ -40,7 +36,7 @@ layout: default
         </div>
 
         <div class="post-content" itemprop="articleBody">
-          {{ content }}
+          {% include translated-content.html content=content %}
         </div>
       </article>
     </div>

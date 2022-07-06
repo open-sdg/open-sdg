@@ -1,15 +1,12 @@
 ---
 layout: default
 ---
-{% assign translation_key = content | strip | strip_html %}
-{% assign translated_content = translation_key | t %}
+<div class="container">
+    {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container" role="main">
     <div>
         <h1>{{ page.title | t }}</h1>
-        {% if translated_content != translation_key %}
-            {{ translated_content | markdownify }}
-        {% else %}
-            {{ content }}
-        {% endif %}
+        {% include translated-content.html content=content %}
     </div>
 </div>

@@ -440,8 +440,6 @@ graph_types:
     type: bar
 ```
 
-Note that this setting only works if `chartjs_3` is set to `true`.
-
 ### indicator_available
 
 **_Recommended_**: This setting is intended for use when the global indicator name might not accurately describe the available national/regional statistics. It should provide an alternate name for the indicator. If specified it will display just below the indicator banner.
@@ -619,6 +617,10 @@ tags:
   - My tag
   - My other tag
 ```
+
+Note that each tag will receive a unique HTML class, according to the content of the tag. For example, a tag called "National" will receive an HTML class of "tag-national". This gives you precise control of the styling of each individual tag, through the use of custom CSS.
+
+Additionally, the default color of the tags can be controlled by changing the `$tag-backgroundColor` [Sass variable](customisation.md#overriding-color-via-sass-variables).
 
 ### x_axis_label
 

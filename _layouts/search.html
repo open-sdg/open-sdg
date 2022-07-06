@@ -34,18 +34,6 @@
 opensdg.searchItems = {{ site.data.search_items[page.language] | jsonify }};
 {% if site.search_index_boost %}
 opensdg.searchIndexBoost = {{ site.search_index_boost | jsonify }};
-// @deprecated start
-if (!Array.isArray(opensdg.searchIndexBoost)) {
-  var searchIndexBoost = [];
-  Object.keys(opensdg.searchIndexBoost).forEach(function(key) {
-    searchIndexBoost.push({
-      field: key,
-      boost: opensdg.searchIndexBoost[key],
-    });
-  });
-  opensdg.searchIndexBoost = searchIndexBoost;
-}
-// @deprecated end
 {% else %}
 opensdg.searchIndexBoost = [{
   field: 'title',
@@ -59,6 +47,9 @@ opensdg.searchIndexExtraFields = [];
 {% endif %}
 </script>
 
+<div class="container">
+  {% include components/page/breadcrumbs.html %}
+</div>
 <div id="main-content" class="container" role="main">
   <h1>{{ page.t.search.search_results_for }} '<span id="search-term"></span>'</h1>
   {% include search.html id="search-bar-on-page" not_in_menu=true %}
