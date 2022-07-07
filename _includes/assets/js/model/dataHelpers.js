@@ -95,9 +95,9 @@ function getPrecision(precisions, selectedUnit, selectedSeries) {
  */
 function inputData(data) {
   var dropKeys = [];
-  {% if site.ignored_disaggregations and site.ignored_disaggregations.size > 0 %}
-  dropKeys = {{ site.ignored_disaggregations | jsonify }};
-  {% endif %}
+  if (opensdg.ignoredDisaggregations && opensdg.ignoredDisaggregations.length > 0) {
+    dropKeys = opensdg.ignoredDisaggregations;
+  }
   return convertJsonFormatToRows(data, dropKeys);
 }
 
@@ -107,15 +107,15 @@ function inputData(data) {
  */
 function inputEdges(edges) {
   var edgesData = convertJsonFormatToRows(edges);
-  {% if site.ignored_disaggregations and site.ignored_disaggregations.size > 0 %}
-  var ignoredDisaggregations = {{ site.ignored_disaggregations | jsonify }};
-  edgesData = edgesData.filter(function(edge) {
-    if (ignoredDisaggregations.includes(edge.To) || ignoredDisaggregations.includes(edge.From)) {
-      return false;
-    }
-    return true;
-  });
-  {% endif %}
+  if (opensdg.ignoredDisaggregations && opensdg.ignoredDisaggregations.length > 0) {
+    var ignoredDisaggregations = opensdg.ignoredDisaggregations;
+    edgesData = edgesData.filter(function(edge) {
+      if (ignoredDisaggregations.includes(edge.To) || ignoredDisaggregations.includes(edge.From)) {
+        return false;
+      }
+      return true;
+    });
+  }
   return edgesData;
 }
 
