@@ -796,10 +796,6 @@ progressive_web_app:
   precaching: false
 ```
 
-If this is enabled, it is recommended to have an "Offline" page
-available at /offline.html. An example of this is available in
-the site-starter repository.
-
 ### remote_data_prefix
 
 **_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
