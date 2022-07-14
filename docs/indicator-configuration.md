@@ -608,7 +608,7 @@ standalone: true
 
 In this case you may also want to control the URL of the indicator. You can do this with the `permalink` metadata field (see above).
 
-If you want to create a listing page you can do so in the `_pages` folder of your site repository. For more details on how to create pages, see the [create_pages guidance](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/). It is recommended the following configuration is used on your created page:
+If you want to create a listing page for your standalone indicators you can do so in the `_pages` folder of your site repository. For more details on how to create pages, see the [create_pages guidance](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/). It is recommended the following configuration is used on your created page:
 
 ```
 layout: standalone-indicators
