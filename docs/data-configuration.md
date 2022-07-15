@@ -81,12 +81,12 @@ _Optional_: This setting controls the title which displays at the top of the dat
 docs_branding: Build docs
 ```
 
-### docs_extra_disaggregation
+### docs_extra_disaggregations
 
-_Optional_: An optional list of extra columns that would not otherwise be included in the data documentation website's "disaggregation report". Common columns included here are the Series and/or Units columns (SERIES and UNIT_MEASURE, if using SDMX column names) since they would not normally be considered "disaggregation", but are still useful to include in this report. For example:
+_Optional_: An optional list of extra columns that would not otherwise be included in the data documentation website's "disaggregation report". Common columns included here are the Series and/or Units columns (SERIES and UNIT_MEASURE, if using SDMX column names) since they would not normally be considered "disaggregations", but are still useful to include in this report. For example:
 
 ```nohighlight
-docs_extra_disaggregation:
+docs_extra_disaggregations:
   - Series
   - Units
 ```
