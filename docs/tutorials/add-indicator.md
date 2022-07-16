@@ -70,6 +70,7 @@ This step is most easily done directly in Github.com.
 
 1. Go to github.com and login, then go to your data repository.
 1. In the list of files, navigate to the `meta` folder.
+1. Ensure you are on your `indicator-tutorial` branch, if not use the dropdown menu to select this branch.  
 1. Press the "Add file" drop-down and select "Create a new file".
 1. For "Name your file" enter `15-3-1-a.md` (this is an Open SDG convention as well).
 1. Under "edit new file", enter the following lines:
