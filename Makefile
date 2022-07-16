@@ -70,7 +70,7 @@ test.accessibility: test.install serve.detached
 	cd tests && npx pa11y-ci --config accessibility/pa11yci-contrast.json
 
 test.docs: build.docs
-	gem install html-proofer
+	gem install html-proofer -v 3.19.4
 	htmlproofer site --disable_external
 
 test.only: test.install
