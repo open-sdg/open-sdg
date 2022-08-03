@@ -30,6 +30,9 @@ Chart.register({
             });
         }
     },
+    afterUpdate: function(chart) {
+        this.setMeta();
+    },
     setMeta: function() {
         this.meta = this.chart.getDatasetMeta(this.currentDataset);
     },
