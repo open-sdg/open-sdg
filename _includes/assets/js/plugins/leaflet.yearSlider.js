@@ -126,6 +126,12 @@
     });
     // Create the player.
     options.player = new L.TimeDimension.Player(options.playerOptions, options.timeDimension);
+    options.player.on('play', function() {
+      $('.timecontrol-play').attr('title', 'Pause');
+    });
+    options.player.on('stop', function() {
+      $('.timecontrol-play').attr('title', 'Play');
+    });
     // Listen for time changes.
     if (typeof options.yearChangeCallback === 'function') {
       options.timeDimension.on('timeload', options.yearChangeCallback);
