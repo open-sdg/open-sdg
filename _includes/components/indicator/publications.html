@@ -1,0 +1,31 @@
+{% if page.indicator.publications and page.indicator.publications.size > 0 %}
+<div class="row">
+{% for publication in page.indicator.publications %}
+    <div class="col-md-6">
+        {% if page.indicator.publications.size > 1 %}
+        <h4>{{ page.t.indicator.publication }} {{ forloop.index }}</h4>
+        {% endif %}
+        <table class="table indicator-publication-table">
+            {% if publication.title and publication.title != '' %}
+            <tr>
+                <th scope="row">{{ page.t.indicator.publication_title }}</th>
+                <td><a href="{{ publication.link }}">{{ publication.title | t }}</a></td>
+            </tr>
+            {% endif %}
+            {% if publication.description and publication.description != '' %}
+            <tr>
+                <th scope="row">{{ page.t.indicator.publication_description }}</th>
+                <td>{{ publication.description | t | markdownify }}</td>
+            </tr>
+            {% endif %}
+            {% if publication.date and publication.date != '' %}
+            <tr>
+                <th scope="row">{{ page.t.indicator.publication_date }}</th>
+                <td>{{ publication.date | t }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+{% endfor %}
+</div>
+{% endif %}

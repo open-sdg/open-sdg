@@ -3,3 +3,12 @@
         clear: left;
     }
 }
+
+#indicator-sources {
+    .indicator-source-table {
+        table-layout: fixed;
+        img {
+            max-width: 100%;
+        }
+    }
+}

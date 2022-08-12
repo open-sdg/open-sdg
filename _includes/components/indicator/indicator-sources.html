@@ -1,0 +1,92 @@
+{% comment %}
+This is an alternate for the sources.html file. While sources.html is
+controlled by metadata fields (source_organisation_1, etc.) this
+file is controlled by the 'sources' indicator configuration option.
+{% endcomment %}
+{% if page.indicator.sources and page.indicator.sources.size > 0 %}
+<div class="row">
+{% for source in page.indicator.sources %}
+    <div class="col-md-6">
+        {% if page.indicator.sources.size > 1 %}
+        <h4>{{ page.t.indicator.source }} {{ forloop.index }}</h4>
+        {% endif %}
+        <table class="table indicator-source-table">
+            {% if source.logo and source.logo != '' %}
+            {% assign image_path = source.logo %}
+            {% unless image_path contains 'http' %}
+                {% assign image_path = site.baseurl | append: image_path %}
+            {% endunless %}
+            <tr>
+                <th scope="row">{{ page.t.indicator.source_logo }}</th>
+                <td><img alt="{{ source.organisation | t }}" src="{{ image_path }}" /></td>
+            </tr>
+            {% endif %}
+            {% if source.organisation and source.organisation != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_organisation_1 }}</th>
+                <td>{{ source.organisation | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.periodicity and source.periodicity != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_periodicity_1 }}</th>
+                <td>{{ source.periodicity | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.earliest_available and source.earliest_available != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_earliest_available_1 }}</th>
+                <td>{{ source.earliest_available | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.geographical_coverage and source.geographical_coverage != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_geographical_coverage_1 }}</th>
+                <td>{{ source.geographical_coverage | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.url and source.url != '' %}
+            {% assign url_text = page.t.metadata_fields.source_url_1 %}
+            {% if source.url_text and source.url_text != '' %}
+                {% assign url_text = source.url_text %}
+            {% endif %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_url_1 }}</th>
+                <td><a href="{{ source.url }}">{{ url_text | t }}</a></td>
+            </tr>
+            {% endif %}
+            {% if source.release_date and source.release_date != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_release_date_1 }}</th>
+                <td>{{ source.release_date | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.next_release and source.next_release != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_next_release_1 }}</th>
+                <td>{{ source.next_release | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.statistical_classification and source.statistical_classification != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_statistical_classification_1 }}</th>
+                <td>{{ source.statistical_classification | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.contact and source.contact != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_contact_1 }}</th>
+                <td>{{ source.contact | t }}</td>
+            </tr>
+            {% endif %}
+            {% if source.other_info and source.other_info != '' %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_other_info_1 }}</th>
+                <td>{{ source.other_info | t | markdownify }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+{% endfor %}
+</div>
+{% endif %}

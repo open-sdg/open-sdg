@@ -20,6 +20,21 @@
     {% else %}
         {% include components/indicator/metadata-panes-default.html %}
     {% endif %}
+    {% if page.indicator.related_indicators and page.indicator.related_indicators.size > 0 %}
+        <div role="tabpanel" class="tab-pane" id="related-indicators">
+            {% include components/indicator/related-indicators.html %}
+        </div>
+    {% endif %}
+    {% if page.indicator.publications and page.indicator.publications.size > 0 %}
+        <div role="tabpanel" class="tab-pane" id="publications">
+            {% include components/indicator/publications.html %}
+        </div>
+    {% endif %}
+    {% if page.indicator.sources and page.indicator.sources.size > 0 %}
+        <div role="tabpanel" class="tab-pane" id="indicator-sources">
+            {% include components/indicator/indicator-sources.html %}
+        </div>
+    {% endif %}
     {% if site.environment == 'staging' %}
         <div role="tabpanel" class="tab-pane" id="edit">
             {% include components/indicator/edit-buttons.html %}
