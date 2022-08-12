@@ -575,11 +575,29 @@ Options out-of-the-box are:
 
 ### publications
 
-_Optional_: TBD
+_Optional_: This setting can be used to control the content of the "Publications" tab on indicator pages. It can contain any number of publication items, each of which should have a `title` and a `link`, and optionally a `description` (which can contain markdown) and/or `date`. Here is an example of the usage:
+
+```
+publications:
+  - title: My publication title
+    link: "https://example.com/path/to/my/file"
+    description: My publication description
+    date: August 12th 1953
+  - title: My other publication
+    link: "https://example.com/path/to/my/other/file"
+    description: Another publication description
+    date: January 2022
+```
 
 ### related_indicators
 
-_Optional_: TBD
+_Optional_: This setting can be used to control the indicators listed in the "Related indicators" tab on indicator pages. It can contain any number of indicator ID numbers. Here is an example of the usage:
+
+```
+related_indicators:
+  - 1.1.1
+  - 1.2.1
+```
 
 ### reporting_status
 
@@ -608,7 +626,38 @@ sort: 0102zz
 
 ### sources
 
-_Optional_: TBD
+_Optional_: This setting can be used to control the content of the "Sources" tab on indicator pages. It can contain any number of source items, each of which can have any of the following fields:
+
+* organisation
+* periodicity
+* earliest_available
+* geographical_coverage
+* url (should be a URL to a website)
+* url_text (controls the link text to use for the `url` above)
+* release_date
+* next_release
+* statistical_classification
+* contact
+* other_info
+* logo (should be a URL to an external image, or a path to one in the site repository)
+
+Here is an example of the usage:
+
+```
+sources:
+  - organisation: House of Commons Library
+    periodicity: Discontinuous
+    earliest_available: "1918"
+    geographical_coverage: United Kingdom
+    url: "https://commonslibrary.parliament.uk/research-briefings/sn01250/"
+    url_text: Women in Parliament and Government
+    release_date: 04/03/2022
+    next_release: TBC
+    statistical_classification: Official Statistic 
+    contact: hcinfo@parliament.uk
+    other_info: "This is *some* markdown."
+    logo: "https://onsdigital.github.io/sdg-indicators/assets/img/SDG_logo.png"
+```
 
 ### standalone
 
