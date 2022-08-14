@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table metadata-content">
   {% for indicator_metadata in site.data.schema %}
     {%- assign metadata_label = indicator_metadata.name | translate_metadata_field -%}
     {% if indicator_metadata.field.scope == include.scope %}

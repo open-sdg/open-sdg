@@ -1,0 +1,9 @@
+.metadata-content {
+    @media only screen and (max-width: 500px) {
+        table-layout: fixed;
+        th, td {
+            word-wrap: break-word;
+            max-width: 1px;
+        }
+    }
+}
