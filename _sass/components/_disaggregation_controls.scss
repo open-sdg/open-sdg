@@ -16,7 +16,12 @@
             display: none;
         }
     }
-    &.no-units.no-serieses.no-fields {
+    &.no-global-data {
+        #toggles {
+            display:none;
+        }
+    }
+    &.no-units.no-serieses.no-fields.no-global-data {
         > .col-md-3 {
             display: none;
         }
