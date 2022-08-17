@@ -107,6 +107,24 @@ The `favicons` site configuration has been removed and the platform will always 
 
 The `frontpage-alt` layout has been removed. Now there is only a single layout for frontpage, called `frontpage`.
 
+### frontpage_goals_grid - required
+
+The `frontpage_goals_grid` is now required if you would like the goal icons to display on your frontpage. Existing implementations of Open SDG may be using a particular frontpage layout in which the goals grid displays automatically. However, as of 2.0.0, if you would like the goals grid to display, you must use the `frontpage_goals_grid` site configuration. For example:
+
+```
+frontpage_goals_grid:
+  title: frontpage.heading_short
+  description: frontpage.instructions_short
+```
+
+You may also want to add the frontpage introduction banner as well, with the following:
+
+```
+frontpage_introduction_banner:
+  title: frontpage.intro_title
+  description: frontpage.intro_body
+```
+
 ### frontpage_heading - removed
 
 The `frontpage_heading` site configuration has been removed. The new setting used to control this text on the frontpage is [`frontpage_introduction_banner`](https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner). Any custom text that you have in `frontpage_heading` should be copied to `frontpage_introduction_banner`.
