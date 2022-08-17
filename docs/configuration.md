@@ -301,6 +301,16 @@ email_contacts:
   functional: test@example.com
 ```
 
+### empty_metadata_placeholder
+
+_Optional_: This setting controls the text that displays for any metadata field which has no content. Note that this setting is not used if `hide_empty_metadata` is set to `true`. If the omitted, the following default is used:
+
+```nohighlight
+empty_metadata_placeholder: indicator.empty_metadata_placeholder
+```
+
+The above default refers to a translation key which currently translates to "Not available for this indicator" in English.
+
 ### environment
 
 **_Required_**: This setting should be either `staging` or `production`. Certain features of the platform, such as data management links, will only appear on `staging`. Typically you will have this set to `staging` in the `_config.yml` file, and set to `production` in the `_config_prod.yml` file.
