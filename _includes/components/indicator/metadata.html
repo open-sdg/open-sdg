@@ -9,6 +9,7 @@
           {% continue %}
         {% else %}
           {% assign metadata_content = site.empty_metadata_placeholder | default: page.t.indicator.empty_metadata_placeholder %}
+          {% assign metadata_content = '<span class="empty-metadata-placeholder">' | append: metadata_content | append: '</span>' %}
           {% assign placeholder_not_needed = false %}
         {% endif %}
       {% endunless %}
