@@ -1,6 +1,6 @@
 <h1>Quick Start</h1>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4O4C52Y4LIg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/frvUcwdHC2Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 This document will go over the quickest way to get this platform up and running. Here we will choose the simplest approach for automation and hosting, which is to use GitHub. Note, however, that there are alternatives to this approach, as detailed under the Automation and Hosting sections.
 
