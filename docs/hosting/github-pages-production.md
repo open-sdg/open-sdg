@@ -1,6 +1,6 @@
 <h1>GitHub Pages for a production environment</h1>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Qa8m0NaUqHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6qXgJfq-qtw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
 
 GitHub Pages is a great option for hosting your production environment, because it is free to use, reliable, and requires no maintenance. The setup process is fairly similar to the [quick start](../quick-start.md) procedure, but requires a bit more explanation. This document will explain the technical details.
 
