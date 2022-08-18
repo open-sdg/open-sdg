@@ -17,8 +17,7 @@ file is controlled by the 'sources' indicator configuration option.
                 {% assign image_path = site.baseurl | append: image_path %}
             {% endunless %}
             <tr>
-                <th scope="row">{{ page.t.indicator.source_logo }}</th>
-                <td><img alt="{{ source.organisation | t }}" src="{{ image_path }}" /></td>
+                <td colspan="2"><img alt="{{ source.organisation | t }}" src="{{ image_path }}" /></td>
             </tr>
             {% endif %}
             {% if source.organisation and source.organisation != '' %}
