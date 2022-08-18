@@ -28,4 +28,8 @@
     </div>
 {% endfor %}
 </div>
+{% else %}
+    {% if include.placeholder and include.placeholder != '' %}
+    <div class="empty-metadata-placeholder">{{ include.placeholder | t | markdownify }}</div>
+    {% endif %}
 {% endif %}

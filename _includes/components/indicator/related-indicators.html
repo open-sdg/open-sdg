@@ -1,3 +1,4 @@
+{% if page.indicator.related_indicators and page.indicator.related_indicators.size > 0 %}
 {% assign related_indicators = "" | split: "," %}
 {% for indicator_id in page.indicator.related_indicators %}
     {% assign indicator = indicator_id | sdg_lookup %}
@@ -17,3 +18,8 @@
     {% endfor %}
     </ul>
 {% endfor %}
+{% else %}
+    {% if include.placeholder and include.placeholder != '' %}
+    <div class="empty-metadata-placeholder">{{ include.placeholder | t | markdownify }}</div>
+    {% endif %}
+{% endif %}

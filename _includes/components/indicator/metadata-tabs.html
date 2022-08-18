@@ -26,21 +26,6 @@
     {% else %}
         {% include components/indicator/metadata-tabs-default.html %}
     {% endif %}
-    {% if page.indicator.related_indicators and page.indicator.related_indicators.size > 0 %}
-        <li role="presentation" class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#related-indicators" aria-controls="related-indicators" role="tab">{{ page.t.indicator.related_indicators }}</a>
-        </li>
-    {% endif %}
-    {% if page.indicator.publications and page.indicator.publications.size > 0 %}
-        <li role="presentation" class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#publications" aria-controls="publications" role="tab">{{ page.t.indicator.publications }}</a>
-        </li>
-    {% endif %}
-    {% if page.indicator.sources and page.indicator.sources.size > 0 %}
-        <li role="presentation" class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#indicator-sources" aria-controls="indicator-sources" role="tab">{{ page.t.indicator.sources }}</a>
-        </li>
-    {% endif %}
     {% if site.environment == 'staging' %}
         <li role="presentation" class="nav-item">
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">{{ page.t.indicator.edit }}</a>
