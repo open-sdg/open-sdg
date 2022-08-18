@@ -1,3 +1,8 @@
-.indicator-publication-table {
-    table-layout: fixed;
+.publication {
+    margin-bottom: 20px;
+}
+.publication-description {
+    p:last-child {
+        margin-bottom: 0;
+    }
 }

@@ -1,5 +1,5 @@
 .metadata-content > tbody > tr {
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 1000px) {
         table-layout: fixed;
         > th, > td {
             word-wrap: break-word;

@@ -5,7 +5,9 @@
 }
 
 .indicator-source-table {
-    table-layout: fixed;
+    @media only screen and (max-width: 1000px) {
+        table-layout: fixed;
+    }
     img {
         max-width: 100%;
     }
