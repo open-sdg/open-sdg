@@ -575,7 +575,7 @@ Options out-of-the-box are:
 
 ### publications
 
-_Optional_: This setting can be used to control the content of the "Publications" tab on indicator pages. It can contain any number of publication items, each of which should have a `title` and a `link`, and optionally a `description` (which can contain markdown) and/or `date`. Here is an example of the usage:
+_Optional_: This setting can be used to store details about related publications for an indicator. These can be displayed by having an item in your [metadata_tabs site configuration](configuration.md#metadata_tabs) with a `scope` of `publications`. It can contain any number of publication items, each of which should have a `title` and a `link`, and optionally a `description` (which can contain markdown) and/or `date`. Here is an example of the usage:
 
 ```
 publications:
@@ -592,6 +592,8 @@ publications:
 ### related_indicators
 
 _Optional_: This setting can be used to control the indicators listed in the "Related indicators" tab on indicator pages. It can contain any number of indicator ID numbers. Here is an example of the usage:
+
+_Optional_: This setting can be used to specify which other indicators are related to this one. These can be displayed by having an item in your [metadata_tabs site configuration](configuration.md#metadata_tabs) with a `scope` of `related_indicators`. It can contain any number of indicator ID numbers. Here is an example of the usage:
 
 ```
 related_indicators:
@@ -626,7 +628,7 @@ sort: 0102zz
 
 ### sources
 
-_Optional_: This setting can be used to control the content of the "Sources" tab on indicator pages. It can contain any number of source items, each of which can have any of the following fields:
+_Optional_: This setting can be used to store details about the sources of data for an indicator. These can be displayed by having an item in your [metadata_tabs site configuration](configuration.md#metadata_tabs) with a `scope` of `sources_alt`. It can contain any number of source items, each of which can have any of the following fields:
 
 * organisation
 * periodicity
