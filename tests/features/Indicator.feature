@@ -14,8 +14,8 @@ Feature: Indicator
 
   Scenario: Indicators have buttons for downloading CSV data
     And I click on "the Table tab"
-    Then I should see "Download Table CSV"
-    And I should see "Download Source CSV"
+    Then I should see "Download table data (.csv)"
+    And I should see "Download source data (.csv)"
 
   Scenario: Indicators have a "Chart" tab which displays data as a chart
     And I click on "the Table tab"
