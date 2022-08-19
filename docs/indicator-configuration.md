@@ -608,6 +608,11 @@ standalone: true
 
 In this case you may also want to control the URL of the indicator. You can do this with the `permalink` metadata field (see above).
 
+If you want to create a listing page for your standalone indicators you can do so in the `_pages` folder of your site repository. For more details on how to create pages, see the [create_pages guidance](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/). It is recommended the following configuration is used on your created page:
+
+```
+layout: standalone-indicators
+```  
 ### tags
 
 **_Optional_**: This setting is used to supply a list of "tags" to display under the indicator when it is listed on its goal page
@@ -617,6 +622,10 @@ tags:
   - My tag
   - My other tag
 ```
+
+Note that each tag will receive a unique HTML class, according to the content of the tag. For example, a tag called "National" will receive an HTML class of "tag-national". This gives you precise control of the styling of each individual tag, through the use of custom CSS.
+
+Additionally, the default color of the tags can be controlled by changing the `$tag-backgroundColor` [Sass variable](customisation.md#overriding-color-via-sass-variables).
 
 ### x_axis_label
 
