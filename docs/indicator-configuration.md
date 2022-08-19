@@ -582,12 +582,14 @@ publications:
   - title: My publication title
     link: "https://example.com/path/to/my/file"
     description: My publication description
-    date: August 12th 1953
+    date: 1953-08-12
   - title: My other publication
     link: "https://example.com/path/to/my/other/file"
     description: Another publication description
-    date: January 2022
+    date: 2022-01-01
 ```
+
+Notice the date must be in the format: YYYY-MM-DD.
 
 ### related_indicators
 

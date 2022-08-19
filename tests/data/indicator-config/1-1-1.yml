@@ -62,3 +62,23 @@ tags:
   - My untranslated tag
   - tags.my-tag
 x_axis_label: My axis label for 1.1.1
+publications:
+  - title: My publication
+    link: "https://example.com"
+    description: My publication description
+    date: 2022-02-03
+related_indicators:
+  - 1.2.1
+  - 2.3.1
+sources:
+  - organisation: My source organisation
+    periodicity: My source periodicity
+    earliest_available: My source earliest available
+    geographical_coverage: My source geographical coverage
+    url_text: My source URL text
+    url: https://example.com
+    release_date: My release date
+    statistical_classification: My statistical classification
+    contact: My contact info
+    other_info: My other info
+    logo: "https://onsdigital.github.io/sdg-indicators/assets/img/SDG_logo.png"

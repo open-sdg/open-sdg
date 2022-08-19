@@ -245,6 +245,18 @@ metadata_tabs:
   - scope: sources
     title: My sources title
     description: My sources blurb
+  - scope: sources_alt
+    title: My alternate sources tab
+    description: My sources blurb
+    placeholder: No sources available
+  - scope: related_indicators
+    title: Related indicators
+    description: My related indicators blurb
+    placeholder: No related indicators available
+  - scope: publications
+    title: Publications
+    description: My publications blurb
+    placeholder: No publications available
 news:
   category_links: true
 progress_status:
