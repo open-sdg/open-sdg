@@ -24,5 +24,5 @@ Feature: Sources
   Scenario: Indicators without sources still show the tab
     And I am on "/1-2-1"
     Then I should see "My alternate sources tab"
-    And I should see "My sources blurb"
+    And I should not see "My sources blurb"
     And I should see "No sources available"

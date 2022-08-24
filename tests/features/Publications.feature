@@ -18,5 +18,5 @@ Feature: Publications
   Scenario: Indicators without publications still show the tab
     And I am on "/1-2-1"
     Then I should see "Publications"
-    And I should see "My publications blurb"
+    And I should not see "My publications blurb"
     And I should see "No publications available"

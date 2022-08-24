@@ -18,5 +18,5 @@ Feature: Related indicators
   Scenario: Indicators without related indicators still show the tab
     And I am on "/1-2-1"
     Then I should see "Related indicators"
-    And I should see "My related indicators blurb"
+    And I should not see "My related indicators blurb"
     And I should see "No related indicators available"
