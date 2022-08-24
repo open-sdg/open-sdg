@@ -11,9 +11,9 @@ Feature: Related indicators
   Scenario: Indicators can have a tab for related indicators
     Then I should see "Related indicators"
     And I should see "My related indicators blurb"
-    And I should see "1.2.1: Proportion of population living below the national poverty line, by sex and age"
+    And I should see "Proportion of population living below the national poverty line, by sex and age"
     And I should see "End hunger, achieve food security and improved nutrition and promote sustainable agriculture"
-    And I should see "2.3.1: Volume of production per labour unit by classes of farming/pastoral/forestry enterprise size"
+    And I should see "Volume of production per labour unit by classes of farming/pastoral/forestry enterprise size"
 
   Scenario: Indicators without related indicators still show the tab
     And I am on "/1-2-1"

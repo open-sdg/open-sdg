@@ -247,7 +247,7 @@ metadata_tabs:
     description: My sources blurb
   - scope: sources_alt
     title: My alternate sources tab
-    description: My sources blurb
+    description: My alternate sources blurb
     placeholder: No sources available
   - scope: related_indicators
     title: Related indicators
