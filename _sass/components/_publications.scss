@@ -1,8 +1,14 @@
 .publication {
-    margin-bottom: 20px;
-}
-.publication-description {
-    p:last-child {
-        margin-bottom: 0;
+    clear: both;
+    margin-bottom: 25px;
+
+    .publication-title {
+        font-size: $fontSize;
+        margin-bottom: 7px !important;
+    }
+    .publication-description {
+        p:last-child {
+            margin-bottom: 0.5rem;
+        }
     }
 }

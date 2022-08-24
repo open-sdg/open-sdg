@@ -3,7 +3,9 @@
 {% for publication in page.indicator.publications %}
     <article class="publication">
         {% if publication.title and publication.title != '' %}
-        <a class="publication-title" href="{{ publication.link }}">{{ publication.title | t }}</a>
+        <h2 class="publication-title">
+            <a href="{{ publication.link }}">{{ publication.title | t }}</a>
+        </h2>
         {% endif %}
         {% if publication.description and publication.description != '' %}
         <div class="publication-description">
