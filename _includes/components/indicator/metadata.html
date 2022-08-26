@@ -30,6 +30,15 @@
               <a href="{{ metadata_content }}" target="_blank">
                 {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
               </a>
+            {% else %}
+              {% assign baseurl_end = site.baseurl | slice: -1 %}
+              {% assign link_start = metadata_content | slice: 0 %}
+              {% if baseurl_end != '/' and link_start != '/' %}
+                {% assign metadata_content = '/' | append: metadata_content %}
+              {% endif %}
+              <a href="{{ site.baseurl | append: metadata_content }}">
+                {{ url_text }}
+              </a>
             {% endif %}
 
           {% elsif indicator_metadata.field.element == 'multiselect' and placeholder_not_needed %}
