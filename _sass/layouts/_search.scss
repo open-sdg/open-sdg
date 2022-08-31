@@ -40,7 +40,7 @@
         font-size: $search-result-fontSize;
         display: inline-block;
       }
-      &:focus {
+      &:focus-visible {
         .title {
           @include focus;
           span.match {

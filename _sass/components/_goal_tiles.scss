@@ -29,8 +29,11 @@ $goal-tile-gutter: 3px;
                 width: calc(100% - #{$goal-tile-gutter});
                 margin-bottom: $goal-tile-gutter;
             }
-            a:focus {
-                outline: 6px $focusOutlineColor solid !important;
+            a:focus-visible {
+                outline: 2px $text-color solid !important;
+                .goal-icon-image {
+                    outline: 8px $focusOutlineColor solid !important;
+                }
             }
             img {
                 width: 100%;

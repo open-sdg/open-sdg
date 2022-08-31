@@ -6,17 +6,19 @@
     input {
         width: 33ch;
         border: 1.25px solid $color-dark;
+        &:focus-visible {
+            @include focusOutlineOnly;
+        }
     }
     button {
         color: $button-foregroundColor;
         background-color: $button-color;
         border: 1.25px solid $button-color;
         border-radius: 0;
-        &:focus {
+        &:focus-visible {
+            @include focusOutlineOnly;
             color: $button-foregroundColor !important;
             background-color: $button-color !important;
-            box-shadow: none !important;
-            outline: 3px solid $focusOutlineColor !important;
             z-index: 1;
         }
     }
@@ -26,7 +28,7 @@ body.contrast-high {
     #search {
         button {
             background-color: $button-color-highContrast;
-            &:focus {
+            &:focus-visible {
                 background-color: $button-color-highContrast;
             }
         }

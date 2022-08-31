@@ -8,9 +8,9 @@
     &.contrast-high canvas,
     canvas {
         @include noselect;
-        &:focus {
+        &:focus-visible {
+            @include focusOutlineOnly;
             background-color: transparent !important;
-            outline: 6px $focusOutlineColor solid !important;
         }
     }
     .chart-title {
