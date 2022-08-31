@@ -12,7 +12,7 @@ Feature: Related indicators
     Then I should see "Related indicators"
     And I should see "My related indicators blurb"
     And I should see "Proportion of population living below the national poverty line, by sex and age"
-    And I should see "End hunger, achieve food security and improved nutrition and promote sustainable agriculture"
+    And I should see "Zero hunger"
     And I should see "Volume of production per labour unit by classes of farming/pastoral/forestry enterprise size"
 
   Scenario: Indicators without related indicators still show the tab
