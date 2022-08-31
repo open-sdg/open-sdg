@@ -11,7 +11,7 @@
 {% assign related_indicators_by_goal = related_indicators | group_by: 'goal_number' %}
 {% for group in related_indicators_by_goal %}
     {% assign goal = group.name | sdg_lookup %}
-    <h2 class="related-indicator-goal" id="related-goal-{{ goal.number }}">{{ page.t.general.goal }} {{ goal.number }}: {{ goal.name }}</h2>
+    <h2 class="related-indicator-goal" id="related-goal-{{ goal.number }}">{{ page.t.general.goal }} {{ goal.number }}: {{ goal.short }}</h2>
     <ul aria-labelledby="related-goal-{{ goal.number }}">
     {% for indicator in group.items %}
         <li>
