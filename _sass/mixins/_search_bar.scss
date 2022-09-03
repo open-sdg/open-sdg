@@ -22,7 +22,7 @@
         vertical-align: middle;
         position: relative;
         z-index: 0;
-        &:focus-visible {
+        &:focus {
             z-index: 1;
         }
     }
@@ -39,7 +39,7 @@
         vertical-align: middle;
         position: relative;
         z-index: 0;
-        &:focus-visible {
+        &:focus {
             color: $button-foregroundColor !important;
             background-color: $button-color !important;
             box-shadow: none !important;
@@ -55,7 +55,7 @@
     }
     button {
         &,
-        &:focus-visible {
+        &:focus {
             background-color: $button-color-highContrast !important;
             color: $button-foregroundColor-highContrast !important;
             border-color: $button-foregroundColor-highContrast !important;

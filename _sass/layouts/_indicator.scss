@@ -8,7 +8,7 @@
     &.contrast-high canvas,
     canvas {
         @include noselect;
-        &:focus-visible {
+        &:focus {
             @include focusOutlineOnly;
             background-color: transparent !important;
         }

@@ -5,7 +5,7 @@
     img {
         max-width: 100%;
     }
-    &:focus-visible {
+    &:focus {
         background-color: transparent !important;
         outline: 7px solid $focusOutlineColor !important;
     }
@@ -46,7 +46,7 @@ header {
 
 body.contrast-high {
     .navbar-brand {
-        &:focus-visible {
+        &:focus {
             background-color: transparent !important;
             outline: 7px solid $focusOutlineColor !important;
         }

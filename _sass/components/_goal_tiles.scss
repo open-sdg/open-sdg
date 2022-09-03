@@ -29,7 +29,7 @@ $goal-tile-gutter: 3px;
                 width: calc(100% - #{$goal-tile-gutter});
                 margin-bottom: $goal-tile-gutter;
             }
-            a:focus-visible {
+            a:focus {
                 outline: 2px $text-color solid !important;
                 .goal-icon-image {
                     outline: 8px $focusOutlineColor solid !important;

@@ -21,7 +21,7 @@ body.contrast-high {
             &:hover {
                 color: $color-highlight-highContrast !important;
             }
-            &:focus-visible {
+            &:focus {
                 color: $color-dark-highContrast !important;
                 background: $color-highlight-highContrast !important;
             }
@@ -29,7 +29,7 @@ body.contrast-high {
         .dropdown-item {
             color: $color-dark-highContrast;
             &:hover,
-            &:focus-visible {
+            &:focus {
                 color: $color-dark-highContrast;
             }
         }

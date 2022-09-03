@@ -1,4 +1,4 @@
-button:focus-visible {
+button:focus {
     @include focus;
 }
 .btn {
@@ -6,7 +6,7 @@ button:focus-visible {
     &:visited {
         color: $button-foregroundColor-visited;
     }
-    &:focus-visible {
+    &:focus {
         color: $button-foregroundColor-focus;
     }
 }
@@ -27,13 +27,13 @@ button:focus-visible {
     &:visited {
         color: $button-foregroundColor-visited !important;
     }
-    &:focus-visible {
+    &:focus {
         background: $button-color-focus !important;
         color: $button-foregroundColor-focus !important;
     }
 }
 body.contrast-high {
-    button:focus-visible {
+    button:focus {
         @include focusHighContrast;
     }
     .btn {
@@ -41,7 +41,7 @@ body.contrast-high {
         &:visited {
             color: $color-dark-highContrast !important;
         }
-        &:focus-visible {
+        &:focus {
             color: $color-dark-highContrast !important;
         }
     }
@@ -55,7 +55,7 @@ body.contrast-high {
         &:hover {
             background: $button-color-hover-highContrast !important;
         }
-        &:focus-visible {
+        &:focus {
             background: $color-highlight-highContrast !important;
         }
     }

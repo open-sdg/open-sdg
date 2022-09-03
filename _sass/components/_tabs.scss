@@ -47,7 +47,7 @@ body.contrast-high {
         .nav-tabs {
             border-color: $color-highlight-highContrast;
             .nav-item {
-                button:focus-visible {
+                button:focus {
                     box-shadow: none !important;
                     background-color: $color-highlight-highContrast !important;
                 }
@@ -57,7 +57,7 @@ body.contrast-high {
                     button {
                         color: $color-dark-highContrast;
                         background: $color-highlight-highContrast;
-                        &:focus-visible {
+                        &:focus {
                             background-color: $color-highlight-highContrast !important;
                             box-shadow: 0 -2px $color-highlight-highContrast, 0 4px $focusColor !important;
                         }

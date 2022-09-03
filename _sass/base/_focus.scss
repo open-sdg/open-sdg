@@ -1,9 +1,9 @@
 // @TODO: Put this in more specific place.
 .tab-pane:focus,
-.variable-selector button.accessBtn:focus-visible {
+.variable-selector button.accessBtn:focus {
     @include focusOutlineOnly;
 }
-body.contrast-high .variable-selector button.accessBtn:focus-visible {
+body.contrast-high .variable-selector button.accessBtn:focus {
     @include focusOutlineOnlyHighContrast;
     &,
     span {

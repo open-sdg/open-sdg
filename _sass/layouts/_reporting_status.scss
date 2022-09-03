@@ -91,7 +91,7 @@
             width: 115px;
             float: left;
             min-height: 1px;
-            > a:focus-visible {
+            > a:focus {
                 outline: 6px $focusOutlineColor solid !important;
             }
         }

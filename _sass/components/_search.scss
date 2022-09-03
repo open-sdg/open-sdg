@@ -6,7 +6,7 @@
     input {
         width: 33ch;
         border: 1.25px solid $color-dark;
-        &:focus-visible {
+        &:focus {
             @include focusOutlineOnly;
         }
     }
@@ -15,7 +15,7 @@
         background-color: $button-color;
         border: 1.25px solid $button-color;
         border-radius: 0;
-        &:focus-visible {
+        &:focus {
             @include focusOutlineOnly;
             color: $button-foregroundColor !important;
             background-color: $button-color !important;
@@ -28,7 +28,7 @@ body.contrast-high {
     #search {
         button {
             background-color: $button-color-highContrast;
-            &:focus-visible {
+            &:focus {
                 background-color: $button-color-highContrast;
             }
         }

@@ -1,22 +1,22 @@
 [contentEditable="true"]:focus,
-input:focus-visible {
+input:focus {
     @include focus;
 }
 body.contrast-high {
     [contentEditable="true"]:focus,
-    input:focus-visible {
+    input:focus {
         @include focusHighContrast;
     }
 }
 input[type="radio"]:focus,
 body.contrast-high input[type="radio"]:focus,
 input[type="checkbox"]:focus,
-body.contrast-high input[type="checkbox"]:focus-visible {
+body.contrast-high input[type="checkbox"]:focus {
     box-shadow: 0px 0px 0px 4px $focusOutlineColor !important;
 }
 input[type="text"]:focus,
 input[type="search"]:focus,
 body.contrast-high input[type="text"]:focus,
-body.contrast-high input[type="search"]:focus-visible {
+body.contrast-high input[type="search"]:focus {
     @include focusOutlineOnly;
 }

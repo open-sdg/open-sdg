@@ -1,15 +1,15 @@
-[tabindex]:focus-visible {
+[tabindex]:focus {
     @include focus;
 }
 body.contrast-high {
-    [tabindex]:focus-visible {
+    [tabindex]:focus {
         @include focusHighContrast;
     }
 }
-div[tabindex]:focus-visible {
+div[tabindex]:focus {
     @include focusOutlineOnly;
 }
-body.contrast-high div[tabindex]:focus-visible {
+body.contrast-high div[tabindex]:focus {
     @include focusOutlineOnlyHighContrast;
 }
 
