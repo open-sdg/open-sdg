@@ -40,7 +40,7 @@ body.contrast-high {
                 > .nav-link {
                     color: $color-light-highContrast;
                     &:hover,
-                    &:focus {
+                    &:focus-visible {
                         color: $color-highlight-highContrast;
                         border-color: $color-highlight-highContrast;
                     }
@@ -52,7 +52,7 @@ body.contrast-high {
                     &:hover {
                         color: $color-highlight-highContrast;
                     }
-                    &:focus {
+                    &:focus-visible {
                         color: $color-highlight-highContrast;
                     }
                 }
@@ -60,7 +60,7 @@ body.contrast-high {
             .dropdown-item {
                 color: $color-dark-highContrast;
                 &:hover,
-                &:focus {
+                &:focus-visible {
                     color: $color-dark-highContrast;
                 }
             }

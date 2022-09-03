@@ -19,11 +19,11 @@ body.contrast-high a:visited{
   color: $link-color-visited-highContrast;
 }
 
-[href]:focus {
+[href]:focus-visible {
     @include focus;
 }
 body.contrast-high {
-    [href]:focus {
+    [href]:focus-visible {
         @include focusHighContrast;
     }
 }

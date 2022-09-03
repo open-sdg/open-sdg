@@ -8,7 +8,7 @@
     &.contrast-high canvas,
     canvas {
         @include noselect;
-        &:focus {
+        &:focus-visible {
             background-color: transparent !important;
             outline: 6px $focusOutlineColor solid !important;
         }

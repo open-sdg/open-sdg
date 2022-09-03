@@ -1,5 +1,5 @@
 /* Backwards compatibility for the sr-only class from Bootstrap 3. */
-.visuallyhidden, .sr-only, .sr-only-focusable:not(:focus):not(:focus-within) {
+.visuallyhidden, .sr-only, .sr-only-focusable:not(:focus-visible):not(:focus-visible-within) {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;

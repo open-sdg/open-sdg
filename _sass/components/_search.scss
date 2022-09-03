@@ -12,7 +12,7 @@
         background-color: $button-color;
         border: 1.25px solid $button-color;
         border-radius: 0;
-        &:focus {
+        &:focus-visible {
             color: $button-foregroundColor !important;
             background-color: $button-color !important;
             box-shadow: none !important;
@@ -26,7 +26,7 @@ body.contrast-high {
     #search {
         button {
             background-color: $button-color-highContrast;
-            &:focus {
+            &:focus-visible {
                 background-color: $button-color-highContrast;
             }
         }
