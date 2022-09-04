@@ -1,9 +1,6 @@
 $goal-by-target-indentation: 60px;
 
 .layout-goal {
-    .goal-page-heading {
-        margin-bottom: 14px;
-    }
     .goal-page-target-number {
         min-width: $goal-by-target-indentation;
         h3 {
@@ -20,10 +17,11 @@ $goal-by-target-indentation: 60px;
     .goal-indicator {
         margin-top: 20px;
     }
-    .goal-page-target-rule {
+    .goal-page-target-rule, .goal-page-column-header-rule {
         border-top: 1px solid $goalTarget-horizontalRule-color;
         margin-bottom: 25px;
         opacity: 1;
+        height: 0.1px;
     }
     .goal-page-indicator-number {
         min-width: $goal-by-target-indentation;
@@ -69,6 +67,15 @@ $goal-by-target-indentation: 60px;
                 float: none;
                 width: 100%;
             }
+        }
+    }
+    .goal-showing-progress {
+        .goal-page-target-name, .goal-page-indicator-name {
+            max-width: 80%;
+        }
+        .progress-column-header {
+            font-size: 16px;
+            margin-top: 20px;
         }
     }
 }

@@ -10,14 +10,32 @@
 
 {% include components/goal/header.html %}
 
+{% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
+{% assign show_progress = false %}
+{% for group in goal_indicators %}
+  {% for indicator in group.items %}
+    {% if indicator.progress_status and indicator.progress_status != '' %}
+      {% assign show_progress = true %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
 <div id="main-content" class="container" role="main">
 
   {% include components/goal/goal-content.html content=content %}
 
-  <div class="container g-0">
-    <h2 class="goal-page-heading">{{ page.t.general.targets_and_indicators }}</h2>
-
-    {% assign goal_indicators = page.indicators | where: 'goal_number', page.goal.number | group_by: 'target_number' %}
+  <div class="container g-0 {% if show_progress %}goal-showing-progress{% endif %}">
+    <div class="row align-items-end">
+      <div class="col">
+        <h2 class="goal-page-heading">{{ page.t.general.targets_and_indicators }}</h2>
+      </div>
+      {% if show_progress %}
+      <div class="col-lg-2 d-none d-lg-block progress-column-header">
+        <span aria-hidden="true">{{ site.progress_status.status_help | t | default: page.t.status.progress_help }}</span>
+      </div>
+      {% endif %}
+    </div>
+    <hr class="goal-page-column-header-rule">
     {% for group in goal_indicators %}
       {% assign target = group.name | sdg_lookup %}
       <div class="row align-items-start goal-target">
@@ -59,7 +77,7 @@
               {% include components/indicator/tags.html tags=indicator.tags reporting_status=true indicator=indicator %}
             </div>
             {% if indicator_has_progress %}
-            <div class="col-lg-1 goal-page-indicator-progress">
+            <div class="col-lg-2 goal-page-indicator-progress">
               <span class="visually-hidden">{{ site.progress_status.status_heading | t }}</span>
               {% include components/progress/progress-status.html indicator=indicator %}
             </div>
