@@ -50,7 +50,7 @@ $goal-by-target-indentation: 60px;
         .goal-page-target-number {
             min-width: 0;
         }
-        .goal-page-target-rule {
+        .goal-page-target-rule, .goal-page-column-header-rule {
             margin-left: $goal-by-target-indentation;
         }
     }
@@ -69,13 +69,15 @@ $goal-by-target-indentation: 60px;
             }
         }
     }
-    .goal-showing-progress {
-        .goal-page-target-name, .goal-page-indicator-name {
-            max-width: 80%;
-        }
-        .progress-column-header {
-            font-size: 16px;
-            margin-top: 20px;
+    @media only screen and (min-width: 992px) {
+        .goal-showing-progress {
+            .goal-page-target-name, .goal-page-indicator-name {
+                padding-right: 40px;
+            }
+            .progress-column-header {
+                font-size: 16px;
+                margin-top: 20px;
+            }
         }
     }
 }

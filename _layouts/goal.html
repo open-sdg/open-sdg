@@ -47,6 +47,9 @@
           <div class="col goal-page-target-name">
             <span class="target-name">{{ target.name }}</span>
           </div>
+          {% if show_progress %}
+          <div class="col-lg-2 d-none d-lg-block"></div>
+          {% endif %}
       </div>
         {% for indicator in group.items %}
 
