@@ -3,7 +3,10 @@
  * @return null
  */
 function initialiseSerieses(args) {
-    var templateElement = $('#series_template');
+    var activeSeriesInput = $('#serieses').find(document.activeElement),
+        seriesWasFocused = (activeSeriesInput.length > 0) ? true : false,
+        focusedValue = (seriesWasFocused) ? $(activeSeriesInput).val() : null,
+        templateElement = $('#series_template');
     if (templateElement.length > 0) {
         var template = _.template(templateElement.html()),
             serieses = args.serieses || [],
@@ -25,5 +28,9 @@ function initialiseSerieses(args) {
         else {
             $(OPTIONS.rootElement).removeClass('no-serieses');
         }
+    }
+    // Return focus if necessary.
+    if (seriesWasFocused) {
+        $('#serieses :input[value="' + focusedValue + '"]').focus();
     }
 }

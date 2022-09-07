@@ -54,7 +54,7 @@ graph_titles:
 
 ### composite_breakdown_label
 
-**_Optional_** This setting is used when importing data from SDMX to specify a more useful label for the COMPOSITE_BREAKDOWN column (if present). Translation keys are supported, as always. Using the example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
+_Optional_ This setting is used when importing data from SDMX to specify a more useful label for the COMPOSITE_BREAKDOWN column (if present). Translation keys are supported, as always. Using the example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
 
 ```nohighlight
 composite_breakdown_label: Hazard type
@@ -76,7 +76,7 @@ computation_units: my_translations.metric_tons
 
 ### copyright
 
-**_Optional_**: This setting can be used to display copyright information below the graph and table on the indicator page.
+_Optional_: This setting can be used to display copyright information below the graph and table on the indicator page.
 
 ```nohighlight
 copyright: Copyright 2019 - My organisation
@@ -90,7 +90,7 @@ copyright: my_translations.copyright_message
 
 ### data_footnote
 
-**_Optional_**: This setting can be used to display additional inforamtion about the data below the graph and table on the indicator page.
+_Optional_: This setting can be used to display additional inforamtion about the data below the graph and table on the indicator page.
 
 
 ```nohighlight
@@ -118,7 +118,7 @@ You may want to display some very important information which site viewers must 
 
 ### data_notice_class
 
-**_Optional_**: This setting can be used to set the colour of a data notice using CSS classes.
+_Optional_: This setting can be used to set the colour of a data notice using CSS classes.
 
 ```nohighlight
 data_notice_class: success
@@ -131,7 +131,7 @@ Options out-of-the-box are:
 
 ### data_notice_heading
 
-**_Optional_**: This setting can be used to set the title of a data notice.
+_Optional_: This setting can be used to set the title of a data notice.
 
 ```nohighlight
 data_notice_heading: Important Note
@@ -145,7 +145,7 @@ data_notice_heading: my_translations.important_note
 
 ### data_notice_text
 
-**_Optional_**: This setting can be used to set the text to display within a data notice.
+_Optional_: This setting can be used to set the text to display within a data notice.
 
 ```nohighlight
 data_notice_text: My note text
@@ -159,7 +159,7 @@ data_notice_text: my_translations.1-1-1-data-notice
 
 ### data_show_map
 
-**_Optional_** This setting can be used to specify whether or not to display a map for the indicator, if you have configured maps. See the [Maps guidance](maps.md) for more information on how to configure maps.
+_Optional_ This setting can be used to specify whether or not to display a map for the indicator, if you have configured maps. See the [Maps guidance](maps.md) for more information on how to configure maps.
 
 ```nohighlight
 data_show_map: true
@@ -167,7 +167,7 @@ data_show_map: true
 
 ### data_start_values
 
-**_Optional_**: This setting is used to specify if you would like an indicator load with certain disaggregation values already selected. Using the example below, the indicator would load with both "Females" and "15 to 19" selected.
+_Optional_: This setting is used to specify if you would like an indicator load with certain disaggregation values already selected. Using the example below, the indicator would load with both "Females" and "15 to 19" selected.
 
 ```nohighlight
 data_start_values:
@@ -223,7 +223,7 @@ embedded_feature_url: http://example.com/embed-1-1-1.html
 
 ### expected_disaggregations
 
-**_Optional_**: This setting is used to supply metrics to the disaggregation status report (see the [reporting_status site configuration](configuration.md#reporting_status)). It should contain a list of the disaggregations (i.e. columns in the CSV file) that the indicator should have.
+_Optional_: This setting is used to supply metrics to the disaggregation status report (see the [reporting_status site configuration](configuration.md#reporting_status)). It should contain a list of the disaggregations (i.e. columns in the CSV file) that the indicator should have.
 
 ```nohighlight
 expected_disaggregations:
@@ -235,7 +235,7 @@ The following fields affect the display of graphs. Currently only longitudinal g
 
 ### footer_fields
 
-**_Optional_**: This setting is used to add any arbitrary footer fields beneath the chart/table. These display under the other footer field settings, like `copyright` and `data_footnote`.
+_Optional_: This setting is used to add any arbitrary footer fields beneath the chart/table. These display under the other footer field settings, like `copyright` and `data_footnote`.
 
 This setting should include a list of items, each containing at least a `label` (which can be a translation key) and `value`. For example:
 
@@ -261,7 +261,7 @@ footer_fields:
 
 ### graph_annotations
 
-**_Optional_**: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
+_Optional_: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
 
 This setting can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator (though, again, there is a separate `graph_target_lines` setting specifically designed for target lines). Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
 
@@ -307,7 +307,7 @@ graph_annotations:
 
 ### graph_limits
 
-**_Optional_**: This setting can be used to control the lowest/highest values to be shown on the y-axis by specifying min/max limits. Optionally they can refer to a specific unit of measurement or series. Note that this involves a slightly more complex metadata structure.
+_Optional_: This setting can be used to control the lowest/highest values to be shown on the y-axis by specifying min/max limits. Optionally they can refer to a specific unit of measurement or series. Note that this involves a slightly more complex metadata structure.
 
 ```nohighlight
 graph_limits:
@@ -321,7 +321,7 @@ graph_limits:
 
 ### graph_series_breaks
 
-**_Optional_**: This setting can be used to add "series break" annotations (ie, gaps in the years) to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
+_Optional_: This setting can be used to add "series break" annotations (ie, gaps in the years) to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
 
     * `series`: If specified, the series break will only display when the user is looking at this series.
     * `unit`: If specified, the series break will only display when the user is looking at this unit of measurement.
@@ -352,7 +352,7 @@ graph_series_breaks:
 
 ### graph_stacked_disaggregation
 
-**_Optional_**: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
+_Optional_: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
 
 ```nohighlight
 graph_stacked_disaggregation: Age
@@ -360,7 +360,7 @@ graph_stacked_disaggregation: Age
 
 ### graph_target_lines
 
-**_Optional_**: This setting can be used to add "target line" annotations to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
+_Optional_: This setting can be used to add "target line" annotations to the graph. Like `graph_titles` it can include multiple items, and each can be limited to particular units or series. Each item can have the following settings:
 
     * `series`: If specified, the target line will only display when the user is looking at this series.
     * `unit`: If specified, the target line will only display when the user is looking at this unit of measurement.
@@ -472,7 +472,7 @@ indicator_number: 1.2.1
 
 ### indicator_tabs
 
-**_Optional_**: This setting controls the order and contents of the data tabs on indicator pages. This only needs to be used on indicators where you would like to override the `indicator_tabs` site configuration setting.
+_Optional_: This setting controls the order and contents of the data tabs on indicator pages. This only needs to be used on indicators where you would like to override the `indicator_tabs` site configuration setting.
 
 Note that the `override` parameter is necessary in order for this indicator-specific override to be used.
 
@@ -505,7 +505,7 @@ national_geographical_coverage: my_translations.australia
 
 ### page_content
 
-**_Optional_**: This setting can be use to add content (e.g. tables, lists, links, headings, etc.) above the graph near the top of the screen. This is a useful place to add information about an indicator that doesn't fit in with the rest of the metadata.
+_Optional_: This setting can be use to add content (e.g. tables, lists, links, headings, etc.) above the graph near the top of the screen. This is a useful place to add information about an indicator that doesn't fit in with the rest of the metadata.
 
 See this [guide to writing Markdown](https://guides.github.com/features/mastering-markdown/).
 
@@ -515,7 +515,7 @@ page_content: My additional information about the indicator
 
 ### permalink
 
-**_Optional_**: This setting can be used to control the URL of a standalone indicator. This does not require any preceding/trailing slashes. See the `standalone` metadata field below for information on how to set an indicator as standalone.
+_Optional_: This setting can be used to control the URL of a standalone indicator. This does not require any preceding/trailing slashes. See the `standalone` metadata field below for information on how to set an indicator as standalone.
 
 ```nohighlight
 permalink: my-custom-indicator-path
@@ -537,7 +537,7 @@ placeholder: custom.my-placeholder-for-1-1-1
 
 ### precision
 
-**_Optional_**: This setting is used to force a particular number of decimal places.
+_Optional_: This setting is used to force a particular number of decimal places.
 
 Note: Normally trailing zeroes are removed from decimals before being displayed. For example, "23.60" will be displayed as "23.6".
 
@@ -573,6 +573,36 @@ Options out-of-the-box are:
 * approaching_target
 * target_achieved
 
+### publications
+
+_Optional_: This setting can be used to store details about related publications for an indicator. These can be displayed by having an item in your [metadata_tabs site configuration](configuration.md#metadata_tabs) with a `scope` of `publications`. It can contain any number of publication items, each of which should have a `title` and a `link`, and optionally a `description` (which can contain markdown) and/or `date`. Here is an example of the usage:
+
+```
+publications:
+  - title: My publication title
+    link: "https://example.com/path/to/my/file"
+    description: My publication description
+    date: 1953-08-12
+  - title: My other publication
+    link: "https://example.com/path/to/my/other/file"
+    description: Another publication description
+    date: 2022-01-01
+```
+
+Notice the date must be in the format: YYYY-MM-DD.
+
+### related_indicators
+
+_Optional_: This setting can be used to control the indicators listed in the "Related indicators" tab on indicator pages. It can contain any number of indicator ID numbers. Here is an example of the usage:
+
+_Optional_: This setting can be used to specify which other indicators are related to this one. These can be displayed by having an item in your [metadata_tabs site configuration](configuration.md#metadata_tabs) with a `scope` of `related_indicators`. It can contain any number of indicator ID numbers. Here is an example of the usage:
+
+```
+related_indicators:
+  - 1.1.1
+  - 1.2.1
+```
+
 ### reporting_status
 
 **_Required_**: This setting is used to specify the status of the indicator. This feeds into the reporting status page and also displays on the goal pages.
@@ -590,7 +620,7 @@ Options out-of-the-box are:
 
 ### sort
 
-**_Optional_**: This setting can be used to override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator.
+_Optional_: This setting can be used to override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator.
 
 The order in which indicators are displayed in lists is determined behind the scenes, according to the indicator number. This is done by automatically converting the indicator number to a string which sorts correctly when alphabetized. (For example, indicator 1.2.1 gets sorted as '010201'.) The example below shows how this setting could be used to make 1.2.1 appear at the end of goal 1, target 2.
 
@@ -598,9 +628,44 @@ The order in which indicators are displayed in lists is determined behind the sc
 sort: 0102zz
 ```
 
+### sources
+
+_Optional_: This setting can be used to store details about the sources of data for an indicator. These can be displayed by having an item in your [metadata_tabs site configuration](configuration.md#metadata_tabs) with a `scope` of `sources_alt`. It can contain any number of source items, each of which can have any of the following fields:
+
+* organisation
+* periodicity
+* earliest_available
+* geographical_coverage
+* url (should be a URL to a website)
+* url_text (controls the link text to use for the `url` above)
+* release_date
+* next_release
+* statistical_classification
+* contact
+* other_info
+* logo (should be a URL to an external image, or a path to one in the site repository)
+
+Here is an example of the usage:
+
+```
+sources:
+  - organisation: House of Commons Library
+    periodicity: Discontinuous
+    earliest_available: "1918"
+    geographical_coverage: United Kingdom
+    url: "https://commonslibrary.parliament.uk/research-briefings/sn01250/"
+    url_text: Women in Parliament and Government
+    release_date: 04/03/2022
+    next_release: TBC
+    statistical_classification: Official Statistic 
+    contact: hcinfo@parliament.uk
+    other_info: "This is *some* markdown."
+    logo: "https://onsdigital.github.io/sdg-indicators/assets/img/SDG_logo.png"
+```
+
 ### standalone
 
-**_Optional_**: This setting can be used to set the indicator as `standalone` which will prevent it from appearing as part of a goal, and keeps the indicator off the reporting status, disaggregation status, and other disaggregation reports. It is useful if you would like to post statistical indicators that are not part of the SDGs (such as Covid-19 data).
+_Optional_: This setting can be used to set the indicator as `standalone` which will prevent it from appearing as part of a goal, and keeps the indicator off the reporting status, disaggregation status, and other disaggregation reports. It is useful if you would like to post statistical indicators that are not part of the SDGs (such as Covid-19 data).
 
 ```nohighlight
 standalone: true
@@ -608,9 +673,14 @@ standalone: true
 
 In this case you may also want to control the URL of the indicator. You can do this with the `permalink` metadata field (see above).
 
+If you want to create a listing page for your standalone indicators you can do so in the `_pages` folder of your site repository. For more details on how to create pages, see the [create_pages guidance](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/). It is recommended the following configuration is used on your created page:
+
+```
+layout: standalone-indicators
+```  
 ### tags
 
-**_Optional_**: This setting is used to supply a list of "tags" to display under the indicator when it is listed on its goal page
+_Optional_: This setting is used to supply a list of "tags" to display under the indicator when it is listed on its goal page
 
 ```nohighlight
 tags:

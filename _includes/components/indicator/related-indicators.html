@@ -1,0 +1,30 @@
+{% if page.indicator.related_indicators and page.indicator.related_indicators.size > 0 %}
+{% assign related_indicators = "" | split: "," %}
+{% for indicator_id in page.indicator.related_indicators %}
+    {% assign indicator = indicator_id | sdg_lookup %}
+    {% if indicator %}
+        {% assign related_indicators = related_indicators | push: indicator %}
+    {% endif %}
+{% endfor %}
+
+
+{% assign related_indicators_by_goal = related_indicators | group_by: 'goal_number' %}
+{% for group in related_indicators_by_goal %}
+    {% assign goal = group.name | sdg_lookup %}
+    <h2 class="related-indicator-goal" id="related-goal-{{ goal.number }}">{{ page.t.general.goal }} {{ goal.number }}: {{ goal.short }}</h2>
+    <ul aria-labelledby="related-goal-{{ goal.number }}">
+    {% for indicator in group.items %}
+        <li>
+            <div class="row">
+                <div class="col col-auto">{{ indicator.number }}:</div>
+                <div class="col"><a href="{{ indicator.url }}">{{ indicator.name }}</a></div>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+{% else %}
+    {% if include.placeholder and include.placeholder != '' %}
+    <div class="empty-metadata-placeholder">{{ include.placeholder | t | markdownify }}</div>
+    {% endif %}
+{% endif %}

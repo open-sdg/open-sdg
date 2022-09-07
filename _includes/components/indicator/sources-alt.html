@@ -1,0 +1,115 @@
+{% comment %}
+This is an alternate for the sources.html file. While sources.html is
+controlled by metadata fields (source_organisation_1, etc.) this
+file is controlled by the 'sources' indicator configuration option.
+{% endcomment %}
+{% if page.indicator.sources and page.indicator.sources.size > 0 %}
+{% assign show_placeholders = false %}
+{% unless site.hide_empty_metadata %}
+    {% assign show_placeholders = true %}
+{% endunless %}
+{% assign placeholder = site.empty_metadata_placeholder | t | default: page.t.indicator.empty_metadata_placeholder %}
+{% assign placeholder = '<span class="empty-metadata-placeholder">' | append: placeholder | append: '</span>' %}
+<div class="row">
+{% for source in page.indicator.sources %}
+    <div class="col-md-6">
+        {% if page.indicator.sources.size > 1 %}
+        <h4>{{ page.t.indicator.source }} {{ forloop.index }}</h4>
+        {% endif %}
+        <table class="table indicator-source-table">
+            {% if source.logo and source.logo != '' %}
+            {% assign image_path = source.logo %}
+            {% unless image_path contains 'http' %}
+                {% assign image_path = site.baseurl | append: image_path %}
+            {% endunless %}
+            <tr>
+                <td colspan="2"><img alt="{{ source.organisation | t }}" src="{{ image_path }}" /></td>
+            </tr>
+            {% endif %}
+            {% assign has_organisation = source.organisation and source.organisation != '' %}
+            {% if has_organisation or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_organisation_1 }}</th>
+                <td>{{ source.organisation | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_periodicity = source.periodicity and source.periodicity != '' %}
+            {% if has_periodicity or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_periodicity_1 }}</th>
+                <td>{{ source.periodicity | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_earliest_available = source.earliest_available and source.earliest_available != '' %}
+            {% if has_earliest_available or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_earliest_available_1 }}</th>
+                <td>{{ source.earliest_available | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_geographical_coverage = source.geographical_coverage and source.geographical_coverage != '' %}
+            {% if has_geographical_coverage or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_geographical_coverage_1 }}</th>
+                <td>{{ source.geographical_coverage | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_url = source.url and source.url != '' %}
+            {% if has_url or show_placeholders %}
+            {% assign url_text = page.t.metadata_fields.source_url_1 %}
+            {% if source.url_text and source.url_text != '' %}
+                {% assign url_text = source.url_text %}
+            {% endif %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_url_1 }}</th>
+                {% if has_url %}
+                <td><a href="{{ source.url }}">{{ url_text | t }}</a></td>
+                {% else %}
+                <td>{{ placeholder }}</td>
+                {% endif %}
+            </tr>
+            {% endif %}
+            {% assign has_release_date = source.release_date and source.release_date != '' %}
+            {% if has_release_date or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_release_date_1 }}</th>
+                <td>{{ source.release_date | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_next_release = source.next_release and source.next_release != '' %}
+            {% if has_next_release or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_next_release_1 }}</th>
+                <td>{{ source.next_release | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_statistical_classification = source.statistical_classification and source.statistical_classification != '' %}
+            {% if has_statistical_classification or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_statistical_classification_1 }}</th>
+                <td>{{ source.statistical_classification | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_contact = source.contact and source.contact != '' %}
+            {% if has_contact or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_contact_1 }}</th>
+                <td>{{ source.contact | t | default: placeholder }}</td>
+            </tr>
+            {% endif %}
+            {% assign has_other_info = source.other_info and source.other_info != '' %}
+            {% if has_other_info or show_placeholders %}
+            <tr>
+                <th scope="row">{{ page.t.metadata_fields.source_other_info_1 }}</th>
+                <td>{{ source.other_info | t | default: placeholder | markdownify }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+{% endfor %}
+</div>
+{% else %}
+    {% if include.placeholder and include.placeholder != '' %}
+    <div class="empty-metadata-placeholder">{{ include.placeholder | t | markdownify }}</div>
+    {% endif %}
+{% endif %}

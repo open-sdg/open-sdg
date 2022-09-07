@@ -1,12 +1,5 @@
 // Leaflet map styles.
 #main-content {
-  #mapFooter {
-    .data-controlled-footer-field,
-    [data-for-unit]:not([data-for-unit=""]),
-    [data-for-series]:not([data-for-series=""]) {
-      display: none !important;
-    }
-  }
   #map {
     height: 500px;
     width: 100%;

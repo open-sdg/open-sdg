@@ -30,6 +30,9 @@ var opensdg = {
     this.dataDisplayAlterations.push(callback);
   },
 
+  // Disaggregations which should be ignored on indicator pages.
+  ignoredDisaggregations: {{ page.indicator.ignored_disaggregations | jsonify }},
+
   language: '{{ page.language }}',
 };
 

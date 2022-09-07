@@ -9,8 +9,8 @@
 
 @mixin focusOutlineOnly {
     background-color: $backgroundColor !important;
-    box-shadow: none !important;
-    outline: 3px solid $focusOutlineColor !important;
+    box-shadow: 0 0 0 5px $focusOutlineColor !important;
+    outline: 2px solid $text-color !important;
 }
 
 @mixin focusHighContrast {
