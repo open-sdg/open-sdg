@@ -30,7 +30,10 @@ $goal-tile-gutter: 3px;
                 margin-bottom: $goal-tile-gutter;
             }
             a:focus {
-                outline: 6px $focusOutlineColor solid !important;
+                outline: 2px $text-color solid !important;
+                .goal-icon-image {
+                    outline: 8px $focusOutlineColor solid !important;
+                }
             }
             img {
                 width: 100%;
