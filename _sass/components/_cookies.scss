@@ -32,6 +32,20 @@
             }
         }
     }
+    .cookie-modal {
+        .cm-modal {
+            .cm-list-input:focus {
+                & + label {
+                    .cm-switch {
+                        .slider {
+                            outline: 3px solid $focusBackgroundColor;
+                            box-shadow: 0 0 0 4px $focusColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 body.contrast-high {
@@ -39,6 +53,34 @@ body.contrast-high {
         .cm-modal {
             span {
                 color: $color-dark-highContrast;
+            }
+            .cm-list-input {
+                & + label {
+                    .cm-switch {
+                        .slider {
+                            background-color: $color-dark-highContrast !important;
+                        }
+                    }
+                }
+                &:checked + label {
+                    .cm-switch {
+                        .slider {
+                            &::before {
+                                background-color: $color-highlight-highContrast !important;
+                            }
+                        }
+                    }
+                }
+            }
+            .cm-footer-buttons {
+                .cm-btn {
+                    background-color: $color-dark-highContrast !important;
+                    color: $color-light-highContrast !important;
+                    &:focus {
+                        background-color: $color-highlight-highContrast !important;
+                        color: $color-dark-highContrast !important;
+                    }
+                }
             }
         }
     }
