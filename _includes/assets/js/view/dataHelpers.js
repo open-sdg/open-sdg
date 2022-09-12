@@ -12,8 +12,13 @@ function alterDataDisplay(value, info, context) {
     // Before passing to user-defined dataDisplayAlterations, let's
     // do our best to ensure that it starts out as a number.
     var altered = value;
+    // In case the decimal separator has already been applied,
+    // change it back now.
+    if (typeof altered === 'string' && OPTIONS.decimalSeparator) {
+        altered = altered.replace(OPTIONS.decimalSeparator, '.');
+    }
     if (typeof altered !== 'number') {
-        altered = Number(value);
+        altered = Number(altered);
     }
     // If that gave us a non-number, return original.
     if (isNaN(altered)) {
