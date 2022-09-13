@@ -21,10 +21,11 @@ $goal-by-target-indentation: 60px;
         margin-top: 20px;
     }
     .goal-page-target-rule {
-        border-top: 1px solid $goalTarget-horizontalRule-color;
+        border: 0;
+        border-top: 0.1px solid $goalTarget-horizontalRule-color;
         margin-bottom: 25px;
         opacity: 1;
-        height: 0.9px;
+        height: 0.1px;
     }
     .goal-page-indicator-number {
         min-width: $goal-by-target-indentation;
