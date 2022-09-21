@@ -6,6 +6,9 @@
     input {
         width: 33ch;
         border: 1.25px solid $color-dark;
+        &:focus {
+            @include focusOutlineOnly;
+        }
     }
     button {
         color: $button-foregroundColor;
@@ -13,10 +16,9 @@
         border: 1.25px solid $button-color;
         border-radius: 0;
         &:focus {
+            @include focusOutlineOnly;
             color: $button-foregroundColor !important;
             background-color: $button-color !important;
-            box-shadow: none !important;
-            outline: 3px solid $focusOutlineColor !important;
             z-index: 1;
         }
     }

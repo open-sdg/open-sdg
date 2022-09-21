@@ -707,9 +707,40 @@ metadata_tabs:
     description: ''
 ```
 
-About the "Sources" tab:
+In addition to the self-explanatory `title` and `description` properties above, each item can optionally have a `placeholder` property, which should contain text to display when the tab pane would otherwise be empty.
 
-While the "scopes" above, such as "national" and "global", are arbitrary, the "sources" scope is special. The "Sources" tab will only display if the scope under `metadata_tabs` is specifically `sources`.
+About the scopes:
+
+While the "scopes" above, such as "national" and "global", are arbitrary, there are four special scopes that take their content in a particular way:
+
+* `sources`: This deprecated scope takes its content from the `source_*_1`, `source_*_2`, etc, metadata fields. This scope is deprecated and `sources_alt` (see below) is recommended instead.
+* `sources_alt`: This scope takes its content from the [`sources` indicator configuration](indicator-configuration.md#sources).
+* `publications`: This scope takes its content from the [`publications` indicator configuration](indicator-configuration.md#publications).
+* `related_indicators`: This scope takes its content from the [`related_indicators` indicator configuration](indicator-configuration.md#related_indicators).
+
+Here is an example configuration of `metadata_tabs` that uses all of these special scopes:
+
+```nohighlight
+metadata_tabs:
+  - scope: national
+    title: indicator.national_metadata
+    description: indicator.national_metadata_blurb
+  - scope: global
+    title: indicator.global_metadata
+    description: indicator.global_metadata_blurb
+  - scope: sources_alt
+    title: Sources
+    description: My blurb about the sources tab
+    placeholder: No sources are available at this time
+  - scope: related_indicators
+    title: Related indicators
+    description: My blurb about the related indicators tab
+    placeholder: There are no other indicators related to this one
+  - scope: publications
+    title: Publications
+    description: My blurb about the publications tab
+    placeholder: There are no publications available for this indicator
+```
 
 ### menu
 
