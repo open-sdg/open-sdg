@@ -23,7 +23,7 @@ Feature: Map
 
   Scenario: The map should include a download button for GeoJSON
     And I click on "the Map tab"
-    Then I should see "Download GeoJSON"
+    Then I should see "Download map data (.geojson)"
     And I should see "My English regions"
 
   Scenario: Text on the map should be translated

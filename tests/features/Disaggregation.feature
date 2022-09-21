@@ -79,3 +79,8 @@ Feature: Disaggregation
     And I am on "/2-2-2"
     And I wait 3 seconds
     Then I should see 1 "disaggregation filter" element
+
+  Scenario: Translation keys can be used to ignore disaggregations
+    And I am on "/1-2-1"
+    And I wait 3 seconds
+    Then I should see 1 "disaggregation filter" element
