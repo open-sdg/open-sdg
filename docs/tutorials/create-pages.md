@@ -147,7 +147,7 @@ Now we can add this change to our branch.
 This step is not required, if you would like to add a link to the new page in your main menu, here are the steps:
 
 1. In the root of your site repository on Github.com, make sure you are still in the `create-pages-tutorial` branch. If not, select it from the dropdown on the top left.
-1. Go to the `_data` folder and click on `_config.yml`.
+1. Go to the `_data` folder and click on `site_config.yml`.
 1. Click the pencil icon on the right to begin editing the file.
 1. Look for the `menu` section.
 1. Add an item at the bottom of the list, using the same syntax and indentation as the others:
