@@ -262,6 +262,8 @@ _Optional_: This setting can be used to replace the default decimal separator --
 decimal_separator: ','
 ```
 
+NOTE: This setting is most likely not needed, because Open SDG will automatically take advantage of browsers' ability to format numbers for the current language. You should only use this setting if the automatic behavior is not working for you.
+
 ### disclaimer
 
 _Optional_: This setting controls the content of the disclaimer that appears at the top of each page. If you are not happy with the default ("ALPHA: This is a development website. We welcome your feedback.") then you can use something like the following example configuration:
