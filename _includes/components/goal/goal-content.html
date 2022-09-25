@@ -2,6 +2,9 @@
 {% if goal_page_content_raw != '' %}
 <div class="row" id="page-content">
   <div class="col-xs-12">
+    {% if site.create_goals.goal_content_heading and site.create_goals.goal_content_heading != '' %}
+      <h2>{{ site.create_goals.goal_content_heading | t }}</h2>
+    {% endif %}
     {{ goal_page_content_raw | t | markdownify }}
   </div>
 </div>

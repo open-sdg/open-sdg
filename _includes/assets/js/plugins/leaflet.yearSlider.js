@@ -19,12 +19,7 @@
     timeSliderDragUpdate: true,
     speedSlider: false,
     position: 'bottomleft',
-    // Player options.
-    playerOptions: {
-      transitionTime: 1000,
-      loop: false,
-      startOver: true
-    },
+    playButton: false,
   };
 
   L.Control.YearSlider = L.Control.TimeDimension.extend({
@@ -123,14 +118,6 @@
       // delimited string of YYYY-MM-DD dates.
       times: years.map(function(y) { return y.time }).join(','),
       currentTime: new Date(years[0].time).getTime(),
-    });
-    // Create the player.
-    options.player = new L.TimeDimension.Player(options.playerOptions, options.timeDimension);
-    options.player.on('play', function() {
-      $('.timecontrol-play').attr('title', 'Pause');
-    });
-    options.player.on('stop', function() {
-      $('.timecontrol-play').attr('title', 'Play');
     });
     // Listen for time changes.
     if (typeof options.yearChangeCallback === 'function') {

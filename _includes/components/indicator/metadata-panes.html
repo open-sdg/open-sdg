@@ -6,14 +6,33 @@
             {% assign tab_obj = tab %}
         {% endif %}
         {% assign tab_description = tab_obj.description | default: tab_obj.blurb %}
+        {% assign tab_placeholder = tab_obj.placeholder %}
         {% assign tab_include = 'components/indicator/metadata.html' %}
         {% if tab_key == 'sources' %}
             {% assign tab_include = 'components/indicator/sources.html' %}
         {% endif %}
+        {% if tab_key == 'sources_alt' %}
+            {% assign tab_include = 'components/indicator/sources-alt.html' %}
+            {% unless page.indicator.sources and page.indicator.sources.size > 0 %}
+                {% assign tab_description = '' %}
+            {% endunless %}
+        {% endif %}
+        {% if tab_key == 'related_indicators' %}
+            {% assign tab_include = 'components/indicator/related-indicators.html' %}
+            {% unless page.indicator.related_indicators and page.indicator.related_indicators.size > 0 %}
+                {% assign tab_description = '' %}
+            {% endunless %}
+        {% endif %}
+        {% if tab_key == 'publications' %}
+            {% assign tab_include = 'components/indicator/publications.html' %}
+            {% unless page.indicator.publications and page.indicator.publications.size > 0 %}
+                {% assign tab_description = '' %}
+            {% endunless %}
+        {% endif %}
         <div role="tabpanel" class="tab-pane {% if forloop.first %}active{% endif %}" id="{{ tab_key }}">
             <article>
                 {% if tab_description %}{{ tab_description | t | markdownify }}{% endif %}
-                {% include {{ tab_include }} scope=tab_key %}
+                {% include {{ tab_include }} scope=tab_key placeholder=tab_placeholder %}
             </article>
         </div>
         {% endfor %}
@@ -26,4 +45,3 @@
         </div>
     {% endif %}
 </div>
-  

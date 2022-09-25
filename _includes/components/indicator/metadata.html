@@ -9,7 +9,7 @@
         {% if site.hide_empty_metadata %}
           {% continue %}
         {% else %}
-          {% assign metadata_content = site.empty_metadata_placeholder | default: page.t.indicator.empty_metadata_placeholder %}
+          {% assign metadata_content = site.empty_metadata_placeholder | t | default: page.t.indicator.empty_metadata_placeholder %}
           {% assign metadata_content = '<span class="empty-metadata-placeholder">' | append: metadata_content | append: '</span>' %}
           {% assign placeholder_not_needed = false %}
         {% endif %}
@@ -29,6 +29,15 @@
             {% if metadata_content contains "http" or metadata_content contains "mailto" %}
               <a href="{{ metadata_content }}" target="_blank">
                 {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
+              </a>
+            {% else %}
+              {% assign baseurl_end = site.baseurl | slice: -1 %}
+              {% assign link_start = metadata_content | slice: 0 %}
+              {% if baseurl_end != '/' and link_start != '/' %}
+                {% assign metadata_content = '/' | append: metadata_content %}
+              {% endif %}
+              <a href="{{ site.baseurl | append: metadata_content }}">
+                {{ url_text }}
               </a>
             {% endif %}
 
