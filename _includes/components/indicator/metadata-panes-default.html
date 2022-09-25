@@ -1,5 +1,7 @@
 {% if site.compare_national_and_global_data %}
-    {% include components/indicator/metadata-global.html %}
+    <div role="tabpanel" class="tab-pane active" id="national">
+        {% include components/indicator/metadata-global.html %}
+    </div>
 {% else %}
     <div role="tabpanel" class="tab-pane active" id="national">
         <!-- National Metadata -->
