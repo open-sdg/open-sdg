@@ -1,5 +1,6 @@
 <script type="text/template" id="item_template">
   <% _.each(fields, function(fieldItem) { %>
+  <% if(_.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
     <div class="variable-selector
       <% if(allowedFields.indexOf(fieldItem.field) == -1) { %> disallowed <% }%>
       <% if (typeof childFields !== 'undefined' && childFields.indexOf(fieldItem.field) !== -1) { %> child <% }%>
@@ -24,14 +25,16 @@
             <button data-type="clear">{{ page.t.indicator.clear_all }}</button>
           </div>
           <% _.each(fieldItem.values, function(item) { %>
-            <label>
-              <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
-            </label>
+            <% if(_.includes(_.map(_.filter(fieldValuesWithNationalReportingType, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+              <label>
+                <input type="checkbox" <%=item.checked ? 'checked' : ''%> value="<%=item.value%>" data-field="<%=fieldItem.field%>" /><%=translations.t(item.value)%>
+              </label>
+            <% }; %>
           <% }); %>
         </fieldset>
       </div>
-
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% }%>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && _.includes(_.map(fieldValuesWithNationalReportingType.filter(key => key.values.length > 0), 'field'), fieldItem.field)) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
           {%- capture var_hint_replacement -%}
             {% raw %}<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>{% endraw %}
