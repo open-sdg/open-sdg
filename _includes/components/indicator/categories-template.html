@@ -1,0 +1,16 @@
+lines (14 sloc)  755 Bytes
+
+<script type="text/template" id="categories_template">
+  <h4>Sub-categories</h4>
+  <p>Choose a sub-category from the dropdown below to compare national and global data for that group.</p>
+  <select class="select" id="category-select" name="category-select">
+    <option value="total" data-field="total" selected>Headline</option>
+		<% _.each(fields, function(fieldItem) { %>
+			<% _.each(fieldItem.values, function(item) { %>
+				<% if(_.includes(_.map(_.filter(comparableFieldValues, {'field': fieldItem.field}), 'values')[0], item.value)) { %>
+					<option value="<%=item.value%>" data-field=<%=fieldItem.field%>><%=translations.t(fieldItem.field)%>: <%=translations.t(item.value)%></option>
+				<% }; %>
+			<% }); %>
+		<% }); %>
+	</select>  
+</script>
