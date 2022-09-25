@@ -86,7 +86,8 @@ var indicatorView = function (model, options) {
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {
-
+        
+        helpers.initialiseFieldsWithGlobalValues(args);
         helpers.initialiseFields(args);
 
         if (args.hasGeoData && args.showMap) {
