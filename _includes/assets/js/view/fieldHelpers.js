@@ -25,6 +25,10 @@ function initialiseFields(args) {
     } else {
         $(OPTIONS.rootElement).addClass('no-fields');
     }
+    
+    if (args.allowedFields == 'Reporting type') {
+         $(OPTIONS.rootElement).addClass('no-fields');
+    }
 }
 
 /**
