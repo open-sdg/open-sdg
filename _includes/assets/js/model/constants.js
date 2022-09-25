@@ -3,6 +3,7 @@
  */
 var UNIT_COLUMN = '{{ site.data_fields.units | default: "Units" }}';
 var SERIES_COLUMN = '{{ site.data_fields.series | default: "Series" }}';
+var REPORTINGTYPE_COLUMN = '{{ site.data_fields.reportingtype | default: "Reporting type" }}';
 var GEOCODE_COLUMN = 'GeoCode';
 var YEAR_COLUMN = 'Year';
 var VALUE_COLUMN = 'Value';
