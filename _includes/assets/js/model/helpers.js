@@ -46,6 +46,7 @@
   {% include assets/js/model/chartHelpers.js %}
   {% include assets/js/model/tableHelpers.js %}
   {% include assets/js/model/dataHelpers.js %}
+  {% include assets/js/model/comparisonHelpers.js %}
 
   function deprecated(name) {
     return function() {
@@ -56,6 +57,7 @@
   return {
     UNIT_COLUMN: UNIT_COLUMN,
     SERIES_COLUMN: SERIES_COLUMN,
+    REPORTINGTYPE_COLUMN: REPORTINGTYPE_COLUMN,
     GEOCODE_COLUMN: GEOCODE_COLUMN,
     YEAR_COLUMN: YEAR_COLUMN,
     VALUE_COLUMN: VALUE_COLUMN,
@@ -65,6 +67,12 @@
     dataHasUnits: dataHasUnits,
     dataHasGeoCodes: dataHasGeoCodes,
     dataHasSerieses: dataHasSerieses,
+    dataHasReportingTypes: dataHasReportingTypes,
+    dataIsComparable: dataIsComparable,
+    headlineHasGlobalReportingType: headlineHasGlobalReportingType,
+    headlineHasNationalReportingType: headlineHasNationalReportingType,
+    headlineIsComparable: headlineIsComparable,
+    fieldsAreComparable: fieldsAreComparable,
     getFirstUnitInData: getFirstUnitInData,
     getFirstSeriesInData: getFirstSeriesInData,
     getDataByUnit: getDataByUnit,
@@ -76,6 +84,9 @@
     selectMinimumStartingFields: selectMinimumStartingFields,
     fieldsUsedByUnit: fieldsUsedByUnit,
     fieldsUsedBySeries: fieldsUsedBySeries,
+    fieldValuesWithGlobalReportingType: fieldValuesWithGlobalReportingType,
+    fieldValuesWithNationalReportingType: fieldValuesWithNationalReportingType,
+    comparableFieldValues: comparableFieldValues,
     dataHasUnitSpecificFields: dataHasUnitSpecificFields,
     dataHasSeriesSpecificFields: dataHasSeriesSpecificFields,
     getInitialFieldItemStates: getInitialFieldItemStates,
@@ -90,6 +101,8 @@
     getAllowedFieldsWithChildren: getAllowedFieldsWithChildren,
     getUpdatedFieldItemStates: getUpdatedFieldItemStates,
     fieldItemStatesForView: fieldItemStatesForView,
+    updateSelectedFieldsFromSelectedValue: updateSelectedFieldsFromSelectedValue,
+    getCombinationDataForReportingTypeComparison: getCombinationDataForReportingTypeComparison,
     getChartTitle: getChartTitle,
     getChartType: getChartType,
     getCombinationData: getCombinationData,
