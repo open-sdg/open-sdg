@@ -84,8 +84,8 @@ var indicatorModel = function (options) {
       var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
       this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(headline);
       this.headlineHasNationalReportingType = helpers.headlineHasNationalReportingType(headline);
-      this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
-      this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
+      this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues);
+      this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType);
       this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
     }
   }
@@ -161,7 +161,7 @@ var indicatorModel = function (options) {
   };
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue);
     this.getData();
     
   };
