@@ -140,7 +140,7 @@ var indicatorModel = function (options) {
   this.colorAssignments = [];
 
   this.clearSelectedFields = function() {
-    this.selectedFields = [];
+    this.selectedFields = [{field: "Reporting type", values: ["National"]}];
     this.getData();
     this.onFieldsCleared.notify();
   };
