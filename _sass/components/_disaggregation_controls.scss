@@ -128,6 +128,10 @@
         &:hover {
             border-color: $indicator-selected-borderColor-hover;
         }
+        
+        &[data-field="Reporting type"] {
+          display: none;
+        }
 
         .no-data-hint,
         .variable-hint {
