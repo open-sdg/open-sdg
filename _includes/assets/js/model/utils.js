@@ -30,6 +30,14 @@ function dataHasGeoCodes(columns) {
 }
 
 /**
+ * @param {Array} reportingTypes
+ * @return {boolean}
+ */
+function dataHasGlobalValues(reportingTypes) {
+  return reportingTypes.includes("Global");
+}
+
+/**
  * @param {Array} rows
  * @return {Array} Columns from first row
  */
