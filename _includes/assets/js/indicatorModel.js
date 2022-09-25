@@ -35,6 +35,15 @@ var indicatorModel = function (options) {
   this.selectedUnit = undefined;
   this.fieldsByUnit = undefined;
   this.dataHasUnitSpecificFields = false;
+  this.headlineHasGlobalReportingType = false;
+  this.headlineHasNationalReportingType = false;
+  this.headlineIsComparable = false;
+  this.fieldsAreComparable = false;
+  this.dataIsComparable = false;
+  this.fieldValuesWithGlobalReportingType = [];
+  this.fieldValuesWithNationalReportingType = [];
+  this.comparableFieldValues = [];
+  this.comparisonToggle = false;
   this.selectedSeries = undefined;
   this.fieldsBySeries = undefined;
   this.dataHasSeriesSpecificFields = false;
@@ -59,6 +68,25 @@ var indicatorModel = function (options) {
       this.selectedUnit = this.units[0];
       this.fieldsByUnit = helpers.fieldsUsedByUnit(this.units, this.data, this.allColumns);
       this.dataHasUnitSpecificFields = helpers.dataHasUnitSpecificFields(this.fieldsByUnit);
+    }
+  }
+  
+  this.initialiseFieldsWithGlobalValues = function() {
+    if (this.hasReportingTypes) {
+      this.fieldValuesWithGlobalReportingType = helpers.fieldValuesWithGlobalReportingType(this.data, this.allColumns);
+      console.log('fieldValuesWithGlobalReportingType: ', this.fieldValuesWithGlobalReportingType)
+      this.fieldValuesWithNationalReportingType = helpers.fieldValuesWithNationalReportingType(this.data, this.allColumns);
+      console.log('fieldValuesWithNationalReportingType: ', this.fieldValuesWithNationalReportingType)
+      this.comparableFieldValues = helpers.comparableFieldValues(this.data, this.allColumns)
+      console.log('comparableFieldValues: ',this.comparableFieldValues)
+      this.fieldItemStates = helpers.getInitialFieldItemStates(this.data, this.edgesData, this.allColumns, this.dataSchema);
+      this.selectableFields = helpers.getFieldNames(this.fieldItemStates);
+      var headline = helpers.getHeadline(this.selectableFields.filter(e => e != helpers.REPORTINGTYPE_COLUMN), this.data);
+      this.headlineHasGlobalReportingType = helpers.headlineHasGlobalReportingType(headline);
+      this.headlineHasNationalReportingType = helpers.headlineHasNationalReportingType(headline);
+      this.fieldsAreComparable = helpers.fieldsAreComparable(this.comparableFieldValues)
+      this.headlineIsComparable = helpers.headlineIsComparable(this.headlineHasGlobalReportingType, this.headlineHasNationalReportingType)
+      this.dataIsComparable = helpers.dataIsComparable(this.headlineIsComparable, this.fieldsAreComparable);
     }
   }
 
@@ -104,6 +132,8 @@ var indicatorModel = function (options) {
   this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
+  this.hasReportingTypes = helpers.dataHasReportingTypes(this.allColumns);
+  this.initialiseFieldsWithGlobalValues();
   this.initialiseFields();
   this.colors = opensdg.chartColors(this.indicatorId);
   this.maxDatasetCount = 2 * this.colors.length;
@@ -117,7 +147,7 @@ var indicatorModel = function (options) {
 
   this.updateFieldStates = function(selectedFields) {
     this.selectedFields = helpers.removeOrphanSelections(selectedFields, this.edgesData);
-    this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, selectedFields);
+    this.allowedFields = helpers.getAllowedFieldsWithChildren(this.selectableFields, this.edgesData, selectedFields).filter(e => (e != 'Reporting type'));
     this.fieldItemStates = helpers.getUpdatedFieldItemStates(this.fieldItemStates, this.edgesData, selectedFields, this.validParentsByChild);
     this.onSelectionUpdate.notify({
       selectedFields: this.selectedFields,
@@ -129,6 +159,18 @@ var indicatorModel = function (options) {
     this.updateFieldStates(selectedFields);
     this.getData();
   };
+  
+  this.updateSelectedComparisonValue = function (selectedComparisonValue) {
+    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue)
+    this.getData();
+    
+  };
+  
+  this.updateHeadlineSelectedFields = function () {
+    this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
+    this.getData();
+  }
+    
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);
@@ -153,6 +195,7 @@ var indicatorModel = function (options) {
     this.refreshSeries();
     this.clearSelectedFields();
     this.initialiseUnits();
+    this.initialiseFieldsWithGlobalValues();
     this.initialiseFields();
     this.getData({ updateFields: true, changingSeries: true });
     this.onSeriesesSelectedChanged.notify(selectedSeries);
@@ -271,6 +314,14 @@ var indicatorModel = function (options) {
           this.compositeBreakdownLabel
         ),
         allowedFields: this.allowedFields,
+        dataIsComparable: this.dataIsComparable,
+        fieldsAreComparable: this.fieldsAreComparable,
+        headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
+        headlineHasNationalReportingType: this.headlineHasNationalReportingType,
+        headlineIsComparable: this.headlineIsComparable,
+        fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
+        fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
+        comparableFieldValues: this.comparableFieldValues,
         edges: this.edgesData,
         hasGeoData: this.hasGeoData,
         indicatorId: this.indicatorId,
@@ -303,8 +354,14 @@ var indicatorModel = function (options) {
     if (headline.length > 0) {
       headline = helpers.sortData(headline, this.selectedUnit);
     }
+    
+    if (this.comparisonToggle) {
+      var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
+    }
+    else {
+      var combinations = helpers.getCombinationData(this.selectedFields);
+    }
 
-    var combinations = helpers.getCombinationData(this.selectedFields);
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
 
@@ -333,6 +390,14 @@ var indicatorModel = function (options) {
       shortIndicatorId: this.shortIndicatorId,
       selectedUnit: this.selectedUnit,
       selectedSeries: this.selectedSeries,
+      dataIsComparable: this.dataIsComparable,
+      fieldsAreComparable: this.fieldsAreComparable,
+      headlineHasGlobalReportingType: this.headlineHasGlobalReportingType,
+      headlineHasNationalReportingType: this.headlineHasNationalReportingType,
+      headlineIsComparable: this.headlineIsComparable,
+      fieldValuesWithGlobalReportingType: this.fieldValuesWithGlobalReportingType,
+      fieldValuesWithNationalReportingType: this.fieldValuesWithNationalReportingType,
+      comparableFieldValues: this.comparableFieldValues,
       graphLimits: helpers.getGraphLimits(this.graphLimits, this.selectedUnit, this.selectedSeries),
       stackedDisaggregation: this.stackedDisaggregation,
       graphAnnotations: helpers.getGraphAnnotations(this.graphAnnotations, this.selectedUnit, this.selectedSeries, this.graphTargetLines, this.graphSeriesBreaks),
