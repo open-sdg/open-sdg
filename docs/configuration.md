@@ -159,15 +159,17 @@ create_goals:
 
 ### create_indicators
 
-_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators. You can optionally turn on previous/next links as well.
+_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. So this is highly recommended.
+
+This setting can contain the following (indented) sub-settings:
+* `previous_next_links`: You can set this to `true` to turn on previous/next links on indicator pages, allowing users to "page" through the indicators, directly from one to the next.
+
+Here is an example of usage:
 
 ```nohighlight
 create_indicators:
-  layout: indicator
   previous_next_links: true
 ```
-
-NOTE: The `layout` setting is deprecated, because in Open SDG 2.0.0 there will only be one choice for indicator layout.
 
 ### create_pages
 
