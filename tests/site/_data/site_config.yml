@@ -261,6 +261,7 @@ news:
   category_links: true
 progress_status:
   status_heading: status.progress_status
+  status_help: How are we doing against the 2030 targets?
   status_types:
     - value: not_available
       label: status.progress_not_available
