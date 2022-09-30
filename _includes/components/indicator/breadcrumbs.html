@@ -13,14 +13,22 @@
         </li>
         {% endfor %}
         <li class="breadcrumb-item">
-            <a href="{{ page.goal.url }}" title="{{ page.goal.name | escape }}">{{ page.t.general.goal }} {{ page.goal.number }}</a>
+            <a href="{{ page.goal.url }}"
+               title="{{ page.t.general.goal }} {{ page.goal.number }} - {{ page.goal.short | escape }}"
+               aria-label="{{ page.t.general.goal }} {{ goal.number }} - {{ goal.short | escape }}">
+               {{ page.t.general.goal }} {{ page.goal.number }}
+            </a>
         </li>
         {% else %}
         <li class="breadcrumb-item">
             <a href="{{ page.baseurl }}">{{ page.t.general.home }}</a>
         </li>
         <li class="breadcrumb-item">
-            <a href="{{ page.goal.url }}" title="{{ page.goal.name | escape }}">{{ page.t.general.goal }} {{ page.goal.number }}</a>
+            <a href="{{ page.goal.url }}"
+               title="{{ page.t.general.goal }} {{ page.goal.number }} - {{ page.goal.short | escape }}"
+               aria-label="{{ page.t.general.goal }} {{ goal.number }} - {{ goal.short | escape }}">
+               {{ page.t.general.goal }} {{ page.goal.number }}
+            </a>
         </li>
         <li class="breadcrumb-item active">{{ page.t.general.indicator }} {{ page.indicator.number }}</li>
         {% endif %}
