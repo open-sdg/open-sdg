@@ -29,11 +29,13 @@
             @media only screen and (min-width: 768px) {
                 margin-top: 0;
                 text-align: right;
-                .config-download-button, .config-repository-button {
-                    margin-top: 0;
-                }
                 .config-repository-button {
                     margin-left: 10px;
+                }
+            }
+            @media only screen and (min-width: 1200px) {
+                .config-download-button, .config-repository-button {
+                    margin-top: 0;
                 }
             }
         }
