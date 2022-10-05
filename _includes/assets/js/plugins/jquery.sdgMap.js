@@ -477,7 +477,8 @@
         plugin.updateColors();
 
         // Add zoom control.
-        plugin.map.addControl(L.Control.zoomHome());
+        plugin.zoomHome = L.Control.zoomHome();
+        plugin.map.addControl(plugin.zoomHome);
 
         // Add full-screen functionality.
         plugin.map.addControl(new L.Control.FullscreenAccessible());
@@ -613,6 +614,8 @@
           plugin.map.invalidateSize();
           // Also zoom in/out as needed.
           plugin.map.fitBounds(plugin.getVisibleLayers().getBounds());
+          // Set the home button to return to that zoom.
+          plugin.zoomHome.setHomeBounds(plugin.getVisibleLayers().getBounds());
           // Limit the panning to what we care about.
           plugin.map.setMaxBounds(plugin.getVisibleLayers().getBounds());
           // Make sure the info pane is not too wide for the map.
