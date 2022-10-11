@@ -477,11 +477,20 @@
         plugin.updateColors();
 
         // Add zoom control.
-        plugin.zoomHome = L.Control.zoomHome();
+        plugin.zoomHome = L.Control.zoomHome({
+          zoomInTitle: translations.indicator.map_zoom_in,
+          zoomOutTitle: translations.indicator.map_zoom_out,
+          zoomHomeTitle: translations.indicator.map_zoom_home,
+        });
         plugin.map.addControl(plugin.zoomHome);
 
         // Add full-screen functionality.
-        plugin.map.addControl(new L.Control.FullscreenAccessible());
+        plugin.map.addControl(new L.Control.FullscreenAccessible({
+          title: {
+              'false': translations.indicator.map_fullscreen,
+              'true': translations.indicator.map_fullscreen_exit,
+          },
+        }));
 
         // Add the year slider.
         plugin.map.addControl(L.Control.yearSlider({

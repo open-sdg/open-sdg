@@ -61,9 +61,15 @@
           maxYear = years[years.length - 1],
           knobElement = knob._element;
 
+      control._buttonBackward.title = translations.indicator.map_slider_back;
+      control._buttonBackward.setAttribute('aria-label', control._buttonBackward.title);
+      control._buttonForward.title = translations.indicator.map_slider_forward;
+      control._buttonForward.setAttribute('aria-label', control._buttonForward.title);
+
       knobElement.setAttribute('tabindex', '0');
       knobElement.setAttribute('role', 'slider');
-      knobElement.setAttribute('aria-label', translations.indicator.map_year_slider);
+      knobElement.setAttribute('aria-label', translations.indicator.map_slider_keyboard);
+      knobElement.title = translations.indicator.map_slider_mouse;
       knobElement.setAttribute('aria-valuemin', minYear);
       knobElement.setAttribute('aria-valuemax', maxYear);
 

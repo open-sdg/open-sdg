@@ -23,6 +23,7 @@
       this._button.innerHTML = '<i class="fa fa-search" aria-hidden="true"></i>';
 
       this._cancel.setAttribute('role', 'button');
+      this._cancel.title = translations.indicator.map_search_cancel;
       this._cancel.setAttribute('aria-label', this._cancel.title);
       this._cancel.innerHTML = '<i class="fa fa-close" aria-hidden="true"></i>';
 
