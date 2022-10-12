@@ -63,6 +63,7 @@ function createDownloadButton(table, name, indicatorId, el) {
             .attr({
                 'download': fileName,
                 'title': translations.indicator.download_csv_title,
+                'aria-label': translations.indicator.download_csv_title,
                 'class': 'btn btn-primary btn-download',
                 'tabindex': 0
             });
@@ -94,6 +95,7 @@ function createDownloadButton(table, name, indicatorId, el) {
                 'href': opensdg.remoteDataBaseUrl + '/headline/' + id + '.csv',
                 'download': headlineId + '.csv',
                 'title': translations.indicator.download_headline_title,
+                'aria-label': translations.indicator.download_headline_title,
                 'class': 'btn btn-primary btn-download',
                 'tabindex': 0
             }));
@@ -113,6 +115,7 @@ function createSourceButton(indicatorId, el) {
             'href': opensdg.remoteDataBaseUrl + '/data/' + indicatorId + '.csv',
             'download': indicatorId + '.csv',
             'title': translations.indicator.download_source_title,
+            'aria-label': translations.indicator.download_source_title,
             'class': 'btn btn-primary btn-download',
             'tabindex': 0
         }));

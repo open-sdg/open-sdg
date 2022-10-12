@@ -19,12 +19,7 @@
     timeSliderDragUpdate: true,
     speedSlider: false,
     position: 'bottomleft',
-    // Player options.
-    playerOptions: {
-      transitionTime: 1000,
-      loop: false,
-      startOver: true
-    },
+    playButton: false,
   };
 
   L.Control.YearSlider = L.Control.TimeDimension.extend({
@@ -66,9 +61,15 @@
           maxYear = years[years.length - 1],
           knobElement = knob._element;
 
+      control._buttonBackward.title = translations.indicator.map_slider_back;
+      control._buttonBackward.setAttribute('aria-label', control._buttonBackward.title);
+      control._buttonForward.title = translations.indicator.map_slider_forward;
+      control._buttonForward.setAttribute('aria-label', control._buttonForward.title);
+
       knobElement.setAttribute('tabindex', '0');
       knobElement.setAttribute('role', 'slider');
-      knobElement.setAttribute('aria-label', translations.indicator.map_year_slider);
+      knobElement.setAttribute('aria-label', translations.indicator.map_slider_keyboard);
+      knobElement.title = translations.indicator.map_slider_mouse;
       knobElement.setAttribute('aria-valuemin', minYear);
       knobElement.setAttribute('aria-valuemax', maxYear);
 
@@ -123,14 +124,6 @@
       // delimited string of YYYY-MM-DD dates.
       times: years.map(function(y) { return y.time }).join(','),
       currentTime: new Date(years[0].time).getTime(),
-    });
-    // Create the player.
-    options.player = new L.TimeDimension.Player(options.playerOptions, options.timeDimension);
-    options.player.on('play', function() {
-      $('.timecontrol-play').attr('title', 'Pause');
-    });
-    options.player.on('stop', function() {
-      $('.timecontrol-play').attr('title', 'Play');
     });
     // Listen for time changes.
     if (typeof options.yearChangeCallback === 'function') {
