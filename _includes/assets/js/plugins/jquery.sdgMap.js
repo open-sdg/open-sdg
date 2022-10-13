@@ -291,7 +291,7 @@
       if (props.values && props.values.length && this.currentDisaggregation < props.values.length) {
         var value = props.values[this.currentDisaggregation][this.currentYear];
         if (typeof value === 'number') {
-          ret = opensdg.dataRounding(value);
+          ret = opensdg.dataRounding(value, { indicatorId: this.indicatorId });
         }
       }
       return ret;
