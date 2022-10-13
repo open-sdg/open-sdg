@@ -84,6 +84,21 @@ opensdg.dataRounding = function(value) {
 
 * You may get unexpected behavior if you return a string - so it is recommended to return a number.
 
+Note that a second parameter (an object) is passed which has additional context. At this time the object contains the indicator ID. This can allow for special behavior for certain indicators. Here is an example of usage:
+
+```
+opensdg.dataRounding = function(value, context) {
+    // Round to 3 decimal places in indicator 3.1.1.
+    if (context.indicatorId === 'indicator_3-1-1') {
+        return Math.round(value * 1000) / 1000;
+    }
+    // Otherwise round to 2 decimal places.
+    else {
+        return Math.round(value * 100) / 100;
+    }
+}
+```
+
 ## Altering data values before displaying
 
 If you need to make any last-minute changes to data values before displaying, you can pass a callback function to the `opensdg.dataDisplayAlter` function. For example, you could include this in your custom javascript:
