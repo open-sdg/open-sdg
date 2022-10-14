@@ -122,7 +122,7 @@ body.contrast-high {
         border: 1px solid $color-light-highContrast;
         background-color: $color-dark-highContrast !important;
         .cn-body {
-            p span {
+            p span, p {
                 color: $color-light-highContrast;
             }
             .cm-link {
