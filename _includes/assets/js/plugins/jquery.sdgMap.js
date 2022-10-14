@@ -504,7 +504,7 @@
         }));
 
         // Add the year slider.
-        plugin.map.addControl(L.Control.yearSlider({
+        plugin.yearSlider = L.Control.yearSlider({
           years: plugin.years,
           yearChangeCallback: function(e) {
             plugin.currentYear = plugin.years[e.target._currentTimeIndex];
@@ -512,7 +512,8 @@
             plugin.updateTooltips();
             plugin.selectionLegend.update();
           }
-        }));
+        });
+        plugin.map.addControl(plugin.yearSlider);
 
         // Add the selection legend.
         plugin.selectionLegend = L.Control.selectionLegend(plugin);
@@ -626,6 +627,8 @@
         plugin.updateTitle();
         plugin.updateFooterFields();
         plugin.updatePrecision();
+        // The year slider does not seem to be correct unless we refresh it here.
+        plugin.yearSlider._timeDimension.setCurrentTimeIndex(plugin.yearSlider._timeDimension.getCurrentTimeIndex());
         // Delay other things to give time for browser to do stuff.
         setTimeout(function() {
           $('#map #loader-container').hide();
