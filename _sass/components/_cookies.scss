@@ -98,8 +98,10 @@ body.contrast-high {
                 &:checked + label {
                     .cm-switch {
                         .slider {
+                            background-color: $color-light-highContrast !important;
+                            border: 1px solid transparent !important;
                             &::before {
-                                background-color: $color-highlight-highContrast !important;
+                                background-color: $color-dark-highContrast !important;
                             }
                         }
                     }
