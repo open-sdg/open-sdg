@@ -61,6 +61,12 @@
           border-color: lighten($text-color, 25%);
         }
       }
+      .timecontrol-backward, .timecontrol-forward {
+        &[disabled] {
+          opacity: 0.4;
+          cursor: default;
+        }
+      }
       &.leaflet-control-attribution {
         background: $backgroundColor;
         a {
