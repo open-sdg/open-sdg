@@ -62,9 +62,10 @@
           color: swatchColor,
         });
       }).join('');
+      var context = { indicatorId: this.plugin.indicatorId };
       return L.Util.template(controlTpl, {
-        lowValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][0])),
-        highValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][1])),
+        lowValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][0], context)),
+        highValue: this.plugin.alterData(opensdg.dataRounding(this.plugin.valueRanges[this.plugin.currentDisaggregation][1], context)),
         legendSwatches: swatches,
       });
     },
