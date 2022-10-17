@@ -36,3 +36,7 @@ In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugi
 ```
 gem "jekyll-open-sdg-plugins", "2.1.0.pre.beta1"
 ```
+
+## Recommended updates to the site configuration
+
+* Empty metadata placeholders?

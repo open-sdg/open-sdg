@@ -6,9 +6,13 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 TBD
 
-*
-*
-
+* Improvements, bugfix, and design updates to the map feature
+* Improved support for long unit-of-measurement labels
+* New features for metadata section: relative links, placeholders, related indicators, and publications
+* Accessibility fixes: clearer button/link labels, high-contrast support for cookie modal, better focus outline
+* Security updates for jQuery and Lodash libraries
+* New features for goal pages: re-design of the indicator progress feature, custom header text per goal
+* Support for data rounding logic per indicator
 
 ## 2.0.0
 

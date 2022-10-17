@@ -2,7 +2,31 @@
 
 ## 2.1.0
 
-
+* Feature: Pass a second parameter to dataRounding which includes indicator id #1831
+* Design: More margin above H2 when it is in content of 'page' and 'post' layouts #1819
+* Bugfix: Use raw value for chart tooltip #1813
+* Design: Remove play button from maps #1812
+* Design: Horizontal rule thickness fix on goal pages #1809
+* Feature: Year-slider starts with the most recent year #1808, #1830
+* Feature: Support for goal_content_heading site config #1803
+* Design: UX improvements for config and data form headers #1802
+* Design: Updates to the indicator progress on goal pages #1801
+* Design: Clarify button labels #1799
+* Security: Lodash and jQuery upgrades #1798
+* Design: Double focus outline (black in addition to yellow) #1797
+* Bugfix: Better pruning of map disaggregations to hide region columns #1795
+* Feature: Support local hrefs in metadata links #1794
+* Feature: Translations in leafletDisaggregationControls #1791
+* Bugfix: Remove extraneous markup #1784
+* Bugfix: Fix for metadata content overflow on high magnification #1777
+* Feature: Related indicators, publications, and sources #1776
+* Feature: Placeholder for empty metadata #1775
+* Design: Update data download card to use new translations #1774
+* Bugfix: Maintain focus when changing series #1765
+* Bugfix: Refresh keyboard navigation plugin on chart update #1762
+* Feature: Wrap Y axis labels to 40 characters per line #1739
+* Bugfix: Map series/unit behaviors #1724
+* Bugfix: High contrast cookie modal #1719
 
 ## 2.0.0
 
