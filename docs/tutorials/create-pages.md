@@ -147,7 +147,7 @@ Now we can add this change to our branch.
 This step is not required, if you would like to add a link to the new page in your main menu, here are the steps:
 
 1. In the root of your site repository on Github.com, make sure you are still in the `create-pages-tutorial` branch. If not, select it from the dropdown on the top left.
-1. Click on `_config.yml`.
+1. Go to the `_data` folder and click on `site_config.yml`.
 1. Click the pencil icon on the right to begin editing the file.
 1. Look for the `menu` section.
 1. Add an item at the bottom of the list, using the same syntax and indentation as the others:
@@ -170,11 +170,11 @@ Now we can add this change to our branch.
 We have now added a page to our site and menu. Perform these last steps to create and merge the pull-request.
 
 1. In the root of your site repository on Github.com, make sure you are still in the `create-pages-tutorial` branch. If not, select it from the dropdown on the top left.
-1. Press the "Pull request" button which is just to the left of "Compare".
-1. Click on the green "Create pull request" button.
-1. Wait until you see a message that says "Test PRs / test (pull_request) - in progress".
+1. Click on the "Pull request" tab and then click the "New pull request" button.
+1. Click on the `create-pages-tutorial` branch. You will see that there should be a number of commits and a number of files changed.
+1. Click on the green "Create pull request" button. This will take you to another page where you could add a description for the pull request, and then click the "Create pull request" button again.
 1. Wait until you see "All checks have passed". This could take about 5 minutes.
-1. Click on the green "Merge pull request" button.
+1. Click on the green "Merge pull request" button. Note that this relies on [triggered site builds](https://open-sdg.readthedocs.io/en/latest/automation/triggered-site-builds/) already being in place.
 
 ## View the results
 
