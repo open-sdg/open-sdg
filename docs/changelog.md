@@ -1,5 +1,9 @@
 <h1>Change Log</h1>
 
+## 2.1.0
+
+
+
 ## 2.0.0
 
 * Bugfix: Fix for rescaler plugin when changing series #1715
