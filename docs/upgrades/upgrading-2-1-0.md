@@ -7,7 +7,7 @@ This document is intended for developers, to help with the process of upgrading 
 In your data repository, update your `requirements.txt` file to:
 
 ```
-git+git://github.com/open-sdg/sdg-build@2.1.0-beta1
+git+https://github.com/open-sdg/sdg-build@2.1.0-beta1
 ```
 
 ## Upgrade translations to sdg-translations 2.1.0-beta1
