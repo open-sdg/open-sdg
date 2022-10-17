@@ -110,3 +110,15 @@ Your production site, once it has been deployed as described in the previous ste
 ## Custom domain
 
 For your production site's domain you will likely want something other than `my-stats-org.github.io` (for example). A common approach is adding `sdg` as a subdomain for an existing domain, such as `https://sdg.example.com`. Whatever you choose, please refer to the [GitHub documentation for configuring a custom domain](https://help.github.com/en/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site).
+
+Note that if your production data is under the same Github organization as your production site, then after you set up the custom domain you will need to change the remote_data_prefix line in your production site configuration file such that it uses the custom domain. For example, if your Github production organization is "my-prod-org", then that `remote_data_prefix` line is probably something like:
+
+```
+remote_data_prefix: https://my-prod-org.github.io/my-data-repo
+```
+
+But after you have set up the custom domain then you would need to change it to:
+
+```
+remote_data_prefix: https://my-custom-domain.org/my-data-repo
+```
