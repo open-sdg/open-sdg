@@ -45,7 +45,13 @@
         },
 
         getVisibleDisaggregations: function() {
-            var features = this.plugin.getVisibleLayers().toGeoJSON().features;
+            var features = this.plugin.getVisibleLayers().toGeoJSON().features.filter(function(feature) {
+                return typeof feature.properties.disaggregations !== 'undefined';
+            });
+            if (features.length === 0) {
+                return [];
+            }
+
             var disaggregations = features[0].properties.disaggregations;
             // The purpose of the rest of this function is to identiy
             // and remove any "region columns" - ie, any columns that
