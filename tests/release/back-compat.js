@@ -3,7 +3,7 @@ const path = require('path')
 const { exec, spawn } = require('child_process')
 const git = require('simple-git')()
 
-const majorFolder = 'version-1.0.0'
+const majorFolder = 'version-2.0.0'
 
 main()
 
@@ -16,7 +16,7 @@ async function main() {
         if (!fs.existsSync(majorFolder)) {
             await git.clone('https://github.com/open-sdg/open-sdg.git', majorFolder, {
                 '--depth': 1,
-                '--branch': '1.0.0',
+                '--branch': '2.0.0',
             })
         }
         await testFile(args[2])
@@ -30,9 +30,9 @@ async function testFile(filePath) {
         return
     }
     fs.copyFileSync(path.join(majorFolder, filePath), filePath)
-    const diff = await git.diff(filePath)
+    const diff = await git.diff([filePath])
     if (diff === '') {
-        await git.checkout(filePath)
+        await git.checkout([filePath])
         console.log('That file has not changed.')
     }
     else {
@@ -41,7 +41,7 @@ async function testFile(filePath) {
 }
 
 async function runTests(filePath) {
-    const serve = spawn('make', ['serve.detached'])
+    const serve = spawn('make', ['serve.detached'], {stdio: 'ignore'})
     serve.on('exit', function (code) {
         console.log('Testing changes to ' + filePath + '...')
         exec('make test.only', (err, stdout, stderr) => {
