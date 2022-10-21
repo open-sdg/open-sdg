@@ -109,8 +109,9 @@
         // https://github.com/stefanocudini/leaflet-search/issues/264
         var firstSuggestion = this._tooltip.childNodes[0].innerText;
         var firstSuggestionLower = firstSuggestion.toLowerCase();
-        var userInputLower = this._input.value.toLowerCase();
-        if (firstSuggestionLower !== userInputLower && firstSuggestionLower.includes(userInputLower)) {
+        var userInput = this._input.value;
+        var userInputLower = userInput.toLowerCase();
+        if (firstSuggestion !== userInput && firstSuggestionLower.includes(userInputLower)) {
           this._input.value = firstSuggestion;
         }
       }
