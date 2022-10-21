@@ -34,3 +34,22 @@
         }
     }
 }
+
+
+body.contrast-high.layout-data-editor {
+    .config-widgets {
+        background-color: $color-dark-highContrast;
+    }
+    .config-repository-button {
+        span {
+            color: $color-dark-highContrast;
+        }
+    }
+    .ag-root-wrapper {
+        &, .ag-header, .ag-row {
+            background-color: $color-dark-highContrast;
+            color: $color-light-highContrast;
+        }
+    }
+
+}
