@@ -20,10 +20,10 @@ nav:
     - Frequently Asked Questions: faq.md
     - Community:
         - Platform updates: updates.md
+        - Change log: changelog.md
         - Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
-    - Change log: changelog.md
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
     - Requirements: requirements.md
