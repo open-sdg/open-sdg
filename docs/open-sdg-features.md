@@ -2,6 +2,31 @@
 
 Open SDG platforms are very customisable and there are a variety of optional features which can be easily configured.
 
+## Fully Customisable ##
+The home page, goals pages and indicator pages can all be adapted to fit the requirements and design specifications.
+
+Further detail on the customisations available can be found in the [indicator](indicator-configuration.md), [site](configuration.md) and [data](data-configuration.md) configuration options.
+
+## Display data for national indicators as well as global indicators
+There are various approaches to publishing national and global indicators:
+
+* National indiators are displayed next to global indicators but are tagged as 'national' to distinguish them, for example in [Armenia's platform](https://armstat.github.io/sdg-site-armenia/1/).
+
+* Separate pages for national and global indicators within the same site, for example [Poland's platform](http://sdg.gov.pl/en).
+
+* Separate sites for national and global indicators, for example [Germany's national indicator site](https://sustainabledevelopment-deutschland.github.io/en/) and [Germany's global indicator site](https://sustainabledevelopment-germany.github.io/en/).
+
+## Add pages
+By default, there are four pages which show in the menu bar: Reporting status, About, Guidance and FAQ.
+
+An example of using just the four default menu items is [Kyrgyzstan's site](https://sdg-kyrgyzstan.github.io/open-sdg-site-starter/en/)
+
+An example of menu items being added is [UK's site](https://sustainabledevelopment-uk.github.io/)
+
+Even though only four pages are linked to in the menu by default, there are other pages provided for use (e.g. Contacts, News) as well as the option to easily create your own pages.
+
+For guidance on how to add more pages to the menu, see the Configuration page [menu](configuration.md#menu) section.
+
 ## Multilingual
 By default, the site is created in English but this can be changed and multiple languages can be added.
 
@@ -75,30 +100,10 @@ An example of using the **Not applicable** option is [Rwanda's Reporting status 
 
 For more detailed information see the [Reporting status](reporting-status.md) page.
 
-## Display data for national indicators as well as global indicators
-There are various approaches to publishing national and global indicators:
-
-* National indiators are displayed next to global indicators but are tagged as 'national' to distinguish them, for example in [Armenia's platform](https://armstat.github.io/sdg-site-armenia/1/).
-
-* Separate pages for national and global indicators within the same site, for example [Poland's platform](http://sdg.gov.pl/en).
-
-* Separate sites for national and global indicators, for example [Germany's national indicator site](https://sustainabledevelopment-deutschland.github.io/en/) and [Germany's global indicator site](https://sustainabledevelopment-germany.github.io/en/).
-
 ## Accessibility High Contrast version
 As well as the default contrast version, Open SDG also offers a high contrast version. By default two menu buttons show, to allow users to choose between the different contrast levels, for example on the [US site](https://sdg.data.gov/). Another approach is to use a contrast toggle button, for example on the [UK site](https://sustainabledevelopment-uk.github.io/).
 
 For guidance on how to use the more accessible contrast button, see the Configuration page [contrast_type](configuration.md) section.
-
-## Add pages
-By default, there are four pages which show in the menu bar: Reporting status, About, Guidance and FAQ.
-
-An example of using just the four default menu items is [Kyrgyzstan's site](https://sdg-kyrgyzstan.github.io/open-sdg-site-starter/en/)
-
-An example of menu items being added is [UK's site](https://sustainabledevelopment-uk.github.io/)
-
-Even though only four pages are linked to in the menu by default, there are other pages provided for use (e.g. Contacts, News) as well as the option to easily create your own pages.
-
-For guidance on how to add more pages to the menu, see the Configuration page [menu](configuration.md#menu) section.
 
 ## Filter by disaggregation
 Open SDG platforms allow data to be displayed in a way in which it can be filtered by disaggregation. This allows user to compare different breakdowns for a particular indicator.
