@@ -204,7 +204,8 @@ var indicatorSearch = function() {
       return token;
     };
     lunr.Pipeline.registerFunction(pipelineFunction, 'storeUnstemmed');
-    builder.pipeline.before(lunr.stemmer, pipelineFunction);
+    var firstPipelineFunction = builder.pipeline._stack[0];
+    builder.pipeline.before(firstPipelineFunction, pipelineFunction);
     builder.metadataWhitelist.push('unstemmed');
   }
 };
