@@ -13,7 +13,9 @@
           {% if include.scope contains 'source_' %}
             {% assign metadata_content = site.empty_metadata_placeholder_sources | t | default: page.t.indicator.empty_metadata_placeholder_sources %}
           {% endif %}
-          {% assign metadata_content = '<span class="empty-metadata-placeholder">' | append: metadata_content | append: '</span>' %}
+          {% unless indicator_metadata.name contains "_url" or indicator_metadata.name contains "_link" %}
+            {% assign metadata_content = '<span class="empty-metadata-placeholder">' | append: metadata_content | append: '</span>' %}
+          {% endunless %}
           {% assign placeholder_not_needed = false %}
         {% endif %}
       {% endunless %}
@@ -28,8 +30,9 @@
             {% unless url_text %}
               {% assign url_text = 'Link' %}
             {% endunless %}
-
-            {% if metadata_content contains "http" or metadata_content contains "mailto" %}
+            {% if placeholder_not_needed == false %}
+              <span class="empty-metadata-placeholder">{{ metadata_content }}</span>
+            {% elsif metadata_content contains "http" or metadata_content contains "mailto" %}
               <a href="{{ metadata_content }}" target="_blank">
                 {{ url_text }} <span class="visuallyhidden">{{ page.t.general.opens_new_window }}</span>
               </a>
