@@ -10,6 +10,9 @@
           {% continue %}
         {% else %}
           {% assign metadata_content = site.empty_metadata_placeholder | t | default: page.t.indicator.empty_metadata_placeholder %}
+          {% if include.scope contains 'source_' %}
+            {% assign metadata_content = site.empty_metadata_placeholder_sources | t | default: page.t.indicator.empty_metadata_placeholder_sources %}
+          {% endif %}
           {% assign metadata_content = '<span class="empty-metadata-placeholder">' | append: metadata_content | append: '</span>' %}
           {% assign placeholder_not_needed = false %}
         {% endif %}
