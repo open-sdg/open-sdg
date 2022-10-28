@@ -10,7 +10,7 @@ In your data repository, update your `requirements.txt` file to:
 git+https://github.com/open-sdg/sdg-build@2.1.0-beta2
 ```
 
-## Upgrade translations to sdg-translations 2.1.0-beta1
+## Upgrade translations to sdg-translations 2.1.0-beta2
 
 In your data repository's config file, update the version of sdg-translations in the "translations" section:
 
@@ -18,15 +18,15 @@ In your data repository's config file, update the version of sdg-translations in
 translations:
   - class: TranslationInputSdgTranslations
     source: https://github.com/open-sdg/sdg-translations.git
-    tag: 2.1.0-beta1
+    tag: 2.1.0-beta2
 ```
 
-## Update version of Open SDG to 2.1.0-beta3
+## Update version of Open SDG to 2.1.0-beta4
 
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.1.0-beta3
+remote_theme: open-sdg/open-sdg@2.1.0-beta4
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 2.1.0-beta1
@@ -87,6 +87,10 @@ This release introduces some optional features that you may be interested in add
 Normally when an indicator has no content for a metadata field, Open SDG will display the field label without any content. One way to avoid this is the [`hide_empty_metadata`](https://open-sdg.readthedocs.io/en/latest/configuration/#hide_empty_metadata) site configuration, which can be used to hide empty fields altogether.
 
 As of version 2.1.0, if you are not using `hide_empty_metadata`, fields without content will display a placeholder instead which is controlled by the new site configuration `empty_metadata_placeholder` (by default it is "Not available for this indicator"). Here is the [documentation for `empty_metadata_placeholder](https://github.com/open-sdg/open-sdg/blob/2.1.0-dev/docs/configuration.md#empty_metadata_placeholder).
+
+### empty_metadata_placeholder_sources
+
+This is similar to `empty_metadata_placeholder` above, but it is used instead in the "Sources" metadata tab.
 
 ### sources
 
