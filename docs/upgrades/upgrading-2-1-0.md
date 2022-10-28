@@ -103,3 +103,18 @@ Open SDG now has functionality for displaying a "Related indicators" tab in the 
 ### publications
 
 Similarly, Open SDG now has functionality for displaying a "Publications" tab in the metadata section on indicator pages. Here is the [documentation on how to use the `publications` indicator configuration](https://github.com/open-sdg/open-sdg/blob/2.1.0-dev/docs/indicator-configuration.md#publications).
+
+### Subheading for goal pages
+
+If you would like to add the same subheading (such as "About this goal") on each goal page, you can use the new `goal_content_heading` property in the `create_goals` setting. For example, if you would like to have "About this goal" appear as a subheading on each goal page, you use can something like this for your `create_goals` site configuration:
+
+```
+create_goals:
+  goal_content_heading: About this goal
+  previous_next_links: true
+  goals:
+    - goal: 1
+      content: My content for goal 1
+    - goal: 2
+      content: My content for goal 2
+```
