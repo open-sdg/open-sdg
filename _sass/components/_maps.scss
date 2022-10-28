@@ -79,7 +79,12 @@
       font-size: 20px;
     }
     .disaggregation-controls {
+
       z-index: 801;
+      margin-right: 10px;
+      @media only screen and (min-width: 800px) {
+        max-width: 250px;
+      }
       .disaggregation-list {
         background: $backgroundColor;
         padding: 5px;
@@ -104,6 +109,7 @@
             flex: 0 1 auto ;
             margin: 0px 0px 0px 0px ;
             order: 3 ;
+            text-align: right;
           }
         }
       }
