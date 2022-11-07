@@ -116,3 +116,14 @@
         }
     }
 }
+
+body.contrast-high.layout-config-builder {
+    .config-widgets {
+        background-color: $color-dark-highContrast;
+    }
+    .config-repository-button {
+        span {
+            color: $color-dark-highContrast;
+        }
+    }
+}

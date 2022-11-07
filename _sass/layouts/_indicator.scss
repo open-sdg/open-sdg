@@ -27,7 +27,7 @@
 
     .plot-container {
         padding: 10px;
-    } 
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -47,4 +47,40 @@
 .empty-metadata-placeholder {
     font-style: italic;
     color: $indicator-metadata-empty-color;
+}
+
+.indicator.goal-banner {
+    .goal-tiles {
+        a {
+            display: block;
+            width: calc(100% - #{$goal-tile-gutter});
+            margin-bottom: $goal-tile-gutter;
+        }
+        a:focus {
+            outline: 2px $text-color solid !important;
+            .goal-icon-image {
+                outline: 8px $focusOutlineColor solid !important;
+            }
+        }
+        img {
+            width: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+body.contrast-high {
+    .indicator.goal-banner {
+        .goal-tiles {
+            img {
+                background-color: black !important;
+                &:hover {
+                    background-color: black !important;
+                    box-shadow: 0px 0px 0px 5px $color-highlight-highContrast;
+                }
+            }
+        }
+    }
 }

@@ -22,7 +22,7 @@
       <% if(didYouMean) { %>
       - {{ page.t.search.did_you_mean }}:
         <% _.each(didYouMean, function(searchTerm){ %>
-        <a href="{{ page.baseurl }}search?q=<%= searchTerm %>"><%= searchTerm %></a>
+        <a href="{{ page.baseurl }}search/?q=<%= searchTerm %>"><%= searchTerm %></a>
         <% }); %>
       <% } %>
       <br><br>
