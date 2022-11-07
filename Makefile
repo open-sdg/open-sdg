@@ -74,7 +74,7 @@ test.docs: build.docs
 	htmlproofer site --disable_external
 
 test.only: test.install
-	cd site-starter && bundle exec htmlproofer --file-ignore '/documentation/' --disable-external ./_site
+	cd site-starter && bundle exec htmlproofer --allow-hash-href --file-ignore '/documentation/' --disable-external ./_site
 	cd tests && npx cucumber-js
 
 test: test.html test.features test.accessibility test.docs

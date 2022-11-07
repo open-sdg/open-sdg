@@ -31,7 +31,7 @@ Feature: Map
     And I follow "the first language option"
     And I wait 3 seconds
     And I click on "the Map tab"
-    And I should see "Descargar GeoJSON"
+    And I should see "Descargar los datos del mapa (.geojson)"
     And I should see "My Spanish regions"
 
   Scenario: The data footer should display in the map pane
