@@ -2,6 +2,15 @@
 
 ## 2.1.0
 
+* Bugfix: Map search role removal #1857
+* Feature: Use new site config/default for empty metadata placeholder for sources #1856
+* Design: Focus styling for goal icon in indicator banner #1855
+* Design: Max width for map disaggregation on desktop #1854
+* Bugfix: Search suggestion stem fix #1853
+* Bugfix: Contrast fixes for data/config forms #1844
+* Design: Focus outline fix for goal icons on the reporting status page #1842
+* Feature: Use more fuzzy searching for maps #1839
+* Bugfix: Map disaggregation: name the function and the flag differently #1837
 * Feature: Pass a second parameter to dataRounding which includes indicator id #1831
 * Design: More margin above H2 when it is in content of 'page' and 'post' layouts #1819
 * Bugfix: Use raw value for chart tooltip #1813

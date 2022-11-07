@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 2.1.0
 
-TBD
+7 November 2022
 
 * Improvements, bugfix, and design updates to the map feature
 * Improved support for long unit-of-measurement labels
@@ -46,7 +46,7 @@ TBD
 * Ignore specified disaggregation columns
 * Control the order of the indicator tabs (chart/table/map/etc)
 * Layout for page-not-found (404) pages
-* Custom footer fields beneath chart/table 
+* Custom footer fields beneath chart/table
 
 ## 1.6.0
 
