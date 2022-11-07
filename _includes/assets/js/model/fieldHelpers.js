@@ -354,7 +354,7 @@ function selectFieldsFromStartValues(startValues, selectableFieldNames) {
   return Object.keys(valuesByField).map(function(field) {
     return {
       field: field,
-      values: valuesByField[field],
+      values: _.uniq(valuesByField[field]),
     };
   });
 }
