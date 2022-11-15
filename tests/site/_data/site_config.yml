@@ -290,7 +290,7 @@ reporting_status:
       hide_on_goal_pages: false
     - value: complete
       label: status.reported_online
-      hide_on_goal_pages: false
+      hide_on_goal_pages: true
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
