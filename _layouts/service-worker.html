@@ -20,17 +20,16 @@ offlineFallback();
 
 {% if site.progressive_web_app.precaching %}
 // Precache the indicator/goal pages.
-precacheAndRoute([
-  {%- for route in site.data.routes.indicators -%}
-  {url: '{{ route }}', revision: null},
-  {%- endfor -%}
-  {%- for route in site.data.routes.goals -%}
-  {url: '{{ route }}', revision: null},
-  {%- endfor -%}
-  {%- for route in site.data.routes.json -%}
-  {url: '{{ route }}', revision: null},
-  {%- endfor -%}
-]);
+self.addEventListener('install', (event) => {
+  const populateCache = async () => {
+    const cache = await caches.open(cacheName);
+    await cache.addAll({{ site.data.routes.goals | jsonify }});
+    await cache.addAll({{ site.data.routes.indicators | jsonify }});
+    await cache.addAll({{ site.data.routes.json | jsonify }});
+  };
+
+  event.waitUntil(populateCache());
+});
 {% endif %}
 
 // Cache page navigations (html) with a Network First strategy
