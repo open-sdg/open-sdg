@@ -261,6 +261,7 @@ news:
   category_links: true
 progress_status:
   status_heading: status.progress_status
+  status_help: How are we doing against the 2030 targets?
   status_types:
     - value: not_available
       label: status.progress_not_available
@@ -294,7 +295,7 @@ reporting_status:
       hide_on_goal_pages: false
     - value: complete
       label: status.reported_online
-      hide_on_goal_pages: false
+      hide_on_goal_pages: true
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false

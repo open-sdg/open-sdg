@@ -6,35 +6,43 @@ Out of the box, Open SDG provides a page showing the "reporting status" of all t
 
 By default, the reporting status options dispayed are **Complete**, **In progress** and **Exploring data sources**. However, these options can be changed to meet your needs. For example, options can be removed or another option, such as **Not applicable**, can be used.
 
-The options available can be controlled by adjusting the [schema file](metadata-format.md#schema). For example, [here is the section](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/_prose.yml#L184) in the data starter repository, where you would adjust the available options for reporting status.
+The options available can be controlled by adjusting the `status_types` property on [reporting_status site configuration](configuration.md#reporting_status). For example, here is the `reporting_status` site configuration that is in the site starter project, at the time of this writing - note the `status_types` section below:
+
+```
+reporting_status:
+  title: status.reporting_status
+  description: status.description
+  disaggregation_tabs: false
+  status_types:
+    - value: notstarted
+      label: status.exploring_data_sources
+      hide_on_goal_pages: false
+    - value: complete
+      label: status.reported_online
+      hide_on_goal_pages: false
+    - value: notapplicable
+      label: status.not_applicable
+      hide_on_goal_pages: false
+```
 
 ## Color-coding
 
 The horizontal bars on the reporting status page have color-coded segments. The default options mentioned above are already color-coded for black, grey, and white, respectively. That color-coding is controlled using Sass variables in [this Sass variables file](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss). To override any of these variables, you can override and edit [this placeholder file for Sass variable overrides](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables.scss).
 
-To color-code your custom options, add your own CSS code (such as in a `custom.scss` file) using a class name that is the same as the option value. For example, if your custom options are configured like so:
+To color-code your custom options, add your own CSS code (such as in a `custom.scss` file) using a class name that is the same as the option value. For example, if you have added a custom status type like so:
 
 ```
-- name: "reporting_status"
-  field:
-    element: select
-    label: "Reporting status"
-    options:
-      - name: 'My first option'
-        value: 'option-1'
-      - name: 'My second option'
-        value: 'option-2'
-      - name: 'My third option'
-        value: 'option-3'
-  scope: data
+reporting_status:
+  status_types:
+    - value: my_custom_status_type
+      label: My custom status type
+      hide_on_goal_pages: false
 ```
 
-Then you could color-code the options by adding this in your CSS:
+Then you could color-code the "my_custom_status_type" option by adding this in your CSS:
 
 ```
-.option-1 { color: pink; }
-.option-2 { color: blue; }
-.option-3 { color: cyan; }
+.my_custom_status_type { background-color: pink; }
 ```
 
 ## Alternative groupings

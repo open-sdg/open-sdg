@@ -266,11 +266,21 @@
       opensdg.dataDisplayAlterations.forEach(function(callback) {
         value = callback(value);
       });
-      if (this._precision || this._precision === 0) {
-        value = Number.parseFloat(value).toFixed(this._precision);
+      if (typeof value !== 'number') {
+        if (this._precision || this._precision === 0) {
+          value = Number.parseFloat(value).toFixed(this._precision);
+        }
+        if (this._decimalSeparator) {
+          value = value.toString().replace('.', this._decimalSeparator);
+        }
       }
-      if (this._decimalSeparator) {
-        value = value.toString().replace('.', this._decimalSeparator);
+      else {
+        var localeOpts = {};
+        if (this._precision || this._precision === 0) {
+            localeOpts.minimumFractionDigits = this._precision;
+            localeOpts.maximumFractionDigits = this._precision;
+        }
+        value = value.toLocaleString(opensdg.language, localeOpts);
       }
       return value;
     },
@@ -281,7 +291,7 @@
       if (props.values && props.values.length && this.currentDisaggregation < props.values.length) {
         var value = props.values[this.currentDisaggregation][this.currentYear];
         if (typeof value === 'number') {
-          ret = opensdg.dataRounding(value);
+          ret = opensdg.dataRounding(value, { indicatorId: this.indicatorId });
         }
       }
       return ret;
@@ -428,6 +438,7 @@
             .attr('download', '')
             .attr('class', 'btn btn-primary btn-download')
             .attr('title', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
+            .attr('aria-label', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
             .text(translations.indicator.download_geojson + ' - ' + downloadLabel);
           $(plugin.element).parent().append(downloadButton);
 
@@ -470,19 +481,30 @@
         plugin.setColorScale();
 
         plugin.years = _.uniq(availableYears).sort();
-        plugin.currentYear = plugin.years[0];
+        //Start the map with the most recent year
+        plugin.currentYear = plugin.years.slice(-1)[0];
 
         // And we can now update the colors.
         plugin.updateColors();
 
         // Add zoom control.
-        plugin.map.addControl(L.Control.zoomHome());
+        plugin.zoomHome = L.Control.zoomHome({
+          zoomInTitle: translations.indicator.map_zoom_in,
+          zoomOutTitle: translations.indicator.map_zoom_out,
+          zoomHomeTitle: translations.indicator.map_zoom_home,
+        });
+        plugin.map.addControl(plugin.zoomHome);
 
         // Add full-screen functionality.
-        plugin.map.addControl(new L.Control.FullscreenAccessible());
+        plugin.map.addControl(new L.Control.FullscreenAccessible({
+          title: {
+              'false': translations.indicator.map_fullscreen,
+              'true': translations.indicator.map_fullscreen_exit,
+          },
+        }));
 
         // Add the year slider.
-        plugin.map.addControl(L.Control.yearSlider({
+        plugin.yearSlider = L.Control.yearSlider({
           years: plugin.years,
           yearChangeCallback: function(e) {
             plugin.currentYear = plugin.years[e.target._currentTimeIndex];
@@ -490,7 +512,8 @@
             plugin.updateTooltips();
             plugin.selectionLegend.update();
           }
-        }));
+        });
+        plugin.map.addControl(plugin.yearSlider);
 
         // Add the selection legend.
         plugin.selectionLegend = L.Control.selectionLegend(plugin);
@@ -604,6 +627,8 @@
         plugin.updateTitle();
         plugin.updateFooterFields();
         plugin.updatePrecision();
+        // The year slider does not seem to be correct unless we refresh it here.
+        plugin.yearSlider._timeDimension.setCurrentTimeIndex(plugin.yearSlider._timeDimension.getCurrentTimeIndex());
         // Delay other things to give time for browser to do stuff.
         setTimeout(function() {
           $('#map #loader-container').hide();
@@ -612,6 +637,8 @@
           plugin.map.invalidateSize();
           // Also zoom in/out as needed.
           plugin.map.fitBounds(plugin.getVisibleLayers().getBounds());
+          // Set the home button to return to that zoom.
+          plugin.zoomHome.setHomeBounds(plugin.getVisibleLayers().getBounds());
           // Limit the panning to what we care about.
           plugin.map.setMaxBounds(plugin.getVisibleLayers().getBounds());
           // Make sure the info pane is not too wide for the map.

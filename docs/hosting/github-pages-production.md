@@ -71,7 +71,7 @@ If you started by using the [site starter](https://github.com/open-sdg/open-sdg-
 
 Find that file in your site repository under `.github/workflows/deploy-to-production.yml`, and change it as instructed in the file. (If you do not have the file already, create a new one in that location using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/.github/workflows/deploy-to-production.yml) as a guide.)
 
-Before we can perform a deployment, we have to tell the site repository where to find the production data. If you started by using the [site starter](https://github.com/open-sdg/open-sdg-site-starter) as a template, then you should have a production-specific config file: [site_config_prod.yml](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml). (If you do not have the file already, create a new one in that location, using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml) as a guide.) This file may be contained within the `_data` folder if you have recently created your Open SDG platform. 
+Before we can perform a deployment, we have to tell the site repository where to find the production data. If you started by using the [site starter](https://github.com/open-sdg/open-sdg-site-starter) as a template, then you should have a production-specific config file: [site_config_prod.yml](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml). (If you do not have the file already, create a new one in that location, using the [starter version](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml) as a guide.) This file may be contained within the `_data` folder if you have recently created your Open SDG platform.
 
 Edit the [remote_data_prefix line](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_data/site_config_prod.yml#L19) in that file to point to the GitHub Pages URL for your production organisation and repository. For example, if your production organisation is `my-stats-org`, and your production **data** repository is `sdg-data`, then use:
 
@@ -110,3 +110,15 @@ Your production site, once it has been deployed as described in the previous ste
 ## Custom domain
 
 For your production site's domain you will likely want something other than `my-stats-org.github.io` (for example). A common approach is adding `sdg` as a subdomain for an existing domain, such as `https://sdg.example.com`. Whatever you choose, please refer to the [GitHub documentation for configuring a custom domain](https://help.github.com/en/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site).
+
+Note that if your production data is under the same Github organization as your production site, then after you set up the custom domain you will need to change the remote_data_prefix line in your production site configuration file such that it uses the custom domain. For example, if your Github production organization is "my-prod-org", then that `remote_data_prefix` line is probably something like:
+
+```
+remote_data_prefix: https://my-prod-org.github.io/my-data-repo
+```
+
+But after you have set up the custom domain then you would need to change it to:
+
+```
+remote_data_prefix: https://my-custom-domain.org/my-data-repo
+```

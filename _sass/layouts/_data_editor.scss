@@ -8,10 +8,16 @@
         background-color: #f5f5f5;
         padding: 20px;
         .data-download-buttons {
-            text-align: right;
-            button {
+            .config-download-button {
                 margin-top: 0;
-                margin-bottom: 10px;
+            }
+            .config-repository-button {
+                margin-left: 10px;
+            }
+            margin-top: 10px;
+            @media only screen and (min-width: 768px) {
+                margin-top: 0;
+                text-align: right;
             }
         }
         .data-grid-buttons {
@@ -19,9 +25,31 @@
                 float: left;
                 margin-right: 10px;
             }
+            #add-column-name {
+                margin-bottom: 10px;
+            }
             #add-column {
                 margin-top: 0;
             }
         }
     }
+}
+
+
+body.contrast-high.layout-data-editor {
+    .config-widgets {
+        background-color: $color-dark-highContrast;
+    }
+    .config-repository-button {
+        span {
+            color: $color-dark-highContrast;
+        }
+    }
+    .ag-root-wrapper {
+        &, .ag-header, .ag-row {
+            background-color: $color-dark-highContrast;
+            color: $color-light-highContrast;
+        }
+    }
+
 }

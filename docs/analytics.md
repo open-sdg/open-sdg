@@ -10,14 +10,18 @@ Out of the box, Open SDG sends information to Google Analytics for certain event
 
 ## Google Analytics ID
 
-In order to turn on the analytics functionality, you must set the [Google Analytics ID](https://support.google.com/analytics/answer/1008080?hl=en) in the site repository's `_config_prod.yml` like so:
+In order to turn on the analytics functionality, you must set the [Google Analytics ID](https://support.google.com/analytics/answer/1008080?hl=en) in the site repository's production Open SDG configuration file. This is typically the `_data/site_config_prod.yml` file.
+
+There are several ways to specify this configuration, but here is an example:
 
 ```
 analytics:
   ga_prod: 'paste ID here'
 ```
 
-It is recommend to only put this in `_config_prod.yml`, and not in `_config.yml`, because you would not want to confuse your metrics by mixing staging and production together.
+For more details, see the documentation on this [analytics site configuration setting](configuration.md#analytics).
+
+It is recommend to only put this in `_data/site_config_prod.yml`, and not in `_data/site_config.yml`, because you would not want to confuse your metrics by mixing staging and production together.
 
 ## Customising the Google Analytics parameters
 

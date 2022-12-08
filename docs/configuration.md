@@ -128,14 +128,13 @@ country:
 _Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder.
 
 This setting can contain several (indented) sub-settings:
-
-* `layout`: This can be used to specify which Jekyll layout will be used for the goal pages. You can create and use your own layout, but several layouts are included with Open SDG. These can be found in [the _layouts folder in the repository](https://github.com/open-sdg/open-sdg/tree/master/_layouts). For example, to use the "goal-with-progress.html" layout, you would enter "goal-with-progress" (without the ".html") in this setting. NOTE: This setting is deprecated, because in Open SDG 2.0.0 there will only be one choice of layout.
+* `goal_content_heading`: Text entered here will appear as an H2 heading above any content configured below in 'goals'.
 * `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
 * `goals`: This optional item can include an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key. They should be in order of goal number.
 
 ```nohighlight
 create_goals:
-  layout: goal
+  goal_content_heading: About
   previous_next_links: true
   goals:
     - content: My content for goal 1
@@ -143,17 +142,34 @@ create_goals:
     - content: custom.my_translation_key_for_goal_3
 ```
 
+Alternatively the `goals` section can specify the goal number of each item, so that it does not need to be in a particular order, as in the following example:
+
+```nohighlight
+create_goals:
+  goal_content_heading: About
+  previous_next_links: true
+  goals:
+    - goal: 3
+      content: custom.my_translation_key_for_goal_3
+    - goal: 2
+      content: My content for goal 2 with a [link](https://example.com)
+    - goal: 1
+      content: My content for goal 1
+```
+
 ### create_indicators
 
-_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators. You can optionally turn on previous/next links as well.
+_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. So this is highly recommended.
+
+This setting can contain the following (indented) sub-settings:
+* `previous_next_links`: You can set this to `true` to turn on previous/next links on indicator pages, allowing users to "page" through the indicators, directly from one to the next.
+
+Here is an example of usage:
 
 ```nohighlight
 create_indicators:
-  layout: indicator
   previous_next_links: true
 ```
-
-NOTE: The `layout` setting is deprecated, because in Open SDG 2.0.0 there will only be one choice for indicator layout.
 
 ### create_pages
 
@@ -262,6 +278,8 @@ _Optional_: This setting can be used to replace the default decimal separator --
 decimal_separator: ','
 ```
 
+NOTE: This setting is most likely not needed, because Open SDG will automatically take advantage of browsers' ability to format numbers for the current language. You should only use this setting if the automatic behavior is not working for you.
+
 ### disclaimer
 
 _Optional_: This setting controls the content of the disclaimer that appears at the top of each page. If you are not happy with the default ("ALPHA: This is a development website. We welcome your feedback.") then you can use something like the following example configuration:
@@ -310,6 +328,16 @@ empty_metadata_placeholder: indicator.empty_metadata_placeholder
 ```
 
 The above default refers to a translation key which currently translates to "Not available for this indicator" in English.
+
+### empty_metadata_placeholder_sources
+
+_Optional_: This setting controls the text that displays for any *sources* field which has no content. Note that this setting is not used if `hide_empty_metadata` is set to `true`. If the omitted, the following default is used:
+
+```nohighlight
+empty_metadata_placeholder_sources: indicator.empty_metadata_placeholder_sources
+```
+
+The above default refers to a translation key which currently translates to "Not available for this source" in English.
 
 ### environment
 
@@ -791,6 +819,7 @@ plugins:
 _Optional_: This setting controls certain aspects of the progress status functionality. The available settings are:
 
 * `status_heading`: Controls the heading that describes the progress status, whenever it appears.
+* `status_help`: Controls the help text that displays as a header above the progress column. This should describe what the progress types are intended to convey. This defaults to: "How are we doing against the 2030 targets?"
 * `status_types`: A list of progress status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'target_achieved').
     * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved').
@@ -801,7 +830,8 @@ Here is an example of using these settings:
 
 ```yaml
 progress_status:
-    status_heading: heading goes here
+    status_heading: Status heading
+    status_help: Status help text
     status_types:
       - value: not_available
         label: status.progress_not_available
