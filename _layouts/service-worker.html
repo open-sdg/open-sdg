@@ -14,7 +14,7 @@ const {
     CacheFirst,
     NetworkOnly,
 } = workbox.strategies;
-
+const cacheName = 'install-cache';
 setDefaultHandler(new NetworkOnly());
 offlineFallback();
 
@@ -38,8 +38,7 @@ registerRoute(
   ({ request }) => request.mode === 'navigate',
   // Use a Network First caching strategy
   new NetworkFirst({
-    // Put all cached files in a cache named 'pages'
-    cacheName: 'pages',
+    cacheName: cacheName,
     plugins: [
       // Ensure that only requests that result in a 200 status are cached
       new CacheableResponsePlugin({
@@ -58,8 +57,7 @@ registerRoute(
     request.destination === 'worker',
   // Use a Stale While Revalidate caching strategy
   new StaleWhileRevalidate({
-    // Put all cached files in a cache named 'assets'
-    cacheName: 'assets',
+    cacheName: cacheName,
     plugins: [
       // Ensure that only requests that result in a 200 status are cached
       new CacheableResponsePlugin({
@@ -75,8 +73,7 @@ registerRoute(
   ({ request }) => ['image', 'font'].includes(request.destination),
   // Use a Cache First caching strategy
   new CacheFirst({
-    // Put all cached files in a cache named 'images'
-    cacheName: 'images-and-fonts',
+    cacheName: cacheName,
     plugins: [
       // Ensure that only requests that result in a 200 status are cached
       new CacheableResponsePlugin({
@@ -95,7 +92,7 @@ registerRoute(
 registerRoute(
   /.*\.(json|geojson|zip|csv)$/,
   new NetworkFirst({
-    cacheName: 'data-files',
+    cacheName: cacheName,
     plugins: [
       new CacheableResponsePlugin({
         statuses: [200],
