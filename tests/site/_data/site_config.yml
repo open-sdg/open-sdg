@@ -30,6 +30,8 @@ create_goals:
   previous_next_links: true
   goals:
     - content: custom.goal_1_content
+      heading: My custom heading for Goal 1
+      content_heading: My custom subheading for Goal 1
     - content: My goal 2 content
 create_indicators:
   previous_next_links: true
