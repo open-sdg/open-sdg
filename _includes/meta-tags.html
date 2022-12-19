@@ -1,0 +1,3 @@
+{% for meta in page.meta_tags %}
+    <meta name="{{ meta['name'] | escape }}" content="{{ meta['content'] | t | escape }}">
+{% endfor %}

@@ -259,6 +259,10 @@ metadata_tabs:
     title: Publications
     description: My publications blurb
     placeholder: No publications available
+meta_tags:
+  - path: about
+    name: my meta name
+    content: my meta content
 news:
   category_links: true
 progress_status:
