@@ -12,11 +12,11 @@ Feature: Language switcher
     Then I should see "My Spanish frontpage introduction banner title"
 
   Scenario: Lanugage switcher works on a goal page
-    Given I am on "/1"
-    Then I should see "End poverty in all its forms everywhere"
+    Given I am on "/2"
+    Then I should see "End hunger, achieve food security and improved nutrition and promote sustainable agriculture"
     And I click on "the language toggle dropdown"
     And I follow "the first language option"
-    Then I should see "Poner fin a la pobreza en todas sus formas y en todo el mundo"
+    Then I should see "Poner fin al hambre, lograr la seguridad alimentaria y la mejora de la nutrición y promover la agricultura sostenible"
 
   Scenario: Language switcher works on an indicator page
     Given I am on "/1-1-1"

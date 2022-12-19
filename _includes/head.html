@@ -18,12 +18,9 @@
 
         {% include title-tag.html %}
 
-        <meta name="description" content="">
-        <meta property="og:description" content="">
         {% if site.environment == 'staging' or include.noindex %}
         <meta name="robots" content="noindex, nofollow">
         {% endif %}
-        <link rel="canonical" href="/">
 
         <!--[if IE 9]>
         <script src="{{ site.baseurl }}/assets/js/lib/classList.js"></script>
@@ -57,6 +54,8 @@
         {% if site.analytics.gtm and site.analytics.gtm != '' %}
           {% include components/analytics/ga-gtm.html %}
         {% endif %}
+
+        {% include meta-tags.html %}
 
         <!--[if IE]>
         <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/ie.css">

@@ -6,7 +6,11 @@
         {{ page.indicator.name | escape }} - {{ site.title | t | escape }}
     </title>
 {% elsif page.goal %}
+    {% if page.goal_heading and page.goal_heading != '' %}
+    <title>{{ page.goal_heading | t | escape }} - {{ site.title | t | escape }}</title>
+    {% else %}
     <title>{{ page.t.general.goal | escape }} {{ page.goal.number }} - {{ page.goal.short | escape }} - {{ site.title | t | escape }}</title>
+    {% endif %}
 {% elsif page.title and page.title != '' %}
     <title>{{ page.title | t | escape }} - {{ site.title | t | escape }}</title>
 {% else %}
