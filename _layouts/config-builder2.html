@@ -1,0 +1,10 @@
+{% include head.html noindex=true %}
+{% include header.html %}
+<div id="main-content" class="container" role="main">
+    <div id="root"></div>
+    <script>
+        opensdg.indicatorConfigSchema = {% include assets/js/config-schama/schema-indicator-config.json %};
+    </script>
+    <script src="/assets/js/bundle.js"></script>
+</div>
+{% include footer.html %}
