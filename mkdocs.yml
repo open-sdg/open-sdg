@@ -16,17 +16,15 @@ extra_css:
 
 nav:
     - Home: index.md
-    - About: about.md
-    - News & events: news-and-events.md
     - Open SDG features: open-sdg-features.md
     - Potential users: potential-users.md
     - Frequently Asked Questions: faq.md
     - Community:
         - Platform updates: updates.md
-        - Support: support.md
+        - Change log: changelog.md
+        - Getting Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
-    - Change log: changelog.md
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
     - Requirements: requirements.md
@@ -40,15 +38,15 @@ nav:
         - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
         - "Tutorial: Contibuting to SDG Translations": tutorials/contribute-translations.md
         - "Tutorial: Creating pages": tutorials/create-pages.md
-    - Data providers:
-        - Making updates: making-updates.md
-        - Metadata format: metadata-format.md
-        - Metadata file formats: metadata-file-formats.md
+    - Data provider guidance:
         - Data format: data-format.md
         - Data sources: data-sources.md
         - Data schema: data-schema.md
+        - Making updates: making-updates.md
+        - Metadata format: metadata-format.md
+        - Metadata file formats: metadata-file-formats.md
         - Chart types: charts.md
-    - Developers:
+    - Developer guidance:
         - Local development: development.md
         - Cookies and privacy: cookies.md
         - Deployment: deployment.md
@@ -56,8 +54,8 @@ nav:
         - Data configuration: data-configuration.md
         - Indicator configuration: indicator-configuration.md
         - Customisation: customisation.md
-        - Jekyll templates: jekyll-templates.md
         - Jekyll and Open SDG: jekyll-and-open-sdg.md
+        - Jekyll templates: jekyll-templates.md
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md
