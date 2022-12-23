@@ -1020,23 +1020,45 @@
             "title": "Main menu",
             "description": "The links to display in the main menu.",
             "items": {
+                "type": "object",
                 "title": "Menu item",
-                "allOf": [
-                    { "$ref": "#/definitions/menu_item" },
-                    {
-                        "properties": {
-                            "dropdown": {
-                                "title": "Dropdown menu",
-                                "type": "array",
-                                "description": "Enter menu items here to turn this into a dropdown.",
-                                "items": {
-                                    "$ref": "#/definitions/menu_item",
-                                    "title": "Dropdown menu item"
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Path",
+                        "description": "Path or URL that the menu item should link to."
+                    },
+                    "translation_key": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Label",
+                        "description": "Label (or translation key) for the link."
+                    },
+                    "dropdown": {
+                        "title": "Dropdown menu",
+                        "type": "array",
+                        "description": "Enter menu items here to turn this into a dropdown.",
+                        "items": {
+                            "type": "object",
+                            "title": "Dropdown menu item",
+                            "properties": {
+                                "path": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "title": "Path",
+                                    "description": "Path or URL that the menu item should link to."
+                                },
+                                "translation_key": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "title": "Label",
+                                    "description": "Label (or translation key) for the link."
                                 }
                             }
                         }
                     }
-                ]
+                }
             },
             "links": [
                 {

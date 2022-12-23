@@ -1,1 +1,178 @@
-{}
+{
+    "type": "Categorization",
+    "elements": [
+        {
+            "type": "Category",
+            "label": "Content",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/disclaimer"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/news"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/logos"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Frontpage",
+            "elements": [
+                {
+                    "type": "Group",
+                    "label": "Frontpage introduction banner",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_introduction_banner/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_introduction_banner/properties/description",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Frontpage goals grid",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_goals_grid/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_goals_grid/properties/description",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/frontpage_cards"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "General",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/country"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email_contacts"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Goals",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goal_image_base"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goal_image_extension"
+                        }
+                    ]
+                },
+                {
+                    "type": "Group",
+                    "label": "Goals page",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goals_page/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goals_page/properties/description",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/create_goals"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Navigation",
+            "elements": [
+                {
+                    "type": "VerticalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/menu"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/footer_menu"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/breadcrumbs"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Webmaster",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/analytics"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/cookie_consent_form"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
