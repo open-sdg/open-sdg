@@ -1,4 +1,4 @@
-﻿accessible_charts: true
+accessible_charts: true
 accessible_tabs: true
 analytics:
   ua: ''
@@ -77,11 +77,11 @@ email_contacts:
 environment: staging
 footer_language_toggle: dropdown
 footer_menu:
-  - path: 'mailto:test@example.com'
+  - path: mailto:test@example.com
     translation_key: menu.contact_us
-  - path: 'https://twitter.com/MyTwitterAccount'
+  - path: https://twitter.com/MyTwitterAccount
     translation_key: general.twitter
-  - path: 'https://facebook.com/MyFacebookAccount'
+  - path: https://facebook.com/MyFacebookAccount
     translation_key: general.facebook
 frontpage_cards:
   - title: Download all data
@@ -108,7 +108,7 @@ frontpage_cards:
       * [Publication](https://example.com)
     include: ''
     button_label: View more publications
-    button_link: 'https://example.com'
+    button_link: https://example.com
     rule_color: orange
 frontpage_goals_grid:
   title: My custom frontpage goals grid title
@@ -125,7 +125,7 @@ goals_page:
   description: custom.goals_page_description
 graph_color_headline: '#004466'
 graph_color_headline_high_contrast: '#55a6e5'
-graph_color_set: default
+graph_color_set: accessible
 graph_color_list: []
 graph_color_number: 6
 graph_title_from_series: true
@@ -156,7 +156,7 @@ indicator_metadata_form:
   enabled: true
   dropdowns: []
   repository_link: /tree/master/tests/data/meta
-  translation_link: 'https://example.com?[id]&[group]&[key]'
+  translation_link: https://example.com?[id]&[group]&[key]
   language: ''
   scopes:
     - national
@@ -199,7 +199,7 @@ map_options:
   disaggregation_controls: true
   minZoom: 5
   maxZoom: 10
-  tileURL: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  tileURL: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
   tileOptions:
     id: ''
     accessToken: ''
@@ -223,7 +223,7 @@ map_options:
     opacity: 1
     fillOpacity: 0
     color: '#172d44'
-    dashArray: '5,5'
+    dashArray: 5,5
 menu:
   - path: reporting-status
     translation_key: menu.reporting_status
@@ -300,8 +300,8 @@ reporting_status:
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
-repository_url_data: 'https://github.com/open-sdg/open-sdg'
-repository_url_site: 'https://github.com/open-sdg/open-sdg'
+repository_url_data: https://github.com/open-sdg/open-sdg
+repository_url_site: https://github.com/open-sdg/open-sdg
 search_index_boost: []
 search_index_extra_fields:
   - un_custodian_agency
