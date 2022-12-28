@@ -2,7 +2,7 @@
 
 This document will define the common terminology used through this platform's documentation.
 
-### Data repository
+## Data repository
 
 This is where the platform's data and metadata are managed. A ["starter" repository](https://github.com/open-sdg/open-sdg-data-starter) is available which can be easily copied and customised.
 
@@ -13,6 +13,14 @@ Disaggregated data is data that has been broken down by detailed sub-categories 
 ## Environments: Staging vs production
 
 It is important to be able to see proposed changes before releasing them to the general public. To accomplish this, there should be 2 separate __environments__:
+
+### Staging
+
+This is where proposed changes are first visible.
+
+### Production
+
+This is where the general public views the platform.
 
 ## Forks
 
@@ -30,21 +38,13 @@ Github.com is a service that hosts Git repositories, and provides a useful inter
 
 And indicator's "headline" is the data series that contains no disaggregations. It is the data series that is typically displayed first, upon viewing the indicator's page.
 
-### Production
-
-This is where the general public views the platform.
-
 ## Repository
 
 A set of files that is versioned by Git is called a __repository__. Each repository has its own separate history and administrators.
 
-### Site repository
+## Site repository
 
 This is where everything else is managed, such as presentation, pages, menus, and documents.  A ["starter" repository](https://github.com/open-sdg/open-sdg-site-starter) is available which can be easily copied and customised.
-
-### Staging
-
-This is where proposed changes are first visible.
 
 ## Translation keys
 
