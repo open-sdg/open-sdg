@@ -38,9 +38,13 @@ Github.com is a service that hosts Git repositories, and provides a useful inter
 
 And indicator's "headline" is the data series that contains no disaggregations. It is the data series that is typically displayed first, upon viewing the indicator's page.
 
+## Pull Request
+
+A pull request is a way for a developer to ask for changes committed to an upstream respository to be reviewed and potentially merged into a repository
+
 ## Repository
 
-A set of files that is versioned by Git is called a __repository__. Each repository has its own separate history and administrators.
+A set of files that is versioned by Git is called a __repository__. Each repository has its own separate history and administrators. A repository contains all of your project's files and each file's revision history. You can discuss and manage your project's work within the repository.
 
 ## Site repository
 
