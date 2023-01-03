@@ -16,39 +16,37 @@ extra_css:
 
 nav:
     - Home: index.md
-    - About: about.md
-    - News & events: news-and-events.md
     - Open SDG features: open-sdg-features.md
     - Potential users: potential-users.md
     - Frequently Asked Questions: faq.md
     - Community:
         - Platform updates: updates.md
-        - Support: support.md
+        - Change log: changelog.md
+        - Getting Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
-    - Change log: changelog.md
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
     - Requirements: requirements.md
+    - Contibuting to SDG Translations": tutorials/contribute-translations.md
     - Quick start:
         - Installation: quick-start.md
         - "Tutorial: Changing the logo and favicon": tutorials/change-logo.md
-        - "Tutorial: Frontpage configuration": tutorials/frontpage-config.md
+        - "Tutorial: Frontpage text configuration": tutorials/frontpage-config.md
         - "Tutorial: Adding indicators": tutorials/add-indicator.md
         - "Tutorial: Adding languages": tutorials/add-language.md
         - "Tutorial: Changing colors": tutorials/change-colors.md
         - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
-        - "Tutorial: Contibuting to SDG Translations": tutorials/contribute-translations.md
         - "Tutorial: Creating pages": tutorials/create-pages.md
-    - Data providers:
-        - Making updates: making-updates.md
-        - Metadata format: metadata-format.md
-        - Metadata file formats: metadata-file-formats.md
+    - Data provider guidance:
         - Data format: data-format.md
         - Data sources: data-sources.md
         - Data schema: data-schema.md
+        - Making updates: making-updates.md
+        - Metadata format: metadata-format.md
+        - Metadata file formats: metadata-file-formats.md
         - Chart types: charts.md
-    - Developers:
+    - Developer guidance:
         - Local development: development.md
         - Cookies and privacy: cookies.md
         - Deployment: deployment.md
@@ -56,8 +54,8 @@ nav:
         - Data configuration: data-configuration.md
         - Indicator configuration: indicator-configuration.md
         - Customisation: customisation.md
-        - Jekyll templates: jekyll-templates.md
         - Jekyll and Open SDG: jekyll-and-open-sdg.md
+        - Jekyll templates: jekyll-templates.md
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md
@@ -88,3 +86,6 @@ nav:
         - Upgrading to 1.3.0: upgrades/upgrading-1-3-0.md
         - Upgrading to 1.2.0: upgrades/upgrading-1-2-0.md
         - Upgrading to 1.0.0: upgrades/upgrading-1-0-0.md
+        
+        
+
