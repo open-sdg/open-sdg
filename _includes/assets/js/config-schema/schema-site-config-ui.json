@@ -31,6 +31,56 @@
         },
         {
             "type": "Category",
+            "label": "Languages",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/languages"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/languages_public"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/header_language_toggle"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/footer_language_toggle"
+                        }
+                    ]
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/date_formats"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Status",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/reporting_status"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/progress_status"
+                }
+            ]
+        },
+        {
+            "type": "Category",
             "label": "Frontpage",
             "elements": [
                 {
@@ -87,6 +137,33 @@
                         {
                             "type": "Control",
                             "scope": "#/properties/email_contacts"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Indicators",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/create_indicators"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/indicator_tabs"
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_edit_url"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#properties/metadata_edit_url"
                         }
                     ]
                 }
@@ -157,6 +234,97 @@
         },
         {
             "type": "Category",
+            "label": "Data",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_single_series"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_single_unit"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/ignored_disaggregations"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_fields"
+                        }
+                    ]
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/time_series_attributes"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Metadata",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/hide_empty_metadata"
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/empty_metadata_placeholder"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/empty_metadata_placeholder_sources"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Forms",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_config_form"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_data_form"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
             "label": "Webmaster",
             "elements": [
                 {
@@ -169,6 +337,129 @@
                         {
                             "type": "Control",
                             "scope": "#/properties/cookie_consent_form"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/search_index_boost"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/search_index_extra_fields"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Maps",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/map_layers"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/map_options"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Charts",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_color_headline"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_color_headline_high_contrast"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_color_set"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_color_list"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_color_number"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_title_from_series"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/x_axis_label"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Dev",
+            "elements": [
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/remote_data_prefix"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/environment"
+                        }
+                    ]
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/create_pages"
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/environment"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/remote_data_"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/repository_url_site"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/repository_url_data"
+                        }
+                    ]
+                },
+                {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/validate_site_config"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/validate_indicator_config"
                         }
                     ]
                 }

@@ -929,7 +929,6 @@
                 "tileURL": {
                     "title": "Tile URL",
                     "type": "string",
-                    "format": "url",
                     "description": "If you would like the maps to show tile imagery, add the URL here."
                 },
                 "tileOptions": {

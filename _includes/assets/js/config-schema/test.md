@@ -7,6 +7,8 @@ Footer menu
 -- Webmaster
 Analytics
 Cookie consent form
+Search index boost
+Search index extra fields
 
 -- General information
 Country information
@@ -83,12 +85,6 @@ Frontpage introduction banner
 Map layers
 Map options
 
--- Progress status
+-- Status
 Progress status
-
--- Reporting status
 Reporting status
-
--- Search
-Search index boost
-Search index extra fields

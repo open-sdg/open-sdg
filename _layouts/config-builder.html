@@ -11,20 +11,26 @@
     opensdg.configForm = {
       schema: null,
       uiSchema: null,
-      existingData: null,
+      initialData: null,
+      configFilename: {{ page.config_filename | jsonify }},
+      configFolder: 'tests/site/_data',
+      githubClientId: 'd057ffc62f01ce8f3376',
+      githubProxyUrl: 'https://open-sdg-github-auth-production.up.railway.app',
+      githubRepo: 'open-sdg',
+      githubOwner: 'open-sdg',
     };
     {% if page.config_type == 'site' %}
       opensdg.configForm.schema = {% include assets/js/config-schema/schema-site-config.json %};
       opensdg.configForm.uiSchema = {% include assets/js/config-schema/schema-site-config-ui.json %};
-      opensdg.configForm.existingData = {{ site.data.site_config | jsonify }}
+      opensdg.configForm.initialData = {{ site.data.site_config | jsonify }}
     {% elsif page.config_type == 'indicator' %}
       opensdg.configForm.schema = {% include assets/js/config-schema/schema-indicator-config.json %};
       opensdg.configForm.uiSchema = {% include assets/js/config-schema/schema-indicator-config-ui.json %};
-      opensdg.configForm.existingData = {{ page.meta | jsonify }}
+      opensdg.configForm.initialData = {{ page.meta | jsonify }}
     {% elsif page.config_type == 'metadata' %}
       opensdg.configForm.schema = {{ site.data.schema-indicator-metadata | jsonify }}
       opensdg.configForm.uiSchema = {};
-      opensdg.configForm.existingData = {{ page.meta | jsonify }}
+      opensdg.configForm.initialData = {{ page.meta | jsonify }}
     {% endif %}
     console.log(opensdg.configForm);
   </script>
