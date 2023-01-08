@@ -45,15 +45,15 @@ git+git://github.com/open-sdg/sdg-build@1.0.0
 
 If you are using the default data management approach -- .CSV files for data and .MD files for metadata -- then it is recommended that you adopt a new, simpler data repository configuration. You can do this by emulating the [data starter](https://github.com/open-sdg/open-sdg-data-starter), but here are the details:
 
-1. Add a configuration file called `config_data.yml`. Start with [this file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml) and edit as needed. You should read through the whole file, but in particular:
-    1. Adjust the `languages` list (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L10))
-    2. If your site repository was pointing at custom translations repositories, adjust the defaults for `translations` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L57)).
+1. Add a configuration file called `config_data.yml`. Start with [this file](https://github.com/open-sdg/open-sdg-data-starter/blob/07d881fe11cc2cb5e3cf060fec49cc752d6d8227/config_data.yml) and edit as needed. You should read through the whole file, but in particular:
+    1. Adjust the `languages` list (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/07d881fe11cc2cb5e3cf060fec49cc752d6d8227/config_data.yml#L6-L11)).
+    2. If your site repository was pointing at custom translations repositories, adjust the defaults for `translations` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/07d881fe11cc2cb5e3cf060fec49cc752d6d8227/config_data.yml#L57-L73)).
         * Note that these should point directly to Git repositories (usually ending in .git) and NOT to .json files.
         * Note that if you are using the standard `open-sdg/sdg-translations` translations, that you should use version 1.0.0, as demonstrated here (link TBD).
-    3. If your site uses the Open SDG mapping functionality, uncomment and adjust the `map_layers` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L81))
-2. Replace the contents of the scripts you use to check and build data. They are likely called `check_data.py` and `build_data.py`, in your `scripts` folder. Unless you need special customisations, you can use the exact versions from the data starter ([check_data.py](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/check_data.py) and [build_data.py](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/scripts/build_data.py).
+    3. If your site uses the Open SDG mapping functionality, uncomment and adjust the `map_layers` (as described in the [data starter config](https://github.com/open-sdg/open-sdg-data-starter/blob/07d881fe11cc2cb5e3cf060fec49cc752d6d8227/config_data.yml#L81-L94)).
+2. Replace the contents of the scripts you use to check and build data. They are likely called `check_data.py` and `build_data.py`, in your `scripts` folder. Unless you need special customisations, you can use the exact versions from the data starter ([check_data.py](https://github.com/open-sdg/open-sdg-data-starter/blob/07d881fe11cc2cb5e3cf060fec49cc752d6d8227/scripts/check_data.py) and [build_data.py](https://github.com/open-sdg/open-sdg-data-starter/blob/07d881fe11cc2cb5e3cf060fec49cc752d6d8227/scripts/build_data.py).
 
-If you are not able to use this new YAML-based configuration approach, or you would prefer not to, you can use the sdg-build classes directly, as demonstrated in the [sdg-build example](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg.py). This requires some knowledge of Python.
+If you are not able to use this new YAML-based configuration approach, or you would prefer not to, you can use the sdg-build classes directly, as demonstrated in the [sdg-build example](https://github.com/open-sdg/sdg-build/blob/07d881fe11cc2cb5e3cf060fec49cc752d6d8227/docs/examples/open_sdg.py). This requires some knowledge of Python.
 
 ### Update some special metadata fields, if you use them
 
