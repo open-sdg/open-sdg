@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Integration testing for Open SDG",
     "dependencies": {
-        "@cucumber/cucumber": "latest",
+        "@cucumber/cucumber": "^8.10.0",
         "cucumber-mink": "latest",
         "pa11y-ci": "latest",
         "simple-git": "latest"
