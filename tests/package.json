@@ -4,7 +4,7 @@
     "description": "Integration testing for Open SDG",
     "dependencies": {
         "@cucumber/cucumber": "latest",
-        "cucumber-mink": "latest",
+        "cucumber-mink": "brockfanning/cucumber-mink#dependency-updates",
         "pa11y-ci": "latest",
         "simple-git": "latest"
     }
