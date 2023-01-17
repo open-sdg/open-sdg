@@ -73,6 +73,13 @@
           break;
         }
       }
+      if (overrideColorRange && typeof colorRange === 'function') {
+        var indicatorId = options.indicatorId.replace('indicator_', ''),
+            indicatorIdParts = indicatorId.split('-'),
+            goalId = (indicatorIdParts.length > 0) ? indicatorIdParts[0] : null,
+            indicatorIdDots = indicatorIdParts.join('.');
+        colorRange = colorRange(indicatorIdDots, goalId);
+      }
       options.mapOptions.colorRange = (overrideColorRange) ? colorRange : defaults.colorRange;
     }
 
