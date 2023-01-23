@@ -94,6 +94,7 @@
     this.viewHelpers = options.viewHelpers;
     this.modelHelpers = options.modelHelpers;
     this.chartTitles = options.chartTitles;
+    this.startValues = options.startValues;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -529,9 +530,14 @@
         // Add the disaggregation controls.
         plugin.disaggregationControls = L.Control.disaggregationControls(plugin);
         plugin.map.addControl(plugin.disaggregationControls);
-        plugin.updateTitle();
-        plugin.updateFooterFields();
-        plugin.updatePrecision();
+        if (plugin.disaggregationControls.needsMapUpdate) {
+          plugin.disaggregationControls.updateMap();
+        }
+        else {
+          plugin.updateTitle();
+          plugin.updateFooterFields();
+          plugin.updatePrecision();
+        }
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
