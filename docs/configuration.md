@@ -329,6 +329,16 @@ empty_metadata_placeholder: indicator.empty_metadata_placeholder
 
 The above default refers to a translation key which currently translates to "Not available for this indicator" in English.
 
+### empty_metadata_placeholder_sources
+
+_Optional_: This setting controls the text that displays for any *sources* field which has no content. Note that this setting is not used if `hide_empty_metadata` is set to `true`. If the omitted, the following default is used:
+
+```nohighlight
+empty_metadata_placeholder_sources: indicator.empty_metadata_placeholder_sources
+```
+
+The above default refers to a translation key which currently translates to "Not available for this source" in English.
+
 ### environment
 
 **_Required_**: This setting should be either `staging` or `production`. Certain features of the platform, such as data management links, will only appear on `staging`. Typically you will have this set to `staging` in the `_config.yml` file, and set to `production` in the `_config_prod.yml` file.
@@ -700,6 +710,34 @@ _Optional_: This setting configures the layers that will be visible on maps on i
 
 _Optional_: This setting configures general options for maps on indicator pages. For more information on this setting, see the [Maps guidance](maps.md).
 
+### menu
+
+**_Required_**: This setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
+
+```nohighlight
+menu:
+  - path: reporting-status/
+    translation_key: menu.reporting_status
+  - path: about/
+    translation_key: menu.about
+  - path: faq/
+    translation_key: menu.faq
+```
+
+Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "about/" and "faq/" under a "More information" dropdown:
+
+```nohighlight
+menu:
+  - path: reporting-status/
+    translation_key: menu.reporting_status
+  - translation_key: More information
+    dropdown:
+      - path: faq/
+        translation_key: menu.faq
+      - path: about/
+        translation_key: menu.about
+```
+
 ### metadata_edit_url
 
 **_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
@@ -760,33 +798,30 @@ metadata_tabs:
     placeholder: There are no publications available for this indicator
 ```
 
-### menu
+### meta_tags
 
-**_Required_**: This setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
-
-```nohighlight
-menu:
-  - path: reporting-status/
-    translation_key: menu.reporting_status
-  - path: about/
-    translation_key: menu.about
-  - path: faq/
-    translation_key: menu.faq
-```
-
-Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "about/" and "faq/" under a "More information" dropdown:
+_Optional_: This setting can be used to set [meta tags](https://www.w3schools.com/tags/tag_meta.asp) on any of the paths within the site. It should contain a list of items, each containing a `path`, a `name`, and `content`.
 
 ```nohighlight
-menu:
-  - path: reporting-status/
-    translation_key: menu.reporting_status
-  - translation_key: More information
-    dropdown:
-      - path: faq/
-        translation_key: menu.faq
-      - path: about/
-        translation_key: menu.about
+meta_tags:
+  - path: about
+    name: description
+    content: My description text for the About page
+  - path: '1'
+    name: keywords
+    content: my list of keywords for Goal 1
 ```
+
+Note that the homepage should have a `path` of `''`, eg:
+
+```nohighlight
+meta_tags:
+  - path: ''
+    name: description
+    content: My description text for the homepage
+```
+
+If your platform is multilingual, note that the `content` can be a [translation key](translation.md), and the `path` should not contain any language abbreviations.
 
 ### news
 

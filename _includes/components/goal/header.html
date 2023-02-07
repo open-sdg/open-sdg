@@ -5,7 +5,13 @@
                 <img src="{{ page.goal.icon }}" alt="{{ page.goal.short | escape }} - {{ page.t.general.goal }} {{ page.goal.number }}" id="goal-{{ page.goal.number }}" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}" />
             </div>
             <div class="col-8 col-md-9 col-lg-10 goal-details">
-                <h1>{{ page.goal.name }}</h1>
+                <h1>
+                    {% if page.goal_heading and page.goal_heading != '' %}
+                        {{ page.goal_heading | t }}
+                    {% else %}
+                        {{ page.goal.name }}
+                    {% endif %}
+                </h1>
             </div>
         </div>
     </div>

@@ -70,7 +70,7 @@ map_options:
     id: replace me
     accessToken: replace me
     attribution: replace me
-  # Control the choropleth color range. See https://gka.github.io/chroma.js/#chroma-brewer
+  # Control the choropleth color range. See below for more details.
   colorRange: chroma.brewer.BuGn
   # Set the color for boundaries that have no data.
   noValueColor: #f0f0f0
@@ -96,6 +96,75 @@ map_options:
     fillOpacity: 0
     color: #172d44
     dashArray: 5,5
+```
+
+#### colorRange
+
+The `colorRange` setting above needs more explanation because it is flexible. It can either point to a JavaScript array of colors, or it can point to a JavaScript function which returns an array of colors.
+
+First let's show the case of pointing to a JavaScript array of colors. Imagine that you have the following custom JavaScript elsewhere on the page:
+
+```
+var myMapColors = [
+  "#c4e1c6",
+  "#b0d1b3",
+  "#9bc2a1",
+  "#87b28f",
+  "#74a37c",
+  "#60946b",
+  "#4d8559",
+  "#3a7747",
+  "#276836"
+];
+```
+
+Then you could point to this array in your map_options.colorRange setting. Eg:
+
+```
+map_options:
+  colorRange: myMapColors
+```
+
+OpenSDG comes with a default color range which is available at `opensdg.mapColors.default`. Eg:
+
+```
+map_options:
+  colorRange: opensdg.mapColors.default
+```
+
+You can easily customize this by overriding the [_includes/assets/js/mapColors.json file](https://github.com/open-sdg/open-sdg/blob/HEAD/_includes/assets/js/mapColors.json).
+
+Additionally, the `chroma.brewer` object is available and has many color ranges for use, such as `chroma.brewer.BuGn` (blue-green). Eg:
+
+```
+map_options:
+  colorRange: chroma.brewer.BuGn
+```
+
+[Here are all of the available `chroma.brewer` color ranges.](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3)
+
+#### colorRange - function
+
+Another way to specify the colorRange is to point to a JavaScript function which returns an array of colors. This function will receive two parameters: an indicator id, and a goal id.
+
+So imagine that you would like to use `chroma.brewer.BuGn` for most of your indicators, but you would like to use `chroma.brewer.OrRd` for goal 1. You could have a JavaScript function elsewhere on the page like:
+
+```
+function myMapColorFunction(indicatorId, goalId) {
+  if (goalId == 3) {
+    return chroma.brewer.OrRd;
+  }
+  else {
+    return chroma.brewer.BuGn;
+  }
+}
+```
+
+Then you could point to this function like so:
+
+```
+map_option:
+  colorRange: myMapColorFunction
 ```
 
 ### map_layers
