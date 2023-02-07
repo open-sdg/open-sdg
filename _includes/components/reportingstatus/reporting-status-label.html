@@ -12,6 +12,6 @@
 {% assign reporting_status_type = site.reporting_status.status_types | where: 'value', include.indicator.reporting_status | first %}
 {% unless reporting_status_type.hide_on_goal_pages %}
 <span class="status {{ status_css }}">
-    <span class="status-inner">{{ status_desc }}</span>
+    <span class="status-inner">{{ reporting_status_type.label | t | default: status_desc }}</span>
 </span>
 {% endunless %}
