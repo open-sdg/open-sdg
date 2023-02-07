@@ -28,7 +28,7 @@ nav:
     - Glossary of terms: glossary.md
     - Architecture diagram: architecture.md
     - Requirements: requirements.md
-    - Contibuting to SDG Translations": tutorials/contribute-translations.md
+    - Contibuting to SDG Translations: tutorials/contribute-translations.md
     - Quick start:
         - Installation: quick-start.md
         - "Tutorial: Changing the logo and favicon": tutorials/change-logo.md
