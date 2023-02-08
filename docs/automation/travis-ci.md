@@ -13,7 +13,7 @@ TravisCI is a "continuous integration" (CI) cloud service. It is useful for Open
 
 ## Cons
 
-* * Requires the creation of SSH keys to communicate with version control (eg, GitHub)
+* Requires the creation of SSH keys to communicate with version control (eg, GitHub)
 * Requires the installation of Ruby to set up SSH keys
 
 Other than these very minor issues, TravisCI makes a good choice for Open SDG.

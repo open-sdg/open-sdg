@@ -4,14 +4,12 @@ This document will describe how to update data and metadata for the Open SDG pla
 
 ## Before you start
 
-These steps have four pre-requisites:
+These steps have 2 pre-requisites:
 
-1. An internet connection
-2. A web browser
-3. A [GitHub.com](https://github.com) account
+1. A [GitHub.com](https://github.com) account
 
     If you do not already have one, go to [GitHub](https://github.com) now to sign up for your free account.
-4. A working implementation of Open SDG (hereafter referred to as the "staging site")
+2. A working implementation of Open SDG (hereafter referred to as the "staging site")
 
     In most cases, the "staging site" will be something similar to: `https://my-org.github.io/my-site` (but with `my-org` and `my-site` changed as appropriate). If you do not have such a site available, or you are not sure, check with your team before continuing. Instructions on getting started are available on the [Quick Start page](quick-start.md).
 

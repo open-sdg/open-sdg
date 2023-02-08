@@ -2,21 +2,13 @@
 
 This document will define the common terminology used through this platform's documentation.
 
-## Git
+## Data repository
 
-Git is a free industry-standard version control system that makes it easier to track changes to files. An Open SDG platform, its data and its metadata, are all powered by files. Changes to these files are tracked (or "versioned") by Git ensuring a complete history of every change to the platform (and its data and metadata) will always be available.
+This is where the platform's data and metadata are managed. A ["starter" repository](https://github.com/open-sdg/open-sdg-data-starter) is available which can be easily copied and customised.
 
-## Repository
+## Disaggregations
 
-A set of files that is versioned by Git is called a __repository__. Each repository has its own separate history and administrators.
-
-## Github
-
-Github.com is a service that hosts Git repositories, and provides a useful interface for maintaining them. Github does offer paid services, but everything that this platform needs is part of Github's free offerings.
-
-## Forks
-
-Github offers an easy way to make a copy of a repository, and the term they use is "fork." So, a __fork__ is a copy of a repository. It can also be used as a verb: "to fork" means "to copy a repository," and "forked" means "copied a repository."
+Disaggregated data is data that has been broken down by detailed sub-categories for example gender, age and ethnicity. 
 
 ## Environments: Staging vs production
 
@@ -30,15 +22,31 @@ This is where proposed changes are first visible.
 
 This is where the general public views the platform.
 
-## Site repository vs data repository
+## Forks
 
-The implementation of this platform involves maintaining 2 repositories:
+Github offers an easy way to make a copy of a repository, and the term they use is "fork." So, a __fork__ is a copy of a repository. It can also be used as a verb: "to fork" means "to copy a repository," and "forked" means "copied a repository."
 
-### Data repository
+## Git
 
-This is where the platform's data and metadata are managed. A ["starter" repository](https://github.com/open-sdg/open-sdg-data-starter) is available which can be easily copied and customised.
+Git is a free industry-standard version control system that makes it easier to track changes to files. An Open SDG platform, its data and its metadata, are all powered by files. Changes to these files are tracked (or "versioned") by Git ensuring a complete history of every change to the platform (and its data and metadata) will always be available.
 
-### Site repository
+## Github
+
+Github.com is a service that hosts Git repositories, and provides a useful interface for maintaining them. Github does offer paid services, but everything that this platform needs is part of Github's free offerings.
+
+## Headline
+
+And indicator's "headline" is the data series that contains no disaggregations. It is the data series that is typically displayed first, upon viewing the indicator's page.
+
+## Pull Request
+
+A pull request is a way for a developer to ask for changes committed to an upstream respository to be reviewed and potentially merged into a repository
+
+## Repository
+
+A set of files that is versioned by Git is called a __repository__. Each repository has its own separate history and administrators. A repository contains all of your project's files and each file's revision history. You can discuss and manage your project's work within the repository.
+
+## Site repository
 
 This is where everything else is managed, such as presentation, pages, menus, and documents.  A ["starter" repository](https://github.com/open-sdg/open-sdg-site-starter) is available which can be easily copied and customised.
 
@@ -55,10 +63,3 @@ To illustrate, here are a few examples of translation keys:
 * `global_goals.1-title`
 * `global_goals.2-title`
 
-## Disaggregations
-
-Disaggregated data is data that has been broken down by detailed sub-categories for example gender, age and ethnicity. 
-
-## Headline
-
-And indicator's "headline" is the data series that contains no disaggregations. It is the data series that is typically displayed first, upon viewing the indicator's page.
