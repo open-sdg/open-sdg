@@ -48,7 +48,7 @@ Yes. Maps can be automatically generated from the data if GeoCodes are included 
 Maps from other systems or publications can also be embedded. See the [Maps](maps.md) section
 for more information
 
-## Can content from other websites be embedded in Open SDG?
+## Can other website content be embedded in Open SDG?
 
 Yes. Content can be embedded into the indicator page using HTML either within a tab like the charts and tables or embedded as a main feature on the page, for example [indicator 17.13.1 on the UK site](https://sustainabledevelopment-uk.github.io/17-13-1/).
 

@@ -22,6 +22,7 @@ nav:
     - Community:
         - Platform updates: updates.md
         - Change log: changelog.md
+        - Support: support.md
         - Getting Support: support.md
         - Contribution guidelines: contribution.md
         - Code of conduct: conduct.md
