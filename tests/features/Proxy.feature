@@ -13,7 +13,7 @@ Feature: Proxy indicators
     Given I am on "/1-3-1"
     And I wait 3 seconds
     Then I should see "This indicator contains some alternative data to those specified by the United Nations (UN). The data displayed are the closest match currently available."
-    Then I should see 1 "proxy pill" elements
+    Then I should see 2 "proxy pill" elements
     And I click on "the second series"
     And I wait 3 seconds
-    Then I should see 2 "proxy pill" elements
+    Then I should see 4 "proxy pill" elements
