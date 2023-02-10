@@ -40,68 +40,36 @@ It is possible to "boost" one or more fields in the search index, so that more r
 It is also possible to index additional metadata fields, so that more fields are searched e.g. if you wanted the search to return pages where the graph title contains the search term. See the [search_index_extra_fields configuration option](https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_extra_fields) for how to configure this.
 
 ## Accessibility High Contrast version
-As well as the default contrast version, Open SDG also offers a high contrast version. By default two menu buttons show, to allow users to choose between the different contrast levels, for example on the [US site](https://sdg.data.gov/). Another approach is to use a contrast toggle button, for example on the [UK site](https://sustainabledevelopment-uk.github.io/).
+As well as the default contrast version, Open SDG also offers a high contrast version. There is a toggle to allow users to choose between the different contrast levels.
 
 For guidance on how to use the more accessible contrast button, see the Configuration page [contrast_type](configuration.md) section.
 
 ## Multilingual
-By default, the site is created in English but this can be changed and multiple languages can be added.
-
-An example of a site just using the English language (default) is the [UK site](https://sustainabledevelopment-uk.github.io/).
-
-An example of a site using multiple languages is the [Armenian site](https://armstat.github.io/sdg-site-armenia/).
+The Open SDG platform can be either monolingual or multilingual. All aspects of the platform are included in the translation system, including page content, indicator metadata, indicator data disaggregations, menus and interface elements, etc.
 
 ## Charts
 
 Open SDG supports several types of charts for displaying indicator data:
 
-* Line: [example](https://visar.hagstofa.is/heimsmarkmidin/2-a-1), [documentation](../charts#line)
-* Bar: [example](https://sustainabledevelopment-uk.github.io/2-1-2/), [documentation](../charts#bar)
-* Binary (yes/no): [example](https://sdg.data.gov/1-5-1/), [documentation](../charts/#binary)
-
 ## Filter by disaggregation
 Open SDG platforms allow data to be displayed in a way in which it can be filtered by disaggregation. This allows user to compare different breakdowns for a particular indicator.
-
-An example of providing disaggregation filtering is [indicator 5.2.2 on the UK site](https://sustainabledevelopment-uk.github.io/5-2-2/).
 
 This feature is configured with the data files. For guidance on how to provide disaggregation filtering, see the [Data format page](data-format.md).
 
 ## Maps
-By default, data uploaded to an Open SDG platform is displayed on a chart and a table. You can configure your platform and data to also display data on a map.
-
-Some examples of data being shown on maps are:
-
-* [5.1.a on Germany's national Open SDG platform](https://sustainabledevelopment-deutschland.github.io/5-1-a/)
-* [3.c.1 on UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/3-a-1/)
+By default, data uploaded to an Open SDG platform is displayed on a chart and a table. You can configure your platform and data to also display data on a map so long as the correct Geo data is present.
 
 For guidance on how set up your site and data in order to be able to display data on a map (as well as on a chart and table), see the [Maps page](maps.md).
 
 ## Embedded content
-Another way of showing data/information on a indicator page is by embedding content from other websites/applications.
-
-An examples of embedded content as main content is a [macro-economic dashboard on the UK's Open SDG platform](https://sustainabledevelopment-uk.github.io/17-13-1/)
-
-Content can also be embedded on a data tab next to the Chart and Table tabs.
+Another way of showing data/information on a indicator page is by embedding content from other websites/applications. Content can also be embedded on a data tab next to the Chart and Table tabs.
 
 Embedded features are configured in the indicator configuration files. See the [Embedded feature settings](indicator-configuration.md#embedded-feature-settings) section for more guidance.
 
 ## Reporting status options
 By default, the reporting status options dispayed are **Complete**, **In progress** and **Exploring data sources**. However, these options can be changed to meet your needs. For example, options can be removed or another option, **Not applicable**, can be used.
 
-An example of using the default options is [Ghana's Reporting status page](https://sustainabledevelopment-ghana.github.io/reporting-status/).
-
-An example of removing one of the options is the [UK's Reporting status page](https://sustainabledevelopment-uk.github.io/reporting-status/).
-
-An example of using the **Not applicable** option is [Rwanda's Reporting status page](https://sustainabledevelopment-rwanda.github.io/reporting-status/).
-
 For more detailed information see the [Reporting status](reporting-status.md) page.
-
-## Targets on goal pages
-By default, targets are not shown on the goal pages. An example of this is the [UK Open SDG platform](https://sustainabledevelopment-uk.github.io/1/).
-
-However, Open SDG platforms can be configured to show targets on the goal pages. An example of this is [Armenia's Open SDG platform](https://armstat.github.io/sdg-site-armenia/1/)
-
-For guidance on how to display targets on your goal pages, see the Customisations page [*Optional feature: Goal page layouts*](customisation.md#optional-feature-goal-page-layouts) section.
 
 ## News, posts, and categories
 Open SDG includes the ability to post news and updates to your site. In all respects, this functionality matches what is described in [this Jekyll documentation](https://jekyllrb.com/docs/posts/).
