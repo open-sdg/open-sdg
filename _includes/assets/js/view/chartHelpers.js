@@ -13,9 +13,12 @@ function alterChartConfig(config, info) {
  * @param {String} chartTitle
  * @return null
  */
-function updateChartTitle(chartTitle) {
+function updateChartTitle(chartTitle, isProxy) {
     if (typeof chartTitle !== 'undefined') {
-        $('.chart-title').text(chartTitle);
+        if (isProxy) {
+            chartTitle += ' ' + PROXY_PILL;
+        }
+        $('.chart-title').html(chartTitle);
     }
 }
 

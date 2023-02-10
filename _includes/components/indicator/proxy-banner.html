@@ -1,0 +1,13 @@
+{% if page.indicator.proxy == 'proxy' or page.indicator.proxy == 'both' %}
+<div class="row proxy-banner my-4 mx-1 px-2 gx-2">
+  <div class="col col-auto align-self-center">
+    {% include components/indicator/proxy-pill.html %}
+  </div>
+  <div class="col col-auto align-self-center">
+    =
+  </div>
+  <div id="proxy-description" class="col">
+    {{ page.t.indicator.proxy_description }}
+  </div>
+</div>
+{% endif %}

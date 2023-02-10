@@ -94,6 +94,7 @@
     this.viewHelpers = options.viewHelpers;
     this.modelHelpers = options.modelHelpers;
     this.chartTitles = options.chartTitles;
+    this.proxySerieses = options.proxySerieses;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -138,7 +139,10 @@
         newTitle = this.modelHelpers.getChartTitle(currentTitle, this.chartTitles, currentUnit, currentSeries);
       }
       if (newTitle) {
-        $('#map-heading').text(newTitle);
+        if (this.proxySerieses.includes(currentSeries)) {
+          newTitle += ' ' + this.viewHelpers.PROXY_PILL;
+        }
+        $('#map-heading').html(newTitle);
       }
     },
 

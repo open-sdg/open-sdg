@@ -1,0 +1,32 @@
+.proxy-pill {
+    padding: 4px;
+    font-size: $proxy-fontSize;
+    color: $proxy-color;
+    border: $proxy-border;
+    background: $proxy-backgroundColor;
+    white-space: nowrap;
+}
+
+#serieses {
+    .proxy-pill {
+        font-size: $proxy-fontSize-small;
+        float: right;
+    }
+}
+
+#chart-heading, #selectionsTable, #map-heading {
+    .proxy-pill {
+        margin-left: 10px;
+    }
+}
+
+.proxy-banner {
+    border-left: solid 10px $color-medium-highContrast;
+}
+
+body.contrast-high {
+    .proxy-pill {
+        background: $color-highlight-highContrast;
+        color: $color-dark-highContrast;
+    }
+}
