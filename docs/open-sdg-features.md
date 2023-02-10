@@ -10,18 +10,14 @@ Further detail on the customisations available can be found in the [indicator](i
 ## Display data for national indicators as well as global indicators
 There are various approaches to publishing national and global indicators:
 
-* National indiators are displayed next to global indicators but are tagged as 'national' to distinguish them, for example in [Armenia's platform](https://armstat.github.io/sdg-site-armenia/1/).
+* National indiators can be displayed next to global indicators but are tagged as 'national' to distinguish them.
 
-* Separate pages for national and global indicators within the same site, for example [Poland's platform](http://sdg.gov.pl/en).
+* Separate pages for national and global indicators can be created within the same site.
 
-* Separate sites for national and global indicators, for example [Germany's national indicator site](https://sustainabledevelopment-deutschland.github.io/en/) and [Germany's global indicator site](https://sustainabledevelopment-germany.github.io/en/).
+* Separate sites for national and global indicators can be created.
 
 ## Add pages
 By default, there are four pages which show in the menu bar: Reporting status, About, Guidance and FAQ.
-
-An example of using just the four default menu items is [Kyrgyzstan's site](https://sdg-kyrgyzstan.github.io/open-sdg-site-starter/en/)
-
-An example of menu items being added is [UK's site](https://sustainabledevelopment-uk.github.io/)
 
 Even though only four pages are linked to in the menu by default, there are other pages provided for use (e.g. Contacts, News) as well as the option to easily create your own pages.
 
@@ -33,8 +29,8 @@ Open SDG platforms have a search function, where users can search for terms to q
 By default, the following fields are searched:
 
 - The title of an indicator, goal, or page i.e. words within an indicator title, short goal title, long goal title or page title e.g. FAQ
-- The content of the indicator e.g. on the [UK 3.4.2 indicator page](https://sdgdata.gov.uk/3-4-2/) the content is the text which starts with "In 2018..." and ends with "[Further Quality and Methodology information](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/methodologies/suicideratesintheukqmi) is available."
-- The content of pages such as the About or FAQ page i.e. everything on the page below the title e.g on the [UK FAQ page](https://sdgdata.gov.uk/faq/), everything below the title (Frequently Asked Questions (FAQ)) is the page content
+- The content on the indicator page including any supplementary information you have added
+- The content of pages such as the About or FAQ pages
 - The ID number of an indicator or goal e.g. 3 or 3.1.2
 
 The search functionality also includes fuzzy search meaning the search function will also find pages that are likely to be relevant to a search term even when the term doesn't correspond exactly to the wanted information. For example, pages with searched fields that contain "smoke" or "smoker" may be returned when a user searches for "smoking". However, the project that is used for fuzzy search has implemented the feature for a set of languages, but not all. Currently, Open SDG languages supported include Arabic, English, French, German, Russian and Spanish (see the [full list of supported languages](https://lunrjs.com/guides/language_support.html)). If a language is not supported, the search feature will still work but it will find fewer results as the search query must be exact. For example, "smoking" would not return "smoke".
