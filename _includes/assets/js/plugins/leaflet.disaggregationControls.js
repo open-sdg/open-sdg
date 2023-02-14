@@ -23,16 +23,23 @@
             this.form = null;
             this.currentDisaggregation = 0;
             this.displayedDisaggregation = 0;
+            this.needsMapUpdate = false;
             this.seriesColumn = '{{ site.data_fields.series | default: "Series" }}';
             this.unitsColumn = '{{ site.data_fields.units | default: "Units" }}';
             this.displayForm = {{ site.map_options.disaggregation_controls | jsonify }};
-            this.updateDisaggregations();
+            this.updateDisaggregations(plugin.startValues);
         },
 
-        updateDisaggregations: function() {
+        updateDisaggregations: function(startValues) {
             // TODO: Not all of this needs to be done
             // at every update.
-            this.disaggregations = this.getVisibleDisaggregations();
+            var features = this.getFeatures();
+            if (startValues && startValues.length > 0) {
+                this.currentDisaggregation = this.getStartingDisaggregation(features, startValues);
+                this.displayedDisaggregation = this.currentDisaggregation;
+                this.needsMapUpdate = true;
+            }
+            this.disaggregations = this.getVisibleDisaggregations(features);
             this.fieldsInOrder = this.getFieldsInOrder();
             this.valuesInOrder = this.getValuesInOrder();
             this.allSeries = this.getAllSeries();
@@ -44,10 +51,43 @@
             this.hasDisaggregationsWithMultipleValuesFlag = this.hasDisaggregationsWithMultipleValues();
         },
 
-        getVisibleDisaggregations: function() {
-            var features = this.plugin.getVisibleLayers().toGeoJSON().features.filter(function(feature) {
+        getFeatures: function() {
+            return this.plugin.getVisibleLayers().toGeoJSON().features.filter(function(feature) {
                 return typeof feature.properties.disaggregations !== 'undefined';
             });
+        },
+
+        getStartingDisaggregation: function(features, startValues) {
+            if (features.length === 0) {
+                return;
+            }
+            var disaggregations = features[0].properties.disaggregations,
+                fields = Object.keys(disaggregations[0]),
+                weighted = _.sortBy(disaggregations.map(function(disaggregation, index) {
+                    var disaggClone = Object.assign({}, disaggregation);
+                    disaggClone.emptyFields = 0;
+                    disaggClone.index = index;
+                    fields.forEach(function(field) {
+                        if (disaggClone[field] == '') {
+                            disaggClone.emptyFields += 1;
+                        }
+                    });
+                    return disaggClone;
+                }), 'emptyFields').reverse(),
+                match = weighted.find(function(disaggregation) {
+                    return _.every(startValues, function(startValue) {
+                        return disaggregation[startValue.field] === startValue.value;
+                    });
+                });
+            if (match) {
+                return match.index;
+            }
+            else {
+                return 0;
+            }
+        },
+
+        getVisibleDisaggregations: function(features) {
             if (features.length === 0) {
                 return [];
             }
@@ -303,19 +343,24 @@
                 that.updateForm();
             });
             applyButton.addEventListener('click', function(e) {
-                that.plugin.currentDisaggregation = that.currentDisaggregation;
-                that.plugin.updatePrecision();
-                that.plugin.setColorScale();
-                that.plugin.updateColors();
-                that.plugin.updateTooltips();
-                that.plugin.selectionLegend.resetSwatches();
-                that.plugin.selectionLegend.update();
-                that.plugin.updateTitle();
-                that.plugin.updateFooterFields();
-                that.plugin.replaceYearSlider();
+                that.updateMap();
                 that.updateList();
                 $('.disaggregation-form-outer').toggle();
             });
+        },
+
+        updateMap: function() {
+            this.needsMapUpdate = false;
+            this.plugin.currentDisaggregation = this.currentDisaggregation;
+            this.plugin.updatePrecision();
+            this.plugin.setColorScale();
+            this.plugin.updateColors();
+            this.plugin.updateTooltips();
+            this.plugin.selectionLegend.resetSwatches();
+            this.plugin.selectionLegend.update();
+            this.plugin.updateTitle();
+            this.plugin.updateFooterFields();
+            this.plugin.replaceYearSlider();
         },
 
         onAdd: function () {
