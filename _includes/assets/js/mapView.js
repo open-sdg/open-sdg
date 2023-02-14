@@ -2,7 +2,7 @@ var mapView = function () {
 
   "use strict";
 
-  this.initialise = function(indicatorId, precision, precisionItems, decimalSeparator, dataSchema, viewHelpers, modelHelpers, chartTitles, proxySerieses) {
+  this.initialise = function(indicatorId, precision, precisionItems, decimalSeparator, dataSchema, viewHelpers, modelHelpers, chartTitles, startValues, proxySerieses) {
     $('.map').show();
     $('#map').sdgMap({
       indicatorId: indicatorId,
@@ -16,6 +16,7 @@ var mapView = function () {
       modelHelpers: modelHelpers,
       chartTitles: chartTitles,
       proxySerieses: proxySerieses,
+      startValues: startValues,
     });
   };
 };

@@ -101,6 +101,7 @@ var indicatorView = function (model, options) {
                 MODEL.helpers,
                 args.chartTitles,
                 args.proxySerieses,
+                args.startValues,
             );
         }
     });
