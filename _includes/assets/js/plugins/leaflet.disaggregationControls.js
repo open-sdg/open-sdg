@@ -351,7 +351,7 @@
 
         updateMap: function() {
             this.needsMapUpdate = false;
-            this.plugin.currentDisaggregation = that.currentDisaggregation;
+            this.plugin.currentDisaggregation = this.currentDisaggregation;
             this.plugin.updatePrecision();
             this.plugin.setColorScale();
             this.plugin.updateColors();
