@@ -100,6 +100,7 @@ var indicatorView = function (model, options) {
                 VIEW.helpers,
                 MODEL.helpers,
                 args.chartTitles,
+                args.startValues,
             );
         }
     });

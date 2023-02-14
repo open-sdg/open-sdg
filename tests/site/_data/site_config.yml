@@ -204,7 +204,7 @@ map_options:
     id: ''
     accessToken: ''
     attribution: My map attribution
-  colorRange: chroma.brewer.BuGn
+  colorRange: opensdg.mapColors.default
   noValueColor: '#f0f0f0'
   styleNormal:
     weight: 1
