@@ -351,7 +351,7 @@
 
         updateMap: function() {
             this.needsMapUpdate = false;
-            this.plugin.currentDisaggregation = this.currentDisaggregation;
+            this.plugin.currentDisaggregation = that.currentDisaggregation;
             this.plugin.updatePrecision();
             this.plugin.setColorScale();
             this.plugin.updateColors();
@@ -360,6 +360,7 @@
             this.plugin.selectionLegend.update();
             this.plugin.updateTitle();
             this.plugin.updateFooterFields();
+            this.plugin.replaceYearSlider();
         },
 
         onAdd: function () {
