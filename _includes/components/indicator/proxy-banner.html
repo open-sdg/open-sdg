@@ -7,7 +7,7 @@
     =
   </div>
   <div id="proxy-description" class="col">
-    {{ page.t.indicator.proxy_description }}
+    {{ site.proxy_indicators.description | default: "indicator.proxy_description | t }}
   </div>
 </div>
 {% endif %}
