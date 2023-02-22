@@ -14,7 +14,7 @@ The templates contain a few questions which will allow us to sort and prioritise
 
 ## Google Groups
 
-The Open SDG development team can also be reached by email at [opensdg@googlegroups.com](mailto:opensdg@googlegroups.com).
+The Open SDG development team can also be reached by email at [opensdg@outlook.com](mailto:opensdg@outlook.com).
 
 ## Specific implementations
 
