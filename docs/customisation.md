@@ -6,10 +6,6 @@ Jekyll configuration is stored at the root of the site repository in a YAML file
 
 In addition to general Jekyll configurations, Open SDG needs some specific configurations. For more information on these, please see the [configuration page](configuration.md).
 
-## Optional features
-
-As with any Jekyll theme, Open SDG can be easily customised. The platform comes with some out-of-the-box optional features that can serve as examples of possible customisations.
-
 ## Working with (remote) Jekyll themes
 
 This project (the repository you are reading currently) functions as a [Jekyll theme](https://jekyllrb.com/docs/themes/), which can most easily be used with the help of the [Remote Theme plugin](https://github.com/benbalter/jekyll-remote-theme). As with any Jekyll theme (and as can be seen in the [folder structure of this project](https://github.com/open-sdg/open-sdg)) the entirety of the theme is contained in these 3 folders:
