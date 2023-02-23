@@ -4,7 +4,7 @@
 
 This platform compiles to a static web site, which means that it can be deployed to any host that can serve files (most notably Github's free "Github Pages" offering). At run-time, it requires no server-side technologies.
 
-That said, the platform does require some server-side technologies to *build* the site. At build-time, this platform requires Python and Ruby.
+That said, the platform does require some server-side technologies to *build* the site. At build-time, this platform requires `Python` and `Ruby`.
 
 ## Automation services
 
