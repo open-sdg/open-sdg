@@ -1,3 +1,4 @@
 # These are the Python requirements for building the data.
 git+https://github.com/dougmet/yamlmd
 git+https://github.com/open-sdg/sdg-build@2.2.0-dev
+frictionless==4.40.8

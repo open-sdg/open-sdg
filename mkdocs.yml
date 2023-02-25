@@ -2,7 +2,9 @@ site_name: Open SDG
 
 repo_url: https://github.com/open-sdg/open-sdg
 site_description: 'Open SDG - A platform for collecting and disseminating data for the Sustainable Development Goal global indicators.'
-theme: readthedocs
+theme:
+    name: readthedocs
+    custom_dir: docs-theme/
 
 markdown_extensions:
     - toc:
