@@ -19,7 +19,7 @@
                     ]
                 },
                 {
-                    "type": "VerticalLayout",
+                    "type": "HorizontalLayout",
                     "elements": [
                         {
                             "type": "Control",
@@ -163,7 +163,7 @@
                         },
                         {
                             "type": "Control",
-                            "scope": "#properties/metadata_edit_url"
+                            "scope": "#/properties/metadata_edit_url"
                         }
                     ]
                 }
@@ -423,19 +423,6 @@
                 {
                     "type": "Control",
                     "scope": "#/properties/create_pages"
-                },
-                {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/environment"
-                        },
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/remote_data_"
-                        }
-                    ]
                 },
                 {
                     "type": "HorizontalLayout",

@@ -760,25 +760,65 @@
                     "type": "string",
                     "title": "Tab 1",
                     "description": "What to display in the first tab",
-                    "$ref": "#/definitions/indicator_tabs_options"
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
                 },
                 "tab_2": {
                     "type": "string",
                     "title": "Tab 2",
                     "description": "What to display in the second tab",
-                    "$ref": "#/definitions/indicator_tabs_options"
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
                 },
                 "tab_3": {
                     "type": "string",
                     "title": "Tab 3",
                     "description": "What to display in the third tab",
-                    "$ref": "#/definitions/indicator_tabs_options"
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
                 },
                 "tab_4": {
                     "type": "string",
                     "title": "Tab 4",
                     "description": "What to display in the fourth tab",
-                    "$ref": "#/definitions/indicator_tabs_options"
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
                 }
             }
         },
@@ -1235,46 +1275,49 @@
             "type": "object",
             "title": "Reporting status",
             "description": "This setting is used in the 'reportingstatus' layout. It can display a title and description above the reporting status page.",
-            "allOf": [
-                { "$ref": "#/definitions/title_and_description" },
-                {
-                    "properties": {
-                        "disaggregation_tabs": {
-                            "title": "Disaggregation tabs",
-                            "type": "boolean",
-                            "description": "Whether or not to display disaggregation status tabs. If you enable this setting, you should also use 'expected_disaggregations' in your indicator configuration, in order to provide the disaggregation status report with useful metrics."
-                        },
-                        "status_types": {
-                                            "type": "array",
-                            "title": "Status types",
-                            "description": "Controls the behavior and labels for the different reporting status types.",
-                            "items": {
-                                "type": "object",
-                                "title": "Status type",
-                                "properties": {
-                                    "value": {
-                                        "type": "string",
-                                        "minLength": 1,
-                                        "title": "Value",
-                                        "description": "The value of the status type, as it is set in the indicator configuration (eg, 'complete')."
-                                    },
-                                    "label": {
-                                        "type": "string",
-                                        "minLength": 1,
-                                        "title": "Label",
-                                        "description": "The human-readable label for the status type. Can be a translation key (eg, 'status.reported_online')."
-                                    },
-                                    "hide_on_goal_pages": {
-                                        "type": "boolean",
-                                        "title": "Hide on goal pages",
-                                        "description": "Whether to hide this status type on goal pages. Useful for the most commonly-occuring type."
-                                    }
-                                }
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description"
+                },
+                "disaggregation_tabs": {
+                    "title": "Disaggregation tabs",
+                    "type": "boolean",
+                    "description": "Whether or not to display disaggregation status tabs. If you enable this setting, you should also use 'expected_disaggregations' in your indicator configuration, in order to provide the disaggregation status report with useful metrics."
+                },
+                "status_types": {
+                    "type": "array",
+                    "title": "Status types",
+                    "description": "Controls the behavior and labels for the different reporting status types.",
+                    "items": {
+                        "type": "object",
+                        "title": "Status type",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "title": "Value",
+                                "description": "The value of the status type, as it is set in the indicator configuration (eg, 'complete')."
+                            },
+                            "label": {
+                                "type": "string",
+                                "minLength": 1,
+                                "title": "Label",
+                                "description": "The human-readable label for the status type. Can be a translation key (eg, 'status.reported_online')."
+                            },
+                            "hide_on_goal_pages": {
+                                "type": "boolean",
+                                "title": "Hide on goal pages",
+                                "description": "Whether to hide this status type on goal pages. Useful for the most commonly-occuring type."
                             }
                         }
                     }
                 }
-            ],
+            },
             "links": [
                 {
                     "rel": "More information on the reporting status setting",
