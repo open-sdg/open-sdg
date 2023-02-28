@@ -261,6 +261,9 @@
                     input.checked = (series === that.getCurrentSeries()) ? 'checked' : '';
                     var label = L.DomUtil.create('label', 'disaggregation-label');
                     label.innerHTML = series;
+                    if (that.plugin.proxySerieses.includes(series)) {
+                        label.innerHTML += ' ' + that.plugin.viewHelpers.PROXY_PILL;
+                    }
                     label.prepend(input);
                     fieldset.append(label);
                     input.addEventListener('change', function(e) {
