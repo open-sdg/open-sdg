@@ -58,7 +58,7 @@ inputs:
 
 This class handles the URL generated as the query for you, so you don’t need to obtain it using the UN data website as per the UN SDG API manual instructions. This method is simple which means you may not be able to add all the details that you want.  
 
-Note that in the example above, the REPORTING_TYPE has been specified to be ‘N’ which means it is specified to pull national data from the Database. 
+Note that in the example above, the `REPORTING_TYPE` has been specified to be ‘N’ which means it is specified to pull national data from the Database. 
 
 ***InputSdmxMl_Structure*** 
 
@@ -82,7 +82,7 @@ This is then followed by the second part, which is the key. The key needs to fol
 [FREQ].[REPORTING_TYPE].[SERIES].[REF_AREA].[SEX].[AGE].[URBANISATION].[INCOME_WEALTH_QUANTILE].[EDUCATION_LEV].[OCCUPATION].[CUST_BREAKDOWN].[COMPOSITE_BREAKDOWN].[DISABILITY_STATUS].[ACTIVITY].[PRODUCT]  
 ```
 
-However, you do not need to include details for all 15 parts as shown in the code example above where 231 has been entered as the [REF_AREA] part of the key (in the fourth part between the dots (.)), but no other parts are specified. To mirror the first example using the InputSdmxMl_UnitedNationsApi to specify national data, you would need to add ‘N’ to the second part between the dots (.) where [REPORTING_TYPE] is in the key. E.g https://data.un.org/ws/rest/data/IAEG-SDGs,DF_SDG_GLH/.N..231...........?startPeriod=2000&endPeriod=2022 
+However, you do not need to include details for all 15 parts as shown in the code example above where 231 has been entered as the `[REF_AREA]` part of the key (in the fourth part between the dots (.)), but no other parts are specified. To mirror the first example using the `InputSdmxMl_UnitedNationsApi` to specify national data, you would need to add ‘N’ to the second part between the dots (.) where `[REPORTING_TYPE]` is in the key. E.g. https://data.un.org/ws/rest/data/IAEG-SDGs,DF_SDG_GLH/.N..231...........?startPeriod=2000&endPeriod=2022 
 
 This example also demonstrates adding a custom time period of 2000-2022, which is achieved by adding the following details after the key: 
 
