@@ -38,7 +38,6 @@
         },
         "data_footnote": {
             "type": "string",
-            "format": "markdown",
             "title": "Footnote",
             "description": "Footnote which displays below the indicator chart.",
             "links": [
@@ -52,7 +51,6 @@
             "title": "Non-statistical data",
             "type": "boolean",
             "description": "Whether the indicator is statistical (can be charted/graphed) or not.",
-            "format": "checkbox",
             "links": [
                 {
                     "rel": "More information the non-statistical setting",
@@ -85,7 +83,6 @@
         "data_notice_text": {
             "title": "Data notice - text",
             "type": "string",
-            "format": "markdown",
             "description": "Text to display as a data notice for this indicator, intended to contain very important information which site viewers must keep in mind when using the data provided.",
             "links": [
                 {
@@ -98,7 +95,6 @@
             "title": "Show map",
             "type": "boolean",
             "description": "Whether the indicator should display a Map tab.",
-            "format": "checkbox",
             "links": [
                 {
                     "rel": "More information on the map setting",
@@ -138,7 +134,6 @@
         },
         "embedded_feature_footer": {
             "type": "string",
-            "format": "markdown",
             "title": "Embedded feature - Footer",
             "description": "A footer that displays below the embedded feature. Only used with either embedded_feature_url or embedded_feature_html.",
             "links": [
@@ -150,7 +145,6 @@
         },
         "embedded_feature_html": {
             "type": "string",
-            "format": "textarea",
             "title": "Embedded feature - HTML",
             "description": "Any HTML to display in another tab, after Chart/Table/etc.",
             "links": [
@@ -184,7 +178,6 @@
         },
         "embedded_feature_url": {
             "type": "string",
-            "format": "url",
             "title": "Embedded feature - URL",
             "description": "Any URL to display as an iframe in another tab, after Chart/Table/etc.",
             "links": [
@@ -273,7 +266,6 @@
                             },
                             "borderColor": {
                                 "type": "string",
-                                "format": "color",
                                 "title": "Line color",
                                 "default": "#949494",
                                 "description": "The color of the line.",
@@ -332,7 +324,6 @@
                                     },
                                     "backgroundColor": {
                                         "type": "string",
-                                        "format": "color",
                                         "default": "#ffffff",
                                         "title": "Background color",
                                         "description": "Background color for the label text."
@@ -346,7 +337,6 @@
                                 "properties": {
                                     "borderColor": {
                                         "type": "string",
-                                        "format": "color",
                                         "default": "#ffffff",
                                         "title": "High-contrast line color",
                                         "description": "The color of the line in high-contrast mode."
@@ -358,14 +348,12 @@
                                         "properties": {
                                             "fontColor": {
                                                 "type": "string",
-                                                "format": "color",
                                                 "default": "#ffffff",
                                                 "title": "High-contrast label color",
                                                 "description": "Color for the label text in high-contrast mode."
                                             },
                                             "backgroundColor": {
                                                 "type": "string",
-                                                "format": "color",
                                                 "default": "#000000",
                                                 "title": "High-contrast background color",
                                                 "description": "Background color for the label text in high-contrast mode."
@@ -587,8 +575,7 @@
                 "override": {
                     "type": "boolean",
                     "title": "Override site configuration",
-                    "description": "If checked, the site-wide indicator tab configuration will be ignored for this indicator.",
-                    "format": "checkbox"
+                    "description": "If checked, the site-wide indicator tab configuration will be ignored for this indicator."
                 },
                 "tab_1": {
                     "type": "string",
@@ -629,7 +616,6 @@
         },
         "page_content": {
             "type": "string",
-            "format": "markdown",
             "title": "Page content",
             "description": "Content which displays in the main content area of the indicator page."
         },
@@ -648,7 +634,6 @@
             "title": "Placeholder indicator",
             "type": "string",
             "description": "Entering text here identifies this as a 'placeholder' indicator. The text will be displayed on the goal page, in place of a link to the indicator page.",
-            "format": "textarea",
             "links": [
                 {
                     "rel": "More information the placeholder setting",
@@ -709,8 +694,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "title": "description",
-                        "format": "markdown"
+                        "title": "description"
                     },
                     "date": {
                         "type": "string",
@@ -835,7 +819,6 @@
             "title": "Standalone indicator",
             "type": "boolean",
             "description": "Whether the indicator is standalone (separate from the SDGs) or not.",
-            "format": "checkbox",
             "links": [
                 {
                     "rel": "More information the standalone setting",

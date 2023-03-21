@@ -1,1 +1,107 @@
-{}
+{
+    "type": "Categorization",
+    "elements": [
+        {
+            "type": "Category",
+            "label": "SDMX",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/composite_breakdown_label"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Metadata",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/copyright"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_footnote"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Chart",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                }
+            ]
+        }
+    ]
+}
