@@ -892,6 +892,20 @@ progressive_web_app:
   precaching: false
 ```
 
+### proxy_indicators
+
+_Optional_: This setting can be used to override the default label and description that are displayed
+for [proxy indicators](indicator-configuration.md#proxy). The available settings are:
+
+* `label`: The label to display when flagging a proxy indicator. Defaults to 'Proxy'.
+* `description`: The description to display at the top of indicator pages, explaining what 'Proxy' means.
+
+```nohighlight
+proxy_indicators:
+  label: My alternate proxy label
+  description: My alternate proxy description
+```
+
 ### remote_data_prefix
 
 **_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).
