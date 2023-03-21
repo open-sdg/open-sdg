@@ -82,6 +82,7 @@ const driver = new mink.Mink({
     "map disaggregation popup": "#map .disaggregation-form-outer",
     "the 'Rural' item under Location": "#map .disaggregation-form-outer input[value='Rural']",
     "the map disaggregation apply button": "#map .disaggregation-apply-button",
+    "proxy pill": ".proxy-pill",
   }
 });
 

@@ -34,5 +34,10 @@ page_content: >
   * Map.feature
 
   * NoDataMessage.feature
+
+  * Proxy.feature (confirming that the proxy pill appears for a certain series)
+proxy: both
+proxy_series:
+  - Series B
 reporting_status: complete
 tags: []
