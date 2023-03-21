@@ -1,0 +1,102 @@
+importScripts(
+    'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js'
+);
+
+const {registerRoute, setDefaultHandler} = workbox.routing;
+const {CacheableResponsePlugin} = workbox.cacheableResponse;
+const {ExpirationPlugin} = workbox.expiration;
+const {precacheAndRoute} = workbox.precaching;
+const {offlineFallback} = workbox.recipes;
+
+const {
+    NetworkFirst,
+    StaleWhileRevalidate,
+    CacheFirst,
+    NetworkOnly,
+} = workbox.strategies;
+const cacheName = 'install-cache';
+setDefaultHandler(new NetworkOnly());
+offlineFallback();
+
+{% if site.progressive_web_app.precaching %}
+// Precache the indicator/goal pages.
+self.addEventListener('install', (event) => {
+  const populateCache = async () => {
+    const cache = await caches.open(cacheName);
+    await cache.addAll({{ site.data.routes.goals | jsonify }});
+    await cache.addAll({{ site.data.routes.indicators | jsonify }});
+    await cache.addAll({{ site.data.routes.json | jsonify }});
+  };
+
+  event.waitUntil(populateCache());
+});
+{% endif %}
+
+// Cache page navigations (html) with a Network First strategy
+registerRoute(
+  // Check to see if the request is a navigation to a new page
+  ({ request }) => request.mode === 'navigate',
+  // Use a Network First caching strategy
+  new NetworkFirst({
+    cacheName: cacheName,
+    plugins: [
+      // Ensure that only requests that result in a 200 status are cached
+      new CacheableResponsePlugin({
+        statuses: [200],
+      }),
+    ],
+  }),
+);
+
+// Cache CSS, JS, and Web Worker requests with a Stale While Revalidate strategy
+registerRoute(
+  // Check to see if the request's destination is style for stylesheets, script for JavaScript, or worker for web worker
+  ({ request }) =>
+    request.destination === 'style' ||
+    request.destination === 'script' ||
+    request.destination === 'worker',
+  // Use a Stale While Revalidate caching strategy
+  new StaleWhileRevalidate({
+    cacheName: cacheName,
+    plugins: [
+      // Ensure that only requests that result in a 200 status are cached
+      new CacheableResponsePlugin({
+        statuses: [200],
+      }),
+    ],
+  }),
+);
+
+// Cache images/fonts with a Cache First strategy
+registerRoute(
+  // Check to see if the request's destination is style for an image
+  ({ request }) => ['image', 'font'].includes(request.destination),
+  // Use a Cache First caching strategy
+  new CacheFirst({
+    cacheName: cacheName,
+    plugins: [
+      // Ensure that only requests that result in a 200 status are cached
+      new CacheableResponsePlugin({
+        statuses: [200],
+      }),
+      // Don't cache more than 50 items, and expire them after 30 days
+      new ExpirationPlugin({
+        maxEntries: 50,
+        maxAgeSeconds: 60 * 60 * 24 * 30, // 30 Days
+      }),
+    ],
+  }),
+);
+
+// Cache json with a Network First strategy.
+registerRoute(
+  /.*\.(json|geojson|zip|csv)$/,
+  new NetworkFirst({
+    cacheName: cacheName,
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [200],
+      }),
+    ]
+  }),
+);
