@@ -642,25 +642,29 @@
             ]
         },
         "precision": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Precision rules",
             "description": "Control the number of decimal places for data in this indicator.",
             "items": {
                 "type": "object",
                 "title": "Precision rule",
-                "allOf": [
-                    { "$ref": "#/definitions/series_unit_constraint" },
-                    {
-                        "properties": {
-                            "decimals": {
-                                "type": "number",
-                                "title": "Decimals",
-                                "description": "The number of decimal places"
-                            }
-                        }
+                "properties": {
+                    "decimals": {
+                        "type": "number",
+                        "title": "Decimals",
+                        "description": "The number of decimal places"
+                    },
+                    "series": {
+                        "type": "string",
+                        "title": "Series",
+                        "description": "Limit to this particular series"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "title": "Unit",
+                        "description": "Limit to this particular unit"
                     }
-                ]
+                }
             }
         },
         "progress_status": {
