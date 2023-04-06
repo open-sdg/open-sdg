@@ -1,5 +1,9 @@
 <h1>Change Log</h1>
 
+## 2.2.0
+
+[TODO]
+
 ## 2.1.0
 
 * Bugfix: Map search role removal #1857
