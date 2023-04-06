@@ -7,6 +7,11 @@
 {%- endif -%}
 
 <div class="goal goal-overall">
+    {% unless include.hide_wheel %}
+    <div class="frame goal-tiles">
+        <img src="{{ site.baseurl }}/assets/img/SDG Wheel_Transparent-01.png" alt="{{ page.t.general.sdg }}" width="100" height="100" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}"/>
+    </div>
+    {% endunless %}
     <div class="details">
         <h2 class="status-goal">
             {{ include.title }}
