@@ -2,6 +2,10 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 2.2.0
+
+[TODO]
+
 ## 2.1.0
 
 7 November 2022
