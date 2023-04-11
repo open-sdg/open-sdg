@@ -4,7 +4,14 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 2.2.0
 
-[TODO]
+TBD
+
+* Feature for flagging indicators as "proxy"
+* More granular control over disaggregations on maps
+* High-resolution chart image downloads
+* SEO improvements: custom meta tags on any page, and custom headings on goal pages
+* Design enhancement on reporting status pages - SDG image on overall
+* Bugfixes for reporting status label, data edit page, and third-party dependencies
 
 ## 2.1.0
 

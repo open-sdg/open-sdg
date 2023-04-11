@@ -2,7 +2,17 @@
 
 ## 2.2.0
 
-[TODO]
+* Bugfix: Fix reference to map timedimension nezasa dependency #1962
+* Design: SDG image on reporting status overall row #1960
+* Bugfix: Fix for "Edit data" indicator form #1945
+* Feature: Proxy indicators feature #1944
+* Feature: Year range per disaggregation #1930
+* Bugfix: Use data_start_values for maps #1929
+* Feature: More details on custom map colors and support for functions #1924
+* Feature: Double-size chart image downloads #1898
+* Feature: Meta tag functionality #1892
+* Feature: Custom headings and subheadings for goal pages #1891
+* Bugfix: Use reporting status label in site configuration #1867
 
 ## 2.1.0
 
