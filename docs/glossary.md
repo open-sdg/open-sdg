@@ -36,7 +36,7 @@ Github.com is a service that hosts Git repositories, and provides a useful inter
 
 ## Headline
 
-And indicator's "headline" is the data series that contains no disaggregations. It is the data series that is typically displayed first, upon viewing the indicator's page.
+An indicator's "headline" is the data series that contains no disaggregations. It is the data series that is typically displayed first, upon viewing the indicator's page.
 
 ## Pull Request
 
