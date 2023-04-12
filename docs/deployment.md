@@ -10,7 +10,7 @@ That said, the platform does require some server-side technologies to *build* th
 
 The easiest way to perform these builds is to use a free automation service like Github Actions, TravisCI, or CircleCI. Alternatives such as self-hosted Jenkins are possible, but require more maintenance and likely would not be free.
 
-Note that the "starter" repositories are pre-configured to handle all ofthe tasks mentioned in this document, using Github Actions for automation.
+Note that the "starter" repositories are pre-configured to handle all of the tasks mentioned in this document, using Github Actions for automation.
 
 ## Hosting providers
 
