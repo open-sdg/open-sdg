@@ -15,7 +15,8 @@ We recommend the first option. Both are detailed below.
 
 ### Creating an access token
 
-1. Create an access token described in [this official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
+1. Create a personal access token (classic) described in [this official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
+    * Make sure you set up a 'classic' token, not a 'fine-grained' token.
     * Select the `repo` permission, as indicated in those instructions.
     * Save the token somewhere private.
 1. Copy the access token so that you can paste in the next steps.
