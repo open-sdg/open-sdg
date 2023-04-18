@@ -50,11 +50,14 @@ page_content: >
 
   * EmbeddedFeature.feature (confirming the embedded_feature_url setting works)
 
+  * Proxy.feature (confirming that the proxy banner appears)
 
   This is also used to show multiple items in the "Sources" tab.
 permalink: ''
 precision: []
 progress_status: target_achieved
+proxy: proxy
+proxy_series: []
 reporting_status: complete
 sort: ''
 standalone: false

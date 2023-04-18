@@ -79,7 +79,7 @@
     {%- for extra_field in reporting_data.extra_fields -%}
     {% assign extra_field_name = extra_field[0] %}
     <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}view" data-extra-field="true">
-      {% include components/reportingstatus/reporting-status-overall.html overall=reporting_data.overall title=page.t.status.overall_reporting_status status_types="reporting_status" %}
+      {% include components/reportingstatus/reporting-status-overall.html hide_wheel=true overall=reporting_data.overall title=page.t.status.overall_reporting_status status_types="reporting_status" %}
       {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status.status_by_field status_types="reporting_status" %}
     </div>
     {%- endfor -%}
@@ -95,7 +95,7 @@
       {%- for extra_field in disagg_data.extra_fields -%}
       {% assign extra_field_name = extra_field[0] %}
       <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}-disaggregationsview" data-extra-field="true">
-        {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" %}
+        {% include components/reportingstatus/reporting-status-overall.html hide_wheel=true overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" %}
         {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status.disaggregation_status_by_field status_types="disaggregation_status" %}
       </div>
       {%- endfor -%}

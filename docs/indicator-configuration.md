@@ -573,6 +573,33 @@ Options out-of-the-box are:
 * approaching_target
 * target_achieved
 
+### proxy
+
+_Optional_: This setting can be used to flag that an indicator contains "proxy" data, meaning that it is somehow different than the expected UN global indicator. The available settings for this are:
+
+```
+proxy: proxy
+```
+
+Using "proxy" will flag the entire indicator as a proxy.
+
+```
+proxy: both
+```
+
+Using "both" can flag particular series codes within the indicator as proxies. This requires that you also set the `proxy_series` option below.
+
+### proxy_series
+
+This setting is required if you have `proxy` set to "proxy". It should be a list of the series codes within the indicator that you want flagged as "proxy" data. For example:
+
+```
+proxy: both
+proxy_series:
+  - my first series code
+  - my other series code
+```
+
 ### publications
 
 _Optional_: This setting can be used to store details about related publications for an indicator. These can be displayed by having an item in your [metadata_tabs site configuration](configuration.md#metadata_tabs) with a `scope` of `publications`. It can contain any number of publication items, each of which should have a `title` and a `link`, and optionally a `description` (which can contain markdown) and/or `date`. Here is an example of the usage:

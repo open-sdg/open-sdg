@@ -872,6 +872,40 @@ As always, for multilingual support, the label/alt/heading settings can refer to
 
 For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
 
+### progressive_web_app
+
+_Optional_: This setting can be used to make the platform a
+[progressive web app](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps),
+which users can add to their mobile device's home screen and
+use while offline. The available settings are:
+
+* `enabled`: Whether or not this platform will be a progressive web app
+* `name`: The full name of the app, to be displayed on the splash screen
+* `short_name`: The short name of the app, to be displayed under the homescreen icon
+* `precaching`: Whether all indicator and goal pages should be precached when the app is installed
+
+```nohighlight
+progressive_web_app:
+  enabled: true
+  name: Indicators For The Sustainable Development Goals - Mexico
+  short_name: SDG Mexico
+  precaching: false
+```
+
+### proxy_indicators
+
+_Optional_: This setting can be used to override the default label and description that are displayed
+for [proxy indicators](indicator-configuration.md#proxy). The available settings are:
+
+* `label`: The label to display when flagging a proxy indicator. Defaults to 'Proxy'.
+* `description`: The description to display at the top of indicator pages, explaining what 'Proxy' means.
+
+```nohighlight
+proxy_indicators:
+  label: My alternate proxy label
+  description: My alternate proxy description
+```
+
 ### remote_data_prefix
 
 **_Required_**: This setting tells the platform where to find your hosted [data repository](glossary.md#data-repository).

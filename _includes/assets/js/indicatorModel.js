@@ -51,6 +51,8 @@ var indicatorModel = function (options) {
   this.compositeBreakdownLabel = options.compositeBreakdownLabel;
   this.precision = options.precision;
   this.dataSchema = options.dataSchema;
+  this.proxy = options.proxy;
+  this.proxySerieses = (this.proxy === 'both') ? options.proxySeries : [];
 
   this.initialiseUnits = function() {
     if (this.hasUnits) {
@@ -252,7 +254,8 @@ var indicatorModel = function (options) {
 
       this.onSeriesesComplete.notify({
         serieses: this.serieses,
-        selectedSeries: this.selectedSeries
+        selectedSeries: this.selectedSeries,
+        proxySerieses: this.proxySerieses,
       });
     }
 
@@ -280,6 +283,8 @@ var indicatorModel = function (options) {
         precisionItems: this.precision,
         dataSchema: this.dataSchema,
         chartTitles: this.chartTitles,
+        proxy: this.proxy,
+        proxySerieses: this.proxySerieses,
       });
     }
 
@@ -342,6 +347,7 @@ var indicatorModel = function (options) {
       indicatorDownloads: this.indicatorDownloads,
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
       timeSeriesAttributes: timeSeriesAttributes,
+      isProxy: this.proxy === 'proxy' || this.proxySerieses.includes(this.selectedSeries),
     });
   };
 };

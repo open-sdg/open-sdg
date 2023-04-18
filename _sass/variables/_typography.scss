@@ -19,6 +19,8 @@ $smallText-fontSize: $fontSize-small !default;
 $breadcrumbs-fontSize: 16px !default;
 $button-fontSize: 14px !default;
 $tag-fontSize: 12px !default;
+$proxy-fontSize: $fontSize !default;
+$proxy-fontSize-small: $fontSize-small !default;
 
 // Component-level typography variables.
 // [component] - [element] - [fontSize|fontWeight|etc] - [...modifiers]
