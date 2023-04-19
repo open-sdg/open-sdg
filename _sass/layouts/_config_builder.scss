@@ -1,11 +1,14 @@
 .layout-config-builder {
 
-    .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true:not(:empty) {
+    .MuiGrid-container > .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true:not(:empty) {
         border-top: 5px solid rgb(25, 118, 210);
         padding-top: 20px;
         margin-top: 20px;
         &:first-child {
             margin-top: -0.5em;
+        }
+        .MuiGrid-container > .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true:not(:empty) {
+            border-top: none;
         }
     }
 }
