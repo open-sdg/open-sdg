@@ -6,7 +6,7 @@ GitHub Pages is a great option for hosting your production environment, because 
 
 ## Requirements
 
-Before setting up your production site, you will need to [configure triggered builds](https://open-sdg.readthedocs.io/en/latest/automation/triggered-site-builds/), if you have not already done so.
+Before setting up your production site, you will need to [configure triggered builds](https://open-sdg.readthedocs.io/en/latest/automation/triggered-site-builds/), if you have not already done so. This includes creating a personal access token (classic).
 
 ## Default site address
 

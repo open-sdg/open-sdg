@@ -1,6 +1,6 @@
 <h1>Potential users</h1>
 
-If you are considering using an Open SDG platform, we would love to hear about it. Please email the Open SDG team at [opensdg@googlegroups.com](mailto:opensdg@googlegroups.com) or [raise an issue on GitHub](https://github.com/open-sdg/open-sdg/issues/new) to let us know and ask us questions.
+If you are considering using an Open SDG platform, we would love to hear about it. Please email the Open SDG team at [opensdg@outlook.com](mailto:opensdg@outlook.com) or [raise an issue on GitHub](https://github.com/open-sdg/open-sdg/issues/new) to let us know and ask us questions.
 
 For general information about Open SDG, please also see the [FAQ page](faq.md) and the [Features page](open-sdg-features.md). When you are ready to start setting up your Open SDG platform, check out the [quick start guide](quick-start.md).
 

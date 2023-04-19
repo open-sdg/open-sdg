@@ -6,7 +6,7 @@ Open SDG supports a few different types of charts. Each indicator will display a
 
 This type of chart is a horizontal line connecting points representing each year. Disaggregations are displayed by adding more lines to the chart.
 
-> This type of chart works well for showing trends in SDG data.
+This type of chart works well for showing trends in SDG data.
 
 To use this type, put `line` in the `graph_type` metadata field for an indicator. For example:
 
@@ -18,8 +18,7 @@ graph_type: line
 
 This type of chart shows each year as a vertical bar. Disaggregations are displayed by adding more bars above each year.
 
-> This type of chart may be a suitable alternative to `line` in the case where you
-> only have 1 or 2 years of data.
+This type of chart may be a suitable alternative to `line` in the case where you only have 1 or 2 years of data.
 
 To use this type, put `bar` in the `graph_type` metadata field for an indicator. For example:
 
