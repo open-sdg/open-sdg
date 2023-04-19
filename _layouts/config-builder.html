@@ -14,8 +14,8 @@
       initialData: null,
       configFilename: {{ page.config_filename | jsonify }},
       configFolder: 'tests/site/_data',
-      githubClientId: 'd057ffc62f01ce8f3376',
-      githubProxyUrl: 'https://open-sdg-github-auth-production.up.railway.app',
+      //githubClientId: 'd057ffc62f01ce8f3376',
+      //githubProxyUrl: 'https://open-sdg-github-auth-production.up.railway.app',
       githubRepo: 'open-sdg',
       githubOwner: 'open-sdg',
     };
@@ -34,6 +34,6 @@
     {% endif %}
     console.log(opensdg.configForm);
   </script>
-  <script src="/assets/js/bundle.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/bundle.js"></script>
 </div>
 {% include footer.html %}
