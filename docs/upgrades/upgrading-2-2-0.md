@@ -68,3 +68,34 @@ If you are overriding certain files, you may need to adjust your version in orde
 * [_layouts/reportingstatus.html](https://github.com/open-sdg/open-sdg/compare/2.1.0-dev...2.2.0-dev#diff-f3789d9a98b0217b53eb383897faf37ac74aedbcc63a078300947d8d65a192cd)
 
 Note that we strive to avoid any breaking changes, so this process of updating overridden files is optional. However we strongly recommend keeping your overridden files as current as possible.
+
+## New features
+
+This release introduces some optional features that you may be interested in adding to your platform.
+
+### Proxy
+
+Open SDG now has the functionality to mark indicator data as “proxy” data with a label and definition, meaning that it is somehow different than the expected UN global indicator.
+
+To set an entire indicator to be a "proxy", this line is needed in each indicator configuration file in the metadata section on indicator pages:
+
+```
+proxy: proxy
+```
+
+If your data has multiple series and not all of them are proxies, this is needed instead, to define which series are proxies (for example):
+
+```
+proxy: both
+proxy_series:
+  - my first proxy series
+  - my other proxy series
+```
+
+To change the text that appears for the proxy description as default, add this to the `site_config.yml` file in your site repository to customise the description text. Note: you will need to update the translation for this if you use any other languages on the site.
+
+```
+proxy_indicators:
+  label: Proxy
+  description: My alternate proxy description
+```
