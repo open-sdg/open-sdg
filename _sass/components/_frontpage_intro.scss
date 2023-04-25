@@ -18,3 +18,14 @@
         background-repeat: no-repeat;
     }
 }
+
+body.contrast-high {
+    .site-intro {
+        @media only screen and (min-width: 700px) {
+            background: url('../img/high-contrast/SDG Wheel_Transparent-01.png');
+            background-position: right 60px top;
+            background-size: 180px;
+            background-repeat: no-repeat;
+        }
+    }
+}
