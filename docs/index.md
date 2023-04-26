@@ -20,3 +20,5 @@ Interested in setting up your own version of Open SDG? Use our [Quick Start](qui
 Want to know more about who else has Open SDG and why? See our 'Open SDG users section', including a [List of users](https://open-sdg.org/community) and various case studies.
 
 We hope this documentation is helpful for getting your Open SDG project started. If you have comments, feedback, or want to get involved with the Open SDG community then please [contact us](support.md).
+
+Help us improve the Open SDG website and documentation, take this [short survey](https://www.surveymonkey.co.uk/r/DFVB8PJ) to share your feedback
