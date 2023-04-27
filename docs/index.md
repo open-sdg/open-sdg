@@ -22,4 +22,4 @@ Want to know more about who else has Open SDG and why? See our 'Open SDG users s
 
 We hope this documentation is helpful for getting your Open SDG project started. If you have comments, feedback, or want to get involved with the Open SDG community then please [contact us](support.md).
 
-Help us improve the Open SDG website and documentation, take this [short survey](https://www.surveymonkey.co.uk/r/DFVB8PJ) to share your feedback.
+**Help us improve the Open SDG website and documentation, take this <a href="https://www.surveymonkey.co.uk/r/DFVB8PJ" target="_blank"> short survey </a> to share your feedback.**
