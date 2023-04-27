@@ -4,7 +4,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 ## 2.2.0
 
-TBD
+26 April 2023
 
 * Feature for flagging indicators as "proxy"
 * More granular control over disaggregations on maps
