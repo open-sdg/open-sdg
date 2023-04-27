@@ -1,0 +1,22 @@
+User-agent: *
+
+Disallow: /en/0.10.0/
+Disallow: /en/1.0.0/
+Disallow: /en/1.0.1/
+Disallow: /en/1.0.2/
+Disallow: /en/1.1.0/
+Disallow: /en/1.2.0/
+Disallow: /en/1.3.0/
+Disallow: /en/1.3.1/
+Disallow: /en/1.4.0/
+Disallow: /en/1.5.0/
+Disallow: /en/1.5.1/
+Disallow: /en/1.5.2/
+Disallow: /en/1.5.3/
+Disallow: /en/1.6.0/
+Disallow: /en/1.7.0/
+Disallow: /en/1.8.0/
+Disallow: /en/1.8.1/
+Disallow: /en/2.0.0/
+
+Sitemap: https://docs.readthedocs.io/sitemap.xml
