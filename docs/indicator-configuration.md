@@ -259,6 +259,18 @@ footer_fields:
     value: My other field content
 ```
 
+### goal_heading
+
+_Optional_: By default, goal pages will have a heading that includes the goal number as well as the shortened version of the goal name. For example, `Goal 1: No Poverty`. If you would like to control the heading, you can use this `goal_heading` option. For example, if you use this...
+
+```nohightlight
+goal_heading: End poverty
+```
+
+...then the heading on the page would be `End Poverty`. Notably, the `Goal 1: ` is not added, to allow you to have full control.
+
+This option can be used to help with search-engine optimization (SEO) so that your goal pages appear higher in the appropriate Google/Bing/etc search results.
+
 ### graph_annotations
 
 _Optional_: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
