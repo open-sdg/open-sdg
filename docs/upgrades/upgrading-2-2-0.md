@@ -109,7 +109,7 @@ There are a number of SEO additions to this update including:
 
 Meta Tags
 
-Title tags and meta desctriptions are two important elements of SEO. Title tags are the clickable headlines that appear in search engine results pages, while meta descriptions are brief summaries of the page's content. Both title tags and meta descriptions can help improve your website's click-through rate (CTR), which is the percentage of people who see your listing in the SERPs and click on it.
+Title tags and meta desctriptions are two important elements of SEO. Title tags are the clickable headlines that appear in search engine results pages (SERP), while meta descriptions are brief summaries of the page's content. Both title tags and meta descriptions can help improve your website's click-through rate (CTR), which is the percentage of people who see your listing in the SERPs and click on it.
 
 This setting can be used to set [meta tags](https://www.w3schools.com/tags/tag_meta.asp) on any of the paths within the site. It should contain a list of items, each containing a `path`, a `name`, and `content`.
 
