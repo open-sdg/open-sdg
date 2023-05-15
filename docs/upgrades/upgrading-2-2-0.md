@@ -73,6 +73,61 @@ Note that we strive to avoid any breaking changes, so this process of updating o
 
 This release introduces some optional features that you may be interested in adding to your platform.
 
+### Chart image size 
+
+When a chart image is downloaded, it now downloads as double the size.  
+
+### colorRange [need to check if users will need to change these themselves or will it be automatic?] 
+
+Open SDG now has the functionality to specify the map colours. These have been set to the following as default to be the most accessible they can be: 
+
+``` 
+colorRange: 
+- '#c4e1c6' 
+- '#b0d1b3' 
+- '#9bc2a1' 
+- '#87b28f' 
+- '#74a37c' 
+- '#60946b' 
+- '#4d8559' 
+- '#3a7747' 
+- '#276836' 
+``` 
+
+Note: while these colours can be changed, this may affect the accessibility of the maps, particularly for the visually impaired, so this should be done with caution. 
+
+### data_start_values 
+
+This setting can now be used for maps so that the data you’d like to appear first when initially opening the map tab, can be prescribed. 
+
+### progressive_web_app  
+
+Open SDG now has the functionality to make the platform into a web app which users can add to their mobile device's home screen and use while offline. To enable this, you will need to edit your config file. Once enabled the web app can be installed to a user’s mobile device by visiting the settings while visiting the platform on a browser app. 
+
+To enable this, edit your config file to include the field below 
+
+``` 
+progressive_web_app: 
+  enabled: true 
+  name: My SDG App Name 
+  short_name: SDG App 
+  precaching: true 
+``` 
+
+The "precaching" is what is meant to allow the site to be viewed even while offline. 
+
+Add these? 
+
+### Fix for "Edit data" indicator form 
+
+### Fix reference to map time dimension nezasa dependency  
+
+### Year range per disaggregation 
+
+### Support for map functions 
+
+### Use reporting status label in site configuration
+
 ### Proxy
 
 Open SDG now has the functionality to mark indicator data as “proxy” data with a label and definition, meaning that it is somehow different than the expected UN global indicator.
