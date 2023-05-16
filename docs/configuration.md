@@ -130,19 +130,25 @@ _Optional_: This setting can be used to automatically create the goal pages. Wit
 This setting can contain several (indented) sub-settings:
 * `goal_content_heading`: Text entered here will appear as an H2 heading above any content configured below in 'goals'.
 * `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
-* `goals`: This optional item can include an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key. They should be in order of goal number.
+* `goals`: This optional item can include an array of objects, each with can have these optional fields:
+    * `goal`: This can specify the goal number. For example: `goal: 1`. This is optional but recommended. If you omit this, then it is your responsibility to make sure that all of the objects in this array are *in order*. In other words, the first object is goal 1, the second object is goal 2, etc.
+    * `heading`: Text entered here will appear as an H1 heading at the top of the goal page. This is optional and overrides the default (eg, 'Goal 1: No Poverty'). This is useful for SEO purposes, and can be plain text or a translation key.
+    * `content`: Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
+    * `content_heading`: Text entered here will appear as an H2 heading above the `content` configured above. Note that this overrides the site-wide `goal_content_heading` option above as well.
 
 ```nohighlight
 create_goals:
   goal_content_heading: About
   previous_next_links: true
   goals:
-    - content: My content for goal 1
+    - heading: My heading for goal 1
+      content: My content for goal 1
     - content: My content for goal 2 with a [link](https://example.com)
+      content_heading: My sub-heading for the content on goal 2
     - content: custom.my_translation_key_for_goal_3
 ```
 
-Alternatively the `goals` section can specify the goal number of each item, so that it does not need to be in a particular order, as in the following example:
+It is recommend that each object in the `goals` section specify the `goal` number of each item. This is preferred because it allows you to have the objects in any order. For example:
 
 ```nohighlight
 create_goals:
@@ -153,7 +159,9 @@ create_goals:
       content: custom.my_translation_key_for_goal_3
     - goal: 2
       content: My content for goal 2 with a [link](https://example.com)
+      content_heading: My sub-heading for the content on goal 2
     - goal: 1
+      heading: My heading for goal 1
       content: My content for goal 1
 ```
 
