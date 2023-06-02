@@ -91,7 +91,7 @@ The "precaching" is what is meant to allow the site to be viewed even while offl
 
 ### Proxy
 
-Open SDG now has the functionality to mark indicator data as “proxy” data with a label and definition, meaning that it is somehow different than the expected UN global indicator.
+When the indicator data provided is alternative to that specified by the UN, Open SDG now has the functionality to mark it as “proxy” data with a label and definition.
 
 To set an entire indicator to be a "proxy", this line is needed in each indicator configuration file in the metadata section on indicator pages:
 
