@@ -591,7 +591,7 @@ Using "both" can flag particular series codes within the indicator as proxies. T
 
 ### proxy_series
 
-This setting is required if you have `proxy` set to "proxy". It should be a list of the series codes within the indicator that you want flagged as "proxy" data. For example:
+This setting is required if you have `proxy` set to "both". It should be a list of the series codes within the indicator that you want flagged as "proxy" data. For example:
 
 ```
 proxy: both
