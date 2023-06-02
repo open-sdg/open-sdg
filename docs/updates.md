@@ -6,7 +6,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 
 26 April 2023
 
-* Feature for flagging indicators as "proxy"
+* Feature for tagging indicator data as "proxy"
 * More granular control over disaggregations on maps
 * High-resolution chart image downloads
 * SEO improvements: custom meta tags on any page, and custom headings on goal pages
