@@ -228,7 +228,7 @@ function sortFieldsForView(fieldItemStates, edges) {
       }
     });
     fieldItemStates.forEach(function(fieldItem) {
-      if (typeof tempHierarchyHash[fieldItem.topLevelParent] !== 'undefined') {
+      if (typeof tempHierarchyHash[fieldItem.topLevelParent] === 'undefined') {
         return;
       }
       if (fieldItem.topLevelParent !== '') {
