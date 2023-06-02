@@ -73,33 +73,6 @@ Note that we strive to avoid any breaking changes, so this process of updating o
 
 This release introduces some optional features that you may be interested in adding to your platform.
 
-### Chart image size 
-
-When a chart image is downloaded, it now downloads as double the size.  
-
-### colorRange [need to check if users will need to change these themselves or will it be automatic?] 
-
-Open SDG now has the functionality to specify the map colours. These have been set to the following as default to be the most accessible they can be: 
-
-``` 
-colorRange: 
-- '#c4e1c6' 
-- '#b0d1b3' 
-- '#9bc2a1' 
-- '#87b28f' 
-- '#74a37c' 
-- '#60946b' 
-- '#4d8559' 
-- '#3a7747' 
-- '#276836' 
-``` 
-
-Note: while these colours can be changed, this may affect the accessibility of the maps, particularly for the visually impaired, so this should be done with caution. 
-
-### data_start_values 
-
-This setting can now be used for maps so that the data you’d like to appear first when initially opening the map tab, can be prescribed. 
-
 ### progressive_web_app  
 
 Open SDG now has the functionality to make the platform into a web app which users can add to their mobile device's home screen and use while offline. To enable this, you will need to edit your config file. Once enabled the web app can be installed to a user’s mobile device by visiting the settings while visiting the platform on a browser app. 
@@ -115,18 +88,6 @@ progressive_web_app:
 ``` 
 
 The "precaching" is what is meant to allow the site to be viewed even while offline. 
-
-Add these? 
-
-### Fix for "Edit data" indicator form 
-
-### Fix reference to map time dimension nezasa dependency  
-
-### Year range per disaggregation 
-
-### Support for map functions 
-
-### Use reporting status label in site configuration
 
 ### Proxy
 
@@ -191,3 +152,23 @@ Example code for Goal 6 heading being the H1 and content_heading being the H2
       heading: Goal 6 - Clean Water and Sanitation
       content_heading: Ensure availability and sustainable management of water and sanitation for all
 ```
+
+### colorRange function support and easier overrides
+
+The maps in Open SDG are "choropleth" maps, where each region is given a color according to its numeric value. The range of colors that will be used is controlled in the `colorRange` parameter in the `map_options` site configuration. The value of this option is now much more flexible: it can refer to a JavaScript variable or a JavaScript function. This allows for very granular control of the map colors, in a dynamic way.
+
+However if you are interested in use one set of map colors for every map on your site, the easiest way to accomplish this is to override this file: `_includes/assets/js/mapColors.json`.
+
+Note: while these colours can be changed, this may affect the accessibility of the maps, particularly for the visually impaired, so this should be done with caution.
+
+For more details about using `colorRange` to control the map colors, see [the map documentation](https://github.com/open-sdg/open-sdg/blob/2.2.0-dev/docs/maps.md#colorrange).
+
+## Bug-fixes and improvements
+
+* A broken reference to one of the map dependencies ("nezasa") is fixed in this release
+* The reporting status overall row now shows the SDG wheel, so that it lines up visually with the other rows
+* The built-in data edit functionality ("Edit data") has been fixed after a dependency updated
+* The range of years on maps now correctly updates for each disaggregation
+* The indicator configuration `data_start_values` now works for maps
+* When a chart image is downloaded, it now downloads as double the size
+* The reporting status "label" option in the site configuration is now correctly used
