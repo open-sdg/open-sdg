@@ -73,6 +73,22 @@ Note that we strive to avoid any breaking changes, so this process of updating o
 
 This release introduces some optional features that you may be interested in adding to your platform.
 
+### progressive_web_app  
+
+Open SDG now has the functionality to make the platform into a web app which users can add to their mobile device's home screen and use while offline. To enable this, you will need to edit your config file. Once enabled the web app can be installed to a user’s mobile device by visiting the settings while visiting the platform on a browser app. 
+
+To enable this, edit your config file to include the field below 
+
+``` 
+progressive_web_app: 
+  enabled: true 
+  name: My SDG App Name 
+  short_name: SDG App 
+  precaching: true 
+``` 
+
+The "precaching" is what is meant to allow the site to be viewed even while offline. 
+
 ### Proxy
 
 Open SDG now has the functionality to mark indicator data as “proxy” data with a label and definition, meaning that it is somehow different than the expected UN global indicator.
@@ -99,3 +115,60 @@ proxy_indicators:
   label: Proxy
   description: My alternate proxy description
 ```
+
+### Search Engine Optimization (SEO) Customisation Options
+
+There are a number of SEO additions to this update including:
+
+- Meta Tags
+- Goal Page H1s & H2s
+
+Meta Tags
+
+Title tags and meta desctriptions are two important elements of SEO. Title tags are the clickable headlines that appear in search engine results pages (SERP), while meta descriptions are brief summaries of the page's content. Both title tags and meta descriptions can help improve your website's click-through rate (CTR), which is the percentage of people who see your listing in the SERPs and click on it.
+
+This setting can be used to set [meta tags](https://www.w3schools.com/tags/tag_meta.asp) on any of the paths within the site. It should contain a list of items, each containing a `path`, a `name`, and `content`.
+
+```
+meta_tags:
+  - path: about
+    name: description
+    content: My description text for the About page
+  - path: '1'
+    name: keywords
+    content: my list of keywords for Goal 1
+```
+
+Goal Page H1s & H2s
+
+H1 and H2 tags are HTML elements that are used to define headings in a web page. H1 tags are the most important headings, followed by H2 tags. Heading tags are important for SEO because they help search engines understand the structure of your content and the topitcs that you are writing about. They also help users scan your content to find the information they are looking for.
+
+Text entered here will appear as an H1 heading at the top of the goal page. This is optional and overrides the default (eg, 'Goal 1: No Poverty'). This is useful for SEO purposes, and can be plain text or a translation key.
+
+Example code for Goal 6 heading being the H1 and content_heading being the H2
+
+```
+    - goal: 6
+      heading: Goal 6 - Clean Water and Sanitation
+      content_heading: Ensure availability and sustainable management of water and sanitation for all
+```
+
+### colorRange function support and easier overrides
+
+The maps in Open SDG are "choropleth" maps, where each region is given a color according to its numeric value. The range of colors that will be used is controlled in the `colorRange` parameter in the `map_options` site configuration. The value of this option is now much more flexible: it can refer to a JavaScript variable or a JavaScript function. This allows for very granular control of the map colors, in a dynamic way.
+
+However if you are interested in use one set of map colors for every map on your site, the easiest way to accomplish this is to override this file: `_includes/assets/js/mapColors.json`.
+
+Note: while these colours can be changed, this may affect the accessibility of the maps, particularly for the visually impaired, so this should be done with caution.
+
+For more details about using `colorRange` to control the map colors, see [the map documentation](https://github.com/open-sdg/open-sdg/blob/2.2.0-dev/docs/maps.md#colorrange).
+
+## Bug-fixes and improvements
+
+* A broken reference to one of the map dependencies ("nezasa") is fixed in this release
+* The reporting status overall row now shows the SDG wheel, so that it lines up visually with the other rows
+* The built-in data edit functionality ("Edit data") has been fixed after a dependency updated
+* The range of years on maps now correctly updates for each disaggregation
+* The indicator configuration `data_start_values` now works for maps
+* When a chart image is downloaded, it now downloads as double the size
+* The reporting status "label" option in the site configuration is now correctly used
