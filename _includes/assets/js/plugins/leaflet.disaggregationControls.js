@@ -458,6 +458,9 @@
                                 return disaggregation[field];
                             })),
                         };
+                    if (typeof sortedValues === 'undefined') {
+                        return;
+                    }
                     item.values.sort(function(a, b) {
                         return sortedValues.indexOf(a) - sortedValues.indexOf(b);
                     });
