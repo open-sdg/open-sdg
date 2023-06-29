@@ -15,7 +15,9 @@
 #selectionsTable {
     div.dataTables_wrapper {
         overflow-x: auto;
-
+        overflow-y: auto;
+        height: fit-content;
+        max-height: $datatable-maxHeight;
         .row {
             margin-left: 0;
             margin-right: 0;
@@ -23,6 +25,10 @@
     }
     table {
         caption-side: top;
+        thead {
+            position: sticky;
+            inset-block-start: 0;
+        }
         thead th {
             cursor: pointer;
 
@@ -53,6 +59,28 @@
         }
         tbody th {
             font-weight: normal;
+        }
+        th:first-child {
+            position: sticky;
+            inset-inline-start: 0;
+        }
+    }
+    div.dataTables_wrapper.scrolled-y {
+        thead {
+            background-color: $backgroundColor;
+            box-shadow: $text-color 0px 5px 6px -6px;
+            z-index: 1;
+        }
+    }
+    div.dataTables_wrapper.scrolled-x {
+        th:first-child {
+            background-color: $backgroundColor;
+        }
+        thead th:first-child {
+            z-index: 2;
+        }
+        tbody th:first-child {
+            box-shadow: $text-color 1px 1px 2px 0px;
         }
     }
 
