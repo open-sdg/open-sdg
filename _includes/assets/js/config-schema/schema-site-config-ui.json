@@ -224,7 +224,10 @@
             "elements": [
                 {
                     "type": "Control",
-                    "scope": "#/properties/hide_empty_metadata"
+                    "scope": "#/properties/hide_empty_metadata",
+                    "options": {
+                        "toggle": true
+                    }
                 },
                 {
                     "type": "Control",

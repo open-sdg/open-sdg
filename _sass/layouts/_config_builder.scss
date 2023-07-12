@@ -11,6 +11,28 @@
             border-top: none;
         }
     }
+
+    .MuiButton-root,
+    .MuiTab-root,
+    .MuiTypography-root,
+    .MuiFormLabel-root {
+        font-family: $fontFamily;
+    }
+
+    .MuiButton-root {
+        @include button;
+        @include buttonDownload;
+        text-transform: capitalize;
+    }
+
+    .MuiTab-root {
+        text-transform: capitalize;
+    }
+
+    .MuiAppBar-root {
+        background-color: transparent;
+        color: $text-color;
+    }
 }
 
 body.contrast-high.layout-config-builder {
@@ -21,5 +43,9 @@ body.contrast-high.layout-config-builder {
         span {
             color: $color-dark-highContrast;
         }
+    }
+    .MuiButton-root {
+        @include buttonHighContrast;
+        @include buttonDownloadHighContrast;
     }
 }
