@@ -54,7 +54,7 @@ Feature: Indicator
     Then I should see "This is the page content in English."
 
   Scenario: Indicators get an iframe-friendly version.
-    And I am on "/1-1-1/iframe"
+    And I am on "/1-1-1-iframe"
     Then I should see "This is the page content in English."
 
   Scenario: Country name is translated in table header.
