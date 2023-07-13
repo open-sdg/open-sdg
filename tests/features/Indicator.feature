@@ -52,3 +52,7 @@ Feature: Indicator
 
   Scenario: Indicators can display a free form blurb at the top.
     Then I should see "This is the page content in English."
+
+  Scenario: Indicators get an iframe-friendly version.
+    And I am on "/1-1-1/iframe"
+    Then I should see "This is the page content in English."
