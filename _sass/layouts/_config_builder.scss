@@ -33,6 +33,11 @@
         background-color: transparent;
         color: $text-color;
     }
+
+    .MuiInput-input {
+        border: 1px solid $color-medium-highContrast;
+        padding: 5px;
+    }
 }
 
 body.contrast-high.layout-config-builder {
