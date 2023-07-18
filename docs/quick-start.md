@@ -38,7 +38,7 @@ Once the builds are complete, you can view them, using the following steps:
 1. Under the repository name, click "Settings".
 1. In the sidebar, click on "Pages".
 1. You should see "Your site is published at" next to a link.
-1. Click that link to view your data service.
+1. Click that link to view your site.
 1. Bookmark this page -- this is your *site*.
 
 ## Connect your site to your data service
