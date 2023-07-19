@@ -25,7 +25,8 @@ We recommend the first option. Both are detailed below.
 
 1. Go to the *site repository*.
 1. Under the repository name, click "Settings".
-1. In the left sidebar, click "Secrets".
+1. In the left sidebar, click "Secrets and variables".
+1. Click "Actions"
 1. Click "New repository secret".
 1. Under "Name", type the following (case-sensitive): `token`
 1. Under "Value", paste in the access token you copied earlier.
@@ -35,7 +36,8 @@ Then repeat this for the data repository, as follows:
 
 1. Go to the *data repository*.
 1. Under the repository name, click "Settings".
-1. In the left sidebar, click "Secrets".
+1. In the left sidebar, click "Secrets and variables".
+1. Click "Actions"
 1. Click "New repository secret".
 1. Under "Name", type the following (case-sensitive): `token`
 1. Under "Value", paste in the access token you copied earlier.
