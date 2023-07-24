@@ -16,7 +16,7 @@
         <h2 class="status-goal">
             {{ include.title }}
         </h2>
-        <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
+        <span class="total"><span>{{ overall.totals.total }}</span> {{ include.indicator_count_label | t | default: indicators_plural }}</span>
         <div class="summary">
             <div class="statuses">
             {%- for status_type in status_types -%}

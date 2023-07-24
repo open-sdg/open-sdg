@@ -17,9 +17,9 @@
         </h3>
         <span class="total">{{ fieldreport.totals.total }}
             {% if fieldreport.totals.total == 1 %}
-                {{ indicator_singular }}
+                {{ include.indicator_count_label | t | default: indicator_singular }}
             {% else %}
-                {{ indicators_plural }}
+                {{ include.indicator_count_label | t | default: indicators_plural }}
             {% endif %}
         </span>
         <div class="summary">
