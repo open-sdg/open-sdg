@@ -35,10 +35,10 @@ function toCsv(tableData, selectedSeries, selectedUnit) {
             line.push(dataValues[index]);
         });
         if (selectedSeries) {
-            line.push(translations.t(selectedSeries));
+            line.push(JSON.stringify(translations.t(selectedSeries)));
         }
         if (selectedUnit) {
-            line.push(translations.t(selectedUnit));
+            line.push(JSON.stringify(translations.t(selectedUnit)));
         }
 
         lines.push(line.join(','));
