@@ -139,7 +139,7 @@ function setPlotEvents(chartInfo) {
         $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
     });
 
-    createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
+    createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload', chartInfo.selectedSeries, chartInfo.selectedUnit);
     createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
     createIndicatorDownloadButtons(chartInfo.indicatorDownloads, chartInfo.shortIndicatorId, '#chartSelectionDownload');
 
@@ -246,7 +246,7 @@ function createPlot(chartInfo) {
     VIEW._chartInstance.update();
 
     $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
-    updateChartDownloadButton(chartInfo.selectionsTable);
+    updateChartDownloadButton(chartInfo.selectionsTable, chartInfo.selectedSeries, chartInfo.selectedUnit);
 };
 
 /**
