@@ -34,10 +34,23 @@
         color: $text-color;
     }
 
-    .MuiInput-input {
+    .MuiInput-input:not([role="combobox"]) {
         border: 1px solid $color-medium-highContrast;
         padding: 5px;
     }
+    /*
+    .MuiAutocomplete-inputRoot {
+        width: fit-content;
+        input[role="combobox"] {
+            min-width: fit-content;
+        }
+    }
+    */
+    /*
+    .MuiInput-input[type="number"] {
+        width: fit-content;
+    }
+    */
 }
 
 body.contrast-high.layout-config-builder {
