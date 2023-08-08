@@ -22,6 +22,7 @@
                 {{ include.indicator_count_label | t | default: indicators_plural }}
             {% endif %}
         </span>
+        {% if fieldreport.totals.total > 0 %}
         <div class="summary">
             <div class="statuses">
                 {%- for status_type in status_types -%}
@@ -46,6 +47,7 @@
                 {% endif %}
             {%- endfor -%}
         </div>
+        {% endif %}
         <div class="divider"></div>
     </div>
     <br style="clear:both;">

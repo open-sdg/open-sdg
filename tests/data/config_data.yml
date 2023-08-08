@@ -43,6 +43,8 @@ map_layers:
 reporting_status_extra_fields:
   - un_custodian_agency
 
+ignore_out_of_scope_disaggregation_stats: true
+
 docs_subfolder: documentation
 
 datapackage:
