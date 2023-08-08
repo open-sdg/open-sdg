@@ -961,7 +961,7 @@ Here is an example of using these settings:
 reporting_status:
     title: title goes here
     description: description goes here
-    disaggregtaion_indicator_count_label: indicators in scope
+    disaggregation_indicator_count_label: indicators in scope
     disaggregation_tabs: true
     status_types:
       - value: notstarted
