@@ -6,12 +6,38 @@
             "label": "Content",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/disclaimer"
+                    "type": "Group",
+                    "label": "Disclaimer",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/disclaimer/properties/phase"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/disclaimer/properties/message"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/disclaimer/properties/hidden",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/news"
+                    "type": "Group",
+                    "label": "News",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/news/properties/category_links",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
                     "type": "Control",
@@ -50,8 +76,29 @@
             "label": "Status",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/reporting_status"
+                    "type": "Group",
+                    "label": "Reporting status",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/description"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/disaggregation_tabs",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/status_types"
+                        }
+                    ]
                 },
                 {
                     "type": "Control",
@@ -98,8 +145,39 @@
                     ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/frontpage_cards"
+                    "type": "ListWithDetail",
+                    "scope": "#/properties/frontpage_cards",
+                    "options": {
+                        "detail": {
+                            "type": "VerticalLayout",
+                            "elements": [
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/title"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/content"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/include"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/button_label"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/button_link"
+                                },
+                                {
+                                    "type": "Control",
+                                    "scope": "#/properties/rule_color"
+                                }
+                            ]
+                        }
+                    }
                 }
             ]
         },
@@ -169,8 +247,48 @@
                     ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/create_goals"
+                    "type": "Group",
+                    "label": "Create Goals",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/create_goals/properties/previous_next_links",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/create_goals/properties/goal_content_heading"
+                        },
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/create_goals/properties/goals",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/heading"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content_heading"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/goal"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
                 }
             ]
         },

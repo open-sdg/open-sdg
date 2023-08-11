@@ -38,6 +38,29 @@
         border: 1px solid $color-medium-highContrast;
         padding: 5px;
     }
+
+    .MuiTabs-scroller {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .MuiGrid-spacing-xs-2 {
+        justify-content: space-between;
+        > .MuiGrid-item:first-child {
+            max-width: 100%;
+        }
+        > .MuiGrid-itm:last-child {
+            max-width: 50%;
+            .MuiListItem-root {
+                .MuiListItemText-root {
+                    min-width: fit-content;
+                }
+            }
+            .MuiListItemSecondaryAction-root {
+                right: -50px;
+            }
+        }
+    }
     /*
     .MuiAutocomplete-inputRoot {
         width: fit-content;
