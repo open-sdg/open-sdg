@@ -16,7 +16,7 @@ There are several ways to specify this configuration, but here is an example:
 
 ```
 analytics:
-  ga_prod: 'paste ID here'
+  gtag: 'Paste ID Here'
 ```
 
 For more details, see the documentation on this [analytics site configuration setting](configuration.md#analytics).
