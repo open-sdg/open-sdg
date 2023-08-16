@@ -1,12 +1,5 @@
 <h1>News & events</h1>
 
-<h3>Newsletters</h3>
-
-To keep up to date with everything Open SDG [subscribe to the newsletter.](opensdg@outlook.com)
-
-Published newsletters can be found on the [Open SDG website.](https://open-sdg.org/news-and-events)
-
-
 <h3>Open SDG v2.2.0</h3>
 
 The Open SDG team have been working hard to release Open SDG v2.2.0.
@@ -22,3 +15,10 @@ H1 and H2 tags are HTML elements that are used to define headings in a web page.
 
 
 For more information about the v2.2.0 release, check out the [the list of updates](updates.md#100) and for a more technical list of platform changes, see the [change log](changelog.md).
+
+<h3>Newsletters</h3>
+
+To keep up to date with everything Open SDG [subscribe to the newsletter.](opensdg@outlook.com)
+
+Published newsletters can be found on the [Open SDG website.](https://open-sdg.org/news-and-events)
+
