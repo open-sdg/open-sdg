@@ -1,7 +1,5 @@
 <h1>News & events</h1>
 
-## News
-
 <h3>Newsletters</h3>
 
 To keep up to date with everything Open SDG [subscribe to the newsletter.](opensdg@outlook.com)
