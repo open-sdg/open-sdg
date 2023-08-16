@@ -10,7 +10,7 @@ Information on version 2.2.0 an be found in the [upgrades section,](https://open
 
 <h3>Newsletters</h3>
 
-To keep up to date with news and events within Open SDG [subscribe to the newsletter.](opensdg@outlook.com)
+To keep up to date with news and events within Open SDG [subscribe to the newsletter.](mailto:opensdg@outlook.com)
 
 Published newsletters can be found on the [Open SDG website.](https://open-sdg.org/news-and-events)
 
