@@ -2,6 +2,13 @@
 
 ## News
 
+<h3>Newsletters</h3>
+
+To keep up to date with everything Open SDG [subscribe to the newsletter.](opensdg@outlook.com)
+
+Published newsletters can be found on the [Open SDG website.](https://open-sdg.org/news-and-events)
+
+
 <h3>Open SDG v2.2.0</h3>
 
 The Open SDG team have been working hard to release Open SDG v2.2.0.
@@ -17,20 +24,3 @@ H1 and H2 tags are HTML elements that are used to define headings in a web page.
 
 
 For more information about the v2.2.0 release, check out the [the list of updates](updates.md#100) and for a more technical list of platform changes, see the [change log](changelog.md).
-
-
-## Events
-
-<h3>Open SDG Webinar - 17th June 2020, 13:00-14:30 UK time (GMT+1)</h3>
-
-The UK Office for National Statistics (ONS), the UN Statistics Division (UNSD), and the Center for Open Data Enterprise (CODE) are hosting a webinar for users of Open SDG.
-
-The webinar will:
-
--	present new developments and key features of Open SDG
--	discuss questions and features from countries
--	help create a community of users of Open SDG
-
-Please send any questions and register interest with [Lucy Gwilliam](mailto:Lucy.Gwilliam@ons.gov.uk) by 3rd June 2020.
-
-[Download the draft agenda](https://github.com/open-sdg/open-sdg/blob/master/docs/Open-SDG-Webinar-Agenda.pdf?raw=1)
