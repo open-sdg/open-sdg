@@ -6,8 +6,9 @@
             "label": "Content",
             "elements": [
                 {
-                    "type": "Group",
+                    "type": "GroupWithAccordion",
                     "label": "Disclaimer",
+                    "documentationKey": "disclaimer",
                     "elements": [
                         {
                             "type": "Control",
@@ -27,8 +28,9 @@
                     ]
                 },
                 {
-                    "type": "Group",
+                    "type": "GroupWithAccordion",
                     "label": "News",
+                    "documentationKey": "news",
                     "elements": [
                         {
                             "type": "Control",
@@ -40,8 +42,15 @@
                     ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/logos"
+                    "type": "GroupWithAccordion",
+                    "label": "Logos",
+                    "documentationKey": "logos",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/logos"
+                        }
+                    ]
                 }
             ]
         },
@@ -50,24 +59,59 @@
             "label": "Languages",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/languages"
+                    "type": "GroupWithAccordion",
+                    "label": "Languages",
+                    "documentationKey": "languages",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/languages"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/languages_public"
+                    "type": "GroupWithAccordion",
+                    "label": "Languages public",
+                    "documentationKey": "languages_public",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/languages_public"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/header_language_toggle"
+                    "type": "GroupWithAccordion",
+                    "label": "Header language toggle",
+                    "documentationKey": "header_language_toggle",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/header_language_toggle"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/footer_language_toggle"
+                    "type": "GroupWithAccordion",
+                    "label": "Footer language toggle",
+                    "documentationKey": "footer_language_toggle",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/footer_language_toggle"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/date_formats"
+                    "type": "GroupWithAccordion",
+                    "label": "Date formats",
+                    "documentationKey": "date_formats",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/date_formats"
+                        }
+                    ]
                 }
             ]
         },
@@ -76,8 +120,9 @@
             "label": "Status",
             "elements": [
                 {
-                    "type": "Group",
+                    "type": "GroupWithAccordion",
                     "label": "Reporting status",
+                    "documentationKey": "reporting_status",
                     "elements": [
                         {
                             "type": "Control",
@@ -101,8 +146,15 @@
                     ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/progress_status"
+                    "type": "GroupWithAccordion",
+                    "label": "Progress status",
+                    "documentationKey": "progress_status",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progress_status"
+                        }
+                    ]
                 }
             ]
         },
@@ -111,8 +163,9 @@
             "label": "Frontpage",
             "elements": [
                 {
-                    "type": "Group",
+                    "type": "GroupWithAccordion",
                     "label": "Frontpage introduction banner",
+                    "documentationKey": "frontpage_introduction_banner",
                     "elements": [
                         {
                             "type": "Control",
@@ -128,8 +181,9 @@
                     ]
                 },
                 {
-                    "type": "Group",
+                    "type": "GroupWithAccordion",
                     "label": "Frontpage goals grid",
+                    "documentationKey": "frontpage_goals_grid",
                     "elements": [
                         {
                             "type": "Control",
@@ -145,39 +199,46 @@
                     ]
                 },
                 {
-                    "type": "ListWithDetail",
-                    "scope": "#/properties/frontpage_cards",
-                    "options": {
-                        "detail": {
-                            "type": "VerticalLayout",
-                            "elements": [
-                                {
-                                    "type": "Control",
-                                    "scope": "#/properties/title"
-                                },
-                                {
-                                    "type": "Control",
-                                    "scope": "#/properties/content"
-                                },
-                                {
-                                    "type": "Control",
-                                    "scope": "#/properties/include"
-                                },
-                                {
-                                    "type": "Control",
-                                    "scope": "#/properties/button_label"
-                                },
-                                {
-                                    "type": "Control",
-                                    "scope": "#/properties/button_link"
-                                },
-                                {
-                                    "type": "Control",
-                                    "scope": "#/properties/rule_color"
+                    "type": "GroupWithAccordion",
+                    "label": "Frontpage cards",
+                    "documentationKey": "frontpage_cards",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/frontpage_cards",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/title"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/include"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/button_label"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/button_link"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/rule_color"
+                                        }
+                                    ]
                                 }
-                            ]
+                            }
                         }
-                    }
+                    ]
                 }
             ]
         },
@@ -186,12 +247,26 @@
             "label": "General",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/country"
+                    "type": "GroupWithAccordion",
+                    "label": "Country",
+                    "documentationKey": "country",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/country"
+                        },
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/email_contacts"
+                    "type": "GroupWithAccordion",
+                    "label": "Email contacts",
+                    "documentationKey": "email_contacts",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email_contacts"
+                        }
+                    ]
                 }
             ]
         },
@@ -200,20 +275,48 @@
             "label": "Indicators",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/create_indicators"
+                    "type": "GroupWithAccordion",
+                    "label": "Create indicators",
+                    "documentationKey": "create_indicators",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/create_indicators"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_tabs"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator tabs",
+                    "documentationKey": "indicator_tabs",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_tabs"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_edit_url"
+                    "type": "GroupWithAccordion",
+                    "label": "Data edit URL",
+                    "documentationKey": "data_edit_url",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_edit_url"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/metadata_edit_url"
+                    "type": "GroupWithAccordion",
+                    "label": "Metadata edit URL",
+                    "documentationKey": "metadata_edit_url",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/metadata_edit_url"
+                        }
+                    ]
                 }
             ]
         },
@@ -222,16 +325,31 @@
             "label": "Goals",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/goal_image_base"
+                    "type": "GroupWithAccordion",
+                    "label": "Goal image base",
+                    "documentationKey": "goal_image_base",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goal_image_base"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/goal_image_extension"
+                    "type": "GroupWithAccordion",
+                    "label": "Goal image extension",
+                    "documentationKey": "goal_image_extension",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goal_image_extension"
+                        }
+                    ]
                 },
                 {
-                    "type": "Group",
+                    "type": "GroupWithAccordion",
                     "label": "Goals page",
+                    "documentationKey": "goals_page",
                     "elements": [
                         {
                             "type": "Control",
@@ -247,8 +365,9 @@
                     ]
                 },
                 {
-                    "type": "Group",
+                    "type": "GroupWithAccordion",
                     "label": "Create Goals",
+                    "documentationKey": "create_goals",
                     "elements": [
                         {
                             "type": "Control",
