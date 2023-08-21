@@ -142,3 +142,41 @@ function getTimeSeriesAttributes(rows) {
   });
   return timeSeriesAttributes;
 }
+
+/**
+ * @param {Array} datasets
+ * @return {Array} Objects containing 'field' and 'value' and 'footnoteNumber'.
+ */
+function getObservationAttributes(datasets) {
+  var footnoteNumber = 1, combinedObsAttributes = [];
+  datasets.forEach(function(dataset) {
+    dataset.observationAttributes.forEach(function(obsAttribute) {
+      var alreadyThere = _.find(combinedObsAttributes, function(existing) {
+        return existing.field === obsAttribute.field && existing.value === obsAttribute.value;
+      });
+      if (!alreadyThere) {
+        var newObsAttribute = Object.assign({ footnoteNumber: footnoteNumber }, obsAttribute);
+        footnoteNumber += 1;
+        combinedObsAttributes.push(newObsAttribute);
+      }
+    });
+  });
+  return combinedObsAttributes;
+}
+
+/**
+ * Takes footnote numbers from combined observation values and sets them inside each dataset.
+ *
+ * @param {Array} datasets
+ * @param {Array} combinedObsAttributes
+ */
+function setFootnoteNumbersOnDatasets(datasets, combinedObsAttributes) {
+  datasets.forEach(function(dataset) {
+    dataset.observationAttributes.forEach(function(obsAttribute) {
+      var match = _.find(combinedObsAttributes, function(existing) {
+        return existing.field === obsAttribute.field && existing.value === obsAttribute.value;
+      });
+      obsAttribute.footnoteNumber = match.footnoteNumber;
+    });
+  });
+}

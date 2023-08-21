@@ -2,9 +2,10 @@
  * @param {null|undefined|Float|String} value
  * @param {Object} info
  * @param {Object} context
+ * @param {Object} additionalInfo
  * @return {null|undefined|Float|String}
  */
-function alterDataDisplay(value, info, context) {
+function alterDataDisplay(value, info, context, additionalInfo) {
     // If value is empty, we will not alter it.
     if (value == null || value == undefined) {
         return value;
@@ -44,5 +45,52 @@ function alterDataDisplay(value, info, context) {
         }
         altered = altered.toLocaleString(opensdg.language, localeOpts);
     }
+    // Now let's add any footnotes from observation attributes.
+    var obsAttributes = [];
+    if (context === 'chart tooltip') {
+        var dataIndex = additionalInfo.dataIndex;
+        obsAttributes = info.observationAttributesByRow[dataIndex];
+    }
+    else if (context === 'table cell') {
+        var row = additionalInfo.row,
+            col = additionalInfo.col,
+            obsAttributesTable = additionalInfo.observationAttributesTable;
+        obsAttributes = obsAttributesTable.data[row][col];
+    }
+    if (obsAttributes.length > 0) {
+        var obsAttributeFootnoteNumbers = obsAttributes.map(function(obsAttribute) {
+            return superScriptNumber(obsAttribute.footnoteNumber);
+        });
+        altered += ' ' + obsAttributeFootnoteNumbers.join(' ');
+    }
     return altered;
+}
+
+/**
+ * Convert a number into a string with the superscript equivalent.
+ *
+ * @param {int} num 
+ * @returns {string} Number converted into unicode character for superscript.
+ */
+function superScriptNumber(num) {
+    var SUPERSCRIPTS = {
+        '0': '⁰',
+        '1': '¹',
+        '2': '²',
+        '3': '³',
+        '4': '⁴',
+        '5': '⁵',
+        '6': '⁶',
+        '7': '⁷',
+        '8': '⁸',
+        '9': '⁹',
+    };
+    var numStr = num.toString(10);
+    return numStr.split('').map(function(c) {
+      var supc = SUPERSCRIPTS[c]
+      if (supc) {
+        return supc
+      }
+      return ''
+    }).join('')
 }

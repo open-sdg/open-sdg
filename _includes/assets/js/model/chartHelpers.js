@@ -325,10 +325,13 @@ function getBorderDash(striped) {
  * @param {string} color
  * @param {string} background
  * @param {Array} border
+ * @param {Array} excess
  * @return {Object} Dataset object for Chart.js
  */
 function makeDataset(years, rows, combination, labelFallback, color, background, border, excess) {
-  var dataset = getBaseDataset();
+  var dataset = getBaseDataset(),
+      data = prepareDataForDataset(years, rows),
+      obsAttributesInfo = prepareObservationAttributesForDataset(rows, data);
   return Object.assign(dataset, {
     label: getCombinationDescription(combination, labelFallback),
     disaggregation: combination,
@@ -340,7 +343,9 @@ function makeDataset(years, rows, combination, labelFallback, color, background,
     borderWidth: 2,
     headline: false,
     pointStyle: 'circle',
-    data: prepareDataForDataset(years, rows),
+    data: data,
+    observationAttributes: obsAttributesInfo.obsAttributes,
+    observationAttributesByRow: obsAttributesInfo.obsAttributesByRow,
     excess: excess,
   });
 }
@@ -389,6 +394,46 @@ function prepareDataForDataset(years, rows) {
 }
 
 /**
+ * Get info on the observation attributes.
+ */
+function prepareObservationAttributesForDataset(rows, data) {
+  if (rows.length === 0) {
+    return [];
+  }
+  var obsAttributeHash = {},
+      configObsAttributes = {{ site.observation_attributes | jsonify }}.map(function(obsAtt) {
+        return obsAtt.field;
+      })
+  configObsAttributes.forEach(function(field) {
+    var attributeValues = Object.keys(_.groupBy(rows, field)).filter(function(value) {
+      return value !== 'undefined';
+    });
+    attributeValues.forEach(function(attributeValue) {
+      var hashKey = field + '|' + attributeValue;
+      obsAttributeHash[hashKey] = {
+        field: field,
+        value: attributeValue,
+      }
+    });
+  });
+  var obsAttributesByRow = rows.map(function(row) {
+    var obsAttributesForRow = [];
+    configObsAttributes.forEach(function(field) {
+      if (row[field]) {
+        var hashKey = field + '|' + row[field];
+        obsAttributesForRow.push(obsAttributeHash[hashKey]);
+      }
+    });
+    return obsAttributesForRow;
+  });
+  
+  return {
+    obsAttributesByRow: obsAttributesByRow,
+    obsAttributes: Object.values(obsAttributeHash),
+  }
+}
+
+/**
  * @return {string} Hex number of headline color
  *
  * TODO: Make this dynamic to support high-contrast.
@@ -415,5 +460,6 @@ function makeHeadlineDataset(years, rows, label) {
     headline: true,
     pointStyle: 'rect',
     data: prepareDataForDataset(years, rows),
+    observationAttributes: prepareObservationAttributesForDataset(rows),
   });
 }
