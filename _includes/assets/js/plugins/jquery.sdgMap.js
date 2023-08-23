@@ -575,6 +575,18 @@
                 });
               });
             }
+            // We have to delete the observation attributes from the "disaggregation"
+            // objects to avoid problems.
+            if (feature.properties.disaggregations) {
+              feature.properties.disaggregations.forEach(function(disagg) {
+                plugin.configObsAttributes.forEach(function(configObsAttribute) {
+                  var field = configObsAttribute.field;
+                  if (disagg[field]) {
+                    delete disagg[field];
+                  }
+                });
+              });
+            }
           });
           plugin.footnotesByDisaggregation = footnotesByDisaggregation;
         }
