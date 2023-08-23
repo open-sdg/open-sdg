@@ -48,5 +48,6 @@
     createDownloadButton: createDownloadButton,
     createSelectionsTable: createSelectionsTable,
     sortFieldGroup: sortFieldGroup,
+    superScriptNumber: superScriptNumber,
   }
 })();

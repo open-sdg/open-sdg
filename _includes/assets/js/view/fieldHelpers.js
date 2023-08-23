@@ -95,6 +95,7 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
  * @return null
  */
 function updateObservationAttributes(obsAttributes) {
+    console.log(obsAttributes);
     var $listElement = $('.observation-attribute-list');
     $listElement.empty();
     if (obsAttributes.length === 0) {

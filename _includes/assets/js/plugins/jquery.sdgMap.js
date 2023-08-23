@@ -97,6 +97,8 @@
     this.proxy = options.proxy;
     this.proxySerieses = options.proxySerieses;
     this.startValues = options.startValues;
+    this.configObsAttributes = {{ site.observation_attributes | jsonify }};
+    this.footnotesByDisaggregation = {};
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -153,10 +155,13 @@
       if (!this.viewHelpers) {
         return;
       }
+      console.log('updating footer fields in map');
       var currentSeries = this.disaggregationControls.getCurrentSeries(),
-          currentUnit = this.disaggregationControls.getCurrentUnit();
+          currentUnit = this.disaggregationControls.getCurrentUnit(),
+          observationAttributes = this.getCurrentObservationFootnotes();
       this.viewHelpers.updateSeriesAndUnitElements(currentSeries, currentUnit);
       this.viewHelpers.updateUnitElements(currentUnit);
+      this.viewHelpers.updateObservationAttributes(observationAttributes);
     },
 
     // Update precision.
@@ -178,8 +183,17 @@
     getTooltipContent: function(feature) {
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
+      var plugin = this;
       if (typeof tooltipData === 'number') {
         tooltipContent += ': ' + this.alterData(tooltipData);
+      }
+      if (feature.properties.observationAttributes) {
+        var footnoteNumbers = feature.properties.observationAttributes[this.currentDisaggregation].map(function(obsAtt) {
+          return plugin.viewHelpers.superScriptNumber(obsAtt.footnoteNumber);
+        });
+        if (footnoteNumbers.length > 0) {
+          tooltipContent += ' ' + footnoteNumbers.join(' ');
+        }
       }
       return tooltipContent;
     },
@@ -358,6 +372,13 @@
       this.yearSlider._timeDimension.setCurrentTimeIndex(this.yearSlider._timeDimension.getCurrentTimeIndex());
     },
 
+    getCurrentObservationFootnotes: function() {
+      var disagg = this.currentDisaggregation.toString();
+      return _.sortBy(Object.values(this.footnotesByDisaggregation[disagg]), function(obsAtt) {
+        return obsAtt.footnoteNumber;
+      });
+    },
+
     // Initialize the map itself.
     init: function() {
 
@@ -505,6 +526,57 @@
               }
             }
           });
+
+          var footnotes = {},
+              footnoteCounter = {},
+              footnotesByDisaggregation = {};
+          geoJson.features.forEach(function(feature) {
+            if (feature.properties.disaggregations) {
+              var obsAttributes = feature.properties.disaggregations.map(function(disagg, disaggIdx) {
+                var ret = [];
+                plugin.configObsAttributes.forEach(function(configObsAttribute) {
+                  var field = configObsAttribute.field;
+                  if (disagg[field]) {
+                    // Compile the attributes.
+                    ret.push(Object.assign({value:disagg[field]}, configObsAttribute));
+                    // Compile the footnote numbers.
+                    var key = field + '|' + disagg[field];
+                    if (typeof footnotes[key] === 'undefined') {
+                      footnotes[key] = {};
+                    }
+                    if (typeof footnotes[key][disaggIdx] === 'undefined') {
+                      if (typeof footnoteCounter[disaggIdx] === 'undefined') {
+                        footnoteCounter[disaggIdx] = 0;
+                      }
+                      footnoteCounter[disaggIdx] += 1;
+                      footnotes[key][disaggIdx] = footnoteCounter[disaggIdx];
+                    }
+                  }
+                });
+                return ret;
+              });
+              feature.properties.observationAttributes = obsAttributes;
+            }
+          });
+          geoJson.features.forEach(function(feature) {
+            if (feature.properties.observationAttributes) {
+              feature.properties.observationAttributes.forEach(function(obsAtts, obsAttIdx) {
+                obsAtts.forEach(function(obsAtt) {
+                  var disagg = feature.properties.disaggregations[obsAttIdx],
+                      field = obsAtt.field,
+                      value = disagg[field],
+                      key = field + '|' + value,
+                      idx = obsAttIdx.toString();
+                  obsAtt.footnoteNumber = footnotes[key][idx];
+                  if (typeof footnotesByDisaggregation[idx] === 'undefined') {
+                    footnotesByDisaggregation[idx] = {};
+                  }
+                  footnotesByDisaggregation[idx][key] = obsAtt;
+                });
+              });
+            }
+          });
+          plugin.footnotesByDisaggregation = footnotesByDisaggregation;
         }
 
         // Calculate the ranges of values, years and colors.
@@ -562,7 +634,8 @@
         }
         else {
           plugin.updateTitle();
-          plugin.updateFooterFields();
+          //console.log('in init');
+          //plugin.updateFooterFields();
           plugin.updatePrecision();
         }
 
@@ -665,6 +738,7 @@
         // Update the series/unit stuff in case it changed
         // while on the chart/table.
         plugin.updateTitle();
+        console.log('in final map preparation');
         plugin.updateFooterFields();
         plugin.updatePrecision();
         // The year slider does not seem to be correct unless we refresh it here.
