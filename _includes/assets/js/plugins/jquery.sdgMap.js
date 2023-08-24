@@ -184,6 +184,8 @@
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
       var plugin = this;
+      console.log(feature, 'feature');
+      console.log(this.currentDisaggregation, 'currentDisaggregation');
       if (typeof tooltipData === 'number') {
         tooltipContent += ': ' + this.alterData(tooltipData);
       }
@@ -581,7 +583,7 @@
               feature.properties.disaggregations.forEach(function(disagg) {
                 plugin.configObsAttributes.forEach(function(configObsAttribute) {
                   var field = configObsAttribute.field;
-                  if (disagg[field]) {
+                  if (typeof disagg[field] !== 'undefined') {
                     delete disagg[field];
                   }
                 });
