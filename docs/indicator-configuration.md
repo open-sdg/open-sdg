@@ -589,6 +589,10 @@ proxy: both
 
 Using "both" can flag particular series codes within the indicator as proxies. This requires that you also set the `proxy_series` option below.
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of proxy functionality](https://open-sdg.org/open-sdg-docs/img/image001.png)
+
 ### proxy_series
 
 This setting is required if you have `proxy` set to "both". It should be a list of the series codes within the indicator that you want flagged as "proxy" data. For example:
