@@ -140,6 +140,16 @@ _Optional_: If set to true, then the documentation website's "disaggregation rep
 docs_translate_disaggregations: true
 ```
 
+### ignore_out_of_scope_disaggregation_stats
+
+_Optional_: If set to true, then the disaggregation status totals will ignore indicators that are "out of scope" (aka, "not applicable").
+
+```nohighlight
+ignore_out_of_scope_disaggregation_stats: true
+```
+
+This may be useful in combination with the `reporting_status` site configuration, particularly with the `disaggregation_indicator_count_label` option.
+
 ### indicator_downloads
 
 _Optional_: This creates additional "download" buttons on each indicator page of your Open SDG implementation. Use this if there are additional per-indicator files (such as SDMX files) that you would like to make available for download.
