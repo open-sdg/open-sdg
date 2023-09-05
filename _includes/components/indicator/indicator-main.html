@@ -8,7 +8,7 @@
   id="indicatorData"
   data-indicatorid='indicator_{{ page.indicator.slug }}'
   data-id="{{ page.indicator.slug }}"
-  data-country="{{ page.indicator.national_geographical_coverage | default: site.country.name }}"
+  data-country="{{ page.indicator.national_geographical_coverage | default: site.country.name | t }}"
   data-charttitle="{{ page.indicator.graph_title }}"
   data-charttitles="{{ page.indicator.graph_titles | jsonify | xml_escape }}"
   data-measurementunit="{{ page.indicator.computation_units }}"

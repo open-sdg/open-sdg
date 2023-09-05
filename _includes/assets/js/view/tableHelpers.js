@@ -13,18 +13,33 @@ function alterTableConfig(config, info) {
  * @param {Object} tableData
  * @return {String}
  */
-function toCsv(tableData) {
+function toCsv(tableData, selectedSeries, selectedUnit) {
     var lines = [],
-        headings = _.map(tableData.headings, function (heading) { return '"' + translations.t(heading) + '"'; });
+        dataHeadings = _.map(tableData.headings, function (heading) { return '"' + translations.t(heading) + '"'; }),
+        metaHeadings = [];
 
-    lines.push(headings.join(','));
+    if (selectedSeries) {
+        metaHeadings.push(translations.indicator.series);
+    }
+    if (selectedUnit) {
+        metaHeadings.push(translations.indicator.unit);
+    }
+    var allHeadings = dataHeadings.concat(metaHeadings);
+
+    lines.push(allHeadings.join(','));
 
     _.each(tableData.data, function (dataValues) {
         var line = [];
 
-        _.each(headings, function (heading, index) {
+        _.each(dataHeadings, function (heading, index) {
             line.push(dataValues[index]);
         });
+        if (selectedSeries) {
+            line.push(JSON.stringify(translations.t(selectedSeries)));
+        }
+        if (selectedUnit) {
+            line.push(JSON.stringify(translations.t(selectedUnit)));
+        }
 
         lines.push(line.join(','));
     });
@@ -76,7 +91,7 @@ function createSelectionsTable(chartInfo) {
     createTable(chartInfo.selectionsTable, chartInfo.indicatorId, '#selectionsTable', chartInfo.isProxy);
     $('#tableSelectionDownload').empty();
     createTableTargetLines(chartInfo.graphAnnotations);
-    createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload');
+    createDownloadButton(chartInfo.selectionsTable, 'Table', chartInfo.indicatorId, '#tableSelectionDownload', chartInfo.selectedSeries, chartInfo.selectedUnit);
     createSourceButton(chartInfo.shortIndicatorId, '#tableSelectionDownload');
     createIndicatorDownloadButtons(chartInfo.indicatorDownloads, chartInfo.shortIndicatorId, '#tableSelectionDownload');
 };
@@ -189,6 +204,24 @@ function createTable(table, indicatorId, el, isProxy) {
                 var sortDirection = $(this).attr('aria-sort');
                 $(this).find('span[role="button"]').attr('aria-sort', sortDirection);
             });
+
+        let tableWrapper = document.querySelector('.dataTables_wrapper');
+        if (tableWrapper) {
+            tableWrapper.addEventListener('scroll', function(e) {
+                if (tableWrapper.scrollLeft > 0) {
+                    tableWrapper.classList.add('scrolled-x');
+                }
+                else {
+                    tableWrapper.classList.remove('scrolled-x');
+                }
+                if (tableWrapper.scrollTop > 0) {
+                    tableWrapper.classList.add('scrolled-y');
+                }
+                else {
+                    tableWrapper.classList.remove('scrolled-y');
+                }
+            });
+        }
     } else {
         $(el).append($('<h3 />').text(translations.indicator.data_not_available));
         $(el).addClass('table-has-no-data');
@@ -242,9 +275,9 @@ function setDataTableWidth(table) {
  * @param {Object} table
  * @return null
  */
-function updateChartDownloadButton(table) {
+function updateChartDownloadButton(table, selectedSeries, selectedUnit) {
     if (typeof VIEW._chartDownloadButton !== 'undefined') {
-        var tableCsv = toCsv(table);
+        var tableCsv = toCsv(table, selectedSeries, selectedUnit);
         var blob = new Blob([tableCsv], {
             type: 'text/csv'
         });

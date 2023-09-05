@@ -17,3 +17,4 @@ Published newsletters can be found on the [Open SDG website.](https://open-sdg.o
 ## Events
 
 There currently no events planned at this time.
+

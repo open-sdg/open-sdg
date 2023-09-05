@@ -948,6 +948,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+* `disaggregation_indicator_count_label`: An alternative label to use for the indicator count on the disaggregation tab, to be displayed after a number. For example, if set to `indicators in scope`, then it would display something like `12 indicators in scope` in the disaggregation status tab. The default is `indicators`.
 * `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
 * `status_types`: A list of reporting status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'complete').
@@ -960,6 +961,7 @@ Here is an example of using these settings:
 reporting_status:
     title: title goes here
     description: description goes here
+    disaggregation_indicator_count_label: indicators in scope
     disaggregation_tabs: true
     status_types:
       - value: notstarted

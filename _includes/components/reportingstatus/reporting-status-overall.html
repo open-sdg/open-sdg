@@ -16,7 +16,8 @@
         <h2 class="status-goal">
             {{ include.title }}
         </h2>
-        <span class="total"><span>{{ overall.totals.total }}</span> {{ indicators_plural }}</span>
+        <span class="total"><span>{{ overall.totals.total }}</span> {{ include.indicator_count_label | t | default: indicators_plural }}</span>
+        {% if overall.totals.total > 0 %}
         <div class="summary">
             <div class="statuses">
             {%- for status_type in status_types -%}
@@ -42,6 +43,7 @@
             {% endif %}
             {%- endfor -%}
         </div>
+        {% endif %}
     </div>
     <br style="clear:both;">
 </div>
