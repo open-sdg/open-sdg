@@ -48,6 +48,6 @@
     createDownloadButton: createDownloadButton,
     createSelectionsTable: createSelectionsTable,
     sortFieldGroup: sortFieldGroup,
-    superScriptNumber: superScriptNumber,
+    getObservationAttributeFootnoteSymbol: getObservationAttributeFootnoteSymbol,
   }
 })();

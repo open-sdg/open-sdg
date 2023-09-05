@@ -161,7 +161,7 @@
           observationAttributes = this.getCurrentObservationFootnotes();
       this.viewHelpers.updateSeriesAndUnitElements(currentSeries, currentUnit);
       this.viewHelpers.updateUnitElements(currentUnit);
-      this.viewHelpers.updateObservationAttributes(observationAttributes);
+      //this.viewHelpers.updateObservationAttributes(observationAttributes);
     },
 
     // Update precision.
@@ -184,14 +184,14 @@
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
       var plugin = this;
-      console.log(feature, 'feature');
-      console.log(this.currentDisaggregation, 'currentDisaggregation');
+      //console.log(feature, 'feature');
+      //console.log(this.currentDisaggregation, 'currentDisaggregation');
       if (typeof tooltipData === 'number') {
         tooltipContent += ': ' + this.alterData(tooltipData);
       }
-      if (feature.properties.observationAttributes) {
-        var footnoteNumbers = feature.properties.observationAttributes[this.currentDisaggregation].map(function(obsAtt) {
-          return plugin.viewHelpers.superScriptNumber(obsAtt.footnoteNumber);
+      if (feature.properties.observation_attributes) {
+        var footnoteNumbers = this.getFootnoteNumbers(feature.properties.observation_attributes).map(function(footnoteNumber) {
+          return plugin.viewHelpers.getObservationAttributeFootnoteSymbol(footnoteNumber);
         });
         if (footnoteNumbers.length > 0) {
           tooltipContent += ' ' + footnoteNumbers.join(' ');
@@ -374,8 +374,27 @@
       this.yearSlider._timeDimension.setCurrentTimeIndex(this.yearSlider._timeDimension.getCurrentTimeIndex());
     },
 
+    getFootnoteNumbers: function(observationAttributes) {
+      var disagg = this.currentDisaggregation,
+          year = this.currentYear,
+          idx = disagg.toString(),
+          obsAtt = observationAttributes[disagg],
+          footnoteNumbers = [],
+          numByDisagg = this.footnoteNumByDisagg;
+      Object.keys(obsAtt[year]).forEach(function(field) {
+        var value = obsAtt[year][field];
+        if (value) {
+          var key = field + '|' + value;
+          footnoteNumbers.push(numByDisagg[idx][year][key]);
+        }
+      });
+      return footnoteNumbers;
+    },
+
     getCurrentObservationFootnotes: function() {
+      return 'foo';
       var disagg = this.currentDisaggregation.toString();
+
       return _.sortBy(Object.values(this.footnotesByDisaggregation[disagg]), function(obsAtt) {
         return obsAtt.footnoteNumber;
       });
@@ -531,66 +550,61 @@
 
           var footnotes = {},
               footnoteCounter = {},
-              footnotesByDisaggregation = {};
+              footnoteNumByDisagg = {};
+          //console.log(plugin.configObsAttributes);
           geoJson.features.forEach(function(feature) {
-            if (feature.properties.disaggregations) {
-              var obsAttributes = feature.properties.disaggregations.map(function(disagg, disaggIdx) {
-                var ret = [];
+            //console.log(feature);
+            if (feature.properties.observation_attributes) {
+              //console.log(feature.properties.observation_attributes, 'observation_attributes');
+              feature.properties.observation_attributes.forEach(function(obsAtt, obsAttIdx) {
                 plugin.configObsAttributes.forEach(function(configObsAttribute) {
                   var field = configObsAttribute.field;
-                  if (disagg[field]) {
-                    // Compile the attributes.
-                    ret.push(Object.assign({value:disagg[field]}, configObsAttribute));
-                    // Compile the footnote numbers.
-                    var key = field + '|' + disagg[field];
-                    if (typeof footnotes[key] === 'undefined') {
-                      footnotes[key] = {};
-                    }
-                    if (typeof footnotes[key][disaggIdx] === 'undefined') {
-                      if (typeof footnoteCounter[disaggIdx] === 'undefined') {
-                        footnoteCounter[disaggIdx] = 0;
+                  Object.keys(obsAtt).forEach(function(year) {
+                    if (obsAtt[year][field]) {
+                      // Compile the footnote numbers.
+                      var key = field + '|' + obsAtt[year][field];
+                      if (typeof footnotes[key] === 'undefined') {
+                        footnotes[key] = {};
                       }
-                      footnoteCounter[disaggIdx] += 1;
-                      footnotes[key][disaggIdx] = footnoteCounter[disaggIdx];
+                      if (typeof footnotes[key][obsAttIdx] === 'undefined') {
+                        if (typeof footnoteCounter[obsAttIdx] === 'undefined') {
+                          footnoteCounter[obsAttIdx] = 0;
+                        }
+                        else {
+                          footnoteCounter[obsAttIdx] += 1;
+                        }
+                        footnotes[key][obsAttIdx] = footnoteCounter[obsAttIdx];
+                      }
                     }
-                  }
+                  });
                 });
-                return ret;
               });
-              feature.properties.observationAttributes = obsAttributes;
             }
           });
+
           geoJson.features.forEach(function(feature) {
-            if (feature.properties.observationAttributes) {
-              feature.properties.observationAttributes.forEach(function(obsAtts, obsAttIdx) {
-                obsAtts.forEach(function(obsAtt) {
-                  var disagg = feature.properties.disaggregations[obsAttIdx],
-                      field = obsAtt.field,
-                      value = disagg[field],
-                      key = field + '|' + value,
-                      idx = obsAttIdx.toString();
-                  obsAtt.footnoteNumber = footnotes[key][idx];
-                  if (typeof footnotesByDisaggregation[idx] === 'undefined') {
-                    footnotesByDisaggregation[idx] = {};
-                  }
-                  footnotesByDisaggregation[idx][key] = obsAtt;
-                });
-              });
-            }
-            // We have to delete the observation attributes from the "disaggregation"
-            // objects to avoid problems.
-            if (feature.properties.disaggregations) {
-              feature.properties.disaggregations.forEach(function(disagg) {
-                plugin.configObsAttributes.forEach(function(configObsAttribute) {
-                  var field = configObsAttribute.field;
-                  if (typeof disagg[field] !== 'undefined') {
-                    delete disagg[field];
-                  }
+            if (feature.properties.observation_attributes) {
+              feature.properties.observation_attributes.forEach(function(obsAtt, obsAttIdx) {
+                Object.keys(obsAtt).forEach(function(year) {
+                  Object.keys(obsAtt[year]).forEach(function(field) {
+                    var value = obsAtt[year][field],
+                        key = field + '|' + value,
+                        idx = obsAttIdx.toString();
+                    if (value) {
+                      if (typeof footnoteNumByDisagg[idx] === 'undefined') {
+                        footnoteNumByDisagg[idx] = {};
+                      }
+                      if (typeof footnoteNumByDisagg[idx][year] === 'undefined') {
+                        footnoteNumByDisagg[idx][year] = {};
+                      }
+                      footnoteNumByDisagg[idx][year][key] = footnotes[key][idx];
+                    }
+                  });
                 });
               });
             }
           });
-          plugin.footnotesByDisaggregation = footnotesByDisaggregation;
+          plugin.footnoteNumByDisagg = footnoteNumByDisagg;
         }
 
         // Calculate the ranges of values, years and colors.

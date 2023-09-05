@@ -148,7 +148,7 @@ function getTimeSeriesAttributes(rows) {
  * @return {Array} Objects containing 'field' and 'value' and 'footnoteNumber'.
  */
 function getObservationAttributes(datasets) {
-  var footnoteNumber = 1, combinedObsAttributes = [];
+  var footnoteNumber = 0, combinedObsAttributes = [];
   datasets.forEach(function(dataset) {
     dataset.observationAttributes.forEach(function(obsAttribute) {
       var alreadyThere = _.find(combinedObsAttributes, function(existing) {

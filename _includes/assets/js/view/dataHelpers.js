@@ -59,7 +59,7 @@ function alterDataDisplay(value, info, context, additionalInfo) {
     }
     if (obsAttributes.length > 0) {
         var obsAttributeFootnoteNumbers = obsAttributes.map(function(obsAttribute) {
-            return superScriptNumber(obsAttribute.footnoteNumber);
+            return getObservationAttributeFootnoteSymbol(obsAttribute.footnoteNumber);
         });
         altered += ' ' + obsAttributeFootnoteNumbers.join(' ');
     }
@@ -67,30 +67,11 @@ function alterDataDisplay(value, info, context, additionalInfo) {
 }
 
 /**
- * Convert a number into a string with the superscript equivalent.
+ * Convert a number into a string for observation atttribute footnotes.
  *
  * @param {int} num 
- * @returns {string} Number converted into unicode character for superscript.
+ * @returns {string} Number converted into unicode character for footnotes.
  */
-function superScriptNumber(num) {
-    var SUPERSCRIPTS = {
-        '0': '⁰',
-        '1': '¹',
-        '2': '²',
-        '3': '³',
-        '4': '⁴',
-        '5': '⁵',
-        '6': '⁶',
-        '7': '⁷',
-        '8': '⁸',
-        '9': '⁹',
-    };
-    var numStr = num.toString(10);
-    return numStr.split('').map(function(c) {
-      var supc = SUPERSCRIPTS[c]
-      if (supc) {
-        return supc
-      }
-      return ''
-    }).join('')
+function getObservationAttributeFootnoteSymbol(num) {
+    return '[' + translations.indicator.note + ' ' + (num + 1) + ']';
 }
