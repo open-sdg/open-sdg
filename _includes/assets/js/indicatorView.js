@@ -58,7 +58,6 @@ var indicatorView = function (model, options) {
                 helpers.updateSeriesAndUnitElements(VIEW._dataCompleteArgs.selectedSeries, VIEW._dataCompleteArgs.selectedUnit);
                 helpers.updateUnitElements(VIEW._dataCompleteArgs.selectedUnit);
                 helpers.updateTimeSeriesAttributes(VIEW._dataCompleteArgs.timeSeriesAttributes);
-                helpers.updateObservationAttributes(VIEW._dataCompleteArgs.allObservationAttributes);
             }
         };
     });
@@ -105,6 +104,7 @@ var indicatorView = function (model, options) {
                 args.startValues,
                 args.proxy,
                 args.proxySerieses,
+                MODEL.allObservationAttributes,
             );
         }
     });

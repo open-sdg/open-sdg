@@ -104,6 +104,7 @@ var indicatorModel = function (options) {
   }
 
   // calculate some initial values:
+  this.allObservationAttributes = helpers.getAllObservationAttributes(this.allData);
   this.hasGeoData = helpers.dataHasGeoCodes(this.allColumns);
   this.hasUnits = helpers.dataHasUnits(this.allColumns);
   this.initialiseUnits();
@@ -293,9 +294,6 @@ var indicatorModel = function (options) {
       this.updateFieldStates(this.selectedFields);
     }
 
-    var allObservationAttributes = helpers.getAllObservationAttributes(this.data);
-    this.allObservationAttributes = allObservationAttributes;
-
     var filteredData = helpers.getDataBySelectedFields(this.data, this.selectedFields);
     if (this.hasUnits) {
       filteredData = helpers.getDataByUnit(filteredData, this.selectedUnit);
@@ -353,7 +351,7 @@ var indicatorModel = function (options) {
       indicatorDownloads: this.indicatorDownloads,
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
       timeSeriesAttributes: timeSeriesAttributes,
-      allObservationAttributes: allObservationAttributes,
+      allObservationAttributes: this.allObservationAttributes,
       isProxy: this.proxy === 'proxy' || this.proxySerieses.includes(this.selectedSeries),
     });
   };

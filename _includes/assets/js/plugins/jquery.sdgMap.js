@@ -98,7 +98,7 @@
     this.proxySerieses = options.proxySerieses;
     this.startValues = options.startValues;
     this.configObsAttributes = {{ site.observation_attributes | jsonify }};
-    this.footnotesByDisaggregation = {};
+    this.allObservationAttributes = options.allObservationAttributes;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -155,13 +155,10 @@
       if (!this.viewHelpers) {
         return;
       }
-      console.log('updating footer fields in map');
       var currentSeries = this.disaggregationControls.getCurrentSeries(),
-          currentUnit = this.disaggregationControls.getCurrentUnit(),
-          observationAttributes = this.getCurrentObservationFootnotes();
+          currentUnit = this.disaggregationControls.getCurrentUnit();
       this.viewHelpers.updateSeriesAndUnitElements(currentSeries, currentUnit);
       this.viewHelpers.updateUnitElements(currentUnit);
-      //this.viewHelpers.updateObservationAttributes(observationAttributes);
     },
 
     // Update precision.
@@ -184,19 +181,26 @@
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
       var plugin = this;
-      //console.log(feature, 'feature');
-      //console.log(this.currentDisaggregation, 'currentDisaggregation');
       if (typeof tooltipData === 'number') {
         tooltipContent += ': ' + this.alterData(tooltipData);
       }
       if (feature.properties.observation_attributes) {
-        var footnoteNumbers = this.getFootnoteNumbers(feature.properties.observation_attributes).map(function(footnoteNumber) {
-          return plugin.viewHelpers.getObservationAttributeFootnoteSymbol(footnoteNumber);
-        });
-        if (footnoteNumbers.length > 0) {
-          tooltipContent += ' ' + footnoteNumbers.join(' ');
+        var obsAtts = feature.properties.observation_attributes[plugin.currentDisaggregation][plugin.currentYear],
+            footnoteNumbers = [];
+        if (obsAtts) {
+          Object.keys(obsAtts).forEach(function(field) {
+            if (obsAtts[field]) {
+              var hashKey = field + '|' + obsAtts[field];
+              var footnoteNumber = plugin.allObservationAttributes[hashKey].footnoteNumber;
+              footnoteNumbers.push(plugin.viewHelpers.getObservationAttributeFootnoteSymbol(footnoteNumber));
+            }
+          });
+          if (footnoteNumbers.length > 0) {
+            tooltipContent += ' ' + footnoteNumbers.join(' ');
+          }
         }
       }
+
       return tooltipContent;
     },
 
@@ -374,32 +378,6 @@
       this.yearSlider._timeDimension.setCurrentTimeIndex(this.yearSlider._timeDimension.getCurrentTimeIndex());
     },
 
-    getFootnoteNumbers: function(observationAttributes) {
-      var disagg = this.currentDisaggregation,
-          year = this.currentYear,
-          idx = disagg.toString(),
-          obsAtt = observationAttributes[disagg],
-          footnoteNumbers = [],
-          numByDisagg = this.footnoteNumByDisagg;
-      Object.keys(obsAtt[year]).forEach(function(field) {
-        var value = obsAtt[year][field];
-        if (value) {
-          var key = field + '|' + value;
-          footnoteNumbers.push(numByDisagg[idx][year][key]);
-        }
-      });
-      return footnoteNumbers;
-    },
-
-    getCurrentObservationFootnotes: function() {
-      return 'foo';
-      var disagg = this.currentDisaggregation.toString();
-
-      return _.sortBy(Object.values(this.footnotesByDisaggregation[disagg]), function(obsAtt) {
-        return obsAtt.footnoteNumber;
-      });
-    },
-
     // Initialize the map itself.
     init: function() {
 
@@ -547,64 +525,6 @@
               }
             }
           });
-
-          var footnotes = {},
-              footnoteCounter = {},
-              footnoteNumByDisagg = {};
-          //console.log(plugin.configObsAttributes);
-          geoJson.features.forEach(function(feature) {
-            //console.log(feature);
-            if (feature.properties.observation_attributes) {
-              //console.log(feature.properties.observation_attributes, 'observation_attributes');
-              feature.properties.observation_attributes.forEach(function(obsAtt, obsAttIdx) {
-                plugin.configObsAttributes.forEach(function(configObsAttribute) {
-                  var field = configObsAttribute.field;
-                  Object.keys(obsAtt).forEach(function(year) {
-                    if (obsAtt[year][field]) {
-                      // Compile the footnote numbers.
-                      var key = field + '|' + obsAtt[year][field];
-                      if (typeof footnotes[key] === 'undefined') {
-                        footnotes[key] = {};
-                      }
-                      if (typeof footnotes[key][obsAttIdx] === 'undefined') {
-                        if (typeof footnoteCounter[obsAttIdx] === 'undefined') {
-                          footnoteCounter[obsAttIdx] = 0;
-                        }
-                        else {
-                          footnoteCounter[obsAttIdx] += 1;
-                        }
-                        footnotes[key][obsAttIdx] = footnoteCounter[obsAttIdx];
-                      }
-                    }
-                  });
-                });
-              });
-            }
-          });
-
-          geoJson.features.forEach(function(feature) {
-            if (feature.properties.observation_attributes) {
-              feature.properties.observation_attributes.forEach(function(obsAtt, obsAttIdx) {
-                Object.keys(obsAtt).forEach(function(year) {
-                  Object.keys(obsAtt[year]).forEach(function(field) {
-                    var value = obsAtt[year][field],
-                        key = field + '|' + value,
-                        idx = obsAttIdx.toString();
-                    if (value) {
-                      if (typeof footnoteNumByDisagg[idx] === 'undefined') {
-                        footnoteNumByDisagg[idx] = {};
-                      }
-                      if (typeof footnoteNumByDisagg[idx][year] === 'undefined') {
-                        footnoteNumByDisagg[idx][year] = {};
-                      }
-                      footnoteNumByDisagg[idx][year][key] = footnotes[key][idx];
-                    }
-                  });
-                });
-              });
-            }
-          });
-          plugin.footnoteNumByDisagg = footnoteNumByDisagg;
         }
 
         // Calculate the ranges of values, years and colors.
@@ -662,8 +582,6 @@
         }
         else {
           plugin.updateTitle();
-          //console.log('in init');
-          //plugin.updateFooterFields();
           plugin.updatePrecision();
         }
 
@@ -766,7 +684,6 @@
         // Update the series/unit stuff in case it changed
         // while on the chart/table.
         plugin.updateTitle();
-        console.log('in final map preparation');
         plugin.updateFooterFields();
         plugin.updatePrecision();
         // The year slider does not seem to be correct unless we refresh it here.
