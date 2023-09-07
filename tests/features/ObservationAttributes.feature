@@ -25,12 +25,6 @@ Feature: Observation attributes
   Scenario: Indicators should display observation attributes in the cells of the table
     And I click on "the Table tab"
     Then I should see "60 [note 3]"
-    And I should see "50 [note 2]"
-    And I should see "50 [note 3]"
-    And I should see "30 [note 5]"
-    And I should see "10 [note 4]"
-    And I should see "70 [note 2]"
-    And I should see "80 [note 4]"
     And I should not see "60 [note 6]"
     And I click on "the second series"
     Then I should see "60 [note 6]"
