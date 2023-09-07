@@ -841,7 +841,7 @@ _Optional_: This setting can be used to control the behavior of the `news` and `
 
 _Optional_: This setting controls the data columns that should be considered "observation attributes", as well as the labels that should be used for these columns when displaying their values in the footer beneath charts and tables.
 
-If this setting is left empty, the following defaults are assumed:
+Here is a recommended example that would set "COMMENT_OBS" as an observation attribute:
 
 ```
 observation_attributes:
@@ -873,6 +873,8 @@ observation_attributes:
 ```
 
 ...would result in the footnote "Comment: estimate" being associated with the values 5000 and 6000.
+
+> NOTE: For full support (including on maps) a corresponding change should also be made in the data configuration in the "indicator_options" setting. See [more details on the "indicator_options" data configuration setting](data-configuration.md#indicator_options).
 
 ### plugins
 
