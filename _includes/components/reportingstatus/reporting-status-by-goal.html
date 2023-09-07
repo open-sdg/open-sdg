@@ -18,7 +18,8 @@
         <h3 class="status-goal">
             <a href="{{ goal.url }}">{{ goal.short }}</a>
         </h3>
-        <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
+        <span class="total">{{ goalreport.totals.total }} {{ include.indicator_count_label | t | default: indicators_plural }}</span>
+        {% if goalreport.totals.total > 0 %}
         <div class="summary">
             <div class="statuses">
                 {%- for status_type in status_types -%}
@@ -43,6 +44,7 @@
                 {% endif %}
             {%- endfor -%}
         </div>
+        {% endif %}
         <div class="divider"></div>
     </div>
     <br style="clear:both;">
