@@ -25,7 +25,7 @@ function observationAttributesTableFromDatasets(datasets, years) {
   return {
     data: years.map(function(year, index) {
       return [null].concat(datasets.map(function(ds) {
-        return ds.observationAttributesByRow[index] ? ds.observationAttributesByRow[index] : [];
+        return ds.observationAttributes[index] ? ds.observationAttributes[index] : [];
       }));
     }),
   };

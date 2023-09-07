@@ -96,7 +96,7 @@ function getGraphSeriesBreaks(graphSeriesBreaks, selectedUnit, selectedSeries) {
  * @param {Array} colorAssignments Color/striping assignments for disaggregation combinations
  * @return {Array} Datasets suitable for Chart.js
  */
-function getDatasets(headline, data, combinations, years, defaultLabel, colors, selectableFields, colorAssignments) {
+function getDatasets(headline, data, combinations, years, defaultLabel, colors, selectableFields, colorAssignments, allObservationAttributes) {
   var datasets = [], index = 0, dataset, colorIndex, color, background, border, striped, excess, combinationKey, colorAssignment;
   var numColors = colors.length,
       maxColorAssignments = numColors * 2;
@@ -137,14 +137,14 @@ function getDatasets(headline, data, combinations, years, defaultLabel, colors, 
       background = getBackground(color, striped);
       border = getBorderDash(striped);
 
-      dataset = makeDataset(years, filteredData, combination, defaultLabel, color, background, border, excess);
+      dataset = makeDataset(years, filteredData, combination, defaultLabel, color, background, border, excess, allObservationAttributes);
       datasets.push(dataset);
       index++;
     }
   }, this);
 
   if (headline.length > 0) {
-    dataset = makeHeadlineDataset(years, headline, defaultLabel);
+    dataset = makeHeadlineDataset(years, headline, defaultLabel, allObservationAttributes);
     datasets.unshift(dataset);
   }
   return datasets;
@@ -328,10 +328,9 @@ function getBorderDash(striped) {
  * @param {Array} excess
  * @return {Object} Dataset object for Chart.js
  */
-function makeDataset(years, rows, combination, labelFallback, color, background, border, excess) {
+function makeDataset(years, rows, combination, labelFallback, color, background, border, excess, allObservationAttributes) {
   var dataset = getBaseDataset(),
-      data = prepareDataForDataset(years, rows),
-      obsAttributesInfo = prepareObservationAttributesForDataset(rows, data);
+      data = prepareDataForDataset(years, rows);
   return Object.assign(dataset, {
     label: getCombinationDescription(combination, labelFallback),
     disaggregation: combination,
@@ -344,9 +343,8 @@ function makeDataset(years, rows, combination, labelFallback, color, background,
     headline: false,
     pointStyle: 'circle',
     data: data,
-    observationAttributes: obsAttributesInfo.obsAttributes,
-    observationAttributesByRow: obsAttributesInfo.obsAttributesByRow,
     excess: excess,
+    observationAttributes: prepareObservationAttributesForDataset(rows, allObservationAttributes),
   });
 }
 
@@ -396,41 +394,23 @@ function prepareDataForDataset(years, rows) {
 /**
  * Get info on the observation attributes.
  */
-function prepareObservationAttributesForDataset(rows, data) {
+function prepareObservationAttributesForDataset(rows, allObservationAttributes) {
   if (rows.length === 0) {
     return [];
   }
-  var obsAttributeHash = {},
-      configObsAttributes = {{ site.observation_attributes | jsonify }}.map(function(obsAtt) {
-        return obsAtt.field;
-      })
-  configObsAttributes.forEach(function(field) {
-    var attributeValues = Object.keys(_.groupBy(rows, field)).filter(function(value) {
-      return value !== 'undefined';
-    });
-    attributeValues.forEach(function(attributeValue) {
-      var hashKey = field + '|' + attributeValue;
-      obsAttributeHash[hashKey] = {
-        field: field,
-        value: attributeValue,
-      }
-    });
+  var configObsAttributes = {{ site.observation_attributes | jsonify }}.map(function(obsAtt) {
+    return obsAtt.field;
   });
-  var obsAttributesByRow = rows.map(function(row) {
+  return rows.map(function(row) {
     var obsAttributesForRow = [];
     configObsAttributes.forEach(function(field) {
       if (row[field]) {
         var hashKey = field + '|' + row[field];
-        obsAttributesForRow.push(obsAttributeHash[hashKey]);
+        obsAttributesForRow.push(allObservationAttributes[hashKey]);
       }
     });
     return obsAttributesForRow;
   });
-  
-  return {
-    obsAttributesByRow: obsAttributesByRow,
-    obsAttributes: Object.values(obsAttributeHash),
-  }
 }
 
 /**
@@ -448,7 +428,7 @@ function getHeadlineColor() {
  * @param {string} label
  * @return {Object} Dataset object for Chart.js
  */
-function makeHeadlineDataset(years, rows, label) {
+function makeHeadlineDataset(years, rows, label, allObservationAttributes) {
   var dataset = getBaseDataset();
   return Object.assign(dataset, {
     label: label,
@@ -460,6 +440,6 @@ function makeHeadlineDataset(years, rows, label) {
     headline: true,
     pointStyle: 'rect',
     data: prepareDataForDataset(years, rows),
-    observationAttributes: prepareObservationAttributesForDataset(rows),
+    observationAttributes: prepareObservationAttributesForDataset(rows, allObservationAttributes),
   });
 }

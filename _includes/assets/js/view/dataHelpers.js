@@ -49,7 +49,7 @@ function alterDataDisplay(value, info, context, additionalInfo) {
     var obsAttributes = [];
     if (context === 'chart tooltip') {
         var dataIndex = additionalInfo.dataIndex;
-        obsAttributes = info.observationAttributesByRow[dataIndex];
+        obsAttributes = info.observationAttributes[dataIndex];
     }
     else if (context === 'table cell') {
         var row = additionalInfo.row,

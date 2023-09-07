@@ -293,6 +293,9 @@ var indicatorModel = function (options) {
       this.updateFieldStates(this.selectedFields);
     }
 
+    var allObservationAttributes = helpers.getAllObservationAttributes(this.data);
+    this.allObservationAttributes = allObservationAttributes;
+
     var filteredData = helpers.getDataBySelectedFields(this.data, this.selectedFields);
     if (this.hasUnits) {
       filteredData = helpers.getDataByUnit(filteredData, this.selectedUnit);
@@ -312,10 +315,8 @@ var indicatorModel = function (options) {
     }
 
     var combinations = helpers.getCombinationData(this.selectedFields);
-    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments);
+    var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments, this.allObservationAttributes);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
-    var observationAttributes = helpers.getObservationAttributes(datasets);
-    helpers.setFootnoteNumbersOnDatasets(datasets, observationAttributes);
     var observationAttributesTable = helpers.observationAttributesTableFromDatasets(datasets, this.years);
 
     var datasetCountExceedsMax = false;
@@ -352,7 +353,7 @@ var indicatorModel = function (options) {
       indicatorDownloads: this.indicatorDownloads,
       precision: helpers.getPrecision(this.precision, this.selectedUnit, this.selectedSeries),
       timeSeriesAttributes: timeSeriesAttributes,
-      observationAttributes: observationAttributes,
+      allObservationAttributes: allObservationAttributes,
       isProxy: this.proxy === 'proxy' || this.proxySerieses.includes(this.selectedSeries),
     });
   };

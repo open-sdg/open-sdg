@@ -102,7 +102,7 @@ function updateObservationAttributes(obsAttributes) {
         return;
     }
     $listElement.show();
-    obsAttributes.forEach(function(obsAttribute) {
+    Object.values(obsAttributes).forEach(function(obsAttribute) {
         var label = getObservationAttributeText(obsAttribute),
             num = getObservationAttributeFootnoteSymbol(obsAttribute.footnoteNumber);
         var $listItem = $('<dt id="observation-footnote-title-' + num + '">' + num + '</dt><dd id="observation-footnote-desc-' + num + '">' + label + '</dd>');

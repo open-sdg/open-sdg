@@ -104,8 +104,7 @@
     getColumnsFromData: getColumnsFromData,
     inputEdges: inputEdges,
     getTimeSeriesAttributes: getTimeSeriesAttributes,
-    getObservationAttributes: getObservationAttributes,
-    setFootnoteNumbersOnDatasets: setFootnoteNumbersOnDatasets,
+    getAllObservationAttributes: getAllObservationAttributes,
     inputData: inputData,
   }
 })();
