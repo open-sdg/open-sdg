@@ -118,6 +118,9 @@ function getObservationAttributeText(obsAttribute) {
     var attributeConfig = _.find(configuredObsAttributes, function(configuredObsAttribute) {
         return configuredObsAttribute.field === obsAttribute.field;
     });
+    if (!attributeConfig) {
+        return '';
+    }
     var label = translations.t(obsAttribute.value);
     if (attributeConfig.label) {
         label = translations.t(attributeConfig.label) + ': ' + label;
