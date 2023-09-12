@@ -57,6 +57,10 @@
     .url {
       color: $search-resultURL-color;
       font-size: $fontSize;
+      ol, li {
+        display: inline-block;
+        padding-left: 0;
+      }
     }
     .content {
       margin-top: 2px;
