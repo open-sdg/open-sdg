@@ -142,3 +142,29 @@ function getTimeSeriesAttributes(rows) {
   });
   return timeSeriesAttributes;
 }
+
+function getAllObservationAttributes(rows) {
+  if (rows.length === 0) {
+    return {};
+  }
+  var obsAttributeHash = {},
+      footnoteNumber = 0,
+      configObsAttributes = {{ site.observation_attributes | jsonify }}.map(function(obsAtt) {
+        return obsAtt.field;
+      })
+  configObsAttributes.forEach(function(field) {
+    var attributeValues = Object.keys(_.groupBy(rows, field)).filter(function(value) {
+      return value !== 'undefined';
+    });
+    attributeValues.forEach(function(attributeValue) {
+      var hashKey = field + '|' + attributeValue;
+      obsAttributeHash[hashKey] = {
+        field: field,
+        value: attributeValue,
+        footnoteNumber: footnoteNumber,
+      }
+      footnoteNumber += 1;
+    });
+  });
+  return obsAttributeHash;
+}

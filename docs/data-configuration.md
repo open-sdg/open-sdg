@@ -194,6 +194,8 @@ _Optional_: This controls how your indicators are loaded. The available paramete
 
 * series_column: The name of the data column that should be considered the series. Historically this has been "Series", but if your data source is SDMX then it may be "SERIES".
 * unit_column: The name of the data column that should be considered the unit of measurement. Historically this has been "Units", but if your data source is SDMX then it may be "UNIT_MEASURE".
+* observation_attributes: This specifies a list of columns should be considered "observation attributes" -- meaning that they described individual data points (aka, observations). Adding a column here ensures that the column will be treated as observation-level metadata. Currently the effects include:
+  1. Outputs this metadata in the JSON produced by the OutputGeoJson class
 
 Here are the defaults that are assumed if this is omitted:
 
@@ -210,6 +212,8 @@ indicator_options:
     - Unit measure
   series_column: Series
   unit_column: Units
+  observation_attributes:
+    - COMMENT_OBS
 ```
 
 ### inputs

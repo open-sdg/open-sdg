@@ -60,3 +60,5 @@ indicator_options:
     - Value
     - GeoCode
     - COMMENT_TS
+  observation_attributes:
+    - COMMENT_OBS

@@ -88,3 +88,42 @@ function updateTimeSeriesAttributes(tsAttributeValues) {
         }
     });
 }
+
+/**
+ * @param {Array} obsAttributes
+ *   Array of objects containing 'field' and 'value'.
+ * @return null
+ */
+function updateObservationAttributes(obsAttributes) {
+    var $listElement = $('.observation-attribute-list');
+    $listElement.empty();
+    if (obsAttributes.length === 0) {
+        $listElement.hide();
+        return;
+    }
+    $listElement.show();
+    Object.values(obsAttributes).forEach(function(obsAttribute) {
+        var label = getObservationAttributeText(obsAttribute),
+            num = getObservationAttributeFootnoteSymbol(obsAttribute.footnoteNumber);
+        var $listItem = $('<dt id="observation-footnote-title-' + num + '">' + num + '</dt><dd id="observation-footnote-desc-' + num + '">' + label + '</dd>');
+        $listElement.append($listItem);
+    });
+}
+
+/**
+ * Gets the text of an observation attribute for display to the end user.
+ */
+function getObservationAttributeText(obsAttribute) {
+    var configuredObsAttributes = {{ site.observation_attributes | jsonify }};
+    var attributeConfig = _.find(configuredObsAttributes, function(configuredObsAttribute) {
+        return configuredObsAttribute.field === obsAttribute.field;
+    });
+    if (!attributeConfig) {
+        return '';
+    }
+    var label = translations.t(obsAttribute.value);
+    if (attributeConfig.label) {
+        label = translations.t(attributeConfig.label) + ': ' + label;
+    }
+    return label;
+}
