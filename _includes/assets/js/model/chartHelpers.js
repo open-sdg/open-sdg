@@ -330,7 +330,9 @@ function getBorderDash(striped) {
  */
 function makeDataset(years, rows, combination, labelFallback, color, background, border, excess, allObservationAttributes) {
   var dataset = getBaseDataset(),
-      data = prepareDataForDataset(years, rows);
+      prepared = prepareDataForDataset(years, rows, allObservationAttributes),
+      data = prepared.data,
+      obsAttributes = prepared.observationAttributes;
   return Object.assign(dataset, {
     label: getCombinationDescription(combination, labelFallback),
     disaggregation: combination,
@@ -344,7 +346,7 @@ function makeDataset(years, rows, combination, labelFallback, color, background,
     pointStyle: 'circle',
     data: data,
     excess: excess,
-    observationAttributes: prepareObservationAttributesForDataset(rows, allObservationAttributes),
+    observationAttributes: obsAttributes,
   });
 }
 
@@ -382,35 +384,32 @@ function getCombinationDescription(combination, fallback) {
  * @param {Array} rows
  * @return {Array} Prepared rows
  */
-function prepareDataForDataset(years, rows) {
-  return years.map(function(year) {
-    var found = rows.find(function (row) {
-      return row[YEAR_COLUMN] === year;
-    });
-    return found ? found[VALUE_COLUMN] : null;
-  });
-}
-
-/**
- * Get info on the observation attributes.
- */
-function prepareObservationAttributesForDataset(rows, allObservationAttributes) {
-  if (rows.length === 0) {
-    return [];
-  }
+function prepareDataForDataset(years, rows, allObservationAttributes) {
+  var ret = {
+    data: [],
+    observationAttributes: [],
+  };
   var configObsAttributes = {{ site.observation_attributes | jsonify }}.map(function(obsAtt) {
     return obsAtt.field;
   });
-  return rows.map(function(row) {
-    var obsAttributesForRow = [];
-    configObsAttributes.forEach(function(field) {
-      if (row[field]) {
-        var hashKey = field + '|' + row[field];
-        obsAttributesForRow.push(allObservationAttributes[hashKey]);
-      }
+  years.forEach(function(year) {
+    var found = rows.find(function (row) {
+      return row[YEAR_COLUMN] === year;
     });
-    return obsAttributesForRow;
+    ret.data.push(found ? found[VALUE_COLUMN] : null);
+
+    var obsAttributesForRow = [];
+    if (found) {
+      configObsAttributes.forEach(function(field) {
+        if (found[field]) {
+          var hashKey = field + '|' + found[field];
+          obsAttributesForRow.push(allObservationAttributes[hashKey]);
+        }
+      });
+    }
+    ret.observationAttributes.push(obsAttributesForRow);
   });
+  return ret;
 }
 
 /**
@@ -429,7 +428,10 @@ function getHeadlineColor() {
  * @return {Object} Dataset object for Chart.js
  */
 function makeHeadlineDataset(years, rows, label, allObservationAttributes) {
-  var dataset = getBaseDataset();
+  var dataset = getBaseDataset(),
+      prepared = prepareDataForDataset(years, rows, allObservationAttributes),
+      data = prepared.data,
+      obsAttributes = prepared.observationAttributes;
   return Object.assign(dataset, {
     label: label,
     borderColor: getHeadlineColor(),
@@ -439,7 +441,7 @@ function makeHeadlineDataset(years, rows, label, allObservationAttributes) {
     borderWidth: 4,
     headline: true,
     pointStyle: 'rect',
-    data: prepareDataForDataset(years, rows),
-    observationAttributes: prepareObservationAttributesForDataset(rows, allObservationAttributes),
+    data: data,
+    observationAttributes: obsAttributes,
   });
 }
