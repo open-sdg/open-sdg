@@ -25,6 +25,8 @@
     initialiseFields: initialiseFields,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
+    updateIndicatorDataUnitStatus: updateIndicatorDataUnitStatus,
+    updateIndicatorDataSeriesStatus: updateIndicatorDataSeriesStatus,
     alterChartConfig: alterChartConfig,
     alterTableConfig: alterTableConfig,
     alterDataDisplay: alterDataDisplay,
