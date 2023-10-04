@@ -152,7 +152,15 @@
                     "elements": [
                         {
                             "type": "Control",
-                            "scope": "#/properties/progress_status"
+                            "scope": "#/properties/progress_status/properties/status_heading"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progress_status/properties/status_help"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/status_types"
                         }
                     ]
                 }
@@ -253,8 +261,12 @@
                     "elements": [
                         {
                             "type": "Control",
-                            "scope": "#/properties/country"
+                            "scope": "#/properties/country/properties/name"
                         },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/country/properties/adjective"
+                        }
                     ]
                 },
                 {
@@ -264,7 +276,15 @@
                     "elements": [
                         {
                             "type": "Control",
-                            "scope": "#/properties/email_contacts"
+                            "scope": "#/properties/email_contacts/properties/questions"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email_contacts/properties/suggestions"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email_contacts/properties/functional"
                         }
                     ]
                 }
@@ -416,16 +436,37 @@
             "label": "Navigation",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/menu"
+                    "type": "GroupWithAccordion",
+                    "label": "Main menu",
+                    "documentationKey": "menu",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/menu"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/footer_menu"
+                    "type": "GroupWithAccordion",
+                    "label": "Footer menu",
+                    "documentationKey": "footer_menu",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/footer_menu"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/breadcrumbs"
+                    "type": "GroupWithAccordion",
+                    "label": "Breadcrumbs",
+                    "documentationKey": "breadcrumbs",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/breadcrumbs"
+                        }
+                    ]
                 }
             ]
         },
@@ -434,24 +475,65 @@
             "label": "Data",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/hide_single_series"
+                    "type": "GroupWithAccordion",
+                    "label": "Hide single series",
+                    "documentationKey": "hide_single_series",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_single_series",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/hide_single_unit"
+                    "type": "GroupWithAccordion",
+                    "label": "Hide single unit",
+                    "documentationKey": "hide_single_unit",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_single_unit",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/ignored_disaggregations"
+                    "type": "GroupWithAccordion",
+                    "label": "Ignored disaggregations",
+                    "documentationKey": "ignored_disaggregations",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/ignored_disaggregations"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_fields"
+                    "type": "GroupWithAccordion",
+                    "label": "Data fields",
+                    "documentationKey": "data_fields",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_fields"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/time_series_attributes"
+                    "type": "GroupWithAccordion",
+                    "label": "Time series attributes",
+                    "documentationKey": "time_series_attributes",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/time_series_attributes"
+                        }
+                    ]
                 }
             ]
         },
@@ -460,19 +542,40 @@
             "label": "Metadata",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/hide_empty_metadata",
-                    "options": {
-                        "toggle": true
-                    }
+                    "type": "GroupWithAccordion",
+                    "label": "Hide empty metadata",
+                    "documentationKey": "hide_empty_metadata",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_empty_metadata",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/empty_metadata_placeholder"
+                    "type": "GroupWithAccordion",
+                    "label": "Empty metadata placeholder",
+                    "documentationKey": "empty_metadata_placeholder",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/empty_metadata_placeholder"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/empty_metadata_placeholder_sources"
+                    "type": "GroupWithAccordion",
+                    "label": "Empty metadata placeholder - sources",
+                    "documentationKey": "empty_metadata_placeholder_sources",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/empty_metadata_placeholder_sources"
+                        }
+                    ]
                 }
             ]
         },
@@ -481,20 +584,107 @@
             "label": "Forms",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_config_form"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator config form",
+                    "documentationKey": "indicator_config_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_config_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_config_form/properties/repository_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_config_form/properties/translation_link"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_data_form"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator data form",
+                    "documentationKey": "indicator_data_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_data_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_data_form/properties/repository_link"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_metadata_form"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator metadata form",
+                    "documentationKey": "indicator_metadata_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/repository_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/translation_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/language"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/scopes"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/exclude_fields"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/translated",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/site_config_form"
+                    "type": "GroupWithAccordion",
+                    "label": "Site config form",
+                    "documentationKey": "site_config_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/repository_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/translation_link"
+                        }
+                    ]
                 }
             ]
         },
@@ -503,20 +693,62 @@
             "label": "Webmaster",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/analytics"
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "analytics",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/analytics"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/cookie_consent_form"
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "cookie_consent_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/cookie_consent_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/search_index_boost"
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "search_index_boost",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/search_index_boost",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/field"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/boost"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/search_index_extra_fields"
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "search_index_extra_fields",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/search_index_extra_fields"
+                        }
+                    ]
                 }
             ]
         },
@@ -525,12 +757,95 @@
             "label": "Maps",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/map_layers"
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "map_layers",
+                    "label": "Map layers",
+                    "description": "Configure any number of layers to display on all indicator maps. A minimum of one layer is required to display maps.",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/map_layers",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/subfolder"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/label"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/min_zoom"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/max_zoom"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/staticBorders"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/map_options"
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "map_options",
+                    "label": "Map options",
+                    "description": "Site-wide configuration of map behavior and style.",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/disaggregation_controls",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/minZoom"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/maxZoom"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/tileURL"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/tileOptions"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/colorRange"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/noValueColor"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/styleNormal",
+                            "description": "Foo"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/styleHighlighted"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/styleStatic"
+                        }
+                    ]
                 }
             ]
         },
@@ -539,32 +854,84 @@
             "label": "Charts",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_color_headline"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color for headline",
+                    "documentationKey": "graph_color_headline",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_headline"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_color_headline_high_contrast"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color for headline - high contrast",
+                    "documentationKey": "graph_color_headline_high_contrast",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_headline_high_contrast"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_color_set"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color set",
+                    "documentationKey": "graph_color_set",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_set"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_color_list"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color list",
+                    "documentationKey": "graph_color_list",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_list"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_color_number"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color number",
+                    "documentationKey": "graph_color_number",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_number"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_title_from_series"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph title from series",
+                    "documentationKey": "graph_title_from_series",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_title_from_series",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/x_axis_label"
+                    "type": "GroupWithAccordion",
+                    "label": "X axis label",
+                    "documentationKey": "x_axis_label",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/x_axis_label"
+                        }
+                    ]
                 }
             ]
         },
@@ -581,8 +948,39 @@
                     "scope": "#/properties/environment"
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/create_pages"
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "create_pages",
+                    "label": "Create pages",
+                    "description": "This setting can be used to automatically create certain pages.",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/create_pages",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/folder"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/filename"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/layout"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/title"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
                 },
                 {
                     "type": "Control",
