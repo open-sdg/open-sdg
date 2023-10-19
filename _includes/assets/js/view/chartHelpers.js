@@ -256,8 +256,8 @@ function createPlot(chartInfo, helpers) {
  * @return null
  */
 function updateGraphAnnotationColors(contrast, chartInfo) {
-    if (chartInfo.options.annotation) {
-        chartInfo.options.annotation.annotations.forEach(function (annotation) {
+    if (chartInfo.options.plugins.annotation) {
+        chartInfo.options.plugins.annotation.annotations.forEach(function (annotation) {
             if (contrast === 'default') {
                 $.extend(true, annotation, annotation.defaultContrast);
             }

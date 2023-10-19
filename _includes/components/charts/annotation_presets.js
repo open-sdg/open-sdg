@@ -55,7 +55,7 @@ opensdg.annotationPresets = {
         mode: 'vertical',
         borderDash: [2, 2],
         label: {
-            position: 'top',
+            position: 'start',
             content: translations.indicator.annotation_series_break,
         },
     },
