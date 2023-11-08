@@ -116,6 +116,13 @@ function inputEdges(edges) {
       return true;
     });
   }
+  var unitAndSeries = [UNIT_COLUMN, SERIES_COLUMN];
+  edgesData = edgesData.filter(function(edge) {
+    if (unitAndSeries.includes(edge.To) || unitAndSeries.includes(edge.From)) {
+      return false;
+    }
+    return true;
+  });
   return edgesData;
 }
 
