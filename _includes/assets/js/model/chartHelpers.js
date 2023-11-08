@@ -389,9 +389,15 @@ function prepareDataForDataset(years, rows, allObservationAttributes) {
     data: [],
     observationAttributes: [],
   };
-  var configObsAttributes = {{ site.observation_attributes | jsonify }}.map(function(obsAtt) {
-    return obsAtt.field;
-  });
+  var configObsAttributes = {{ site.observation_attributes | jsonify }};
+  if (configObsAttributes && configObsAttributes.length > 0) {
+    configObsAttributes = configObsAttributes.map(function(obsAtt) {
+      return obsAtt.field;
+    });
+  }
+  else {
+    configObsAttributes = [];
+  }
   years.forEach(function(year) {
     var found = rows.find(function (row) {
       return row[YEAR_COLUMN] === year;
