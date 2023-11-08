@@ -448,6 +448,9 @@
                 validFields = Object.keys(disaggregations[0]),
                 invalidFields = [this.seriesColumn, this.unitsColumn],
                 allDisaggregations = [];
+            this.plugin.configObsAttributes.forEach(function(obsAttribute) {
+                invalidFields.push(obsAttribute.field);
+            });
 
             this.fieldsInOrder.forEach(function(field) {
                 if (!(invalidFields.includes(field)) && validFields.includes(field)) {
@@ -458,6 +461,9 @@
                                 return disaggregation[field];
                             })),
                         };
+                    if (typeof sortedValues === 'undefined') {
+                        return;
+                    }
                     item.values.sort(function(a, b) {
                         return sortedValues.indexOf(a) - sortedValues.indexOf(b);
                     });

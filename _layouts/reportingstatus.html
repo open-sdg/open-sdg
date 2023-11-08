@@ -87,16 +87,16 @@
 
   {% if site.reporting_status.disaggregation_tabs and disagg_data %}
     <div role="tabpanel" class="tab-pane" id="disaggregationsview">
-      {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" %}
-      {% include components/reportingstatus/reporting-status-by-goal.html goals=disagg_data.goals title=page.t.status.status_by_goal status_types="disaggregation_status" %}
+      {% include components/reportingstatus/reporting-status-overall.html overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
+      {% include components/reportingstatus/reporting-status-by-goal.html goals=disagg_data.goals title=page.t.status.status_by_goal status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
     </div>
 
     {% if extra_fields %}
       {%- for extra_field in disagg_data.extra_fields -%}
       {% assign extra_field_name = extra_field[0] %}
       <div role="tabpanel" class="tab-pane" id="{{ extra_field_name }}-disaggregationsview" data-extra-field="true">
-        {% include components/reportingstatus/reporting-status-overall.html hide_wheel=true overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" %}
-        {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status.disaggregation_status_by_field status_types="disaggregation_status" %}
+        {% include components/reportingstatus/reporting-status-overall.html hide_wheel=true overall=disagg_data.overall title=page.t.status.disaggregation_status_overall status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
+        {% include components/reportingstatus/reporting-status-by-field.html extra_field=extra_field title=page.t.status.disaggregation_status_by_field status_types="disaggregation_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
       </div>
       {%- endfor -%}
     {% endif %}

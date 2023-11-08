@@ -575,7 +575,7 @@ Options out-of-the-box are:
 
 ### proxy
 
-_Optional_: This setting can be used to flag that an indicator contains "proxy" data, meaning that it is somehow different than the expected UN global indicator. The available settings for this are:
+_Optional_: When indicator data provided is alternative to that specified by the UN, Open SDG now has the functionality to mark it as "proxy" data. The feature provides a label and customizable definition and can be set for an entire indicator of for an individual series within an indicator. The available settings for this are:
 
 ```
 proxy: proxy
@@ -589,9 +589,13 @@ proxy: both
 
 Using "both" can flag particular series codes within the indicator as proxies. This requires that you also set the `proxy_series` option below.
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of proxy functionality](https://open-sdg.org/open-sdg-docs/img/image001.png)
+
 ### proxy_series
 
-This setting is required if you have `proxy` set to "proxy". It should be a list of the series codes within the indicator that you want flagged as "proxy" data. For example:
+This setting is required if you have `proxy` set to "both". It should be a list of the series codes within the indicator that you want flagged as "proxy" data. For example:
 
 ```
 proxy: both

@@ -69,6 +69,10 @@ function nonFieldColumns() {
   timeSeriesAttributes.forEach(function(tsAttribute) {
     columns.push(tsAttribute.field);
   });
+  var observationAttributes = {{ site.observation_attributes | jsonify }};
+  observationAttributes.forEach(function(oAttribute) {
+    columns.push(oAttribute.field);
+  });
   columns.push(SERIES_COLUMN);
   return columns;
 }

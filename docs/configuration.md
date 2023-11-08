@@ -130,19 +130,25 @@ _Optional_: This setting can be used to automatically create the goal pages. Wit
 This setting can contain several (indented) sub-settings:
 * `goal_content_heading`: Text entered here will appear as an H2 heading above any content configured below in 'goals'.
 * `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
-* `goals`: This optional item can include an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key. They should be in order of goal number.
+* `goals`: This optional item can include an array of objects, each with can have these optional fields:
+    * `goal`: This can specify the goal number. For example: `goal: 1`. This is optional but recommended. If you omit this, then it is your responsibility to make sure that all of the objects in this array are *in order*. In other words, the first object is goal 1, the second object is goal 2, etc.
+    * `heading`: Text entered here will appear as an H1 heading at the top of the goal page. This is optional and overrides the default (eg, 'Goal 1: No Poverty'). This is useful for SEO purposes, and can be plain text or a translation key.
+    * `content`: Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
+    * `content_heading`: Text entered here will appear as an H2 heading above the `content` configured above. Note that this overrides the site-wide `goal_content_heading` option above as well.
 
 ```nohighlight
 create_goals:
   goal_content_heading: About
   previous_next_links: true
   goals:
-    - content: My content for goal 1
+    - heading: My heading for goal 1
+      content: My content for goal 1
     - content: My content for goal 2 with a [link](https://example.com)
+      content_heading: My sub-heading for the content on goal 2
     - content: custom.my_translation_key_for_goal_3
 ```
 
-Alternatively the `goals` section can specify the goal number of each item, so that it does not need to be in a particular order, as in the following example:
+It is recommend that each object in the `goals` section specify the `goal` number of each item. This is preferred because it allows you to have the objects in any order. For example:
 
 ```nohighlight
 create_goals:
@@ -153,7 +159,9 @@ create_goals:
       content: custom.my_translation_key_for_goal_3
     - goal: 2
       content: My content for goal 2 with a [link](https://example.com)
+      content_heading: My sub-heading for the content on goal 2
     - goal: 1
+      heading: My heading for goal 1
       content: My content for goal 1
 ```
 
@@ -829,6 +837,45 @@ _Optional_: This setting can be used to control the behavior of the `news` and `
 
 * `category_links`: Whether you would like the `categories` of posts to generate links to dedicated category pages. Default is `true`, but set to `false` to disable category links.
 
+### observation_attributes
+
+_Optional_: This setting controls the data columns that should be considered "observation attributes", as well as the labels that should be used for these columns when displaying their values in the footer beneath charts and tables.
+
+Here is a recommended example that would set "COMMENT_OBS" as an observation attribute:
+
+```
+observation_attributes:
+  - field: COMMENT_OBS
+    label: ''
+```
+
+As you can see in the defaults above, the labels can be empty, in which case the label is not displayed. They can also be translation keys.
+
+The "field" above is what is expected to be the column name in the data (eg, the CSV file). The "label" is what you would like to appear in the footer as the label (if anything).
+
+For example, given the following CSV data and the defaults above:
+
+Year | Units | COMMENT_OBS | Value
+--- | --- | --- | ---
+2020 | Percent | | 50
+2021 | Percent | | 60
+2020 | Total | estimate | 5000
+2021 | Total | estimate | 6000
+
+The footnote "estimate" would be associated with the observation values 5000 and 6000.
+
+By contrast, setting a label on the observation attribute will prepend that label in the footnotes. For example, using these settings instead:
+
+```
+observation_attributes:
+  - field: COMMENT_OBS
+    label: Comment
+```
+
+...would result in the footnote "Comment: estimate" being associated with the values 5000 and 6000.
+
+> NOTE: For full support (including on maps) a corresponding change should also be made in the data configuration in the "indicator_options" setting. See [more details on the "indicator_options" data configuration setting](data-configuration.md#indicator_options).
+
 ### plugins
 
 **_Required_**: This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
@@ -940,6 +987,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+* `disaggregation_indicator_count_label`: An alternative label to use for the indicator count on the disaggregation tab, to be displayed after a number. For example, if set to `indicators in scope`, then it would display something like `12 indicators in scope` in the disaggregation status tab. The default is `indicators`.
 * `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
 * `status_types`: A list of reporting status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'complete').
@@ -952,6 +1000,7 @@ Here is an example of using these settings:
 reporting_status:
     title: title goes here
     description: description goes here
+    disaggregation_indicator_count_label: indicators in scope
     disaggregation_tabs: true
     status_types:
       - value: notstarted

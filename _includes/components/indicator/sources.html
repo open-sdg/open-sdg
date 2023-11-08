@@ -13,6 +13,9 @@
     {% assign src_active = "source_active_" | append: i %}
     {% assign src_scope = "source_" | append: i %}
     <div class="col-md-6">
+      {% if n_sources == 1 %}
+        <h4 class="sr-only">{{ page.t.indicator.source }} {{ i }}</h4>
+      {% endif %}
       {% if n_sources > 1 %}
         <h4>{{ page.t.indicator.source }} {{ i }}</h4>
       {% endif %}

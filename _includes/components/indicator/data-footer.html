@@ -61,4 +61,7 @@
         {% endfor %}
         {% endif %}
     </dl>
+    {% if site.observation_attributes and site.observation_attributes.size > 0 %}
+    <dl class="observation-attribute-list"></dl>
+    {% endif %}
 </div>

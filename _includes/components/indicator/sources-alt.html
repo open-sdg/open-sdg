@@ -13,6 +13,9 @@ file is controlled by the 'sources' indicator configuration option.
 <div class="row">
 {% for source in page.indicator.sources %}
     <div class="col-md-6">
+        {% if page.indicator.sources.size == 1 %}
+        <h4 class="sr-only">{{ page.t.indicator.source }} {{ forloop.index }}</h4>
+        {% endif %}
         {% if page.indicator.sources.size > 1 %}
         <h4>{{ page.t.indicator.source }} {{ forloop.index }}</h4>
         {% endif %}
