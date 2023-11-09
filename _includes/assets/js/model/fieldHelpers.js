@@ -151,14 +151,15 @@ function fieldItemStatesForView(fieldItemStates, fieldsByUnit, selectedUnit, dat
   else if (dataHasUnitSpecificFields) {
     states = fieldItemStatesForUnit(fieldItemStates, fieldsByUnit, selectedUnit);
   }
-
+  // Set all values to checked=false because they are going to be
+  // conditionally set to true below, if needed.
+  states.forEach(function(fieldItem) {
+    fieldItem.values.forEach(function(defaultFieldItemValue) {
+      defaultFieldItemValue.checked = false;
+    });
+  });
   if (selectedFields && selectedFields.length > 0) {
     states.forEach(function(fieldItem) {
-      // Set all values to checked=false because they are going to be
-      // conditionally set to true below, if needed.
-      fieldItem.values.forEach(function(defaultFieldItemValue) {
-        defaultFieldItemValue.checked = false;
-      });
       var selectedField = selectedFields.find(function(selectedItem) {
         return selectedItem.field === fieldItem.field;
       });
