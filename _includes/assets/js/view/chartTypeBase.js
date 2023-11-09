@@ -200,6 +200,12 @@ opensdg.chartTypes.base = function(info) {
                     if (annotation.label.backgroundColor) {
                         annotation.defaultContrast.label.backgroundColor = annotation.label.backgroundColor;
                     }
+                    if (annotation.label.borderWidth) {
+                        annotation.defaultContrast.label.borderWidth = annotation.label.borderWidth;
+                    }
+                    if (annotation.label.borderColor) {
+                        annotation.defaultContrast.label.borderColor = annotation.label.borderColor;
+                    }
                 }
             }
             return annotation;

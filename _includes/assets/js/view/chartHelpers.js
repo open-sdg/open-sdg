@@ -240,6 +240,7 @@ function createPlot(chartInfo, helpers) {
     VIEW._chartInstance.data.datasets = updatedConfig.data.datasets;
     VIEW._chartInstance.data.labels = updatedConfig.data.labels;
     VIEW._chartInstance.options = updatedConfig.options;
+    updateGraphAnnotationColors(isHighContrast() ? 'high' : 'default', updatedConfig);
 
     // The following is needed in our custom "rescaler" plugin.
     VIEW._chartInstance.data.allLabels = VIEW._chartInstance.data.labels.slice(0);
