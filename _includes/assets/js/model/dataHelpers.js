@@ -149,9 +149,15 @@ function getAllObservationAttributes(rows) {
   }
   var obsAttributeHash = {},
       footnoteNumber = 0,
-      configObsAttributes = {{ site.observation_attributes | jsonify }}.map(function(obsAtt) {
-        return obsAtt.field;
-      })
+      configObsAttributes = {{ site.observation_attributes | jsonify }};
+  if (configObsAttributes && configObsAttributes.length > 0) {
+    configObsAttributes = configObsAttributes.map(function(obsAtt) {
+      return obsAtt.field;
+    });
+  }
+  else {
+    configObsAttributes = [];
+  }
   configObsAttributes.forEach(function(field) {
     var attributeValues = Object.keys(_.groupBy(rows, field)).filter(function(value) {
       return value !== 'undefined';
