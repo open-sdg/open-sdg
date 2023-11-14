@@ -33,6 +33,7 @@
     updateSeriesAndUnitElements: updateSeriesAndUnitElements,
     updateUnitElements: updateUnitElements,
     updateTimeSeriesAttributes: updateTimeSeriesAttributes,
+    updateObservationAttributes: updateObservationAttributes,
     updatePlot: updatePlot,
     isHighContrast: isHighContrast,
     getHeadlineColor: getHeadlineColor,
@@ -47,5 +48,7 @@
     createDownloadButton: createDownloadButton,
     createSelectionsTable: createSelectionsTable,
     sortFieldGroup: sortFieldGroup,
+    getObservationAttributeFootnoteSymbol: getObservationAttributeFootnoteSymbol,
+    getObservationAttributeText: getObservationAttributeText,
   }
 })();

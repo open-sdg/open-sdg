@@ -95,6 +95,7 @@
     getCombinationData: getCombinationData,
     getDatasets: getDatasets,
     tableDataFromDatasets: tableDataFromDatasets,
+    observationAttributesTableFromDatasets: observationAttributesTableFromDatasets,
     sortFieldNames: typeof sortFieldNames !== 'undefined' ? sortFieldNames : function() {},
     sortFieldValueNames: typeof sortFieldValueNames !== 'undefined' ? sortFieldValueNames : function() {},
     getPrecision: getPrecision,
@@ -103,6 +104,7 @@
     getColumnsFromData: getColumnsFromData,
     inputEdges: inputEdges,
     getTimeSeriesAttributes: getTimeSeriesAttributes,
+    getAllObservationAttributes: getAllObservationAttributes,
     inputData: inputData,
   }
 })();

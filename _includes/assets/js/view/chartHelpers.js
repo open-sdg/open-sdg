@@ -139,7 +139,7 @@ function setPlotEvents(chartInfo) {
         $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
     });
 
-    createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
+    createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload', chartInfo.selectedSeries, chartInfo.selectedUnit);
     createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
     createIndicatorDownloadButtons(chartInfo.indicatorDownloads, chartInfo.shortIndicatorId, '#chartSelectionDownload');
 
@@ -195,9 +195,10 @@ function setPlotEvents(chartInfo) {
  * @param {Object} chartInfo
  * @return null
  */
-function createPlot(chartInfo) {
+function createPlot(chartInfo, helpers) {
 
     var chartConfig = getChartConfig(chartInfo);
+    chartConfig.indicatorViewHelpers = helpers;
     alterChartConfig(chartConfig, chartInfo);
     if (isHighContrast()) {
         updateGraphAnnotationColors('high', chartConfig);
@@ -239,6 +240,7 @@ function createPlot(chartInfo) {
     VIEW._chartInstance.data.datasets = updatedConfig.data.datasets;
     VIEW._chartInstance.data.labels = updatedConfig.data.labels;
     VIEW._chartInstance.options = updatedConfig.options;
+    updateGraphAnnotationColors(isHighContrast() ? 'high' : 'default', updatedConfig);
 
     // The following is needed in our custom "rescaler" plugin.
     VIEW._chartInstance.data.allLabels = VIEW._chartInstance.data.labels.slice(0);
@@ -246,7 +248,7 @@ function createPlot(chartInfo) {
     VIEW._chartInstance.update();
 
     $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
-    updateChartDownloadButton(chartInfo.selectionsTable);
+    updateChartDownloadButton(chartInfo.selectionsTable, chartInfo.selectedSeries, chartInfo.selectedUnit);
 };
 
 /**
@@ -255,8 +257,8 @@ function createPlot(chartInfo) {
  * @return null
  */
 function updateGraphAnnotationColors(contrast, chartInfo) {
-    if (chartInfo.options.annotation) {
-        chartInfo.options.annotation.annotations.forEach(function (annotation) {
+    if (chartInfo.options.plugins.annotation) {
+        chartInfo.options.plugins.annotation.annotations.forEach(function (annotation) {
             if (contrast === 'default') {
                 $.extend(true, annotation, annotation.defaultContrast);
             }

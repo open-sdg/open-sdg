@@ -125,7 +125,7 @@ There are a number of SEO additions to this update including:
 
 Meta Tags
 
-Title tags and meta desctriptions are two important elements of SEO. Title tags are the clickable headlines that appear in search engine results pages (SERP), while meta descriptions are brief summaries of the page's content. Both title tags and meta descriptions can help improve your website's click-through rate (CTR), which is the percentage of people who see your listing in the SERPs and click on it.
+Title tags and meta descriptions are two important elements of SEO. Title tags are the clickable headlines that appear in search engine results pages (SERP), while meta descriptions are brief summaries of the page's content. Both title tags and meta descriptions can help improve your website's click-through rate (CTR), which is the percentage of people who see your listing in the SERPs and click on it.
 
 This setting can be used to set [meta tags](https://www.w3schools.com/tags/tag_meta.asp) on any of the paths within the site. It should contain a list of items, each containing a `path`, a `name`, and `content`.
 
@@ -141,9 +141,9 @@ meta_tags:
 
 Goal Page H1s & H2s
 
-H1 and H2 tags are HTML elements that are used to define headings in a web page. H1 tags are the most important headings, followed by H2 tags. Heading tags are important for SEO because they help search engines understand the structure of your content and the topitcs that you are writing about. They also help users scan your content to find the information they are looking for.
+H1 and H2 tags are HTML elements that are used to define headings in a web page. H1 tags are the most important headings, followed by H2 tags. Heading tags are important for SEO because they help search engines understand the structure of your content and the topics that you are writing about. They also help users scan your content to find the information they are looking for.
 
-Text entered here will appear as an H1 heading at the top of the goal page. This is optional and overrides the default (eg, 'Goal 1: No Poverty'). This is useful for SEO purposes, and can be plain text or a translation key.
+Text entered here will appear as an H1 heading at the top of the goal page. This is optional and overrides the default (e.g. 'Goal 1: No Poverty'). This is useful for SEO purposes, and can be plain text or a translation key.
 
 Example code for Goal 6 heading being the H1 and content_heading being the H2
 

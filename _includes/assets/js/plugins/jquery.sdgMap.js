@@ -97,6 +97,8 @@
     this.proxy = options.proxy;
     this.proxySerieses = options.proxySerieses;
     this.startValues = options.startValues;
+    this.configObsAttributes = {{ site.observation_attributes | jsonify }};
+    this.allObservationAttributes = options.allObservationAttributes;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -178,9 +180,27 @@
     getTooltipContent: function(feature) {
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
+      var plugin = this;
       if (typeof tooltipData === 'number') {
         tooltipContent += ': ' + this.alterData(tooltipData);
       }
+      if (feature.properties.observation_attributes) {
+        var obsAtts = feature.properties.observation_attributes[plugin.currentDisaggregation][plugin.currentYear],
+            footnoteNumbers = [];
+        if (obsAtts) {
+          Object.keys(obsAtts).forEach(function(field) {
+            if (obsAtts[field]) {
+              var hashKey = field + '|' + obsAtts[field];
+              var footnoteNumber = plugin.allObservationAttributes[hashKey].footnoteNumber;
+              footnoteNumbers.push(plugin.viewHelpers.getObservationAttributeFootnoteSymbol(footnoteNumber));
+            }
+          });
+          if (footnoteNumbers.length > 0) {
+            tooltipContent += ' ' + footnoteNumbers.join(' ');
+          }
+        }
+      }
+
       return tooltipContent;
     },
 
@@ -562,7 +582,6 @@
         }
         else {
           plugin.updateTitle();
-          plugin.updateFooterFields();
           plugin.updatePrecision();
         }
 

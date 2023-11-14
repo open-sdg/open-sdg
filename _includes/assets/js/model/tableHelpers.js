@@ -17,6 +17,21 @@ function tableDataFromDatasets(datasets, years) {
 }
 
 /**
+ * @param {Array} datasets
+ * @param {Array} years
+ * @return {Object} Same as tableDataFromDatasets, except values are arrays of observation attributes
+ */
+function observationAttributesTableFromDatasets(datasets, years) {
+  return {
+    data: years.map(function(year, index) {
+      return [null].concat(datasets.map(function(ds) {
+        return ds.observationAttributes[index] ? ds.observationAttributes[index] : [];
+      }));
+    }),
+  };
+}
+
+/**
  * @param {Array} rows
  * @param {string} selectedUnit
  * @return {Object} Object containing 'title', 'headings', and 'data'
