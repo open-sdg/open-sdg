@@ -333,3 +333,4 @@ site_config_form:
 validate_indicator_config: true
 validate_site_config: false
 x_axis_label: Year
+use_new_config_forms: true

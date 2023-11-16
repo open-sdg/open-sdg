@@ -1,0 +1,92 @@
+.layout-config-builder-2 {
+
+    .MuiGrid-container > .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true:not(:empty) {
+        border-top: 5px solid rgb(25, 118, 210);
+        padding-top: 20px;
+        margin-top: 20px;
+        &:first-child {
+            margin-top: -0.5em;
+        }
+        .MuiGrid-container > .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true:not(:empty) {
+            border-top: none;
+        }
+    }
+
+    .MuiButton-root,
+    .MuiTab-root,
+    .MuiTypography-root,
+    .MuiFormLabel-root {
+        font-family: $fontFamily;
+    }
+
+    .MuiButton-root {
+        @include button;
+        @include buttonDownload;
+        text-transform: capitalize;
+    }
+
+    .MuiTab-root {
+        text-transform: capitalize;
+    }
+
+    .MuiAppBar-root {
+        background-color: transparent;
+        color: $text-color;
+    }
+
+    .MuiInput-input:not([role="combobox"]) {
+        border: 1px solid $color-medium-highContrast;
+        padding: 5px;
+    }
+
+    .MuiTabs-scroller {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .MuiGrid-spacing-xs-2 {
+        justify-content: space-between;
+        > .MuiGrid-item:first-child {
+            max-width: 100%;
+        }
+        > .MuiGrid-itm:last-child {
+            max-width: 50%;
+            .MuiListItem-root {
+                .MuiListItemText-root {
+                    min-width: fit-content;
+                }
+            }
+            .MuiListItemSecondaryAction-root {
+                right: -50px;
+            }
+        }
+    }
+    /*
+    .MuiAutocomplete-inputRoot {
+        width: fit-content;
+        input[role="combobox"] {
+            min-width: fit-content;
+        }
+    }
+    */
+    /*
+    .MuiInput-input[type="number"] {
+        width: fit-content;
+    }
+    */
+}
+
+body.contrast-high.layout-config-builder {
+    .config-widgets {
+        background-color: $color-dark-highContrast;
+    }
+    .config-repository-button {
+        span {
+            color: $color-dark-highContrast;
+        }
+    }
+    .MuiButton-root {
+        @include buttonHighContrast;
+        @include buttonDownloadHighContrast;
+    }
+}
