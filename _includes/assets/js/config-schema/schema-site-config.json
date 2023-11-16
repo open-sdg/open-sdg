@@ -191,16 +191,16 @@
                 "type": "object",
                 "title": "Page",
                 "properties": {
-                    "filename": {
-                        "type": "string",
-                        "title": "Filename",
-                        "description": "The filename for the page - usually 'index.html'."
-                    },
                     "folder": {
                         "type": "string",
                         "minLength": 1,
                         "title": "Folder",
                         "description": "The folder path for the page."
+                    },
+                    "filename": {
+                        "type": "string",
+                        "title": "Filename",
+                        "description": "The filename for the page - usually 'index.html'."
                     },
                     "layout": {
                         "type": "string",
