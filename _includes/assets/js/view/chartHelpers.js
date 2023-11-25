@@ -67,6 +67,30 @@ function updateIndicatorDataViewStatus(oldDatasets, newDatasets) {
 }
 
 /**
+ * @param {Array} unit
+ * @return null
+ */
+function updateIndicatorDataUnitStatus(unit) {
+    var status = translations.indicator.announce_unit_switched + translations.t(unit);
+    var current = $('#indicator-data-unit-status').text();
+    if (current != status) {
+        $('#indicator-data-unit-status').text(status);
+    }
+}
+
+/**
+ * @param {Array} series
+ * @return null
+ */
+function updateIndicatorDataSeriesStatus(series) {
+    var status = translations.indicator.announce_series_switched + translations.t(series);
+    var current = $('#indicator-data-series-status').text();
+    if (current != status) {
+        $('#indicator-data-series-status').text(status);
+    }
+}
+
+/**
  * @param {String} contrast
  * @param {Object} chartInfo
  * @return null
@@ -226,7 +250,6 @@ function createPlot(chartInfo, helpers) {
         createPlot(chartInfo);
         return;
     }
-
     updateIndicatorDataViewStatus(VIEW._chartInstance.data.datasets, updatedConfig.data.datasets);
     updateHeadlineColor(isHighContrast() ? 'high' : 'default', updatedConfig);
 

@@ -121,6 +121,17 @@ var indicatorView = function (model, options) {
         });
     }
 
+    if (MODEL.onUnitsSelectedChanged) {
+        MODEL.onUnitsSelectedChanged.attach(function (sender, args) {
+            helpers.updateIndicatorDataUnitStatus(args);
+        });
+    }
+    if (MODEL.onSeriesesSelectedChanged) {
+        MODEL.onSeriesesSelectedChanged.attach(function (sender, args) {
+            helpers.updateIndicatorDataSeriesStatus(args);
+        });
+    }
+
     MODEL.onFieldsCleared.attach(function (sender, args) {
 
         $(OPTIONS.rootElement).find(':checkbox').prop('checked', false);
