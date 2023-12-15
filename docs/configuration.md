@@ -1,6 +1,6 @@
 <h1>Site configuration</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_config.yml` file.** Alternatively, you can add any/all of these settings to a `site_config.yml` file in your data folder (usually `data/site_config.yml`).
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `data/site_config.yml` file.** Alternatively, you can make changes using the site configuration forms.
 
 This document covers the "site configuration", which is distinct from "data configuration". See more [details on data configuration](data-configuration.md).
 
