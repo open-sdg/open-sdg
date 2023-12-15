@@ -1,48 +1,44 @@
-<h1>Site configuration</h1>
+<h1>Site configuration forms</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `data/site_config.yml` file.** Alternatively, you can make changes using the site configuration forms.
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed on the [site configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/). **All of these settings go in the `data/site_config.yml` file or you can make changes to these settings using the site configuration forms.**
 
-This document covers the "site configuration", which is distinct from "data configuration". See more [details on data configuration](data-configuration.md).
+This document covers when and how to use the site configuration forms to make configuration changes to your site.
 
-_Note about "strings": Many of the settings detailed here contain human-readable "strings" (ie, text). In most cases, they can be replaced by [translation keys](translation.md) for better multilingual support. For example, "Indicator" could be replaced with "general.indicator"._
+### When to use
 
-> To see many of these options in action, the [site starter repository](https://github.com/open-sdg/open-sdg-site-starter) contains an [example config file](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/_config.yml).
+There are two ways of making configuration changes to your site: 
 
-### analytics
+* You can edit the `data/site_config.yml` file directly in GitHub, or 
+* You can use the site configuration forms via your staging site.
+  
+You can use either method at any time for any change. 
 
-_Optional_: This setting can be used to facilitate the installation of Google Analytics. You can do this in multiple ways:
+The site configurations forms have been created to make changes to your site more user-friendly. It may be quicker for you to use the user-friendly site configuration forms than editing the file directly. Or, it might be quicker for you to edit the directly file instead. This may depend on your experience and personal preference and the choice is yours.
 
-* ua (analytics.js)
-* gtag (gtag.js)
-* gtm (Google Tag Manager)
+By using the site configuration forms, you remove the risk of any syntax errors that may occur from editing the file directly. This may be preferential for users without much developer or GitHub experience. 
 
-Google provides a number that would be used in each of these cases. The numbers typically have the following prefixes:
+### How to use
 
-* UA-xxxxxxxx
-* G-xxxxxxxx
-* GTM-xxxxxxxx
+You can access the site configuration forms by going to your staging site and in the footer menu at the bottom of any page, click "Configuration".
 
-To use this setting, put the appropriate number next to the corresponding item. For example:
+From here you can navigate around the forms depending on what setting you would like to change. Every setting has its own section which may consist of checkboxes, text boxes, drop-downs, toggles and list items. You can interact with each of them to update any settings from the default. There is more information provided to give context and guidance for each setting which can be accessed by clicking on the drop-down at the bottom of each setting. 
 
-```nohighlight
-analytics:
-  ua: UA-xxxxxxxx
-  gtag: G-xxxxxxxx
-  gtm: GTM-xxxxxxxx
-```
+For example, if you wanted to change your country name on the site, you would: 
+1. Click on the "General" menu item.
+1. Find the "Country" setting on that page.
+1. Read more about the setting by clicking on the more information drop-down at the bottom of that setting.
+1. Type in the name of your country/region/locality etc. in the text box for that setting.
+1. Change any other settings in a similar way, depending on their format.
 
-Notes:
+Once you have made the desired changes within the site configuration forms:
 
-1. The don't need to use all of them. You can use 1, 2, or none at all.
-1. The `ua` option was previously called `ga_prod` which also still works.
-1. As an alternative to using these settings, you can alternatively override the `_includes/head-custom.html` and/or `_includes/scripts-custom.html` files in order to insert any Google Analytics snippets you might need.
-1. The `ua` option also captures certain custom events, such as the clicking of the contrast toggle button.
-1. If you are using the `cookie_consent_form` setting, these analytics will be automatically included in the cookie consent form. This allows the user to decline the setting of the following cookies: "_gat", "_gid", and "ga". If using the `gtag` approach, then some additional cookies may be set (see the [official documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage#gtagjs_google_analytics_4_-_cookie_usage)). You can specify these with an `extra_cookies` option, for example:
+1. Click the green "Download Configuration" button above the configuration menu.  
+1. You will receive a file download called "site_config.yml". 
+1. Click on the green "Go to Repository" button to the right of it, and it will take you to your site repository on GitHub.
+1. Upload the downloaded "site_config.yml" file by dragging it onto the page.
+1. Scroll down and press "Commit changes".
 
-```
-analytics:
-  gtag: G-xxxxxxxx
-  extra_cookies:
-    - _ga_123456789
-    - _gac_gb_123456789
-```
+If you are ready to test your changes, merge your feature branch to the "develop" branch and you can view them on your staging site to check they look as expected and you are happy with them. 
+
+If you are not happy, go back to the configuration forms and alter/change back following the same steps. Once happy with the changes in the staging site, make sure to merge "develop" to "master" to see these changes on your live site.
+   
