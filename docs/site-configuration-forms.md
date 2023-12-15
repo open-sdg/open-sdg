@@ -2,6 +2,8 @@
 
 In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed on the [site configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/). **All of these settings go in the `data/site_config.yml` file or you can make changes to these settings using the site configuration forms.**
 
+New site configuration forms have been developed to be as user friendly as possible. The original ones are still available if you do not change the setting as below in the 'How to use' section, but you still access the forms in the same way.
+
 This document covers when and how to use the site configuration forms to make configuration changes to your site.
 
 ### When to use
@@ -18,6 +20,18 @@ The site configurations forms have been created to make changes to your site mor
 By using the site configuration forms, you remove the risk of any syntax errors that may occur from editing the file directly. This may be preferential for users without much developer or GitHub experience. 
 
 ### How to use
+
+To turn on the new site configuration forms:
+1. Go to the `site_config.yml` file in the `data` folder in your site repository.
+2. Include this line:
+```
+use_new_config_forms: true
+```
+A branch is needed for jekyll-open-sdg-plugins. In the Gemfile in your site repository, use: 
+
+```
+gem 'jekyll-open-sdg-plugins', git: 'https://github.com/brockfanning/jekyll-open-sdg-plugins.git', branch: 'config-form-revamp-option'
+```
 
 You can access the site configuration forms by going to your staging site and in the footer menu at the bottom of any page, click "Configuration".
 
