@@ -1,6 +1,6 @@
 <h1>Site configuration forms</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed on the [site configuration page](https://open-sdg.readthedocs.io/en/latest/configuration/). **All of these settings go in the `data/site_config.yml` file or you can make changes to these settings using the site configuration forms.**
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed on the [site configuration page](configuration.md). **All of these settings go in the `data/site_config.yml` file or you can make changes to these settings using the site configuration forms.**
 
 New site configuration forms have been developed to be as user friendly as possible. The original ones are still available if you do not change the setting as below in the 'How to use' section, but you still access the forms in the same way.
 
