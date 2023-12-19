@@ -1,0 +1,27 @@
+{% include head.html %}
+{% include multilingual-js.html key="header" %}
+
+{% include components/indicator/fields-template.html %}
+{% include components/indicator/units-template.html %}
+{% include components/indicator/series-template.html %}
+{% include multilingual-js.html key="indicator" %}
+{% include multilingual-js.html key="data" %}
+
+{% include components/indicator/header.html %}
+<div id="main-content" class="container goal-{{ page.goal.number }}" role="main">
+  {% include components/indicator/data-notice.html %}
+  {% include components/indicator/indicator-available.html %}
+  {% include components/indicator/proxy-banner.html %}
+  {% include components/indicator/indicator-progress.html %}
+  {% include components/indicator/indicator-content.html %}
+  {% include components/indicator/indicator-main.html %}
+</div>
+
+{% include scripts.html %}
+<script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+<script>
+    new pym.Child();
+</script>
+
+</body>
+</html>

@@ -25,15 +25,15 @@ graph_annotations:
       - 2
       - 2
     label:
-      position: top
+      position: start
       content: Foo
-      fontColor: '#000000'
+      color: '#ffffff'
       backgroundColor: '#000000'
     highContrast:
       borderColor: '#ffffff'
       label:
-        fontColor: '#ffffff'
-        backgroundColor: '#000000'
+        color: '#000000'
+        backgroundColor: '#ffffff'
   - preset: target_line
     value: 1.3
     endValue: 0
@@ -46,15 +46,15 @@ graph_annotations:
       - 2
       - 2
     label:
-      position: top
+      position: start
       content: Bar
-      fontColor: '#000000'
+      color: '#ffffff'
       backgroundColor: '#000000'
     highContrast:
       borderColor: '#ffffff'
       label:
-        fontColor: '#ffffff'
-        backgroundColor: '#000000'
+        color: '#000000'
+        backgroundColor: '#ffffff'
 graph_limits: []
 graph_stacked_disaggregation: ''
 graph_title: global_indicators.2-2-2-title

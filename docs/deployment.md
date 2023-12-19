@@ -41,3 +41,19 @@ To deploy the site repository requires these tasks (which, again, are pre-config
 1. Build the Jekyll site
 1. Validate the HTML of the site to ensure quality
 1. Upload the built files to the hosting provider
+
+### Embedding indicators on other sites
+
+Each individual indicator page can be embedded on other sites or pages, using iframes. The iframe-friendly URLs are the same as the indicator page URLs, but with "-frame" added. For example, instead of `/1-1-1`, the iframe-friendly version is `/1-1-1-iframe`.
+
+The recommended way to embed indicators as iframes is using the [Pym.js](https://blog.apps.npr.org/pym.js/) library. Here is some example embed code:
+
+```
+<script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script>
+<div id="my-iframe-container"></div>
+<script>
+    var pymParent = new pym.Parent('my-iframe-container', 'https://my-github-org.github.io/my-site-repo/1-1-1-iframe', {});
+</script>
+```
+
+The reason for using Pym.js is to avoid having vertical scrollbars on the iframe, since the height of the indicator pages is unpredictable.

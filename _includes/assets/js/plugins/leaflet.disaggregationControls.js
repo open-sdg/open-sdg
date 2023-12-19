@@ -63,6 +63,9 @@
             }
             var disaggregations = features[0].properties.disaggregations,
                 fields = Object.keys(disaggregations[0]),
+                validStartValues = startValues.filter(function(startValue) {
+                    return fields.includes(startValue.field);
+                }),
                 weighted = _.sortBy(disaggregations.map(function(disaggregation, index) {
                     var disaggClone = Object.assign({}, disaggregation);
                     disaggClone.emptyFields = 0;
@@ -75,7 +78,7 @@
                     return disaggClone;
                 }), 'emptyFields').reverse(),
                 match = weighted.find(function(disaggregation) {
-                    return _.every(startValues, function(startValue) {
+                    return _.every(validStartValues, function(startValue) {
                         return disaggregation[startValue.field] === startValue.value;
                     });
                 });
@@ -448,9 +451,11 @@
                 validFields = Object.keys(disaggregations[0]),
                 invalidFields = [this.seriesColumn, this.unitsColumn],
                 allDisaggregations = [];
-            this.plugin.configObsAttributes.forEach(function(obsAttribute) {
-                invalidFields.push(obsAttribute.field);
-            });
+            if (this.plugin.configObsAttributes && this.plugin.configObsAttributes.length > 0) {
+                this.plugin.configObsAttributes.forEach(function(obsAttribute) {
+                    invalidFields.push(obsAttribute.field);
+                });
+            }
 
             this.fieldsInOrder.forEach(function(field) {
                 if (!(invalidFields.includes(field)) && validFields.includes(field)) {
