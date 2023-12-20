@@ -27,12 +27,6 @@ To turn on the new site configuration forms:
 ```
 use_new_config_forms: true
 ```
-A branch is needed for jekyll-open-sdg-plugins. In the Gemfile in your site repository, use: 
-
-```
-gem 'jekyll-open-sdg-plugins', git: 'https://github.com/brockfanning/jekyll-open-sdg-plugins.git', branch: 'config-form-revamp-option'
-```
-
 You can access the site configuration forms by going to your staging site and in the footer menu at the bottom of any page, click "Configuration".
 
 From here you can navigate around the forms depending on what setting you would like to change. Every setting has its own section which may consist of checkboxes, text boxes, drop-downs, toggles and list items. You can interact with each of them to update any settings from the default. There is more information provided to give context and guidance for each setting which can be accessed by clicking on the drop-down at the bottom of each setting. 
