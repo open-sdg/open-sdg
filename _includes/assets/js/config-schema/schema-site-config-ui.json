@@ -134,6 +134,10 @@
                         },
                         {
                             "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/disaggregation_indicator_count_label"
+                        },
+                        {
+                            "type": "Control",
                             "scope": "#/properties/reporting_status/properties/disaggregation_tabs",
                             "options": {
                                 "toggle": true
@@ -337,6 +341,17 @@
                             "scope": "#/properties/metadata_edit_url"
                         }
                     ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Proxy indicators",
+                    "documentationKey": "proxy_indicators",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/proxy_indicators"
+                        }
+                    ]
                 }
             ]
         },
@@ -526,6 +541,17 @@
                 },
                 {
                     "type": "GroupWithAccordion",
+                    "label": "Observation attributes",
+                    "documentationKey": "observation_attributes",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/observation_attributes"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
                     "label": "Time series attributes",
                     "documentationKey": "time_series_attributes",
                     "elements": [
@@ -704,11 +730,52 @@
                 },
                 {
                     "type": "GroupWithAccordion",
+                    "label": "Cookie consent form",
                     "documentationKey": "cookie_consent_form",
                     "elements": [
                         {
                             "type": "Control",
                             "scope": "#/properties/cookie_consent_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Meta tags",
+                    "documentationKey": "meta_tags",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/meta_tags"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Progressive web app",
+                    "documentationKey": "progressive_web_app",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/name"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/short_name"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/precaching",
                             "options": {
                                 "toggle": true
                             }

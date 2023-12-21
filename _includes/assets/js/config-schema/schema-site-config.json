@@ -150,7 +150,7 @@
                                 "description": "Optional heading to display above the content (as an H2) for this goal. If left blank, the site-wide 'Goal content heading' (above) will be used."
                             },
                             "goal": {
-                                "type": "string",
+                                "type": ["integer", "string"],
                                 "title": "Goal",
                                 "description": "Optionally specify the goal ID this content applies to. Can be left blank if using the correct order of the goals (1, 2, 3, etc.)."
                             }
@@ -1161,7 +1161,6 @@
                 "properties": {
                     "path": {
                         "type": "string",
-                        "minLength": 1,
                         "title": "Path",
                         "description": "The path within the platform at which to place this tag."
                     },
@@ -1171,7 +1170,7 @@
                         "title": "Name",
                         "description": "The 'name' attribute for the meta tag."
                     },
-                    "src": {
+                    "content": {
                         "type": "string",
                         "minLength": 1,
                         "title": "Content",
@@ -1204,6 +1203,34 @@
                 }
             ]
         },
+        "observation_attributes": {
+            "type": "array",
+            "title": "Observation attributes",
+            "description": "This setting can be used to specify data columns to be considered 'observation attributes' and displayed along with individual data-points.",
+            "items": {
+                "type": "object",
+                "title": "Observation attribute",
+                "properties": {
+                    "field": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Field",
+                        "description": "Column name in the data."
+                    },
+                    "label": {
+                        "type": "string",
+                        "title": "Label",
+                        "description": "Optional label when displayed in footnotes."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the observation attributes setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#observation_attributes"
+                }
+            ]
+        },
         "progress_status": {
             "type": "object",
             "title": "Progress status",
@@ -1220,7 +1247,7 @@
                     "description": "An explanatory column header above the progress status on goal pages."
                 },
                 "status_types": {
-                            "type": "array",
+                    "type": "array",
                     "title": "Status types",
                     "description": "Controls the behavior and labels for the different progress status types.",
                     "items": {
@@ -1259,6 +1286,56 @@
                 }
             ]
         },
+        "progressive_web_app": {
+            "type": "object",
+            "title": "Progressive Web App",
+            "description": "Configuration for turning the platform into a progressive web app for offline usage.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "If enabled, the platform will be a progressive web app for offline usage."
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "The full name of the app (displays on splash screen)."
+                },
+                "short_name": {
+                    "type": "string",
+                    "title": "Short name",
+                    "description": "The short name of the app (displays under home screen icon)."
+                },
+                "precaching": {
+                    "type": "boolean",
+                    "title": "Precaching",
+                    "description": "If enabled, all indicator and goal pages will be precached when the app is installed."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the progressive_web_app setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#progressive_web_app"
+                }
+            ]
+        },
+        "proxy_indicators": {
+            "type": "object",
+            "title": "Proxy indicators",
+            "description": "Configuration for the proxy indicator functionality.",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "title": "Label",
+                    "description": "The label to display when flagging a proxy indicator. Defaults to 'Proxy'."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "The description to display at the top of indicator pages, explaining what 'Proxy' means."
+                }
+            }
+        },
         "remote_data_prefix": {
             "type": "string",
             "minLength": 1,
@@ -1283,6 +1360,11 @@
                 "description": {
                     "type": "string",
                     "title": "Description"
+                },
+                "disaggregation_indicator_count_label": {
+                    "title": "Disaggregation indicator count label",
+                    "type": "string",
+                    "description": "An alternative label to use for the indicator count on the disaggregation tab, to be display after a number."
                 },
                 "disaggregation_tabs": {
                     "title": "Disaggregation tabs",
