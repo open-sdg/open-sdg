@@ -1,6 +1,6 @@
 <h1>Site configuration forms</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed on the [site configuration page](configuration.md). **All of these settings go in the `data/site_config.yml` file or you can make changes to these settings using the site configuration forms.**
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed on the [site configuration page](configuration.md). **All of these settings go in the `_data/site_config.yml` file or you can make changes to these settings using the site configuration forms.**
 
 New site configuration forms have been developed to be as user friendly as possible. The original ones are still available if you do not change the setting as below in the 'How to use' section, but you still access the forms in the same way.
 
@@ -8,9 +8,9 @@ This document covers when and how to use the site configuration forms to make co
 
 ### When to use
 
-There are two ways of making configuration changes to your site: 
+There are two ways of updating to your `site_config.yml` file in order to make configuration changes to your site: 
 
-* You can edit the `data/site_config.yml` file directly in GitHub, or 
+* You can edit the `_data/site_config.yml` file directly, or 
 * You can use the site configuration forms via your staging site.
   
 You can use either method at any time for any change. 
@@ -22,7 +22,7 @@ By using the site configuration forms, you remove the risk of any syntax errors 
 ### How to use
 
 To turn on the new site configuration forms:
-1. Go to the `site_config.yml` file in the `data` folder in your site repository.
+1. Go to the `site_config.yml` file in the `_data` folder in your site repository.
 2. Include this line:
 ```
 use_new_config_forms: true
@@ -48,5 +48,5 @@ Once you have made the desired changes within the site configuration forms:
 
 If you are ready to test your changes, merge your feature branch to the "develop" branch and you can view them on your staging site to check they look as expected and you are happy with them. 
 
-If you are not happy, go back to the configuration forms and alter/change back following the same steps. Once happy with the changes in the staging site, make sure to merge "develop" to "master" to see these changes on your live site.
+If you are not happy, go back to the configuration forms and alter/change back following the same steps. Once happy with the changes on the staging site, make sure to merge "develop" to "master" to see these changes on your production site.
    
