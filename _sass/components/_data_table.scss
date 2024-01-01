@@ -104,3 +104,22 @@ caption {
         text-align: right;
     }
 }
+
+body.contrast-high {
+    #selectionsTable {
+        div.dataTables_wrapper {
+            &.scrolled-y thead {
+                background-color: $color-dark-highContrast;
+            }
+            &.scrolled-x th:first-child {
+                background-color: $color-dark-highContrast;
+            }
+            .table-hover tbody tr:hover {
+                th, td {
+                    background-color: $color-highlight-highContrast;
+                    color: $color-dark-highContrast;
+                }
+            }
+        }
+    }
+}
