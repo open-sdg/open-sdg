@@ -1639,6 +1639,31 @@
                     "type": "string",
                     "title": "Translation link",
                     "description": "The URL pattern for all 'Go to translation' links on the configuration page."
+                },
+                "config_folder": {
+                    "type": "string",
+                    "title": "Config file folder",
+                    "description": "The folder within the code repository in which the file should be placed."
+                },
+                "github_client_id": {
+                    "type": "string",
+                    "title": "Github Client ID",
+                    "description": "The Client ID, for use with Github authentication."
+                },
+                "github_proxy_url": {
+                    "type": "string",
+                    "title": "Github Proxy URL",
+                    "description": "The Proxy URL, for use with Github authentication."
+                },
+                "github_repo": {
+                    "type": "string",
+                    "title": "Github Repository",
+                    "description": "The name of the Github repository, for use with Github authentication."
+                },
+                "github_owner": {
+                    "type": "string",
+                    "title": "Github Owner",
+                    "description": "The owner (organisation) of the Github repository, for use with Github authentication."
                 }
             }
         },

@@ -709,6 +709,26 @@
                         {
                             "type": "Control",
                             "scope": "#/properties/site_config_form/properties/translation_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/config_folder"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_client_id"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_proxy_url"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_repo"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_owner"
                         }
                     ]
                 }

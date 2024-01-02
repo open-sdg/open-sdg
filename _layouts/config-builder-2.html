@@ -13,11 +13,11 @@
       uiSchema: null,
       initialData: null,
       configFilename: {{ page.config_filename | jsonify }},
-      configFolder: 'tests/site/_data',
-      //githubClientId: 'd057ffc62f01ce8f3376',
-      //githubProxyUrl: 'https://open-sdg-github-auth-production.up.railway.app',
-      githubRepo: 'open-sdg',
-      githubOwner: 'open-sdg',
+      configFolder: null,
+      githubClientId: null,
+      githubProxyUrl: null,
+      githubRepo: null,
+      githubOwner: null,
       repositoryLink: {{ page.form_settings.repository_link | jsonify }},
     };
     {% if page.config_type == 'site' %}
@@ -25,6 +25,11 @@
       opensdg.configForm.uiSchema = {% include assets/js/config-schema/schema-site-config-ui.json %};
       opensdg.configForm.initialData = {{ site.data.site_config | jsonify }};
       opensdg.configForm.repoUrl = {{ site.repository_url_site | jsonify }};
+      opensdg.configForm.configFolder = {{ site.site_config_form.config_folder | jsonify }};
+      opensdg.configForm.githubClientId = {{ site.site_config_form.github_client_id | jsonify }};
+      opensdg.configForm.githubProxyUrl = {{ site.site_config_form.github_proxy_url | jsonify }};
+      opensdg.configForm.githubRepo = {{ site.site_config_form.github_repo | jsonify }};
+      opensdg.configForm.githubOwner = {{ site.site_config_form.github_owner | jsonify }};
     {% elsif page.config_type == 'indicator' %}
       opensdg.configForm.schema = {% include assets/js/config-schema/schema-indicator-config.json %};
       opensdg.configForm.uiSchema = {% include assets/js/config-schema/schema-indicator-config-ui.json %};
