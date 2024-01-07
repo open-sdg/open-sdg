@@ -61,22 +61,9 @@
             }
         }
     }
-    /*
-    .MuiAutocomplete-inputRoot {
-        width: fit-content;
-        input[role="combobox"] {
-            min-width: fit-content;
-        }
-    }
-    */
-    /*
-    .MuiInput-input[type="number"] {
-        width: fit-content;
-    }
-    */
 }
 
-body.contrast-high.layout-config-builder {
+body.contrast-high.layout-config-builder-2 {
     .config-widgets {
         background-color: $color-dark-highContrast;
     }
@@ -88,5 +75,27 @@ body.contrast-high.layout-config-builder {
     .MuiButton-root {
         @include buttonHighContrast;
         @include buttonDownloadHighContrast;
+    }
+    .MuiInputLabel-root {
+        color: $color-light-highContrast;
+    }
+    input {
+        background-color: $color-light-highContrast;
+    }
+    .MuiAccordionSummary-root, .MuiAccordionSummary-root:focus {
+        color: $color-dark-highContrast !important;
+        background-color: $color-light-highContrast !important;
+        .MuiAccordionSummary-content {
+            .MuiTypography-root {
+                color: $color-dark-highContrast;
+                background-color: $color-light-highContrast;
+            }
+        }
+    }
+    .MuiAccordionDetails-root {
+        p, h1, h2, h3, h4, h5, h6, span, td, th, li, & {
+            color: $color-dark-highContrast;
+            background-color: $color-light-highContrast;
+        }
     }
 }
