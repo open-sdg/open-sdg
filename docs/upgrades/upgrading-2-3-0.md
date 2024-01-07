@@ -21,12 +21,12 @@ translations:
     tag: 2.3.0-beta1
 ```
 
-## Update version of Open SDG to 2.3.0-beta1
+## Update version of Open SDG to 2.3.0-beta2
 
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.3.0-beta1
+remote_theme: open-sdg/open-sdg@2.3.0-beta2
 ```
 
 ## Update version of jekyll-open-sdg-plugins to 2.3.0-beta1
