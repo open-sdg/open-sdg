@@ -87,7 +87,7 @@ This release introduces some optional features that you may be interested in add
 
 This feature allows you to create iframe-friendly versions of each indicator. An iframe is an HTML element that loads another HTML page within the same page. It essentially puts another webpage within the parent page.
 
-The URLs of the iframe-friendly versions will be the same link but with "-iframe" at the end e.g. "/1-1-1" & "/1-1-1-iframe" an example of how to embed this into a new age is shown below
+The URLs of the iframe-friendly versions will be the same link but with "-iframe" at the end e.g. "/1-1-1" & "/1-1-1-iframe". An example of how to embed this into a new page is shown below:
 
 ```
 ---
@@ -103,7 +103,7 @@ Indicator 1.1.1 should be embedded below:
     var pymParent = new pym.Parent('my-iframe-container', '{{ site.baseurl }}/1-1-1-iframe', {});
 </script>
 ```
-It is also possible to do an iframe directly, however you would lose out on the benefit of the Pym.js library, which is what is supposed to prevent vertical scrollbars. If you watned to do this, it would be something like this
+It is also possible to do an iframe directly, however you would lose out on the benefit of the Pym.js library, which is supposed to prevent vertical scrollbars. If you wanted to do this, it would be something like this:
 
 ```
 ---
@@ -116,17 +116,47 @@ Indicator 1.1.1 should be embedded below:
 <iframe src="{{ site.baseurl }}/1-1-1-iframe"></iframe>
 ```
 
+### observation_attributes 
+
+Open SDG now has the functionality to display observation attributes for indicator data in charts, tables and maps. This setting controls the data columns that should be considered "observation attributes", as well as the labels that should be used for these columns when displaying their values in the footer beneath charts and tables. 
+
+There are two steps to displaying observation attributes in your data:  
+
+1. Add the relevant information into your data - this is achieved by adding a COMMENT_OBS column to the indicator data file which is filled in with wording (e.g. Estimated value, Forecast value etc.) for those lines of data that are observation attributes. 
+
+1. Include the observation_attribute setting in your site configuration - add the following lines to the site_config.yml in the site repository: 
+
+```
+observation_attributes: 
+  - field: COMMENT_OBS 
+    label: '' 
+```
+
+The default is to display ‘note 1(2,3 etc.)’ after each data point in the tooltips of the chart, table and graph, that is an observation attribute. The number of the note corresponds to a type of observation attribute entered into the COMMENT_OBS column as outlined below: 
+
+```
+[note 1] Estimated value 
+[note 2] Forecast value 
+[note 3] Unvalidated value 
+[note 4] Low reliability 
+[note 5] Experimental value 
+[note 6] Imputed value  
+```
+
+You can change the label in the setting to say something other than the default ‘note’ as desired too. 
+
+
 ### Reporting status page - Option to remove out of scope
 
 Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can be used to now only show indicators where a disaggregation is explicitly menioned in the indicator title.
 
 ## Bug-fixes and improvements
 
-* Map bug - Fixed an issue where Maps were not displaying for some indicators
+* Map bug - Fixed an issue where maps were not displaying for some indicators
 * Series not appearing - Fixed an issue where some series were not appearing
-* Country name not translated in table header
-* Added units and series to data download
+* Country name now translated in table header
+* Added units and series columns to data download files
 * Checkboxes get selected when changing unit
 * data_start_values on maps: geographical fields now ignored
-* Graph annotation label position functionality
+* Graph annotation label position functionality improved
 * Ruby 3 issue addressed
