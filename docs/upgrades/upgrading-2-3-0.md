@@ -122,3 +122,11 @@ Open SDG users will now have the option to show or remove the "Out of Scope" tag
 
 ## Bug-fixes and improvements
 
+* Map bug - Fixed an issue where Maps were not displaying for some indicators
+* Series not appearing - Fixed an issue where some series were not appearing
+* Country name not translated in table header
+* Added units and series to data download
+* Checkboxes get selected when changing unit
+* data_start_values on maps: geographical fields now ignored
+* Graph annotation label position functionality
+* Ruby 3 issue addressed
