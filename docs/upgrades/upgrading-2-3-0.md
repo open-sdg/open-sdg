@@ -85,7 +85,7 @@ This release introduces some optional features that you may be interested in add
 
 ### Indicator iframes
 
-This feature allows you to create iframe-friendl versions of each indicator. An iframe is an HTML element that loads another HTML page within the same page. It essentially puts another webpage within the parent page.
+This feature allows you to create iframe-friendly versions of each indicator. An iframe is an HTML element that loads another HTML page within the same page. It essentially puts another webpage within the parent page.
 
 The URLs of the iframe-friendly versions will be the same link but with "-iframe" at the end e.g. "/1-1-1" & "/1-1-1-iframe" an example of how to embed this into a new age is shown below
 
@@ -103,7 +103,7 @@ Indicator 1.1.1 should be embedded below:
     var pymParent = new pym.Parent('my-iframe-container', '{{ site.baseurl }}/1-1-1-iframe', {});
 </script>
 ```
-It is also possible to do an iframe directly, however you would lose out o n the benefit of the Pym.js library, which is what is supposed to prevent vertical scrollbars. If you watned to do this, it would be something like this
+It is also possible to do an iframe directly, however you would lose out on the benefit of the Pym.js library, which is what is supposed to prevent vertical scrollbars. If you watned to do this, it would be something like this
 
 ```
 ---
@@ -118,7 +118,7 @@ Indicator 1.1.1 should be embedded below:
 
 ### Reporting status page - Option to remove out of scope
 
-Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can be sued to now only show indicators where a disaggregation is explicitly menioned in the indicator title.
+Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can be used to now only show indicators where a disaggregation is explicitly menioned in the indicator title.
 
 ## Bug-fixes and improvements
 
