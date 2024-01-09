@@ -174,7 +174,7 @@ You can then access the site configuration forms by going to your staging site a
 
 From here you can navigate around the forms depending on what setting you would like to change. Every setting has its own section which may consist of checkboxes, text boxes, drop-downs, toggles and list items. You can interact with each of them to update any settings from the default. There is more information provided to give context and guidance for each setting which can be accessed by clicking on the drop-down at the bottom of each setting. 
 
-See the [site configuration forms guidance page](site-configuration-forms.md) for more information. 
+See the [site configuration forms guidance page](https://open-sdg.readthedocs.io/en/latest/site-configuration-forms/) for more information. 
 
 ## Bug-fixes and improvements
 
