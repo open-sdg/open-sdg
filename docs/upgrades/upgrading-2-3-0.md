@@ -150,6 +150,32 @@ You can change the label in the setting to say something other than the default 
 
 Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can be used to now only show indicators where a disaggregation is explicitly menioned in the indicator title.
 
+### use_new_config_forms
+
+New and improved site configuration forms have been developed to make changes to your site as user friendly as possible. The original forms are still available if you do not change the setting as indicated below and you still access the forms in the same way. 
+
+As usual, there are two ways of updating to your `site_config.yml` file in order to make configuration changes to your site:  
+
+* You can edit the `_data/site_config.yml` file directly, or  
+* You can use the site configuration forms via your staging site. 
+
+You can use either method at any time for any change.    
+
+To turn on the new site configuration forms: 
+
+1. Go to the `site_config.yml` file in the `_data` folder in your site repository. 
+2. Include this line: 
+
+``` 
+use_new_config_forms: true 
+```
+
+You can then access the site configuration forms by going to your staging site and in the footer menu at the bottom of any page, click "Configuration". 
+
+From here you can navigate around the forms depending on what setting you would like to change. Every setting has its own section which may consist of checkboxes, text boxes, drop-downs, toggles and list items. You can interact with each of them to update any settings from the default. There is more information provided to give context and guidance for each setting which can be accessed by clicking on the drop-down at the bottom of each setting. 
+
+See the [site configuration forms guidance page](site-configuration-forms.md) for more information. 
+
 ## Bug-fixes and improvements
 
 * Map bug - Fixed an issue where maps were not displaying for some indicators
