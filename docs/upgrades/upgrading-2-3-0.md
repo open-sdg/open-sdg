@@ -148,7 +148,7 @@ You can change the label in the setting to say something other than the default 
 
 ### Reporting status page - Option to remove out of scope
 
-Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can be used to now only show indicators where a disaggregation is explicitly menioned in the indicator title.
+Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can now be used to only show indicators where a disaggregation is explicitly mentioned in the indicator title.
 
 ### use_new_config_forms
 
@@ -178,11 +178,14 @@ See the [site configuration forms guidance page](https://open-sdg.readthedocs.io
 
 ## Bug-fixes and improvements
 
-* Map bug - Fixed an issue where maps were not displaying for some indicators
-* Series not appearing - Fixed an issue where some series were not appearing
+* Fixed an issue where maps were not displaying for some indicators
+* Fixed an issue where some series were not appearing
 * Country name now translated in table header
+* Header columns now pinned in tables
 * Added units and series columns to data download files
-* Checkboxes get selected when changing unit
+* Improvements to checkbox selection on indicator pages
 * data_start_values on maps: geographical fields now ignored
 * Graph annotation label position functionality improved
 * Ruby 3 issue addressed
+* Improvements to screenreader and voice control functionality
+* Allowed DataSchemaInputSdmxDsd as a data schema
