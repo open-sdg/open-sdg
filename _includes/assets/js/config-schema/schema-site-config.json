@@ -168,7 +168,7 @@
         "create_indicators": {
             "type": "object",
             "title": "Create indicators",
-            "description": "This setting can be used to automatically create the indicator pages.",
+            "description": "This setting controls the way that indicator pages are automatically created.",
             "properties": {
                 "previous_next_links": {
                     "title": "Previous/next links",

@@ -79,6 +79,20 @@ body.contrast-high.layout-config-builder-2 {
     .MuiInputLabel-root {
         color: $color-light-highContrast;
     }
+    .MuiInputLabel-animated {
+        color: $color-dark-highContrast;
+        background-color: $color-light-highContrast;
+        z-index: 999;
+    }
+    .MuiAutocomplete-popper {
+        .MuiPaper-root {
+            .MuiAutocomplete-listbox {
+                .MuiAutocomplete-option {
+                    color: $color-dark-highContrast;
+                }
+            }
+        }
+    }
     input {
         background-color: $color-light-highContrast;
     }
@@ -97,5 +111,8 @@ body.contrast-high.layout-config-builder-2 {
             color: $color-dark-highContrast;
             background-color: $color-light-highContrast;
         }
+    }
+    .MuiCard-root {
+        background-color: $color-dark-highContrast;
     }
 }

@@ -305,7 +305,10 @@
                     "elements": [
                         {
                             "type": "Control",
-                            "scope": "#/properties/create_indicators"
+                            "scope": "#/properties/create_indicators/properties/previous_next_links",
+                            "options": {
+                                "toggle": true
+                            }
                         }
                     ]
                 },
