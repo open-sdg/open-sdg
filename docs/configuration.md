@@ -1125,6 +1125,14 @@ Year | Units | COMMENT_TS | Value
 2020 | Total | My comment for totals | 5000
 2021 | Total | My comment for totals | 6000
 
+### use_new_config_forms
+
+_Optional_: This setting, if true, will enable a new version of the site configuration forms. This new version is experimental but will eventually be the default for configuration forms.
+
+```
+use_new_config_forms: true
+```
+
 ### validate_indicator_config
 
 _Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.
