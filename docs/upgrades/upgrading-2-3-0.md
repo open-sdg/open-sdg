@@ -150,6 +150,19 @@ You can change the label in the setting to say something other than the default 
 
 Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can now be used to only show indicators where a disaggregation is explicitly mentioned in the indicator title.
 
+To omit "not applicable" from the disaggregation reports, in the data config file, set ignore_out_of_scope_disaggregation_stats to true
+
+```
+ignore_out_of_scope_disaggregation_stats: true
+```
+
+To change the label of the totals in the disaggregation report, in the site config file, in the reporting_status section add a disaggregation_indicator_count_label to the reporting_status section. The default is "indicators", so for example you might want to use "indicators in scope"
+
+```
+reporting_status:
+    disaggregation_indicator_count_label: indicators in scope
+```
+
 ### use_new_config_forms
 
 New and improved site configuration forms have been developed to make changes to your site as user friendly as possible. The original forms are still available if you do not change the setting as indicated below and you still access the forms in the same way. 
