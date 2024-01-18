@@ -146,9 +146,9 @@ The default is to display ‘note 1(2,3 etc.)’ after each data point in the to
 You can change the label in the setting to say something other than the default ‘note’ as desired too. 
 
 
-### Reporting status page - Option to remove out of scope
+### Reporting status page - Option to remove out of scope Disaggregations
 
-Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status Pages. This can now be used to only show indicators where a disaggregation is explicitly mentioned in the indicator title.
+Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status pages in the Disaggregation status. This can now be used to only show indicators where a disaggregation is explicitly mentioned in the indicator title. This will hide the out of scope indicators from the bar on the screen. This should hopefully better represent how many indicators are disaggregated
 
 To omit "not applicable" from the disaggregation reports, in the data config file, set ignore_out_of_scope_disaggregation_stats to true
 
