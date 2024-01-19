@@ -72,6 +72,16 @@ body.contrast-high.layout-config-builder-2 {
             color: $color-dark-highContrast;
         }
     }
+    .MuiInputBase-root {
+        textarea {
+            background-color: $color-light-highContrast;
+        }
+    }
+    .MuiToolbar-root {
+        .MuiIconButton-root {
+            background-color: $color-light-highContrast;
+        }
+    }
     .MuiButton-root {
         @include buttonHighContrast;
         @include buttonDownloadHighContrast;
@@ -100,17 +110,27 @@ body.contrast-high.layout-config-builder-2 {
         color: $color-dark-highContrast !important;
         background-color: $color-light-highContrast !important;
         .MuiAccordionSummary-content {
-            .MuiTypography-root {
+            .MuiTypography-root, span {
                 color: $color-dark-highContrast;
                 background-color: $color-light-highContrast;
             }
         }
     }
-    .MuiAccordionDetails-root {
+    .MuiCollapse-root {
+        background-color: $color-dark-highContrast;
+    }
+    .MuiTableHead-root {
+        .MuiIconButton-root {
+            background-color: $color-light-highContrast;
+        }
+    }
+    .docs-content {
+        padding: 5px;
         p, h1, h2, h3, h4, h5, h6, span, td, th, li, & {
             color: $color-dark-highContrast;
             background-color: $color-light-highContrast;
         }
+        
     }
     .MuiCard-root {
         background-color: $color-dark-highContrast;
