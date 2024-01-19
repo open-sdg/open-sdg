@@ -146,17 +146,17 @@ The default is to display ‘note 1(2,3 etc.)’ after each data point in the to
 You can change the label in the setting to say something other than the default ‘note’ as desired too. 
 
 
-### Reporting status page - Option to remove out of scope Disaggregations
+### Reporting status page - Option to remove "out of scope" disaggregations
 
-Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status pages in the Disaggregation status. This can now be used to only show indicators where a disaggregation is explicitly mentioned in the indicator title. This will hide the out of scope indicators from the bar on the screen. This should hopefully better represent how many indicators are disaggregated
+Open SDG users will now have the option to show or remove the "Out of Scope" tag on their Reporting Status page in the Disaggregation status. This can now be used to only show indicators where a disaggregation is explicitly mentioned in the indicator title. This will hide the out of scope indicators from the bar on the screen. This should hopefully better represent how many indicators are disaggregated.
 
-To omit "not applicable" from the disaggregation reports, in the data config file, set ignore_out_of_scope_disaggregation_stats to true
+To omit "out of scope" from the disaggregation status page, in the data config file, set `ignore_out_of_scope_disaggregation_stats` to true.
 
 ```
 ignore_out_of_scope_disaggregation_stats: true
 ```
 
-To change the label of the totals in the disaggregation report, in the site config file, in the reporting_status section add a disaggregation_indicator_count_label to the reporting_status section. The default is "indicators", so for example you might want to use "indicators in scope"
+To change the label of the totals in the disaggregation status page, in the site configuration file (eg, _data/site_config.yml), in the `reporting_status` section add a `disaggregation_indicator_count_label` to the reporting_status section. The default is "indicators", so for example you might want to use "indicators in scope".
 
 ```
 reporting_status:
