@@ -189,6 +189,15 @@ From here you can navigate around the forms depending on what setting you would 
 
 See the [site configuration forms guidance page](https://open-sdg.readthedocs.io/en/latest/site-configuration-forms/) for more information. 
 
+### Ruby 3
+
+The Open SDG platform now supports Ruby 3, and if you would like to upgrade here are the instructions. Note that this is not required, but if you would like to be on the latest version then it is now possible. To upgrade to Ruby 3, you will need to make changes in your site repository:
+
+* Changes to your "Gemfile"
+* Changes to the "workflows" in the .github folder
+
+Here is an illustration of the specific changes needed: https://github.com/open-sdg/open-sdg-site-starter/pull/98/files
+
 ## Bug-fixes and improvements
 
 * Fixed an issue where maps were not displaying for some indicators
