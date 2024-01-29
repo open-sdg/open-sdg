@@ -208,6 +208,5 @@ Here is an illustration of the specific changes needed: https://github.com/open-
 * Improvements to checkbox selection on indicator pages
 * data_start_values on maps: geographical fields now ignored
 * Graph annotation label position functionality improved
-* Ruby 3 issue addressed
 * Improvements to screenreader and voice control functionality
 * Allowed DataSchemaInputSdmxDsd as a data schema
