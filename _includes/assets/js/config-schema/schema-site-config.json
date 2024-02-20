@@ -495,7 +495,7 @@
         "frontpage_goals_grid": {
             "type": "object",
             "title": "Frontpage goals grid",
-            "description": "This setting is only used in the frontpage-alt layout. It can display a title and description above the grid of goal tiles.",
+            "description": "This setting is only used in the frontpage layout. It can display a title and description above the grid of goal tiles.",
             "$ref": "#/definitions/title_and_description",
             "links": [
                 {
@@ -974,7 +974,7 @@
                 "tileOptions": {
                     "title": "Tile options",
                     "type": "object",
-                            "description": "Additional options for map tile imagery.",
+                    "description": "Additional options for map tile imagery.",
                     "properties": {
                         "id": {
                             "type": "string",
@@ -1012,7 +1012,33 @@
                     "type": "object",
                     "title": "Style (normal)",
                     "description": "Style for boundaries in normal state",
-                    "$ref": "#/definitions/map_style",
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "Weight",
+                            "description": "The weight (boldness) of boundary borders."
+                        },
+                        "opacity": {
+                            "type": "number",
+                            "title": "Opacity",
+                            "description": "The opacity of the boundary borders (between 0 and 1)."
+                        },
+                        "fillOpacity": {
+                            "type": "number",
+                            "title": "Fill opacity",
+                            "description": "The opacity of the boundaries' background color (between 0 and 1)."
+                        },
+                        "color": {
+                            "type": "string",
+                            "title": "Color",
+                            "description": "The color of the boundary borders."
+                        },
+                        "dashArray": {
+                            "type": "string",
+                            "title": "Dash array",
+                            "description": "A 'dash array' describing the boundary as dashed lines."
+                        }
+                    },
                     "default": {
                         "weight": 1,
                         "opacity": 1,
@@ -1024,7 +1050,33 @@
                     "type": "object",
                     "title": "Style (highlighted)",
                     "description": "Style for boundaries in highlighted state",
-                    "$ref": "#/definitions/map_style",
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "Weight",
+                            "description": "The weight (boldness) of boundary borders."
+                        },
+                        "opacity": {
+                            "type": "number",
+                            "title": "Opacity",
+                            "description": "The opacity of the boundary borders (between 0 and 1)."
+                        },
+                        "fillOpacity": {
+                            "type": "number",
+                            "title": "Fill opacity",
+                            "description": "The opacity of the boundaries' background color (between 0 and 1)."
+                        },
+                        "color": {
+                            "type": "string",
+                            "title": "Color",
+                            "description": "The color of the boundary borders."
+                        },
+                        "dashArray": {
+                            "type": "string",
+                            "title": "Dash array",
+                            "description": "A 'dash array' describing the boundary as dashed lines."
+                        }
+                    },
                     "default": {
                         "weight": 1,
                         "opacity": 1,
@@ -1036,7 +1088,33 @@
                     "type": "object",
                     "title": "Style (static)",
                     "description": "Style for boundaries in static state (map layers using the 'static boundaries' option).",
-                    "$ref": "#/definitions/map_style",
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "Weight",
+                            "description": "The weight (boldness) of boundary borders."
+                        },
+                        "opacity": {
+                            "type": "number",
+                            "title": "Opacity",
+                            "description": "The opacity of the boundary borders (between 0 and 1)."
+                        },
+                        "fillOpacity": {
+                            "type": "number",
+                            "title": "Fill opacity",
+                            "description": "The opacity of the boundaries' background color (between 0 and 1)."
+                        },
+                        "color": {
+                            "type": "string",
+                            "title": "Color",
+                            "description": "The color of the boundary borders."
+                        },
+                        "dashArray": {
+                            "type": "string",
+                            "title": "Dash array",
+                            "description": "A 'dash array' describing the boundary as dashed lines."
+                        }
+                    },
                     "default": {
                         "weight": 2,
                         "opacity": 1,
@@ -1590,35 +1668,6 @@
                 "description": {
                     "type": "string",
                     "title": "Description"
-                }
-            }
-        },
-        "map_style": {
-            "properties": {
-                "weight": {
-                    "type": "number",
-                    "title": "Weight",
-                    "description": "The weight (boldness) of boundary borders."
-                },
-                "opacity": {
-                    "type": "number",
-                    "title": "Opacity",
-                    "description": "The opacity of the boundary borders (between 0 and 1)."
-                },
-                "fillOpacity": {
-                    "type": "number",
-                    "title": "Fill opacity",
-                    "description": "The opacity of the boundaries' background color (between 0 and 1)."
-                },
-                "color": {
-                    "type": "string",
-                    "title": "Color",
-                    "description": "The color of the boundary borders."
-                },
-                "dashArray": {
-                    "type": "string",
-                    "title": "Dash array",
-                    "description": "A 'dash array' describing the boundary as dashed lines."
                 }
             }
         },

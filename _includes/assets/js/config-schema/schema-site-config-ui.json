@@ -144,14 +144,37 @@
                             }
                         },
                         {
-                            "type": "Control",
-                            "scope": "#/properties/reporting_status/properties/status_types"
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/reporting_status/properties/status_types",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/value"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/label"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/hide_on_goal_pages",
+                                            "options": {
+                                                "toggle": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 },
                 {
                     "type": "GroupWithAccordion",
                     "label": "Progress status",
+                    "description": "This setting is used in the 'goal-with-progress' layout. It controls the behavior of progress status functionality.",
                     "documentationKey": "progress_status",
                     "elements": [
                         {
@@ -177,6 +200,7 @@
                 {
                     "type": "GroupWithAccordion",
                     "label": "Frontpage introduction banner",
+                    "description": "This setting is only used in the frontpage layout. It can display a title and description in a banner at the top of the frontpage.",
                     "documentationKey": "frontpage_introduction_banner",
                     "elements": [
                         {
@@ -195,6 +219,7 @@
                 {
                     "type": "GroupWithAccordion",
                     "label": "Frontpage goals grid",
+                    "description": "This setting is only used in the frontpage layout. It can display a title and description above the grid of goal tiles.",
                     "documentationKey": "frontpage_goals_grid",
                     "elements": [
                         {
@@ -213,6 +238,7 @@
                 {
                     "type": "GroupWithAccordion",
                     "label": "Frontpage cards",
+                    "description": "This setting is only used in the frontpage layout. It can display any number of 'cards' in 3-column rows, beneath the grid of goal tiles.",
                     "documentationKey": "frontpage_cards",
                     "elements": [
                         {
@@ -877,7 +903,10 @@
                                         },
                                         {
                                             "type": "Control",
-                                            "scope": "#/properties/staticBorders"
+                                            "scope": "#/properties/staticBorders",
+                                            "options": {
+                                                "toggle": true
+                                            }
                                         }
                                     ]
                                 }
@@ -925,7 +954,6 @@
                         {
                             "type": "Control",
                             "scope": "#/properties/map_options/properties/styleNormal",
-                            "description": "Foo"
                         },
                         {
                             "type": "Control",
@@ -1082,11 +1110,17 @@
                 },
                 {
                     "type": "Control",
-                    "scope": "#/properties/validate_site_config"
+                    "scope": "#/properties/validate_site_config",
+                    "options": {
+                        "toggle": true
+                    }
                 },
                 {
                     "type": "Control",
-                    "scope": "#/properties/validate_indicator_config"
+                    "scope": "#/properties/validate_indicator_config",
+                    "options": {
+                        "toggle": true
+                    }
                 }
             ]
         }

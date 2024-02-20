@@ -77,6 +77,10 @@ body.contrast-high.layout-config-builder-2 {
             background-color: $color-light-highContrast;
         }
     }
+    .MuiIconButton-root {
+        background-color: $color-light-highContrast;
+        color: $color-dark-highContrast;
+    }
     .MuiToolbar-root {
         .MuiIconButton-root {
             background-color: $color-light-highContrast;
@@ -116,6 +120,28 @@ body.contrast-high.layout-config-builder-2 {
             }
         }
     }
+    .MuiAccordionSummary-content {
+        .MuiIconButton-root {
+            background-color: $color-dark-highContrast;
+            color: $color-light-highContrast !important;
+            .MuiSvgIcon-root {
+                z-index: 999;
+                background-color: $color-dark-highContrast;
+            }
+            .MuiTouchRipple-root {
+                background-color: $color-dark-highContrast !important;
+            }
+            &:focus {
+                .MuiSvgIcon-root {
+                    background-color: $color-highlight-highContrast;
+                    color: $color-dark-highContrast;
+                }
+                .MuiTouchRipple-root {
+                    background-color: $color-highlight-highContrast !important;
+                }
+            }
+        }
+    }
     .MuiCollapse-root {
         background-color: $color-dark-highContrast;
     }
@@ -134,5 +160,28 @@ body.contrast-high.layout-config-builder-2 {
     }
     .MuiCard-root {
         background-color: $color-dark-highContrast;
+    }
+    .MuiSwitch-track {
+        background-color: $color-medium-highContrast;
+    }
+    .MuiSwitch-switchBase {
+        &.Mui-checked {
+            .MuiSwitch-thumb {
+                background-color: $color-highlight-highContrast;
+            }
+        }
+    }
+    .MuiDialog-container {
+        .MuiPaper-root {
+            background-color: $color-dark-highContrast;
+            border: 1px solid $color-light-highContrast;
+        }
+    }
+    .Mui-error {
+        color: $color-danger-highContrast;
+    }
+    .MuiFormHelperText-root.Mui-error {
+        background-color: $color-light-highContrast;
+        margin-bottom: 10px;
     }
 }
