@@ -163,6 +163,7 @@ body.contrast-high.layout-config-builder-2 {
     }
     .MuiSwitch-track {
         background-color: $color-medium-highContrast;
+        opacity: 0.9;
     }
     .MuiSwitch-switchBase {
         &.Mui-checked {

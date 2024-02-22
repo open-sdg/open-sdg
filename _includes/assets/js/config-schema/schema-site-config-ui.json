@@ -16,7 +16,10 @@
                         },
                         {
                             "type": "Control",
-                            "scope": "#/properties/disclaimer/properties/message"
+                            "scope": "#/properties/disclaimer/properties/message",
+                            "options": {
+                                "multi": true
+                            }
                         },
                         {
                             "type": "Control",
@@ -47,8 +50,30 @@
                     "documentationKey": "logos",
                     "elements": [
                         {
-                            "type": "Control",
-                            "scope": "#/properties/logos"
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/logos",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/src"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/alt",
+                                            "options": {
+                                                "multi": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 }
@@ -75,8 +100,23 @@
                     "documentationKey": "languages_public",
                     "elements": [
                         {
-                            "type": "Control",
-                            "scope": "#/properties/languages_public"
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/languages_public",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language_public"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 },
@@ -797,8 +837,30 @@
                     "documentationKey": "meta_tags",
                     "elements": [
                         {
-                            "type": "Control",
-                            "scope": "#/properties/meta_tags"
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/meta_tags",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/path"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/name"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content",
+                                            "options": {
+                                                "multi": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     ]
                 },

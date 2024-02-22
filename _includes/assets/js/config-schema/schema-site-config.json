@@ -447,7 +447,7 @@
         "frontpage_cards": {
             "type": "array",
             "title": "Frontpage cards",
-            "description": "This setting is only used in the frontpage-alt layout. It can display any number of 'cards' in 3-column rows, beneath the grid of goal tiles.",
+            "description": "This setting is only used in the frontpage layout. It can display any number of 'cards' in 3-column rows, beneath the grid of goal tiles.",
             "items": {
                 "type": "object",
                 "title": "Frontpage card",
@@ -496,7 +496,18 @@
             "type": "object",
             "title": "Frontpage goals grid",
             "description": "This setting is only used in the frontpage layout. It can display a title and description above the grid of goal tiles.",
-            "$ref": "#/definitions/title_and_description",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Used in the 'frontpage' layout, this sets a title to display above the goals grid."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Used in the 'frontpage' layout, this sets a description to display above the goals grid."
+                }
+            },
             "links": [
                 {
                     "rel": "More information on the frontpage goals grid setting",
@@ -507,8 +518,19 @@
         "frontpage_introduction_banner": {
             "type": "object",
             "title": "Frontpage introduction banner",
-            "description": "This setting is only used in the frontpage-alt layout. It can display a title and description in a banner at the top of the frontpage.",
-            "$ref": "#/definitions/title_and_description",
+            "description": "This setting is only used in the frontpage layout. It can display a title and description in a banner at the top of the frontpage.",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Used in the 'frontpage' layout, this sets a title to display in a banner at the top of the front page."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Used in the 'frontpage' layout, this sets a description to display in a banner at the top of the front page."
+                }
+            },
             "links": [
                 {
                     "rel": "More information on the frontpage introduction banner setting",
@@ -543,7 +565,18 @@
             "type": "object",
             "title": "Goals page",
             "description": "This setting is used in the 'goals' layout. It can display a title and description above the grid of goal tiles.",
-            "$ref": "#/definitions/title_and_description",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Used in the 'goals' layout, this sets a title to display above the goals grid."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Used in the 'goals' layout, this sets a description to display above the goals grid."
+                }
+            },
             "links": [
                 {
                     "rel": "More information on the goals page setting",
@@ -1242,12 +1275,6 @@
                         "title": "Path",
                         "description": "The path within the platform at which to place this tag."
                     },
-                    "name": {
-                        "type": "string",
-                        "minLength": 1,
-                        "title": "Name",
-                        "description": "The 'name' attribute for the meta tag."
-                    },
                     "content": {
                         "type": "string",
                         "minLength": 1,
@@ -1655,19 +1682,6 @@
                     "minLength": 1,
                     "title": "Label",
                     "description": "Label (or translation key) for the breadcrumb item."
-                }
-            }
-        },
-        "title_and_description": {
-            "type": "object",
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "title": "Title"
-                },
-                "description": {
-                    "type": "string",
-                    "title": "Description"
                 }
             }
         },
