@@ -1,0 +1,1753 @@
+{
+    "type": "object",
+    "title": "Open SDG site configuration",
+    "description": "This form will produce the site configuration for your Open SDG implementation.",
+    "properties": {
+        "analytics": {
+            "type": "object",
+            "title": "Analytics",
+            "description": "If these settings are used, usage statistics will be sent to Google Analytics. These are optional, and you don't have to use all of them. Typically you would just use one, such as the 'ua' option.",
+            "properties": {
+                "ua": {
+                    "type": "string",
+                    "title": "Universal Analytics (ua) tracking ID",
+                    "description": "The tracking ID for the analytics.js approach, for your property on Google Analytics. Typically starts with 'UA-'."
+                },
+                "gtag": {
+                    "type": "string",
+                    "title": "gtag.js (gtag) tracking ID",
+                    "description": "The tracking ID for the gtag.js approach, for your property on Google Analytics. Typically starts with 'G-'."
+                },
+                "gtm": {
+                    "type": "string",
+                    "title": "Google Tag Manager (gtm) tracking ID",
+                    "description": "Your tracking ID for Google Tag Manager. Typically starts with 'GTM-'. Though this is included as an analytics approach, it requires additional configuration within Google Tag Manager in order to capture analytics."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the analytics setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#analytics"
+                }
+            ]
+        },
+        "breadcrumbs": {
+            "type": "object",
+            "title": "Breadcrumbs",
+            "description": "This can contain breadcrumb settings for each of the supported collection types: goal, indicator, and post. Each should have a list of label/path objects.",
+            "properties": {
+                "goal": {
+                    "type": "array",
+                    "title": "Goal breadcrumbs",
+                    "description": "The breadcrumb items for goal pages.",
+                    "items": {
+                        "$ref": "#/definitions/breadcrumb_item"
+                    }
+                },
+                "indicator": {
+                            "type": "array",
+                    "title": "Indicator breadcrumbs",
+                    "description": "The breadcrumb items for indicator pages. Note that there will automatically be a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.",
+                    "items": {
+                        "$ref": "#/definitions/breadcrumb_item"
+                    }
+                },
+                "post": {
+                    "type": "array",
+                    "title": "Post breadcrumbs",
+                    "description": "The breadcrumb items for post pages.",
+                    "items": {
+                        "$ref": "#/definitions/breadcrumb_item"
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the breadcrumbs setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#breadcrumbs"
+                }
+            ]
+        },
+        "cookie_consent_form": {
+            "type": "object",
+            "title": "Cookie consent form",
+            "description": "A cookie consent form for users",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "Whether the cookie consent form will be enabled"
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the cookie_consent_form setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#cookie_consent_form"
+                }
+            ]
+        },
+        "country": {
+            "type": "object",
+            "title": "Country information",
+            "description": "Information about your country (or region, locality, etc.)",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "The name of your country/region/locality/etc.",
+                    "minLength": 1
+                },
+                "adjective": {
+                    "type": "string",
+                    "title": "Adjective",
+                    "description": "Adjective form of your country/region/locality/etc.",
+                    "minLength": 1
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the country setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#country"
+                }
+            ]
+        },
+        "create_goals": {
+            "type": "object",
+            "title": "Create goals",
+            "description": "This setting can be used to automatically create the goal pages.",
+            "properties": {
+                "previous_next_links": {
+                    "title": "Previous/next links",
+                    "type": "boolean",
+                    "description": "This setting can be used to show navigation links to the previous/next goals."
+                },
+                "goal_content_heading": {
+                    "type": "string",
+                    "title": "Goal content heading",
+                    "description": "Text entered here will appear as an H2 heading above any content configured below in 'goals'."
+                },
+                "goals": {
+                    "type": "array",
+                    "title": "Content per goal",
+                    "description": "This setting can be used to enter details for each goal.",
+                    "items": {
+                        "type": "object",
+                        "title": "Goal",
+                        "properties": {
+                            "heading": {
+                                "type": "string",
+                                "title": "Page heading",
+                                "description": "Optional heading to display in the goal banner (as an H1) for this goal. If left blank, the goal name will be used."
+                            },
+                            "content": {
+                                "type": "string",
+                                "title": "Content",
+                                "description": "Markdown content or a translation key for this goal."
+                            },
+                            "content_heading": {
+                                "type": "string",
+                                "title": "Content heading",
+                                "description": "Optional heading to display above the content (as an H2) for this goal. If left blank, the site-wide 'Goal content heading' (above) will be used."
+                            },
+                            "goal": {
+                                "type": ["integer", "string"],
+                                "title": "Goal",
+                                "description": "Optionally specify the goal ID this content applies to. Can be left blank if using the correct order of the goals (1, 2, 3, etc.)."
+                            }
+                        }
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the create goals setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#create_goals"
+                }
+            ]
+        },
+        "create_indicators": {
+            "type": "object",
+            "title": "Create indicators",
+            "description": "This setting controls the way that indicator pages are automatically created.",
+            "properties": {
+                "previous_next_links": {
+                    "title": "Previous/next links",
+                    "type": "boolean",
+                    "description": "This setting can be used to show navigation links to the previous/next indicators."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the create indicators setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#create_indicators"
+                }
+            ]
+        },
+        "create_pages": {
+            "type": "array",
+            "title": "Create pages",
+            "description": "This setting can be used to automatically create the pages.",
+            "items": {
+                "type": "object",
+                "title": "Page",
+                "properties": {
+                    "folder": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Folder",
+                        "description": "The folder path for the page."
+                    },
+                    "filename": {
+                        "type": "string",
+                        "title": "Filename",
+                        "description": "The filename for the page - usually 'index.html'."
+                    },
+                    "layout": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Layout",
+                        "description": "The layout to use for the page."
+                    },
+                    "title": {
+                        "type": "string",
+                        "title": "Title",
+                        "description": "The page title for the page."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the create pages setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#create_pages"
+                }
+            ]
+        },
+        "custom_css": {
+            "type": "array",
+            "title": "Custom CSS files",
+            "description": "Deprecated: instead of using this, it is recommended to put custom CSS in a _sass/custom.scss file.",
+            "items": {
+                "type": "string",
+                "title": "Custom CSS file"
+            },
+            "links": [
+                {
+                    "rel": "More information on the custom CSS setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#custom_css"
+                }
+            ]
+        },
+        "custom_js": {
+            "type": "array",
+            "title": "Custom JavaScript files",
+            "description": "This setting can be used to load additional JavaScript files on each page.",
+            "items": {
+                "type": "string",
+                "title": "Custom JavaScript file"
+            },
+            "links": [
+                {
+                    "rel": "More information on the custom JS setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#custom_js"
+                }
+            ]
+        },
+        "data_edit_url": {
+            "type": "string",
+            "title": "Data edit URL",
+            "description": "This setting controls the URL of the 'Edit Data' buttons that appear on the staging site's indicator pages.",
+            "links": [
+                {
+                    "rel": "More information on the data edit URL setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#data_edit_url"
+                }
+            ]
+        },
+        "data_fields": {
+            "type": "object",
+            "title": "Data fields",
+            "description": "Control the names of fields used for special purposes in data.",
+            "properties": {
+                "units": {
+                    "type": "string",
+                    "title": "Units",
+                    "description": "Field to reserve for units of measurement. Defaults to 'Units'."
+                },
+                "series": {
+                    "type": "string",
+                    "title": "Series",
+                    "description": "Field to reserve for the SDG series. Defaults to 'Series'."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the data fields setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#data_fields"
+                }
+            ]
+        },
+        "date_formats": {
+            "type": "array",
+            "title": "Date formats",
+            "description": "This setting can be used to control date formats for use in the site, such as in the news/category/post layouts. Any number date formats can be entered, and each must have an arbitrary type, such as `standard`. Make sure that each type has a variant for each of your languages.",
+            "items": {
+                "type": "object",
+                "title": "Date format",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Type",
+                        "description": "Use `standard` for news/post dates."
+                    },
+                    "language": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Language",
+                        "description": "Language code the format applies to."
+                    },
+                    "format": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Format",
+                        "description": "Ruby DateTime date format."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the date formats setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#date_formats"
+                }
+            ]
+        },
+        "disclaimer": {
+            "type": "object",
+            "title": "Disclaimer",
+            "description": "This setting controls the content of the disclaimer that appears at the top of each page.",
+            "properties": {
+                "phase": {
+                    "type": "string",
+                    "title": "Phase",
+                    "description": "The development phase of your platform (alpha, beta, etc.)"
+                },
+                "message": {
+                    "type": "string",
+                    "title": "Message",
+                    "description": "A short disclaimer message."
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "title": "Hidden",
+                    "description": "Hide the disclaimer."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the disclaimer setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#disclaimer"
+                }
+            ]
+        },
+        "email_contacts": {
+            "type": "object",
+            "title": "Email addresses",
+            "description": "Email addresses to publish on your platform.",
+            "properties": {
+                "questions": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "email",
+                    "title": "Questions",
+                    "description": "Inbox for questions about your platform."
+                },
+                "suggestions": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "email",
+                    "title": "Suggestions",
+                    "description": "Inbox for suggestions for your platform."
+                },
+                "functional": {
+                    "type": "string",
+                    "minLength": 1,
+                    "format": "email",
+                    "title": "Functional",
+                    "description": "Inbox for bug reports for your platform."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the email contacts setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#email_contacts"
+                }
+            ]
+        },
+        "empty_metadata_placeholder": {
+            "type": "string",
+            "title": "Empty metadata placeholder",
+            "description": "This setting controls the text that will display for any metadata field which has no content. Note that this is not used if 'hide_empty_metadata' is true.",
+            "links": [
+                {
+                    "rel": "More information on the empty metadata placeholder setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#empty_metadata_placeholder"
+                }
+            ]
+        },
+        "empty_metadata_placeholder_sources": {
+            "type": "string",
+            "title": "Empty metadata placeholder (sources)",
+            "description": "This setting controls the text that will display for any sources field which has no content. Note that this is not used if 'hide_empty_metadata' is true.",
+            "links": [
+                {
+                    "rel": "More information on the empty metadata placeholder (sources) setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#empty_metadata_placeholder_sources"
+                }
+            ]
+        },
+        "environment": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Environment",
+            "description": "Which environment (staging or production) this configuration is for.",
+            "enum": ["staging", "production"],
+            "links": [
+                {
+                    "rel": "More information on the environment setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#environment"
+                }
+            ]
+        },
+        "footer_language_toggle": {
+            "type": "string",
+            "title": "Footer language toggle",
+            "description": "This setting controls the type of language toggle to be used in the footer.",
+            "enum": ["none", "dropdown", "links"],
+            "links": [
+                {
+                    "rel": "More information on the footer language toggle setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#footer_language_toggle"
+                }
+            ]
+        },
+        "footer_menu": {
+            "type": "array",
+            "title": "Footer menu",
+            "description": "The links to display in the footer menu.",
+            "items": {
+                "$ref": "#/definitions/menu_item"
+            },
+            "links": [
+                {
+                    "rel": "More information on the footer menu setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#footer_menu"
+                }
+            ]
+        },
+        "frontpage_cards": {
+            "type": "array",
+            "title": "Frontpage cards",
+            "description": "This setting is only used in the frontpage layout. It can display any number of 'cards' in 3-column rows, beneath the grid of goal tiles.",
+            "items": {
+                "type": "object",
+                "title": "Frontpage card",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Title",
+                        "description": "The card's title."
+                    },
+                    "content": {
+                        "type": "string",
+                        "title": "Content",
+                        "description": "The card's content."
+                    },
+                    "include": {
+                        "type": "string",
+                        "title": "Include file",
+                        "description": "A Jekyll include file to place inside the card."
+                    },
+                    "button_label": {
+                        "type": "string",
+                        "title": "Button label",
+                        "description": "A label for a button to display at the bottom of the card."
+                    },
+                    "button_link": {
+                        "type": "string",
+                        "title": "Button link",
+                        "description": "A path or URL for the card's button to link to."
+                    },
+                    "rule_color": {
+                        "type": "string",
+                        "title": "Rule color",
+                        "description": "The color of the horizontal line appearing above the card."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the frontpage cards setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_cards"
+                }
+            ]
+        },
+        "frontpage_goals_grid": {
+            "type": "object",
+            "title": "Frontpage goals grid",
+            "description": "This setting is only used in the frontpage layout. It can display a title and description above the grid of goal tiles.",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Used in the 'frontpage' layout, this sets a title to display above the goals grid."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Used in the 'frontpage' layout, this sets a description to display above the goals grid."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the frontpage goals grid setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_goals_grid"
+                }
+            ]
+        },
+        "frontpage_introduction_banner": {
+            "type": "object",
+            "title": "Frontpage introduction banner",
+            "description": "This setting is only used in the frontpage layout. It can display a title and description in a banner at the top of the frontpage.",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Used in the 'frontpage' layout, this sets a title to display in a banner at the top of the front page."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Used in the 'frontpage' layout, this sets a description to display in a banner at the top of the front page."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the frontpage introduction banner setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner"
+                }
+            ]
+        },
+        "goal_image_base": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Goal image base URL",
+            "description": "This setting controls the base URL for downloading the imagery for the goals.",
+            "links": [
+                {
+                    "rel": "More information on the goal image base setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#goal_image_base"
+                }
+            ]
+        },
+        "goal_image_extension": {
+            "type": "string",
+            "title": "Goal image extension",
+            "description": "This setting controls the type of file (the file extension) that will be used for the goal images.",
+            "links": [
+                {
+                    "rel": "More information on the goal image extension setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#goal_image_extension"
+                }
+            ]
+        },
+        "goals_page": {
+            "type": "object",
+            "title": "Goals page",
+            "description": "This setting is used in the 'goals' layout. It can display a title and description above the grid of goal tiles.",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Used in the 'goals' layout, this sets a title to display above the goals grid."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Used in the 'goals' layout, this sets a description to display above the goals grid."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the goals page setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#goals_page"
+                }
+            ]
+        },
+        "graph_color_headline": {
+            "type": "string",
+            "title": "Graph color for headline",
+            "default": "#004466",
+            "description": "This setting can be used to customize the color used in the chart 'headlines'.",
+            "examples": [],
+            "links": [
+                {
+                    "rel": "More information on the graph color headline setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_headline"
+                }
+            ]
+        },
+        "graph_color_headline_high_contrast": {
+            "type": "string",
+            "title": "Graph color for headline - high-contrast",
+            "default": "#55a6e5",
+            "description": "This setting can be used to customize the color used in the chart 'headlines' in high-contrast mode.",
+            "examples": [],
+            "links": [
+                {
+                    "rel": "More information on the graph color headline high-contrast setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_headline_high_contrast"
+                }
+            ]
+        },
+        "graph_color_set": {
+            "type": "string",
+            "title": "Graph color set",
+            "description": "This setting can be used to customize the color set used in the charts.",
+            "examples": [],
+            "enum": ["accessible", "classic", "sdg", "goal", "custom"],
+            "links": [
+                {
+                    "rel": "More information on the graph color set setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_set"
+                }
+            ]
+        },
+        "graph_color_list": {
+            "type": "array",
+            "title": "Graph color list",
+            "description": "This setting can be used to define a set of colors to be used in the charts. This is only used when graph_color_set is 'custom'.",
+            "items": {
+                "type": "string",
+                "title": "Color",
+                "description": "Hexadecimal color code"
+            },
+            "links": [
+                {
+                    "rel": "More information on the graph color list setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_list"
+                }
+            ]
+        },
+        "graph_color_number": {
+            "title": "Graph color number",
+            "type": "integer",
+            "description": "This setting can be used to limit the length of the list of colors selected via graph_color_set.",
+            "links": [
+                {
+                    "rel": "More information on the graph color number setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_number"
+                }
+            ]
+        },
+        "graph_title_from_series": {
+            "title": "Graph title from series",
+            "type": "boolean",
+            "description": "This setting can be set to `true` to use the selected series for the graph title, whenever possible.",
+            "links": [
+                {
+                    "rel": "More information on the graph title from series setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_title_from_series"
+                }
+            ]
+        },
+        "header_language_toggle": {
+            "type": "string",
+            "title": "Header language toggle",
+            "description": "This setting controls the type of language toggle to be used in the header.",
+            "enum": ["none", "dropdown", "links"],
+            "links": [
+                {
+                    "rel": "More information on the header language toggle setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#header_language_toggle"
+                }
+            ]
+        },
+        "hide_empty_metadata": {
+            "title": "Hide empty metadata",
+            "type": "boolean",
+            "description": "This setting can be used to hide any metadata fields that are empty.",
+            "links": [
+                {
+                    "rel": "More information on the hide empty metadata setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#hide_empty_metadata"
+                }
+            ]
+        },
+        "hide_single_series": {
+            "title": "Hide single series",
+            "type": "boolean",
+            "description": "This setting can be used to hide the 'Series' toggle on indicators where there is only one choice.",
+            "links": [
+                {
+                    "rel": "More information on the hide single series setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#hide_single_series"
+                }
+            ]
+        },
+        "hide_single_unit": {
+            "title": "Hide single unit",
+            "type": "boolean",
+            "description": "This setting can be used to hide the 'Unit' toggle on indicators where there is only one choice.",
+            "links": [
+                {
+                    "rel": "More information on the hide single unit setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#hide_single_unit"
+                }
+            ]
+        },
+        "ignored_disaggregations": {
+            "type": "array",
+            "title": "Ignored disaggregations",
+            "description": "An optional list of data columns that should not appear as disaggregation drop-downs in the left sidebar.",
+            "items": {
+                "type": "string",
+                "title": "Ignored disaggregation"
+            },
+            "links": [
+                {
+                    "rel": "More information on the ignored_disaggregations setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#ignored_disaggregations"
+                }
+            ]
+        },
+        "indicator_config_form": {
+            "type": "object",
+            "title": "Indicator configuration form",
+            "description": "Configuration of the indicator configuration form.",
+            "$ref": "#/definitions/config_form_options"
+        },
+        "indicator_data_form": {
+            "type": "object",
+            "title": "Indicator data form",
+            "description": "Configuration of the indicator data form.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enable this type of form",
+                    "description": "If enabled, the indicator data form will be available."
+                },
+                "repository_link": {
+                    "type": "string",
+                    "title": "Repository link",
+                    "description": "The URL pattern of the 'Go to repository' link on the configuration page."
+                }
+            }
+        },
+        "indicator_metadata_form": {
+            "type": "object",
+            "title": "Indicator metadata form",
+            "description": "Configuration of the indicator metadata form.",
+            "allOf": [
+                { "$ref": "#/definitions/config_form_options" },
+                {
+                    "properties": {
+                        "language": {
+                            "type": "string",
+                            "title": "Language for editing",
+                            "description": "Choose the language you prefer when editing metadata. This is used to translate the labels of the metadata fields."
+                        },
+                        "scopes": {
+                                            "type": "array",
+                            "title": "Metadata scopes",
+                            "description": "Specify the 'scopes' of metadata to include on the form. Eg: 'national' or 'global'.",
+                            "items": {
+                                "type": "string",
+                                "title": "Scope"
+                            }
+                        },
+                        "exclude_fields": {
+                                            "type": "array",
+                            "title": "Exclude fields",
+                            "description": "Specify any fields you would like to exclude from the form.",
+                            "items": {
+                                "type": "string",
+                                "title": "Field"
+                            }
+                        },
+                        "translated": {
+                            "type": "boolean",
+                            "title": "Display translated contents in the form",
+                            "description": "This should only be enabled if you are using the 'subfolder' approach for your metadata."
+                        }
+                    }
+                }
+            ]
+        },
+        "indicator_tabs": {
+            "type": "object",
+            "title": "Indicator tabs",
+            "description": "Assign content for the indicator tabs.",
+            "properties": {
+                "tab_1": {
+                    "type": "string",
+                    "title": "Tab 1",
+                    "description": "What to display in the first tab",
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
+                },
+                "tab_2": {
+                    "type": "string",
+                    "title": "Tab 2",
+                    "description": "What to display in the second tab",
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
+                },
+                "tab_3": {
+                    "type": "string",
+                    "title": "Tab 3",
+                    "description": "What to display in the third tab",
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
+                },
+                "tab_4": {
+                    "type": "string",
+                    "title": "Tab 4",
+                    "description": "What to display in the fourth tab",
+                    "enum": ["", "chart", "table", "map", "embed", "hide"],
+                    "options": {
+                        "enum_titles": [
+                            "",
+                            "Chart",
+                            "Table",
+                            "Map",
+                            "Embed",
+                            "Hide this tab"
+                        ]
+                    }
+                }
+            }
+        },
+        "languages": {
+            "type": "array",
+            "minItems": 1,
+            "title": "Languages",
+            "description": "This setting controls the languages to be used on the site.",
+            "items": {
+                "type": "string",
+                "minLength": 1,
+                "title": "Language"
+            },
+            "links": [
+                {
+                    "rel": "More information on the languages setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#languages"
+                }
+            ]
+        },
+        "languages_public": {
+            "type": "array",
+            "title": "Language code overrides",
+            "description": "This setting can be used if you are not happy with any of the standard language codes.",
+            "items": {
+                "type": "object",
+                "title": "Language override",
+                "properties": {
+                    "language": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Language",
+                        "description": "The (standard) language code that you would like to override."
+                    },
+                    "language_public": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Language override",
+                        "description": "The (non-standard) language code that you would like show the public instead."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the language override setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#languages_public"
+                }
+            ]
+        },
+        "logos": {
+            "type": "array",
+            "title": "Logos",
+            "description": "This setting can be used to control the main logo (or logos).",
+            "items": {
+                "type": "object",
+                "title": "Logo",
+                "properties": {
+                    "language": {
+                        "type": "string",
+                        "title": "Language",
+                        "description": "The language on which this logo displays. Leave blank to show on all."
+                    },
+                    "src": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Image file",
+                        "description": "The image file (path or URL) for this logo"
+                    },
+                    "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Alt text",
+                        "description": "The alt text for this logo"
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the logos setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#logos"
+                }
+            ]
+        },
+        "map_layers": {
+            "type": "array",
+            "title": "Map layers",
+            "description": "Configure any number of layers to display on all indicator maps. A minimum of one layer is required to display maps.",
+            "items": {
+                "type": "object",
+                "title": "Map layer",
+                "properties": {
+                    "subfolder": {
+                        "type": "string",
+                        "title": "Subfolder",
+                        "description": "The subfolder under 'geojson' in the data repository holding the GeoJSON file for this layer."
+                    },
+                    "label": {
+                        "type": "string",
+                        "title": "Download button label",
+                        "description": "The label to use in the 'Download GeoJSON' button for this layer."
+                    },
+                    "min_zoom": {
+                        "type": "integer",
+                        "title": "Minimum zoom",
+                        "description": "This layer will only be visible when the map is zoomed to at least this number."
+                    },
+                    "max_zoom": {
+                        "type": "integer",
+                        "title": "Maximum zoom",
+                        "description": "The layer will not be visible when the map is zoomed beyond this number."
+                    },
+                    "staticBorders": {
+                        "type": "boolean",
+                        "title": "Static borders",
+                        "description": "Whether the borders on this layer should remain visible when the map is zoomed past the maximum."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the map layers setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/maps/#map_layers"
+                }
+            ]
+        },
+        "map_options": {
+            "type": "object",
+            "title": "Map options",
+            "description": "Site-wide configuration of map behavior and style.",
+            "properties": {
+                "disaggregation_controls": {
+                    "title": "Disaggregation controls",
+                    "type": "boolean",
+                    "description": "Whether the map should provide a button and form for changing the displayed disaggregation."
+                },
+                "minZoom": {
+                    "title": "Minimum zoom",
+                    "type": "integer",
+                    "description": "The lowest amount of 'zoom' possible for users.",
+                    "default": 5
+                },
+                "maxZoom": {
+                    "title": "Maximum zoom",
+                    "type": "integer",
+                    "description": "The highest amount of 'zoom' possible for users.",
+                    "default": 10
+                },
+                "tileURL": {
+                    "title": "Tile URL",
+                    "type": "string",
+                    "description": "If you would like the maps to show tile imagery, add the URL here."
+                },
+                "tileOptions": {
+                    "title": "Tile options",
+                    "type": "object",
+                    "description": "Additional options for map tile imagery.",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "title": "Tile ID"
+                        },
+                        "accessToken": {
+                            "type": "string",
+                            "title": "Access token"
+                        },
+                        "attribution": {
+                            "type": "string",
+                            "title": "Attribution"
+                        }
+                    }
+                },
+                "colorRange": {
+                    "type": "string",
+                    "title": "Color range",
+                    "description": "The color range for the choropleth map.",
+                    "default": "chroma.brewer.BuGn",
+                    "links": [
+                        {
+                            "ref": "More information on the color range setting",
+                            "href": "https://gka.github.io/chroma.js/#chroma-brewer"
+                        }
+                    ]
+                },
+                "noValueColor": {
+                    "type": "string",
+                    "title": "No-value color",
+                    "description": "Color for boundaries that have no data.",
+                    "default": "#f0f0f0"
+                },
+                "styleNormal": {
+                    "type": "object",
+                    "title": "Style (normal)",
+                    "description": "Style for boundaries in normal state",
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "Weight",
+                            "description": "The weight (boldness) of boundary borders."
+                        },
+                        "opacity": {
+                            "type": "number",
+                            "title": "Opacity",
+                            "description": "The opacity of the boundary borders (between 0 and 1)."
+                        },
+                        "fillOpacity": {
+                            "type": "number",
+                            "title": "Fill opacity",
+                            "description": "The opacity of the boundaries' background color (between 0 and 1)."
+                        },
+                        "color": {
+                            "type": "string",
+                            "title": "Color",
+                            "description": "The color of the boundary borders."
+                        },
+                        "dashArray": {
+                            "type": "string",
+                            "title": "Dash array",
+                            "description": "A 'dash array' describing the boundary as dashed lines."
+                        }
+                    },
+                    "default": {
+                        "weight": 1,
+                        "opacity": 1,
+                        "fillOpacity": 0.7,
+                        "color": "#888888"
+                    }
+                },
+                "styleHighlighted": {
+                    "type": "object",
+                    "title": "Style (highlighted)",
+                    "description": "Style for boundaries in highlighted state",
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "Weight",
+                            "description": "The weight (boldness) of boundary borders."
+                        },
+                        "opacity": {
+                            "type": "number",
+                            "title": "Opacity",
+                            "description": "The opacity of the boundary borders (between 0 and 1)."
+                        },
+                        "fillOpacity": {
+                            "type": "number",
+                            "title": "Fill opacity",
+                            "description": "The opacity of the boundaries' background color (between 0 and 1)."
+                        },
+                        "color": {
+                            "type": "string",
+                            "title": "Color",
+                            "description": "The color of the boundary borders."
+                        },
+                        "dashArray": {
+                            "type": "string",
+                            "title": "Dash array",
+                            "description": "A 'dash array' describing the boundary as dashed lines."
+                        }
+                    },
+                    "default": {
+                        "weight": 1,
+                        "opacity": 1,
+                        "fillOpacity": 0.7,
+                        "color": "#111111"
+                    }
+                },
+                "styleStatic": {
+                    "type": "object",
+                    "title": "Style (static)",
+                    "description": "Style for boundaries in static state (map layers using the 'static boundaries' option).",
+                    "properties": {
+                        "weight": {
+                            "type": "number",
+                            "title": "Weight",
+                            "description": "The weight (boldness) of boundary borders."
+                        },
+                        "opacity": {
+                            "type": "number",
+                            "title": "Opacity",
+                            "description": "The opacity of the boundary borders (between 0 and 1)."
+                        },
+                        "fillOpacity": {
+                            "type": "number",
+                            "title": "Fill opacity",
+                            "description": "The opacity of the boundaries' background color (between 0 and 1)."
+                        },
+                        "color": {
+                            "type": "string",
+                            "title": "Color",
+                            "description": "The color of the boundary borders."
+                        },
+                        "dashArray": {
+                            "type": "string",
+                            "title": "Dash array",
+                            "description": "A 'dash array' describing the boundary as dashed lines."
+                        }
+                    },
+                    "default": {
+                        "weight": 2,
+                        "opacity": 1,
+                        "fillOpacity": 0,
+                        "color": "#172d44",
+                        "dashArray": "5,5"
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the map options setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/maps/#map_options"
+                }
+            ]
+        },
+        "menu": {
+            "type": "array",
+            "minItems": 1,
+            "title": "Main menu",
+            "description": "The links to display in the main menu.",
+            "items": {
+                "type": "object",
+                "title": "Menu item",
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Path",
+                        "description": "Path or URL that the menu item should link to."
+                    },
+                    "translation_key": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Label",
+                        "description": "Label (or translation key) for the link."
+                    },
+                    "dropdown": {
+                        "title": "Dropdown menu",
+                        "type": "array",
+                        "description": "Enter menu items here to turn this into a dropdown.",
+                        "items": {
+                            "type": "object",
+                            "title": "Dropdown menu item",
+                            "properties": {
+                                "path": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "title": "Path",
+                                    "description": "Path or URL that the menu item should link to."
+                                },
+                                "translation_key": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "title": "Label",
+                                    "description": "Label (or translation key) for the link."
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the menu setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#menu"
+                }
+            ]
+        },
+        "metadata_edit_url": {
+            "type": "string",
+            "title": "Metadata edit URL",
+            "description": "This setting controls the URL of the 'Edit Metadata' buttons that appear on the staging site's indicator pages.",
+            "links": [
+                {
+                    "rel": "More information on the metadata edit URL setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#metadata_edit_url"
+                }
+            ]
+        },
+        "metadata_tabs": {
+            "type": "array",
+            "title": "Metadata tabs",
+            "description": "This setting can control the metadata tabs which appear on the indicator pages.",
+            "items": {
+                "type": "object",
+                "title": "Metadata tab",
+                "properties": {
+                    "scope": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Scope",
+                        "description": "This tab will contain fields in the specific `scope` in your data repository's metadata schema file (eg, `_prose.yml`)."
+                    },
+                    "title": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Title",
+                        "description": "The title of the metadata tab."
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "description": "A descriptive blurb to show at the top of the tab content."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the metadata tabs setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#metadata_tabs"
+                }
+            ]
+        },
+        "meta_tags": {
+            "type": "array",
+            "title": "Meta tags",
+            "description": "This setting can be used to add custom meta tags at any paths.",
+            "items": {
+                "type": "object",
+                "title": "Meta tag",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Name",
+                        "description": "The 'name' attribute for the meta tag."
+                    },
+                    "path": {
+                        "type": "string",
+                        "title": "Path",
+                        "description": "The path within the platform at which to place this tag."
+                    },
+                    "content": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Content",
+                        "description": "The 'content' attribute for the meta tag. Translation keys can be used."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the Meta Tags setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#meta_tags"
+                }
+            ]
+        },
+        "news": {
+            "type": "object",
+            "title": "News",
+            "description": "Configuration related to news updates and posts.",
+            "properties": {
+                "category_links": {
+                    "title": "Category links",
+                    "type": "boolean",
+                    "description": "Whether you would like the 'categories' of posts to generate links to dedicated category pages."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the news setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#news"
+                }
+            ]
+        },
+        "observation_attributes": {
+            "type": "array",
+            "title": "Observation attributes",
+            "description": "This setting can be used to specify data columns to be considered 'observation attributes' and displayed along with individual data-points.",
+            "items": {
+                "type": "object",
+                "title": "Observation attribute",
+                "properties": {
+                    "field": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Field",
+                        "description": "Column name in the data."
+                    },
+                    "label": {
+                        "type": "string",
+                        "title": "Label",
+                        "description": "Optional label when displayed in footnotes."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the observation attributes setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#observation_attributes"
+                }
+            ]
+        },
+        "progress_status": {
+            "type": "object",
+            "title": "Progress status",
+            "description": "This setting is used in the 'goal-with-progress' layout. It controls the behavior of progress status functionality.",
+            "properties": {
+                "status_heading": {
+                    "title": "Status heading",
+                    "type": "string",
+                    "description": "A heading to display before the progress status on indicator pages."
+                },
+                "status_help": {
+                    "title": "Status help",
+                    "type": "string",
+                    "description": "An explanatory column header above the progress status on goal pages."
+                },
+                "status_types": {
+                    "type": "array",
+                    "title": "Status types",
+                    "description": "Controls the behavior and labels for the different progress status types.",
+                    "items": {
+                        "type": "object",
+                        "title": "Status type",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "title": "Value",
+                                "description": "The value of the status type, as it is set in the indicator configuration (eg, 'targetachieved')."
+                            },
+                            "label": {
+                                "type": "string",
+                                "title": "Label",
+                                "description": "The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved')."
+                            },
+                            "image": {
+                                "type": "string",
+                                "title": "Image",
+                                "description": "The internal path to the image to use (if any) for this progress status."
+                            },
+                            "alt": {
+                                "type": "string",
+                                "title": "Alt",
+                                "description": "An alt tag for the image above."
+                            }
+                        }
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the progress status setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#progress_status"
+                }
+            ]
+        },
+        "progressive_web_app": {
+            "type": "object",
+            "title": "Progressive Web App",
+            "description": "Configuration for turning the platform into a progressive web app for offline usage.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enabled",
+                    "description": "If enabled, the platform will be a progressive web app for offline usage."
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "The full name of the app (displays on splash screen)."
+                },
+                "short_name": {
+                    "type": "string",
+                    "title": "Short name",
+                    "description": "The short name of the app (displays under home screen icon)."
+                },
+                "precaching": {
+                    "type": "boolean",
+                    "title": "Precaching",
+                    "description": "If enabled, all indicator and goal pages will be precached when the app is installed."
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the progressive_web_app setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#progressive_web_app"
+                }
+            ]
+        },
+        "proxy_indicators": {
+            "type": "object",
+            "title": "Proxy indicators",
+            "description": "Configuration for the proxy indicator functionality.",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "title": "Label",
+                    "description": "The label to display when flagging a proxy indicator. Defaults to 'Proxy'."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "The description to display at the top of indicator pages, explaining what 'Proxy' means."
+                }
+            }
+        },
+        "remote_data_prefix": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Remote data prefix",
+            "description": "Specify the URL of the 'data service' that is generated from your data repository.",
+            "links": [
+                {
+                    "rel": "More information on the remote data prefix setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#remote_data_prefix"
+                }
+            ]
+        },
+        "reporting_status": {
+            "type": "object",
+            "title": "Reporting status",
+            "description": "This setting is used in the 'reportingstatus' layout. It can display a title and description above the reporting status page.",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "title": "Title"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description"
+                },
+                "disaggregation_indicator_count_label": {
+                    "title": "Disaggregation indicator count label",
+                    "type": "string",
+                    "description": "An alternative label to use for the indicator count on the disaggregation tab, to be display after a number."
+                },
+                "disaggregation_tabs": {
+                    "title": "Disaggregation tabs",
+                    "type": "boolean",
+                    "description": "Whether or not to display disaggregation status tabs. If you enable this setting, you should also use 'expected_disaggregations' in your indicator configuration, in order to provide the disaggregation status report with useful metrics."
+                },
+                "status_types": {
+                    "type": "array",
+                    "title": "Status types",
+                    "description": "Controls the behavior and labels for the different reporting status types.",
+                    "items": {
+                        "type": "object",
+                        "title": "Status type",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "minLength": 1,
+                                "title": "Value",
+                                "description": "The value of the status type, as it is set in the indicator configuration (eg, 'complete')."
+                            },
+                            "label": {
+                                "type": "string",
+                                "minLength": 1,
+                                "title": "Label",
+                                "description": "The human-readable label for the status type. Can be a translation key (eg, 'status.reported_online')."
+                            },
+                            "hide_on_goal_pages": {
+                                "type": "boolean",
+                                "title": "Hide on goal pages",
+                                "description": "Whether to hide this status type on goal pages. Useful for the most commonly-occuring type."
+                            }
+                        }
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the reporting status setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#reporting_status"
+                }
+            ]
+        },
+        "repository_url_data": {
+            "type": "string",
+            "title": "Repository URL - Data",
+            "description": "The URL of your data repository, eg: https://github.com/my-github-org/data",
+            "links": [
+                {
+                    "rel": "More information on the data repository URL setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#repository_url_data"
+                }
+            ]
+        },
+        "repository_url_site": {
+            "type": "string",
+            "title": "Repository URL - Site",
+            "description": "The URL of your site repository, eg: https://github.com/my-github-org/site",
+            "links": [
+                {
+                    "rel": "More information on the site repository URL setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#repository_url_site"
+                }
+            ]
+        },
+        "search_index_boost": {
+            "type": "array",
+            "title": "Search index boost",
+            "description": "This setting can be used to give a boost to one or more fields in the search index.",
+            "items": {
+                "type": "object",
+                "title": "Boost",
+                "properties": {
+                    "field": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Field",
+                        "description": "Field to boost ('title', 'content', etc.)"
+                    },
+                    "boost": {
+                        "type": "integer",
+                        "minLength": 1,
+                        "title": "Boost",
+                        "description": "Higher boost means higher search ranking."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the search index boost setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_boost"
+                }
+            ]
+        },
+        "search_index_extra_fields": {
+            "type": "array",
+            "title": "Search index extra fields",
+            "description": "This setting can be used to index additional metadata fields in your indicators, for the purposes of affecting the site-wide search.",
+            "items": {
+                "type": "string",
+                "title": "Extra field"
+            },
+            "links": [
+                {
+                    "rel": "More information on the search index extra fields setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_extra_fields"
+                }
+            ]
+        },
+        "site_config_form": {
+            "type": "object",
+            "title": "Site configuration form",
+            "description": "Configuration of the site configuration form.",
+            "$ref": "#/definitions/config_form_options"
+        },
+        "time_series_attributes": {
+            "type": "array",
+            "title": "Time-series attributes",
+            "description": "This setting can be used to specify data columns to be considered 'time-series attributes' and displayed in the footer.",
+            "items": {
+                "type": "object",
+                "title": "Time-series attribute",
+                "properties": {
+                    "field": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Field",
+                        "description": "Column name in the data."
+                    },
+                    "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Label",
+                        "description": "Label when displayed in the footer."
+                    }
+                }
+            },
+            "links": [
+                {
+                    "rel": "More information on the time series attributes setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#time_series_attributes"
+                }
+            ]
+        },
+        "validate_indicator_config": {
+            "title": "Validate indicator config",
+            "type": "boolean",
+            "description": "If checked, this will require that all indicators have valid Open SDG indicator configuration.",
+            "links": [
+                {
+                    "rel": "More information on the validate indicator config setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#validate_indicator_config"
+                }
+            ]
+        },
+        "validate_site_config": {
+            "title": "Validate site config",
+            "type": "boolean",
+            "description": "If checked, this will require valid site configuration.",
+            "links": [
+                {
+                    "rel": "More information on the validate site config setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#validate_site_config"
+                }
+            ]
+        },
+        "x_axis_label": {
+            "type": "string",
+            "title": "X axis label",
+            "description": "A label beneath the X axis on charts. This is overridden by the same indicator configuration setting.",
+            "links": [
+                {
+                    "rel": "More information on the X axis label setting",
+                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#x_axis_label"
+                }
+            ]
+        }
+    },
+    "additionalProperties": true,
+    "definitions": {
+        "menu_item": {
+            "type": "object",
+            "title": "Menu item",
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Path",
+                    "description": "Path or URL that the menu item should link to."
+                },
+                "translation_key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Label",
+                    "description": "Label (or translation key) for the link."
+                }
+            }
+        },
+        "breadcrumb_item": {
+            "type": "object",
+            "title": "Breadcrumb item",
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Path",
+                    "description": "Path or URL that the breadcrumb item should link to."
+                },
+                "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Label",
+                    "description": "Label (or translation key) for the breadcrumb item."
+                }
+            }
+        },
+        "config_form_options": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enable this type of form",
+                    "description": "If enabled, this type of configuration form will be available."
+                },
+                "repository_link": {
+                    "type": "string",
+                    "title": "Repository link",
+                    "description": "The URL pattern of the 'Go to repository' link on the configuration page."
+                },
+                "translation_link": {
+                    "type": "string",
+                    "title": "Translation link",
+                    "description": "The URL pattern for all 'Go to translation' links on the configuration page."
+                },
+                "config_folder": {
+                    "type": "string",
+                    "title": "Config file folder",
+                    "description": "The folder within the code repository in which the file should be placed."
+                },
+                "github_client_id": {
+                    "type": "string",
+                    "title": "Github Client ID",
+                    "description": "The Client ID, for use with Github authentication."
+                },
+                "github_proxy_url": {
+                    "type": "string",
+                    "title": "Github Proxy URL",
+                    "description": "The Proxy URL, for use with Github authentication."
+                },
+                "github_repo": {
+                    "type": "string",
+                    "title": "Github Repository",
+                    "description": "The name of the Github repository, for use with Github authentication."
+                },
+                "github_owner": {
+                    "type": "string",
+                    "title": "Github Owner",
+                    "description": "The owner (organisation) of the Github repository, for use with Github authentication."
+                }
+            }
+        },
+        "indicator_tabs_options": {
+            "enum": ["", "chart", "table", "map", "embed", "hide"],
+            "options": {
+                "enum_titles": [
+                    "",
+                    "Chart",
+                    "Table",
+                    "Map",
+                    "Embed",
+                    "Hide this tab"
+                ]
+            }
+        }
+    }
+}

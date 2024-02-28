@@ -1,0 +1,317 @@
+{
+    "type": "Categorization",
+    "elements": [
+        {
+            "type": "Category",
+            "label": "Data",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_non_statistical"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/computation_units",
+                    "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/data_non_statistical",
+                          "schema": { "const": true }
+                        }
+                    }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/national_geographical_coverage"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/precision",
+                    "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/data_non_statistical",
+                          "schema": { "const": true }
+                        }
+                    }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_show_map",
+                    "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/data_non_statistical",
+                          "schema": { "const": true }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Disaggregation",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_start_values"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/expected_disaggregations"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/composite_breakdown_label"
+                }
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/data_non_statistical",
+                  "schema": { "const": true }
+                }
+            }
+        },
+        {
+            "type": "Category",
+            "label": "Annotation",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_annotations"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_series_breaks"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_target_lines"
+                }
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/data_non_statistical",
+                  "schema": { "const": true }
+                }
+            }
+        },
+        {
+            "type": "Category",
+            "label": "Chart",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_types"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_type"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/x_axis_label"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_stacked_disaggregation"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_limits"
+                }
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/data_non_statistical",
+                  "schema": { "const": true }
+                }
+            }
+        },
+        {
+            "type": "Category",
+            "label": "Header",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/indicator_number"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/indicator_name"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/indicator_available"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_titles",
+                    "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/data_non_statistical",
+                          "schema": { "const": true }
+                        }
+                    }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/graph_title",
+                    "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/data_non_statistical",
+                          "schema": { "const": true }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Footer",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/copyright"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_footnote"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/footer_fields"
+                }
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/data_non_statistical",
+                  "schema": { "const": true }
+                }
+            }
+        },
+        {
+            "type": "Category",
+            "label": "Info",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_notice_text"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_notice_header"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/data_notice_class"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/placeholder"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/page_content"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Embed",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/embedded_feature_url"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/embedded_feature_html"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/embedded_feature_title"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/embedded_feature_tab_title"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/embedded_feature_footer"
+                }
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/data_non_statistical",
+                  "schema": { "const": true }
+                }
+            }
+        },
+        {
+            "type": "Category",
+            "label": "Webmaster",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/standalone"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/permalink"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/tags"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/sort"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Status",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/reporting_status"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/progress_status"
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Tabs",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/indicator_tabs"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/publications"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/related_indicators"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/sources"
+                }
+            ]
+        }
+    ]
+}
