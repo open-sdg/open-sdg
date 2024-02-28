@@ -2,6 +2,24 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 2.3.0
+
+1 March 2024
+
+* New site configuration forms
+* iframe-friendly versions of each indicator can be created
+* Observation attributes can be displayed on charts, tables and maps
+* 'Out of scope' can be removed from disaggregation status
+* Ruby 3 upgrade enabled
+* Country name translated in table header​ and header columns pinned
+* Added units and series columns to data download files​
+* Improvements to checkbox selection on indicator pages​
+* data_start_values on maps: geographical fields now ignored​
+* Graph annotation label position functionality improved​
+* Improvements to screenreader and voice control functionality​
+* DataSchemaInputSdmxDsd allowed as a data schema
+* Bugfixes for some maps and series not appearing
+
 ## 2.2.0
 
 26 April 2023
