@@ -1270,6 +1270,12 @@
                 "type": "object",
                 "title": "Meta tag",
                 "properties": {
+                    "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Name",
+                        "description": "The 'name' attribute for the meta tag."
+                    },
                     "path": {
                         "type": "string",
                         "title": "Path",
