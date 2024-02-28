@@ -15,7 +15,7 @@ There are two ways of updating to your `site_config.yml` file in order to make c
   
 You can use either method at any time for any change. 
 
-The site configurations forms have been created to make changes to your site more user-friendly. It may be quicker for you to use the user-friendly site configuration forms than editing the file directly. Or, it might be quicker for you to edit the directly file instead. This may depend on your experience and personal preference and the choice is yours.
+The site configuration forms have been created to make changes to your site more user-friendly. It may be quicker for you to use the user-friendly site configuration forms than editing the file directly. Or, it might be quicker for you to edit the directly file instead. This may depend on your experience and personal preference and the choice is yours.
 
 By using the site configuration forms, you remove the risk of any syntax errors that may occur from editing the file directly. This may be preferential for users without much developer or GitHub experience. 
 
@@ -29,7 +29,7 @@ use_new_config_forms: true
 ```
 You can access the site configuration forms by going to your staging site and in the footer menu at the bottom of any page, click "Configuration".
 
-From here you can navigate around the forms depending on what setting you would like to change. Every setting has its own section which may consist of checkboxes, text boxes, drop-downs, toggles and list items. You can interact with each of them to update any settings from the default. There is more information provided to give context and guidance for each setting which can be accessed by clicking on the drop-down at the bottom of each setting. 
+From here you can navigate around the forms depending on what setting you would like to change. Every setting has its own section which may consist of checkboxes, text boxes, drop-downs, toggles and list items. You can interact with each of them to update any settings from the default. There is more information provided to give context and guidance for each setting which can be accessed by clicking on the drop-down at the bottom of each setting. You can also use the search function to find a specific setting.
 
 For example, if you wanted to change your country name on the site, you would: 
 1. Click on the "General" menu item.
