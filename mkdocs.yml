@@ -52,6 +52,7 @@ nav:
         - Cookies and privacy: cookies.md
         - Deployment: deployment.md
         - Site configuration: configuration.md
+        - Site configuration forms: site-configuration-forms.md
         - Data configuration: data-configuration.md
         - Indicator configuration: indicator-configuration.md
         - Customisation: customisation.md
