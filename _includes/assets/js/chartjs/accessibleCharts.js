@@ -161,7 +161,14 @@ Chart.register({
                     year = this.chart.data.labels[pointIndex],
                     dataset = this.chart.data.datasets[datasetIndex],
                     label = dataset.label,
-                    value = dataset.data[pointIndex];
+                    value = dataset.data[pointIndex],
+                    observationAttributes = dataset.observationAttributes[pointIndex],
+                    helpers = this.chart.config._config.indicatorViewHelpers;
+
+                if (observationAttributes && observationAttributes.length > 0) {
+                    label += ', ' + observationAttributes.map(helpers.getObservationAttributeText).join(', ');
+                }
+
                 if (typeof labels[year] === 'undefined') {
                     labels[year] = [];
                 }

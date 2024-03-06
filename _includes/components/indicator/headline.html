@@ -12,9 +12,9 @@
   <div id="datatables">
 
     {% unless no_headline %}
-    <a href="{{ page.remote_data_prefix }}/headline/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download="indicator_{{ page.indicator.slug }}.csv" tabindex="0" role="button">{{ page.t.indicator.download_headline }}</a>
+    <a role="button" href="{{ page.remote_data_prefix }}/headline/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download="indicator_{{ page.indicator.slug }}.csv" tabindex="0" role="button">{{ page.t.indicator.download_headline }}</a>
     {% endunless %}
-    <a href="{{ page.remote_data_prefix }}/data/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download='indicator_{{ page.indicator.slug }}.csv' tabindex='0' role='button'>{{ page.t.indicator.download_source }}</a>
+    <a role="button" href="{{ page.remote_data_prefix }}/data/{{ page.indicator.slug }}.csv" class="btn btn-primary btn-download" download='indicator_{{ page.indicator.slug }}.csv' tabindex='0' role='button'>{{ page.t.indicator.download_source }}</a>
 
     <p class="no-js-disaggregation-hint">{{ page.t.indicator.download_source_for_disaggregations }}</p>
 

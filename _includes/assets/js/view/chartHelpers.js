@@ -67,6 +67,30 @@ function updateIndicatorDataViewStatus(oldDatasets, newDatasets) {
 }
 
 /**
+ * @param {Array} unit
+ * @return null
+ */
+function updateIndicatorDataUnitStatus(unit) {
+    var status = translations.indicator.announce_unit_switched + translations.t(unit);
+    var current = $('#indicator-data-unit-status').text();
+    if (current != status) {
+        $('#indicator-data-unit-status').text(status);
+    }
+}
+
+/**
+ * @param {Array} series
+ * @return null
+ */
+function updateIndicatorDataSeriesStatus(series) {
+    var status = translations.indicator.announce_series_switched + translations.t(series);
+    var current = $('#indicator-data-series-status').text();
+    if (current != status) {
+        $('#indicator-data-series-status').text(status);
+    }
+}
+
+/**
  * @param {String} contrast
  * @param {Object} chartInfo
  * @return null
@@ -139,7 +163,7 @@ function setPlotEvents(chartInfo) {
         $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
     });
 
-    createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload');
+    createDownloadButton(chartInfo.selectionsTable, 'Chart', chartInfo.indicatorId, '#chartSelectionDownload', chartInfo.selectedSeries, chartInfo.selectedUnit);
     createSourceButton(chartInfo.shortIndicatorId, '#chartSelectionDownload');
     createIndicatorDownloadButtons(chartInfo.indicatorDownloads, chartInfo.shortIndicatorId, '#chartSelectionDownload');
 
@@ -195,9 +219,10 @@ function setPlotEvents(chartInfo) {
  * @param {Object} chartInfo
  * @return null
  */
-function createPlot(chartInfo) {
+function createPlot(chartInfo, helpers) {
 
     var chartConfig = getChartConfig(chartInfo);
+    chartConfig.indicatorViewHelpers = helpers;
     alterChartConfig(chartConfig, chartInfo);
     if (isHighContrast()) {
         updateGraphAnnotationColors('high', chartConfig);
@@ -225,7 +250,6 @@ function createPlot(chartInfo) {
         createPlot(chartInfo);
         return;
     }
-
     updateIndicatorDataViewStatus(VIEW._chartInstance.data.datasets, updatedConfig.data.datasets);
     updateHeadlineColor(isHighContrast() ? 'high' : 'default', updatedConfig);
 
@@ -239,6 +263,7 @@ function createPlot(chartInfo) {
     VIEW._chartInstance.data.datasets = updatedConfig.data.datasets;
     VIEW._chartInstance.data.labels = updatedConfig.data.labels;
     VIEW._chartInstance.options = updatedConfig.options;
+    updateGraphAnnotationColors(isHighContrast() ? 'high' : 'default', updatedConfig);
 
     // The following is needed in our custom "rescaler" plugin.
     VIEW._chartInstance.data.allLabels = VIEW._chartInstance.data.labels.slice(0);
@@ -246,7 +271,7 @@ function createPlot(chartInfo) {
     VIEW._chartInstance.update();
 
     $(VIEW._legendElement).html(generateChartLegend(VIEW._chartInstance));
-    updateChartDownloadButton(chartInfo.selectionsTable);
+    updateChartDownloadButton(chartInfo.selectionsTable, chartInfo.selectedSeries, chartInfo.selectedUnit);
 };
 
 /**
@@ -255,8 +280,8 @@ function createPlot(chartInfo) {
  * @return null
  */
 function updateGraphAnnotationColors(contrast, chartInfo) {
-    if (chartInfo.options.annotation) {
-        chartInfo.options.annotation.annotations.forEach(function (annotation) {
+    if (chartInfo.options.plugins.annotation) {
+        chartInfo.options.plugins.annotation.annotations.forEach(function (annotation) {
             if (contrast === 'default') {
                 $.extend(true, annotation, annotation.defaultContrast);
             }

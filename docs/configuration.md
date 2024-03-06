@@ -1,6 +1,6 @@
 <h1>Site configuration</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_config.yml` file.** Alternatively, you can add any/all of these settings to a `site_config.yml` file in your data folder (usually `data/site_config.yml`).
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_data/site_config.yml` file.** Alternatively, you can make changes using the site configuration forms. See more [details on the site configuration forms](site-configuration-forms.md).
 
 This document covers the "site configuration", which is distinct from "data configuration". See more [details on data configuration](data-configuration.md).
 
@@ -837,6 +837,45 @@ _Optional_: This setting can be used to control the behavior of the `news` and `
 
 * `category_links`: Whether you would like the `categories` of posts to generate links to dedicated category pages. Default is `true`, but set to `false` to disable category links.
 
+### observation_attributes
+
+_Optional_: This setting controls the data columns that should be considered "observation attributes", as well as the labels that should be used for these columns when displaying their values in the footer beneath charts and tables.
+
+Here is a recommended example that would set "COMMENT_OBS" as an observation attribute:
+
+```
+observation_attributes:
+  - field: COMMENT_OBS
+    label: ''
+```
+
+As you can see in the defaults above, the labels can be empty, in which case the label is not displayed. They can also be translation keys.
+
+The "field" above is what is expected to be the column name in the data (eg, the CSV file). The "label" is what you would like to appear in the footer as the label (if anything).
+
+For example, given the following CSV data and the defaults above:
+
+Year | Units | COMMENT_OBS | Value
+--- | --- | --- | ---
+2020 | Percent | | 50
+2021 | Percent | | 60
+2020 | Total | estimate | 5000
+2021 | Total | estimate | 6000
+
+The footnote "estimate" would be associated with the observation values 5000 and 6000.
+
+By contrast, setting a label on the observation attribute will prepend that label in the footnotes. For example, using these settings instead:
+
+```
+observation_attributes:
+  - field: COMMENT_OBS
+    label: Comment
+```
+
+...would result in the footnote "Comment: estimate" being associated with the values 5000 and 6000.
+
+> NOTE: For full support (including on maps) a corresponding change should also be made in the data configuration in the "indicator_options" setting. See [more details on the "indicator_options" data configuration setting](data-configuration.md#indicator_options).
+
 ### plugins
 
 **_Required_**: This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
@@ -948,6 +987,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+* `disaggregation_indicator_count_label`: An alternative label to use for the indicator count on the disaggregation tab, to be displayed after a number. For example, if set to `indicators in scope`, then it would display something like `12 indicators in scope` in the disaggregation status tab. The default is `indicators`.
 * `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
 * `status_types`: A list of reporting status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'complete').
@@ -960,6 +1000,7 @@ Here is an example of using these settings:
 reporting_status:
     title: title goes here
     description: description goes here
+    disaggregation_indicator_count_label: indicators in scope
     disaggregation_tabs: true
     status_types:
       - value: notstarted
@@ -1083,6 +1124,14 @@ Year | Units | COMMENT_TS | Value
 2021 | Percent | My comment for percentages | 60
 2020 | Total | My comment for totals | 5000
 2021 | Total | My comment for totals | 6000
+
+### use_new_config_forms
+
+_Optional_: This setting, if true, will enable a new version of the site configuration forms. This new version is experimental but will eventually be the default for configuration forms.
+
+```
+use_new_config_forms: true
+```
 
 ### validate_indicator_config
 

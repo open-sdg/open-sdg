@@ -38,7 +38,7 @@ Once the builds are complete, you can view them, using the following steps:
 1. Under the repository name, click "Settings".
 1. In the sidebar, click on "Pages".
 1. You should see "Your site is published at" next to a link.
-1. Click that link to view your data service.
+1. Click that link to view your site.
 1. Bookmark this page -- this is your *site*.
 
 ## Connect your site to your data service
@@ -47,13 +47,13 @@ You now have a working site and a working data service, however they are not yet
 
 1. From the previous step you should now be on your *site*. If not, go back there using your bookmark.
 1. In the footer menu at the bottom of any page, click "Configuration".
-1. Scroll down to the "Remote data prefix" setting.
+1. Click on the "Dev" menu option and find the "Remote data prefix" setting.
 1. In this field, replacing what is already there, paste in the URL of your *data service* (which you bookmarked above).
 1. Continue down to the "Repository URL - Data" setting.
 1. In this field, replacing what is already there, paste in the URL of your *data repository* (which you bookmarked above).
 1. Scroll to the top and press "Download configuration". You will receive a file download called "site_config.yml".
 1. Press "Go to repository".
-1. Upload the downloaded "site_config.yml" file by dragging it onto the page.
+1. Upload the downloaded "site_config.yml" file by dragging it onto the page (this will override the existing file with your changes).
 1. Scroll down and press "Commit changes".
 
 ## Recommended
