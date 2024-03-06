@@ -139,14 +139,6 @@ ignored_disaggregations:
   - custom.ignore_me
 indicator_config_form:
   enabled: true
-  dropdowns:
-    - jsonschema: reporting_status
-      values:
-        - notstarted
-        - complete
-      labels:
-        - Not started
-        - Complete
   repository_link: /tree/master/tests/data/indicator-config
   translation_link: ''
 indicator_data_form:
@@ -154,7 +146,6 @@ indicator_data_form:
   repository_link: /tree/master/tests/data/data
 indicator_metadata_form:
   enabled: true
-  dropdowns: []
   repository_link: /tree/master/tests/data/meta
   translation_link: 'https://example.com?[id]&[group]&[key]'
   language: ''
@@ -316,20 +307,14 @@ search_index_extra_fields:
 sharethis_property: ''
 site_config_form:
   enabled: true
-  dropdowns:
-    - jsonschema: create_goals.properties.layout
-      values:
-        - ''
-        - goal
-        - goal-by-target
-        - goal-by-target-vertical
-      labels:
-        - Do not automatically create goals
-        - goal
-        - goal-by-target
-        - goal-by-target-vertical
   repository_link: /tree/master/tests/site/_data
   translation_link: ''
+  config_folder: 'tests/site/_data'
+  github_client_id: 'd057ffc62f01ce8f3376'
+  github_proxy_url: 'https://open-sdg-github-auth-production.up.railway.app'
+  github_repo: 'open-sdg'
+  github_owner: 'open-sdg'
 validate_indicator_config: true
 validate_site_config: false
 x_axis_label: Year
+use_new_config_forms: true

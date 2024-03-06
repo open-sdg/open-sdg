@@ -52,6 +52,7 @@ nav:
         - Cookies and privacy: cookies.md
         - Deployment: deployment.md
         - Site configuration: configuration.md
+        - Site configuration forms: site-configuration-forms.md
         - Data configuration: data-configuration.md
         - Indicator configuration: indicator-configuration.md
         - Customisation: customisation.md
@@ -77,6 +78,7 @@ nav:
         - Github pages (production): hosting/github-pages-production.md
     - Upgrades:
         - Upgrade process: upgrades/upgrade-process.md
+        - Upgrading to 2.3.0: upgrades/upgrading-2-3-0.md
         - Upgrading to 2.2.0: upgrades/upgrading-2-2-0.md
         - Upgrading to 2.1.0: upgrades/upgrading-2-1-0.md
         - Upgrading to 2.0.0: upgrades/upgrading-2-0-0.md

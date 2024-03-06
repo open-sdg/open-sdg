@@ -1,5 +1,25 @@
 <h1>Change Log</h1>
 
+## 2.3.0
+
+* Design: Always limit width of disagg controls on map #2082
+* Bugfix: High contrast fixes for scrolled tables #2081
+* Feature: Do not use starting values when changing series #2076
+* Feature: Only use valid start values for maps #2069
+* Feature: Ensure checkboxes don't stay checked when switching units #2068
+* Bugfix: Screenreader statuses for switching unit and series #2061
+* Bugfix: Additional context for screenreaders when only 1 source #2057
+* Bugfix: Use role=button in several places #2056
+* Bugfix: Semantic markup for search result breadcrumbs #2055
+* Feature: Observation attributes #2052
+* Feature: Allow changing the label of the indicator count on disagg status tab #2036
+* Feature: Add series and unit to chart/table CSV downloads #2035
+* Feature: Indicator iframes #2025
+* Bugfix: Translate country name in table header #2024
+* Feature: Sticky header and first column on data tables #2016
+* Bugfix: Fixes for chart.js annotations #1996, #2066
+* Feature: Optional new design for site configuration page #1970
+
 ## 2.2.0
 
 * Bugfix: Fix reference to map timedimension nezasa dependency #1962

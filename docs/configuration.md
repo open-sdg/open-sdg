@@ -1,6 +1,6 @@
 <h1>Site configuration</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_config.yml` file.** Alternatively, you can add any/all of these settings to a `site_config.yml` file in your data folder (usually `data/site_config.yml`).
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_data/site_config.yml` file.** Alternatively, you can make changes using the site configuration forms. See more [details on the site configuration forms](site-configuration-forms.md).
 
 This document covers the "site configuration", which is distinct from "data configuration". See more [details on data configuration](data-configuration.md).
 
@@ -1124,6 +1124,14 @@ Year | Units | COMMENT_TS | Value
 2021 | Percent | My comment for percentages | 60
 2020 | Total | My comment for totals | 5000
 2021 | Total | My comment for totals | 6000
+
+### use_new_config_forms
+
+_Optional_: This setting, if true, will enable a new version of the site configuration forms. This new version is experimental but will eventually be the default for configuration forms.
+
+```
+use_new_config_forms: true
+```
 
 ### validate_indicator_config
 
