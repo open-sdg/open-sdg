@@ -7,7 +7,10 @@
             "elements": [
                 {
                     "type": "Control",
-                    "scope": "#/properties/data_non_statistical"
+                    "scope": "#/properties/data_non_statistical",
+                    "options": {
+                        "toggle": true
+                    }
                 },
                 {
                     "type": "Control",
