@@ -424,6 +424,7 @@ graph_type: line
 ```
 
 Options out-of-the-box are:
+
 * line
 * bar
 * binary (Yes/No graph)
