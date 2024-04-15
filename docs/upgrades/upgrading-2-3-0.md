@@ -2,13 +2,15 @@
 
 This document is intended for developers, to help with the process of upgrading to version 2.3.0 of Open SDG, from 2.2.0 or higher.
 
-## Upgrade data repository to sdg-build 2.3.0
+## Upgrade data repository to sdg-build 2.3.1
 
 In your data repository, update your `requirements.txt` file to:
 
 ```
-git+https://github.com/open-sdg/sdg-build@2.3.0
+git+https://github.com/open-sdg/sdg-build@2.3.1
 ```
+
+Note: A hotfix was implemented in April 2024 so for this file, sdg-build should point to 2.3.1, not 2.3.0.
 
 ## Upgrade translations to sdg-translations 2.3.0
 
