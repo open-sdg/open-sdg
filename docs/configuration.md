@@ -385,6 +385,8 @@ footer_menu:
 
 Note that the `path` of an item can be a translation key itself. This is useful if you want the link to go to different URLs depending on what language is active (for example if you have multiple language-specific Twitter accounts).
 
+Here is an example of what this looks like on the platform:
+
 ![Screenshot of footer menu functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_menu.PNG)
 
 ### frontpage_cards
