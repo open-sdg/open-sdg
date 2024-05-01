@@ -32,6 +32,7 @@ You can access the site configuration forms by going to your staging site and in
 From here you can navigate around the forms depending on what setting you would like to change. Every setting has its own section which may consist of checkboxes, text boxes, drop-downs, toggles and list items. You can interact with each of them to update any settings from the default. There is more information provided to give context and guidance for each setting which can be accessed by clicking on the drop-down at the bottom of each setting. You can also use the search function to find a specific setting.
 
 For example, if you wanted to change your country name on the site, you would: 
+
 1. Click on the "General" menu item.
 1. Find the "Country" setting on that page.
 1. Read more about the setting by clicking on the more information drop-down at the bottom of that setting.
