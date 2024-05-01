@@ -385,6 +385,8 @@ footer_menu:
 
 Note that the `path` of an item can be a translation key itself. This is useful if you want the link to go to different URLs depending on what language is active (for example if you have multiple language-specific Twitter accounts).
 
+![Screenshot of footer menu functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_menu.png)
+
 ### frontpage_cards
 
 _Optional_: This setting is used on the frontpage. It can display any number of "cards" in 3-column rows, beneath the grid of goal tiles. It should be a list of cards. Each configuration is optional, and here is an displaying one card with all of the options:
