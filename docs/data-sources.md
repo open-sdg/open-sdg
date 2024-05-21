@@ -28,17 +28,11 @@ The .Stat Suite, is an SDMX native standard-based, componentised, open source pl
 
 **.Stat Suite Tools**
 
-* ***.Stat Data Explorer***
+* ***.Stat Data Explorer*** - A front-office application for easy finding, understanding and using of data through an efficient well-tuned navigation and search approach, appropriate data previews and contextual  metadata, and download in standard formats, APIs or share features.
 
-    A front-office application for easy finding, understanding and using of data through an efficient well-tuned navigation and search approach, appropriate data previews and contextual  metadata, and download in standard formats, APIs or share features.
+* ***.Stat Data Lifecycle Manager*** - A set of adaptive back-office modules to efficiently and timely produce and (re-)use high quality statistical data by defining, running, automating, controlling and evaluating the    underlying data processes.
 
-* ***.Stat Data Lifecycle Manager***
-
-    A set of adaptive back-office modules to efficiently and timely produce and (re-)use high quality statistical data by defining, running, automating, controlling and evaluating the    underlying data processes.
-
-* ***.Stat Core***
-
-    A highly performing, secure SDMX Data Store based on standard protocols, to store and retrieve statistical data, structural and referential metadata, data process information and security settings.
+* ***.Stat Core*** - A highly performing, secure SDMX Data Store based on standard protocols, to store and retrieve statistical data, structural and referential metadata, data process information and security settings.
 
 **How to use the .Stat Suite SDMX data output with Open SDG**
 
