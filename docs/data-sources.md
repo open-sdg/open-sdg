@@ -36,7 +36,7 @@ The .Stat Suite, is an SDMX native standard-based, componentised, open source pl
 
 **How to use the .Stat Suite SDMX data output with Open SDG**
 
-For this data to appear on your platform, you need to add some code to the `config_data.yml` file in your data repository. We'd recommend using the **InputSdmxMl_Structure** class. An example is shown below from Cambodias data repository
+For this data to appear on your platform, you need to add some code to the `config_data.yml` file in your data repository. We'd recommend using the **InputSdmxMl_Structure** class. An example is shown below from Cambodias data repository. If you've uploaded your data to .Stat you will have a url that points to the SDMX data file & your DSD (Data Structure Definition)
 
 ```
 - class: InputSdmxMl_Structure
