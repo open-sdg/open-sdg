@@ -1,0 +1,23 @@
+Year,Age,COMMENT_OBS,Value
+2008,,estimated,8.5
+2009,foo,estimated,8.0
+2010,foo,estimated,7.4
+2011,foo,estimated,6.9
+2012,foo,estimated,8.6
+2013,foo,estimated,7.8
+2014,foo,estimated,6.5
+2015,foo,estimated,7.3
+2016,foo,estimated,9.4
+2017,foo,estimated,7.8
+2018,foo,estimated,8.6
+2008,17 and under,estimated,12.8
+2009,17 and under,estimated,10.9
+2010,17 and under,estimated,7.6
+2011,17 and under,estimated,7.6
+2012,17 and under,estimated,6.8
+2013,17 and under,estimated,6.3
+2014,17 and under,estimated,9.1
+2015,17 and under,estimated,7.8
+2016,17 and under,estimated,12.6
+2017,17 and under,estimated,7.4
+2018,17 and under,estimated,11.4

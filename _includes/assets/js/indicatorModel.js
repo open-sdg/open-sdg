@@ -294,7 +294,10 @@ var indicatorModel = function (options) {
       this.updateFieldStates(this.selectedFields);
     }
 
+    console.log(this.data, 'this.data');
+    console.log(this.selectedFields, 'this.selectedFields');
     var filteredData = helpers.getDataBySelectedFields(this.data, this.selectedFields);
+    console.log(headline, 'headline');
     if (this.hasUnits) {
       filteredData = helpers.getDataByUnit(filteredData, this.selectedUnit);
     }
@@ -312,11 +315,12 @@ var indicatorModel = function (options) {
       headline = helpers.sortData(headline, this.selectedUnit);
     }
 
+    console.log(filteredData, 'filteredData');
+
     var combinations = helpers.getCombinationData(this.selectedFields);
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments, this.allObservationAttributes);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
     var observationAttributesTable = helpers.observationAttributesTableFromDatasets(datasets, this.years);
-
     var datasetCountExceedsMax = false;
     // restrict count if it exceeds the limit:
     if(datasets.length > this.maxDatasetCount) {
