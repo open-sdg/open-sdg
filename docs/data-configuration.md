@@ -324,7 +324,7 @@ Below is an example of how Cambodia's platform pulls in data from the API using 
     import_names: false
 ```
 
-To view their entire data configuration file for a full example of this method [click here](https://github.com/sdg-cambodia/data/blob/develop/config_data.yml)
+To view their entire data configuration file for a full example of this method [click here](https://github.com/sdg-cambodia/data/blob/develop/config_data.yml).
 
 **InputSdmxMl_StructureSpecific**: Input data from an SDMX-ML Structure Specific (also known as "Compact") file. The available parameters are the same as in InputSdmxJson.
 
