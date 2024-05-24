@@ -314,6 +314,8 @@ Now here are specific descriptions and parameters available for each class:
 
 > For more technical information see the [InputSdmxMl_Structure class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMl_Structure.py), and an [example of using InputSdmxMl_Structure in Python code](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/sdmx_ml.py).
 
+Use this option for when you have uploaded your indicator data to .Stat, or any other website that outputs in SDMX. You will need a link to your SDMX output file with all indicator data and a link to your DSD that was uploaded to .Stat. These links should be straight to the outputted SDMX data files.
+
 Below is an example of how Cambodia's platform pulls in data from the API using this method:
 
 ```
