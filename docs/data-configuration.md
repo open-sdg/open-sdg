@@ -316,7 +316,7 @@ Now here are specific descriptions and parameters available for each class:
 
 Use this option for when you have uploaded your indicator data to .Stat, or any other website that outputs in SDMX. You will need a link to your SDMX output file with all indicator data and link to your DSD that was uploaded to .Stat. These links should be straight to the outputted SDMX data files.
 
-Below is an example of how Cambodias platform pulls in data from the API using this method
+Below is an example of how Cambodia's platform pulls in data from the API using this method:
 
 ```
 - class: InputSdmxMl_Structure
