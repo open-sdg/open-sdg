@@ -104,7 +104,7 @@ data_footnote: my_translations.1-1-1-footnote
 ```
 
 
-### data_not_statistical
+### data_non_statistical
 
 **_Required_**: This setting is used to specify whether the indicator is statistical (can be charted/graphed) or not. If you have uploaded data that you want to display on a chart/table for an indicator, set this to `false`.
 
