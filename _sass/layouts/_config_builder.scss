@@ -1,117 +1,63 @@
 .layout-config-builder {
-    .je-checkbox {
-        margin-right: 10px;
+
+    .MuiGrid-container > .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true:not(:empty) {
+        border-top: 5px solid rgb(25, 118, 210);
+        padding-top: 20px;
+        margin-top: 20px;
+        &:first-child {
+            margin-top: -0.5em;
+        }
+        .MuiGrid-container > .MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-true:not(:empty) {
+            border-top: none;
+        }
     }
-    i.fa {
+
+    .MuiButton-root,
+    .MuiTab-root,
+    .MuiTypography-root,
+    .MuiFormLabel-root {
+        font-family: $fontFamily;
+    }
+
+    .MuiButton-root {
+        @include button;
+        @include buttonDownload;
+        text-transform: capitalize;
+    }
+
+    .MuiTab-root {
+        text-transform: capitalize;
+    }
+
+    .MuiAppBar-root {
+        background-color: #eee;
         color: $text-color;
     }
-    .btn-group {
-        .btn {
-            span {
-                color: $text-color;
-            }
-        }
+
+    .MuiInput-input:not([role="combobox"]) {
+        border: 1px solid $color-medium-highContrast;
+        padding: 5px;
     }
-    .config-widgets {
-        margin-top: 30px;
-        margin-bottom: 10px;
-        background-color: #f5f5f5;
-        padding: 20px;
-        #button_holder {
-            .config-download-button {
-                margin-top: 10px;
-                margin-bottom: 0;
-            }
-            .config-repository-button {
-                margin-top: 10px;
-            }
-            margin-top: 10px;
-            @media only screen and (min-width: 768px) {
-                margin-top: 0;
-                text-align: right;
-                .config-repository-button {
-                    margin-left: 10px;
+
+    .MuiTabs-scroller {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .MuiGrid-spacing-xs-2 {
+        justify-content: space-between;
+        > .MuiGrid-item:first-child {
+            max-width: 100%;
+        }
+        > .MuiGrid-itm:last-child {
+            max-width: 50%;
+            .MuiListItem-root {
+                .MuiListItemText-root {
+                    min-width: fit-content;
                 }
             }
-            @media only screen and (min-width: 1200px) {
-                .config-download-button, .config-repository-button {
-                    margin-top: 0;
-                }
-            }
-        }
-    }
-    .well {
-        background: none;
-        padding: 0;
-        border: none;
-    }
-    div[data-schemapath="root"] > .well > div > div > .row {
-        margin-bottom: 30px;
-        padding-bottom: 5px;
-        padding-top: 10px;
-        background-color: #f5f5f5;
-    }
-    div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div > label {
-        font-size: $fontSize-medium;
-        font-weight: 700;
-    }
-    div[data-schemapath="root"] > .well > div > div > .row > div[data-schematype] > div a {
-        margin-top: 15px;
-        display: block;
-        margin-bottom: 15px;
-    }
-    div[data-schemapath="root"] > .je-header {
-        display: none !important;
-    }
-    .help-block {
-        color: $text-color;
-    }
-    #no_results {
-        background-color: $color-warning;
-        padding: 20px;
-        margin: 20px;
-    }
-    .errormsg {
-        color: $color-error;
-        font-weight: bold;
-    }
-    .config-required {
-        color: $color-error;
-    }
-    .translation-link {
-        margin-top: 0;
-        margin-bottom: 20px;
-    }
-    &.contrast-high {
-        .config-widgets {
-            background-color: $color-dark-highContrast;
-        }
-        div[data-schemapath="root"] > .well > div > div > .row {
-            background-color: $color-dark-highContrast;
-        }
-        .help-block {
-            color: $text-color-highContrast;
-        }
-        #no_results {
-            background-color: $color-highlight-highContrast;
-            color: $color-dark-highContrast;
-        }
-        .errormsg {
-            color: $color-error;
-        }
-        .config-required {
-            color: $color-error;
-        }
-        .editor-toolbar {
-            background-color: $color-light-highContrast;
-            opacity: 1;
-            border-bottom: 2px solid $color-dark-highContrast;
-        }
-        .btn-group {
-            .btn {
-                span {
-                    color: $color-dark-highContrast;
-                }
+            .MuiListItemSecondaryAction-root {
+                right: -50px;
             }
         }
     }
@@ -125,5 +71,118 @@ body.contrast-high.layout-config-builder {
         span {
             color: $color-dark-highContrast;
         }
+    }
+    .MuiInputBase-root {
+        textarea {
+            background-color: $color-light-highContrast;
+        }
+    }
+    .MuiIconButton-root {
+        background-color: $color-light-highContrast;
+        color: $color-dark-highContrast;
+    }
+    .MuiToolbar-root {
+        .MuiIconButton-root {
+            background-color: $color-light-highContrast;
+        }
+    }
+    .MuiButton-root {
+        @include buttonHighContrast;
+        @include buttonDownloadHighContrast;
+    }
+    .MuiInputLabel-root {
+        color: $color-light-highContrast;
+    }
+    .MuiInputLabel-animated {
+        color: $color-dark-highContrast;
+        background-color: $color-light-highContrast;
+        z-index: 999;
+    }
+    .MuiAutocomplete-popper {
+        .MuiPaper-root {
+            .MuiAutocomplete-listbox {
+                .MuiAutocomplete-option {
+                    color: $color-dark-highContrast;
+                }
+            }
+        }
+    }
+    input {
+        background-color: $color-light-highContrast;
+    }
+    .MuiAccordionSummary-root, .MuiAccordionSummary-root:focus {
+        color: $color-dark-highContrast !important;
+        background-color: $color-light-highContrast !important;
+        .MuiAccordionSummary-content {
+            .MuiTypography-root, span {
+                color: $color-dark-highContrast;
+                background-color: $color-light-highContrast;
+            }
+        }
+    }
+    .MuiAccordionSummary-content {
+        .MuiIconButton-root {
+            background-color: $color-dark-highContrast;
+            color: $color-light-highContrast !important;
+            .MuiSvgIcon-root {
+                z-index: 999;
+                background-color: $color-dark-highContrast;
+            }
+            .MuiTouchRipple-root {
+                background-color: $color-dark-highContrast !important;
+            }
+            &:focus {
+                .MuiSvgIcon-root {
+                    background-color: $color-highlight-highContrast;
+                    color: $color-dark-highContrast;
+                }
+                .MuiTouchRipple-root {
+                    background-color: $color-highlight-highContrast !important;
+                }
+            }
+        }
+    }
+    .MuiCollapse-root {
+        background-color: $color-dark-highContrast;
+    }
+    .MuiTableHead-root {
+        .MuiIconButton-root {
+            background-color: $color-light-highContrast;
+        }
+    }
+    .docs-content {
+        padding: 5px;
+        p, h1, h2, h3, h4, h5, h6, span, td, th, li, & {
+            color: $color-dark-highContrast;
+            background-color: $color-light-highContrast;
+        }
+        
+    }
+    .MuiCard-root {
+        background-color: $color-dark-highContrast;
+    }
+    .MuiSwitch-track {
+        background-color: $color-medium-highContrast;
+        opacity: 0.9;
+    }
+    .MuiSwitch-switchBase {
+        &.Mui-checked {
+            .MuiSwitch-thumb {
+                background-color: $color-highlight-highContrast;
+            }
+        }
+    }
+    .MuiDialog-container {
+        .MuiPaper-root {
+            background-color: $color-dark-highContrast;
+            border: 1px solid $color-light-highContrast;
+        }
+    }
+    .Mui-error {
+        color: $color-danger-highContrast;
+    }
+    .MuiFormHelperText-root.Mui-error {
+        background-color: $color-light-highContrast;
+        margin-bottom: 10px;
     }
 }
