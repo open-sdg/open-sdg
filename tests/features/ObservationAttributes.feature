@@ -28,3 +28,10 @@ Feature: Observation attributes
     And I should not see "60 [note 6]"
     And I click on "the second series"
     Then I should see "60 [note 6]"
+
+  Scenario: Disaggregation appears even when observation attributes are used with headline data
+    Given I am on "/4-4-1"
+    And I wait 3 seconds
+    And I click on "the filter drop-down button"
+    And I click on "the first filter option"
+    Then I should see 1 "chart legend item" element
