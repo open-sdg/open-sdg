@@ -34,4 +34,4 @@ Feature: Observation attributes
     And I wait 3 seconds
     And I click on "the filter drop-down button"
     And I click on "the first filter option"
-    Then I should see 1 "chart legend item" element
+    Then I should see 2 "chart legend item" elements
