@@ -71,7 +71,7 @@ const driver = new mink.Mink({
     "table value": "#tableview tbody .table-value",
     "main logo": ".navbar-brand img",
     "chart title": "#chart-heading",
-    "configuration form textarea": "textarea.form-control",
+    "configuration form textarea": "textarea.MuiInputBase-inputMultiline",
     "embedded iframe": "#embeddedmapframe iframe",
     "footer field that says 'Testing label for series A'": "#selectionChartFooter dt[data-for-series='A']",
     "footer field that says 'Another field label for unit total'": "#selectionChartFooter dt[data-for-unit='Total']",
