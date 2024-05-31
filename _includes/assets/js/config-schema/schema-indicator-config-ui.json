@@ -6,46 +6,103 @@
             "label": "Data",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_non_statistical",
-                    "options": {
-                        "toggle": true
-                    }
+                    "type": "GroupWithAccordion",
+                    "label": "Non-statistical data",
+                    "documentationKey": "data_non_statistical",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_non_statistical",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/computation_units",
+                    "type": "GroupWithAccordion",
+                    "label": "Computation units",
+                    "documentationKey": "computation_units",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/computation_units"
+                        }
+                    ],
                     "rule": {
                         "effect": "HIDE",
                         "condition": {
-                          "scope": "#/properties/data_non_statistical",
-                          "schema": { "const": true }
+                            "scope": "#/properties/data_non_statistical",
+                            "schema": { "const": true }
                         }
                     }
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/national_geographical_coverage"
+                    "type": "GroupWithAccordion",
+                    "label": "National Geographical Coverage",
+                    "documentationKey": "national_geographical_coverage",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/national_geographical_coverage"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/precision",
+                    "type": "GroupWithAccordion",
+                    "label": "Precision",
+                    "documentationKey": "precision",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/precision",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/decimals"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/series"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/unit"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
                     "rule": {
                         "effect": "HIDE",
                         "condition": {
-                          "scope": "#/properties/data_non_statistical",
-                          "schema": { "const": true }
+                            "scope": "#/properties/data_non_statistical",
+                            "schema": { "const": true }
                         }
                     }
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_show_map",
+                    "type": "GroupWithAccordion",
+                    "label": "Show map",
+                    "documentationKey": "data_show_map",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_show_map",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ],
                     "rule": {
                         "effect": "HIDE",
                         "condition": {
-                          "scope": "#/properties/data_non_statistical",
-                          "schema": { "const": true }
+                            "scope": "#/properties/data_non_statistical",
+                            "schema": { "const": true }
                         }
                     }
                 }
@@ -56,16 +113,52 @@
             "label": "Disaggregation",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_start_values"
+                    "type": "GroupWithAccordion",
+                    "label": "Start values",
+                    "documentationKey": "data_start_values",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/data_start_values",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/field"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/value"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/expected_disaggregations"
+                    "type": "GroupWithAccordion",
+                    "label": "Expected disaggregations",
+                    "documentationKey": "expected_disaggregations",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/expected_disaggregations"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/composite_breakdown_label"
+                    "type": "GroupWithAccordion",
+                    "label": "Composite Breakdown label",
+                    "documentationKey": "composite_breakdown_label",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/composite_breakdown_label"
+                        }
+                    ]
                 }
             ],
             "rule": {
@@ -81,16 +174,37 @@
             "label": "Annotation",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_annotations"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph annotations",
+                    "documentationKey": "graph_annotations",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_annotations"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_series_breaks"
+                    "type": "GroupWithAccordion",
+                    "label": "Series breaks",
+                    "documentationKey": "graph_series_breaks",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_series_breaks"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_target_lines"
+                    "type": "GroupWithAccordion",
+                    "label": "Target lines",
+                    "documentationKey": "graph_target_lines",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_target_lines"
+                        }
+                    ]
                 }
             ],
             "rule": {
@@ -106,24 +220,59 @@
             "label": "Chart",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_types"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph type",
+                    "documentationKey": "graph_type",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_type"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_type"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph types",
+                    "documentationKey": "graph_types",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_types"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/x_axis_label"
+                    "type": "GroupWithAccordion",
+                    "label": "X Axis label",
+                    "documentationKey": "x_axis_label",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/x_axis_label"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_stacked_disaggregation"
+                    "type": "GroupWithAccordion",
+                    "label": "Stacked disaggregation",
+                    "documentationKey": "graph_stacked_disaggregation",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_stacked_disaggregation"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_limits"
+                    "type": "GroupWithAccordion",
+                    "label": "Graph limits",
+                    "documentationKey": "graph_limits",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_limits"
+                        }
+                    ]
                 }
             ],
             "rule": {
@@ -139,36 +288,71 @@
             "label": "Header",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_number"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator number",
+                    "documentationKey": "indicator_number",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_number"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_name"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator name",
+                    "documentationKey": "indicator_name",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_name"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_available"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator available",
+                    "documentationKey": "indicator_available",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_available"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_titles",
+                    "type": "GroupWithAccordion",
+                    "label": "Graph titles",
+                    "documentationKey": "graph_titles",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_titles"
+                        }
+                    ],
                     "rule": {
                         "effect": "HIDE",
                         "condition": {
-                          "scope": "#/properties/data_non_statistical",
-                          "schema": { "const": true }
+                            "scope": "#/properties/data_non_statistical",
+                            "schema": { "const": true }
                         }
                     }
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/graph_title",
+                    "type": "GroupWithAccordion",
+                    "label": "Graph title",
+                    "documentationKey": "graph_title",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_title"
+                        }
+                    ],
                     "rule": {
                         "effect": "HIDE",
                         "condition": {
-                          "scope": "#/properties/data_non_statistical",
-                          "schema": { "const": true }
+                            "scope": "#/properties/data_non_statistical",
+                            "schema": { "const": true }
                         }
                     }
                 }
@@ -179,16 +363,40 @@
             "label": "Footer",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/copyright"
+                    "type": "GroupWithAccordion",
+                    "label": "Copyright",
+                    "documentationKey": "copyright",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/copyright"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_footnote"
+                    "type": "GroupWithAccordion",
+                    "label": "Footnote",
+                    "documentationKey": "data_footnote",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_footnote",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/footer_fields"
+                    "type": "GroupWithAccordion",
+                    "label": "Footer fields",
+                    "documentationKey": "footer_fields",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/footer_fields"
+                        }
+                    ]
                 }
             ],
             "rule": {
@@ -204,24 +412,62 @@
             "label": "Info",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_notice_text"
+                    "type": "GroupWithAccordion",
+                    "label": "Data notice - Text",
+                    "documentationKey": "data_notice_text",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_notice_text"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_notice_header"
+                    "type": "GroupWithAccordion",
+                    "label": "Data notice - Heading",
+                    "documentationKey": "data_notice_heading",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_notice_heading"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/data_notice_class"
+                    "type": "GroupWithAccordion",
+                    "label": "Data notice - Class",
+                    "documentationKey": "data_notice_class",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_notice_class"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/placeholder"
+                    "type": "GroupWithAccordion",
+                    "label": "Placeholder",
+                    "documentationKey": "placeholder",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/placeholder"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/page_content"
+                    "type": "GroupWithAccordion",
+                    "label": "Page content",
+                    "documentationKey": "page_content",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/page_content",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -230,24 +476,65 @@
             "label": "Embed",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/embedded_feature_url"
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - URL",
+                    "documentationKey": "embedded_feature_url",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_url"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/embedded_feature_html"
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - HTML",
+                    "documentationKey": "embedded_feature_html",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_html",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/embedded_feature_title"
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - Title",
+                    "documentationKey": "embedded_feature_title",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_title"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/embedded_feature_tab_title"
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - Tab Title",
+                    "documentationKey": "embedded_feature_tab_title",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_tab_title"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/embedded_feature_footer"
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - Footer",
+                    "documentationKey": "embedded_feature_footer",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_footer",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
                 }
             ],
             "rule": {
@@ -263,20 +550,51 @@
             "label": "Webmaster",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/standalone"
+                    "type": "GroupWithAccordion",
+                    "label": "Standalone",
+                    "documentationKey": "standalone",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/standalone",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/permalink"
+                    "type": "GroupWithAccordion",
+                    "label": "Permalink",
+                    "documentationKey": "permalink",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/permalink"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/tags"
+                    "type": "GroupWithAccordion",
+                    "label": "Tags",
+                    "documentationKey": "tags",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/tags"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/sort"
+                    "type": "GroupWithAccordion",
+                    "label": "Sort",
+                    "documentationKey": "sort",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/sort"
+                        }
+                    ]
                 }
             ]
         },
@@ -285,12 +603,55 @@
             "label": "Status",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/reporting_status"
+                    "type": "GroupWithAccordion",
+                    "label": "Reporting status",
+                    "documentationKey": "reporting_status",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/progress_status"
+                    "type": "GroupWithAccordion",
+                    "label": "Progress status",
+                    "documentationKey": "progress_status",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progress_status"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Proxy",
+                    "documentationKey": "proxy",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/proxy"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Proxy serieses",
+                    "documentationKey": "proxy_series",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/proxy_series"
+                        }
+                    ],
+                    "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                            "scope": "#/properties/proxy",
+                            "schema": { "const": "both" }
+                        }
+                    }
                 }
             ]
         },
@@ -299,20 +660,155 @@
             "label": "Tabs",
             "elements": [
                 {
-                    "type": "Control",
-                    "scope": "#/properties/indicator_tabs"
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator tabs",
+                    "documentationKey": "indicator_tabs",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_tabs/properties/override",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_tabs/properties/tab_1"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_tabs/properties/tab_2"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_tabs/properties/tab_3"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_tabs/properties/tab_4"
+                        }
+                    ],
+                    "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                            "scope": "#/properties/data_non_statistical",
+                            "schema": { "const": true }
+                        }
+                    }
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/publications"
+                    "type": "GroupWithAccordion",
+                    "label": "Publications",
+                    "documentationKey": "publications",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/publications",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/title"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/link"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/description",
+                                            "options": {
+                                                "multi": true
+                                            }
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/date"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/related_indicators"
+                    "type": "GroupWithAccordion",
+                    "label": "Related indicators",
+                    "documentationKey": "related_indicators",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/related_indicators"
+                        }
+                    ]
                 },
                 {
-                    "type": "Control",
-                    "scope": "#/properties/sources"
+                    "type": "GroupWithAccordion",
+                    "label": "Sources",
+                    "documentationKey": "sources",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/sources",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/organisation"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/periodicity"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/earliest_available"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/geographical_coverage"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/url"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/url_text"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/release_date"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/next_release"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/statistical_classification"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/contact"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/other_info"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/logo"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
                 }
             ]
         }

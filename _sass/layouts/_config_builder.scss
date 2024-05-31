@@ -61,6 +61,11 @@
             }
         }
     }
+
+    .docs-content {
+        max-width: 1000px;
+        overflow: scroll;        
+    }
 }
 
 body.contrast-high.layout-config-builder {
