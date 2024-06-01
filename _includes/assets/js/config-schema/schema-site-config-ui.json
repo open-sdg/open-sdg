@@ -1169,20 +1169,6 @@
                 {
                     "type": "Control",
                     "scope": "#/properties/repository_url_data"
-                },
-                {
-                    "type": "Control",
-                    "scope": "#/properties/validate_site_config",
-                    "options": {
-                        "toggle": true
-                    }
-                },
-                {
-                    "type": "Control",
-                    "scope": "#/properties/validate_indicator_config",
-                    "options": {
-                        "toggle": true
-                    }
                 }
             ]
         }

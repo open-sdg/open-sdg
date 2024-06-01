@@ -314,7 +314,4 @@ site_config_form:
   github_proxy_url: 'https://open-sdg-github-auth-production.up.railway.app'
   github_repo: 'open-sdg'
   github_owner: 'open-sdg'
-validate_indicator_config: true
-validate_site_config: false
 x_axis_label: Year
-use_new_config_forms: true

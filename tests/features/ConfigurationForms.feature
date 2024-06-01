@@ -33,4 +33,4 @@ Feature: Configuration forms
     And I click on "the Edit tab"
     And I follow "Edit Metadata"
     Then I should see "Edit Metadata: standalone.indicator.3"
-    And I should see 13 "configuration form textarea" elements
+    And I should see 12 "configuration form textarea" elements

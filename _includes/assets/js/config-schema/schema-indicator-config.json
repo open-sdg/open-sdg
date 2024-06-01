@@ -6,104 +6,49 @@
         "composite_breakdown_label": {
             "type": "string",
             "title": "Composite breakdown label",
-            "description": "Used as a label for the COMPOSITE_BREAKDOWN column, if it appears in the indicator data.",
-            "links": [
-                {
-                    "rel": "More information on the composite breakdown label setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#composite-breakdown-label"
-                }
-            ]
+            "description": "Used as a label for the COMPOSITE_BREAKDOWN column, if it appears in the indicator data."
         },
         "computation_units": {
             "type": "string",
             "title": "Unit of measurement",
-            "description": "Unit of measurement which displays below the indicator chart.",
-            "links": [
-                {
-                    "rel": "More information on the units of measurement setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"
-                }
-            ]
+            "description": "Unit of measurement which displays below the indicator chart."
         },
         "copyright": {
             "type": "string",
             "title": "Copyright",
-            "description": "Copyright which displays below the indicator chart.",
-            "links": [
-                {
-                    "rel": "More information on the copyright setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#footer"
-                }
-            ]
+            "description": "Copyright which displays below the indicator chart."
         },
         "data_footnote": {
             "type": "string",
             "title": "Footnote",
-            "description": "Footnote which displays below the indicator chart.",
-            "links": [
-                {
-                    "rel": "More information on the footnote setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#footer"
-                }
-            ]
+            "description": "Footnote which displays below the indicator chart."
         },
         "data_non_statistical": {
             "title": "Non-statistical data",
             "type": "boolean",
-            "description": "Whether the indicator is statistical (can be charted/graphed) or not.",
-            "links": [
-                {
-                    "rel": "More information the non-statistical setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"
-                }
-            ]
+            "description": "Whether the indicator is statistical (can be charted/graphed) or not."
         },
         "data_notice_class": {
             "title": "Data notice - class",
             "type": "string",
-            "description": "A CSS class to apply to the data notice for this indicator.",
-            "links": [
-                {
-                    "rel": "More information on the data notice setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#data-notice"
-                }
-            ]
+            "description": "A CSS class to apply to the data notice for this indicator."
         },
         "data_notice_heading": {
             "title": "Data notice - heading",
             "type": "string",
-            "description": "A title to display above the data notice for this indicator.",
-            "links": [
-                {
-                    "rel": "More information on the data notice heading setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#data-notice"
-                }
-            ]
+            "description": "A title to display above the data notice for this indicator."
         },
         "data_notice_text": {
             "title": "Data notice - text",
             "type": "string",
-            "description": "Text to display as a data notice for this indicator, intended to contain very important information which site viewers must keep in mind when using the data provided.",
-            "links": [
-                {
-                    "rel": "More information on the data notice text setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#data-notice"
-                }
-            ]
+            "description": "Text to display as a data notice for this indicator, intended to contain very important information which site viewers must keep in mind when using the data provided."
         },
         "data_show_map": {
             "title": "Show map",
             "type": "boolean",
-            "description": "Whether the indicator should display a Map tab.",
-            "links": [
-                {
-                    "rel": "More information on the map setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/maps/#metadata-field-data_show_map"
-                }
-            ]
+            "description": "Whether the indicator should display a Map tab."
         },
         "data_start_values": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Starting values",
             "description": "Disaggregation values for a an indicator to start with already selected",
@@ -124,87 +69,43 @@
                         "description": "The value in that field to pre-select."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the starting values setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#starting-values"
-                }
-            ]
+            }
         },
         "embedded_feature_footer": {
             "type": "string",
             "title": "Embedded feature - Footer",
-            "description": "A footer that displays below the embedded feature. Only used with either embedded_feature_url or embedded_feature_html.",
-            "links": [
-                {
-                    "rel": "More information on the embed footer setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"
-                }
-            ]
+            "description": "A footer that displays below the embedded feature. Only used with either embedded_feature_url or embedded_feature_html."
         },
         "embedded_feature_html": {
             "type": "string",
             "title": "Embedded feature - HTML",
-            "description": "Any HTML to display in another tab, after Chart/Table/etc.",
-            "links": [
-                {
-                    "rel": "More information on the embed HTML setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"
-                }
-            ]
+            "description": "Any HTML to display in another tab, after Chart/Table/etc."
         },
         "embedded_feature_tab_title": {
             "type": "string",
             "title": "Embedded feature - Tab Title",
-            "description": "A title for the embedded feature tab (ie, Chart/Table/[this]). Only used with either embedded_feature_url or embedded_feature_html.",
-            "links": [
-                {
-                    "rel": "More information on the embed tab title setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"
-                }
-            ]
+            "description": "A title for the embedded feature tab (ie, Chart/Table/[this]). Only used with either embedded_feature_url or embedded_feature_html."
         },
         "embedded_feature_title": {
             "type": "string",
             "title": "Embedded feature - Title",
-            "description": "A title that displays above the embedded feature. Only used with either embedded_feature_url or embedded_feature_html.",
-            "links": [
-                {
-                    "rel": "More information on the embed title setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"
-                }
-            ]
+            "description": "A title that displays above the embedded feature. Only used with either embedded_feature_url or embedded_feature_html."
         },
         "embedded_feature_url": {
             "type": "string",
             "title": "Embedded feature - URL",
-            "description": "Any URL to display as an iframe in another tab, after Chart/Table/etc.",
-            "links": [
-                {
-                    "rel": "More information on the embed URL setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#embedded-feature-metadata"
-                }
-            ]
+            "description": "Any URL to display as an iframe in another tab, after Chart/Table/etc."
         },
         "expected_disaggregations": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Expected disaggregations",
             "description": "An optional list of disaggregations (ie, data column names) to use when calculating the disaggregation status statistics.",
             "items": {
                 "type": "string",
                 "title": "Expected disaggregation"
-            },
-            "links": [
-                {
-                    "rel": "More information on the expected disaggregation setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"
-                }
-            ]
+            }
         },
         "footer_fields": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Footer fields",
             "description": "Additional arbitrary information to display beneath the graph/table.",
@@ -231,7 +132,6 @@
             }
         },
         "graph_annotations": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Graph annotations",
             "description": "This can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator.",
@@ -268,13 +168,7 @@
                                 "type": "string",
                                 "title": "Line color",
                                 "default": "#949494",
-                                "description": "The color of the line.",
-                                "links": [
-                                    {
-                                        "rel": "More information on the border color setting",
-                                        "href": "https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md"
-                                    }
-                                ]
+                                "description": "The color of the line."
                             },
                             "borderDash": {
                                 "type": "array",
@@ -284,13 +178,7 @@
                                 "items": {
                                     "type": "number"
                                 },
-                                "minItems": 2,
-                                "links": [
-                                    {
-                                        "rel": "More information on the line dash setting",
-                                        "href": "https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md"
-                                    }
-                                ]
+                                "minItems": 2
                             },
                             "label": {
                                 "type": "object",
@@ -317,7 +205,6 @@
                                     },
                                     "fontColor": {
                                         "type": "string",
-                                        "format": "color",
                                         "title": "Label color",
                                         "description": "Color for the label text.",
                                         "default": "#000000"
@@ -365,16 +252,9 @@
                         }
                     }
                 ]
-            },
-            "links": [
-                {
-                    "rel": "More information on the graph annotations setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#graph-metadata"
-                }
-            ]
+            }
         },
         "graph_limits": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Graph limits",
             "description": "A list of min/max limits controlling the lowest/highest values to be shown on the y-axis.",
@@ -400,16 +280,9 @@
                         }
                     }
                 ]
-            },
-            "links": [
-                {
-                    "rel": "More information on the graph limits setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#graph-metadata"
-                }
-            ]
+            }
         },
         "graph_series_breaks": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Graph series breaks",
             "description": "A list of series break (ie, a gap among the years) lines to display on the graph.",
@@ -434,27 +307,14 @@
                         }
                     }
                 ]
-            },
-            "links": [
-                {
-                    "rel": "More information on the graph target lines setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#graph_series_breaks"
-                }
-            ]
+            }
         },
         "graph_stacked_disaggregation": {
             "type": "string",
             "title": "Stacked disaggregation",
-            "description": "This can be used with the bar graph type to place a certain disaggregation into the same stacked bars.",
-            "links": [
-                {
-                    "rel": "More information on the stacked disaggregation setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"
-                }
-            ]
+            "description": "This can be used with the bar graph type to place a certain disaggregation into the same stacked bars."
         },
         "graph_target_lines": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Graph target lines",
             "description": "A list of target lines to display on the graph.",
@@ -479,27 +339,14 @@
                         }
                     }
                 ]
-            },
-            "links": [
-                {
-                    "rel": "More information on the graph target lines setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#graph_target_lines"
-                }
-            ]
+            }
         },
         "graph_title": {
             "type": "string",
             "title": "Graph title",
-            "description": "The title that displays above the graph/chart.",
-            "links": [
-                {
-                    "rel": "More information on the graph title setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-for-statistical-indicators"
-                }
-            ]
+            "description": "The title that displays above the graph/chart."
         },
         "graph_titles": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Graph titles",
             "description": "As an alternative to `graph_title`, this can be used to set specific titles for particular units and/or series.",
@@ -525,49 +372,46 @@
             "type": "string",
             "title": "Graph type",
             "description": "What type of graph to use for the indicator.",
-            "enum": ["line", "bar", "binary"],
-            "links": [
-                {
-                    "rel": "More information on the graph titles setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-for-statistical-indicators"
-                }
-            ]
+            "enum": ["line", "bar", "binary"]
+        },
+        "graph_types": {
+            "type": "array",
+            "title": "Graph types",
+            "description": "A more configurable version of 'graph_type' (singular), this setting is used if you would like the chart type to depend on the user-selected unit of measurement or series.",
+            "items": {
+                "type": "object",
+                "title": "Graph title",
+                "allOf": [
+                    { "$ref": "#/definitions/series_unit_constraint" },
+                    {
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "minLength": 1,
+                                "title": "Type",
+                                "description": "The graph type."
+                            }
+                        }
+                    }
+                ]
+            }
         },
         "indicator_available": {
             "type": "string",
             "title": "Indicator available",
-            "description": "An optional sub-title for the indicator, which displays below the indicator name. Intended for cases where the available data is slightly different than the indicator name.",
-            "links": [
-                {
-                    "rel": "More information on the indicator available setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"
-                }
-            ]
+            "description": "An optional sub-title for the indicator, which displays below the indicator name. Intended for cases where the available data is slightly different than the indicator name."
         },
         "indicator_name": {
             "type": "string",
             "title": "Indicator name",
-            "description": "The name for the indicator, which displays at the top of the indicator page.",
-            "links": [
-                {
-                    "rel": "More information on the indicator name setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"
-                }
-            ]
+            "description": "The name for the indicator, which displays at the top of the indicator page."
         },
         "indicator_number": {
             "type": "string",
             "title": "Indicator number",
-            "description": "The number (or 'id') for the indicator.",
-            "links": [
-                {
-                    "rel": "More information on the indicator number setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"
-                }
-            ]
+            "description": "The number (or 'id') for the indicator."
         },
         "indicator_tabs": {
-            "options": {"collapsed": true},
             "type": "object",
             "title": "Indicator tabs",
             "description": "Assign content for the indicator tabs, if the override box is checked. Otherwise this indicator will use the assignments set in your site configuration.",
@@ -606,13 +450,7 @@
         "national_geographical_coverage": {
             "type": "string",
             "title": "National geographical coverage",
-            "description": "A label used in the absence of any disaggregation.",
-            "links": [
-                {
-                    "rel": "More information on the geographical coverage setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-for-statistical-indicators"
-                }
-            ]
+            "description": "A label used in the absence of any disaggregation."
         },
         "page_content": {
             "type": "string",
@@ -622,24 +460,12 @@
         "permalink": {
             "type": "string",
             "title": "Permalink",
-            "description": "Overrides the normal path of the indicator page. Not recommended, execpt for 'standalone' indicators.",
-            "links": [
-                {
-                    "rel": "More information the permalink setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#standalone-indicators"
-                }
-            ]
+            "description": "Overrides the normal path of the indicator page. Not recommended, execpt for 'standalone' indicators."
         },
         "placeholder": {
             "title": "Placeholder indicator",
             "type": "string",
-            "description": "Entering text here identifies this as a 'placeholder' indicator. The text will be displayed on the goal page, in place of a link to the indicator page.",
-            "links": [
-                {
-                    "rel": "More information the placeholder setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#placeholder"
-                }
-            ]
+            "description": "Entering text here identifies this as a 'placeholder' indicator. The text will be displayed on the goal page, in place of a link to the indicator page."
         },
         "precision": {
             "type": "array",
@@ -671,16 +497,24 @@
             "type": "string",
             "title": "Progress status",
             "enum": ["not_available", "challenges_remain", "approaching_target", "target_achieved"],
-            "description": "The progress status of the indicator.",
-            "links": [
-                {
-                    "rel": "More information on the progress status setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#progress-status"
-                }
-            ]
+            "description": "The progress status of the indicator."
+        },
+        "proxy": {
+            "type": "string",
+            "title": "Proxy",
+            "enum": ["", "proxy", "both"],
+            "description": "Flag this indicator as being a 'proxy' for one of the global SDG indicators. Use 'proxy' to flag the entire indicator, or use 'both' to flag particular serieses."
+        },
+        "proxy_series": {
+            "type": "array",
+            "title": "Proxy serieses",
+            "description": "If 'proxy' above is set to both, this is required in order to specify which serieses should be flagged as proxies.",
+            "items": {
+                "type": "string",
+                "title": "Series"
+            }
         },
         "publications": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Publications",
             "description": "This setting controls the content of the 'Related publications' tab. It can contain any number of publications. You may have much of this information in the indicator metadata, but this configuration is available to supplement the metadata with a more structured way to list multiple publications.",
@@ -705,55 +539,29 @@
                         "title": "Date"
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the publications setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#publications"
-                }
-            ]
+            }
         },
         "related_indicators": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Related indicators",
             "description": "This setting controls the 'Related indicators' tab. Specify indicators by using their indicator numbers, such as: 1.1.1",
             "items": {
                 "type": "string",
                 "title": "Related indicator"
-            },
-            "links": [
-                {
-                    "rel": "More information on the related_indicators setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#related_indicators"
-                }
-            ]
+            }
         },
         "reporting_status": {
             "type": "string",
             "title": "Reporting status",
             "enum": ["complete", "inprogress", "notstarted", "notapplicable"],
-            "description": "The reporting status of the indicator.",
-            "links": [
-                {
-                    "rel": "More information on the reporting status setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#mandatory-fields"
-                }
-            ]
+            "description": "The reporting status of the indicator."
         },
         "sort": {
             "type": "string",
             "title": "Sort order",
-            "description": "Override the default order in which this indicator is displayed in lists. This can be left blank, and it will be automatically determined.",
-            "links": [
-                {
-                    "rel": "More information on the sort setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#sorting-in-lists"
-                }
-            ]
+            "description": "Override the default order in which this indicator is displayed in lists. This can be left blank, and it will be automatically determined."
         },
         "sources": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Sources",
             "description": "This setting controls the content of the 'Sources' tab. It can contain any number sources. You may have much of this information in the metadata, but this configuration is available to supplement the metadata with a more structured way to list multiple sources.",
@@ -803,59 +611,33 @@
                     },
                     "other_info": {
                         "type": "string",
-                        "title": "Other information",
-                        "format": "markdown"
+                        "title": "Other information"
                     },
                     "logo": {
                         "type": "string",
                         "title": "Path to logo image"
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the sources setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#sources"
-                }
-            ]
+            }
         },
         "standalone": {
             "title": "Standalone indicator",
             "type": "boolean",
-            "description": "Whether the indicator is standalone (separate from the SDGs) or not.",
-            "links": [
-                {
-                    "rel": "More information the standalone setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#standalone-indicators"
-                }
-            ]
+            "description": "Whether the indicator is standalone (separate from the SDGs) or not."
         },
         "tags": {
-            "options": {"collapsed": true},
             "type": "array",
             "title": "Tags",
             "description": "An optional list of 'tags' to display under an indicator when it is listed on its goal page.",
             "items": {
                 "type": "string",
                 "title": "Tag"
-            },
-            "links": [
-                {
-                    "rel": "More information on the tags setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/metadata-format/#recommended-special-fields"
-                }
-            ]
+            }
         },
         "x_axis_label": {
             "type": "string",
             "title": "X axis label",
-            "description": "A label beneath the X axis on charts. This overrides the same site configuration setting.",
-            "links": [
-                {
-                    "rel": "More information on the X axis label setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/indicator-configuration/#x_axis_label"
-                }
-            ]
+            "description": "A label beneath the X axis on charts. This overrides the same site configuration setting."
         }
     },
     "additionalProperties": true,
@@ -876,17 +658,7 @@
             }
         },
         "indicator_tabs_options": {
-            "enum": ["", "chart", "table", "map", "embed", "hide"],
-            "options": {
-                "enum_titles": [
-                    "",
-                    "Chart",
-                    "Table",
-                    "Map",
-                    "Embed",
-                    "Hide this tab"
-                ]
-            }
+            "enum": ["", "chart", "table", "map", "embed", "hide"]
         }
     }
 }
