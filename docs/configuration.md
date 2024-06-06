@@ -889,36 +889,48 @@ plugins:
 
 ### progress_status
 
-_Optional_: This setting controls certain aspects of the progress status functionality. The available settings are:
+_Optional_: This setting controls certain aspects of the progress status functionality. 
+
+For the progress status icons to display, you will need to include the relevant setting for progress_status in both the site and data configuration files. The site configuration settings for progress_status sets up the desired options for reporting progress, including the category names and images to display.
+
+The available settings in the site configuration are:
 
 * `status_heading`: Controls the heading that describes the progress status, whenever it appears.
 * `status_help`: Controls the help text that displays as a header above the progress column. This should describe what the progress types are intended to convey. This defaults to: "How are we doing against the 2030 targets?"
 * `status_types`: A list of progress status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'target_achieved').
     * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved').
-    * `image`: The internal path to the image to use (if any) for this progress status.
+    * `image`: The internal path to the image to use (if any) for this progress status. We have default images available to use by including the file names in the below examples (links to Open SDG image files), however you can choose any image to represent each of your reporting progress categories and add these to your assets/img folder in your own site repository. You will then need to change the file name to reflect your new images.
     * `alt`: An alt tag for the image above.
 
-Here is an example of using these settings:
+Here is the default example of these settings:
 
 ```yaml
 progress_status:
-    status_heading: Status heading
-    status_help: Status help text
-    status_types:
-      - value: not_available
-        label: status.progress_not_available
-        image: assets/img/progress/not-available.png
-        alt: status.progress_not_available
-      - value: target_achieved
-        label: status.progress_target_achieved
-        image: assets/img/progress/target-achieved.png
-        alt: status.progress_target_achieved
+  status_heading: ''
+  status_help: ''
+  status_types:
+    - value: not_available
+      label: status.progress_not_available
+      image: assets/img/progress/not-available.png
+      alt: status.progress_not_available
+    - value: target_achieved
+      label: status.progress_target_achieved
+      image: assets/img/progress/target-achieved.png
+      alt: status.progress_target_achieved
+    - value: challenges_remain
+      label: status.progress_challenges_remain
+      image: assets/img/progress/challenges-remain.png
+      alt: status.progress_challenges_remain
+    - value: approaching_target
+      label: status.progress_approaching_target
+      image: assets/img/progress/approaching-target.png
+      alt: status.progress_approaching_target
 ```
 
 As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
 
-For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
+For the relevant indicators, you will need to specify the progress_status in the indicator configuration - see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status) for how to do this. 
 
 ### progressive_web_app
 
