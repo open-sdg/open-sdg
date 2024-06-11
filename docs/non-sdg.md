@@ -62,6 +62,50 @@ As you can see in those translations, the "translation keys" are based on the nu
 
 This means that, to support your non-SDG framework, you will need to have translation files for "global_goals", "global_targets", and "global_indicators" with all of the necessary labels. As long as your framework uses numerical identifiers (eg, 1.1.1, 1.1.2, etc.) then this should work fine.
 
+## Goal images
+
+A core visual component of Open SDG is a grid of icons that correspond to each of the 17 Sustainable Development Goals. This is obviously unique to the SDGs and would need to be overridden for a non-SDG framework. This would be done through the `goal_image_base` and `goal_image_extension` site configurations.
+
+Because these images contain text, they must be "translated" like anything else, and so we maintain translated sets of these images in the central repository of translations mentioned above (https://github.com/open-sdg/sdg-translations). Out of the box, Open SDG sites start with a `goal_image_base` of: `https://open-sdg.org/sdg-translations/assets/img/goals` and a `goal_image_extension` of `png`. This configuration causes Open SDG to use the PNG images in [this folder of goal image translations](https://github.com/open-sdg/sdg-translations/tree/HEAD/www/assets/img/goals).
+
+By changing the `goal_image_base` and/or `goal_image_extension` site configuration settings, you can control where your platform will look for goal images. When Open SDG renders a goal image, it expects the path to consist of the following pieces:
+
+1. The `goal_image_base`
+2. A language code
+3. The id of the goal
+4. The `goal_image_extension`
+
+For example, with the out-of-the-box configuration described above, it would expect the English goal image for Goal 1 to consist of the following:
+
+1. https://open-sdg.org/sdg-translations/assets/img/goals
+2. en
+3. 1
+4. png
+
+All together, that would be:
+
+`https://open-sdg.org/sdg-translations/assets/img/goals/en/1.png`
+
+Using this information, you can tailor the goal images to your non-SDG framework, by hosting them somewhere with the expected folder structure and naming convention.
+
+For example, imagine that your non-SDG framework uses 3 goals with the ids "A", "B", and "C", and uses the languages English (en) and Spanish (es). Now imagine that you create your goal images as SVG files and host them at `https://example.com/my/image/folder`. You would need to set your site configuration like so:
+
+```
+goal_image_base: "https://example.com/my/image/folder"
+goal_image_extension: svg
+```
+
+Then you would need to upload all of the following images, at these exact paths:
+
+* https://example.com/my/image/folder/en/A.svg
+* https://example.com/my/image/folder/en/B.svg
+* https://example.com/my/image/folder/en/C.svg
+* https://example.com/my/image/folder/es/A.svg
+* https://example.com/my/image/folder/es/B.svg
+* https://example.com/my/image/folder/es/C.svg
+
+NOTE: Open SDG supports other image formats, but SVG is the recommended format for this purpose.
+
 ## Time series
 
 The SDGs are designed to show progress on the indicators year by year. In other words, the data are displayed as a time series. For example, the x-axis on the charts is "Year".
@@ -92,3 +136,10 @@ And you could add this to that file:
 target: Policy Objective
 targets: Policy Objectives
 ```
+
+## Examples of non-SDG frameworks using Open SDG
+
+Here are some examples of non-SDG frameworks that have been implemented with Open SDG.
+
+* https://integrationsmonitoring.niedersachsen.de/
+* https://oifdata.defra.gov.uk/
