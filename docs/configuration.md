@@ -503,7 +503,7 @@ As always, for multilingual support, these settings can refer to translation key
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of goals page functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/goals_page.png)
+![Screenshot of goals page functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/goals_page.PNG)
 
 ### graph_color_headline
 
