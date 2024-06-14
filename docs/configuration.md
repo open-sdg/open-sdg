@@ -316,6 +316,10 @@ disclaimer:
   hidden: true
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of disclaimer functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/disclaimer.PNG)
+
 ### email_contacts
 
 **_Required_**: This setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
@@ -337,6 +341,10 @@ empty_metadata_placeholder: indicator.empty_metadata_placeholder
 
 The above default refers to a translation key which currently translates to "Not available for this indicator" in English.
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of empty metadata placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_metadata_placeholder.PNG)
+
 ### empty_metadata_placeholder_sources
 
 _Optional_: This setting controls the text that displays for any *sources* field which has no content. Note that this setting is not used if `hide_empty_metadata` is set to `true`. If the omitted, the following default is used:
@@ -346,6 +354,10 @@ empty_metadata_placeholder_sources: indicator.empty_metadata_placeholder_sources
 ```
 
 The above default refers to a translation key which currently translates to "Not available for this source" in English.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of empty source placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_source_placeholder.PNG)
 
 ### environment
 
@@ -362,6 +374,10 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 ```nohighlight
 footer_language_toggle: none
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of footer language toggle functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_language_toggles.PNG)
 
 ### footer_menu
 
@@ -417,6 +433,10 @@ frontpage_cards:
       etc...
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of frontpage cards functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_cards.PNG)
+
 ### frontpage_goals_grid
 
 _Optional_: This setting is used on the frontpage. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
@@ -439,6 +459,10 @@ frontpage_introduction_banner:
     title: title goes here
     description: description goes here
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of frontpage introduction banner functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_introduction_banner.PNG)
 
 ### goal_image_base
 
@@ -476,6 +500,10 @@ goals_page:
 ```
 
 As always, for multilingual support, these settings can refer to translation keys, and the description can include Markdown.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of goals page functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/goals_page.PNG)
 
 ### graph_color_headline
 
@@ -526,6 +554,14 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 ```nohighlight
 header_language_toggle: dropdown
 ```
+
+Here is an example of what the dropdown option looks like on the platform:
+
+![Screenshot of header language toggle dropdown functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_dropdown.PNG)
+
+Here is an example of what the links option looks like on the platform:
+
+![Screenshot of header language toggle links functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_links.PNG)
 
 ### hide_empty_metadata
 
@@ -672,6 +708,10 @@ indicator_tabs:
   tab_4: hide
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of header indicator tabs functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/indicator_tabs.PNG)
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
@@ -714,6 +754,10 @@ logos:
     alt: mi texto alternativo
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of logos functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/logos.PNG)
+
 ### map_layers
 
 _Optional_: This setting configures the layers that will be visible on maps on indicator pages. Each layer is a set of boundaries. For example, one layer might be for the province boundaries, and another layer might be for the district boundaries. For more information on this setting, see the [Maps guidance](maps.md).
@@ -749,6 +793,10 @@ menu:
       - path: about/
         translation_key: menu.about
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of menu functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/menu.PNG)
 
 ### metadata_edit_url
 
@@ -809,6 +857,10 @@ metadata_tabs:
     description: My blurb about the publications tab
     placeholder: There are no publications available for this indicator
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of metadata tabs functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/metadata_tabs.PNG)
 
 ### meta_tags
 
@@ -880,6 +932,10 @@ observation_attributes:
 
 > NOTE: For full support (including on maps) a corresponding change should also be made in the data configuration in the "indicator_options" setting. See [more details on the "indicator_options" data configuration setting](data-configuration.md#indicator_options).
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of observation attributes functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/observation_attributes.PNG)
+
 ### plugins
 
 **_Required_**: This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
@@ -923,6 +979,10 @@ As always, for multilingual support, the label/alt/heading settings can refer to
 
 For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of progress status functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progress_status.PNG)
+
 ### progressive_web_app
 
 _Optional_: This setting can be used to make the platform a
@@ -943,6 +1003,10 @@ progressive_web_app:
   precaching: false
 ```
 
+Here is an example of how this functionality appears in a web browser on your phone:
+
+![Screenshot of progressive web app functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progressive_web_app.PNG)
+
 ### proxy_indicators
 
 _Optional_: This setting can be used to override the default label and description that are displayed
@@ -956,6 +1020,10 @@ proxy_indicators:
   label: My alternate proxy label
   description: My alternate proxy description
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of proxy indicators functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/proxy_indicators.PNG)
 
 ### remote_data_prefix
 
@@ -1019,6 +1087,10 @@ reporting_status:
 ```
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of reporting status functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/reporting_status.PNG)
 
 ### repository_url_data
 
@@ -1148,3 +1220,7 @@ _Optional_: This setting, if true, will run a validation of the site configurati
 ### x_axis_label
 
 _Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this is also available on the configuration of individual indicators, where it will override this setting.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of x axis label functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/x_axis_label.PNG)
