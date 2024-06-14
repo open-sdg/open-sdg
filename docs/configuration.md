@@ -343,7 +343,7 @@ The above default refers to a translation key which currently translates to "Not
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of empty metadata placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_metadata_placeholder.PNG)
+![Screenshot of empty metadata placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_metadata_placeholder.png)
 
 ### empty_metadata_placeholder_sources
 
@@ -357,7 +357,7 @@ The above default refers to a translation key which currently translates to "Not
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of empty source placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_source_placeholder.PNG)
+![Screenshot of empty source placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_source_placeholder.png)
 
 ### environment
 
@@ -377,7 +377,7 @@ footer_language_toggle: none
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of footer language toggle functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_language_toggles.PNG)
+![Screenshot of footer language toggle functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_language_toggles.png)
 
 ### footer_menu
 
@@ -435,7 +435,7 @@ frontpage_cards:
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of frontpage cards functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_cards.PNG)
+![Screenshot of frontpage cards functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_cards.png)
 
 ### frontpage_goals_grid
 
@@ -462,7 +462,7 @@ frontpage_introduction_banner:
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of frontpage introduction banner functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_introduction_banner.PNG)
+![Screenshot of frontpage introduction banner functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_introduction_banner.png)
 
 ### goal_image_base
 
@@ -503,7 +503,7 @@ As always, for multilingual support, these settings can refer to translation key
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of goals page functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/goals_page.PNG)
+![Screenshot of goals page functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/goals_page.png)
 
 ### graph_color_headline
 
@@ -557,11 +557,11 @@ header_language_toggle: dropdown
 
 Here is an example of what the dropdown option looks like on the platform:
 
-![Screenshot of header language toggle dropdown functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_dropdown.PNG)
+![Screenshot of header language toggle dropdown functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_dropdown.png)
 
 Here is an example of what the links option looks like on the platform:
 
-![Screenshot of header language toggle links functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_links.PNG)
+![Screenshot of header language toggle links functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_links.png)
 
 ### hide_empty_metadata
 
@@ -1005,7 +1005,7 @@ progressive_web_app:
 
 Here is an example of how this functionality appears in a web browser on your phone:
 
-![Screenshot of progressive web app functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progressive_web_app.PNG)
+![Screenshot of progressive web app functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progressive_web_app.png)
 
 ### proxy_indicators
 
