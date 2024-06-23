@@ -20,6 +20,36 @@ NOTE: If using any of these alternative data sources, the "config file" approach
 
 Your data repository can contain SDMX files, either of the SDMX-ML or the SDMX-JSON format. Alternatively, your data repository can "point" to a remote SDMX API endpoint. Examples can be found in the [sdg-build documentation](https://github.com/open-sdg/sdg-build/tree/master/docs/examples).
 
+### .Stat Suite, SDMX & Open SDG
+
+**What is the .Stat Suite?**
+
+The .Stat Suite, is an SDMX native standard-based, componentised, open source platform for the efficient production and dissemination of high-quality statistical data.
+
+**.Stat Suite Tools**
+
+* ***.Stat Data Explorer*** - A front-office application for easy finding, understanding and using of data through an efficient well-tuned navigation and search approach, appropriate data previews and contextual  metadata, and download in standard formats, APIs or share features.
+
+* ***.Stat Data Lifecycle Manager*** - A set of adaptive back-office modules to efficiently and timely produce and (re-)use high quality statistical data by defining, running, automating, controlling and evaluating the    underlying data processes.
+
+* ***.Stat Core*** - A highly performing, secure SDMX Data Store based on standard protocols, to store and retrieve statistical data, structural and referential metadata, data process information and security settings.
+
+**How to use the .Stat Suite SDMX data output with Open SDG**
+
+For this data to appear on your platform, you need to add some code to the `config_data.yml` file in your data repository. We'd recommend using the **InputSdmxMl_Structure** class. An example is shown below from Cambodia's data repository. If you've uploaded your data to .Stat you will have a url that points to the SDMX data file & your DSD (Data Structure Definition).
+
+```
+- class: InputSdmxMl_Structure
+    source: https://nsiws-stable-camstat-live.officialstatistics.org/rest/data/KH_NIS,DF_SDG_KH,1.2/A..............
+    dsd: https://nsiws-stable-camstat-live.officialstatistics.org/rest/dataflow/KH_NIS/DF_SDG_KH/1.2?references=all&detail=referencepartial
+```
+
+To view their entire data configuration file for a full example of this method [click here](https://github.com/sdg-cambodia/data/blob/develop/config_data.yml)
+
+**Source** - Place the remote URL of your SDMX source here, this points to your SDMX data file for all your indicator data.
+
+**DSD** - Place the remote URL of your SDMX DSD (Data Structure Definition), this will point towards your DSD remotely.
+
 ### UN SDG API
 
 **What is the UN SDG API?**

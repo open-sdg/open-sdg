@@ -424,6 +424,7 @@ graph_type: line
 ```
 
 Options out-of-the-box are:
+
 * line
 * bar
 * binary (Yes/No graph)
@@ -561,6 +562,8 @@ precision:
 ### progress_status
 
 **_Required_**: This setting is used to specify the status of the indicator's progress. This is displayed on the indicator pages. You can also display this on goal pages by setting your goal layout to "goal-with-progress" (this can be done in the [`create_goals` site configuration setting](configuration.md#create_goals)).
+
+Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. More information with the code needed for the out-of-the-box options below can be found in the [`progress_status` site configuration setting](configuration.md#progress_status). Then for each indicator, you can add the relevant progress_status in its indicator configuration file.
 
 ```nohighlight
 progress_status: target_achieved
