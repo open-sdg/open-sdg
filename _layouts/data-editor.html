@@ -33,9 +33,9 @@
   </div>
 
   <script src="https://unpkg.com/papaparse@5.3.2/papaparse.min.js"></script>
-  <script src="https://unpkg.com/ag-grid-community@28.2.1/dist/ag-grid-community.min.noStyle.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community@28.2.1/dist/styles/ag-grid.css">
-  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community@28.2.1/dist/styles/ag-theme-alpine.css">
+  <script src="https://unpkg.com/ag-grid-community@31.3.2/dist/ag-grid-community.min.noStyle.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community@31.3.2/styles/ag-grid.css">
+  <link rel="stylesheet" href="https://unpkg.com/ag-grid-community@31.3.2/styles/ag-theme-alpine.css">
 
   <script>
   var httpRequest;
@@ -61,13 +61,29 @@
             rowData = [];
         if (csvData.data.length > 0) {
           rowData = csvData.data;
-          columnDefs = Object.keys(rowData[0]).map(function(key) {
+          columnDefs = csvData.meta.fields.map(function(key) {
             var columnDef = { field: key, headerName: key };
             if (key === 'Value') {
-              columnDef['type'] = 'rightAligned';
+              columnDef['type'] = 'numericColumn';
             }
             return columnDef;
           });
+        }
+        else {
+          columnDefs = [
+            {
+              field: 'Year',
+              headerName: 'Year',
+            },
+            {
+              field: 'Value',
+              headerName: 'Value',
+              type: 'numericColumn',
+            }
+          ];
+          rowData = [
+            {}
+          ];
         }
         var container = document.getElementById('editor-holder');
         gridOptions = {
@@ -81,20 +97,18 @@
           rowData: rowData,
           undoRedoCellEditing: true,
           undoRedoCellEditingLimit: 5,
-          enableCellChangeFlash: true,
-          enterMovesDownAfterEdit: true,
+          enterNavigatesVerticallyAfterEdit: true,
           suppressDragLeaveHidesColumns: true,
-          applyColumnDefOrder: true,
           onCellValueChanged: function(info) {
-            if (info.rowIndex + 1 === this.api.getDisplayedRowCount()) {
-              this.api.applyTransaction({
+            if (info.rowIndex + 1 === info.api.getDisplayedRowCount()) {
+              info.api.applyTransaction({
                 add: [{}],
               });
             }
           }
         };
 
-        new agGrid.Grid(container, gridOptions);
+        agGrid.createGrid(container, gridOptions);
       } else {
         alert('There was a problem when loading the data. Please edit the data in some other way (such as in Github).');
       }

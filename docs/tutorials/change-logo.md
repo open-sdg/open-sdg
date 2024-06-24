@@ -33,6 +33,21 @@ Next we will upload the logo to your site repository.
 1. Click `Create pull request`.
 1. Wait for the tests to complete, and then click `Merge pull request`.
 
+## High contrast logo
+
+The logo you have uploaded will not automatically replace the logo shown on the page in high contrast mode. 
+
+1. Make a high contrast version of your logo by changing all the colours to black and white. Make sure this is a .png file.
+1. In a browser go to your site repository.
+1. In the list of files, navigate to the `assets/img` folder.
+1. Create a new feature branch.
+1. Click `Add a file` and then `Upload files`.
+1. Drag in your new high contrast `.png` file or click to browse for it.
+1. In the same feature branch, click on the file in the folder and click the pencil to edit.
+1. Click into where the file name is written and at the start of your file name, add `high-contrast/` to the beginning and change the file name to `SDG_logo.png`. This will create a folder named high-contrast that your .png is contained in.
+1. Start a pull request merging your feature branch into `develop`.
+1. Wait for the tests to complete, and then click `Merge pull request`.
+
 ## Find a favicon
 
 Next we will replace the "favicon" (the small image that appears in browser tabs). Again, the actual image is up to your preference. A common choice, again, is to your your country's flag. For this tutorial we will use the logo you uploaded above.

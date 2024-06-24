@@ -1,14 +1,16 @@
-<h1>Upgrading to 2.3.0</h1>
+<h1>Upgrading to 2.3.1</h1>
 
 This document is intended for developers, to help with the process of upgrading to version 2.3.0 of Open SDG, from 2.2.0 or higher.
 
-## Upgrade data repository to sdg-build 2.3.0
+## Upgrade data repository to sdg-build 2.3.1
 
 In your data repository, update your `requirements.txt` file to:
 
 ```
-git+https://github.com/open-sdg/sdg-build@2.3.0
+git+https://github.com/open-sdg/sdg-build@2.3.1
 ```
+
+Note: A hotfix was implemented in April 2024 so for this file, sdg-build should point to 2.3.1, not 2.3.0.
 
 ## Upgrade translations to sdg-translations 2.3.0
 
@@ -26,8 +28,10 @@ translations:
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.3.0
+remote_theme: open-sdg/open-sdg@2.3.1
 ```
+
+Note: A hotfix was implemented in June 2024 so for this file, open-sdg/open-sdg should point to 2.3.1, not 2.3.0.
 
 ## Update version of jekyll-open-sdg-plugins to 2.3.0
 

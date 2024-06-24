@@ -54,14 +54,14 @@ Feature: Search
     And I fill in "the search box" with "proportions"
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
-    Then I should see "Results found: 10"
+    Then I should see "Results found: 11"
 
   Scenario: Searching for words also matches their stems in other languages
     Given I am on "/es"
     And I fill in "the search box" with "proporciónes"
     And I send key "Enter" in "the search box" element
     And I wait 5 seconds
-    Then I should see "Results found (translated): 10"
+    Then I should see "Results found (translated): 11"
 
   Scenario: Searching for nothing displays no results
     Given I am on the homepage
