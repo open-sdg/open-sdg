@@ -1,4 +1,4 @@
-<h1>Upgrading to 2.3.0</h1>
+<h1>Upgrading to 2.3.1</h1>
 
 This document is intended for developers, to help with the process of upgrading to version 2.3.0 of Open SDG, from 2.2.0 or higher.
 
@@ -28,8 +28,10 @@ translations:
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.3.0
+remote_theme: open-sdg/open-sdg@2.3.1
 ```
+
+Note: A hotfix was implemented in June 2024 so for this file, open-sdg/open-sdg should point to 2.3.1, not 2.3.0.
 
 ## Update version of jekyll-open-sdg-plugins to 2.3.0
 
