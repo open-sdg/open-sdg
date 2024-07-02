@@ -28,8 +28,10 @@ translations:
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.3.0
+remote_theme: open-sdg/open-sdg@2.3.2
 ```
+
+Note: A hotfix was implemented in June 2024 so for this file, the remote theme should point to 2.3.2, not 2.3.0.
 
 ## Update version of jekyll-open-sdg-plugins to 2.3.0
 
