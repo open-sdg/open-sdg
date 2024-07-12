@@ -105,6 +105,20 @@
                             "schema": { "const": true }
                         }
                     }
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Standalone",
+                    "documentationKey": "standalone",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/standalone",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -171,53 +185,7 @@
         },
         {
             "type": "Category",
-            "label": "Annotation",
-            "elements": [
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Graph annotations",
-                    "documentationKey": "graph_annotations",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/graph_annotations"
-                        }
-                    ]
-                },
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Series breaks",
-                    "documentationKey": "graph_series_breaks",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/graph_series_breaks"
-                        }
-                    ]
-                },
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Target lines",
-                    "documentationKey": "graph_target_lines",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/graph_target_lines"
-                        }
-                    ]
-                }
-            ],
-            "rule": {
-                "effect": "HIDE",
-                "condition": {
-                  "scope": "#/properties/data_non_statistical",
-                  "schema": { "const": true }
-                }
-            }
-        },
-        {
-            "type": "Category",
-            "label": "Chart",
+            "label": "Graph",
             "elements": [
                 {
                     "type": "GroupWithAccordion",
@@ -285,6 +253,52 @@
         },
         {
             "type": "Category",
+            "label": "Graph Annotation",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Graph annotations",
+                    "documentationKey": "graph_annotations",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_annotations"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Series breaks",
+                    "documentationKey": "graph_series_breaks",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_series_breaks"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Target lines",
+                    "documentationKey": "graph_target_lines",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_target_lines"
+                        }
+                    ]
+                }
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/data_non_statistical",
+                  "schema": { "const": true }
+                }
+            }
+        },
+        {
+            "type": "Category",
             "label": "Header",
             "elements": [
                 {
@@ -322,12 +336,12 @@
                 },
                 {
                     "type": "GroupWithAccordion",
-                    "label": "Graph titles",
-                    "documentationKey": "graph_titles",
+                    "label": "Graph title",
+                    "documentationKey": "graph_title",
                     "elements": [
                         {
                             "type": "Control",
-                            "scope": "#/properties/graph_titles"
+                            "scope": "#/properties/graph_title"
                         }
                     ],
                     "rule": {
@@ -340,12 +354,12 @@
                 },
                 {
                     "type": "GroupWithAccordion",
-                    "label": "Graph title",
-                    "documentationKey": "graph_title",
+                    "label": "Graph titles",
+                    "documentationKey": "graph_titles",
                     "elements": [
                         {
                             "type": "Control",
-                            "scope": "#/properties/graph_title"
+                            "scope": "#/properties/graph_titles"
                         }
                     ],
                     "rule": {
@@ -473,96 +487,8 @@
         },
         {
             "type": "Category",
-            "label": "Embed",
-            "elements": [
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Embedded Feature - URL",
-                    "documentationKey": "embedded_feature_url",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/embedded_feature_url"
-                        }
-                    ]
-                },
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Embedded Feature - HTML",
-                    "documentationKey": "embedded_feature_html",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/embedded_feature_html",
-                            "options": {
-                                "multi": true
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Embedded Feature - Title",
-                    "documentationKey": "embedded_feature_title",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/embedded_feature_title"
-                        }
-                    ]
-                },
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Embedded Feature - Tab Title",
-                    "documentationKey": "embedded_feature_tab_title",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/embedded_feature_tab_title"
-                        }
-                    ]
-                },
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Embedded Feature - Footer",
-                    "documentationKey": "embedded_feature_footer",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/embedded_feature_footer",
-                            "options": {
-                                "multi": true
-                            }
-                        }
-                    ]
-                }
-            ],
-            "rule": {
-                "effect": "HIDE",
-                "condition": {
-                  "scope": "#/properties/data_non_statistical",
-                  "schema": { "const": true }
-                }
-            }
-        },
-        {
-            "type": "Category",
             "label": "Webmaster",
             "elements": [
-                {
-                    "type": "GroupWithAccordion",
-                    "label": "Standalone",
-                    "documentationKey": "standalone",
-                    "elements": [
-                        {
-                            "type": "Control",
-                            "scope": "#/properties/standalone",
-                            "options": {
-                                "toggle": true
-                            }
-                        }
-                    ]
-                },
                 {
                     "type": "GroupWithAccordion",
                     "label": "Permalink",
@@ -637,7 +563,7 @@
                 },
                 {
                     "type": "GroupWithAccordion",
-                    "label": "Proxy serieses",
+                    "label": "Proxy series",
                     "documentationKey": "proxy_series",
                     "elements": [
                         {
@@ -653,7 +579,14 @@
                         }
                     }
                 }
-            ]
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/standalone",
+                  "schema": { "const": true }
+                }
+            }
         },
         {
             "type": "Category",
@@ -811,6 +744,80 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "Category",
+            "label": "Embed",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - URL",
+                    "documentationKey": "embedded_feature_url",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_url"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - HTML",
+                    "documentationKey": "embedded_feature_html",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_html",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - Title",
+                    "documentationKey": "embedded_feature_title",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_title"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - Tab Title",
+                    "documentationKey": "embedded_feature_tab_title",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_tab_title"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Embedded Feature - Footer",
+                    "documentationKey": "embedded_feature_footer",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/embedded_feature_footer",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                }
+            ],
+            "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/data_non_statistical",
+                  "schema": { "const": true }
+                }
+            }
         }
     ]
 }
