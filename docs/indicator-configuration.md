@@ -1,13 +1,15 @@
-In your [data repository](glossary.md#data-repository) the indicator configuration is maintained on an indicator-by-indicator basis. This indicator configuration contains set fields, which have specific uses in Open SDG. This page details those fields.
+In your [data repository](glossary.md#data-repository) the indicator configuration is maintained on an indicator-by-indicator basis. This indicator configuration contains fields which have specific uses in Open SDG. This page details those fields.
 
 ## Note about indicator configuration file formats
 
-By default, Open SDG platforms expect the individual indicator configuration files to be uploaded in YML format to the "indicator-config" folder. See this [example in the data starter repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/indicator-config/1-1-1.yml)
+By default, Open SDG platforms expect the individual indicator configuration files to be uploaded in YAML format (.yml) to the "indicator-config" folder. See this [example in the data starter repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/indicator-config/1-1-1.yml)
 
 ### Indicator configuration forms
-To help with configuring indicators, you can optionally enable user-friendly indicator configuration forms, which will allow you to fill in a form and then download a YML file which will be ready to upload to your platform.
+Just as with the site configuration, there is a form provided to help you make changes. You can reach this form by going to an indicator page on your staging site, and then pressing "Edit Indicator", and then "Edit Configuration". Once there, you can learn about the available settings, make changes, and then download a YML file which will be ready to upload to your platform.
 
-For more details on how to enable these forms, see the [indicator_config_form site configuration setting](configuration.md#indicator_config_form).
+The alternative to using this form is to maintain your indicator configuration files by hand. This is also an option, if you are comfortable working with YAML files, but we generally recommend using the forms even so.
+
+Note: Open SDG's indicator configuration is in a format called YAML, as mentioned above. Much of the documentation below will show examples if this YAML syntax. However, if you are using the indicator configuration forms, then you actually never need to interact with the YAML. Instead you will be making changes in the form, downloading the YAML, and then uploading it your repository directly. So, the YAML syntax examples shown below are intended to help your understanding, but do not represent anything you would actually need to type in (if you are using the indicator configuration forms).
 
 ## Note about translation keys
 Indicator configuration values can either be filled in with normal text ("My field value") or with [translation keys](glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
@@ -111,6 +113,8 @@ data_footnote: my_translations.1-1-1-footnote
 ```nohighlight
 data_non_statistical: false
 ```
+
+Note that in the indicator configuration form, if you toggle this on, many of the other configuration fields will be hidden, since the are not applicable to non-statistical indicators.
 
 ### Data notices
 
@@ -417,7 +421,7 @@ graph_titles:
 
 ### graph_type
 
-**_Required_** (for statistical indicators): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
+**_Required_** (for statistical indicators that don't use the alternative "graph_types" setting): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
 
 ```nohighlight
 graph_type: line
@@ -430,7 +434,7 @@ Options out-of-the-box are:
 
 ### graph_types
 
-**_Required_** (for statistical indicators): This setting is used if you would like the chart type to depend on the user-selected unit of measurement or series. It has a more complex structure than `graph_type` (*singular*). For example:
+**_Required_** (for statistical indicators that don't use the alternative "graph_type" setting): This setting is used if you would like the chart type to depend on the user-selected unit of measurement or series. It has a more complex structure than `graph_type` (*singular*). For example:
 
 ```nohighlight
 graph_types:
