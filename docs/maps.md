@@ -25,7 +25,7 @@ Each "feature" in the The GeoJSON must have the following in their `properties` 
 1. A property that holds the unique ID for the boundary (which must correspond to the GeoCode data column mentioned above)
 2. A property that holds the human-readable name of the boundary
 
-The specific keys for these properties are configured in the data repository. Here is an example of the relevant configuration settings for the data repository:
+The specific keys for these properties are configured in the data repository `config_data.yml` file. Here is an example of the relevant configuration settings for the data repository:
 
 ```
 map_layers:
@@ -51,7 +51,7 @@ map_layers:
 
 ## Site configuration: map_options and map_layers
 
-Lastly, there must be 2 sections in your `_config.yml` file to configure mapping behavior: `map_options` and `map_layers`.
+Lastly, there must be 2 sections in your `site_config.yml` file in the site repository to configure mapping behavior: `map_options` and `map_layers`.
 
 ### map_options
 
