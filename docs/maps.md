@@ -51,7 +51,7 @@ map_layers:
 
 ## Site configuration: map_options and map_layers
 
-Lastly, there must be 2 sections in your `site_config.yml` file in the site repository to configure mapping behavior: `map_options` and `map_layers`.
+Lastly, there must be 2 sections in your site configuration file in the site repository to configure mapping behavior: `map_options` and `map_layers`.
 
 ### map_options
 
