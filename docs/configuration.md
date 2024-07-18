@@ -1013,7 +1013,7 @@ progressive_web_app:
   enabled: true
   name: Indicators For The Sustainable Development Goals - Mexico
   short_name: SDG Mexico
-  precaching: false
+  precaching: true
 ```
 
 Here is an example of how this functionality appears in a web browser on your phone:
