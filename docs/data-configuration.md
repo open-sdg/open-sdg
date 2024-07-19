@@ -210,10 +210,15 @@ indicator_options:
     - Observation status
     - Unit multiplier
     - Unit measure
+    - UNIT_MEASURE
+    - SERIES
+    - COMMENT_TS
+    - DATA_LAST_UPDATE
   series_column: Series
   unit_column: Units
   observation_attributes:
     - COMMENT_OBS
+    - SOURCE_DETAIL
 ```
 
 ### inputs
