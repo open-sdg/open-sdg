@@ -36,6 +36,8 @@ Note that if you use the SVG format for the images, you do not need to make high
 
 Add the new language in the 'languages' list in your data config (`config_data.yml`) file.
 
+Guidance on this can be found [here](https://open-sdg.readthedocs.io/en/latest/tutorials/add-language/)
+
 ### 4. Translate site pages and posts
 
 Create new versions of any files in the `_pages` and `_posts` folders of your site repository. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
