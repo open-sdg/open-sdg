@@ -1,6 +1,6 @@
 <h1>Site configuration</h1>
 
-In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_config.yml` file.** Alternatively, you can add any/all of these settings to a `site_config.yml` file in your data folder (usually `data/site_config.yml`).
+In addition to the [usual Jekyll configuration options](https://jekyllrb.com/docs/configuration/), there are many options specific to Open SDG. These are detailed below, along with usage examples. **All of these settings go in the `_data/site_config.yml` file.** Alternatively, you can make changes using the site configuration forms. See more [details on the site configuration forms](site-configuration-forms.md).
 
 This document covers the "site configuration", which is distinct from "data configuration". See more [details on data configuration](data-configuration.md).
 
@@ -128,32 +128,57 @@ country:
 _Optional_: This setting can be used to automatically create the goal pages. Without this setting, you will need a file for each goal (per language), in a `_goals` folder.
 
 This setting can contain several (indented) sub-settings:
-
-* `layout`: This can be used to specify which Jekyll layout will be used for the goal pages. You can create and use your own layout, but several layouts are included with Open SDG. These can be found in [the _layouts folder in the repository](https://github.com/open-sdg/open-sdg/tree/master/_layouts). For example, to use the "goal-with-progress.html" layout, you would enter "goal-with-progress" (without the ".html") in this setting. NOTE: This setting is deprecated, because in Open SDG 2.0.0 there will only be one choice of layout.
+* `goal_content_heading`: Text entered here will appear as an H2 heading above any content configured below in 'goals'.
 * `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
-* `goals`: This optional item can include an array of objects, each with a `content` field. Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key. They should be in order of goal number.
+* `goals`: This optional item can include an array of objects, each with can have these optional fields:
+
+    * `goal`: This can specify the goal number. For example: `goal: 1`. This is optional but recommended. If you omit this, then it is your responsibility to make sure that all of the objects in this array are *in order*. In other words, the first object is goal 1, the second object is goal 2, etc.
+    * `heading`: Text entered here will appear as an H1 heading at the top of the goal page. This is optional and overrides the default (eg, 'Goal 1: No Poverty'). This is useful for SEO purposes, and can be plain text or a translation key.
+    * `content`: Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
+    * `content_heading`: Text entered here will appear as an H2 heading above the `content` configured above. Note that this overrides the site-wide `goal_content_heading` option above as well.
 
 ```nohighlight
 create_goals:
-  layout: goal
+  goal_content_heading: About
   previous_next_links: true
   goals:
-    - content: My content for goal 1
+    - heading: My heading for goal 1
+      content: My content for goal 1
     - content: My content for goal 2 with a [link](https://example.com)
+      content_heading: My sub-heading for the content on goal 2
     - content: custom.my_translation_key_for_goal_3
+```
+
+It is recommend that each object in the `goals` section specify the `goal` number of each item. This is preferred because it allows you to have the objects in any order. For example:
+
+```nohighlight
+create_goals:
+  goal_content_heading: About
+  previous_next_links: true
+  goals:
+    - goal: 3
+      content: custom.my_translation_key_for_goal_3
+    - goal: 2
+      content: My content for goal 2 with a [link](https://example.com)
+      content_heading: My sub-heading for the content on goal 2
+    - goal: 1
+      heading: My heading for goal 1
+      content: My content for goal 1
 ```
 
 ### create_indicators
 
-_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. This setting should include another (indented) setting indicating the Jekyll layout to use for the indicators. You can optionally turn on previous/next links as well.
+_Optional_: This setting can be used to automatically create the indicator pages. Without this setting, you will need a file for each indicator (per language), in an `_indicators` folder. So this is highly recommended.
+
+This setting can contain the following (indented) sub-settings:
+* `previous_next_links`: You can set this to `true` to turn on previous/next links on indicator pages, allowing users to "page" through the indicators, directly from one to the next.
+
+Here is an example of usage:
 
 ```nohighlight
 create_indicators:
-  layout: indicator
   previous_next_links: true
 ```
-
-NOTE: The `layout` setting is deprecated, because in Open SDG 2.0.0 there will only be one choice for indicator layout.
 
 ### create_pages
 
@@ -262,6 +287,8 @@ _Optional_: This setting can be used to replace the default decimal separator --
 decimal_separator: ','
 ```
 
+NOTE: This setting is most likely not needed, because Open SDG will automatically take advantage of browsers' ability to format numbers for the current language. You should only use this setting if the automatic behavior is not working for you.
+
 ### disclaimer
 
 _Optional_: This setting controls the content of the disclaimer that appears at the top of each page. If you are not happy with the default ("ALPHA: This is a development website. We welcome your feedback.") then you can use something like the following example configuration:
@@ -290,6 +317,10 @@ disclaimer:
   hidden: true
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of disclaimer functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/disclaimer.PNG)
+
 ### email_contacts
 
 **_Required_**: This setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
@@ -311,6 +342,24 @@ empty_metadata_placeholder: indicator.empty_metadata_placeholder
 
 The above default refers to a translation key which currently translates to "Not available for this indicator" in English.
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of empty metadata placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_metadata_placeholder.png)
+
+### empty_metadata_placeholder_sources
+
+_Optional_: This setting controls the text that displays for any *sources* field which has no content. Note that this setting is not used if `hide_empty_metadata` is set to `true`. If the omitted, the following default is used:
+
+```nohighlight
+empty_metadata_placeholder_sources: indicator.empty_metadata_placeholder_sources
+```
+
+The above default refers to a translation key which currently translates to "Not available for this source" in English.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of empty source placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_source_placeholder.png)
+
 ### environment
 
 **_Required_**: This setting should be either `staging` or `production`. Certain features of the platform, such as data management links, will only appear on `staging`. Typically you will have this set to `staging` in the `_config.yml` file, and set to `production` in the `_config_prod.yml` file.
@@ -326,6 +375,10 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 ```nohighlight
 footer_language_toggle: none
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of footer language toggle functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_language_toggles.png)
 
 ### footer_menu
 
@@ -348,6 +401,10 @@ footer_menu:
 ```
 
 Note that the `path` of an item can be a translation key itself. This is useful if you want the link to go to different URLs depending on what language is active (for example if you have multiple language-specific Twitter accounts).
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of footer menu functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_menu.PNG)
 
 ### frontpage_cards
 
@@ -377,6 +434,10 @@ frontpage_cards:
       etc...
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of frontpage cards functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_cards.png)
+
 ### frontpage_goals_grid
 
 _Optional_: This setting is used on the frontpage. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
@@ -399,6 +460,10 @@ frontpage_introduction_banner:
     title: title goes here
     description: description goes here
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of frontpage introduction banner functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_introduction_banner.png)
 
 ### goal_image_base
 
@@ -436,6 +501,10 @@ goals_page:
 ```
 
 As always, for multilingual support, these settings can refer to translation keys, and the description can include Markdown.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of goals page functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/goals_page.PNG)
 
 ### graph_color_headline
 
@@ -486,6 +555,14 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 ```nohighlight
 header_language_toggle: dropdown
 ```
+
+Here is an example of what the dropdown option looks like on the platform:
+
+![Screenshot of header language toggle dropdown functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_dropdown.png)
+
+Here is an example of what the links option looks like on the platform:
+
+![Screenshot of header language toggle links functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_links.png)
 
 ### hide_empty_metadata
 
@@ -632,6 +709,10 @@ indicator_tabs:
   tab_4: hide
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of header indicator tabs functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/indicator_tabs.PNG)
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
@@ -674,6 +755,10 @@ logos:
     alt: mi texto alternativo
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of logos functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/logos.PNG)
+
 ### map_layers
 
 _Optional_: This setting configures the layers that will be visible on maps on indicator pages. Each layer is a set of boundaries. For example, one layer might be for the province boundaries, and another layer might be for the district boundaries. For more information on this setting, see the [Maps guidance](maps.md).
@@ -681,6 +766,38 @@ _Optional_: This setting configures the layers that will be visible on maps on i
 ### map_options
 
 _Optional_: This setting configures general options for maps on indicator pages. For more information on this setting, see the [Maps guidance](maps.md).
+
+### menu
+
+**_Required_**: This setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
+
+```nohighlight
+menu:
+  - path: reporting-status/
+    translation_key: menu.reporting_status
+  - path: about/
+    translation_key: menu.about
+  - path: faq/
+    translation_key: menu.faq
+```
+
+Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "about/" and "faq/" under a "More information" dropdown:
+
+```nohighlight
+menu:
+  - path: reporting-status/
+    translation_key: menu.reporting_status
+  - translation_key: More information
+    dropdown:
+      - path: faq/
+        translation_key: menu.faq
+      - path: about/
+        translation_key: menu.about
+```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of menu functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/menu.PNG)
 
 ### metadata_edit_url
 
@@ -742,39 +859,83 @@ metadata_tabs:
     placeholder: There are no publications available for this indicator
 ```
 
-### menu
+Here is an example of what this looks like on the platform:
 
-**_Required_**: This setting controls the main navigation menu for the platform. It should contain a list of menu items, each containing a `path` and a [translation key](translation.md).
+![Screenshot of metadata tabs functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/metadata_tabs.PNG)
 
-```nohighlight
-menu:
-  - path: reporting-status/
-    translation_key: menu.reporting_status
-  - path: about/
-    translation_key: menu.about
-  - path: faq/
-    translation_key: menu.faq
-```
+### meta_tags
 
-Menu items can also be turned into dropdowns by putting additional menu items under a `dropdown` setting. For example, this would move "about/" and "faq/" under a "More information" dropdown:
+_Optional_: This setting can be used to set [meta tags](https://www.w3schools.com/tags/tag_meta.asp) on any of the paths within the site. It should contain a list of items, each containing a `path`, a `name`, and `content`.
 
 ```nohighlight
-menu:
-  - path: reporting-status/
-    translation_key: menu.reporting_status
-  - translation_key: More information
-    dropdown:
-      - path: faq/
-        translation_key: menu.faq
-      - path: about/
-        translation_key: menu.about
+meta_tags:
+  - path: about
+    name: description
+    content: My description text for the About page
+  - path: '1'
+    name: keywords
+    content: my list of keywords for Goal 1
 ```
+
+Note that the homepage should have a `path` of `''`, eg:
+
+```nohighlight
+meta_tags:
+  - path: ''
+    name: description
+    content: My description text for the homepage
+```
+
+If your platform is multilingual, note that the `content` can be a [translation key](translation.md), and the `path` should not contain any language abbreviations.
 
 ### news
 
 _Optional_: This setting can be used to control the behavior of the `news` and `post` layouts. The available settings are:
 
 * `category_links`: Whether you would like the `categories` of posts to generate links to dedicated category pages. Default is `true`, but set to `false` to disable category links.
+
+### observation_attributes
+
+_Optional_: This setting controls the data columns that should be considered "observation attributes", as well as the labels that should be used for these columns when displaying their values in the footer beneath charts and tables.
+
+Here is a recommended example that would set "COMMENT_OBS" as an observation attribute:
+
+```
+observation_attributes:
+  - field: COMMENT_OBS
+    label: ''
+```
+
+As you can see in the defaults above, the labels can be empty, in which case the label is not displayed. They can also be translation keys.
+
+The "field" above is what is expected to be the column name in the data (eg, the CSV file). The "label" is what you would like to appear in the footer as the label (if anything).
+
+For example, given the following CSV data and the defaults above:
+
+Year | Units | COMMENT_OBS | Value
+--- | --- | --- | ---
+2020 | Percent | | 50
+2021 | Percent | | 60
+2020 | Total | estimate | 5000
+2021 | Total | estimate | 6000
+
+The footnote "estimate" would be associated with the observation values 5000 and 6000.
+
+By contrast, setting a label on the observation attribute will prepend that label in the footnotes. For example, using these settings instead:
+
+```
+observation_attributes:
+  - field: COMMENT_OBS
+    label: Comment
+```
+
+...would result in the footnote "Comment: estimate" being associated with the values 5000 and 6000.
+
+> NOTE: For full support (including on maps) a corresponding change should also be made in the data configuration in the "indicator_options" setting. See [more details on the "indicator_options" data configuration setting](data-configuration.md#indicator_options).
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of observation attributes functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/observation_attributes.PNG)
 
 ### plugins
 
@@ -788,34 +949,94 @@ plugins:
 
 ### progress_status
 
-_Optional_: This setting controls certain aspects of the progress status functionality. The available settings are:
+_Optional_: This setting controls certain aspects of the progress status functionality. 
+
+For the progress status icons to display, you will need to include the relevant setting for progress_status in both the site and data configuration files. The site configuration settings for progress_status sets up the desired options for reporting progress, including the category names and images to display.
+
+The available settings in the site configuration are:
 
 * `status_heading`: Controls the heading that describes the progress status, whenever it appears.
+* `status_help`: Controls the help text that displays as a header above the progress column. This should describe what the progress types are intended to convey. This defaults to: "How are we doing against the 2030 targets?"
 * `status_types`: A list of progress status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'target_achieved').
     * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved').
-    * `image`: The internal path to the image to use (if any) for this progress status.
+    * `image`: The internal path to the image to use (if any) for this progress status. We have default images available to use by including the file names in the below examples (links to Open SDG image files), however you can choose any image to represent each of your reporting progress categories and add these to your assets/img folder in your own site repository. You will then need to change the file name to reflect your new images.
     * `alt`: An alt tag for the image above.
 
-Here is an example of using these settings:
+Here is the default example of these settings:
 
 ```yaml
 progress_status:
-    status_heading: heading goes here
-    status_types:
-      - value: not_available
-        label: status.progress_not_available
-        image: assets/img/progress/not-available.png
-        alt: status.progress_not_available
-      - value: target_achieved
-        label: status.progress_target_achieved
-        image: assets/img/progress/target-achieved.png
-        alt: status.progress_target_achieved
+  status_heading: ''
+  status_help: ''
+  status_types:
+    - value: not_available
+      label: status.progress_not_available
+      image: assets/img/progress/not-available.png
+      alt: status.progress_not_available
+    - value: target_achieved
+      label: status.progress_target_achieved
+      image: assets/img/progress/target-achieved.png
+      alt: status.progress_target_achieved
+    - value: challenges_remain
+      label: status.progress_challenges_remain
+      image: assets/img/progress/challenges-remain.png
+      alt: status.progress_challenges_remain
+    - value: approaching_target
+      label: status.progress_approaching_target
+      image: assets/img/progress/approaching-target.png
+      alt: status.progress_approaching_target
 ```
 
 As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
 
-For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
+For the relevant indicators, you will need to specify the progress_status in the indicator configuration - see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status) for how to do this. 
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of progress status functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progress_status.PNG)
+
+### progressive_web_app
+
+_Optional_: This setting can be used to make the platform a
+[progressive web app](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps),
+which users can add to their mobile device's home screen and
+use while offline. The available settings are:
+
+* `enabled`: Whether or not this platform will be a progressive web app
+* `name`: The full name of the app, to be displayed on the splash screen
+* `short_name`: The short name of the app, to be displayed under the homescreen icon
+* `precaching`: Whether all indicator and goal pages should be precached when the app is installed
+
+```nohighlight
+progressive_web_app:
+  enabled: true
+  name: Indicators For The Sustainable Development Goals - Mexico
+  short_name: SDG Mexico
+  precaching: false
+```
+
+Here is an example of how this functionality appears in a web browser on your phone:
+
+![Screenshot of progressive web app functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progressive_web_app.png)
+
+### proxy_indicators
+
+_Optional_: This setting can be used to override the default label and description that are displayed
+for [proxy indicators](indicator-configuration.md#proxy). The available settings are:
+
+* `label`: The label to display when flagging a proxy indicator. Defaults to 'Proxy'.
+* `description`: The description to display at the top of indicator pages, explaining what 'Proxy' means.
+
+```nohighlight
+proxy_indicators:
+  label: My alternate proxy label
+  description: My alternate proxy description
+```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of proxy indicators functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/proxy_indicators.PNG)
 
 ### remote_data_prefix
 
@@ -851,6 +1072,7 @@ _Optional_: This setting controls certain aspects of the reporting status page. 
 
 * `title`: Controls the title of the reporting status page. Defaults to "Reporting status".
 * `description`: Controls the introductory text under the title. If omitted there will be no introductory text.
+* `disaggregation_indicator_count_label`: An alternative label to use for the indicator count on the disaggregation tab, to be displayed after a number. For example, if set to `indicators in scope`, then it would display something like `12 indicators in scope` in the disaggregation status tab. The default is `indicators`.
 * `disaggregation_tabs`: Whether or not to display disaggregation status tabs. If omitted, this defaults to false. If you enable this setting, you should also use "expected_disaggregations" in your indicator configuration, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
 * `status_types`: A list of reporting status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'complete').
@@ -863,6 +1085,7 @@ Here is an example of using these settings:
 reporting_status:
     title: title goes here
     description: description goes here
+    disaggregation_indicator_count_label: indicators in scope
     disaggregation_tabs: true
     status_types:
       - value: notstarted
@@ -877,6 +1100,10 @@ reporting_status:
 ```
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of reporting status functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/reporting_status.PNG)
 
 ### repository_url_data
 
@@ -987,6 +1214,14 @@ Year | Units | COMMENT_TS | Value
 2020 | Total | My comment for totals | 5000
 2021 | Total | My comment for totals | 6000
 
+### use_new_config_forms
+
+_Optional_: This setting, if true, will enable a new version of the site configuration forms. This new version is experimental but will eventually be the default for configuration forms.
+
+```
+use_new_config_forms: true
+```
+
 ### validate_indicator_config
 
 _Optional_: This setting, if true, will run a validation of each indicator's configuration during the site build. This defaults to `false`.
@@ -998,3 +1233,7 @@ _Optional_: This setting, if true, will run a validation of the site configurati
 ### x_axis_label
 
 _Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this is also available on the configuration of individual indicators, where it will override this setting.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of x axis label functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/x_axis_label.PNG)

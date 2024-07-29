@@ -36,3 +36,8 @@ Feature: Series
     And I wait 3 seconds
     And I click on "the fourth series"
     Then I should see "Title from series column" in the "chart title" element
+
+  Scenario: The chart has the correct number of legend items even when series and start values are used
+    Given I am on "/4-3-1"
+    And I wait 3 seconds
+    Then I should see 2 "chart legend item" elements

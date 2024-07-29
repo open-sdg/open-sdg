@@ -7,6 +7,7 @@
 @import "mixins/noselect";
 @import "mixins/post_categories";
 @import "mixins/preserve_original_colors";
+@import "mixins/buttons";
 @import "mixins/search_bar";
 @import "base/no_javascript";
 @import "base/screenreaders";
@@ -47,6 +48,7 @@
 @import "components/comparison_toggle";
 @import "components/indicator_progress_status";
 @import "components/indicator_tags";
+@import "components/proxy_indicators";
 @import "components/indicator_reporting_status";
 @import "components/previous_next_buttons";
 @import "components/metadata";
@@ -58,13 +60,14 @@
 @import "layouts/default";
 @import "layouts/goal";
 @import "layouts/indicator";
+@import "layouts/page";
 @import "layouts/reporting_status";
 @import "layouts/goals";
 @import "layouts/config_builder";
+@import "layouts/config_builder_2";
 @import "components/maps";
 @import "components/cookies";
 @import "components/notices";
-@import "layouts/config_bulder";
 @import "layouts/data_editor";
 @import "layouts/news";
 @import "layouts/page-not-found";

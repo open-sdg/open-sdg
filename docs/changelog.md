@@ -1,5 +1,76 @@
 <h1>Change Log</h1>
 
+## 2.3.0
+
+* Design: Always limit width of disagg controls on map #2082
+* Bugfix: High contrast fixes for scrolled tables #2081
+* Feature: Do not use starting values when changing series #2076
+* Feature: Only use valid start values for maps #2069
+* Feature: Ensure checkboxes don't stay checked when switching units #2068
+* Bugfix: Screenreader statuses for switching unit and series #2061
+* Bugfix: Additional context for screenreaders when only 1 source #2057
+* Bugfix: Use role=button in several places #2056
+* Bugfix: Semantic markup for search result breadcrumbs #2055
+* Feature: Observation attributes #2052
+* Feature: Allow changing the label of the indicator count on disagg status tab #2036
+* Feature: Add series and unit to chart/table CSV downloads #2035
+* Feature: Indicator iframes #2025
+* Bugfix: Translate country name in table header #2024
+* Feature: Sticky header and first column on data tables #2016
+* Bugfix: Fixes for chart.js annotations #1996, #2066
+* Feature: Optional new design for site configuration page #1970
+
+## 2.2.0
+
+* Bugfix: Fix reference to map timedimension nezasa dependency #1962
+* Design: SDG image on reporting status overall row #1960
+* Bugfix: Fix for "Edit data" indicator form #1945
+* Feature: Proxy indicators feature #1944
+* Feature: Year range per disaggregation #1930
+* Bugfix: Use data_start_values for maps #1929
+* Feature: More details on custom map colors and support for functions #1924
+* Feature: Double-size chart image downloads #1898
+* Feature: Meta tag functionality #1892
+* Feature: Custom headings and subheadings for goal pages #1891
+* Bugfix: Use reporting status label in site configuration #1867
+
+## 2.1.0
+
+* Bugfix: Map search role removal #1857
+* Feature: Use new site config/default for empty metadata placeholder for sources #1856
+* Design: Focus styling for goal icon in indicator banner #1855
+* Design: Max width for map disaggregation on desktop #1854
+* Bugfix: Search suggestion stem fix #1853
+* Bugfix: Contrast fixes for data/config forms #1844
+* Design: Focus outline fix for goal icons on the reporting status page #1842
+* Feature: Use more fuzzy searching for maps #1839
+* Bugfix: Map disaggregation: name the function and the flag differently #1837
+* Feature: Pass a second parameter to dataRounding which includes indicator id #1831
+* Design: More margin above H2 when it is in content of 'page' and 'post' layouts #1819
+* Bugfix: Use raw value for chart tooltip #1813
+* Design: Remove play button from maps #1812
+* Design: Horizontal rule thickness fix on goal pages #1809
+* Feature: Year-slider starts with the most recent year #1808, #1830
+* Feature: Support for goal_content_heading site config #1803
+* Design: UX improvements for config and data form headers #1802
+* Design: Updates to the indicator progress on goal pages #1801
+* Design: Clarify button labels #1799
+* Security: Lodash and jQuery upgrades #1798
+* Design: Double focus outline (black in addition to yellow) #1797
+* Bugfix: Better pruning of map disaggregations to hide region columns #1795
+* Feature: Support local hrefs in metadata links #1794
+* Feature: Translations in leafletDisaggregationControls #1791
+* Bugfix: Remove extraneous markup #1784
+* Bugfix: Fix for metadata content overflow on high magnification #1777
+* Feature: Related indicators, publications, and sources #1776
+* Feature: Placeholder for empty metadata #1775
+* Design: Update data download card to use new translations #1774
+* Bugfix: Maintain focus when changing series #1765
+* Bugfix: Refresh keyboard navigation plugin on chart update #1762
+* Feature: Wrap Y axis labels to 40 characters per line #1739
+* Bugfix: Map series/unit behaviors #1724
+* Bugfix: High contrast cookie modal #1719
+
 ## 2.0.0
 
 * Bugfix: Fix for rescaler plugin when changing series #1715

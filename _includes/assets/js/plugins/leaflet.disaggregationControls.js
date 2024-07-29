@@ -23,16 +23,23 @@
             this.form = null;
             this.currentDisaggregation = 0;
             this.displayedDisaggregation = 0;
+            this.needsMapUpdate = false;
             this.seriesColumn = '{{ site.data_fields.series | default: "Series" }}';
             this.unitsColumn = '{{ site.data_fields.units | default: "Units" }}';
             this.displayForm = {{ site.map_options.disaggregation_controls | jsonify }};
-            this.updateDisaggregations();
+            this.updateDisaggregations(plugin.startValues);
         },
 
-        updateDisaggregations: function() {
+        updateDisaggregations: function(startValues) {
             // TODO: Not all of this needs to be done
             // at every update.
-            this.disaggregations = this.getVisibleDisaggregations();
+            var features = this.getFeatures();
+            if (startValues && startValues.length > 0) {
+                this.currentDisaggregation = this.getStartingDisaggregation(features, startValues);
+                this.displayedDisaggregation = this.currentDisaggregation;
+                this.needsMapUpdate = true;
+            }
+            this.disaggregations = this.getVisibleDisaggregations(features);
             this.fieldsInOrder = this.getFieldsInOrder();
             this.valuesInOrder = this.getValuesInOrder();
             this.allSeries = this.getAllSeries();
@@ -41,11 +48,53 @@
             this.hasSeries = (this.allSeries.length > 0);
             this.hasUnits = (this.allUnits.length > 0);
             this.hasDisaggregations = this.hasDissagregationsWithValues();
-            this.hasDisaggregationsWithMultipleValues = this.hasDisaggregationsWithMultipleValues();
+            this.hasDisaggregationsWithMultipleValuesFlag = this.hasDisaggregationsWithMultipleValues();
         },
 
-        getVisibleDisaggregations: function() {
-            var features = this.plugin.getVisibleLayers().toGeoJSON().features;
+        getFeatures: function() {
+            return this.plugin.getVisibleLayers().toGeoJSON().features.filter(function(feature) {
+                return typeof feature.properties.disaggregations !== 'undefined';
+            });
+        },
+
+        getStartingDisaggregation: function(features, startValues) {
+            if (features.length === 0) {
+                return;
+            }
+            var disaggregations = features[0].properties.disaggregations,
+                fields = Object.keys(disaggregations[0]),
+                validStartValues = startValues.filter(function(startValue) {
+                    return fields.includes(startValue.field);
+                }),
+                weighted = _.sortBy(disaggregations.map(function(disaggregation, index) {
+                    var disaggClone = Object.assign({}, disaggregation);
+                    disaggClone.emptyFields = 0;
+                    disaggClone.index = index;
+                    fields.forEach(function(field) {
+                        if (disaggClone[field] == '') {
+                            disaggClone.emptyFields += 1;
+                        }
+                    });
+                    return disaggClone;
+                }), 'emptyFields').reverse(),
+                match = weighted.find(function(disaggregation) {
+                    return _.every(validStartValues, function(startValue) {
+                        return disaggregation[startValue.field] === startValue.value;
+                    });
+                });
+            if (match) {
+                return match.index;
+            }
+            else {
+                return 0;
+            }
+        },
+
+        getVisibleDisaggregations: function(features) {
+            if (features.length === 0) {
+                return [];
+            }
+
             var disaggregations = features[0].properties.disaggregations;
             // The purpose of the rest of this function is to identiy
             // and remove any "region columns" - ie, any columns that
@@ -215,6 +264,9 @@
                     input.checked = (series === that.getCurrentSeries()) ? 'checked' : '';
                     var label = L.DomUtil.create('label', 'disaggregation-label');
                     label.innerHTML = series;
+                    if (that.plugin.proxySerieses.includes(series)) {
+                        label.innerHTML += ' ' + that.plugin.viewHelpers.PROXY_PILL;
+                    }
                     label.prepend(input);
                     fieldset.append(label);
                     input.addEventListener('change', function(e) {
@@ -297,18 +349,24 @@
                 that.updateForm();
             });
             applyButton.addEventListener('click', function(e) {
-                that.plugin.currentDisaggregation = that.currentDisaggregation;
-                that.plugin.updatePrecision();
-                that.plugin.setColorScale();
-                that.plugin.updateColors();
-                that.plugin.updateTooltips();
-                that.plugin.selectionLegend.resetSwatches();
-                that.plugin.selectionLegend.update();
-                that.plugin.updateTitle();
-                that.plugin.updateFooterFields();
+                that.updateMap();
                 that.updateList();
                 $('.disaggregation-form-outer').toggle();
             });
+        },
+
+        updateMap: function() {
+            this.needsMapUpdate = false;
+            this.plugin.currentDisaggregation = this.currentDisaggregation;
+            this.plugin.updatePrecision();
+            this.plugin.setColorScale();
+            this.plugin.updateColors();
+            this.plugin.updateTooltips();
+            this.plugin.selectionLegend.resetSwatches();
+            this.plugin.selectionLegend.update();
+            this.plugin.updateTitle();
+            this.plugin.updateFooterFields();
+            this.plugin.replaceYearSlider();
         },
 
         onAdd: function () {
@@ -325,7 +383,7 @@
                     numUnits = this.allUnits.length,
                     displayForm = this.displayForm;
 
-                if (displayForm && (this.hasDisaggregationsWithMultipleValues || (numSeries > 1 || numUnits > 1))) {
+                if (displayForm && (this.hasDisaggregationsWithMultipleValuesFlag || (numSeries > 1 || numUnits > 1))) {
 
                     var button = L.DomUtil.create('button', 'disaggregation-button');
                     button.innerHTML = translations.indicator.change_breakdowns;
@@ -393,6 +451,11 @@
                 validFields = Object.keys(disaggregations[0]),
                 invalidFields = [this.seriesColumn, this.unitsColumn],
                 allDisaggregations = [];
+            if (this.plugin.configObsAttributes && this.plugin.configObsAttributes.length > 0) {
+                this.plugin.configObsAttributes.forEach(function(obsAttribute) {
+                    invalidFields.push(obsAttribute.field);
+                });
+            }
 
             this.fieldsInOrder.forEach(function(field) {
                 if (!(invalidFields.includes(field)) && validFields.includes(field)) {
@@ -403,6 +466,9 @@
                                 return disaggregation[field];
                             })),
                         };
+                    if (typeof sortedValues === 'undefined') {
+                        return;
+                    }
                     item.values.sort(function(a, b) {
                         return sortedValues.indexOf(a) - sortedValues.indexOf(b);
                     });

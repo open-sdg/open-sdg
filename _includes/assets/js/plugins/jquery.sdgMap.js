@@ -73,6 +73,13 @@
           break;
         }
       }
+      if (overrideColorRange && typeof colorRange === 'function') {
+        var indicatorId = options.indicatorId.replace('indicator_', ''),
+            indicatorIdParts = indicatorId.split('-'),
+            goalId = (indicatorIdParts.length > 0) ? indicatorIdParts[0] : null,
+            indicatorIdDots = indicatorIdParts.join('.');
+        colorRange = colorRange(indicatorIdDots, goalId);
+      }
       options.mapOptions.colorRange = (overrideColorRange) ? colorRange : defaults.colorRange;
     }
 
@@ -87,6 +94,11 @@
     this.viewHelpers = options.viewHelpers;
     this.modelHelpers = options.modelHelpers;
     this.chartTitles = options.chartTitles;
+    this.proxy = options.proxy;
+    this.proxySerieses = options.proxySerieses;
+    this.startValues = options.startValues;
+    this.configObsAttributes = {{ site.observation_attributes | jsonify }};
+    this.allObservationAttributes = options.allObservationAttributes;
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -131,7 +143,10 @@
         newTitle = this.modelHelpers.getChartTitle(currentTitle, this.chartTitles, currentUnit, currentSeries);
       }
       if (newTitle) {
-        $('#map-heading').text(newTitle);
+        if (this.proxy === 'proxy' || this.proxySerieses.includes(currentSeries)) {
+            newTitle += ' ' + this.viewHelpers.PROXY_PILL;
+        }
+        $('#map-heading').html(newTitle);
       }
     },
 
@@ -165,9 +180,27 @@
     getTooltipContent: function(feature) {
       var tooltipContent = feature.properties.name;
       var tooltipData = this.getData(feature.properties);
+      var plugin = this;
       if (typeof tooltipData === 'number') {
         tooltipContent += ': ' + this.alterData(tooltipData);
       }
+      if (feature.properties.observation_attributes) {
+        var obsAtts = feature.properties.observation_attributes[plugin.currentDisaggregation][plugin.currentYear],
+            footnoteNumbers = [];
+        if (obsAtts) {
+          Object.keys(obsAtts).forEach(function(field) {
+            if (obsAtts[field]) {
+              var hashKey = field + '|' + obsAtts[field];
+              var footnoteNumber = plugin.allObservationAttributes[hashKey].footnoteNumber;
+              footnoteNumbers.push(plugin.viewHelpers.getObservationAttributeFootnoteSymbol(footnoteNumber));
+            }
+          });
+          if (footnoteNumbers.length > 0) {
+            tooltipContent += ' ' + footnoteNumbers.join(' ');
+          }
+        }
+      }
+
       return tooltipContent;
     },
 
@@ -266,11 +299,21 @@
       opensdg.dataDisplayAlterations.forEach(function(callback) {
         value = callback(value);
       });
-      if (this._precision || this._precision === 0) {
-        value = Number.parseFloat(value).toFixed(this._precision);
+      if (typeof value !== 'number') {
+        if (this._precision || this._precision === 0) {
+          value = Number.parseFloat(value).toFixed(this._precision);
+        }
+        if (this._decimalSeparator) {
+          value = value.toString().replace('.', this._decimalSeparator);
+        }
       }
-      if (this._decimalSeparator) {
-        value = value.toString().replace('.', this._decimalSeparator);
+      else {
+        var localeOpts = {};
+        if (this._precision || this._precision === 0) {
+            localeOpts.minimumFractionDigits = this._precision;
+            localeOpts.maximumFractionDigits = this._precision;
+        }
+        value = value.toLocaleString(opensdg.language, localeOpts);
       }
       return value;
     },
@@ -281,7 +324,7 @@
       if (props.values && props.values.length && this.currentDisaggregation < props.values.length) {
         var value = props.values[this.currentDisaggregation][this.currentYear];
         if (typeof value === 'number') {
-          ret = opensdg.dataRounding(value);
+          ret = opensdg.dataRounding(value, { indicatorId: this.indicatorId });
         }
       }
       return ret;
@@ -309,6 +352,30 @@
     getGeoJsonUrl: function(subfolder) {
       var fileName = this.indicatorId + '.geojson';
       return [opensdg.remoteDataBaseUrl, 'geojson', subfolder, fileName].join('/');
+    },
+
+    getYearSlider: function() {
+      var plugin = this,
+          years = plugin.years[plugin.currentDisaggregation];
+      return L.Control.yearSlider({
+        years: years,
+        yearChangeCallback: function(e) {
+          plugin.currentYear = years[e.target._currentTimeIndex];
+          plugin.updateColors();
+          plugin.updateTooltips();
+          plugin.selectionLegend.update();
+        }
+      });
+    },
+
+    replaceYearSlider: function() {
+      var newSlider = this.getYearSlider();
+      var oldSlider = this.yearSlider;
+      this.map.addControl(newSlider);
+      this.map.removeControl(oldSlider);
+      this.yearSlider = newSlider;
+      $(this.yearSlider.getContainer()).insertAfter($(this.disaggregationControls.getContainer()));
+      this.yearSlider._timeDimension.setCurrentTimeIndex(this.yearSlider._timeDimension.getCurrentTimeIndex());
     },
 
     // Initialize the map itself.
@@ -428,6 +495,7 @@
             .attr('download', '')
             .attr('class', 'btn btn-primary btn-download')
             .attr('title', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
+            .attr('aria-label', translations.indicator.download_geojson_title + ' - ' + downloadLabel)
             .text(translations.indicator.download_geojson + ' - ' + downloadLabel);
           $(plugin.element).parent().append(downloadButton);
 
@@ -444,7 +512,10 @@
                 var validValues = validEntries.map(function(entry) {
                   return entry[1];
                 });
-                availableYears = availableYears.concat(validKeys);
+                if (availableYears.length <= valueIndex) {
+                  availableYears.push([]);
+                }
+                availableYears[valueIndex] = availableYears[valueIndex].concat(validKeys);
                 if (minimumValues.length <= valueIndex) {
                   minimumValues.push([]);
                   maximumValues.push([]);
@@ -469,28 +540,35 @@
         }
         plugin.setColorScale();
 
-        plugin.years = _.uniq(availableYears).sort();
-        plugin.currentYear = plugin.years[0];
+        plugin.years = availableYears.map(function(yearsForIndex) {
+          return _.uniq(yearsForIndex).sort();
+        });
+        //Start the map with the most recent year
+        plugin.currentYear = plugin.years[plugin.currentDisaggregation].slice(-1)[0];
+        plugin.currentYear = plugin.years.slice(-1)[0];
 
         // And we can now update the colors.
         plugin.updateColors();
 
         // Add zoom control.
-        plugin.map.addControl(L.Control.zoomHome());
+        plugin.zoomHome = L.Control.zoomHome({
+          zoomInTitle: translations.indicator.map_zoom_in,
+          zoomOutTitle: translations.indicator.map_zoom_out,
+          zoomHomeTitle: translations.indicator.map_zoom_home,
+        });
+        plugin.map.addControl(plugin.zoomHome);
 
         // Add full-screen functionality.
-        plugin.map.addControl(new L.Control.FullscreenAccessible());
+        plugin.map.addControl(new L.Control.FullscreenAccessible({
+          title: {
+              'false': translations.indicator.map_fullscreen,
+              'true': translations.indicator.map_fullscreen_exit,
+          },
+        }));
 
         // Add the year slider.
-        plugin.map.addControl(L.Control.yearSlider({
-          years: plugin.years,
-          yearChangeCallback: function(e) {
-            plugin.currentYear = plugin.years[e.target._currentTimeIndex];
-            plugin.updateColors();
-            plugin.updateTooltips();
-            plugin.selectionLegend.update();
-          }
-        }));
+        plugin.yearSlider = plugin.getYearSlider();
+        plugin.map.addControl(plugin.yearSlider);
 
         // Add the selection legend.
         plugin.selectionLegend = L.Control.selectionLegend(plugin);
@@ -499,9 +577,13 @@
         // Add the disaggregation controls.
         plugin.disaggregationControls = L.Control.disaggregationControls(plugin);
         plugin.map.addControl(plugin.disaggregationControls);
-        plugin.updateTitle();
-        plugin.updateFooterFields();
-        plugin.updatePrecision();
+        if (plugin.disaggregationControls.needsMapUpdate) {
+          plugin.disaggregationControls.updateMap();
+        }
+        else {
+          plugin.updateTitle();
+          plugin.updatePrecision();
+        }
 
         // Add the search feature.
         plugin.searchControl = new L.Control.SearchAccessible({
@@ -604,6 +686,8 @@
         plugin.updateTitle();
         plugin.updateFooterFields();
         plugin.updatePrecision();
+        // The year slider does not seem to be correct unless we refresh it here.
+        plugin.yearSlider._timeDimension.setCurrentTimeIndex(plugin.yearSlider._timeDimension.getCurrentTimeIndex());
         // Delay other things to give time for browser to do stuff.
         setTimeout(function() {
           $('#map #loader-container').hide();
@@ -612,6 +696,8 @@
           plugin.map.invalidateSize();
           // Also zoom in/out as needed.
           plugin.map.fitBounds(plugin.getVisibleLayers().getBounds());
+          // Set the home button to return to that zoom.
+          plugin.zoomHome.setHomeBounds(plugin.getVisibleLayers().getBounds());
           // Limit the panning to what we care about.
           plugin.map.setMaxBounds(plugin.getVisibleLayers().getBounds());
           // Make sure the info pane is not too wide for the map.

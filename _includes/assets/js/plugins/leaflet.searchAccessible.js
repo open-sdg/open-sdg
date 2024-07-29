@@ -16,6 +16,7 @@
       var container = L.Control.Search.prototype.onAdd.call(this, map);
 
       this._input.setAttribute('aria-label', this._input.placeholder);
+      this._input.removeAttribute('role');
       this._tooltip.setAttribute('aria-label', this._input.placeholder);
 
       this._button.setAttribute('role', 'button');
@@ -23,6 +24,7 @@
       this._button.innerHTML = '<i class="fa fa-search" aria-hidden="true"></i>';
 
       this._cancel.setAttribute('role', 'button');
+      this._cancel.title = translations.indicator.map_search_cancel;
       this._cancel.setAttribute('aria-label', this._cancel.title);
       this._cancel.innerHTML = '<i class="fa fa-close" aria-hidden="true"></i>';
 
@@ -101,6 +103,18 @@
       // Prevent the enter key from immediately collapsing the search bar.
       if ((typeof e === 'undefined' || e.type === 'keyup') && this._input.value === '') {
         return;
+      }
+      if (this._tooltip.childNodes.length > 0 && this._input.value !== '') {
+        // This is a workaround for the bug where non-exact matches
+        // do not successfully search. See this Github issue:
+        // https://github.com/stefanocudini/leaflet-search/issues/264
+        var firstSuggestion = this._tooltip.childNodes[0].innerText;
+        var firstSuggestionLower = firstSuggestion.toLowerCase();
+        var userInput = this._input.value;
+        var userInputLower = userInput.toLowerCase();
+        if (firstSuggestion !== userInput && firstSuggestionLower.includes(userInputLower)) {
+          this._input.value = firstSuggestion;
+        }
       }
       L.Control.Search.prototype._handleSubmit.call(this, e);
     },

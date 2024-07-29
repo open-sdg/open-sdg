@@ -9,7 +9,9 @@
     <div id="selectionsChart">
       <figure role="group">
         <div id="chart-canvas">
-          <h4 id="chart-heading" class="chart-title">{{ graph_title }}</h4>
+          <h4 id="chart-heading" class="chart-title">
+            {{ graph_title }}
+          </h4>
           <div id="chart" class="plot-container">
             {% include components/charts/canvas.html %}
           </div>
@@ -18,9 +20,13 @@
         </div>
       </figure>
       <div id="chartSelectionDownload" class="clearfix">
-        <button id="btnSave" title="{{ page.t.indicator.download_chart_image_title }}" class='btn btn-primary btn-download'>
+        <button
+          id="btnSave"
+          title="{{ page.t.indicator.download_chart_image_title }}"
+          aria-label="{{ page.t.indicator.download_chart_image_title }}"
+          class='btn btn-primary btn-download'>
           {{ page.t.indicator.download_chart_image }}
-        </button><!-- 
+        </button><!--
    --></div>
     </div>
 

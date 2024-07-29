@@ -18,10 +18,25 @@
         background-color: #f5f5f5;
         padding: 20px;
         #button_holder {
-            text-align: right;
-            button {
+            .config-download-button {
+                margin-top: 10px;
+                margin-bottom: 0;
+            }
+            .config-repository-button {
+                margin-top: 10px;
+            }
+            margin-top: 10px;
+            @media only screen and (min-width: 768px) {
                 margin-top: 0;
-                margin-bottom: 10px;
+                text-align: right;
+                .config-repository-button {
+                    margin-left: 10px;
+                }
+            }
+            @media only screen and (min-width: 1200px) {
+                .config-download-button, .config-repository-button {
+                    margin-top: 0;
+                }
             }
         }
     }
@@ -98,6 +113,17 @@
                     color: $color-dark-highContrast;
                 }
             }
+        }
+    }
+}
+
+body.contrast-high.layout-config-builder {
+    .config-widgets {
+        background-color: $color-dark-highContrast;
+    }
+    .config-repository-button {
+        span {
+            color: $color-dark-highContrast;
         }
     }
 }

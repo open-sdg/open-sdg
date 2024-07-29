@@ -52,3 +52,12 @@ Feature: Indicator
 
   Scenario: Indicators can display a free form blurb at the top.
     Then I should see "This is the page content in English."
+
+  Scenario: Indicators get an iframe-friendly version.
+    And I am on "/1-1-1-iframe"
+    Then I should see "This is the page content in English."
+
+  Scenario: Country name is translated in table header.
+    And I am on "/1-2-1"
+    And I click on "the Table tab"
+    Then I should see "Australia"

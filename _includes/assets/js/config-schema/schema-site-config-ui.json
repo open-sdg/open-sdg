@@ -1,0 +1,1190 @@
+{
+    "type": "Categorization",
+    "elements": [
+        {
+            "type": "Category",
+            "label": "Content",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Disclaimer",
+                    "documentationKey": "disclaimer",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/disclaimer/properties/phase"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/disclaimer/properties/message",
+                            "options": {
+                                "multi": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/disclaimer/properties/hidden",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "News",
+                    "documentationKey": "news",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/news/properties/category_links",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Logos",
+                    "documentationKey": "logos",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/logos",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/src"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/alt",
+                                            "options": {
+                                                "multi": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Languages",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Languages",
+                    "documentationKey": "languages",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/languages"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Languages public",
+                    "documentationKey": "languages_public",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/languages_public",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language_public"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Header language toggle",
+                    "documentationKey": "header_language_toggle",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/header_language_toggle"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Footer language toggle",
+                    "documentationKey": "footer_language_toggle",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/footer_language_toggle"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Date formats",
+                    "documentationKey": "date_formats",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/date_formats"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Status",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Reporting status",
+                    "documentationKey": "reporting_status",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/description"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/disaggregation_indicator_count_label"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/disaggregation_tabs",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/reporting_status/properties/status_types",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/value"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/label"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/hide_on_goal_pages",
+                                            "options": {
+                                                "toggle": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Progress status",
+                    "description": "This setting is used in the 'goal-with-progress' layout. It controls the behavior of progress status functionality.",
+                    "documentationKey": "progress_status",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progress_status/properties/status_heading"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progress_status/properties/status_help"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/reporting_status/properties/status_types"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Frontpage",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Frontpage introduction banner",
+                    "description": "This setting is only used in the frontpage layout. It can display a title and description in a banner at the top of the frontpage.",
+                    "documentationKey": "frontpage_introduction_banner",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_introduction_banner/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_introduction_banner/properties/description",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Frontpage goals grid",
+                    "description": "This setting is only used in the frontpage layout. It can display a title and description above the grid of goal tiles.",
+                    "documentationKey": "frontpage_goals_grid",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_goals_grid/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/frontpage_goals_grid/properties/description",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Frontpage cards",
+                    "description": "This setting is only used in the frontpage layout. It can display any number of 'cards' in 3-column rows, beneath the grid of goal tiles.",
+                    "documentationKey": "frontpage_cards",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/frontpage_cards",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/title"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/include"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/button_label"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/button_link"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/rule_color"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "General",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Country",
+                    "documentationKey": "country",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/country/properties/name"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/country/properties/adjective"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Email contacts",
+                    "documentationKey": "email_contacts",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email_contacts/properties/questions"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email_contacts/properties/suggestions"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/email_contacts/properties/functional"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Indicators",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Create indicators",
+                    "documentationKey": "create_indicators",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/create_indicators/properties/previous_next_links",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator tabs",
+                    "documentationKey": "indicator_tabs",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_tabs"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Data edit URL",
+                    "documentationKey": "data_edit_url",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_edit_url"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Metadata edit URL",
+                    "documentationKey": "metadata_edit_url",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/metadata_edit_url"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Proxy indicators",
+                    "documentationKey": "proxy_indicators",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/proxy_indicators"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Goals",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Goal image base",
+                    "documentationKey": "goal_image_base",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goal_image_base"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Goal image extension",
+                    "documentationKey": "goal_image_extension",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goal_image_extension"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Goals page",
+                    "documentationKey": "goals_page",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goals_page/properties/title"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/goals_page/properties/description",
+                            "options": {
+                                "multi": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Create Goals",
+                    "documentationKey": "create_goals",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/create_goals/properties/previous_next_links",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/create_goals/properties/goal_content_heading"
+                        },
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/create_goals/properties/goals",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/heading"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content_heading"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/goal"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Navigation",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Main menu",
+                    "documentationKey": "menu",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/menu"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Footer menu",
+                    "documentationKey": "footer_menu",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/footer_menu"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Breadcrumbs",
+                    "documentationKey": "breadcrumbs",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/breadcrumbs"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Data",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Hide single series",
+                    "documentationKey": "hide_single_series",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_single_series",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Hide single unit",
+                    "documentationKey": "hide_single_unit",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_single_unit",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Ignored disaggregations",
+                    "documentationKey": "ignored_disaggregations",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/ignored_disaggregations"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Data fields",
+                    "documentationKey": "data_fields",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/data_fields"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Observation attributes",
+                    "documentationKey": "observation_attributes",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/observation_attributes"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Time series attributes",
+                    "documentationKey": "time_series_attributes",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/time_series_attributes"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Metadata",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Hide empty metadata",
+                    "documentationKey": "hide_empty_metadata",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/hide_empty_metadata",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Empty metadata placeholder",
+                    "documentationKey": "empty_metadata_placeholder",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/empty_metadata_placeholder"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Empty metadata placeholder - sources",
+                    "documentationKey": "empty_metadata_placeholder_sources",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/empty_metadata_placeholder_sources"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Forms",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator config form",
+                    "documentationKey": "indicator_config_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_config_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_config_form/properties/repository_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_config_form/properties/translation_link"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator data form",
+                    "documentationKey": "indicator_data_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_data_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_data_form/properties/repository_link"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Indicator metadata form",
+                    "documentationKey": "indicator_metadata_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/repository_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/translation_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/language"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/scopes"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/exclude_fields"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/indicator_metadata_form/properties/translated",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Site config form",
+                    "documentationKey": "site_config_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/repository_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/translation_link"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/config_folder"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_client_id"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_proxy_url"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_repo"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/site_config_form/properties/github_owner"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Webmaster",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "analytics",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/analytics"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Cookie consent form",
+                    "documentationKey": "cookie_consent_form",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/cookie_consent_form/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Meta tags",
+                    "documentationKey": "meta_tags",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/meta_tags",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/path"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/name"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/content",
+                                            "options": {
+                                                "multi": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Progressive web app",
+                    "documentationKey": "progressive_web_app",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/enabled",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/name"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/short_name"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progressive_web_app/properties/precaching",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "search_index_boost",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/search_index_boost",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/field"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/boost"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "search_index_extra_fields",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/search_index_extra_fields"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Maps",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "map_layers",
+                    "label": "Map layers",
+                    "description": "Configure any number of layers to display on all indicator maps. A minimum of one layer is required to display maps.",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/map_layers",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/subfolder"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/label"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/min_zoom"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/max_zoom"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/staticBorders",
+                                            "options": {
+                                                "toggle": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "map_options",
+                    "label": "Map options",
+                    "description": "Site-wide configuration of map behavior and style.",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/disaggregation_controls",
+                            "options": {
+                                "toggle": true
+                            }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/minZoom"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/maxZoom"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/tileURL"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/tileOptions"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/colorRange"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/noValueColor"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/styleNormal",
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/styleHighlighted"
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/map_options/properties/styleStatic"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Charts",
+            "elements": [
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color for headline",
+                    "documentationKey": "graph_color_headline",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_headline"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color for headline - high contrast",
+                    "documentationKey": "graph_color_headline_high_contrast",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_headline_high_contrast"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color set",
+                    "documentationKey": "graph_color_set",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_set"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color list",
+                    "documentationKey": "graph_color_list",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_list"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Graph color number",
+                    "documentationKey": "graph_color_number",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_color_number"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Graph title from series",
+                    "documentationKey": "graph_title_from_series",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/graph_title_from_series",
+                            "options": {
+                                "toggle": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "X axis label",
+                    "documentationKey": "x_axis_label",
+                    "elements": [   
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/x_axis_label"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Category",
+            "label": "Dev",
+            "elements": [
+                {
+                    "type": "Control",
+                    "scope": "#/properties/remote_data_prefix"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/environment"
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "documentationKey": "create_pages",
+                    "label": "Create pages",
+                    "description": "This setting can be used to automatically create certain pages.",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/create_pages",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/folder"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/filename"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/layout"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/title"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/repository_url_site"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/repository_url_data"
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/validate_site_config",
+                    "options": {
+                        "toggle": true
+                    }
+                },
+                {
+                    "type": "Control",
+                    "scope": "#/properties/validate_indicator_config",
+                    "options": {
+                        "toggle": true
+                    }
+                }
+            ]
+        }
+    ]
+}

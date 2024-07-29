@@ -10,7 +10,13 @@
           <a href="<%= result.url %>">
             <h3 class="title"><%= result.title %></h3>
           </a>
-          <div class="url"><%= result.type %> &raquo; <%= result.url %></div>
+          <div class="url">
+            <ol>
+              <li><%= result.type %></li>
+              <span aria-hidden=true>&raquo;</span>
+              <li><%= result.url %></li>
+            </ol>
+          </div>
           <div class="content"><%= result.content %></div>
         </div>
       </div>
@@ -22,7 +28,7 @@
       <% if(didYouMean) { %>
       - {{ page.t.search.did_you_mean }}:
         <% _.each(didYouMean, function(searchTerm){ %>
-        <a href="{{ page.baseurl }}search?q=<%= searchTerm %>"><%= searchTerm %></a>
+        <a href="{{ page.baseurl }}search/?q=<%= searchTerm %>"><%= searchTerm %></a>
         <% }); %>
       <% } %>
       <br><br>

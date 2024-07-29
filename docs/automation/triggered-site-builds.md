@@ -15,7 +15,8 @@ We recommend the first option. Both are detailed below.
 
 ### Creating an access token
 
-1. Create an access token described in [this official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
+1. Create a personal access token (classic) described in [this official GitHub documentation](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token). Notes:
+    * Make sure you set up a 'classic' token, not a 'fine-grained' token.
     * Select the `repo` permission, as indicated in those instructions.
     * Save the token somewhere private.
 1. Copy the access token so that you can paste in the next steps.
@@ -24,7 +25,8 @@ We recommend the first option. Both are detailed below.
 
 1. Go to the *site repository*.
 1. Under the repository name, click "Settings".
-1. In the left sidebar, click "Secrets".
+1. In the left sidebar, click "Secrets and variables".
+1. Click "Actions"
 1. Click "New repository secret".
 1. Under "Name", type the following (case-sensitive): `token`
 1. Under "Value", paste in the access token you copied earlier.
@@ -34,7 +36,8 @@ Then repeat this for the data repository, as follows:
 
 1. Go to the *data repository*.
 1. Under the repository name, click "Settings".
-1. In the left sidebar, click "Secrets".
+1. In the left sidebar, click "Secrets and variables".
+1. Click "Actions"
 1. Click "New repository secret".
 1. Under "Name", type the following (case-sensitive): `token`
 1. Under "Value", paste in the access token you copied earlier.

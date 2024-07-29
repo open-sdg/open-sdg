@@ -74,9 +74,17 @@ function nonFieldColumns() {
     'Unit measure',
   ];
   var timeSeriesAttributes = {{ site.time_series_attributes | jsonify }};
-  timeSeriesAttributes.forEach(function(tsAttribute) {
-    columns.push(tsAttribute.field);
-  });
+  if (timeSeriesAttributes && timeSeriesAttributes.length > 0) {
+    timeSeriesAttributes.forEach(function(tsAttribute) {
+      columns.push(tsAttribute.field);
+    });
+  }
+  var observationAttributes = {{ site.observation_attributes | jsonify }};
+  if (observationAttributes && observationAttributes.length > 0) {
+    observationAttributes.forEach(function(oAttribute) {
+      columns.push(oAttribute.field);
+    });
+  }
   columns.push(SERIES_COLUMN);
   return columns;
 }

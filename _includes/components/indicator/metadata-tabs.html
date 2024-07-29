@@ -26,7 +26,7 @@
     {% else %}
         {% include components/indicator/metadata-tabs-default.html %}
     {% endif %}
-    {% if site.environment == 'staging' %}
+    {% if site.environment == 'staging' and page.layout != 'indicator-iframe' %}
         <li role="presentation" class="nav-item">
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#edit" aria-controls="edit" role="tab">{{ page.t.indicator.edit }}</a>
         </li>

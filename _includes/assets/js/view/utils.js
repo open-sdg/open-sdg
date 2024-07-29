@@ -46,7 +46,7 @@ function isHighContrast(contrast) {
  * @param {Element} el
  * @return null
  */
-function createDownloadButton(table, name, indicatorId, el) {
+function createDownloadButton(table, name, indicatorId, el, selectedSeries, selectedUnit) {
     if (window.Modernizr.blobconstructor) {
         var downloadKey = 'download_csv';
         if (name == 'Chart') {
@@ -56,15 +56,17 @@ function createDownloadButton(table, name, indicatorId, el) {
             downloadKey = 'download_table';
         }
         var gaLabel = 'Download ' + name + ' CSV: ' + indicatorId.replace('indicator_', '');
-        var tableCsv = toCsv(table);
+        var tableCsv = toCsv(table, selectedSeries, selectedUnit);
         var fileName = indicatorId + '.csv';
         var downloadButton = $('<a />').text(translations.indicator[downloadKey])
             .attr(opensdg.autotrack('download_data_current', 'Downloads', 'Download CSV', gaLabel))
             .attr({
                 'download': fileName,
                 'title': translations.indicator.download_csv_title,
+                'aria-label': translations.indicator.download_csv_title,
                 'class': 'btn btn-primary btn-download',
-                'tabindex': 0
+                'tabindex': 0,
+                'role': 'button',
             });
         var blob = new Blob([tableCsv], {
             type: 'text/csv'
@@ -94,8 +96,10 @@ function createDownloadButton(table, name, indicatorId, el) {
                 'href': opensdg.remoteDataBaseUrl + '/headline/' + id + '.csv',
                 'download': headlineId + '.csv',
                 'title': translations.indicator.download_headline_title,
+                'aria-label': translations.indicator.download_headline_title,
                 'class': 'btn btn-primary btn-download',
-                'tabindex': 0
+                'tabindex': 0,
+                'role': 'button',
             }));
     }
 }
@@ -113,8 +117,10 @@ function createSourceButton(indicatorId, el) {
             'href': opensdg.remoteDataBaseUrl + '/data/' + indicatorId + '.csv',
             'download': indicatorId + '.csv',
             'title': translations.indicator.download_source_title,
+            'aria-label': translations.indicator.download_source_title,
             'class': 'btn btn-primary btn-download',
-            'tabindex': 0
+            'tabindex': 0,
+            'role': 'button',
         }));
 }
 
@@ -139,7 +145,8 @@ function createIndicatorDownloadButtons(indicatorDownloads, indicatorId, el) {
                     'download': href.split('/').pop(),
                     'title': buttonLabelTranslated,
                     'class': 'btn btn-primary btn-download',
-                    'tabindex': 0
+                    'tabindex': 0,
+                    'role': 'button',
                 }));
         }
     }

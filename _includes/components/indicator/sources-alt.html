@@ -8,11 +8,14 @@ file is controlled by the 'sources' indicator configuration option.
 {% unless site.hide_empty_metadata %}
     {% assign show_placeholders = true %}
 {% endunless %}
-{% assign placeholder = site.empty_metadata_placeholder | t | default: page.t.indicator.empty_metadata_placeholder %}
+{% assign placeholder = site.empty_metadata_placeholder_sources | t | default: page.t.indicator.empty_metadata_placeholder_sources %}
 {% assign placeholder = '<span class="empty-metadata-placeholder">' | append: placeholder | append: '</span>' %}
 <div class="row">
 {% for source in page.indicator.sources %}
     <div class="col-md-6">
+        {% if page.indicator.sources.size == 1 %}
+        <h4 class="sr-only">{{ page.t.indicator.source }} {{ forloop.index }}</h4>
+        {% endif %}
         {% if page.indicator.sources.size > 1 %}
         <h4>{{ page.t.indicator.source }} {{ forloop.index }}</h4>
         {% endif %}

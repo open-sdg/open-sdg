@@ -91,8 +91,15 @@
             width: 115px;
             float: left;
             min-height: 1px;
-            > a:focus {
-                outline: 6px $focusOutlineColor solid !important;
+            > a {
+                display: block;
+                width: calc(100% - 15px);
+                &:focus {
+                    outline: 2px $text-color solid !important;
+                    .goal-icon-image {
+                        outline: 8px $focusOutlineColor solid !important;
+                    }
+                }
             }
         }
         .details {
@@ -125,10 +132,6 @@
         }
         .goal-overall {
             margin-bottom: 20px;
-
-            .details {
-                width: 100%;
-            }
         }
     }
 
@@ -143,7 +146,7 @@
                     background-color: black !important;
                 }
             }
-            
+
             .goal-stats {
                 border: 1px solid $color-light-highContrast !important;
                 .notapplicable {

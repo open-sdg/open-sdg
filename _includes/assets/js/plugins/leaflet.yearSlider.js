@@ -61,9 +61,15 @@
           maxYear = years[years.length - 1],
           knobElement = knob._element;
 
+      control._buttonBackward.title = translations.indicator.map_slider_back;
+      control._buttonBackward.setAttribute('aria-label', control._buttonBackward.title);
+      control._buttonForward.title = translations.indicator.map_slider_forward;
+      control._buttonForward.setAttribute('aria-label', control._buttonForward.title);
+
       knobElement.setAttribute('tabindex', '0');
       knobElement.setAttribute('role', 'slider');
-      knobElement.setAttribute('aria-label', translations.indicator.map_year_slider);
+      knobElement.setAttribute('aria-label', translations.indicator.map_slider_keyboard);
+      knobElement.title = translations.indicator.map_slider_mouse;
       knobElement.setAttribute('aria-valuemin', minYear);
       knobElement.setAttribute('aria-valuemax', maxYear);
 
@@ -117,12 +123,28 @@
       // cause any problems. This converts the array of years into a comma-
       // delimited string of YYYY-MM-DD dates.
       times: years.map(function(y) { return y.time }).join(','),
-      currentTime: new Date(years[0].time).getTime(),
+      //Set the map to the most recent year
+      currentTime: new Date(years.slice(-1)[0].time).getTime(),
     });
     // Listen for time changes.
     if (typeof options.yearChangeCallback === 'function') {
       options.timeDimension.on('timeload', options.yearChangeCallback);
     };
+    // Also pass in another callback for managing the back/forward buttons.
+    options.timeDimension.on('timeload', function(e) {
+      var currentTimeIndex = this.getCurrentTimeIndex(),
+          availableTimes = this.getAvailableTimes(),
+          $backwardButton = $('.timecontrol-backward'),
+          $forwardButton = $('.timecontrol-forward'),
+          isFirstTime = (currentTimeIndex === 0),
+          isLastTime = (currentTimeIndex === availableTimes.length - 1);
+      $backwardButton
+        .attr('disabled', isFirstTime)
+        .attr('aria-disabled', isFirstTime);
+      $forwardButton
+        .attr('disabled', isLastTime)
+        .attr('aria-disabled', isLastTime);
+    });
     // Pass in our years for later use.
     options.years = years;
     // Return the control.

@@ -10,7 +10,7 @@
 {%- assign goal = goalreport.goal | strip | sdg_lookup -%}
 <div class="goal reporting-status-item">
     <div class="frame goal-tiles">
-        <a href="{{ goal.url }}">
+        <a href="{{ goal.url }}" title="{{ page.t.goal.indicators_for_goal }} {{ goal.number }}" aria-label="{{ page.t.goal.indicators_for_goal }} {{ goal.number }}">
         <img src="{{ goal.icon }}" alt="{{ goal.short | escape }} - {{ page.t.general.goal }} {{ goal.number }}" width="100" height="100" class="goal-icon-{{ goal.number }} goal-icon-image goal-icon-image-{{ site.goal_image_extension }}"/>
         </a>
     </div>
@@ -18,7 +18,8 @@
         <h3 class="status-goal">
             <a href="{{ goal.url }}">{{ goal.short }}</a>
         </h3>
-        <span class="total">{{ goalreport.totals.total }} {{ indicators_plural }}</span>
+        <span class="total">{{ goalreport.totals.total }} {{ include.indicator_count_label | t | default: indicators_plural }}</span>
+        {% if goalreport.totals.total > 0 %}
         <div class="summary">
             <div class="statuses">
                 {%- for status_type in status_types -%}
@@ -43,6 +44,7 @@
                 {% endif %}
             {%- endfor -%}
         </div>
+        {% endif %}
         <div class="divider"></div>
     </div>
     <br style="clear:both;">

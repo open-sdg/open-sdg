@@ -30,6 +30,8 @@ create_goals:
   previous_next_links: true
   goals:
     - content: custom.goal_1_content
+      heading: My custom heading for Goal 1
+      content_heading: My custom subheading for Goal 1
     - content: My goal 2 content
 create_indicators:
   previous_next_links: true
@@ -137,14 +139,6 @@ ignored_disaggregations:
   - custom.ignore_me
 indicator_config_form:
   enabled: true
-  dropdowns:
-    - jsonschema: reporting_status
-      values:
-        - notstarted
-        - complete
-      labels:
-        - Not started
-        - Complete
   repository_link: /tree/master/tests/data/indicator-config
   translation_link: ''
 indicator_data_form:
@@ -152,7 +146,6 @@ indicator_data_form:
   repository_link: /tree/master/tests/data/data
 indicator_metadata_form:
   enabled: true
-  dropdowns: []
   repository_link: /tree/master/tests/data/meta
   translation_link: 'https://example.com?[id]&[group]&[key]'
   language: ''
@@ -202,7 +195,7 @@ map_options:
     id: ''
     accessToken: ''
     attribution: My map attribution
-  colorRange: chroma.brewer.BuGn
+  colorRange: opensdg.mapColors.default
   noValueColor: '#f0f0f0'
   styleNormal:
     weight: 1
@@ -257,10 +250,18 @@ metadata_tabs:
     title: Publications
     description: My publications blurb
     placeholder: No publications available
+meta_tags:
+  - path: about
+    name: my meta name
+    content: my meta content
 news:
   category_links: true
+observation_attributes:
+  - field: COMMENT_OBS
+    label: ''
 progress_status:
   status_heading: status.progress_status
+  status_help: How are we doing against the 2030 targets?
   status_types:
     - value: not_available
       label: status.progress_not_available
@@ -278,6 +279,11 @@ progress_status:
       label: status.progress_target_achieved
       image: assets/img/progress/target-achieved.png
       alt: status.progress_target_achieved
+progressive_web_app:
+  enabled: true
+  name: My SDG App Name
+  short_name: SDG App
+  precaching: true
 remote_data_prefix: _build
 reporting_status:
   title: custom.reporting_status_title
@@ -289,7 +295,7 @@ reporting_status:
       hide_on_goal_pages: false
     - value: complete
       label: status.reported_online
-      hide_on_goal_pages: false
+      hide_on_goal_pages: true
     - value: notapplicable
       label: status.not_applicable
       hide_on_goal_pages: false
@@ -301,20 +307,14 @@ search_index_extra_fields:
 sharethis_property: ''
 site_config_form:
   enabled: true
-  dropdowns:
-    - jsonschema: create_goals.properties.layout
-      values:
-        - ''
-        - goal
-        - goal-by-target
-        - goal-by-target-vertical
-      labels:
-        - Do not automatically create goals
-        - goal
-        - goal-by-target
-        - goal-by-target-vertical
   repository_link: /tree/master/tests/site/_data
   translation_link: ''
+  config_folder: 'tests/site/_data'
+  github_client_id: 'd057ffc62f01ce8f3376'
+  github_proxy_url: 'https://open-sdg-github-auth-production.up.railway.app'
+  github_repo: 'open-sdg'
+  github_owner: 'open-sdg'
 validate_indicator_config: true
 validate_site_config: false
 x_axis_label: Year
+use_new_config_forms: true

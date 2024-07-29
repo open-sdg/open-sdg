@@ -39,7 +39,7 @@
     {% else %}
         {% include components/indicator/metadata-panes-default.html %}
     {% endif %}
-    {% if site.environment == 'staging' %}
+    {% if site.environment == 'staging' and page.layout != 'indicator-iframe' %}
         <div role="tabpanel" class="tab-pane" id="edit">
             {% include components/indicator/edit-buttons.html %}
         </div>

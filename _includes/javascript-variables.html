@@ -18,8 +18,9 @@ var opensdg = {
   },
 
   // A hook which can be replaced to alter whether/how the values that are
-  // displayed on indicator tables/graphs get rounded.
-  dataRounding: function(value) {
+  // displayed on indicator tables/graphs get rounded. A "context" parameter
+  // is also passed which contains additional information.
+  dataRounding: function(value, context) {
     // Alterations go here.
     return value;
   },
@@ -34,6 +35,8 @@ var opensdg = {
   ignoredDisaggregations: {{ page.indicator.ignored_disaggregations | jsonify }},
 
   language: '{{ page.language }}',
+
+  mapColors: {% include assets/js/mapColors.json %},
 };
 
 </script>

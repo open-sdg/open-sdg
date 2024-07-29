@@ -140,6 +140,16 @@ _Optional_: If set to true, then the documentation website's "disaggregation rep
 docs_translate_disaggregations: true
 ```
 
+### ignore_out_of_scope_disaggregation_stats
+
+_Optional_: If set to true, then the disaggregation status totals will ignore indicators that are "out of scope" (aka, "not applicable").
+
+```nohighlight
+ignore_out_of_scope_disaggregation_stats: true
+```
+
+This may be useful in combination with the `reporting_status` site configuration, particularly with the `disaggregation_indicator_count_label` option.
+
 ### indicator_downloads
 
 _Optional_: This creates additional "download" buttons on each indicator page of your Open SDG implementation. Use this if there are additional per-indicator files (such as SDMX files) that you would like to make available for download.
@@ -184,6 +194,8 @@ _Optional_: This controls how your indicators are loaded. The available paramete
 
 * series_column: The name of the data column that should be considered the series. Historically this has been "Series", but if your data source is SDMX then it may be "SERIES".
 * unit_column: The name of the data column that should be considered the unit of measurement. Historically this has been "Units", but if your data source is SDMX then it may be "UNIT_MEASURE".
+* observation_attributes: This specifies a list of columns should be considered "observation attributes" -- meaning that they described individual data points (aka, observations). Adding a column here ensures that the column will be treated as observation-level metadata. Currently the effects include:
+  1. Outputs this metadata in the JSON produced by the OutputGeoJson class
 
 Here are the defaults that are assumed if this is omitted:
 
@@ -200,6 +212,8 @@ indicator_options:
     - Unit measure
   series_column: Series
   unit_column: Units
+  observation_attributes:
+    - COMMENT_OBS
 ```
 
 ### inputs
@@ -296,9 +310,23 @@ Now here are specific descriptions and parameters available for each class:
 
 > For more technical information see the [InputSdmxMl_Multiple class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMl_Multiple.py).
 
-**InputSdmxMl_Structure**: Input data from an SDMX-ML Structure file. The available parameters are the same as in InputSdmxJson.
+**InputSdmxMl_Structure**: Input data from an SDMX-ML Structure file. **The available parameters are the same as in InputSdmxJson shown above.**
 
 > For more technical information see the [InputSdmxMl_Structure class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMl_Structure.py), and an [example of using InputSdmxMl_Structure in Python code](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/sdmx_ml.py).
+
+Use this option for when you have uploaded your indicator data to .Stat, or any other website that outputs in SDMX. You will need a link to your SDMX output file with all indicator data and a link to your DSD that was uploaded to .Stat. These links should be straight to the outputted SDMX data files.
+
+Below is an example of how Cambodia's platform pulls in data from the API using this method:
+
+```
+- class: InputSdmxMl_Structure
+    source: https://nsiws-stable-camstat-live.officialstatistics.org/rest/data/KH_NIS,DF_SDG_KH,1.2/A..............
+    dsd: https://nsiws-stable-camstat-live.officialstatistics.org/rest/dataflow/KH_NIS/DF_SDG_KH/1.2?references=all&detail=referencepartial
+    import_codes: true
+    import_names: false
+```
+
+To view their entire data configuration file for a full example of this method [click here](https://github.com/sdg-cambodia/data/blob/develop/config_data.yml).
 
 **InputSdmxMl_StructureSpecific**: Input data from an SDMX-ML Structure Specific (also known as "Compact") file. The available parameters are the same as in InputSdmxJson.
 

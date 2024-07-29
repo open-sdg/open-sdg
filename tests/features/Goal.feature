@@ -27,3 +27,8 @@ Feature: Goal page
     Given I am on "/1"
     Then I should not see "Reported online"
     And I should see "Not applicable"
+
+  Scenario: Goals can have custom headings and subheadings
+    Given I am on "/1"
+    Then I should see "My custom heading for Goal 1"
+    And I should see "My custom subheading for Goal 1"

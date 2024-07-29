@@ -27,7 +27,7 @@ const driver = new mink.Mink({
     "the language toggle dropdown": "header .language-toggle-dropdown .dropdown-toggle",
     "the first language option": "header .language-toggle-dropdown .dropdown-menu li:first-child a",
     "the last language option": "header .language-toggle-dropdown .dropdown-menu li:last-child a",
-    "goal status": ".goal .frame",
+    "goal status": ".reporting-status-item .frame",
     "the second reporting status tab": ".nav-tabs.reporting-status-view li:last-child button",
     "the search box": "#indicator_search",
     "disaggregation filter": ".variable-selector",
@@ -82,6 +82,7 @@ const driver = new mink.Mink({
     "map disaggregation popup": "#map .disaggregation-form-outer",
     "the 'Rural' item under Location": "#map .disaggregation-form-outer input[value='Rural']",
     "the map disaggregation apply button": "#map .disaggregation-apply-button",
+    "proxy pill": ".proxy-pill",
   }
 });
 

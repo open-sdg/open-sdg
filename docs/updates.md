@@ -2,6 +2,47 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 2.3.0
+
+1 March 2024
+
+* New site configuration forms
+* iframe-friendly versions of each indicator can be created
+* Observation attributes can be displayed on charts, tables and maps
+* 'Out of scope' can be removed from disaggregation status
+* Ruby 3 upgrade enabled
+* Country name translated in table header​ and header columns pinned
+* Added units and series columns to data download files​
+* Improvements to checkbox selection on indicator pages​
+* data_start_values on maps: geographical fields now ignored​
+* Graph annotation label position functionality improved​
+* Improvements to screenreader and voice control functionality​
+* DataSchemaInputSdmxDsd allowed as a data schema
+* Bugfixes for some maps and series not appearing
+
+## 2.2.0
+
+26 April 2023
+
+* Feature for tagging indicator data as "proxy"
+* More granular control over disaggregations on maps
+* High-resolution chart image downloads
+* SEO improvements: custom meta tags on any page, and custom headings on goal pages
+* Design enhancement on reporting status pages - SDG image on overall
+* Bugfixes for reporting status label, data edit page, and third-party dependencies
+
+## 2.1.0
+
+7 November 2022
+
+* Improvements, bugfix, and design updates to the map feature
+* Improved support for long unit-of-measurement labels
+* New features for metadata section: relative links, placeholders, related indicators, and publications
+* Accessibility fixes: clearer button/link labels, high-contrast support for cookie modal, better focus outline
+* Security updates for jQuery and Lodash libraries
+* New features for goal pages: re-design of the indicator progress feature, custom header text per goal
+* Support for data rounding logic per indicator
+
 ## 2.0.0
 
 24 June 2022
@@ -34,7 +75,7 @@ For a more technical list of platform changes, see [the change log](changelog.md
 * Ignore specified disaggregation columns
 * Control the order of the indicator tabs (chart/table/map/etc)
 * Layout for page-not-found (404) pages
-* Custom footer fields beneath chart/table 
+* Custom footer fields beneath chart/table
 
 ## 1.6.0
 

@@ -104,7 +104,7 @@ data_footnote: my_translations.1-1-1-footnote
 ```
 
 
-### data_not_statistical
+### data_non_statistical
 
 **_Required_**: This setting is used to specify whether the indicator is statistical (can be charted/graphed) or not. If you have uploaded data that you want to display on a chart/table for an indicator, set this to `false`.
 
@@ -424,6 +424,7 @@ graph_type: line
 ```
 
 Options out-of-the-box are:
+
 * line
 * bar
 * binary (Yes/No graph)
@@ -562,6 +563,8 @@ precision:
 
 **_Required_**: This setting is used to specify the status of the indicator's progress. This is displayed on the indicator pages. You can also display this on goal pages by setting your goal layout to "goal-with-progress" (this can be done in the [`create_goals` site configuration setting](configuration.md#create_goals)).
 
+Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. More information with the code needed for the out-of-the-box options below can be found in the [`progress_status` site configuration setting](configuration.md#progress_status). Then for each indicator, you can add the relevant progress_status in its indicator configuration file.
+
 ```nohighlight
 progress_status: target_achieved
 ```
@@ -572,6 +575,37 @@ Options out-of-the-box are:
 * challenges_remain
 * approaching_target
 * target_achieved
+
+### proxy
+
+_Optional_: When indicator data provided is alternative to that specified by the UN, Open SDG now has the functionality to mark it as "proxy" data. The feature provides a label and customizable definition and can be set for an entire indicator of for an individual series within an indicator. The available settings for this are:
+
+```
+proxy: proxy
+```
+
+Using "proxy" will flag the entire indicator as a proxy.
+
+```
+proxy: both
+```
+
+Using "both" can flag particular series codes within the indicator as proxies. This requires that you also set the `proxy_series` option below.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of proxy functionality](https://open-sdg.org/open-sdg-docs/img/image001.png)
+
+### proxy_series
+
+This setting is required if you have `proxy` set to "both". It should be a list of the series codes within the indicator that you want flagged as "proxy" data. For example:
+
+```
+proxy: both
+proxy_series:
+  - my first series code
+  - my other series code
+```
 
 ### publications
 

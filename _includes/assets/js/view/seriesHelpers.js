@@ -10,11 +10,13 @@ function initialiseSerieses(args) {
     if (templateElement.length > 0) {
         var template = _.template(templateElement.html()),
             serieses = args.serieses || [],
-            selectedSeries = args.selectedSeries || null;
-
+            selectedSeries = args.selectedSeries || null,
+            proxySerieses = args.proxySerieses || [];
         $('#serieses').html(template({
             serieses: serieses,
-            selectedSeries: selectedSeries
+            selectedSeries: selectedSeries,
+            proxySerieses: proxySerieses,
+            proxyPill: PROXY_PILL,
         }));
 
         var noSerieses = (serieses.length < 1);

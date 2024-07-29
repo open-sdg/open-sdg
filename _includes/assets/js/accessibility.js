@@ -122,3 +122,13 @@ var accessibilitySwitcher = function () {
     }
 
 };
+
+// Dynamic aria labels on navbar toggle.
+$(document).ready(function() {
+    $('#navbarSupportedContent').on('shown.bs.collapse', function() {
+        $('.navbar-toggler').attr('aria-label', translations.header.hide_menu);
+    });
+    $('#navbarSupportedContent').on('hidden.bs.collapse', function() {
+        $('.navbar-toggler').attr('aria-label', translations.header.show_menu);
+    });
+});

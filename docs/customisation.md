@@ -6,23 +6,6 @@ Jekyll configuration is stored at the root of the site repository in a YAML file
 
 In addition to general Jekyll configurations, Open SDG needs some specific configurations. For more information on these, please see the [configuration page](configuration.md).
 
-## Optional features
-
-As with any Jekyll theme, Open SDG can be easily customised. The platform comes with some out-of-the-box optional features that can serve as examples of possible customisations.
-
-### Optional feature: Goal page layouts
-
-Open SDG includes two alternative [layouts](https://jekyllrb.com/docs/step-by-step/04-layouts/) for the 17 goal pages:
-
-1. [`goal`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal.html) - Indicators are displayed in a responsive grid
-1. [`goal-by-target`](https://github.com/open-sdg/open-sdg/blob/master/_layouts/goal-by-target.html) - Targets on the left, and indicators on the right
-
-If you are using the `create_goals` setting, you can change the layout as described on the [configuration page in the "create goals" section](configuration.md#create_goals).
-
-Otherwise you can set the layout by adjusting the [front matter](https://jekyllrb.com/docs/front-matter/) of the goal file. For example, to use the goal-by-target layout, you would need this in the goal's front matter:
-
-`layout: goal-by-target`
-
 ## Working with (remote) Jekyll themes
 
 This project (the repository you are reading currently) functions as a [Jekyll theme](https://jekyllrb.com/docs/themes/), which can most easily be used with the help of the [Remote Theme plugin](https://github.com/benbalter/jekyll-remote-theme). As with any Jekyll theme (and as can be seen in the [folder structure of this project](https://github.com/open-sdg/open-sdg)) the entirety of the theme is contained in these 3 folders:
@@ -83,6 +66,21 @@ opensdg.dataRounding = function(value) {
 ```
 
 * You may get unexpected behavior if you return a string - so it is recommended to return a number.
+
+Note that a second parameter (an object) is passed which has additional context. At this time the object contains the indicator ID. This can allow for special behavior for certain indicators. Here is an example of usage:
+
+```
+opensdg.dataRounding = function(value, context) {
+    // Round to 3 decimal places in indicator 3.1.1.
+    if (context.indicatorId === 'indicator_3-1-1') {
+        return Math.round(value * 1000) / 1000;
+    }
+    // Otherwise round to 2 decimal places.
+    else {
+        return Math.round(value * 100) / 100;
+    }
+}
+```
 
 ## Altering data values before displaying
 

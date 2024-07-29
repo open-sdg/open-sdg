@@ -1,6 +1,6 @@
 <h1>GitHub Actions</h1>
 
-GitHub Actions is the automation service used in the [Quick start](../quick-start.md). Historically, GitHub has not provided an automation service, and required third-party services like CircleCI or Travis. But the newly-released GitHub Actions changes that.
+GitHub Actions is the automation service used in the [Quick start](../quick-start.md). Historically, GitHub has not provided an automation service, and required third-party services like CircleCI or Travis. But GitHub Actions changes that.
 
 GitHub Actions is a "continuous integration" (CI) cloud service, specifically for repositories in GitHub. It is useful for Open SDG in a way that is typical of open-source projects: it "listens" for certain events in your GitHub repository, and then provides temporary virtual machines to perform various server-side tasks. Open SDG needs a CI tool to accomplish these things:
 
