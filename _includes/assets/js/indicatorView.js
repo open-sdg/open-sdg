@@ -87,7 +87,8 @@ var indicatorView = function (model, options) {
     });
 
     MODEL.onFieldsComplete.attach(function (sender, args) {
-
+    
+        helpers.initialiseFieldsWithGlobalValues(args);
         helpers.initialiseFields(args);
 
         if (args.hasGeoData && args.showMap) {
@@ -205,6 +206,7 @@ var indicatorView = function (model, options) {
 
     $(OPTIONS.rootElement).on('click', '#clear', function () {
         MODEL.clearSelectedFields();
+        MODEL.selectedFields = [{field: "Reporting type", values: ["National"]}];
     });
 
     $(OPTIONS.rootElement).on('click', '#fields label', function (e) {
