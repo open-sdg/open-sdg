@@ -121,7 +121,7 @@ data_non_statistical: false
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of non statistical data functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/data_not_statistical_true.PNG)
+![Screenshot of non statistical data functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/data_non_statistical_true.PNG)
 
 ### Data notices
 
@@ -403,7 +403,7 @@ graph_stacked_disaggregation: Age
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of graph stacked disaggregations functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_stacked_disaggregations.png)
+![Screenshot of graph stacked disaggregation functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_stacked_disaggregation.png)
 
 ### graph_target_lines
 
