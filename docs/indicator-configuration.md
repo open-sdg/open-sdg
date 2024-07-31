@@ -88,6 +88,10 @@ With translation key:
 copyright: my_translations.copyright_message
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of copyright functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/copyright.png)
+
 ### data_footnote
 
 _Optional_: This setting can be used to display additional inforamtion about the data below the graph and table on the indicator page.
@@ -103,6 +107,9 @@ With translation key:
 data_footnote: my_translations.1-1-1-footnote
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of data footnote functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/data_footnote.png)
 
 ### data_non_statistical
 
@@ -112,9 +119,17 @@ data_footnote: my_translations.1-1-1-footnote
 data_non_statistical: false
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of non statistical data functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/data_non_statistical_true.PNG)
+
 ### Data notices
 
 You may want to display some very important information which site viewers must keep in mind when using the data provided. To display a notice above the graph in a coloured box, you can use the following fields within the metadata file.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of data notice functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/data_notice.png)
 
 ### data_notice_class
 
@@ -165,6 +180,10 @@ _Optional_ This setting can be used to specify whether or not to display a map f
 data_show_map: true
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of map functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/data_show_map.PNG)
+
 ### data_start_values
 
 _Optional_: This setting is used to specify if you would like an indicator load with certain disaggregation values already selected. Using the example below, the indicator would load with both "Females" and "15 to 19" selected.
@@ -196,6 +215,10 @@ embedded_feature_footer: This graph is provided by "My Organisation"
 ```nohighlight
 embedded_feature_html: <iframe width="1110" height="700" title="Childhood Vaccination Coverage Statistics" src="https://app.powerbi.com/view?r=eyJrIjoiZTI3NWZhNzItMTIyZS00OWM2LTg0MzMtOGY5YTJjMGY0MjI1IiwidCI6IjUwZjYwNzFmLWJiZmUtNDAxYS04ODAzLTY3Mzc0OGU2MjllMiIsImMiOjh9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of embedded feature html functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/embedded_feature_html.png)
 
 ### embedded_feature_tab_title
 
@@ -233,6 +256,10 @@ expected_disaggregations:
 
 The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of expected disaggregations functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/expected_disaggregations.png)
+
 ### footer_fields
 
 _Optional_: This setting is used to add any arbitrary footer fields beneath the chart/table. These display under the other footer field settings, like `copyright` and `data_footnote`.
@@ -258,6 +285,10 @@ footer_fields:
     label: My field for totals
     value: My other field content
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of footer fields functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/footer_fields.png)
 
 ### graph_annotations
 
@@ -305,6 +336,10 @@ graph_annotations:
     preset: target_line
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of graph annotations functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_annotations.png)
+
 ### graph_limits
 
 _Optional_: This setting can be used to control the lowest/highest values to be shown on the y-axis by specifying min/max limits. Optionally they can refer to a specific unit of measurement or series. Note that this involves a slightly more complex metadata structure.
@@ -318,6 +353,10 @@ graph_limits:
     minimum: 200
     maximum: 2000
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of graph limits functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_limits.png)
 
 ### graph_series_breaks
 
@@ -350,6 +389,10 @@ graph_series_breaks:
     value: 8.5
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of graph series breaks functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_series_breaks.png)
+
 ### graph_stacked_disaggregation
 
 _Optional_: This setting can be used with the "bar" graph type to place a certain disaggregation (such as "Age") into the same "stacked" bars.
@@ -357,6 +400,10 @@ _Optional_: This setting can be used with the "bar" graph type to place a certai
 ```nohighlight
 graph_stacked_disaggregation: Age
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of graph stacked disaggregation functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_stacked_disaggregation.png)
 
 ### graph_target_lines
 
@@ -386,6 +433,10 @@ graph_target_lines:
   - series: My series name
     value: 2.5
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of graph target lines functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_target_lines.png)
 
 ### graph_title
 
@@ -514,6 +565,10 @@ See this [guide to writing Markdown](https://guides.github.com/features/masterin
 page_content: My additional information about the indicator
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of page content functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/page_content.png)
+
 ### permalink
 
 _Optional_: This setting can be used to control the URL of a standalone indicator. This does not require any preceding/trailing slashes. See the `standalone` metadata field below for information on how to set an indicator as standalone.
@@ -575,6 +630,10 @@ Options out-of-the-box are:
 * challenges_remain
 * approaching_target
 * target_achieved
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of progress status functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/progress_status.PNG)
 
 ### proxy
 
@@ -652,6 +711,10 @@ Options out-of-the-box are:
 * notstarted
 * notapplicable
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of reporting statusfunctionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/reporting_status.PNG)
+
 ### sort
 
 _Optional_: This setting can be used to override this automatic ordering for a particular indicator by setting `sort` in the metadata for that indicator.
@@ -697,6 +760,10 @@ sources:
     logo: "https://onsdigital.github.io/sdg-indicators/assets/img/SDG_logo.png"
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of sources functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/sources.png)
+
 ### standalone
 
 _Optional_: This setting can be used to set the indicator as `standalone` which will prevent it from appearing as part of a goal, and keeps the indicator off the reporting status, disaggregation status, and other disaggregation reports. It is useful if you would like to post statistical indicators that are not part of the SDGs (such as Covid-19 data).
@@ -711,7 +778,12 @@ If you want to create a listing page for your standalone indicators you can do s
 
 ```
 layout: standalone-indicators
-```  
+```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of standalone indicators functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/standalone_indicators.PNG)
+
 ### tags
 
 _Optional_: This setting is used to supply a list of "tags" to display under the indicator when it is listed on its goal page
@@ -726,6 +798,14 @@ Note that each tag will receive a unique HTML class, according to the content of
 
 Additionally, the default color of the tags can be controlled by changing the `$tag-backgroundColor` [Sass variable](customisation.md#overriding-color-via-sass-variables).
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of tags functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/tags.PNG)
+
 ### x_axis_label
 
 _Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this overrides the same setting in the site configuration.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of x axis label functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/x_axis_label.PNG)
