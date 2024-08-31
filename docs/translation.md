@@ -14,23 +14,21 @@ Each of these 5 parts has its own unique translation challenges. Open SDG's tran
 
 ## Part 1: The user interface
 
-The user interface of Open SDG is obviously specific to Open SDG, so the Open SDG team manages this part. This is handled in a [separate repository](https://github.com/open-sdg/sdg-translations) which is maintained via Weblate at this address:
+The "user interface" includes things like buttons, labels, help text, and other bits and pieces. Because this part is obviously specific to Open SDG, we (the Open SDG team) manage this part. This is handled in a [separate repository](https://github.com/open-sdg/sdg-translations) which is maintained via Weblate at this address:
 
 * [SDG Translations](https://hosted.weblate.org/projects/sdg-translations/)
 
 The number of languages supported in SDG Translations is continually growing, as more languages are requested. Here are instructions on how to take advantage of SDG Translations.
 
-First, check [SDG Translations](https://github.com/open-sdg/sdg-translations/tree/HEAD/translations) and see if the desired language is already there. If so, you can skip to step 2.
+First, check [SDG Translations](https://github.com/open-sdg/sdg-translations/tree/HEAD/translations) and see if the desired language is already there. If so, you can skip the next step.
 
-Next, check to see if you can use [Weblate](https://hosted.weblate.org/projects/sdg-translations/) to add the translations. On Weblate, click on any of the "components", such as [General](https://hosted.weblate.org/projects/sdg-translations/general/). Press "Start new translation" at the bottom to get started, and then follow the prompts to choose your language.
+If not, check to see if you can use [Weblate](https://hosted.weblate.org/projects/sdg-translations/) to add the translations. On Weblate, click on any of the "components", such as [General](https://hosted.weblate.org/projects/sdg-translations/general/). Press "Start new translation" at the bottom to get started, and then follow the prompts to choose your language.
 
 You can then proceed to translate each "component" in Weblate, such as General, Calendar, etc. For more details on using Weblate, see the [official Weblate documentation](https://docs.weblate.org/en/latest/user/basic.html).
 
 Note, in the rare case that your language is not available in Weblate, you will need to manually translate all of the YAML files from the [Github repository](https://github.com/open-sdg/sdg-translations) and then submit your translations as a pull-request.
 
 Important note about machine translations: The translations in SDG Translations are initially performed as machine translations, and then reviewed and corrected by users (like you!). So, the Open SDG team cannot make any guarantees about the quality of these translations. We need the help of our users to confirm that the machine translations are correct, or to improve them as needed.
-
-### Technical notes about the user interface
 
 SDG Translations can be pulled into your platform simply with the [`translations` section of your data configuration file](data-configuration.md#translations). Here is an example pulling in version 2.3.0 of SDG Translations:
 
@@ -43,9 +41,109 @@ translations:
 
 ## Part 2: Indicator data disaggregation
 
+This part includes the human-readable labels for the breakdowns of the data. For example, this would include translation of the words "Sex", "Female", and "Male". These translations appear on the indicator pages, in charts, tables, and dropdowns.
+
+The recommend approach for translating disaggregation is to use YAML files in a `translations` folder in your data repository. Inside this folder you should have subfolders -- one for each language. Within these subfolders you should have YAML files -- one for each breakdown.
+
+Here is an illustration of this folder structure, using the example described above of the "Sex" breakdown, translated into English (en) and Spanish (es):
+
+```
+translations
+    en
+        Sex.yml
+    es
+        Sex.yml
+
+```
+
+The contents of these YAML files should contain key/value pairs that connect the codes from the data with human-readable labels. For example, take the following data in CSV format:
+
+Year|Sex|Value
+---|---|---
+2023||50
+2024||60
+2023|F|25
+2024|F|30
+2023|M|25
+2024|M|30
+
+Given that the codes in the data are "F" and "M" respectively, this would be the contents of the English translation file (translations/en/Sex.yml):
+
+```
+F: Female
+M: Male
+```
+
+And this woud be the contents of the Spanish translation file (translations/es/Sex.yml):
+
+```
+F: Mujeres
+M: Hombres
+```
+
+Importantly though, these files should contain a translation of the breakdown itself. So the full Spanish file would be:
+
+```
+Sex: Sexo
+F: Mujeres
+M: Hombres
+```
+
+As you might imagine, consistency in the codes and breakdowns used in data is very important, since each individual code needs to be translated.
+
+## Part 3: Indicator metadata and configuration
+
+The translation of metadata may be the most time-consuming. Because metadata for each indicator are verbose and unique, you can expect the translation of metadata to be a significant undertaking.
+
+The recommended approach for structuring the translations of metadata is fairly straightforward:
+
+1. Place the metadata files for your default ("source") language in a "meta" folder in your data repository, named according to the indicator number.
+2. Create a subfolder for each other language.
+3. Place copies of the metadata in each of the language subfolders, and translate the content accordingly.
+
+Here is an example of this folder structure, showing the metadata for 1.1.1 and a subfolder for a Spanish translation of 1.1.1:
+
+```
+meta
+    1-1-1.yml
+    es
+        1-1-1.yml
+```
+
+Note that unlike with the "translations" folder above, the source language is not in a subfolder. In other words, notice how there is no English (en) subfolder.
+
+The contents of these YAML files are what you might expect -- key/value pairs connecting metadata fields/codes with the content. For example:
+
+```
+SDG_GOAL: '<p>Objetivo 1: Poner fin a la pobreza en todas sus formas y en todo el
+  mundo</p>'
+SDG_TARGET: >-
+  <p>Meta 1.1: De aquí a 2030, erradicar para todas las personas y en todo el mundo
+  la pobreza extrema (actualmente se considera que sufren pobreza extrema las personas
+  que viven con menos de 1,25 dólares de los Estados Unidos al día)</p>
+SDG_INDICATOR: >-
+  <p> Indicador 1.1.1: Proporción de la población que vive por debajo del umbral de
+  pobreza internacional por sexo, edad, situación laboral y ubicación geográfica (urbana/rural)</p>
+```
+
+Notice the use of the `>-` syntax, which is useful for large amounts of metadata, especially when it contains special characters.
+
+Notice also that the metadata content can contain HTML.
+
+Finally, recognize that everything mentioned above can also be applied to your "indicator configuration" -- the files inside the `indicator-config` folder in your data repository. Much of the contents of this "indicator configuration" may be technical in nature and not meant to be human readable, but there are some fields (such as "graph_title" and "indicator_name") that could indeed benefit from translation. In this case, the structure and recommended approach is the same.
+
+## Part 4: Icons for the 17 goals
+
+Although it is not a best practice to include text inside of images, the 17 goal icons have historically contained shortened versions of the goal titles.
+
+We try to maintain translated goal icons in the SDG Translations library (mentioned above). [Here are the languages that we currently have goal icons for](https://github.com/open-sdg/sdg-translations/tree/2.4.0-dev/www/assets/img/goals).
+
+The ideal implementation of the icons is SVG format with a transparent background. This allows for the most flexibility in displaying the icons clearly to all users. The next best format, however, is PNG, followed by JPG.
 
 
-This document provides an overview of how the platform accomplishes this, and how it can be extended.
+
+
+
 
 Throughout this discussion of translation, there will be repeated mention of "translation keys". See the [glossary page in the "translation keys" section](glossary.md#translation-keys) for a definition.
 
