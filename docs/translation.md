@@ -1,8 +1,49 @@
 <h1>Translation</h1>
 
-This platform is designed to be multilingual, and leverages the translations being maintained in a [separate repository](https://github.com/open-sdg/sdg-translations) which is maintained via Weblate at this address:
+This platform is designed to be multilingual can be fully translated into any number of languages. Here are the key parts of the platform that should be translated:
+
+1. The user interface (buttons, labels, etc.)
+2. Indicator data disaggregation
+3. Indicator metadata and configuration
+4. Icons for the 17 goals
+5. Any custom pages
+6. Site configurations
+
+
+Each of these 5 parts has its own unique translation challenges. Open SDG's translation system is flexible, which can make it seem confusing. So this document will describe recommended approaches for each of the 5 parts. After learning these recommended approaches, however, you may decide to mix and match approaches as you see fit.
+
+## Part 1: The user interface
+
+The user interface of Open SDG is obviously specific to Open SDG, so the Open SDG team manages this part. This is handled in a [separate repository](https://github.com/open-sdg/sdg-translations) which is maintained via Weblate at this address:
 
 * [SDG Translations](https://hosted.weblate.org/projects/sdg-translations/)
+
+The number of languages supported in SDG Translations is continually growing, as more languages are requested. Here are instructions on how to take advantage of SDG Translations.
+
+First, check [SDG Translations](https://github.com/open-sdg/sdg-translations/tree/HEAD/translations) and see if the desired language is already there. If so, you can skip to step 2.
+
+Next, check to see if you can use [Weblate](https://hosted.weblate.org/projects/sdg-translations/) to add the translations. On Weblate, click on any of the "components", such as [General](https://hosted.weblate.org/projects/sdg-translations/general/). Press "Start new translation" at the bottom to get started, and then follow the prompts to choose your language.
+
+You can then proceed to translate each "component" in Weblate, such as General, Calendar, etc. For more details on using Weblate, see the [official Weblate documentation](https://docs.weblate.org/en/latest/user/basic.html).
+
+Note, in the rare case that your language is not available in Weblate, you will need to manually translate all of the YAML files from the [Github repository](https://github.com/open-sdg/sdg-translations) and then submit your translations as a pull-request.
+
+Important note about machine translations: The translations in SDG Translations are initially performed as machine translations, and then reviewed and corrected by users (like you!). So, the Open SDG team cannot make any guarantees about the quality of these translations. We need the help of our users to confirm that the machine translations are correct, or to improve them as needed.
+
+### Technical notes about the user interface
+
+SDG Translations can be pulled into your platform simply with the [`translations` section of your data configuration file](data-configuration.md#translations). Here is an example pulling in version 2.3.0 of SDG Translations:
+
+```
+translations:
+  - class: TranslationInputSdgTranslations
+    source: https://github.com/open-sdg/sdg-translations.git
+    tag: 2.3.0
+```
+
+## Part 2: Indicator data disaggregation
+
+
 
 This document provides an overview of how the platform accomplishes this, and how it can be extended.
 
