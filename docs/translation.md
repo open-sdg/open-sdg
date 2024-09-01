@@ -9,8 +9,7 @@ This platform is designed to be multilingual can be fully translated into any nu
 5. Any custom pages
 6. Site configurations
 
-
-Each of these 5 parts has its own unique translation challenges. Open SDG's translation system is flexible, which can make it seem confusing. So this document will describe recommended approaches for each of the 5 parts. After learning these recommended approaches, however, you may decide to mix and match approaches as you see fit.
+Each of these 6 parts has its own unique translation challenges. Open SDG's translation system is flexible, which can make it seem confusing. So this document will describe recommended approaches for each of the 6 parts. After learning these recommended approaches, however, you may decide to mix and match approaches as you see fit.
 
 ## Part 1: The user interface
 
@@ -136,52 +135,121 @@ Finally, recognize that everything mentioned above can also be applied to your "
 
 Although it is not a best practice to include text inside of images, the 17 goal icons have historically contained shortened versions of the goal titles.
 
-We try to maintain translated goal icons in the SDG Translations library (mentioned above). [Here are the languages that we currently have goal icons for](https://github.com/open-sdg/sdg-translations/tree/2.4.0-dev/www/assets/img/goals).
+We maintain translated goal icons for some languages in the SDG Translations library (mentioned above). [Here are the languages that we currently have goal icons for](https://github.com/open-sdg/sdg-translations/tree/HEAD/www/assets/img/goals).
 
 The ideal implementation of the icons is SVG format with a transparent background. This allows for the most flexibility in displaying the icons clearly to all users. The next best format, however, is PNG, followed by JPG.
 
+SVG is the ideal format because of the "high-contrast" feature of Open SDG. Open SDG users can opt for a high-contrast mode that changes everything to black, white, and yellow. If you use PNG or JPG goal icons, then you will need to also generate a set of black-and-white versions for this high-contrast mode. But with SVG you only need to make one version.
 
 
+If your language does not yet have goal icons in SDG Translations, you will need to generate them yourself. Once you have the icons generated, you have two choices:
 
+1. Contribute your creations to the SDG Translations repository (contact the Open SDG team to get help with this)
+2. Upload the icons to the `assets/img/goals` folder of your site repository.
 
+Depending on where you place your goal icons, you will need to set the [`goal_image_base`](configuration.md#goal_image_base) and/or [`goal_image_extension`](configuration.md#goal_image_extension) site configuration settings appropriately.
 
-Throughout this discussion of translation, there will be repeated mention of "translation keys". See the [glossary page in the "translation keys" section](glossary.md#translation-keys) for a definition.
+## Part 5: Custom pages
 
-## Translation data
+Custom pages are the files contained in the `_pages` folder of your site repository. The important consideration for the purposes of translation is to ensure that every page has a version of every language.
 
-In order to compile the platform in multiple languages, Jekyll needs the translations themselves. The recommended way to pull in the translations is through the data repository. Note that the [open-sdg-data-starter](https://github.com/open-sdg/open-sdg-data-starter) comes pre-configured to use this approach.
+For example, if your site has a default language of English, and is to be translated into Spanish, you will need two versions of every page: English and Spanish. So, if you have a custom "About" page and a custom "Frequently Asked Questions" page, then you will need a total of 4 files in the `_pages` folder:
 
-## Adding new languages
+1. English version of "About"
+2. Spanish version of "About"
+3. English version of "Frequently Asked Questions"
+4. Spanish version of "Frequently Asked Questions"
 
-There are 4 steps in adding a new language to your platform
+There are two important pieces of configuration necessary in each of these files:
 
-### 1. Add the language to SDG Translations
+1. `language`: This is simply the language code of the page
+2. `permalink`: This is the URL path for the page, and **should include the language code**.
 
-First, check [SDG Translations](https://github.com/open-sdg/sdg-translations/tree/1.4.0-dev/translations) and see if the desired language is already there. If so, you can skip to step 2.
+Here are short examples for all 6 of the hypothetical pages mentioned above:
 
-Next, check to see if you can use [Weblate](https://hosted.weblate.org/projects/sdg-translations/) to add the translations. On Weblate, click on any of the "components", such as [General](https://hosted.weblate.org/projects/sdg-translations/general/). Press "Start new translation" at the bottom to get started, and then follow the prompts to choose your language.
+* _pages/about-en.md
 
-You can then proceed to translate each "component" in Weblate, such as General, Calendar, etc. For more details on using Weblate, see the [official Weblate documentation](https://docs.weblate.org/en/latest/user/basic.html).
+      ---
+      language: en
+      permalink: /about/
+      title: About
+      layout: page
+      ---
 
-Note, if your language is not available in Weblate, you will need to manually translate all of the YAML files from the [Github repository](https://github.com/open-sdg/sdg-translations) and then submit your translations as a pull-request.
+      My content for the page.
 
-### 2. Make sure that translated goal icons have been created. These are currently maintained in [the sdg-translations project](https://github.com/open-sdg/sdg-translations/).
+* _pages/about-es.md
 
-Specifically, you will need to produce translated versions of all the PNG files in [this folder of goal images](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/goals/en) and [this folder of high-contrast goal images](https://github.com/open-sdg/sdg-translations/tree/master/www/assets/img/high-contrast/goals/en) (for high contrast versions).
+      ---
+      language: es
+      permalink: /es/about/
+      title: Acerca de
+      layout: page
+      ---
 
-Note that if you use the SVG format for the images, you do not need to make high-contrast versions.
+      Mi contenido para la pagina.
 
-### 3. Update data configuration
+* _pages/faq-en.md
 
-Add the new language in the 'languages' list in your data config (`config_data.yml`) file.
+      ---
+      language: en
+      permalink: /faq/
+      title: Frequently Asked Questions
+      layout: page
+      ---
 
-### 4. Translate site pages and posts
+      My content for the page.
 
-Create new versions of any files in the `_pages` and `_posts` folders of your site repository. Note that the open-sdg-site-starter project includes a [script](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/scripts/batch/add_language.py) to make this easier.
+* _pages/faq-es.md
 
-### 5. Update site configuration
+      ---
+      language: es
+      permalink: /es/faq/
+      title: Preguntas frecuentes
+      layout: page
+      ---
 
-Add the new language in the 'languages' list in your site config (`_config.yml`).
+      Mi contenido para la pagina.
+
+Note these important considerations:
+
+1. When the language is the default language (English in the example above) you do not need to include the language code in the "permalink".
+2. The "permalinks" should be identical apart from the language codes. In other words, you should not "translate" the permalinks.
+3. Feel free to organize these files into subfolders if that makes it easier to maintain.
+
+## Part 6: Site configurations
+
+Some site configurations include blurbs, labels, menus, etc, which need to be translated. One example is the [`menu` site configuration](configuration.md#menu). For cases like this, you will need to refer to "translation keys". See the [glossary page in the "translation keys" section](glossary.md#translation-keys) for a definition.
+
+Translation keys are a way to refer to any of the translations that you are using, whether it is from SDG Translations, or from any of the files in your data repository's "translations" folders. Each translation key consists of a file and a key, with a dot in the middle. Eg: "file.key".
+
+For example, to refer to the first item ("Cookie settings") in [this SDG Translations file called "cookies.yml"](https://github.com/open-sdg/sdg-translations/blob/HEAD/translations/en/cookies.yml) you would use this translation key:
+
+`cookies.cookie_settings`
+
+Again, this is the file ("cookies") then a dot, and then the key that you want ("cookie_settings").
+
+Open SDG will recognize that this is a translation key, and will automatically translate it as needed.
+
+A common approach taken for translating site configurations is to create files called "custom.yml" in your data repository's translation folders. Then, add keys to these files as needed, and then refer to those translation keys.
+
+For example, you might have these files in your data repository:
+
+* translations/en/custom.yml
+
+      foo: My content
+
+* translations/es/custom.yml
+
+      foo: Mi contenido
+
+Then you could use the translation key `custom.foo` in any site configurations, as needed.
+
+## Languages configurations
+
+You should have a list of your language codes in the `languages` setting for both your [data configuration](data-configuration.md#languages) and your [site configuration](configuration.md#languages). The first item should always be the default language.
+
+> The following topics are more advanced and useful only if you are doing significant customizations.
 
 ## Using translated text in Jekyll templates
 
@@ -193,7 +261,7 @@ Instead, you should see something like this:
 
 `<h1>{{ page.t.general.sdg }}</h1>`
 
-The `page.t` variable contains a nested structure of translation values, corresponding to the folder structure of the repositories mentioned above. For example, in the example above, the "general" refers to [this general.yml translation file](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/general.yml), and the "sdg" refers to [that particular line within the translation file](https://github.com/open-sdg/sdg-translations/blob/master/translations/en/general.yml#L9).
+The `page.t` variable contains a nested structure of translation values, corresponding to the folder structure of the repositories mentioned above. For example, in the example above, the "general" refers to [this general.yml translation file](https://github.com/open-sdg/sdg-translations/blob/HEAD/translations/en/general.yml), and the "sdg" refers to [that particular line within the translation file](https://github.com/open-sdg/sdg-translations/blob/HEAD/translations/en/general.yml#L9).
 
 Jekyll will display translated text according to the "language" specified in the "front matter" of the current document.
 
@@ -207,49 +275,6 @@ Sometimes you may need to translate something that exists as a Liquid variable i
 ```
 
 Note that it is always safe to run variables through this `t` filter, even if you aren't sure whether it actually contains a translation key. If the variable doesn't actually contain a translation key, then it will be unchanged.
-
-## Translating indicator metadata
-
-The translate indicator metadata, you put "translation keys" directly into the indicator metadata. For example, instead of:
-
-```lang-yaml
-un_custodian_agency: UN Habitat
-```
-
-You might do:
-
-```lang-yaml
-un_custodian_agency: agencies.un_habitat
-```
-
-Assuming that `agencies.un_habitat` refers to an actual translation key in your translations, this will translate the field according to that entry.
-
-### Alternative approach: subfolders
-
-Another mechanism available for translating metadata is to place pre-translated versions of your metadata files into subfolders, named by the language. The pre-translated versions need not contain all the fields - only the particular fields that you have translated.
-
-For example, suppose you have a metadata file called `1-1-1.md` containing the following:
-
-```
-indicator_name: My English indicator name
-some_other_field: XYZ
-```
-
-If you want to translate the indicator name into Spanish, you could create a subfolder called `es` and place inside a file called `1-1-1.md` containing the following:
-
-```
-indicator_name: My Spanish indicator name
-```
-
-This will translate the indicator name into Spanish, but will leave `some_other_field` alone.
-
-### Subfolders vs translation keys
-
-You may be wondering which of the above approaches you should use - subfolders, or translation keys. The answer depends on your preference. You can use either approach - or even both approaches - as you see fit.
-
-A practical tip: You may find that using translation keys is preferable for smaller pieces of content that are shared by multiple indicators. Translation keys work best here, because they allow you to maintain the translation in only one place. By contrast, using the subfolder approach would require you to copy/paste the translation into each metadata file in the subfolder.
-
-However, the subfolder approach can be more straightforward and direct, may be preferable for larger chunks of content that are specific to one indicator only, such as indicator descriptions.
 
 ## Translation in Javascript
 
@@ -274,26 +299,6 @@ NOTE: In contrast to Jekyll, any translation keys you will need in Javascript ne
 
 Sometimes you might want to utilize a site configuration setting inside a translation, such as `country.name` or `country.adjective`. You can do this by adding a `%` in front. For example, "Statistical data on the SDGs for %country.name". You can also use this approach in page content. For example, "For more information please contact %email_contacts.suggestions".
 
-## Translating data disaggregations and columns
-
-To translate the disaggregations and columns in your data (such as "Age", "Sex", "Female", etc.) you will need to make sure that the translations exist which correspond to your columns and disaggregation values. The translation of the column itself should be have a translation group and a key both named the same as the column. So for example, the translation key of a "Sex" column should be "Sex.Sex". The translation keys of each disaggregation value belong within the same translation group, eg: "Sex.Female" and "Sex.Male". So, for example, an English translation file which handles the "Sex" column might look like this:
-
-```
-Sex: Sex
-Female: Female
-Male: Male
-```
-
-While the Chinese version might look like:
-
-```
-Sex: 性别
-Female: 女
-Male: 男
-```
-
-Alternatively, you can use actual translation keys inside your data. For example, your CSV files can include things like "custom.my_translation_key" instead of a column name or disaggregation value. However the recommended approach is to have one translation group per column, as described above.
-
 ## Available translation-related variables
 
 In addition to the `page.t` variable for displaying translations, there are 3 other Liquid variables of general use:
@@ -303,62 +308,3 @@ In addition to the `page.t` variable for displaying translations, there are 3 ot
 * `page.baseurl`: A version of site.baseurl including any language code
 
 These variables are available in all Jekyll documents.
-
-## Overriding and extending translation data
-
-Inevitably an implementation of this platform will need to display some text that is not already included in the repositories mentioned above, and that is likely specific to a particular country. There are two recommended options for this:
-
-1. Maintain your translations in a `translations` folder of any Git repository. An easy way to get started with this is to copy the [sdg-translations](https://github.com/open-sdg/sdg-translations) project and then clear out the `translations` folder. More detail on this process is below.
-2. Put the translations directly into your data repository, in a `translations` folder. See [this folder in the data starter](https://github.com/open-sdg/open-sdg-data-starter/tree/develop/translations) for an example.
-
-Whichever approach you take, make sure to adjust your data repository's configuration as needed. See this [example of a data repository's translation configuration](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L66).
-
-> **NOTE**: If you make a translation that you think would be useful to others, please
-> submit it as a pull-request!
-
-### Maintaining translation data in a separate repository
-
-An implementation of Open SDG can pull its translations from any number of Git repositories. Out of the box, the starter repositories are configured to pull translations from the [sdg-translations](https://github.com/open-sdg/sdg-translations) project. To see an example, see [that part of the data starter configuration](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L69).
-
-However as mentioned above, you likely will need custom translations of text that are specific to your region. For a direct approach, as mentioned above, you can add these translations directly to a `translations` folder in the data repository. The starter repository is configured to pull translations from this folder, if it exists (see [that part of the data starter configuration](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml#L73)).
-
-But perhaps you would prefer to maintain your translations in a separate Git repository. The recommended approach here is to copy [sdg-translations](https://github.com/open-sdg/sdg-translations) by going there and clicking the green "Use this template" button. This will allow you to name it whatever you would like, and will give you an exact copy of sdg-translations.
-
-You likely don't want to maintain *all* of the translations in sdg-translations, so it is recommended that you clear out the contents of the `translations` folder of your copied version. Next, you can add only the translations that you need. Then, you will need to update your data repository configuration so that it pulls from sdg-translations **AND** your copied version.
-
-For example, if you named your copied version `my-github-org/my-translations-repo`, then you would update your data repository configuration from this:
-
-```
-translations:
-  - class: TranslationInputSdgTranslations
-    source: https://github.com/open-sdg/sdg-translations.git
-    tag: master
-```
-
-...to this:
-
-```
-translations:
-  - class: TranslationInputSdgTranslations
-    source: https://github.com/open-sdg/sdg-translations.git
-    tag: master
-  - class: TranslationInputSdgTranslations
-    source: https://github.com/my-github-org/my-translations-repo.git
-    tag: master
-
-```
-
-Note that because your copied version is *after* the sdg-translations entry, you can "override" anything in the sdg-translations project by duplicating (and changing) it in your copied version.
-
-Also note, as a good practice you should point at "tags" (such as "1.0.0") instead of "branches" (such as "master"). In other words, a better configuration would be something like:
-
-```
-translations:
-  - class: TranslationInputSdgTranslations
-    source: https://github.com/open-sdg/sdg-translations.git
-    tag: 1.0.0
-  - class: TranslationInputSdgTranslations
-    source: https://github.com/my-github-org/my-translations-repo.git
-    tag: 1.0.0
-
-```
