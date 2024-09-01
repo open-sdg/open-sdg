@@ -1,6 +1,6 @@
 <h1>Translation</h1>
 
-This platform is designed to be multilingual can be fully translated into any number of languages. Here are the key parts of the platform that should be translated:
+This platform is designed to be multilingual and can be fully translated into any number of languages. Here are the key parts of the platform that should be translated:
 
 1. The user interface (buttons, labels, etc.)
 2. Indicator data disaggregation
