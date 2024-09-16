@@ -75,10 +75,10 @@ function initialiseDataTable(el, info) {
                     if (info.chartType === 'binary') {
                         var cellDataInt = Number(cellData);
                         if (cellDataInt === 1) {
-                            cellData = 'Yes';
+                            cellData = translations.indicator.affirmative;
                         }
                         else if (cellDataInt === 0 || cellDataInt === -1) {
-                            cellData = 'No';
+                            cellData = translations.indicator.negative;
                         }
                     }
                     $(td).text(alterDataDisplay(cellData, rowData, 'table cell', additionalInfo));
