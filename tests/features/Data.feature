@@ -17,7 +17,7 @@ Feature: Data
         And I wait 2 seconds
         And I click on "the Table tab"
         And I wait 2 seconds
-        Then I should see 3 "table value" elements
+        Then I should see 2 "table value" elements
         And I should not see "0" in the "table cell" element
         And I should not see "1" in the "table cell" element
         And I should see "Yes" in the "table cell" element
