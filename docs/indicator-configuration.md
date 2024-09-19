@@ -292,7 +292,7 @@ Here is an example of what this looks like on the platform:
 
 ### graph_annotations
 
-_Optional_: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `t_lines` and `graph_series_breaks` settings.
+_Optional_: Note that this setting is quite complex, and is not recommended unless you really need a particular type of graph annotation. For much simpler alternatives specifically designed for the most common use-cases, see the `graph_target_lines` and `graph_series_breaks` settings.
 
 This setting can be used to add line annotations to the graph, such as target lines to show the progress towards the 2030 goal for an indicator (though, again, there is a separate `graph_target_lines` setting specifically designed for target lines). Like `graph_titles` it can include multiple annotations, and limited to particular units or series. Each item can have the following settings:
 
