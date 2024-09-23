@@ -165,6 +165,37 @@ Now we can add this change to our branch.
 1. At the bottom select "Commit directly to the `create-pages-tutorial` branch".
 1. Click the "Commit changes" button.
 
+## Table of Contents
+
+You may want to include a table of contents to your custom pages or your about section on your Open SDG platform. This can be useful if you have a lot of information on the site and make navigation for users easier when using the site.
+
+The change required to have these appear come in two steps
+
+1. Update your Gem file
+
+Inside your staging site repository there will be a file called "Gemfile" in the root of your repository, this will include several plugins for your site. Some come as default with the site starter but to add your table of contents you will need to add an extra line
+
+```
+---
+gem "jekyll-toc"
+---
+```
+
+2. Enable Toc inside your pages
+
+Inside your pages folder in your staging site repository at the top of every file there will be this section
+
+```
+---
+title: About the SDGs
+permalink: /about/
+layout: page
+toc: true
+---
+```
+
+To enable this feature your 'toc:' setting must be set to **true**
+
 ## Merge the pull request
 
 We have now added a page to our site and menu. Perform these last steps to create and merge the pull-request.
