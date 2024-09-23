@@ -122,3 +122,11 @@ But after you have set up the custom domain then you would need to change it to:
 ```
 remote_data_prefix: https://my-custom-domain.org/my-data-repo
 ```
+
+In addition to the Github Pages guidance for configuring your custom domain for your production site.
+
+You'll need to get the DNS (Domain Name System) record with the custom domain registered, this would usually be handled by your IT department but you can complete this yourself, usually for little cost.
+
+Once you have the DNS record you'll need to instruct the DNS provider to point towards Githubs IP address.
+
+Inside Github you'll need to go into the setting of your organisation, navigate to the "GitHub Pages" section under "Code and Automation". Once the DNS provider is pointing towards Githubs IP address you can set the custom domain inside the "Custom Domain" box and click save
