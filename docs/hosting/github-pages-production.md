@@ -117,7 +117,7 @@ Once you have the DNS record you will need to instruct the DNS provider to point
 
 Inside GitHub, you will need to go into the settings of your staging site repository and navigate to the "Pages" section under "Code and Automation". Once the DNS provider is pointing towards GitHub's IP address, you can set the custom domain inside the "Custom Domain" box and click "Save".
 
-Note that if your production data is under the same GitHub organisation as your production site, then after you set up the custom domain you will need to change the remote_data_prefix line in your production site configuration file such that it uses the custom domain. For example, if your GitHub production organization is "my-prod-org", then that `remote_data_prefix` line is probably something like:
+Note that if your production data repository is under the same GitHub organisation as your production site repository, then after you set up the custom domain you will need to change the remote_data_prefix line in your production site configuration file such that it uses the custom domain. For example, if your GitHub production organization is "my-prod-org", then that `remote_data_prefix` line is probably something like:
 
 ```
 remote_data_prefix: https://my-prod-org.github.io/my-data-repo
