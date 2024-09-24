@@ -167,23 +167,21 @@ Now we can add this change to our branch.
 
 ## Table of Contents
 
-You may want to include a table of contents to your custom pages or your about section on your Open SDG platform. This can be useful if you have a lot of information on the site and make navigation for users easier when using the site.
+You may want to include a table of contents in your custom pages or your About section on your Open SDG platform. Every heading will appear in the contents list with hyperlinks to take users straight to those sections. This can be useful if you have a lot of information on the site and will make navigation for users easier when using the site.
 
-The change required to have these appear come in two steps
+The change required to have these appear comes in two steps:
 
-1. Update your Gem file
+1. Update your Gemfile
 
-Inside your staging site repository there will be a file called "Gemfile" in the root of your repository, this will include several plugins for your site. Some come as default with the site starter but to add your table of contents you will need to add an extra line
+Inside your staging site repository there will be a file called "Gemfile" in the root of your repository, this will include several plugins for your site. Some come as default with the site starter but to add your table of contents you will need to add an extra line:
 
 ```
----
 gem "jekyll-toc"
----
 ```
 
 2. Enable Toc inside your pages
 
-Inside your pages folder in your staging site repository at the top of every file there will be this section
+Inside your pages folder in your staging site repository at the top of every file there will be this section:
 
 ```
 ---
@@ -192,9 +190,11 @@ permalink: /about/
 layout: page
 toc: true
 ---
+## First heading
+This is my About page content
 ```
 
-To enable this feature your 'toc:' setting must be set to **true**
+To enable this feature your 'toc:' setting must be set to **true** and any headings in your text should have the following formatting `## Heading 1` so that they appear in your table of contents.
 
 ## Merge the pull request
 
