@@ -6,8 +6,6 @@ Indicator data can be displayed on a [choropleth map](https://en.wikipedia.org/w
 
 There must be a column in the CSV data called `GeoCode`. Each row that you would like mapped must have a value in the GeoCode column, which corresponds to an ID in the GeoJSON (see below).
 
-> NOTE: Currently the mapping solution does not support disaggregation, so there is no need to add GeoCode values in disaggregated rows.
-
 ## Metadata field: data_show_map
 
 The metadata field `data_show_map` must be set to `true`.
