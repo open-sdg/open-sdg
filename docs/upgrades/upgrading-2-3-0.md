@@ -1,4 +1,4 @@
-<h1>Upgrading to 2.3.0</h1>
+<h1>Upgrading to 2.3.1</h1>
 
 This document is intended for developers, to help with the process of upgrading to version 2.3.0 of Open SDG, from 2.2.0 or higher.
 
