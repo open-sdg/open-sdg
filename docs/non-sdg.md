@@ -48,7 +48,7 @@ The members of the aforementioned hierarchy each have labels. In the SDG framewo
 For example:
 
 * The label for Goal 1 is "End poverty in all its forms everywhere".
-* The label for Target 1.1. is "By 2030, eradicate extreme poverty for all people everywhere, currently measured as people living on less than $1.25 a day".
+* The label for Target 1.1 is "By 2030, eradicate extreme poverty for all people everywhere, currently measured as people living on less than $1.25 a day".
 * The label for Indicator 1.1.1 is "Proportion of the population living below the international poverty line by sex, age, employment status and geographic location (urban/rural)".
 * etc...
 
@@ -58,7 +58,7 @@ The mechanism in Open SDG for controlling these labels is in the translations. O
 * Targets: https://github.com/open-sdg/sdg-translations/blob/HEAD/translations/en/global_targets.yml
 * Indicators: https://github.com/open-sdg/sdg-translations/blob/HEAD/translations/en/global_indicators.yml
 
-As you can see in those translations, the "translation keys" are based on the numeric identififier of each goal/target/indicator. For example, the key for indicator 1.1.1 is "1-1-1-title" in the "global_indicators" file.
+As you can see in those translations, the "translation keys" are based on the numeric identifier of each goal/target/indicator. For example, the key for indicator 1.1.1 is "1-1-1-title" in the "global_indicators" file.
 
 This means that, to support your non-SDG framework, you will need to have translation files for "global_goals", "global_targets", and "global_indicators" with all of the necessary labels. As long as your framework uses numerical identifiers (eg, 1.1.1, 1.1.2, etc.) then this should work fine.
 
