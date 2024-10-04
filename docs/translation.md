@@ -8,6 +8,7 @@ This platform is designed to be multilingual and can be fully translated into an
 4. Icons for the 17 goals
 5. Any custom pages
 6. Site configurations
+7. Maps
 
 Each of these 6 parts has its own unique translation challenges. Open SDG's translation system is flexible, which can make it seem confusing. So this document will describe recommended approaches for each of the 6 parts. After learning these recommended approaches, however, you may decide to mix and match approaches as you see fit.
 
@@ -42,7 +43,7 @@ translations:
 
 This part includes the human-readable labels for the breakdowns of the data. For example, this would include translation of the words "Sex", "Female", and "Male". These translations appear on the indicator pages, in charts, tables, and dropdowns.
 
-The recommend approach for translating disaggregation is to use YAML files in a `translations` folder in your data repository. Inside this folder you should have subfolders -- one for each language. Within these subfolders you should have YAML files -- one for each breakdown.
+The recommend approach for translating disaggregation is to use YAML files in a `translations` folder in your data repository. Inside this folder you should have subfolders -- one for each language. Within these subfolders you should have YAML files -- one file for each breakdown that is used in your data.
 
 Here is an illustration of this folder structure, using the example described above of the "Sex" breakdown, translated into English (en) and Spanish (es):
 
@@ -51,6 +52,19 @@ translations
     en
         Sex.yml
     es
+        Sex.yml
+
+```
+
+If your data also have a breakdown for "Age", then you would need to have "Age.yml" files too:
+
+```
+translations
+    en
+        Age.yml
+        Sex.yml
+    es
+        Age.yml
         Sex.yml
 
 ```
@@ -100,7 +114,7 @@ The recommended approach for structuring the translations of metadata is fairly 
 2. Create a subfolder for each other language.
 3. Place copies of the metadata in each of the language subfolders, and translate the content accordingly.
 
-Here is an example of this folder structure, showing the metadata for 1.1.1 and a subfolder for a Spanish translation of 1.1.1:
+Here is an example of this folder structure, showing the metadata for 1.1.1 and a subfolder for a Spanish translation of 1.1.1. In this case, the format for the metadata is YAML files:
 
 ```
 meta
@@ -109,7 +123,7 @@ meta
         1-1-1.yml
 ```
 
-Note that unlike with the "translations" folder above, the source language is not in a subfolder. In other words, notice how there is no English (en) subfolder.
+**Important note**: Unlike with the "translations" folder above, the source language is *not* in a subfolder. The source language (English) is in the root "meta" folder. In other words, notice how there is no English (en) subfolder.
 
 The contents of these YAML files are what you might expect -- key/value pairs connecting metadata fields/codes with the content. For example:
 
@@ -125,9 +139,9 @@ SDG_INDICATOR: >-
   pobreza internacional por sexo, edad, situación laboral y ubicación geográfica (urbana/rural)</p>
 ```
 
-Notice the use of the `>-` syntax, which is useful for large amounts of metadata, especially when it contains special characters.
+Some tips related specifically to the YAML format: Notice the use of the `>-` syntax, which is useful for large amounts of metadata, especially when it contains special characters. Notice also that the metadata content can contain HTML.
 
-Notice also that the metadata content can contain HTML.
+This approach also works with other formats of metadata - apart from YAML. For example, if you are using Word documents for metadata, you can use the same approach.
 
 Finally, recognize that everything mentioned above can also be applied to your "indicator configuration" -- the files inside the `indicator-config` folder in your data repository. Much of the contents of this "indicator configuration" may be technical in nature and not meant to be human readable, but there are some fields (such as "graph_title" and "indicator_name") that could indeed benefit from translation. In this case, the structure and recommended approach is the same.
 
@@ -244,6 +258,22 @@ For example, you might have these files in your data repository:
       foo: Mi contenido
 
 Then you could use the translation key `custom.foo` in any site configurations, as needed.
+
+## Part 7: Maps
+
+Maps in Open SDG are implemented using a GeoJSON file, in which each region on the map contains a human-readable name (see the "name_property in [the map documentation](maps.md)). Note that, in order to have this name translated, you will need to use translation keys in your GeoJSON file.
+
+For example, if the name for a "region_1" is "New York", you could have the following in your data repository:
+
+* translations/en/custom.yml
+
+      region_1: New York
+
+* translations/es/custom.yml
+
+      region_1: Nueva York
+
+Then, in your GeoJSON file, you would use the translation key `custom.region_1` as the name for that region.
 
 ## Languages configurations
 
