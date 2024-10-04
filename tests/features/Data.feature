@@ -10,7 +10,8 @@ Feature: Data
         And I click on "the Table tab"
         And I wait 2 seconds
         Then I should see 3 "table value" elements
-        And I should not see "undefined" in the "table cell" element
+        And I should not see "undefined" in the "second table value" element
+        And I should see "-" in the "second table value" element
 
     Scenario: Indicators configured as binary charts should appear as Yes/No on tables too
         Given I am on "/2-4-1"
@@ -18,7 +19,7 @@ Feature: Data
         And I click on "the Table tab"
         And I wait 2 seconds
         Then I should see 2 "table value" elements
-        And I should not see "0" in the "table cell" element
-        And I should not see "1" in the "table cell" element
-        And I should see "Yes" in the "table cell" element
-        And I should see "No" in the "table cell" element
+        And I should not see "1" in the "first table value" element
+        And I should not see "0" in the "second table value" element
+        And I should see "Yes" in the "first table value" element
+        And I should see "No" in the "second table value" element
