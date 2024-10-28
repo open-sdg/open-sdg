@@ -131,6 +131,7 @@ This setting can contain several (indented) sub-settings:
 * `goal_content_heading`: Text entered here will appear as an H2 heading above any content configured below in 'goals'.
 * `previous_next_links`: You can set this to `true` to turn on previous/next links on goal pages, allowing users to "page" through the goals, directly from one to the next.
 * `goals`: This optional item can include an array of objects, each with can have these optional fields:
+
     * `goal`: This can specify the goal number. For example: `goal: 1`. This is optional but recommended. If you omit this, then it is your responsibility to make sure that all of the objects in this array are *in order*. In other words, the first object is goal 1, the second object is goal 2, etc.
     * `heading`: Text entered here will appear as an H1 heading at the top of the goal page. This is optional and overrides the default (eg, 'Goal 1: No Poverty'). This is useful for SEO purposes, and can be plain text or a translation key.
     * `content`: Use this to specify specific content for goal pages, which can include Markdown, or can be a translation key.
@@ -316,6 +317,10 @@ disclaimer:
   hidden: true
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of disclaimer functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/disclaimer.PNG)
+
 ### email_contacts
 
 **_Required_**: This setting should contain three more (indented) settings for email addresses: `questions`, `suggestions`, and `functional`. This allows the platform to direct users to appropriate inboxes from various parts of your site.
@@ -337,6 +342,10 @@ empty_metadata_placeholder: indicator.empty_metadata_placeholder
 
 The above default refers to a translation key which currently translates to "Not available for this indicator" in English.
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of empty metadata placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_metadata_placeholder.png)
+
 ### empty_metadata_placeholder_sources
 
 _Optional_: This setting controls the text that displays for any *sources* field which has no content. Note that this setting is not used if `hide_empty_metadata` is set to `true`. If the omitted, the following default is used:
@@ -346,6 +355,10 @@ empty_metadata_placeholder_sources: indicator.empty_metadata_placeholder_sources
 ```
 
 The above default refers to a translation key which currently translates to "Not available for this source" in English.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of empty source placeholder functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/empty_source_placeholder.png)
 
 ### environment
 
@@ -362,6 +375,10 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 ```nohighlight
 footer_language_toggle: none
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of footer language toggle functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_language_toggles.png)
 
 ### footer_menu
 
@@ -384,6 +401,10 @@ footer_menu:
 ```
 
 Note that the `path` of an item can be a translation key itself. This is useful if you want the link to go to different URLs depending on what language is active (for example if you have multiple language-specific Twitter accounts).
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of footer menu functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/footer_menu.PNG)
 
 ### frontpage_cards
 
@@ -413,6 +434,10 @@ frontpage_cards:
       etc...
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of frontpage cards functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_cards.png)
+
 ### frontpage_goals_grid
 
 _Optional_: This setting is used on the frontpage. It can display a title and description above the grid of goal tiles. It can be configured in the following way:
@@ -435,6 +460,10 @@ frontpage_introduction_banner:
     title: title goes here
     description: description goes here
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of frontpage introduction banner functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/frontpage_introduction_banner.png)
 
 ### goal_image_base
 
@@ -472,6 +501,10 @@ goals_page:
 ```
 
 As always, for multilingual support, these settings can refer to translation keys, and the description can include Markdown.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of goals page functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/goals_page.PNG)
 
 ### graph_color_headline
 
@@ -522,6 +555,14 @@ _Optional_: This setting controls the type of language toggle to be used in the 
 ```nohighlight
 header_language_toggle: dropdown
 ```
+
+Here is an example of what the dropdown option looks like on the platform:
+
+![Screenshot of header language toggle dropdown functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_dropdown.png)
+
+Here is an example of what the links option looks like on the platform:
+
+![Screenshot of header language toggle links functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/header_language_toggles_links.png)
 
 ### hide_empty_metadata
 
@@ -668,6 +709,10 @@ indicator_tabs:
   tab_4: hide
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of header indicator tabs functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/indicator_tabs.PNG)
+
 ### languages
 
 **_Required_**: This setting controls the languages to be used on the site. This should be a list of language codes, and the first is assumed to be the default.
@@ -710,6 +755,10 @@ logos:
     alt: mi texto alternativo
 ```
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of logos functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/logos.PNG)
+
 ### map_layers
 
 _Optional_: This setting configures the layers that will be visible on maps on indicator pages. Each layer is a set of boundaries. For example, one layer might be for the province boundaries, and another layer might be for the district boundaries. For more information on this setting, see the [Maps guidance](maps.md).
@@ -745,6 +794,10 @@ menu:
       - path: about/
         translation_key: menu.about
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of menu functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/menu.PNG)
 
 ### metadata_edit_url
 
@@ -805,6 +858,10 @@ metadata_tabs:
     description: My blurb about the publications tab
     placeholder: There are no publications available for this indicator
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of metadata tabs functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/metadata_tabs.PNG)
 
 ### meta_tags
 
@@ -876,6 +933,10 @@ observation_attributes:
 
 > NOTE: For full support (including on maps) a corresponding change should also be made in the data configuration in the "indicator_options" setting. See [more details on the "indicator_options" data configuration setting](data-configuration.md#indicator_options).
 
+Here is an example of what this looks like on the platform:
+
+![Screenshot of observation attributes functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/observation_attributes.PNG)
+
 ### plugins
 
 **_Required_**: This is a general Jekyll setting, but it is mentioned here to indicate the required plugins. At a minimum you should include the following:
@@ -888,36 +949,52 @@ plugins:
 
 ### progress_status
 
-_Optional_: This setting controls certain aspects of the progress status functionality. The available settings are:
+_Optional_: This setting controls certain aspects of the progress status functionality. 
+
+For the progress status icons to display, you will need to include the relevant setting for progress_status in both the site and data configuration files. The site configuration settings for progress_status sets up the desired options for reporting progress, including the category names and images to display.
+
+The available settings in the site configuration are:
 
 * `status_heading`: Controls the heading that describes the progress status, whenever it appears.
 * `status_help`: Controls the help text that displays as a header above the progress column. This should describe what the progress types are intended to convey. This defaults to: "How are we doing against the 2030 targets?"
 * `status_types`: A list of progress status types to use. Each item should have these settings:
     * `value`: The value of the status type, as it is set in the indicator configuration (eg, 'target_achieved').
     * `label`: The human-readable label for the status type. Can be a translation key (eg, 'status.target_achieved').
-    * `image`: The internal path to the image to use (if any) for this progress status.
+    * `image`: The internal path to the image to use (if any) for this progress status. We have default images available to use by including the file names in the below examples (links to Open SDG image files), however you can choose any image to represent each of your reporting progress categories and add these to your assets/img folder in your own site repository. You will then need to change the file name to reflect your new images.
     * `alt`: An alt tag for the image above.
 
-Here is an example of using these settings:
+Here is the default example of these settings:
 
 ```yaml
 progress_status:
-    status_heading: Status heading
-    status_help: Status help text
-    status_types:
-      - value: not_available
-        label: status.progress_not_available
-        image: assets/img/progress/not-available.png
-        alt: status.progress_not_available
-      - value: target_achieved
-        label: status.progress_target_achieved
-        image: assets/img/progress/target-achieved.png
-        alt: status.progress_target_achieved
+  status_heading: ''
+  status_help: ''
+  status_types:
+    - value: not_available
+      label: status.progress_not_available
+      image: assets/img/progress/not-available.png
+      alt: status.progress_not_available
+    - value: target_achieved
+      label: status.progress_target_achieved
+      image: assets/img/progress/target-achieved.png
+      alt: status.progress_target_achieved
+    - value: challenges_remain
+      label: status.progress_challenges_remain
+      image: assets/img/progress/challenges-remain.png
+      alt: status.progress_challenges_remain
+    - value: approaching_target
+      label: status.progress_approaching_target
+      image: assets/img/progress/approaching-target.png
+      alt: status.progress_approaching_target
 ```
 
 As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
 
-For more information on how to use these status types, see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status).
+For the relevant indicators, you will need to specify the progress_status in the indicator configuration - see the [indicator configuration setting for `progress_status`](indicator-configuration.md#progress_status) for how to do this. 
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of progress status functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progress_status.PNG)
 
 ### progressive_web_app
 
@@ -936,8 +1013,12 @@ progressive_web_app:
   enabled: true
   name: Indicators For The Sustainable Development Goals - Mexico
   short_name: SDG Mexico
-  precaching: false
+  precaching: true
 ```
+
+Here is an example of how this functionality appears in a web browser on your phone:
+
+![Screenshot of progressive web app functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progressive_web_app.png)
 
 ### proxy_indicators
 
@@ -952,6 +1033,10 @@ proxy_indicators:
   label: My alternate proxy label
   description: My alternate proxy description
 ```
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of proxy indicators functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/proxy_indicators.PNG)
 
 ### remote_data_prefix
 
@@ -1015,6 +1100,10 @@ reporting_status:
 ```
 
 As always, for multilingual support, the title/description settings can refer to translation keys, and description can include Markdown.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of reporting status functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/reporting_status.PNG)
 
 ### repository_url_data
 
@@ -1128,3 +1217,7 @@ Year | Units | COMMENT_TS | Value
 ### x_axis_label
 
 _Optional_: This setting, if provided, will display as a label beneath the X axis on charts. Note that this is also available on the configuration of individual indicators, where it will override this setting.
+
+Here is an example of what this looks like on the platform:
+
+![Screenshot of x axis label functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/x_axis_label.PNG)
