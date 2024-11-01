@@ -5,7 +5,7 @@
 
 function initialiseFieldsWithGlobalValues(args) {
 	
-	var dataIsComparable = args.dataIsComparable
+	var dataIsComparable = args.dataIsComparable;
 	if (dataIsComparable === false) {
 		$('#toggles').hide()
 		$(OPTIONS.rootElement).addClass('no-global-data');
@@ -29,15 +29,17 @@ function initialiseFieldsWithGlobalValues(args) {
 				comparableFieldValues: args.comparableFieldValues
 			}));
 				$('#categories').show();
-                                $(OPTIONS.rootElement).on('change', '#category-select', function () {
+                $(OPTIONS.rootElement).on('change', '#category-select', function () {
 					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
-                                });
+                });
 			}	
 		} else {
 			MODEL.comparisonToggle = false;
 			MODEL.startValues = [{"field":"Reporting type","value":"National"}]
 			$('#categories').hide();
-			$('#toolbar').show()
+			$('#toolbar').show();
+			// TODO: Get the original data to show.
+			//MODEL.updateHeadlineSelectedFields();
 		}
 	});
 }

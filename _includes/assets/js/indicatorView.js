@@ -244,7 +244,7 @@ var indicatorView = function (model, options) {
         e.stopPropagation();
     });
 
-    $(OPTIONS.rootElement).on('click', ':checkbox', function (e) {
+    $(OPTIONS.rootElement).on('click', '#fields :checkbox', function (e) {
 
         // don't permit disallowed selections:
         if ($(this).closest('.variable-selector').hasClass('disallowed')) {
