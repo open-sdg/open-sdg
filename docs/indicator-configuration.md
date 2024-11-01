@@ -64,7 +64,7 @@ composite_breakdown_label: Hazard type
 
 ### computation_units
 
-**_Recommended_**: This setting is used to specify the unit used in the headline data for the indicator. It will display below the graph and table, on the graph y-axis, and on the graph tooltips on the indicator page.
+**_Recommended_**: This setting is used to specify the unit used in the headline data for the indicator. It will display below the graph and table, on the graph y-axis, and on the graph tooltips on the indicator page. Note that this is not necessary if your indicator data contains a "Units" column.
 
 ```nohighlight
 computation_units: Metric tons
@@ -200,6 +200,16 @@ data_start_values:
     value: 15 to 19
 ```
 
+Note for multilingual implementations: both the "field" and the "value" should match what is in your data. However, if your data disaggregations are translated into other languages, then you should use translation keys here. Here is an example of how you might use translation keys:
+
+```nohighlight
+data_start_values:
+  - field: SEX.SEX
+    value: SEX.F
+  - field: AGE.AGE
+    value: AGE.Y15T19
+```
+
 ### Embedded feature settings
 
 You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following fields to the metadata file. You can either specify a URL (use `embedded_feature_url`) or some HTML (use `embedded_feature_html`) for the feature you want to embed.
@@ -258,8 +268,6 @@ expected_disaggregations:
   - Sex
 ```
 
-The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
-
 Here is an example of what this looks like on the platform:
 
 ![Screenshot of expected disaggregations functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/expected_disaggregations.png)
@@ -313,8 +321,8 @@ This setting can be used to add line annotations to the graph, such as target li
         * `content`: The text of the label (can be a translation key). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
         * `fontColor`: The color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
         * `backgroundColor`: The background color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js).
-    * `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
+    * `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/HEAD/_includes/components/charts/annotation_presets.js).
+    * `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/HEAD/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
 
 This is an example of using annotations
 
@@ -404,6 +412,8 @@ _Optional_: This setting can be used with the "bar" graph type to place a certai
 ```nohighlight
 graph_stacked_disaggregation: Age
 ```
+
+This setting is most appropriate for cases where the data are disaggregated among percentages that add up to 100. For example, if the data are disaggregated among "Female" and "Male", and each year the two measurements add up to 100, this stacked disaggregation works well.
 
 Here is an example of what this looks like on the platform:
 
