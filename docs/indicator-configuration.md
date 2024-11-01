@@ -714,6 +714,8 @@ related_indicators:
 
 **_Required_**: This setting is used to specify the status of the indicator. This feeds into the reporting status page and also displays on the goal pages.
 
+Importantly, this also determines whether a chart and table will appear on the indicator page. If the reporting_status is not `complete`, the chart and table will NOT appear.
+
 ```nohighlight
 reporting_status: complete
 ```
