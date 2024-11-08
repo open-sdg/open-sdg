@@ -1,13 +1,15 @@
-In your [data repository](glossary.md#data-repository) the indicator configuration is maintained on an indicator-by-indicator basis. This indicator configuration contains set fields, which have specific uses in Open SDG. This page details those fields.
+In your [data repository](glossary.md#data-repository) the indicator configuration is maintained on an indicator-by-indicator basis. This indicator configuration contains fields which have specific uses in Open SDG. This page details those fields.
 
 ## Note about indicator configuration file formats
 
-By default, Open SDG platforms expect the individual indicator configuration files to be uploaded in YML format to the "indicator-config" folder. See this [example in the data starter repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/indicator-config/1-1-1.yml)
+By default, Open SDG platforms expect the individual indicator configuration files to be uploaded in YAML format (.yml) to the "indicator-config" folder. See this [example in the data starter repo](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/indicator-config/1-1-1.yml)
 
 ### Indicator configuration forms
-To help with configuring indicators, you can optionally enable user-friendly indicator configuration forms, which will allow you to fill in a form and then download a YML file which will be ready to upload to your platform.
+Just as with the site configuration, there is a form provided to help you make changes. You can reach this form by going to an indicator page on your staging site, and then pressing "Edit Indicator", and then "Edit Configuration". Once there, you can learn about the available settings, make changes, and then download a YML file which will be ready to upload to your platform.
 
-For more details on how to enable these forms, see the [indicator_config_form site configuration setting](configuration.md#indicator_config_form).
+The alternative to using this form is to maintain your indicator configuration files by hand. This is also an option, if you are comfortable working with YAML files, but we generally recommend using the forms even so.
+
+Note: Open SDG's indicator configuration is in a format called YAML, as mentioned above. Much of the documentation below will show examples if this YAML syntax. However, if you are using the indicator configuration forms, then you actually never need to interact with the YAML. Instead you will be making changes in the form, downloading the YAML, and then uploading it your repository directly. So, the YAML syntax examples shown below are intended to help your understanding, but do not represent anything you would actually need to type in (if you are using the indicator configuration forms).
 
 ## Note about translation keys
 Indicator configuration values can either be filled in with normal text ("My field value") or with [translation keys](glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
@@ -62,7 +64,7 @@ composite_breakdown_label: Hazard type
 
 ### computation_units
 
-**_Recommended_**: This setting is used to specify the unit used in the headline data for the indicator. It will display below the graph and table, on the graph y-axis, and on the graph tooltips on the indicator page.
+**_Recommended_**: This setting is used to specify the unit used in the headline data for the indicator. It will display below the graph and table, on the graph y-axis, and on the graph tooltips on the indicator page. Note that this is not necessary if your indicator data contains a "Units" column.
 
 ```nohighlight
 computation_units: Metric tons
@@ -119,7 +121,9 @@ Here is an example of what this looks like on the platform:
 data_non_statistical: false
 ```
 
-Here is an example of what this looks like on the platform:
+Note that in the indicator configuration form, if you toggle this on, many of the other configuration fields will be hidden, since they are not applicable to non-statistical indicators.
+
+Here is an example of what a non-statistical indicator page looks like on the platform:
 
 ![Screenshot of non statistical data functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/data_non_statistical_true.PNG)
 
@@ -196,6 +200,16 @@ data_start_values:
     value: 15 to 19
 ```
 
+Note for multilingual implementations: both the "field" and the "value" should match what is in your data. However, if your data disaggregations are translated into other languages, then you should use translation keys here. Here is an example of how you might use translation keys:
+
+```nohighlight
+data_start_values:
+  - field: SEX.SEX
+    value: SEX.F
+  - field: AGE.AGE
+    value: AGE.Y15T19
+```
+
 ### Embedded feature settings
 
 You may want to add an additional feature which isn't created from data, such as an iframe. You can create an extra tab to display this feature by adding the following fields to the metadata file. You can either specify a URL (use `embedded_feature_url`) or some HTML (use `embedded_feature_html`) for the feature you want to embed.
@@ -254,8 +268,6 @@ expected_disaggregations:
   - Sex
 ```
 
-The following fields affect the display of graphs. Currently only longitudinal graphs are available but more are planned. These fields are experimental. Graph fields do not show up on the web page as metadata; we will use them in the future for setting how a graphic should render, some extra labels etc.
-
 Here is an example of what this looks like on the platform:
 
 ![Screenshot of expected disaggregations functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/expected_disaggregations.png)
@@ -309,8 +321,8 @@ This setting can be used to add line annotations to the graph, such as target li
         * `content`: The text of the label (can be a translation key). See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
         * `fontColor`: The color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
         * `backgroundColor`: The background color of the label text. See [Chart.js documentation](https://github.com/chartjs/chartjs-plugin-annotation/blob/master/README.md) for details.
-    * `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js).
-    * `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/master/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
+    * `highContrast`: Overrides of the color-related settings described above (`borderColor`, and the label's `fontColor` and `backgroundColor`) for when the user is in high-contrast mode. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/HEAD/_includes/components/charts/annotation_presets.js).
+    * `preset`: A "preset" is a pre-bundled set of configurations. The only available preset is `target_line`. For examples see [the javascript file containing presets](https://github.com/open-sdg/open-sdg/blob/HEAD/_includes/components/charts/annotation_presets.js). Note that you can use a preset and also override any of that preset's individual settings.
 
 This is an example of using annotations
 
@@ -401,6 +413,8 @@ _Optional_: This setting can be used with the "bar" graph type to place a certai
 graph_stacked_disaggregation: Age
 ```
 
+This setting is most appropriate for cases where the data are disaggregated among percentages that add up to 100. For example, if the data are disaggregated among "Female" and "Male", and each year the two measurements add up to 100, this stacked disaggregation works well.
+
 Here is an example of what this looks like on the platform:
 
 ![Screenshot of graph stacked disaggregation functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_stacked_disaggregation.png)
@@ -468,7 +482,7 @@ graph_titles:
 
 ### graph_type
 
-**_Required_** (for statistical indicators): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
+**_Required_** (for statistical indicators that don't use the alternative "graph_types" setting): This setting is used to specify what type of graph to use for the indicator. [More information about charts here](charts.md).
 
 ```nohighlight
 graph_type: line
@@ -482,7 +496,7 @@ Options out-of-the-box are:
 
 ### graph_types
 
-**_Required_** (for statistical indicators): This setting is used if you would like the chart type to depend on the user-selected unit of measurement or series. It has a more complex structure than `graph_type` (*singular*). For example:
+**_Required_** (for statistical indicators that don't use the alternative "graph_type" setting): This setting is used if you would like the chart type to depend on the user-selected unit of measurement or series. It has a more complex structure than `graph_type` (*singular*). For example:
 
 ```nohighlight
 graph_types:
@@ -699,6 +713,8 @@ related_indicators:
 ### reporting_status
 
 **_Required_**: This setting is used to specify the status of the indicator. This feeds into the reporting status page and also displays on the goal pages.
+
+Importantly, this also determines whether a chart and table will appear on the indicator page. If the reporting_status is not `complete`, the chart and table will NOT appear.
 
 ```nohighlight
 reporting_status: complete
