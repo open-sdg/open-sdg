@@ -496,7 +496,7 @@
         "progress_status": {
             "type": "string",
             "title": "Progress status",
-            "enum": ["not_available", "challenges_remain", "approaching_target", "target_achieved"],
+            "enum": ["", "not_available", "challenges_remain", "approaching_target", "target_achieved"],
             "description": "The progress status of the indicator."
         },
         "proxy": {

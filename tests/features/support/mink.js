@@ -69,6 +69,8 @@ const driver = new mink.Mink({
     "chart has no data": "#selectionsChart.chart-has-no-data canvas",
     "breadcrumbs": ".breadcrumb",
     "table value": "#tableview tbody .table-value",
+    "first table value": "#tableview tbody tr:nth-of-type(1) .table-value",
+    "second table value": "#tableview tbody tr:nth-of-type(2) .table-value",
     "main logo": ".navbar-brand img",
     "chart title": "#chart-heading",
     "configuration form textarea": ".MuiFormControl-root .MuiInputBase-formControl.MuiInputBase-multiline",
