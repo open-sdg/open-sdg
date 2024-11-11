@@ -111,7 +111,13 @@ Your production site, once it has been deployed as described in the previous ste
 
 For your production site's domain you will likely want something other than `my-stats-org.github.io` (for example). A common approach is adding `sdg` as a subdomain for an existing domain, such as `https://sdg.example.com`. Whatever you choose, please refer to the [GitHub documentation for configuring a custom domain](https://help.github.com/en/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site).
 
-Note that if your production data is under the same Github organization as your production site, then after you set up the custom domain you will need to change the remote_data_prefix line in your production site configuration file such that it uses the custom domain. For example, if your Github production organization is "my-prod-org", then that `remote_data_prefix` line is probably something like:
+In addition to the Github Pages guidance for configuring your custom domain for your production site, you will need to get the DNS (Domain Name System) record with the custom domain registered. This would usually be handled by your organisation's IT department but you can complete this yourself, usually for little cost.
+
+Once you have the DNS record you will need to instruct the DNS provider to point towards GitHub's IP address.
+
+Inside GitHub, you will need to go into the settings of your staging site repository and navigate to the "Pages" section under "Code and Automation". Once the DNS provider is pointing towards GitHub's IP address, you can set the custom domain inside the "Custom Domain" box and click "Save".
+
+Note that if your production data repository is under the same GitHub organisation as your production site repository, then after you set up the custom domain you will need to change the remote_data_prefix line in your production site configuration file such that it uses the custom domain. For example, if your GitHub production organization is "my-prod-org", then that `remote_data_prefix` line is probably something like:
 
 ```
 remote_data_prefix: https://my-prod-org.github.io/my-data-repo
@@ -122,3 +128,5 @@ But after you have set up the custom domain then you would need to change it to:
 ```
 remote_data_prefix: https://my-custom-domain.org/my-data-repo
 ```
+
+

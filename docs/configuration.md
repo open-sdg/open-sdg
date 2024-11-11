@@ -96,10 +96,16 @@ Note that `indicator` will automatically add a final item, which is a link to th
 
 ### configuration_edit_url
 
-_Optional_: This setting controls the URL of the "Edit Configuration" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+_Optional_: This setting controls the URL of the "Edit Configuration" that appear on the staging site's indicator pages. Open SDG comes with a built-in configuration form at a sub-path called "config", so the default value for this setting should simply be "config".
 
 ```nohighlight
-configuration_edit_url: http://prose.io/#my-org/my-repo/edit/develop/indicator-settings/[id].md
+configuration_edit_url: config
+```
+
+However, if you do not want to use the built-in configuration forms, this can alternatively be a full URL -- such as if you wanted to link directly to a particular file in Github. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+configuration_edit_url: http://github.com/my-org/my-repo/tree/develop/indicator-config/[id].yml
 ```
 
 ### cookie_consent_form
@@ -237,10 +243,16 @@ custom_js:
 
 ### data_edit_url
 
-**_Required_**: This setting controls the URL of the "Edit Data" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+**_Required_**: This setting controls the URL of the "Edit Data" that appear on the staging site's indicator pages. Open SDG comes with a built-in data form at a sub-path called "data", so the default value for this setting should simply be "data".
 
 ```nohighlight
-data_edit_url: http://prose.io/#my-org/my-repo/edit/develop/data/indicator_[id].csv
+data_edit_url: data
+```
+
+Alternatively, it could also be a full URL -- such as if you wanted to link directly to a file in Github. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+data_edit_url: http://github.com/my-org/my-repo/tree/develop/data/indicator_[id].csv
 ```
 
 ### data_fields
@@ -801,10 +813,16 @@ Here is an example of what this looks like on the platform:
 
 ### metadata_edit_url
 
-**_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. It should be a full URL. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+**_Required_**: This setting controls the URL of the "Edit Metadata" that appear on the staging site's indicator pages. Open SDG comes with a built-in metadata form at a sub-path called "metadata", so the default value for this setting should simply be "metadata".
 
 ```nohighlight
-metadata_edit_url: http://prose.io/#my-org/my-repo/edit/develop/meta/[id].md
+metadata_edit_url: metadata
+```
+
+Alternatively, it could also be a full URL -- such as if you wanted to link directly to a file in Github. Note that you can include `[id]` in the URL, and it will be dynamically replaced with the indicator's id (dash-delimited).
+
+```nohighlight
+metadata_edit_url: http://github.com/my-org/my-repo/tree/develop/meta/[id].yml
 ```
 
 ### metadata_tabs
@@ -1013,7 +1031,7 @@ progressive_web_app:
   enabled: true
   name: Indicators For The Sustainable Development Goals - Mexico
   short_name: SDG Mexico
-  precaching: false
+  precaching: true
 ```
 
 Here is an example of how this functionality appears in a web browser on your phone:

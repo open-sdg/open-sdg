@@ -6,8 +6,6 @@ Indicator data can be displayed on a [choropleth map](https://en.wikipedia.org/w
 
 There must be a column in the CSV data called `GeoCode`. Each row that you would like mapped must have a value in the GeoCode column, which corresponds to an ID in the GeoJSON (see below).
 
-> NOTE: Currently the mapping solution does not support disaggregation, so there is no need to add GeoCode values in disaggregated rows.
-
 ## Metadata field: data_show_map
 
 The metadata field `data_show_map` must be set to `true`.
@@ -25,7 +23,7 @@ Each "feature" in the The GeoJSON must have the following in their `properties` 
 1. A property that holds the unique ID for the boundary (which must correspond to the GeoCode data column mentioned above)
 2. A property that holds the human-readable name of the boundary
 
-The specific keys for these properties are configured in the data repository. Here is an example of the relevant configuration settings for the data repository:
+The specific keys for these properties are configured in the data repository `config_data.yml` file. Here is an example of the relevant configuration settings for the data repository:
 
 ```
 map_layers:
@@ -51,7 +49,7 @@ map_layers:
 
 ## Site configuration: map_options and map_layers
 
-Lastly, there must be 2 sections in your `_config.yml` file to configure mapping behavior: `map_options` and `map_layers`.
+Lastly, there must be 2 sections in your site configuration file in the site repository to configure mapping behavior: `map_options` and `map_layers`.
 
 ### map_options
 

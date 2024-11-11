@@ -40,6 +40,7 @@
   <script>
   var httpRequest;
   var gridOptions;
+  var gridOptionsApi;
   function makeRequest() {
     httpRequest = new XMLHttpRequest();
 
@@ -108,7 +109,7 @@
           }
         };
 
-        agGrid.createGrid(container, gridOptions);
+        gridOptionsApi = agGrid.createGrid(container, gridOptions);
       } else {
         alert('There was a problem when loading the data. Please edit the data in some other way (such as in Github).');
       }
@@ -120,8 +121,8 @@
   });
 
   document.getElementById('export').onclick = function() {
-    gridOptions.api.stopEditing();
-    gridOptions.api.exportDataAsCsv({
+    gridOptionsApi.stopEditing();
+    gridOptionsApi.exportDataAsCsv({
       fileName: '{{ page.config_filename }}',
     });
   }
@@ -139,7 +140,7 @@
         // Otherwise just last.
         columnDefs.push(newColumn);
       }
-      gridOptions.api.setColumnDefs(columnDefs);
+      gridOptionsApi.setGridOption('columnDefs', columnDefs);
     }
     else {
       alert('Please enter a column name first and then try again.');
