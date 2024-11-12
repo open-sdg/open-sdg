@@ -17,7 +17,7 @@ graph_limits: []
 graph_stacked_disaggregation: ''
 graph_title: global_indicators.4-4-1-title
 graph_titles: []
-graph_type: line
+graph_type: bar
 indicator_name: global_indicators.4-4-1-title
 indicator_number: 4.4.1
 national_geographical_coverage: ''

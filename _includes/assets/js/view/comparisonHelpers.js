@@ -16,7 +16,7 @@ function initialiseFieldsWithGlobalValues(args) {
 	
 	$('.toggle-switch-check').change(function() {
 		if (this.checked) {
-			MODEL.comparisonToggle = true;
+			MODEL.enableComparisonMode();
 			if (args.headlineIsComparable) {
 				 MODEL.updateHeadlineSelectedFields()
 			}
@@ -25,21 +25,20 @@ function initialiseFieldsWithGlobalValues(args) {
 			if (args.fieldsAreComparable) {
 				var template = _.template($('#categories_template').html());
 				$('#categories').html(template({
-				fields: args.fields,
-				comparableFieldValues: args.comparableFieldValues
-			}));
+					fields: args.fields,
+					comparableFieldValues: args.comparableFieldValues
+				}));
 				$('#categories').show();
                 $(OPTIONS.rootElement).on('change', '#category-select', function () {
 					MODEL.updateSelectedComparisonValue($(this).find(':selected').data('field').concat("|",$(this).val()));
                 });
 			}	
-		} else {
-			MODEL.comparisonToggle = false;
-			MODEL.startValues = [{"field":"Reporting type","value":"National"}]
+		}
+		else {
+			MODEL.disableComparisonMode();
+			MODEL.resetChartWithoutComparison();
 			$('#categories').hide();
 			$('#toolbar').show();
-			// TODO: Get the original data to show.
-			//MODEL.updateHeadlineSelectedFields();
 		}
 	});
 }

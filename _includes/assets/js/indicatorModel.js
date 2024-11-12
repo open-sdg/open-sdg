@@ -109,6 +109,22 @@ var indicatorModel = function (options) {
     this.allowedFields = helpers.getInitialAllowedFields(this.selectableFields, this.edgesData);
   }
 
+  this.disableComparisonMode = function() {
+    this.comparisonToggle = false;
+  }
+
+  this.enableComparisonMode = function() {
+    this.comparisonToggle = true;
+  }
+
+  this.resetChartWithoutComparison = function() {
+    console.log(this);
+    this.getData({
+      changingSeries: true,
+      updateFields: true,
+    });
+  }
+
   // Before continuing, we may need to filter by Series, so set up all the Series stuff.
   this.allData = helpers.prepareData(this.data, { indicatorId: this.indicatorId });
   this.allColumns = helpers.getColumnsFromData(this.allData);
