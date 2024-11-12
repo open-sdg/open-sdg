@@ -2,8 +2,15 @@
 * Model helper functions related to comparing national and global data.
  */
 
+/**
+ * @param {Array} selectedFields
+ * @return {Array}
+ */
 function getCombinationDataForReportingTypeComparison(selectedFields) {
-  var combinations = [{'Reporting type': 'National'}, {'Reporting type': 'Global'}]
+  var combinations = [
+    {REPORTINGTYPE_COLUMN: REPORTINGTYPE_NATIONAL},
+    {REPORTINGTYPE_COLUMN: REPORTINGTYPE_GLOBAL},
+  ];
   if (selectedFields.length < 2) {
     // do nothing  
   } else {
@@ -14,29 +21,29 @@ function getCombinationDataForReportingTypeComparison(selectedFields) {
   }
   return combinations
 }
-	
 
+/**
+ * @param {Array} selectedComparisonValue
+ * @return {Array}
+ */
+function updateSelectedFieldsFromSelectedComparisonValue(selectedComparisonValue) {
 
-function updateSelectedFieldsFromSelectedValue(selectedComparisonValue) {
-
-  var selectedFields = [{
-    field: "Reporting type",
-    values: ["National", "Global"]}]
+  var selectedFields = [
+    {
+      field: REPORTINGTYPE_COLUMN,
+      values: [REPORTINGTYPE_NATIONAL, REPORTINGTYPE_GLOBAL]
+    }
+  ];
   var field = selectedComparisonValue.split("|")[0];
   var value = selectedComparisonValue.split("|")[1];
-  if (value === "total") {
-    // do nothing
-  } else {
-    selectedFields.push(_.map($('#category-select option'), function(option) {
-      return {
-	field: field,
-        values: [value]
-      };
-    })[0])
+  if (value !== "total") {
+    selectedFields.push({
+	    field: field,
+      values: [value]
+    });
   }
-  return selectedFields
+  return selectedFields;
 }
-
 
 /**
  * @param {Array} columns
@@ -55,35 +62,37 @@ function dataIsComparable(headlineIsComparable, fieldsAreComparable) {
 	return headlineIsComparable || fieldsAreComparable
 }
 
+/**
+ * @param {boolean} headlineHasGlobalData
+ * @param {boolean} headlineHasNationalData
+ * @return {boolean} 
+ */
 function headlineIsComparable(headlineHasGlobalData, headlineHasNationalData) {
   	return headlineHasGlobalData && headlineHasNationalData;
 }
 
 /**
- * @param {Array} Headline data
+ * @param {Array} headlineRows
  * @return {boolean} 
  */
 function headlineHasNationalReportingType(headlineRows) {
 	return headlineRows.some(function(row) {
-  	return row[REPORTINGTYPE_COLUMN] === 'National';
-  }, this)
-
+  	return row[REPORTINGTYPE_COLUMN] === REPORTINGTYPE_NATIONAL;
+  });
 }
 
 /**
- * @param {Array} Headline data
+ * @param {Array} headlineRows
  * @return {boolean} 
  */
 function headlineHasGlobalReportingType(headlineRows) {
 	return headlineRows.some(function(row) {
-  	return row[REPORTINGTYPE_COLUMN] === 'Global';
-  }, this)
-
+  	return row[REPORTINGTYPE_COLUMN] === REPORTINGTYPE_GLOBAL;
+  });
 }
 
-
 /**
- * @param {Array} Field items and values with global data
+ * @param {Array} comparableFieldValues
  * @return {boolean} 
  */
 function fieldsAreComparable(comparableFieldValues) {
@@ -122,7 +131,7 @@ function fieldValuesWithNationalReportingType(rows, columns) {
       field: field,
       values: values.filter(function(fieldValue) {
         return fieldValueHasNationalReportingType(field, fieldValue, rows);
-      }, this),
+      }),
     };
   }, this);
 }
@@ -135,17 +144,15 @@ function fieldValuesWithNationalReportingType(rows, columns) {
 function comparableFieldValues(rows, columns) {
   var fields = getFieldColumnsFromData(columns);
   return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
+    var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
     return {
       field: field,
       values: values.filter(function(fieldValue) {
         return fieldValueHasNationalReportingType(field, fieldValue, rows) && fieldValueHasGlobalReportingType(field, fieldValue, rows);
-      }, this),
+      }),
     };
-  }, this);
+  });
 }
-
-
 
 /**
  * @param {string} field
@@ -154,8 +161,8 @@ function comparableFieldValues(rows, columns) {
  */
 function fieldValueHasGlobalReportingType(field, fieldValue, rows) {
   return rows.some(function(row) {
-    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'Global';
-  }, this);
+    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === REPORTINGTYPE_GLOBAL;
+  });
 }
 
 /**
@@ -165,6 +172,6 @@ function fieldValueHasGlobalReportingType(field, fieldValue, rows) {
  */
 function fieldValueHasNationalReportingType(field, fieldValue, rows) {
   return rows.some(function(row) {
-    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === 'National';
-  }, this);
+    return row[field] === fieldValue && row[REPORTINGTYPE_COLUMN] === REPORTINGTYPE_NATIONAL;
+  });
 }

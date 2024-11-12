@@ -162,7 +162,7 @@ var indicatorModel = function (options) {
   };
   
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
-    this.selectedFields = helpers.updateSelectedFieldsFromSelectedValue(selectedComparisonValue);
+    this.selectedFields = helpers.updateSelectedFieldsFromSelectedComparisonValue(selectedComparisonValue);
     this.getData();
     
   };
