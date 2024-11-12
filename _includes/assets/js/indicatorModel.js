@@ -119,6 +119,7 @@ var indicatorModel = function (options) {
 
   this.resetChartWithoutComparison = function() {
     console.log(this);
+    this.resetSelected
     this.getData({
       changingSeries: true,
       updateFields: true,
@@ -156,8 +157,29 @@ var indicatorModel = function (options) {
   this.maxDatasetCount = 2 * this.colors.length;
   this.colorAssignments = [];
 
+  this.controlDisplayOfGlobalData = function() {
+    var reportingTypeField = this.selectedFields.first(function (selectedField) {
+      return selectedField.field === REPORTINGTYPE_COLUMN;
+    });
+    if (this.hasReportingTypes) {
+      if (!reportingTypeField) {
+        reportingTypeField = {field: REPORTINGTYPE_COLUMN};
+        this.selectedFields.push(reportingTypeField);
+      }
+      if (this.comparisonToggle) {
+        reportingTypeField.values = [REPORTINGTYPE_NATIONAL];
+      }
+      else {
+        reportingTypeField.values = [
+          REPORTINGTYPE_NATIONAL,
+          REPORTINGTYPE_GLOBAL,
+        ];
+      }
+    }
+  };
+
   this.clearSelectedFields = function() {
-    this.selectedFields = [{field: "Reporting type", values: ["National"]}];
+    this.controlDisplayOfGlobalData();
     this.getData();
     this.onFieldsCleared.notify();
   };
@@ -173,6 +195,7 @@ var indicatorModel = function (options) {
   }
 
   this.updateSelectedFields = function (selectedFields) {
+    this.controlDisplayOfGlobalData();
     this.updateFieldStates(selectedFields);
     this.getData();
   };
@@ -184,10 +207,9 @@ var indicatorModel = function (options) {
   };
   
   this.updateHeadlineSelectedFields = function () {
-    this.selectedFields = [{field: "Reporting type", values: ["National", "Global"]}];
+    this.controlDisplayOfGlobalData();
     this.getData();
   }
-    
 
   this.updateChartTitle = function() {
     this.chartTitle = helpers.getChartTitle(this.chartTitle, this.chartTitles, this.selectedUnit, this.selectedSeries);

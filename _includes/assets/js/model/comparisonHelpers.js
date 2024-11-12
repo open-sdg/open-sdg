@@ -108,14 +108,14 @@ function fieldsAreComparable(comparableFieldValues) {
 function fieldValuesWithGlobalReportingType(rows, columns) {
   var fields = getFieldColumnsFromData(columns);
   return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
+    var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
     return {
       field: field,
       values: values.filter(function(fieldValue) {
         return fieldValueHasGlobalReportingType(field, fieldValue, rows);
-      }, this),
+      }),
     };
-  }, this);
+  });
 }
 
 /**
@@ -126,14 +126,14 @@ function fieldValuesWithGlobalReportingType(rows, columns) {
 function fieldValuesWithNationalReportingType(rows, columns) {
   var fields = getFieldColumnsFromData(columns);
   return fields.map(function(field) {
-  var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
+    var values = getUniqueValuesByProperty(field, rows).filter(e =>  e);
     return {
       field: field,
       values: values.filter(function(fieldValue) {
         return fieldValueHasNationalReportingType(field, fieldValue, rows);
       }),
     };
-  }, this);
+  });
 }
 
 /**
