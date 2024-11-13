@@ -7,19 +7,20 @@
  * @return {Array}
  */
 function getCombinationDataForReportingTypeComparison(selectedFields) {
-  var combinations = [
-    {REPORTINGTYPE_COLUMN: REPORTINGTYPE_NATIONAL},
-    {REPORTINGTYPE_COLUMN: REPORTINGTYPE_GLOBAL},
-  ];
+  var national = {};
+  national[REPORTINGTYPE_COLUMN] = REPORTINGTYPE_NATIONAL;
+  var global = {};
+  global[REPORTINGTYPE_COLUMN] = REPORTINGTYPE_GLOBAL;
+  combinations = [national, global];
   if (selectedFields.length < 2) {
     // do nothing  
   } else {
-    var selectedComparisonValue = selectedFields.filter(key => (key.field != 'Reporting type'))
+    var selectedComparisonValue = selectedFields.filter(key => (key.field != REPORTINGTYPE_COLUMN))
     var field = selectedComparisonValue[0]['field'];
     var value = selectedComparisonValue[0]['values'][0];
     combinations.forEach(object => {object[field] = value;});
   }
-  return combinations
+  return combinations;
 }
 
 /**

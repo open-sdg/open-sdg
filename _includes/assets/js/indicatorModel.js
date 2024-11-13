@@ -118,8 +118,6 @@ var indicatorModel = function (options) {
   }
 
   this.resetChartWithoutComparison = function() {
-    console.log(this);
-    this.resetSelected
     this.getData({
       changingSeries: true,
       updateFields: true,
@@ -158,21 +156,23 @@ var indicatorModel = function (options) {
   this.colorAssignments = [];
 
   this.controlDisplayOfGlobalData = function() {
-    var reportingTypeField = this.selectedFields.first(function (selectedField) {
-      return selectedField.field === REPORTINGTYPE_COLUMN;
+    var reportingTypeField = this.selectedFields.find(function (selectedField) {
+      return selectedField.field === helpers.REPORTINGTYPE_COLUMN;
     });
     if (this.hasReportingTypes) {
       if (!reportingTypeField) {
-        reportingTypeField = {field: REPORTINGTYPE_COLUMN};
+        reportingTypeField = {field: helpers.REPORTINGTYPE_COLUMN};
         this.selectedFields.push(reportingTypeField);
       }
       if (this.comparisonToggle) {
-        reportingTypeField.values = [REPORTINGTYPE_NATIONAL];
+        reportingTypeField.values = [
+          helpers.REPORTINGTYPE_NATIONAL,
+          helpers.REPORTINGTYPE_GLOBAL,
+        ];
       }
       else {
         reportingTypeField.values = [
-          REPORTINGTYPE_NATIONAL,
-          REPORTINGTYPE_GLOBAL,
+          helpers.REPORTINGTYPE_NATIONAL,
         ];
       }
     }
@@ -199,13 +199,12 @@ var indicatorModel = function (options) {
     this.updateFieldStates(selectedFields);
     this.getData();
   };
-  
+
   this.updateSelectedComparisonValue = function (selectedComparisonValue) {
     this.selectedFields = helpers.updateSelectedFieldsFromSelectedComparisonValue(selectedComparisonValue);
     this.getData();
-    
   };
-  
+
   this.updateHeadlineSelectedFields = function () {
     this.controlDisplayOfGlobalData();
     this.getData();
@@ -397,15 +396,15 @@ var indicatorModel = function (options) {
     if (headline.length > 0) {
       headline = helpers.sortData(headline, this.selectedUnit);
     }
-    
+
+    var combinations = [];
     if (this.comparisonToggle) {
-      var combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
+      combinations = helpers.getCombinationDataForReportingTypeComparison(this.selectedFields);
     }
     else {
-      var combinations = helpers.getCombinationData(this.selectedFields);
+      combinations = helpers.getCombinationData(this.selectedFields);
     }
 
-    var combinations = helpers.getCombinationData(this.selectedFields);
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments, this.allObservationAttributes);
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
     var observationAttributesTable = helpers.observationAttributesTableFromDatasets(datasets, this.years);
