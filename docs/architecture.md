@@ -150,7 +150,7 @@ jsPlumb.ready(function () {
         '<i tabindex="0" class="fa fa-info-circle"></i>' +
         '<span class="info">' + text + '</span>' +
       '</div>';
-    return [['Custom', {create: function() { return $(label); }, location: location}]]
+    return [['Custom', {create: function() { return jQuery(label); }, location: location}]]
   }
 
   // Helper function to get overlay arrows.
