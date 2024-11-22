@@ -1,0 +1,14 @@
+<div id="toggles" class="compare-toggle">
+  <h4 id="compare-toggle-title">Compare national and global data</h4>
+  <p>
+      National data refers to data reported by {{ site.country.name | t }}.<br>
+      Global data refers to data reported for {{ site.country.name | t }} by the custodian agency.<br><br>
+      Turning this on will limit the amount of subcategories you can view at one time.
+  </p>
+  <label class="toggle-switch">
+    <input class="toggle-switch-check" type="checkbox" role="switch" aria-checked="false" />
+    <span aria-hidden="true" class="toggle-switch-bar">
+			<span class="toggle-switch-handle" data-label-off="OFF" data-label-on="ON"></span>
+		</span>
+  </label>
+</div>
