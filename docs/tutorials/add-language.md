@@ -7,20 +7,23 @@ This tutorial will describe how to add a new language to your Open SDG implement
 * SDG Translations project
 * Data and site configuration
 * Pages and posts
+* Other considerations for translation
 
 ## Level of difficulty
 
 This tutorial involves working with text files, but requires no previous technical expertise.
 
+Note that there are several aspects of an Open SDG implementation that need to be translated. So, this involves a large effort of translation - in particular with regards to indicator metadata and page content.
+
 ## SDG Translations
 
-All of the text used in Open SDG has already been translated into several languages, in the [SDG Translations](https://github.com/open-sdg/sdg-translations) project. At the time of this writing, those languages include the 6 official languages of the United Nations (Arabic, Chinese, English, French, Russian, Spanish) as well as Armenian, German, and Kazakh.
+All of the text used in Open SDG has already been translated into several languages, in the [SDG Translations](https://github.com/open-sdg/sdg-translations) project. Those languages include the 6 official languages of the United Nations (Arabic, Chinese, English, French, Russian, Spanish) as well as several other languages.
 
-In this tutorial, you will add one of these already-translated languages to your Open SDG implementation. Adding a language that is not already part of the SDG Translations project involves a lot of translation, and will not be covered here.
+In this tutorial, you will add one of these already-translated languages to your Open SDG implementation. Adding a language that is not already part of the SDG Translations project involves a lot of translation, and is covered elsewhere in [the translation documentation](../translation.md).
 
 ## Pick a language to add
 
-First, choose one from the available languages. They are listed below, along with their language codes.
+First, choose one from the available languages. Some examples are listed below, along with their language codes.
 
 * Arabic (ar)
 * Armenian (hy)
@@ -161,6 +164,10 @@ Now you are finished with the updates needed for this tutorial. In order to see 
 ## View your results
 
 Your site will now begin rebuilding. After about 5 minutes, if you visit your site, you should be able to use the language-switcher to change to Russian, on any page.
+
+## Other considerations for translation
+
+Note that there are several other aspects of an Open SDG implementation that need to be translated, including indicator metadata, data disaggregation labels, and even date formats. For a detailed explanation of all of the various translatable aspects of Open SDG, see [the translation documentation](../translation.md).
 
 ## Troubleshooting
 
