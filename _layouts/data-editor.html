@@ -124,6 +124,9 @@
     gridOptionsApi.stopEditing();
     gridOptionsApi.exportDataAsCsv({
       fileName: '{{ page.config_filename }}',
+      shouldRowBeSkipped: function(row) {
+        return typeof row.node.data.Value === 'undefined';
+      },
     });
   }
 
