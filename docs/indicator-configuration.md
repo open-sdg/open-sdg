@@ -436,7 +436,7 @@ graph_target_lines:
 
 Here is an example of what this looks like on the platform:
 
-![Screenshot of graph target lines functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_target_lines.png)
+![Screenshot of graph target lines functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/graph_target_lines.PNG)
 
 ### graph_title
 
