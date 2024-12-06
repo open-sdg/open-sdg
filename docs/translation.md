@@ -32,13 +32,6 @@ Important note about machine translations: The translations in SDG Translations 
 
 SDG Translations can be pulled into your platform simply with the [`translations` section of your data configuration file](data-configuration.md#translations). Here is an example pulling in version 2.3.0 of SDG Translations:
 
-```
-translations:
-  - class: TranslationInputSdgTranslations
-    source: https://github.com/open-sdg/sdg-translations.git
-    tag: 2.3.0
-```
-
 ## Part 2: Indicator data disaggregation
 
 This part includes the human-readable labels for the breakdowns of the data. For example, this would include translation of the words "Sex", "Female", and "Male". These translations appear on the indicator pages, in charts, tables, and dropdowns.
@@ -278,6 +271,8 @@ Then, in your GeoJSON file, you would use the translation key `custom.region_1` 
 ## Languages configurations
 
 You should have a list of your language codes in the `languages` setting for both your [data configuration](data-configuration.md#languages) and your [site configuration](configuration.md#languages). The first item should always be the default language.
+
+Guidance on this can be found [here](https://open-sdg.readthedocs.io/en/latest/tutorials/add-language/)
 
 > The following topics are more advanced and useful only if you are doing significant customizations.
 
