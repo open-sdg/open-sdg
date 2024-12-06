@@ -55,3 +55,7 @@ Year,Group,Fruit,Units,Series,Value
 2015,B,Orange,Total,Series B,1030
 2016,A,Orange,Total,Series B,1010
 2016,B,Orange,Total,Series B,1030
+2015,C,,Percent,Series C,300
+2016,C,,Percent,Series C,600
+2015,C,,Total,Series C,1010
+2016,C,,Total,Series C,1010
