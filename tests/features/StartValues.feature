@@ -21,4 +21,4 @@ Feature: Start values
   Scenario: The indicator start values are not used if they would result in 0 data
     And I click on "the third series"
     And I wait 1 second
-    Then I should see 2 "chart legend item" elements
+    Then I should see 1 "chart legend item" element
