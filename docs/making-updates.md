@@ -2,9 +2,11 @@
 
 This document will describe how to update data and metadata for the Open SDG platform.
 
+Note that there are many ways to store, manage and update data and metadata for Open SDG. This document describes one way, and assumes a default implementation of Open SDG.
+
 ## Before you start
 
-These steps have 2 pre-requisites:
+These steps have 4 pre-requisites:
 
 1. A [GitHub.com](https://github.com) account
 
@@ -12,6 +14,8 @@ These steps have 2 pre-requisites:
 2. A working implementation of Open SDG (hereafter referred to as the "staging site")
 
     In most cases, the "staging site" will be something similar to: `https://my-org.github.io/my-site` (but with `my-org` and `my-site` changed as appropriate). If you do not have such a site available, or you are not sure, check with your team before continuing. Instructions on getting started are available on the [Quick Start page](quick-start.md).
+3. Your Github.com account needs to have "write permissions" on your Open SDG repositories. If you personally performed the "Quick Start" mentioned above, you already have this. If not, you may need to ask the person that set up the Open SDG repositories to give you "write permissions".
+4. It's recommended to have some sort of spreadsheet software, like Excel. This will be used to edit CSV files.
 
 ## GitHub.com login
 
@@ -27,52 +31,50 @@ For example, if you would like to edit indicator 1-1-1, you should go to your st
 
 Go ahead and do this now, for any indicator you would like.
 
-## Prose.io
-
-You should now be on an "indicator page". There will be a tab towards the bottom labeled `Edit`. Click this tab, and then click `Edit Data`.
-
-This will take you to a service called Prose.io.
-
-> Prose.io is a service dedicated to user-friendly editing of GitHub files.
-> Because it is a separate service, it requires "authorization" before it can be
-> used. See below for details.
-
-If you see a green icon in the lower-right corner, then you need to "authorize" Prose.io before you can use it. Click the icon and accept the prompts that follow.
-
-After the authorization is complete, you will need to make your back to the goal/indicator that you were trying to edit, on the staging site.
-
 ## Editing data
 
-On the indicator page, click the `Edit` tab and then click `Edit Data`.
+On the indicator page, click the `Edit Indicator` tab and then click `Edit Data`.
 
-This takes you to Prose.io. Because Prose.io is now "authorized", you should *not* see the green icon in the lower right corner.
+This takes you to a spreadsheet-like interface displaying the data for your indicator. You should also see a button that says "Download data" and another that says "Go to repository".
 
-What you *should* see is a spreadsheet-like interface displaying the data for your indicator.
+Click the "Download data" button to get the CSV file for that indicator's data. Open that CSV file in Excel (or similar) and make any changes that you would like to the data.
 
-To update some data, simply select a cell and make a change. You can use your keyboard's arrow keys to move around the table, and then type in your update.
+> A few notes about editing data:
+>
+> 1. The first column should be `Year`.
+> 2. The last column should be `Value`.
+> 3. In between, you can have any number of disaggregation columns (eg, `AGE`, `SEX`, etc.).
+> 4. You can use an optional column called `Units` to denote the unit of measurement.
+> 5. You can use an optional column called `Series` to denote the series. If you are not familiar with the concept of "series" in the SDGs, it is sometimes used to split an indicator into multiple sub-indicators.
 
-Once you have made your update, click on any other cell. You should see a disk icon in the right-hand sidebar. This icon will change slightly, indicating that you have made a change which needs to be saved.
+After you have finished making your changes in Excel, save the file. Back on that "Edit Data" page, click the "Go to repository" button. This should take you to your data repository.
 
-Click the disk icon to save your change. Enter a short description of your change, and then click "Commit".
+Assuming you are still logged in, you should see a drop-down in the upper right that says "Add files". Click that drop-down and select "Upload files". Now you can drag in or select the CSV file that you edited earlier.
 
+Under "Commit changes", select "Create a new branch for this commit and start a pull request". Press "Commit changes". Next you will be taken to another screen, where you should click "Create pull request".
+
+> By creating a "pull request", you have essentially *proposed* changes. 
 > Note that your change will not immediately appear on your staging site - the
 > change will need to be approved by a platform administrator on your team.
 
 ## Editing metadata
 
-Next we will update metadata. Return to the indicator on your staging site, and again click the "Edit" tab. This time, click "Edit Metadata".
+Next we will update metadata. Return to the indicator on your staging site, and again click the "Edit Indicator" tab. This time, click "Edit Metadata".
 
-You will be back on Prose.io, but this time there is an extra step to get to the metadata: Click on the metadata icon in the right-hand sidebar.
+You will now see a list of metadata fields where you can directly type in your edits. Go ahead and make any edits you would like to the metadata.
 
-Now you will see a list of metadata fields. Locate the field you would like to change, and then make your update.
+**Important note**: The edits you make here will NOT be automatically saved. If you close your browser or turn off your computer, your edits will be lost. Get all the way to the end of these steps to ensure your edits are not lost!
 
-Once you have made your update, click on any other field. You should see a disk icon in the right-hand sidebar. This icon will change slightly, indicating that you have made a change which needs to be saved.
+Once you have finished making your edits, click "Download configuration". This will download a YAML (.yml) file that should be named according to the indicator number (eg, 1-1-1.yml). Click the "Go to repository" button. This should take you to your data repository.
 
-Click the disk icon to save your change. Enter a short description of your change, and then click "Commit".
+Assuming you are still logged in, you should see a drop-down in the upper right that says "Add files". Click that drop-down and select "Upload files". Now you can drag in or select the YAML file that you downloaded earlier.
 
+Under "Commit changes", select "Create a new branch for this commit and start a pull request". Press "Commit changes". Next you will be taken to another screen, where you should click "Create pull request".
+
+> By creating a "pull request", you have essentially *proposed* changes. 
 > Note that your change will not immediately appear on your staging site - the
 > change will need to be approved by a platform administrator on your team.
 
 ## Conclusion
 
-This document has detailed how to use GitHub.com, Prose.io, and your staging site, to update data and metadata for the Open SDG platform.
+This document has detailed how to use GitHub.com and your staging site, to update data and metadata for the Open SDG platform.

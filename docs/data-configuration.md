@@ -210,10 +210,15 @@ indicator_options:
     - Observation status
     - Unit multiplier
     - Unit measure
+    - UNIT_MEASURE
+    - SERIES
+    - COMMENT_TS
+    - DATA_LAST_UPDATE
   series_column: Series
   unit_column: Units
   observation_attributes:
     - COMMENT_OBS
+    - SOURCE_DETAIL
 ```
 
 ### inputs
@@ -367,7 +372,7 @@ inputs:
 
 ### languages
 
-_Optional_: This setting corresponds exactly to the [language setting in the site configuration](configuration.md#languages). It is technically optional, but **strongly recommended**, and will be required in future releases. If you use this setting, your data will be translated and placed in language subfolders. For more information on how this translation works, see documentation on [translating metadata](translation.md#translating-indicator-metadata) and [translating data](translation.md#translating-data-disaggregations-and-columns).
+_Optional_: This setting corresponds exactly to the [language setting in the site configuration](configuration.md#languages). It is technically optional, but **strongly recommended**, and will be required in future releases. If you use this setting, your data will be translated and placed in language subfolders. For more information on how this translation works, see documentation on [translating metadata](translation.md#part-3-indicator-metadata-and-configuration) and [translating data](translation.md#part-2-indicator-data-disaggregation).
 
 ```nohighlight
 languages:
