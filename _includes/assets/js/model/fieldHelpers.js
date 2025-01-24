@@ -513,6 +513,19 @@ function getDataBySelectedFields(rows, selectedFields) {
 }
 
 /**
+ * @param {Array} rows
+ * @param {Array} selectedFields Field items
+ * @return {Array} Rows
+ */
+function hasDataBySelectedFields(rows, selectedFields) {
+  return rows.some(function(row) {
+    return selectedFields.some(function(field) {
+      return field.values.includes(row[field.field]);
+    });
+  });
+}
+
+/**
  * @param {Array} fieldNames
  * @param {Object} dataSchema
  */

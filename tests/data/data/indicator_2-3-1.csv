@@ -1,29 +1,61 @@
-Year,Group,Fruit,Units,Value
-2015,,,Percent,100
-2016,,,Percent,100
-2015,A,,Percent,30
-2015,B,,Percent,70
-2016,A,,Percent,60
-2016,B,,Percent,40
-2015,A,Apple,Percent,10
-2015,B,Apple,Percent,90
-2016,A,Apple,Percent,80
-2016,B,Apple,Percent,20
-2015,A,Orange,Percent,30
-2015,B,Orange,Percent,70
-2016,A,Orange,Percent,90
-2016,B,Orange,Percent,10
-2015,,,Total,108
-2016,,,Total,109
-2015,A,,Total,101
-2015,B,,Total,103
-2016,A,,Total,101
-2016,B,,Total,103
-2015,A,Apple,Total,101
-2015,B,Apple,Total,103
-2016,A,Apple,Total,101
-2016,B,Apple,Total,103
-2015,A,Orange,Total,101
-2015,B,Orange,Total,103
-2016,A,Orange,Total,101
-2016,B,Orange,Total,103
+Year,Group,Fruit,Units,Series,Value
+2015,,,Percent,Series A,100
+2016,,,Percent,Series A,100
+2015,A,,Percent,Series A,30
+2015,B,,Percent,Series A,70
+2016,A,,Percent,Series A,60
+2016,B,,Percent,Series A,40
+2015,A,Apple,Percent,Series A,10
+2015,B,Apple,Percent,Series A,90
+2016,A,Apple,Percent,Series A,80
+2016,B,Apple,Percent,Series A,20
+2015,A,Orange,Percent,Series A,30
+2015,B,Orange,Percent,Series A,70
+2016,A,Orange,Percent,Series A,90
+2016,B,Orange,Percent,Series A,10
+2015,,,Total,Series A,108
+2016,,,Total,Series A,09
+2015,A,,Total,Series A,101
+2015,B,,Total,Series A,103
+2016,A,,Total,Series A,101
+2016,B,,Total,Series A,103
+2015,A,Apple,Total,Series A,101
+2015,B,Apple,Total,Series A,103
+2016,A,Apple,Total,Series A,101
+2016,B,Apple,Total,Series A,103
+2015,A,Orange,Total,Series A,101
+2015,B,Orange,Total,Series A,103
+2016,A,Orange,Total,Series A,101
+2016,B,Orange,Total,Series A,103
+2015,,,Percent,Series B,1000
+2016,,,Percent,Series B,1000
+2015,A,,Percent,Series B,300
+2015,B,,Percent,Series B,700
+2016,A,,Percent,Series B,600
+2016,B,,Percent,Series B,400
+2015,A,Apple,Percent,Series B,100
+2015,B,Apple,Percent,Series B,900
+2016,A,Apple,Percent,Series B,800
+2016,B,Apple,Percent,Series B,200
+2015,A,Orange,Percent,Series B,300
+2015,B,Orange,Percent,Series B,700
+2016,A,Orange,Percent,Series B,900
+2016,B,Orange,Percent,Series B,100
+2015,,,Total,Series B,1080
+2016,,,Total,Series B,090
+2015,A,,Total,Series B,1010
+2015,B,,Total,Series B,1030
+2016,A,,Total,Series B,1010
+2016,B,,Total,Series B,1030
+2015,A,Apple,Total,Series B,1010
+2015,B,Apple,Total,Series B,1030
+2016,A,Apple,Total,Series B,1010
+2016,B,Apple,Total,Series B,1030
+2015,A,Orange,Total,Series B,1010
+2015,B,Orange,Total,Series B,1030
+2016,A,Orange,Total,Series B,1010
+2016,B,Orange,Total,Series B,1030
+2015,C,,Percent,Series C,300
+2016,C,,Percent,Series C,600
+2015,C,,Total,Series C,1010
+2016,C,,Total,Series C,1010
