@@ -23,13 +23,7 @@
                     "title": "Google Tag Manager (gtm) tracking ID",
                     "description": "Your tracking ID for Google Tag Manager. Typically starts with 'GTM-'. Though this is included as an analytics approach, it requires additional configuration within Google Tag Manager in order to capture analytics."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the analytics setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#analytics"
-                }
-            ]
+            }
         },
         "breadcrumbs": {
             "type": "object",
@@ -60,13 +54,7 @@
                         "$ref": "#/definitions/breadcrumb_item"
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the breadcrumbs setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#breadcrumbs"
-                }
-            ]
+            }
         },
         "cookie_consent_form": {
             "type": "object",
@@ -78,13 +66,7 @@
                     "title": "Enabled",
                     "description": "Whether the cookie consent form will be enabled"
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the cookie_consent_form setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#cookie_consent_form"
-                }
-            ]
+            }
         },
         "country": {
             "type": "object",
@@ -103,13 +85,7 @@
                     "description": "Adjective form of your country/region/locality/etc.",
                     "minLength": 1
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the country setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#country"
-                }
-            ]
+            }
         },
         "create_goals": {
             "type": "object",
@@ -157,13 +133,7 @@
                         }
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the create goals setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#create_goals"
-                }
-            ]
+            }
         },
         "create_indicators": {
             "type": "object",
@@ -175,13 +145,7 @@
                     "type": "boolean",
                     "description": "This setting can be used to show navigation links to the previous/next indicators."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the create indicators setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#create_indicators"
-                }
-            ]
+            }
         },
         "create_pages": {
             "type": "array",
@@ -214,13 +178,7 @@
                         "description": "The page title for the page."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the create pages setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#create_pages"
-                }
-            ]
+            }
         },
         "custom_css": {
             "type": "array",
@@ -229,13 +187,7 @@
             "items": {
                 "type": "string",
                 "title": "Custom CSS file"
-            },
-            "links": [
-                {
-                    "rel": "More information on the custom CSS setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#custom_css"
-                }
-            ]
+            }
         },
         "custom_js": {
             "type": "array",
@@ -244,24 +196,12 @@
             "items": {
                 "type": "string",
                 "title": "Custom JavaScript file"
-            },
-            "links": [
-                {
-                    "rel": "More information on the custom JS setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#custom_js"
-                }
-            ]
+            }
         },
         "data_edit_url": {
             "type": "string",
             "title": "Data edit URL",
-            "description": "This setting controls the URL of the 'Edit Data' buttons that appear on the staging site's indicator pages.",
-            "links": [
-                {
-                    "rel": "More information on the data edit URL setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#data_edit_url"
-                }
-            ]
+            "description": "This setting controls the URL of the 'Edit Data' buttons that appear on the staging site's indicator pages."
         },
         "data_fields": {
             "type": "object",
@@ -278,13 +218,7 @@
                     "title": "Series",
                     "description": "Field to reserve for the SDG series. Defaults to 'Series'."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the data fields setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#data_fields"
-                }
-            ]
+            }
         },
         "date_formats": {
             "type": "array",
@@ -313,13 +247,7 @@
                         "description": "Ruby DateTime date format."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the date formats setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#date_formats"
-                }
-            ]
+            }
         },
         "disclaimer": {
             "type": "object",
@@ -341,13 +269,7 @@
                     "title": "Hidden",
                     "description": "Hide the disclaimer."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the disclaimer setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#disclaimer"
-                }
-            ]
+            }
         },
         "email_contacts": {
             "type": "object",
@@ -357,78 +279,45 @@
                 "questions": {
                     "type": "string",
                     "minLength": 1,
-                    "format": "email",
                     "title": "Questions",
                     "description": "Inbox for questions about your platform."
                 },
                 "suggestions": {
                     "type": "string",
                     "minLength": 1,
-                    "format": "email",
                     "title": "Suggestions",
                     "description": "Inbox for suggestions for your platform."
                 },
                 "functional": {
                     "type": "string",
                     "minLength": 1,
-                    "format": "email",
                     "title": "Functional",
                     "description": "Inbox for bug reports for your platform."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the email contacts setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#email_contacts"
-                }
-            ]
+            }
         },
         "empty_metadata_placeholder": {
             "type": "string",
             "title": "Empty metadata placeholder",
-            "description": "This setting controls the text that will display for any metadata field which has no content. Note that this is not used if 'hide_empty_metadata' is true.",
-            "links": [
-                {
-                    "rel": "More information on the empty metadata placeholder setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#empty_metadata_placeholder"
-                }
-            ]
+            "description": "This setting controls the text that will display for any metadata field which has no content. Note that this is not used if 'hide_empty_metadata' is true."
         },
         "empty_metadata_placeholder_sources": {
             "type": "string",
             "title": "Empty metadata placeholder (sources)",
-            "description": "This setting controls the text that will display for any sources field which has no content. Note that this is not used if 'hide_empty_metadata' is true.",
-            "links": [
-                {
-                    "rel": "More information on the empty metadata placeholder (sources) setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#empty_metadata_placeholder_sources"
-                }
-            ]
+            "description": "This setting controls the text that will display for any sources field which has no content. Note that this is not used if 'hide_empty_metadata' is true."
         },
         "environment": {
             "type": "string",
             "minLength": 1,
             "title": "Environment",
             "description": "Which environment (staging or production) this configuration is for.",
-            "enum": ["staging", "production"],
-            "links": [
-                {
-                    "rel": "More information on the environment setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#environment"
-                }
-            ]
+            "enum": ["staging", "production"]
         },
         "footer_language_toggle": {
             "type": "string",
             "title": "Footer language toggle",
             "description": "This setting controls the type of language toggle to be used in the footer.",
-            "enum": ["none", "dropdown", "links"],
-            "links": [
-                {
-                    "rel": "More information on the footer language toggle setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#footer_language_toggle"
-                }
-            ]
+            "enum": ["none", "dropdown", "links"]
         },
         "footer_menu": {
             "type": "array",
@@ -436,13 +325,7 @@
             "description": "The links to display in the footer menu.",
             "items": {
                 "$ref": "#/definitions/menu_item"
-            },
-            "links": [
-                {
-                    "rel": "More information on the footer menu setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#footer_menu"
-                }
-            ]
+            }
         },
         "frontpage_cards": {
             "type": "array",
@@ -484,13 +367,7 @@
                         "description": "The color of the horizontal line appearing above the card."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the frontpage cards setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_cards"
-                }
-            ]
+            }
         },
         "frontpage_goals_grid": {
             "type": "object",
@@ -507,13 +384,7 @@
                     "title": "Description",
                     "description": "Used in the 'frontpage' layout, this sets a description to display above the goals grid."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the frontpage goals grid setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_goals_grid"
-                }
-            ]
+            }
         },
         "frontpage_introduction_banner": {
             "type": "object",
@@ -530,36 +401,18 @@
                     "title": "Description",
                     "description": "Used in the 'frontpage' layout, this sets a description to display in a banner at the top of the front page."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the frontpage introduction banner setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#frontpage_introduction_banner"
-                }
-            ]
+            }
         },
         "goal_image_base": {
             "type": "string",
             "minLength": 1,
             "title": "Goal image base URL",
-            "description": "This setting controls the base URL for downloading the imagery for the goals.",
-            "links": [
-                {
-                    "rel": "More information on the goal image base setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#goal_image_base"
-                }
-            ]
+            "description": "This setting controls the base URL for downloading the imagery for the goals."
         },
         "goal_image_extension": {
             "type": "string",
             "title": "Goal image extension",
-            "description": "This setting controls the type of file (the file extension) that will be used for the goal images.",
-            "links": [
-                {
-                    "rel": "More information on the goal image extension setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#goal_image_extension"
-                }
-            ]
+            "description": "This setting controls the type of file (the file extension) that will be used for the goal images."
         },
         "goals_page": {
             "type": "object",
@@ -576,52 +429,26 @@
                     "title": "Description",
                     "description": "Used in the 'goals' layout, this sets a description to display above the goals grid."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the goals page setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#goals_page"
-                }
-            ]
+            }
         },
         "graph_color_headline": {
             "type": "string",
             "title": "Graph color for headline",
             "default": "#004466",
-            "description": "This setting can be used to customize the color used in the chart 'headlines'.",
-            "examples": [],
-            "links": [
-                {
-                    "rel": "More information on the graph color headline setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_headline"
-                }
-            ]
+            "description": "This setting can be used to customize the color used in the chart 'headlines'."
         },
         "graph_color_headline_high_contrast": {
             "type": "string",
             "title": "Graph color for headline - high-contrast",
             "default": "#55a6e5",
-            "description": "This setting can be used to customize the color used in the chart 'headlines' in high-contrast mode.",
-            "examples": [],
-            "links": [
-                {
-                    "rel": "More information on the graph color headline high-contrast setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_headline_high_contrast"
-                }
-            ]
+            "description": "This setting can be used to customize the color used in the chart 'headlines' in high-contrast mode."
         },
         "graph_color_set": {
             "type": "string",
             "title": "Graph color set",
             "description": "This setting can be used to customize the color set used in the charts.",
             "examples": [],
-            "enum": ["accessible", "classic", "sdg", "goal", "custom"],
-            "links": [
-                {
-                    "rel": "More information on the graph color set setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_set"
-                }
-            ]
+            "enum": ["accessible", "classic", "sdg", "goal", "custom"]
         },
         "graph_color_list": {
             "type": "array",
@@ -631,80 +458,38 @@
                 "type": "string",
                 "title": "Color",
                 "description": "Hexadecimal color code"
-            },
-            "links": [
-                {
-                    "rel": "More information on the graph color list setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_list"
-                }
-            ]
+            }
         },
         "graph_color_number": {
             "title": "Graph color number",
             "type": "integer",
-            "description": "This setting can be used to limit the length of the list of colors selected via graph_color_set.",
-            "links": [
-                {
-                    "rel": "More information on the graph color number setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_color_number"
-                }
-            ]
+            "description": "This setting can be used to limit the length of the list of colors selected via graph_color_set."
         },
         "graph_title_from_series": {
             "title": "Graph title from series",
             "type": "boolean",
-            "description": "This setting can be set to `true` to use the selected series for the graph title, whenever possible.",
-            "links": [
-                {
-                    "rel": "More information on the graph title from series setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#graph_title_from_series"
-                }
-            ]
+            "description": "This setting can be set to `true` to use the selected series for the graph title, whenever possible."
         },
         "header_language_toggle": {
             "type": "string",
             "title": "Header language toggle",
             "description": "This setting controls the type of language toggle to be used in the header.",
-            "enum": ["none", "dropdown", "links"],
-            "links": [
-                {
-                    "rel": "More information on the header language toggle setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#header_language_toggle"
-                }
-            ]
+            "enum": ["none", "dropdown", "links"]
         },
         "hide_empty_metadata": {
             "title": "Hide empty metadata",
             "type": "boolean",
-            "description": "This setting can be used to hide any metadata fields that are empty.",
-            "links": [
-                {
-                    "rel": "More information on the hide empty metadata setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#hide_empty_metadata"
-                }
-            ]
+            "description": "This setting can be used to hide any metadata fields that are empty."
         },
         "hide_single_series": {
             "title": "Hide single series",
             "type": "boolean",
-            "description": "This setting can be used to hide the 'Series' toggle on indicators where there is only one choice.",
-            "links": [
-                {
-                    "rel": "More information on the hide single series setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#hide_single_series"
-                }
-            ]
+            "description": "This setting can be used to hide the 'Series' toggle on indicators where there is only one choice."
         },
         "hide_single_unit": {
             "title": "Hide single unit",
             "type": "boolean",
-            "description": "This setting can be used to hide the 'Unit' toggle on indicators where there is only one choice.",
-            "links": [
-                {
-                    "rel": "More information on the hide single unit setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#hide_single_unit"
-                }
-            ]
+            "description": "This setting can be used to hide the 'Unit' toggle on indicators where there is only one choice."
         },
         "ignored_disaggregations": {
             "type": "array",
@@ -713,13 +498,7 @@
             "items": {
                 "type": "string",
                 "title": "Ignored disaggregation"
-            },
-            "links": [
-                {
-                    "rel": "More information on the ignored_disaggregations setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#ignored_disaggregations"
-                }
-            ]
+            }
         },
         "indicator_config_form": {
             "type": "object",
@@ -864,13 +643,7 @@
                 "type": "string",
                 "minLength": 1,
                 "title": "Language"
-            },
-            "links": [
-                {
-                    "rel": "More information on the languages setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#languages"
-                }
-            ]
+            }
         },
         "languages_public": {
             "type": "array",
@@ -893,13 +666,7 @@
                         "description": "The (non-standard) language code that you would like show the public instead."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the language override setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#languages_public"
-                }
-            ]
+            }
         },
         "logos": {
             "type": "array",
@@ -927,13 +694,7 @@
                         "description": "The alt text for this logo"
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the logos setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#logos"
-                }
-            ]
+            }
         },
         "map_layers": {
             "type": "array",
@@ -969,13 +730,7 @@
                         "description": "Whether the borders on this layer should remain visible when the map is zoomed past the maximum."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the map layers setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/maps/#map_layers"
-                }
-            ]
+            }
         },
         "map_options": {
             "type": "object",
@@ -1027,13 +782,7 @@
                     "type": "string",
                     "title": "Color range",
                     "description": "The color range for the choropleth map.",
-                    "default": "chroma.brewer.BuGn",
-                    "links": [
-                        {
-                            "ref": "More information on the color range setting",
-                            "href": "https://gka.github.io/chroma.js/#chroma-brewer"
-                        }
-                    ]
+                    "default": "chroma.brewer.BuGn"
                 },
                 "noValueColor": {
                     "type": "string",
@@ -1156,13 +905,7 @@
                         "dashArray": "5,5"
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the map options setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/maps/#map_options"
-                }
-            ]
+            }
         },
         "menu": {
             "type": "array",
@@ -1209,24 +952,12 @@
                         }
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the menu setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#menu"
-                }
-            ]
+            }
         },
         "metadata_edit_url": {
             "type": "string",
             "title": "Metadata edit URL",
-            "description": "This setting controls the URL of the 'Edit Metadata' buttons that appear on the staging site's indicator pages.",
-            "links": [
-                {
-                    "rel": "More information on the metadata edit URL setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#metadata_edit_url"
-                }
-            ]
+            "description": "This setting controls the URL of the 'Edit Metadata' buttons that appear on the staging site's indicator pages."
         },
         "metadata_tabs": {
             "type": "array",
@@ -1254,13 +985,7 @@
                         "description": "A descriptive blurb to show at the top of the tab content."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the metadata tabs setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#metadata_tabs"
-                }
-            ]
+            }
         },
         "meta_tags": {
             "type": "array",
@@ -1288,13 +1013,7 @@
                         "description": "The 'content' attribute for the meta tag. Translation keys can be used."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the Meta Tags setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#meta_tags"
-                }
-            ]
+            }
         },
         "news": {
             "type": "object",
@@ -1306,13 +1025,7 @@
                     "type": "boolean",
                     "description": "Whether you would like the 'categories' of posts to generate links to dedicated category pages."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the news setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#news"
-                }
-            ]
+            }
         },
         "observation_attributes": {
             "type": "array",
@@ -1334,13 +1047,7 @@
                         "description": "Optional label when displayed in footnotes."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the observation attributes setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#observation_attributes"
-                }
-            ]
+            }
         },
         "progress_status": {
             "type": "object",
@@ -1389,13 +1096,7 @@
                         }
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the progress status setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#progress_status"
-                }
-            ]
+            }
         },
         "progressive_web_app": {
             "type": "object",
@@ -1422,13 +1123,7 @@
                     "title": "Precaching",
                     "description": "If enabled, all indicator and goal pages will be precached when the app is installed."
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the progressive_web_app setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#progressive_web_app"
-                }
-            ]
+            }
         },
         "proxy_indicators": {
             "type": "object",
@@ -1451,13 +1146,7 @@
             "type": "string",
             "minLength": 1,
             "title": "Remote data prefix",
-            "description": "Specify the URL of the 'data service' that is generated from your data repository.",
-            "links": [
-                {
-                    "rel": "More information on the remote data prefix setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#remote_data_prefix"
-                }
-            ]
+            "description": "Specify the URL of the 'data service' that is generated from your data repository."
         },
         "reporting_status": {
             "type": "object",
@@ -1510,35 +1199,17 @@
                         }
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the reporting status setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#reporting_status"
-                }
-            ]
+            }
         },
         "repository_url_data": {
             "type": "string",
             "title": "Repository URL - Data",
-            "description": "The URL of your data repository, eg: https://github.com/my-github-org/data",
-            "links": [
-                {
-                    "rel": "More information on the data repository URL setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#repository_url_data"
-                }
-            ]
+            "description": "The URL of your data repository, eg: https://github.com/my-github-org/data"
         },
         "repository_url_site": {
             "type": "string",
             "title": "Repository URL - Site",
-            "description": "The URL of your site repository, eg: https://github.com/my-github-org/site",
-            "links": [
-                {
-                    "rel": "More information on the site repository URL setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#repository_url_site"
-                }
-            ]
+            "description": "The URL of your site repository, eg: https://github.com/my-github-org/site"
         },
         "search_index_boost": {
             "type": "array",
@@ -1561,13 +1232,7 @@
                         "description": "Higher boost means higher search ranking."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the search index boost setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_boost"
-                }
-            ]
+            }
         },
         "search_index_extra_fields": {
             "type": "array",
@@ -1576,13 +1241,7 @@
             "items": {
                 "type": "string",
                 "title": "Extra field"
-            },
-            "links": [
-                {
-                    "rel": "More information on the search index extra fields setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#search_index_extra_fields"
-                }
-            ]
+            }
         },
         "site_config_form": {
             "type": "object",
@@ -1611,46 +1270,12 @@
                         "description": "Label when displayed in the footer."
                     }
                 }
-            },
-            "links": [
-                {
-                    "rel": "More information on the time series attributes setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#time_series_attributes"
-                }
-            ]
-        },
-        "validate_indicator_config": {
-            "title": "Validate indicator config",
-            "type": "boolean",
-            "description": "If checked, this will require that all indicators have valid Open SDG indicator configuration.",
-            "links": [
-                {
-                    "rel": "More information on the validate indicator config setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#validate_indicator_config"
-                }
-            ]
-        },
-        "validate_site_config": {
-            "title": "Validate site config",
-            "type": "boolean",
-            "description": "If checked, this will require valid site configuration.",
-            "links": [
-                {
-                    "rel": "More information on the validate site config setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#validate_site_config"
-                }
-            ]
+            }
         },
         "x_axis_label": {
             "type": "string",
             "title": "X axis label",
-            "description": "A label beneath the X axis on charts. This is overridden by the same indicator configuration setting.",
-            "links": [
-                {
-                    "rel": "More information on the X axis label setting",
-                    "href": "https://open-sdg.readthedocs.io/en/latest/configuration/#x_axis_label"
-                }
-            ]
+            "description": "A label beneath the X axis on charts. This is overridden by the same indicator configuration setting."
         }
     },
     "additionalProperties": true,
