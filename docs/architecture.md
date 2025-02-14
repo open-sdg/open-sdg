@@ -1,7 +1,7 @@
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.8.6/js/jsplumb.js"></script>
-<script src="https://unpkg.com/popper.js"></script>
-<script src="https://unpkg.com/tooltip.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.8.6/js/jsplumb.js" integrity="sha384-pge06D67Qc8qh00Apil8hJbKHA5hAv0SvX+NJUdI60b65mcgAguChL0072HWlC+7" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/tooltip.js@1.3.3/dist/umd/tooltip.min.js" integrity="sha384-EebWk7GwYnOiMYxONecFC/D8xQKZ7e+QVT20Mom2m2HYhh4KyRZjZXNAiXK7ZCKU" crossorigin="anonymous"></script>
 
 <div id="architecture">
   <div class="container">
