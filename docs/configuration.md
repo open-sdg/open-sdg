@@ -990,20 +990,27 @@ progress_status:
   status_types:
     - value: not_available
       label: status.progress_not_available
-      image: assets/img/progress/not-available.png
       alt: status.progress_not_available
+    - value: deterioration
+      label: status.deterioration
+      image: assets/img/progress/red-gauge.png
+      alt: status.deterioration
+    - value: limited_progress
+      label: status.limited_progress
+      image: assets/img/progress/orange-gauge.png
+      alt: status.limited_progress
+    - value: moderate_progress
+      label: status.moderate_progress
+      image: assets/img/progress/yellow-gauge.png
+      alt: status.moderate_progress
+    - value: substantial_progress
+      label: status.substantial_progress
+      image: assets/img/progress/green-gauge.png
+      alt: status.substantial_progress
     - value: target_achieved
-      label: status.progress_target_achieved
-      image: assets/img/progress/target-achieved.png
-      alt: status.progress_target_achieved
-    - value: challenges_remain
-      label: status.progress_challenges_remain
-      image: assets/img/progress/challenges-remain.png
-      alt: status.progress_challenges_remain
-    - value: approaching_target
-      label: status.progress_approaching_target
-      image: assets/img/progress/approaching-target.png
-      alt: status.progress_approaching_target
+      label: status.target_achieved
+      image: assets/img/progress/target-achieved-gauge.png
+      alt: status.target_achieved
 ```
 
 As always, for multilingual support, the label/alt/heading settings can refer to translation keys.
