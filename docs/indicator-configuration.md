@@ -54,6 +54,14 @@ graph_titles:
 
 ## Indicator configuration fields
 
+### auto_progress_calculation
+
+_Optional_: This setting is used to turn on or off the progress measure for the indicator. A minimum of 2 years with data points are required to assess the indicator's progress, otherwise the progress status will be "Not available".
+
+```nohighlight
+auto_progress_calculation: true
+```
+
 ### composite_breakdown_label
 
 _Optional_ This setting is used when importing data from SDMX to specify a more useful label for the COMPOSITE_BREAKDOWN column (if present). Translation keys are supported, as always. Using the example below would change the COMPOSITE_BREAKDOWN label to "Hazard type" for this indicator:
@@ -630,7 +638,7 @@ precision:
 
 ### progress_status
 
-**_Required_**: This setting is used to specify the status of the indicator's progress. This is displayed on the indicator pages. You can also display this on goal pages by setting your goal layout to "goal-with-progress" (this can be done in the [`create_goals` site configuration setting](configuration.md#create_goals)).
+_Optional_: This setting is used to manually specify the status of the indicator's progress when the automated progress calculation is not turned on (`auto_progress_calculation: false`). This is displayed on the indicator pages. You can also display this on goal pages by setting your goal layout to "goal-with-progress" (this can be done in the [`create_goals` site configuration setting](configuration.md#create_goals)).
 
 Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. More information with the code needed for the out-of-the-box options below can be found in the [`progress_status` site configuration setting](configuration.md#progress_status). Then for each indicator, you can add the relevant progress_status in its indicator configuration file.
 
@@ -641,13 +649,64 @@ progress_status: target_achieved
 Options out-of-the-box are:
 
 * not_available
-* challenges_remain
-* approaching_target
+* limited_progress
+* moderate_progress
+* substantial_progress
 * target_achieved
 
 Here is an example of what this looks like on the platform:
 
 ![Screenshot of progress status functionality](https://open-sdg.org/open-sdg-docs/img/indicatorconfiguration/progress_status.PNG)
+
+### progress_calculation_options
+
+_Optional_: If the automated progress calculation is turned on (`auto_progress_calculation: true`). This controls the input parameters for the progress calculation. A progress status and score are determined for the indicator using a methodology based on compound annual growth rates (see methodology details).
+
+A progress score can only determined for individual time series within the data. If the data has many possible time series (for example: multiple series, units, or disaggregations), the individual time series to use for the progress calculation must be specified in `progress_calculation_options` using the `series`, `unit`, and `disaggregation` parameters. It is also possible to specify multiple time series and calculate the progress scores for these time series individually. The overall progress status for such an indicator will correspond to the mean score of each of the specified time series.
+
+* `series`: The series name of the time series for the progress calculation.
+* `unit`: The unit name of the time series for the progress calculation.
+* `disaggregation`: If the selected time series has no headline, a particular disaggregation may be selected with this setting. If `disaggregation` is not specified and a headline is present, the headline values will be selected for the progress calculation.
+* `direction`: "negative" or "positive". Default: "negative". The desired direction of progress for the time series. 
+* `base_year`: Default: 2015. The base year for the progress calculation of the specified time series.
+* `target_year`: Default: 2030. The target year for the progress calculation of the specified time series.
+* `target`: Default: None. The value required to reach the target of the specified time series. _Cannot be zero - a target of zero will be reset to 0.001._
+* `limit`: Default: None. If direction is "positive", this is the maximum possible ceiling for the values of the specified time series. If direction is "negative", this is the minimum possible floor for the value of the specified time series. For example, the limit of SDG 6.1.1 'Proportion of population using safely managed drinking water services' should be 100 since no more than 100% of the population can be using safely managed drinking water services. _Only applicable if no target is specified._
+
+Here is an example specifying a single time series from an indicator with multiple series and disaggregations. This example tells the progress measurement tool to only include data from the time series falling under the following categories: Series = Fatality claims, Geography = Canada, Gender = Male.
+
+```
+auto_progress_calculation: true
+progress_calculation_options:
+- series: Fatality claims
+  disaggregation:
+  - field: Geography
+    value: Canada
+  - field: Gender
+    value: Male
+  direction: negative
+```
+
+Here is another example where multiple time series from the indicator data are specified. The overall progress status for the indicator in this example will correspond to the mean progress scores of these two time series: fatality claims for males in Canada and the fatality claims for females in Canada.
+
+```
+auto_progress_calculation: true
+progress_calculation_options:
+- series: Fatality claims
+  disaggregation:
+  - field: Geography
+    value: Canada
+  - field: Gender
+    value: Male
+  direction: negative
+- series: Fatality claims
+  disaggregation:
+  - field: Geography
+    value: Canada
+  - field: Gender
+    value: Female
+  direction: negative
+```
 
 ### proxy
 
