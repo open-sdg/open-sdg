@@ -3,6 +3,11 @@
     "title": "Open SDG indicator configuration",
     "description": "This form will produce an indicator's configuration for your Open SDG implementation.",
     "properties": {
+        "auto_progress_calculation": {
+            "title": "Automatic progress calculation",
+            "type": "boolean",
+            "description": "This setting can be toggled on to enable automatic progress calculation for the indicator."
+        },
         "composite_breakdown_label": {
             "type": "string",
             "title": "Composite breakdown label",
@@ -493,11 +498,78 @@
                 }
             }
         },
+        "progress_calculation_options": {
+            "type": "object",
+            "title": "Progress calculation options",
+            "description": "These settings control the automatic selection of a progress status when auto_progress_calculation is toggle on.",
+            "properties": {
+                "base_year": {
+                    "type": "integer",
+                    "title": "Base year",
+                    "description": "Default: 2015. Base year with which to compare current progress."
+                },
+                "direction": {
+                    "type": "string",
+                    "title": "Direction",
+                    "description": "The indicator's desired direction of progress -- towards more positive values or more negative values. Default: negative.",
+                    "enum": ["negative", "positive"]
+                },
+                "disaggregation": {
+                    "type": "array",
+                    "title": "Disaggregations",
+                    "description": "Disaggregation(s) to include in the progress calculation from the provided series and/or unit if there is no headline. If more than one disaggregation is specified, a progress value is calculated for each specified disaggregation and the median is taken as the final progress value for the indicator.",
+                    "items": {
+                        "type": "object",
+                        "title": "Disaggregation",
+                        "properties": {
+                            "field": {
+                                "type": "string",
+                                "title": "Field",
+                                "description": "Disaggregation column name"
+                            },
+                            "value": {
+                                "type": "string",
+                                "title": "Value",
+                                "description": "Name of sub-category within disaggregation column"
+                            }
+                        }
+                    }
+                },
+                "limit": {
+                    "type": "number",
+                    "title": "Limit",
+                    "description": "Default: None. Only applicable if the target is None. Cannot be zero. If direction is 'positive', this is the maximum possible ceiling for the indicator values. If direction is 'negative', this is the minimum possible floor for the indicator values."
+                },
+                "series": {
+                    "type": "string",
+                    "title": "Series",
+                    "description": "Series for the progress calculation"
+                },
+                "target": {
+                    "type": "number",
+                    "title": "Target",
+                    "description": "Default: None. Value required to achieve target. Cannot be zero -- a target of zero will be reset to 0.001."
+                },
+                "target_year": {
+                    "type": "integer",
+                    "title": "Target year",
+                    "description": "Default: 2030. Year by which the target is expected to be achieved."
+                },
+                "unit": {
+                    "type": "string",
+                    "title": "Unit",
+                    "description": "Unit for the progress calculation"
+                },
+
+                
+                
+            }
+        },
         "progress_status": {
             "type": "string",
             "title": "Progress status",
-            "enum": ["", "not_available", "challenges_remain", "approaching_target", "target_achieved"],
-            "description": "The progress status of the indicator."
+            "enum": ["", "not_available", "challenges_remain", "approaching_target", "target_achieved", "deterioration", "limited_progress", "moderate_progress", "substantial_progress"],
+            "description": "Progress status level that can be manually specified by the user if auto_progress_calculation is false."
         },
         "proxy": {
             "type": "string",
