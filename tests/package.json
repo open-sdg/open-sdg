@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Integration testing for Open SDG",
     "dependencies": {
-        "@cucumber/cucumber": "latest",
+        "@cucumber/cucumber": "10.9.0",
         "cucumber-mink": "brockfanning/cucumber-mink#puppeteer-update",
         "pa11y-ci": "brockfanning/pa11y-ci#puppeteer-update",
         "simple-git": "latest"

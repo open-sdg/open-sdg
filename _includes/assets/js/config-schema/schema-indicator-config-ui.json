@@ -541,6 +541,17 @@
                 },
                 {
                     "type": "GroupWithAccordion",
+                    "label": "Automatic progress calculation",
+                    "documentationKey": "auto_progress_calculation",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/auto_progress_calculation"
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
                     "label": "Progress status",
                     "documentationKey": "progress_status",
                     "elements": [
@@ -548,7 +559,32 @@
                             "type": "Control",
                             "scope": "#/properties/progress_status"
                         }
-                    ]
+                    ],
+                    "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/auto_progress_calculation",
+                          "schema": { "const": true }
+                        }
+                    }
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Progress calculation options",
+                    "documentationKey": "progress_calculation_options",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/progress_calculation_options"
+                        }
+                    ],
+                    "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/auto_progress_calculation",
+                          "schema": { "const": true }
+                        }
+                    }
                 },
                 {
                     "type": "GroupWithAccordion",
