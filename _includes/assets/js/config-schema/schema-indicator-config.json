@@ -504,7 +504,7 @@
             "description": "These settings control the automatic selection of a progress status when auto_progress_calculation is toggle on.",
             "properties": {
                 "base_year": {
-                    "type": "integer",
+                    "type": ["integer", "string"],
                     "title": "Base year",
                     "description": "Default: 2015. Base year with which to compare current progress."
                 },
@@ -551,7 +551,7 @@
                     "description": "Default: None. Value required to achieve target. Cannot be zero -- a target of zero will be reset to 0.001."
                 },
                 "target_year": {
-                    "type": "integer",
+                    "type": ["integer", "string"],
                     "title": "Target year",
                     "description": "Default: 2030. Year by which the target is expected to be achieved."
                 },

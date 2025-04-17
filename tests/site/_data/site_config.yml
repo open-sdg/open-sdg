@@ -125,7 +125,7 @@ goals_page:
   description: custom.goals_page_description
 graph_color_headline: '#004466'
 graph_color_headline_high_contrast: '#55a6e5'
-graph_color_set: default
+graph_color_set: accessible
 graph_color_list: []
 graph_color_number: 6
 graph_title_from_series: true
@@ -214,7 +214,7 @@ map_options:
     opacity: 1
     fillOpacity: 0
     color: '#172d44'
-    dashArray: '5,5'
+    dashArray: 5,5
 menu:
   - path: reporting-status
     translation_key: menu.reporting_status
