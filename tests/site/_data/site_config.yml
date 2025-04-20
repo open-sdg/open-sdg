@@ -35,6 +35,7 @@ create_goals:
     - content: My goal 2 content
 create_indicators:
   previous_next_links: true
+  global_national_comparison: true
 create_pages:
   - filename: index.html
     folder: /goals

@@ -2,35 +2,58 @@
 <nav>
     <ol aria-label="breadcrumb" class="breadcrumb" style="--bs-breadcrumb-divider: '&rsaquo;';">
         {% if site.breadcrumbs.indicator and site.breadcrumbs.indicator.size > 0 %}
-        {% for item in site.breadcrumbs.indicator %}
-        {%- assign item_path = item.path -%}
-        {%- assign item_path_first = item_path | slice: 0 %}
-        {%- if item_path_first == '/' -%}
-            {%- assign item_path = item_path | slice: 1, item_path.size -%}
-        {%- endif -%}
-        <li class="breadcrumb-item">
-            <a href="{{ page.baseurl }}{{ item_path }}">{{ item.label | t }}</a>
-        </li>
-        {% endfor %}
-        <li class="breadcrumb-item">
-            <a href="{{ page.goal.url }}"
-               title="{{ page.t.general.goal }} {{ page.goal.number }} - {{ page.goal.short | escape }}"
-               aria-label="{{ page.t.general.goal }} {{ goal.number }} - {{ goal.short | escape }}">
-               {{ page.t.general.goal }} {{ page.goal.number }}
-            </a>
-        </li>
+            {% for item in site.breadcrumbs.indicator %}
+                {%- assign item_path = item.path -%}
+                {%- assign item_path_first = item_path | slice: 0 %}
+                {%- if item_path_first == '/' -%}
+                    {%- assign item_path = item_path | slice: 1, item_path.size -%}
+                {%- endif -%}
+                <li class="breadcrumb-item">
+                    <a href="{{ page.baseurl }}{{ item_path }}">{{ item.label | t }}</a>
+                </li>
+            {% endfor %}
+            <li class="breadcrumb-item">
+                <a href="{{ page.goal.url }}"
+                title="{{ page.t.general.goal }} {{ page.goal.number }} - {{ page.goal.short | escape }}"
+                aria-label="{{ page.t.general.goal }} {{ page.goal.number }} - {{ goal.short | escape }}">
+                {{ page.t.general.goal }} {{ page.goal.number }}
+                </a>
+            </li>
+            {% if page.layout == 'indicator-comparison' %}
+                <li class="breadcrumb-item">
+                    <a href="{{ page.indicator.url }}"
+                    title="{{ page.t.general.indicator }} {{ page.indicator.number }}"
+                    aria-label="{{ page.t.general.indicator }} {{ page.indicator.number }}">
+                    {{ page.t.general.indicator }} {{ page.indicator.number }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">{{ page.t.indicator.comparison }} {{ page.indicator.number }}</li>
+                {% else %}
+                <li class="breadcrumb-item active">{{ page.t.general.indicator }} {{ page.indicator.number }}</li>
+            {% endif %}
         {% else %}
-        <li class="breadcrumb-item">
-            <a href="{{ page.baseurl }}">{{ page.t.general.home }}</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{{ page.goal.url }}"
-               title="{{ page.t.general.goal }} {{ page.goal.number }} - {{ page.goal.short | escape }}"
-               aria-label="{{ page.t.general.goal }} {{ goal.number }} - {{ goal.short | escape }}">
-               {{ page.t.general.goal }} {{ page.goal.number }}
-            </a>
-        </li>
-        <li class="breadcrumb-item active">{{ page.t.general.indicator }} {{ page.indicator.number }}</li>
+            <li class="breadcrumb-item">
+                <a href="{{ page.baseurl }}">{{ page.t.general.home }}</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{{ page.goal.url }}"
+                title="{{ page.t.general.goal }} {{ page.goal.number }} - {{ page.goal.short | escape }}"
+                aria-label="{{ page.t.general.goal }} {{ goal.number }} - {{ goal.short | escape }}">
+                {{ page.t.general.goal }} {{ page.goal.number }}
+                </a>
+            </li>
+            {% if page.layout == 'indicator-comparison' %}
+                <li class="breadcrumb-item">
+                    <a href="{{ page.indicator.url }}"
+                    title="{{ page.t.general.indicator }} {{ page.indicator.number }}"
+                    aria-label="{{ page.t.general.indicator }} {{ page.indicator.number }}">
+                    {{ page.t.general.indicator }} {{ page.indicator.number }}
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">{{ page.t.indicator.comparison }} {{ page.indicator.number }}</li>
+                {% else %}
+                <li class="breadcrumb-item active">{{ page.t.general.indicator }} {{ page.indicator.number }}</li>
+            {% endif %}
         {% endif %}
     </ol>
 </nav>
