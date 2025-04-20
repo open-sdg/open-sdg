@@ -130,6 +130,22 @@ function inputEdges(edges) {
   return edgesData;
 }
 
+function areDataValidForComparison(data) {
+  var reportingTypeData = data[opensdg.reportingtype_column];
+  if (typeof reportingTypeData === 'undefined') {
+    return false;
+  }
+  var reportingTypeGlobal = opensdg.reportingtype_global;
+  var reportingTypeNational = opensdg.reportingtype_national;
+  if (!(reportingTypeData.includes(reportingTypeGlobal))) {
+    return false;
+  }
+  if (!(reportingTypeData.includes(reportingTypeNational))) {
+    return false;
+  }
+  return true;
+}
+
 /**
  * @param {Array} rows
  * @return {Array} Objects containing 'field' and 'value', to be placed in the footer.

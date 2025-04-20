@@ -16,6 +16,7 @@ var indicatorModel = function (options) {
 
   // general members:
   var that = this;
+  this.validForComparison = helpers.areDataValidForComparison(options.data);
   this.data = helpers.inputData(options.data);
   this.edgesData = helpers.inputEdges(options.edgesData);
   this.hasHeadline = true;
@@ -168,6 +169,10 @@ var indicatorModel = function (options) {
       updateFields: false,
       changingSeries: false,
     }, options);
+
+    if (this.validForComparison) {
+      console.log('valid!');
+    }
 
     var headlineUnfiltered = helpers.getHeadline(this.selectableFields, this.data);
     var headline;

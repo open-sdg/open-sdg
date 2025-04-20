@@ -107,5 +107,6 @@
     getTimeSeriesAttributes: getTimeSeriesAttributes,
     getAllObservationAttributes: getAllObservationAttributes,
     inputData: inputData,
+    areDataValidForComparison: areDataValidForComparison,
   }
 })();

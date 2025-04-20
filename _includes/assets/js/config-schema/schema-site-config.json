@@ -222,6 +222,21 @@
                     "type": "string",
                     "title": "Series",
                     "description": "Field to reserve for the SDG series. Defaults to 'Series'."
+                },
+                "reportingtype_column": {
+                    "type": "string",
+                    "title": "Reporting type - column",
+                    "description": "The column name in your data for reporting type. Defaults to REPORTING_TYPE."
+                },
+                "reportingtype_global": {
+                    "type": "string",
+                    "title": "Reporting type - global",
+                    "description": "The value in your data for global reporting type. Defaults to G."
+                },
+                "reportingtype_national": {
+                    "type": "string",
+                    "title": "Reporting type - national",
+                    "description": "The value in your data for national reporting type. Defaults to N."
                 }
             }
         },

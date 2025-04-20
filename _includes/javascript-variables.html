@@ -37,6 +37,17 @@ var opensdg = {
   language: '{{ page.language }}',
 
   mapColors: {% include assets/js/mapColors.json %},
+
+  reportingtype_column: '{{ page.reportingtype }}',
+  reportingtype_global: '{{ page.reportingtype_global }}',
+  reportingtype_national: '{{ page.reportingtype_national }}',
 };
+
+{% if page.layout != 'indicator-comparison' %}
+  if (!Array.isArray(opensdg.ignoredDisaggregations)) {
+    opensdg.ignoredDisaggregations = [];
+  }
+  opensdg.ignoredDisaggregations.push(opensdg.reportingtype_column);
+{% endif %}
 
 </script>
