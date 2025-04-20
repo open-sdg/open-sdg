@@ -144,6 +144,11 @@
                     "title": "Previous/next links",
                     "type": "boolean",
                     "description": "This setting can be used to show navigation links to the previous/next indicators."
+                },
+                "global_national_comparison": {
+                    "title": "Global/National comparison",
+                    "type": "boolean",
+                    "description": "This setting can be used to generate separate indicator pages for comparison global and national data."
                 }
             }
         },

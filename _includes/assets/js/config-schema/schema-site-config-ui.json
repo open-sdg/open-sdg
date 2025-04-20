@@ -375,6 +375,13 @@
                             "options": {
                                 "toggle": true
                             }
+                        },
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/create_indicators/properties/global_national_comparison",
+                            "options": {
+                                "toggle": true
+                            }
                         }
                     ]
                 },
