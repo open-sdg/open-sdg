@@ -38,16 +38,15 @@ var opensdg = {
 
   mapColors: {% include assets/js/mapColors.json %},
 
-  reportingtype_column: '{{ page.reportingtype }}',
-  reportingtype_global: '{{ page.reportingtype_global }}',
-  reportingtype_national: '{{ page.reportingtype_national }}',
+  reportingTypeColumn: '{{ page.reportingtype }}',
+  reportingTypeGlobal: '{{ page.reportingtype_global }}',
+  reportingTypeNational: '{{ page.reportingtype_national }}',
+  doGlobalComparison: {{ site.create_indicators.global_national_comparison | jsonify }},
+  {% if page.layout == 'indicator-comparison' %}
+  onComparisonPage: true,
+  {% else %}
+  onComparisonPage: false,
+  {% endif %}
 };
-
-{% if page.layout != 'indicator-comparison' %}
-  if (!Array.isArray(opensdg.ignoredDisaggregations)) {
-    opensdg.ignoredDisaggregations = [];
-  }
-  opensdg.ignoredDisaggregations.push(opensdg.reportingtype_column);
-{% endif %}
 
 </script>

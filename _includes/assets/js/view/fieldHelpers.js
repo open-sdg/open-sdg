@@ -25,6 +25,9 @@ function initialiseFields(args) {
     } else {
         $(OPTIONS.rootElement).addClass('no-fields');
     }
+    if (args.validForComparison) {
+        $('#comparison-link').show();
+    }
 }
 
 /**

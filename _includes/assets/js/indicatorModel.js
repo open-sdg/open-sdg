@@ -19,6 +19,11 @@ var indicatorModel = function (options) {
   this.validForComparison = helpers.areDataValidForComparison(options.data);
   this.data = helpers.inputData(options.data);
   this.edgesData = helpers.inputEdges(options.edgesData);
+  if (this.validForComparison && !opensdg.onComparisonPage) {
+    // If we are not on a comparison page, remove the reporting type info.
+    this.data = helpers.removeGlobalData(this.data);
+    this.edgesData = helpers.removeReportingTypeEdge(this.edgesData);
+  }
   this.hasHeadline = true;
   this.country = options.country;
   this.indicatorId = options.indicatorId;
@@ -170,10 +175,6 @@ var indicatorModel = function (options) {
       changingSeries: false,
     }, options);
 
-    if (this.validForComparison) {
-      console.log('valid!');
-    }
-
     var headlineUnfiltered = helpers.getHeadline(this.selectableFields, this.data);
     var headline;
     if (this.hasUnits && !this.hasSerieses) {
@@ -299,6 +300,7 @@ var indicatorModel = function (options) {
         chartTitles: this.chartTitles,
         proxy: this.proxy,
         proxySerieses: this.proxySerieses,
+        validForComparison: this.validForComparison,
       });
     }
 

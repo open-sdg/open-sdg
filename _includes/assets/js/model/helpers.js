@@ -45,6 +45,7 @@
   {% include assets/js/model/fieldHelpers.js %}
   {% include assets/js/model/chartHelpers.js %}
   {% include assets/js/model/tableHelpers.js %}
+  {% include assets/js/model/comparisonHelpers.js %}
   {% include assets/js/model/dataHelpers.js %}
 
   function deprecated(name) {
@@ -108,5 +109,7 @@
     getAllObservationAttributes: getAllObservationAttributes,
     inputData: inputData,
     areDataValidForComparison: areDataValidForComparison,
+    removeGlobalData: removeGlobalData,
+    removeReportingTypeEdge: removeReportingTypeEdge,
   }
 })();
