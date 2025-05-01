@@ -37,6 +37,14 @@ build: clean cache
 	cd site-starter && bundle install
 	cd site-starter && bundle exec jekyll build
 
+serve.offline:
+	rm -fr site-starter/_build
+	cp -r tests/site/* site-starter/
+	cp -r tests/data/* data-starter/
+	cd data-starter && python build_data.py
+	mv data-starter/_build site-starter
+	cd site-starter && bundle exec jekyll serve
+
 build.docs:
 	pip install -r docs/requirements.txt
 	mkdocs build

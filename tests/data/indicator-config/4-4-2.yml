@@ -19,9 +19,9 @@ graph_title: global_indicators.4-4-1-title
 graph_titles: []
 graph_type: line
 indicator_name: global_indicators.4-4-1-title
-indicator_number: 4.4.1
+indicator_number: 4.4.2
 national_geographical_coverage: ''
 page_content: >
-  This indicator is used to test issues with observation attributes and the global comparison feature in combination with headline data.
+  This indicator is used to test the global comparison feature without a headline.
 reporting_status: complete
 tags: []

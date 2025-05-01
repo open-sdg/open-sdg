@@ -16,6 +16,7 @@
   {% include assets/js/view/chartTypeBinary.js %}
   {% include assets/js/view/tableHelpers.js %}
   {% include assets/js/view/dataHelpers.js %}
+  {% include assets/js/view/comparisonHelpers.js %}
   {% include assets/js/view/utils.js %}
 
   return {
@@ -32,6 +33,7 @@
     alterDataDisplay: alterDataDisplay,
     updateChartTitle: updateChartTitle,
     updateWithSelectedFields: updateWithSelectedFields,
+    updateWithSelectedComparisonFields: updateWithSelectedComparisonFields,
     updateSeriesAndUnitElements: updateSeriesAndUnitElements,
     updateUnitElements: updateUnitElements,
     updateTimeSeriesAttributes: updateTimeSeriesAttributes,
@@ -52,5 +54,6 @@
     sortFieldGroup: sortFieldGroup,
     getObservationAttributeFootnoteSymbol: getObservationAttributeFootnoteSymbol,
     getObservationAttributeText: getObservationAttributeText,
+    showComparisonLink: showComparisonLink,
   }
 })();

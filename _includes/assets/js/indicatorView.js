@@ -90,6 +90,10 @@ var indicatorView = function (model, options) {
 
         helpers.initialiseFields(args);
 
+        if (args.validForComparison) {
+            helpers.showComparisonLink();
+        }
+
         if (args.hasGeoData && args.showMap) {
             VIEW._mapView = new mapView();
             VIEW._mapView.initialise(
@@ -241,6 +245,12 @@ var indicatorView = function (model, options) {
         helpers.updateWithSelectedFields();
         e.stopPropagation();
     });
+
+    if (MODEL.validForComparison && opensdg.onComparisonPage) {
+        $(OPTIONS.rootElement).on('change', '#comparison-select', function (e) {
+            helpers.updateWithSelectedComparisonFields();
+        });
+    }
 
     $(OPTIONS.rootElement).on('click', ':checkbox', function (e) {
 

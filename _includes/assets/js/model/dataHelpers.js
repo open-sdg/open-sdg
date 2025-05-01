@@ -126,7 +126,6 @@ function inputEdges(edges) {
       return true;
     });
   }
-
   return edgesData;
 }
 

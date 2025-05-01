@@ -28,6 +28,12 @@
     .plot-container {
         padding: 10px;
     }
+
+    #comparison {
+        .comparison-link {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 @media only screen and (max-width: 500px) {

@@ -136,6 +136,7 @@ var indicatorModel = function (options) {
   }
 
   this.updateSelectedFields = function (selectedFields) {
+    console.log(selectedFields);
     this.updateFieldStates(selectedFields);
     this.getData();
   };
@@ -240,21 +241,35 @@ var indicatorModel = function (options) {
         this.selectedSeries = startingSeries;
       }
 
-      // Decide on starting field values.
+      // Decide on starting field values if not on comparison page.
       var startingFields = this.selectedFields;
-      var useMinimumStartingFields = false;
-      if (this.hasStartValues) {
-        startingFields = helpers.selectFieldsFromStartValues(this.startValues, this.selectableFields);
-        // Quick test to see if this would result in zero matches, in cases where
-        // the series is being changed and the new series would not show data.
-        if (options.changingSeries && !helpers.hasDataBySelectedFields(this.data, startingFields)) {
-          useMinimumStartingFields = true;
-          startingFields = this.selectedFields;
+      if (this.validForComparison && opensdg.onComparisonPage) {
+        startingFields = [
+          helpers.getComparisonBase()
+        ];
+
+        if (headline.length === 0) {
+          var comparisonCombinations = helpers.getComparisonCombinations(this.data, this.selectableFields);
+          if (comparisonCombinations.length > 0) {
+            startingFields.push(comparisonCombinations[0]);
+          }
         }
       }
-      if (!this.hasStartValues || useMinimumStartingFields) {
-        if (headline.length === 0) {
-          startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
+      else {
+        var useMinimumStartingFields = false;
+        if (this.hasStartValues) {
+          startingFields = helpers.selectFieldsFromStartValues(this.startValues, this.selectableFields);
+          // Quick test to see if this would result in zero matches, in cases where
+          // the series is being changed and the new series would not show data.
+          if (options.changingSeries && !helpers.hasDataBySelectedFields(this.data, startingFields)) {
+            useMinimumStartingFields = true;
+            startingFields = this.selectedFields;
+          }
+        }
+        if (!this.hasStartValues || useMinimumStartingFields) {
+          if (headline.length === 0) {
+            startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
+          }
         }
       }
       if (startingFields.length > 0) {
@@ -328,6 +343,11 @@ var indicatorModel = function (options) {
 
     var combinations = helpers.getCombinationData(this.selectedFields);
     var datasets = helpers.getDatasets(headline, filteredData, combinations, this.years, this.country, this.colors, this.selectableFields, this.colorAssignments, this.allObservationAttributes);
+    if (this.validForComparison && opensdg.onComparisonPage) {
+      if (datasets.length >= 4) {
+        datasets = helpers.filterComparisonDatasets(datasets);
+      }
+    }
     var selectionsTable = helpers.tableDataFromDatasets(datasets, this.years);
     var observationAttributesTable = helpers.observationAttributesTableFromDatasets(datasets, this.years);
 

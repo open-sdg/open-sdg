@@ -1,17 +1,17 @@
 Year,Series,Units,Age,COMMENT_OBS,REPORTING_TYPE,Value
-2008,Series A,Percent,,estimated,G,20
+2008,Series A,Percent,18 and over,estimated,G,20
 2008,Series A,Percent,17 and under,estimated,G,25
-2008,Series A,Percent,,estimated,N,8.5
+2008,Series A,Percent,18 and over,estimated,N,8.5
 2008,Series A,Percent,17 and under,estimated,N,12.8
-2009,Series A,Percent,,estimated,G,22
+2009,Series A,Percent,18 and over,estimated,G,22
 2009,Series A,Percent,17 and under,estimated,G,27
-2009,Series A,Percent,,estimated,N,10.5
+2009,Series A,Percent,18 and over,estimated,N,10.5
 2009,Series A,Percent,17 and under,estimated,N,14.8
-2008,Series B,Total,,estimated,G,2000
+2008,Series B,Total,18 and over,estimated,G,2000
 2008,Series B,Total,17 and under,estimated,G,2500
-2008,Series B,Total,,estimated,N,800.5
+2008,Series B,Total,18 and over,estimated,N,800.5
 2008,Series B,Total,17 and under,estimated,N,1200.8
-2009,Series B,Total,,estimated,G,2200
+2009,Series B,Total,18 and over,estimated,G,2200
 2009,Series B,Total,17 and under,estimated,G,2700
-2009,Series B,Total,,estimated,N,1000.5
+2009,Series B,Total,18 and over,estimated,N,1000.5
 2009,Series B,Total,17 and under,estimated,N,1400.8

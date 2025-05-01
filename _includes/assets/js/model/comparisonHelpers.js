@@ -54,3 +54,40 @@ function removeReportingTypeEdge(edgesData) {
         return edge.From != opensdg.reportingTypeColumn;
     });
 }
+
+function getComparisonBase() {
+    return {
+        field: opensdg.reportingTypeColumn,
+        values: [
+            opensdg.reportingTypeGlobal,
+            opensdg.reportingTypeNational,
+        ],
+    };
+}
+
+function getComparisonCombinations(rows, selectableFields) {
+    var combinations = [];
+    for (var fieldIndex = 0; fieldIndex < selectableFields.length; fieldIndex++) {
+        if (selectableFields[fieldIndex] === opensdg.reportingTypeColumn) {
+            continue;
+        }
+        var values = getUniqueValuesByProperty(selectableFields[fieldIndex], rows);
+        for (var valueIndex = 0; valueIndex < values.length; valueIndex++) {
+            combinations.push({
+                field: selectableFields[fieldIndex],
+                values: [values[valueIndex]],
+            });
+        }
+    }
+    return combinations;
+}
+
+function filterComparisonDatasets(datasets) {
+    return datasets.filter(function(dataset) {
+        var keys = Object.keys(dataset.disaggregation);
+        if (keys.length === 1 && keys[0] === opensdg.reportingTypeColumn) {
+            return false;
+        }
+        return true;
+    });
+}

@@ -111,5 +111,8 @@
     areDataValidForComparison: areDataValidForComparison,
     removeGlobalData: removeGlobalData,
     removeReportingTypeEdge: removeReportingTypeEdge,
+    getComparisonCombinations: getComparisonCombinations,
+    getComparisonBase: getComparisonBase,
+    filterComparisonDatasets: filterComparisonDatasets,
   }
 })();
