@@ -1,12 +1,22 @@
 <script type="text/template" id="item_template">
-  <label for="comparison-select">My label</label>
-  <select id="comparison-select">
-  <% _.each(fields, function(fieldItem) { %>
-    <% if (fieldItem.field !== opensdg.reportingTypeColumn) { %>
-      <% _.each(fieldItem.values, function(item) { %>
-        <option data-field="<%=fieldItem.field%>" value="<%=item.value%>" <%=item.checked ? 'selected' : ''%>><%=fieldItem.field%> - <%=item.value%></option>
-      <% }); %>
-    <% } %>
-  <% }); %>
-  </select>
+  <fieldset>
+    <% _.each(fields, function(fieldItem, i) { %>
+      <% if (fieldItem.field !== opensdg.reportingTypeColumn) { %>
+        <legend><%=translations.t(fieldItem.field)%></legend>
+        <% _.each(fieldItem.values, function(item, j) { %>
+          <label for="comparison-<%=i%>-<%=j%>">
+            <input
+              id="comparison-<%=i%>-<%=j%>"
+              type="radio"
+              data-field="<%=fieldItem.field%>"
+              name="comparison-<%=fieldItem.field%>"
+              value="<%=item.value%>"
+              <%=item.checked ? 'checked' : ''%>
+            />
+            <%=translations.t(item.value)%>
+          </label>
+        <% }); %>
+      <% } %>
+    <% }); %>
+  </fieldset>
 </script>

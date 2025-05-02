@@ -212,6 +212,10 @@ var indicatorView = function (model, options) {
     });
 
     $(OPTIONS.rootElement).on('click', '#fields label', function (e) {
+        if ($(this).attr('for').startsWith('comparison-')) {
+            // We don't need this for the comparison radio buttons.
+            return;
+        }
 
         if (!$(this).closest('.variable-selector').hasClass('disallowed')) {
             $(this).find(':checkbox').trigger('click');
@@ -247,7 +251,7 @@ var indicatorView = function (model, options) {
     });
 
     if (MODEL.validForComparison && opensdg.onComparisonPage) {
-        $(OPTIONS.rootElement).on('change', '#comparison-select', function (e) {
+        $(OPTIONS.rootElement).on('change', 'input[type=radio][name=comparison]', function (e) {
             helpers.updateWithSelectedComparisonFields();
         });
     }

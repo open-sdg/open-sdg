@@ -3,7 +3,7 @@ function showComparisonLink() {
 }
 
 function updateWithSelectedComparisonFields() {
-    var selectedOption = $('#comparison-select option:selected');
+    var selectedOption = $('#fields.comparison-fields input:checked');
     var selectedFields = [MODEL.helpers.getComparisonBase()];
     selectedFields.push({
         field: $(selectedOption).data('field'),

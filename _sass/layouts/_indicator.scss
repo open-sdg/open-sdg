@@ -1,4 +1,4 @@
-.layout-indicator {
+.layout-indicator, .layout-indicator-comparison {
     #page-content {
         border-top: 1px solid $indicatorContent-horizontalRule-color;
         border-bottom: 1px solid $indicatorContent-horizontalRule-color;
@@ -32,6 +32,27 @@
     #comparison {
         .comparison-link {
             margin-bottom: 20px;
+        }
+    }
+}
+
+.layout-indicator-comparison {
+    #fields.comparison-fields {
+        legend {
+            font-size: 18px;
+        }
+        label {
+            font-weight: normal;
+            font-size: 16px;
+            border: 1px solid $indicator-selector-borderColor;
+            padding: 10px 10px 10px 15px;
+            cursor: pointer;
+            width: 100%;
+            input {
+                position: inherit;
+                top: 1px;
+            }
+            margin-bottom: 10px;
         }
     }
 }

@@ -112,6 +112,7 @@
     removeGlobalData: removeGlobalData,
     removeReportingTypeEdge: removeReportingTypeEdge,
     getComparisonCombinations: getComparisonCombinations,
+    getSelectableComparisonFields: getSelectableComparisonFields,
     getComparisonBase: getComparisonBase,
     filterComparisonDatasets: filterComparisonDatasets,
   }

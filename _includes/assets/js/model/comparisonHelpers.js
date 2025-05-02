@@ -65,6 +65,13 @@ function getComparisonBase() {
     };
 }
 
+function getSelectableComparisonFields(selectableFields) {
+    return selectableFields.filter(function(field) {
+        return field !== opensdg.reportingTypeColumn;
+    });
+}
+
+// remove this?
 function getComparisonCombinations(rows, selectableFields) {
     var combinations = [];
     for (var fieldIndex = 0; fieldIndex < selectableFields.length; fieldIndex++) {

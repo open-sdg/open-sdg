@@ -249,10 +249,8 @@ var indicatorModel = function (options) {
         ];
 
         if (headline.length === 0) {
-          var comparisonCombinations = helpers.getComparisonCombinations(this.data, this.selectableFields);
-          if (comparisonCombinations.length > 0) {
-            startingFields.push(comparisonCombinations[0]);
-          }
+          var selectableComparisonFields = helpers.getSelectableComparisonFields(this.selectableFields);
+          startingFields = startingFields.concat(helpers.selectMinimumStartingFields(this.data, selectableComparisonFields, this.selectedUnit));
         }
       }
       else {
