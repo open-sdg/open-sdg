@@ -9,10 +9,8 @@ function initialiseFields(args) {
     if (fieldsContainValues) {
         var template = _.template($("#item_template").html());
 
-        if (!MODEL.validForComparison || !opensdg.onComparisonPage) {
-            if (!$('button#clear').length) {
-                $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
-            }
+        if (!$('button#clear').length) {
+            $('<button id="clear" disabled="disabled" aria-disabled="true" class="disabled">' + translations.indicator.clear_selections + ' <i class="fa fa-remove"></i></button>').insertBefore('#fields');
         }
 
         $('#fields').html(template({

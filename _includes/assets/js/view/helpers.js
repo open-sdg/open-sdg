@@ -33,7 +33,6 @@
     alterDataDisplay: alterDataDisplay,
     updateChartTitle: updateChartTitle,
     updateWithSelectedFields: updateWithSelectedFields,
-    updateWithSelectedComparisonFields: updateWithSelectedComparisonFields,
     updateSeriesAndUnitElements: updateSeriesAndUnitElements,
     updateUnitElements: updateUnitElements,
     updateTimeSeriesAttributes: updateTimeSeriesAttributes,
@@ -55,5 +54,6 @@
     getObservationAttributeFootnoteSymbol: getObservationAttributeFootnoteSymbol,
     getObservationAttributeText: getObservationAttributeText,
     showComparisonLink: showComparisonLink,
+    getBoxElementType: getBoxElementType,
   }
 })();

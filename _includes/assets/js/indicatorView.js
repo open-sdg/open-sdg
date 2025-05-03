@@ -17,6 +17,7 @@ var indicatorView = function (model, options) {
     VIEW._chartInstances = {};
 
     var chartHeight = screen.height < OPTIONS.maxChartHeight ? screen.height : OPTIONS.maxChartHeight;
+    var boxType = ':' + helpers.getBoxElementType();
     $('.plot-container', OPTIONS.rootElement).css('height', chartHeight + 'px');
 
     $(document).ready(function () {
@@ -138,7 +139,7 @@ var indicatorView = function (model, options) {
 
     MODEL.onFieldsCleared.attach(function (sender, args) {
 
-        $(OPTIONS.rootElement).find(':checkbox').prop('checked', false);
+        $(OPTIONS.rootElement).find(boxType).prop('checked', false);
         $(OPTIONS.rootElement).find('#clear')
             .addClass('disabled')
             .attr('aria-disabled', 'true')
@@ -186,7 +187,7 @@ var indicatorView = function (model, options) {
 
         _.each(args.data, function (fieldGroup) {
             _.each(fieldGroup.values, function (fieldItem) {
-                var element = $(OPTIONS.rootElement).find(':checkbox[value="' + fieldItem.value + '"][data-field="' + fieldGroup.field + '"]');
+                var element = $(OPTIONS.rootElement).find(boxType + '[value="' + fieldItem.value + '"][data-field="' + fieldGroup.field + '"]');
                 element.parent().addClass(fieldItem.state).attr('data-has-data', fieldItem.hasData);
             });
             // Indicate whether the fieldGroup had any data.
@@ -212,13 +213,9 @@ var indicatorView = function (model, options) {
     });
 
     $(OPTIONS.rootElement).on('click', '#fields label', function (e) {
-        if ($(this).attr('for').startsWith('comparison-')) {
-            // We don't need this for the comparison radio buttons.
-            return;
-        }
 
         if (!$(this).closest('.variable-selector').hasClass('disallowed')) {
-            $(this).find(':checkbox').trigger('click');
+            $(this).find(boxType).trigger('click');
         }
 
         e.preventDefault();
@@ -235,7 +232,7 @@ var indicatorView = function (model, options) {
 
     $(OPTIONS.rootElement).on('click', '.variable-options button', function (e) {
         var type = $(this).data('type');
-        var $options = $(this).closest('.variable-options').find(':checkbox');
+        var $options = $(this).closest('.variable-options').find(boxType);
 
         // The clear button can clear all checkboxes.
         if (type == 'clear') {
@@ -243,20 +240,14 @@ var indicatorView = function (model, options) {
         }
         // The select button must only select checkboxes that have data.
         if (type == 'select') {
-            $options.parent().not('[data-has-data=false]').find(':checkbox').prop('checked', true)
+            $options.parent().not('[data-has-data=false]').find(boxType).prop('checked', true)
         }
 
         helpers.updateWithSelectedFields();
         e.stopPropagation();
     });
 
-    if (MODEL.validForComparison && opensdg.onComparisonPage) {
-        $(OPTIONS.rootElement).on('change', 'input[type=radio][name=comparison]', function (e) {
-            helpers.updateWithSelectedComparisonFields();
-        });
-    }
-
-    $(OPTIONS.rootElement).on('click', ':checkbox', function (e) {
+    $(OPTIONS.rootElement).on('click', boxType, function (e) {
 
         // don't permit disallowed selections:
         if ($(this).closest('.variable-selector').hasClass('disallowed')) {

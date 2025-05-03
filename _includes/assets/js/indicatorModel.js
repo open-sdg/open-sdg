@@ -243,31 +243,19 @@ var indicatorModel = function (options) {
 
       // Decide on starting field values if not on comparison page.
       var startingFields = this.selectedFields;
-      if (this.validForComparison && opensdg.onComparisonPage) {
-        startingFields = [
-          helpers.getComparisonBase()
-        ];
-
-        if (headline.length === 0) {
-          var selectableComparisonFields = helpers.getSelectableComparisonFields(this.selectableFields);
-          startingFields = startingFields.concat(helpers.selectMinimumStartingFields(this.data, selectableComparisonFields, this.selectedUnit));
+      var useMinimumStartingFields = false;
+      if (this.hasStartValues) {
+        startingFields = helpers.selectFieldsFromStartValues(this.startValues, this.selectableFields);
+        // Quick test to see if this would result in zero matches, in cases where
+        // the series is being changed and the new series would not show data.
+        if (options.changingSeries && !helpers.hasDataBySelectedFields(this.data, startingFields)) {
+          useMinimumStartingFields = true;
+          startingFields = this.selectedFields;
         }
       }
-      else {
-        var useMinimumStartingFields = false;
-        if (this.hasStartValues) {
-          startingFields = helpers.selectFieldsFromStartValues(this.startValues, this.selectableFields);
-          // Quick test to see if this would result in zero matches, in cases where
-          // the series is being changed and the new series would not show data.
-          if (options.changingSeries && !helpers.hasDataBySelectedFields(this.data, startingFields)) {
-            useMinimumStartingFields = true;
-            startingFields = this.selectedFields;
-          }
-        }
-        if (!this.hasStartValues || useMinimumStartingFields) {
-          if (headline.length === 0) {
-            startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
-          }
+      if (!this.hasStartValues || useMinimumStartingFields) {
+        if (headline.length === 0) {
+          startingFields = helpers.selectMinimumStartingFields(this.data, this.selectableFields, this.selectedUnit);
         }
       }
       if (startingFields.length > 0) {

@@ -51,7 +51,7 @@ function removeGlobalData(rows) {
 
 function removeReportingTypeEdge(edgesData) {
     return edgesData.filter(function(edge) {
-        return edge.From != opensdg.reportingTypeColumn;
+        return edge.From != opensdg.reportingTypeColumn && edge.To != opensdg.reportingTypeColumn;
     });
 }
 
@@ -69,24 +69,6 @@ function getSelectableComparisonFields(selectableFields) {
     return selectableFields.filter(function(field) {
         return field !== opensdg.reportingTypeColumn;
     });
-}
-
-// remove this?
-function getComparisonCombinations(rows, selectableFields) {
-    var combinations = [];
-    for (var fieldIndex = 0; fieldIndex < selectableFields.length; fieldIndex++) {
-        if (selectableFields[fieldIndex] === opensdg.reportingTypeColumn) {
-            continue;
-        }
-        var values = getUniqueValuesByProperty(selectableFields[fieldIndex], rows);
-        for (var valueIndex = 0; valueIndex < values.length; valueIndex++) {
-            combinations.push({
-                field: selectableFields[fieldIndex],
-                values: [values[valueIndex]],
-            });
-        }
-    }
-    return combinations;
 }
 
 function filterComparisonDatasets(datasets) {
