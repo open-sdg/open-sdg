@@ -462,7 +462,7 @@
         },
         "graph_color_number": {
             "title": "Graph color number",
-            "type": "integer",
+            "type": ["integer", "string"],
             "description": "This setting can be used to limit the length of the list of colors selected via graph_color_set."
         },
         "graph_title_from_series": {
@@ -715,12 +715,12 @@
                         "description": "The label to use in the 'Download GeoJSON' button for this layer."
                     },
                     "min_zoom": {
-                        "type": "integer",
+                        "type": ["integer", "string"],
                         "title": "Minimum zoom",
                         "description": "This layer will only be visible when the map is zoomed to at least this number."
                     },
                     "max_zoom": {
-                        "type": "integer",
+                        "type": ["integer", "string"],
                         "title": "Maximum zoom",
                         "description": "The layer will not be visible when the map is zoomed beyond this number."
                     },
@@ -744,13 +744,13 @@
                 },
                 "minZoom": {
                     "title": "Minimum zoom",
-                    "type": "integer",
+                    "type": ["integer", "string"],
                     "description": "The lowest amount of 'zoom' possible for users.",
                     "default": 5
                 },
                 "maxZoom": {
                     "title": "Maximum zoom",
-                    "type": "integer",
+                    "type": ["integer", "string"],
                     "description": "The highest amount of 'zoom' possible for users.",
                     "default": 10
                 },
@@ -1226,7 +1226,7 @@
                         "description": "Field to boost ('title', 'content', etc.)"
                     },
                     "boost": {
-                        "type": "integer",
+                        "type": ["integer", "string"],
                         "minLength": 1,
                         "title": "Boost",
                         "description": "Higher boost means higher search ranking."
