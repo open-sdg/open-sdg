@@ -65,6 +65,14 @@ function getComparisonBase() {
     };
 }
 
+function addComparisonField(selectedFields) {
+    selectedFields = selectedFields.filter(function(field) {
+        return field.field !== opensdg.reportingTypeColumn;
+    });
+    selectedFields.push(getComparisonBase());
+    return selectedFields;
+}
+
 function getSelectableComparisonFields(selectableFields) {
     return selectableFields.filter(function(field) {
         return field !== opensdg.reportingTypeColumn;

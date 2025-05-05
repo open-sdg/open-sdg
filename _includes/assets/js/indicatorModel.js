@@ -19,10 +19,11 @@ var indicatorModel = function (options) {
   this.validForComparison = helpers.areDataValidForComparison(options.data);
   this.data = helpers.inputData(options.data);
   this.edgesData = helpers.inputEdges(options.edgesData);
-  if (this.validForComparison && !opensdg.onComparisonPage) {
-    // If we are not on a comparison page, remove the reporting type info.
-    this.data = helpers.removeGlobalData(this.data);
+  if (this.validForComparison) {
     this.edgesData = helpers.removeReportingTypeEdge(this.edgesData);
+    if (!opensdg.onComparisonPage) {
+      this.data = helpers.removeGlobalData(this.data);
+    }
   }
   this.hasHeadline = true;
   this.country = options.country;
@@ -274,6 +275,11 @@ var indicatorModel = function (options) {
         proxySerieses: this.proxySerieses,
       });
     }
+
+    if (this.validForComparison && opensdg.onComparisonPage) {
+      this.selectedFields = helpers.addComparisonField(this.selectedFields);
+    }
+    console.log(this.selectedFields);
 
     if (options.initial || options.updateFields) {
       this.onFieldsComplete.notify({

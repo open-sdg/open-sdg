@@ -113,6 +113,7 @@
     removeReportingTypeEdge: removeReportingTypeEdge,
     getSelectableComparisonFields: getSelectableComparisonFields,
     getComparisonBase: getComparisonBase,
+    addComparisonField: addComparisonField,
     filterComparisonDatasets: filterComparisonDatasets,
   }
 })();
