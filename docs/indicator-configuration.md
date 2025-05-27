@@ -56,11 +56,13 @@ graph_titles:
 
 ### auto_progress_calculation
 
-_Optional_: This setting is used to turn on or off the progress measure for the indicator. A minimum of 2 years with data points are required to assess the indicator's progress, otherwise the progress status will be "Not available".
+_Optional_: This setting is used to turn on or off the automated progress measure for the indicator. The automatic progress measurement follows [Statistics Canada's progress measurement methodology](https://sdgcif-data-canada-oddcic-donnee.github.io/methodology/). It is based upon the compound annual growth rate that has been observed in the indicator's data since 2015.
 
 ```nohighlight
 auto_progress_calculation: true
 ```
+
+The calculated progress status is displayed on the indicator page and the goal page. Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. See [setup and configuration details for reporting the progress status](progress.md).
 
 ### composite_breakdown_label
 
@@ -638,13 +640,13 @@ precision:
 
 ### progress_status
 
-_Optional_: This setting is used to manually specify the status of the indicator's progress when the automated progress calculation is not turned on (`auto_progress_calculation: false`). This is displayed on the indicator pages. You can also display this on goal pages by setting your goal layout to "goal-with-progress" (this can be done in the [`create_goals` site configuration setting](configuration.md#create_goals)).
-
-Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. More information with the code needed for the out-of-the-box options below can be found in the [`progress_status` site configuration setting](configuration.md#progress_status). Then for each indicator, you can add the relevant progress_status in its indicator configuration file.
+_Optional_: This setting is used to manually specify the status of the indicator's progress when the automated progress calculation is not turned on (`auto_progress_calculation: false`).
 
 ```nohighlight
 progress_status: target_achieved
 ```
+
+The specified progress status is displayed on the indicator page and the goal page. Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. See [setup and configuration details for reporting the progress status](progress.md).
 
 Options out-of-the-box are:
 
@@ -660,14 +662,14 @@ Here is an example of what this looks like on the platform:
 
 ### progress_calculation_options
 
-_Optional_: If the automated progress calculation is turned on (`auto_progress_calculation: true`). This controls the input parameters for the progress calculation. A progress status and score are determined for the indicator using a methodology based on compound annual growth rates (see methodology details).
+_Optional_: If the automated progress calculation is turned on (`auto_progress_calculation: true`). This controls the input parameters for the progress calculation. A progress status and score are determined for the indicator using a methodology based on compound annual growth rates (see [Statistics Canada's progress measurement methodology](https://sdgcif-data-canada-oddcic-donnee.github.io/methodology/) for details).
 
-A progress score can only determined for individual time series within the data. If the data has many possible time series (for example: multiple series, units, or disaggregations), the individual time series to use for the progress calculation must be specified in `progress_calculation_options` using the `series`, `unit`, and `disaggregation` parameters. It is also possible to specify multiple time series and calculate the progress scores for these time series individually. The overall progress status for such an indicator will correspond to the mean score of each of the specified time series.
+A progress score can only be determined for individual time series within the data. If the data has many possible time series (for example: multiple series, units, or disaggregations), the individual time series to use for the progress calculation must be specified in `progress_calculation_options` using the `series`, `unit`, and `disaggregation` parameters. It is also possible to specify multiple time series, which will calculate the progress scores for each of these time series individually and the overall progress status will correspond to the mean score of each of the specified time series.
 
 * `series`: The series name of the time series for the progress calculation.
 * `unit`: The unit name of the time series for the progress calculation.
 * `disaggregation`: If the selected time series has no headline, a particular disaggregation may be selected with this setting. If `disaggregation` is not specified and a headline is present, the headline values will be selected for the progress calculation.
-* `direction`: "negative" or "positive". Default: "negative". The desired direction of progress for the time series. 
+* `direction`: "negative" or "positive". Default: "negative". The desired direction of progress for the time series.
 * `base_year`: Default: 2015. The base year for the progress calculation of the specified time series.
 * `target_year`: Default: 2030. The target year for the progress calculation of the specified time series.
 * `target`: Default: None. The value required to reach the target of the specified time series. _Cannot be zero - a target of zero will be reset to 0.001._
