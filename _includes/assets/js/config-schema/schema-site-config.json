@@ -56,6 +56,11 @@
                 }
             }
         },
+        "config_form_library_src": {
+            "type": "string",
+            "title": "Configuration form library",
+            "description": "This optional setting controls the URL of the JavaScript library to use for configuration forms, such as the site config form and the indicator config form. Leave blank to default to the latest available code, but using a specific version is recommended. See here for the available versions: https://github.com/open-sdg/open-sdg-config-form#open-sdg-config-form"
+        },
         "cookie_consent_form": {
             "type": "object",
             "title": "Cookie consent form",

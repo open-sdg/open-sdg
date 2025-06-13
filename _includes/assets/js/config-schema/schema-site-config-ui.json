@@ -800,6 +800,17 @@
                             "scope": "#/properties/site_config_form/properties/github_owner"
                         }
                     ]
+                },
+                {
+                    "type": "GroupWithAccordion",
+                    "label": "Configuration form library",
+                    "documentationKey": "config_form_library_src",
+                    "elements": [
+                        {
+                            "type": "Control",
+                            "scope": "#/properties/config_form_library_src"
+                        }
+                    ]
                 }
             ]
         },

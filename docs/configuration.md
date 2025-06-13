@@ -94,6 +94,11 @@ breadcrumbs:
 
 Note that `indicator` will automatically add a final item, which is a link to the goal that the indicator belongs to. You do not need to specify this, since it is done dynamically and automatically.
 
+### config_form_library_src
+
+_Optional_: This setting controls the URL of the JavaScript library to use for configuration forms, such as the site config form and the indicator config form. Leave blank to default to the latest available code, but using a specific version is recommended. See [here](https://github.com/open-sdg/open-sdg-config-form#open-sdg-config-form)
+for the available versions.
+
 ### configuration_edit_url
 
 _Optional_: This setting controls the URL of the "Edit Configuration" that appear on the staging site's indicator pages. Open SDG comes with a built-in configuration form at a sub-path called "config", so the default value for this setting should simply be "config".
