@@ -43,7 +43,7 @@ function alterDataDisplay(value, info, context, additionalInfo) {
             localeOpts.minimumFractionDigits = VIEW._precision;
             localeOpts.maximumFractionDigits = VIEW._precision;
         }
-        altered = altered.toLocaleString(opensdg.language, localeOpts);
+        altered = altered.toLocaleString(opensdg.language_numbers, localeOpts);
         // Still use the custom decimal separator if it is there.
         if (OPTIONS.decimalSeparator) {
             altered = altered.toString().replace(VIEW._browserDecimalSeparator, OPTIONS.decimalSeparator);
@@ -87,6 +87,6 @@ function getObservationAttributeFootnoteSymbol(num) {
  */
 function getBrowserDecimalSeparator() {
     var browserDecimal = 1.1;
-    browserDecimal = browserDecimal.toLocaleString(opensdg.language).substring(1, 2);
+    browserDecimal = browserDecimal.toLocaleString(opensdg.language_numbers).substring(1, 2);
     return browserDecimal;
 }

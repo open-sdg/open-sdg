@@ -96,6 +96,32 @@
                 },
                 {
                     "type": "GroupWithAccordion",
+                    "label": "Languages numbers",
+                    "documentationKey": "languages_numbers",
+                    "elements": [
+                        {
+                            "type": "ListWithDetail",
+                            "scope": "#/properties/languages_numbers",
+                            "options": {
+                                "detail": {
+                                    "type": "VerticalLayout",
+                                    "elements": [
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language"
+                                        },
+                                        {
+                                            "type": "Control",
+                                            "scope": "#/properties/language_numbers"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GroupWithAccordion",
                     "label": "Languages public",
                     "documentationKey": "languages_public",
                     "elements": [
