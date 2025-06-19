@@ -650,6 +650,29 @@
                 "title": "Language"
             }
         },
+        "languages_numbers": {
+            "type": "array",
+            "title": "Language code overrides to use when formatting numbers",
+            "description": "This setting can be used in the rare cases where browsers are not correctly formatting numbers for a particular language.",
+            "items": {
+                "type": "object",
+                "title": "Language override for numbers",
+                "properties": {
+                    "language": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Language",
+                        "description": "The language code that you would like to override when formatting numbers."
+                    },
+                    "language_numbers": {
+                        "type": "string",
+                        "minLength": 1,
+                        "title": "Language override for numbers",
+                        "description": "The language code that you would like use instead when formatting numbers."
+                    }
+                }
+            }
+        },
         "languages_public": {
             "type": "array",
             "title": "Language code overrides",

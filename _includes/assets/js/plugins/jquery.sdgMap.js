@@ -99,6 +99,7 @@
     this.startValues = options.startValues;
     this.configObsAttributes = {{ site.observation_attributes | jsonify }};
     this.allObservationAttributes = options.allObservationAttributes;
+    this._browserDecimalSeparator = this.viewHelpers.getBrowserDecimalSeparator();
 
     // Require at least one geoLayer.
     if (!options.mapLayers || !options.mapLayers.length) {
@@ -313,7 +314,11 @@
             localeOpts.minimumFractionDigits = this._precision;
             localeOpts.maximumFractionDigits = this._precision;
         }
-        value = value.toLocaleString(opensdg.language, localeOpts);
+        value = value.toLocaleString(opensdg.language_numbers, localeOpts);
+        // Still use the custom decimal separator if it is there.
+        if (this._decimalSeparator) {
+          value = value.toString().replace(this._browserDecimalSeparator, this._decimalSeparator);
+        }
       }
       return value;
     },

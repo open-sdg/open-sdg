@@ -167,6 +167,9 @@ languages:
   - en
   - es
   - fr
+languages_numbers:
+  - language: fr
+    language_numbers: en
 languages_public:
   - language: fr
     language_public: fr-CA
