@@ -31,7 +31,7 @@
         </fieldset>
       </div>
 
-      <% if(allowedFields.indexOf(fieldItem.field) == -1) { %>
+      <% if(allowedFields.indexOf(fieldItem.field) == -1 && edges.length > 0) { %>
         <div class="variable-hint" id="variable-hint-<%=fieldItem.field.replace(/ /g, '-')%>">
           {%- capture var_hint_replacement -%}
             {% raw %}<%= translations.t(_.find(edges, { To: fieldItem.field }).From) %>{% endraw %}
