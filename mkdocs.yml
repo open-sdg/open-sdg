@@ -61,6 +61,7 @@ nav:
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md
+        - Progress status: progress.md
         - Reporting status: reporting-status.md
         - Troubleshooting: troubleshooting.md
         - Non SDG usage: non-sdg.md
