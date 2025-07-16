@@ -20,6 +20,10 @@ NOTE: If using any of these alternative data sources, the "config file" approach
 
 Your data repository can contain SDMX files, either of the SDMX-ML or the SDMX-JSON format. Alternatively, your data repository can "point" to a remote SDMX API endpoint. Examples can be found in the [sdg-build documentation](https://github.com/open-sdg/sdg-build/tree/master/docs/examples).
 
+An SDMX DSD can also be used a source of translations for platforms - whether multilingual or monolingual.
+
+[Click here for a full tutorial for integrating SDMX data.](tutorials/data-source-sdmx.md)
+
 ### .Stat Suite, SDMX & Open SDG
 
 **What is the .Stat Suite?**
@@ -121,6 +125,12 @@ This example also demonstrates adding a custom time period of 2000-2022, which i
 ```
 
 To know what to populate the 15 parts of the key with, refer to the SDG Data Structure Definition (DSD) [here](https://unstats.un.org/sdgs/files/SDG_DSD_MATRIX.1.11.xlsm). 
+
+### PX Web
+
+PX files, used in the PX Web platform, can be used as a source of data (and some metadata) for Open SDG. They can also be used as a source of translations for Open SDG platforms, whether multilingual or monolingual.
+
+[Click here for a full tutorial for integrating PX Web.](tutorials/data-source-pxweb.md)
 
 ### CKAN
 
