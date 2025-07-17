@@ -11,7 +11,7 @@ This tutorial will describe how to integrate your Open SDG platform with SDMX da
 ## Requirements
 
 * This tutorial assumes you already have your data in SDMX format via a remote SDMX API. (However this approach also works with local SDMX files.)
-* This tutorial assumes you have already set an Open SDG platform
+* This tutorial assumes you have already set up an Open SDG platform.
 
 ## Level of difficulty
 
@@ -21,11 +21,11 @@ Some basic knowledge of SDMX is helpful but not required.
 
 ## Removing the CSV input
 
-The Open SDG platform out-of-the-box is configured to use CSV files as a data source -- one file for each SDG indicator. In terms of Open SDG configuration, there is a "CSV input". When switching to SDMX, you will usually want to remove the CSV input.
+The Open SDG platform out-of-the-box is configured to use CSV files as a data source - one file for each SDG indicator. In terms of Open SDG configuration, there is a "CSV input". When switching to SDMX, you will usually want to remove the CSV input.
 
 There may be unusual cases where you need to keep some indicators as CSV-based because you don't have their data in SDMX format yet. So this section is optional.
 
-The inputs are controlled in your [data configuration](../data-configuration.md#inputs). This setting contains any number of inputs in a list. To remove the CSV input, simply delete that item from the list. For example, if you are starting with this:
+The inputs are controlled in your [data configuration](../data-configuration.md#inputs) (config_data.yml file) in your data repository. This setting contains any number of inputs in a list. To remove the CSV input, simply delete that item from the list. For example, if you are starting with this:
 
 ```
 inputs:
@@ -51,7 +51,7 @@ Next we will add some code in the same place, but this time it will refer to you
 
 ### Gather the URLs for your data and structure
 
-Before proceeding you will need to know the location for your data, and the location for your structure. (The structure is often referred to as the "DSD".) Assuming you are using a remote SDMX API, these should both be URLs (ie, they should start with "https://"). Get these URLs from your SDMX API, or by consulting your data managers. For this tutorial we will assume the URLs are:
+Before proceeding you will need to know the location for your data, and the location for your structure. (The structure is often referred to as the "DSD".) Assuming you are using a remote SDMX API, these should both be URLs (i.e., they should start with "https://"). Get these URLs from your SDMX API, or by consulting your data managers. For this tutorial we will assume the URLs are:
 
 * https://my-sdmx-api.org/my-data
 * https://my-sdmx-api.org/my-structure
@@ -217,7 +217,7 @@ data_fields:
   series: 'SERIES'
 ```
 
-You can either use the site configuration form to generate a new `_data/site_config.yml` file, or change the file directly.
+You can either use the site configuration form to generate a new `_data/site_config.yml` file, or change the file directly in your site repository.
 
 ### Time-series attributes
 
@@ -229,11 +229,11 @@ time_series_attributes:
     label: My custom label
 ```
 
-As above, you can either use the site configuration form to generate a new `_data/site_config.yml` file, or change the file directly.
+As above, you can either use the site configuration form to generate a new `_data/site_config.yml` file, or change the file directly in your site repository.
 
 ### Observation attributes
 
-If you have attributes in your SDMX at the observation level, you can display them in Open SDG by specifying them in the observation_attributes setting. For example, if you have a `COMMENT_OBS` attribute on each observation in your SDMX, you can display it in Open SDG using any custom label:
+If you have attributes in your SDMX data at the observation level, you can display them in Open SDG by specifying them in the observation_attributes setting. For example, if you have a `COMMENT_OBS` attribute on each observation in your SDMX, you can display it in Open SDG using any custom label:
 
 ```
 observation_attributes:
@@ -241,6 +241,6 @@ observation_attributes:
     label: My custom label
 ```
 
-As above, you can either use the site configuration form to generate a new `_data/site_config.yml` file, or change the file directly.
+As above, you can either use the site configuration form to generate a new `_data/site_config.yml` file, or change the file directly in your site repository.
 
 Note that these correspond to the `observation_attributes` in the `indicator_options` section of the data configuration you set above.
