@@ -95,10 +95,38 @@ status_types:
   alt: Alt text for my custom status
 ```
 
-Then, "custom_status" can be shown on the indicator and goal pages by setting `auto_progress_calculation: false` and `progress_status: custom_status` in the indicator config file.
+Then, "My custom status label" alongside the selected image can be shown on the indicator and goal pages by setting `auto_progress_calculation: false` and `progress_status: custom_status` in the indicator config file.
 
 The label and alt text may be translation keys.
 
-<!-- ## Output
+## Progress calculation components output
 
-Optionally, for added transparency, a yaml file called `indicator_calculation_components.yml` that contains the details of the progress calculation for each time series and indicator may be saved to your data repo during the data build. To enable this, you must edit the "Deploy to staging" workflow at `/.github/workflows/deploy-to-staging.yml` as follows: -->
+Optionally, for the sake of clarity and transparency, a yaml file containing the settings and values used to calculate the progress for each series and indicator may be saved to your data repository during the data build. The output file is named `indicator_calculation_components.yml`.
+
+ To enable this, you must edit the "Deploy to staging" workflow in your data repository at `/.github/workflows/deploy-to-staging.yml`. In between the `Build data` and the `Place public files` steps in the workflow, add the following steps:
+ ```
+- name: Check if there are any changes to files
+  id: verify_diff
+  run: |
+    if [[ `git status -s` ]]; then
+      echo "DIFF=true" >> "$GITHUB_OUTPUT"
+    else
+      echo "DIFF=false" >> "$GITHUB_OUTPUT"
+    fi
+- name: Commit files
+  if: steps.verify_diff.outputs.DIFF == 'true'
+  run: |
+    git config --local user.email "github-actions[bot]@users.noreply.github.com"
+    git config --local user.name "github-actions[bot]"
+    git add .
+    git commit -m "Add new progress measure updates"
+- name: Push changes
+  if: steps.verify_diff.outputs.DIFF == 'true'
+  uses: ad-m/github-push-action@master
+  with:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    BRANCH: ${{ github.ref }}
+ ```
+
+If there is no `Place public files` step in your deploy to staging workflow, then the new steps should be added in between the `Build data` and the `Deploy to GitHub Pages` steps.
+
