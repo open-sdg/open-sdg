@@ -8,13 +8,51 @@ This data and metadata is processed by a Python library called [sdg-build](https
 
 ## Data repository config file
 
-If you are using the out-of-the-box CSV/YAML approach mentioned above, you can take advantage of using a [configuration file](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config.yml) in your data repository. For an example of using this approach, see [this example in the sdg-build documentation](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_simple.py).
+Although SDG Build can be used using Python code, you can use it for Open SDG using a YAML configuration file. For an example of this configuration file, see [the data-starter configuration file](https://github.com/open-sdg/open-sdg-data-starter/blob/develop/config_data.yml).
 
 ## Alternative data sources
 
 You may want to maintain your data and/or metadata in some other way. With the help of the [sdg-build](https://github.com/open-sdg/sdg-build) library, there are additional options available for Open SDG.
 
-NOTE: If using any of these alternative data sources, the "config file" approach mentioned above will not work.
+### Note about "remote" vs "local" data sources
+
+Many altenative data sources can be either "remote" or "local".
+
+#### "Remote" data sources
+
+If your data are available via some remote location, such as an API or a cloud-hosted file, this would be considered a "remote" data source. When using remote data sources, you will utilize full URLs (starting with "https" as normal) in your data configuration. For example:
+
+```
+source: https://my-remote-api.com"
+```
+
+Another note about remote sources - often remote services are protected by firewalls, rate limits, reverse proxies, etc. A common method for getting around this problem is to arrange for a particular "user agent" to be allow-listed by the administrators of the remote service. Then, the following configuration can be applied to any data input:
+
+```
+request_params:
+  headers:
+    User-Agent: My-custom-user-agent
+```
+
+For example, you could add this to an SDMX input:
+
+```
+inputs:
+  - class: InputSdmxMl_Structure
+    source: https://my-sdmx-api.org/source
+    dsd: https://my-sdmx-api.org/dsd
+    request_params:
+      headers:
+        User-Agent: My-custom-user-agent
+```
+
+#### "Local" data sources
+
+By contrast, many alternative data sources can be "local" by being included in your data repository itself. For cases like this, you will utilize paths, starting from the root of your repository. For example, if a "bar" file is in the "foo" folder in your data repository, you would use something like this:
+
+```
+source: foo/bar
+```
 
 ### SDMX
 
