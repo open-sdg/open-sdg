@@ -39,6 +39,8 @@ nav:
         - "Tutorial: Changing colors": tutorials/change-colors.md
         - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
         - "Tutorial: Creating pages": tutorials/create-pages.md
+        - "Tutorial: SDMX integration": tutorials/data-source-sdmx.md
+        - "Tutorial: PX Web integration": tutorials/data-source-pxweb.md
     - Data provider guidance:
         - Data format: data-format.md
         - Data sources: data-sources.md
