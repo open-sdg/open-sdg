@@ -1,17 +1,17 @@
-<h1>Tutorial: PX Web integration</h1>
+<h1>Tutorial: PxWeb integration</h1>
 
-This tutorial will describe how to integrate your Open SDG platform with PX Web data, metadata, and translations.
+This tutorial will describe how to integrate your Open SDG platform with PxWeb data, metadata, and translations.
 
 ## Topics covered
 
-* Using PX Web data
-* Using (limited) Px Web metadata
-* Using PX Web translations
+* Using PxWeb data
+* Using (limited) PxWeb metadata
+* Using PxWeb translations
 
 ## Requirements
 
-* This tutorial assumes you already have your data in PX Web format via a remote PX Web API. (However this approach also works with local PX files.)
-* This tutorial assumes you have already set an Open SDG platform
+* This tutorial assumes you already have your data in PxWeb format via a remote PxWeb API. (However this approach also works with local PX files.)
+* This tutorial assumes you have already set up an Open SDG platform
 
 ## Level of difficulty
 
@@ -31,7 +31,7 @@ There are some tags in the PX file that have special significance when used with
 
 ## Removing the CSV input
 
-The Open SDG platform out-of-the-box is configured to use CSV files as a data source -- one file for each SDG indicator. In terms of Open SDG configuration, there is a "CSV input". When switching to PxWeb, you will usually want to remove the CSV input.
+The Open SDG platform out-of-the-box is configured to use CSV files as a data source - one file for each SDG indicator. In terms of Open SDG configuration, there is a "CSV input". When switching to PxWeb, you will usually want to remove the CSV input.
 
 There may be unusual cases where you need to keep some indicators as CSV-based because you don't have their data in PxWeb format yet. So this section is optional.
 
