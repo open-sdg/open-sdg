@@ -670,9 +670,9 @@ A progress score can only be determined for individual time series within the da
 * `unit`: The unit name of the time series for the progress calculation.
 * `disaggregation`: If the selected time series has no headline, a particular disaggregation may be selected with this setting. If `disaggregation` is not specified and a headline is present, the headline values will be selected for the progress calculation.
 * `direction`: "negative" or "positive". Default: "negative". The desired direction of progress for the time series.
-* `base_year`: Default: 2015. The base year for the progress calculation of the specified time series.
+* `base_year`: Default: 2015. The base year for the progress calculation of the specified time series. Note that if you have data displaying before the base year it will not be included in the progress calculation
 * `target_year`: Default: 2030. The target year for the progress calculation of the specified time series.
-* `target`: Default: None. The value required to reach the target of the specified time series. _Cannot be zero - a target of zero will be reset to 0.001._
+* `target`: Default: None. The value required to reach the target of the specified time series. _Cannot be zero - a target of zero will be reset to 0.001._ (If your indicator is already close to 0, the progress calculation may be more representative when setting the target to 0.1 or 0.01 instead of the 0.001 default)
 * `limit`: Default: None. If direction is "positive", this is the maximum possible ceiling for the values of the specified time series. If direction is "negative", this is the minimum possible floor for the value of the specified time series. For example, the limit of SDG 6.1.1 'Proportion of population using safely managed drinking water services' should be 100 since no more than 100% of the population can be using safely managed drinking water services. _Only applicable if no target is specified._
 
 Here is an example specifying a single time series from an indicator with multiple series and disaggregations. This example tells the progress measurement tool to only include data from the time series falling under the following categories: Series = Fatality claims, Geography = Canada, Gender = Male.
