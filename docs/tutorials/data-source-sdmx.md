@@ -90,7 +90,7 @@ However you may tweak these configuration settings as needed. Here is some guida
 * `import_series_attributes`: This controls whether to import SDMX "attributes" at the series level.
 * `import_observation_attributes`: This controls whether to import SDMX "attributes" at the observation level.
 * `import_codes`: This must be included for several features to work correctly, and it must be set to `true`.
-* `indicator_id_map`: This must be included if you have made custom series codes so that Open SDG knows which indicator the series belongs to. You should add all your custom series to the list. You can add multiple series here to appear in the same indicator.
+* `indicator_id_map`: This must be included if you have made custom series codes so that Open SDG knows which indicator the series belongs to. You should add all your custom series to the list. You can add multiple series here to appear on the same indicator page.
 * `drop_singleton_dimensions`: This setting will automatically drop any SDMX "dimensions" that contain only a single value. It is recommended to set this to `false` and then specify exactly which dimensions you would like to drop in `drop_dimensions` (see below).
 * `drop_dimensions`: This optional setting will drop specified SDMX dimensions that do not serve any purpose in Open SDG. Common candidates for dropping here are: FREQ, REPORTING_TYPE, NATURE, and TIME_PERIOD. If you notice some dimensions are appearing as disaggregation dropdowns on your indicator pages, you can add them to the list. e.g. UNIT_MULT, OBS_STATUS etc.
 
