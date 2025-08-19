@@ -1,5 +1,18 @@
 <h1>Change Log</h1>
 
+## 2.4.0
+
+* Feature: Indicator configuration form upgrade #2104
+* Bugfix: Show yes/no on table if chart type is binary #2135
+* Bugfix: Allow blank progress status #2148
+* Bugfix: Do not export rows in data edit form with empty values #2158
+* Bugfix: Use start values when changing series, unless there would be zero results #2159
+* Feature: Add SRI hashes to script tags #2164
+* Feature: Support languages_numbers setting and still use decimal_separator even after localString. #2178
+* Feature: Allow configurable js library for config forms #2181
+* Feature: PxWeb integration (multiple PRs)
+* Feature: Progress auto-calculation (multiple PRs)
+
 ## 2.3.0
 
 * Design: Always limit width of disagg controls on map #2082

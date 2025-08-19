@@ -27,3 +27,14 @@ page_content: >
   disaggregations work.
 reporting_status: complete
 tags: []
+auto_progress_calculation: true
+progress_calculation_options:
+  - direction: positive
+    base_year: 2015
+    disaggregation:
+      - field: Group1
+        value: single disaggregation
+    limit: 9
+    target: 9
+    target_year: 2030
+    unit: Total

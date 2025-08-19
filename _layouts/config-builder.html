@@ -54,6 +54,15 @@
       opensdg.configForm.repoUrl = {{ site.repository_url_data | jsonify }};
     {% endif %}
   </script>
-  <script src="https://open-sdg.org/open-sdg-config-form/bundle.js"></script>
+  {% assign library_src = site.config_form_library_src | default: 'https://open-sdg.org/open-sdg-config-form/bundle.js' %}
+  {% assign href_start = library_src | slice: 0, 4 %}
+  {% if href_start != 'http' %}
+    {% assign href_first = href_start | slice: 0 %}
+    {% if href_first == '/' %}
+      {% assign library_src = library_src | slice: 1, library_src.size %}
+    {% endif %}
+    {% assign library_src = page.baseurl | append: library_src %}
+  {% endif %}
+  <script src="{{ library_src }}"></script>
 </div>
 {% include footer.html %}
