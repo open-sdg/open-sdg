@@ -1,16 +1,16 @@
-<h1>Upgrading to 2.4.0-beta5</h1>
+<h1>Upgrading to 2.4.0</h1>
 
-This document is intended for developers, to help with the process of upgrading to version 2.4.0-beta5 of Open SDG, from 2.3.0 or higher.
+This document is intended for developers, to help with the process of upgrading to version 2.4.0 of Open SDG, from 2.3.0 or higher.
 
-## Upgrade data repository to sdg-build 2.4.0-beta5
+## Upgrade data repository to sdg-build 2.4.0
 
 In your data repository, update your `requirements.txt` file to:
 
 ```
-git+https://github.com/open-sdg/sdg-build@2.4.0-beta5
+git+https://github.com/open-sdg/sdg-build@2.4.0
 ```
 
-## Upgrade translations to sdg-translations 2.4.0-beta5
+## Upgrade translations to sdg-translations 2.4.0
 
 In your data repository's config file, update the version of sdg-translations in the "translations" section:
 
@@ -18,23 +18,23 @@ In your data repository's config file, update the version of sdg-translations in
 translations:
   - class: TranslationInputSdgTranslations
     source: https://github.com/open-sdg/sdg-translations.git
-    tag: 2.4.0-beta5
+    tag: 2.4.0
 ```
 
-## Update version of Open SDG to 2.4.0-beta5
+## Update version of Open SDG to 2.4.0
 
 In your site repository's `_config.yml` file, update the version of Open SDG in `remote_theme`, like so:
 
 ```
-remote_theme: open-sdg/open-sdg@2.4.0-beta5
+remote_theme: open-sdg/open-sdg@2.4.0
 ```
 
-## Update version of jekyll-open-sdg-plugins to 2.4.0-beta5
+## Update version of jekyll-open-sdg-plugins to 2.4.0
 
 In your site repository's `Gemfile`, update the version of jekyll-open-sdg-plugins like so:
 
 ```
-gem "jekyll-open-sdg-plugins", "2.4.0.pre.beta5"
+gem "jekyll-open-sdg-plugins", "2.4.0"
 ```
 
 ## Updating overridden files
@@ -54,11 +54,12 @@ Note that we strive to avoid any breaking changes, so this process of updating o
 
 This release introduces some optional features that you may be interested in adding to your platform.
 
-* Progress status auto-calculation: TBD
-* PXWeb integration: TBD
+* Progress status auto-calculation: Previously the progress status of each indicator needed to be manually set. This release includes new functionality developed by Statistics Canada which allows the progress status to be automatically calculated, based on the indicator data and configuration options. [More information is available here](../progress.md).
+* PXWeb integration: With this release, in collaboration with Statistics Faroe Islands we have added integration with the PxWeb platform via a direct parsing of PX files. This integration uses the PX files to import data, translations, and some metadata. [More information is available here](../tutorials/data-source-pxweb.md).
 
 ## Bug-fixes and improvements
 
+* Indicator configuration form upgrade (#2104)
 * Show yes/no on table if chart type is binary (#2135)
 * Allow blank progress status (#2148)
 * Do not export rows in data edit form with empty values (#2158)
@@ -66,4 +67,3 @@ This release introduces some optional features that you may be interested in add
 * Add SRI hashes to script tags (#2164)
 * Support languages_numbers setting and still use decimal_separator even after localString. (#2178)
 * Allow configurable js library for config forms (#2181)
-
