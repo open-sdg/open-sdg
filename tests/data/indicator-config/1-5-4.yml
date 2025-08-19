@@ -35,7 +35,6 @@ progress_calculation_options:
       - field: Group1
         value: single disaggregation
     limit: 9
-    series: ''
     target: 9
     target_year: 2030
     unit: Total
