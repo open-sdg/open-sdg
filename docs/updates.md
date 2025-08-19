@@ -2,6 +2,17 @@
 
 For a more technical list of platform changes, see [the change log](changelog.md).
 
+## 2.4.0
+
+19 August 2025
+
+* New indicator configuration forms
+* Better third-party library security via SRI hashes
+* PxWeb integration
+* Allow more control over locale-specific treatment of numbers
+* Bugfixes related to start values and binary graphs
+* Automatic indicator progress calculation
+
 ## 2.3.0
 
 1 March 2024

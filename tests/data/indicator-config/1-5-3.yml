@@ -36,7 +36,6 @@ progress_calculation_options:
       - field: Group2
         value: X
     limit: 1
-    series: ''
     target: 1
     target_year: 2030
     unit: Percent
