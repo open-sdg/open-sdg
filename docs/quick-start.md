@@ -7,7 +7,7 @@ This document will go over the quickest way to get this platform up and running.
 ## Signing up and creating repositories
 
 1. If you don't already have a Github.com account, [go to Github.com](https://github.com/) to sign up and then log in.
-1. Create a new, free organisation by navigating to "Your organisations" in the menu. This can be called anything you like e.g. SDG-your-country
+1. Create a new, free organisation by navigating to "Your organisations" in the menu. This can be called anything you like e.g. SDG-your-country.
 1. Go to the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and click the green "Use this template" button, then "Create a new repository".
 1. Check the "Include all branches" toggle so it is "On". (**required**)
 2. Change the owner to be your new organsation.
