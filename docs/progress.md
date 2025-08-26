@@ -8,14 +8,14 @@ The automated progress measurement functionality runs on Open SDG versions 2.4.0
 
 To setup your site to display progress statuses, follow these steps:
 1. In the site repo, go to `_data/site_config.yml` and find these lines:
-    ```
+```
     progress_status:
       status_heading: ''
       status_help: ''
       status_types: []
-    ```
+```
     Replace the lines above with the following:
-    ```
+```
     progress_status:
       status_heading: status.progress_status
       status_help: ''
@@ -43,13 +43,13 @@ To setup your site to display progress statuses, follow these steps:
         label: status.target_achieved
         image: assets/img/progress/target-achieved-gauge.png
         alt: status.target_achieved
-    ```
+```
 2. In the same `site_config.yml` file, also add "Progress" as an ignored disaggregation. 
-    ```
+```
     ignored_disaggregations:
       - Progress
-    ```
-    This is needed for the [progress column](#progress-column) functionality which allows data conversions and transformations prior to the progress calculation.
+```
+This is needed for the [progress column](#progress-column) functionality which allows data conversions and transformations prior to the progress calculation.
 3. In the data repo, turn on the automated progress calculation by adding `auto_progress_calculation: true` to the indicator config file(s) of the indicator(s) for which you want to evaluate the progress. Take care to also setup the [`progress_calculation_options`](indicator-configuration.md#progress_calculation_options) for each indicator so that the progress measurement is as accurate as possible.
 
 ## Progress column
@@ -104,7 +104,7 @@ The label and alt text may be translation keys.
 Optionally, for the sake of clarity and transparency, a yaml file containing the settings and values used to calculate the progress for each series and indicator may be saved to your data repository during the data build. The output file is named `indicator_calculation_components.yml`.
 
  To enable this, you must edit the "Deploy to staging" workflow in your data repository at `/.github/workflows/deploy-to-staging.yml`. In between the `Build data` and the `Place public files` steps in the workflow, add the following steps:
- ```
+```
 - name: Check if there are any changes to files
   id: verify_diff
   run: |
@@ -126,7 +126,7 @@ Optionally, for the sake of clarity and transparency, a yaml file containing the
   with:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     BRANCH: ${{ github.ref }}
- ```
+```
 
 If there is no `Place public files` step in your deploy to staging workflow, then the new steps should be added in between the `Build data` and the `Deploy to GitHub Pages` steps.
 
