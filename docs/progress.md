@@ -14,7 +14,7 @@ To setup your site to display progress statuses, follow these steps:
       status_help: ''
       status_types: []
 ```
-    Replace the lines above with the following:
+Replace the lines above with the following:
 ```
     progress_status:
       status_heading: status.progress_status
