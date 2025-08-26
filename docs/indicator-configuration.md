@@ -672,8 +672,8 @@ A progress score can only be determined for individual time series within the da
 * `direction`: "negative" or "positive". Default: "negative". The desired direction of progress for the time series.
 * `base_year`: Default: 2015. The base year for the progress calculation of the specified time series.
 * `target_year`: Default: 2030. The target year for the progress calculation of the specified time series.
-* `target`: Default: None. The value required to reach the target of the specified time series. _Cannot be zero - a target of zero will be reset to 0.001._
-* `limit`: Default: None. If direction is "positive", this is the maximum possible ceiling for the values of the specified time series. If direction is "negative", this is the minimum possible floor for the value of the specified time series. For example, the limit of SDG 6.1.1 'Proportion of population using safely managed drinking water services' should be 100 since no more than 100% of the population can be using safely managed drinking water services. _Only applicable if no target is specified._
+* `target`: Default: None. The value required to reach the target of the specified time series. __Cannot be zero - a target of zero will be automatically reset to 0.001.__ _Note: When the desired target is zero, it is recommended to manually specify a replacement target value that is sufficiently small to represent a near-zero target in the context of the data. The automatic replacement by 0.001 may be overly aggressive if the data lacks correspondingly high precision. Consider more realistic replacement target values (e.g. 0.01, 0.1) for less precise datasets or datasets with larger values._
+* `limit`: Default: None. If direction is "positive", this is the maximum possible ceiling for the values of the specified time series. If direction is "negative", this is the minimum possible floor for the value of the specified time series. For example, the limit of SDG 6.1.1 'Proportion of population using safely managed drinking water services' should be 100 since no more than 100% of the population can be using safely managed drinking water services. __Only applicable if no target is specified.__
 
 Here is an example specifying a single time series from an indicator with multiple series and disaggregations. This example tells the progress measurement tool to only include data from the time series falling under the following categories: Series = Fatality claims, Geography = Canada, Gender = Male.
 
@@ -689,7 +689,7 @@ progress_calculation_options:
   direction: negative
 ```
 
-Here is another example where multiple time series from the indicator data are specified. The overall progress status for the indicator in this example will correspond to the mean progress scores of these two time series: fatality claims for males in Canada and the fatality claims for females in Canada.
+Here is another example where multiple time series from the indicator data are specified. The overall progress status for the indicator in this example will correspond to the mean progress scores of these two time series: fatality claims for males in Canada and fatality claims for females in Canada.
 
 ```
 auto_progress_calculation: true
@@ -709,6 +709,31 @@ progress_calculation_options:
     value: Female
   direction: negative
 ```
+
+It is also possible to group equally-weighted time series together. In the following example, the overall progress status for the indicator is obtained from the mean of the progress scores for _lost time claims_ and _fatality claims_, with each group weighted equally. Within the _fatality claims_ group, the progress score is derived from two equally-weighted sub-series: fatality claims for males in Canada and fatality claims for females in Canada.
+
+```
+auto_progress_calculation: true
+progress_calculation_options:
+- series: Lost time claims
+  direction: negative
+- group:
+  # Grouped time series are weighted equally
+  - series: Fatality claims
+    disaggregation:
+    - field: Geography
+      value: Canada
+    - field: Gender
+      value: Male
+    direction: negative
+  - series: Fatality claims
+    disaggregation:
+    - field: Geography
+      value: Canada
+    - field: Gender
+      value: Female
+    direction: negative
+  ```
 
 ### proxy
 
