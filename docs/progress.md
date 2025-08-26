@@ -9,45 +9,45 @@ The automated progress measurement functionality runs on Open SDG versions 2.4.0
 To setup your site to display progress statuses, follow these steps:
 1. In the site repo, go to `_data/site_config.yml` and find these lines:
 ```
-    progress_status:
-      status_heading: ''
-      status_help: ''
-      status_types: []
+progress_status:
+    status_heading: ''
+    status_help: ''
+    status_types: []
 ```
 Replace the lines above with the following:
 ```
-    progress_status:
-      status_heading: status.progress_status
-      status_help: ''
-      status_types:
-      - value: not_available
-        label: status.progress_not_available
-        alt: status.progress_not_available
-      - value: deterioration
-        label: status.deterioration
-        image: assets/img/progress/red-gauge.png
-        alt: status.deterioration
-      - value: limited_progress
-        label: status.limited_progress
-        image: assets/img/progress/orange-gauge.png
-        alt: status.limited_progress
-      - value: moderate_progress
-        label: status.moderate_progress
-        image: assets/img/progress/yellow-gauge.png
-        alt: status.moderate_progress
-      - value: substantial_progress
-        label: status.substantial_progress
-        image: assets/img/progress/green-gauge.png
-        alt: status.substantial_progress
-      - value: target_achieved
-        label: status.target_achieved
-        image: assets/img/progress/target-achieved-gauge.png
-        alt: status.target_achieved
+progress_status:
+    status_heading: status.progress_status
+    status_help: ''
+    status_types:
+    - value: not_available
+      label: status.progress_not_available
+      alt: status.progress_not_available
+    - value: deterioration
+      label: status.deterioration
+      image: assets/img/progress/red-gauge.png
+      alt: status.deterioration
+    - value: limited_progress
+      label: status.limited_progress
+      image: assets/img/progress/orange-gauge.png
+      alt: status.limited_progress
+    - value: moderate_progress
+      label: status.moderate_progress
+      image: assets/img/progress/yellow-gauge.png
+      alt: status.moderate_progress
+    - value: substantial_progress
+      label: status.substantial_progress
+      image: assets/img/progress/green-gauge.png
+      alt: status.substantial_progress
+    - value: target_achieved
+      label: status.target_achieved
+      image: assets/img/progress/target-achieved-gauge.png
+      alt: status.target_achieved
 ```
 2. In the same `site_config.yml` file, also add "Progress" as an ignored disaggregation. 
 ```
-    ignored_disaggregations:
-      - Progress
+ignored_disaggregations:
+    - Progress
 ```
 This is needed for the [progress column](#progress-column) functionality which allows data conversions and transformations prior to the progress calculation.
 3. In the data repo, turn on the automated progress calculation by adding `auto_progress_calculation: true` to the indicator config file(s) of the indicator(s) for which you want to evaluate the progress. Take care to also setup the [`progress_calculation_options`](indicator-configuration.md#progress_calculation_options) for each indicator so that the progress measurement is as accurate as possible.
@@ -59,7 +59,7 @@ A data column named `Progress` can be used to run the progress calculations with
 The progress column should be added to the `ignored_disaggregations` in the site configurations to prevent the progress column from appearing as a disaggregation drop-down menu.
 ```
 ignored_disaggregations:
-- Progress
+    - Progress
 ```
 
 ## Indicator-config progress settings
