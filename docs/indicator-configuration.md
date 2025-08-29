@@ -56,7 +56,7 @@ graph_titles:
 
 ### auto_progress_calculation
 
-_Optional_: This setting is used to turn on or off the automated progress measure for the indicator. The automatic progress measurement follows [Statistics Canada's progress measurement methodology](https://sdgcif-data-canada-oddcic-donnee.github.io/methodology/). It is based upon the compound annual growth rate that has been observed in the indicator's data since 2015.
+_Optional_: This setting is used to turn on or off the automated progress measure for the indicator. The automatic progress measurement follows [Statistics Canada's progress measurement methodology](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/). It is based upon the compound annual growth rate that has been observed in the indicator's data since 2015.
 
 ```nohighlight
 auto_progress_calculation: true
@@ -662,7 +662,7 @@ Here is an example of what this looks like on the platform:
 
 ### progress_calculation_options
 
-_Optional_: If the automated progress calculation is turned on (`auto_progress_calculation: true`). This controls the input parameters for the progress calculation. A progress status and score are determined for the indicator using a methodology based on compound annual growth rates (see [Statistics Canada's progress measurement methodology](https://sdgcif-data-canada-oddcic-donnee.github.io/methodology/) for details).
+_Optional_: If the automated progress calculation is turned on (`auto_progress_calculation: true`). This controls the input parameters for the progress calculation. A progress status and score are determined for the indicator using a methodology based on compound annual growth rates (see [Statistics Canada's progress measurement methodology](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/) for details).
 
 A progress score can only be determined for individual time series within the data. If the data has many possible time series (for example: multiple series, units, or disaggregations), the individual time series to use for the progress calculation must be specified in `progress_calculation_options` using the `series`, `unit`, and `disaggregation` parameters. It is also possible to specify multiple time series, which will calculate the progress scores for each of these time series individually and the overall progress status will correspond to the mean score of each of the specified time series.
 
