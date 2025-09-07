@@ -7,6 +7,7 @@
 
   {% include assets/js/view/constants.js %}
   {% include assets/js/view/fieldHelpers.js %}
+  {% include assets/js/view/comparisonHelpers.js %}
   {% include assets/js/view/unitHelpers.js %}
   {% include assets/js/view/seriesHelpers.js %}
   {% include assets/js/view/chartHelpers.js %}
@@ -23,6 +24,7 @@
     HIDE_SINGLE_UNIT: HIDE_SINGLE_UNIT,
     PROXY_PILL: PROXY_PILL,
     initialiseFields: initialiseFields,
+    initialiseFieldsWithGlobalValues: initialiseFieldsWithGlobalValues,
     initialiseUnits: initialiseUnits,
     initialiseSerieses: initialiseSerieses,
     updateIndicatorDataUnitStatus: updateIndicatorDataUnitStatus,

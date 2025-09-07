@@ -1,0 +1,23 @@
+select {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid #ccc;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  padding-left: 3px;
+}
+
+select option:disabled {
+  color: #0b0c0c;
+  font-weight: bold;
+}
+
+select:focus {
+    background-color: white !important;
+    box-shadow: none !important;
+    outline: 3px solid #ffdd00 !important;
+}
+
+.categories > h4 {
+  margin-bottom: 1.5rem;
+}
