@@ -55,13 +55,13 @@ ignored_disaggregations:
 ```
 This is needed for the [progress column](#progress-column) functionality which allows data conversions and transformations prior to the progress calculation.
 
-3. In the data repo, turn on the automated progress calculation by adding `auto_progress_calculation: true` to the indicator config file(s) of the indicator(s) for which you want to evaluate the progress. Take care to also setup the [`progress_calculation_options`](indicator-configuration.md#progress_calculation_options) for each indicator so that the progress measurement is as accurate as possible.
+3. In the data repo, turn on the automated progress calculation by adding `auto_progress_calculation: true` to the indicator config file(s) of the indicator(s) for which you want to evaluate the progress. Make sure to also setup the `progress_calculation_options` in each indicator's configuration (using the file or form) so that the progress measurement is as accurate as possible. You can see a full breakdown of all the settings that need to be input on the [progress_calculations_options page](indicator-configuration.md#progress_calculation_options).
 
 ## Progress column
 
 A data column named `Progress` can be used to run the progress calculations with different values than appear in the Value column. During the progress calculation, all values in the Progress column will override all values in the Value column. However, the values in the Value column will still appear on the indicator page. This can be useful when additional operations must be applied to the raw values before running the progress calculation without affecting the data displayed on the indicator page. Specific examples are described in the [exceptions](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#specific-exceptions-for-canadas-global-indicator-framework-reporting) to Statistics Canada's progress measurement methodology.
 
-The progress column should be added to the `ignored_disaggregations` in the site configurations to prevent the progress column from appearing as a disaggregation drop-down menu.
+The progress column should be added to the `ignored_disaggregations` in the site configuration to prevent the progress column from appearing as a disaggregation drop-down menu.
 ```
 ignored_disaggregations:
     - Progress
@@ -71,7 +71,13 @@ ignored_disaggregations:
 
 Input parameters such as the base year, the target, the target year, the desired direction of progress, and any limit to the indicator's allowed range may be specified using the [`progress_calculation_options`](indicator-configuration.md#progress_calculation_options) in the indicator config file. These options also allow you to select which time series (specified by series name, unit, and/or disaggregation field) to use for the indicator's automated progress calculation.
 
-Base `direction` and `target` settings for all SDG indicators are elaborated in the [metadata](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata) for Statistics Canada's progress measurement methodology.
+Base `direction` and `target` settings for all SDG indicators are summarised in [Statistics Canada's progress measurement methodology](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata). It is recommended that targets and directions are taken from the standardised list of targets for each indicator as described in the UN SDG metadata and [summarised in this table](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata). Where some targets in the table have exceptions or are country-dependent, countries should customise as best relevant. If an alternative target is used, for transparency, it is recommended to explain this in your national metadata on the relevant indicator page.
+
+## Including a progress methodology page
+
+If you have used the automated progress measurement functionality, it is strongly recommended to include a page on your platform that details the methodology. This ensures transparency so users can read about how the progress displaying on the platform has been calculated.
+
+We have provided a template page to include within your `_pages` folder in your site repository. You can access the template [here]() , where you can copy all the code on the page, paste it into a new .md file in your own `_pages` folder on your site repository, and include on your platform's menu by [following these instructions](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/#add-a-menu-item).
 
 ## Manually specifying the progress status
 
