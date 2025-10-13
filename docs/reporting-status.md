@@ -27,7 +27,7 @@ reporting_status:
 
 ## Disaggregation status
 
-To enable this you must set ```disaggregation_tabs``` to true. When using this feature you also must stipulate your "expected_disaggregations" in each of your indicator configuration files where disaggreations are present for this to be calculated, in order to provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
+To enable this you must set ```disaggregation_tabs``` to true. When using this feature you also must stipulate your "expected_disaggregations" in each of your indicator configuration files where disaggreations are present. This ensures that these are calculated, and therefore provide the disaggregation status report with useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
 
 ```
 disaggregation_tabs: true
