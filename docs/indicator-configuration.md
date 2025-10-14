@@ -56,13 +56,13 @@ graph_titles:
 
 ### auto_progress_calculation
 
-_Optional_: This setting is used to turn on or off the automated  measure for the indicator. The automatic  measurement follows [Statistics Canada's  measurement methodology](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/). It is based upon the compound annual growth rate that has been observed in the indicator's data since 2015.
+_Optional_: This setting is used to turn on or off the automated progress measure for the indicator. The automatic progress measurement follows [Statistics Canada's progress measurement methodology](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/). It is based upon the compound annual growth rate that has been observed in the indicator's data since 2015.
 
 ```nohighlight
 auto_progress_calculation: true
 ```
 
-The calculated  status is displayed on the indicator page and the goal page. Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. See [setup and configuration details for reporting the progress status](progress.md).
+The calculated progress status is displayed on the indicator page and the goal page. Note that you will need to have set up the `progress_status` site configuration in the site_config.yml file before the progress status will appear. See [setup and configuration details for reporting the progress status](progress.md).
 
 ### composite_breakdown_label
 
