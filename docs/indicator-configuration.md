@@ -673,9 +673,18 @@ A progress score can only be determined for individual time series within the da
 * `base_year`: Default: 2015. The base year for the progress calculation of the specified time series. Note that if you have data displaying before the base year it will not be included in the progress calculation. For consistency in reporting progress over the period of the SDGs (2015-2030), it is recommended to only change the base year where necessary e.g. if your data collection frequency for an indicator is not annual and the start of the collection period falls just before 2015, you might use 2014 instead.
 * `target_year`: Default: 2030. The target year for the progress calculation of the specified time series.
 * `target`: Default: None. The value required to reach the target of the specified time series. It is recommended that these are taken from the standardised list of targets for each indicator as described in the UN SDG metadata and [summarised in this table](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata). Where there is a numerical target, a direction should also be specified in the field above. Where some targets in the table have exceptions or are country-dependent, countries should customise as best relevant. If an alternative target is used, for transparency, it is recommended to explain this in your national metadata on the relevant indicator page. __Cannot be zero - a target of zero will be automatically reset to 0.001.__ _Note: When the desired target is zero, it is recommended to manually specify a replacement target value that is sufficiently small to represent a near-zero target in the context of the data. The automatic replacement by 0.001 may be overly aggressive if the data lacks correspondingly high precision. Consider more realistic replacement target values (e.g. 0.01, 0.1) for less precise datasets or datasets with larger values._
-* `limit`: Default: None. If direction is "positive", this is the maximum possible ceiling for the values of the specified time series. If direction is "negative", this is the minimum possible floor for the value of the specified time series. For example, the limit of SDG 6.1.1 'Proportion of population using safely managed drinking water services' should be 100 since no more than 100% of the population can be using safely managed drinking water services. __Only applicable if no target is specified.__
+* `limit`: Default: None. If direction is "positive", this is the maximum possible ceiling for the values of the specified time series. If direction is "negative", this is the minimum possible floor for the value of the specified time series. For example, the limit of SDG 9.c.1 'Proportion of population covered by a mobile network, by technology' should be 100 since no more than 100% of the population can be covered by a mobile network. __Only applicable if no target is specified.__
 
-Here is an example specifying a single time series from an indicator with multiple series and disaggregations. This example tells the progress measurement tool to only include data from the time series falling under the following categories: Series = Fatality claims, Geography = Canada, Gender = Male.
+Here is an example of an indicator with a quantitative target – e.g. 3.1.1 Maternal mortality ratio which has a target according to the [metadata table](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata) of ≤ 70 per 100,000.
+
+```
+auto_progress_calculation: true
+progress_calculation_options:
+- direction: negative
+  target: 70
+```
+
+Here is an example specifying a single time series from an indicator with multiple series and disaggregations. This example tells the progress measurement tool to only include data from the time series falling under the following categories: Series = Fatality claims, Geography = Canada, Gender = Male. There is no prescribed target, but a negative direction.
 
 ```
 auto_progress_calculation: true
