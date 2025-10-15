@@ -114,9 +114,9 @@ The label and alt text may be translation keys.
 
 ## Progress calculation components output
 
-Optionally, for the sake of clarity and transparency, a yaml file containing the settings and values used to calculate the progress for each series and indicator may be saved to your data repository during the data build. The output file is named `indicator_calculation_components.yml`.
+Optionally, for the sake of clarity and transparency, a yaml file containing the settings and values used to calculate the progress for each series and indicator may be saved to your data repository during the data build. The output file is named `indicator_calculation_components.yml`. When configured, the progress calculation components file gets automatically output to the data repository at the end of each staging deployment. As an Open SDG user, you can access this summary page, and if your data repository is public, then the public can also access. Overall, this provides a layer of transparency to users as they can validate how the progress calculation and status was determined. Internally, this output file may be useful for analyzing/generating reports on SDG progress since it contains all the progress-related inputs and outputs.
 
- To enable this, you must edit the "Deploy to staging" workflow in your data repository at `/.github/workflows/deploy-to-staging.yml`. In between the `Build data` and the `Place public files` steps in the workflow, add the following steps:
+To enable this, you must edit the "Deploy to staging" workflow in your data repository at `/.github/workflows/deploy-to-staging.yml`. In between the `Build data` and the `Place public files` steps in the workflow, add the following steps:
 ```
 - name: Check if there are any changes to files
   id: verify_diff
