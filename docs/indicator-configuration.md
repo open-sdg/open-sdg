@@ -662,12 +662,12 @@ Here is an example of what this looks like on the platform:
 
 ### progress_calculation_options
 
-_Optional_: If the automated progress calculation is turned on (`auto_progress_calculation: true`). This controls the input parameters for the progress calculation. A progress status and score are determined for the indicator using a methodology based on compound annual growth rates (see [Statistics Canada's progress measurement methodology](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/) for details).
+_Optional_: If the automated progress calculation is turned on (`auto_progress_calculation: true`). This controls the input parameters for the progress calculation. A progress status and score are determined for the indicator using a methodology based on compound annual growth rates (see the [Progress Status page](https://open-sdg.readthedocs.io/en/latest/progress/) or [Statistics Canada's progress measurement methodology](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/) for more details).
 
 A progress score can only be determined for individual time series within the data. If the data has many possible time series (for example: multiple series, units, or disaggregations), the individual time series to use for the progress calculation must be specified in `progress_calculation_options` using the `series`, `unit`, and `disaggregation` parameters. It is also possible to specify multiple time series, which will calculate the progress scores for each of these time series individually and the overall progress status will correspond to the mean score of each of the specified time series.
 
-* `series`: The series name of the time series for the progress calculation.
-* `unit`: The unit name of the time series for the progress calculation.
+* `series`: The series name of the time series for the progress calculation. This only needs to be specified where there is more than one series. Take care to write the series the same way as is in your data.
+* `unit`: The unit name of the time series for the progress calculation. This only needs to be specified where there is more than one type of unit. Take care to spell the unit the same way as is in your data.
 * `disaggregation`: If the selected time series has no headline, a particular disaggregation may be selected with this setting. If `disaggregation` is not specified and a headline is present, the headline values will be selected for the progress calculation.
 * `direction`: "negative" or "positive". Default: "negative". The desired direction of progress for the time series which is always required for the progress calculation. So when there is a numerical target, a direction should also be specified (else the default “negative” is used).
 * `base_year`: Default: 2015. The base year for the progress calculation of the specified time series. Note that if you have data displaying before the base year it will not be included in the progress calculation. For consistency in reporting progress over the period of the SDGs (2015-2030), it is recommended to only change the base year where necessary e.g. if your data collection frequency for an indicator is not annual and the start of the collection period falls just before 2015, you might use 2014 instead.
@@ -675,7 +675,7 @@ A progress score can only be determined for individual time series within the da
 * `target`: Default: None. The value required to reach the target of the specified time series. It is recommended that these are taken from the standardised list of targets for each indicator as described in the UN SDG metadata and [summarised in this table](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata). Where there is a numerical target, a direction should also be specified in the field above. Where some targets in the table have exceptions or are country-dependent, countries should customise as best relevant. If an alternative target is used, for transparency, it is recommended to explain this in your national metadata on the relevant indicator page. __Cannot be zero - a target of zero will be automatically reset to 0.001.__ _Note: When the desired target is zero, it is recommended to manually specify a replacement target value that is sufficiently small to represent a near-zero target in the context of the data. The automatic replacement by 0.001 may be overly aggressive if the data lacks correspondingly high precision. Consider more realistic replacement target values (e.g. 0.01, 0.1) for less precise datasets or datasets with larger values._
 * `limit`: Default: None. If direction is "positive", this is the maximum possible ceiling for the values of the specified time series. If direction is "negative", this is the minimum possible floor for the value of the specified time series. For example, the limit of SDG 9.c.1 'Proportion of population covered by a mobile network, by technology' should be 100 since no more than 100% of the population can be covered by a mobile network. __Only applicable if no target is specified.__
 
-Here is an example of an indicator with a quantitative target – e.g. 3.1.1 Maternal mortality ratio which has a target according to the [metadata table](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata) of ≤ 70 per 100,000.
+Here is an example of a simple indicator with a quantitative target – e.g. 3.1.1 Maternal mortality ratio which has a target according to the [metadata table](https://sdggif-data-canada-oddcmi-donnee.github.io/methodology/#metadata) of ≤ 70 per 100,000:
 
 ```
 auto_progress_calculation: true
@@ -698,7 +698,7 @@ progress_calculation_options:
   direction: negative
 ```
 
-Here is another example where multiple time series from the indicator data are specified. The overall progress status for the indicator in this example will correspond to the mean progress scores of these two time series: fatality claims for males in Canada and fatality claims for females in Canada.
+Here is another example where multiple time series from the indicator data are specified. The overall progress status for the indicator in this example will correspond to the mean progress scores of these two time series: fatality claims for males in Canada and fatality claims for females in Canada. There are also two different units and one has a limit as an example, the other has a target.
 
 ```
 auto_progress_calculation: true
@@ -710,6 +710,8 @@ progress_calculation_options:
   - field: Gender
     value: Male
   direction: negative
+  unit: percentage
+  limit: 0
 - series: Fatality claims
   disaggregation:
   - field: Geography
@@ -717,6 +719,8 @@ progress_calculation_options:
   - field: Gender
     value: Female
   direction: negative
+  unit: persons per thousand
+  target: 85
 ```
 
 It is also possible to group equally-weighted time series together. In the following example, the overall progress status for the indicator is obtained from the mean of the progress scores for _lost time claims_ and _fatality claims_, with each group weighted equally. Within the _fatality claims_ group, the progress score is derived from two equally-weighted sub-series: fatality claims for males in Canada and fatality claims for females in Canada.
