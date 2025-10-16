@@ -77,7 +77,7 @@ Base `direction` and `target` settings for all SDG indicators are summarised in 
 
 If you have used the automated progress measurement functionality, it is strongly recommended to include a page on your platform that details the methodology. This ensures transparency so users can read about how the progress displaying on the platform has been calculated.
 
-We have provided a template page to include within your `_pages` folder in your site repository. You can access the template [here]() , where you can copy all the code on the page, paste it into a new .md file in your own `_pages` folder on your site repository, and include on your platform's menu by [following these instructions](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/#add-a-menu-item). Make sure to name the file like the others in the `_pages folder` with the ending '.md' - e.g. 'methodology.md'.
+We have provided a template page to include within your `_pages` folder in your site repository. You can access the template [here](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/example-pages/methodology.md.example) , where you can copy all the code on the page, paste it into a new .md file in your own `_pages` folder on your site repository, and include on your platform's menu by [following these instructions](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/#add-a-menu-item). Make sure to name the file like the others in your `_pages folder` with the ending '.md' - e.g. 'methodology.md'.
 
 ## Manually specifying the progress status
 
