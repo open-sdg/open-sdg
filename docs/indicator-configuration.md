@@ -748,7 +748,6 @@ progress_calculation_options:
     direction: negative
   ```
 
-
 ### proxy
 
 _Optional_: When indicator data provided is alternative to that specified by the UN, Open SDG now has the functionality to mark it as "proxy" data. The feature provides a label and customizable definition and can be set for an entire indicator of for an individual series within an indicator. The available settings for this are:
@@ -779,6 +778,7 @@ proxy_series:
   - my first series code
   - my other series code
 ```
+
 
 ### publications
 
