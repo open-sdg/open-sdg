@@ -25,6 +25,24 @@ reporting_status:
       hide_on_goal_pages: false
 ```
 
+## Disaggregation status
+
+To enable this you must set ```disaggregation_tabs``` to true. When using this feature you also must stipulate your "expected_disaggregations" in each of your indicator configuration files where disaggregations are present. This ensures that all the disaggregations you have are considered, and therefore provide the disaggregation status report with the most useful metrics. For more information see [expected_disaggregations](indicator-configuration.md#expected_disaggregations).
+
+```
+disaggregation_tabs: true
+```
+
+An example for this "expected_disaggregations" setting:
+
+```
+expected_disaggregations:
+  - Sex
+  - Age
+  - Employment Status
+  - Geograhical Location
+```
+
 ## Color-coding
 
 The horizontal bars on the reporting status page have color-coded segments. The default options mentioned above are already color-coded for black, grey, and white, respectively. That color-coding is controlled using Sass variables in [this Sass variables file](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables/_colors.scss). To override any of these variables, you can override and edit [this placeholder file for Sass variable overrides](https://github.com/open-sdg/open-sdg/blob/master/_sass/variables.scss).
