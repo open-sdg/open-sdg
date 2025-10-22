@@ -8,7 +8,7 @@ The automated progress measurement functionality runs on Open SDG versions 2.4.0
 
 To setup your site to display progress statuses, follow these steps:
 
-1. In the site repo, go to `_data/site_config.yml` and find these lines:
+1) In the site repo, go to `_data/site_config.yml` and find these lines:
 
 ```
 progress_status:
@@ -47,8 +47,7 @@ progress_status:
       alt: status.target_achieved
 ```
 
-
-2. In the same `site_config.yml` file, also add "Progress" as an ignored disaggregation.
+2) In the same `site_config.yml` file, also add "Progress" as an ignored disaggregation.
 
 ```
 ignored_disaggregations:
@@ -57,7 +56,7 @@ ignored_disaggregations:
 
 This is needed for the [progress column](#progress-column) functionality which allows data conversions and transformations prior to the progress calculation.
 
-3. In the data repo, turn on the automated progress calculation by adding `auto_progress_calculation: true` to the indicator config file(s) of the indicator(s) for which you want to evaluate the progress. Make sure to also setup the `progress_calculation_options` in each indicator's configuration (using the file or form) so that the progress measurement is as accurate as possible. You can see a full breakdown of all the settings that need to be input on the [progress_calculations_options page](indicator-configuration.md#progress_calculation_options).
+3) In the data repo, turn on the automated progress calculation by adding `auto_progress_calculation: true` to the indicator config file(s) of the indicator(s) for which you want to evaluate the progress. Make sure to also setup the `progress_calculation_options` in each indicator's configuration (using the file or form) so that the progress measurement is as accurate as possible. You can see a full breakdown of all the settings that need to be input on the [progress_calculations_options page](indicator-configuration.md#progress_calculation_options).
 
 ## Progress column
 
@@ -95,11 +94,11 @@ The Global Indicator Framework (GIF) lays the foundation for countries to measur
 
 To complement the GIF and their own set of National indicators, Statistics Canada developed a robust and simple method of measuring progress which can be reported using visualizations that allow data users to easily see areas of progress or weakness. This method has been integrated into Open SDG for all it’s organisational users to make use of, including this platform. Even in the absence of specific quantitative targets, an estimate of progress can inform whether undesired trends are being observed by reporting progress deterioration. In essence, this measure of progress provides a simplified illustration of a country’s progress towards achieving the SDGs, assuming that the current trends are maintained.
 
-For a full breakdown of the methodology and supplementary information, [see the Progress Methodology Summary Page here](progress-methodology.md).
+For a full breakdown of the methodology and supplementary information, [see the Progress Methodology Summary Page here](https://open-sdg.readthedocs.io/en/latest/progress-methodology/).
 ```
 
 
-There is also the option to include a methodology page on your platform and we have created a template for you to include within your `_pages` folder in your site repository. You can access the template [here](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/example-pages/methodology.md.example) , where you can copy all the code on the page, paste it into a new .md file in your own `_pages` folder on your site repository, and include on your platform's menu by [following these instructions](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/#add-a-menu-item). Make sure to name the file like the others in your `_pages folder` with the ending '.md' - e.g. 'methodology.md'. Please note that if there are any updates to the methodology information that we provide, you will have to amend this yourself within your own platform, otherwise it may not be uptodate as it is on [our summary page](progress-methodology.md).
+There is also the option to include a methodology page on your platform and we have created a template for you to include within your `_pages` folder in your site repository. You can access the template [here](https://github.com/open-sdg/open-sdg-site-starter/blob/develop/example-pages/methodology.md.example) , where you can copy all the code on the page, paste it into a new .md file in your own `_pages` folder on your site repository, and include on your platform's menu by [following these instructions](https://open-sdg.readthedocs.io/en/latest/tutorials/create-pages/#add-a-menu-item). Make sure to name the file like the others in your `_pages` folder with the ending '.md' - e.g. 'methodology.md'. Please note that if there are any updates to the methodology information that we provide, you will have to amend this yourself within your own platform, otherwise it may not be uptodate as it is on [our summary page](progress-methodology.md).
 
 ## Manually specifying the progress status
 
