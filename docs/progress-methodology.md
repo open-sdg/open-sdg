@@ -317,258 +317,281 @@ Please [contact Statistics Canada directly](mailto:statcan.sdg-odd.statcan@statc
 The table below provides the targets and desired directions used to measure a country’s progress across the GIF. All targets are interpreted at the country-level. For example, GIF indicator 12.1.1 *Number of countries developing, adopting or implementing policy instruments aimed at supporting the shift to sustainable consumption and production* will measure only the country’s progress rather than measuring the number of countries worldwide that have achieved the desired policy objectives. 
 
 
-| Indicator number | Indicator name                                                                                                                                                    | Target or desired direction |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
-| 1.1.1            | Proportion of the population living below the international poverty line by sex, age, employment status and geographic location (urban/rural)                     | 0%                          |
-| 1.2.1            | Proportion of population living below the national poverty line, by sex and age                                                                                   | Reduce by 1/2               |
-| 1.2.2            | Proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions                                       | Reduce by 1/2               |
-| 1.3.1            | Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable                                                                                                                                    | Increase                    |
-| 1.4.1            | Proportion of population living in households with access to basic services                         | Increase access to basic information services; 100% for all other types of basic services |
-| 1.4.2            | Proportion of total adult population with secure tenure rights to land, (a) with legally recognized documentation, and (b) who perceive their rights to land as secure, by sex and type of tenure                                                                                                                                                                                 | 100%                        |
-| 1.5.1            | Number of deaths, missing persons and directly affected persons attributed to disasters per 100,000 population                                                    | Decrease                    |
-| 1.5.2            | Direct economic loss attributed to disasters in relation to global gross domestic product (GDP)                                                                   | Decrease                    |
-| 1.5.3            | Number of countries that adopt and implement national disaster risk reduction strategies in line with the Sendai Framework for Disaster Risk Reduction 2015–2030  | Score ≥ 0.75                |
-| 1.5.4            | Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies        | Increase                    |
-| 1.a.1            | Total official development assistance grants from all donors that focus on poverty reduction as a share of the recipient country’s gross national income          | Increase                    |
-| 1.a.2            | Proportion of total government spending on essential services (education, health and social protection)                                                           | Increase                    |
-| 1.b.1            | Pro-poor public social spending                                                                                                                                   | Increase                    |
-| 2.1.1            | Prevalence of undernourishment                                                                                                                                    | 0%                          |
-| 2.1.2            | Prevalence of moderate or severe food insecurity in the population, based on the Food Insecurity Experience Scale (FIES)                                          | 0%                          |
-| 2.2.1            | Prevalence of stunting (height for age <-2 standard deviation from the median of the World Health Organization (WHO) Child Growth Standards) among children under 5 years of age | 0%           |
-| 2.2.2            | Prevalence of malnutrition (weight for height >+2 or <-2 standard deviation from the median of the WHO Child Growth Standards) among children under 5 years of age, by type (wasting and overweight)                                                                                                                                                                            | 0%                          |
-| 2.2.3            | Prevalence of anaemia in women aged 15 to 49 years, by pregnancy status (percentage)                                                                              | 0%                          |
-| 2.2.4            | Prevalence of minimum dietary diversity, by population group (children aged 6 to 23.9 months and non-pregnant women aged 15 to 49 years)                          | Increase                    |
-| 2.3.1            | Volume of production per labour unit by classes of farming/pastoral/forestry enterprise size                                                                      | Increase by double          |
-| 2.3.2            | Average income of small-scale food producers, by sex and indigenous status                                                                                        | Increase by double          |
-| 2.4.1            | Proportion of agricultural area under productive and sustainable agriculture                                                                                      | Increase                    |
-| 2.5.1            | Number of plant and animal genetic resources for food and agriculture secured in either medium- or long-term conservation facilities                              | Increase                    |
-| 2.5.2            | Proportion of local breeds classified as being at risk of extinction                                                                                              | Decrease                    |
-| 2.a.1            | The agriculture orientation index for government expenditures                                                                                                     | Increase                    |
-| 2.a.2            | Total official flows (official development assistance plus other official flows) to the agriculture sector                                                        | Increase                    |
-| 2.b.1            | Agricultural export subsidies                                                                                                                                     | 0                           |
-| 2.c.1            | Indicator of food price anomalies                                                                                                                                 | ≤ 0.5                       |
-| 3.1.1            | Maternal mortality ratio                                                                                                                                          | ≤ 70 per 100,000            |
-| 3.1.2            | Proportion of births attended by skilled health personnel                                                                                                         | 100%                        |
-| 3.2.1            | Under‐5 mortality rate                                                                                                                                            | ≤ 25 per 1,000              |
-| 3.2.2            | Neonatal mortality rate                                                                                                                                           | ≤ 12 per 1,000              |
-| 3.3.1            | Number of new HIV infections per 1,000 uninfected population, by sex, age and key population                                                                      | 0                           |
-| 3.3.2            | Tuberculosis incidence per 100,000 population                                                                                                                     | Reduce by 80%               |
-| 3.3.3            | Malaria incidence per 1,000 population                                                                                                                            | Reduce by 90%               |
-| 3.3.4            | Hepatitis B incidence per 100,000 population                                                                                                                      | Reduce by 90%               |
-| 3.3.5            | Number of people requiring interventions against neglected tropical diseases                                                                        | Reduce by 90% (compared to 2010 baseline) |
-| 3.4.1            | Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease                                                              | Reduce by 1/3               |
-| 3.4.2            | Suicide mortality rate                                                                                                                                            | Reduce by 1/3               |
-| 3.5.1            | Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders                         | Increase                    |
-| 3.5.2            | Alcohol per capita consumption (aged 15 years and older) within a calendar year in litres of pure alcohol                                                         | Decrease                    |
-| 3.6.1            | Death rate due to road traffic injuries                                                                                                                           | Reduce by 1/2               |
-| 3.7.1            | Proportion of women of reproductive age (aged 15–49 years) who have their need for family planning satisfied with modern methods                                  | 100%                        |
-| 3.7.2            | Adolescent birth rate (aged 10–14 years; aged 15–19 years) per 1,000 women in that age group                                                             | Ages 10-14: 0%; Ages 15-19: Decrease |
-| 3.8.1            | Coverage of essential health services                                                                                                                             | 100%                        |
-| 3.8.2            | Proportion of population with large household expenditures on health as a share of total household expenditure or income                                          | 0%                          |
-| 3.9.1            | Mortality rate attributed to household and ambient air pollution                                                                                                  | Decrease                    |
-| 3.9.2            | Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (exposure to unsafe Water, Sanitation and Hygiene for All (WASH) services)       | Decrease                    |
-| 3.9.3            | Mortality rate attributed to unintentional poisoning                                                                                                              | Decrease                    |
-| 3.a.1            | Age-standardized prevalence of current tobacco use among persons aged 15 years and older                                                                          | Decrease                    |
-| 3.b.1            | Proportion of the target population covered by all vaccines included in their national programme                                                                  | Increase                    |
-| 3.b.2            | Total net official development assistance to medical research and basic health sectors                                                                            | Increase                    |
-| 3.b.3            | Proportion of health facilities that have a core set of relevant essential medicines available and affordable on a sustainable basis                              | 100%                        |
-| 3.c.1            | Health worker density and distribution                                                                                                                            | Increase                    |
-| 3.d.1            | International Health Regulations (IHR) capacity and health emergency preparedness                                                                                 | Increase                    |
-| 3.d.2            | Percentage of bloodstream infections due to selected antimicrobial-resistant organisms                                                                            | Decrease                    |
-| 4.1.1            | Proportion of children and young people (a) in grades 2/3; (b) at the end of primary; and (c) at the end of lower secondary achieving at least a minimum proficiency level in (i) reading and (ii) mathematics, by sex                                                                                                                                                                    | 100%                        |
-| 4.1.2            | Completion rate (primary education, lower secondary education, upper secondary education)                                                                         | 100%                        |
-| 4.2.1            | Proportion of children aged 24-59 months who are developmentally on track in health, learning and psychosocial well-being, by sex                                 | 100%                        |
-| 4.2.2            | Participation rate in organized learning (one year before the official primary entry age), by sex                                                                 | 100%                        |
-| 4.3.1            | Participation rate of youth and adults in formal and non-formal education and training in the previous 12 months, by sex                                          | Increase                    |
-| 4.4.1            | Proportion of youth and adults with information and communications technology (ICT) skills, by type of skill                                                      | Increase                    |
-| 4.5.1            | Parity indices (female/male, rural/urban, bottom/top wealth quintile and others such as disability status, indigenous peoples and conflict-affected, as data become available) for all education indicators on this list that can be disaggregated                                                                                                                                      | 1 (*See exceptions*)        |
-| 4.6.1            | Proportion of population in a given age group achieving at least a fixed level of proficiency in functional (a) literacy and (b) numeracy skills, by sex          | Youth: 100%; Adults: Increase |
-| 4.7.1            | Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment                                                                                                                                                                     | 100%                        |
-| 4.a.1            | Proportion of schools offering basic services, by type of service                                                                                                 | Increase                    |
-| 4.b.1            | Volume of official development assistance flows for scholarships by sector and type of study                                                                      | Increase                    |
-| 4.c.1            | Proportion of teachers with the minimum required qualifications, by education level                                                                               | Increase                    |
-| 5.1.1            | Whether or not legal frameworks are in place to promote, enforce and monitor equality and non‐discrimination on the basis of sex                                  | 100%                        |
-| 5.2.1            | Proportion of ever-partnered women and girls aged 15 years and older subjected to physical, sexual or psychological violence by a current or former intimate partner in the previous 12 months, by form of violence and by age                                                                                                                                                            | 0%                          |
-| 5.2.2            | Proportion of women and girls aged 15 years and older subjected to sexual violence by persons other than an intimate partner in the previous 12 months, by age and place of occurrence | 0%     |
-| 5.3.1            | Proportion of women aged 20–24 years who were married or in a union before age 15 and before age 18                                                               | 0%                          |
-| 5.3.2            | Proportion of girls and women aged 15–49 years who have undergone female genital mutilation/cutting, by age                                                       | 0%                          |
-| 5.4.1            | Proportion of time spent on unpaid domestic and care work, by sex, age and location                                                                              | Ratio = 1 (*See exceptions*) |
-| 5.5.1            | Proportion of seats held by women in (a) national parliaments and (b) local governments                                                                           | 50% (*See exceptions*)      |
-| 5.5.2            | Proportion of women in managerial positions                                                                                                                       | 50% (*See exceptions*)      |
-| 5.6.1            | Proportion of women aged 15–49 years who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care             | 100%                        |
-| 5.6.2            | Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education                                                                                                                                                                              | 100%                        |
-| 5.a.1            | (a) Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex; and (b) share of women among owners or rights-bearers of agricultural land, by type of tenure                                                                                                                                                            | (a) Increase; (b) 50% (*See exceptions*) |
-| 5.a.2            | Proportion of countries where the legal framework (including customary law) guarantees women’s equal rights to land ownership and/or control                      | Increase                    |
-| 5.b.1            | Proportion of individuals who own a mobile telephone, by sex                                                                                                      | Increase                    |
-| 5.c.1            | Proportion of countries with systems to track and make public allocations for gender equality and women’s empowerment                                             | Increase                    |
-| 6.1.1            | Proportion of population using safely managed drinking water services                                                                                             | 100%                        |
-| 6.2.1            | Proportion of population using (a) safely managed sanitation services and (b) a hand-washing facility with soap and water                                         | 100%                        |
-| 6.3.1            | Proportion of domestic and industrial wastewater flows safely treated                                                                        | Reduce proportion of untreated wastewater by 1/2 |
-| 6.3.2            | Proportion of bodies of water with good ambient water quality                                                                                                     | Increase                    |
-| 6.4.1            | Change in water-use efficiency over time                                                                                                                          | Increase                    |
-| 6.4.2            | Level of water stress: freshwater withdrawal as a proportion of available freshwater resources                                                                    | ≤ 25%                       |
-| 6.5.1            | Degree of integrated water resources management                                                                                                                   | 100%                        |
-| 6.5.2            | Proportion of transboundary basin area with an operational arrangement for water cooperation                                                                      | 100%                        |
-| 6.6.1            | Change in the extent of water-related ecosystems over time                                                                                                        | Increase                    |
-| 6.a.1            | Amount of water- and sanitation-related official development assistance that is part of a government-coordinated spending plan                                    | Increase                    |
-| 6.b.1            | Proportion of local administrative units with established and operational policies and procedures for participation of local communities in water and sanitation management | Increase          |
-| 7.1.1            | Proportion of population with access to electricity                                                                                                               | 100%                        |
-| 7.1.2            | Proportion of population with primary reliance on clean fuels and technology                                                                                      | 100%                        |
-| 7.2.1            | Renewable energy share in the total final energy consumption                                                                                                      | Increase                    |
-| 7.3.1            | Energy intensity measured in terms of primary energy and GDP                                                                                                      | Reduce by 1/2               |
-| 7.a.1            | International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems | Increase               |
-| 7.b.1            | Installed renewable energy-generating capacity in developing countries (in watts per capita)                                                                      | Increase                    |
-| 8.1.1            | Annual growth rate of real GDP per capita                                                                                          | LDC ≥ 7%; All other countries: Increase (*See exceptions*) |
-| 8.2.1            | Annual growth rate of real GDP per employed person                                                                                                                | Increase (*See exceptions*) |
-| 8.3.1            | Proportion of informal employment in total employment, by sector and sex                                                                                          | Decrease                    |
-| 8.4.1            | Material footprint, material footprint per capita, and material footprint per GDP                                                                                 | Decrease                    |
-| 8.4.2            | Domestic material consumption, domestic material consumption per capita, and domestic material consumption per GDP                                                | Decrease                    |
-| 8.5.1            | Average hourly earnings of employees, by sex, age, occupation and persons with disabilities                                                                       | Increase                    |
-| 8.5.2            | Unemployment rate, by sex, age and persons with disabilities                                                                                                      | 3% (*See exceptions*)       |
-| 8.6.1            | Proportion of youth (aged 15–24 years) not in education, employment or training                                                                                   | Decrease                    |
-| 8.7.1            | Proportion and number of children aged 5–17 years engaged in child labour, by sex and age                                                                         | 0%                          |
-| 8.8.1            | Fatal and non-fatal occupational injuries per 100,000 workers, by sex and migrant status                                                                          | Decrease                    |
-| 8.8.2            | Level of national compliance with labour rights (freedom of association and collective bargaining) based on International Labour Organization (ILO) textual sources and national legislation, by sex and migrant status                                                                                                                                                                 | Decrease                    |
-| 8.9.1            | Tourism direct GDP as a proportion of total GDP and in growth rate                                                                                                | Increase                    |
-| 8.9.2            | Employed persons in the tourism industries                                                                                                                        | Increase                    |
-| 8.10.1           | (a) Number of commercial bank branches per 100,000 adults and (b) number of automated teller machines (ATMs) per 100,000 adults                                | Developing countries: Increase |
-| 8.10.2           | Proportion of adults (15 years and older) with an account at a bank or other financial institution or with a mobile-money-service provider                        | 100%                        |
-| 8.a.1            | Aid for Trade commitments and disbursements                                                                                                                       | Increase                    |
-| 8.b.1            | Existence of a developed and operationalized national strategy for youth employment, as a distinct strategy or as part of a national employment strategy          | Score = 3                   |
-| 9.1.1            | Proportion of the rural population who live within 2 km of an all-season road                                                                                     | 100%                        |
-| 9.1.2            | Passenger and freight volumes, by mode of transport                                                                                                               | Increase                    |
-| 9.2.1            | Manufacturing value added as a proportion of GDP and per capita                                                                        | LDC: Increase by double; All other countries: Increase |
-| 9.2.2            | Manufacturing employment as a proportion of total employment                                                                           | LDC: Increase by double; All other countries: Increase |
-| 9.3.1            | Proportion of small-scale industries in total industry value added                                                                                                | Increase                    |
-| 9.3.2            | Proportion of small-scale industries with a loan or line of credit                                                                                                | Increase                    |
-| 9.4.1            | CO2 emission per unit of value added                                                                                                                              | Decrease                    |
-| 9.5.1            | Research and development expenditure as a proportion of GDP                                                                                                       | Increase                    |
-| 9.5.2            | Researchers (in full-time equivalent) per million inhabitants                                                                                                     | Increase                    |
-| 9.a.1            | Total official international support (official development assistance plus other official flows) to infrastructure                                                | Increase                    |
-| 9.b.1            | Proportion of medium and high-tech industry value added in total value added                                                                                      | Increase                    |
-| 9.c.1            | Proportion of population covered by a mobile network, by technology                                                                                               | Increase                    |
-| 10.1.1           | Growth rates of household expenditure or income per capita among the bottom 40 per cent of the population and the total population                                | ≥ 1                         |
-| 10.2.1           | Proportion of people living below 50 per cent of median income, by sex, age and persons with disabilities                                                         | Decrease                    |
-| 10.3.1           | Proportion of population reporting having personally felt discriminated against or harassed in the previous 12 months on the basis of a ground of discrimination prohibited under international human rights law                                                                                                                                                                       | Decrease                    |
-| 10.4.1           | Labour share of GDP                                                                                                                                               | Increase                    |
-| 10.4.2           | Redistributive impact of fiscal policy                                                                                                                            | Increase                    |
-| 10.5.1           | Financial Soundness Indicators                                                                                                                                    | Multiple                    |
-| 10.6.1           | Proportion of members and voting rights of developing countries in international organizations                                                                    | Increase                    |
-| 10.7.1           | Recruitment cost borne by employee as a proportion of monthly income earned in country of destination                                                             | Decrease                    |
-| 10.7.2           | Number of countries with migration policies that facilitate orderly, safe, regular and responsible migration and mobility of people                          | Score ≥ 3 (Meets or fully meets) |
-| 10.7.3           | Number of people who died or disappeared in the process of migration towards an international destination                                                         | Decrease                    |
-| 10.7.4           | Proportion of the population who are refugees, by country of origin                                                                                               | Decrease                    |
-| 10.a.1           | Proportion of tariff lines applied to imports from least developed countries and developing countries with zero-tariff                                            | Decrease                    |
-| 10.b.1           | Total resource flows for development, by recipient and donor countries and type of flow (e.g. official development assistance, foreign direct investment and other flows) | Increase            |
-| 10.c.1           | Remittance costs as a proportion of the amount remitted                                                                                                           | ≤ 3%                        |
-| 11.1.1           | Proportion of urban population in core housing need                                                                                                               | 0%                          |
-| 11.2.1           | Proportion of population that has convenient access to public transport, by sex, age and persons with disabilities                                                | 100%                        |
-| 11.3.1           | Ratio of land consumption rate to population growth rate                                                                                                          | Decrease                    |
-| 11.3.2           | Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically            | Increase                    |
-| 11.4.1           | Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)                                                                                                                      | Increase                    |
-| 11.5.1           | Number of deaths, missing persons and directly affected persons attributed to disasters per 100,000 population                                                    | Decrease                    |
-| 11.5.2           | Direct economic loss in relation to global GDP, damage to critical infrastructure and number of disruptions to basic services, attributed to disasters            | Decrease                    |
-| 11.5.3           | (a) Damage to critical infrastructure and (b) number of disruptions to basic services, attributed to disasters                                                    | Decrease                    |
-| 11.6.1           | Proportion of municipal solid waste collected and managed in controlled facilities out of total municipal waste generated, by cities                              | Increase                    |
-| 11.6.2           | Annual mean levels of fine particulate matter (e.g. PM2.5 and PM10) in cities (population weighted)                                                               | Decrease                    |
-| 11.7.1           | Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities                                 | Increase                    |
-| 11.7.2           | Proportion of persons victim of physical or sexual harassment, by sex, age, disability status and place of occurrence, in the previous 12 months                  | 0%                          |
-| 11.a.1           | Number of countries that have national urban policies or regional development plans that (a) respond to population dynamics; (b) ensure balanced territorial development; and (c) increase local fiscal space                                                                                                                                                                           | Non-statistical             |
-| 11.b.1           | Number of countries that adopt and implement national disaster risk reduction strategies in line with the Sendai Framework for Disaster Risk Reduction 2015–2030  | Score ≥ 0.75                |
-| 11.b.2           | Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies        | Increase                    |
-| 12.1.1           | Number of countries developing, adopting or implementing policy instruments aimed at supporting the shift to sustainable consumption and production               | Non-statistical             |
-| 12.2.1           | Material footprint, material footprint per capita, and material footprint per GDP                                                                                 | Decrease                    |
-| 12.2.2           | Domestic material consumption, domestic material consumption per capita, and domestic material consumption per GDP                                                | Decrease                    |
-| 12.3.1           | (a) Food loss index and (b) food waste index                                                                                                                  | (a) Decrease; (b) Reduce by 1/2 |
-| 12.4.1           | Number of parties to international multilateral environmental agreements on hazardous waste, and other chemicals that meet their commitments and obligations in transmitting information as required by each relevant agreement                                                                                                                                                    | 100%                        |
-| 12.4.2           | (a) Hazardous waste generated per capita; and (b) proportion of hazardous waste treated, by type of treatment                                                     | (a) Decrease; (b) 100%      |
-| 12.5.1           | National recycling rate, tons of material recycled                                                                                                                | Increase                    |
-| 12.6.1           | Number of companies publishing sustainability reports                                                                                                             | Increase                    |
-| 12.7.1           | Degree of sustainable public procurement policies and action plan implementation                                                                                  | Increase                    |
-| 12.8.1           | Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment                                                                                                                                                                     | 100%                        |
-| 12.a.1           | Installed renewable energy-generating capacity in developing countries (in watts per capita)                                                                      | Increase                    |
-| 12.b.1           | Implementation of standard accounting tools to monitor the economic and environmental aspects of tourism sustainability                                           | Increase                    |
-| 12.c.1           | Amount of fossil-fuel subsidies per unit of GDP (production and consumption)                                                                                      | Decrease                    |
-| 13.1.1           | Number of deaths, missing persons and directly affected persons attributed to disasters per 100,000 population                                                    | Decrease                    |
-| 13.1.2           | Number of countries that adopt and implement national disaster risk reduction strategies in line with the Sendai Framework for Disaster Risk Reduction 2015–2030  | Score ≥ 0.75                |
-| 13.1.3           | Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies        | Increase                    |
-| 13.2.1           | Number of countries with nationally determined contributions, long-term strategies, national adaptation plans, strategies as reported in adaptation communications and national communications                                                                                                                                                                         | Non-statistical             |
-| 13.2.2           | Total greenhouse gas emissions per year                                                                                                                           | Decrease                    |
-| 13.3.1           | Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment                                                                                                                                                                     | Increase                    |
-| 13.a.1           | Amounts provided and mobilized in United States dollars per year in relation to the continued existing collective mobilization goal of the $100 billion commitment through to 2025 | Increase   |
-| 13.b.1           | Number of least developed countries and small island developing States with nationally determined contributions, long-term strategies, national adaptation plans, strategies as reported in adaptation communications and national communications                                                                                                                                  | Non-statistical             |
-| 14.1.1           | (a) Index of coastal eutrophication; and (b) plastic debris density                                                                                               | (a) Decrease; (b) Decrease  |
-| 14.2.1           | Number of countries using ecosystem-based approaches to managing marine areas                                                                                     | Non-statistical             |
-| 14.3.1           | Average marine acidity (pH) measured at agreed suite of representative sampling stations                                                                          | Decrease                    |
-| 14.4.1           | Proportion of fish stocks within biologically sustainable levels                                                                                                  | 100%                        |
-| 14.5.1           | Coverage of protected areas in relation to marine areas                                                                                                           | ≥ 10%                       |
-| 14.6.1           | Degree of implementation of international instruments aiming to combat illegal, unreported and unregulated fishing                                                | Score ≥ 0.8 (Very high)     |
-| 14.7.1           | Sustainable fisheries as a proportion of GDP in small island developing States, least developed countries and all countries                                       | Increase                    |
-| 14.a.1           | Proportion of total research budget allocated to research in the field of marine technology                                                                       | Increase                    |
-| 14.b.1           | Degree of application of a legal/regulatory/ policy/institutional framework which recognizes and protects access rights for small-scale fisheries                 | Score ≥ 0.8 (Very high)     |
-| 14.c.1           | Number of countries making progress in ratifying, accepting and implementing through legal, policy and institutional frameworks, ocean-related instruments that implement international law, as reflected in the United Nations Convention on the Law of the Sea, for the conservation and sustainable use of the oceans and their resources                                           | 100%                        |
-| 15.1.1           | Forest area as a proportion of total land area                                                                                                         | No change (*Country-dependent target*) |
-| 15.1.2           | Proportion of important sites for terrestrial and freshwater biodiversity that are covered by protected areas, by ecosystem type                                  | 100%                        |
-| 15.2.1           | Progress towards sustainable forest management                                                                                                                    | Increase                    |
-| 15.3.1           | Proportion of land that is degraded over total land area                                                                                                          | Decrease                    |
-| 15.4.1           | Coverage by protected areas of important sites for mountain biodiversity                                                                                          | 100%                        |
-| 15.4.2           | (a) Mountain Green Cover Index and (b) proportion of degraded mountain land                                                           | (a) Increase (*Country-dependent target*); (b) Decrease |
-| 15.5.1           | Red List Index                                                                                                                                                    | Increase (*See exceptions*) |
-| 15.6.1           | Number of countries that have adopted legislative, administrative and policy frameworks to ensure fair and equitable sharing of benefits            | Increase; Includes non-statistical series |
-| 15.7.1           | Proportion of traded wildlife that was poached or illicitly trafficked                                                                                            | 0%                          |
-| 15.8.1           | Proportion of countries adopting relevant national legislation and adequately resourcing the prevention or control of invasive alien species                      |Non-statistical              |
-| 15.9.1           | (a) Number of countries that have established national targets in accordance with or similar to Aichi Biodiversity Target 2 of the Strategic Plan for Biodiversity 2011–2020 in their national biodiversity strategy and action plans and the progress reported towards these targets; and (b) integration of biodiversity into national accounting and reporting systems, defined as implementation of the System of Environmental-Economic Accounting                                                                                                                                        | (a) Non-statistical; (b) Non-statistical  |
-| 15.a.1           | (a) Official development assistance on conservation and sustainable use of biodiversity; and (b) revenue generated and finance mobilized from biodiversity-relevant economic instruments                                                                                                                                                                            | (a) Increase; (b) Increase  |
-| 15.b.1           | (a) Official development assistance on conservation and sustainable use of biodiversity; and (b) revenue generated and finance mobilized from biodiversity-relevant economic instruments                                                                                                                                                                            | (a) Increase; (b) Increase  |
-| 15.c.1           | Proportion of traded wildlife that was poached or illicitly trafficked                                                                                            | 0%                          |
-| 16.1.1           | Number of victims of intentional homicide per 100,000 population, by sex and age                                                                                  | Decrease                    |
-| 16.1.2           | Conflict-related deaths per 100,000 population, by sex, age and cause                                                                                             | Decrease                    |
-| 16.1.3           | Proportion of population subjected to (a) physical violence, (b) psychological violence and (c) sexual violence in the previous 12 months            | (a) Decrease; (b) Decrease; (c) Decrease |
-| 16.1.4           | Proportion of population that feel safe walking alone around the area they live                                                                                   | Increase                    |
-| 16.2.1           | Proportion of children aged 1–17 years who experienced any physical punishment and/or psychological aggression by caregivers in the past month                    | 0%                          |
-| 16.2.2           | Number of victims of human trafficking per 100,000 population, by sex, age and form of exploitation                                                               | 0                           |
-| 16.2.3           | Proportion of young women and men aged 18–29 years who experienced sexual violence by age 18                                                                      | 0%                          |
-| 16.3.1           | Proportion of victims of violence in the previous 12 months who reported their victimization to competent authorities or other officially recognized conflict resolution mechanisms | 100%      |
-| 16.3.2           | Unsentenced detainees as a proportion of overall prison population                                                                                                | Decrease                    |
-| 16.3.3           | Proportion of the population who have experienced a dispute in the past two years and who accessed a formal or informal dispute resolution mechanism, by type of mechanism | 100%               |
-| 16.4.1           | Total value of inward and outward illicit financial flows (in current United States dollars)                                                                      | Decrease                    |
-| 16.4.2           | Proportion of seized, found or surrendered arms whose illicit origin or context has been traced or established by a competent authority in line with international instruments | Increase       |
-| 16.5.1           | Proportion of persons who had at least one contact with a public official and who paid a bribe to a public official, or were asked for a bribe by those public officials, during the previous 12 months                                                                                                                                                                                 | Decrease                    |
-| 16.5.2           | Proportion of businesses that had at least one contact with a public official and that paid a bribe to a public official, or were asked for a bribe by those public officials during the previous 12 months                                                                                                                                                                              | Decrease                    |
-| 16.6.1           | Primary government expenditures as a proportion of original approved budget, by sector (or by budget codes or similar)                                            | 100% (*See exceptions*)     |
-| 16.6.2           | Proportion of population satisfied with their last experience of public services                                                                                  | 100%                        |
-| 16.7.1           | Proportions of positions in national and local institutions, including (a) the legislatures; (b) the public service; and (c) the judiciary, compared to national distributions, by sex, age, persons with disabilities and population groups                                                                                                                        | (a) Ratio = 1; (b) Ratio = 1; (c) Ratio = 1 |
-| 16.7.2           | Proportion of population who believe decision-making is inclusive and responsive, by sex, age, disability and population group                                    | 100%                        |
-| 16.8.1           | Proportion of members and voting rights of developing countries in international organizations                                                                    | Increase                    |
-| 16.9.1           | Proportion of children under 5 years of age whose births have been registered with a civil authority, by age                                                      | 100%                        |
-| 16.10.1          | Number of verified cases of killing, kidnapping, enforced disappearance, arbitrary detention and torture of journalists, associated media personnel, trade unionists and human rights advocates in the previous 12 months                                                                                                                                                                 | 0                           |
-| 16.10.2          | Number of countries that adopt and implement constitutional, statutory and/or policy guarantees for public access to information                                  | Score = 9                   |
-| 16.a.1           | Existence of independent national human rights institutions in compliance with the Paris Principles                                                               | Non-statistical             |
-| 16.b.1           | Proportion of population reporting having personally felt discriminated against or harassed in the previous 12 months on the basis of a ground of discrimination prohibited under international human rights law                                                                                                                                                                       | Decrease                    |
-| 17.1.1           | Total government revenue as a proportion of GDP, by source                                                                                                        | Increase                    |
-| 17.1.1           | Proportion of domestic budget funded by domestic taxes                                                                                                            | Increase                    |
-| 17.2.1           | Net official development assistance, total and to least developed countries, as a proportion of the Organization for Economic Cooperation and Development (OECD) Development Assistance Committee donors’ gross national income (GNI)                                                                                                                                  | ≥ 0.7% to developing countries; ≥ 0.2% to LDC |
-| 17.3.1           | Additional financial resources mobilized for developing countries from multiple sources                                                                           | Increase                    |
-| 17.3.2           | Volume of remittances (in United States dollars) as a proportion of total GDP                                                                                     | Increase                    |
-| 17.4.1           | Debt service as a proportion of exports of goods and services                                                                                                     | Decrease                    |
-| 17.5.1           | Number of countries that adopt and implement investment promotion regimes for developing countries, including the least developed countries                       | Non-statistical             |
-| 17.6.1           | Fixed Internet broadband subscriptions per 100 inhabitants, by speed                                                                                              | Increase                    |
-| 17.7.1           | Total amount of funding for developing countries to promote the development, transfer, dissemination and diffusion of environmentally sound technologies          | Increase                    |
-| 17.8.1           | Proportion of individuals using the Internet                                                                                                                      | 100%                        |
-| 17.9.1           | Dollar value of financial and technical assistance (including through North-South, South‐South and triangular cooperation) committed to developing countries      | Increase                    |
-| 17.10.1          | Worldwide weighted tariff-average                                                                                                                                 | 0                           |
-| 17.11.1          | Developing countries’ and least developed countries’ share of global exports                                                                                      | Increase by double          |
-| 17.12.1          | Weighted average tariffs faced by developing countries, least developed countries and small island developing States                                              | 0                           |
-| 17.13.1          | Macroeconomic Dashboard                                                                                                                                           | Multiple                    |
-| 17.14.1          | Number of countries with mechanisms in place to enhance policy coherence of sustainable development                                                               | Increase                    |
-| 17.15.1          | Extent of use of country-owned results frameworks and planning tools by providers of development cooperation                                                      | Increase                    |
-| 17.16.1          | Number of countries reporting progress in multi-stakeholder development effectiveness monitoring frameworks that support the achievement of the sustainable development goals | Non-statistical |
-| 17.17.1          | Amount in United States dollars committed to public-private partnerships for infrastructure                                                                       | Increase                    |
-| 17.18.1          | Statistical capacity indicator for Sustainable Development Goal monitoring                                                                                        | Increase                    |
-| 17.18.2          | Number of countries that have national statistical legislation that complies with the Fundamental Principles of Official Statistics                               | Non-statistical             |
-| 17.18.3          | Number of countries with a national statistical plan that is fully funded and under implementation, by source of funding                                          | Non-statistical             |
-| 17.19.1          | Dollar value of all resources made available to strengthen statistical capacity in developing countries                                                           | Increase                    |
-| 17.19.2          | Proportion of countries that (a) have conducted at least one population and housing census in the last 10 years; and (b) have achieved 100 per cent birth registration and 80 per cent death registration                                                                                                                                                                           | Non-statistical             |
+
+<style>
+table.targets {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+.targets th, .targets td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.targets tbody tr:nth-child(odd) td { background: #fafafa; }
+</style>
+
+<table class="targets">
+<colgroup><col style="width: 12ch"><col><col style="width: 22ch"></colgroup>
+<thead><tr><th>Indicator number</th><th>Indicator name</th><th>Target or desired direction</th></tr></thead>
+<tbody>
+<tr><td>1.1.1</td><td>Proportion of the population living below the international poverty line by sex, age, employment status and geographic location (urban/rural)</td><td>0%</td></tr>
+<tr><td>1.2.1</td><td>Proportion of population living below the national poverty line, by sex and age</td><td>Reduce by 1/2</td></tr>
+<tr><td>1.2.2</td><td>Proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions</td><td>Reduce by 1/2</td></tr>
+<tr><td>1.3.1</td><td>Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable</td><td>Increase</td></tr>
+<tr><td>1.4.1</td><td>Proportion of population living in households with access to basic services</td><td>Increase access to basic information services; 100% for all other types of basic services</td></tr>
+<tr><td>1.4.2</td><td>Proportion of total adult population with secure tenure rights to land, (a) with legally recognized documentation, and (b) who perceive their rights to land as secure, by sex and type of tenure</td><td>100%</td></tr>
+<tr><td>1.5.1</td><td>Number of deaths, missing persons and directly affected persons attributed to disasters per 100,000 population</td><td>Decrease</td></tr>
+<tr><td>1.5.2</td><td>Direct economic loss attributed to disasters in relation to global gross domestic product (GDP)</td><td>Decrease</td></tr>
+<tr><td>1.5.3</td><td>Number of countries that adopt and implement national disaster risk reduction strategies in line with the Sendai Framework for Disaster Risk Reduction 2015–2030</td><td>Score ≥ 0.75</td></tr>
+<tr><td>1.5.4</td><td>Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies</td><td>Increase</td></tr>
+<tr><td>1.a.1</td><td>Total official development assistance grants from all donors that focus on poverty reduction as a share of the recipient country’s gross national income</td><td>Increase</td></tr>
+<tr><td>1.a.2</td><td>Proportion of total government spending on essential services (education, health and social protection)</td><td>Increase</td></tr>
+<tr><td>1.b.1</td><td>Pro-poor public social spending</td><td>Increase</td></tr>
+<tr><td>2.1.1</td><td>Prevalence of undernourishment</td><td>0%</td></tr>
+<tr><td>2.1.2</td><td>Prevalence of moderate or severe food insecurity in the population, based on the Food Insecurity Experience Scale (FIES)</td><td>0%</td></tr>
+<tr><td>2.2.1</td><td>Prevalence of stunting (height for age &lt;-2 standard deviation from the median of the World Health Organization (WHO) Child Growth Standards) among children under 5 years of age</td><td>0%</td></tr>
+<tr><td>2.2.2</td><td>Prevalence of malnutrition (weight for height &gt;+2 or &lt;-2 standard deviation from the median of the WHO Child Growth Standards) among children under 5 years of age, by type (wasting and overweight)</td><td>0%</td></tr>
+<tr><td>2.2.3</td><td>Prevalence of anaemia in women aged 15 to 49 years, by pregnancy status (percentage)</td><td>0%</td></tr>
+<tr><td>2.2.4</td><td>Prevalence of minimum dietary diversity, by population group (children aged 6 to 23.9 months and non-pregnant women aged 15 to 49 years)</td><td>Increase</td></tr>
+<tr><td>2.3.1</td><td>Volume of production per labour unit by classes of farming/pastoral/forestry enterprise size</td><td>Increase by double</td></tr>
+<tr><td>2.3.2</td><td>Average income of small-scale food producers, by sex and indigenous status</td><td>Increase by double</td></tr>
+<tr><td>2.4.1</td><td>Proportion of agricultural area under productive and sustainable agriculture</td><td>Increase</td></tr>
+<tr><td>2.5.1</td><td>Number of plant and animal genetic resources for food and agriculture secured in either medium- or long-term conservation facilities</td><td>Increase</td></tr>
+<tr><td>2.5.2</td><td>Proportion of local breeds classified as being at risk of extinction</td><td>Decrease</td></tr>
+<tr><td>2.a.1</td><td>The agriculture orientation index for government expenditures</td><td>Increase</td></tr>
+<tr><td>2.a.2</td><td>Total official flows (official development assistance plus other official flows) to the agriculture sector</td><td>Increase</td></tr>
+<tr><td>2.b.1</td><td>Agricultural export subsidies</td><td>0</td></tr>
+<tr><td>2.c.1</td><td>Indicator of food price anomalies</td><td>≤ 0.5</td></tr>
+<tr><td>3.1.1</td><td>Maternal mortality ratio</td><td>≤ 70 per 100,000</td></tr>
+<tr><td>3.1.2</td><td>Proportion of births attended by skilled health personnel</td><td>100%</td></tr>
+<tr><td>3.2.1</td><td>Under‐5 mortality rate</td><td>≤ 25 per 1,000</td></tr>
+<tr><td>3.2.2</td><td>Neonatal mortality rate</td><td>≤ 12 per 1,000</td></tr>
+<tr><td>3.3.1</td><td>Number of new HIV infections per 1,000 uninfected population, by sex, age and key population</td><td>0</td></tr>
+<tr><td>3.3.2</td><td>Tuberculosis incidence per 100,000 population</td><td>Reduce by 80%</td></tr>
+<tr><td>3.3.3</td><td>Malaria incidence per 1,000 population</td><td>Reduce by 90%</td></tr>
+<tr><td>3.3.4</td><td>Hepatitis B incidence per 100,000 population</td><td>Reduce by 90%</td></tr>
+<tr><td>3.3.5</td><td>Number of people requiring interventions against neglected tropical diseases</td><td>Reduce by 90% (compared to 2010 baseline)</td></tr>
+<tr><td>3.4.1</td><td>Mortality rate attributed to cardiovascular disease, cancer, diabetes or chronic respiratory disease</td><td>Reduce by 1/3</td></tr>
+<tr><td>3.4.2</td><td>Suicide mortality rate</td><td>Reduce by 1/3</td></tr>
+<tr><td>3.5.1</td><td>Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders</td><td>Increase</td></tr>
+<tr><td>3.5.2</td><td>Alcohol per capita consumption (aged 15 years and older) within a calendar year in litres of pure alcohol</td><td>Decrease</td></tr>
+<tr><td>3.6.1</td><td>Death rate due to road traffic injuries</td><td>Reduce by 1/2</td></tr>
+<tr><td>3.7.1</td><td>Proportion of women of reproductive age (aged 15–49 years) who have their need for family planning satisfied with modern methods</td><td>100%</td></tr>
+<tr><td>3.7.2</td><td>Adolescent birth rate (aged 10–14 years; aged 15–19 years) per 1,000 women in that age group</td><td>Ages 10-14: 0%; Ages 15-19: Decrease</td></tr>
+<tr><td>3.8.1</td><td>Coverage of essential health services</td><td>100%</td></tr>
+<tr><td>3.8.2</td><td>Proportion of population with large household expenditures on health as a share of total household expenditure or income</td><td>0%</td></tr>
+<tr><td>3.9.1</td><td>Mortality rate attributed to household and ambient air pollution</td><td>Decrease</td></tr>
+<tr><td>3.9.2</td><td>Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (exposure to unsafe Water, Sanitation and Hygiene for All (WASH) services)</td><td>Decrease</td></tr>
+<tr><td>3.9.3</td><td>Mortality rate attributed to unintentional poisoning</td><td>Decrease</td></tr>
+<tr><td>3.a.1</td><td>Age-standardized prevalence of current tobacco use among persons aged 15 years and older</td><td>Decrease</td></tr>
+<tr><td>3.b.1</td><td>Proportion of the target population covered by all vaccines included in their national programme</td><td>Increase</td></tr>
+<tr><td>3.b.2</td><td>Total net official development assistance to medical research and basic health sectors</td><td>Increase</td></tr>
+<tr><td>3.b.3</td><td>Proportion of health facilities that have a core set of relevant essential medicines available and affordable on a sustainable basis</td><td>100%</td></tr>
+<tr><td>3.c.1</td><td>Health worker density and distribution</td><td>Increase</td></tr>
+<tr><td>3.d.1</td><td>International Health Regulations (IHR) capacity and health emergency preparedness</td><td>Increase</td></tr>
+<tr><td>3.d.2</td><td>Percentage of bloodstream infections due to selected antimicrobial-resistant organisms</td><td>Decrease</td></tr>
+<tr><td>4.1.1</td><td>Proportion of children and young people (a) in grades 2/3; (b) at the end of primary; and (c) at the end of lower secondary achieving at least a minimum proficiency level in (i) reading and (ii) mathematics, by sex</td><td>100%</td></tr>
+<tr><td>4.1.2</td><td>Completion rate (primary education, lower secondary education, upper secondary education)</td><td>100%</td></tr>
+<tr><td>4.2.1</td><td>Proportion of children aged 24-59 months who are developmentally on track in health, learning and psychosocial well-being, by sex</td><td>100%</td></tr>
+<tr><td>4.2.2</td><td>Participation rate in organized learning (one year before the official primary entry age), by sex</td><td>100%</td></tr>
+<tr><td>4.3.1</td><td>Participation rate of youth and adults in formal and non-formal education and training in the previous 12 months, by sex</td><td>Increase</td></tr>
+<tr><td>4.4.1</td><td>Proportion of youth and adults with information and communications technology (ICT) skills, by type of skill</td><td>Increase</td></tr>
+<tr><td>4.5.1</td><td>Parity indices (female/male, rural/urban, bottom/top wealth quintile and others such as disability status, indigenous peoples and conflict-affected, as data become available) for all education indicators on this list that can be disaggregated</td><td>1 (*See exceptions*)</td></tr>
+<tr><td>4.6.1</td><td>Proportion of population in a given age group achieving at least a fixed level of proficiency in functional (a) literacy and (b) numeracy skills, by sex</td><td>Youth: 100%; Adults: Increase</td></tr>
+<tr><td>4.7.1</td><td>Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment</td><td>100%</td></tr>
+<tr><td>4.a.1</td><td>Proportion of schools offering basic services, by type of service</td><td>Increase</td></tr>
+<tr><td>4.b.1</td><td>Volume of official development assistance flows for scholarships by sector and type of study</td><td>Increase</td></tr>
+<tr><td>4.c.1</td><td>Proportion of teachers with the minimum required qualifications, by education level</td><td>Increase</td></tr>
+<tr><td>5.1.1</td><td>Whether or not legal frameworks are in place to promote, enforce and monitor equality and non‐discrimination on the basis of sex</td><td>100%</td></tr>
+<tr><td>5.2.1</td><td>Proportion of ever-partnered women and girls aged 15 years and older subjected to physical, sexual or psychological violence by a current or former intimate partner in the previous 12 months, by form of violence and by age</td><td>0%</td></tr>
+<tr><td>5.2.2</td><td>Proportion of women and girls aged 15 years and older subjected to sexual violence by persons other than an intimate partner in the previous 12 months, by age and place of occurrence</td><td>0%</td></tr>
+<tr><td>5.3.1</td><td>Proportion of women aged 20–24 years who were married or in a union before age 15 and before age 18</td><td>0%</td></tr>
+<tr><td>5.3.2</td><td>Proportion of girls and women aged 15–49 years who have undergone female genital mutilation/cutting, by age</td><td>0%</td></tr>
+<tr><td>5.4.1</td><td>Proportion of time spent on unpaid domestic and care work, by sex, age and location</td><td>Ratio = 1 (*See exceptions*)</td></tr>
+<tr><td>5.5.1</td><td>Proportion of seats held by women in (a) national parliaments and (b) local governments</td><td>50% (*See exceptions*)</td></tr>
+<tr><td>5.5.2</td><td>Proportion of women in managerial positions</td><td>50% (*See exceptions*)</td></tr>
+<tr><td>5.6.1</td><td>Proportion of women aged 15–49 years who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care</td><td>100%</td></tr>
+<tr><td>5.6.2</td><td>Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education</td><td>100%</td></tr>
+<tr><td>5.a.1</td><td>(a) Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex; and (b) share of women among owners or rights-bearers of agricultural land, by type of tenure</td><td>(a) Increase; (b) 50% (*See exceptions*)</td></tr>
+<tr><td>5.a.2</td><td>Proportion of countries where the legal framework (including customary law) guarantees women’s equal rights to land ownership and/or control</td><td>Increase</td></tr>
+<tr><td>5.b.1</td><td>Proportion of individuals who own a mobile telephone, by sex</td><td>Increase</td></tr>
+<tr><td>5.c.1</td><td>Proportion of countries with systems to track and make public allocations for gender equality and women’s empowerment</td><td>Increase</td></tr>
+<tr><td>6.1.1</td><td>Proportion of population using safely managed drinking water services</td><td>100%</td></tr>
+<tr><td>6.2.1</td><td>Proportion of population using (a) safely managed sanitation services and (b) a hand-washing facility with soap and water</td><td>100%</td></tr>
+<tr><td>6.3.1</td><td>Proportion of domestic and industrial wastewater flows safely treated</td><td>Reduce proportion of untreated wastewater by 1/2</td></tr>
+<tr><td>6.3.2</td><td>Proportion of bodies of water with good ambient water quality</td><td>Increase</td></tr>
+<tr><td>6.4.1</td><td>Change in water-use efficiency over time</td><td>Increase</td></tr>
+<tr><td>6.4.2</td><td>Level of water stress: freshwater withdrawal as a proportion of available freshwater resources</td><td>≤ 25%</td></tr>
+<tr><td>6.5.1</td><td>Degree of integrated water resources management</td><td>100%</td></tr>
+<tr><td>6.5.2</td><td>Proportion of transboundary basin area with an operational arrangement for water cooperation</td><td>100%</td></tr>
+<tr><td>6.6.1</td><td>Change in the extent of water-related ecosystems over time</td><td>Increase</td></tr>
+<tr><td>6.a.1</td><td>Amount of water- and sanitation-related official development assistance that is part of a government-coordinated spending plan</td><td>Increase</td></tr>
+<tr><td>6.b.1</td><td>Proportion of local administrative units with established and operational policies and procedures for participation of local communities in water and sanitation management</td><td>Increase</td></tr>
+<tr><td>7.1.1</td><td>Proportion of population with access to electricity</td><td>100%</td></tr>
+<tr><td>7.1.2</td><td>Proportion of population with primary reliance on clean fuels and technology</td><td>100%</td></tr>
+<tr><td>7.2.1</td><td>Renewable energy share in the total final energy consumption</td><td>Increase</td></tr>
+<tr><td>7.3.1</td><td>Energy intensity measured in terms of primary energy and GDP</td><td>Reduce by 1/2</td></tr>
+<tr><td>7.a.1</td><td>International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems</td><td>Increase</td></tr>
+<tr><td>7.b.1</td><td>Installed renewable energy-generating capacity in developing countries (in watts per capita)</td><td>Increase</td></tr>
+<tr><td>8.1.1</td><td>Annual growth rate of real GDP per capita</td><td>LDC ≥ 7%; All other countries: Increase (*See exceptions*)</td></tr>
+<tr><td>8.2.1</td><td>Annual growth rate of real GDP per employed person</td><td>Increase (*See exceptions*)</td></tr>
+<tr><td>8.3.1</td><td>Proportion of informal employment in total employment, by sector and sex</td><td>Decrease</td></tr>
+<tr><td>8.4.1</td><td>Material footprint, material footprint per capita, and material footprint per GDP</td><td>Decrease</td></tr>
+<tr><td>8.4.2</td><td>Domestic material consumption, domestic material consumption per capita, and domestic material consumption per GDP</td><td>Decrease</td></tr>
+<tr><td>8.5.1</td><td>Average hourly earnings of employees, by sex, age, occupation and persons with disabilities</td><td>Increase</td></tr>
+<tr><td>8.5.2</td><td>Unemployment rate, by sex, age and persons with disabilities</td><td>3% (*See exceptions*)</td></tr>
+<tr><td>8.6.1</td><td>Proportion of youth (aged 15–24 years) not in education, employment or training</td><td>Decrease</td></tr>
+<tr><td>8.7.1</td><td>Proportion and number of children aged 5–17 years engaged in child labour, by sex and age</td><td>0%</td></tr>
+<tr><td>8.8.1</td><td>Fatal and non-fatal occupational injuries per 100,000 workers, by sex and migrant status</td><td>Decrease</td></tr>
+<tr><td>8.8.2</td><td>Level of national compliance with labour rights (freedom of association and collective bargaining) based on International Labour Organization (ILO) textual sources and national legislation, by sex and migrant status</td><td>Decrease</td></tr>
+<tr><td>8.9.1</td><td>Tourism direct GDP as a proportion of total GDP and in growth rate</td><td>Increase</td></tr>
+<tr><td>8.9.2</td><td>Employed persons in the tourism industries</td><td>Increase</td></tr>
+<tr><td>8.10.1</td><td>(a) Number of commercial bank branches per 100,000 adults and (b) number of automated teller machines (ATMs) per 100,000 adults</td><td>Developing countries: Increase</td></tr>
+<tr><td>8.10.2</td><td>Proportion of adults (15 years and older) with an account at a bank or other financial institution or with a mobile-money-service provider</td><td>100%</td></tr>
+<tr><td>8.a.1</td><td>Aid for Trade commitments and disbursements</td><td>Increase</td></tr>
+<tr><td>8.b.1</td><td>Existence of a developed and operationalized national strategy for youth employment, as a distinct strategy or as part of a national employment strategy</td><td>Score = 3</td></tr>
+<tr><td>9.1.1</td><td>Proportion of the rural population who live within 2 km of an all-season road</td><td>100%</td></tr>
+<tr><td>9.1.2</td><td>Passenger and freight volumes, by mode of transport</td><td>Increase</td></tr>
+<tr><td>9.2.1</td><td>Manufacturing value added as a proportion of GDP and per capita</td><td>LDC: Increase by double; All other countries: Increase</td></tr>
+<tr><td>9.2.2</td><td>Manufacturing employment as a proportion of total employment</td><td>LDC: Increase by double; All other countries: Increase</td></tr>
+<tr><td>9.3.1</td><td>Proportion of small-scale industries in total industry value added</td><td>Increase</td></tr>
+<tr><td>9.3.2</td><td>Proportion of small-scale industries with a loan or line of credit</td><td>Increase</td></tr>
+<tr><td>9.4.1</td><td>CO2 emission per unit of value added</td><td>Decrease</td></tr>
+<tr><td>9.5.1</td><td>Research and development expenditure as a proportion of GDP</td><td>Increase</td></tr>
+<tr><td>9.5.2</td><td>Researchers (in full-time equivalent) per million inhabitants</td><td>Increase</td></tr>
+<tr><td>9.a.1</td><td>Total official international support (official development assistance plus other official flows) to infrastructure</td><td>Increase</td></tr>
+<tr><td>9.b.1</td><td>Proportion of medium and high-tech industry value added in total value added</td><td>Increase</td></tr>
+<tr><td>9.c.1</td><td>Proportion of population covered by a mobile network, by technology</td><td>Increase</td></tr>
+<tr><td>10.1.1</td><td>Growth rates of household expenditure or income per capita among the bottom 40 per cent of the population and the total population</td><td>≥ 1</td></tr>
+<tr><td>10.2.1</td><td>Proportion of people living below 50 per cent of median income, by sex, age and persons with disabilities</td><td>Decrease</td></tr>
+<tr><td>10.3.1</td><td>Proportion of population reporting having personally felt discriminated against or harassed in the previous 12 months on the basis of a ground of discrimination prohibited under international human rights law</td><td>Decrease</td></tr>
+<tr><td>10.4.1</td><td>Labour share of GDP</td><td>Increase</td></tr>
+<tr><td>10.4.2</td><td>Redistributive impact of fiscal policy</td><td>Increase</td></tr>
+<tr><td>10.5.1</td><td>Financial Soundness Indicators</td><td>Multiple</td></tr>
+<tr><td>10.6.1</td><td>Proportion of members and voting rights of developing countries in international organizations</td><td>Increase</td></tr>
+<tr><td>10.7.1</td><td>Recruitment cost borne by employee as a proportion of monthly income earned in country of destination</td><td>Decrease</td></tr>
+<tr><td>10.7.2</td><td>Number of countries with migration policies that facilitate orderly, safe, regular and responsible migration and mobility of people</td><td>Score ≥ 3 (Meets or fully meets)</td></tr>
+<tr><td>10.7.3</td><td>Number of people who died or disappeared in the process of migration towards an international destination</td><td>Decrease</td></tr>
+<tr><td>10.7.4</td><td>Proportion of the population who are refugees, by country of origin</td><td>Decrease</td></tr>
+<tr><td>10.a.1</td><td>Proportion of tariff lines applied to imports from least developed countries and developing countries with zero-tariff</td><td>Decrease</td></tr>
+<tr><td>10.b.1</td><td>Total resource flows for development, by recipient and donor countries and type of flow (e.g. official development assistance, foreign direct investment and other flows)</td><td>Increase</td></tr>
+<tr><td>10.c.1</td><td>Remittance costs as a proportion of the amount remitted</td><td>≤ 3%</td></tr>
+<tr><td>11.1.1</td><td>Proportion of urban population in core housing need</td><td>0%</td></tr>
+<tr><td>11.2.1</td><td>Proportion of population that has convenient access to public transport, by sex, age and persons with disabilities</td><td>100%</td></tr>
+<tr><td>11.3.1</td><td>Ratio of land consumption rate to population growth rate</td><td>Decrease</td></tr>
+<tr><td>11.3.2</td><td>Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically</td><td>Increase</td></tr>
+<tr><td>11.4.1</td><td>Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)</td><td>Increase</td></tr>
+<tr><td>11.5.1</td><td>Number of deaths, missing persons and directly affected persons attributed to disasters per 100,000 population</td><td>Decrease</td></tr>
+<tr><td>11.5.2</td><td>Direct economic loss in relation to global GDP, damage to critical infrastructure and number of disruptions to basic services, attributed to disasters</td><td>Decrease</td></tr>
+<tr><td>11.5.3</td><td>(a) Damage to critical infrastructure and (b) number of disruptions to basic services, attributed to disasters</td><td>Decrease</td></tr>
+<tr><td>11.6.1</td><td>Proportion of municipal solid waste collected and managed in controlled facilities out of total municipal waste generated, by cities</td><td>Increase</td></tr>
+<tr><td>11.6.2</td><td>Annual mean levels of fine particulate matter (e.g. PM2.5 and PM10) in cities (population weighted)</td><td>Decrease</td></tr>
+<tr><td>11.7.1</td><td>Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities</td><td>Increase</td></tr>
+<tr><td>11.7.2</td><td>Proportion of persons victim of physical or sexual harassment, by sex, age, disability status and place of occurrence, in the previous 12 months</td><td>0%</td></tr>
+<tr><td>11.a.1</td><td>Number of countries that have national urban policies or regional development plans that (a) respond to population dynamics; (b) ensure balanced territorial development; and (c) increase local fiscal space</td><td>Non-statistical</td></tr>
+<tr><td>11.b.1</td><td>Number of countries that adopt and implement national disaster risk reduction strategies in line with the Sendai Framework for Disaster Risk Reduction 2015–2030</td><td>Score ≥ 0.75</td></tr>
+<tr><td>11.b.2</td><td>Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies</td><td>Increase</td></tr>
+<tr><td>12.1.1</td><td>Number of countries developing, adopting or implementing policy instruments aimed at supporting the shift to sustainable consumption and production</td><td>Non-statistical</td></tr>
+<tr><td>12.2.1</td><td>Material footprint, material footprint per capita, and material footprint per GDP</td><td>Decrease</td></tr>
+<tr><td>12.2.2</td><td>Domestic material consumption, domestic material consumption per capita, and domestic material consumption per GDP</td><td>Decrease</td></tr>
+<tr><td>12.3.1</td><td>(a) Food loss index and (b) food waste index</td><td>(a) Decrease; (b) Reduce by 1/2</td></tr>
+<tr><td>12.4.1</td><td>Number of parties to international multilateral environmental agreements on hazardous waste, and other chemicals that meet their commitments and obligations in transmitting information as required by each relevant agreement</td><td>100%</td></tr>
+<tr><td>12.4.2</td><td>(a) Hazardous waste generated per capita; and (b) proportion of hazardous waste treated, by type of treatment</td><td>(a) Decrease; (b) 100%</td></tr>
+<tr><td>12.5.1</td><td>National recycling rate, tons of material recycled</td><td>Increase</td></tr>
+<tr><td>12.6.1</td><td>Number of companies publishing sustainability reports</td><td>Increase</td></tr>
+<tr><td>12.7.1</td><td>Degree of sustainable public procurement policies and action plan implementation</td><td>Increase</td></tr>
+<tr><td>12.8.1</td><td>Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment</td><td>100%</td></tr>
+<tr><td>12.a.1</td><td>Installed renewable energy-generating capacity in developing countries (in watts per capita)</td><td>Increase</td></tr>
+<tr><td>12.b.1</td><td>Implementation of standard accounting tools to monitor the economic and environmental aspects of tourism sustainability</td><td>Increase</td></tr>
+<tr><td>12.c.1</td><td>Amount of fossil-fuel subsidies per unit of GDP (production and consumption)</td><td>Decrease</td></tr>
+<tr><td>13.1.1</td><td>Number of deaths, missing persons and directly affected persons attributed to disasters per 100,000 population</td><td>Decrease</td></tr>
+<tr><td>13.1.2</td><td>Number of countries that adopt and implement national disaster risk reduction strategies in line with the Sendai Framework for Disaster Risk Reduction 2015–2030</td><td>Score ≥ 0.75</td></tr>
+<tr><td>13.1.3</td><td>Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies</td><td>Increase</td></tr>
+<tr><td>13.2.1</td><td>Number of countries with nationally determined contributions, long-term strategies, national adaptation plans, strategies as reported in adaptation communications and national communications</td><td>Non-statistical</td></tr>
+<tr><td>13.2.2</td><td>Total greenhouse gas emissions per year</td><td>Decrease</td></tr>
+<tr><td>13.3.1</td><td>Extent to which (i) global citizenship education and (ii) education for sustainable development are mainstreamed in (a) national education policies; (b) curricula; (c) teacher education; and (d) student assessment</td><td>Increase</td></tr>
+<tr><td>13.a.1</td><td>Amounts provided and mobilized in United States dollars per year in relation to the continued existing collective mobilization goal of the $100 billion commitment through to 2025</td><td>Increase</td></tr>
+<tr><td>13.b.1</td><td>Number of least developed countries and small island developing States with nationally determined contributions, long-term strategies, national adaptation plans, strategies as reported in adaptation communications and national communications</td><td>Non-statistical</td></tr>
+<tr><td>14.1.1</td><td>(a) Index of coastal eutrophication; and (b) plastic debris density</td><td>(a) Decrease; (b) Decrease</td></tr>
+<tr><td>14.2.1</td><td>Number of countries using ecosystem-based approaches to managing marine areas</td><td>Non-statistical</td></tr>
+<tr><td>14.3.1</td><td>Average marine acidity (pH) measured at agreed suite of representative sampling stations</td><td>Decrease</td></tr>
+<tr><td>14.4.1</td><td>Proportion of fish stocks within biologically sustainable levels</td><td>100%</td></tr>
+<tr><td>14.5.1</td><td>Coverage of protected areas in relation to marine areas</td><td>≥ 10%</td></tr>
+<tr><td>14.6.1</td><td>Degree of implementation of international instruments aiming to combat illegal, unreported and unregulated fishing</td><td>Score ≥ 0.8 (Very high)</td></tr>
+<tr><td>14.7.1</td><td>Sustainable fisheries as a proportion of GDP in small island developing States, least developed countries and all countries</td><td>Increase</td></tr>
+<tr><td>14.a.1</td><td>Proportion of total research budget allocated to research in the field of marine technology</td><td>Increase</td></tr>
+<tr><td>14.b.1</td><td>Degree of application of a legal/regulatory/ policy/institutional framework which recognizes and protects access rights for small-scale fisheries</td><td>Score ≥ 0.8 (Very high)</td></tr>
+<tr><td>14.c.1</td><td>Number of countries making progress in ratifying, accepting and implementing through legal, policy and institutional frameworks, ocean-related instruments that implement international law, as reflected in the United Nations Convention on the Law of the Sea, for the conservation and sustainable use of the oceans and their resources</td><td>100%</td></tr>
+<tr><td>15.1.1</td><td>Forest area as a proportion of total land area</td><td>No change (*Country-dependent target*)</td></tr>
+<tr><td>15.1.2</td><td>Proportion of important sites for terrestrial and freshwater biodiversity that are covered by protected areas, by ecosystem type</td><td>100%</td></tr>
+<tr><td>15.2.1</td><td>Progress towards sustainable forest management</td><td>Increase</td></tr>
+<tr><td>15.3.1</td><td>Proportion of land that is degraded over total land area</td><td>Decrease</td></tr>
+<tr><td>15.4.1</td><td>Coverage by protected areas of important sites for mountain biodiversity</td><td>100%</td></tr>
+<tr><td>15.4.2</td><td>(a) Mountain Green Cover Index and (b) proportion of degraded mountain land</td><td>(a) Increase (*Country-dependent target*); (b) Decrease</td></tr>
+<tr><td>15.5.1</td><td>Red List Index</td><td>Increase (*See exceptions*)</td></tr>
+<tr><td>15.6.1</td><td>Number of countries that have adopted legislative, administrative and policy frameworks to ensure fair and equitable sharing of benefits</td><td>Increase; Includes non-statistical series</td></tr>
+<tr><td>15.7.1</td><td>Proportion of traded wildlife that was poached or illicitly trafficked</td><td>0%</td></tr>
+<tr><td>15.8.1</td><td>Proportion of countries adopting relevant national legislation and adequately resourcing the prevention or control of invasive alien species</td><td>Non-statistical</td></tr>
+<tr><td>15.9.1</td><td>(a) Number of countries that have established national targets in accordance with or similar to Aichi Biodiversity Target 2 of the Strategic Plan for Biodiversity 2011–2020 in their national biodiversity strategy and action plans and the progress reported towards these targets; and (b) integration of biodiversity into national accounting and reporting systems, defined as implementation of the System of Environmental-Economic Accounting</td><td>(a) Non-statistical; (b) Non-statistical</td></tr>
+<tr><td>15.a.1</td><td>(a) Official development assistance on conservation and sustainable use of biodiversity; and (b) revenue generated and finance mobilized from biodiversity-relevant economic instruments</td><td>(a) Increase; (b) Increase</td></tr>
+<tr><td>15.b.1</td><td>(a) Official development assistance on conservation and sustainable use of biodiversity; and (b) revenue generated and finance mobilized from biodiversity-relevant economic instruments</td><td>(a) Increase; (b) Increase</td></tr>
+<tr><td>15.c.1</td><td>Proportion of traded wildlife that was poached or illicitly trafficked</td><td>0%</td></tr>
+<tr><td>16.1.1</td><td>Number of victims of intentional homicide per 100,000 population, by sex and age</td><td>Decrease</td></tr>
+<tr><td>16.1.2</td><td>Conflict-related deaths per 100,000 population, by sex, age and cause</td><td>Decrease</td></tr>
+<tr><td>16.1.3</td><td>Proportion of population subjected to (a) physical violence, (b) psychological violence and (c) sexual violence in the previous 12 months</td><td>(a) Decrease; (b) Decrease; (c) Decrease</td></tr>
+<tr><td>16.1.4</td><td>Proportion of population that feel safe walking alone around the area they live</td><td>Increase</td></tr>
+<tr><td>16.2.1</td><td>Proportion of children aged 1–17 years who experienced any physical punishment and/or psychological aggression by caregivers in the past month</td><td>0%</td></tr>
+<tr><td>16.2.2</td><td>Number of victims of human trafficking per 100,000 population, by sex, age and form of exploitation</td><td>0</td></tr>
+<tr><td>16.2.3</td><td>Proportion of young women and men aged 18–29 years who experienced sexual violence by age 18</td><td>0%</td></tr>
+<tr><td>16.3.1</td><td>Proportion of victims of violence in the previous 12 months who reported their victimization to competent authorities or other officially recognized conflict resolution mechanisms</td><td>100%</td></tr>
+<tr><td>16.3.2</td><td>Unsentenced detainees as a proportion of overall prison population</td><td>Decrease</td></tr>
+<tr><td>16.3.3</td><td>Proportion of the population who have experienced a dispute in the past two years and who accessed a formal or informal dispute resolution mechanism, by type of mechanism</td><td>100%</td></tr>
+<tr><td>16.4.1</td><td>Total value of inward and outward illicit financial flows (in current United States dollars)</td><td>Decrease</td></tr>
+<tr><td>16.4.2</td><td>Proportion of seized, found or surrendered arms whose illicit origin or context has been traced or established by a competent authority in line with international instruments</td><td>Increase</td></tr>
+<tr><td>16.5.1</td><td>Proportion of persons who had at least one contact with a public official and who paid a bribe to a public official, or were asked for a bribe by those public officials, during the previous 12 months</td><td>Decrease</td></tr>
+<tr><td>16.5.2</td><td>Proportion of businesses that had at least one contact with a public official and that paid a bribe to a public official, or were asked for a bribe by those public officials during the previous 12 months</td><td>Decrease</td></tr>
+<tr><td>16.6.1</td><td>Primary government expenditures as a proportion of original approved budget, by sector (or by budget codes or similar)</td><td>100% (*See exceptions*)</td></tr>
+<tr><td>16.6.2</td><td>Proportion of population satisfied with their last experience of public services</td><td>100%</td></tr>
+<tr><td>16.7.1</td><td>Proportions of positions in national and local institutions, including (a) the legislatures; (b) the public service; and (c) the judiciary, compared to national distributions, by sex, age, persons with disabilities and population groups</td><td>(a) Ratio = 1; (b) Ratio = 1; (c) Ratio = 1</td></tr>
+<tr><td>16.7.2</td><td>Proportion of population who believe decision-making is inclusive and responsive, by sex, age, disability and population group</td><td>100%</td></tr>
+<tr><td>16.8.1</td><td>Proportion of members and voting rights of developing countries in international organizations</td><td>Increase</td></tr>
+<tr><td>16.9.1</td><td>Proportion of children under 5 years of age whose births have been registered with a civil authority, by age</td><td>100%</td></tr>
+<tr><td>16.10.1</td><td>Number of verified cases of killing, kidnapping, enforced disappearance, arbitrary detention and torture of journalists, associated media personnel, trade unionists and human rights advocates in the previous 12 months</td><td>0</td></tr>
+<tr><td>16.10.2</td><td>Number of countries that adopt and implement constitutional, statutory and/or policy guarantees for public access to information</td><td>Score = 9</td></tr>
+<tr><td>16.a.1</td><td>Existence of independent national human rights institutions in compliance with the Paris Principles</td><td>Non-statistical</td></tr>
+<tr><td>16.b.1</td><td>Proportion of population reporting having personally felt discriminated against or harassed in the previous 12 months on the basis of a ground of discrimination prohibited under international human rights law</td><td>Decrease</td></tr>
+<tr><td>17.1.1</td><td>Total government revenue as a proportion of GDP, by source</td><td>Increase</td></tr>
+<tr><td>17.1.1</td><td>Proportion of domestic budget funded by domestic taxes</td><td>Increase</td></tr>
+<tr><td>17.2.1</td><td>Net official development assistance, total and to least developed countries, as a proportion of the Organization for Economic Cooperation and Development (OECD) Development Assistance Committee donors’ gross national income (GNI)</td><td>≥ 0.7% to developing countries; ≥ 0.2% to LDC</td></tr>
+<tr><td>17.3.1</td><td>Additional financial resources mobilized for developing countries from multiple sources</td><td>Increase</td></tr>
+<tr><td>17.3.2</td><td>Volume of remittances (in United States dollars) as a proportion of total GDP</td><td>Increase</td></tr>
+<tr><td>17.4.1</td><td>Debt service as a proportion of exports of goods and services</td><td>Decrease</td></tr>
+<tr><td>17.5.1</td><td>Number of countries that adopt and implement investment promotion regimes for developing countries, including the least developed countries</td><td>Non-statistical</td></tr>
+<tr><td>17.6.1</td><td>Fixed Internet broadband subscriptions per 100 inhabitants, by speed</td><td>Increase</td></tr>
+<tr><td>17.7.1</td><td>Total amount of funding for developing countries to promote the development, transfer, dissemination and diffusion of environmentally sound technologies</td><td>Increase</td></tr>
+<tr><td>17.8.1</td><td>Proportion of individuals using the Internet</td><td>100%</td></tr>
+<tr><td>17.9.1</td><td>Dollar value of financial and technical assistance (including through North-South, South‐South and triangular cooperation) committed to developing countries</td><td>Increase</td></tr>
+<tr><td>17.10.1</td><td>Worldwide weighted tariff-average</td><td>0</td></tr>
+<tr><td>17.11.1</td><td>Developing countries’ and least developed countries’ share of global exports</td><td>Increase by double</td></tr>
+<tr><td>17.12.1</td><td>Weighted average tariffs faced by developing countries, least developed countries and small island developing States</td><td>0</td></tr>
+<tr><td>17.13.1</td><td>Macroeconomic Dashboard</td><td>Multiple</td></tr>
+<tr><td>17.14.1</td><td>Number of countries with mechanisms in place to enhance policy coherence of sustainable development</td><td>Increase</td></tr>
+<tr><td>17.15.1</td><td>Extent of use of country-owned results frameworks and planning tools by providers of development cooperation</td><td>Increase</td></tr>
+<tr><td>17.16.1</td><td>Number of countries reporting progress in multi-stakeholder development effectiveness monitoring frameworks that support the achievement of the sustainable development goals</td><td>Non-statistical</td></tr>
+<tr><td>17.17.1</td><td>Amount in United States dollars committed to public-private partnerships for infrastructure</td><td>Increase</td></tr>
+<tr><td>17.18.1</td><td>Statistical capacity indicator for Sustainable Development Goal monitoring</td><td>Increase</td></tr>
+<tr><td>17.18.2</td><td>Number of countries that have national statistical legislation that complies with the Fundamental Principles of Official Statistics</td><td>Non-statistical</td></tr>
+<tr><td>17.18.3</td><td>Number of countries with a national statistical plan that is fully funded and under implementation, by source of funding</td><td>Non-statistical</td></tr>
+<tr><td>17.19.1</td><td>Dollar value of all resources made available to strengthen statistical capacity in developing countries</td><td>Increase</td></tr>
+<tr><td>17.19.2</td><td>Proportion of countries that (a) have conducted at least one population and housing census in the last 10 years; and (b) have achieved 100 per cent birth registration and 80 per cent death registration</td><td>Non-statistical</td></tr>
+</tbody>
+</table>
 
 
 ## References
