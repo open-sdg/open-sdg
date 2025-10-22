@@ -746,7 +746,7 @@ progress_calculation_options:
     - field: Gender
       value: Female
     direction: negative
-  ```
+```
 
 ### proxy
 
