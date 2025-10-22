@@ -316,6 +316,10 @@ Please [contact Statistics Canada directly](mailto:statcan.sdg-odd.statcan@statc
 ##### Global Indicator Framework
 The table below provides the targets and desired directions used to measure a country’s progress across the GIF. All targets are interpreted at the country-level. For example, GIF indicator 12.1.1 *Number of countries developing, adopting or implementing policy instruments aimed at supporting the shift to sustainable consumption and production* will measure only the country’s progress rather than measuring the number of countries worldwide that have achieved the desired policy objectives. 
 
+<h6>1.1.1: Proportion of the population living below the international poverty line by sex, age, employment status and geographic location (urban/rural)</h6>
+<p>Target or desired direction: 0%</p>
+<h6>1.2.1: Proportion of population living below the national poverty line, by sex and age</h6>
+<p>Target or desired direction: Reduce by 1/2</p>
 
 
 <style>
