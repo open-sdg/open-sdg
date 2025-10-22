@@ -47,12 +47,14 @@ progress_status:
       alt: status.target_achieved
 ```
 
+
 2. In the same `site_config.yml` file, also add "Progress" as an ignored disaggregation.
 
 ```
 ignored_disaggregations:
     - Progress
 ```
+
 This is needed for the [progress column](#progress-column) functionality which allows data conversions and transformations prior to the progress calculation.
 
 3. In the data repo, turn on the automated progress calculation by adding `auto_progress_calculation: true` to the indicator config file(s) of the indicator(s) for which you want to evaluate the progress. Make sure to also setup the `progress_calculation_options` in each indicator's configuration (using the file or form) so that the progress measurement is as accurate as possible. You can see a full breakdown of all the settings that need to be input on the [progress_calculations_options page](indicator-configuration.md#progress_calculation_options).
