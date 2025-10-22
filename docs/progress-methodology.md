@@ -596,6 +596,9 @@ Sachs, J., Kroll, C., Lafortune, G., Fuller, G., Woelm, F. (2021). *The Decade o
 ## Notes
 
 [^1]: For a detailed description of the methodology, please refer to Eurostat (2021).
+
 [^2]: All thresholds are standards in the international community. After assessment, it was found that they are also applicable in the Canadian context.
+
 [^3]: Fifteen years is the expected validity period for the methodology (generally from 2015 to 2030).
+
 [^4]: For more details on aspects of the methodology such as the scaling factor, please [contact Statistics Canada directly](mailto:statcan.sdg-odd.statcan@statcan.gc.ca).
