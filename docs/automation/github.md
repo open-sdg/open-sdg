@@ -29,8 +29,7 @@ Next you can add the "branch protection rule" to require these tests to pass:
 1. Go to the repository in GitHub.
 1. Under the repository name, click "Settings".
 1. In the left sidebar, click "Branches".
-1. Make sure the "default" branch is: `develop`
-1. Under "Branch protection rules" click "Add rule"
+1. Click "Add classic branch protection rule".
 1. Under "Branch name pattern" enter `develop`
 1. Check the box "Require status checks to pass before merging"
 1. In "Search for status checks in the last week for this repository" type "test" and select the "test" option.

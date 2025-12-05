@@ -7,17 +7,19 @@ This document will go over the quickest way to get this platform up and running.
 ## Signing up and creating repositories
 
 1. If you don't already have a Github.com account, [go to Github.com](https://github.com/) to sign up and then log in.
-1. Go to the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and click the green "Use this template" button.
+1. Create a new, free organisation by navigating to "Your organisations" in the menu. This can be called anything you like e.g. SDG-your-country.
+1. Go to the [site starter](https://github.com/open-sdg/open-sdg-site-starter) and click the green "Use this template" button, then "Create a new repository".
+1. Check the "Include all branches" toggle so it is "On". (**required**)
+2. Change the owner to be your new organsation.
 1. You can enter any name for the repository. Here we recommend using "site".
-1. Leave "Public" selected. (**required**)
-1. Check the "Include all branches" box. (**required**)
-1. Click "Create repository from template".
+1. Change the visibility to be "Public". (**required**)
+1. Click "Create repository".
     * Bookmark the created repository -- this is your *site repository*.
-1. Go to the [data starter](https://github.com/open-sdg/open-sdg-data-starter) and click the green "Use this template" button.
-1. As before, you can enter any name for the repository. Here we recommend using "data".
-1. As before, leave "Public" selected. (**required**)
-1. As before, check the "Include all branches" box. (**required**)
-1. Click "Create repository from template".
+1. Go to the [data starter](https://github.com/open-sdg/open-sdg-data-starter) and click the green "Use this template" button, then "Create a new repository".
+1. Check the "Include all branches" toggle so it is "On". (**required**)
+2. As before, you can enter any name for the repository. Here we recommend using "data".
+1. As before, change the visibility to be "Public". (**required**)
+1. Click "Create repository".
     * Bookmark the created repository -- this is your *data repository*.
 
 ## Wait for the builds to complete
@@ -53,6 +55,7 @@ You now have a working site and a working data service, however they are not yet
 1. In this field, replacing what is already there, paste in the URL of your *data repository* (which you bookmarked above).
 1. Scroll to the top and press "Download configuration". You will receive a file download called "site_config.yml".
 1. Press "Go to repository".
+1. Click "Add file", then "Upload files".
 1. Upload the downloaded "site_config.yml" file by dragging it onto the page (this will override the existing file with your changes).
 1. Scroll down and press "Commit changes".
 
