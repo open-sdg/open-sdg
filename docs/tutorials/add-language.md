@@ -62,7 +62,7 @@ Before continuing to the next step, wait for another 5 minutes. This gives your 
 ## Add the language code in your site repository
 
 1. Still logged in to Github.com, go to your site repository.
-1. In the list of files, click on `_config.yml`.
+1. In the list of files, go to the `_data` folder click on `site_config.yml`.
 1. Click the pencil icon on the right to begin editing the file.
 1. Just as you did in the data repository, under `languages` add a new line with `- ru`.
 1. Towards the bottom, select "Create a new branch for this commit and start a pull request."
