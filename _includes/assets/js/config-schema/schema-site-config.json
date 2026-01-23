@@ -1082,6 +1082,11 @@
             "title": "Progress status",
             "description": "This setting is used in the 'goal-with-progress' layout. It controls the behavior of progress status functionality.",
             "properties": {
+                "progress_tabs": {
+                    "title": "Progress tab",
+                    "type": "boolean",
+                    "description": "If enabled, show a tab on the 'Reporting Status' page for progress status by goal."
+                },
                 "status_heading": {
                     "title": "Status heading",
                     "type": "string",
