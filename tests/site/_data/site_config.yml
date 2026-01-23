@@ -263,6 +263,7 @@ observation_attributes:
   - field: COMMENT_OBS
     label: ''
 progress_status:
+  progress_tabs: true
   status_heading: status.progress_status
   status_help: How are we doing against the 2030 targets?
   status_types:
