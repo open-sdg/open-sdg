@@ -39,3 +39,4 @@ progress_calculation_options:
     target: 1
     target_year: 2030
     unit: Percent
+progress_status: target_achieved

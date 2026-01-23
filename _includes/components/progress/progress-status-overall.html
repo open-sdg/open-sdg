@@ -1,0 +1,49 @@
+{%- assign overall = include.overall -%}
+{%- assign indicators_plural = page.t.general.indicators | downcase -%}
+
+{%- assign status_types = site.progress_status.status_types -%}
+{%- if include.status_types and site[include.status_types] -%}
+    {%- assign status_types = site[include.status_types].status_types -%}
+{%- endif -%}
+
+<div class="goal goal-overall">
+    {% unless include.hide_wheel %}
+    <div class="frame goal-tiles">
+        <img src="{{ site.baseurl }}/assets/img/SDG Wheel_Transparent-01.png" alt="{{ page.t.general.sdg }}" width="100" height="100" class="goal-icon-image goal-icon-image-{{ site.goal_image_extension }}"/>
+    </div>
+    {% endunless %}
+    <div class="details">
+        <h2 class="status-goal">
+            {{ include.title }}
+        </h2>
+        <span class="total"><span>{{ overall.totals.total }}</span> {{ include.indicator_count_label | t | default: indicators_plural }}</span>
+        {% if overall.totals.total > 0 %}
+        <div class="summary">
+            <div class="statuses">
+            {%- for status_type in status_types -%}
+            {% assign status_stats = overall.statuses | where: "status", status_type.value | first %}
+            {% if status_stats %}
+            <div>
+                <span class="status {{ status_type.value | slugify }}"><span class="status-inner">{{ status_stats.count }}</span></span><strong>{{ status_type.label | t }}</strong><span class="value">{{ status_stats.percentage | round }}%</span>
+            </div>
+            {% endif %}
+            {%- endfor -%}
+
+            <br style="clear:both;">
+            </div>
+        </div>
+        <div class="goal-stats">
+            {%- for status_type in status_types -%}
+            {% assign status_stats = overall.statuses | where: "status", status_type.value | first %}
+            {% if status_stats %}
+            {% assign status_count_precise = status_stats.count | times: 1.0 %}
+            {% assign overall_total_precise = overall.totals.total  | times: 1.0 %}
+            {% assign percentage_precise = status_count_precise | divided_by: overall_total_precise | times: 100 %}
+            <span class="{{ status_type.value | slugify }}" style="width:{{ percentage_precise }}%" title="{{ status_type.label | t }}: {{ status_stats.percentage | round }}%"></span>
+            {% endif %}
+            {%- endfor -%}
+        </div>
+        {% endif %}
+    </div>
+    <br style="clear:both;">
+</div>

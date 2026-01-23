@@ -62,6 +62,30 @@
                 background-color: $status-backgroundColor-complete;
                 background: $status-backgroundColor-complete;
             }
+            .not-available {
+                background-color: $status-backgroundColor-not-available;
+                background: $status-backgroundColor-not-available;
+            }
+            .deterioration {
+                background-color: $status-backgroundColor-deterioration;
+                background: $status-backgroundColor-deterioration;
+            }
+            .limited-progress {
+                background-color: $status-backgroundColor-limited-progress;
+                background: $status-backgroundColor-limited-progress;
+            }
+            .moderate-progress {
+                background-color: $status-backgroundColor-moderate-progress;
+                background: $status-backgroundColor-moderate-progress;
+            }
+            .substantial-progress {
+                background-color: $status-backgroundColor-substantial-progress;
+                background: $status-backgroundColor-substantial-progress;
+            }
+            .target-achieved {
+                background-color: $status-backgroundColor-target-achieved;
+                background: $status-backgroundColor-target-achieved;
+            }
         }
         .divider {
             height: 15px;
@@ -164,6 +188,30 @@
                 .complete {
                     background-color: $status-backgroundColor-complete-highContrast;
                     background: $status-backgroundColor-complete-highContrast;
+                }
+                .not-available {
+                    background-color: $status-backgroundColor-not-available-highContrast;
+                    background: $status-backgroundColor-not-available-highContrast;
+                }
+                .deterioration {
+                    background-color: $status-backgroundColor-deterioration-highContrast;
+                    background: $status-backgroundColor-deterioration-highContrast;
+                }
+                .limited-progress {
+                    background-color: $status-backgroundColor-limited-progress-highContrast;
+                    background: $status-backgroundColor-limited-progress-highContrast;
+                }
+                .moderate-progress {
+                    background-color: $status-backgroundColor-moderate-progress-highContrast;
+                    background: $status-backgroundColor-moderate-progress-highContrast;
+                }
+                .substantial-progress {
+                    background-color: $status-backgroundColor-substantial-progress-highContrast;
+                    background: $status-backgroundColor-substantial-progress-highContrast;
+                }
+                .target-achieved {
+                    background-color: $status-backgroundColor-target-achieved-highContrast;
+                    background: $status-backgroundColor-target-achieved-highContrast;
                 }
             }
 
