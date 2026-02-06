@@ -22,11 +22,9 @@
             <div class="statuses">
             {%- for status_type in status_types -%}
             {% assign status_stats = overall.statuses | where: "status", status_type.value | first %}
-            {% if status_stats %}
             <div>
                 <span class="status {{ status_type.value | slugify }}"><span class="status-inner">{{ status_stats.count }}</span></span><strong>{{ status_type.label | t }}</strong><span class="value">{{ status_stats.percentage | round }}%</span>
             </div>
-            {% endif %}
             {%- endfor -%}
 
             <br style="clear:both;">
