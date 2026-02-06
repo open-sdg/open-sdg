@@ -72,7 +72,7 @@
 
     {% if site.progress_status.progress_tabs %}
       <li role="presentation" class="nav-item">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#progressview" aria-controls="progressview" role="tab" {% include autotrack.html preset="tab_reporting_status_progress" category="Tab change" action="Change reporting status view" label="Change reporting status view to progress" %}>Progress status</button>
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#progressview" aria-controls="progressview" role="tab" {% include autotrack.html preset="tab_reporting_status_progress" category="Tab change" action="Change reporting status view" label="Change reporting status view to progress" %}>{{ page.t.status.progress_status }}</button>
       </li>
     {% endif %}
   </ul>
@@ -117,8 +117,8 @@
 
   {% if site.progress_status.progress_tabs and progress_data %}
     <div role="tabpanel" class="tab-pane" id="progressview">
-      {% include components/progress/progress-status-overall.html overall=progress_data.overall title=page.t.status.disaggregation_status_overall status_types="progress_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
-      {% include components/progress/progress-status-by-goal.html goals=progress_data.goals title=page.t.status.status_by_goal status_types="progress_status" indicator_count_label=site.reporting_status.disaggregation_indicator_count_label %}
+      {% include components/progress/progress-status-overall.html overall=progress_data.overall title=page.t.status.progress_status_overall status_types="progress_status" %}
+      {% include components/progress/progress-status-by-goal.html goals=progress_data.goals title=page.t.status.status_by_goal status_types="progress_status" %}
     </div>
   {% endif %}
 
