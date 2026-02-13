@@ -267,9 +267,6 @@ progress_status:
   status_heading: status.progress_status
   status_help: How are we doing against the 2030 targets?
   status_types:
-    - value: not_available
-      label: status.progress_not_available
-      alt: status.progress_not_available
     - value: target_achieved
       label: status.target_achieved
       image: assets/img/progress/target-achieved-gauge.png
@@ -290,6 +287,9 @@ progress_status:
       label: status.deterioration
       image: assets/img/progress/red-gauge.png
       alt: status.deterioration
+    - value: not_available
+      label: status.progress_not_available
+      alt: status.progress_not_available
 progressive_web_app:
   enabled: true
   name: My SDG App Name

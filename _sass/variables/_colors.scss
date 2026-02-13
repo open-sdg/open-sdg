@@ -82,11 +82,10 @@ $status-color-limited-progress: $text-color !default;
 $status-color-deterioration: $text-color !default;
 $status-color-not-available: $text-color !default;
 
-$status-backgroundColor-not-available: #FFFFFF !default;
-$status-backgroundColor-target-achieved: #1A1A1A !default;
-$status-backgroundColor-substantial-progress: #666666 !default;
-$status-backgroundColor-moderate-progress: #B3B3B3 !default;
-$status-backgroundColor-limited-progress: #F2F2F2 !default;
+$status-backgroundColor-target-achieved: #000000 !default;
+$status-backgroundColor-substantial-progress: #555555 !default;
+$status-backgroundColor-moderate-progress: #8A8A8A !default;
+$status-backgroundColor-limited-progress: #CFCFCF !default;
 $status-backgroundColor-deterioration: repeating-linear-gradient(
   135deg,
   #757575 0,
@@ -94,6 +93,8 @@ $status-backgroundColor-deterioration: repeating-linear-gradient(
   #757575 10px,
   white 20px
 ) !default;
+$status-backgroundColor-not-available: #FFFFFF !default;
+
 
 $status-backgroundColor-inner-not-available: rgba(255, 255, 255, 0.9) !default;
 $status-backgroundColor-inner-target-achieved: $status-backgroundColor-target-achieved !default;
