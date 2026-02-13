@@ -270,26 +270,26 @@ progress_status:
     - value: not_available
       label: status.progress_not_available
       alt: status.progress_not_available
-    - value: deterioration
-      label: status.deterioration
-      image: assets/img/progress/red-gauge.png
-      alt: status.deterioration
-    - value: limited_progress
-      label: status.limited_progress
-      image: assets/img/progress/orange-gauge.png
-      alt: status.limited_progress
-    - value: moderate_progress
-      label: status.moderate_progress
-      image: assets/img/progress/yellow-gauge.png
-      alt: status.moderate_progress
-    - value: substantial_progress
-      label: status.substantial_progress
-      image: assets/img/progress/green-gauge.png
-      alt: status.substantial_progress
     - value: target_achieved
       label: status.target_achieved
       image: assets/img/progress/target-achieved-gauge.png
       alt: status.target_achieved
+    - value: substantial_progress
+      label: status.substantial_progress
+      image: assets/img/progress/green-gauge.png
+      alt: status.substantial_progress
+    - value: moderate_progress
+      label: status.moderate_progress
+      image: assets/img/progress/yellow-gauge.png
+      alt: status.moderate_progress
+    - value: limited_progress
+      label: status.limited_progress
+      image: assets/img/progress/orange-gauge.png
+      alt: status.limited_progress
+    - value: deterioration
+      label: status.deterioration
+      image: assets/img/progress/red-gauge.png
+      alt: status.deterioration
 progressive_web_app:
   enabled: true
   name: My SDG App Name
