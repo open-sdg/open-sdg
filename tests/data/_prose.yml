@@ -614,4 +614,16 @@ prose:
             label: "Other information"
             translation_key: metadata_fields.source_other_info_6
             scope: source_6
+      - name: SDG_CUSTODIAN_AGENCIES
+        field:
+            element: text
+            label: International organisations(s) responsible for global monitoring (national)
+            translation_key: metadata_fields.SDG_CUSTODIAN_AGENCIES
+            scope: national
+      - name: SDG_CUSTODIAN_AGENCIES__GLOBAL
+        field:
+            element: text
+            label: International organisations(s) responsible for global monitoring (global)
+            translation_key: metadata_fields.SDG_CUSTODIAN_AGENCIES
+            scope: global
   ignore: ['/scripts', '/.github']

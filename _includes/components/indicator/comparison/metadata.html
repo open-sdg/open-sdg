@@ -2,15 +2,27 @@
     <table>
         <thead>
             <tr>
-                <th>Field (translate me)</th>
+                <th>Field to compare</th>
                 <th>{{ page.t.indicator.global_metadata }}</th>
                 <th>{{ page.t.indicator.national_metadata }}</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                
-            </tr>
+            {% for indicator_metadata in site.data.schema %}
+                {%- assign metadata_label = indicator_metadata.name | translate_metadata_field -%}
+                {% if indicator_metadata.field.scope == 'global' %}
+                    {% assign global_content = page.indicator[indicator_metadata.name] %}
+                    {% assign national_key = indicator_metadata.name | replace: "__GLOBAL", "" %}
+                    {% assign national_content = page.indicator[national_key] %}
+                    {% if global_content and national_content and global_content != '' and national_content != '' %}
+                        <tr>
+                            <td>{{ metadata_label }}</td>
+                            <td>{{ global_content }}</td>
+                            <td>{{ national_content }}</td>
+                        </tr>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
         </tbody>
     </table>
 </div>
