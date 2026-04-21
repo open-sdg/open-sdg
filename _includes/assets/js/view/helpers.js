@@ -55,5 +55,6 @@
     getObservationAttributeText: getObservationAttributeText,
     showComparisonLink: showComparisonLink,
     getBoxElementType: getBoxElementType,
+    getBrowserDecimalSeparator: getBrowserDecimalSeparator,
   }
 })();

@@ -39,6 +39,8 @@ nav:
         - "Tutorial: Changing colors": tutorials/change-colors.md
         - "Tutorial: Changing the site-wide banner": tutorials/change-banner.md
         - "Tutorial: Creating pages": tutorials/create-pages.md
+        - "Tutorial: SDMX integration": tutorials/data-source-sdmx.md
+        - "Tutorial: PX Web integration": tutorials/data-source-pxweb.md
     - Data provider guidance:
         - Data format: data-format.md
         - Data sources: data-sources.md
@@ -61,6 +63,7 @@ nav:
         - Translation: translation.md
         - Maps: maps.md
         - Analytics: analytics.md
+        - Progress status: progress.md
         - Reporting status: reporting-status.md
         - Troubleshooting: troubleshooting.md
         - Non SDG usage: non-sdg.md
@@ -79,6 +82,7 @@ nav:
         - Github pages (production): hosting/github-pages-production.md
     - Upgrades:
         - Upgrade process: upgrades/upgrade-process.md
+        - Upgrading to 2.4.0: upgrades/upgrading-2-4-0.md
         - Upgrading to 2.3.0: upgrades/upgrading-2-3-0.md
         - Upgrading to 2.2.0: upgrades/upgrading-2-2-0.md
         - Upgrading to 2.1.0: upgrades/upgrading-2-1-0.md

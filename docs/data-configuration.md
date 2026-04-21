@@ -197,6 +197,7 @@ _Optional_: This controls how your indicators are loaded. The available paramete
 * progress_column: The name of the data column that holds the values for the progress calculations (overriding all values in the Value column). By default, the progress column is "Progress".
 * observation_attributes: This specifies a list of columns should be considered "observation attributes" -- meaning that they described individual data points (aka, observations). Adding a column here ensures that the column will be treated as observation-level metadata. Currently the effects include:
   1. Outputs this metadata in the JSON produced by the OutputGeoJson class
+  2. Prevents the SDMX translation input from translating the column name of these attributes (important for allowing the raw attribute name to be referenced in the site configuration's 'observation_attributes' setting).
 
 Here are the defaults that are assumed if this is omitted:
 

@@ -26,3 +26,16 @@ page_content: >
   no-headline indicators with a double-disaggregation work.
 reporting_status: complete
 tags: []
+auto_progress_calculation: true
+progress_calculation_options:
+  - direction: negative
+    base_year: 2015
+    disaggregation:
+      - field: Group1
+        value: A
+      - field: Group2
+        value: X
+    limit: 1
+    target: 1
+    target_year: 2030
+    unit: Percent

@@ -43,7 +43,11 @@ function alterDataDisplay(value, info, context, additionalInfo) {
             localeOpts.minimumFractionDigits = VIEW._precision;
             localeOpts.maximumFractionDigits = VIEW._precision;
         }
-        altered = altered.toLocaleString(opensdg.language, localeOpts);
+        altered = altered.toLocaleString(opensdg.language_numbers, localeOpts);
+        // Still use the custom decimal separator if it is there.
+        if (OPTIONS.decimalSeparator) {
+            altered = altered.toString().replace(VIEW._browserDecimalSeparator, OPTIONS.decimalSeparator);
+        }
     }
     // Now let's add any footnotes from observation attributes.
     var obsAttributes = [];
@@ -74,4 +78,15 @@ function alterDataDisplay(value, info, context, additionalInfo) {
  */
 function getObservationAttributeFootnoteSymbol(num) {
     return '[' + translations.indicator.note + ' ' + (num + 1) + ']';
+}
+
+/**
+ * Figure out what the browser will be using for the decimal separator.
+ *
+ * @returns {string} The decimal separator the browser will use.
+ */
+function getBrowserDecimalSeparator() {
+    var browserDecimal = 1.1;
+    browserDecimal = browserDecimal.toLocaleString(opensdg.language_numbers).substring(1, 2);
+    return browserDecimal;
 }

@@ -282,7 +282,7 @@ function setDataTableWidth(table) {
     // ascertain whether the table should be width 100% or explicit width:
     var containerWidth = table.closest('.dataTables_wrapper').width();
 
-    if (totalWidth > containerWidth) {
+    if (totalWidth > containerWidth && containerWidth > 0) {
         table.css('width', totalWidth + 'px');
     } else {
         table.css('width', '100%');
