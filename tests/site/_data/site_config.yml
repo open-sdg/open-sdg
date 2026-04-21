@@ -288,8 +288,8 @@ progress_status:
       image: assets/img/progress/red-gauge.png
       alt: status.deterioration
     - value: not_available
-      label: status.progress_not_available
-      alt: status.progress_not_available
+      label: status.progress_not_available_full
+      alt: status.progress_not_available_full
 progressive_web_app:
   enabled: true
   name: My SDG App Name

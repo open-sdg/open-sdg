@@ -994,8 +994,8 @@ progress_status:
   status_help: ''
   status_types:
     - value: not_available
-      label: status.progress_not_available
-      alt: status.progress_not_available
+      label: status.progress_not_available_full
+      alt: status.progress_not_available_full
     - value: deterioration
       label: status.deterioration
       image: assets/img/progress/red-gauge.png

@@ -14,7 +14,7 @@
 {% assign show_progress = false %}
 {% for group in goal_indicators %}
   {% for indicator in group.items %}
-    {% if indicator.progress_status and indicator.progress_status != '' %}
+    {% if indicator.progress_status and indicator.progress_status != '' and indicator.progress_status != 'not_available' %}
       {% assign show_progress = true %}
     {% endif %}
   {% endfor %}
