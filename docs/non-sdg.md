@@ -137,6 +137,12 @@ target: Policy Objective
 targets: Policy Objectives
 ```
 
+## ABAS M&E Framework
+
+If you are looking to use Open SDG to report on the ABAS M&E framework for SIDS, we have created a template option to get you started & guidance on how to link this with your SDG platform where indicators are linked/related
+
+For a guide on how to set these up from scratch please see -> [ABAS M&E platform quickstart](tutorials/abas-quick-start.md)
+
 ## Examples of non-SDG frameworks using Open SDG
 
 Here are some examples of non-SDG frameworks that have been implemented with Open SDG.
