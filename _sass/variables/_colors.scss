@@ -81,6 +81,7 @@ $status-color-moderate-progress: $text-color !default;
 $status-color-limited-progress: $text-color !default;
 $status-color-deterioration: $text-color !default;
 $status-color-not-available: $text-color !default;
+$status-color-default: $text-color !default;
 
 $status-backgroundColor-target-achieved: #000000 !default;
 $status-backgroundColor-substantial-progress: #555555 !default;
@@ -94,6 +95,7 @@ $status-backgroundColor-deterioration: repeating-linear-gradient(
   white 20px
 ) !default;
 $status-backgroundColor-not-available: #FFFFFF !default;
+$status-backgroundColor-default: #CFCFCF !default;
 
 
 $status-backgroundColor-inner-not-available: rgba(255, 255, 255, 0.9) !default;
@@ -102,6 +104,7 @@ $status-backgroundColor-inner-substantial-progress: rgba(255, 255, 255, 0.9) !de
 $status-backgroundColor-inner-moderate-progress: rgba(255, 255, 255, 0.9) !default;
 $status-backgroundColor-inner-limited-progress: rgba(255, 255, 255, 0.9) !default;
 $status-backgroundColor-inner-deterioration: rgba(255, 255, 255, 0.9) !default;
+$status-backgroundColor-inner-default: rgba(255, 255, 255, 0.9) !default;
 
 $status-color-not-available-highContrast: $color-dark-highContrast !default;
 $status-color-target-achieved-highContrast: $color-light-highContrast !default;
@@ -109,6 +112,7 @@ $status-color-substantial-progress-highContrast: $color-dark-highContrast !defau
 $status-color-moderate-progress-highContrast: $color-dark-highContrast !default;
 $status-color-limited-progress-highContrast: $color-dark-highContrast !default;
 $status-color-deterioration-highContrast: $color-dark-highContrast !default;
+$status-color-default-highContrast: $color-dark-highContrast !default;
 
 $status-backgroundColor-not-available-highContrast: $status-backgroundColor-not-available !default;
 $status-backgroundColor-target-achieved-highContrast: $status-backgroundColor-target-achieved !default;
@@ -116,6 +120,7 @@ $status-backgroundColor-substantial-progress-highContrast: $status-backgroundCol
 $status-backgroundColor-moderate-progress-highContrast: $status-backgroundColor-moderate-progress !default;
 $status-backgroundColor-limited-progress-highContrast: $status-backgroundColor-limited-progress !default;
 $status-backgroundColor-deterioration-highContrast: $status-backgroundColor-deterioration !default;
+$status-backgroundColor-default-highContrast: $status-backgroundColor-default !default;
 
 $status-backgroundColor-inner-not-available-highContrast: $status-backgroundColor-inner-not-available !default;
 $status-backgroundColor-inner-target-achieved-highContrast: $status-backgroundColor-inner-target-achieved !default;
@@ -123,6 +128,7 @@ $status-backgroundColor-inner-substantial-progress-highContrast: $status-backgro
 $status-backgroundColor-inner-moderate-progress-highContrast: $status-backgroundColor-inner-moderate-progress !default;
 $status-backgroundColor-inner-limited-progress-highContrast: $status-backgroundColor-inner-limited-progress !default;
 $status-backgroundColor-inner-deterioration-highContrast: $status-backgroundColor-inner-deterioration !default;
+$status-backgroundColor-inner-default-highContrast: $status-backgroundColor-inner-default !default;
 
 $status-border-not-available: 1px solid $color-dark !default;
 $status-border-target-achieved: 1px solid transparent !default;
@@ -130,6 +136,7 @@ $status-border-substantial-progress: 1px solid $color-dark !default;
 $status-border-moderate-progress: 1px solid transparent !default;
 $status-border-limited-progress: 1px solid $color-dark !default;
 $status-border-deterioration: 1px solid $color-dark !default;
+$status-border-default: 1px solid $color-dark !default;
 
 $status-border-not-available-highContrast: 1px solid $color-light-highContrast !default;
 $status-border-target-achieved-highContrast: 1px solid transparent !default;
@@ -137,6 +144,7 @@ $status-border-substantial-progress-highContrast: 1px solid transparent !default
 $status-border-moderate-progress-highContrast: 1px solid transparent !default;
 $status-border-limited-progress-highContrast: 1px solid transparent !default;
 $status-border-deterioration-highContrast: 1px solid $color-light-highContrast !default;
+$status-border-default-highContrast: 1px solid $color-light-highContrast !default;
 
 $tag-color: $color-light !default;
 $tag-border: 1px solid transparent !default;

@@ -45,6 +45,9 @@
                 display: inline-block;
                 height: 10px;
                 font-weight: bold;
+                // Default colors to catch non-standard categories.
+                background-color: $status-backgroundColor-default;
+                background: $status-backgroundColor-default;
             }
             .notapplicable {
                 background-color: $status-backgroundColor-notapplicable;
@@ -173,6 +176,11 @@
 
             .goal-stats {
                 border: 1px solid $color-light-highContrast !important;
+                & span {
+                    // Default colors to catch non-standard categories.
+                    background-color: $status-backgroundColor-default-highContrast;
+                    background: $status-backgroundColor-default-highContrast;
+                }
                 .notapplicable {
                     background-color: $status-backgroundColor-notapplicable-highContrast;
                     background: $status-backgroundColor-notapplicable-highContrast;

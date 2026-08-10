@@ -10,6 +10,18 @@
         border-radius: 5px;
     }
 
+    // Default styling for non-standard categories.
+    & {
+        color: $status-color-default;
+        border: $status-border-default;
+        background-color: $status-backgroundColor-default;
+        background: $status-backgroundColor-default;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-default;
+            background: $status-backgroundColor-inner-default;
+        }
+    }
+
     &.complete {
         color: $status-color-complete;
         border: $status-border-complete;
@@ -117,6 +129,18 @@
 }
 
 @mixin statusHighContrast {
+    // Default styling to catch non-standard categories.
+    & {
+        border: $status-border-default-highContrast;
+        background-color: $status-backgroundColor-default-highContrast;
+        background: $status-backgroundColor-default-highContrast;
+        color: $status-color-default-highContrast;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-default-highContrast;
+            background: $status-backgroundColor-inner-default-highContrast;
+            color: $status-color-default-highContrast;
+        }
+    }
     &.complete {
         border: $status-border-complete-highContrast;
         background-color: $status-backgroundColor-complete-highContrast;
