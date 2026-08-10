@@ -38,3 +38,4 @@ progress_calculation_options:
     target: 9
     target_year: 2030
     unit: Total
+progress_status: target_achieved

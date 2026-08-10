@@ -10,6 +10,18 @@
         border-radius: 5px;
     }
 
+    // Default styling for non-standard categories.
+    & {
+        color: $status-color-default;
+        border: $status-border-default;
+        background-color: $status-backgroundColor-default;
+        background: $status-backgroundColor-default;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-default;
+            background: $status-backgroundColor-inner-default;
+        }
+    }
+
     &.complete {
         color: $status-color-complete;
         border: $status-border-complete;
@@ -52,9 +64,83 @@
             background: $status-backgroundColor-inner-notapplicable;
         }
     }
+    &.target-achieved {
+        color: $status-color-target-achieved;
+        border: $status-border-target-achieved;
+        // Both background-color and background are included to allow the
+        // use of patterns.
+        background-color: $status-backgroundColor-target-achieved;
+        background: $status-backgroundColor-target-achieved;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-target-achieved;
+            background: $status-backgroundColor-inner-target-achieved;
+        }
+    }
+    &.limited-progress {
+        color: $status-color-limited-progress;
+        border: $status-border-limited-progress;
+        background-color: $status-backgroundColor-limited-progress;
+        background: $status-backgroundColor-limited-progress;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-limited-progress;
+            background: $status-backgroundColor-inner-limited-progress;
+        }
+    }
+    &.moderate-progress {
+        color: $status-color-moderate-progress;
+        border: $status-border-moderate-progress;
+        background-color: $status-backgroundColor-moderate-progress;
+        background: $status-backgroundColor-moderate-progress;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-moderate-progress;
+            background: $status-backgroundColor-inner-moderate-progress;
+        }
+    }
+    &.substantial-progress {
+        color: $status-color-substantial-progress;
+        border: $status-border-substantial-progress;
+        background-color: $status-backgroundColor-substantial-progress;
+        background: $status-backgroundColor-substantial-progress;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-substantial-progress;
+            background: $status-backgroundColor-inner-substantial-progress;
+        }
+    }
+    &.deterioration{
+        color: $status-color-deterioration;
+        border: $status-border-deterioration;
+        background-color: $status-backgroundColor-deterioration;
+        background: $status-backgroundColor-deterioration;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-deterioration;
+            background: $status-backgroundColor-inner-deterioration;
+        }
+    }
+    &.not-available {
+        color: $status-color-not-available;
+        border: $status-border-not-available;
+        background-color: $status-backgroundColor-not-available;
+        background: $status-backgroundColor-not-available;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-not-available;
+            background: $status-backgroundColor-inner-not-available;
+        }
+    }
 }
 
 @mixin statusHighContrast {
+    // Default styling to catch non-standard categories.
+    & {
+        border: $status-border-default-highContrast;
+        background-color: $status-backgroundColor-default-highContrast;
+        background: $status-backgroundColor-default-highContrast;
+        color: $status-color-default-highContrast;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-default-highContrast;
+            background: $status-backgroundColor-inner-default-highContrast;
+            color: $status-color-default-highContrast;
+        }
+    }
     &.complete {
         border: $status-border-complete-highContrast;
         background-color: $status-backgroundColor-complete-highContrast;
@@ -97,6 +183,72 @@
             background-color: $status-backgroundColor-inner-notapplicable-highContrast !important;
             background: $status-backgroundColor-inner-notapplicable-highContrast !important;
             color: $status-color-notapplicable-highContrast !important;
+        }
+    }
+    &.target-achieved {
+        border: $status-border-target-achieved-highContrast;
+        background-color: $status-backgroundColor-target-achieved-highContrast;
+        background: $status-backgroundColor-target-achieved-highContrast;
+        color: $status-color-target-achieved-highContrast !important;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-target-achieved-highContrast !important;
+            background: $status-backgroundColor-inner-target-achieved-highContrast !important;
+            color: $status-color-target-achieved-highContrast !important;
+        }
+    }
+    &.limited-progress {
+        border: $status-border-limited-progress-highContrast;
+        background-color: $status-backgroundColor-limited-progress-highContrast;
+        background: $status-backgroundColor-limited-progress-highContrast;
+        color: $status-color-limited-progress-highContrast;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-limited-progress-highContrast !important;
+            background: $status-backgroundColor-inner-limited-progress-highContrast !important;
+            color: $status-color-limited-progress-highContrast;
+        }
+    }
+    &.moderate-progress {
+        border: $status-border-moderate-progress-highContrast;
+        background-color: $status-backgroundColor-moderate-progress-highContrast;
+        background: $status-backgroundColor-moderate-progress-highContrast;
+        color: $status-color-moderate-progress-highContrast;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-moderate-progress-highContrast !important;
+            background: $status-backgroundColor-inner-moderate-progress-highContrast !important;
+            color: $status-color-moderate-progress-highContrast;
+        }
+    }
+    &.substantial-progress {
+        border: $status-border-substantial-progress-highContrast;
+        background-color: $status-backgroundColor-substantial-progress-highContrast;
+        background: $status-backgroundColor-substantial-progress-highContrast;
+        color: $status-color-substantial-progress-highContrast;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-substantial-progress-highContrast !important;
+            background: $status-backgroundColor-inner-substantial-progress-highContrast !important;
+            color: $status-color-substantial-progress-highContrast;
+        }
+    }
+    &.deterioration {
+        border: $status-border-deterioration-highContrast;
+        background-color: $status-backgroundColor-deterioration-highContrast;
+        background: $status-backgroundColor-deterioration-highContrast;
+        color: $status-color-deterioration-highContrast !important;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-deterioration-highContrast !important;
+            background: $status-backgroundColor-inner-deterioration-highContrast !important;
+            color: $status-color-deterioration-highContrast !important;
+        }
+    }
+    &.not-available {
+        border: $status-border-not-available-highContrast;
+        background-color: $status-backgroundColor-not-available-highContrast;
+        background: $status-backgroundColor-not-available-highContrast;
+        color: $status-color-not-available-highContrast !important;
+        .status-inner {
+            background-color: $status-backgroundColor-inner-not-available-highContrast !important;
+            background: $status-backgroundColor-inner-not-available-highContrast !important;
+            color: $status-color-not-available-highContrast !important;
         }
     }
 }

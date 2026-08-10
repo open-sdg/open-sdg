@@ -9,7 +9,8 @@ Feature: Reporting status page
 
   Scenario: All available goals are listed
     # 4 under "Reporting status" and 4 under "Disaggregation status"
-    Then I should see 8 "goal status" elements
+    # and 4 under "Progress status".
+    Then I should see 12 "goal status" elements
 
   Scenario: Extra fields can be used to group status and are properly translated
     And I click on "the second reporting status tab"

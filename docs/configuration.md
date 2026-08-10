@@ -994,8 +994,8 @@ progress_status:
   status_help: ''
   status_types:
     - value: not_available
-      label: status.progress_not_available
-      alt: status.progress_not_available
+      label: status.progress_not_available_full
+      alt: status.progress_not_available_full
     - value: deterioration
       label: status.deterioration
       image: assets/img/progress/red-gauge.png
@@ -1025,6 +1025,27 @@ For the relevant indicators, you will need to specify the progress_status in the
 Here is an example of what this looks like on the platform:
 
 ![Screenshot of progress status functionality](https://open-sdg.org/open-sdg-docs/img/siteconfiguration/progress_status.PNG)
+
+#### On creating new progress status types and visual styling
+
+Open SDG uses hardcoded visual styling for the expected progress status types: not_available, deterioration, limited_progress, moderate_progress, substantial_progress, and target_achieved. You can create new status types, but they will receive the default visual styling, which looks the same as "limited_progress". To apply your own visual styling for your new status types, you will need to add custom CSS.
+
+Here is an example of how to do that, assuming a new status type called "my_new_status_type". In this example, we'll give the new status type a yellow background color, and a white background color in high-contrast mode:
+
+```
+.layout-reportingstatus #main-content .goal-stats .my_new_status_type {
+  background-color: yellow;
+}
+.layout-reportingstatus.contrast-high #main-content .goal-stats .my_new_status_type {
+  background-color: white;
+}
+.layout-reportingstatus #main-content .statuses .status.my_new_status_type {
+  background-color: yellow;
+}
+.layout-reportingstatus.contrast-high #main-content .statuses .status.my_new_status_type {
+  background-color: white;
+}
+```
 
 ### progressive_web_app
 

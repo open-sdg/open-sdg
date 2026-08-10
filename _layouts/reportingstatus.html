@@ -6,6 +6,11 @@
   {% assign reporting_data = site.data[page.language].reporting %}
 {% endif %}
 
+{% assign progress_data = site.data.progress %}
+{% if site.data[page.language].progress %}
+  {% assign progress_data = site.data[page.language].progress %}
+{% endif %}
+
 {% assign disagg_data = site.data.disaggregation %}
 {% if site.data[page.language].disaggregation %}
   {% assign disagg_data = site.data[page.language].disaggregation %}
@@ -20,6 +25,8 @@
 {% if extra_fields %}
   {% assign show_tabs = true %}
 {% elsif site.reporting_status.disaggregation_tabs and disagg_data %}
+  {% assign show_tabs = true %}
+{% elsif site.progress_status.progress_tabs and progress_data %}
   {% assign show_tabs = true %}
 {% endif %}
 <div class="container">
@@ -62,6 +69,12 @@
       {% endif %}
 
     {% endif %}
+
+    {% if site.progress_status.progress_tabs %}
+      <li role="presentation" class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#progressview" aria-controls="progressview" role="tab" {% include autotrack.html preset="tab_reporting_status_progress" category="Tab change" action="Change reporting status view" label="Change reporting status view to progress" %}>{{ page.t.status.progress_status }}</button>
+      </li>
+    {% endif %}
   </ul>
   {% endif %}
 
@@ -100,6 +113,13 @@
       </div>
       {%- endfor -%}
     {% endif %}
+  {% endif %}
+
+  {% if site.progress_status.progress_tabs and progress_data %}
+    <div role="tabpanel" class="tab-pane" id="progressview">
+      {% include components/progress/progress-status-overall.html overall=progress_data.overall title=page.t.status.progress_status_overall status_types="progress_status" %}
+      {% include components/progress/progress-status-by-goal.html goals=progress_data.goals title=page.t.status.status_by_goal status_types="progress_status" %}
+    </div>
   {% endif %}
 
   {% if show_tabs %}

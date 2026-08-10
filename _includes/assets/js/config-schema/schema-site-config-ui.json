@@ -245,6 +245,10 @@
                     "elements": [
                         {
                             "type": "Control",
+                            "scope": "#/properties/progress_status/properties/progress_tabs"
+                        },
+                        {
+                            "type": "Control",
                             "scope": "#/properties/progress_status/properties/status_heading"
                         },
                         {

@@ -45,6 +45,9 @@
                 display: inline-block;
                 height: 10px;
                 font-weight: bold;
+                // Default colors to catch non-standard categories.
+                background-color: $status-backgroundColor-default;
+                background: $status-backgroundColor-default;
             }
             .notapplicable {
                 background-color: $status-backgroundColor-notapplicable;
@@ -61,6 +64,30 @@
             .complete {
                 background-color: $status-backgroundColor-complete;
                 background: $status-backgroundColor-complete;
+            }
+            .not-available {
+                background-color: $status-backgroundColor-not-available;
+                background: $status-backgroundColor-not-available;
+            }
+            .deterioration {
+                background-color: $status-backgroundColor-deterioration;
+                background: $status-backgroundColor-deterioration;
+            }
+            .limited-progress {
+                background-color: $status-backgroundColor-limited-progress;
+                background: $status-backgroundColor-limited-progress;
+            }
+            .moderate-progress {
+                background-color: $status-backgroundColor-moderate-progress;
+                background: $status-backgroundColor-moderate-progress;
+            }
+            .substantial-progress {
+                background-color: $status-backgroundColor-substantial-progress;
+                background: $status-backgroundColor-substantial-progress;
+            }
+            .target-achieved {
+                background-color: $status-backgroundColor-target-achieved;
+                background: $status-backgroundColor-target-achieved;
             }
         }
         .divider {
@@ -149,6 +176,11 @@
 
             .goal-stats {
                 border: 1px solid $color-light-highContrast !important;
+                & span {
+                    // Default colors to catch non-standard categories.
+                    background-color: $status-backgroundColor-default-highContrast;
+                    background: $status-backgroundColor-default-highContrast;
+                }
                 .notapplicable {
                     background-color: $status-backgroundColor-notapplicable-highContrast;
                     background: $status-backgroundColor-notapplicable-highContrast;
@@ -164,6 +196,30 @@
                 .complete {
                     background-color: $status-backgroundColor-complete-highContrast;
                     background: $status-backgroundColor-complete-highContrast;
+                }
+                .not-available {
+                    background-color: $status-backgroundColor-not-available-highContrast;
+                    background: $status-backgroundColor-not-available-highContrast;
+                }
+                .deterioration {
+                    background-color: $status-backgroundColor-deterioration-highContrast;
+                    background: $status-backgroundColor-deterioration-highContrast;
+                }
+                .limited-progress {
+                    background-color: $status-backgroundColor-limited-progress-highContrast;
+                    background: $status-backgroundColor-limited-progress-highContrast;
+                }
+                .moderate-progress {
+                    background-color: $status-backgroundColor-moderate-progress-highContrast;
+                    background: $status-backgroundColor-moderate-progress-highContrast;
+                }
+                .substantial-progress {
+                    background-color: $status-backgroundColor-substantial-progress-highContrast;
+                    background: $status-backgroundColor-substantial-progress-highContrast;
+                }
+                .target-achieved {
+                    background-color: $status-backgroundColor-target-achieved-highContrast;
+                    background: $status-backgroundColor-target-achieved-highContrast;
                 }
             }
 
