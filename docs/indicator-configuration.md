@@ -11,6 +11,8 @@ The alternative to using this form is to maintain your indicator configuration f
 
 Note: Open SDG's indicator configuration is in a format called YAML, as mentioned above. Much of the documentation below will show examples if this YAML syntax. However, if you are using the indicator configuration forms, then you actually never need to interact with the YAML. Instead you will be making changes in the form, downloading the YAML, and then uploading it your repository directly. So, the YAML syntax examples shown below are intended to help your understanding, but do not represent anything you would actually need to type in (if you are using the indicator configuration forms).
 
+With some additional steps it is also possible for the configuration forms to push changes directly to GitHub. This avoids the steps of downloading and uploading the files. There are more details in the [instructions on setting up a GitHub authentication server](github-authentication-server.md).
+
 ## Note about translation keys
 Indicator configuration values can either be filled in with normal text ("My field value") or with [translation keys](glossary.md#translation-keys) (my_translations.my_translation). In the examples below, we will try to demonstrate both possibilities.
 

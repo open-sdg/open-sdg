@@ -18,6 +18,8 @@ To help with specifying indicator metadata, you can optionally enable user-frien
 
 For more details on how to enable these forms, see the [indicator_metadata_form site configuration setting](configuration.md#indicator_metadata_form).
 
+With some additional steps it is also possible for the configuration forms to push changes directly to GitHub. This avoids the steps of downloading and uploading the files. There are more details in the [instructions on setting up a GitHub authentication server](github-authentication-server.md).
+
 ## Note about empty metadata fields
 
 Due to the large number of metadata fields with some maybe not being applicable, empty metadata fields are hidden by default using `hide_empty_metadata: true` in the site configuration file.
