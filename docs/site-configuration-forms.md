@@ -41,6 +41,8 @@ Once you have made the desired changes within the site configuration forms:
 1. Upload the downloaded "site_config.yml" file by dragging it onto the page.
 1. Scroll down and press "Commit changes".
 
+With some additional steps it is also possible for the configuration forms to push changes directly to GitHub. This avoids the steps of downloading and uploading the files. There are more details in the [instructions on setting up a GitHub authentication server](github-authentication-server.md).
+
 If you are ready to test your changes, merge your feature branch to the "develop" branch and you can view them on your staging site to check they look as expected and you are happy with them. 
 
 If you are not happy, go back to the configuration forms and alter/change back following the same steps. Once happy with the changes on the staging site, make sure to merge "develop" to "master" to see these changes on your production site.
