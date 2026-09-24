@@ -57,6 +57,7 @@ nav:
         - Site configuration forms: site-configuration-forms.md
         - Data configuration: data-configuration.md
         - Indicator configuration: indicator-configuration.md
+        - GitHub Authentication Server: github-authentication-server.md
         - Customisation: customisation.md
         - Jekyll and Open SDG: jekyll-and-open-sdg.md
         - Jekyll templates: jekyll-templates.md
