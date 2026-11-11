@@ -248,6 +248,12 @@ The following parameters can be used for any input:
           headers:
             My-Custom-Header: my-value
 
+* `skip_indicators`: A list of indicators that you would like to skip. For example:
+
+        skip_indicators:
+          - 1.1.1
+          - 1.2.1
+
 Now here are specific descriptions and parameters available for each class:
 
 **InputCkan**: Input data from a [CKAN](https://ckan.org/) service. The available parameters are:
@@ -266,6 +272,23 @@ Now here are specific descriptions and parameters available for each class:
   * `path_pattern`: A wildcard pattern used for identifying the source files.
 
 > To see this in practice see this [example of InputCsvData configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config.yml#L30). For more technical information see the [InputCsvData class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputCsvData.py).
+
+**InputCsvDataRemote**: Input data from any number of remote CSV files. The available parameters are:
+
+  * `indicator_id_map`: A dict mapping sources (URLs to remote CSV files) to lists of indicator IDs (or single indicator IDs)
+
+Here is an example of usage:
+
+```
+- class: InputCsvDataRemote
+  indicator_id_map:
+    'https://example.com/path/to/my/file1.csv': 1.1.1
+    'https://example.com/path/to/my/file2.csv':
+      - 1.2.1
+      - 5.1.1
+```
+
+> For more technical information see the [InputCsvDataRemote class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputCsvDataRemote.py).
 
 **InputCsvMeta**: Input metadata from a folder of CSV files. The available parameters are:
 
@@ -354,6 +377,24 @@ To view their entire data configuration file for a full example of this method [
 **InputYamlMeta**: Input metadata from YAML files. The available parameters are the same as InputCsvMeta.
 
 > For more technical information see the [InputYamlMeta class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputYamlMeta.py).
+
+**InputYamlMetaRemote**: Input metadata from remote YAML files. The available parameters are:
+
+* `indicator_id_map`: A dict mapping sources (URLs to remote YAML files) to lists of indicator IDs (or single indicator IDs)
+* `metadata_mapping`: A map of human-readable labels to machine keys or a path to a CSV file containing that mapping. This allows the YAML metadata files to use human-readable labels instead of machine keys, which makes management easier.
+
+Here is an example of usage:
+
+```
+- class: InputYamlMetaRemote
+  indicator_id_map:
+    'https://example.com/path/to/my/file1.yaml': 1.1.1
+    'https://example.com/path/to/my/file2.yaml':
+      - 1.2.1
+      - 5.1.1
+```
+
+> For more technical information see the [InputYamlMetaRemote class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputYamlMetaRemote.py).
 
 **InputYamlMdMeta**: Input metadata from a folder of YAML/Markdown files. The available parameters are the same as in InputCsvMeta.
 
