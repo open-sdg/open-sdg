@@ -8,7 +8,7 @@ These settings are mostly related to the conversion/alteration of data, metadata
 
 ### csvw
 
-_Optional_: If specified, then your data will be converted into [CSVW](https://www.w3.org/TR/tabular-data-primer/) format. The available parameters correspond to the parameters available in the [OutputCsvw class](https://github.com/open-sdg/sdg-build/blob/master/sdg/outputs/OutputCsvw.py).
+_Optional_: If specified, then your data will be converted into [CSVW](https://www.w3.org/TR/tabular-data-primer/) format. The available parameters correspond to the parameters available in the [OutputCsvw class](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/outputs/OutputCsvw.py).
 
 * `common_properties`: Key/value pairs showing common properties to add to the CSVW metadata. Here is a [list of support properties](https://w3c.github.io/csvw/metadata/#common-properties). Note that this can also be set per-indicator in a "csvw" metadata property.
 * `at_properties`: Key/value pairs showing "at" properties (those starting with @). Note that this can also be set per-indicator in a "csvw" metadata property.
@@ -22,7 +22,7 @@ _Optional_: Your data will automatically be converted into a machine-readable st
 
 **NOTE**: These datapackages are actually used in Open SDG to determine the order in which the disaggregations and their values are displayed to the end-user. So, the "sorting" option described below has a direct effect on your Open SDG site.
 
-The available parameters correspond to the parameters available in the [OutputDataPackage class](https://github.com/open-sdg/sdg-build/blob/master/sdg/outputs/OutputDataPackage.py):
+The available parameters correspond to the parameters available in the [OutputDataPackage class](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/outputs/OutputDataPackage.py):
 
 * `field_properties`: Key/value pairs (where each value is itself a set of key/value pairs) showing properties to add to specific fields, keyed by field name. Note that this can also be set per-indicator in a "datapackage" metadata property.
 * `package_properties`: Key/value pairs showing common properties to add to all the data packages. Note that this can also be set per-indicator in a "datapackage" metadata property.
@@ -254,6 +254,12 @@ The following parameters can be used for any input:
           - 1.1.1
           - 1.2.1
 
+* `indicator_id_conversions`: A mapping of indicator IDs that you would like to convert during import. For example, if you wanted to add "ABC" to the indicator IDs:
+
+        indicator_id_conversions:
+          1.1.1: ABC1.1.1
+          1.2.1: ABC1.2.1
+
 Now here are specific descriptions and parameters available for each class:
 
 **InputCkan**: Input data from a [CKAN](https://ckan.org/) service. The available parameters are:
@@ -265,13 +271,13 @@ Now here are specific descriptions and parameters available for each class:
   * `value_column`: The name of the column which will be changed to "Value".
   * `sleep`: Number of seconds to wait in between each request.
 
-> For more technical information see the [InputCkan class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputCkan.py) and an [example of using InputCkan in Python code](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/ckan.py).
+> For more technical information see the [InputCkan class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputCkan.py) and an [example of using InputCkan in Python code](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/ckan.py).
 
 **InputCsvData**: Input data from a folder of CSV files. The available parameters are:
 
   * `path_pattern`: A wildcard pattern used for identifying the source files.
 
-> To see this in practice see this [example of InputCsvData configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config.yml#L30). For more technical information see the [InputCsvData class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputCsvData.py).
+> To see this in practice see this [example of InputCsvData configuration](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/open_sdg_config.yml#L30). For more technical information see the [InputCsvData class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputCsvData.py).
 
 **InputCsvDataRemote**: Input data from any number of remote CSV files. The available parameters are:
 
@@ -288,7 +294,7 @@ Here is an example of usage:
       - 5.1.1
 ```
 
-> For more technical information see the [InputCsvDataRemote class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputCsvDataRemote.py).
+> For more technical information see the [InputCsvDataRemote class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputCsvDataRemote.py).
 
 **InputCsvMeta**: Input metadata from a folder of CSV files. The available parameters are:
 
@@ -298,11 +304,11 @@ Here is an example of usage:
   * `git_data_dir`: Only used if you are using the "git" option described above. Location of folder containing the data files.
   * `git_data_filemask`: Only used if you are using the "git" option described above. A pattern for data filenames, where "*" is the indicator id. Any indicator can override this setting by having a metadata field called "data_filename" with the name of the data file for that indicator.
 
-> For more technical information see the [InputCsvMeta class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputCsvMeta.py).
+> For more technical information see the [InputCsvMeta class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputCsvMeta.py).
 
 **InputExcelMeta**: Input metadata from a folder of Excel files. The available parameters are the same as in InputCsvMeta.
 
-> For more technical information see the [InputExcelMeta class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputExcelMeta.py).
+> For more technical information see the [InputExcelMeta class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputExcelMeta.py).
 
 **InputSdgMetadata**: Input metadata from a folder or repository of subfolders that follow the same pattern as the [SDG Metadata](https://github.com/worldbank/sdg-metadata) project. Specifically, each subfolder must be a language code (like `en`), and each language folder contains one YAML file per indicator, named like `1-1-1.yml`.
 
@@ -312,7 +318,7 @@ Here is an example of usage:
   * `repo_subfolder`: If using a Git repository, the name of the folder within the repo to use as the main folder.
   * `default_language`: Which language is your site's main language.
 
-> For more technical information see the [InputSdgMetadata class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputSdgMetadata.py).
+> For more technical information see the [InputSdgMetadata class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputSdgMetadata.py).
 
 **InputSdmxJson**: Input data from an SDMX-JSON file or endpoint. The available parameters are:
 
@@ -329,21 +335,21 @@ Here is an example of usage:
   * `indicator_id_xpath`: An xpath query to find the indicator id within each Series code.
   * `indicator_name_xpath`: An xpath query to find the indicator name within each Series code.
 
-> For more technical information see the [InputSdmxJson class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxJson.py), an [example of InputSdmxJson configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config_sdmx.yml#L29), and an [example of using InputSdmxJson in Python code](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/sdmx_json.py).
+> For more technical information see the [InputSdmxJson class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputSdmxJson.py), an [example of InputSdmxJson configuration](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/open_sdg_config_sdmx.yml#L29), and an [example of using InputSdmxJson in Python code](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/sdmx_json.py).
 
 **InputSdmxMeta**: Input metadata from SDMX, either remote inputs or a local file. The available parameters are the same as in InputSdmxJson.
 
-> For more technical information see the [InputSdmxMeta class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMeta.py).
+> For more technical information see the [InputSdmxMeta class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputSdmxMeta.py).
 
 **InputSdmxMl_Multiple**: Input data from multiple SDMX-ML files (which can be a mix of either "Structure" or "Structure Specific"). The available parameters are the same as in InputSdmxJson, along with these additional parameters:
 
   * `path_pattern`: Same as described above in other inputs.
 
-> For more technical information see the [InputSdmxMl_Multiple class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMl_Multiple.py).
+> For more technical information see the [InputSdmxMl_Multiple class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputSdmxMl_Multiple.py).
 
 **InputSdmxMl_Structure**: Input data from an SDMX-ML Structure file. **The available parameters are the same as in InputSdmxJson shown above.**
 
-> For more technical information see the [InputSdmxMl_Structure class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMl_Structure.py), and an [example of using InputSdmxMl_Structure in Python code](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/sdmx_ml.py).
+> For more technical information see the [InputSdmxMl_Structure class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputSdmxMl_Structure.py), and an [example of using InputSdmxMl_Structure in Python code](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/sdmx_ml.py).
 
 Use this option for when you have uploaded your indicator data to .Stat, or any other website that outputs in SDMX. You will need a link to your SDMX output file with all indicator data and a link to your DSD that was uploaded to .Stat. These links should be straight to the outputted SDMX data files.
 
@@ -361,22 +367,26 @@ To view their entire data configuration file for a full example of this method [
 
 **InputSdmxMl_StructureSpecific**: Input data from an SDMX-ML Structure Specific (also known as "Compact") file. The available parameters are the same as in InputSdmxJson.
 
-> For more technical information see the [InputSdmxMl_StructureSpecific class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputSdmxMl_StructureSpecific.py).
+> For more technical information see the [InputSdmxMl_StructureSpecific class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputSdmxMl_StructureSpecific.py).
 
 **InputSdmxMl_UnitedNationsApi**: Input data from the United Nations Global SDG Database. The available parameters are the same as in InputSdmxJson, plus the following:
 
   * `reference_area`: The SDMX in the REF_AREA dimension. Defaults to '1' (world).
   * `dimension_query`: Key/value pairs for SDMX dimensions to use in generating the query. For details see the [UN SDG API manual](https://unstats.un.org/sdgs/files/SDMX_SDG_API_MANUAL.pdf).
 
-> For more technical information see the [InputSdmxMl_UnitedNationsApi class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputSdmxMl_UnitedNationsApi.py).
+> For more technical information see the [InputSdmxMl_UnitedNationsApi class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputSdmxMl_UnitedNationsApi.py).
 
-**InputWordMeta**: Input data from the [Microsoft Word templates](https://github.com/sdmx-sdgs/metadata) popular for SDG metdata. The available parameters are the same as InputCsvMeta.
+**InputWordMeta**: Input metadata from the [Microsoft Word templates](https://github.com/sdmx-sdgs/metadata) popular for SDG metdata. The available parameters are the same as InputCsvMeta.
 
-> For more technical information see the [InputWordMeta class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputWordMeta.py).
+> For more technical information see the [InputWordMeta class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputWordMeta.py).
+
+**InputWordMetaRemote**: Input remote metadata from the [Microsoft Word templates](https://github.com/sdmx-sdgs/metadata) popular for SDG metdata. The available parameters are the same as InputCsvMetaRemote.
+
+> For more technical information see the [InputWordMetaRemote class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputWordMetaRemote.py).
 
 **InputYamlMeta**: Input metadata from YAML files. The available parameters are the same as InputCsvMeta.
 
-> For more technical information see the [InputYamlMeta class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputYamlMeta.py).
+> For more technical information see the [InputYamlMeta class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputYamlMeta.py).
 
 **InputYamlMetaRemote**: Input metadata from remote YAML files. The available parameters are:
 
@@ -394,13 +404,13 @@ Here is an example of usage:
       - 5.1.1
 ```
 
-> For more technical information see the [InputYamlMetaRemote class definition](https://github.com/open-sdg/sdg-build/blog/master/sdg/inputs/InputYamlMetaRemote.py).
+> For more technical information see the [InputYamlMetaRemote class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputYamlMetaRemote.py).
 
 **InputYamlMdMeta**: Input metadata from a folder of YAML/Markdown files. The available parameters are the same as in InputCsvMeta.
 
 Note that YAML/Markdown files should have a `---` at the bottom. Any Markdown text below that line will be used as the `page_content` metadata field.
 
-> For more technical information see the [InputYamlMdMeta class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/inputs/InputYamlMdMeta.py) and an [example of InputYamlMdMeta configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config.yml#L33).
+> For more technical information see the [InputYamlMdMeta class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputYamlMdMeta.py) and an [example of InputYamlMdMeta configuration](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/open_sdg_config.yml#L33).
 
 **Defaults**: As mentioned above, this `inputs` setting is optional. The defaults below show what is assumed if `inputs` is omitted entirely. Note that these defaults should not be considered the recommended approach -- they are left only for backwards compatibility.
 
@@ -440,7 +450,7 @@ logging:
 
 ### map_layers
 
-_Optional_: This allows the build to generate one or more GeoJSON files to be used by Open SDG maps. This should be a list of layers, each one containing certain parameters. The parameters available correspond to the [sdg-build library's OutputGeoJson class](https://github.com/open-sdg/sdg-build/blob/master/sdg/outputs/OutputGeoJson.py) and are described below:
+_Optional_: This allows the build to generate one or more GeoJSON files to be used by Open SDG maps. This should be a list of layers, each one containing certain parameters. The parameters available correspond to the [sdg-build library's OutputGeoJson class](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/outputs/OutputGeoJson.py) and are described below:
 
 * `geojson_file`: A path to a GeoJSON file (remote or local) which contains all of the "geometries" for the regions to include. Each region should have an id and a name, in properties (see name_property and id_property).
 * `name_property`: The property in the geometry file which contains the region's name.
@@ -483,7 +493,7 @@ This setting can even point to multiple schemas. Each item must have a "class" w
   * `scope`: Which metadata scope the fields should apply to. Not usually used here, since "scope" can be assigned in the Prose.io schema per field.
   * `request_params`: Only used in the case of a remote schema_path, to control the behavior of the HTTP request. Not usually used since the Prose.io schema is typically a local file.
 
-> For more technical information see the [SchemaInputOpenSdg class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/schemas/SchemaInputOpenSdg.py).
+> For more technical information see the [SchemaInputOpenSdg class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/schemas/SchemaInputOpenSdg.py).
 
 **SchemaInputSdmxMsd**: Input a metadata schema from an SDMX metadata structure definition. The available parameters are:
 
@@ -491,7 +501,7 @@ This setting can even point to multiple schemas. Each item must have a "class" w
   * `scope`: Which metadata scope the fields should apply to. This is necessary here, since the MSD has no idea about the Open SDG concept of "scope".
   * `request_params`: Only used in the case of a remote schema_path, to control the behavior of the HTTP request.
 
-> For more technical information see the [SchemaInputSdmxMsd class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/schemas/SchemaInputSdmxMsd.py).
+> For more technical information see the [SchemaInputSdmxMsd class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/schemas/SchemaInputSdmxMsd.py).
 
 Example:
 
@@ -591,7 +601,7 @@ Each item must have a "class" which corresponds to classes in the [/sdg/translat
 
   * `source`: The folder containing the translation files. Defaults to "translations".
 
-> For more technical information see the [TranslationInputCsv class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/translations/TranslationInputCsv.py).
+> For more technical information see the [TranslationInputCsv class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/translations/TranslationInputCsv.py).
 
 **TranslationInputSdgTranslations**: Input translations from a Git repository structured like the [sdg-translations](https://github.com/open-sdg/sdg-build/tree/master/sdg/translations) project. The available parameters are:
 
@@ -599,23 +609,23 @@ Each item must have a "class" which corresponds to classes in the [/sdg/translat
   * `branch`: Specifies a particular branch (or tag or commit) to use in the Git repository. Alias for "tag".
   * `source`: Specifies the endpoint for the Git repository. Defaults to the sdg-translations project: 'https://github.com/open-sdg/sdg-translations.git'
 
-> For more technical information see the [TranslationInputSdgTranslations class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/translations/TranslationInputSdgTranslations.py) and an [example of TranslationInputSdgTranslations configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config.yml#L56).
+> For more technical information see the [TranslationInputSdgTranslations class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/translations/TranslationInputSdgTranslations.py) and an [example of TranslationInputSdgTranslations configuration](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/open_sdg_config.yml#L56).
 
 **TranslationInputSdmx**: Input translations from an SDMX DSD file. The available parameters are:
 
   * `source`: The location of the SDMX DSD file (either local or remote).
 
-> For more technical information see the [TranslationInputSdmx class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/translations/TranslationInputSdmx.py) and an [example of TranslationInputSdmx configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config_sdmx.yml#L55).
+> For more technical information see the [TranslationInputSdmx class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/translations/TranslationInputSdmx.py) and an [example of TranslationInputSdmx configuration](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/open_sdg_config_sdmx.yml#L55).
 
 **TranslationInputSdmxMsd**: Input translations from an SDMX MSD (metadata structure definition) file. The available parameters are:
 
   * `source`: The location of the SDMX MSD file (either local or remote).
 
-> For more technical information see the [TranslationInputSdmxMsd class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/translations/TranslationInputSdmxMsd.py).
+> For more technical information see the [TranslationInputSdmxMsd class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/translations/TranslationInputSdmxMsd.py).
 
 **TranslationInputYaml**: Input translations from a folder of local YAML files. The available parameters are the same as in TranslationInputCsv above.
 
-> For more technical information see the [TranslationInputYaml class definition](https://github.com/open-sdg/sdg-build/blob/master/sdg/translations/TranslationInputYaml.py) and an [example of TranslationInputYaml configuration](https://github.com/open-sdg/sdg-build/blob/master/docs/examples/open_sdg_config_sdmx.yml#L53).
+> For more technical information see the [TranslationInputYaml class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/translations/TranslationInputYaml.py) and an [example of TranslationInputYaml configuration](https://github.com/open-sdg/sdg-build/blob/HEAD/docs/examples/open_sdg_config_sdmx.yml#L53).
 
 **Defaults**: As mentioned above, this `translations` setting is optional. The defaults below show what is assumed if `translations` is omitted entirely.
 
