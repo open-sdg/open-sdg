@@ -251,14 +251,14 @@ The following parameters can be used for any input:
 * `skip_indicators`: A list of indicators that you would like to skip. For example:
 
         skip_indicators:
-          - 1.1.1
-          - 1.2.1
+          - 1-1-1
+          - 1-2-1
 
 * `indicator_id_conversions`: A mapping of indicator IDs that you would like to convert during import. For example, if you wanted to add "ABC" to the indicator IDs:
 
         indicator_id_conversions:
-          1.1.1: ABC1.1.1
-          1.2.1: ABC1.2.1
+          1-1-1: ABC1-1-1
+          1-2-1: ABC1-2-1
 
 Now here are specific descriptions and parameters available for each class:
 
@@ -288,10 +288,10 @@ Here is an example of usage:
 ```
 - class: InputCsvDataRemote
   indicator_id_map:
-    'https://example.com/path/to/my/file1.csv': 1.1.1
+    'https://example.com/path/to/my/file1.csv': 1-1-1
     'https://example.com/path/to/my/file2.csv':
-      - 1.2.1
-      - 5.1.1
+      - 1-2-1
+      - 5-1-1
 ```
 
 > For more technical information see the [InputCsvDataRemote class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputCsvDataRemote.py).
@@ -398,10 +398,10 @@ Here is an example of usage:
 ```
 - class: InputYamlMetaRemote
   indicator_id_map:
-    'https://example.com/path/to/my/file1.yaml': 1.1.1
+    'https://example.com/path/to/my/file1.yaml': 1-1-1
     'https://example.com/path/to/my/file2.yaml':
-      - 1.2.1
-      - 5.1.1
+      - 1-2-1
+      - 5-1-1
 ```
 
 > For more technical information see the [InputYamlMetaRemote class definition](https://github.com/open-sdg/sdg-build/blob/HEAD/sdg/inputs/InputYamlMetaRemote.py).
